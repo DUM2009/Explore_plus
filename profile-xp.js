@@ -7,7 +7,7 @@ const BADGE_DEFINITIONS = Object.freeze([
         name: 'Fotossíntese',
         topic: 'Fotossíntese',
         tone: 'Prateado',
-        icon: 'assets/images/badges/photosynthesis-silver.svg',
+        icon: 'assets/images/Emblema prateado fotossíntese.jpg',
         description: 'Completa o quiz de Fotossíntese para desbloquear este emblema.',
         unlockSources: ['photosynthesis-goldtest', 'photosynthesis:final-quiz']
     },
