@@ -226,7 +226,7 @@ const missionData = {
             `,
             quiz: {
                 questions: [
-                    {onClick={event => event.preventDefault(); const clicked =event.target.dataset.clicked; if (clicked.toLowerCase() !== "yes") return; showToast();}
+                    {onClick={event => event.preventDefault(); const clicked =event.target.dataset.clicked; if (clicked.toLowerCase() !== "true") return; showToast();}
 
                         question: "Onde ocorre o ciclo de Calvin?",
                         options: [
