@@ -558,11 +558,13 @@ border-radius:25px;
 
 width:420px;
 
+height: 585px;
+
 box-shadow:0 20px 40px rgba(0,0,0,.08);
 
 text-align:center;
 
-margin-right:1px;
+margin-right:-600px;
 
 }
 
@@ -594,6 +596,9 @@ border-radius:12px;
 
 font-size:1rem;
 
+
+
+
 }
 
 .login-box button{
@@ -612,6 +617,7 @@ font-weight:bold;
 
 text-decoration:none;
 
+
 }
 .password-container{
     position:relative;
@@ -627,9 +633,9 @@ text-decoration:none;
 
 .olho{
     position:absolute;
-    right:15px;
+    right:14px;
     top:50%;
-    transform:translateY(-50%);
+    transform:translateY(-100%);
     cursor:pointer;
     font-size:14px;
 }
