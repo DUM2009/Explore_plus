@@ -29,9 +29,9 @@ const missionData = {
                         <img class="screen-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Esquema simples de cloroplasto com tilacoides em destaque">
                         <p>Achas que a planta usa a água apenas para transportar nutrientes, ou também para <strong>produzir</strong> algo durante a fotossíntese?</p>
                         <div class="guide-options">
-                            <button class="guide-option" data-choice="transporta">💧 Só transporta</button>
-                            <button class="guide-option" data-choice="produz">⚡ Também produz algo</button>
-                        </div>
+   <button class="guide-option" data-choice="transporta" data-correct="false">💧 Só transporta</button>
+<button class="guide-option" data-choice="produz" data-correct="true">⚡ Também produz algo</button>
+</div>
                         <p class="neutral-feedback">Vamos ver o que a água realmente faz aqui dentro.</p>
                     </div>
 

@@ -1051,3 +1051,17 @@ body.sidebar-open{
         grid-template-columns:1fr;
     }
 }
+.guide-option.correct {
+    background-color: #d4edda;
+    border-color: #28a745;
+}
+
+.guide-option.incorrect {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+}
+
+.guide-option:disabled {
+    cursor: not-allowed;
+    opacity: 0.85;
+}

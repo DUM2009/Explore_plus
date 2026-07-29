@@ -14,12 +14,21 @@ class MissionSystem {
         this.finalQuizAnswers = [];
         this.loadProgress();
     }
+    
+
+    getProgressStorageKey() {
+        const user = window.exploreCurrentUser;
+        const userKey = user?.uid
+            ? `uid:${user.uid}`
+            : (user?.email ? `email:${user.email.toLowerCase()}` : 'guest');
+        return `mission_${userKey}_${this.mission.id}`;
+    }
 
     /**
      * Load user progress from localStorage
      */
     loadProgress() {
-        const savedProgress = localStorage.getItem(`mission_${this.mission.id}`);
+        const savedProgress = localStorage.getItem(this.getProgressStorageKey());
 
         if (savedProgress) {
             try {
@@ -70,7 +79,7 @@ class MissionSystem {
             earnedXP: this.earnedXP,
             completedSections: Array.from(this.completedSections)
         };
-        localStorage.setItem(`mission_${this.mission.id}`, JSON.stringify(data));
+        localStorage.setItem(this.getProgressStorageKey(), JSON.stringify(data));
     }
 
     awardProfileXP(amount, source) {
@@ -202,6 +211,18 @@ class MissionSystem {
 
                 sectionEl.querySelectorAll('.open-quiz-submit').forEach(button => {
                     button.addEventListener('click', (event) => this.handleOpenQuizAnswer(event, section, index));
+                });
+
+                sectionEl.querySelectorAll('.quiz-option').forEach(option => {
+                    option.addEventListener('click', (event) => this.handleQuizAnswer(event, section, index));
+                });
+
+                sectionEl.querySelectorAll('.open-quiz-submit').forEach(button => {
+                    button.addEventListener('click', (event) => this.handleOpenQuizAnswer(event, section, index));
+                });
+
+                sectionEl.querySelectorAll('.guide-option').forEach(option => {
+                    option.addEventListener('click', (event) => this.handleGuideOption(event));
                 });
             }
 
@@ -393,8 +414,9 @@ class MissionSystem {
         this.userAnswers[section.id] = answerState;
         this.saveProgress();
 
+        const scrollPosition = window.scrollY;
         this.render();
-        this.scrollToElement(`#missao-${sectionIndex + 1}`);
+        window.scrollTo(0, scrollPosition);
 
         if (this.isSectionQuizComplete(section)) {
             this.completeSection(section, sectionIndex);
@@ -448,11 +470,34 @@ class MissionSystem {
         this.userAnswers[section.id] = answerState;
         this.saveProgress();
 
+        const scrollPosition = window.scrollY;
         this.render();
-        this.scrollToElement(`#missao-${sectionIndex + 1}`);
+        window.scrollTo(0, scrollPosition);
 
         if (this.isSectionQuizComplete(section)) {
             this.completeSection(section, sectionIndex);
+        }
+    }
+
+    handleGuideOption(event) {
+        const button = event.target.closest('.guide-option');
+        if (!button || button.disabled) return;
+
+        const container = button.closest('.guide-options');
+        const feedbackEl = container.parentElement.querySelector('.neutral-feedback');
+        const isCorrect = button.dataset.correct === 'true';
+
+        container.querySelectorAll('.guide-option').forEach(opt => {
+            opt.disabled = true;
+            if (opt.dataset.correct === 'true') {
+                opt.classList.add('correct');
+            } else if (opt === button) {
+                opt.classList.add('incorrect');
+            }
+        });
+
+        if (feedbackEl) {
+            feedbackEl.classList.add('show');
         }
     }
 
@@ -697,7 +742,7 @@ class MissionSystem {
      * Reset mission progress
      */
     resetMission() {
-        localStorage.removeItem(`mission_${this.mission.id}`);
+        localStorage.removeItem(this.getProgressStorageKey());
         this.currentSectionIndex = 0;
         this.userAnswers = {};
         this.earnedXP = 0;
@@ -745,7 +790,10 @@ class MissionSystem {
 // Initialize mission system when page loads
 let missionSystem;
 document.addEventListener('DOMContentLoaded', () => {
-    missionSystem = new MissionSystem(missionData);
-    missionSystem.render();
-    missionSystem.guardSectionAccessFromUrl();
+    window.addEventListener('explore:auth-changed', function initAfterAuth() {
+        window.removeEventListener('explore:auth-changed', initAfterAuth);
+        missionSystem = new MissionSystem(missionData);
+        missionSystem.render();
+        missionSystem.guardSectionAccessFromUrl();
+    }, { once: true });
 });
