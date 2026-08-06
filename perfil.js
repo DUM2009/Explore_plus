@@ -1,5 +1,6 @@
 import { auth } from "./firebase.js";
 import {
+    deleteUser,
     onAuthStateChanged,
     signOut
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
@@ -16,6 +17,7 @@ const remainingUnlocks = document.getElementById("remainingUnlocks");
 const profileImage = document.getElementById("profileImage");
 const profileAvatarFallback = document.getElementById("profileAvatarFallback");
 const logoutBtn = document.getElementById("logoutBtn");
+const deleteAccountBtn = document.getElementById("deleteAccountBtn");
 const sidebar = document.getElementById("profileSidebar");
 const sidebarToggle = document.getElementById("sidebarToggle");
 const sidebarOverlay = document.getElementById("sidebarOverlay");
@@ -185,6 +187,38 @@ if (logoutBtn) {
             })
             .catch((erro) => {
                 alert("Erro ao terminar sessão: " + erro.message);
+            });
+    });
+}
+
+if (deleteAccountBtn) {
+    deleteAccountBtn.addEventListener('click', () => {
+        if (!auth.currentUser) {
+            return;
+        }
+
+        const confirmed = window.confirm(
+            'Queres mesmo eliminar esta conta? Esta ação é permanente.'
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        const user = auth.currentUser;
+        deleteUser(user)
+            .then(() => {
+                updateCurrentUserState(null);
+                window.alert('Conta eliminada com sucesso.');
+                window.location.href = 'signup.html';
+            })
+            .catch((erro) => {
+                if (erro?.code === 'auth/requires-recent-login') {
+                    window.alert('Por segurança, termina sessão e volta a entrar antes de eliminares a conta.');
+                    return;
+                }
+
+                window.alert('Erro ao eliminar conta: ' + erro.message);
             });
     });
 }

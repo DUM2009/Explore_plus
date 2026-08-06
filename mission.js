@@ -7,21 +7,158 @@ class MissionSystem {
     constructor(missionData) {
         this.mission = missionData;
         this.currentSectionIndex = 0;
+        this.activeSectionIndex = 0;
         this.userAnswers = {};
+        this.sectionScreenProgress = {};
+        this.openAnswerDrafts = {};
+        this.guideAnswerState = {};
+        this.quizEntryState = {};
+        this.chapterCompletionView = false;
         this.earnedXP = 0;
         this.completedSections = new Set();
         this.isInFinalQuiz = false;
         this.finalQuizAnswers = [];
+        this.activeCardAudioButton = null;
+        this.progressStorageKey = this.resolveProgressStorageKey();
         this.loadProgress();
+        this.registerPersistenceListeners();
     }
     
 
-    getProgressStorageKey() {
-        const user = window.exploreCurrentUser;
+    buildProgressStorageKey(user) {
         const userKey = user?.uid
             ? `uid:${user.uid}`
             : (user?.email ? `email:${user.email.toLowerCase()}` : 'guest');
         return `mission_${userKey}_${this.mission.id}`;
+    }
+
+    scoreProgressSnapshot(snapshot) {
+        if (!snapshot || typeof snapshot !== 'object') {
+            return 0;
+        }
+
+        const completed = Array.isArray(snapshot.completedSections) ? snapshot.completedSections.length : 0;
+        const answered = snapshot.userAnswers && typeof snapshot.userAnswers === 'object'
+            ? Object.values(snapshot.userAnswers).reduce((count, state) => {
+                const answers = Array.isArray(state?.answers) ? state.answers.length : 0;
+                return count + answers;
+            }, 0)
+            : 0;
+        const screenAdvance = snapshot.sectionScreenProgress && typeof snapshot.sectionScreenProgress === 'object'
+            ? Object.values(snapshot.sectionScreenProgress).reduce((sum, value) => sum + (Number.isInteger(value) ? value : 0), 0)
+            : 0;
+        const earned = Number.isFinite(snapshot.earnedXP) ? snapshot.earnedXP : 0;
+
+        return (completed * 10000) + (answered * 100) + (screenAdvance * 10) + earned;
+    }
+
+    resolveProgressStorageKey() {
+        const user = window.exploreCurrentUser;
+        const preferredKey = this.buildProgressStorageKey(user);
+        const isAuthenticated = !!(user?.uid || user?.email);
+        const candidateKeys = [preferredKey];
+
+        if (user?.uid && user?.email) {
+            candidateKeys.push(this.buildProgressStorageKey({ email: user.email }));
+        }
+
+        // Nunca misturar progresso de guest com contas autenticadas.
+        if (!isAuthenticated) {
+            candidateKeys.push(this.buildProgressStorageKey(null));
+        }
+
+        const parsedSnapshots = candidateKeys
+            .filter((key, index, array) => array.indexOf(key) === index)
+            .map((key) => {
+                const raw = localStorage.getItem(key);
+                if (!raw) {
+                    return null;
+                }
+
+                try {
+                    return { key, raw, data: JSON.parse(raw) };
+                } catch (error) {
+                    return null;
+                }
+            })
+            .filter(Boolean);
+
+        if (!parsedSnapshots.length) {
+            return preferredKey;
+        }
+
+        let best = parsedSnapshots[0];
+        let bestScore = this.scoreProgressSnapshot(best.data);
+
+        parsedSnapshots.slice(1).forEach((item) => {
+            const score = this.scoreProgressSnapshot(item.data);
+            if (score > bestScore) {
+                best = item;
+                bestScore = score;
+            }
+        });
+
+        const preferredRaw = localStorage.getItem(preferredKey);
+        if (!preferredRaw && best.key !== preferredKey) {
+            localStorage.setItem(preferredKey, best.raw);
+            return preferredKey;
+        }
+
+        if (preferredRaw && best.key !== preferredKey) {
+            try {
+                const preferredData = JSON.parse(preferredRaw);
+                const preferredScore = this.scoreProgressSnapshot(preferredData);
+                if (bestScore > preferredScore) {
+                    localStorage.setItem(preferredKey, best.raw);
+                }
+            } catch (error) {
+                localStorage.setItem(preferredKey, best.raw);
+            }
+            return preferredKey;
+        }
+
+        return preferredKey;
+    }
+
+    getProgressStorageKey() {
+        return this.progressStorageKey || this.buildProgressStorageKey(window.exploreCurrentUser);
+    }
+
+    handleAuthStateSync() {
+        const nextKey = this.resolveProgressStorageKey();
+        const previousKey = this.progressStorageKey;
+
+        if (!previousKey) {
+            this.progressStorageKey = nextKey;
+            return;
+        }
+
+        if (nextKey === previousKey) {
+            return;
+        }
+
+        const previousRaw = localStorage.getItem(previousKey);
+        const nextRaw = localStorage.getItem(nextKey);
+
+        if (previousRaw && !nextRaw) {
+            localStorage.setItem(nextKey, previousRaw);
+        } else if (previousRaw && nextRaw) {
+            try {
+                const previousData = JSON.parse(previousRaw);
+                const nextData = JSON.parse(nextRaw);
+                const previousScore = this.scoreProgressSnapshot(previousData);
+                const nextScore = this.scoreProgressSnapshot(nextData);
+                if (previousScore > nextScore) {
+                    localStorage.setItem(nextKey, previousRaw);
+                }
+            } catch (error) {
+                localStorage.setItem(nextKey, previousRaw);
+            }
+        }
+
+        this.progressStorageKey = nextKey;
+        this.loadProgress();
+        this.render();
     }
 
     /**
@@ -34,13 +171,25 @@ class MissionSystem {
             try {
                 const data = JSON.parse(savedProgress);
                 this.currentSectionIndex = Number.isInteger(data.currentSectionIndex) ? data.currentSectionIndex : 0;
+                this.activeSectionIndex = Number.isInteger(data.activeSectionIndex) ? data.activeSectionIndex : this.currentSectionIndex;
                 this.userAnswers = data.userAnswers && typeof data.userAnswers === 'object' ? data.userAnswers : {};
+                this.sectionScreenProgress = data.sectionScreenProgress && typeof data.sectionScreenProgress === 'object' ? data.sectionScreenProgress : {};
+                this.openAnswerDrafts = data.openAnswerDrafts && typeof data.openAnswerDrafts === 'object' ? data.openAnswerDrafts : {};
+                this.guideAnswerState = data.guideAnswerState && typeof data.guideAnswerState === 'object' ? data.guideAnswerState : {};
+                this.quizEntryState = data.quizEntryState && typeof data.quizEntryState === 'object' ? data.quizEntryState : {};
+                this.chapterCompletionView = data.chapterCompletionView === true;
                 this.earnedXP = Number.isFinite(data.earnedXP) ? data.earnedXP : 0;
                 this.completedSections = new Set(Array.isArray(data.completedSections) ? data.completedSections : []);
             } catch (error) {
                 console.warn('Could not parse mission progress from localStorage:', error);
                 this.currentSectionIndex = 0;
+                this.activeSectionIndex = 0;
                 this.userAnswers = {};
+                this.sectionScreenProgress = {};
+                this.openAnswerDrafts = {};
+                this.guideAnswerState = {};
+                this.quizEntryState = {};
+                this.chapterCompletionView = false;
                 this.earnedXP = 0;
                 this.completedSections = new Set();
             }
@@ -54,9 +203,76 @@ class MissionSystem {
      */
     enforceProgressIntegrity() {
         const orderedCompleted = [];
+        const validSectionIds = new Set(this.mission.sections.map(section => section.id));
+
+        this.sectionScreenProgress = Object.entries(this.sectionScreenProgress || {}).reduce((acc, [sectionId, index]) => {
+            if (!validSectionIds.has(sectionId)) {
+                return acc;
+            }
+
+            const section = this.mission.sections.find(item => item.id === sectionId);
+            const screenCount = section?.content
+                ? ((section.content.match(/class=\"screen-card/g) || []).length)
+                : 0;
+            const maxIndex = Math.max(0, screenCount - 1);
+            const safeIndex = Number.isInteger(index) ? Math.max(0, Math.min(index, maxIndex)) : 0;
+            acc[sectionId] = safeIndex;
+            return acc;
+        }, {});
+
+        this.openAnswerDrafts = Object.entries(this.openAnswerDrafts || {}).reduce((acc, [sectionId, drafts]) => {
+            if (!validSectionIds.has(sectionId) || !drafts || typeof drafts !== 'object') {
+                return acc;
+            }
+
+            const normalizedDrafts = Object.entries(drafts).reduce((draftAcc, [questionIndex, value]) => {
+                if (typeof value !== 'string') {
+                    return draftAcc;
+                }
+
+                draftAcc[questionIndex] = value;
+                return draftAcc;
+            }, {});
+
+            if (Object.keys(normalizedDrafts).length > 0) {
+                acc[sectionId] = normalizedDrafts;
+            }
+
+            return acc;
+        }, {});
+
+        this.guideAnswerState = Object.entries(this.guideAnswerState || {}).reduce((acc, [sectionId, state]) => {
+            if (!validSectionIds.has(sectionId) || !state || typeof state !== 'object') {
+                return acc;
+            }
+
+            const selectedChoice = typeof state.selectedChoice === 'string' ? state.selectedChoice : null;
+            const isCorrect = state.isCorrect === true;
+            if (!selectedChoice) {
+                return acc;
+            }
+
+            acc[sectionId] = { selectedChoice, isCorrect };
+            return acc;
+        }, {});
+
+        this.quizEntryState = Object.entries(this.quizEntryState || {}).reduce((acc, [sectionId, isOpen]) => {
+            if (!validSectionIds.has(sectionId) || isOpen !== true) {
+                return acc;
+            }
+
+            acc[sectionId] = true;
+            return acc;
+        }, {});
 
         for (const section of this.mission.sections) {
-            if (this.completedSections.has(section.id)) {
+            const isStoredComplete = this.completedSections.has(section.id);
+            const questions = this.getSectionQuestions(section);
+            const answerState = this.getSectionAnswerState(section.id);
+            const hasCompletedQuizAnswers = questions.length > 0
+                && questions.every((_, questionIndex) => !!answerState.answers?.[questionIndex]);
+
+            if (isStoredComplete || hasCompletedQuizAnswers) {
                 orderedCompleted.push(section.id);
             } else {
                 break;
@@ -65,8 +281,19 @@ class MissionSystem {
 
         this.completedSections = new Set(orderedCompleted);
 
-        const maxUnlocked = Math.min(orderedCompleted.length, this.mission.sections.length);
-        this.currentSectionIndex = Math.max(0, Math.min(maxUnlocked, this.currentSectionIndex));
+        const lastSectionIndex = Math.max(0, this.mission.sections.length - 1);
+        const minimumUnlockedIndex = Math.min(orderedCompleted.length, lastSectionIndex);
+        this.currentSectionIndex = Math.max(minimumUnlockedIndex, this.currentSectionIndex);
+        this.currentSectionIndex = Math.max(0, Math.min(lastSectionIndex, this.currentSectionIndex));
+
+        const maxVisibleIndex = this.completedSections.size === this.mission.sections.length
+            ? this.mission.sections.length - 1
+            : this.currentSectionIndex;
+        this.activeSectionIndex = Math.max(0, Math.min(maxVisibleIndex, this.activeSectionIndex));
+
+        if (this.completedSections.size !== this.mission.sections.length) {
+            this.chapterCompletionView = false;
+        }
     }
 
     /**
@@ -75,11 +302,49 @@ class MissionSystem {
     saveProgress() {
         const data = {
             currentSectionIndex: this.currentSectionIndex,
+            activeSectionIndex: this.activeSectionIndex,
             userAnswers: this.userAnswers,
+            sectionScreenProgress: this.sectionScreenProgress,
+            openAnswerDrafts: this.openAnswerDrafts,
+            guideAnswerState: this.guideAnswerState,
+            quizEntryState: this.quizEntryState,
+            chapterCompletionView: this.chapterCompletionView,
             earnedXP: this.earnedXP,
             completedSections: Array.from(this.completedSections)
         };
-        localStorage.setItem(this.getProgressStorageKey(), JSON.stringify(data));
+
+        const key = this.getProgressStorageKey();
+        const existingRaw = localStorage.getItem(key);
+        if (existingRaw) {
+            try {
+                const existing = JSON.parse(existingRaw);
+                const existingScore = this.scoreProgressSnapshot(existing);
+                const nextScore = this.scoreProgressSnapshot(data);
+                if (nextScore === 0 && existingScore > 0) {
+                    return;
+                }
+            } catch (error) {
+                // Ignore parse issues and overwrite with fresh valid state
+            }
+        }
+
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    registerPersistenceListeners() {
+        window.addEventListener('beforeunload', () => {
+            this.saveProgress();
+        });
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') {
+                this.saveProgress();
+            }
+        });
+
+        window.addEventListener('explore:auth-changed', () => {
+            this.handleAuthStateSync();
+        });
     }
 
     awardProfileXP(amount, source) {
@@ -109,6 +374,7 @@ class MissionSystem {
      * Render the mission interface
      */
     render() {
+        this.stopCardAudio();
         this.renderHeader();
         this.renderSections();
         this.updateProgressBar();
@@ -120,6 +386,115 @@ class MissionSystem {
     renderHeader() {
         document.getElementById('missionTitle').textContent = this.mission.title;
         document.getElementById('missionDescription').textContent = this.mission.description;
+    }
+
+    isScreenFlowEnabled() {
+        return this.mission?.screenFlowEnabled === true;
+    }
+
+    supportsCardAudio() {
+        return typeof window !== 'undefined'
+            && 'speechSynthesis' in window
+            && typeof SpeechSynthesisUtterance !== 'undefined';
+    }
+
+    extractCardAudioText(cardEl) {
+        const parts = Array.from(cardEl.querySelectorAll('h2, h3, h4, p, li'))
+            .map((el) => el.textContent.trim())
+            .filter(Boolean);
+        return parts.join('. ');
+    }
+
+    resetCardAudioButton(button) {
+        if (!button) {
+            return;
+        }
+
+        button.classList.remove('playing');
+        button.textContent = '🔊 Ouvir áudio';
+    }
+
+    stopCardAudio() {
+        if (this.supportsCardAudio()) {
+            window.speechSynthesis.cancel();
+        }
+
+        this.resetCardAudioButton(this.activeCardAudioButton);
+        this.activeCardAudioButton = null;
+    }
+
+    playCardAudio(text, button) {
+        if (!this.supportsCardAudio() || !text) {
+            return;
+        }
+
+        const isSameButton = this.activeCardAudioButton === button;
+        if (isSameButton && (window.speechSynthesis.speaking || window.speechSynthesis.pending)) {
+            this.stopCardAudio();
+            return;
+        }
+
+        this.stopCardAudio();
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'pt-PT';
+        utterance.rate = 1;
+        utterance.pitch = 1;
+
+        utterance.onstart = () => {
+            this.activeCardAudioButton = button;
+            button.classList.add('playing');
+            button.textContent = '⏹ Parar áudio';
+        };
+
+        utterance.onend = () => {
+            this.resetCardAudioButton(button);
+            if (this.activeCardAudioButton === button) {
+                this.activeCardAudioButton = null;
+            }
+        };
+
+        utterance.onerror = () => {
+            this.resetCardAudioButton(button);
+            if (this.activeCardAudioButton === button) {
+                this.activeCardAudioButton = null;
+            }
+        };
+
+        window.speechSynthesis.speak(utterance);
+    }
+
+    attachCardAudioButtons(sectionEl) {
+        if (!this.supportsCardAudio()) {
+            return;
+        }
+
+        sectionEl.querySelectorAll('.section-content .screen-card').forEach((cardEl) => {
+            if (cardEl.querySelector('.card-audio-btn')) {
+                return;
+            }
+
+            const audioText = this.extractCardAudioText(cardEl);
+            if (!audioText) {
+                return;
+            }
+
+            const controls = document.createElement('div');
+            controls.className = 'card-audio-controls';
+
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'card-audio-btn';
+            button.textContent = '🔊 Ouvir áudio';
+            button.setAttribute('aria-label', 'Ouvir texto do cartão');
+
+            button.addEventListener('click', () => {
+                this.playCardAudio(audioText, button);
+            });
+
+            controls.appendChild(button);
+            cardEl.insertBefore(controls, cardEl.firstChild);
+        });
     }
 
     /**
@@ -150,6 +525,104 @@ class MissionSystem {
         return { answers: [] };
     }
 
+    getOpenAnswerDraft(sectionId, questionIndex) {
+        const sectionDrafts = this.openAnswerDrafts?.[sectionId];
+        if (!sectionDrafts || typeof sectionDrafts !== 'object') {
+            return '';
+        }
+
+        const draft = sectionDrafts[String(questionIndex)];
+        return typeof draft === 'string' ? draft : '';
+    }
+
+    setOpenAnswerDraft(sectionId, questionIndex, text) {
+        if (!this.openAnswerDrafts[sectionId] || typeof this.openAnswerDrafts[sectionId] !== 'object') {
+            this.openAnswerDrafts[sectionId] = {};
+        }
+
+        this.openAnswerDrafts[sectionId][String(questionIndex)] = text;
+    }
+
+    clearOpenAnswerDraft(sectionId, questionIndex) {
+        const sectionDrafts = this.openAnswerDrafts?.[sectionId];
+        if (!sectionDrafts || typeof sectionDrafts !== 'object') {
+            return;
+        }
+
+        delete sectionDrafts[String(questionIndex)];
+        if (Object.keys(sectionDrafts).length === 0) {
+            delete this.openAnswerDrafts[sectionId];
+        }
+    }
+
+    hydrateGuideState(sectionEl, section) {
+        const saved = this.guideAnswerState?.[section.id];
+        if (!saved) {
+            return;
+        }
+
+        sectionEl.querySelectorAll('.guide-options').forEach(container => {
+            const selectedButton = container.querySelector(`.guide-option[data-choice="${saved.selectedChoice}"]`);
+
+            container.querySelectorAll('.guide-option').forEach(opt => {
+                opt.disabled = true;
+                if (opt.dataset.correct === 'true') {
+                    opt.classList.add('correct');
+                } else if (selectedButton && opt === selectedButton) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            const feedbackEl = container.parentElement.querySelector('.neutral-feedback');
+            if (feedbackEl) {
+                feedbackEl.classList.add('show');
+            }
+        });
+    }
+
+    bindOpenQuizDraftAutosave(sectionEl, section) {
+        sectionEl.querySelectorAll('.open-quiz-input').forEach((textarea) => {
+            textarea.addEventListener('input', (event) => {
+                const questionIndex = Number(event.target.dataset.questionIndex);
+                if (!Number.isInteger(questionIndex)) {
+                    return;
+                }
+
+                this.setOpenAnswerDraft(section.id, questionIndex, event.target.value);
+                this.saveProgress();
+            });
+        });
+    }
+
+    getMaxReviewableSectionIndex() {
+        if (this.completedSections.size === this.mission.sections.length) {
+            return this.mission.sections.length - 1;
+        }
+
+        return Math.min(this.currentSectionIndex, this.mission.sections.length - 1);
+    }
+
+    setActiveSection(sectionIndex) {
+        const maxReviewable = this.getMaxReviewableSectionIndex();
+        const safeIndex = Math.max(0, Math.min(maxReviewable, sectionIndex));
+        this.activeSectionIndex = safeIndex;
+        this.chapterCompletionView = false;
+        this.saveProgress();
+        this.render();
+        this.scrollToElement(`#missao-${safeIndex + 1}`);
+    }
+
+    reviewCompletedMissions() {
+        this.setActiveSection(0);
+    }
+
+    showChapterCompletionView() {
+        this.chapterCompletionView = true;
+        this.saveProgress();
+        this.render();
+        this.scrollToElement('#chapterCompleteCta');
+    }
+
     normalizeKeywordText(text) {
         return String(text || '')
             .toLowerCase()
@@ -162,6 +635,633 @@ class MissionSystem {
         return sectionIndex <= this.currentSectionIndex;
     }
 
+    getSectionCurrentScreen(sectionId, totalScreens) {
+        const savedIndex = this.sectionScreenProgress?.[sectionId];
+        if (!Number.isInteger(savedIndex)) {
+            return 0;
+        }
+
+        return Math.max(0, Math.min(savedIndex, totalScreens - 1));
+    }
+
+    setSectionCurrentScreen(sectionId, targetIndex, totalScreens) {
+        const safeIndex = Math.max(0, Math.min(targetIndex, totalScreens - 1));
+        this.sectionScreenProgress[sectionId] = safeIndex;
+        this.saveProgress();
+        return safeIndex;
+    }
+
+    mountSectionScreenFlow(sectionEl, section) {
+        const contentEl = sectionEl.querySelector('.section-content');
+        if (!contentEl) return;
+
+        const screens = Array.from(contentEl.querySelectorAll('.screen-card'));
+        if (screens.length <= 1) return;
+
+        contentEl.classList.add('screen-mode');
+
+        const existingNav = sectionEl.querySelector('.screen-nav');
+        if (!existingNav) {
+            const navEl = document.createElement('div');
+            navEl.className = 'screen-nav';
+            navEl.innerHTML = `
+                <button type="button" class="screen-nav-btn" data-nav-action="prev">Anterior</button>
+                <span class="screen-nav-status"></span>
+                <button type="button" class="screen-nav-btn" data-nav-action="next">Próximo</button>
+            `;
+
+            const quizEl = sectionEl.querySelector('.section-quiz');
+            if (quizEl) {
+                quizEl.insertAdjacentElement('beforebegin', navEl);
+            } else {
+                contentEl.insertAdjacentElement('afterend', navEl);
+            }
+        }
+
+        const existingPageNav = sectionEl.querySelector('.screen-page-nav');
+        if (!existingPageNav) {
+            const pageNavEl = document.createElement('div');
+            pageNavEl.className = 'screen-page-nav';
+
+            const pageButtons = Array.from({ length: screens.length }, (_, index) => `
+                <button type="button"
+                        class="screen-page-btn"
+                        data-screen-index="${index}"
+                        aria-label="Ir para a página ${index + 1}">
+                    ${index + 1}
+                </button>
+            `).join('');
+
+            pageNavEl.innerHTML = `
+                ${pageButtons}
+                <button type="button" class="screen-page-btn quiz-shortcut" data-screen-target="quiz" aria-label="Ir para o quiz">Q</button>
+            `;
+
+            const navEl = sectionEl.querySelector('.screen-nav');
+            navEl?.insertAdjacentElement('afterend', pageNavEl);
+        }
+
+        const currentScreen = this.getSectionCurrentScreen(section.id, screens.length);
+        this.updateSectionScreen(sectionEl, section, currentScreen, false);
+
+        sectionEl.querySelectorAll('[data-nav-action]').forEach(button => {
+            button.addEventListener('click', (event) => this.handleScreenNav(event, sectionEl, section));
+        });
+
+        sectionEl.querySelectorAll('.screen-page-btn').forEach(button => {
+            button.addEventListener('click', (event) => this.handleScreenPageNav(event, sectionEl, section));
+        });
+
+        sectionEl.querySelectorAll('.mission-jump-screen').forEach(button => {
+            button.addEventListener('click', (event) => this.handleScreenJump(event, sectionEl, section));
+        });
+
+        this.bindPhaseClearSequence(sectionEl);
+        this.bindCalvinCycleBuilder(sectionEl);
+    }
+
+    handleScreenPageNav(event, sectionEl, section) {
+        const button = event.target.closest('.screen-page-btn');
+        if (!button) return;
+
+        const contentEl = sectionEl.querySelector('.section-content');
+        if (!contentEl) return;
+
+        const screens = Array.from(contentEl.querySelectorAll('.screen-card'));
+        if (!screens.length) return;
+
+        if (button.dataset.screenTarget === 'quiz') {
+            this.updateSectionScreen(sectionEl, section, screens.length - 1, false);
+            this.openQuizEntryForSection(section.id);
+            sectionEl.classList.add('quiz-only-mode');
+            const quizEl = sectionEl.querySelector('.section-quiz');
+            if (quizEl) {
+                quizEl.classList.remove('quiz-entry-hidden');
+                quizEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            return;
+        }
+
+        const targetIndex = Number(button.dataset.screenIndex);
+        if (!Number.isInteger(targetIndex) || targetIndex < 0) {
+            return;
+        }
+
+        this.updateSectionScreen(sectionEl, section, targetIndex);
+    }
+
+    bindCalvinCycleBuilder(sectionEl) {
+        sectionEl.querySelectorAll('.calvin-cycle-builder').forEach((builder) => {
+            const pool = builder.querySelector('.cycle-pool');
+            const slots = Array.from(builder.querySelectorAll('.cycle-slot'));
+            const pieces = Array.from(builder.querySelectorAll('.cycle-piece'));
+            const feedbackEl = builder.querySelector('.cycle-feedback');
+            const resetBtn = builder.querySelector('.cycle-reset-btn');
+            const correctBySlot = {
+                co2: 'co2',
+                rubp: 'rubp',
+                fixacao: 'fixacao',
+                g3p: 'g3p',
+                regeneracao: 'regeneracao'
+            };
+
+            let draggedPiece = null;
+            let completed = false;
+
+            const setFeedback = (text, type) => {
+                if (!feedbackEl) {
+                    return;
+                }
+
+                feedbackEl.textContent = text;
+                feedbackEl.classList.remove('success', 'error');
+                if (type) {
+                    feedbackEl.classList.add(type);
+                }
+            };
+
+            const normalizeSlotState = () => {
+                slots.forEach((slot) => {
+                    slot.classList.toggle('filled', !!slot.querySelector('.cycle-piece'));
+                });
+            };
+
+            const evaluateCycle = () => {
+                const allFilled = slots.every((slot) => !!slot.querySelector('.cycle-piece'));
+                if (!allFilled) {
+                    builder.classList.remove('completed');
+                    completed = false;
+                    setFeedback('Coloca as peças nas posições certas do círculo.');
+                    return;
+                }
+
+                const isCorrect = slots.every((slot) => {
+                    const piece = slot.querySelector('.cycle-piece');
+                    return piece && piece.dataset.piece === correctBySlot[slot.dataset.slot];
+                });
+
+                if (isCorrect) {
+                    completed = true;
+                    builder.classList.add('completed');
+                    pieces.forEach((piece) => {
+                        piece.setAttribute('draggable', 'false');
+                    });
+                    setFeedback('Perfeito! O ciclo está completo.', 'success');
+                } else {
+                    completed = false;
+                    builder.classList.remove('completed');
+                    setFeedback('Ainda não está na ordem certa. Ajusta as peças.', 'error');
+                }
+            };
+
+            const placePieceInSlot = (piece, slot) => {
+                if (!piece || !slot || completed) {
+                    return;
+                }
+
+                const currentParentSlot = piece.closest('.cycle-slot');
+                if (currentParentSlot && currentParentSlot !== slot) {
+                    currentParentSlot.classList.remove('filled');
+                }
+
+                const occupyingPiece = slot.querySelector('.cycle-piece');
+                if (occupyingPiece && occupyingPiece !== piece && pool) {
+                    occupyingPiece.classList.remove('placed');
+                    occupyingPiece.setAttribute('draggable', 'true');
+                    pool.appendChild(occupyingPiece);
+                }
+
+                piece.classList.add('placed');
+                piece.setAttribute('draggable', 'true');
+                slot.appendChild(piece);
+
+                normalizeSlotState();
+                evaluateCycle();
+            };
+
+            const returnPieceToPool = (piece) => {
+                if (!piece || !pool || completed) {
+                    return;
+                }
+
+                const parentSlot = piece.closest('.cycle-slot');
+                if (parentSlot) {
+                    parentSlot.classList.remove('filled');
+                }
+
+                piece.classList.remove('placed');
+                piece.setAttribute('draggable', 'true');
+                pool.appendChild(piece);
+
+                normalizeSlotState();
+                evaluateCycle();
+            };
+
+            pieces.forEach((piece) => {
+                piece.addEventListener('dragstart', (event) => {
+                    if (completed) {
+                        event.preventDefault();
+                        return;
+                    }
+
+                    draggedPiece = piece;
+                    event.dataTransfer.setData('text/plain', piece.dataset.piece || '');
+                    event.dataTransfer.effectAllowed = 'move';
+                });
+
+                piece.addEventListener('dragend', () => {
+                    draggedPiece = null;
+                });
+            });
+
+            slots.forEach((slot) => {
+                slot.addEventListener('dragover', (event) => {
+                    event.preventDefault();
+                    event.dataTransfer.dropEffect = 'move';
+                });
+
+                slot.addEventListener('drop', (event) => {
+                    event.preventDefault();
+                    if (completed) {
+                        return;
+                    }
+
+                    const pieceName = event.dataTransfer.getData('text/plain');
+                    const piece = draggedPiece || builder.querySelector(`.cycle-piece[data-piece="${pieceName}"]`);
+                    placePieceInSlot(piece, slot);
+                });
+            });
+
+            if (pool) {
+                pool.addEventListener('dragover', (event) => {
+                    event.preventDefault();
+                    event.dataTransfer.dropEffect = 'move';
+                });
+
+                pool.addEventListener('drop', (event) => {
+                    event.preventDefault();
+                    if (completed) {
+                        return;
+                    }
+
+                    const pieceName = event.dataTransfer.getData('text/plain');
+                    const piece = draggedPiece || builder.querySelector(`.cycle-piece[data-piece="${pieceName}"]`);
+                    returnPieceToPool(piece);
+                });
+            }
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', () => {
+                    completed = false;
+                    builder.classList.remove('completed');
+
+                    pieces
+                        .sort((a, b) => Number(a.dataset.order) - Number(b.dataset.order))
+                        .forEach((piece) => {
+                            piece.classList.remove('placed');
+                            piece.setAttribute('draggable', 'true');
+                            pool?.appendChild(piece);
+                        });
+
+                    normalizeSlotState();
+                    setFeedback('Coloca as peças nas posições certas do círculo.');
+                });
+            }
+
+            normalizeSlotState();
+            setFeedback('Coloca as peças nas posições certas do círculo.');
+        });
+    }
+
+    bindPhaseClearSequence(sectionEl) {
+        sectionEl.querySelectorAll('.phase-clear-sequence').forEach((container) => {
+            const options = Array.from(container.querySelectorAll('.sequence-option'));
+            const feedbackEl = container.querySelector('.sequence-feedback');
+            const currentEl = container.querySelector('.sequence-current');
+            const resultEl = container.querySelector('.sequence-result');
+            const finalEl = container.querySelector('.sequence-final');
+            const resetBtn = container.querySelector('.sequence-reset');
+            const nodes = Array.from(container.querySelectorAll('.chain-node'));
+            const links = Array.from(container.querySelectorAll('.chain-link'));
+            const expectedOrder = [1, 2, 3, 4, 5];
+            let currentOrder = [];
+            let completed = false;
+
+            const clearChain = () => {
+                nodes.forEach((node) => node.classList.remove('lit'));
+                links.forEach((link) => link.classList.remove('lit'));
+                if (finalEl) {
+                    finalEl.classList.remove('blink');
+                }
+            };
+
+            const renderCurrentOrder = () => {
+                if (!currentEl) return;
+
+                currentEl.innerHTML = currentOrder
+                    .map((step) => {
+                        const label = options.find((opt) => Number(opt.dataset.step) === step)?.textContent || `Passo ${step}`;
+                        return `<span class="sequence-chip">${step}. ${label}</span>`;
+                    })
+                    .join('');
+            };
+
+            const playChainAnimation = () => {
+                clearChain();
+
+                nodes.forEach((node, idx) => {
+                    setTimeout(() => {
+                        node.classList.add('lit');
+                    }, idx * 260);
+
+                    if (idx < links.length) {
+                        setTimeout(() => {
+                            links[idx].classList.add('lit');
+                        }, idx * 260 + 150);
+                    }
+                });
+
+                if (finalEl) {
+                    setTimeout(() => {
+                        finalEl.classList.add('blink');
+                    }, nodes.length * 260 + 120);
+                }
+            };
+
+            const resetSequence = () => {
+                completed = false;
+                currentOrder = [];
+
+                options.forEach((opt) => {
+                    opt.disabled = false;
+                    opt.classList.remove('selected');
+                });
+
+                clearChain();
+                renderCurrentOrder();
+
+                if (feedbackEl) {
+                    feedbackEl.textContent = 'Seleciona os elementos pela ordem correta.';
+                    feedbackEl.classList.remove('success', 'error');
+                }
+
+                if (resultEl) {
+                    resultEl.setAttribute('aria-hidden', 'true');
+                }
+            };
+
+            options.forEach((button) => {
+                button.addEventListener('click', () => {
+                    if (completed || button.disabled) {
+                        return;
+                    }
+
+                    const step = Number(button.dataset.step);
+                    if (!Number.isInteger(step)) {
+                        return;
+                    }
+
+                    currentOrder.push(step);
+                    button.disabled = true;
+                    button.classList.add('selected');
+                    renderCurrentOrder();
+
+                    if (currentOrder.length < expectedOrder.length) {
+                        return;
+                    }
+
+                    const isCorrect = expectedOrder.every((value, index) => value === currentOrder[index]);
+                    if (isCorrect) {
+                        completed = true;
+                        if (feedbackEl) {
+                            feedbackEl.textContent = 'Perfeito. Sequência completa da fase clara!';
+                            feedbackEl.classList.add('success');
+                            feedbackEl.classList.remove('error');
+                        }
+
+                        if (resultEl) {
+                            resultEl.setAttribute('aria-hidden', 'false');
+                        }
+
+                        playChainAnimation();
+                        return;
+                    }
+
+                    if (feedbackEl) {
+                        feedbackEl.textContent = 'Ordem incorreta. Clica em "Tentar novamente".';
+                        feedbackEl.classList.add('error');
+                        feedbackEl.classList.remove('success');
+                    }
+                });
+            });
+
+            if (resetBtn) {
+                resetBtn.addEventListener('click', resetSequence);
+            }
+
+            resetSequence();
+        });
+    }
+
+    updateSectionScreen(sectionEl, section, targetIndex, shouldScroll = true) {
+        const contentEl = sectionEl.querySelector('.section-content');
+        if (!contentEl) return;
+
+        const screens = Array.from(contentEl.querySelectorAll('.screen-card'));
+        if (!screens.length) return;
+
+        const safeIndex = this.setSectionCurrentScreen(section.id, targetIndex, screens.length);
+
+        screens.forEach((screen, index) => {
+            screen.classList.toggle('active-screen', index === safeIndex);
+            screen.classList.toggle('hidden-screen', index !== safeIndex);
+        });
+
+        const statusEl = sectionEl.querySelector('.screen-nav-status');
+        if (statusEl) {
+            statusEl.textContent = `Ecrã ${safeIndex + 1} de ${screens.length}`;
+        }
+
+        const prevBtn = sectionEl.querySelector('[data-nav-action="prev"]');
+        const nextBtn = sectionEl.querySelector('[data-nav-action="next"]');
+
+        if (prevBtn) {
+            prevBtn.disabled = safeIndex === 0;
+        }
+
+        if (nextBtn) {
+            const isLast = safeIndex === screens.length - 1;
+            nextBtn.textContent = isLast ? 'Ir para Quiz' : 'Próximo';
+        }
+
+        const quizEl = sectionEl.querySelector('.section-quiz');
+        if (quizEl) {
+            const isLast = safeIndex === screens.length - 1;
+            quizEl.classList.toggle('quiz-locked', !isLast);
+
+            const isQuizEntryOpen = this.quizEntryState?.[section.id] === true;
+            const shouldShowQuiz = isLast && isQuizEntryOpen;
+            quizEl.classList.toggle('quiz-entry-hidden', !shouldShowQuiz);
+            sectionEl.classList.toggle('quiz-only-mode', shouldShowQuiz);
+
+            if (!isLast && isQuizEntryOpen) {
+                delete this.quizEntryState[section.id];
+                this.saveProgress();
+            }
+        }
+
+        sectionEl.querySelectorAll('.screen-page-btn[data-screen-index]').forEach((button) => {
+            const buttonIndex = Number(button.dataset.screenIndex);
+            const isActivePage = buttonIndex === safeIndex;
+            button.classList.toggle('active', isActivePage);
+            button.setAttribute('aria-current', isActivePage ? 'page' : 'false');
+        });
+
+        const quizShortcut = sectionEl.querySelector('.screen-page-btn[data-screen-target="quiz"]');
+        if (quizShortcut) {
+            const isQuizActive = sectionEl.classList.contains('quiz-only-mode');
+            quizShortcut.classList.toggle('active', isQuizActive);
+            quizShortcut.setAttribute('aria-current', isQuizActive ? 'page' : 'false');
+        }
+
+        if (shouldScroll) {
+            screens[safeIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    handleScreenNav(event, sectionEl, section) {
+        const button = event.target.closest('[data-nav-action]');
+        if (!button) return;
+
+        const action = button.dataset.navAction;
+        const contentEl = sectionEl.querySelector('.section-content');
+        if (!contentEl) return;
+
+        const screens = Array.from(contentEl.querySelectorAll('.screen-card'));
+        if (!screens.length) return;
+
+        const current = this.getSectionCurrentScreen(section.id, screens.length);
+
+        if (action === 'prev') {
+            this.updateSectionScreen(sectionEl, section, current - 1);
+            return;
+        }
+
+        if (action === 'next') {
+            if (current < screens.length - 1) {
+                this.updateSectionScreen(sectionEl, section, current + 1);
+                return;
+            }
+
+            const quizEl = sectionEl.querySelector('.section-quiz');
+            if (quizEl) {
+                this.openQuizEntryForSection(section.id);
+                sectionEl.classList.add('quiz-only-mode');
+                quizEl.classList.remove('quiz-entry-hidden');
+
+                const isLastMission = section.id === this.mission.sections[this.mission.sections.length - 1]?.id;
+                if (isLastMission) {
+                    this.showChapterCompletionView();
+                    return;
+                }
+
+                quizEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    }
+
+    closeSectionQuizPopout() {
+        const overlay = document.getElementById('sectionQuizPopout');
+        if (!overlay) return;
+
+        const quizEl = overlay.querySelector('.section-quiz');
+        const anchor = document.getElementById('sectionQuizPopoutAnchor');
+
+        if (quizEl && anchor?.parentElement) {
+            anchor.parentElement.insertBefore(quizEl, anchor);
+        }
+
+        overlay.remove();
+        document.body.classList.remove('quiz-popout-open');
+    }
+
+    openSectionQuizPopout(sectionEl, section) {
+        const quizEl = sectionEl.querySelector('.section-quiz');
+        if (!quizEl) return;
+
+        this.closeSectionQuizPopout();
+
+        let anchor = document.getElementById('sectionQuizPopoutAnchor');
+        if (!anchor) {
+            anchor = document.createElement('div');
+            anchor.id = 'sectionQuizPopoutAnchor';
+            quizEl.insertAdjacentElement('afterend', anchor);
+        }
+
+        const overlay = document.createElement('div');
+        overlay.className = 'quiz-popout-overlay';
+        overlay.id = 'sectionQuizPopout';
+        overlay.innerHTML = `
+            <div class="quiz-popout-panel" role="dialog" aria-modal="true" aria-label="Desafio da missão">
+                <div class="quiz-popout-header">
+                    <h3>Desafio: ${section.title}</h3>
+                    <button type="button" class="quiz-popout-close" aria-label="Fechar desafio">×</button>
+                </div>
+                <div class="quiz-popout-body"></div>
+            </div>
+        `;
+
+        const body = overlay.querySelector('.quiz-popout-body');
+        body.appendChild(quizEl);
+
+        overlay.querySelector('.quiz-popout-close').addEventListener('click', () => {
+            this.closeSectionQuizPopout();
+        });
+
+        overlay.addEventListener('click', (event) => {
+            if (event.target === overlay) {
+                this.closeSectionQuizPopout();
+            }
+        });
+
+        document.body.appendChild(overlay);
+        document.body.classList.add('quiz-popout-open');
+    }
+
+    handleScreenJump(event, sectionEl, section) {
+        const button = event.target.closest('.mission-jump-screen');
+        if (!button) return;
+
+        if (button.dataset.targetScreen === 'quiz') {
+            const contentEl = sectionEl.querySelector('.section-content');
+            if (!contentEl) {
+                return;
+            }
+
+            const screens = Array.from(contentEl.querySelectorAll('.screen-card'));
+            if (!screens.length) {
+                return;
+            }
+
+            this.updateSectionScreen(sectionEl, section, screens.length - 1, false);
+            this.openQuizEntryForSection(section.id);
+            sectionEl.classList.add('quiz-only-mode');
+            const quizEl = sectionEl.querySelector('.section-quiz');
+            if (quizEl) {
+                quizEl.classList.remove('quiz-entry-hidden');
+                quizEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            return;
+        }
+
+        const targetScreen = Number(button.dataset.targetScreen);
+        if (!Number.isInteger(targetScreen) || targetScreen < 1) {
+            return;
+        }
+
+        this.updateSectionScreen(sectionEl, section, targetScreen - 1);
+    }
+
     /**
      * Render all sections
      */
@@ -169,82 +1269,119 @@ class MissionSystem {
         const wrapper = document.getElementById('sectionsWrapper');
         wrapper.innerHTML = '';
 
-        this.mission.sections.forEach((section, index) => {
-            const isUnlocked = this.isSectionUnlocked(index);
-            const isCompleted = this.completedSections.has(section.id);
+        if (this.completedSections.size === this.mission.sections.length && this.chapterCompletionView) {
+            this.renderChapterCompletion(wrapper);
+            return;
+        }
 
-            const sectionEl = document.createElement('div');
-            sectionEl.className = `section ${isUnlocked ? 'unlocked' : 'locked'} ${isCompleted ? 'completed' : ''}`;
-            sectionEl.dataset.sectionId = section.id;
-            sectionEl.id = `missao-${index + 1}`;
+        const maxReviewable = this.getMaxReviewableSectionIndex();
+        const sectionIndex = Math.max(0, Math.min(this.activeSectionIndex, maxReviewable));
+        const section = this.mission.sections[sectionIndex];
+        const isCompleted = this.completedSections.has(section.id);
 
-            sectionEl.innerHTML = `
-                <div class="section-header">
-                    <div class="section-number-badge">
-                        <span class="section-num">${index + 1}</span>
-                        ${isCompleted ? '<span class="section-check">✓</span>' : ''}
-                    </div>
-                    <div class="section-info">
-                        <h2>${section.icon} ${section.title}</h2>
-                        <div class="section-meta">
-                            <span class="xp-badge">+${section.xpReward} XP</span>
-                            ${isCompleted ? '<span class="status-badge completed">Concluída</span>' : `<span class="status-badge">${isUnlocked ? 'Em progresso' : 'Bloqueada'}</span>`}
-                        </div>
+        const missionNav = document.createElement('div');
+        missionNav.className = 'chapter-mission-nav';
+        missionNav.innerHTML = this.mission.sections
+            .map((item, idx) => {
+                const isUnlocked = idx <= maxReviewable;
+                const isActive = idx === sectionIndex;
+                const isDone = this.completedSections.has(item.id);
+
+                return `
+                    <button type="button"
+                            class="chapter-mission-btn ${isActive ? 'active' : ''} ${isDone ? 'done' : ''}"
+                            data-section-index="${idx}"
+                            ${isUnlocked ? '' : 'disabled'}>
+                        Missão ${idx + 1}
+                    </button>
+                `;
+            })
+            .join('');
+        wrapper.appendChild(missionNav);
+
+        const sectionEl = document.createElement('div');
+        sectionEl.className = `section unlocked ${isCompleted ? 'completed' : ''}`;
+        sectionEl.dataset.sectionId = section.id;
+        sectionEl.id = `missao-${sectionIndex + 1}`;
+
+        sectionEl.innerHTML = `
+            <div class="section-header">
+                <div class="section-number-badge">
+                    <span class="section-num">${sectionIndex + 1}</span>
+                    ${isCompleted ? '<span class="section-check">✓</span>' : ''}
+                </div>
+                <div class="section-info">
+                    <h2>${section.icon} ${section.title}</h2>
+                    <div class="section-meta">
+                        <span class="xp-badge">+${section.xpReward} XP</span>
+                        ${isCompleted ? '<span class="status-badge completed">Concluída</span>' : '<span class="status-badge">Em progresso</span>'}
                     </div>
                 </div>
-                <div class="section-body"></div>
-            `;
+            </div>
+            <div class="section-body"></div>
+        `;
 
-            const bodyEl = sectionEl.querySelector('.section-body');
+        const bodyEl = sectionEl.querySelector('.section-body');
+        bodyEl.innerHTML = section.content;
+        bodyEl.insertAdjacentHTML('beforeend', this.renderSectionQuiz(section));
 
-            if (!isUnlocked) {
-                bodyEl.innerHTML = '<div class="locked-message">🔒 Completa a missão anterior para desbloquear esta.</div>';
-            } else {
-                bodyEl.innerHTML = section.content;
-                bodyEl.insertAdjacentHTML('beforeend', this.renderSectionQuiz(section));
-            }
+        sectionEl.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', (event) => this.handleQuizAnswer(event, section, sectionIndex));
+        });
 
-            if (isUnlocked) {
-                sectionEl.querySelectorAll('.quiz-option').forEach(option => {
-                    option.addEventListener('click', (event) => this.handleQuizAnswer(event, section, index));
-                });
+        sectionEl.querySelectorAll('.open-quiz-submit').forEach(button => {
+            button.addEventListener('click', (event) => this.handleOpenQuizAnswer(event, section, sectionIndex));
+        });
 
-                sectionEl.querySelectorAll('.open-quiz-submit').forEach(button => {
-                    button.addEventListener('click', (event) => this.handleOpenQuizAnswer(event, section, index));
-                });
+        sectionEl.querySelectorAll('.guide-option').forEach(option => {
+            option.addEventListener('click', (event) => this.handleGuideOption(event));
+        });
 
-                sectionEl.querySelectorAll('.quiz-option').forEach(option => {
-                    option.addEventListener('click', (event) => this.handleQuizAnswer(event, section, index));
-                });
+        this.hydrateGuideState(sectionEl, section);
+        this.bindOpenQuizDraftAutosave(sectionEl, section);
+        this.attachCardAudioButtons(sectionEl);
+        if (this.isScreenFlowEnabled()) {
+            this.mountSectionScreenFlow(sectionEl, section);
+        }
+        wrapper.appendChild(sectionEl);
 
-                sectionEl.querySelectorAll('.open-quiz-submit').forEach(button => {
-                    button.addEventListener('click', (event) => this.handleOpenQuizAnswer(event, section, index));
-                });
+        missionNav.querySelectorAll('[data-section-index]').forEach((button) => {
+            button.addEventListener('click', (event) => {
+                const target = Number(event.currentTarget.dataset.sectionIndex);
+                if (!Number.isInteger(target)) {
+                    return;
+                }
 
-                sectionEl.querySelectorAll('.guide-option').forEach(option => {
-                    option.addEventListener('click', (event) => this.handleGuideOption(event));
-                });
-            }
-
-            wrapper.appendChild(sectionEl);
+                this.setActiveSection(target);
+            });
         });
 
         if (this.completedSections.size === this.mission.sections.length) {
-            const finalQuizBtn = document.createElement('div');
-            finalQuizBtn.className = 'final-quiz-section';
-            finalQuizBtn.id = 'finalQuizCta';
-            finalQuizBtn.innerHTML = `
-                <div class="final-quiz-card">
-                    <div class="final-quiz-icon">🏆</div>
-                    <h2>Teste de Ouro desbloqueado</h2>
-                    <p>Completaste as 3 missões! Avança para o teste final do capítulo.</p>
-                    <button class="final-quiz-btn" onclick="missionSystem.startFinalQuiz()">Tentar o Teste de Ouro 🚀</button>
-                </div>
+            const chapterAction = document.createElement('div');
+            chapterAction.className = 'chapter-end-actions';
+            chapterAction.innerHTML = `
+                <button type="button" class="final-quiz-btn" onclick="missionSystem.showChapterCompletionView()">Voltar ao fim do capítulo</button>
             `;
-            wrapper.appendChild(finalQuizBtn);
+            wrapper.appendChild(chapterAction);
         }
 
         this.hydrateOpenQuizTextareas();
+    }
+
+    renderChapterCompletion(wrapper) {
+        const finalQuizBtn = document.createElement('div');
+        finalQuizBtn.className = 'final-quiz-section';
+        finalQuizBtn.id = 'chapterCompleteCta';
+        finalQuizBtn.innerHTML = `
+            <div class="final-quiz-card">
+                <div class="final-quiz-icon">🏆</div>
+                <h2>Capítulo concluído: Fotossíntese</h2>
+                <p>Completaste as 3 missões. Agora sim, avança para o Teste de Ouro.</p>
+                <button class="final-quiz-btn" onclick="missionSystem.reviewCompletedMissions()">Rever missões</button>
+                <button class="final-quiz-btn" onclick="missionSystem.startFinalQuiz()">Começar Teste de Ouro 🚀</button>
+            </div>
+        `;
+        wrapper.appendChild(finalQuizBtn);
     }
 
     hydrateOpenQuizTextareas() {
@@ -258,16 +1395,19 @@ class MissionSystem {
     renderSectionQuiz(section) {
         const questions = this.getSectionQuestions(section);
         const answerState = this.getSectionAnswerState(section.id);
+        const isQuizEntryGated = this.isSectionQuizEntryGated(section);
+        const isQuizEntryOpen = this.quizEntryState?.[section.id] === true;
 
         if (!questions.length) {
             return '';
         }
 
         return `
-            <div class="section-quiz" data-section-id="${section.id}">
+            <div class="section-quiz ${isQuizEntryGated && !isQuizEntryOpen ? 'quiz-entry-hidden' : ''}" data-section-id="${section.id}">
                 <h3>Quiz da missão 📋</h3>
                 ${questions.map((question, questionIndex) => {
                     const savedAnswer = answerState.answers[questionIndex];
+                    const openDraft = this.getOpenAnswerDraft(section.id, questionIndex);
 
                     if (question.type === 'open') {
                         const isAnswered = !!savedAnswer;
@@ -279,7 +1419,7 @@ class MissionSystem {
                                 <textarea
                                     class="open-quiz-input reflection-input"
                                     data-question-index="${questionIndex}"
-                                    data-saved-text="${savedAnswer?.text ? encodeURIComponent(savedAnswer.text) : ''}"
+                                    data-saved-text="${savedAnswer?.text ? encodeURIComponent(savedAnswer.text) : (openDraft ? encodeURIComponent(openDraft) : '')}"
                                     placeholder="${question.placeholder || 'Escreve aqui a tua resposta...'}"
                                     ${isAnswered ? 'disabled' : ''}
                                 ></textarea>
@@ -337,6 +1477,23 @@ class MissionSystem {
         `;
     }
 
+    isSectionQuizEntryGated(section) {
+        if (!this.isScreenFlowEnabled()) {
+            return false;
+        }
+
+        return typeof section?.content === 'string' && section.content.includes('class="screen-card"');
+    }
+
+    openQuizEntryForSection(sectionId) {
+        if (!sectionId) {
+            return;
+        }
+
+        this.quizEntryState[sectionId] = true;
+        this.saveProgress();
+    }
+
     isSectionQuizComplete(section) {
         const questions = this.getSectionQuestions(section);
         const answerState = this.getSectionAnswerState(section.id);
@@ -362,20 +1519,67 @@ class MissionSystem {
 
         if (sectionIndex + 1 < this.mission.sections.length) {
             this.currentSectionIndex = sectionIndex + 1;
+            this.activeSectionIndex = this.currentSectionIndex;
+            this.chapterCompletionView = false;
+        } else {
+            this.chapterCompletionView = true;
         }
 
         this.saveProgress();
         this.showCorrectAnimation();
 
-        setTimeout(() => {
+        const hasNextSection = sectionIndex + 1 < this.mission.sections.length;
+
+        const continueToNext = () => {
             this.render();
 
-            if (sectionIndex + 1 < this.mission.sections.length) {
+            if (hasNextSection) {
                 this.scrollToElement(`#missao-${sectionIndex + 2}`);
             } else {
-                this.scrollToElement('#finalQuizCta');
+                this.scrollToElement('#chapterCompleteCta');
             }
-        }, 700);
+        };
+
+        const completionMessage = hasNextSection
+            ? `Parabéns! Completaste a missão ${sectionIndex + 1}!`
+            : (typeof section.completionMessage === 'string' && section.completionMessage.trim()
+                ? section.completionMessage.trim()
+                : `Missão completa! +${section.xpReward} XP.`);
+
+        const ctaLabel = hasNextSection
+            ? `Explora a missão ${sectionIndex + 2}!`
+            : 'Ir para o desafio';
+
+        this.showSectionCompletionDialog(completionMessage, ctaLabel, continueToNext);
+        return;
+    }
+
+    showSectionCompletionDialog(message, ctaLabel, onContinue) {
+        const existing = document.getElementById('sectionCompletionOverlay');
+        if (existing) {
+            existing.remove();
+        }
+
+        const overlay = document.createElement('div');
+        overlay.id = 'sectionCompletionOverlay';
+        overlay.className = 'section-completion-overlay';
+        overlay.innerHTML = `
+            <div class="section-completion-card" role="dialog" aria-modal="true" aria-label="Missão concluída">
+                <h3>Missão concluída</h3>
+                <p>${message}</p>
+                <button type="button" class="section-completion-btn">${ctaLabel}</button>
+            </div>
+        `;
+
+        const continueButton = overlay.querySelector('.section-completion-btn');
+        continueButton?.addEventListener('click', () => {
+            overlay.remove();
+            if (typeof onContinue === 'function') {
+                onContinue();
+            }
+        });
+
+        document.body.appendChild(overlay);
     }
 
     scrollToElement(selector) {
@@ -467,6 +1671,8 @@ class MissionSystem {
             isOpen: true
         };
 
+        this.clearOpenAnswerDraft(section.id, questionIndex);
+
         this.userAnswers[section.id] = answerState;
         this.saveProgress();
 
@@ -499,6 +1705,16 @@ class MissionSystem {
         if (feedbackEl) {
             feedbackEl.classList.add('show');
         }
+
+        const sectionEl = button.closest('.section');
+        const sectionId = sectionEl?.dataset?.sectionId;
+        if (sectionId) {
+            this.guideAnswerState[sectionId] = {
+                selectedChoice: button.dataset.choice || '',
+                isCorrect
+            };
+            this.saveProgress();
+        }
     }
 
     /**
@@ -509,6 +1725,7 @@ class MissionSystem {
         if (!match) return;
 
         const requestedIndex = parseInt(match[1], 10) - 1;
+        const maxReviewable = this.getMaxReviewableSectionIndex();
         if (!Number.isInteger(requestedIndex) || requestedIndex < 0) {
             const unlockedTarget = this.getFirstAccessibleSectionHash();
             this.scrollToElement(unlockedTarget);
@@ -516,11 +1733,18 @@ class MissionSystem {
             return;
         }
 
-        if (!this.isSectionUnlocked(requestedIndex)) {
+        if (requestedIndex > maxReviewable) {
             const unlockedTarget = this.getFirstAccessibleSectionHash();
             this.scrollToElement(unlockedTarget);
             window.location.hash = unlockedTarget;
             return;
+        }
+
+        if (requestedIndex !== this.activeSectionIndex || this.chapterCompletionView) {
+            this.activeSectionIndex = requestedIndex;
+            this.chapterCompletionView = false;
+            this.saveProgress();
+            this.render();
         }
 
         this.scrollToElement(`#missao-${requestedIndex + 1}`);
@@ -744,7 +1968,12 @@ class MissionSystem {
     resetMission() {
         localStorage.removeItem(this.getProgressStorageKey());
         this.currentSectionIndex = 0;
+        this.activeSectionIndex = 0;
         this.userAnswers = {};
+        this.sectionScreenProgress = {};
+        this.openAnswerDrafts = {};
+        this.guideAnswerState = {};
+        this.chapterCompletionView = false;
         this.earnedXP = 0;
         this.completedSections = new Set();
         this.isInFinalQuiz = false;
@@ -760,7 +1989,7 @@ class MissionSystem {
         const percent = this.getProgressPercent();
         document.getElementById('progressPercent').textContent = percent + '%';
         document.getElementById('progressBar').style.width = percent + '%';
-        document.getElementById('sectionCounter').textContent = `${this.completedSections.size}/${this.mission.sections.length} Secções`;
+        document.getElementById('sectionCounter').textContent = `${this.completedSections.size}/${this.mission.sections.length} Missões`;
     }
 
     /**
@@ -790,10 +2019,22 @@ class MissionSystem {
 // Initialize mission system when page loads
 let missionSystem;
 document.addEventListener('DOMContentLoaded', () => {
-    window.addEventListener('explore:auth-changed', function initAfterAuth() {
-        window.removeEventListener('explore:auth-changed', initAfterAuth);
+    let initialized = false;
+
+    const initMission = () => {
+        if (initialized) return;
+        initialized = true;
         missionSystem = new MissionSystem(missionData);
         missionSystem.render();
         missionSystem.guardSectionAccessFromUrl();
-    }, { once: true });
+    };
+
+    window.addEventListener('explore:auth-changed', initMission, { once: true });
+
+    if (window.exploreCurrentUser !== undefined) {
+        initMission();
+        return;
+    }
+
+    setTimeout(initMission, 1200);
 });

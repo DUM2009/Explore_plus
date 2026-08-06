@@ -86,11 +86,37 @@
                 }
             }
 
-            if (typeof missionSystem !== 'undefined' && missionData.goldTestUrl) {
+            const applyGoldTestOverride = () => {
+                if (typeof missionSystem === 'undefined' || !missionData.goldTestUrl) {
+                    return false;
+                }
+
                 missionSystem.startFinalQuiz = function () {
-                    window.location.href = missionData.goldTestUrl;
+                    const message = 'Ganhaste o emblema de prata 🥈\nQueres tentar ganhar o emblema de ouro? Resolve o teste final do capítulo (20 perguntas) e consegue 17 ou mais valores.';
+                    const proceed = window.confirm(message);
+
+                    if (proceed) {
+                        sessionStorage.setItem('allow_goldtest_photosynthesis', '1');
+                        window.location.href = missionData.goldTestUrl;
+                    }
                 };
+
+                return true;
+            };
+
+            if (applyGoldTestOverride()) {
+                return;
             }
+
+            window.addEventListener('explore:auth-changed', applyGoldTestOverride, { once: true });
+
+            let attempts = 0;
+            const attachTimer = setInterval(() => {
+                attempts += 1;
+                if (applyGoldTestOverride() || attempts > 20) {
+                    clearInterval(attachTimer);
+                }
+            }, 100);
         });
     </script>
 </body>

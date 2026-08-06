@@ -140,7 +140,34 @@ function safelyParseJSON(rawValue) {
     }
 }
 
-function getLegacyMissionXP(storage) {
+function shouldImportLegacyMissionKey(key, user) {
+    if (!key || !key.startsWith('mission_')) {
+        return false;
+    }
+
+    const missionScopedPrefixes = [];
+
+    if (user?.uid) {
+        missionScopedPrefixes.push(`mission_uid:${user.uid}_`);
+    }
+
+    if (user?.email) {
+        missionScopedPrefixes.push(`mission_email:${String(user.email).toLowerCase()}_`);
+    }
+
+    if (missionScopedPrefixes.length > 0) {
+        return missionScopedPrefixes.some((prefix) => key.startsWith(prefix));
+    }
+
+    if (key.startsWith('mission_guest_')) {
+        return true;
+    }
+
+    // Compatibilidade com chaves muito antigas sem escopo de utilizador.
+    return /^mission_[^:_]+$/.test(key);
+}
+
+function getLegacyMissionXP(storage, user) {
     if (!storage || typeof storage.length !== 'number' || typeof storage.key !== 'function') {
         return 0;
     }
@@ -149,7 +176,7 @@ function getLegacyMissionXP(storage) {
 
     for (let index = 0; index < storage.length; index += 1) {
         const key = storage.key(index);
-        if (!key || !key.startsWith('mission_')) {
+        if (!shouldImportLegacyMissionKey(key, user)) {
             continue;
         }
 
@@ -164,14 +191,14 @@ function getLegacyMissionXP(storage) {
     return totalXP;
 }
 
-function migrateLegacyMissionXP(profile, storage) {
+function migrateLegacyMissionXP(profile, storage, user) {
     const safeProfile = sanitizeProfile(profile);
 
     if (safeProfile.migrations.legacyMissionXpImported) {
         return { profile: safeProfile, changed: false };
     }
 
-    const migratedXP = getLegacyMissionXP(storage);
+    const migratedXP = getLegacyMissionXP(storage, user);
     const nextProfile = {
         ...safeProfile,
         xp: safeProfile.xp + migratedXP,
@@ -190,7 +217,7 @@ function migrateLegacyMissionXP(profile, storage) {
 function readProfile(storage, user) {
     const key = getProfileStorageKey(user);
     const storedProfile = sanitizeProfile(safelyParseJSON(storage?.getItem?.(key)));
-    const migration = migrateLegacyMissionXP(storedProfile, storage);
+    const migration = migrateLegacyMissionXP(storedProfile, storage, user);
 
     if (migration.changed) {
         writeProfile(storage, user, migration.profile);
@@ -323,6 +350,37 @@ function commitProfileUpdate(user, profile, storage) {
     announceProfileUpdate(user, profile);
 }
 
+function buildLevelResetProfile(profile) {
+    const safeProfile = sanitizeProfile(profile);
+
+    return {
+        ...safeProfile,
+        xp: 0,
+        awardedSources: {},
+        migrations: {
+            ...safeProfile.migrations,
+            manualLevelResetCompleted: true
+        }
+    };
+}
+
+function resetLevelForUser(user, storage) {
+    const resolvedStorage = getDefaultStorage(storage);
+    const currentProfile = readProfile(resolvedStorage, user);
+    const resetProfile = sanitizeProfile(buildLevelResetProfile(currentProfile));
+
+    commitProfileUpdate(user, resetProfile, resolvedStorage);
+
+    return {
+        profile: resetProfile,
+        reset: true
+    };
+}
+
+function resetProfileForUser(user, storage) {
+    return resetLevelForUser(user, storage);
+}
+
 function awardXPToUser(user, amount, source, storage) {
     const resolvedStorage = getDefaultStorage(storage);
     const currentProfile = readProfile(resolvedStorage, user);
@@ -371,6 +429,14 @@ function awardXPToCurrentUser(amount, source, storage) {
 
 function unlockBadgesForCurrentUser(source, storage) {
     return unlockBadgesForUser(getCurrentUser(), source, getDefaultStorage(storage));
+}
+
+function resetCurrentUserProfile(storage) {
+    return resetLevelForUser(getCurrentUser(), getDefaultStorage(storage));
+}
+
+function resetCurrentUserLevel(storage) {
+    return resetLevelForUser(getCurrentUser(), getDefaultStorage(storage));
 }
 
 function getBadgeCatalog(profile) {
@@ -464,9 +530,13 @@ const ProfileXP = {
     buildRewardSource,
     awardXPToUser,
     unlockBadgesForUser,
+    resetLevelForUser,
+    resetProfileForUser,
     getCurrentUserProfile,
     awardXPToCurrentUser,
     unlockBadgesForCurrentUser,
+    resetCurrentUserLevel,
+    resetCurrentUserProfile,
     getBadgeCatalog,
     getRankFromLevel,
     getCurrentSubject,

@@ -52,7 +52,7 @@ Descobre como a luz vira energia e como o CO₂ se transforma em açúcar.
 
 <a href="mission-photosynthesis.html">
 
-<button>Começar</button>
+<button id="photosynthesisCta">Começar</button>
 
 </a>
 
@@ -153,6 +153,53 @@ Viaja pelo cérebro e pelos neurónios.
 <footer>
     <p>© Explore+ 2025</p>
 </footer>
+
+<script type="module" src="auth.js"></script>
+<script>
+function buildMissionProgressKey(missionId) {
+    const user = window.exploreCurrentUser;
+    const userKey = user && user.uid
+        ? `uid:${user.uid}`
+        : (user && user.email ? `email:${String(user.email).toLowerCase()}` : 'guest');
+    return `mission_${userKey}_${missionId}`;
+}
+
+function hasMeaningfulProgress(progress) {
+    if (!progress || typeof progress !== 'object') return false;
+
+    const hasCompleted = Array.isArray(progress.completedSections) && progress.completedSections.length > 0;
+    const hasAnswers = progress.userAnswers && Object.keys(progress.userAnswers).length > 0;
+    const hasScreenAdvance = progress.sectionScreenProgress
+        && Object.values(progress.sectionScreenProgress).some((value) => Number.isInteger(value) && value > 0);
+    const hasOpenDrafts = progress.openAnswerDrafts && Object.keys(progress.openAnswerDrafts).length > 0;
+    const hasGuideState = progress.guideAnswerState && Object.keys(progress.guideAnswerState).length > 0;
+
+    return hasCompleted || hasAnswers || hasScreenAdvance || hasOpenDrafts || hasGuideState;
+}
+
+function updatePhotosynthesisCta() {
+    const cta = document.getElementById('photosynthesisCta');
+    if (!cta) return;
+
+    const storageKey = buildMissionProgressKey('photosynthesis');
+    const rawProgress = localStorage.getItem(storageKey);
+
+    if (!rawProgress) {
+        cta.textContent = 'Começar';
+        return;
+    }
+
+    try {
+        const parsedProgress = JSON.parse(rawProgress);
+        cta.textContent = hasMeaningfulProgress(parsedProgress) ? 'Retomar' : 'Começar';
+    } catch (error) {
+        cta.textContent = 'Começar';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', updatePhotosynthesisCta);
+window.addEventListener('explore:auth-changed', updatePhotosynthesisCta);
+</script>
 
 </body>
 

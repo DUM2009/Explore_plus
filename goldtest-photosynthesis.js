@@ -1,244 +1,154 @@
 /**
- * Gold Test - Fotossíntese
- * 20 perguntas: 10 fáceis, 5 intermédias, 5 difíceis
- * Aprovação: 17/20
+ * Teste de ouro — Capítulo Fotossíntese
+ * 20 perguntas: 10 fáceis, 5 intermédias, 5 difíceis.
+ * Nota mínima para o emblema de ouro: 17/20.
+ * Mistura conteúdo das 3 missões do capítulo.
  */
 
-const goldTestData = {
-    id: "photosynthesis-goldtest",
-    title: "🌿 Teste Ouro — Fotossíntese",
-    missionUrl: "mission-photosynthesis.html",
-    passScore: 17,
-    totalQuestions: 20,
-    questions: [
-        /* ── Fáceis (1–10) ── */
-        {
-            id: 1,
-            difficulty: "easy",
-            question: "Qual é o principal pigmento responsável pela captação de luz nas plantas?",
-            options: [
-                { text: "Clorofila", correct: true },
-                { text: "Caroteno", correct: false },
-                { text: "Melanina", correct: false },
-                { text: "Xantofila", correct: false }
-            ]
-        },
-        {
-            id: 2,
-            difficulty: "easy",
-            question: "Onde se encontram os tilacoides no cloroplasto?",
-            options: [
-                { text: "No estroma", correct: false },
-                { text: "Na membrana externa", correct: false },
-                { text: "Dentro do cloroplasto, como membranas empilhadas (granas)", correct: true },
-                { text: "No núcleo celular", correct: false }
-            ]
-        },
-        {
-            id: 3,
-            difficulty: "easy",
-            question: "Que gás é libertado durante a fase clara da fotossíntese?",
-            options: [
-                { text: "CO₂", correct: false },
-                { text: "N₂", correct: false },
-                { text: "O₂", correct: true },
-                { text: "H₂", correct: false }
-            ]
-        },
-        {
-            id: 4,
-            difficulty: "easy",
-            question: "De onde vem o oxigénio libertado durante a fotossíntese?",
-            options: [
-                { text: "Do CO₂", correct: false },
-                { text: "Da glicose", correct: false },
-                { text: "Da fotólise da água", correct: true },
-                { text: "Do ar atmosférico", correct: false }
-            ]
-        },
-        {
-            id: 5,
-            difficulty: "easy",
-            question: "Qual é o produto final rico em energia que o ciclo de Calvin constrói?",
-            options: [
-                { text: "ATP", correct: false },
-                { text: "NADPH", correct: false },
-                { text: "Glicose (e outros açúcares)", correct: true },
-                { text: "ADP", correct: false }
-            ]
-        },
-        {
-            id: 6,
-            difficulty: "easy",
-            question: "Em que parte do cloroplasto ocorre o ciclo de Calvin?",
-            options: [
-                { text: "Nos tilacoides", correct: false },
-                { text: "No estroma", correct: true },
-                { text: "Na membrana externa", correct: false },
-                { text: "No núcleo", correct: false }
-            ]
-        },
-        {
-            id: 7,
-            difficulty: "easy",
-            question: "Que moléculas a fase clara fornece ao ciclo de Calvin?",
-            options: [
-                { text: "CO₂ e H₂O", correct: false },
-                { text: "Glicose e O₂", correct: false },
-                { text: "ATP e NADPH", correct: true },
-                { text: "ADP e NADP⁺", correct: false }
-            ]
-        },
-        {
-            id: 8,
-            difficulty: "easy",
-            question: "Qual é a molécula que recebe o CO₂ no início do ciclo de Calvin?",
-            options: [
-                { text: "ATP", correct: false },
-                { text: "G3P", correct: false },
-                { text: "NADPH", correct: false },
-                { text: "RuBP", correct: true }
-            ]
-        },
-        {
-            id: 9,
-            difficulty: "easy",
-            question: "Quantas voltas do ciclo de Calvin são necessárias para produzir uma molécula de glicose?",
-            options: [
-                { text: "2", correct: false },
-                { text: "3", correct: false },
-                { text: "6", correct: true },
-                { text: "12", correct: false }
-            ]
-        },
-        {
-            id: 10,
-            difficulty: "easy",
-            question: "A fotossíntese transforma energia luminosa em que tipo de energia?",
-            options: [
-                { text: "Energia térmica", correct: false },
-                { text: "Energia elétrica", correct: false },
-                { text: "Energia química (ligações dos açúcares)", correct: true },
-                { text: "Energia cinética", correct: false }
-            ]
-        },
+const MISSION_ID = "photosynthesis-factory";
+const PASS_SCORE = 17;
+const TOTAL_QUESTIONS = 20;
 
-        /* ── Intermédias (11–15) ── */
-        {
-            id: 11,
-            difficulty: "medium",
-            question: "Qual é a função da ATP sintase na fase clara?",
-            options: [
-                { text: "Absorver fotões de luz", correct: false },
-                { text: "Usar o gradiente de H⁺ para produzir ATP", correct: true },
-                { text: "Fixar CO₂ à RuBP", correct: false },
-                { text: "Produzir NADPH diretamente da água", correct: false }
-            ]
-        },
-        {
-            id: 12,
-            difficulty: "medium",
-            question: "O que é a fotólise e qual a sua importância para a cadeia transportadora de eletrões?",
-            options: [
-                { text: "Síntese de glicose; fornece energia ao Calvin", correct: false },
-                { text: "Divisão da água pela luz; fornece eletrões à cadeia transportadora", correct: true },
-                { text: "Produção de CO₂; alimenta o estroma", correct: false },
-                { text: "Redução do NADP⁺; regenera RuBP", correct: false }
-            ]
-        },
-        {
-            id: 13,
-            difficulty: "medium",
-            question: "Se a concentração de CO₂ cair para zero (estomas fechados), o que acontece ao ciclo de Calvin?",
-            options: [
-                { text: "Continua normalmente usando O₂ como substituto", correct: false },
-                { text: "Para por falta de substrato para a fixação", correct: true },
-                { text: "Acelera porque há mais ATP disponível", correct: false },
-                { text: "Começa a produzir proteínas em vez de açúcares", correct: false }
-            ]
-        },
-        {
-            id: 14,
-            difficulty: "medium",
-            question: "Quais são as moléculas que o ciclo de Calvin devolve à fase clara?",
-            options: [
-                { text: "CO₂ e H₂O", correct: false },
-                { text: "G3P e RuBP", correct: false },
-                { text: "ADP e NADP⁺", correct: true },
-                { text: "Glicose e O₂", correct: false }
-            ]
-        },
-        {
-            id: 15,
-            difficulty: "medium",
-            question: "Porque é que a fase escura (ciclo de Calvin) é chamada 'independente da luz'?",
-            options: [
-                { text: "Só ocorre à noite", correct: false },
-                { text: "Não usa diretamente fotões de luz, embora dependa dos produtos da fase clara", correct: true },
-                { text: "Não precisa de ATP para funcionar", correct: false },
-                { text: "Produz luz como subproduto", correct: false }
-            ]
-        },
+const goldTestQuestions = [
+    // ---- 10 fáceis ----
+    { difficulty: "fácil", question: "Qual gás a planta liberta durante a fotossíntese?", options: [{ text: "Oxigénio", correct: true }, { text: "Azoto", correct: false }, { text: "Hidrogénio", correct: false }] },
+    { difficulty: "fácil", question: "Onde está a clorofila dentro do cloroplasto?", options: [{ text: "Nos tilacoides", correct: true }, { text: "No núcleo", correct: false }, { text: "Na parede celular", correct: false }] },
+    { difficulty: "fácil", question: "Qual destes é um dos 'ingredientes' da fotossíntese?", options: [{ text: "CO₂", correct: true }, { text: "Azoto", correct: false }, { text: "Metano", correct: false }] },
+    { difficulty: "fácil", question: "O ciclo de Calvin ocorre em qual parte do cloroplasto?", options: [{ text: "No estroma", correct: true }, { text: "Nos tilacoides", correct: false }, { text: "Na membrana externa", correct: false }] },
+    { difficulty: "fácil", question: "Qual molécula é 'partida' na fotólise?", options: [{ text: "Água", correct: true }, { text: "Glicose", correct: false }, { text: "CO₂", correct: false }] },
+    { difficulty: "fácil", question: "O que a planta produz como açúcar final da fotossíntese?", options: [{ text: "Glicose", correct: true }, { text: "Frutose apenas", correct: false }, { text: "Amido apenas", correct: false }] },
+    { difficulty: "fácil", question: "Qual estrutura da folha deixa entrar CO₂?", options: [{ text: "Estoma", correct: true }, { text: "Nervura", correct: false }, { text: "Cutícula", correct: false }] },
+    { difficulty: "fácil", question: "A fase clara da fotossíntese precisa diretamente de:", options: [{ text: "Luz", correct: true }, { text: "Glicose", correct: false }, { text: "Amido", correct: false }] },
+    { difficulty: "fácil", question: "Quantas fases principais tem a fotossíntese?", options: [{ text: "Duas", correct: true }, { text: "Três", correct: false }, { text: "Uma", correct: false }] },
+    { difficulty: "fácil", question: "O ciclo de Calvin usa qual gás como matéria-prima?", options: [{ text: "CO₂", correct: true }, { text: "O₂", correct: false }, { text: "N₂", correct: false }] },
 
-        /* ── Difíceis (16–20) ── */
-        {
-            id: 16,
-            difficulty: "hard",
-            question: "Se um inibidor bloquear especificamente a rubisco, qual é o efeito em cascata mais imediato?",
-            options: [
-                { text: "A fotólise da água para imediatamente", correct: false },
-                { text: "O CO₂ acumula-se e a RuBP não é consumida; Calvin para", correct: true },
-                { text: "A ATP sintase deixa de funcionar", correct: false },
-                { text: "O NADPH oxida-se espontaneamente", correct: false }
-            ]
-        },
-        {
-            id: 17,
-            difficulty: "hard",
-            question: "Uma planta é exposta a luz com apenas comprimentos de onda verdes. O que se espera?",
-            options: [
-                { text: "Fotossíntese normal, pois toda a luz serve", correct: false },
-                { text: "Fotossíntese reduzida, pois a clorofila reflete maioritariamente o verde e absorve mal", correct: true },
-                { text: "Fotossíntese aumentada, pois o verde é o melhor comprimento de onda", correct: false },
-                { text: "Nenhuma alteração; a fase clara não depende da cor", correct: false }
-            ]
-        },
-        {
-            id: 18,
-            difficulty: "hard",
-            question: "No escuro total e prolongado, qual das seguintes moléculas esgota primeiro nas folhas?",
-            options: [
-                { text: "CO₂ atmosférico", correct: false },
-                { text: "Reservas de ATP e NADPH geradas pela fase clara", correct: true },
-                { text: "A RuBP, que não pode ser regenerada sem açúcar", correct: false },
-                { text: "O oxigénio dissolvido na célula", correct: false }
-            ]
-        },
-        {
-            id: 19,
-            difficulty: "hard",
-            question: "Qual das seguintes afirmações descreve melhor a interdependência entre fase clara e ciclo de Calvin?",
-            options: [
-                { text: "São paralelas e funcionam de forma autónoma", correct: false },
-                { text: "A fase clara produz ATP/NADPH que Calvin consome; Calvin devolve ADP/NADP⁺ que a fase clara recarrega", correct: true },
-                { text: "Calvin produz ATP que a fase clara consome para captar luz", correct: false },
-                { text: "Só há dependência quando há pouca luz", correct: false }
-            ]
-        },
-        {
-            id: 20,
-            difficulty: "hard",
-            question: "Uma mutação elimina o gradiente de H⁺ nos tilacoides. Qual cadeia de efeitos seria mais precisa?",
-            options: [
-                { text: "Menos ATP → menos G3P → menos glicose → Calvin para", correct: true },
-                { text: "Menos NADPH → menos fotólise → menos O₂ libertado", correct: false },
-                { text: "Mais RuBP → mais fixação de CO₂ → mais glicose", correct: false },
-                { text: "Menos clorofila → menos absorção de luz → menos fotólise", correct: false }
-            ]
+    // ---- 5 intermédias ----
+    { difficulty: "intermédia", question: "Que enzima fixa o CO₂ à RuBP?", options: [{ text: "Rubisco", correct: true }, { text: "ATP sintase", correct: false }, { text: "Amílase", correct: false }] },
+    { difficulty: "intermédia", question: "Que duas moléculas a fase clara entrega ao ciclo de Calvin?", options: [{ text: "ATP e NADPH", correct: true }, { text: "CO₂ e O₂", correct: false }, { text: "Glicose e água", correct: false }] },
+    { difficulty: "intermédia", question: "O que impulsiona a ATP sintase a produzir ATP?", options: [{ text: "O gradiente de H⁺", correct: true }, { text: "A luz diretamente", correct: false }, { text: "O CO₂", correct: false }] },
+    { difficulty: "intermédia", question: "Qual é o primeiro açúcar de 3 carbonos formado no ciclo de Calvin?", options: [{ text: "G3P", correct: true }, { text: "Glicose", correct: false }, { text: "RuBP", correct: false }] },
+    { difficulty: "intermédia", question: "O que volta do ciclo de Calvin para a fase clara?", options: [{ text: "ADP e NADP⁺", correct: true }, { text: "CO₂", correct: false }, { text: "Glicose", correct: false }] },
+
+    // ---- 5 difíceis ----
+    { difficulty: "difícil", question: "Se bloqueares a fotólise da água, qual é o efeito mais direto?", options: [{ text: "Deixa de haver eletrões e H⁺ disponíveis", correct: true }, { text: "O ciclo de Calvin acelera", correct: false }, { text: "A planta produz mais O₂", correct: false }] },
+    { difficulty: "difícil", question: "Uma planta com luz abundante mas estomas fechados — o que trava primeiro?", options: [{ text: "O ciclo de Calvin, por falta de CO₂", correct: true }, { text: "A fase clara, por falta de luz", correct: false }, { text: "Nada é afetado", correct: false }] },
+    { difficulty: "difícil", question: "Quantas voltas do ciclo de Calvin são necessárias para produzir uma molécula de glicose?", options: [{ text: "6", correct: true }, { text: "1", correct: false }, { text: "3", correct: false }] },
+    { difficulty: "difícil", question: "Numa planta em escuridão total, o que se esgota primeiro e trava o ciclo de Calvin?", options: [{ text: "As reservas de ATP e NADPH", correct: true }, { text: "O CO₂ do ar", correct: false }, { text: "A RuBP", correct: false }] },
+    { difficulty: "difícil", question: "Porque é que dizemos que a fotossíntese é 'um sistema' e não duas reações separadas?", options: [{ text: "Porque cada fase depende dos produtos da outra para continuar", correct: true }, { text: "Porque ocorrem exatamente ao mesmo tempo, sem relação", correct: false }, { text: "Porque usam a mesma enzima em ambas", correct: false }] }
+];
+
+class GoldTest {
+    constructor(questions) {
+        this.questions = questions;
+        this.current = 0;
+        this.correctCount = 0;
+    }
+
+    render() {
+        const el = document.getElementById('goldtest-root');
+        el.innerHTML = `
+            <div class="final-quiz-header">
+                <h1>🥇 Teste de ouro — Fotossíntese</h1>
+                <p>20 perguntas · precisas de ${PASS_SCORE}/${TOTAL_QUESTIONS} para o emblema de ouro</p>
+            </div>
+            <div class="quiz-progress">
+                <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="goldProgressFill" style="width:0%"></div></div>
+                <span id="goldProgressLabel">Pergunta 1 de ${this.questions.length}</span>
+            </div>
+            <div id="goldQuestionArea"></div>
+        `;
+        this.renderQuestion();
+    }
+
+    renderQuestion() {
+        const q = this.questions[this.current];
+        const area = document.getElementById('goldQuestionArea');
+        area.innerHTML = `
+            <div class="final-quiz-question active">
+                <span class="quiz-question" style="opacity:0.6;">Nível: ${q.difficulty}</span>
+                <h3>${q.question}</h3>
+                <div class="final-quiz-options">
+                    ${q.options.map((opt, i) => `
+                        <button class="final-quiz-option" data-correct="${opt.correct}" data-option-index="${i}">
+                            <span class="option-circle">${String.fromCharCode(65 + i)}</span>
+                            <span class="option-text">${opt.text}</span>
+                        </button>
+                    `).join('')}
+                </div>
+                <div class="quiz-feedback-slot"></div>
+            </div>
+        `;
+        area.querySelectorAll('.final-quiz-option').forEach(opt => {
+            opt.addEventListener('click', (e) => this.handleAnswer(e));
+        });
+        document.getElementById('goldProgressFill').style.width = `${(this.current / this.questions.length) * 100}%`;
+        document.getElementById('goldProgressLabel').textContent = `Pergunta ${this.current + 1} de ${this.questions.length}`;
+    }
+
+    handleAnswer(event) {
+        const button = event.target.closest('.final-quiz-option');
+        if (!button || button.disabled) return;
+        const isCorrect = button.dataset.correct === 'true';
+        const container = button.closest('.final-quiz-question');
+        container.querySelectorAll('.final-quiz-option').forEach(opt => {
+            opt.disabled = true;
+            if (opt.dataset.correct === 'true') opt.classList.add('correct');
+            else if (opt === button) opt.classList.add('incorrect');
+        });
+        if (isCorrect) this.correctCount++;
+
+        setTimeout(() => {
+            this.current++;
+            if (this.current < this.questions.length) {
+                this.renderQuestion();
+            } else {
+                this.showResults();
+            }
+        }, 1000);
+    }
+
+    showResults() {
+        const passed = this.correctCount >= PASS_SCORE;
+        if (passed) {
+            localStorage.setItem(`badge_${MISSION_ID}_gold`, 'true');
         }
-    ]
-};
-
-if (typeof module !== "undefined" && module.exports) {
-    module.exports = goldTestData;
+        const el = document.getElementById('goldtest-root');
+        el.innerHTML = `
+            <div class="completion-screen">
+                <div class="completion-badge">
+                    <div class="badge-icon">${passed ? '🥇' : '🥈'}</div>
+                    <h1>${passed ? 'Emblema de ouro conquistado!' : 'Ainda não chegou lá - continua prata por agora'}</h1>
+                </div>
+                <div class="completion-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">✓</div>
+                        <div class="stat-content">
+                            <div class="stat-label">Respostas certas</div>
+                            <div class="stat-value">${this.correctCount}/${this.questions.length}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="completion-actions">
+                    ${passed ? '' : `<button class="btn-primary" onclick="window.location.reload()">Tentar novamente</button>`}
+                    <button class="btn-secondary" onclick="window.location.href='mission-photosynthesis.html'">Voltar ao capítulo</button>
+                </div>
+            </div>
+        `;
+    }
 }
+
+function shuffle(arr) {
+    return [...arr].sort(() => Math.random() - 0.5);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Mantém a ordem fácil -> intermédia -> difícil, mas baralha DENTRO de cada
+    // nível, para o aluno não decorar a posição exata das perguntas.
+    const easy = shuffle(goldTestQuestions.filter(q => q.difficulty === 'fácil'));
+    const medium = shuffle(goldTestQuestions.filter(q => q.difficulty === 'intermédia'));
+    const hard = shuffle(goldTestQuestions.filter(q => q.difficulty === 'difícil'));
+    const ordered = [...easy, ...medium, ...hard];
+
+    const test = new GoldTest(ordered);
+    test.render();
+});

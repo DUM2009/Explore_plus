@@ -14,228 +14,31 @@
             padding: 40px 20px;
         }
 
-        .goldtest-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .goldtest-header h1 {
-            font-size: 2rem;
-            color: #1f8a5b;
-            margin-bottom: 8px;
-        }
-
-        .goldtest-header p {
-            color: #666;
-            font-size: 1rem;
-        }
-
-        .goldtest-progress {
+        .goldtest-container .quiz-progress {
             margin: 20px 0;
         }
 
-        .goldtest-progress-bar-container {
-            background: #e8f5e9;
-            border-radius: 999px;
-            height: 10px;
-            overflow: hidden;
-        }
-
-        .goldtest-progress-bar {
-            background: linear-gradient(90deg, #1f8a5b, #4caf50);
-            height: 100%;
-            border-radius: 999px;
-            transition: width 0.4s ease;
-        }
-
-        .goldtest-progress-info {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 6px;
-        }
-
-        .goldtest-question-card {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            padding: 32px;
-            margin-bottom: 24px;
-            display: none;
-        }
-
-        .goldtest-question-card.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .difficulty-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 999px;
-            font-size: 0.75rem;
+        .goldtest-container #goldProgressLabel {
+            color: #4b5563;
             font-weight: 600;
-            margin-bottom: 12px;
         }
 
-        .difficulty-badge.easy   { background: #e8f5e9; color: #2e7d32; }
-        .difficulty-badge.medium { background: #fff3e0; color: #e65100; }
-        .difficulty-badge.hard   { background: #fce4ec; color: #c62828; }
-
-        .goldtest-question-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 20px;
-            line-height: 1.5;
+        .goldtest-container .final-quiz-question h3 {
+            margin-top: 8px;
         }
 
-        .goldtest-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .goldtest-container .final-quiz-option {
+            color: #111111;
         }
 
-        .goldtest-option {
-            background: #f7fdf9;
-            border: 2px solid #c8e6c9;
-            border-radius: 10px;
-            padding: 12px 16px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 0.95rem;
-            color: #1a1a1a;
-            transition: background 0.2s, border-color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .goldtest-container .final-quiz-option .option-text {
+            color: #111111;
         }
 
-        .goldtest-option:hover:not(:disabled) {
-            background: #e8f5e9;
-            border-color: #1f8a5b;
-        }
-
-        .goldtest-option:disabled {
-            cursor: default;
-        }
-
-        .goldtest-option.correct  { background: #e8f5e9; border-color: #2e7d32; color: #2e7d32; font-weight: 700; }
-        .goldtest-option.incorrect { background: #fce4ec; border-color: #c62828; color: #c62828; }
-
-        .option-circle {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
+        .goldtest-container .final-quiz-option .option-circle {
+            color: #111111;
             background: #c8e6c9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.85rem;
-            flex-shrink: 0;
         }
-
-        .results-screen {
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
-            padding: 48px 32px;
-            text-align: center;
-        }
-
-        .results-badge {
-            font-size: 4rem;
-            margin-bottom: 16px;
-        }
-
-        .results-screen h1 {
-            font-size: 2rem;
-            color: #1f8a5b;
-            margin-bottom: 8px;
-        }
-
-        .results-stats {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin: 32px 0;
-        }
-
-        .result-stat {
-            background: #f7fdf9;
-            border-radius: 14px;
-            padding: 20px 24px;
-            min-width: 120px;
-        }
-
-        .result-stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1f8a5b;
-        }
-
-        .result-stat-label {
-            font-size: 0.8rem;
-            color: #666;
-            margin-top: 4px;
-        }
-
-        .pass-message    { color: #2e7d32; font-size: 1.1rem; font-weight: 600; margin-bottom: 24px; }
-        .fail-message    { color: #c62828; font-size: 1.1rem; font-weight: 600; margin-bottom: 24px; }
-
-        .results-actions {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-top: 24px;
-        }
-
-        .btn-primary {
-            background: #1f8a5b;
-            color: #fff;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-primary:hover { background: #167a4e; }
-
-        .btn-secondary {
-            background: transparent;
-            color: #1f8a5b;
-            border: 2px solid #1f8a5b;
-            padding: 12px 28px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-secondary:hover { background: #e8f5e9; }
-
-        #startScreen {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        #startScreen h1 { font-size: 2rem; color: #1f8a5b; margin-bottom: 12px; }
-        #startScreen p  { color: #666; margin-bottom: 8px; }
-        #startScreen .rules { background: #f7fdf9; border-radius: 14px; padding: 20px; margin: 24px 0; text-align: left; }
-        #startScreen .rules li { margin-bottom: 8px; }
     </style>
 </head>
 <body>
@@ -249,47 +52,7 @@
     </header>
 
     <div class="goldtest-container">
-
-        <!-- Start Screen -->
-        <div id="startScreen">
-            <div style="font-size:3rem">🌿🏅</div>
-            <h1>Teste Ouro — Fotossíntese</h1>
-            <p>Prova que és um verdadeiro Mestre da Fotossíntese!</p>
-
-            <div class="rules">
-                <ul>
-                    <li>📋 <strong>20 perguntas</strong> (10 fáceis · 5 intermédias · 5 difíceis)</li>
-                    <li>🎯 Precisas de <strong>17/20</strong> para passar</li>
-                    <li>⏩ Não há tempo limite — lê com cuidado</li>
-                    <li>🔒 Não podes voltar atrás depois de responder</li>
-                </ul>
-            </div>
-
-            <button class="btn-primary" onclick="goldTest.start()">Começar o Teste 🚀</button>
-            <br><br>
-            <a href="mission-photosynthesis.html" style="color:#1f8a5b;font-size:0.9rem;">← Voltar ao capítulo</a>
-        </div>
-
-        <!-- Quiz Area (hidden until started) -->
-        <div id="quizArea" style="display:none;">
-            <div class="goldtest-header">
-                <h1>🌿 Teste Ouro — Fotossíntese</h1>
-                <div class="goldtest-progress">
-                    <div class="goldtest-progress-info">
-                        <span id="questionLabel">Pergunta 1 de 20</span>
-                        <span id="scoreLabel">0 certas</span>
-                    </div>
-                    <div class="goldtest-progress-bar-container">
-                        <div class="goldtest-progress-bar" id="progressBar" style="width:5%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="questionsContainer"></div>
-        </div>
-
-        <!-- Results Screen (hidden until finished) -->
-        <div id="resultsScreen" style="display:none;"></div>
+        <div id="goldtest-root"></div>
     </div>
 
     <script type="module" src="auth.js"></script>
@@ -297,8 +60,23 @@
     <script src="profile-xp.js"></script>
     <script src="goldtest-photosynthesis.js"></script>
     <script>
-        (function guardGoldTestAccess() {
-            const storageKey = `mission_${missionData?.id || 'photosynthesis'}`;
+        function getMissionProgressKey() {
+            const user = window.exploreCurrentUser;
+            const userKey = user && user.uid
+                ? `uid:${user.uid}`
+                : (user && user.email ? `email:${String(user.email).toLowerCase()}` : 'guest');
+
+            return `mission_${userKey}_${missionData?.id || 'photosynthesis'}`;
+        }
+
+        function runGoldTestAccessGuard() {
+            const isSessionAllowed = sessionStorage.getItem('allow_goldtest_photosynthesis') === '1';
+            if (isSessionAllowed) {
+                sessionStorage.removeItem('allow_goldtest_photosynthesis');
+                return;
+            }
+
+            const storageKey = getMissionProgressKey();
             const raw = localStorage.getItem(storageKey);
             const requiredSections = new Set(
                 Array.isArray(missionData?.sections) ? missionData.sections.map((section) => section.id) : []
@@ -320,133 +98,18 @@
             } catch (error) {
                 window.location.href = 'mission-photosynthesis.html?locked=gold';
             }
-        })();
+        }
 
-        const goldTest = (() => {
-            let currentIndex = 0;
-            let correctCount = 0;
-            const answers = [];
+        let guardRan = false;
+        const guardedRun = () => {
+            if (guardRan) return;
+            guardRan = true;
+            runGoldTestAccessGuard();
+        };
 
-            function start() {
-                document.getElementById('startScreen').style.display = 'none';
-                document.getElementById('quizArea').style.display = 'block';
-                renderQuestion(0);
-            }
+        window.addEventListener('explore:auth-changed', guardedRun, { once: true });
+        setTimeout(guardedRun, 1200);
 
-            function renderQuestion(index) {
-                const container = document.getElementById('questionsContainer');
-                container.innerHTML = '';
-
-                const q = goldTestData.questions[index];
-                const card = document.createElement('div');
-                card.className = 'goldtest-question-card active';
-
-                const diffLabel = { easy: 'Fácil', medium: 'Intermédia', hard: 'Difícil' }[q.difficulty];
-                card.innerHTML = `
-                    <span class="difficulty-badge ${q.difficulty}">${diffLabel}</span>
-                    <p class="goldtest-question-text">${index + 1}. ${q.question}</p>
-                    <div class="goldtest-options" id="options-${index}">
-                        ${q.options.map((opt, i) => `
-                            <button class="goldtest-option"
-                                    data-correct="${opt.correct}"
-                                    onclick="goldTest.answer(this, ${index})">
-                                <span class="option-circle">${String.fromCharCode(65 + i)}</span>
-                                <span>${opt.text}</span>
-                            </button>
-                        `).join('')}
-                    </div>
-                `;
-                container.appendChild(card);
-            }
-
-            function answer(btn, index) {
-                const opts = btn.closest('.goldtest-options').querySelectorAll('.goldtest-option');
-                opts.forEach(o => {
-                    o.disabled = true;
-                    o.style.pointerEvents = 'none';
-                    if (o.dataset.correct === 'true') o.classList.add('correct');
-                });
-
-                const isCorrect = btn.dataset.correct === 'true';
-                if (!isCorrect) btn.classList.add('incorrect');
-                if (isCorrect) correctCount++;
-
-                answers[index] = isCorrect;
-
-                // Update progress
-                const next = index + 1;
-                document.getElementById('questionLabel').textContent =
-                    next < goldTestData.totalQuestions
-                        ? `Pergunta ${next + 1} de ${goldTestData.totalQuestions}`
-                        : `Concluído!`;
-                document.getElementById('scoreLabel').textContent = `${correctCount} certa${correctCount !== 1 ? 's' : ''}`;
-                document.getElementById('progressBar').style.width =
-                    (((next) / goldTestData.totalQuestions) * 100) + '%';
-
-                setTimeout(() => {
-                    if (next < goldTestData.totalQuestions) {
-                        renderQuestion(next);
-                    } else {
-                        showResults();
-                    }
-                }, 1200);
-            }
-
-            function showResults() {
-                document.getElementById('quizArea').style.display = 'none';
-                const resultsEl = document.getElementById('resultsScreen');
-                resultsEl.style.display = 'block';
-
-                const total = goldTestData.totalQuestions;
-                const pass  = goldTestData.passScore;
-                const scorePercent = Math.round((correctCount / total) * 100);
-                const passed = correctCount >= pass;
-                const challengeXP = passed ? scorePercent : 0;
-                const challengeRewardSource = window.ProfileXP
-                    ? window.ProfileXP.buildRewardSource('challenge', goldTestData.id)
-                    : null;
-                const reward = passed && challengeRewardSource
-                    ? window.ProfileXP.awardXPToCurrentUser(
-                        challengeXP,
-                        challengeRewardSource
-                    )
-                    : null;
-                const xpMessage = reward?.awarded
-                    ? `Ganhaste +${reward.xpAdded} XP no teu perfil.`
-                    : 'Este desafio já tinha atribuído XP ao teu perfil.';
-
-                resultsEl.innerHTML = `
-                    <div class="results-screen">
-                        <div class="results-badge">${passed ? '🏅' : '📚'}</div>
-                        <h1>${passed ? 'Teste Ouro superado!' : 'Continua a praticar!'}</h1>
-                        <p class="${passed ? 'pass-message' : 'fail-message'}">
-                            ${passed
-                                ? '🌟 Conquistaste o badge de Mestre da Fotossíntese!'
-                                : `Precisas de ${pass}/20 para passar. Tenta outra vez!`}
-                        </p>
-                        ${passed ? `<p class="pass-message">⭐ ${xpMessage}</p>` : ''}
-
-                        <div class="results-stats">
-                            <div class="result-stat">
-                                <div class="result-stat-value">${correctCount}/${total}</div>
-                                <div class="result-stat-label">Respostas certas</div>
-                            </div>
-                            <div class="result-stat">
-                                <div class="result-stat-value">${scorePercent}%</div>
-                                <div class="result-stat-label">Precisão</div>
-                            </div>
-                        </div>
-
-                        <div class="results-actions">
-                            <button class="btn-primary" onclick="window.location.href='missions.html'">Voltar às Missões</button>
-                            <button class="btn-secondary" onclick="window.location.reload()">Repetir o Teste</button>
-                        </div>
-                    </div>
-                `;
-            }
-
-            return { start, answer };
-        })();
     </script>
 </body>
 </html>

@@ -4,11 +4,54 @@
       <stop offset="0%" stop-color="#eef9f5"/>
       <stop offset="100%" stop-color="#dff3e9"/>
     </linearGradient>
+    <linearGradient id="stromaFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5fff9"/>
+      <stop offset="100%" stop-color="#dcf2e5"/>
+    </linearGradient>
+    <linearGradient id="molAtp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4ecf8f"/>
+      <stop offset="100%" stop-color="#1f8a5b"/>
+    </linearGradient>
+    <linearGradient id="molNadph" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8adfba"/>
+      <stop offset="100%" stop-color="#2b9f74"/>
+    </linearGradient>
   </defs>
+
   <rect width="960" height="420" rx="26" fill="url(#bg)"/>
-  <rect x="40" y="50" width="880" height="320" rx="20" fill="#ffffff" stroke="#b8dfca" stroke-width="3"/>
-  <circle cx="135" cy="210" r="52" fill="#37d67a" opacity="0.25"/>
-  <circle cx="825" cy="210" r="52" fill="#1f8a5b" opacity="0.2"/>
-  <text x="480" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" fill="#1f8a5b" font-weight="700">Fotossíntese</text>
-  <text x="480" y="250" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" fill="#2f4f3d">M2 HOOK</text>
+  <rect x="34" y="38" width="892" height="344" rx="20" fill="#ffffff" stroke="#b8dfca" stroke-width="3"/>
+
+  <text x="100" y="90" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="25" fill="#1f5f42" font-weight="700">Da fase clara para o estroma</text>
+
+  <g opacity="0.28">
+    <rect x="96" y="146" width="290" height="120" rx="22" fill="#59c792"/>
+    <text x="118" y="214" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="23" fill="#15573b" font-weight="700">energia da Missao 1</text>
+  </g>
+
+  <g>
+    <ellipse cx="700" cy="210" rx="180" ry="120" fill="url(#stromaFill)" stroke="#7dc8a3" stroke-width="4"/>
+    <text x="700" y="215" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="34" fill="#1f7c4e" font-weight="700">ESTROMA</text>
+    <text x="700" y="245" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="17" fill="#2f6f4d">nova zona do cloroplasto</text>
+  </g>
+
+  <path d="M410 178 C510 178, 560 178, 620 178" fill="none" stroke="#7bcfa8" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 10"/>
+  <path d="M430 256 C530 256, 580 256, 640 256" fill="none" stroke="#7bcfa8" stroke-width="6" stroke-linecap="round" stroke-dasharray="8 10"/>
+
+  <g>
+    <g transform="translate(0 0)">
+      <circle cx="195" cy="178" r="30" fill="url(#molAtp)"/>
+      <text x="195" y="184" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="18" fill="#ffffff" font-weight="700">ATP</text>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 420 0; 420 0; 0 0" keyTimes="0;0.45;0.75;1" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;1;0.35;1" keyTimes="0;0.45;0.75;1" dur="3.2s" repeatCount="indefinite"/>
+    </g>
+
+    <g transform="translate(0 0)">
+      <rect x="148" y="228" width="110" height="44" rx="22" fill="url(#molNadph)"/>
+      <text x="203" y="256" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="16" fill="#ffffff" font-weight="700">NADPH</text>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 450 0; 450 0; 0 0" keyTimes="0;0.45;0.75;1" dur="3.2s" begin="0.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;1;0.35;1" keyTimes="0;0.45;0.75;1" dur="3.2s" begin="0.2s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+  <text x="478" y="334" text-anchor="middle" font-family="Trebuchet MS, Segoe UI, sans-serif" font-size="18" fill="#2f5d45" font-weight="600">ATP e NADPH entram no estroma para iniciar o ciclo de Calvin.</text>
 </svg>

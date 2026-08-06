@@ -62,8 +62,8 @@ function testChallengeFlowAccumulation() {
 function testLegacyMissionMigration() {
     const user = { uid: 'student-3', email: 'legacy@example.com' };
     const storage = createStorage({
-        mission_photosynthesis: JSON.stringify({ earnedXP: 190 }),
-        mission_biology: JSON.stringify({ earnedXP: 75 })
+        'mission_uid:student-3_photosynthesis': JSON.stringify({ earnedXP: 190 }),
+        'mission_email:legacy@example.com_biology': JSON.stringify({ earnedXP: 75 })
     });
 
     const profile = ProfileXP.readProfile(storage, user);
@@ -71,6 +71,19 @@ function testLegacyMissionMigration() {
 
     assert.strictEqual(profile.xp, 265);
     assert.strictEqual(savedProfile.migrations.legacyMissionXpImported, true);
+}
+
+function testLegacyMissionMigrationIsolationByUser() {
+    const user = { uid: 'student-6', email: 'isolated@example.com' };
+    const storage = createStorage({
+        'mission_uid:student-6_photosynthesis': JSON.stringify({ earnedXP: 120 }),
+        'mission_uid:other-user_photosynthesis': JSON.stringify({ earnedXP: 500 }),
+        mission_photosynthesis: JSON.stringify({ earnedXP: 900 })
+    });
+
+    const profile = ProfileXP.readProfile(storage, user);
+
+    assert.strictEqual(profile.xp, 120);
 }
 
 function testCurrentUserProfileAccess() {
@@ -138,14 +151,35 @@ function testProfileOverview() {
     assert.ok(overview.remainingUnlockables.some((item) => item.label.includes('Mitose')));
 }
 
+function testLevelResetIsolation() {
+    const primary = { uid: 'student-7', email: 'reset-a@example.com' };
+    const secondary = { uid: 'student-8', email: 'reset-b@example.com' };
+    const storage = createStorage();
+
+    ProfileXP.awardXPToUser(primary, 250, ProfileXP.buildRewardSource('quiz', 'photosynthesis:luz-vira-energia'), storage);
+    ProfileXP.awardXPToUser(secondary, 120, ProfileXP.buildRewardSource('quiz', 'dna:code-of-life'), storage);
+    ProfileXP.unlockBadgesForUser(primary, ProfileXP.buildRewardSource('challenge', 'photosynthesis-goldtest'), storage);
+
+    const resetResult = ProfileXP.resetLevelForUser(primary, storage);
+    const primaryAfterReset = ProfileXP.readProfile(storage, primary);
+    const secondaryAfterReset = ProfileXP.readProfile(storage, secondary);
+
+    assert.strictEqual(resetResult.reset, true);
+    assert.strictEqual(primaryAfterReset.xp, 0);
+    assert.strictEqual(primaryAfterReset.badges.photosynthesis.unlocked, true);
+    assert.strictEqual(secondaryAfterReset.xp, 120);
+}
+
 function run() {
     testLevelBoundaries();
     testQuizFlowAccumulation();
     testChallengeFlowAccumulation();
     testLegacyMissionMigration();
+    testLegacyMissionMigrationIsolationByUser();
     testCurrentUserProfileAccess();
     testBadgeUnlockAndSafeDefaults();
     testProfileOverview();
+    testLevelResetIsolation();
     console.log('XP system validation passed.');
 }
 

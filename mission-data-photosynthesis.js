@@ -1,290 +1,338 @@
 /**
- * Mission Data - Fotossíntese
- * Estrutura alinhada com o guião pedagógico em cartões por ecrã.
+ * Mission Data - Fotossintese
+ * Estrutura alinhada com o guiao pedagogico em cartoes por ecra.
  */
 
 const missionData = {
     id: "photosynthesis",
     title: "🌿 Fotossíntese",
-    description: "Descobre como a luz vira energia e como o CO₂ se transforma em açúcar.",
+    description: "Descobre como a luz vira energia e como o CO2 se transforma em acucar.",
+    screenFlowEnabled: true,
     totalXP: 190,
     badge: { icon: "🌿", name: "Mestre da Fotossíntese" },
     goldTestUrl: "mission-photosynthesis-goldtest.html",
     sections: [
         {
             id: "luz-vira-energia",
-            title: "Luz vira energia (fase clara)",
-            icon: "⚡",
+            title: "Definição e estruturas da fotossíntese",
+            icon: "🧩",
             xpReward: 60,
+            completionMessage: "Missão completa! +60 XP. Já dominas a definição e as estruturas envolvidas na fotossíntese.",
             content: `
-                <div class="section-content">
+            
+            <div class="section-content">
                     <div class="screen-card">
-                        <h3>Ecrã 1 — Gancho</h3>
-                        <img class="screen-visual" src="assets/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
-                        <p>A luz do sol não entra na planta e sai já transformada em açúcar. Antes disso, ela passa por uma verdadeira central elétrica dentro da folha.</p>
+                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?</strong></p>
+                        <p style="text-align: center; margin-top: 18px;">
+                        </p>
+                    </div>
+
+
+                    <div class="screen-card">
+                        <h3>O que é a fotossíntese?</h3>
+                        <img class="card-visual" src="assets/images/Planta-fotossíntese.png" alt="Planta a receber luz solar">
+                        <p>Ao contrário dos animais, as plantas não saem à procura de alimento. Elas próprias o fabricam!</p>
+                        <p>Com a energia da luz do Sol, transformam água e dióxido de carbono em glicose, um açúcar que lhes fornece energia para crescer e sobreviver. Como "bónus", libertam oxigénio para a atmosfera. Este incrível processo chama-se <strong>fotossíntese</strong>.</p>
+                        <details class="did-you-know">
+                            <summary>Saber mais...</summary>
+                            <p>Sabias que a fotossíntese tem uma fórmula química? Parece um bicho de sete cabeças, mas não é!</p>
+                            <p style="text-align: center; font-size: 1.2em;"><strong>6CO<sub>2</sub> + 6H<sub>2</sub>O &rarr; C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub></strong></p>
+                        </details>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 2 — Pergunta guia</h3>
-                        <img class="screen-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Esquema simples de cloroplasto com tilacoides em destaque">
-                        <p>Achas que a planta usa a água apenas para transportar nutrientes, ou também para <strong>produzir</strong> algo durante a fotossíntese?</p>
-                        <div class="guide-options">
-   <button class="guide-option" data-choice="transporta" data-correct="false">💧 Só transporta</button>
-<button class="guide-option" data-choice="produz" data-correct="true">⚡ Também produz algo</button>
-</div>
-                        <p class="neutral-feedback">Vamos ver o que a água realmente faz aqui dentro.</p>
+                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Já sabemos que as plantas fabricam o seu alimento. Mas onde acontece essa transformação?</strong></p>
+                        <p style="text-align: center; margin-top: 18px;"></p>
+                        
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 3 — Explicação em blocos</h3>
-                        <div class="screen-subcards">
-                            <div class="info-card">
-                                <h4>Cartão 1 — Onde acontece</h4>
-                                <img class="card-visual" src="assets/images/Tilacoides 2.jpg" alt="Zoom folha para célula para cloroplasto para tilacoide">
-                                <p>A fase clara ocorre nos <strong>tilacoides</strong>, membranas dentro do cloroplasto onde está a clorofila.</p>
-                            </div>
-                            <div class="info-card">
-                                <h4>Cartão 2 — Fotólise da água</h4>
-                                <img class="card-visual" src="assets/images/Fotólise da água.jpg" alt="Molécula de água dividida em eletrões, protões e oxigénio">
-                                <p>A luz "parte" a molécula de água (fotólise). Isso liberta <strong>eletrões</strong>, <strong>protões (H⁺)</strong> e <strong>oxigénio</strong>, que sai para o ar.</p>
-                            </div>
-                            <div class="info-card">
-                                <h4>Cartão 3 — Cadeia transportadora de eletrões</h4>
-                                <img class="card-visual" src="assets/images/photosynthesis/m1-card-chain.svg" alt="Eletrões a percorrer proteínas na membrana com H mais a acumular">
-                                <p>Os eletrões libertados passam por uma sequência de proteínas na membrana — a <strong>cadeia transportadora de eletrões</strong>. Nesse percurso, a energia deles é usada para bombear H⁺ para dentro do tilacoide.</p>
-                            </div>
-                            <div class="info-card">
-                                <h4>Cartão 4 — ATP e NADPH</h4>
-                                <img class="card-visual" src="assets/images/photosynthesis/m1-card-atp.svg" alt="ATP sintase em forma de turbina e formação de NADPH">
-                                <p>A acumulação de H⁺ cria um gradiente que impulsiona a <strong>ATP sintase</strong> a produzir <strong>ATP</strong>. Os eletrões terminam o percurso a formar <strong>NADPH</strong>.</p>
-                            </div>
+                        <h3>As folhas: o principal local da fotossíntese</h3>
+                        <img class="card-visual" src="assets/images/Folha.png" alt="Folha de planta">
+                        <p>Embora toda a planta seja importante, é nas <strong>folhas</strong> que a maior parte da fotossíntese acontece.</p>
+                        <p>As folhas possuem muitos cloroplastos, recebem luz solar e estão em contacto direto com o ar, facilitando a entrada de dióxido de carbono.</p>
+                 <details class="did-you-know">
+                            <summary>Saber mais...</summary>
+                            <p>Algumas folhas conseguem “mover-se” para captar melhor a luz do Sol. Esse movimento chama-se <strong>heliotropismo</strong>. Certas plantas conseguem orientar as suas folhas ou flores em direção à luz para aumentar a quantidade de energia captada e, assim, tornar a fotossíntese mais eficiente.</p>
+                        </details>
                         </div>
+
+
+<div class="screen-card">
+                        <h3>Os estomas: as "portas" da folha</h3>
+                        <img class="card-visual" src="assets/images/Estoma.png" alt="Estomas na folha de planta">
+                        <p>As plantas também precisam de captar dióxido de carbono do ar. Para isso existem pequenos poros nas folhas chamados <strong>estomas</strong>.</p>
+                        <p>Os estomas permitem a entrada de dióxido de carbono e a saída do oxigénio produzido durante a fotossíntese. Além disso, regulam a perda de vapor de água para o ambiente.</p>
+                   <details class="did-you-know">
+                            <summary>Saber mais...</summary>
+                            <p>🌵 Algumas plantas de ambientes secos, como os cactos, abrem os estomas principalmente durante a noite. Assim, conseguem absorver dióxido de carbono sem perder tanta água durante o dia quente — uma adaptação que ajuda a sobreviver em desertos. 🌙🌵</p>
+                        </details>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 4 — Mini-interação</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m1-mini.svg" alt="Sequência da fase clara do início ao fim">
-                        <p><strong>Sequenciar:</strong> Luz na clorofila → Fotólise da água → Cadeia de eletrões → Acumulação de H⁺ → ATP + NADPH.</p>
+                        <h3>O cloroplasto: a "fábrica" da fotossíntese</h3>
+                        <img class="card-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
+                        <p> Para fabricar o seu alimento, a planta precisa de um local onde todas as reações da fotossíntese acontecem. Esse local chama-se <strong>cloroplasto</strong>.</p>
+                        <p>O cloroplasto é um organelo presente nas células das plantas e é considerado a fábrica da fotossíntese. É aqui que a energia da luz é captada e utilizada para transformar água e dióxido de carbono em glicose.</p>
+                        <p>No interior do cloroplasto destacam-se os <strong>tilacoides</strong>, a <strong>clorofila</strong> e o <strong>estroma</strong>.</p>
+                   <details class="did-you-know">
+                            <summary>Saber mais...</summary>
+                            <p>Os cloroplastos têm o seu próprio DNA. Isso acontece porque, há milhões de anos, eles eram bactérias independentes que foram incorporadas por células ancestrais das plantas através de um processo chamado endossimbiose. Com o tempo, passaram a viver dentro das células vegetais e tornaram-se responsáveis pela fotossíntese.</p>
+                        </details>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 5 — Curiosidade</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m1-curiosity.svg" alt="Ícone de relógio e planta">
-                        <p>Todo o oxigénio que existe hoje na atmosfera veio, ao longo de milhões de anos, desta mesma reação de fotólise da água.</p>
+                        <h3>Os tilacoides: os "painéis solares" da fotossíntese</h3>
+                        <img class="card-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
+                        <p> Dentro do cloroplasto existem pequenas estruturas em forma de discos empilhados chamadas tilacóides. É na membrana destes tilacóides que se encontra a clorofila, o pigmento verde responsável por captar a energia da luz solar.</p>
+                        <details class="did-you-know">
+                            <summary>Saber mais...</summary>
+                            <p>Sabias que um único cloroplasto pode conter dezenas de tilacóides empilhados? Esta organização aumenta a superfície disponível para captar luz, tornando a fotossíntese muito mais eficiente.</p>
+                        </details>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 6 — Quiz rápido</h3>
-                        <p>Responde às 5 perguntas com feedback imediato para concluir a missão.</p>
+                        <h3>A clorofila: o pigmento que capta a luz</h3>
+                        <img class="card-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
+                        <p>A <strong>clorofila</strong> é um pigmento verde presente nos cloroplastos. A sua principal função é <strong>captar a energia da luz solar</strong>, fornecendo a energia necessária para que a fotossíntese possa ocorrer.</p>
+                        <p>É também a clorofila que dá às plantas a sua cor verde característica.</p>
+                         <details class="did-you-know">
+                            <summary>Saber mais...</summary>
+                            <p>Sabias que, a clorofila não é o único pigmento fotossintético nas plantas? Elas possuem vários, cada um capaz de absorver diferentes comprimentos de onda da luz. Isto permite que a planta aproveite melhor a energia do Sol. Alguns exemplos de pigmentos fotossintéticos são:</p>
+                            <ul>
+                                <li><strong>Carotenoides:</strong> pigmentos que absorvem luz azul e verde, refletindo tons de laranja e vermelho.</li>
+                                <li><strong>Ficobilinas:</strong> pigmentos encontrados em algas, que absorvem luz verde e refletem tons de vermelho.</li>
+                            </ul>
                     </div>
 
-                    <div class="screen-card reward-card">
-                        <h3>Ecrã 7 — Recompensa</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m1-reward.svg" alt="Barra de XP a encher e selo missão 1 de 3">
-                        <p>Missão completa! +60 XP. Já sabes como a luz se transforma em ATP e NADPH para a próxima fase.</p>
+<div class="screen-card">
+                        <h3>O estroma: o "citosol" do cloroplasto</h3>
+                        <img class="card-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
+                        <p> À volta dos tilacóides encontra-se um líquido chamado <strong>estroma</strong>. É nesta região que a planta utiliza a energia captada pela luz para fabricar glicose.</p>
+                        <details class="did-you-know">
+                            <summary>Saber mais...</summary>
+                            <p>Sabias que, ao contrário dos tilacóides, que captam a energia da luz, o estroma utiliza essa energia para construir moléculas de glicose.</p>
+                        </details>
                     </div>
+
+                    <div class="screen-card">
+                        <h3>As raízes: a origem da água</h3>
+                        <img class="card-visual" src="assets/images/Raízes 2.png" alt="Raízes da planta">
+                        <p>A água utilizada na fotossíntese é absorvida pelas raízes. Depois de entrar na planta, a água é transportada através do caule até chegar às folhas, onde será utilizada na produção de glicose.</p>
+                    <details class="did-you-know">
+                            <summary>Saber mais...</summary>
+                            <p>🌳 Algumas árvores têm redes de raízes que se ligam a fungos do solo, formando uma relação chamada <strong>micorriza</strong>. Os fungos ajudam a planta a absorver água e minerais, enquanto recebem açúcares produzidos pela fotossíntese.</p>
+                        </details>
+                        </div>
+
+
                 </div>
             `,
             quiz: {
                 questions: [
                     {
-                        question: "Onde ocorre a fase clara da fotossíntese?",
+                        question: "O que é a fotossíntese?",
                         options: [
-                            { text: "No estroma", correct: false },
-                            { text: "Nos tilacoides", correct: true },
-                            { text: "No núcleo", correct: false }
+                            { text: "Processo em que a planta produz glicose a partir de luz, água e CO<sub>2</sub>", correct: true },
+                            { text: "Processo de respiração noturna da planta", correct: false },
+                            { text: "Processo que só produz oxigénio", correct: false }
                         ],
                         feedback: {
-                            correct: "Certo! É nas membranas dos tilacoides que está a clorofila e a maquinaria da fase clara.",
-                            incorrect: "Revê: a fase clara acontece nos tilacoides."
+                            correct: "Correto! Essa é a definição central da fotossíntese.",
+                            incorrect: "Revê: a fotossíntese produz glicose e liberta oxigénio."
                         }
                     },
                     {
-                        question: "De onde vem o oxigénio libertado na fotossíntese?",
+                        question: "Em que organelo ocorre a fotossíntese?",
                         options: [
-                            { text: "Do CO₂", correct: false },
-                            { text: "Da água (fotólise)", correct: true },
-                            { text: "Da glicose", correct: false }
+                            { text: "No núcleo", correct: false },
+                            { text: "No cloroplasto", correct: true },
+                            { text: "Na mitocôndria", correct: false }
                         ],
                         feedback: {
-                            correct: "Exato — a fotólise da água é que liberta o O₂, não o CO₂.",
-                            incorrect: "Pista: o O₂ vem da divisão da água."
+                            correct: "Exato! O cloroplasto é o organelo chave da fotossíntese.",
+                            incorrect: "A fotossíntese ocorre no cloroplasto."
                         }
                     },
                     {
-                        question: "Qual é a função da cadeia transportadora de eletrões?",
+                        question: "Qual pigmento capta a luz?",
                         options: [
-                            { text: "Usar a energia dos eletrões para bombear H⁺ e criar um gradiente", correct: true },
-                            { text: "Produzir glicose diretamente", correct: false },
-                            { text: "Absorver CO₂ do ar", correct: false }
+                            { text: "Rubisco", correct: false },
+                            { text: "Clorofila", correct: true },
+                            { text: "Amido", correct: false }
                         ],
                         feedback: {
-                            correct: "Isso mesmo — a cadeia prepara a energia para a fase seguinte.",
-                            incorrect: "Revê a cadeia: ela usa energia dos eletrões para criar gradiente de H⁺."
+                            correct: "Certo! A clorofila capta a energia luminosa.",
+                            incorrect: "Quem capta a luz é a clorofila."
                         }
                     },
                     {
-                        question: "O que impulsiona a ATP sintase a produzir ATP?",
+                        question: "Qual estrutura permite a entrada de CO<sub>2</sub> na folha?",
                         options: [
-                            { text: "A luz diretamente", correct: false },
-                            { text: "O gradiente de H⁺ acumulado no tilacoide", correct: true },
-                            { text: "O oxigénio libertado", correct: false }
+                            { text: "Estoma", correct: true },
+                            { text: "Nervura", correct: false },
+                            { text: "Raiz", correct: false }
                         ],
                         feedback: {
-                            correct: "Correto — é o fluxo de H⁺ pela ATP sintase que gera ATP.",
-                            incorrect: "Pensa na 'turbina': ela é movida pelo gradiente de H⁺."
+                            correct: "Boa! O CO2 entra pelos estomas.",
+                            incorrect: "A entrada de CO2 ocorre pelos estomas."
                         }
                     },
                     {
-                        question: "Se bloqueares a fotólise da água numa planta, o que deixa de acontecer primeiro?",
+                        question: "Qual é o principal açúcar produzido pela fotossíntese?",
                         options: [
-                            { text: "A libertação de eletrões e a formação do gradiente de H⁺", correct: true },
-                            { text: "A absorção de CO₂", correct: false },
-                            { text: "O ciclo de Calvin, diretamente", correct: false }
+                            { text: "Glicose", correct: true },
+                            { text: "Celulose", correct: false },
+                            { text: "Proteína", correct: false }
                         ],
                         feedback: {
-                            correct: "Muito bem — sem fotólise, a cadeia fica sem eletrões e sem H⁺.",
-                            incorrect: "Sem fotólise, o primeiro bloqueio é na libertação de eletrões/H⁺."
+                            correct: "Muito bem! A glicose é o produto energético principal.",
+                            incorrect: "O principal açúcar produzido é a glicose."
                         }
                     }
                 ]
             }
         },
         {
-            id: "do-ar-ao-acucar",
-            title: "Do ar ao açúcar (ciclo de Calvin)",
-            icon: "🍬",
+            id: "do-ar-ao-açúcar",
+            title: "Fase clara",
+            icon: "⚡",
             xpReward: 60,
+            completionMessage: "Missão completa! +60 XP. Já entendes como a luz se converte em ATP e NADPH.",
             content: `
                 <div class="section-content">
+                    
                     <div class="screen-card">
-                        <h3>Ecrã 1 — Gancho</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-hook.svg" alt="ATP e NADPH a entrar numa nova zona do cloroplasto">
-                        <p>Na missão anterior, a planta fabricou energia (ATP) e poder redutor (NADPH). Mas isso não é açúcar. Falta um passo — e é aqui que o CO₂ do ar entra em jogo.</p>
+                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Já sabemos onde acontece a fotossíntese. Mas como é que a luz do Sol é transformada em energia útil para a planta?</strong></p>
+                        <p style="text-align: center; margin-top: 18px;">
+                        </p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 2 — Pergunta guia</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-guide.svg" alt="Folha a absorver CO2 pelo estoma">
-                        <p>Achas que a planta precisa de <strong>luz direta</strong> para transformar CO₂ em açúcar, ou consegue fazê-lo mesmo <strong>no escuro</strong>, desde que tenha ATP e NADPH?</p>
+                        <h3>Ecra 1 - Gancho</h3>
+                        <img class="screen-visual" src="assets/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
+                        <p>Tudo começa quando a luz do Sol atinge a clorofila. Ao absorver essa luz, a clorofila capta energia que dá início às primeiras reações da fotossíntese. Esta etapa recebe o nome de fase clara.</p>
+                    </div>
+
+                    <div class="screen-card">
+                        <h3>Ecra 2 - Pergunta guia</h3>
+                        <img class="screen-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com tilacoides">
+                        <p>A água serve apenas para transporte, ou também participa diretamente na fase clara?</p>
                         <div class="guide-options">
-                            <span>☀️ Precisa de luz direta</span>
-                            <span>🌑 Consegue no escuro, com ATP/NADPH</span>
+                            <button class="guide-option" data-choice="so-transporta" data-correct="false">So transporta</button>
+                            <button class="guide-option" data-choice="participa" data-correct="true">Participa diretamente</button>
                         </div>
-                        <p class="neutral-feedback">Boa aposta — vamos ver porque esta fase é chamada de independente da luz.</p>
+                        <p class="neutral-feedback">Vamos ver como a água entra na fase clara.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 3 — Explicação em blocos</h3>
-                        <div class="screen-subcards">
-                            <div class="info-card">
-                                <h4>Cartão 1 — Onde acontece</h4>
-                                <img class="card-visual" src="assets/images/photosynthesis/m2-card-where.svg" alt="Cloroplasto com estroma destacado à volta dos tilacoides">
-                                <p>O ciclo de Calvin ocorre no <strong>estroma</strong>, o fluido que envolve os tilacoides dentro do cloroplasto.</p>
-                            </div>
-                            <div class="info-card">
-                                <h4>Cartão 2 — Fixação do carbono</h4>
-                                <img class="card-visual" src="assets/images/photosynthesis/m2-card-fix.svg" alt="CO2 a ligar-se à RuBP e a dividir-se em duas moléculas">
-                                <p>O CO₂ do ar liga-se à <strong>RuBP</strong> com ajuda da <strong>rubisco</strong>, formando uma molécula instável que se parte em duas.</p>
-                            </div>
-                            <div class="info-card">
-                                <h4>Cartão 3 — Redução</h4>
-                                <img class="card-visual" src="assets/images/photosynthesis/m2-card-reduction.svg" alt="ATP e NADPH a transformar moléculas em G3P">
-                                <p>O ATP e o NADPH da missão anterior fornecem energia e eletrões para transformar essas moléculas em <strong>G3P</strong>.</p>
-                            </div>
-                            <div class="info-card">
-                                <h4>Cartão 4 — Regeneração</h4>
-                                <img class="card-visual" src="assets/images/photosynthesis/m2-card-regeneration.svg" alt="Seta circular de regeneração da RuBP e saída para glicose">
-                                <p>A maior parte do G3P é reciclada para regenerar RuBP; só uma pequena parte sai para formar glicose e outros açúcares.</p>
-                            </div>
-                        </div>
+                        <h3>Ecra 3 - Onde ocorre</h3>
+                        <img class="card-visual" src="assets/images/Tilacoides 2.jpg" alt="Tilacoides no cloroplasto">
+                        <p>A fase clara ocorre nos <strong>tilacoides</strong>, onde estão os pigmentos e a maquinaria que usa a luz.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 4 — Mini-interação</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-mini.svg" alt="Ciclo de Calvin com posições CO2, RuBP, G3P e regeneração">
-                        <p><strong>Completar o ciclo:</strong> CO₂ → RuBP → fixação → G3P → regeneração → RuBP (com saída para glicose).</p>
+                        <h3>Ecra 4 - Fotólise da água</h3>
+                        <img class="card-visual" src="assets/images/Fotólise da água.jpg" alt="Divisao da agua em produtos">
+                        <p>A luz permite dividir água (fotólise), libertando <strong>eletrões</strong>, <strong>H+</strong> e <strong>O2</strong>.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 5 — Curiosidade</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-curiosity.svg" alt="Planta com relógio a girar rápido">
-                        <p>São precisas <strong>6 voltas</strong> completas do ciclo de Calvin para produzir uma molécula de glicose.</p>
+                        <h3>Ecra 5 - Cadeia de eletrões</h3>
+                        <img class="card-visual" src="assets/images/photosynthesis/m1-card-chain.svg" alt="Cadeia transportadora de eletrões">
+                        <p>Os eletrões percorrem uma cadeia de transporte. A energia libertada bombeia H+ para o interior do tilacoide.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 6 — Quiz rápido</h3>
-                        <p>Responde às 5 perguntas para consolidar a ligação entre fase clara e ciclo de Calvin.</p>
+                        <h3>Ecra 6 - ATP e NADPH</h3>
+                        <img class="card-visual" src="assets/images/photosynthesis/m1-card-atp.svg" alt="Formacao de ATP e NADPH">
+                        <p>O gradiente de H+ alimenta a ATP sintase para formar <strong>ATP</strong>. No fim, tambem se forma <strong>NADPH</strong>.</p>
+                    </div>
+
+                    <div class="screen-card">
+                        <h3>Ecra 7 - Mini-interacao</h3>
+                        <img class="screen-visual" src="assets/images/photosynthesis/m1-mini.svg" alt="Sequencia da fase clara">
+                        <p><strong>Sequenciar:</strong> Luz na clorofila -> Fotolise -> Cadeia de eletrões -> Gradiente de H+ -> ATP/NADPH.</p>
+                    </div>
+
+                    <div class="screen-card">
+                        <h3>Ecra 8 - Curiosidade</h3>
+                        <img class="screen-visual" src="assets/images/photosynthesis/m1-curiosity.svg" alt="Curiosidade da fase clara">
+                        <p>O oxigenio libertado na atmosfera vem desta fase, a partir da fotolise da agua.</p>
+                    </div>
+
+                    <div class="screen-card">
+                        <h3>Ecra 9 - Quiz rapido</h3>
+                        <p>Valida o teu entendimento da fase clara com 5 perguntas.</p>
                     </div>
 
                     <div class="screen-card reward-card">
-                        <h3>Ecrã 7 — Recompensa</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-reward.svg" alt="Barra de XP e selo missão 2 de 3">
-                        <p>Missão completa! +60 XP. Agora sabes como o CO₂ se transforma em açúcar.</p>
+                        <h3>Ecra 10 - Recompensa</h3>
+                        <img class="screen-visual" src="assets/images/photosynthesis/m2-reward.svg" alt="Recompensa da fase clara">
+                        <p>Missão completa! +60 XP. Já estás pronto para a fase escura.</p>
                     </div>
                 </div>
             `,
             quiz: {
                 questions: [
                     {
-
-                        question: "Onde ocorre o ciclo de Calvin?",
+                        question: "Onde ocorre a fase clara da fotossintese?",
                         options: [
-                            { text: "Nos tilacoides", correct: false },
-                            { text: "No estroma", correct: true },
-                            { text: "No núcleo", correct: false }
+                            { text: "No estroma", correct: false },
+                            { text: "Nos tilacoides", correct: true },
+                            { text: "No nucleo", correct: false }
                         ],
                         feedback: {
-                            correct: "Certo! O estroma é o fluido à volta dos tilacoides.",
-                            incorrect: "Revê: o Calvin ocorre no estroma."
+                            correct: "Certo! A fase clara decorre nos tilacoides.",
+                            incorrect: "Revê: esta fase acontece nos tilacoides."
                         }
                     },
                     {
-                        question: "Qual enzima fixa o CO₂ à RuBP?",
+                        question: "De onde vem o oxigenio libertado?",
                         options: [
-                            { text: "ATP sintase", correct: false },
-                            { text: "Rubisco", correct: true },
-                            { text: "NADPH redutase", correct: false }
+                            { text: "Do CO2", correct: false },
+                            { text: "Da agua (fotolise)", correct: true },
+                            { text: "Da glicose", correct: false }
                         ],
                         feedback: {
-                            correct: "Exato — a rubisco faz a fixação do carbono.",
-                            incorrect: "A enzima de fixação é a rubisco."
+                            correct: "Exato. O O2 vem da divisao da agua.",
+                            incorrect: "Pista: a origem do O2 e a fotolise da agua."
                         }
                     },
                     {
-                        question: "O que fornece energia e eletrões para formar G3P?",
+                        question: "Qual e a funcao da cadeia transportadora de eletrões?",
                         options: [
-                            { text: "ATP e NADPH produzidos na fase clara", correct: true },
-                            { text: "Luz solar diretamente", correct: false },
-                            { text: "Oxigénio da fotólise", correct: false }
+                            { text: "Criar gradiente de H+ para produzir ATP", correct: true },
+                            { text: "Produzir glicose diretamente", correct: false },
+                            { text: "Fixar CO2", correct: false }
                         ],
                         feedback: {
-                            correct: "Isso mesmo — a fase clara produz, o Calvin usa.",
-                            incorrect: "A energia vem de ATP e NADPH da fase clara."
+                            correct: "Isso mesmo! A cadeia prepara energia para a sintese de ATP.",
+                            incorrect: "A cadeia serve para gerar gradiente de H+, nao para produzir glicose direta."
                         }
                     },
                     {
-                        question: "Porque se diz que o Calvin é independente da luz?",
+                        question: "O que impulsiona a ATP sintase?",
                         options: [
-                            { text: "Porque não precisa de CO₂", correct: false },
-                            { text: "Porque não usa luz diretamente, só ATP/NADPH", correct: true },
-                            { text: "Porque só ocorre à noite", correct: false }
+                            { text: "A luz diretamente", correct: false },
+                            { text: "O gradiente de H+", correct: true },
+                            { text: "O CO2", correct: false }
                         ],
                         feedback: {
-                            correct: "Boa! Não usa fotões diretamente.",
-                            incorrect: "Ele não usa luz diretamente; usa ATP/NADPH já produzidos."
+                            correct: "Correto! O fluxo de H+ e o motor da ATP sintase.",
+                            incorrect: "Pensa no gradiente de H+ como a forca que move a enzima."
                         }
                     },
                     {
-                        question: "Se faltar CO₂, mas houver luz, o que acontece primeiro?",
+                        question: "Que moleculas energeticas resultam da fase clara?",
                         options: [
-                            { text: "O ciclo de Calvin para por falta de carbono", correct: true },
-                            { text: "A fase clara para imediatamente", correct: false },
-                            { text: "Nada muda", correct: false }
+                            { text: "ATP e NADPH", correct: true },
+                            { text: "Glicose e amido", correct: false },
+                            { text: "RuBP e rubisco", correct: false }
                         ],
                         feedback: {
-                            correct: "Correto — sem CO₂ não há fixação de carbono.",
-                            incorrect: "Sem CO₂, o bloqueio direto é no ciclo de Calvin."
+                            correct: "Perfeito. ATP e NADPH alimentam a fase escura.",
+                            incorrect: "As moleculas energeticas desta fase sao ATP e NADPH."
                         }
                     }
                 ]
@@ -292,144 +340,136 @@ const missionData = {
         },
         {
             id: "liga-os-pontos",
-            title: "Liga os pontos (síntese)",
-            icon: "🔗",
+            title: "Fase escura (ciclo de Calvin)",
+            icon: "🌑",
             xpReward: 70,
+            completionMessage: "Missao completa! +70 XP. Ja consegues explicar como o CO2 vira glicose no ciclo de Calvin.",
             content: `
                 <div class="section-content">
                     <div class="screen-card">
-                        <h3>Ecrã 1 — Gancho</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m3-hook.svg" alt="Fase clara e ciclo de Calvin lado a lado a ligarem-se">
-                        <p>Já viste as duas metades da fotossíntese em separado. Agora vamos ver como uma falha numa delas afeta a outra.</p>
+                        <h3>Ecra 1 - Gancho</h3>
+                        <img class="screen-visual" src="assets/images/photosynthesis/m2-hook.svg" alt="ATP e NADPH a entrar no estroma">
+                        <p>A fase escura usa a energia da fase clara para transformar CO2 em compostos organicos.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 2 — Pergunta guia</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m3-guide.svg" alt="Tilacoide e estroma lado a lado num esquema">
-                        <p>Se tapasses uma planta com um saco escuro por um dia inteiro, o ciclo de Calvin pararia <strong>de imediato</strong>, ou continuaria por algum tempo com as reservas?</p>
+                        <h3>Ecra 2 - Pergunta guia</h3>
+                        <img class="screen-visual" src="assets/images/photosynthesis/m2-guide.svg" alt="CO2 a entrar pelo estoma">
+                        <p>A fase escura precisa de luz direta, ou pode funcionar sem luz direta se houver ATP e NADPH?</p>
                         <div class="guide-options">
-                            <span>⚡ Para de imediato</span>
-                            <span>⏳ Continua por algum tempo com reservas</span>
+                            <button class="guide-option" data-choice="luz-direta" data-correct="false">Precisa de luz direta</button>
+                            <button class="guide-option" data-choice="sem-luz-direta" data-correct="true">Nao usa luz direta, usa ATP/NADPH</button>
                         </div>
-                        <p class="neutral-feedback">Vamos ver exatamente o que liga (e separa) as duas fases.</p>
+                        <p class="neutral-feedback">Boa! Esta fase e chamada de independente da luz direta.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 3 — Explicação em blocos</h3>
-                        <div class="screen-subcards">
-                            <div class="info-card">
-                                <h4>Cartão 1 — O que a fase clara entrega</h4>
-                                <img class="card-visual" src="assets/images/photosynthesis/m3-card-deliver.svg" alt="Seta de ATP e NADPH do tilacoide para o estroma">
-                                <p>A fase clara produz <strong>ATP</strong> e <strong>NADPH</strong> a partir de luz e água. Sem eles, o Calvin fica sem combustível.</p>
-                            </div>
-                            <div class="info-card">
-                                <h4>Cartão 2 — O que o Calvin devolve</h4>
-                                <img class="card-visual" src="assets/images/photosynthesis/m3-card-return.svg" alt="Seta de ADP e NADP mais do estroma para o tilacoide">
-                                <p>O Calvin consome ATP/NADPH e devolve <strong>ADP</strong> e <strong>NADP⁺</strong> para recarga na fase clara.</p>
-                            </div>
-                            <div class="info-card">
-                                <h4>Cartão 3 — Um sistema, não dois</h4>
-                                <img class="card-visual" src="assets/images/photosynthesis/m3-card-system.svg" alt="Tilacoide a apagar e ciclo de Calvin a parar">
-                                <p>Se a fase clara parar, o Calvin esgota rapidamente as reservas de ATP/NADPH e para também.</p>
-                            </div>
-                        </div>
+                        <h3>Ecra 3 - Onde ocorre</h3>
+                        <img class="card-visual" src="assets/images/photosynthesis/m2-card-where.svg" alt="Estroma no cloroplasto">
+                        <p>O ciclo de Calvin ocorre no <strong>estroma</strong> do cloroplasto.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 4 — Mini-interação</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m3-mini.svg" alt="Diagrama interativo das partes do sistema da fotossíntese">
-                        <p><strong>Diagrama interativo:</strong> toca em tilacoide, estroma, seta ATP/NADPH e seta ADP/NADP⁺ para rever o sistema completo.</p>
+                        <h3>Ecra 4 - Fixacao do carbono</h3>
+                        <img class="card-visual" src="assets/images/photosynthesis/m2-card-fix.svg" alt="CO2 ligado a RuBP">
+                        <p>O CO2 fixa-se a <strong>RuBP</strong> com ajuda da <strong>rubisco</strong>.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 5 — Curiosidade</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m3-curiosity.svg" alt="Folha com gráfico de temperatura">
-                        <p>Em dias muito quentes, algumas plantas fecham os estomas para poupar água — reduzindo CO₂ e travando o ciclo de Calvin.</p>
+                        <h3>Ecra 5 - Reducao</h3>
+                        <img class="card-visual" src="assets/images/photosynthesis/m2-card-reduction.svg" alt="Reducao para formar G3P">
+                        <p>ATP e NADPH fornecem energia e eletrões para formar <strong>G3P</strong>.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecrã 6 — Quiz de síntese</h3>
-                        <p>6 perguntas (inclui resposta aberta final) para consolidar a interdependência das duas fases.</p>
+                        <h3>Ecra 6 - Regeneracao</h3>
+                        <img class="card-visual" src="assets/images/photosynthesis/m2-card-regeneration.svg" alt="Regeneracao da RuBP">
+                        <p>Grande parte do G3P regenera RuBP; uma parte sai para produzir glicose.</p>
+                    </div>
+
+                    <div class="screen-card">
+                        <h3>Ecra 7 - Mini-interacao</h3>
+                        <img class="screen-visual" src="assets/images/photosynthesis/m2-mini.svg" alt="Representacao do ciclo de Calvin">
+                        <p><strong>Completar o ciclo:</strong> CO2 -> RuBP -> fixacao -> G3P -> regeneracao.</p>
+                    </div>
+
+                    <div class="screen-card">
+                        <h3>Ecra 8 - Curiosidade</h3>
+                        <img class="screen-visual" src="assets/images/photosynthesis/m2-curiosity.svg" alt="Curiosidade sobre voltas do ciclo">
+                        <p>Sao necessarias 6 voltas do ciclo para produzir uma molecula de glicose.</p>
+                    </div>
+
+                    <div class="screen-card">
+                        <h3>Ecra 9 - Quiz da fase escura</h3>
+                        <p>Consolida agora os passos do ciclo de Calvin.</p>
                     </div>
 
                     <div class="screen-card reward-card">
-                        <h3>Ecrã 7 — Recompensa</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m3-reward.svg" alt="Confetis, emblema de prata e progresso do capítulo a 100 por cento">
-                        <p>Capítulo completo! +70 XP e emblema de prata. Se quiseres ouro: acerta 17/20 no teste final.</p>
+                        <h3>Ecra 10 - Recompensa</h3>
+                        <img class="screen-visual" src="assets/images/photosynthesis/m3-reward.svg" alt="Recompensa da fase escura">
+                        <p>Capitulo completo! +70 XP. Agora conheces definicao, fase clara e fase escura.</p>
                     </div>
                 </div>
             `,
             quiz: {
                 questions: [
                     {
-                        question: "Qual molécula liga diretamente a fase clara ao ciclo de Calvin, fornecendo energia?",
+                        question: "Onde ocorre o ciclo de Calvin?",
                         options: [
-                            { text: "ATP", correct: true },
-                            { text: "Glicose", correct: false },
-                            { text: "Rubisco", correct: false }
+                            { text: "Nos tilacoides", correct: false },
+                            { text: "No estroma", correct: true },
+                            { text: "No nucleo", correct: false }
                         ],
                         feedback: {
-                            correct: "Certo — ATP (com NADPH) é a ponte de energia.",
-                            incorrect: "A molécula ponte de energia é o ATP."
+                            correct: "Certo! O ciclo de Calvin ocorre no estroma.",
+                            incorrect: "Revê: a fase escura ocorre no estroma."
                         }
                     },
                     {
-                        question: "O que volta do ciclo de Calvin para a fase clara?",
+                        question: "Qual enzima fixa CO2 a RuBP?",
                         options: [
-                            { text: "CO₂", correct: false },
-                            { text: "ADP e NADP⁺", correct: true },
-                            { text: "Glicose", correct: false }
+                            { text: "ATP sintase", correct: false },
+                            { text: "Rubisco", correct: true },
+                            { text: "Amilase", correct: false }
                         ],
                         feedback: {
-                            correct: "Exato — versões 'descarregadas' para recarregar na fase clara.",
-                            incorrect: "Voltam ADP e NADP⁺."
+                            correct: "Exato! A rubisco e a enzima de fixacao do carbono.",
+                            incorrect: "A enzima correta e a rubisco."
                         }
                     },
                     {
-                        question: "Com luz abundante mas sem CO₂ (estomas fechados), o que acontece ao Calvin?",
+                        question: "O que fornece energia para formar G3P?",
                         options: [
-                            { text: "Trava por falta de carbono para fixar", correct: true },
-                            { text: "Acelera por ter mais ATP", correct: false },
-                            { text: "Não é afetado", correct: false }
+                            { text: "ATP e NADPH", correct: true },
+                            { text: "Luz direta", correct: false },
+                            { text: "Oxigenio", correct: false }
                         ],
                         feedback: {
-                            correct: "Boa aplicação — sem CO₂ não há fixação de carbono.",
-                            incorrect: "Sem CO₂ o Calvin trava."
+                            correct: "Correto! ATP e NADPH alimentam esta fase.",
+                            incorrect: "A fase escura usa ATP e NADPH vindos da fase clara."
                         }
                     },
                     {
-                        question: "Se bloqueares a rubisco, qual o efeito mais direto?",
+                        question: "Porque a fase escura e dita independente da luz?",
                         options: [
-                            { text: "CO₂ deixa de se ligar à RuBP", correct: true },
-                            { text: "Fotólise da água para", correct: false },
-                            { text: "Cadeia transportadora para", correct: false }
+                            { text: "Porque nao usa luz diretamente", correct: true },
+                            { text: "Porque ocorre apenas a noite", correct: false },
+                            { text: "Porque nao precisa de energia", correct: false }
                         ],
                         feedback: {
-                            correct: "Certo — a rubisco atua na fixação do carbono.",
-                            incorrect: "Rubisco bloqueada impede a ligação CO₂-RuBP."
-                        }
-                    },
-                    {
-                        question: "Em escuridão total, o que se esgota primeiro, impedindo o Calvin?",
-                        options: [
-                            { text: "Reservas de ATP e NADPH", correct: true },
-                            { text: "CO₂ do ar", correct: false },
-                            { text: "RuBP", correct: false }
-                        ],
-                        feedback: {
-                            correct: "Exato — sem luz não há reposição de ATP/NADPH.",
-                            incorrect: "As reservas que se esgotam primeiro são ATP e NADPH."
+                            correct: "Boa! Ela nao usa fotões diretamente, mas depende de ATP/NADPH.",
+                            incorrect: "Nao e fase noturna obrigatoria: apenas nao usa luz diretamente."
                         }
                     },
                     {
                         type: "open",
-                        question: "Explica por palavras tuas (2-3 frases): porque dizemos que a fotossíntese é um sistema e não duas reações separadas?",
-                        placeholder: "Ex.: As duas fases dependem uma da outra...",
+                        question: "Explica em 2-3 frases como o CO2 e transformado em glicose na fase escura.",
+                        placeholder: "Ex.: O CO2 entra no ciclo de Calvin, fixa-se a RuBP...",
                         minKeywords: 2,
-                        keywords: ["atp", "nadph", "depende", "liga", "fase clara", "calvin"],
+                        keywords: ["co2", "rubisco", "rubp", "g3p", "atp", "nadph", "glicose"],
                         feedback: {
-                            correct: "Boa síntese! Mostraste a ligação entre as duas fases e a dependência mútua.",
-                            incorrect: "Inclui explicitamente a ligação ATP/NADPH ↔ Calvin e a ideia de dependência entre fases."
+                            correct: "Boa explicacao! Ligaste corretamente os passos da fase escura.",
+                            incorrect: "Inclui fixacao do CO2 (rubisco/RuBP) e uso de ATP/NADPH para formar glicose."
                         }
                     }
                 ]
