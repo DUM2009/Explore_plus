@@ -53,7 +53,7 @@ const missionData = {
                         <p>As folhas possuem muitos cloroplastos, recebem luz solar e estão em contacto direto com o ar, facilitando a entrada de dióxido de carbono.</p>
                  <details class="did-you-know">
                             <summary>Saber mais...</summary>
-                            <p>Algumas folhas conseguem “mover-se” para captar melhor a luz do Sol. Esse movimento chama-se <strong>heliotropismo</strong>. Certas plantas conseguem orientar as suas folhas ou flores em direção à luz para aumentar a quantidade de energia captada e, assim, tornar a fotossíntese mais eficiente.</p>
+                            <p>Algumas folhas conseguem “mover-se” para captar melhor a luz do Sol e, assim, tornar a fotossíntese mais eficiente. Esse movimento chama-se <strong>heliotropismo!</strong>.</p>
                         </details>
                         </div>
 
