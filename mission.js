@@ -1333,8 +1333,16 @@ class MissionSystem {
             button.addEventListener('click', (event) => this.handleOpenQuizAnswer(event, section, sectionIndex));
         });
 
-        sectionEl.querySelectorAll('.guide-option').forEach(option => {
+        sectionEl.querySelectorAll('.guide-option:not(.electron-loss-option)').forEach(option => {
             option.addEventListener('click', (event) => this.handleGuideOption(event));
+        });
+
+        sectionEl.querySelectorAll('.electron-loss-option').forEach(option => {
+            option.addEventListener('click', (event) => this.handleElectronLossOption(event));
+        });
+
+        sectionEl.querySelectorAll('.simple-explanation-btn').forEach(button => {
+            button.addEventListener('click', (event) => this.toggleSimpleExplanation(event));
         });
 
         this.hydrateGuideState(sectionEl, section);
@@ -1715,6 +1723,48 @@ class MissionSystem {
             };
             this.saveProgress();
         }
+    }
+
+    handleElectronLossOption(event) {
+        const button = event.target.closest('.electron-loss-option');
+        if (!button || button.disabled) return;
+
+        const container = button.closest('.electron-loss-options');
+        const feedbackEl = container?.parentElement?.querySelector('.electron-loss-feedback');
+
+        container?.querySelectorAll('.electron-loss-option').forEach((opt) => {
+            opt.disabled = true;
+            if (opt.dataset.correct === 'true') {
+                opt.classList.add('correct');
+            } else if (opt === button) {
+                opt.classList.add('incorrect');
+            }
+        });
+
+        if (feedbackEl) {
+            feedbackEl.classList.add('show');
+        }
+    }
+
+    toggleSimpleExplanation(event) {
+        const button = event.target.closest('.simple-explanation-btn');
+        if (!button) return;
+
+        const card = button.closest('.screen-card');
+        const explanation = card?.querySelector('.simple-explanation-text');
+        if (!explanation) return;
+
+        const isHidden = explanation.hasAttribute('hidden');
+        if (isHidden) {
+            explanation.removeAttribute('hidden');
+            button.setAttribute('aria-expanded', 'true');
+            button.textContent = button.dataset.labelHide || 'Ocultar explicação simples';
+            return;
+        }
+
+        explanation.setAttribute('hidden', '');
+        button.setAttribute('aria-expanded', 'false');
+        button.textContent = button.dataset.labelShow || 'Explicação mais simples';
     }
 
     /**

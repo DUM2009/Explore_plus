@@ -440,6 +440,33 @@ object.card-visual {
     opacity: 0.9;
 }
 
+.simple-explanation-btn {
+    margin-top: 8px;
+    background: #1f8a5b;
+    color: #ffffff;
+    border: 1px solid #1f8a5b;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.simple-explanation-btn:hover {
+    background: #187148;
+    border-color: #187148;
+}
+
+.simple-explanation-text {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-left: 4px solid #1f8a5b;
+    background: #f4fbf7;
+    color: #244a37;
+    border-radius: 8px;
+}
+
 .did-you-know {
     margin-top: 12px;
     border: 1px solid #cde7d9;
@@ -1005,6 +1032,24 @@ object.card-visual {
 
 .neutral-feedback.show {
     display: block;
+}
+
+.electron-loss-feedback {
+    margin-top: 12px;
+    font-style: normal;
+}
+
+.electron-loss-feedback p {
+    margin: 0 0 10px;
+}
+
+.electron-loss-feedback blockquote {
+    margin: 0;
+    padding: 10px 12px;
+    border-left: 4px solid #1f8a5b;
+    background: #f4fbf7;
+    color: #244a37;
+    border-radius: 8px;
 }
 
 .locked-message {

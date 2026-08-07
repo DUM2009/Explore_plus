@@ -208,37 +208,81 @@ const missionData = {
                         </p>
                     </div>
 
-                    <div class="screen-card">
-                        <h3>Ecra 1 - Gancho</h3>
+ <div class="screen-card">
+                        <h3>Como é que a luz inicia a fotossíntese?</h3>
                         <img class="screen-visual" src="assets/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
-                        <p>Tudo começa quando a luz do Sol atinge a clorofila. Ao absorver essa luz, a clorofila capta energia que dá início às primeiras reações da fotossíntese. Esta etapa recebe o nome de fase clara.</p>
-                    </div>
+                        <p><strong>Tudo começa quando a luz do Sol atinge a clorofila.</strong>
+                        <p>A clorofila não trabalha sozinha. Ela encontra-se organizada em estruturas chamadas fotossistemas, responsáveis por captar a energia luminosa.
+
+Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam na fase clara, mas desempenham funções diferentes.</p>
+                         <details class="did-you-know">
+                            <summary>Saber mais...</summary>
+                            <p>Sabias que os cientistas só descobriram que existem dois fotossistemas na década de 1960. Até então, acreditava-se que toda a fotossíntese era realizada por um único sistema de captação de luz.</p>
+                        </details>
+</div>
 
                     <div class="screen-card">
-                        <h3>Ecra 2 - Pergunta guia</h3>
-                        <img class="screen-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com tilacoides">
-                        <p>A água serve apenas para transporte, ou também participa diretamente na fase clara?</p>
-                        <div class="guide-options">
-                            <button class="guide-option" data-choice="so-transporta" data-correct="false">So transporta</button>
-                            <button class="guide-option" data-choice="participa" data-correct="true">Participa diretamente</button>
+                        <h3>A entrada da luz</h3>
+                        <img class="screen-visual" src="assets/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
+                        <p>A luz atinge o fotossistema II e a clorofila absorve a energia da luz. Essa energia é suficiente para fazer com que alguns eletrões da clorofila fiquem energizados e sejam libertados.</p>
+                        <p><strong>Mas surge um problema...</strong></p>
                         </div>
-                        <p class="neutral-feedback">Vamos ver como a água entra na fase clara.</p>
+
+                    <div class="screen-card">
+                        <h3>⚡O problema da perda de eletrões</h3>
+                        <p><strong>O que achas que acontece quando a clorofila perde eletrões?</strong></p>
+                        <div class="guide-options electron-loss-options">
+                            <button type="button" class="guide-option electron-loss-option" data-correct="false">A) Continua exatamente igual</button>
+                            <button type="button" class="guide-option electron-loss-option" data-correct="true">B) Fica incapaz de voltar a captar energia da luz</button>
+                        </div>
+                        <div class="neutral-feedback electron-loss-feedback">
+                            <p><strong>Explicação:</strong></p>
+                            <blockquote>
+                                Ao perder eletrões, a clorofila fica oxidada. Para continuar a funcionar, precisa de recuperar esses eletrões.
+                            </blockquote>
+                            <button type="button" class="simple-explanation-btn" aria-expanded="false" data-label-show="Explicação mais simples" data-label-hide="Ocultar explicação simples">Explicação mais simples</button>
+                            <p class="simple-explanation-text" hidden>Sem eletrões, a clorofila "desliga" temporariamente. Ela só volta a captar luz quando recebe novos eletrões.</p>
+                        </div>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecra 3 - Onde ocorre</h3>
-                        <img class="card-visual" src="assets/images/Tilacoides 2.jpg" alt="Tilacoides no cloroplasto">
-                        <p>A fase clara ocorre nos <strong>tilacoides</strong>, onde estão os pigmentos e a maquinaria que usa a luz.</p>
+                        <p><strong>De onde achas que vêm os eletrões que vão substituir os que a clorofila perdeu?</strong></p>
+                        <div class="guide-options electron-loss-options">
+                            <button type="button" class="guide-option electron-loss-option" data-correct="false">A) Do CO<sub>2</sub></button>
+                            <button type="button" class="guide-option electron-loss-option" data-correct="true">B) Da água</button>
+                            <button type="button" class="guide-option electron-loss-option" data-correct="false">C) Da glicose</button>
+                        </div>
+                        <div class="neutral-feedback electron-loss-feedback">
+                            <p><strong>Explicação:</strong></p>
+                            <blockquote>
+                                Os eletrões que substituem os perdidos pela clorofila vêm da fotólise da água. Vamos descobrir como!
+                            </blockquote>
+                        </div>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecra 4 - Fotólise da água</h3>
+                        <h3>Fotólise da água</h3>
                         <img class="card-visual" src="assets/images/Fotólise da água.jpg" alt="Divisao da agua em produtos">
-                        <p>A luz permite dividir água (fotólise), libertando <strong>eletrões</strong>, <strong>H+</strong> e <strong>O2</strong>.</p>
+                        <p>A fotólise da água é uma etapa da fase luminosa da fotossíntese que ocorre no fotossistema II (PSII), localizado na membrana dos tilacóides dos cloroplastos.</p>
+                        <p>A energia luminosa permite a quebra das moléculas de água (H₂O) em eletrões (e⁻), protões (H⁺) e oxigénio (O₂).</p>
+                        <ul>
+                            <li>Os <strong>eletrões</strong> libertados vão substituir os eletrões perdidos pela clorofila do fotossistema II, permitindo a continuação da fotossíntese.</li>
+                            <li>Os <strong>protões</strong> contribuem para a formação de um gradiente de concentração usado na produção de ATP.</li>
+                            <li>O <strong>oxigénio</strong> é libertado para a atmosfera como um produto secundário.</li>
+                        </ul>
+                        <p style="margin-top: 16px; text-align: center;">
+                            <button type="button" class="screen-nav-btn mission-jump-screen" data-target-screen="7">Vem descobrir o que acontece com cada um desses produtos.</button>
+                        </p>
+                    </div>
+
+<div class="screen-card">
+                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Mas para onde vão esses eletrões?</strong></p>
+                        <p style="text-align: center; margin-top: 18px;">
+                        </p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecra 5 - Cadeia de eletrões</h3>
+                        <h3>Cadeia transportadora de eletrões</h3>
                         <img class="card-visual" src="assets/images/photosynthesis/m1-card-chain.svg" alt="Cadeia transportadora de eletrões">
                         <p>Os eletrões percorrem uma cadeia de transporte. A energia libertada bombeia H+ para o interior do tilacoide.</p>
                     </div>
@@ -247,6 +291,18 @@ const missionData = {
                         <h3>Ecra 6 - ATP e NADPH</h3>
                         <img class="card-visual" src="assets/images/photosynthesis/m1-card-atp.svg" alt="Formacao de ATP e NADPH">
                         <p>O gradiente de H+ alimenta a ATP sintase para formar <strong>ATP</strong>. No fim, tambem se forma <strong>NADPH</strong>.</p>
+                    </div>
+
+<div class="screen-card">
+                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Mas será que os eletrões já terminaram o seu percurso?</strong></p>
+                        <p style="text-align: center; margin-top: 18px;">
+                        </p>
+                    </div>
+
+<div class="screen-card">
+                        <h3>O que faz o fotossistema I?</h3>
+                        <img class="screen-visual" src="assets/images/photosynthesis/m1-mini.svg" alt="Sequencia da fase clara">
+                        <p><strong>Sequenciar:</strong> Luz na clorofila -> Fotolise -> Cadeia de eletrões -> Gradiente de H+ -> ATP/NADPH.</p>
                     </div>
 
                     <div class="screen-card">
