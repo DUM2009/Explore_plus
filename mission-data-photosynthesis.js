@@ -226,24 +226,10 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                         <img class="screen-visual" src="assets/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
                         <p>A luz atinge o fotossistema II e a clorofila absorve a energia da luz. Essa energia é suficiente para fazer com que alguns eletrões da clorofila fiquem energizados e sejam libertados.</p>
                         <p><strong>Mas surge um problema...</strong></p>
+                        <p>Ao perder eletrões (oxidar), a clorofila do Fotossistema II precisa de os substituir para continuar a captar energia luminosa.</p>
                         </div>
 
-                    <div class="screen-card">
-                        <h3>⚡O problema da perda de eletrões</h3>
-                        <p><strong>O que achas que acontece quando a clorofila perde eletrões?</strong></p>
-                        <div class="guide-options electron-loss-options">
-                            <button type="button" class="guide-option electron-loss-option" data-correct="false">A) Continua exatamente igual</button>
-                            <button type="button" class="guide-option electron-loss-option" data-correct="true">B) Fica incapaz de voltar a captar energia da luz</button>
-                        </div>
-                        <div class="neutral-feedback electron-loss-feedback">
-                            <p><strong>Explicação:</strong></p>
-                            <blockquote>
-                                Ao perder eletrões, a clorofila fica oxidada. Para continuar a funcionar, precisa de recuperar esses eletrões.
-                            </blockquote>
-                            <button type="button" class="simple-explanation-btn" aria-expanded="false" data-label-show="Explicação mais simples" data-label-hide="Ocultar explicação simples">Explicação mais simples</button>
-                            <p class="simple-explanation-text" hidden>Sem eletrões, a clorofila "desliga" temporariamente. Ela só volta a captar luz quando recebe novos eletrões.</p>
-                        </div>
-                    </div>
+                
 
                     <div class="screen-card">
                         <p><strong>De onde achas que vêm os eletrões que vão substituir os que a clorofila perdeu?</strong></p>
@@ -270,13 +256,10 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                             <li>Os <strong>protões</strong> contribuem para a formação de um gradiente de concentração usado na produção de ATP.</li>
                             <li>O <strong>oxigénio</strong> é libertado para a atmosfera como um produto secundário.</li>
                         </ul>
-                        <p style="margin-top: 16px; text-align: center;">
-                            <button type="button" class="screen-nav-btn mission-jump-screen" data-target-screen="7">Vem descobrir o que acontece com cada um desses produtos.</button>
-                        </p>
                     </div>
 
 <div class="screen-card">
-                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Mas para onde vão esses eletrões?</strong></p>
+                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Agora que o Fotossistema II conseguiu repor os eletrões perdidos, é altura de acompanhar o percurso dos eletrões que saíram da clorofila.</strong></p>
                         <p style="text-align: center; margin-top: 18px;">
                         </p>
                     </div>
@@ -284,13 +267,14 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                     <div class="screen-card">
                         <h3>Cadeia transportadora de eletrões</h3>
                         <img class="card-visual" src="assets/images/photosynthesis/m1-card-chain.svg" alt="Cadeia transportadora de eletrões">
-                        <p>Os eletrões percorrem uma cadeia de transporte. A energia libertada bombeia H+ para o interior do tilacoide.</p>
+                        <p>A cadeia transportadora de eletrões é uma etapa da fase luminosa da fotossíntese que ocorre na membrana dos tilacóides dos cloroplastos. Esta etapa acontece após a excitação da clorofila no fotossistema II (PSII).</p>
+                        <p>Quando a luz fornece energia à clorofila, os eletrões são libertados e transferidos para uma série de proteínas e moléculas transportadoras. À medida que os eletrões passam de uma molécula para outra ao longo da cadeia transportadora, libertam energia que é utilizada para transportar protões (H⁺) para o interior do tilacóide, criando um gradiente de concentração de protões.</p>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Ecra 6 - ATP e NADPH</h3>
+                        <h3>Protões H⁺ e ATP</h3>
                         <img class="card-visual" src="assets/images/photosynthesis/m1-card-atp.svg" alt="Formacao de ATP e NADPH">
-                        <p>O gradiente de H+ alimenta a ATP sintase para formar <strong>ATP</strong>. No fim, tambem se forma <strong>NADPH</strong>.</p>
+                        <p>O gradiente de protões (H⁺) permite a produção de ATP através da enzima ATP sintase, num processo chamado <strong>quimiosmose</strong>.</p>
                     </div>
 
 <div class="screen-card">
@@ -300,87 +284,98 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                     </div>
 
 <div class="screen-card">
-                        <h3>O que faz o fotossistema I?</h3>
+                        <h3>Síntese de NADPH</h3>
+                        <img class="card-visual" src="assets/images/photosynthesis/m1-card-atp.svg" alt="Formacao de ATP e NADPH">
+                        <p>Os eletrões continuam o seu percurso até chegarem ao fotossistema I (PSI), onde recebem novamente energia da luz e são transferidos para uma molécula recetora.</p>
+                        <p>No final da cadeia transportadora, os eletrões são utilizados para reduzir o NADP⁺, formando NADPH, uma molécula que transporta energia química e que será utilizada na fase escura da fotossíntese (ciclo de Calvin).</p>
+                    </div>
+
+<div class="screen-card">
+                        <h3>Exercício</h3>
                         <img class="screen-visual" src="assets/images/photosynthesis/m1-mini.svg" alt="Sequencia da fase clara">
-                        <p><strong>Sequenciar:</strong> Luz na clorofila -> Fotolise -> Cadeia de eletrões -> Gradiente de H+ -> ATP/NADPH.</p>
+                        <p>Seleciona os passos pela ordem correta para reconstruir a fase clara.</p>
+                        <div class="phase-clear-sequence" aria-label="Exercicio de ordenar a fase clara">
+                            <div class="sequence-options">
+                                <button type="button" class="sequence-option" data-step="3">Cadeia de eletrões</button>
+                                <button type="button" class="sequence-option" data-step="1">Luz na clorofila</button>
+                                <button type="button" class="sequence-option" data-step="5">ATP/NADPH</button>
+                                <button type="button" class="sequence-option" data-step="2">Fotolise</button>
+                                <button type="button" class="sequence-option" data-step="4">Gradiente de H+</button>
+                            </div>
+                            <div class="sequence-current" aria-live="polite"></div>
+                            <p class="sequence-feedback" aria-live="polite">Seleciona os elementos pela ordem correta.</p>
+                            <div class="sequence-result" aria-hidden="true">
+                                <div class="sequence-chain" aria-hidden="true">
+                                    <span class="chain-node">1</span>
+                                    <span class="chain-link"></span>
+                                    <span class="chain-node">2</span>
+                                    <span class="chain-link"></span>
+                                    <span class="chain-node">3</span>
+                                    <span class="chain-link"></span>
+                                    <span class="chain-node">4</span>
+                                    <span class="chain-link"></span>
+                                    <span class="chain-node">5</span>
+                                </div>
+                                <span class="sequence-final">Luz na clorofila -> Fotolise -> Cadeia de eletrões -> Gradiente de H+ -> ATP/NADPH</span>
+                            </div>
+                            <button type="button" class="sequence-reset">Tentar novamente</button>
+                        </div>
                     </div>
 
-                    <div class="screen-card">
-                        <h3>Ecra 7 - Mini-interacao</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m1-mini.svg" alt="Sequencia da fase clara">
-                        <p><strong>Sequenciar:</strong> Luz na clorofila -> Fotolise -> Cadeia de eletrões -> Gradiente de H+ -> ATP/NADPH.</p>
-                    </div>
-
-                    <div class="screen-card">
-                        <h3>Ecra 8 - Curiosidade</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m1-curiosity.svg" alt="Curiosidade da fase clara">
-                        <p>O oxigenio libertado na atmosfera vem desta fase, a partir da fotolise da agua.</p>
-                    </div>
-
-                    <div class="screen-card">
-                        <h3>Ecra 9 - Quiz rapido</h3>
-                        <p>Valida o teu entendimento da fase clara com 5 perguntas.</p>
-                    </div>
-
-                    <div class="screen-card reward-card">
-                        <h3>Ecra 10 - Recompensa</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-reward.svg" alt="Recompensa da fase clara">
-                        <p>Missão completa! +60 XP. Já estás pronto para a fase escura.</p>
-                    </div>
                 </div>
             `,
             quiz: {
                 questions: [
                     {
-                        question: "Onde ocorre a fase clara da fotossintese?",
+                        question: "Onde ocorre a fase clara da fotossíntese?",
                         options: [
                             { text: "No estroma", correct: false },
-                            { text: "Nos tilacoides", correct: true },
-                            { text: "No nucleo", correct: false }
+                            { text: "Nos tilacóides", correct: true },
+                            { text: "No núcleo", correct: false }
                         ],
                         feedback: {
-                            correct: "Certo! A fase clara decorre nos tilacoides.",
-                            incorrect: "Revê: esta fase acontece nos tilacoides."
+                            correct: "Certo! A fase clara decorre nos tilacóides.",
+                            incorrect: "Revê: esta fase acontece nos tilacóides."
                         }
                     },
                     {
-                        question: "De onde vem o oxigenio libertado?",
+                        question: "De onde vem o oxigénio libertado?",
                         options: [
                             { text: "Do CO2", correct: false },
-                            { text: "Da agua (fotolise)", correct: true },
+                            { text: "Da água (fotólise)", correct: true },
                             { text: "Da glicose", correct: false }
                         ],
                         feedback: {
-                            correct: "Exato. O O2 vem da divisao da agua.",
-                            incorrect: "Pista: a origem do O2 e a fotolise da agua."
+                            correct: "Exato. O O<sub>2</sub> vem da divisão da água.",
+                            incorrect: "Pista: a origem do O2 é a fotólise da água."
                         }
                     },
                     {
-                        question: "Qual e a funcao da cadeia transportadora de eletrões?",
+                        question: "Qual é a função da cadeia transportadora de eletrões?",
                         options: [
-                            { text: "Criar gradiente de H+ para produzir ATP", correct: true },
+                            { text: "Criar gradiente de H<sup>+</sup> para produzir ATP", correct: true },
                             { text: "Produzir glicose diretamente", correct: false },
-                            { text: "Fixar CO2", correct: false }
+                            { text: "Fixar CO<sub>2</sub>", correct: false }
                         ],
                         feedback: {
-                            correct: "Isso mesmo! A cadeia prepara energia para a sintese de ATP.",
-                            incorrect: "A cadeia serve para gerar gradiente de H+, nao para produzir glicose direta."
+                            correct: "Isso mesmo! A cadeia prepara energia para a síntese de ATP.",
+                            incorrect: "A cadeia serve para gerar gradiente de H+, não para produzir glicose direta."
                         }
                     },
                     {
                         question: "O que impulsiona a ATP sintase?",
                         options: [
                             { text: "A luz diretamente", correct: false },
-                            { text: "O gradiente de H+", correct: true },
+                            { text: "O gradiente de H<sup>+</sup>", correct: true },
                             { text: "O CO2", correct: false }
                         ],
                         feedback: {
-                            correct: "Correto! O fluxo de H+ e o motor da ATP sintase.",
-                            incorrect: "Pensa no gradiente de H+ como a forca que move a enzima."
+                            correct: "Correto! O fluxo de H+ é o motor da ATP sintase.",
+                            incorrect: "Pensa no gradiente de H+ como a força que move a enzima."
                         }
                     },
                     {
-                        question: "Que moleculas energeticas resultam da fase clara?",
+                        question: "Que moléculas energéticas resultam da fase clara?",
                         options: [
                             { text: "ATP e NADPH", correct: true },
                             { text: "Glicose e amido", correct: false },
@@ -388,7 +383,7 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                         ],
                         feedback: {
                             correct: "Perfeito. ATP e NADPH alimentam a fase escura.",
-                            incorrect: "As moleculas energeticas desta fase sao ATP e NADPH."
+                            incorrect: "As moléculas energéticas desta fase são ATP e NADPH."
                         }
                     }
                 ]
