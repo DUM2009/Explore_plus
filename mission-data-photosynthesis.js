@@ -398,9 +398,16 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
             content: `
                 <div class="section-content">
                     <div class="screen-card">
+                        <p style="text-align: center; font-size: 1.2em;"><strong>☀️ A luz já fez o seu trabalho! A planta tem ATP e NADPH nas mãos... mas ainda precisa de transformar o CO₂ em alimento. Como será que o faz?</strong></p>
+                        <p style="text-align: center; margin-top: 18px;">
+                        </p>
+                    </div>
+                
+                <div class="screen-card">
                         <h3>Ecra 1 - Gancho</h3>
                         <img class="screen-visual" src="assets/images/photosynthesis/m2-hook.svg" alt="ATP e NADPH a entrar no estroma">
-                        <p>A fase escura usa a energia da fase clara para transformar CO2 em compostos organicos.</p>
+                        <p><strong>É agora que começa a fase escura, também chamada Ciclo de Calvin!</strong></p>
+                        <p>Nesta etapa, a planta utiliza a energia produzida na fase luminosa para captar dióxido de carbono (CO₂) e construir moléculas de açúcar — o alimento que irá sustentar o seu crescimento.</p>
                     </div>
 
                     <div class="screen-card">
