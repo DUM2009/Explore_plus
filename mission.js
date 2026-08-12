@@ -678,7 +678,35 @@ class MissionSystem {
             }
         }
 
-    
+        const existingPageNav = sectionEl.querySelector('.screen-page-nav');
+        if (!existingPageNav) {
+            const pageNavEl = document.createElement('div');
+            pageNavEl.className = 'screen-page-nav';
+
+            const pageButtons = Array.from({ length: screens.length }, (_, index) => `
+                <button type="button"
+                        class="screen-page-btn"
+                        data-screen-index="${index}"
+                        aria-label="Ir para a página ${index + 1}">
+                    ${index + 1}
+                </button>
+            `).join('');
+
+            pageNavEl.innerHTML = `
+                ${pageButtons}
+                <button type="button" class="screen-page-btn quiz-shortcut" data-screen-target="quiz" aria-label="Ir para o quiz">Q</button>
+            `;
+
+            const navEl = sectionEl.querySelector('.screen-nav');
+            navEl?.insertAdjacentElement('afterend', pageNavEl);
+        }
+
+        const currentScreen = this.getSectionCurrentScreen(section.id, screens.length);
+        this.updateSectionScreen(sectionEl, section, currentScreen, false);
+
+        sectionEl.querySelectorAll('[data-nav-action]').forEach(button => {
+            button.addEventListener('click', (event) => this.handleScreenNav(event, sectionEl, section));
+        });
 
         sectionEl.querySelectorAll('.screen-page-btn').forEach(button => {
             button.addEventListener('click', (event) => this.handleScreenPageNav(event, sectionEl, section));
