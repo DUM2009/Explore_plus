@@ -410,6 +410,14 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                         <p>Nesta etapa, a planta utiliza a energia produzida na fase luminosa para captar dióxido de carbono (CO₂) e construir moléculas de açúcar — o alimento que irá sustentar o seu crescimento.</p>
                     </div>
 
+<div class="screen-card">
+                        <p><strong>🔍 Mas onde acontece este processo?</strong></p>
+                        <div class="guide-options electron-loss-options">
+                            <button type="button" class="guide-option electron-loss-option" data-correct="false">A) Nos tilacoides<sub>2</sub></button>
+                            <button type="button" class="guide-option electron-loss-option" data-correct="false">B) Na raiz</button>
+                            <button type="button" class="guide-option electron-loss-option" data-correct="true">C) No estroma</button>
+                        </div>
+
                     <div class="screen-card">
                         <h3>Ecra 2 - Pergunta guia</h3>
                         <img class="screen-visual" src="assets/images/photosynthesis/m2-guide.svg" alt="CO2 a entrar pelo estoma">
