@@ -408,7 +408,12 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                         <img class="screen-visual" src="assets/images/photosynthesis/m2-hook.svg" alt="ATP e NADPH a entrar no estroma">
                         <p><strong>É agora que começa a fase escura, também chamada Ciclo de Calvin!</strong></p>
                         <p>Nesta etapa, a planta utiliza a energia produzida na fase luminosa para captar dióxido de carbono (CO₂) e construir moléculas de açúcar — o alimento que irá sustentar o seu crescimento.</p>
-                    </div>
+                       <p> O Ciclo de Calvin divide-se em três etapas principais:
+
+1. Fixação do carbono
+2. Redução
+3. Regeneração
+                        </div>
 
 <div class="screen-card">
                         <p><strong>🔍 Mas onde acontece este processo?</strong></p>
