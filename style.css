@@ -1368,7 +1368,8 @@ body.sidebar-open{
   width: 36px;
   height: 36px;
   line-height: 1.6;
-  border-radius: 12px;
+  border: 1px solid #cccccc;
+  border-radius: 50%;
   cursor: pointer;
   font-weight: 700;
   font-size: 14px;
@@ -1402,7 +1403,7 @@ body.sidebar-open{
   left: 50%;
   width: 36px;
   height: 36px;
-  border-radius: 12px;
+  border-radius: 50%;
   background-color: #0a3cff;
   transform: translate(-50%, -50%);
   z-index: -1;
