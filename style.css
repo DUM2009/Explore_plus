@@ -1352,21 +1352,16 @@ body.sidebar-open{
 }
 
 /* From Uiverse.io by gharsh11032000 */ 
-.screen-page-nav  {
+.tabs {
   display: flex;
   gap: 8px;
-  justify-content: center;
-  align-items: center;
-  margin: 30px auto;
 }
-
 
 .tab-group input {
   appearance: none;
 }
 
-
-.screen-page-btn {
+.tab-group label {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1382,7 +1377,7 @@ body.sidebar-open{
   transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.screen-page-btn::after {
+.tab-group label::after {
   content: "";
   position: absolute;
   bottom: -32px;
@@ -1399,8 +1394,7 @@ body.sidebar-open{
   transition: all 0.48s 0.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-
-.screen-page-btn::before {
+.tab-group label::before {
   content: "";
   position: absolute;
   top: -24px;
@@ -1417,21 +1411,18 @@ body.sidebar-open{
   transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-
-.screen-page-btn:hover {
+.tab-group label:hover {
   border-color: #0a3cff;
   color: #0a3cff;
 }
 
-
-.screen-page-btn.active {
+.tab-group input:checked + label {
   border-color: transparent;
   color: #ffffff;
   scale: 1.1;
 }
 
-
-.screen-page-btn.active::after {
+.tab-group input:checked + label::after {
   bottom: -16px;
   opacity: 1;
   scale: 1;
@@ -1443,8 +1434,7 @@ body.sidebar-open{
     0rem 152px 43px rgba(10, 60, 255, 0);
 }
 
-
-.screen-page-btn.active::before {
+.tab-group input:checked + label::before {
   opacity: 1;
   scale: 1;
   top: 50%;
@@ -1454,4 +1444,15 @@ body.sidebar-open{
     0rem 55px 33px rgba(10, 60, 255, 0.05),
     0rem 97px 39px rgba(10, 60, 255, 0.01),
     0rem 152px 43px rgba(10, 60, 255, 0);
+}
+
+.screen-page-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.screen-page-btn {
+    /* visual dos botões novos */
 }
