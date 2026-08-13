@@ -670,45 +670,43 @@ class MissionSystem {
                 <button type="button" class="screen-nav-btn" data-nav-action="next">Próximo</button>
             `;
 
-
-        const existingPageNav = sectionEl.querySelector('.screen-page-nav');
-        if (!existingPageNav) {
-            const pageNavEl = document.createElement('div');
-            pageNavEl.className = 'screen-page-nav';
-
-
-            const pageButtons = Array.from({ length: screens.length }, (_, index) => `
-                <button type="button"
-                        class="screen-page-btn"
-                        data-screen-index="${index}"
-                        aria-label="Ir para a página ${index + 1}">
-                    ${index + 1}
-                </button>
-            `).join('');
-
-
-            pageNavEl.innerHTML = `
-                ${pageButtons}
-                <button type="button" class="screen-page-btn quiz-shortcut" data-screen-target="quiz" aria-label="Ir para o quiz">Q</button>
-            `;
-
-
-            const navEl = sectionEl.querySelector('.screen-nav');
-            navEl?.insertAdjacentElement('afterend', pageNavEl);
-        }
-
-sectionEl.querySelectorAll('.screen-page-btn').forEach(button => {
-            button.addEventListener('click', (event) => this.handleScreenPageNav(event, sectionEl, section));
-        });
-
             const quizEl = sectionEl.querySelector('.section-quiz');
             if (quizEl) {
                 quizEl.insertAdjacentElement('beforebegin', navEl);
             } else {
                 contentEl.insertAdjacentElement('afterend', navEl);
             }
-        }
 
+            const existingPageNav = sectionEl.querySelector('.screen-page-nav');
+            if (!existingPageNav) {
+                const pageNavEl = document.createElement('div');
+                pageNavEl.className = 'screen-page-nav';
+
+                const pageButtons = Array.from({ length: screens.length }, (_, index) => `
+                    <button type="button"
+                            class="screen-page-btn"
+                            data-screen-index="${index}"
+                            aria-label="Ir para a página ${index + 1}">
+                        ${index + 1}
+                    </button>
+                `).join('');
+
+                pageNavEl.innerHTML = `
+                    ${pageButtons}
+                    <button type="button" class="screen-page-btn quiz-shortcut" data-screen-target="quiz" aria-label="Ir para o quiz">Q</button>
+                `;
+
+                // FIX: use the outer navEl (already inserted into the DOM above)
+                // instead of re-querying '.screen-nav', which shadowed the outer
+                // variable and returned null because navEl hadn't been attached
+                // to sectionEl yet at the time of the query.
+                navEl.insertAdjacentElement('afterend', pageNavEl);
+            }
+
+            sectionEl.querySelectorAll('.screen-page-btn').forEach(button => {
+                button.addEventListener('click', (event) => this.handleScreenPageNav(event, sectionEl, section));
+            });
+        }
 
         const currentScreen = this.getSectionCurrentScreen(section.id, screens.length);
         this.updateSectionScreen(sectionEl, section, currentScreen, false);
@@ -1165,12 +1163,15 @@ sectionEl.querySelectorAll('.screen-page-btn').forEach(button => {
                 sectionEl.classList.add('quiz-only-mode');
                 quizEl.classList.remove('quiz-entry-hidden');
 
-                const isLastMission = section.id === this.mission.sections[this.mission.sections.length - 1]?.id;
-                if (isLastMission) {
-                    this.showChapterCompletionView();
-                    return;
-                }
-
+                // FIX: previously this called showChapterCompletionView() here on
+                // the last mission, which re-rendered the section list before the
+                // quiz had been answered. Since chapterCompletionView is only
+                // honoured once completedSections covers every section, the
+                // re-render just showed the ordinary section again and the
+                // scrollToElement('#chapterCompleteCta') target didn't exist yet.
+                // The quiz should simply be revealed and scrolled to, same as the
+                // page-nav shortcut does; completeSection() is what triggers the
+                // chapter-completion view once the quiz is actually finished.
                 quizEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
@@ -2029,6 +2030,7 @@ sectionEl.querySelectorAll('.screen-page-btn').forEach(button => {
         this.sectionScreenProgress = {};
         this.openAnswerDrafts = {};
         this.guideAnswerState = {};
+        this.quizEntryState = {};
         this.chapterCompletionView = false;
         this.earnedXP = 0;
         this.completedSections = new Set();
