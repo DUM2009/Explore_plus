@@ -697,6 +697,9 @@ class MissionSystem {
             navEl?.insertAdjacentElement('afterend', pageNavEl);
         }
 
+sectionEl.querySelectorAll('.screen-page-btn').forEach(button => {
+            button.addEventListener('click', (event) => this.handleScreenPageNav(event, sectionEl, section));
+        });
 
             const quizEl = sectionEl.querySelector('.section-quiz');
             if (quizEl) {
