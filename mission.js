@@ -670,6 +670,34 @@ class MissionSystem {
                 <button type="button" class="screen-nav-btn" data-nav-action="next">Próximo</button>
             `;
 
+
+        const existingPageNav = sectionEl.querySelector('.screen-page-nav');
+        if (!existingPageNav) {
+            const pageNavEl = document.createElement('div');
+            pageNavEl.className = 'screen-page-nav';
+
+
+            const pageButtons = Array.from({ length: screens.length }, (_, index) => `
+                <button type="button"
+                        class="screen-page-btn"
+                        data-screen-index="${index}"
+                        aria-label="Ir para a página ${index + 1}">
+                    ${index + 1}
+                </button>
+            `).join('');
+
+
+            pageNavEl.innerHTML = `
+                ${pageButtons}
+                <button type="button" class="screen-page-btn quiz-shortcut" data-screen-target="quiz" aria-label="Ir para o quiz">Q</button>
+            `;
+
+
+            const navEl = sectionEl.querySelector('.screen-nav');
+            navEl?.insertAdjacentElement('afterend', pageNavEl);
+        }
+
+
             const quizEl = sectionEl.querySelector('.section-quiz');
             if (quizEl) {
                 quizEl.insertAdjacentElement('beforebegin', navEl);
