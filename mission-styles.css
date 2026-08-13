@@ -936,6 +936,21 @@ object.card-visual {
     display: none;
 }
 
+.screen-nav-btn {
+    background: #eef7f3;
+    color: #1f8a5b;
+    border: 1px solid #cde7d9;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.screen-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 
 
 .guide-options span {
