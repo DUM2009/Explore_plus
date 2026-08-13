@@ -1368,7 +1368,6 @@ body.sidebar-open{
   width: 36px;
   height: 36px;
   line-height: 1.6;
-  border: 1px solid #cccccc;
   border-radius: 12px;
   cursor: pointer;
   font-weight: 700;
@@ -1418,7 +1417,11 @@ body.sidebar-open{
   color: #0a3cff;
 }
 
-
+.screen-page-btn.active {
+  border-color: transparent;
+  color: #ffffff;
+  scale: 1.1;
+}
 
 .screen-page-btn.active::after {
   bottom: -12px;
