@@ -935,6 +935,21 @@ object.card-visual {
 .section.quiz-only-mode .section-content {
     display: none;
 }
+.screen-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 8px 0 20px;
+}
+
+
+.screen-nav-status {
+    color: #456554;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
 
 .screen-nav-btn {
     background: #eef7f3;
