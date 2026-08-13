@@ -1418,11 +1418,7 @@ body.sidebar-open{
   color: #0a3cff;
 }
 
-.screen-page-btn.active {
-  border-color: transparent;
-  color: #ffffff;
-  scale: 1.1;
-}
+
 
 .screen-page-btn.active::after {
   bottom: -12px;
