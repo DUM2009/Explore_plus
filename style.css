@@ -43,11 +43,7 @@ z-index:1000;
 
 }
 
-.logo{
-    font-size:2rem;
-    font-weight:700;
-    color:#1f8a5b;
-}
+
 
 nav{
     display:flex;
@@ -551,9 +547,7 @@ header{
 padding:16px 5%;
 }
 
-.logo{
-font-size:1.6rem;
-}
+
 
 nav{
 width:100%;
