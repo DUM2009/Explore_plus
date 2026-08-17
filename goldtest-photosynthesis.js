@@ -111,6 +111,14 @@ class GoldTest {
         const passed = this.correctCount >= PASS_SCORE;
         if (passed) {
             localStorage.setItem(`badge_${MISSION_ID}_gold`, 'true');
+            const goldTestSource = window.ProfileXP?.buildRewardSource(
+                'challenge',
+                'photosynthesis-goldtest'
+            );
+
+            if (goldTestSource && window.ProfileXP) {
+                window.ProfileXP.awardXPToCurrentUser(85, goldTestSource);
+            }
         }
         const el = document.getElementById('goldtest-root');
         el.innerHTML = `

@@ -16,7 +16,7 @@ const BADGE_DEFINITIONS = Object.freeze([
         name: 'DNA',
         topic: 'DNA',
         tone: 'Prateado',
-        icon: 'assets/images/badges/dna-silver.svg',
+        icon: 'assets/images/dna-double-helix.svg',
         description: 'Completa o quiz de DNA para desbloquear este emblema.',
         unlockSources: ['dna:code-of-life', 'dna-genetic-code']
     },
@@ -25,16 +25,19 @@ const BADGE_DEFINITIONS = Object.freeze([
         name: 'Mitose',
         topic: 'Mitose',
         tone: 'Prateado',
-        icon: 'assets/images/badges/mitosis-silver.svg',
+        icon: 'assets/images/Biology image.jpg',
         description: 'Completa o quiz de Mitose para desbloquear este emblema.',
         unlockSources: ['mitosis']
     }
 ]);
 const PROFILE_RANKS = Object.freeze([
     { minLevel: 0, title: 'Aprendiz' },
-    { minLevel: 1, title: 'Explorador' },
-    { minLevel: 3, title: 'Investigador' },
-    { minLevel: 5, title: 'Guardião da Vida' }
+    { minLevel: 3, title: 'Explorador' },
+    { minLevel: 5, title: 'Investigador' },
+    { minLevel: 7, title: 'Cientista' },
+    { minLevel: 10, title: 'Especialista' },
+    { minLevel: 15, title: 'Mestre' },
+    { minLevel: 25, title: 'Lenda Explore+' }
 ]);
 
 function normalizeXPValue(value) {

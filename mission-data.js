@@ -30,7 +30,7 @@ const missionData = {
                     </div>
 
                     <div class="illustration-placeholder">
-                        <img src="assets/images/biology-hero.svg" alt="Ilustração de biologia: célula com ADN e elementos científicos" style="width: 100%; border-radius: 12px; margin: 20px 0;">
+                        <img src="assets/images/Biology image.jpg" alt="Ilustração de biologia: célula com ADN e elementos científicos" style="width: 100%; border-radius: 12px; margin: 20px 0;">
                     </div>
 
                     <div class="learning-points">

@@ -16,57 +16,71 @@
     </div>
     <nav>
       <a href="index.html">Início</a>
-      <a href="missions.html">Missões</a>
       <a href="about.html">Sobre</a>
     </nav>
   </header>
 
   <section class="login-page">
-
-    <!-- NOVO FORMULÁRIO DO UIVERSE ADAPTADO -->
-    <div class="container">
-      <div class="heading">Bem-vindo!</div>
-      <p style="text-align: center; color: #aaa; margin-bottom: 15px;">Continua a tua aventura científica.</p>
-
-      <form class="form" onsubmit="return false;">
-        <input required="" class="input" type="email" name="email" id="emailLogin" placeholder="E-mail">
-
-        <div class="password-container" style="position: relative; width: 100%;">
-          <input required="" class="input" type="password" name="password" id="passwordLogin" placeholder="Palavra-passe" style="width: 100%;">
-          <span id="olhoLogin" class="olho"></span>
+    <div class="light-login-shell">
+      <div class="light-login-card">
+        <div class="light-login-header">
+          <div class="brand-badge" aria-label="Explore+ logo">
+            <img src="assets/images/Logo.png" alt="Logo Explore+" />
+          </div>
+          <h2>Continua a explorar!</h2>
+          <p>Entra na tua conta</p>
         </div>
 
-        <span class="forgot-password"><a href="#">Esqueceu a palavra-passe?</a></span>
+        <form class="light-login-form" autocomplete="on">
+          <div class="form-group">
+            <label for="emailLogin">Email</label>
+            <div class="input-shell">
+              <input id="emailLogin" type="email" placeholder="Inserir email" />
+            </div>
+          </div>
 
-        <button id="entrarBtn" class="login-button" type="submit">Entrar</button>
-      </form>
+          <div class="form-group">
+            <div class="label-row">
+              <label for="passwordLogin">Password</label>
+              <a href="#" class="forgot-link">Esqueces-te a password?</a>
+            </div>
+            <div class="input-shell">
+              <input id="passwordLogin" type="password" placeholder="••••••••" />
+            </div>
+          </div>
 
-      <div class="social-account-container">
-        <span class="title">Ou entra com</span>
-        <div class="social-accounts">
-          <button class="social-button google" type="button">
-            <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 488 512">
-              <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
-            </svg>
-          </button>
-          <button class="social-button apple" type="button">
-            <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-              <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"></path>
-            </svg>
-          </button>
-          <button class="social-button twitter" type="button">
-            <svg class="svg" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-              <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
-            </svg>
-          </button>
-        </div>
+          <button id="entrarBtn" type="button" class="login-button">Entrar</button>
+
+          <div class="divider">
+            <span>continuar com</span>
+          </div>
+
+          <div class="social-grid">
+            <button type="button" class="social-button google-button" aria-label="Entrar com Google">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              <span>Google</span>
+            </button>
+
+            <button type="button" class="social-button apple-button" aria-label="Entrar com Apple">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.293 11.577c0-2.164 1.764-3.207 1.845-3.258-.997-1.467-2.542-1.668-3.088-1.691-1.316-.133-2.572.775-3.245.775-.673 0-1.71-.755-2.814-.735-1.451.021-2.782.844-3.52 2.146-1.505 2.609-.384 6.462 1.076 8.572.715 1.038 1.566 2.205 2.688 2.162 1.078-.043 1.486-.697 2.792-.697 1.306 0 1.672.697 2.813.675 1.163-.021 1.897-1.055 2.607-2.101.812-1.183 1.146-2.33 1.164-2.389-.025-.009-2.217-.854-3.538-2.335Zm-2.144-6.59c.59-.717 1-1.711.89-2.707-.857.035-1.891.573-2.507 1.291-.553.64-1.04 1.663-.909 2.643.963.075 1.945-.487 2.526-1.227Z" fill="currentColor"/>
+              </svg>
+              <span>Apple</span>
+            </button>
+          </div>
+        </form>
+
+        <p class="bottom-signup">
+          Não tens conta?
+          <a href="signup.html">Criar conta</a>
+        </p>
       </div>
-
-      <span class="agreement" style="display: block; text-align: center; margin-top: 15px;">
-        Ainda não tens conta? <a href="signup.html">Criar conta</a>
-      </span>
     </div>
-
   </section>
 
   <script type="module" src="script.js"></script>

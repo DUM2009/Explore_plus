@@ -29,6 +29,17 @@ function testLevelBoundaries() {
     assert.strictEqual(ProfileXP.getLevelFromXP(300), 3);
 }
 
+function testRankBoundaries() {
+    assert.strictEqual(ProfileXP.getRankFromLevel(0), 'Aprendiz');
+    assert.strictEqual(ProfileXP.getRankFromLevel(2), 'Aprendiz');
+    assert.strictEqual(ProfileXP.getRankFromLevel(3), 'Explorador');
+    assert.strictEqual(ProfileXP.getRankFromLevel(5), 'Investigador');
+    assert.strictEqual(ProfileXP.getRankFromLevel(7), 'Cientista');
+    assert.strictEqual(ProfileXP.getRankFromLevel(10), 'Especialista');
+    assert.strictEqual(ProfileXP.getRankFromLevel(15), 'Mestre');
+    assert.strictEqual(ProfileXP.getRankFromLevel(25), 'Lenda Explore+');
+}
+
 function testQuizFlowAccumulation() {
     const storage = createStorage();
     const user = { uid: 'student-1', email: 'student@example.com' };
@@ -145,9 +156,9 @@ function testProfileOverview() {
 
     assert.strictEqual(overview.stats.level, 2);
     assert.strictEqual(overview.stats.xp, 220);
-    assert.strictEqual(overview.rank, 'Explorador');
+    assert.strictEqual(overview.rank, 'Aprendiz');
     assert.strictEqual(overview.currentSubject, 'DNA');
-    assert.ok(overview.remainingUnlockables.some((item) => item.label.includes('Investigador')));
+    assert.ok(overview.remainingUnlockables.some((item) => item.label.includes('Explorador')));
     assert.ok(overview.remainingUnlockables.some((item) => item.label.includes('Mitose')));
 }
 
@@ -172,6 +183,7 @@ function testLevelResetIsolation() {
 
 function run() {
     testLevelBoundaries();
+    testRankBoundaries();
     testQuizFlowAccumulation();
     testChallengeFlowAccumulation();
     testLegacyMissionMigration();

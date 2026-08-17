@@ -10,6 +10,7 @@ const emailAluno = document.getElementById("emailAluno");
 const nivelAluno = document.getElementById("nivelAluno");
 const xpAluno = document.getElementById("xpAluno");
 const xpProgressBar = document.getElementById("xpProgressBar");
+const xpNextLevelText = document.getElementById("xpNextLevelText");
 const achievementsGrid = document.getElementById("achievementsGrid");
 const profileRank = document.getElementById("profileRank");
 const currentSubject = document.getElementById("currentSubject");
@@ -21,6 +22,11 @@ const deleteAccountBtn = document.getElementById("deleteAccountBtn");
 const sidebar = document.getElementById("profileSidebar");
 const sidebarToggle = document.getElementById("sidebarToggle");
 const sidebarOverlay = document.getElementById("sidebarOverlay");
+const PROFILE_MISSIONS = Object.freeze([
+    { id: "photosynthesis", fallbackSectionCount: 3 },
+    { id: "mitosis", fallbackSectionCount: 0 },
+    { id: "meiosis", fallbackSectionCount: 0 }
+]);
 
 function getNickname(user) {
     const displayName = String(user?.displayName || '').trim();
@@ -101,6 +107,54 @@ function renderRemainingUnlocks(items) {
     `).join('');
 }
 
+function getMissionProgressStorageKey(user, missionId) {
+    const userKey = user?.uid
+        ? `uid:${user.uid}`
+        : (user?.email ? `email:${String(user.email).toLowerCase()}` : "guest");
+
+    return `mission_${userKey}_${missionId}`;
+}
+
+function getMissionProgressPercent(user, mission) {
+    const rawProgress = localStorage.getItem(getMissionProgressStorageKey(user, mission.id));
+
+    if (!rawProgress) {
+        return 0;
+    }
+
+    try {
+        const progress = JSON.parse(rawProgress);
+        const totalSections = Number(progress.totalSections) || mission.fallbackSectionCount;
+        const completedSections = new Set(Array.isArray(progress.completedSections)
+            ? progress.completedSections
+            : []);
+
+        if (!totalSections) {
+            return 0;
+        }
+
+        return Math.round(Math.min(completedSections.size / totalSections, 1) * 100);
+    } catch {
+        return 0;
+    }
+}
+
+function renderMissionProgress(user) {
+    PROFILE_MISSIONS.forEach((mission) => {
+        const percent = getMissionProgressPercent(user, mission);
+        const value = document.querySelector(`[data-mission-progress-value="${mission.id}"]`);
+        const bar = document.querySelector(`[data-mission-progress-bar="${mission.id}"]`);
+
+        if (value) {
+            value.textContent = `${percent}%`;
+        }
+
+        if (bar) {
+            bar.style.width = `${percent}%`;
+        }
+    });
+}
+
 function renderProfileXP(user) {
     if (!window.ProfileXP || !nivelAluno || !xpAluno || !xpProgressBar) {
         return;
@@ -111,7 +165,7 @@ function renderProfileXP(user) {
     const nickname = getNickname(user);
 
     if (nomeAluno) {
-        nomeAluno.textContent = nickname;
+        nomeAluno.textContent = `Olá, ${overview.rank}`;
     }
     if (emailAluno) {
         emailAluno.textContent = user?.email || 'Sem email disponível';
@@ -124,12 +178,16 @@ function renderProfileXP(user) {
     }
 
     nivelAluno.textContent = `Nível ${overview.stats.level}`;
-    xpAluno.textContent = `${overview.stats.xp} XP totais • Próximo nível aos ${overview.stats.nextLevelThreshold} XP`;
+    xpAluno.textContent = `${overview.stats.xp} XP`;
     xpProgressBar.style.width = `${overview.stats.progressPercent}%`;
+    if (xpNextLevelText) {
+        xpNextLevelText.textContent = `Próximo nível aos ${overview.stats.nextLevelThreshold} XP`;
+    }
 
     renderProfilePhoto(user, nickname);
     renderAchievements(overview);
     renderRemainingUnlocks(overview.remainingUnlockables);
+    renderMissionProgress(user);
 }
 
 function setSidebarState(isOpen) {
@@ -232,5 +290,11 @@ window.addEventListener('storage', () => {
 window.addEventListener('explore:profile-updated', () => {
     if (auth.currentUser) {
         renderProfileXP(auth.currentUser);
+    }
+});
+
+window.addEventListener('explore:mission-progress-updated', () => {
+    if (auth.currentUser) {
+        renderMissionProgress(auth.currentUser);
     }
 });

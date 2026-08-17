@@ -38,14 +38,18 @@ Explore+
 
 <aside class="profile-sidebar" id="profileSidebar" aria-hidden="true">
 <div class="profile-sidebar-brand">
-<span>☰</span>
-<span>Menu do aluno</span>
+<div class="logo">
+            <img src="assets/images/Logo.png" alt="Logotipo Explore+">
+        </div>
 </div>
 
 <nav class="profile-sidebar-nav">
 <a href="perfil.html">Perfil</a>
 <a href="missions.html">Missões</a>
-<a href="dicionario.html" id="dictionaryNavItem">Dicionário</a>
+<a href="Testes.html">Testes</a>
+<a href="dicionario.html" id="dictionaryNavItem">Livro do explorador</a>
+<a href="Resumos.html">Resumos</a>
+<a href="Conquistas.html" id="dictionaryNavItem">Conquistas</a>
 <a href="about.html">Sobre</a>
 </nav>
 </aside>
@@ -53,60 +57,97 @@ Explore+
 <div class="profile-main-shell">
 <div class="profile-content">
 <div class="profile-summary-card">
-<p class="profile-kicker">Perfil do aluno</p>
-<h1 id="nomeAluno">A carregar...</h1>
-<h2 id="nivelAluno">Nível 0</h2>
-<p id="xpAluno">0 XP totais • Próximo nível aos 100 XP</p>
 
-<div class="barra profile-progress-bar">
-<div class="progresso" id="xpProgressBar"></div>
-</div>
-</div>
+    <div class="profile-user-info">
+        <div class="profile-avatar-circle">
+            <span>👤</span>
+        </div>
 
-<div class="profile-achievements-card">
-<div class="profile-section-heading">
-<div>
-<p class="profile-kicker">Conquistas</p>
-<h2>Emblemas prateados</h2>
-</div>
-<p>Completa quizzes para desbloquear novas conquistas.</p>
-</div>
+        <div>
+            <p class="profile-kicker">O meu perfil</p>
+            <h1 id="nomeAluno">Olá, Aprendiz</h1>
+            <h2 id="nivelAluno">Nível 0</h2>
+        </div>
+    </div>
 
-<div class="achievement-grid" id="achievementsGrid"></div>
-</div>
-</div>
+    <div class="profile-xp-info">
+        <div class="profile-xp-header">
+            <span>Experiência</span>
+            <strong id="xpAluno">0 XP</strong>
+        </div>
 
-<aside class="profile-side-panel">
-<div class="profile-photo-card">
-<img id="profileImage" class="profile-photo" alt="Foto de perfil do aluno" hidden>
-<div class="profile-photo-fallback" id="profileAvatarFallback">👤</div>
-<h2 id="profileRank">Aprendiz</h2>
-<p class="profile-side-label">Disciplina</p>
-<p class="profile-side-value">Biologia</p>
-<p class="profile-side-label">Matéria atual</p>
-<p class="profile-side-value" id="currentSubject">Fotossíntese</p>
-<p class="profile-side-label">Contacto</p>
-<p class="profile-side-value" id="emailAluno"></p>
-</div>
+        <div class="barra profile-progress-bar">
+            <div class="progresso" id="xpProgressBar"></div>
+        </div>
 
-<div class="profile-locked-card">
-<h3>🔒 Ainda por desbloquear</h3>
-<ul id="remainingUnlocks"></ul>
+        <p id="xpNextLevelText">Próximo nível aos 100 XP</p>
+    </div>
+
+    <div class="profile-biology">
+
+        <div class="profile-biology-heading">
+            <div>
+                <p class="profile-kicker">Explora</p>
+                <h2>Biologia</h2>
+            </div>
+        </div>
+
+        <div class="profile-subject-progress">
+
+            <div class="profile-subject">
+                <div class="profile-subject-info">
+                    <span>Fotossíntese</span>
+                    <strong data-mission-progress-value="photosynthesis">0%</strong>
+                </div>
+
+                <div class="profile-subject-bar">
+                    <div data-mission-progress-bar="photosynthesis" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="profile-subject">
+                <div class="profile-subject-info">
+                    <span>Mitose</span>
+                    <strong data-mission-progress-value="mitosis">0%</strong>
+                </div>
+
+                <div class="profile-subject-bar">
+                    <div data-mission-progress-bar="mitosis" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="profile-subject">
+                <div class="profile-subject-info">
+                    <span>Meiose</span>
+                    <strong data-mission-progress-value="meiosis">0%</strong>
+                </div>
+
+                <div class="profile-subject-bar">
+                    <div data-mission-progress-bar="meiosis" style="width: 0%;"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
 <div class="acoes-card profile-action-card">
-<h2>📚 Explorar</h2>
+<h2>Explorar</h2>
 <button onclick="window.location.href='missions.html'">Continuar a aprender</button>
 <button id="deleteAccountBtn" type="button">Eliminar conta</button>
 <button id="logoutBtn">Terminar sessão</button>
 </div>
-</aside>
+</div>
 </div>
 
 </section>
 
 <script src="profile-xp.js"></script>
 <script type="module" src="perfil.js"></script>
+
+
 
 </body>
 

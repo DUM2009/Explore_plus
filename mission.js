@@ -301,6 +301,8 @@ class MissionSystem {
      */
     saveProgress() {
         const data = {
+            missionId: this.mission.id,
+            totalSections: this.mission.sections.length,
             currentSectionIndex: this.currentSectionIndex,
             activeSectionIndex: this.activeSectionIndex,
             userAnswers: this.userAnswers,
@@ -329,6 +331,12 @@ class MissionSystem {
         }
 
         localStorage.setItem(key, JSON.stringify(data));
+        window.dispatchEvent(new CustomEvent('explore:mission-progress-updated', {
+            detail: {
+                missionId: this.mission.id,
+                progress: data
+            }
+        }));
     }
 
     registerPersistenceListeners() {
