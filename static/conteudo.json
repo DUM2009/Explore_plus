@@ -1,0 +1,336 @@
+{
+  "capitulo": "Fotossíntese",
+  "disciplina": "Explore Biology",
+  "nivel": "Secundário",
+  "missoes": [
+    {
+      "id": 1,
+      "titulo": "Missão 1: Luz vira energia (fase clara)",
+      "duracao": "7-8 minutos",
+      "xp": 60,
+      "ecras": [
+        {
+          "tipo": "gancho",
+          "visual": "animacao_loop_luz_solar_membrana_verde",
+          "texto": "A luz do sol não entra na planta e sai já transformada em açúcar. Antes disso, ela passa por uma verdadeira central elétrica dentro da folha.",
+          "botao": "Ver como funciona →"
+        },
+        {
+          "tipo": "pergunta_guia",
+          "visual": "esquema_simples_cloroplasto_tilacoides",
+          "texto": "Achas que a planta usa a água apenas para transportar nutrientes, ou também para produzir algo durante a fotossíntese?",
+          "interacao": [
+            { "id": "A", "texto": "💧 Só transporta" },
+            { "id": "B", "texto": "⚡ Também produz algo" }
+          ],
+          "feedback_neutro": "Vamos ver o que a água realmente faz aqui dentro."
+        },
+        {
+          "tipo": "explicacao_blocos",
+          "cartoes": [
+            {
+              "titulo": "Onde acontece",
+              "texto": "A fase clara ocorre nos tilacoides, membranas dentro do cloroplasto onde está a clorofila.",
+              "visual": "zoom_progressivo_folha_celula_cloroplasto_tilacoide"
+            },
+            {
+              "titulo": "Fotólise da água",
+              "texto": "A luz 'parte' a molécula de água (fotólise). Isso liberta eletrões, protões (H⁺) e oxigénio, que sai para o ar.",
+              "visual": "molecula_H2O_dividindo_setas_3_produtos"
+            },
+            {
+              "titulo": "Cadeia transportadora de eletrões",
+              "texto": "Os eletrões libertados passam por uma sequência de proteínas na membrana — a cadeia transportadora de eletrões. Nesse percurso, a energia deles é usada para bombear H⁺ para dentro do tilacoide.",
+              "visual": "eletrao_saltando_proteinas_membrana_setas_H+"
+            },
+            {
+              "titulo": "ATP e NADPH",
+              "texto": "A acumulação de H⁺ cria um gradiente que impulsiona a ATP sintase a produzir ATP. Os eletrões terminam o percurso a formar NADPH. Estas duas moléculas são a energia que a próxima fase vai usar.",
+              "visual": "turbina_rodar_ATP_sintase_molecula_NADPH"
+            }
+          ]
+        },
+        {
+          "tipo": "mini_interacao_sequenciar",
+          "instrucao": "Coloca estes acontecimentos na ordem certa, do início ao fim da fase clara.",
+          "elementos_ordem_correta": [
+            "A luz atinge a clorofila",
+            "A água é dividida (fotólise) — liberta O₂",
+            "Os eletrões percorrem a cadeia transportadora",
+            "H⁺ acumula-se dentro do tilacoide",
+            "ATP sintase produz ATP; forma-se NADPH"
+          ],
+          "resultado": "animacao_sequencia_acender_cadeia_pisca_ATP_NADPH"
+        },
+        {
+          "tipo": "curiosidade",
+          "visual": "icone_relogio_planta",
+          "texto": "Todo o oxigénio que existe hoje na atmosfera — o que respiramos agora mesmo — veio, ao longo de milhões de anos, desta mesma reação de fotólise da água.",
+          "botao": "Uau →"
+        },
+        {
+          "tipo": "quiz",
+          "perguntas": [
+            {
+              "id": 1,
+              "pergunta": "Onde ocorre a fase clara da fotossíntese?",
+              "opcoes": ["No estroma", "Nos tilacoides", "No núcleo"],
+              "correta": 1,
+              "feedback": "Certo! É nas membranas dos tilacoides que está a clorofila e a maquinaria da fase clara."
+            },
+            {
+              "id": 2,
+              "pergunta": "De onde vem o oxigénio libertado na fotossíntese?",
+              "opcoes": ["Do CO₂", "Da água (fotólise)", "Da glicose"],
+              "correta": 1,
+              "feedback": "Exato — a fotólise da água é que liberta o O₂, não o CO₂."
+            },
+            {
+              "id": 3,
+              "pergunta": "Qual é a função da cadeia transportadora de eletrões?",
+              "opcoes": ["Usar a energia dos eletrões para bombear H⁺ e criar um gradiente", "Produzir glicose diretamente", "Absorver CO₂ do ar"],
+              "correta": 0,
+              "feedback": "Isso mesmo — a cadeia não produz açúcar diretamente, só prepara a energia (ATP e NADPH) para a fase seguinte."
+            },
+            {
+              "id": 4,
+              "pergunta": "O que impulsiona a ATP sintase a produzir ATP?",
+              "opcoes": ["A luz diretamente", "O gradiente de H⁺ acumulado no tilacoide", "O oxigénio libertado"],
+              "correta": 1,
+              "feedback": "Correto — é o fluxo de H⁺ de volta através da ATP sintase que gera o ATP, como água a mover uma turbina."
+            },
+            {
+              "id": 5,
+              "pergunta": "Se bloqueares a fotólise da água numa planta, o que deixa de acontecer primeiro?",
+              "opcoes": ["A libertação de eletrões e a formação do gradiente de H⁺", "A absorção de CO₂", "O ciclo de Calvin, diretamente"],
+              "correta": 0,
+              "feedback": "Muito bem — sem fotólise não há eletrões nem H⁺, e toda a cadeia fica sem 'combustível'. O ciclo de Calvin é afetado depois, mas não é o primeiro a parar."
+            }
+          ]
+        },
+        {
+          "tipo": "recompensa",
+          "visual": "barra_xp_enchendo_selo_missao_1_de_3",
+          "texto": "Missão completa! +60 XP\nJá sabes como a luz se transforma em ATP e NADPH — a energia que a próxima fase vai usar para construir açúcar.",
+          "botoes": ["Próxima missão: Do ar ao açúcar (ciclo de Calvin) →", "Voltar ao capítulo"]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "titulo": "Missão 2: Do ar ao açúcar (ciclo de Calvin)",
+      "duracao": "7-8 minutos",
+      "xp": 60,
+      "ecras": [
+        {
+          "tipo": "gancho",
+          "visual": "animacao_ATP_NADPH_entram_nova_zona_cloroplasto",
+          "texto": "Na missão anterior, a planta fabricou energia (ATP) e poder redutor (NADPH). Mas isso não é açúcar. Falta um passo — e é aqui que o CO₂ do ar entra em jogo.",
+          "botao": "Continuar →"
+        },
+        {
+          "tipo": "pergunta_guia",
+          "visual": "ilustracao_folha_respirar_CO2_estoma",
+          "texto": "Achas que a planta precisa de luz direta para transformar CO₂ em açúcar, ou consegue fazê-lo mesmo no escuro, desde que tenha ATP e NADPH?",
+          "interacao": [
+            { "id": "A", "texto": "☀️ Precisa de luz direta" },
+            { "id": "B", "texto": "🌑 Consegue no escuro, com ATP/NADPH" }
+          ],
+          "feedback_neutro": "Boa aposta — vamos ver porque é que esta fase é chamada de 'independente da luz'."
+        },
+        {
+          "tipo": "explicacao_blocos",
+          "cartoes": [
+            {
+              "titulo": "Onde acontece",
+              "texto": "O ciclo de Calvin ocorre no estroma, o fluido que envolve os tilacoides dentro do cloroplasto.",
+              "visual": "zoom_cloroplasto_destacando_estroma"
+            },
+            {
+              "titulo": "Fixação do carbono",
+              "texto": "O CO₂ do ar liga-se a uma molécula já existente, a RuBP (com a ajuda de uma enzima chamada rubisco), formando uma molécula instável que se parte em duas.",
+              "visual": "CO2_encaixar_peca_RuBP_divide_duas"
+            },
+            {
+              "titulo": "Redução",
+              "texto": "O ATP e o NADPH da missão anterior entram em ação aqui: fornecem energia e eletrões para transformar essas moléculas em G3P, o primeiro açúcar de 3 carbonos.",
+              "visual": "duas_pecas_ganham_energia_mudam_cor_G3P"
+            },
+            {
+              "titulo": "Regeneração",
+              "texto": "A maior parte do G3P é reciclado para regenerar a RuBP e manter o ciclo a funcionar. Só uma pequena parte sai do ciclo para formar glicose e outros açúcares.",
+              "visual": "seta_circular_G3P_voltar_inicio_fracao_sair"
+            }
+          ]
+        },
+        {
+          "tipo": "mini_interacao_completar_ciclo",
+          "instrucao": "Este é o ciclo de Calvin. Arrasta cada elemento para o lugar certo, seguindo o percurso do carbono.",
+          "elementos": ["CO₂", "RuBP", "Fixação", "G3P", "Regeneração", "Glicose"],
+          "resultado": "ciclo_gira_animacao_particula_glicose_sai_lateral"
+        },
+        {
+          "tipo": "curiosidade",
+          "visual": "icone_planta_relogio_girar_rapido",
+          "texto": "São precisas 6 voltas completas do ciclo de Calvin (e 6 moléculas de CO₂) só para produzir uma molécula de glicose.",
+          "botao": "Interessante →"
+        },
+        {
+          "tipo": "quiz",
+          "perguntas": [
+            {
+              "id": 1,
+              "pergunta": "Onde ocorre o ciclo de Calvin?",
+              "opcoes": ["Nos tilacoides", "No estroma", "No núcleo"],
+              "correta": 1,
+              "feedback": "Certo! O estroma é o fluido à volta dos tilacoides, onde decorre esta fase."
+            },
+            {
+              "id": 2,
+              "pergunta": "Qual enzima é responsável por fixar o CO₂ à RuBP?",
+              "opcoes": ["ATP sintase", "Rubisco", "NADPH redutase"],
+              "correta": 1,
+              "feedback": "Exato — a rubisco é considerada a enzima mais abundante da Terra, precisamente por este papel central."
+            },
+            {
+              "id": 3,
+              "pergunta": "O que fornece a energia e os eletrões para transformar o carbono fixado em G3P?",
+              "opcoes": ["O ATP e o NADPH produzidos na fase clara", "A luz solar diretamente", "O oxigénio libertado na fotólise"],
+              "correta": 0,
+              "feedback": "Isso mesmo — é exatamente por isso que as duas fases estão ligadas: uma produz a energia, a outra usa-a."
+            },
+            {
+              "id": 4,
+              "pergunta": "Porque é que o ciclo de Calvin é chamado 'independente da luz'?",
+              "opcoes": ["Porque não precisa de CO₂", "Porque não usa luz diretamente, só o ATP/NADPH já produzidos", "Porque só ocorre à noite"],
+              "correta": 1,
+              "feedback": "Boa! Não é 'à noite' — pode continuar a acontecer durante o dia. Só não usa fotões diretamente, usa a energia já armazenada."
+            },
+            {
+              "id": 5,
+              "pergunta": "Se uma planta ficar sem CO₂ disponível, mas continuar com luz, o que acontece primeiro?",
+              "opcoes": ["O ciclo de Calvin para, porque não há carbono para fixar", "A fase clara para imediatamente", "Nada muda"],
+              "correta": 0,
+              "feedback": "Correto — a fase clara pode continuar a funcionar por algum tempo, mas sem CO₂ o ciclo de Calvin não tem 'matéria-prima' para produzir açúcar."
+            }
+          ]
+        },
+        {
+          "tipo": "recompensa",
+          "visual": "barra_xp_selo_missao_2_de_3",
+          "texto": "Missão completa! +60 XP\nAgora sabes como o CO₂ do ar se transforma em açúcar, usando a energia da fase clara.",
+          "botoes": ["Próxima missão: Liga os pontos (síntese do capítulo) →", "Voltar ao capítulo"]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "titulo": "Missão 3: Liga os pontos (síntese)",
+      "duracao": "6-7 minutos",
+      "xp": 70,
+      "ecras": [
+        {
+          "tipo": "gancho",
+          "visual": "animacoes_anteriores_lado_a_lado_juntam_seta",
+          "texto": "Já viste as duas metades da fotossíntese em separado. Agora vamos ver como uma falha numa delas destrói a outra — e o que isso te diz sobre como a natureza está toda ligada.",
+          "botao": "Vamos ligar tudo →"
+        },
+        {
+          "tipo": "pergunta_guia",
+          "visual": "esquema_simples_cloroplasto_duas_zonas",
+          "texto": "Se tapasses uma planta com um saco escuro por um dia inteiro, o ciclo de Calvin pararia de imediato, ou continuaria por algum tempo com as reservas que já tinha?",
+          "interacao": [
+            { "id": "A", "texto": "⚡ Para de imediato" },
+            { "id": "B", "texto": "⏳ Continua por algum tempo com reservas" }
+          ],
+          "feedback_neutro": "Vamos ver exatamente o que liga (e separa) as duas fases."
+        },
+        {
+          "tipo": "explicacao_blocos",
+          "cartoes": [
+            {
+              "titulo": "O que a fase clara entrega",
+              "texto": "A fase clara (tilacoide) produz ATP e NADPH a partir de luz e água. Sem eles, o ciclo de Calvin fica sem 'combustível'.",
+              "visual": "seta_ATP_NADPH_sair_tilacoide_entrar_estroma"
+            },
+            {
+              "titulo": "O que o ciclo de Calvin devolve",
+              "texto": "O ciclo de Calvin (estroma) consome ATP e NADPH, e devolve ADP e NADP⁺ — as versões 'gastas' dessas moléculas, que voltam para a fase clara para serem recarregadas.",
+              "visual": "seta_ADP_NADP_voltar_estroma_tilacoide"
+            },
+            {
+              "titulo": "Um sistema, não dois",
+              "texto": "Por isso, se a fase clara parar (ex: sem luz), o ciclo de Calvin esgota rapidamente as suas reservas de ATP/NADPH e para também — mesmo que ainda haja CO₂ disponível.",
+              "visual": "animacao_tilacoide_apagar_ciclo_calvin_parar"
+            }
+          ]
+        },
+        {
+          "tipo": "mini_interacao_diagrama",
+          "instrucao": "Toca em cada parte do sistema para reveres o que aprendeste.",
+          "partes": ["tilacoide", "estroma", "setas_ATP_NADPH", "seta_ADP_NADP"],
+          "resultado": "sistema_completo_acende_ciclo_em_movimento"
+        },
+        {
+          "tipo": "curiosidade",
+          "visual": "icone_folha_grafico_temperatura",
+          "texto": "Em dias muito quentes, algumas plantas fecham os estomas para poupar água — o que reduz o CO₂ disponível e trava o ciclo de Calvin, mesmo com sol pleno.",
+          "botao": "Faz sentido →"
+        },
+        {
+          "tipo": "quiz_sintese",
+          "perguntas": [
+            {
+              "id": 1,
+              "pergunta": "Qual molécula liga diretamente a fase clara ao ciclo de Calvin, fornecendo energia?",
+              "opcoes": ["ATP", "Glicose", "Rubisco"],
+              "correta": 0,
+              "feedback": "Certo — o ATP (junto com o NADPH) é a ponte de energia entre as duas fases."
+            },
+            {
+              "id": 2,
+              "pergunta": "O que volta do ciclo de Calvin para a fase clara?",
+              "opcoes": ["CO₂", "ADP e NADP⁺", "Glicose"],
+              "correta": 1,
+              "feedback": "Exato — estas são as versões 'descarregadas', que a fase clara volta a carregar."
+            },
+            {
+              "id": 3,
+              "pergunta": "Uma planta com luz abundante mas estomas fechados (sem CO₂ disponível) — o que acontece ao ciclo de Calvin?",
+              "opcoes": ["Trava, por falta de carbono para fixar", "Acelera, por ter mais ATP disponível", "Não é afetado"],
+              "correta": 0,
+              "feedback": "Boa aplicação! Mesmo com energia de sobra, sem CO₂ não há fixação de carbono possível."
+            },
+            {
+              "id": 4,
+              "pergunta": "Se bloqueares a rubisco, qual é o efeito mais direto?",
+              "opcoes": ["O CO₂ deixa de conseguir ligar-se à RuBP", "A fotólise da água para", "A cadeia transportadora de eletrões para"],
+              "correta": 0,
+              "feedback": "Certo — a rubisco é específica do ciclo de Calvin; a fase clara não depende dela diretamente."
+            },
+            {
+              "id": 5,
+              "pergunta": "Numa planta em escuridão total, o que se esgota primeiro, impedindo o ciclo de Calvin de continuar?",
+              "opcoes": ["As reservas de ATP e NADPH", "O CO₂ do ar", "A RuBP"],
+              "correta": 0,
+              "feedback": "Exato — sem luz não há reposição de ATP/NADPH, e as reservas existentes esgotam-se rápido."
+            },
+            {
+              "id": 6,
+              "tipo": "resposta_aberta",
+              "pergunta": "Explica por palavras tuas (2-3 frases): porque é que dizemos que a fotossíntese é 'um sistema', e não 'duas reações separadas'?",
+              "palavras_chave_avaliacao": ["ATP", "NADPH", "depende", "liga"],
+              "feedback_exemplo": "As duas fases dependem uma da outra: a fase clara fornece a energia que o ciclo de Calvin precisa, e o ciclo de Calvin devolve as moléculas para a fase clara recarregar. Se uma parar, a outra para pouco depois."
+            }
+          ]
+        },
+        {
+          "tipo": "recompensa_final",
+          "visual": "animacao_confetis_emblema_prata_barra_100",
+          "texto": "Capítulo 'Fotossíntese' completo! +70 XP\nGanhaste o emblema de prata 🥈\nQueres tentar o emblema de ouro? Resolve o teste final do capítulo (20 perguntas) e consegue 17 ou mais valores.",
+          "botoes": ["Tentar o teste de ouro →", "Continuar para o próximo capítulo", "Voltar ao mapa de capítulos"]
+        }
+      ]
+    }
+  ]
+}
