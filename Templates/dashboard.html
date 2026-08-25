@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -5,20 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Explore+</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body>
 
     <header>
         <div class="logo">
-            <img src="assets/images/Logo.png" alt="Logotipo Explore+">
+            <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
         </div>
         <nav>
             <a href="index.html">Início</a>
-            <a href="missions.html">Missões</a>
-            <a href="about.html">Sobre</a>
-            <a href="login.html">Login</a>
+            <a href="{% url 'index-missions' %}">Missões</a>
+            <a href="{% url 'about' %}">Sobre</a>
+            <a href="{% url 'login' %}">Login</a>
         </nav>
     </header>
     <section class="dashboard">
@@ -44,12 +45,11 @@
 
         <div class="acoes-card">
             <h2>📚 Ações</h2>
-            <button onclick="window.location.href='missions.html'">Ver Missões</button>
-            <button onclick="window.location.href='perfil.html'">Ir para Perfil</button>
+            <button onclick="window.location.href='{% url 'index-missions' %}'">Ver Missões</button>
+            <button onclick="window.location.href='{% url 'perfil' %}'">Ir para Perfil</button>
         </div>
     </section>
 
-    <script type="module" src="auth.js"></script>
 <script src="nav-tabs.js" defer></script>
 </body>
 

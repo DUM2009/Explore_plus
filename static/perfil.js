@@ -1,10 +1,4 @@
-import "./profile-xp.js";
-import { auth } from "./firebase.js";
-import {
-    deleteUser,
-    onAuthStateChanged,
-    signOut
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 
 const nomeAluno = document.getElementById("nomeAluno");
 const emailAluno = document.getElementById("emailAluno");
@@ -339,16 +333,7 @@ if (themeToggleBtn) {
     });
 }
 
-onAuthStateChanged(auth, (user) => {
-    updateCurrentUserState(user);
 
-    if (user) {
-        renderAccountInfo(user);
-        renderProfileXP(user);
-    } else {
-        window.location.href = "/login/";
-    }
-});
 
 if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {

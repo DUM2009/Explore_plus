@@ -22,6 +22,7 @@ class MissionSystem {
         this.progressStorageKey = this.resolveProgressStorageKey();
         this.loadProgress();
         this.registerPersistenceListeners();
+        this.saveProgress();
     }
     
 
@@ -312,7 +313,8 @@ class MissionSystem {
             quizEntryState: this.quizEntryState,
             chapterCompletionView: this.chapterCompletionView,
             earnedXP: this.earnedXP,
-            completedSections: Array.from(this.completedSections)
+            completedSections: Array.from(this.completedSections),
+            updatedAt: new Date().toISOString()
         };
 
         const key = this.getProgressStorageKey();
@@ -331,12 +333,37 @@ class MissionSystem {
         }
 
         localStorage.setItem(key, JSON.stringify(data));
+        this.syncProgressWithDjango(data);
         window.dispatchEvent(new CustomEvent('explore:mission-progress-updated', {
             detail: {
                 missionId: this.mission.id,
                 progress: data
             }
         }));
+    }
+
+    syncProgressWithDjango(data) {
+        if (!window.exploreProgressSyncUrl || !window.exploreCsrfToken) {
+            return;
+        }
+
+        fetch(window.exploreProgressSyncUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': window.exploreCsrfToken
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                missionId: this.mission.id,
+                progress: data,
+                xp: window.ProfileXP
+                    ? window.ProfileXP.getProfileStats(window.ProfileXP.getCurrentUserProfile()).xp
+                    : 0
+            })
+        }).catch((error) => {
+            console.warn('Não foi possível sincronizar o progresso com o Django:', error);
+        });
     }
 
     registerPersistenceListeners() {
@@ -355,12 +382,12 @@ class MissionSystem {
         });
     }
 
-    awardProfileXP(amount, source) {
+    awardProfileXP(amount, source, activityDetails = {}) {
         if (!window.ProfileXP) {
             return { awarded: false, xpAdded: 0 };
         }
 
-        return window.ProfileXP.awardXPToCurrentUser(amount, source);
+        return window.ProfileXP.awardXPToCurrentUser(amount, source, undefined, activityDetails);
     }
 
     buildRewardSource(type, identifier) {
@@ -1534,10 +1561,17 @@ class MissionSystem {
         }
 
         const quizRewardSource = this.buildRewardSource('quiz', `${this.mission.id}:${section.id}`);
+        const answerState = this.getSectionAnswerState(section.id);
+        const correctAnswers = answerState.answers?.filter((answer) => answer?.isCorrect === true).length || 0;
+        const totalQuestions = this.getSectionQuestions(section).length;
+        const quizPercentage = totalQuestions ? (correctAnswers / totalQuestions) * 100 : 0;
 
         this.completedSections.add(section.id);
         this.earnedXP += section.xpReward;
-        this.awardProfileXP(section.xpReward, quizRewardSource);
+        this.awardProfileXP(section.xpReward, quizRewardSource, {
+            type: 'quiz',
+            percentage: quizPercentage
+        });
         this.showXPReward(section.xpReward);
 
         if (sectionIndex + 1 < this.mission.sections.length) {
@@ -2024,7 +2058,10 @@ class MissionSystem {
         // Update final earnedXP for localStorage
         this.earnedXP += bonusXP;
         this.saveProgress();
-        this.awardProfileXP(bonusXP, finalQuizRewardSource);
+        this.awardProfileXP(bonusXP, finalQuizRewardSource, {
+            type: 'quiz',
+            percentage
+        });
     }
 
     /**

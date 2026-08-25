@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-t-(99-9dz^q20&-zeye$!0ii2kvv&07hmt_2b)p)&$87tm&u%f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserver', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-     'meu_site',  # ◄ Altera esta linha exatamente assim!
+    'meu_site.apps.MeuSiteConfig',
 ]
 
 
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'meu_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR.parent / 'Templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,11 +119,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+# Static files
+STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR.parent / 'static',
+]
 
 
 # Email

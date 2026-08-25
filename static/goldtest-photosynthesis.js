@@ -117,7 +117,10 @@ class GoldTest {
             );
 
             if (goldTestSource && window.ProfileXP) {
-                window.ProfileXP.awardXPToCurrentUser(85, goldTestSource);
+                window.ProfileXP.awardXPToCurrentUser(85, goldTestSource, undefined, {
+                    type: 'quiz',
+                    percentage: (this.correctCount / this.questions.length) * 100
+                });
             }
         }
         const el = document.getElementById('goldtest-root');

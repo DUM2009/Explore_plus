@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz | Explore+</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <style>
         .quiz-container {
             max-width: 700px;
@@ -77,9 +78,10 @@
     <header>
         <div class="logo">Explore+</div>
         <nav>
-            <a href="index.html">Início</a>
-            <a href="missions.html">Missões</a>
-            <a href="about.html">Sobre</a>
+            <a href="{% url 'pagina_inicial' %}">Início</a>
+            <a href="{% url 'index-missions' %}">Missões</a>
+            <a href="{% url 'about' %}">Sobre</a>
+            <a href="{% url 'perfil' %}">Perfil</a>
         </nav>
     </header>
 
@@ -129,8 +131,6 @@
         <button class="quiz-button" onclick="window.location.href='missions.html'" style="background: #6c757d; margin-top: 10px;">Voltar às Missões</button>
     </div>
 
-    <script type="module" src="auth.js"></script>
-    <script src="profile-xp.js"></script>
     <script>
         function verificarRespostas() {
             const q1 = document.querySelector('input[name="q1"]:checked');

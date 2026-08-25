@@ -30,7 +30,7 @@ const missionData = {
 
                     <div class="screen-card">
                         <h3>O que é a fotossíntese?</h3>
-                        <img class="card-visual" src="assets/images/Planta-fotossíntese.png" alt="Planta a receber luz solar">
+                        <img class="card-visual" src="/static/images/Planta-fotossíntese.png" alt="Planta a receber luz solar">
                         <p>Ao contrário dos animais, as plantas não saem à procura de alimento. Elas próprias o fabricam!</p>
                         <p>Com a energia da luz do Sol, transformam água e dióxido de carbono em glicose, um açúcar que lhes fornece energia para crescer e sobreviver. Como "bónus", libertam oxigénio para a atmosfera. Este incrível processo chama-se <strong>fotossíntese</strong>.</p>
                         <details class="did-you-know">
@@ -48,7 +48,7 @@ const missionData = {
 
                     <div class="screen-card">
                         <h3>As folhas: o principal local da fotossíntese</h3>
-                        <img class="card-visual" src="assets/images/Folha.png" alt="Folha de planta">
+                        <img class="card-visual" src="/static/images/Folha.png" alt="Folha de planta">
                         <p>Embora toda a planta seja importante, é nas <strong>folhas</strong> que a maior parte da fotossíntese acontece.</p>
                         <p>As folhas possuem muitos cloroplastos, recebem luz solar e estão em contacto direto com o ar, facilitando a entrada de dióxido de carbono.</p>
                  <details class="did-you-know">
@@ -60,7 +60,7 @@ const missionData = {
 
 <div class="screen-card">
                         <h3>Os estomas: as "portas" da folha</h3>
-                        <img class="card-visual" src="assets/images/Estoma.png" alt="Estomas na folha de planta">
+                        <img class="card-visual" src="/static/images/Estoma.png" alt="Estomas na folha de planta">
                         <p>As plantas também precisam de captar dióxido de carbono do ar. Para isso existem pequenos poros nas folhas chamados <strong>estomas</strong>.</p>
                         <p>Os estomas permitem a entrada de dióxido de carbono e a saída do oxigénio produzido durante a fotossíntese. Além disso, regulam a perda de vapor de água para o ambiente.</p>
                    <details class="did-you-know">
@@ -71,7 +71,7 @@ const missionData = {
 
                     <div class="screen-card">
                         <h3>O cloroplasto: a "fábrica" da fotossíntese</h3>
-                        <img class="card-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
                         <p> Para fabricar o seu alimento, a planta precisa de um local onde todas as reações da fotossíntese acontecem. Esse local chama-se <strong>cloroplasto</strong>.</p>
                         <p>O cloroplasto é um organelo presente nas células das plantas e é considerado a fábrica da fotossíntese. É aqui que a energia da luz é captada e utilizada para transformar água e dióxido de carbono em glicose.</p>
                         <p>No interior do cloroplasto destacam-se os <strong>tilacoides</strong>, a <strong>clorofila</strong> e o <strong>estroma</strong>.</p>
@@ -83,7 +83,7 @@ const missionData = {
 
                     <div class="screen-card">
                         <h3>Os tilacoides: os "painéis solares" da fotossíntese</h3>
-                        <img class="card-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
                         <p> Dentro do cloroplasto existem pequenas estruturas em forma de discos empilhados chamadas tilacóides. É na membrana destes tilacóides que se encontra a clorofila, o pigmento verde responsável por captar a energia da luz solar.</p>
                         <details class="did-you-know">
                             <summary>Saber mais...</summary>
@@ -93,7 +93,7 @@ const missionData = {
 
                     <div class="screen-card">
                         <h3>A clorofila: o pigmento que capta a luz</h3>
-                        <img class="card-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
                         <p>A <strong>clorofila</strong> é um pigmento verde presente nos cloroplastos. A sua principal função é <strong>captar a energia da luz solar</strong>, fornecendo a energia necessária para que a fotossíntese possa ocorrer.</p>
                         <p>É também a clorofila que dá às plantas a sua cor verde característica.</p>
                          <details class="did-you-know">
@@ -107,7 +107,7 @@ const missionData = {
 
 <div class="screen-card">
                         <h3>O estroma: o "citosol" do cloroplasto</h3>
-                        <img class="card-visual" src="assets/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
                         <p> À volta dos tilacóides encontra-se um líquido chamado <strong>estroma</strong>. É nesta região que a planta utiliza a energia captada pela luz para fabricar glicose.</p>
                         <details class="did-you-know">
                             <summary>Saber mais...</summary>
@@ -117,7 +117,7 @@ const missionData = {
 
                     <div class="screen-card">
                         <h3>As raízes: a origem da água</h3>
-                        <img class="card-visual" src="assets/images/Raízes 2.png" alt="Raízes da planta">
+                        <img class="card-visual" src="/static/images/Raízes 2.png" alt="Raízes da planta">
                         <p>A água utilizada na fotossíntese é absorvida pelas raízes. Depois de entrar na planta, a água é transportada através do caule até chegar às folhas, onde será utilizada na produção de glicose.</p>
                     <details class="did-you-know">
                             <summary>Saber mais...</summary>
@@ -210,7 +210,7 @@ const missionData = {
 
  <div class="screen-card">
                         <h3>Como é que a luz inicia a fotossíntese?</h3>
-                        <img class="screen-visual" src="assets/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
+                        <img class="screen-visual" src="/static/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
                         <p><strong>Tudo começa quando a luz do Sol atinge a clorofila.</strong>
                         <p>A clorofila não trabalha sozinha. Ela encontra-se organizada em estruturas chamadas fotossistemas, responsáveis por captar a energia luminosa.
 
@@ -223,7 +223,7 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
                     <div class="screen-card">
                         <h3>A entrada da luz</h3>
-                        <img class="screen-visual" src="assets/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
+                        <img class="screen-visual" src="/static/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
                         <p>A luz atinge o fotossistema II e a clorofila absorve a energia da luz. Essa energia é suficiente para fazer com que alguns eletrões da clorofila fiquem energizados e sejam libertados.</p>
                         <p><strong>Mas surge um problema...</strong></p>
                         <p>Ao perder eletrões (oxidar), a clorofila do Fotossistema II precisa de os substituir para continuar a captar energia luminosa.</p>
@@ -248,7 +248,7 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
                     <div class="screen-card">
                         <h3>Fotólise da água</h3>
-                        <img class="card-visual" src="assets/images/Fotólise da água.jpg" alt="Divisao da agua em produtos">
+                        <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Divisao da agua em produtos">
                         <p>A fotólise da água é uma etapa da fase luminosa da fotossíntese que ocorre no fotossistema II (PSII), localizado na membrana dos tilacóides dos cloroplastos.</p>
                         <p>A energia luminosa permite a quebra das moléculas de água (H₂O) em eletrões (e⁻), protões (H⁺) e oxigénio (O₂).</p>
                         <ul>
@@ -266,14 +266,14 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
                     <div class="screen-card">
                         <h3>Cadeia transportadora de eletrões</h3>
-                        <img class="card-visual" src="assets/images/photosynthesis/m1-card-chain.svg" alt="Cadeia transportadora de eletrões">
+                        <img class="card-visual" src="/static/images/Cadeia transportadora de eletrões.png" alt="Cadeia transportadora de eletrões">
                         <p>A cadeia transportadora de eletrões é uma etapa da fase luminosa da fotossíntese que ocorre na membrana dos tilacóides dos cloroplastos. Esta etapa acontece após a excitação da clorofila no fotossistema II (PSII).</p>
                         <p>Quando a luz fornece energia à clorofila, os eletrões são libertados e transferidos para uma série de proteínas e moléculas transportadoras. À medida que os eletrões passam de uma molécula para outra ao longo da cadeia transportadora, libertam energia que é utilizada para transportar protões (H⁺) para o interior do tilacóide, criando um gradiente de concentração de protões.</p>
                     </div>
 
                     <div class="screen-card">
                         <h3>Protões H⁺ e ATP</h3>
-                        <img class="card-visual" src="assets/images/photosynthesis/m1-card-atp.svg" alt="Formacao de ATP e NADPH">
+                        <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Formacao de ATP e NADPH">
                         <p>O gradiente de protões (H⁺) permite a produção de ATP através da enzima ATP sintase, num processo chamado <strong>quimiosmose</strong>.</p>
                     </div>
 
@@ -285,14 +285,14 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
 <div class="screen-card">
                         <h3>Síntese de NADPH</h3>
-                        <img class="card-visual" src="assets/images/photosynthesis/m1-card-atp.svg" alt="Formacao de ATP e NADPH">
+                        <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Formacao de ATP e NADPH">
                         <p>Os eletrões continuam o seu percurso até chegarem ao fotossistema I (PSI), onde recebem novamente energia da luz e são transferidos para uma molécula recetora.</p>
                         <p>No final da cadeia transportadora, os eletrões são utilizados para reduzir o NADP⁺, formando NADPH, uma molécula que transporta energia química e que será utilizada na fase escura da fotossíntese (ciclo de Calvin).</p>
                     </div>
 
 <div class="screen-card">
                         <h3>Exercício</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m1-mini.svg" alt="Sequencia da fase clara">
+                        <img class="screen-visual" src="/static/images/Membrana dos tilacoides.jpg" alt="Sequencia da fase clara">
                         <p>Seleciona os passos pela ordem correta para reconstruir a fase clara.</p>
                         <div class="phase-clear-sequence" aria-label="Exercicio de ordenar a fase clara">
                             <div class="sequence-options">
@@ -405,7 +405,7 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                 
                 <div class="screen-card">
                         <h3>Ecra 1 - Gancho</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-hook.svg" alt="ATP e NADPH a entrar no estroma">
+                        <img class="screen-visual" src="/static/images/Membrana dos tilacoides.jpg" alt="ATP e NADPH a entrar no estroma">
                         <p><strong>É agora que começa a fase escura, também chamada Ciclo de Calvin!</strong></p>
                         <p>Nesta etapa, a planta utiliza a energia produzida na fase luminosa para captar dióxido de carbono (CO₂) e construir moléculas de açúcar — o alimento que irá sustentar o seu crescimento.</p>
                        <p> O Ciclo de Calvin divide-se em três etapas principais:
@@ -425,7 +425,7 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
                     <div class="screen-card">
                         <h3>Ecra 2 - Pergunta guia</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-guide.svg" alt="CO2 a entrar pelo estoma">
+                        <img class="screen-visual" src="/static/images/Estoma.png" alt="CO2 a entrar pelo estoma">
                         <p>A fase escura precisa de luz direta, ou pode funcionar sem luz direta se houver ATP e NADPH?</p>
                         <div class="guide-options">
                             <button class="guide-option" data-choice="luz-direta" data-correct="false">Precisa de luz direta</button>
@@ -436,37 +436,37 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
                     <div class="screen-card">
                         <h3>Ecra 3 - Onde ocorre</h3>
-                        <img class="card-visual" src="assets/images/photosynthesis/m2-card-where.svg" alt="Estroma no cloroplasto">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Estroma no cloroplasto">
                         <p>O ciclo de Calvin ocorre no <strong>estroma</strong> do cloroplasto.</p>
                     </div>
 
                     <div class="screen-card">
                         <h3>Ecra 4 - Fixacao do carbono</h3>
-                        <img class="card-visual" src="assets/images/photosynthesis/m2-card-fix.svg" alt="CO2 ligado a RuBP">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="CO2 ligado a RuBP">
                         <p>O CO2 fixa-se a <strong>RuBP</strong> com ajuda da <strong>rubisco</strong>.</p>
                     </div>
 
                     <div class="screen-card">
                         <h3>Ecra 5 - Reducao</h3>
-                        <img class="card-visual" src="assets/images/photosynthesis/m2-card-reduction.svg" alt="Reducao para formar G3P">
+                        <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Reducao para formar G3P">
                         <p>ATP e NADPH fornecem energia e eletrões para formar <strong>G3P</strong>.</p>
                     </div>
 
                     <div class="screen-card">
                         <h3>Ecra 6 - Regeneracao</h3>
-                        <img class="card-visual" src="assets/images/photosynthesis/m2-card-regeneration.svg" alt="Regeneracao da RuBP">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Regeneracao da RuBP">
                         <p>Grande parte do G3P regenera RuBP; uma parte sai para produzir glicose.</p>
                     </div>
 
                     <div class="screen-card">
                         <h3>Ecra 7 - Mini-interacao</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-mini.svg" alt="Representacao do ciclo de Calvin">
+                        <img class="screen-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Representacao do ciclo de Calvin">
                         <p><strong>Completar o ciclo:</strong> CO2 -> RuBP -> fixacao -> G3P -> regeneracao.</p>
                     </div>
 
                     <div class="screen-card">
                         <h3>Ecra 8 - Curiosidade</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m2-curiosity.svg" alt="Curiosidade sobre voltas do ciclo">
+                        <img class="screen-visual" src="/static/images/Raízes 2.png" alt="Curiosidade sobre voltas do ciclo">
                         <p>Sao necessarias 6 voltas do ciclo para produzir uma molecula de glicose.</p>
                     </div>
 
@@ -477,7 +477,7 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
                     <div class="screen-card reward-card">
                         <h3>Ecra 10 - Recompensa</h3>
-                        <img class="screen-visual" src="assets/images/photosynthesis/m3-reward.svg" alt="Recompensa da fase escura">
+                        <img class="screen-visual" src="/static/images/Planta-fotossíntese.png" alt="Recompensa da fase escura">
                         <p>Capitulo completo! +70 XP. Agora conheces definicao, fase clara e fase escura.</p>
                     </div>
                 </div>

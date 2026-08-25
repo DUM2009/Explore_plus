@@ -17,7 +17,7 @@
         </div>
         <nav>
             <a href="/">Início</a>
-            <a href="about.html">Sobre</a>
+            <a href="{% url 'about' %}">Sobre</a>
             <a href="/login/">Login</a>
         </nav>
     </header>
@@ -94,7 +94,7 @@
                     Descobre como a luz vira energia e como o CO₂ se transforma em açúcar.
                 </p>
 
-                <a href="login.html">
+                <a href="{% url 'login' %}">
                     <button>Explorar</button>
                 </a>
             
@@ -114,7 +114,7 @@
         </div>
     </div>
 
-    <a href="login.html" class="view-all-missions">
+    <a href="{% url 'login' %}" class="view-all-missions">
         <button>Ver todas as missões →</button>
     </a>
 
@@ -145,7 +145,7 @@
         <div class="footer-content">
             <section class="footer-legal" aria-labelledby="footer-legal-title">
                 <div class="footer-logo">
-                    <img src="static/images/Logo.png" alt="Logotipo Explore+">
+                    <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
                 </div>
                 <h2 id="footer-legal-title">Questões legais</h2>
                 <ul class="footer-legal-links">
@@ -157,7 +157,7 @@
 
             <section class="footer-support" aria-labelledby="footer-support-title">
                 <h2 id="footer-support-title">Suporte</h2>
-                <a class="footer-instagram-button" href="mailto:exploremore@gmail.com" aria-label="Enviar email para exploremore@gmail.com">
+                <a class="footer-instagram-button" href="mailto:exploremore.pt26@gmail.com" aria-label="Enviar email para exploremore.pt26@gmail.com">
                     <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect width="20" height="16" x="2" y="4" rx="2" />
                         <path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7" />

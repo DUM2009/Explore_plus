@@ -1,20 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fotossíntese | Explore+</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mission-styles.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'mission-styles.css' %}">
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="logo">Explore+</div>
         <nav>
-            <a href="index.html">Início</a>
-            <a href="missions.html">Missões</a>
-            <a href="about.html">Sobre</a>
+            <a href="{% url 'pagina_inicial' %}">Início</a>
+<a href="{% url 'index-missions' %}">Missões</a>
+<a href="{% url 'about' %}">Sobre</a>
+<a href="{% url 'perfil' %}">Perfil</a>
         </nav>
     </header>
 
@@ -25,7 +27,7 @@
         <!-- Progress Section -->
         <div class="mission-header">
             <div class="header-content">
-                <button class="back-button" onclick="window.location.href='missions.html'">&larr; Voltar</button>
+                <a href="{% url 'index-missions' %}" class="back-button">&larr; Voltar</a>
                 <div class="mission-title-section">
                     <h1 id="missionTitle"></h1>
                     <p id="missionDescription"></p>
@@ -73,10 +75,14 @@
     </div>
 
     <!-- Scripts -->
-    <script type="module" src="auth.js"></script>
-    <script src="mission-data-photosynthesis.js"></script>
-    <script src="profile-xp.js"></script>
-    <script src="mission.js"></script>
+    <script>
+        window.exploreCurrentUser = { uid: 'django-{{ request.user.id }}', email: '{{ request.user.email|escapejs }}' };
+        window.exploreProgressSyncUrl = '{% url "salvar-progresso-missao" %}';
+        window.exploreCsrfToken = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'mission-data-photosynthesis.js' %}"></script>
+<script src="{% static 'profile-xp.js' %}"></script>
+<script src="{% static 'mission.js' %}"></script>
     <script>
         // Override startFinalQuiz to redirect to the gold test page instead of in-page quiz
         document.addEventListener('DOMContentLoaded', () => {
@@ -123,6 +129,6 @@
         });
     </script>
 
-<script src="nav-tabs.js" defer></script>
+<script src="{% static 'nav-tabs.js' %}" defer></script>
 </body>
 </html>

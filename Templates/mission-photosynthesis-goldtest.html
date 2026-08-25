@@ -1,11 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teste Ouro — Fotossíntese | Explore+</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mission-styles.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'mission-styles.css' %}">
     <style>
         /* Gold Test specific styles */
         .goldtest-container {
@@ -45,9 +46,10 @@
     <header>
         <div class="logo">Explore+</div>
         <nav>
-            <a href="index.html">Início</a>
-            <a href="missions.html">Missões</a>
-            <a href="about.html">Sobre</a>
+            <a href="{% url 'pagina_inicial' %}">Início</a>
+            <a href="{% url 'index-missions' %}">Missões</a>
+            <a href="{% url 'about' %}">Sobre</a>
+            <a href="{% url 'perfil' %}">Perfil</a>
         </nav>
     </header>
 
@@ -55,10 +57,14 @@
         <div id="goldtest-root"></div>
     </div>
 
-    <script type="module" src="auth.js"></script>
-    <script src="mission-data-photosynthesis.js"></script>
-    <script src="profile-xp.js"></script>
-    <script src="goldtest-photosynthesis.js"></script>
+    <script>
+        window.exploreCurrentUser = { uid: 'django-{{ request.user.id }}', email: '{{ request.user.email|escapejs }}' };
+        window.exploreProgressSyncUrl = '{% url "salvar-progresso-missao" %}';
+        window.exploreCsrfToken = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'mission-data-photosynthesis.js' %}"></script>
+    <script src="{% static 'profile-xp.js' %}"></script>
+    <script src="{% static 'goldtest-photosynthesis.js' %}"></script>
     <script>
         function getMissionProgressKey() {
             const user = window.exploreCurrentUser;

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -6,8 +7,9 @@
     <title>The Code of Life | Explore+</title>
     
     <!-- CSS Externo -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mission-styles.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'mission-styles.css' %}">
+    
 
     <!-- CSS Interno (Movido para dentro do HEAD) -->
     <style>
@@ -28,15 +30,14 @@
     </style>
 </head>
 <body>
-
     <!-- Header -->
     <header>
         <div class="logo">Explore+</div>
         <nav>
-            <a href="index.html">Início</a>
-            <a href="missions.html">Missões</a>
-            <a href="about.html">Sobre</a>
-            <button onclick="window.location.href='perfil.html'">Ir para Perfil</button>
+            <a href="{% url 'pagina_inicial' %}">Início</a>
+            <a href="{% url 'index-missions' %}">Missões</a>
+            <a href="{% url 'about' %}">Sobre</a>
+            <a href="{% url 'perfil' %}">Perfil</a>
         </nav>
     </header>
 
@@ -45,7 +46,9 @@
         <!-- Progress Section -->
         <div class="mission-header">
             <div class="header-content">
-                <button class="back-button" onclick="window.location.href='missions.html'">&larr; Voltar</button>
+                <a href="{% url 'index-missions' %}" class="back-button">
+                    &larr; Voltar
+                </a>
                 <div class="mission-title-section">
                     <h1 id="missionTitle"></h1>
                     <p id="missionDescription"></p>
@@ -92,13 +95,20 @@
             <div class="confetti">🎊</div>
         </div>
     </div>
+     
 
-    <!-- Scripts (Organizados com defer para garantir o carregamento sequencial) -->
-    <script type="module" src="auth.js"></script>
-    <script src="mission-data.js" defer></script>
-    <script src="profile-xp.js" defer></script>
-    <script src="mission.js" defer></script>
+    <!-- Scripts -->
+    <script>
+        window.exploreCurrentUser = { uid: 'django-{{ request.user.id }}', email: '{{ request.user.email|escapejs }}' };
+    </script>
+    <script src="{% static 'mission-data-photosynthesis.js' %}" defer></script>
+    <script>
+        window.exploreProgressSyncUrl = '{% url "salvar-progresso-missao" %}';
+        window.exploreCsrfToken = '{{ csrf_token }}';
+    </script>
+    <script src="{% static 'profile-xp.js' %}" defer></script>
+    <script src="{% static 'mission.js' %}" defer></script>
+    <script src="{% static 'nav-tabs.js' %}" defer></script>
 
-<script src="nav-tabs.js" defer></script>
 </body>
 </html>

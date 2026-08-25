@@ -11,16 +11,6 @@
 
 <body>
 
-  <header>
-    <div class="logo">
-      Explore+
-    </div>
-    <nav>
-      <a href="/">Início</a>
-      <a href="/about/">Sobre</a>
-    </nav>
-  </header>
-
   <section class="login-page">
     <div class="light-login-shell">
       <div class="light-login-card">
@@ -37,19 +27,19 @@
         </div>
 
         <!-- 1. Garante que a abertura do formulário tem exatamente este método e ação -->
-<form class="light-login-form" autocomplete="on" method="POST" action="/login/">
+<form class="light-login-form" autocomplete="on" method="POST" action="{% url 'login' %}">
     {% csrf_token %} 
     
     <!-- 2. Linha para mostrar a mensagem de erro vermelha do Django caso erres a pass -->
     {% if erro %}
-        <p style="color: #dc3545; font-weight: bold; text-align: center; margin-bottom: 15px;">{{ erro }}</p>
+    <p style="color: red; font-weight: bold;">{{ erro }}</p>
     {% endif %}
 
     <div class="form-group">
         <label for="emailLogin">Email ou Utilizador</label>
         <div class="input-shell">
             <!-- 3. Garante que tem o atributo name="email" -->
-            <input id="emailLogin" name="email" type="text" placeholder="Inserir email ou username" required />
+            <input id="emailLogin" name="username" type="text" placeholder="Inserir email ou username" required />
         </div>
     </div>
 
@@ -70,7 +60,7 @@
 
         <p class="bottom-signup">
           Não tens conta?
-          <a href="/signup/">Criar conta</a>
+          <a href="{% url 'signup' %}">Criar conta</a>
         </p>
       </div>
     </div>

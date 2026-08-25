@@ -1,0 +1,131 @@
+/* Explore+ — personalização exclusiva do Django Admin */
+:root {
+    --explore-primary: #5b45d6;
+    --explore-primary-dark: #4331ad;
+    --explore-accent: #18b6a4;
+    --explore-bg: #f4f6fb;
+    --explore-text: #20253a;
+}
+
+body {
+    background: var(--explore-bg);
+    color: var(--explore-text);
+}
+
+#header {
+    background: linear-gradient(135deg, var(--explore-primary), #7965ed);
+    color: #fff;
+    padding: 14px 24px;
+}
+
+#branding h1,
+#branding h1 a:link,
+#branding h1 a:visited {
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: .02em;
+}
+
+#user-tools,
+#user-tools a:link,
+#user-tools a:visited {
+    color: #f2f0ff;
+}
+
+#user-tools a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#nav-sidebar {
+    background: #fff;
+    border-right: 1px solid #e5e8f2;
+}
+
+.module,
+#content-main .app-auth,
+#content-main .app-meu_site {
+    border: 0;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(43, 38, 92, .08);
+    overflow: hidden;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+    background: var(--explore-primary);
+    color: #fff;
+    font-weight: 700;
+}
+
+a:link,
+a:visited {
+    color: var(--explore-primary-dark);
+}
+
+a:hover {
+    color: var(--explore-accent);
+}
+
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input,
+a.button {
+    background: var(--explore-primary);
+    border-radius: 8px;
+    border: 0;
+    font-weight: 700;
+    padding: 10px 16px;
+}
+
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+.submit-row input:hover,
+a.button:hover {
+    background: var(--explore-primary-dark);
+}
+
+.button.default,
+input[type=submit].default {
+    background: var(--explore-accent);
+}
+
+.button.default:hover,
+input[type=submit].default:hover {
+    background: #108d80;
+}
+
+input, textarea, select {
+    border: 1px solid #d9ddec;
+    border-radius: 8px;
+    padding: 9px 10px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--explore-primary);
+    box-shadow: 0 0 0 3px rgba(91, 69, 214, .15);
+    outline: none;
+}
+
+#result_list thead th,
+#result_list thead th a:link,
+#result_list thead th a:visited {
+    background: #eef0ff;
+    color: var(--explore-text);
+}
+
+#result_list tbody tr:hover {
+    background: #f7f7ff;
+}
+
+.messagelist li {
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(43, 38, 92, .06);
+}
+
+#footer {
+    color: #737991;
+}

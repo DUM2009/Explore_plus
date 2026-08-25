@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -8,7 +9,7 @@
 
 <title>Missão | Explore+</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="{% static 'style.css' %}">
 
 </head>
 
@@ -24,10 +25,11 @@ Explore+
 
 <nav>
 
-<a href="index.html">Início</a>
-<a href="missions.html">Missões</a>
-<a href="about.html">Sobre</a>
-<a href="login.html">Login</a>
+<a href="{% url 'pagina_inicial' %}">Início</a>
+<a href="{% url 'index-missions' %}">Missões</a>
+<a href="{% url 'about' %}">Sobre</a>
+<a href="{% url 'perfil' %}">Perfil</a>
+<a href="{% url 'login' %}">Login</a>
 
 </nav>
 
@@ -62,7 +64,7 @@ Porque será que duas pessoas nunca têm exatamente o mesmo ADN?
 </p>
 
 <img
-src="assets/images/dna-double-helix.svg"
+src="{% static 'images/dna-double-helix.svg' %}"
 alt="Dupla hélice do ADN - estrutura da molécula que contém a informação genética">
 
 <p class="content">
@@ -92,8 +94,6 @@ Fazer Quiz
 </div>
 
 </section>
-
-<script type="module" src="auth.js"></script>
 
 <script src="nav-tabs.js" defer></script>
 </body>

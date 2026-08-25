@@ -76,12 +76,16 @@ function sanitizeBadges(rawBadges) {
 
 function sanitizeProfile(rawProfile) {
     const profile = sanitizeObject(rawProfile);
+    const activities = Array.isArray(profile.activities)
+        ? profile.activities.filter((activity) => activity && typeof activity === 'object')
+        : [];
 
     return {
         xp: normalizeXPValue(profile.xp),
         awardedSources: sanitizeObject(profile.awardedSources),
         migrations: sanitizeObject(profile.migrations),
-        badges: sanitizeBadges(profile.badges)
+        badges: sanitizeBadges(profile.badges),
+        activities: activities.slice(-20)
     };
 }
 
@@ -291,7 +295,7 @@ function unlockBadgesForSource(profile, source) {
     };
 }
 
-function awardXP(profile, amount, source) {
+function awardXP(profile, amount, source, activityDetails = {}) {
     const safeProfile = sanitizeProfile(profile);
     const normalizedAmount = normalizeXPValue(amount);
 
@@ -316,7 +320,19 @@ function awardXP(profile, amount, source) {
         xp: safeProfile.xp + normalizedAmount,
         awardedSources: source
             ? { ...safeProfile.awardedSources, [source]: true }
-            : { ...safeProfile.awardedSources }
+            : { ...safeProfile.awardedSources },
+        activities: [
+            ...safeProfile.activities,
+            {
+                source: source || 'atividade',
+                xp: normalizedAmount,
+                type: activityDetails.type || 'mission',
+                percentage: Number.isFinite(activityDetails.percentage)
+                    ? Math.max(0, Math.min(100, Math.round(activityDetails.percentage)))
+                    : null,
+                createdAt: new Date().toISOString()
+            }
+        ].slice(-20)
     };
 
     return {
@@ -350,7 +366,30 @@ function getDefaultStorage(storage) {
 
 function commitProfileUpdate(user, profile, storage) {
     writeProfile(storage, user, profile);
+    syncProfileWithDjango(profile);
     announceProfileUpdate(user, profile);
+}
+
+function syncProfileWithDjango(profile) {
+    if (typeof window === 'undefined' || !window.exploreProgressSyncUrl) {
+        return;
+    }
+
+    fetch(window.exploreProgressSyncUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': window.exploreCsrfToken || ''
+        },
+        credentials: 'same-origin',
+        body: JSON.stringify({
+            missionId: 'profile',
+            progress: { totalSections: 1, completedSections: [] },
+            xp: sanitizeProfile(profile).xp
+        })
+    }).catch((error) => {
+        console.warn('Não foi possível sincronizar o XP com o Django:', error);
+    });
 }
 
 function buildLevelResetProfile(profile) {
@@ -384,10 +423,10 @@ function resetProfileForUser(user, storage) {
     return resetLevelForUser(user, storage);
 }
 
-function awardXPToUser(user, amount, source, storage) {
+function awardXPToUser(user, amount, source, storage, activityDetails = {}) {
     const resolvedStorage = getDefaultStorage(storage);
     const currentProfile = readProfile(resolvedStorage, user);
-    const result = awardXP(currentProfile, amount, source);
+    const result = awardXP(currentProfile, amount, source, activityDetails);
     const badgeResult = unlockBadgesForSource(result.profile, source);
     const nextProfile = badgeResult.profile;
 
@@ -426,8 +465,8 @@ function getCurrentUserProfile(storage) {
     return readProfile(getDefaultStorage(storage), getCurrentUser());
 }
 
-function awardXPToCurrentUser(amount, source, storage) {
-    return awardXPToUser(getCurrentUser(), amount, source, getDefaultStorage(storage));
+function awardXPToCurrentUser(amount, source, storage, activityDetails = {}) {
+    return awardXPToUser(getCurrentUser(), amount, source, getDefaultStorage(storage), activityDetails);
 }
 
 function unlockBadgesForCurrentUser(source, storage) {

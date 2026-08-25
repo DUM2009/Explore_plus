@@ -9,13 +9,15 @@
 <title>O meu Perfil | Explore+</title>
 
 <link rel="stylesheet" href="{% static 'style.css' %}">
-<link rel="stylesheet" href="{% static 'style.css' %}">
-<!-- ◄ ADICIONA ESTA LINHA LOGO ABAIXO DA OUTRA: -->
-<link rel="stylesheet" href="{% static 'mission-styles.css' %}">
 
 </head>
 
 <body>
+
+<script>
+    window.exploreUserId = '{{ request.user.id|escapejs }}';
+    window.exploreUserEmail = '{{ request.user.email|escapejs }}';
+</script>
 
 <div class="profile-header-actions">
 
@@ -51,31 +53,36 @@
 <span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
 <span class="profile-sidebar-label">Perfil</span>
 </a>
-<a href="missions.html">
+<a href="{% url 'index-missions' %}">
 <span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span>
 <span class="profile-sidebar-label">Missões</span>
 </a>
-<a href="Testes.html">
+<a href="/Testes/">
 <span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>
 <span class="profile-sidebar-label">Testes</span>
 </a>
-<a href="dicionario.html" id="dictionaryNavItem">
+<a href="/dicionario/" id="dictionaryNavItem">
 <span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h6v18H6a2 2 0 0 1-2-2z"/><path d="M20 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2z"/></svg></span>
 <span class="profile-sidebar-label">Livro do explorador</span>
 </a>
-<a href="Resumos.html">
+<a href="/Resumos/">
 <span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
 <span class="profile-sidebar-label">Resumos</span>
 </a>
-<a href="Conquistas.html" id="achievementsNavItem">
+<a href="/Conquistas/" id="achievementsNavItem">
 <span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></span>
 <span class="profile-sidebar-label">Conquistas</span>
 </a>
-<a href="about.html">
+<a href="/about/">
 <span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg></span>
 <span class="profile-sidebar-label">Sobre</span>
 </a>
 </nav>
+
+<button class="profile-sidebar-collapse" id="sidebarCollapseToggle" type="button" aria-label="Esconder menu" aria-expanded="true">
+    <span class="profile-sidebar-icon" aria-hidden="true">&larr;</span>
+    <span class="profile-sidebar-label">Esconder</span>
+</button>
 
 <div class="profile-account">
 
@@ -87,12 +94,12 @@
         aria-controls="profileAccountMenu">
 
         <span class="profile-account-avatar" id="profileAccountAvatar">
-            D
+            {{ request.user.username|first|upper }}
         </span>
 
          <span class="profile-account-info">
-            <strong id="profileAccountName">Daniela Matola</strong>
-            <span id="profileAccountEmail">daniela@email.com</span>
+            <strong id="profileAccountName">{{ request.user.username }}</strong>
+            <span id="profileAccountEmail">{{ request.user.email }}</span>
         </span>
 
         <span class="profile-account-arrow" aria-hidden="true">
@@ -125,7 +132,7 @@
             <span>Meu Perfil</span>
         </a>
 
-        <a href="configuracoes.html">
+        <a href="/Configurações/">
             <svg viewBox="0 0 24 24" fill="none"
                  stroke="currentColor"
                  stroke-width="2"
@@ -137,7 +144,7 @@
             <span>Configurações</span>
         </a>
 
-        <button type="button" id="logoutBtn">
+        <a href="{% url 'logout' %}" class="profile-account-logout">
             <svg viewBox="0 0 24 24" fill="none"
                  stroke="currentColor"
                  stroke-width="2"
@@ -148,7 +155,7 @@
                 <path d="M21 19V5a2 2 0 0 0-2-2h-6"/>
             </svg>
             <span>Terminar sessão</span>
-        </button>
+        </a>
 
     </div>
 
@@ -161,38 +168,57 @@
 
     <div class="profile-user-info">
         <div class="profile-avatar-circle">
-            <span>👤</span>
+            <img src="{% static 'images/Mascote Explore+ Biology.png' %}" alt="Avatar do utilizador" class="profile-avatar-image">
         </div>
 
         <div>
             <p class="profile-kicker">O meu perfil</p>
-            <h1 id="nomeAluno">Olá, Aprendiz</h1>
+            <h1 id="nomeAluno">Olá, {{ PROFILE_RANKS }}!</h1> <br>
+            <p class="profile-user-level">Explorador Aprendiz</p>
+        </div>
+        <div class="profile-level-badge" aria-label="Nível atual">
+            <span id="profileLevelBadge">{{ nivel }}</span>
         </div>
     </div>
 
     <div class="profile-xp-info">
     <div class="profile-xp-header">
-        <!-- O Django vai injetar o nível real aqui -->
-        <h2 id="nivelAluno">Nível {{ aluno.nivel }}</h2>
-        
-        <!-- O Django vai injetar os pontos de XP reais aqui -->
-        <strong id="xpAluno">{{ aluno.pontos_xp }} XP</strong>
+        <h2 id="nivelAluno">Nível {{ nivel }}</h2>
+        <strong id="xpAluno">{{ xp }} XP</strong>
     </div>
 
 
         <div class="barra profile-progress-bar">
-            <div class="progresso" id="xpProgressBar"></div>
+            <div class="progresso" id="xpProgressBar" data-progress="{{ xp_progress_percent }}"></div>
         </div>
 
-        <p id="xpNextLevelText">Próximo nível aos {{ aluno.proximo_nivel_xp }} XP</p>
+        <p id="xpNextLevelText">Próximo nível aos {{ proximo_nivel_xp }} XP</p>
+    </div>
+
+    <div class="profile-stat-row">
+        <div class="profile-stat-card">
+            <strong>🔥</strong>
+            <b>5</b>
+            <span>Dias de sequência</span>
+        </div>
+        <div class="profile-stat-card">
+            <strong>🏆</strong>
+            <b id="profileAchievementCount">{{ total_conquistas }}</b>
+            <span>Conquistas</span>
+        </div>
+        <div class="profile-stat-card">
+            <strong>🚩</strong>
+            <b id="profileMissionCount">{{ missoes_completas }}</b>
+            <span>Missões concluídas</span>
+        </div>
     </div>
 
     <div class="profile-biology">
 
         <div class="profile-biology-heading">
             <div>
-                <p class="profile-kicker">Explora</p>
-                <h2>Biologia</h2>
+                <p class="profile-kicker">Continuar a aprender</p>
+                <h2>As tuas missões</h2>
             </div>
 
             <div class="profile-biology-stats">
@@ -207,38 +233,48 @@
             </div>
         </div>
 
+        <article class="profile-learning-card">
+            <div class="profile-learning-art" aria-hidden="true">🌿</div>
+            <div class="profile-learning-copy">
+                <span class="profile-learning-label">Capítulo 1 · Biologia</span>
+                <h3>Fotossíntese</h3>
+                <p>Continua a descobrir como as plantas transformam luz em energia.</p>
+                <div class="profile-learning-progress">
+                    <div class="profile-learning-progress-info">
+                        <span>Progresso da missão</span>
+                        <strong data-mission-progress-value="photosynthesis">0%</strong>
+                    </div>
+                    <div class="profile-subject-bar">
+                        <div data-mission-progress-bar="photosynthesis" data-progress="{{ progresso_missoes.photosynthesis|default:0 }}"></div>
+                    </div>
+                </div>
+                <a class="profile-learning-button" href="{% url 'mission-photosynthesis' %}">
+                    Continuar missão <span aria-hidden="true">→</span>
+                </a>
+            </div>
+        </article>
+
         <div class="profile-subject-progress">
 
             <div class="profile-subject">
-                <div class="profile-subject-info">
-                    <span>Fotossíntese</span>
-                    <strong data-mission-progress-value="photosynthesis">0%</strong>
-                </div>
-
-                <div class="profile-subject-bar">
-                    <div data-mission-progress-bar="photosynthesis" style="width: 0%;"></div>
-                </div>
-            </div>
-
-            <div class="profile-subject">
-                <div class="profile-subject-info">
+                <div class="profile-subject-info profile-extra-progress">
                     <span>Mitose</span>
                     <strong data-mission-progress-value="mitosis">0%</strong>
                 </div>
 
                 <div class="profile-subject-bar">
-                    <div data-mission-progress-bar="mitosis" style="width: 0%;"></div>
+                    <div data-mission-progress-bar="mitosis" data-progress="{{ progresso_missoes.mitosis|default:0 }}"></div>
                 </div>
             </div>
 
             <div class="profile-subject">
-                <div class="profile-subject-info">
+                <div class="profile-subject-info profile-extra-progress">
                     <span>Meiose</span>
                     <strong data-mission-progress-value="meiosis">0%</strong>
                 </div>
 
                 <div class="profile-subject-bar">
-                    <div data-mission-progress-bar="meiosis" style="width: 0%;"></div>
+                    <div data-mission-progress-bar="meiosis" data-progress="{{ progresso_missoes.meiosis|default:0 }}"></div>
                 </div>
             </div>
 
@@ -252,45 +288,16 @@
 
     <div class="profile-section-title">
         <div>
-            <p class="profile-kicker">As tuas conquistas</p>
-            <h2>Conquistas recentes</h2>
+            <p class="profile-kicker">O teu percurso</p>
+            <h2>Atividade recente</h2>
         </div>
 
-        <a href="Conquistas.html" class="profile-see-all">
-            Ver todas
+        <a href="{% url 'Conquistas' %}" class="profile-see-all">
+            Ver conquistas
         </a>
     </div>
 
-    <div class="recent-achievements-grid">
-
-        <div class="recent-achievement">
-            <div class="recent-achievement-icon">🌱</div>
-
-            <div>
-                <h3>Primeira missão</h3>
-                <p>Completaste a tua primeira missão.</p>
-            </div>
-        </div>
-
-        <div class="recent-achievement">
-            <div class="recent-achievement-icon">🔬</div>
-
-            <div>
-                <h3>Pequeno cientista</h3>
-                <p>Começaste a explorar Biologia.</p>
-            </div>
-        </div>
-
-        <div class="recent-achievement">
-            <div class="recent-achievement-icon">🏆</div>
-
-            <div>
-                <h3>Primeiro passo</h3>
-                <p>Ganhaste os teus primeiros XP.</p>
-            </div>
-        </div>
-
-    </div>
+    <div class="recent-achievements-grid" id="recentActivityList"></div>
 
 </section>
 
@@ -310,7 +317,7 @@
 
             <div class="account-summary-item">
                 <span>Missões completas</span>
-                <strong id="summaryMissions">0</strong>
+                <strong id="summaryMissions">{{ missoes_completas }}</strong>
             </div>
 
             <div class="account-summary-item">
@@ -320,7 +327,7 @@
 
             <div class="account-summary-item">
                 <span>XP total</span>
-                <strong id="summaryXP">0 XP</strong>
+                <strong id="summaryXP">{{ xp }} XP</strong>
             </div>
 
         </div>
@@ -340,23 +347,20 @@
 
         <div class="quick-actions-list">
 
-            <button type="button"
-                    onclick="window.location.href='missions.html'">
+            <a class="profile-action-link" href="{% url 'index-missions' %}">
                 <span>🚀</span>
                 Continuar a aprender
-            </button>
+            </a>
 
-            <button type="button"
-                    onclick="window.location.href='Conquistas.html'">
+            <a class="profile-action-link" href="{% url 'Conquistas' %}">
                 <span>🏆</span>
                 Ver conquistas
-            </button>
+            </a>
 
-            <button type="button"
-                    onclick="window.location.href='Resumos.html'">
+            <a class="profile-action-link" href="{% url 'Resumos' %}">
                 <span>📚</span>
                 Ver resumos
-            </button>
+            </a>
 
         </div>
 
@@ -365,6 +369,8 @@
 </div>
 
 </div>
+<script src="{% static 'profile-django.js' %}" defer></script>
+
 </body>
 
 </html>

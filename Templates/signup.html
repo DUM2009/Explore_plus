@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Criar conta | Explore+</title>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+Explore+
+</div>
+
+<nav>
+
+<a href="{% url 'pagina_inicial' %}">Início</a>
+
+<a href="{% url 'index-missions' %}">Missões</a>
+
+<a href="{% url 'about' %}">Sobre</a>
+
+</nav>
+
+</header>
+
+
+<section class="login-page">
+
+<div class="login-box">
+
+<h1>
+Criar conta
+</h1>
+
+<p>
+Começa a tua aventura científica.
+</p>
+
+
+<form method="post" action="{% url 'signup' %}" class="signup-form">
+{% csrf_token %}
+{% if erro %}<p class="form-error">{{ erro }}</p>{% endif %}
+
+<input id="nome" name="username" type="text" placeholder="Nome de utilizador" required>
+
+
+<input id="email" name="email" type="email" placeholder="Email" required>
+
+
+<div class="password-container">
+
+<input id="password" name="password" type="password" placeholder="Criar palavra-passe" required>
+
+<span id="olhoPassword" class="olho">👁</span>
+
+</div>
+
+
+
+
+<div class="password-container">
+
+<input id="confirmarPassword" name="confirmarPassword" type="password" placeholder="Confirmar palavra-passe" required>
+
+<span id="olhoConfirmar" class="olho">👁</span>
+
+</div>
+
+
+<button id="criarContaBtn" type="submit">
+Criar conta
+</button>
+
+</form>
+
+
+<p>
+
+Já tens conta?
+
+<a href="{% url 'login' %}">
+Entrar
+</a>
+
+</p>
+
+
+</div>
+
+</section>
+</body>
+
+</html>
