@@ -4325,3 +4325,703 @@ html.dark-mode .account-actions #logoutBtn {
     .chapter-icon { width: 42px; height: 42px; font-size: 19px; }
     .chapter-state { display: none; }
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #17213b;
+    background: #f8faf7;
+}
+
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar {
+    height: 78px;
+    background: white;
+    border-bottom: 1px solid #edf0ed;
+
+    display: flex;
+    align-items: center;
+    padding: 0 38px;
+
+    gap: 50px;
+}
+
+
+.logo {
+    font-size: 29px;
+    font-weight: 800;
+    color: #17213b;
+}
+
+.logo span {
+    color: #279447;
+}
+
+
+.topbar nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    flex: 1;
+    justify-content: center;
+}
+
+
+.topbar nav a {
+    text-decoration: none;
+    color: #17213b;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    height: 78px;
+    position: relative;
+}
+
+
+.topbar nav a.active {
+    color: #279447;
+}
+
+
+.topbar nav a.active::after {
+    content: "";
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 3px;
+    background: #279447;
+}
+
+
+.user-area {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+.xp {
+    color: #633cf0;
+    font-weight: 700;
+}
+
+
+.user-area img {
+    width: 42px;
+    height: 42px;
+
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+
+/* =========================
+   PÁGINA
+========================= */
+
+.mission-page {
+    max-width: 1450px;
+    margin: auto;
+    padding: 28px 38px 40px;
+}
+
+
+.breadcrumb {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    font-size: 14px;
+    margin-bottom: 28px;
+
+    color: #6e7481;
+}
+
+
+.breadcrumb span:first-child {
+    color: #249348;
+    font-weight: 600;
+}
+
+
+.breadcrumb strong {
+    color: #17213b;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.mission-layout {
+    display: grid;
+
+    grid-template-columns:
+        270px
+        minmax(500px, 1fr)
+        330px;
+
+    gap: 32px;
+    align-items: start;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.mission-menu {
+    background: white;
+
+    border: 1px solid #e9eee9;
+    border-radius: 20px;
+
+    padding: 18px;
+}
+
+
+.mission-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px;
+
+    border-radius: 12px;
+    background: #f7faf6;
+
+    margin-bottom: 20px;
+}
+
+
+.mission-step {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    padding: 7px 5px;
+}
+
+
+.step-icon {
+    width: 37px;
+    height: 37px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef1ef;
+
+    color: #858b87;
+    font-weight: bold;
+
+    flex-shrink: 0;
+}
+
+
+.mission-step.completed .step-icon {
+    background: #2eab59;
+    color: white;
+}
+
+
+.mission-step.current .step-icon {
+    background: #dff4e5;
+    color: #259448;
+
+    border: 2px solid #2eab59;
+}
+
+
+.mission-step.current strong {
+    color: #259448;
+}
+
+
+.mission-step strong {
+    display: block;
+    font-size: 14px;
+}
+
+
+.mission-step small {
+    display: block;
+    color: #8a9098;
+    margin-top: 3px;
+    font-size: 12px;
+}
+
+
+.mission-line {
+    height: 17px;
+    width: 2px;
+
+    margin-left: 22px;
+
+    background: #e3e8e4;
+}
+
+
+.progress-box {
+    margin-top: 25px;
+
+    background: #f7faf6;
+
+    border-radius: 15px;
+    padding: 17px;
+}
+
+
+.progress-bar {
+    height: 8px;
+
+    background: #dfe9e1;
+    border-radius: 20px;
+
+    margin: 12px 0;
+    overflow: hidden;
+}
+
+
+.progress-bar div {
+    width: 33%;
+    height: 100%;
+
+    background: #299a4d;
+    border-radius: inherit;
+}
+
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 12px;
+    color: #747b76;
+}
+
+
+/* =========================
+   LIÇÃO
+========================= */
+
+.lesson-card {
+    background: white;
+
+    border: 1px solid #e9eee9;
+    border-radius: 25px;
+
+    padding: 32px;
+
+    box-shadow:
+        0 8px 30px rgba(25, 50, 35, 0.04);
+}
+
+
+.lesson-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+.lesson-number {
+    background: #2c9f50;
+    color: white;
+
+    border-radius: 30px;
+
+    padding: 10px 17px;
+
+    font-weight: 700;
+}
+
+
+.lesson-header h1 {
+    margin: 0;
+    font-size: 31px;
+}
+
+
+.title-line {
+    width: 38px;
+    height: 3px;
+
+    margin-top: 8px;
+
+    background: #2c9f50;
+}
+
+
+/* =========================
+   DESTAQUE
+========================= */
+
+.highlight-box {
+    background: #f2f8ed;
+
+    border: 1px solid #dcebd2;
+
+    border-radius: 17px;
+
+    padding: 22px;
+
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+
+    margin-bottom: 25px;
+}
+
+
+.sun-icon {
+    font-size: 35px;
+}
+
+
+.highlight-box p {
+    margin: 0 0 8px;
+
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+
+.highlight-box span {
+    color: #249448;
+    font-weight: 700;
+}
+
+
+.lesson-text {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+.lesson-text strong {
+    color: #249448;
+}
+
+
+/* =========================
+   RESUMO
+========================= */
+
+.summary {
+    border: 1px solid #e9eee9;
+
+    border-radius: 17px;
+
+    padding: 20px;
+
+    margin-top: 25px;
+}
+
+
+.summary h3 {
+    margin-top: 0;
+
+    color: #249448;
+}
+
+
+.process {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    text-align: center;
+}
+
+
+.process div {
+    flex: 1;
+}
+
+
+.process span {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 7px;
+}
+
+
+.process strong {
+    display: block;
+    font-size: 11px;
+}
+
+
+.process small {
+    display: block;
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+}
+
+
+.process > b {
+    color: #9ca3a0;
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+.lesson-actions {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 25px;
+}
+
+
+.lesson-actions button {
+    border: none;
+
+    border-radius: 13px;
+
+    padding: 14px 21px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.listen-button {
+    background: white;
+
+    border: 1px solid #e3e7e4 !important;
+
+    color: #29944b;
+}
+
+
+.continue-button {
+    background: #299a4d;
+    color: white;
+
+    min-width: 180px;
+}
+
+
+/* =========================
+   MASCOTE
+========================= */
+
+.mascot-area {
+    position: relative;
+}
+
+
+.speech {
+    position: relative;
+
+    background: white;
+
+    border: 1px solid #e9eee9;
+
+    border-radius: 22px;
+
+    padding: 23px;
+
+    box-shadow:
+        0 8px 30px rgba(25, 50, 35, 0.05);
+
+    z-index: 2;
+}
+
+
+.speech::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: -18px;
+    left: 65px;
+
+    width: 35px;
+    height: 35px;
+
+    background: white;
+
+    transform: rotate(45deg);
+
+    border-right: 1px solid #e9eee9;
+    border-bottom: 1px solid #e9eee9;
+}
+
+
+.speech strong {
+    font-size: 17px;
+}
+
+
+.speech p {
+    line-height: 1.6;
+}
+
+
+.mascot-background {
+    min-height: 430px;
+
+    margin-top: 0;
+
+    border-radius: 0 0 35px 35px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f8fbf4,
+            #e4f1d8
+        );
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+.mascot {
+    width: 270px;
+    max-height: 390px;
+
+    object-fit: contain;
+
+    position: relative;
+    z-index: 2;
+
+    transition: transform .3s ease;
+}
+
+
+.mascot:hover {
+    transform: translateY(-8px);
+}
+
+
+/* =========================
+   CURIOSIDADE
+========================= */
+
+.fact {
+    margin-top: 25px;
+
+    background: #fffaf0;
+
+    border: 1px solid #f3e4bc;
+
+    border-radius: 17px;
+
+    padding: 17px 25px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+.fact .star {
+    color: #e8aa24;
+    font-size: 25px;
+}
+
+
+.fact strong {
+    color: #76551b;
+}
+
+
+.fact p {
+    margin: 0;
+    color: #655f51;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 1100px) {
+
+    .mission-layout {
+        grid-template-columns: 220px 1fr;
+    }
+
+    .mascot-area {
+        grid-column: 2;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .topbar {
+        padding: 0 18px;
+    }
+
+    .topbar nav {
+        display: none;
+    }
+
+    .mission-page {
+        padding: 20px 15px;
+    }
+
+    .mission-layout {
+        display: block;
+    }
+
+    .mission-menu {
+        margin-bottom: 20px;
+    }
+
+    .lesson-card {
+        padding: 22px;
+    }
+
+    .mascot-area {
+        margin-top: 25px;
+    }
+
+    .process {
+        flex-wrap: wrap;
+    }
+
+    .process > b {
+        display: none;
+    }
+
+}
