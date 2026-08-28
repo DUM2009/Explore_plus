@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fotossíntese | Explore+</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <link rel="stylesheet" href="{% static 'mission-styles.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
+    <link rel="stylesheet" href="{% static 'mission-styles.css' %}?v={% now 'U' %}">
 </head>
 <body>
     <!-- Header -->
@@ -24,7 +24,7 @@
     <div class="mission-container">
         <div id="missionNotice" class="locked-message" style="display:none; margin-bottom:16px;"></div>
 
-        <!-- Progress Section -->
+        <!-- Mission Header -->
         <div class="mission-header">
             <div class="header-content">
                 <a href="{% url 'index-missions' %}" class="back-button">&larr; Voltar</a>
@@ -33,30 +33,21 @@
                     <p id="missionDescription"></p>
                 </div>
             </div>
-
-            <!-- Progress Bar -->
-            <div class="progress-section">
-                <div class="progress-info">
-                    <span class="progress-label">Progresso</span>
-                    <span class="progress-percent" id="progressPercent">0%</span>
-                </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="progressBar"></div>
-                </div>
-                <div class="section-counter">
-                    <span id="sectionCounter">0/3 Secções</span>
-                </div>
-            </div>
         </div>
 
         <!-- Content Area -->
-        <div class="mission-content">
-            <!-- Sections Container -->
-            <div class="sections-wrapper" id="sectionsWrapper"></div>
-           
-</div>
+        <div class="mission-layout">
+            <aside class="mission-sidebar" id="missionSidebar"></aside>
 
+            <div class="mission-content">
+                <!-- Sections Container -->
+                <div class="sections-wrapper" id="sectionsWrapper"></div>
+            </div>
+
+            <aside class="mascot-panel" id="mascotPanel"></aside>
         </div>
+
+        <div class="mission-fact-banner" id="missionFactBanner"></div>
     </div>
 
     <!-- XP Toast Notification -->
@@ -79,10 +70,12 @@
         window.exploreCurrentUser = { uid: 'django-{{ request.user.id }}', email: '{{ request.user.email|escapejs }}' };
         window.exploreProgressSyncUrl = '{% url "salvar-progresso-missao" %}';
         window.exploreCsrfToken = '{{ csrf_token }}';
+        window.exploreMascotImageUrl = '{% static "images/Mascote Explore+ Geology.png" %}';
+        window.exploreMissionsIndexUrl = '{% url "index-missions" %}';
     </script>
-    <script src="{% static 'mission-data-photosynthesis.js' %}"></script>
-<script src="{% static 'profile-xp.js' %}"></script>
-<script src="{% static 'mission.js' %}"></script>
+    <script src="{% static 'mission-data-photosynthesis.js' %}?v={% now 'U' %}"></script>
+<script src="{% static 'profile-xp.js' %}?v={% now 'U' %}"></script>
+<script src="{% static 'mission.js' %}?v={% now 'U' %}"></script>
     <script>
         // Override startFinalQuiz to redirect to the gold test page instead of in-page quiz
         document.addEventListener('DOMContentLoaded', () => {
@@ -91,7 +84,7 @@
                 const notice = document.getElementById('missionNotice');
                 if (notice) {
                     notice.style.display = 'block';
-                    notice.textContent = '🔒 Termina as 3 missões do capítulo para desbloquear o Teste de Ouro.';
+                    notice.textContent = '🔒 Termina as 6 etapas da missão para desbloquear o Teste de Ouro.';
                 }
             }
 

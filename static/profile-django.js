@@ -15,6 +15,7 @@ const xpProgressBar = document.getElementById('xpProgressBar');
 const xpNextLevelText = document.getElementById('xpNextLevelText');
 const summaryXP = document.getElementById('summaryXP');
 const recentActivityList = document.getElementById('recentActivityList');
+const profileStreakCount = document.getElementById('profileStreakCount');
 
 function escapeActivityText(value) {
     return String(value || '').replace(/[&<>'"]/g, (character) => ({
@@ -29,6 +30,12 @@ function escapeActivityText(value) {
 function getActivityMissionName(source) {
     const normalizedSource = String(source || '').toLowerCase();
     const missionNames = {
+        'introducao': 'Introdução',
+        'componentes-da-planta': 'Componentes da planta',
+        'fase-clara': 'Fase clara',
+        'fase-escura': 'Fase escura (ciclo de Calvin)',
+        'importancia': 'Importância da fotossíntese',
+        'desafio-final': 'Desafio final',
         'luz-vira-energia': 'Definição e estruturas da fotossíntese',
         'do-ar-ao-açúcar': 'Fase clara',
         'liga-os-pontos': 'Fase escura (ciclo de Calvin)'
@@ -68,6 +75,12 @@ function getStoredMissionActivities() {
             if (xp <= 0) return null;
 
             const sectionNames = {
+                'introducao': 'Introdução',
+                'componentes-da-planta': 'Componentes da planta',
+                'fase-clara': 'Fase clara',
+                'fase-escura': 'Fase escura (ciclo de Calvin)',
+                'importancia': 'Importância da fotossíntese',
+                'desafio-final': 'Desafio final',
                 'luz-vira-energia': 'Definição e estruturas da fotossíntese',
                 'do-ar-ao-açúcar': 'Fase clara',
                 'liga-os-pontos': 'Fase escura (ciclo de Calvin)'
@@ -201,6 +214,9 @@ if (storedProfile) {
     if (nivelAluno) nivelAluno.textContent = `Nível ${level}`;
     if (xpProgressBar) xpProgressBar.style.width = `${progressPercent}%`;
     if (xpNextLevelText) xpNextLevelText.textContent = `Próximo nível aos ${(level + 1) * 100} XP`;
+
+    const streakDays = Math.max(0, Number(storedProfile.streak?.current) || 0);
+    if (profileStreakCount) profileStreakCount.textContent = streakDays;
 }
 
 function getMissionProgressPercent(missionId) {

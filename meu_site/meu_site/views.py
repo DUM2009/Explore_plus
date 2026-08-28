@@ -46,9 +46,9 @@ def pagina_perfil(request):
 
 
 def pagina_login(request):
-    # Se o utilizador já estiver autenticado, vai para a página inicial ou perfil
+    # Se o utilizador já estiver autenticado, vai direto para o perfil
     if request.user.is_authenticated:
-        return redirect('pagina_inicial')  # Ajuste para o 'name' da sua rota inicial
+        return redirect('perfil')
 
     erro = None
 

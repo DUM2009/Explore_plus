@@ -5,7 +5,7 @@
 
 /* Mission Container */
 .mission-container {
-    max-width: 1000px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 40px 20px;
     min-height: 100vh;
@@ -114,44 +114,13 @@
 
 /* Mission Content */
 .mission-content {
-    margin-top: 40px;
+    margin-top: 0;
 }
 
 .sections-wrapper {
     display: flex;
     flex-direction: column;
     gap: 25px;
-}
-
-.chapter-mission-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.chapter-mission-btn {
-    border: 1px solid #cde7d9;
-    background: #eef7f3;
-    color: #215a3f;
-    border-radius: 999px;
-    padding: 8px 14px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.chapter-mission-btn.active {
-    background: #1f8a5b;
-    color: #ffffff;
-    border-color: #1f8a5b;
-}
-
-.chapter-mission-btn.done {
-    box-shadow: inset 0 0 0 1px rgba(31, 138, 91, 0.2);
-}
-
-.chapter-mission-btn:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
 }
 
 .chapter-end-actions {
@@ -215,12 +184,12 @@ body.quiz-popout-open {
     padding: 0 18px 18px;
 }
 
-/* Section Styling */
+/* Section Styling — no more opaque card; the section reads as part of
+   the continuous arbustos scene behind it. */
 .section {
-    background: white;
+    background: transparent;
     border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: none;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     opacity: 1;
 }
@@ -230,60 +199,83 @@ body.quiz-popout-open {
     pointer-events: none;
 }
 
-.section.completed {
-    border-left: 5px solid #37d67a;
-}
-
 .section-header {
-    background: linear-gradient(135deg, #f5f9f7, #ffffff);
-    padding: 25px;
+    background: transparent;
+    padding: 25px 25px 0 8px;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     align-items: flex-start;
-    border-bottom: 1px solid #eee;
+    justify-content: space-between;
+    border-bottom: none;
 }
 
-.section-number-badge {
-    display: flex;
+/* Shown only for the first screen the student sees in a section — see
+   updateSectionScreen() in mission.js. */
+.section-header--hidden {
+    display: none;
+}
+
+/* Wavy divider under the section title, echoing the reference sketch's
+   hand-drawn line between the mascot dialogue and the content below. */
+.section-header::after {
+    content: "";
+    flex: 0 0 100%;
+    height: 14px;
+    margin-top: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14' viewBox='0 0 40 14'%3E%3Cpath d='M0 7 C10 0 30 14 40 7' fill='none' stroke='%237fb377' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 40px 14px;
+    opacity: 0.55;
+}
+
+.mission-view-btn {
+    flex: 0 0 auto;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #1f8a5b, #37d67a);
-    border-radius: 50%;
-    color: white;
-    font-weight: bold;
-    font-size: 1.2rem;
-    position: relative;
-    flex-shrink: 0;
+    gap: 6px;
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    color: #215a3f;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    white-space: nowrap;
 }
 
-.section-check {
-    position: absolute;
-    font-size: 1.5rem;
-    animation: popIn 0.4s ease;
-}
-
-@keyframes popIn {
-    0% {
-        transform: scale(0);
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-    }
+.mission-view-btn:hover {
+    border-color: #1f8a5b;
+    background: #f4fbf7;
 }
 
 .section-info {
     flex: 1;
 }
 
-.section-info h2 {
+.section-title-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.mission-step-counter-badge {
+    display: inline-block;
+    flex-shrink: 0;
+    background: #1f8a5b;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.section-title-large {
     margin: 0 0 10px 0;
-    color: #333;
-    font-size: 1.5rem;
+    color: #215a3f;
+    font-size: 2.1rem;
 }
 
 .section-meta {
@@ -315,7 +307,9 @@ body.quiz-popout-open {
     color: #155724;
 }
 
-/* Section Body */
+/* Section Body — transparent now: the "arbustos" backdrop lives on
+   .mission-layout so it spans the mascot column and the content column
+   as one continuous scene instead of a patch behind just the text. */
 .section-body {
     padding: 30px;
 }
@@ -337,19 +331,25 @@ body.quiz-popout-open {
     display: none;
 }
 
+/* No more card box — content sits directly on the shared arbustos scene
+   from .mission-layout. Sub-elements (.info-card, .did-you-know, etc.)
+   keep their own light backing, so they stay legible on their own. */
 .screen-card {
-    background: #ffffff;
-    border: 1px solid #e8efe9;
-    border-radius: 12px;
-    padding: 20px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
     margin: 20px 0;
-    box-shadow: 0 2px 8px rgba(31, 138, 91, 0.06);
+    box-shadow: none;
 }
 
 .card-audio-controls {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
 }
 
 .card-audio-btn {
@@ -935,32 +935,41 @@ object.card-visual {
 .section.quiz-only-mode .section-content {
     display: none;
 }
+
+.section.quiz-only-mode .screen-nav {
+    display: none;
+}
+
 .screen-nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 10px;
     margin: 8px 0 20px;
 }
 
 
-.screen-nav-status {
-    color: #456554;
-    font-size: 0.95rem;
-    font-weight: 600;
-}
 
 
 .screen-nav-btn {
     background: #eef7f3;
     color: #1f8a5b;
     border: 1px solid #cde7d9;
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-weight: 600;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: 700;
     cursor: pointer;
 }
 
+.screen-nav-btn[data-nav-action="next"] {
+    background: #1f8a5b;
+    color: #ffffff;
+    border-color: #1f8a5b;
+}
+
+.screen-nav-btn[data-nav-action="next"]:hover {
+    background: #166c45;
+}
 
 .screen-nav-btn:disabled {
     opacity: 0.5;
@@ -1784,12 +1793,6 @@ object.card-visual {
         align-items: center;
     }
 
-    .section-number-badge {
-        width: 45px;
-        height: 45px;
-        font-size: 1rem;
-    }
-
     .point-grid, .organisms-grid, .type-grid, .fact-grid, .app-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1826,11 +1829,6 @@ object.card-visual {
 
     .screen-nav-btn {
         min-width: 120px;
-    }
-
-    .screen-page-btn {
-        width: 38px;
-        height: 38px;
     }
 }
 
@@ -1878,24 +1876,9 @@ object.card-visual {
         gap: 8px;
     }
 
-    .screen-nav-status {
-        width: 100%;
-        text-align: center;
-    }
-
     .screen-nav-btn {
         flex: 1;
         min-width: 0;
-    }
-
-    .screen-page-nav {
-        gap: 6px;
-    }
-
-    .screen-page-btn {
-        width: 34px;
-        height: 34px;
-        font-size: 0.9rem;
     }
 
     .quiz-option,
@@ -1910,6 +1893,751 @@ object.card-visual {
 .neutral-feedback.show {
     display: block;
 }
+}
+
+/* ============================================================
+   Mascot guide, sidebar stepper & 3-column mission layout
+   ============================================================ */
+
+.mission-layout {
+    --mission-sidebar-w: 280px;
+    --mission-mascot-w: 260px;
+    display: grid;
+    /* Sidebar, content, then the mascot last — mascot reads to the
+       right of the lesson content. */
+    grid-template-columns: var(--mission-sidebar-w) minmax(0, 1fr) var(--mission-mascot-w);
+    gap: 28px;
+    /* A fixed, deliberately compact height — not viewport-relative, not
+       driven by any single column's content (that turned out unreliable:
+       grid auto-row sizing still counted the full content height of
+       overflow:auto items, not just their visible portion). Sidebar and
+       content are both explicitly capped to 100% of this and scroll on
+       their own; the mascot is short enough to just fit inside it. */
+    align-items: stretch;
+    height: 580px;
+    padding: 10px 14px;
+    border-radius: 24px;
+    background-color: #ffffff;
+}
+
+.mission-content {
+    height: 100%;
+    overflow-y: auto;
+    background-color: #ffffff;
+}
+
+/* Sidebar */
+.mission-sidebar {
+    position: relative;
+}
+
+.mission-sidebar-inner {
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* The percurso + progresso panels stay within the same frame as the
+       content column (same top and bottom edge) — they scroll on their
+       own if they don't fit, rather than running past it. Scrollbar
+       hidden the same way as .mission-content's mascot column. */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.mission-sidebar-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.mission-sidebar-toggle {
+    position: absolute;
+    /* Fixed px offset from the sidebar's own top edge (not 50%/50vh) so the
+       handle's position depends neither on the sidebar's content height
+       (which collapses to ~0 when .mission-sidebar-inner is hidden) nor on
+       the viewport size — it stays pinned near the middle of the step list. */
+    top: 230px;
+    right: -14px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    color: #1f8a5b;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mission-sidebar-toggle:hover {
+    border-color: #1f8a5b;
+}
+
+.mission-sidebar-toggle svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.mission-sidebar-toggle--expanded svg {
+    transform: rotate(180deg);
+}
+
+.mission-layout--sidebar-collapsed .mission-sidebar-inner {
+    display: none;
+}
+
+.mission-layout--sidebar-collapsed {
+    --mission-sidebar-w: 20px;
+}
+
+.mission-layout--no-mascot {
+    --mission-mascot-w: 0px;
+}
+
+.mission-layout--no-mascot .mascot-panel {
+    display: none;
+}
+
+.mission-sidebar-card,
+.mission-progress-card {
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.mission-sidebar-title {
+    margin: 0 0 14px;
+    color: #1f8a5b;
+    font-size: 1.05rem;
+}
+
+.mission-stepper {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mission-step-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.mission-step-btn:hover:not(:disabled) {
+    background: #f4fbf7;
+}
+
+.mission-step--active .mission-step-btn {
+    background: #eef7f3;
+    border-color: #cde7d9;
+}
+
+.mission-step--locked .mission-step-btn {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.mission-step-icon {
+    position: relative;
+    flex: 0 0 auto;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #f4fbf7;
+    color: var(--mission-step-accent, #1f8a5b);
+    font-size: 1.05rem;
+    border: 1px solid var(--mission-step-accent, #cde7d9);
+}
+
+.mission-step:not(:last-child) .mission-step-icon::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 22px;
+    background: #cde7d9;
+}
+
+.mission-step--done:not(:last-child) .mission-step-icon::after {
+    background: #1f8a5b;
+}
+
+.mission-step--done .mission-step-icon {
+    background: #1f8a5b;
+    color: #ffffff;
+    border-color: #1f8a5b;
+}
+
+.mission-step--active .mission-step-icon {
+    box-shadow: 0 0 0 3px rgba(31, 138, 91, 0.18);
+}
+
+.mission-step-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.mission-step-title {
+    font-weight: 700;
+    color: #215a3f;
+    font-size: 0.95rem;
+}
+
+.mission-step-subtitle {
+    color: #6b8579;
+    font-size: 0.8rem;
+}
+
+.mission-progress-heading {
+    margin: 0 0 10px;
+    font-weight: 700;
+    color: #215a3f;
+    font-size: 0.9rem;
+}
+
+.mission-progress-bar-track {
+    width: 100%;
+    height: 10px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.mission-progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1f8a5b, #37d67a);
+    border-radius: 10px;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mission-progress-percent {
+    margin: 0;
+    color: #1f8a5b;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.mission-progress-label {
+    margin: 2px 0 0;
+    color: #6b8579;
+    font-size: 0.85rem;
+}
+
+/* Mascot panel */
+.mascot-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 95px;
+}
+
+.mascot-figure {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    display: block;
+    margin-top: -8px;
+}
+
+.mascot-help-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #1f8a5b;
+    background: #1f8a5b;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 8px 18px 8px 8px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.mascot-help-btn:hover {
+    background: #166c45;
+}
+
+.mascot-help-btn-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #ffffff;
+}
+
+.section-header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex: 0 0 auto;
+}
+
+.mission-tip-card {
+    width: 100%;
+    background: #f4fbf7;
+    border: 1px solid #cde7d9;
+    border-radius: 14px;
+    padding: 14px 16px;
+}
+
+.mission-tip-card strong {
+    display: block;
+    color: #215a3f;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.mission-tip-card p {
+    margin: 0;
+    color: #244a37;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+@keyframes mascotSpeechPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.mascot-speech--pulse {
+    animation: mascotSpeechPulse 0.35s ease;
+}
+
+.mascot-speech {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    position: relative;
+}
+
+.mascot-speech::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    border-right: 1px solid #cde7d9;
+    border-bottom: 1px solid #cde7d9;
+}
+
+.mascot-speech-text {
+    margin: 0;
+    color: #244a37;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.mascot-speech-text--alert {
+    font-weight: 700;
+    color: #a15b1f;
+}
+
+.mascot-curiosity-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.mascot-curiosity-btn {
+    border: 1px solid #cde7d9;
+    background: #eef7f3;
+    color: #215a3f;
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.mascot-curiosity-btn--accept {
+    background: #1f8a5b;
+    color: #ffffff;
+    border-color: #1f8a5b;
+}
+
+.mascot-curiosity-btn:hover {
+    filter: brightness(0.97);
+}
+
+.mascot-curiosity-fact {
+    font-style: italic;
+}
+
+.mascot-curiosity-trigger {
+    margin-top: 10px;
+}
+
+.mascot-curiosity-open-btn {
+    background: none;
+    border: 1px dashed #cde7d9;
+    color: #1f8a5b;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.did-you-know.mascot-managed-hidden {
+    display: none;
+}
+
+/* Mascot overlay dialogs (intro / quiz intro) */
+.mascot-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 17, 0.45);
+    display: grid;
+    place-items: center;
+    z-index: 1300;
+    padding: 16px;
+}
+
+.mascot-overlay-card {
+    width: min(420px, 100%);
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 20px 45px rgba(18, 61, 40, 0.22);
+}
+
+.mascot-overlay-figure {
+    width: 110px;
+    height: auto;
+    margin: 0 auto 14px;
+    display: block;
+}
+
+.mascot-overlay-text {
+    margin: 0 0 18px;
+    color: #244a37;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.mascot-overlay-btn {
+    border: 1px solid #1f8a5b;
+    background: #1f8a5b;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.mascot-overlay-btn:hover {
+    background: #166c45;
+}
+
+.mascot-overlay-choice-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mascot-overlay-choice-btn {
+    border: 1px solid #1f8a5b;
+    background: #ffffff;
+    color: #1f8a5b;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.mascot-overlay-choice-btn:hover {
+    background: #eef7f3;
+}
+
+.mascot-overlay-help-btn {
+    margin: 0 auto;
+}
+
+/* Full mission onboarding tutorial (shown from the missions list before
+   entering a mission for the first time) — bigger than the in-mission
+   mascot overlays above. */
+.mission-tutorial-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 25, 17, 0.55);
+    display: grid;
+    place-items: center;
+    z-index: 1500;
+    padding: 20px;
+}
+
+.mission-tutorial-card {
+    width: min(680px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    border-radius: 20px;
+    padding: 32px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    box-shadow: 0 25px 60px rgba(18, 61, 40, 0.28);
+}
+
+.mission-tutorial-figure {
+    flex: 0 0 auto;
+    width: 130px;
+    height: auto;
+}
+
+.mission-tutorial-body h2 {
+    margin: 0 0 14px;
+    color: #1f8a5b;
+}
+
+.mission-tutorial-body p {
+    margin: 0 0 14px;
+    color: #244a37;
+    line-height: 1.6;
+}
+
+.mission-tutorial-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.mission-tutorial-skip {
+    background: none;
+    border: none;
+    color: #6b8579;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.mission-tutorial-start {
+    border: 1px solid #1f8a5b;
+    background: #1f8a5b;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 12px 22px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.mission-tutorial-start:hover {
+    background: #166c45;
+}
+
+@media (max-width: 560px) {
+    .mission-tutorial-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 24px;
+    }
+}
+
+/* Correct-answer popup (per question, lighter than the confetti overlay) */
+.mascot-popup-correct {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translate(-50%, 16px);
+    background: #1f8a5b;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 12px 20px;
+    border-radius: 999px;
+    box-shadow: 0 10px 25px rgba(18, 61, 40, 0.3);
+    z-index: 1400;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.mascot-popup-correct.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* "Em resumo" step diagram */
+.mission-summary-box {
+    margin: 20px 0;
+    padding: 16px;
+    background: #f4fbf7;
+    border: 1px solid #cde7d9;
+    border-radius: 12px;
+}
+
+.mission-summary-heading {
+    margin: 0 0 12px;
+    color: #1f8a5b;
+    font-weight: 700;
+}
+
+.mission-summary-steps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.mission-summary-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 96px;
+    text-align: center;
+}
+
+.mission-summary-step-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    display: grid;
+    place-items: center;
+    font-size: 1.3rem;
+}
+
+.mission-summary-step-label {
+    font-size: 0.75rem;
+    color: #244a37;
+    line-height: 1.3;
+}
+
+.mission-summary-arrow {
+    align-self: center;
+    color: #9dc4b1;
+    font-size: 1.2rem;
+    margin-top: 16px;
+}
+
+/* Intro callout + key terms usable inside section content */
+.mission-intro-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #eef7f3;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
+
+.mission-intro-callout-icon {
+    flex: 0 0 auto;
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.mission-intro-callout-text {
+    color: #244a37;
+    line-height: 1.55;
+}
+
+.mission-intro-callout-text p {
+    margin: 0 0 8px;
+}
+
+.mission-intro-callout-text p:last-child {
+    margin-bottom: 0;
+}
+
+.key-term {
+    color: #1f8a5b;
+    font-weight: 700;
+}
+
+/* "Sabias que?" fact banner */
+.mission-fact-banner {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding: 14px 18px;
+    background: #fff8e6;
+    border: 1px solid #f0dfa8;
+    border-radius: 12px;
+    color: #7a5c14;
+    font-weight: 600;
+}
+
+.mission-fact-banner.show {
+    display: flex;
+}
+
+.mission-fact-banner-icon {
+    font-size: 1.3rem;
+}
+
+@media (max-width: 900px) {
+    .mission-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .mission-content {
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .mission-sidebar,
+    .mission-sidebar-inner {
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .mascot-panel {
+        flex-direction: row;
+        align-items: flex-start;
+        margin-top: 0;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    .mascot-figure {
+        max-width: 96px;
+    }
 }
 
 

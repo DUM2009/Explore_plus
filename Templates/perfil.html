@@ -8,12 +8,14 @@
 
 <title>O meu Perfil | Explore+</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'style.css' %}">
-<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
 
 </head>
 
-<body>
+<body class="shadcn-profile">
 
 <script>
     window.exploreUserId = '{{ request.user.id|escapejs }}';
@@ -50,7 +52,7 @@
 </div>
 
 <nav class="profile-sidebar-nav">
-<a href="/perfil/">
+<a href="/perfil/" class="is-active" aria-current="page">
 <span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
 <span class="profile-sidebar-label">Perfil</span>
 </a>
@@ -199,7 +201,7 @@
     <div class="profile-stat-row">
         <div class="profile-stat-card">
             <strong>🔥</strong>
-            <b>5</b>
+            <b id="profileStreakCount">0</b>
             <span>Dias de sequência</span>
         </div>
         <div class="profile-stat-card">

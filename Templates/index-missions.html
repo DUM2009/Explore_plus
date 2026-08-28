@@ -9,8 +9,8 @@
 
 <title>Missões | Explore+</title>
 
-<link rel="stylesheet" href="{% static 'style.css' %}">
-<link rel="stylesheet" href="{% static 'mission-styles.css' %}">
+<link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
+<link rel="stylesheet" href="{% static 'mission-styles.css' %}?v={% now 'U' %}">
 
 
 </head>
@@ -42,7 +42,7 @@
             <span class="status available">Disponível</span>
             <h2>🌿 Fotossíntese</h2>
             <p>Descobre como a luz vira energia e como o CO₂ se transforma em açúcar.</p>
-            <a href="{% url 'mission-photosynthesis' %}"><button id="photosynthesisCta" type="button">Começar</button></a>
+            <a href="{% url 'mission-photosynthesis' %}" id="photosynthesisCtaLink"><button id="photosynthesisCta" type="button">Começar</button></a>
         </div>
         <div class="mission-card">
             <span class="status available">Disponível</span>
@@ -62,6 +62,7 @@
 
 <script>
 window.exploreCurrentUser = { uid: 'django-{{ request.user.id }}', email: '{{ request.user.email|escapejs }}' };
+window.exploreMascotImageUrl = '{% static "images/Mascote Explore+ Geology.png" %}';
 
 function buildMissionProgressKey(missionId) {
     const user = window.exploreCurrentUser;
@@ -106,6 +107,50 @@ function updatePhotosynthesisCta() {
 
 document.addEventListener('DOMContentLoaded', updatePhotosynthesisCta);
 window.addEventListener('explore:auth-changed', updatePhotosynthesisCta);
+
+function showMissionTutorialOverlay(destinationUrl) {
+    const existing = document.getElementById('missionTutorialOverlay');
+    if (existing) existing.remove();
+
+    const imageUrl = window.exploreMascotImageUrl || '';
+
+    const overlay = document.createElement('div');
+    overlay.id = 'missionTutorialOverlay';
+    overlay.className = 'mission-tutorial-overlay';
+    overlay.innerHTML = `
+        <div class="mission-tutorial-card" role="dialog" aria-modal="true" aria-label="Introdução à missão">
+            ${imageUrl ? `<img class="mission-tutorial-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
+            <div class="mission-tutorial-body">
+                <h2>Olá, aprendiz! 👋</h2>
+                <p>Estás prestes a começar a missão <strong>Fotossíntese</strong>! Ao longo do caminho vais explorar 6 etapas: a introdução, os componentes da planta, a fase clara, a fase escura, a importância da fotossíntese e, no fim, um desafio final para testares tudo o que aprendeste.</p>
+                <p>Em cada etapa vais ler o conteúdo a pouco e pouco, ao teu ritmo. Se tiveres alguma dúvida, é só clicar no botão <strong>Ajuda</strong> junto de mim, que estarei sempre por perto para te dar uma mãozinha.</p>
+                <p>No final de cada etapa há um <strong>pequeno quiz</strong> para consolidares o que aprendeste — e não te preocupes se errares alguma pergunta, eu explico-te de outra forma. 😉</p>
+                <p>Estás pronto para começar esta aventura?</p>
+                <div class="mission-tutorial-actions">
+                    <button type="button" class="mission-tutorial-skip" id="missionTutorialSkip">Saltar tutorial</button>
+                    <button type="button" class="mission-tutorial-start" id="missionTutorialStart">Vamos começar a aventura! →</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    const goToMission = () => {
+        window.location.href = destinationUrl;
+    };
+
+    overlay.querySelector('#missionTutorialStart').addEventListener('click', goToMission);
+    overlay.querySelector('#missionTutorialSkip').addEventListener('click', goToMission);
+
+    document.body.appendChild(overlay);
+}
+
+const photosynthesisCtaLink = document.getElementById('photosynthesisCtaLink');
+if (photosynthesisCtaLink) {
+    photosynthesisCtaLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        showMissionTutorialOverlay(photosynthesisCtaLink.getAttribute('href'));
+    });
+}
 </script>
 
 </body>

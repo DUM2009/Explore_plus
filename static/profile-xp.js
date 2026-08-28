@@ -74,6 +74,18 @@ function sanitizeBadges(rawBadges) {
     return normalizedBadges;
 }
 
+function sanitizeStreak(rawStreak) {
+    const safeStreak = sanitizeObject(rawStreak);
+    const current = Number.isInteger(safeStreak.current) && safeStreak.current >= 0 ? safeStreak.current : 0;
+    const longest = Number.isInteger(safeStreak.longest) && safeStreak.longest >= 0 ? safeStreak.longest : 0;
+
+    return {
+        current,
+        longest: Math.max(longest, current),
+        lastActiveDate: typeof safeStreak.lastActiveDate === 'string' ? safeStreak.lastActiveDate : null
+    };
+}
+
 function sanitizeProfile(rawProfile) {
     const profile = sanitizeObject(rawProfile);
     const activities = Array.isArray(profile.activities)
@@ -85,6 +97,7 @@ function sanitizeProfile(rawProfile) {
         awardedSources: sanitizeObject(profile.awardedSources),
         migrations: sanitizeObject(profile.migrations),
         badges: sanitizeBadges(profile.badges),
+        streak: sanitizeStreak(profile.streak),
         activities: activities.slice(-20)
     };
 }
@@ -130,7 +143,55 @@ function getProfileStats(profile) {
         level,
         nextLevelThreshold: getNextLevelThreshold(safeProfile.xp),
         progressInLevel: getProgressInCurrentLevel(safeProfile.xp),
-        progressPercent: getProgressPercent(safeProfile.xp)
+        progressPercent: getProgressPercent(safeProfile.xp),
+        streak: safeProfile.streak
+    };
+}
+
+function getTodayDateString() {
+    return new Date().toISOString().slice(0, 10);
+}
+
+function daysBetweenDateStrings(dateA, dateB) {
+    const a = new Date(`${dateA}T00:00:00Z`);
+    const b = new Date(`${dateB}T00:00:00Z`);
+    return Math.round((b - a) / 86400000);
+}
+
+/**
+ * Bumps the daily streak at most once per calendar day. A gap of exactly
+ * one day continues the streak; any bigger gap (or no prior date) resets it
+ * to 1. Visiting again the same day is a no-op.
+ */
+function recordActivityStreak(profile) {
+    const safeProfile = sanitizeProfile(profile);
+    const today = getTodayDateString();
+    const { current, lastActiveDate } = safeProfile.streak;
+
+    if (lastActiveDate === today) {
+        return { profile: safeProfile, changed: false };
+    }
+
+    let nextCurrent = 1;
+    if (lastActiveDate) {
+        const diff = daysBetweenDateStrings(lastActiveDate, today);
+        if (diff === 1) {
+            nextCurrent = current + 1;
+        } else if (diff <= 0) {
+            nextCurrent = current || 1;
+        }
+    }
+
+    return {
+        profile: {
+            ...safeProfile,
+            streak: sanitizeStreak({
+                current: nextCurrent,
+                longest: Math.max(safeProfile.streak.longest, nextCurrent),
+                lastActiveDate: today
+            })
+        },
+        changed: true
     };
 }
 
@@ -481,6 +542,22 @@ function resetCurrentUserLevel(storage) {
     return resetLevelForUser(getCurrentUser(), getDefaultStorage(storage));
 }
 
+function recordActivityStreakForUser(user, storage) {
+    const resolvedStorage = getDefaultStorage(storage);
+    const currentProfile = readProfile(resolvedStorage, user);
+    const result = recordActivityStreak(currentProfile);
+
+    if (result.changed) {
+        commitProfileUpdate(user, result.profile, resolvedStorage);
+    }
+
+    return result.profile.streak;
+}
+
+function recordActivityStreakForCurrentUser(storage) {
+    return recordActivityStreakForUser(getCurrentUser(), getDefaultStorage(storage));
+}
+
 function getBadgeCatalog(profile) {
     const safeProfile = sanitizeProfile(profile);
 
@@ -579,6 +656,8 @@ const ProfileXP = {
     unlockBadgesForCurrentUser,
     resetCurrentUserLevel,
     resetCurrentUserProfile,
+    recordActivityStreakForUser,
+    recordActivityStreakForCurrentUser,
     getBadgeCatalog,
     getRankFromLevel,
     getCurrentSubject,

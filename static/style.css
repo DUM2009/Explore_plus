@@ -12,7 +12,12 @@ html{
 body{
     background:linear-gradient(180deg,#eef9f5,#ffffff);
     color:#222;
-    overflow-x:hidden;
+    /* overflow-x:hidden here would silently force overflow-y:auto too,
+       which breaks position:sticky on <header> since body becomes the
+       scrolling container instead of the viewport. overflow-x:clip
+       still stops horizontal scroll without that side effect. */
+    overflow-x:clip;
+    overflow-y:visible;
 }
 
 img,
@@ -24,8 +29,10 @@ svg{
 
 header{
 
-position:sticky;
+position:fixed;
 top:0;
+left:0;
+right:0;
 
 display:flex;
 justify-content:space-between;
@@ -41,6 +48,16 @@ border-bottom:1px solid rgba(0,0,0,.06);
 
 z-index:1000;
 
+}
+
+/* header is now position:fixed (removed from normal flow), so every page
+   needs this top offset to stop its own first section from sliding under
+   it. Scoped to match the breakpoint below (480px) where header switches
+   back to position:relative and needs no compensation. */
+@media (min-width:481px){
+    body{
+        padding-top:90px;
+    }
 }
 
 header .logo img {
@@ -2146,117 +2163,6 @@ background:#27ae60;
   .social-grid {
     grid-template-columns: 1fr;
   }
-}
-
-/* Adaptado de Uiverse.io by gharsh11032000, para <button> com classe .active */
-
-.screen-page-nav {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.screen-page-btn {
-  appearance: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  line-height: 1.6;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 14px;
-  position: relative;
-  background-color: transparent;
-  color: inherit;
-  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.screen-page-btn::after {
-  content: "";
-  position: absolute;
-  bottom: -24px;
-  left: 50%;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #0a3cff;
-  transform: translateX(-50%);
-  transform-origin: 0 0;
-  scale: 0;
-  opacity: 0;
-  z-index: -1;
-  transition: all 0.48s 0.2s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.screen-page-btn::before {
-  content: "";
-  position: absolute;
-  top: -18px;
-  left: 50%;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: #0a3cff;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  opacity: 0;
-  scale: 0;
-  transform-origin: 0 0;
-  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.screen-page-btn:hover {
-  border-color: #0a3cff;
-  color: #0a3cff;
-}
-
-.screen-page-btn.active {
-  border-color: transparent;
-  color: #ffffff;
-  scale: 1.1;
-}
-
-.screen-page-btn.active::after {
-  bottom: -12px;
-  opacity: 1;
-  scale: 1;
-  box-shadow:
-    0rem 6px 13px rgba(10, 60, 255, 0.1),
-    0rem 24px 24px rgba(10, 60, 255, 0.09),
-    0rem 55px 33px rgba(10, 60, 255, 0.05),
-    0rem 97px 39px rgba(10, 60, 255, 0.01),
-    0rem 152px 43px rgba(10, 60, 255, 0);
-}
-
-.screen-page-btn.active::before {
-  opacity: 1;
-  scale: 1;
-  top: 50%;
-  box-shadow:
-    0rem 6px 13px rgba(10, 60, 255, 0.1),
-    0rem 24px 24px rgba(10, 60, 255, 0.09),
-    0rem 55px 33px rgba(10, 60, 255, 0.05),
-    0rem 97px 39px rgba(10, 60, 255, 0.01),
-    0rem 152px 43px rgba(10, 60, 255, 0);
-}
-
-/* botão "Q" (atalho para o quiz) — cor diferenciada */
-.screen-page-btn.quiz-shortcut {
-  font-size: 13px;
-}
-
-.screen-page-btn.quiz-shortcut.active::after,
-.screen-page-btn.quiz-shortcut.active::before {
-  background-color: #ff6b0a;
-}
-
-.screen-page-btn.quiz-shortcut.active {
-  box-shadow: none;
 }
 
 /* ==============================
@@ -5023,5 +4929,310 @@ body {
     .process > b {
         display: none;
     }
+}
 
+/* =====================================================================
+   PERFIL — shadcn-style dashboard skin (collapsible sidebar layout)
+   Scoped to body.shadcn-profile so no other page is affected.
+   ===================================================================== */
+
+body.shadcn-profile {
+    --sp-bg: #f8f9fa;
+    --sp-card: #ffffff;
+    --sp-border: #e5e7eb;
+    --sp-fg: #18181b;
+    --sp-muted-fg: #71717a;
+    --sp-sidebar-bg: #ffffff;
+    --sp-primary: #3f7d3a;
+    --sp-primary-fg: #ffffff;
+    --sp-accent-soft: #eef6ec;
+    --sp-radius: 12px;
+    --sp-sidebar-w: 264px;
+    --sp-sidebar-w-collapsed: 76px;
+
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--sp-bg);
+    color: var(--sp-fg);
+}
+
+html.dark-mode body.shadcn-profile {
+    --sp-bg: #0a0a0b;
+    --sp-card: #17171a;
+    --sp-border: #27272a;
+    --sp-fg: #f4f4f5;
+    --sp-muted-fg: #a1a1aa;
+    --sp-sidebar-bg: #111113;
+    --sp-primary: #5da356;
+    --sp-primary-fg: #0a0a0b;
+    --sp-accent-soft: rgba(93, 163, 86, .14);
+}
+
+/* Sidebar shell */
+
+body.shadcn-profile .profile-sidebar {
+    background: var(--sp-sidebar-bg);
+    color: var(--sp-fg);
+    border-right: 1px solid var(--sp-border);
+    box-shadow: none;
+}
+
+body.shadcn-profile .profile-sidebar-brand {
+    color: var(--sp-fg);
+    padding-bottom: 16px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-sidebar-nav a {
+    background: transparent;
+    color: var(--sp-muted-fg);
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+body.shadcn-profile .profile-sidebar-nav a:hover {
+    background: var(--sp-accent-soft);
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-sidebar-nav a.is-active {
+    background: var(--sp-accent-soft);
+    color: var(--sp-primary);
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-sidebar-nav a.is-active .profile-sidebar-icon svg {
+    stroke: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-sidebar-collapse {
+    color: var(--sp-muted-fg);
+    border-top: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-sidebar-collapse:hover {
+    background: var(--sp-accent-soft);
+    color: var(--sp-fg);
+}
+
+/* Account footer + menu */
+
+body.shadcn-profile .profile-account-trigger {
+    border: 1px solid var(--sp-border);
+    background: var(--sp-card);
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-account-trigger:hover {
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-account-avatar {
+    background: var(--sp-primary);
+    color: var(--sp-primary-fg);
+}
+
+body.shadcn-profile .profile-account-info strong {
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-account-info span {
+    color: var(--sp-muted-fg);
+    opacity: 1;
+}
+
+body.shadcn-profile .profile-account-menu {
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+}
+
+body.shadcn-profile .profile-account-menu a,
+body.shadcn-profile .profile-account-menu button {
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-account-menu a:hover,
+body.shadcn-profile .profile-account-menu button:hover {
+    background: var(--sp-accent-soft);
+}
+
+/* Top-right header icons */
+
+body.shadcn-profile .header-icon-btn {
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .header-icon-btn:hover {
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .notifications-panel {
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+    color: var(--sp-fg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+}
+
+body.shadcn-profile .notifications-panel li:hover {
+    background: var(--sp-accent-soft);
+}
+
+/* Layout: reclaim main-content width when sidebar collapses */
+
+@media (min-width: 981px) {
+    body.shadcn-profile .profile-layout {
+        padding: 28px 32px 32px calc(var(--sp-sidebar-w) + 32px);
+        transition: padding-left .25s ease;
+    }
+
+    body.shadcn-profile .profile-sidebar {
+        width: var(--sp-sidebar-w);
+        padding: 20px 16px;
+        box-shadow: none;
+    }
+
+    body.shadcn-profile .profile-sidebar.is-collapsed {
+        width: var(--sp-sidebar-w-collapsed);
+    }
+
+    body.shadcn-profile .profile-layout:has(.profile-sidebar.is-collapsed) {
+        padding-left: calc(var(--sp-sidebar-w-collapsed) + 32px);
+    }
+}
+
+/* Cards */
+
+body.shadcn-profile .profile-summary-card,
+body.shadcn-profile .profile-section-card {
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+    border-radius: var(--sp-radius);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-kicker {
+    color: var(--sp-muted-fg);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-summary-card h1,
+body.shadcn-profile .profile-section-title h2,
+body.shadcn-profile .profile-biology-heading h2,
+body.shadcn-profile .profile-learning-copy h3,
+body.shadcn-profile #nivelAluno {
+    color: var(--sp-fg);
+    font-weight: 700;
+}
+
+body.shadcn-profile .profile-learning-copy p {
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-subject-info span,
+body.shadcn-profile .profile-learning-progress-info span {
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-user-level {
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-level-badge {
+    background: var(--sp-accent-soft);
+    color: var(--sp-primary);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-avatar-circle {
+    border: 1px solid var(--sp-border);
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-stat-card,
+body.shadcn-profile .profile-biology-stat,
+body.shadcn-profile .account-summary-item,
+body.shadcn-profile .recent-achievement,
+body.shadcn-profile .profile-action-link {
+    background: var(--sp-bg);
+    border: 1px solid var(--sp-border);
+    border-radius: calc(var(--sp-radius) - 4px);
+    color: var(--sp-fg);
+    box-shadow: none;
+}
+
+body.shadcn-profile .recent-achievement:hover,
+body.shadcn-profile .profile-action-link:hover {
+    background: var(--sp-accent-soft);
+    border-color: var(--sp-primary);
+    transform: none;
+    box-shadow: none;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-see-all,
+body.shadcn-profile .account-summary-item strong {
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .account-summary-item span,
+body.shadcn-profile .profile-biology-stat span,
+body.shadcn-profile .profile-stat-card span {
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .barra,
+body.shadcn-profile .profile-progress-bar,
+body.shadcn-profile .profile-subject-bar {
+    background: var(--sp-border);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+body.shadcn-profile .progresso,
+body.shadcn-profile [data-mission-progress-bar] {
+    background: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-learning-card {
+    background: var(--sp-accent-soft);
+    border: 1px solid var(--sp-border);
+    border-radius: var(--sp-radius);
+}
+
+body.shadcn-profile .profile-learning-button {
+    background: var(--sp-primary);
+    color: var(--sp-primary-fg);
+    border-radius: 8px;
+}
+
+/* Recent activity table */
+
+body.shadcn-profile .profile-activity-table-wrapper {
+    border: 1px solid var(--sp-border);
+    border-radius: calc(var(--sp-radius) - 4px);
+}
+
+body.shadcn-profile .profile-activity-row:hover {
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-activity-status {
+    background: var(--sp-accent-soft);
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-activity-copy strong {
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-activity-time,
+body.shadcn-profile .profile-empty-activity {
+    color: var(--sp-muted-fg);
 }
