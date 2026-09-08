@@ -26,12 +26,25 @@ ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t-(99-9dz^q20&-zeye$!0ii2kvv&07hmt_2b)p)&$87tm&u%f'
+# In production (Render), SECRET_KEY is set as an environment variable —
+# this hardcoded value is only ever used for local development.
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-t-(99-9dz^q20&-zeye$!0ii2kvv&07hmt_2b)p)&$87tm&u%f',
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['testserver', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = os.environ.get(
+    'ALLOWED_HOSTS', 'testserver,127.0.0.1,localhost'
+).split(',')
+
+# Needed for POST requests (e.g. login) to work behind Render's HTTPS proxy —
+# without it Django's CSRF check rejects the request's Origin as untrusted.
+CSRF_TRUSTED_ORIGINS = [
+    origin for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if origin
+]
 
 
 # Application definition
@@ -52,6 +65,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -131,6 +145,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR.parent / 'static',
 ]
+
+# Where `collectstatic` gathers everything for production — whitenoise then
+# serves it directly from the app process, no separate static host needed.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STORAGES = {
+    'staticfiles': {
+        'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+    },
+}
 
 
 # Email
