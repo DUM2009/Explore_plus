@@ -3,7 +3,7 @@ services:
     name: explore-plus
     runtime: python
     plan: free
-    buildCommand: "pip install -r requirements.txt && python meu_site/manage.py collectstatic --noinput && python meu_site/manage.py migrate"
+    buildCommand: "pip install -r requirements.txt && python meu_site/manage.py collectstatic --noinput && python meu_site/manage.py migrate && (python meu_site/manage.py createsuperuser --noinput || true)"
     startCommand: "gunicorn meu_site.wsgi:application --chdir meu_site"
     envVars:
       - key: SECRET_KEY
@@ -17,4 +17,13 @@ services:
       - key: PYTHON_VERSION
         value: "3.12.10"
       - key: ANTHROPIC_API_KEY
+        sync: false
+      # Used only by `createsuperuser --noinput` above, which reads these
+      # three exact env var names itself (Django convention). The `|| true`
+      # keeps redeploys from failing once the account already exists.
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
+      - key: DJANGO_SUPERUSER_PASSWORD
         sync: false
