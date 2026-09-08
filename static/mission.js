@@ -575,8 +575,6 @@ class MissionSystem {
         window.addEventListener('explore:auth-changed', () => {
             this.handleAuthStateSync();
         });
-
-        window.addEventListener('resize', () => this.drawPathConnectorLine());
     }
 
     awardProfileXP(amount, source, activityDetails = {}) {
@@ -627,10 +625,10 @@ class MissionSystem {
         // lesson topbar (close button + progress + XP/streak) replaces it.
         const headerHidden = !this.showPathScreen || this.pathIntroActive;
         if (header) header.hidden = headerHidden;
-        // The floating "talk to Kim" mascot button is redundant (and visually
-        // clashes) while Kim is already front and center walking the student
-        // through the tutorial intro.
-        if (helpFab) helpFab.hidden = this.pathIntroActive;
+        // The floating "talk to Kim" mascot button stays hidden for the
+        // whole percurso overview (intro and section index alike) — only
+        // shown once a section is actually open.
+        if (helpFab) helpFab.hidden = this.showPathScreen;
         // The page normally reserves top padding for the site's fixed
         // marketing header — cancel that reserved space for as long as the
         // header itself is hidden, or the lesson topbar ends up floating
@@ -662,18 +660,38 @@ class MissionSystem {
         const missionTitle = this.mission.title.replace(/[^\p{L}\p{N}\s]/gu, '').trim();
         const introActive = this.pathIntroActive;
 
-        const nodesHtml = this.mission.sections.map((section, idx) => {
+        const xpStarIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="yellow" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>';
+        const leafIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-11 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>';
+        const checkIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>';
+
+        const indexRowsHtml = this.mission.sections.map((section, idx) => {
             const isDone = this.completedSections.has(section.id);
             const isLocked = idx > maxReviewable;
-            const icon = isLocked ? '🔒' : (isDone ? '✓' : section.icon);
+            const isActive = !isDone && !isLocked;
+            const iconTint = `${section.accentColor || '#1f8a5b'}22`;
+            const statusHtml = isLocked
+                ? '<span class="mo-index-status mo-index-status--locked">🔒 Bloqueada</span>'
+                : (isDone
+                    ? `<span class="mo-index-status mo-index-status--done">${checkIconSvg} Concluída</span>`
+                    : '<span class="mo-index-status mo-index-status--active">Em progresso</span>');
+
             return `
-                <li class="mission-path-node-row">
-                    <button type="button"
-                            class="mission-path-node ${isDone ? 'mission-path-node--done' : ''} ${isLocked ? 'mission-path-node--locked' : ''}"
-                            data-section-index="${idx}" ${isLocked ? 'disabled' : ''}>
-                        <span class="mission-path-node-icon">${icon}</span>
+                <li class="mo-index-row ${isActive ? 'is-active' : ''} ${isLocked ? 'is-locked' : ''}">
+                    <button type="button" class="mo-index-row-btn" data-section-index="${idx}" ${isLocked ? 'disabled' : ''}>
+                        <span class="mo-index-number">${isDone ? checkIconSvg : idx + 1}</span>
+                        <span class="mo-index-icon" style="background:${iconTint}; color:${section.accentColor || '#1f8a5b'}">${section.icon}</span>
+                        <span class="mo-index-copy">
+                            <strong>${section.title}</strong>
+                            <span>${section.subtitle || ''}</span>
+                        </span>
+                        <span class="mo-index-meta">
+                            ${statusHtml}
+                            <span class="mo-index-xp">${xpStarIconSvg} +${section.xpReward || 0} XP</span>
+                        </span>
+                        <span class="mo-index-chevron" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </span>
                     </button>
-                    <span class="mission-path-node-label">${section.title}</span>
                 </li>
             `;
         }).join('');
@@ -700,25 +718,6 @@ class MissionSystem {
                 </div>
             </div>
         `;
-
-        const forestLayout = [
-            { left: '4%', top: '6%', scale: .7, variant: '' },
-            { left: '15%', top: '20%', scale: .9, variant: '--dark' },
-            { left: '3%', top: '38%', scale: 1.1, variant: '--light' },
-            { left: '11%', top: '58%', scale: 1.25, variant: '' },
-            { left: '5%', top: '78%', scale: 1.5, variant: '--dark' },
-            { left: '14%', top: '92%', scale: 1.3, variant: '--light' },
-            { left: '91%', top: '5%', scale: .7, variant: '--light' },
-            { left: '82%', top: '18%', scale: .95, variant: '' },
-            { left: '94%', top: '36%', scale: 1.15, variant: '--dark' },
-            { left: '85%', top: '56%', scale: 1.35, variant: '--light' },
-            { left: '93%', top: '76%', scale: 1.5, variant: '' },
-            { left: '83%', top: '92%', scale: 1.3, variant: '--dark' }
-        ];
-        const forestHtml = forestLayout.map((tree) => `
-            <span class="mission-path-tree mission-path-tree${tree.variant}"
-                  style="left:${tree.left}; top:${tree.top}; transform:scale(${tree.scale});"></span>
-        `).join('');
 
         screen.className = `mission-path-screen ${introActive ? 'mission-path-screen--intro' : ''}`;
 
@@ -751,19 +750,216 @@ class MissionSystem {
             `;
         } else {
             const missionsIndexUrl = window.exploreMissionsIndexUrl || '#';
+            const progressPercent = this.getProgressPercent();
+            const completedCount = this.completedSections.size;
+            const totalCount = this.mission.sections.length;
+
+            const planoIsPro = window.explorePlano === 'pro';
+            const avatarInitial = (window.exploreUsername || '').trim().charAt(0).toUpperCase() || '?';
+
             screen.innerHTML = `
-                <div class="mission-path-sky"></div>
-                <div class="mission-path-forest">${forestHtml}</div>
-                <a href="${missionsIndexUrl}" class="mission-path-back-btn" aria-label="Voltar às missões">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                </a>
-                <div class="mission-path-inner">
-                    <div class="mission-path-mascot-wrap">
-                        ${imageUrl ? `<img class="mission-path-mascot" src="${imageUrl}" alt="Mascote Explore+">` : ''}
+                <div class="mo-page">
+                    <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+                    <aside class="profile-sidebar" id="profileSidebar" aria-hidden="true">
+                        <div class="profile-sidebar-brand">
+                            <div><img src="${window.exploreLogoUrl || ''}" alt="Logotipo Explore+"></div>
+                        </div>
+
+                        <nav class="profile-sidebar-nav">
+                            <div class="sidebar-plan-card">
+                                <div class="sidebar-plan-info">
+                                    <span class="sidebar-plan-label">Plano</span>
+                                    <strong class="sidebar-plan-name">${planoIsPro ? 'Pro' : 'Gratuito'}</strong>
+                                </div>
+                                ${planoIsPro ? '' : `<a href="${window.exploreSuperExploreUrl || '#'}" class="sidebar-plan-cta">SuperExplore</a>`}
+                            </div>
+
+                            <a href="${window.explorePerfilUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+                            <span class="profile-sidebar-label">Perfil</span>
+                            </a>
+
+                            <a href="${missionsIndexUrl}" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+                            <span class="profile-sidebar-label">Missões</span>
+                            </a>
+                            <a href="${window.exploreTestesUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg></span>
+                            <span class="profile-sidebar-label">Testes</span>
+                            </a>
+                            <a href="${window.exploreExamesUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+                            <span class="profile-sidebar-label">Exames</span>
+                            </a>
+                            <a href="${window.exploreBibliotecaUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></span>
+                            <span class="profile-sidebar-label">Biblioteca do Explorador</span>
+                            </a>
+                            <a href="${window.exploreResumosUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
+                            <span class="profile-sidebar-label">Resumos</span>
+                            </a>
+                        </nav>
+
+                        <div class="sidebar-theme-card">
+                            <span class="sidebar-theme-label">Tema</span>
+                            <button class="header-icon-btn theme-toggle-btn" id="sidebarThemeToggleBtn" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
+                                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+                                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+                            </button>
+                        </div>
+
+                        <div class="profile-account">
+                            <button class="profile-account-trigger" id="profileAccountTrigger" type="button" aria-expanded="false" aria-controls="profileAccountMenu">
+                                <span class="profile-account-avatar" id="profileAccountAvatar">${avatarInitial}</span>
+                                <span class="profile-account-info">
+                                    <strong id="profileAccountName">${window.exploreUsername || ''}</strong>
+                                    <span id="profileAccountEmail">${window.exploreCurrentUser?.email || ''}</span>
+                                </span>
+                                <span class="profile-account-arrow" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                                </span>
+                            </button>
+
+                            <div class="profile-account-menu" id="profileAccountMenu" hidden>
+                                <a href="${window.exploreConfiguracoesUrl || '#'}">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
+                                    <span>Configurações</span>
+                                </a>
+                                <a href="${window.exploreLogoutUrl || '#'}" class="profile-account-logout">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M21 19V5a2 2 0 0 0-2-2h-6"/></svg>
+                                    <span>Terminar sessão</span>
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <div class="mo-body">
+                        <div class="mo-topbar">
+                            <a href="${window.explorePaginaInicialUrl || '#'}" class="mo-header-logo">
+                                <img src="${window.exploreLogoUrl || ''}" alt="Explore+">
+                            </a>
+                            <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="Abrir menu">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                            </button>
+                        </div>
+
+                        <nav class="mo-breadcrumb" aria-label="Navegação">
+                            <a href="${missionsIndexUrl}">Missões</a>
+                            <span class="mo-breadcrumb-sep">›</span>
+                            <span>Fotossíntese</span>
+                        </nav>
+
+                        <section class="mo-hero">
+                            <div class="mo-hero-info">
+                                <h1>${this.mission.title}</h1>
+                                <p>${this.mission.description}</p>
+                                <div class="mo-hero-meta">
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-spreadsheet"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg> ${totalCount} secções</span>
+                                    <span>${xpStarIconSvg} +${this.mission.totalXP || 0} XP</span>
+                                    ${this.mission.badge ? `<span>${this.mission.badge.icon} ${this.mission.badge.name}</span>` : ''}
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="mo-index">
+                            <h2>Índice da Missão</h2>
+                            <p class="mo-index-subtitle">Completa todos os passos para dominares a fotossíntese e ganhares a tua recompensa!</p>
+
+                            <div class="mo-layout">
+                                <ol class="mo-index-list">${indexRowsHtml}</ol>
+
+                                <aside class="mo-sidebar">
+                                    <div class="mo-card mo-progress-card">
+                                        <h3>O teu progresso</h3>
+                                        <div class="mo-progress-row">
+                                            <div class="mo-progress-ring" style="--progress: ${progressPercent}">
+                                                <span>${completedCount}/${totalCount}</span>
+                                            </div>
+                                            <strong class="mo-progress-percent">${progressPercent}%</strong>
+                                        </div>
+                                        <div class="mo-progress-bar"><div class="mo-progress-bar-fill" style="width:${progressPercent}%"></div></div>
+                                        <div class="mo-reward-row">
+                                            <span class="mo-reward-icon">${leafIconSvg}</span>
+                                            <div class="mo-reward-copy">
+                                                <span>Recompensa da missão</span>
+                                                <strong>+${this.mission.totalXP || 0} XP</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mo-card mo-next-card">
+                                        <h3>Pronto para o próximo desafio?</h3>
+                                        <p>Completa esta missão e desbloqueia a próxima aventura!</p>
+                                        <a href="${missionsIndexUrl}" class="mo-next-cta">Ver próxima missão →</a>
+                                    </div>
+                                </aside>
+                            </div>
+                        </section>
                     </div>
-                    <ol class="mission-path-nodes">${nodesHtml}</ol>
                 </div>
             `;
+
+            const setSidebarOpen = (isOpen) => {
+                const drawer = document.getElementById('profileSidebar');
+                const overlay = document.getElementById('sidebarOverlay');
+                const page = screen.querySelector('.mo-page');
+                if (!drawer || !overlay) return;
+                drawer.classList.toggle('is-open', isOpen);
+                drawer.setAttribute('aria-hidden', String(!isOpen));
+                overlay.toggleAttribute('hidden', !isOpen);
+                // Pushes the main content over (instead of dimming it) once
+                // there's room for the sidebar to sit beside it rather than
+                // on top of it — see the matching min-width rule in CSS.
+                page?.classList.toggle('sidebar-open', isOpen);
+            };
+
+            screen.querySelector('#navDrawerToggle')?.addEventListener('click', () => {
+                const drawer = document.getElementById('profileSidebar');
+                setSidebarOpen(!drawer?.classList.contains('is-open'));
+            });
+            screen.querySelector('#sidebarOverlay')?.addEventListener('click', () => setSidebarOpen(false));
+
+            // Sidebar theme toggle — mirrors the lesson-topbar's own toggle
+            // (renderLessonChrome, below) so both stay in sync via the same
+            // localStorage key.
+            const sidebarThemeToggle = screen.querySelector('#sidebarThemeToggleBtn');
+            if (sidebarThemeToggle) {
+                const isDark = document.documentElement.dataset.theme === 'dark';
+                sidebarThemeToggle.setAttribute('aria-pressed', String(isDark));
+                sidebarThemeToggle.addEventListener('click', () => {
+                    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+                    document.documentElement.dataset.theme = next;
+                    document.documentElement.classList.toggle('dark-mode', next === 'dark');
+                    try {
+                        localStorage.setItem('explore-theme', next);
+                    } catch (error) {
+                        // Ignore storage errors (private browsing, quota).
+                    }
+                    sidebarThemeToggle.setAttribute('aria-pressed', String(next === 'dark'));
+                });
+            }
+
+            screen.querySelector('#profileAccountTrigger')?.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const menu = document.getElementById('profileAccountMenu');
+                if (!menu) return;
+                const isOpen = !menu.hidden;
+                menu.hidden = isOpen;
+                event.currentTarget.setAttribute('aria-expanded', String(!isOpen));
+            });
+
+            // Bound once (document persists across re-renders; the sidebar
+            // and account menu are looked up fresh each time renderPathScreen()
+            // rebuilds the DOM underneath them).
+            if (!this._moSidebarGlobalBound) {
+                this._moSidebarGlobalBound = true;
+                document.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape') setSidebarOpen(false);
+                });
+                document.addEventListener('click', (event) => {
+                    const menu = document.getElementById('profileAccountMenu');
+                    const trigger = document.getElementById('profileAccountTrigger');
+                    if (menu && !menu.hidden && !menu.contains(event.target) && event.target !== trigger && !trigger?.contains(event.target)) {
+                        menu.hidden = true;
+                        trigger?.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
         }
 
         screen.querySelectorAll('[data-section-index]').forEach((btn) => {
@@ -798,54 +994,6 @@ class MissionSystem {
         }
 
         this.applyPathScreenVisibility();
-
-        // Only meaningful once the screen is actually visible — measuring
-        // node positions while it's still hidden would just read 0×0 rects.
-        if (!introActive) {
-            this.drawPathConnectorLine();
-
-            // The mascot image sits above the nodes and can still be
-            // loading when the line above is first drawn — once it loads
-            // in, it pushes the whole node list down and the line (drawn
-            // against the pre-load positions) ends up offset from the
-            // circles. Redraw once it's actually done loading.
-            const mascotImg = screen.querySelector('.mission-path-mascot');
-            if (mascotImg && !mascotImg.complete) {
-                mascotImg.addEventListener('load', () => this.drawPathConnectorLine(), { once: true });
-            }
-            requestAnimationFrame(() => this.drawPathConnectorLine());
-        }
-    }
-
-    /**
-     * The percurso nodes zigzag left/center/right (see .mission-path-node-row
-     * nth-child rules), so a straight line can't connect them — this draws
-     * an SVG polyline through each node's actual rendered center instead.
-     */
-    drawPathConnectorLine() {
-        const container = document.querySelector('.mission-path-nodes');
-        if (!container) return;
-
-        const nodes = Array.from(container.querySelectorAll('.mission-path-node'));
-        if (nodes.length < 2) return;
-
-        const containerRect = container.getBoundingClientRect();
-        const points = nodes.map((node) => {
-            const rect = node.getBoundingClientRect();
-            const x = rect.left + rect.width / 2 - containerRect.left;
-            const y = rect.top + rect.height / 2 - containerRect.top;
-            return `${x},${y}`;
-        }).join(' ');
-
-        let svg = container.querySelector('.mission-path-line-svg');
-        if (!svg) {
-            svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('class', 'mission-path-line-svg');
-            container.insertBefore(svg, container.firstChild);
-        }
-        svg.setAttribute('width', containerRect.width);
-        svg.setAttribute('height', containerRect.height);
-        svg.innerHTML = `<polyline points="${points}" fill="none" stroke="#b9ddc6" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round" />`;
     }
 
     /**

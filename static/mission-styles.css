@@ -39,39 +39,6 @@ body.mission-header-hidden .mission-container {
     background: rgba(0,0,0,.05);
 }
 
-/* Back-to-missions button, shown top-left of the percurso screen now that
-   the site header (which used to hold this navigation) is gone from the
-   lesson-player page. */
-.mission-path-back-btn {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #ffffff;
-    color: #244a37;
-    box-shadow: 0 4px 14px rgba(0,0,0,.14);
-    text-decoration: none;
-}
-
-.mission-path-back-btn:hover {
-    background: #f2f7f4;
-}
-
-html[data-theme="dark"] .mission-path-back-btn {
-    background: #26201a;
-    color: #c9dcae;
-    box-shadow: 0 4px 14px rgba(0,0,0,.35);
-}
-
-html[data-theme="dark"] .mission-path-back-btn:hover {
-    background: #332a20;
-}
-
 .mission-intro-controls {
     display: flex;
     flex-direction: column;
@@ -131,7 +98,8 @@ html[data-theme="dark"] .mission-path-back-btn:hover {
     min-height: 100vh;
     overflow: hidden;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    background: #f6f1e6;
 }
 
 .mission-path-screen[hidden] {
@@ -176,70 +144,558 @@ html[data-theme="dark"] .mission-path-back-btn:hover {
     line-height: 1.5;
 }
 
-.mission-path-sky {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, #eaf7ee 0%, #dbf0e2 45%, #c3e8ce 75%, #a8dab8 100%);
+/* ============================================================
+   Mission overview screen ("mo-*"): header, hero banner, section
+   index and progress sidebar shown before the student picks a
+   section to start.
+   ============================================================ */
+.mo-page {
+    width: 100%;
+    font-family: 'Outfit', system-ui, sans-serif;
 }
 
-.mission-path-forest {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.mission-path-tree {
-    position: absolute;
-    width: 46px;
-    height: 64px;
-    opacity: .65;
-}
-
-.mission-path-tree::before {
-    content: "";
-    position: absolute;
+/* .profile-sidebar (see style.css) is normally a permanent, always-visible
+   dashboard sidebar on wide screens with no way to close it. Here it's
+   closed by default everywhere and only ever shown by the hamburger, so
+   these overrides force it to stay an actual toggle (open/closed) at every
+   width, out-specificity-ing the site's own unconditional desktop rule. */
+.mo-page .profile-sidebar {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 78%;
-    background: #1f8a5b;
-    clip-path: polygon(50% 0%, 0% 45%, 22% 45%, 4% 78%, 28% 78%, 50% 100%, 72% 78%, 96% 78%, 78% 45%, 100% 45%);
-}
-
-.mission-path-tree::after {
-    content: "";
-    position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 10px;
-    height: 14px;
-    background: #8a5a34;
-    border-radius: 2px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
 }
 
-.mission-path-tree--dark::before { background: #166c45; }
-.mission-path-tree--light::before { background: #2ea36f; }
+.mo-page .profile-sidebar.is-open {
+    transform: translateX(0);
+}
 
-.mission-path-inner {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 420px;
-    padding: 32px 24px 48px;
+.mo-body {
+    transition: margin-left .25s ease;
+}
+
+/* Once there's enough room for the sidebar to sit beside the content
+   instead of on top of it, opening it pushes the content over rather than
+   dimming it under an overlay. */
+@media (min-width: 981px) {
+    .mo-page.sidebar-open .mo-body {
+        margin-left: var(--sp-sidebar-w, 264px);
+    }
+}
+
+/* No separate header bar — just the logo and the sidebar toggle, sitting
+   directly at the top of the content column (same padding as everything
+   below, so the logo lines up with where the panels start). */
+.mo-topbar {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.mo-header-logo {
+    display: flex;
     align-items: center;
 }
 
-.mission-path-mascot-wrap {
-    position: relative;
-    z-index: 2;
+.mo-header-logo img {
+    height: 34px;
+    width: auto;
+}
+
+/* .nav-drawer-toggle is the site-wide sidebar-toggle button (see style.css)
+   — reused here as-is, just recoloured to match this page instead of the
+   site's default brown. */
+.mo-topbar .nav-drawer-toggle {
+    color: #4a584f;
+    box-shadow: none;
+}
+
+.mo-topbar .nav-drawer-toggle:hover {
+    background: rgba(0, 0, 0, .05);
+    transform: none;
+    box-shadow: none;
+}
+
+.mo-body {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 28px 4% 64px;
+}
+
+.mo-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .85rem;
+    color: #8a9690;
+    margin-bottom: 20px;
+}
+
+.mo-breadcrumb a {
+    color: #8a9690;
+    text-decoration: none;
+}
+
+.mo-breadcrumb a:hover {
+    color: #4a584f;
+}
+
+.mo-breadcrumb-sep {
+    opacity: .6;
+}
+
+.mo-breadcrumb span:last-child {
+    color: #2c3a32;
+    font-weight: 700;
+}
+
+.mo-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 36px 40px;
+    margin-bottom: 32px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .05);
+}
+
+.mo-hero-info {
+    max-width: 640px;
+}
+
+.mo-hero-info h1 {
+    margin: 0 0 12px;
+    font-size: 2.1rem;
+    color: #1a2620;
+}
+
+.mo-hero-info p {
+    margin: 0 0 18px;
+    color: #5c6b62;
+    line-height: 1.55;
+}
+
+.mo-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: .88rem;
+    font-weight: 600;
+    color: #5c6b62;
+}
+
+.mo-hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.mo-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 28px;
+    align-items: start;
+}
+
+.mo-index h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 6px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1a2620;
+}
+
+.mo-index h2 svg {
+    flex-shrink: 0;
+    color: #1f8a5b;
+}
+
+.mo-index-subtitle {
+    margin: 0 0 20px;
+    color: #6b7a71;
+    font-size: .92rem;
+}
+
+.mo-index-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .05);
+    overflow: hidden;
+}
+
+.mo-index-row {
+    border-bottom: 1px solid #f0efe9;
+}
+
+.mo-index-row:last-child {
+    border-bottom: none;
+}
+
+.mo-index-row.is-active {
+    background: #eef7ee;
+    box-shadow: inset 4px 0 0 #1f8a5b;
+}
+
+.mo-index-row-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 18px 22px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    transition: none;
+}
+
+/* Overrides the site-wide button{} hover (lift + green glow, pill radius)
+   — a row should only ever look highlighted via .is-active, never on
+   mouseover. */
+.mo-index-row-btn:hover {
+    background: none;
+    transform: none;
+    box-shadow: none;
+}
+
+.mo-index-row.is-locked .mo-index-row-btn {
+    cursor: not-allowed;
+    opacity: .7;
+}
+
+.mo-index-number {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid #d8ded9;
+    display: grid;
+    place-items: center;
+    font-size: .8rem;
+    font-weight: 700;
+    color: #5c6b62;
+}
+
+.mo-index-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.4rem;
+}
+
+.mo-index-row.is-locked .mo-index-icon {
+    filter: grayscale(1);
+    opacity: .6;
+}
+
+.mo-index-copy {
+    flex: 1 1 auto;
+    min-width: 0;
     display: flex;
     flex-direction: column;
+    gap: 2px;
+}
+
+.mo-index-copy strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a2620;
+}
+
+.mo-index-copy span {
+    font-size: .85rem;
+    color: #7a8880;
+}
+
+.mo-index-meta {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.mo-index-status {
+    display: inline-flex;
     align-items: center;
-    width: 100%;
+    gap: 4px;
+    font-size: .76rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.mo-index-status--active {
+    background: #dcefdd;
+    color: #1f5c33;
+}
+
+.mo-index-status--locked {
+    background: #eceeec;
+    color: #8a948d;
+}
+
+.mo-index-status--done {
+    background: #fdf1cf;
+    color: #8a6d1a;
+}
+
+.mo-index-xp {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: .78rem;
+    font-weight: 600;
+    color: #8a948d;
+}
+
+.mo-index-chevron {
+    flex-shrink: 0;
+    color: #b7c2ba;
+    display: flex;
+}
+
+.mo-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mo-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 22px 24px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .05);
+}
+
+.mo-card h3 {
+    margin: 0 0 16px;
+    font-size: 1.02rem;
+    font-weight: 800;
+    color: #1a2620;
+}
+
+.mo-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+.mo-progress-ring {
+    --progress: 0;
+    --ring-color: #1f8a5b;
+    --ring-track: #e4f1e7;
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: conic-gradient(var(--ring-color) calc(var(--progress) * 1%), var(--ring-track) 0);
+}
+
+.mo-progress-ring span {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: grid;
+    place-items: center;
+    font-size: .78rem;
+    font-weight: 700;
+    color: #1f8a5b;
+}
+
+.mo-progress-percent {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #1f8a5b;
+}
+
+.mo-progress-bar {
+    height: 8px;
+    background: #eef1ec;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+.mo-progress-bar-fill {
+    height: 100%;
+    background: #1f8a5b;
+    border-radius: 999px;
+    transition: width .25s ease;
+}
+
+.mo-reward-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px dashed #e5e5e0;
+}
+
+.mo-reward-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #eef7ee;
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
+}
+
+.mo-reward-copy {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mo-reward-copy span {
+    font-size: .78rem;
+    color: #7a8880;
+}
+
+.mo-reward-copy strong {
+    font-size: 1rem;
+    color: #1a2620;
+}
+
+.mo-next-card p {
+    margin: 0 0 16px;
+    color: #6b7a71;
+    font-size: .88rem;
+    line-height: 1.5;
+}
+
+.mo-next-cta {
+    display: block;
+    text-align: center;
+    background: #1f8a5b;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 14px;
+    border-radius: 14px;
+    box-shadow: 0 10px 24px rgba(31, 138, 91, .3);
+}
+
+.mo-next-cta:hover {
+    background: #166c45;
+}
+
+@media (max-width: 900px) {
+    .mo-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .mo-hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mo-hero-info {
+        max-width: none;
+    }
+
+    .mo-hero-meta {
+        justify-content: center;
+    }
+}
+
+html[data-theme="dark"] .mo-topbar .nav-drawer-toggle {
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .mo-topbar .nav-drawer-toggle:hover {
+    background: rgba(255, 255, 255, .08);
+}
+
+html[data-theme="dark"] .mo-breadcrumb,
+html[data-theme="dark"] .mo-breadcrumb a {
+    color: #b8a58e;
+}
+
+html[data-theme="dark"] .mo-breadcrumb span:last-child {
+    color: #f2e9dd;
+}
+
+html[data-theme="dark"] .mo-hero,
+html[data-theme="dark"] .mo-index-list,
+html[data-theme="dark"] .mo-card {
+    background: #26201a;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, .35);
+}
+
+html[data-theme="dark"] .mo-hero-info h1,
+html[data-theme="dark"] .mo-index h2,
+html[data-theme="dark"] .mo-index-copy strong,
+html[data-theme="dark"] .mo-card h3,
+html[data-theme="dark"] .mo-reward-copy strong {
+    color: #f2e9dd;
+}
+
+html[data-theme="dark"] .mo-hero-info p,
+html[data-theme="dark"] .mo-index-subtitle,
+html[data-theme="dark"] .mo-hero-meta,
+html[data-theme="dark"] .mo-index-copy span,
+html[data-theme="dark"] .mo-index-xp,
+html[data-theme="dark"] .mo-reward-copy span,
+html[data-theme="dark"] .mo-next-card p {
+    color: #b8a58e;
+}
+
+html[data-theme="dark"] .mo-index-row {
+    border-bottom-color: #332a20;
+}
+
+html[data-theme="dark"] .mo-index-row.is-active {
+    background: #2f2619;
+}
+
+html[data-theme="dark"] .mo-index-number {
+    border-color: #4a3d30;
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .mo-index-status--locked {
+    background: #332a20;
+    color: #b8a58e;
+}
+
+html[data-theme="dark"] .mo-progress-ring span {
+    background: #26201a;
+}
+
+html[data-theme="dark"] .mo-progress-bar {
+    background: #3a2f24;
+}
+
+html[data-theme="dark"] .mo-reward-row {
+    border-top-color: #4a3d30;
 }
 
 .mission-path-quiz-demo {
@@ -275,87 +731,6 @@ html[data-theme="dark"] .mission-path-back-btn:hover {
     background: #1f8a5b;
     border-radius: 999px;
     transition: width .25s ease;
-}
-
-.mission-path-nodes {
-    position: relative;
-    list-style: none;
-    margin: 32px 0 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 34px;
-    width: 100%;
-}
-
-/* The connector line is drawn dynamically (drawPathConnectorLine) as an SVG
-   polyline through the actual node centers — the zigzag nodes below don't
-   sit on a straight line, so a plain centered ::before line missed them. */
-.mission-path-line-svg {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.mission-path-node-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.mission-path-node-row:nth-child(3n+2) {
-    align-self: flex-start;
-    margin-left: 10%;
-}
-
-.mission-path-node-row:nth-child(3n) {
-    align-self: flex-end;
-    margin-right: 10%;
-}
-
-.mission-path-node {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: none;
-    background: #1f8a5b;
-    color: #fff;
-    font-size: 1.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 0 #145c39, 0 8px 16px rgba(0, 0, 0, .15);
-    cursor: pointer;
-    transition: transform .15s ease;
-}
-
-.mission-path-node:hover:not(:disabled) {
-    transform: translateY(-2px);
-}
-
-.mission-path-node--done {
-    background: #f4c744;
-    box-shadow: 0 6px 0 #c99f1e, 0 8px 16px rgba(0, 0, 0, .15);
-}
-
-.mission-path-node--locked {
-    background: #cfd8d2;
-    color: #8fa39a;
-    box-shadow: 0 6px 0 #b7c2ba, 0 8px 16px rgba(0, 0, 0, .1);
-    cursor: not-allowed;
-}
-
-.mission-path-node-label {
-    font-size: .8rem;
-    font-weight: 600;
-    color: #215a3f;
-    background: rgba(255, 255, 255, .85);
-    padding: 3px 10px;
-    border-radius: 999px;
-    text-align: center;
 }
 
 /* Mission Container */

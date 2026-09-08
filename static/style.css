@@ -7264,9 +7264,7 @@ body.shadcn-profile .profile-sidebar-brand {
 }
 
 body.shadcn-profile .profile-account {
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid var(--sp-border);
+    margin-top: 2px;
 }
 
 body.shadcn-profile .profile-sidebar-brand img {
@@ -7398,11 +7396,21 @@ body.shadcn-profile .sidebar-theme-card {
     flex-shrink: 0;
     gap: 10px;
     width: 100%;
-    margin-top: 14px;
+    margin-top: 24px;
     padding: 10px 14px;
     border-radius: 14px;
     background: #ffffff;
     border: 1px solid var(--sp-border);
+    position: relative;
+}
+
+body.shadcn-profile .sidebar-theme-card::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    border-top: 1px solid var(--sp-border);
 }
 
 body.shadcn-profile .sidebar-theme-label {

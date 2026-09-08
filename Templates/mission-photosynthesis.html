@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
     <link rel="stylesheet" href="{% static 'mission-styles.css' %}?v={% now 'U' %}">
 </head>
-<body>
+<body class="shadcn-profile">
     <!-- Percurso screen: forest path of section circles, shown once per mission -->
     <div class="mission-path-screen" id="missionPathScreen" hidden></div>
 
@@ -117,6 +117,19 @@
         window.exploreMissionsIndexUrl = '{% url "index-missions" %}';
         window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
         window.exploreMascotWaveVideoUrl = '{% static "Mascote a acenar.webm" %}';
+        window.explorePaginaInicialUrl = '{% url "pagina_inicial" %}';
+        window.exploreAboutUrl = '{% url "about" %}';
+        window.explorePerfilUrl = '{% url "perfil" %}';
+        window.exploreLogoutUrl = '{% url "logout" %}';
+        window.exploreLogoUrl = '{% static "images/Logo.png" %}';
+        window.exploreUsername = '{{ request.user.username|escapejs }}';
+        window.explorePlano = '{{ perfil.plano|escapejs }}';
+        window.exploreTestesUrl = '{% url "Testes" %}';
+        window.exploreExamesUrl = '{% url "exames" %}';
+        window.exploreBibliotecaUrl = '{% url "biblioteca" %}';
+        window.exploreResumosUrl = '{% url "Resumos" %}';
+        window.exploreSuperExploreUrl = '{% url "superexplore" %}';
+        window.exploreConfiguracoesUrl = '{% url "Configurações" %}';
     </script>
     <script src="{% static 'avatar-selector.js' %}"></script>
     <script>

@@ -286,7 +286,8 @@ def pagina_dashboard(request):
 
 @login_required(login_url='login')
 def pagina_mission_photosynthesis(request):
-    return render(request, 'mission-photosynthesis.html')
+    perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    return render(request, 'mission-photosynthesis.html', {'perfil': perfil})
 
 
 @login_required(login_url='login')
