@@ -656,8 +656,15 @@ def atualizar_vocabulario(request, missao_id):
     return JsonResponse({'ok': True})
 
 
+@login_required(login_url='login')
 def pagina_Resumos(request):
-    return render(request, 'Resumos.html')
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    return render(request, 'Resumos.html', {
+        'perfil': perfil,
+    })
 
 
 def pagina_Conquistas(request):
