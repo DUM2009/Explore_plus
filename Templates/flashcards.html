@@ -3,15 +3,16 @@
 <html lang="pt">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sobre | Explore+</title>
+<title>Flashcards — {{ vocabulario.titulo }} | Explore+</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
 
 </head>
 
@@ -145,34 +146,96 @@
     </button>
 </div>
 
-<section class="about">
+<section class="missions-page flashcards-page">
+    <a href="{% url 'biblioteca' %}" class="teste-voltar">&larr; Voltar à Biblioteca do Explorador</a>
+    <h1>Flashcards — {{ vocabulario.titulo }}</h1>
+    <p>Revê o vocabulário desta missão. Toca no cartão para veres a definição.</p>
 
-<h1>Sobre o Explore+</h1>
+    <div id="flashcardsScreen1">
+        <div class="flashcards-progress">
+            <div class="flashcards-progress-track">
+                <div class="flashcards-progress-fill" id="flashcardsProgressFill"></div>
+            </div>
+            <span class="flashcards-progress-label" id="flashcardsProgressLabel"></span>
+        </div>
 
-<p>
+        <div class="flashcards-stage">
+            <div class="flashcard" id="flashcard">
+                <div class="flashcard-stamp flashcard-stamp--know" id="flashcardStampKnow" aria-hidden="true">Sabia</div>
+                <div class="flashcard-stamp flashcard-stamp--dontknow" id="flashcardStampDontknow" aria-hidden="true">Não sabia</div>
+                <div class="flashcard-inner" id="flashcardInner">
+                    <div class="flashcard-face flashcard-front">
+                        <span class="flashcard-hint">Toca para revelar</span>
+                        <p class="flashcard-term" id="flashcardTerm"></p>
+                    </div>
+                    <div class="flashcard-face flashcard-back">
+                        <p class="flashcard-definition" id="flashcardDefinition"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-O Explore+ nasceu com uma missão simples: transformar a forma como os estudantes aprendem Ciência.
+        <div class="flashcards-actions" id="flashcardsActions" hidden>
+            <button type="button" class="flashcards-btn flashcards-btn--no" id="flashcardsBtnNo" aria-label="Não sabia">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <button type="button" class="flashcards-btn flashcards-btn--yes" id="flashcardsBtnYes" aria-label="Sabia">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+        </div>
+    </div>
 
-</p>
+    <!-- Ecrã 2 — resumo intermédio, logo a seguir aos 12 flashcards -->
+    <div id="flashcardsScreen2" class="flashcards-screen" hidden>
+        <div class="flashcards-summary">
+            <img src="{% static 'images/Mascote a acenar.png' %}" alt="Mascote Explore+" class="flashcards-summary-mascote">
+            <p class="flashcards-summary-message" id="flashcardsSummaryMessage"></p>
+            <div class="flashcards-summary-stats">
+                <div class="flashcards-summary-stat flashcards-summary-stat--yes">
+                    <span class="flashcards-summary-stat-value" id="flashcardsSummaryYes">0</span>
+                    <span class="flashcards-summary-stat-label">Sabia</span>
+                </div>
+                <div class="flashcards-summary-stat flashcards-summary-stat--no">
+                    <span class="flashcards-summary-stat-value" id="flashcardsSummaryNo">0</span>
+                    <span class="flashcards-summary-stat-label">Não sabia</span>
+                </div>
+            </div>
+            <div class="flashcards-summary-actions">
+                <button type="button" class="flashcards-primary-btn" id="flashcardsGoToAssociacao">Vamos lá →</button>
+                <button type="button" class="flashcards-secondary-btn" id="flashcardsSkipToResult">Só flashcards, chega por hoje</button>
+            </div>
+        </div>
+    </div>
 
-<p>
+    <!-- Ecrã 3 — associação, só com os termos marcados "não sabia" -->
+    <div id="flashcardsScreen3" class="flashcards-screen" hidden>
+        <h2 class="flashcards-screen-title">Associa cada termo à sua definição</h2>
+        <p class="flashcards-screen-subtitle">Toca num termo e depois na definição correspondente.</p>
+        <div class="associacao-board">
+            <div class="associacao-coluna" id="associacaoTermos"></div>
+            <div class="associacao-coluna" id="associacaoDefinicoes"></div>
+        </div>
+        <button type="button" class="flashcards-primary-btn associacao-resultado-btn" id="flashcardsVerResultado" hidden>Ver resultado →</button>
+    </div>
 
-Em vez de decorar páginas e páginas de teoria, queremos que os alunos compreendam verdadeiramente os conceitos através de curiosidades, desafios, imagens, missões e explicações intuitivas.
-
-</p>
-
-<p>
-
-Estamos a começar pela Biologia, mas no futuro a plataforma irá incluir Química, Física, Geologia e outras áreas da Ciência.
-
-</p>
-
-<p>
-
-O nosso objetivo é tornar o estudo mais interessante, mais intuitivo e mais eficaz.
-
-</p>
-
+    <!-- Ecrã 4 — resultado final, já com o estado gravado no vocabulário -->
+    <div id="flashcardsScreen4" class="flashcards-screen" hidden>
+        <div class="flashcards-summary">
+            <img src="{% static 'images/Mascote a acenar.png' %}" alt="Mascote Explore+" class="flashcards-summary-mascote">
+            <h2>Resultado desta revisão</h2>
+            <div class="flashcards-summary-stats">
+                <div class="flashcards-summary-stat flashcards-summary-stat--yes">
+                    <span class="flashcards-summary-stat-value" id="flashcardsResultDominados">0</span>
+                    <span class="flashcards-summary-stat-label">Dominados</span>
+                </div>
+                <div class="flashcards-summary-stat flashcards-summary-stat--no">
+                    <span class="flashcards-summary-stat-value" id="flashcardsResultARever">0</span>
+                    <span class="flashcards-summary-stat-label">A rever</span>
+                </div>
+            </div>
+            <a href="{% url 'biblioteca' %}" class="flashcards-primary-btn">Voltar à Biblioteca do Explorador</a>
+        </div>
+    </div>
 </section>
 
 </div>
@@ -180,7 +243,12 @@ O nosso objetivo é tornar o estudo mais interessante, mais intuitivo e mais efi
 
 </section>
 
+{{ vocabulario.termos|json_script:"flashcards-data" }}
 <script>
+window.exploreCsrfToken = '{{ csrf_token }}';
+window.exploreMissaoId = '{{ missao_id|escapejs }}';
+window.exploreAtualizarVocabularioUrl = '{% url "atualizar-vocabulario" missao_id %}';
+
 const accountTrigger = document.getElementById('profileAccountTrigger');
 const accountMenu = document.getElementById('profileAccountMenu');
 
@@ -198,6 +266,7 @@ document.addEventListener('click', (event) => {
     }
 });
 </script>
+<script src="{% static 'flashcards.js' %}?v={% now 'U' %}"></script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
 

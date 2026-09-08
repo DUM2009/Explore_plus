@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bem-vindo | Explore+</title>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<header>
+    <div class="logo">Explore+</div>
+</header>
+
+<section class="onboarding-page">
+    <div class="onboarding-card">
+        <img src="{% static 'images/Mascote Explore+ Geology.png' %}" alt="Kim, o Aventureiro" class="onboarding-mascot">
+        <h1>Olá! Sou o Kim, o teu explorador 👋</h1>
+        <p class="onboarding-intro">Antes de começares, quero conhecer-te um pouco melhor. Só demora um minuto!</p>
+
+        {% if erro %}<p class="form-error">{{ erro }}</p>{% endif %}
+
+        <form method="post" action="{% url 'onboarding' %}" class="onboarding-form">
+            {% csrf_token %}
+
+            <div class="onboarding-section">
+                <h3>Em que ano estás?</h3>
+                <div class="onboarding-pill-row">
+                    {% for valor, rotulo in anos_escolares %}
+                    <label class="onboarding-pill">
+                        <input type="radio" name="ano_escolar" value="{{ valor }}" required>
+                        <span>{{ rotulo }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="onboarding-section">
+                <h3>Que curso queres seguir na universidade?</h3>
+                <p class="onboarding-hint">Se ainda não sabes ao certo, escreve pelo menos a área que te interessa.</p>
+                <input type="text" name="curso_pretendido" class="onboarding-text-input" placeholder="Ex.: Medicina, ou &quot;área da saúde&quot;">
+            </div>
+
+            <div class="onboarding-section">
+                <h3>De 0 a 10, o quanto sentes que percebes cada disciplina?</h3>
+                {% for disciplina, rotulo in disciplinas %}
+                <div class="onboarding-subject-row" data-disciplina="{{ disciplina }}">
+                    <span class="onboarding-subject-label">{{ rotulo }}</span>
+                    <div class="onboarding-level-row">
+                        {% for n in niveis_range %}
+                        <label class="onboarding-level-pill">
+                            <input type="radio" name="nivel_{{ disciplina }}" value="{{ n }}" required>
+                            <span>{{ n }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    <label class="onboarding-nao-tem">
+                        <input type="checkbox" name="{{ disciplina }}_nao_tem" class="onboarding-nao-tem-checkbox">
+                        Não tenho esta disciplina
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="onboarding-submit-btn">Começar a explorar →</button>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.onboarding-subject-row').forEach((row) => {
+        const checkbox = row.querySelector('.onboarding-nao-tem-checkbox');
+        const levelInputs = row.querySelectorAll('.onboarding-level-row input');
+
+        checkbox.addEventListener('change', () => {
+            const semDisciplina = checkbox.checked;
+            levelInputs.forEach((input) => {
+                input.disabled = semDisciplina;
+                input.required = !semDisciplina;
+                if (semDisciplina) input.checked = false;
+            });
+            row.classList.toggle('is-disabled', semDisciplina);
+        });
+    });
+</script>
+
+</body>
+</html>

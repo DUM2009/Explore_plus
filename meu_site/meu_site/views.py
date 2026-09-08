@@ -1,14 +1,29 @@
 import json
+import re
+import unicodedata
+import anthropic
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.db import OperationalError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.http import require_POST
-from .models import PerfilAluno
+from django.utils import timezone
+from .models import PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel
+
+
+def redirecionar_apos_autenticacao(user):
+    """
+    Manda o aluno para o inquérito inicial se ainda não o tiver concluído,
+    ou para o perfil normal caso já o tenha feito.
+    """
+    if InqueritoAluno.objects.filter(user=user, concluido=True).exists():
+        return redirect('perfil')
+    return redirect('onboarding')
 
 
 def pagina_inicial(request):
@@ -31,24 +46,118 @@ def pagina_perfil(request):
     progresso = {} if perfil_legacy else (perfil.progresso_missoes or {})
     percentagens = [int(progresso.get(missao, 0)) for missao in ('photosynthesis', 'mitosis', 'meiosis')]
     badges = {} if perfil_legacy else (perfil.conquistas or {})
+    secoes = {} if perfil_legacy else (perfil.progresso_secoes or {})
+
+    (_, titulo_nome, titulo_icone, titulo_descricao), proximo_titulo = titulo_para_nivel(perfil.nivel)
+    if not perfil_legacy and perfil.titulo_atual != titulo_nome:
+        perfil.titulo_atual = titulo_nome
+        perfil.save(update_fields=['titulo_atual'])
+
+    def cor_subtopico(pontuacao):
+        if pontuacao is None:
+            return 'gray'
+        if pontuacao >= 70:
+            return 'green'
+        if pontuacao >= 40:
+            return 'yellow'
+        return 'red'
+
+    definicoes_missoes = [
+        {
+            'id': 'photosynthesis',
+            'titulo': 'Fotossíntese',
+            'capitulo': 'Capítulo 1 · Biologia',
+            'categoria': 'Biologia',
+            'icone': '🌿',
+            'descricao': 'Continua a descobrir como as plantas transformam luz em energia.',
+            'url': 'mission-photosynthesis',
+            'subtopicos': [('fase-clara', 'Fase clara'), ('fase-escura', 'Fase escura')],
+        },
+        {
+            'id': 'mitosis',
+            'titulo': 'Mitose',
+            'capitulo': 'Capítulo 2 · Biologia',
+            'categoria': 'Biologia',
+            'icone': '🧫',
+            'descricao': 'Em breve: como uma célula se divide em duas células idênticas.',
+            'url': None,
+            'subtopicos': [('fases-mitose', 'Fases da mitose'), ('citocinese', 'Citocinese')],
+        },
+        {
+            'id': 'meiosis',
+            'titulo': 'Meiose',
+            'capitulo': 'Capítulo 3 · Biologia',
+            'categoria': 'Biologia',
+            'icone': '🧬',
+            'descricao': 'Em breve: como se formam as células sexuais.',
+            'url': None,
+            'subtopicos': [('meiose-1', 'Meiose I'), ('meiose-2', 'Meiose II')],
+        },
+    ]
+
+    missoes = []
+    missoes_bloqueadas = False
+    for definicao in definicoes_missoes:
+        if not definicao['url']:
+            missoes_bloqueadas = True
+            continue
+        secoes_missao = secoes.get(definicao['id'], {}) or {}
+        subtopicos = [
+            {'label': label, 'cor': cor_subtopico(secoes_missao.get(secao_id))}
+            for secao_id, label in definicao['subtopicos']
+        ]
+        missoes.append({
+            'id': definicao['id'],
+            'titulo': definicao['titulo'],
+            'capitulo': definicao['capitulo'],
+            'categoria': definicao['categoria'],
+            'icone': definicao['icone'],
+            'descricao': definicao['descricao'],
+            'url': definicao['url'],
+            'percent': int(progresso.get(definicao['id'], 0)),
+            'subtopicos': subtopicos,
+        })
+
+    definicoes_conquistas = [
+        {'id': 'primeira-missao', 'nome': 'Primeiros Passos', 'icone': '🌱', 'descricao': 'Conclui a tua primeira missão.'},
+        {'id': 'fotossintese-mestre', 'nome': 'Mestre da Fotossíntese', 'icone': '🌿', 'descricao': 'Termina o capítulo da Fotossíntese a 100%.'},
+        {'id': 'sequencia-3-dias', 'nome': 'Em Chamas', 'icone': '🔥', 'descricao': 'Estuda 3 dias seguidos.'},
+        {'id': 'sequencia-7-dias', 'nome': 'Semana Perfeita', 'icone': '⭐', 'descricao': 'Estuda 7 dias seguidos.'},
+        {'id': 'nivel-5', 'nome': 'Explorador Veterano', 'icone': '🏅', 'descricao': 'Atinge o nível 5.'},
+        {'id': 'primeiro-teste-ouro', 'nome': 'Emblema de Ouro', 'icone': '🥇', 'descricao': 'Consegue emblema de ouro num teste final.'},
+    ]
+    conquistas_lista = [
+        {**definicao, 'desbloqueada': bool(badges.get(definicao['id']))}
+        for definicao in definicoes_conquistas
+    ]
+
     return render(request, 'perfil.html', {
         'perfil': perfil,
         'nivel': perfil.nivel,
         'xp': perfil.pontos_xp,
         'xp_progress_percent': perfil.pontos_xp % 100,
-        'proximo_nivel_xp': (perfil.nivel + 1) * 100,
+        'proximo_nivel_xp': perfil.nivel * 100,
+        'xp_restante': (perfil.nivel * 100) - perfil.pontos_xp,
+        'proximo_nivel': perfil.nivel + 1,
         'progresso_missoes': progresso,
         'progresso_medio': round(sum(percentagens) / len(percentagens)),
         'missoes_completas': sum(1 for percentagem in percentagens if percentagem >= 100),
         'conquistas': badges,
+        'conquistas_lista': conquistas_lista,
         'total_conquistas': sum(1 for desbloqueada in badges.values() if desbloqueada),
+        'missoes': missoes,
+        'missoes_bloqueadas': missoes_bloqueadas,
+        'titulo_nome': titulo_nome,
+        'titulo_icone': titulo_icone,
+        'titulo_descricao': titulo_descricao,
+        'proximo_titulo': proximo_titulo,
     })
 
 
 def pagina_login(request):
     # Se o utilizador já estiver autenticado, vai direto para o perfil
     if request.user.is_authenticated:
-        return redirect('perfil')
+        return redirecionar_apos_autenticacao(request.user)
 
     erro = None
 
@@ -70,7 +179,7 @@ def pagina_login(request):
 
             if user is not None:
                 login(request, user)
-                return redirect('perfil')
+                return redirecionar_apos_autenticacao(user)
             else:
                 erro = "E-mail/Utilizador ou palavra-passe incorretos!"
         else:
@@ -81,7 +190,7 @@ def pagina_login(request):
 
 def pagina_signup(request):
     if request.user.is_authenticated:
-        return redirect('perfil')
+        return redirecionar_apos_autenticacao(request.user)
 
     erro = None
     if request.method == 'POST':
@@ -101,7 +210,7 @@ def pagina_signup(request):
         else:
             user = User.objects.create_user(username=username, email=email, password=password)
             login(request, user)
-            return redirect('perfil')
+            return redirecionar_apos_autenticacao(user)
 
     return render(request, 'signup.html', {'erro': erro})
 
@@ -111,9 +220,65 @@ def pagina_logout(request):
     return redirect('login')
 
 
+DISCIPLINAS_INQUERITO = [
+    ('biologia', 'Biologia'),
+    ('quimica', 'Química'),
+    ('fisica', 'Física'),
+    ('geologia', 'Geologia'),
+    ('matematica', 'Matemática'),
+]
+
+
+@login_required(login_url='login')
+def pagina_onboarding(request):
+    inquerito, _ = InqueritoAluno.objects.get_or_create(user=request.user)
+
+    if inquerito.concluido:
+        return redirect('perfil')
+
+    erro = None
+    if request.method == 'POST':
+        ano_escolar = request.POST.get('ano_escolar', '').strip()
+        curso_pretendido = request.POST.get('curso_pretendido', '').strip()
+
+        if ano_escolar not in dict(InqueritoAluno.ANOS_ESCOLARES):
+            erro = 'Escolhe o teu ano escolar.'
+        else:
+            niveis = {}
+            for disciplina, _rotulo in DISCIPLINAS_INQUERITO:
+                if request.POST.get(f'{disciplina}_nao_tem') == 'on':
+                    niveis[disciplina] = None
+                    continue
+
+                valor = request.POST.get(f'nivel_{disciplina}', '').strip()
+                if not valor.isdigit() or not (0 <= int(valor) <= 10):
+                    erro = 'Escolhe um nível de 0 a 10 (ou marca "Não tenho esta disciplina") para cada disciplina.'
+                    break
+                niveis[disciplina] = int(valor)
+
+            if not erro:
+                inquerito.ano_escolar = ano_escolar
+                inquerito.curso_pretendido = curso_pretendido
+                inquerito.niveis_disciplinas = niveis
+                inquerito.concluido = True
+                inquerito.save()
+                return redirect('perfil')
+
+    return render(request, 'onboarding.html', {
+        'erro': erro,
+        'anos_escolares': InqueritoAluno.ANOS_ESCOLARES,
+        'disciplinas': DISCIPLINAS_INQUERITO,
+        'niveis_range': list(range(11)),
+    })
+
+
 @login_required(login_url='login')
 def pagina_index_missions(request):
-    return render(request, 'index-missions.html')
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    return render(request, 'index-missions.html', {'perfil': perfil})
 
 
 @login_required(login_url='login')
@@ -160,10 +325,21 @@ def salvar_progresso_missao(request):
     perfil.progresso_missoes = progresso
     update_fields = ['progresso_missoes']
 
+    section_scores = progress.get('sectionScores')
+    if isinstance(section_scores, dict) and mission_id != 'profile':
+        secoes = dict(perfil.progresso_secoes or {})
+        secoes[mission_id] = {
+            str(secao_id): int(score)
+            for secao_id, score in section_scores.items()
+            if isinstance(score, (int, float))
+        }
+        perfil.progresso_secoes = secoes
+        update_fields.append('progresso_secoes')
+
     xp = dados.get('xp')
     if isinstance(xp, (int, float)) and xp >= 0:
         perfil.pontos_xp = max(perfil.pontos_xp, int(xp))
-        perfil.nivel = perfil.pontos_xp // 100
+        perfil.nivel = perfil.pontos_xp // 100 + 1
         update_fields.extend(['pontos_xp', 'nivel'])
 
     perfil.save(update_fields=update_fields)
@@ -177,12 +353,307 @@ def salvar_progresso_missao(request):
     })
 
 
+@login_required(login_url='login')
+@require_POST
+def mascote_chat(request):
+    """
+    Proxies a chat message to Claude so the mascot can answer questions
+    grounded in the mission's own content. The API key lives only here
+    (server-side, read from the untracked .env file) — it never reaches
+    the browser.
+    """
+    try:
+        dados = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+
+    user_message = str(dados.get('message', '')).strip()
+    if not user_message:
+        return JsonResponse({'erro': 'Mensagem vazia.'}, status=400)
+    if len(user_message) > 1000:
+        return JsonResponse({'erro': 'Mensagem demasiado longa.'}, status=400)
+
+    # O limite semanal é verificado antes de chamar a Claude — mesmo sem
+    # chave da API configurada, o aluno não deve poder "gastar" perguntas à
+    # borla, e assim dá para testar o limite independentemente da IA estar
+    # ligada. Só pedidos com uma mensagem válida chegam a consumir quota.
+    perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    if not perfil.verificar_e_incrementar_uso_chat():
+        limite = obter_limite_chat(perfil.plano)
+        return JsonResponse({
+            'erro': f'Atingiste o limite de {limite} perguntas ao Kim esta semana. Volta na próxima semana ou passa para o plano Pro para teres mais perguntas.',
+            'limiteAtingido': True,
+        }, status=429)
+
+    if not settings.ANTHROPIC_API_KEY:
+        return JsonResponse({'erro': 'O chat da mascote ainda não está configurado.'}, status=503)
+
+    mission_title = str(dados.get('missionTitle', ''))[:200]
+    section_title = str(dados.get('sectionTitle', ''))[:200]
+    context_text = str(dados.get('context', ''))[:6000]
+
+    history = dados.get('history')
+    messages = []
+    if isinstance(history, list):
+        for entry in history[-10:]:
+            if not isinstance(entry, dict):
+                continue
+            role = entry.get('role')
+            text = str(entry.get('text', ''))[:2000]
+            if role in ('user', 'assistant') and text:
+                messages.append({'role': role, 'content': text})
+    messages.append({'role': 'user', 'content': user_message})
+
+    system_prompt = (
+        "Chamas-te Kim, o Aventureiro, a mascote da Explore+, uma app de estudo de Biologia para alunos "
+        "do ensino secundário em Portugal. Falas sempre em português de Portugal, "
+        "de forma simpática, encorajadora e simples, como um explicador amigo.\n\n"
+        f"O aluno está na missão \"{mission_title}\", na etapa \"{section_title}\".\n\n"
+        "Usa o seguinte conteúdo desta etapa como referência para responderes com "
+        "rigor científico — não inventes factos que o contradigam:\n\n"
+        f"{context_text}\n\n"
+        "Regras importantes:\n"
+        "- Ajuda o aluno a perceber, mas não resolvas exercícios de teste por ele "
+        "sem explicares o raciocínio.\n"
+        "- Se perguntarem algo sem relação com Biologia ou com esta missão, recusa "
+        "com simpatia e traz a conversa de volta ao tema.\n"
+        "- Respostas curtas (2 a 4 frases), adequadas a um adolescente."
+    )
+
+    try:
+        client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+        response = client.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=500,
+            system=[{
+                "type": "text",
+                "text": system_prompt,
+                "cache_control": {"type": "ephemeral"},
+            }],
+            messages=messages,
+        )
+        reply = next((block.text for block in response.content if block.type == 'text'), '')
+    except anthropic.RateLimitError:
+        return JsonResponse({'erro': 'Muitos pedidos de momento. Tenta novamente daqui a pouco.'}, status=429)
+    except anthropic.APIStatusError:
+        return JsonResponse({'erro': 'O serviço de chat está indisponível de momento.'}, status=502)
+    except anthropic.APIConnectionError:
+        return JsonResponse({'erro': 'Não foi possível ligar ao serviço de chat.'}, status=502)
+
+    return JsonResponse({'reply': reply})
+
+
+# Cada missão tem 3 testes: o primeiro incluído no plano Free, os outros
+# dois exclusivos do SuperExplore (Pro). 'teste_id' fica a None enquanto o
+# teste ainda não tiver conteúdo — a página mostra-o como "Em breve".
+MISSOES_TESTES = [
+    {
+        'categoria': 'Botânica',
+        'titulo': 'Fotossíntese',
+        'meta': ['Grupos I, II e III', '14-16 perguntas', '45 minutos'],
+        'correcao': 'Correção automática e por IA.',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fotossintese'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fotossintese-c4-milho'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fotossintese-cam-opuntia'},
+        ],
+    },
+]
+
+
+def encontrar_config_teste(teste_id):
+    for missao in MISSOES_TESTES:
+        for teste in missao['testes']:
+            if teste.get('teste_id') == teste_id:
+                return teste
+    return None
+
+
+def montar_categorias_testes(plano_aluno):
+    categorias = {}
+    for missao in MISSOES_TESTES:
+        testes = []
+        for teste in missao['testes']:
+            disponivel = teste.get('teste_id') is not None
+            testes.append({
+                'titulo': teste['titulo'],
+                'plano': teste['plano'],
+                'disponivel': disponivel,
+                'desbloqueado': teste['plano'] == 'free' or plano_aluno == 'pro',
+                'url': reverse('teste-fotossintese', args=[teste['teste_id']]) if disponivel else None,
+            })
+        categorias.setdefault(missao['categoria'], []).append({**missao, 'testes': testes})
+    return [{'nome': nome, 'missoes': missoes} for nome, missoes in categorias.items()]
+
+
+@login_required(login_url='login')
 def pagina_Testes(request):
-    return render(request, 'Testes.html')
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    plano_aluno = perfil.plano if perfil is not None else 'free'
+    return render(request, 'Testes.html', {
+        'perfil': perfil,
+        'categorias_testes': montar_categorias_testes(plano_aluno),
+    })
 
 
-def pagina_dicionario(request):
-    return render(request, 'dicionario.html')
+@login_required(login_url='login')
+def pagina_exames(request):
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    return render(request, 'exames.html', {'perfil': perfil})
+
+
+def carregar_vocabulario(missao_id):
+    caminho_json = settings.BASE_DIR.parent / 'vocabulario' / f'{missao_id}.json'
+    with open(caminho_json, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def guardar_vocabulario(missao_id, dados):
+    caminho_json = settings.BASE_DIR.parent / 'vocabulario' / f'{missao_id}.json'
+    with open(caminho_json, 'w', encoding='utf-8') as f:
+        json.dump(dados, f, ensure_ascii=False, indent=2)
+        f.write('\n')
+
+
+# Biblioteca do Explorador: um "livro" de vocabulário por unidade, cada um
+# associado ao ficheiro vocabulario/<id>.json (mesmo formato usado pelos
+# flashcards — daí "Praticar com flashcards" reutilizar diretamente a rota
+# de flashcards com o id da unidade). Uma unidade sem ficheiro ainda aparece
+# na estante, mas como "ainda por começar".
+UNIDADES_BIBLIOTECA = [
+    {'id': 'citologia', 'nome': 'Citologia', 'cor_a': '#2f7ea6', 'cor_b': '#1fa6c9', 'cor_soft': '#e3f3f7'},
+    {'id': 'genetica', 'nome': 'Genética', 'cor_a': '#6c4fb0', 'cor_b': '#8a6bd1', 'cor_soft': '#efe7fa'},
+    {'id': 'ecologia', 'nome': 'Ecologia', 'cor_a': '#5f7d33', 'cor_b': '#789b4a', 'cor_soft': '#eef3e0'},
+    {'id': 'corpo_humano', 'nome': 'Corpo Humano', 'cor_a': '#b03a3a', 'cor_b': '#dc3545', 'cor_soft': '#fdecee'},
+    {'id': 'botanica', 'nome': 'Botânica', 'cor_a': '#2f6b45', 'cor_b': '#1f8a5b', 'cor_soft': '#eaf3e9'},
+]
+
+
+def carregar_termos_unidade(unidade_id):
+    try:
+        return carregar_vocabulario(unidade_id).get('termos', [])
+    except FileNotFoundError:
+        return []
+
+
+def montar_biblioteca_estante():
+    estante = []
+    for unidade in UNIDADES_BIBLIOTECA:
+        termos = carregar_termos_unidade(unidade['id'])
+        novos = sum(1 for termo in termos if termo.get('estado', 'novo') == 'novo')
+        estante.append({**unidade, 'total_termos': len(termos), 'novos': novos})
+    return estante
+
+
+@login_required(login_url='login')
+def pagina_biblioteca(request):
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    return render(request, 'biblioteca.html', {
+        'perfil': perfil,
+        'estante': montar_biblioteca_estante(),
+    })
+
+
+@login_required(login_url='login')
+def pagina_biblioteca_unidade(request, unidade_id):
+    unidade = next((u for u in UNIDADES_BIBLIOTECA if u['id'] == unidade_id), None)
+    if unidade is None:
+        raise Http404('Unidade não encontrada.')
+
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    termos = carregar_termos_unidade(unidade_id)
+    nomes_por_id = {termo['id']: termo['termo'] for termo in termos}
+    for termo in termos:
+        termo['relacionados_nomes'] = [
+            nomes_por_id.get(rel_id, rel_id) for rel_id in termo.get('relacionados', [])
+        ]
+
+    contagens = {'novo': 0, 'dominado': 0, 'a_rever': 0}
+    for termo in termos:
+        estado = termo.get('estado', 'novo')
+        if estado in contagens:
+            contagens[estado] += 1
+
+    return render(request, 'biblioteca-unidade.html', {
+        'perfil': perfil,
+        'unidade': unidade,
+        'termos': termos,
+        'total_termos': len(termos),
+        'contagens': contagens,
+    })
+
+
+@login_required(login_url='login')
+def pagina_flashcards(request, missao_id):
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    try:
+        vocabulario = carregar_vocabulario(missao_id)
+    except FileNotFoundError:
+        raise Http404('Vocabulário não encontrado para esta missão.')
+
+    return render(request, 'flashcards.html', {
+        'perfil': perfil,
+        'vocabulario': vocabulario,
+        'missao_id': missao_id,
+    })
+
+
+@login_required(login_url='login')
+@require_POST
+def atualizar_vocabulario(request, missao_id):
+    """Grava o resultado desta ronda de revisão diretamente no ficheiro de
+    vocabulário da missão (estado + última revisão por termo)."""
+    try:
+        dados_pedido = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+
+    atualizacoes = dados_pedido.get('atualizacoes')
+    if not isinstance(atualizacoes, list):
+        return JsonResponse({'erro': 'Atualizações em falta.'}, status=400)
+
+    estados_por_id = {}
+    for item in atualizacoes:
+        if not isinstance(item, dict):
+            continue
+        termo_id = item.get('id')
+        estado = item.get('estado')
+        if termo_id and estado in ('dominado', 'a_rever'):
+            estados_por_id[termo_id] = estado
+
+    try:
+        vocabulario = carregar_vocabulario(missao_id)
+    except FileNotFoundError:
+        raise Http404('Vocabulário não encontrado para esta missão.')
+
+    hoje = timezone.localdate().isoformat()
+    for termo in vocabulario['termos']:
+        novo_estado = estados_por_id.get(termo['id'])
+        if novo_estado:
+            termo['estado'] = novo_estado
+            termo['ultima_revisao'] = hoje
+
+    guardar_vocabulario(missao_id, vocabulario)
+
+    return JsonResponse({'ok': True})
 
 
 def pagina_Resumos(request):
@@ -199,6 +670,325 @@ def pagina_about(request):
 
 def pagina_Configurações(request):
     return render(request, 'Configurações.html')
+
+
+@login_required(login_url='login')
+def pagina_superexplore(request):
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    return render(request, 'superexplore.html', {
+        'perfil': perfil,
+        'limite_chat_free': obter_limite_chat('free'),
+        'limite_chat_pro': obter_limite_chat('pro'),
+    })
+
+
+def carregar_teste(teste_id):
+    """Testes vivem fora de static/ de propósito: static/ é servido
+    publicamente, e este ficheiro contém o gabarito — nunca deve chegar
+    ao browser do aluno."""
+    caminho_json = settings.BASE_DIR.parent / 'testes' / f'{teste_id}.json'
+    with open(caminho_json, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+CHAVES_SECRETAS_PERGUNTA = (
+    'resposta_correta', 'criterios_correcao', 'tolerancia_numerica',
+    'palavras_chave', 'grupos_palavras_chave', 'minimo_grupos',
+)
+
+
+@login_required(login_url='login')
+def pagina_teste_fotossintese(request, teste_id):
+    config_teste = encontrar_config_teste(teste_id)
+    if config_teste is None:
+        raise Http404('Teste não encontrado.')
+
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    plano_aluno = perfil.plano if perfil is not None else 'free'
+    if config_teste['plano'] == 'pro' and plano_aluno != 'pro':
+        return redirect('superexplore')
+
+    try:
+        teste = carregar_teste(teste_id)
+    except FileNotFoundError:
+        raise Http404('Teste não encontrado.')
+
+    # Nunca enviar o gabarito para o browser — a correção só acontece
+    # no servidor, em corrigir_teste_fotossintese().
+    perguntas_publicas = [
+        {chave: valor for chave, valor in pergunta.items() if chave not in CHAVES_SECRETAS_PERGUNTA}
+        for pergunta in teste['perguntas']
+    ]
+
+    progresso_guardado = {}
+    if perfil is not None:
+        progresso_testes = perfil.progresso_testes if isinstance(perfil.progresso_testes, dict) else {}
+        entrada = progresso_testes.get(teste_id)
+        if isinstance(entrada, dict) and isinstance(entrada.get('respostas'), dict):
+            progresso_guardado = entrada['respostas']
+
+    return render(request, 'teste-fotossintese.html', {
+        'perfil': perfil,
+        'teste': teste,
+        'teste_id': teste_id,
+        'perguntas': perguntas_publicas,
+        'progresso_guardado': progresso_guardado,
+    })
+
+
+@login_required(login_url='login')
+@require_POST
+def guardar_progresso_teste(request):
+    """Guarda um rascunho das respostas do aluno a meio do teste, para que
+    possa fechar a página e continuar mais tarde de onde ficou — a correção
+    em si só acontece quando ele submete (corrigir_teste_fotossintese)."""
+    try:
+        dados = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+
+    teste_id = str(dados.get('testeId', '')).strip()
+    respostas = dados.get('respostas')
+    if not teste_id or not isinstance(respostas, dict):
+        return JsonResponse({'erro': 'Teste ou respostas em falta.'}, status=400)
+
+    perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    progresso_testes = dict(perfil.progresso_testes or {})
+    progresso_testes[teste_id] = {
+        'respostas': respostas,
+        'atualizado_em': timezone.now().isoformat(),
+    }
+    perfil.progresso_testes = progresso_testes
+    perfil.save(update_fields=['progresso_testes'])
+
+    return JsonResponse({'ok': True})
+
+
+def normalizar_resposta(valor):
+    return str(valor if valor is not None else '').strip().lower()
+
+
+def normalizar_sem_acentos(valor):
+    """Para correspondência por palavras-chave: minúsculas e sem
+    acentuação, para "espécie" e "especie" contarem como a mesma palavra."""
+    texto = normalizar_resposta(valor)
+    sem_acentos = unicodedata.normalize('NFKD', texto)
+    return ''.join(c for c in sem_acentos if not unicodedata.combining(c))
+
+
+def extrair_numero(valor):
+    texto = str(valor if valor is not None else '').replace(',', '.')
+    encontrado = re.search(r'-?\d+(\.\d+)?', texto)
+    return float(encontrado.group()) if encontrado else None
+
+
+def corrigir_pergunta_automatica(pergunta, resposta_aluno):
+    """Corrige tudo exceto resposta_longa — sem chamar nenhuma API. Itens
+    com várias partes (correspondência, ordenação, completar texto,
+    verdadeiro/falso) têm a cotação repartida em partes iguais."""
+    tipo = pergunta['tipo']
+    cotacao = pergunta['cotacao']
+    correta = pergunta.get('resposta_correta')
+
+    if tipo == 'escolha_multipla':
+        return cotacao if normalizar_resposta(resposta_aluno) == normalizar_resposta(correta) else 0
+
+    if tipo == 'correspondencia' or tipo == 'completar_texto' or tipo == 'verdadeiro_falso':
+        if not isinstance(resposta_aluno, dict) or not correta:
+            return 0
+        pontos_por_parte = cotacao / len(correta)
+        pontos = sum(
+            pontos_por_parte
+            for chave, valor_correto in correta.items()
+            if normalizar_resposta(resposta_aluno.get(chave)) == normalizar_resposta(valor_correto)
+        )
+        return round(pontos, 2)
+
+    if tipo == 'ordenacao':
+        if not isinstance(resposta_aluno, list) or not correta:
+            return 0
+        pontos_por_parte = cotacao / len(correta)
+        pontos = 0
+        for indice, letra_correta in enumerate(correta):
+            valor_aluno = resposta_aluno[indice] if indice < len(resposta_aluno) else None
+            if normalizar_resposta(valor_aluno) == normalizar_resposta(letra_correta):
+                pontos += pontos_por_parte
+        return round(pontos, 2)
+
+    if tipo == 'resposta_curta':
+        modo = pergunta.get('modo_correcao')
+
+        # Um único grupo de sinónimos aceitáveis — qualquer um dá cotação
+        # inteira (ex: "bicarbonato" ou "CO2" para a mesma variável).
+        if modo == 'palavras_chave':
+            palavras = pergunta.get('palavras_chave') or []
+            texto_aluno = normalizar_sem_acentos(resposta_aluno)
+            acertou = any(normalizar_sem_acentos(palavra) in texto_aluno for palavra in palavras)
+            return cotacao if acertou else 0
+
+        # Vários grupos de sinónimos (cada grupo = uma variável/ideia
+        # distinta); cotação proporcional a quantos grupos diferentes o
+        # aluno referiu, até ao mínimo pedido no enunciado.
+        if modo == 'grupos_multiplos':
+            grupos = pergunta.get('grupos_palavras_chave') or []
+            minimo = pergunta.get('minimo_grupos') or len(grupos) or 1
+            texto_aluno = normalizar_sem_acentos(resposta_aluno)
+            grupos_encontrados = sum(
+                1 for grupo in grupos
+                if any(normalizar_sem_acentos(palavra) in texto_aluno for palavra in grupo)
+            )
+            pontos = cotacao * min(grupos_encontrados, minimo) / minimo
+            return round(pontos, 2)
+
+        numero_correto = extrair_numero(correta)
+        numero_aluno = extrair_numero(resposta_aluno)
+        tolerancia = pergunta.get('tolerancia_numerica')
+        if numero_correto is not None and numero_aluno is not None and tolerancia is not None:
+            return cotacao if abs(numero_correto - numero_aluno) <= tolerancia else 0
+        return cotacao if normalizar_resposta(resposta_aluno) == normalizar_resposta(correta) else 0
+
+    return 0
+
+
+def corrigir_perguntas_longas_com_ia(perguntas_longas):
+    """Uma única chamada à Claude (Haiku) que corrige todas as perguntas de
+    resposta_longa do teste de uma vez. Sem limite de uso — não passa por
+    verificar_e_incrementar_uso_chat(), disponível para Free e Pro."""
+    resultado = {}
+
+    if not settings.ANTHROPIC_API_KEY:
+        for pergunta, _ in perguntas_longas:
+            resultado[pergunta['id']] = {
+                'pontos': 0,
+                'feedback': 'A correção automática desta pergunta ainda não está configurada.',
+            }
+        return resultado
+
+    blocos_pedido = [
+        (
+            f"Pergunta \"{pergunta['id']}\" (cotação máxima: {pergunta['cotacao']} pontos)\n"
+            f"Enunciado: {pergunta['enunciado']}\n"
+            f"Critérios de correção: {pergunta['criterios_correcao']}\n"
+            f"Resposta do aluno: {(resposta or '').strip() or '(sem resposta)'}"
+        )
+        for pergunta, resposta in perguntas_longas
+    ]
+    formato_json = ', '.join(
+        f'"{pergunta["id"]}": {{"pontuacao": numero, "feedback": "texto"}}'
+        for pergunta, _ in perguntas_longas
+    )
+    prompt = (
+        "És um professor de Biologia do ensino secundário em Portugal a corrigir um teste. "
+        "Para cada pergunta abaixo, atribui uma pontuação entre 0 e a cotação máxima indicada, "
+        "com base em quão bem a resposta do aluno cobre os critérios de correção, e escreve um "
+        "feedback curto (1 a 2 frases, em português de Portugal) sobre o que está bem ou o que falta.\n\n"
+        + "\n\n---\n\n".join(blocos_pedido)
+        + "\n\nResponde APENAS com um objeto JSON válido, sem texto antes ou depois, no formato exato:\n"
+        + "{" + formato_json + "}"
+    )
+
+    try:
+        client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+        response = client.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=1000,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        texto_resposta = next((bloco.text for bloco in response.content if bloco.type == 'text'), '{}')
+        correcao_ia = json.loads(texto_resposta)
+    except (anthropic.RateLimitError, anthropic.APIStatusError, anthropic.APIConnectionError, ValueError, TypeError):
+        correcao_ia = {}
+
+    for pergunta, _ in perguntas_longas:
+        item = correcao_ia.get(pergunta['id']) if isinstance(correcao_ia, dict) else None
+        if isinstance(item, dict) and isinstance(item.get('pontuacao'), (int, float)):
+            pontos = max(0.0, min(float(pergunta['cotacao']), float(item['pontuacao'])))
+            feedback = str(item.get('feedback', ''))[:500]
+        else:
+            pontos = 0
+            feedback = 'Não foi possível obter a correção da IA para esta pergunta. Tenta submeter novamente.'
+        resultado[pergunta['id']] = {'pontos': pontos, 'feedback': feedback}
+
+    return resultado
+
+
+@login_required(login_url='login')
+@require_POST
+def corrigir_teste_fotossintese(request, teste_id):
+    config_teste = encontrar_config_teste(teste_id)
+    if config_teste is None:
+        raise Http404('Teste não encontrado.')
+
+    try:
+        perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    plano_aluno = perfil.plano if perfil is not None else 'free'
+    if config_teste['plano'] == 'pro' and plano_aluno != 'pro':
+        return JsonResponse({'erro': 'Este teste está disponível apenas no plano SuperExplore.'}, status=403)
+
+    try:
+        dados_pedido = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+
+    respostas_aluno = dados_pedido.get('respostas')
+    if not isinstance(respostas_aluno, dict):
+        return JsonResponse({'erro': 'Respostas em falta.'}, status=400)
+
+    try:
+        teste = carregar_teste(teste_id)
+    except FileNotFoundError:
+        raise Http404('Teste não encontrado.')
+
+    resultado_perguntas = {}
+    pontos_totais = 0.0
+    perguntas_longas = []
+
+    for pergunta in teste['perguntas']:
+        resposta = respostas_aluno.get(pergunta['id'])
+        if pergunta['tipo'] == 'resposta_longa':
+            perguntas_longas.append((pergunta, resposta))
+            continue
+        pontos = corrigir_pergunta_automatica(pergunta, resposta)
+        pontos_totais += pontos
+        resultado_perguntas[pergunta['id']] = {'pontos': pontos, 'cotacao': pergunta['cotacao']}
+
+    feedback_ia = {}
+    if perguntas_longas:
+        correcao_ia = corrigir_perguntas_longas_com_ia(perguntas_longas)
+        for pergunta, _ in perguntas_longas:
+            item = correcao_ia.get(pergunta['id'], {'pontos': 0, 'feedback': ''})
+            resultado_perguntas[pergunta['id']] = {'pontos': item['pontos'], 'cotacao': pergunta['cotacao']}
+            feedback_ia[pergunta['id']] = item['feedback']
+            pontos_totais += item['pontos']
+
+    nota_final = round(pontos_totais / (teste['cotacao_total'] / 20), 1)
+
+    # O teste já foi corrigido — o rascunho de respostas em curso deixa de
+    # fazer sentido (evita reaparecer pré-preenchido se o aluno repetir o
+    # teste mais tarde).
+    if perfil is not None:
+        progresso_testes = dict(perfil.progresso_testes or {})
+        if progresso_testes.pop(teste_id, None) is not None:
+            perfil.progresso_testes = progresso_testes
+            perfil.save(update_fields=['progresso_testes'])
+
+    return JsonResponse({
+        'notaFinal': nota_final,
+        'pontosTotais': round(pontos_totais, 2),
+        'cotacaoTotal': teste['cotacao_total'],
+        'perguntas': resultado_perguntas,
+        'feedbackIA': feedback_ia,
+    })
 
 
 def pagina_conteudo(request):

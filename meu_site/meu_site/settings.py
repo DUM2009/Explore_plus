@@ -10,11 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Loads secrets (like ANTHROPIC_API_KEY) from a local ".env" file at the repo
+# root — that file is gitignored and never committed.
+load_dotenv(BASE_DIR.parent / '.env')
+ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/

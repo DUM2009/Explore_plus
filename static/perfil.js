@@ -245,7 +245,7 @@ function renderProfileXP(user) {
         currentSubject.textContent = overview.currentSubject;
     }
 
-    nivelAluno.textContent = `Nível ${overview.stats.level}`;
+    nivelAluno.textContent = `Nível ${overview.stats.level + 1}`;
     xpAluno.textContent = `${overview.stats.xp} XP`;
     xpProgressBar.style.width = `${overview.stats.progressPercent}%`;
     if (xpNextLevelText) {

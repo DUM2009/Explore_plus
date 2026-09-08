@@ -1,0 +1,624 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{ teste.titulo }} | Explore+</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
+
+</head>
+
+<body class="shadcn-profile">
+
+<div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+
+<section class="profile-layout has-sidebar sidebar-collapsible">
+
+<aside class="profile-sidebar" id="profileSidebar" aria-hidden="true">
+<div class="profile-sidebar-brand">
+<div>
+            <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
+        </div>
+</div>
+
+<nav class="profile-sidebar-nav">
+<div class="sidebar-plan-card">
+<div class="sidebar-plan-info">
+<span class="sidebar-plan-label">Plano</span>
+<strong class="sidebar-plan-name">{% if perfil.plano == 'pro' %}SuperExplore{% else %}Gratuito{% endif %}</strong>
+</div>
+{% if perfil.plano != 'pro' %}
+<a href="{% url 'superexplore' %}" class="sidebar-plan-cta">SuperExplore</a>
+{% endif %}
+</div>
+
+<a href="{% url 'perfil' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+<span class="profile-sidebar-label">Perfil</span>
+</a>
+
+<a href="{% url 'index-missions' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target-icon lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+<span class="profile-sidebar-label">Missões</span>
+</a>
+<a href="{% url 'Testes' %}" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-spreadsheet-icon lucide-file-spreadsheet"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg></span>
+<span class="profile-sidebar-label">Testes</span>
+</a>
+<a href="{% url 'exames' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+<span class="profile-sidebar-label">Exames</span>
+</a>
+<a href="{% url 'biblioteca' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked-icon lucide-book-marked"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></span>
+<span class="profile-sidebar-label">Biblioteca do Explorador</span>
+</a>
+<a href="{% url 'Resumos' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
+<span class="profile-sidebar-label">Resumos</span>
+</a>
+</nav>
+
+<div class="sidebar-theme-card">
+<span class="sidebar-theme-label">Tema</span>
+<button class="header-icon-btn theme-toggle-btn" id="sidebarThemeToggleBtn" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+<svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+</button>
+</div>
+
+<div class="profile-account">
+
+    <button
+        class="profile-account-trigger"
+        id="profileAccountTrigger"
+        type="button"
+        aria-expanded="false"
+        aria-controls="profileAccountMenu">
+
+        <span class="profile-account-avatar" id="profileAccountAvatar">
+            {{ request.user.username|first|upper }}
+        </span>
+
+         <span class="profile-account-info">
+            <strong id="profileAccountName">{{ request.user.username }}</strong>
+            <span id="profileAccountEmail">{{ request.user.email }}</span>
+        </span>
+
+        <span class="profile-account-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"/>
+            </svg>
+        </span>
+
+    </button>
+
+    <div
+        class="profile-account-menu"
+        id="profileAccountMenu"
+        hidden>
+
+        <a href="/Configurações/">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+            </svg>
+            <span>Configurações</span>
+        </a>
+
+        <a href="{% url 'logout' %}" class="profile-account-logout">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <path d="M10 17l5-5-5-5"/>
+                <path d="M15 12H3"/>
+                <path d="M21 19V5a2 2 0 0 0-2-2h-6"/>
+            </svg>
+            <span>Terminar sessão</span>
+        </a>
+
+    </div>
+
+</div>
+</aside>
+
+<div class="profile-main-shell">
+<div class="profile-content">
+
+<div class="missions-topbar">
+    <div class="missions-topbar-logo">
+        <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
+    </div>
+    <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+</div>
+
+<section class="missions-page teste-page">
+    <a href="{% url 'Testes' %}" class="teste-voltar">&larr; Voltar aos testes</a>
+    <h1>{{ teste.titulo }}</h1>
+    <p class="teste-meta">{{ teste.disciplina }} &middot; Duração sugerida: {{ teste.duracao_sugerida_min }} minutos &middot; Cotação total: {{ teste.cotacao_total }} pontos</p>
+
+    <form id="testeForm" novalidate>
+    {% for grupo in teste.grupos %}
+        <div class="teste-grupo">
+            <h2>{{ grupo.titulo }}</h2>
+            <p class="teste-texto-apoio">{{ grupo.texto_apoio }}</p>
+
+            {% if grupo.tabela_apoio %}
+            <p class="teste-tabela-titulo">{{ grupo.tabela_apoio.titulo }}</p>
+            <div class="teste-tabela-wrapper">
+                <table class="teste-tabela">
+                    <thead>
+                        <tr>{% for coluna in grupo.tabela_apoio.colunas %}<th>{{ coluna }}</th>{% endfor %}</tr>
+                    </thead>
+                    <tbody>
+                        {% for linha in grupo.tabela_apoio.linhas %}
+                        <tr>{% for valor in linha %}<td>{{ valor }}</td>{% endfor %}</tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
+            {% if grupo.esquema_apoio %}
+            <p class="teste-esquema">{{ grupo.esquema_apoio }}</p>
+            {% endif %}
+
+            {% for pergunta in perguntas %}
+                {% if pergunta.grupo == grupo.numero %}
+                <div class="teste-pergunta" data-pergunta-id="{{ pergunta.id }}" data-tipo="{{ pergunta.tipo }}">
+                    <div class="teste-pergunta-head">
+                        <span class="teste-pergunta-numero">{{ pergunta.id|slice:"1:" }}.</span>
+                        <p class="teste-pergunta-enunciado">{{ pergunta.enunciado }}</p>
+                        <span class="teste-pergunta-cotacao">{{ pergunta.cotacao }} pts</span>
+                    </div>
+
+                    {% if pergunta.tipo == 'escolha_multipla' %}
+                    <div class="teste-opcoes">
+                        {% for opcao in pergunta.opcoes %}
+                        <label class="teste-opcao">
+                            <input type="radio" name="resposta_{{ pergunta.id }}" value="{{ opcao.letra }}" class="teste-opcao-input">
+                            <span class="teste-opcao-letra">{{ opcao.letra }}</span>
+                            <span class="teste-opcao-texto">{{ opcao.texto }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+
+                    {% elif pergunta.tipo == 'correspondencia' %}
+                    <div class="teste-correspondencia">
+                        <div class="teste-coluna">
+                            <p class="teste-coluna-titulo">Coluna I</p>
+                            {% for item in pergunta.coluna_esquerda %}
+                            <div class="teste-correspondencia-linha">
+                                <span>({{ item.letra }}) {{ item.texto }}</span>
+                                <select data-parte="{{ item.letra }}">
+                                    <option value="">—</option>
+                                    {% for opcao in pergunta.coluna_direita %}
+                                    <option value="{{ opcao.numero }}">{{ opcao.numero }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="teste-coluna">
+                            <p class="teste-coluna-titulo">Coluna II</p>
+                            {% for opcao in pergunta.coluna_direita %}
+                            <p class="teste-coluna-item">({{ opcao.numero }}) {{ opcao.texto }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {% elif pergunta.tipo == 'ordenacao' %}
+                    <div class="teste-ordenacao">
+                        <div class="teste-ordenacao-opcoes">
+                            {% for opcao in pergunta.opcoes %}
+                            <p>({{ opcao.letra }}) {{ opcao.texto }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="teste-ordenacao-posicoes">
+                            {% for opcao in pergunta.opcoes %}
+                            <label class="teste-ordenacao-posicao">
+                                <span>{{ forloop.counter }}º</span>
+                                <select data-posicao="{{ forloop.counter }}">
+                                    <option value="">—</option>
+                                    {% for opcao2 in pergunta.opcoes %}
+                                    <option value="{{ opcao2.letra }}">{{ opcao2.letra }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {% elif pergunta.tipo == 'completar_texto' %}
+                    <p class="teste-completar-texto">{{ pergunta.texto_com_espacos }}</p>
+                    <div class="teste-espacos">
+                        {% for espaco in pergunta.espacos %}
+                        <label class="teste-espaco">
+                            <span>({{ espaco.id }})</span>
+                            <select data-espaco="{{ espaco.id }}">
+                                <option value="">—</option>
+                                {% for opcao in espaco.opcoes %}
+                                <option value="{{ opcao.letra }}">({{ opcao.letra }}) {{ opcao.texto }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        {% endfor %}
+                    </div>
+
+                    {% elif pergunta.tipo == 'resposta_curta' %}
+                    <input type="text" class="teste-input-curta" placeholder="A tua resposta">
+
+                    {% elif pergunta.tipo == 'resposta_longa' %}
+                    <textarea class="teste-input-longa" rows="5" placeholder="Escreve a tua resposta..."></textarea>
+
+                    {% elif pergunta.tipo == 'verdadeiro_falso' %}
+                    <div class="teste-vf">
+                        {% for item in pergunta.itens %}
+                        <div class="teste-vf-linha" data-letra="{{ item.letra }}">
+                            <span class="teste-vf-texto">({{ item.letra }}) {{ item.texto }}</span>
+                            <div class="teste-vf-opcoes">
+                                <label class="teste-vf-pill teste-vf-pill--v">
+                                    <input type="radio" name="resposta_{{ pergunta.id }}_{{ item.letra }}" value="V" class="teste-opcao-input">
+                                    <span>Verdadeiro</span>
+                                </label>
+                                <label class="teste-vf-pill teste-vf-pill--f">
+                                    <input type="radio" name="resposta_{{ pergunta.id }}_{{ item.letra }}" value="F" class="teste-opcao-input">
+                                    <span>Falso</span>
+                                </label>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <div class="teste-pergunta-feedback" hidden></div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+        <p class="teste-guardado-aviso" id="testeGuardadoAviso" hidden></p>
+        <button type="submit" class="teste-submeter-btn" id="testeSubmitBtn">Submeter teste</button>
+    </form>
+
+    <div class="teste-resultado-final" id="testeResultadoFinal" hidden></div>
+</section>
+
+</div>
+</div>
+
+</section>
+
+<button type="button" class="teste-mascote-fab" id="testeMascoteFab" aria-label="Falar com o Kim">
+    <video class="teste-mascote-fab-img" autoplay loop muted playsinline aria-hidden="true">
+        <source src="{% static 'Mascote a acenar.webm' %}" type="video/webm">
+    </video>
+    <span class="teste-mascote-fab-tooltip">Precisas de ajuda com o teste?</span>
+</button>
+
+<div class="teste-mascote-panel" id="testeMascotePanel" hidden>
+    <div class="teste-mascote-panel-header">
+        <span>Fala com o Kim</span>
+        <button type="button" class="teste-mascote-panel-close" id="testeMascotePanelClose" aria-label="Fechar">✕</button>
+    </div>
+    <div class="teste-mascote-messages" id="testeMascoteMessages"></div>
+    <form class="teste-mascote-form" id="testeMascoteForm">
+        <input type="text" class="teste-mascote-input" id="testeMascoteInput" placeholder="Escreve a tua pergunta..." autocomplete="off" maxlength="500">
+        <button type="submit" class="teste-mascote-send" aria-label="Enviar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        </button>
+    </form>
+</div>
+
+{{ progresso_guardado|json_script:"progresso-guardado-data" }}
+<script>
+window.exploreCsrfToken = '{{ csrf_token }}';
+window.exploreCorrigirTesteUrl = '{% url "corrigir-teste-fotossintese" teste_id %}';
+window.exploreGuardarProgressoTesteUrl = '{% url "guardar-progresso-teste" %}';
+window.exploreTesteId = '{{ teste_id }}';
+window.exploreProgressoGuardado = JSON.parse(document.getElementById('progresso-guardado-data').textContent);
+window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
+
+(function () {
+    const fab = document.getElementById('testeMascoteFab');
+    const panel = document.getElementById('testeMascotePanel');
+    const closeBtn = document.getElementById('testeMascotePanelClose');
+    const form = document.getElementById('testeMascoteForm');
+    const input = document.getElementById('testeMascoteInput');
+    const messagesEl = document.getElementById('testeMascoteMessages');
+
+    let history = [];
+    let welcomed = false;
+
+    function appendBubble(role, text, isTyping) {
+        const bubble = document.createElement('div');
+        bubble.className = `teste-mascote-bubble teste-mascote-bubble--${role}${isTyping ? ' is-typing' : ''}`;
+        bubble.textContent = text;
+        messagesEl.appendChild(bubble);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        return bubble;
+    }
+
+    fab?.addEventListener('click', () => {
+        const willOpen = panel.hidden;
+        panel.hidden = !willOpen;
+        if (willOpen) {
+            if (!welcomed) {
+                welcomed = true;
+                appendBubble('assistant', 'Olá! Sou o Kim 🦎 Se tiveres dúvidas sobre alguma pergunta do teste, pergunta-me — mas não te dou a resposta direta, só ajudo-te a perceber.');
+            }
+            input?.focus();
+        }
+    });
+
+    closeBtn?.addEventListener('click', () => { panel.hidden = true; });
+
+    form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const text = input.value.trim();
+        if (!text) return;
+
+        input.value = '';
+        appendBubble('user', text);
+        const historyBefore = [...history];
+        history.push({ role: 'user', text });
+
+        const typingEl = appendBubble('assistant', '…', true);
+
+        try {
+            const response = await fetch(window.exploreMascoteChatUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': window.exploreCsrfToken },
+                credentials: 'same-origin',
+                body: JSON.stringify({
+                    message: text,
+                    history: historyBefore,
+                    missionTitle: '{{ teste.titulo|default:"Teste"|escapejs }}',
+                    sectionTitle: '{{ teste.disciplina|default:""|escapejs }}',
+                    context: 'O aluno está a meio de um teste de avaliação sobre {{ teste.titulo|default:"Fotossíntese"|escapejs }}. Ajuda-o a perceber os conceitos, mas não resolvas as perguntas do teste por ele.',
+                }),
+            });
+            const dados = await response.json();
+            typingEl.remove();
+            if (!response.ok) {
+                appendBubble('assistant', dados.erro || 'Não foi possível obter resposta.');
+                return;
+            }
+            appendBubble('assistant', dados.reply);
+            history.push({ role: 'assistant', text: dados.reply });
+        } catch (error) {
+            typingEl.remove();
+            appendBubble('assistant', 'Ocorreu um erro de ligação. Tenta novamente.');
+        }
+    });
+})();
+
+const accountTrigger = document.getElementById('profileAccountTrigger');
+const accountMenu = document.getElementById('profileAccountMenu');
+
+accountTrigger?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isOpen = !accountMenu.hidden;
+    accountMenu.hidden = isOpen;
+    accountTrigger.setAttribute('aria-expanded', String(!isOpen));
+});
+
+document.addEventListener('click', (event) => {
+    if (accountMenu && !accountMenu.hidden && !accountMenu.contains(event.target) && event.target !== accountTrigger) {
+        accountMenu.hidden = true;
+        accountTrigger?.setAttribute('aria-expanded', 'false');
+    }
+});
+
+function escapeHtml(texto) {
+    const div = document.createElement('div');
+    div.textContent = texto;
+    return div.innerHTML;
+}
+
+function coletarRespostas() {
+    const respostas = {};
+    document.querySelectorAll('.teste-pergunta').forEach((bloco) => {
+        const id = bloco.dataset.perguntaId;
+        const tipo = bloco.dataset.tipo;
+
+        if (tipo === 'escolha_multipla') {
+            const marcado = bloco.querySelector(`input[name="resposta_${id}"]:checked`);
+            respostas[id] = marcado ? marcado.value : null;
+        } else if (tipo === 'correspondencia' || tipo === 'completar_texto') {
+            const valor = {};
+            bloco.querySelectorAll('[data-parte], [data-espaco]').forEach((select) => {
+                const chave = select.dataset.parte || select.dataset.espaco;
+                valor[chave] = select.value || null;
+            });
+            respostas[id] = valor;
+        } else if (tipo === 'ordenacao') {
+            const posicoes = [];
+            bloco.querySelectorAll('[data-posicao]').forEach((select) => {
+                posicoes[Number(select.dataset.posicao) - 1] = select.value || null;
+            });
+            respostas[id] = posicoes;
+        } else if (tipo === 'resposta_curta') {
+            respostas[id] = bloco.querySelector('.teste-input-curta')?.value.trim() || '';
+        } else if (tipo === 'resposta_longa') {
+            respostas[id] = bloco.querySelector('.teste-input-longa')?.value.trim() || '';
+        } else if (tipo === 'verdadeiro_falso') {
+            const valor = {};
+            bloco.querySelectorAll('.teste-vf-linha').forEach((linha) => {
+                const marcado = linha.querySelector('input:checked');
+                valor[linha.dataset.letra] = marcado ? marcado.value : null;
+            });
+            respostas[id] = valor;
+        }
+    });
+    return respostas;
+}
+
+/** Pré-preenche o formulário com um rascunho guardado anteriormente (ver
+ *  guardarProgressoDebounced), para o aluno continuar de onde ficou em vez
+ *  de recomeçar o teste do zero. */
+function restaurarRespostas(respostas) {
+    if (!respostas || typeof respostas !== 'object') return;
+
+    document.querySelectorAll('.teste-pergunta').forEach((bloco) => {
+        const id = bloco.dataset.perguntaId;
+        const tipo = bloco.dataset.tipo;
+        const valor = respostas[id];
+        if (valor === undefined || valor === null) return;
+
+        if (tipo === 'escolha_multipla') {
+            if (!valor) return;
+            const input = bloco.querySelector(`input[name="resposta_${id}"][value="${CSS.escape(valor)}"]`);
+            if (input) input.checked = true;
+        } else if (tipo === 'correspondencia' || tipo === 'completar_texto') {
+            if (typeof valor !== 'object') return;
+            bloco.querySelectorAll('[data-parte], [data-espaco]').forEach((select) => {
+                const chave = select.dataset.parte || select.dataset.espaco;
+                if (valor[chave]) select.value = valor[chave];
+            });
+        } else if (tipo === 'ordenacao') {
+            if (!Array.isArray(valor)) return;
+            bloco.querySelectorAll('[data-posicao]').forEach((select) => {
+                const indice = Number(select.dataset.posicao) - 1;
+                if (valor[indice]) select.value = valor[indice];
+            });
+        } else if (tipo === 'resposta_curta') {
+            const input = bloco.querySelector('.teste-input-curta');
+            if (input && valor) input.value = valor;
+        } else if (tipo === 'resposta_longa') {
+            const textarea = bloco.querySelector('.teste-input-longa');
+            if (textarea && valor) textarea.value = valor;
+        } else if (tipo === 'verdadeiro_falso') {
+            if (typeof valor !== 'object') return;
+            bloco.querySelectorAll('.teste-vf-linha').forEach((linha) => {
+                const letra = linha.dataset.letra;
+                if (valor[letra]) {
+                    const input = linha.querySelector(`input[value="${CSS.escape(valor[letra])}"]`);
+                    if (input) input.checked = true;
+                }
+            });
+        }
+    });
+}
+
+let guardarProgressoTimeout = null;
+
+function guardarProgressoDebounced() {
+    clearTimeout(guardarProgressoTimeout);
+    guardarProgressoTimeout = setTimeout(guardarProgresso, 800);
+}
+
+/** Guarda um rascunho das respostas atuais no servidor — silencioso em
+ *  caso de falha, já que é só uma conveniência (o teste em si só é
+ *  avaliado quando o aluno submete). */
+async function guardarProgresso() {
+    try {
+        const response = await fetch(window.exploreGuardarProgressoTesteUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': window.exploreCsrfToken },
+            credentials: 'same-origin',
+            body: JSON.stringify({ testeId: window.exploreTesteId, respostas: coletarRespostas() }),
+        });
+        if (!response.ok) return;
+        const aviso = document.getElementById('testeGuardadoAviso');
+        if (aviso) {
+            aviso.hidden = false;
+            aviso.textContent = 'Progresso guardado ✓';
+        }
+    } catch (error) {
+        // Falha silenciosa — a próxima alteração tenta guardar de novo.
+    }
+}
+
+function mostrarResultado(dados) {
+    document.querySelectorAll('#testeForm input, #testeForm select, #testeForm textarea, #testeSubmitBtn').forEach((el) => {
+        el.disabled = true;
+    });
+
+    const aviso = document.getElementById('testeGuardadoAviso');
+    if (aviso) aviso.hidden = true;
+
+    let feedbackHtml = '';
+    Object.entries(dados.feedbackIA || {}).forEach(([perguntaId, feedback]) => {
+        const numero = perguntaId.replace('p', '');
+        const info = dados.perguntas[perguntaId] || {};
+        feedbackHtml += `
+            <div class="teste-feedback-ia">
+                <p class="teste-feedback-ia-titulo">Pergunta ${numero} <span>${info.pontos} / ${info.cotacao} pts</span></p>
+                <p class="teste-feedback-ia-texto">${escapeHtml(feedback)}</p>
+            </div>
+        `;
+    });
+
+    const resultadoEl = document.getElementById('testeResultadoFinal');
+    resultadoEl.hidden = false;
+    resultadoEl.innerHTML = `
+        <div class="teste-nota-final">
+            <span class="teste-nota-final-label">Nota final</span>
+            <span class="teste-nota-final-valor">${dados.notaFinal}<small>/20</small></span>
+            <span class="teste-nota-final-pontos">${dados.pontosTotais} / ${dados.cotacaoTotal} pontos</span>
+        </div>
+        ${feedbackHtml}
+    `;
+    resultadoEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+if (window.exploreProgressoGuardado && Object.keys(window.exploreProgressoGuardado).length > 0) {
+    restaurarRespostas(window.exploreProgressoGuardado);
+    const aviso = document.getElementById('testeGuardadoAviso');
+    if (aviso) {
+        aviso.hidden = false;
+        aviso.textContent = 'Retomaste este teste de onde tinhas ficado.';
+    }
+}
+
+document.getElementById('testeForm').addEventListener('input', guardarProgressoDebounced);
+document.getElementById('testeForm').addEventListener('change', guardarProgressoDebounced);
+
+document.getElementById('testeForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const submitBtn = document.getElementById('testeSubmitBtn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'A corrigir...';
+
+    try {
+        const response = await fetch(window.exploreCorrigirTesteUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': window.exploreCsrfToken },
+            credentials: 'same-origin',
+            body: JSON.stringify({ respostas: coletarRespostas() }),
+        });
+        const dados = await response.json();
+        if (!response.ok) throw new Error(dados.erro || 'Não foi possível corrigir o teste.');
+        submitBtn.textContent = 'Teste corrigido';
+        mostrarResultado(dados);
+    } catch (error) {
+        const resultadoEl = document.getElementById('testeResultadoFinal');
+        resultadoEl.hidden = false;
+        resultadoEl.innerHTML = `<p class="teste-erro">${escapeHtml(error.message)}</p>`;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submeter teste';
+    }
+});
+</script>
+<script src="{% static 'nav-drawer.js' %}" defer></script>
+<script src="{% static 'header-actions.js' %}" defer></script>
+
+</body>
+
+</html>

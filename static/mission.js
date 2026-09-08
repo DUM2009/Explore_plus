@@ -17,24 +17,44 @@ class MissionSystem {
         this.chapterCompletionView = false;
         this.earnedXP = 0;
         this.completedSections = new Set();
+        // Guards one-off interactive widgets (the formula builder, the
+        // phase-clara sequence) so their small XP reward is only ever
+        // granted once per widget, even if the student redoes it later.
+        this.widgetCompletions = {};
         this.isInFinalQuiz = false;
         this.finalQuizAnswers = [];
         this.activeCardAudioButton = null;
         this.mascotIntroShown = {};
         this.mascotQuizIntroShown = {};
-        this.currentMascotSpeech = null;
-        this.sectionHeaderShown = {};
         this.quizViewActive = {};
-        this.sidebarCollapsed = localStorage.getItem('explore_mission_sidebar_collapsed') === '1';
+        // Transient (not persisted): which just-answered question is still
+        // showing its feedback, waiting for "Continuar".
+        this.awaitingContinue = {};
         this.progressStorageKey = this.resolveProgressStorageKey();
         this.loadProgress();
         this.registerPersistenceListeners();
         this.saveProgress();
         this.streak = window.ProfileXP?.recordActivityStreakForCurrentUser?.() || { current: 0, longest: 0 };
+
+        // Percurso (path) screen: forest scene with a circle per section.
+        // It's always the first thing shown when entering a mission
+        // (fresh visit or "Retomar"), so the student always picks their
+        // section from the map — it only clears once they click a circle.
+        this.showPathScreen = true;
+        // The mascot's explanation of how missions work is a ONE-TIME thing
+        // across the whole app, not per mission — it only plays the very
+        // first time a student ever opens a mission, whichever one that is.
+        this.mascotIntroSeenKey = 'explore_mascot_intro_seen';
+        this.pathIntroActive = localStorage.getItem(this.mascotIntroSeenKey) !== '1';
+        this.pathIntroStep = 0;
     }
     
 
     buildSummaryCardHtml(section) {
+        if (section.formulaBuilder) {
+            return this.buildFormulaBuilderCardHtml();
+        }
+
         const hasSummary = Array.isArray(section.summarySteps) && section.summarySteps.length > 0;
 
         if (!hasSummary) {
@@ -53,6 +73,64 @@ class MissionSystem {
                         </div>
                     `).join('')}
                 </div>
+            </div>
+        `;
+
+        return `<div class="screen-card mission-summary-card">${summaryHtml}</div>`;
+    }
+
+    /**
+     * Instead of showing the photosynthesis equation already complete, the
+     * student drags each term into its slot — 6CO2 + 6H2O -> C6H12O6 + 6O2 —
+     * and earns a small XP bonus once it's right (bindFormulaBuilder wires
+     * the actual drag-and-drop after this HTML is in the DOM).
+     */
+    buildFormulaBuilderCardHtml() {
+        const co2Icon = '<span class="molecule-icon"><span class="atom atom--oxygen"></span><span class="atom atom--carbon"></span><span class="atom atom--oxygen"></span></span>';
+        const o2Icon = '<span class="molecule-icon"><span class="atom atom--oxygen"></span><span class="atom atom--oxygen"></span></span>';
+        const pieces = [
+            { key: 'co2', label: '6CO<sub>2</sub>', icon: co2Icon },
+            { key: 'h2o', label: '6H<sub>2</sub>O', icon: '💧' },
+            { key: 'glicose', label: 'C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>', icon: '🍬' },
+            { key: 'o2', label: '6O<sub>2</sub>', icon: o2Icon }
+        ];
+        const pieceByKey = Object.fromEntries(pieces.map((piece) => [piece.key, piece]));
+        // Shuffled so the pool isn't already in the correct order.
+        const poolOrder = ['glicose', 'o2', 'co2', 'h2o'];
+
+        // Reactants (CO2 + H2O) and products (glicose + O2) can go in either
+        // of their two slots — the order within each side of the equation
+        // doesn't change its meaning, so bindFormulaBuilder checks the pair
+        // as a set rather than a fixed position.
+        const slotsHtml = `
+            <div class="formula-slot" data-slot="reactant-1" data-zone="reactant"><span class="formula-slot-placeholder">?</span></div>
+            <span class="formula-operator">+</span>
+            <div class="formula-slot" data-slot="reactant-2" data-zone="reactant"><span class="formula-slot-placeholder">?</span></div>
+            <span class="formula-operator formula-operator--arrow">→</span>
+            <div class="formula-slot" data-slot="product-1" data-zone="product"><span class="formula-slot-placeholder">?</span></div>
+            <span class="formula-operator">+</span>
+            <div class="formula-slot" data-slot="product-2" data-zone="product"><span class="formula-slot-placeholder">?</span></div>
+        `;
+
+        const poolHtml = poolOrder.map((key) => {
+            const piece = pieceByKey[key];
+            return `
+                <div class="formula-piece" draggable="true" data-piece="${piece.key}">
+                    <span class="formula-piece-label">${piece.label}</span>
+                    <span class="formula-piece-arrow">↓</span>
+                    <span class="formula-piece-icon">${piece.icon}</span>
+                </div>
+            `;
+        }).join('');
+
+        const summaryHtml = `
+            <div class="mission-summary-box formula-builder">
+                <p class="mission-summary-heading">Em resumo: o que acontece nesta etapa?</p>
+                <p class="formula-builder-hint">Arrasta cada peça para o espaço certo da equação da fotossíntese.</p>
+                <div class="formula-equation">${slotsHtml}</div>
+                <div class="formula-pool">${poolHtml}</div>
+                <p class="formula-builder-feedback"></p>
+                <button type="button" class="formula-builder-reset-btn">↺ Repetir</button>
             </div>
         `;
 
@@ -275,6 +353,7 @@ class MissionSystem {
                 this.chapterCompletionView = data.chapterCompletionView === true;
                 this.earnedXP = Number.isFinite(data.earnedXP) ? data.earnedXP : 0;
                 this.completedSections = new Set(Array.isArray(data.completedSections) ? data.completedSections : []);
+                this.widgetCompletions = data.widgetCompletions && typeof data.widgetCompletions === 'object' ? data.widgetCompletions : {};
             } catch (error) {
                 console.warn('Could not parse mission progress from localStorage:', error);
                 this.currentSectionIndex = 0;
@@ -287,6 +366,7 @@ class MissionSystem {
                 this.chapterCompletionView = false;
                 this.earnedXP = 0;
                 this.completedSections = new Set();
+                this.widgetCompletions = {};
             }
         }
 
@@ -392,6 +472,25 @@ class MissionSystem {
     }
 
     /**
+     * Builds a { sectionId: quizPercentage } map for every completed section,
+     * so the profile page can show how well each topic went (not just whether
+     * it was finished).
+     */
+    buildSectionScores() {
+        const scores = {};
+        for (const sectionId of this.completedSections) {
+            const section = this.mission.sections.find((s) => s.id === sectionId);
+            if (!section) continue;
+            const questions = this.getSectionQuestions(section);
+            if (!questions.length) continue;
+            const answerState = this.getSectionAnswerState(sectionId);
+            const correct = answerState.answers?.filter((a) => a?.isCorrect === true).length || 0;
+            scores[sectionId] = Math.round((correct / questions.length) * 100);
+        }
+        return scores;
+    }
+
+    /**
      * Save user progress to localStorage
      */
     saveProgress() {
@@ -408,6 +507,8 @@ class MissionSystem {
             chapterCompletionView: this.chapterCompletionView,
             earnedXP: this.earnedXP,
             completedSections: Array.from(this.completedSections),
+            widgetCompletions: this.widgetCompletions,
+            sectionScores: this.buildSectionScores(),
             updatedAt: new Date().toISOString()
         };
 
@@ -474,6 +575,8 @@ class MissionSystem {
         window.addEventListener('explore:auth-changed', () => {
             this.handleAuthStateSync();
         });
+
+        window.addEventListener('resize', () => this.drawPathConnectorLine());
     }
 
     awardProfileXP(amount, source, activityDetails = {}) {
@@ -505,17 +608,250 @@ class MissionSystem {
     render() {
         this.stopCardAudio();
         this.renderHeader();
-        this.renderMissionSidebar();
         this.renderSections();
+        this.renderLessonChrome();
         this.updateProgressBar();
+        this.renderPathScreen();
+        this.applyPathScreenVisibility();
+    }
+
+    applyPathScreenVisibility() {
+        const pathScreen = document.getElementById('missionPathScreen');
+        const container = document.querySelector('.mission-container');
+        const header = document.getElementById('siteHeader');
+        const helpFab = document.getElementById('lessonHelpFab');
+        if (pathScreen) pathScreen.hidden = !this.showPathScreen;
+        if (container) container.hidden = this.showPathScreen;
+        // The site header stays hidden for the whole lesson-player experience
+        // now (not just during the percurso's mascot intro), since the new
+        // lesson topbar (close button + progress + XP/streak) replaces it.
+        const headerHidden = !this.showPathScreen || this.pathIntroActive;
+        if (header) header.hidden = headerHidden;
+        // The floating "talk to Kim" mascot button is redundant (and visually
+        // clashes) while Kim is already front and center walking the student
+        // through the tutorial intro.
+        if (helpFab) helpFab.hidden = this.pathIntroActive;
+        // The page normally reserves top padding for the site's fixed
+        // marketing header — cancel that reserved space for as long as the
+        // header itself is hidden, or the lesson topbar ends up floating
+        // below a blank gap the same height as the header would have been.
+        document.body.classList.toggle('mission-header-hidden', headerHidden);
+    }
+
+    /**
+     * Render the "percurso" screen: a forest scene with one circle per
+     * section (locked/done states matching the sidebar stepper) and the
+     * mascot floating above them. The first time a student opens the
+     * mission, the mascot also walks through a short generic explanation
+     * of how missions work, one speech-bubble step at a time, with
+     * "Saltar tutorial" always available. Clicking a circle enters that
+     * section and this screen never shows again for this mission.
+     */
+    renderPathScreen() {
+        const screen = document.getElementById('missionPathScreen');
+        if (!screen) return;
+
+        if (!this.showPathScreen) {
+            screen.innerHTML = '';
+            return;
+        }
+
+        const maxReviewable = this.getMaxReviewableSectionIndex();
+        const imageUrl = this.getMascotImageUrl();
+        const waveVideoUrl = this.getMascotWaveVideoUrl();
+        const missionTitle = this.mission.title.replace(/[^\p{L}\p{N}\s]/gu, '').trim();
+        const introActive = this.pathIntroActive;
+
+        const nodesHtml = this.mission.sections.map((section, idx) => {
+            const isDone = this.completedSections.has(section.id);
+            const isLocked = idx > maxReviewable;
+            const icon = isLocked ? '🔒' : (isDone ? '✓' : section.icon);
+            return `
+                <li class="mission-path-node-row">
+                    <button type="button"
+                            class="mission-path-node ${isDone ? 'mission-path-node--done' : ''} ${isLocked ? 'mission-path-node--locked' : ''}"
+                            data-section-index="${idx}" ${isLocked ? 'disabled' : ''}>
+                        <span class="mission-path-node-icon">${icon}</span>
+                    </button>
+                    <span class="mission-path-node-label">${section.title}</span>
+                </li>
+            `;
+        }).join('');
+
+        const studentTitle = this.getStudentRankTitle().replace(/!+$/, '');
+        const steps = [
+            `Olá, ${studentTitle}! Sou o Kim, o teu companheiro, e estou aqui para te guiar nesta aventura.`,
+            'Podes explorar sozinho, ao teu ritmo, ou comigo sempre por perto para te ajudar em cada etapa — a escolha é tua.',
+            'Ao longo do caminho vais descobrir o conteúdo da missão e deparar-te com curiosidades verdadeiramente fascinantes.',
+            'Também vais resolver quizzes que se tornam mais desafiantes a cada etapa — e ganhas XP sempre que acertares.',
+            `Prepara-te para desafios, dúvidas e descobertas incríveis. Escolhe um círculo e começa a tua aventura em ${missionTitle}!`
+        ];
+        const quizStepIndex = 3;
+        const stepIndex = Math.min(this.pathIntroStep, steps.length - 1);
+
+        const quizDemoHtml = `
+            <div class="home-quiz-preview mission-path-quiz-demo" aria-hidden="true">
+                <div class="home-quiz-preview-heading"><span class="home-quiz-progress">Pergunta 2/5</span></div>
+                <h3>Qual pigmento capta a luz?</h3>
+                <div class="home-quiz-options">
+                    <div class="home-quiz-option"><span>A</span> Rubisco</div>
+                    <div class="home-quiz-option is-correct"><span>B</span> Clorofila</div>
+                    <div class="home-quiz-option"><span>C</span> Amido</div>
+                </div>
+            </div>
+        `;
+
+        const forestLayout = [
+            { left: '4%', top: '6%', scale: .7, variant: '' },
+            { left: '15%', top: '20%', scale: .9, variant: '--dark' },
+            { left: '3%', top: '38%', scale: 1.1, variant: '--light' },
+            { left: '11%', top: '58%', scale: 1.25, variant: '' },
+            { left: '5%', top: '78%', scale: 1.5, variant: '--dark' },
+            { left: '14%', top: '92%', scale: 1.3, variant: '--light' },
+            { left: '91%', top: '5%', scale: .7, variant: '--light' },
+            { left: '82%', top: '18%', scale: .95, variant: '' },
+            { left: '94%', top: '36%', scale: 1.15, variant: '--dark' },
+            { left: '85%', top: '56%', scale: 1.35, variant: '--light' },
+            { left: '93%', top: '76%', scale: 1.5, variant: '' },
+            { left: '83%', top: '92%', scale: 1.3, variant: '--dark' }
+        ];
+        const forestHtml = forestLayout.map((tree) => `
+            <span class="mission-path-tree mission-path-tree${tree.variant}"
+                  style="left:${tree.left}; top:${tree.top}; transform:scale(${tree.scale});"></span>
+        `).join('');
+
+        screen.className = `mission-path-screen ${introActive ? 'mission-path-screen--intro' : ''}`;
+
+        // While the mascot is explaining how missions work, keep the scene
+        // to a plain white background with no forest/circles behind it —
+        // the percurso itself is only revealed once the explanation is done.
+        if (introActive) {
+            const progressPercent = Math.round(((stepIndex + 1) / steps.length) * 100);
+
+            screen.innerHTML = `
+                <div class="mission-path-intro-stage">
+                    <button type="button" class="mission-intro-skip" id="missionPathSkip">Saltar tutorial</button>
+                    <div class="mission-path-progress-track" role="progressbar" aria-valuenow="${progressPercent}" aria-valuemin="0" aria-valuemax="100">
+                        <div class="mission-path-progress-fill" style="width:${progressPercent}%"></div>
+                    </div>
+                    <div class="mission-path-intro-center">
+                        ${waveVideoUrl
+                            ? `<video class="mission-path-mascot" src="${waveVideoUrl}" autoplay loop muted playsinline ${imageUrl ? `poster="${imageUrl}"` : ''}></video>`
+                            : (imageUrl ? `<img class="mission-path-mascot" src="${imageUrl}" alt="Mascote Explore+">` : '')}
+                        <p class="mission-path-intro-text">${steps[stepIndex]}</p>
+                        ${stepIndex === quizStepIndex ? quizDemoHtml : ''}
+                    </div>
+                    <div class="mission-intro-controls">
+                        <div class="mission-path-intro-buttons">
+                            ${stepIndex > 0 ? `<button type="button" class="mission-intro-back" id="missionPathBack">Voltar</button>` : ''}
+                            <button type="button" class="mission-intro-next" id="missionPathNext">${stepIndex === steps.length - 1 ? 'Vamos a isso!' : 'Seguinte'}</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            screen.innerHTML = `
+                <div class="mission-path-sky"></div>
+                <div class="mission-path-forest">${forestHtml}</div>
+                <div class="mission-path-inner">
+                    <div class="mission-path-mascot-wrap">
+                        ${imageUrl ? `<img class="mission-path-mascot" src="${imageUrl}" alt="Mascote Explore+">` : ''}
+                    </div>
+                    <ol class="mission-path-nodes">${nodesHtml}</ol>
+                </div>
+            `;
+        }
+
+        screen.querySelectorAll('[data-section-index]').forEach((btn) => {
+            btn.addEventListener('click', (event) => {
+                const target = Number(event.currentTarget.dataset.sectionIndex);
+                if (!Number.isInteger(target)) return;
+                this.showPathScreen = false;
+                this.setActiveSection(target);
+            });
+        });
+
+        if (introActive) {
+            const dismissIntro = () => {
+                this.pathIntroActive = false;
+                localStorage.setItem(this.mascotIntroSeenKey, '1');
+                this.renderPathScreen();
+            };
+
+            screen.querySelector('#missionPathSkip')?.addEventListener('click', dismissIntro);
+            screen.querySelector('#missionPathNext')?.addEventListener('click', () => {
+                if (stepIndex === steps.length - 1) {
+                    dismissIntro();
+                    return;
+                }
+                this.pathIntroStep = stepIndex + 1;
+                this.renderPathScreen();
+            });
+            screen.querySelector('#missionPathBack')?.addEventListener('click', () => {
+                this.pathIntroStep = Math.max(0, stepIndex - 1);
+                this.renderPathScreen();
+            });
+        }
+
+        this.applyPathScreenVisibility();
+
+        // Only meaningful once the screen is actually visible — measuring
+        // node positions while it's still hidden would just read 0×0 rects.
+        if (!introActive) {
+            this.drawPathConnectorLine();
+
+            // The mascot image sits above the nodes and can still be
+            // loading when the line above is first drawn — once it loads
+            // in, it pushes the whole node list down and the line (drawn
+            // against the pre-load positions) ends up offset from the
+            // circles. Redraw once it's actually done loading.
+            const mascotImg = screen.querySelector('.mission-path-mascot');
+            if (mascotImg && !mascotImg.complete) {
+                mascotImg.addEventListener('load', () => this.drawPathConnectorLine(), { once: true });
+            }
+            requestAnimationFrame(() => this.drawPathConnectorLine());
+        }
+    }
+
+    /**
+     * The percurso nodes zigzag left/center/right (see .mission-path-node-row
+     * nth-child rules), so a straight line can't connect them — this draws
+     * an SVG polyline through each node's actual rendered center instead.
+     */
+    drawPathConnectorLine() {
+        const container = document.querySelector('.mission-path-nodes');
+        if (!container) return;
+
+        const nodes = Array.from(container.querySelectorAll('.mission-path-node'));
+        if (nodes.length < 2) return;
+
+        const containerRect = container.getBoundingClientRect();
+        const points = nodes.map((node) => {
+            const rect = node.getBoundingClientRect();
+            const x = rect.left + rect.width / 2 - containerRect.left;
+            const y = rect.top + rect.height / 2 - containerRect.top;
+            return `${x},${y}`;
+        }).join(' ');
+
+        let svg = container.querySelector('.mission-path-line-svg');
+        if (!svg) {
+            svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('class', 'mission-path-line-svg');
+            container.insertBefore(svg, container.firstChild);
+        }
+        svg.setAttribute('width', containerRect.width);
+        svg.setAttribute('height', containerRect.height);
+        svg.innerHTML = `<polyline points="${points}" fill="none" stroke="#b9ddc6" stroke-width="4" stroke-dasharray="10 12" stroke-linecap="round" />`;
     }
 
     /**
      * Render mission header with title and description
      */
     renderHeader() {
-        document.getElementById('missionTitle').textContent = this.mission.title;
-        document.getElementById('missionDescription').textContent = this.mission.description;
+        const titleEl = document.getElementById('missionTitle');
+        const descriptionEl = document.getElementById('missionDescription');
+        if (titleEl) titleEl.textContent = this.mission.title;
+        if (descriptionEl) descriptionEl.textContent = this.mission.description;
     }
 
     getMascotText(key, replacements = {}) {
@@ -549,176 +885,278 @@ class MissionSystem {
         return window.exploreMascotImageUrl || '';
     }
 
+    getMascotWaveVideoUrl() {
+        return window.exploreMascotWaveVideoUrl || '';
+    }
+
     /**
-     * Render the left-hand vertical step sidebar
+     * Total/completed step count for the active section, combining its
+     * content screen-cards and quiz questions into one number so the lesson
+     * topbar's progress bar reflects real progress through *this* section
+     * (not the whole mission — the percurso map already covers that).
      */
-    renderMissionSidebar() {
-        const sidebar = document.getElementById('missionSidebar');
-        if (!sidebar) return;
+    getSectionStepProgress(section) {
+        const screenCount = typeof section?.content === 'string'
+            ? (section.content.match(/class="screen-card/g) || []).length
+            : 0;
+        const questions = this.getSectionQuestions(section);
+        const totalSteps = Math.max(1, screenCount + questions.length);
+
+        const currentScreen = this.getSectionCurrentScreen(section.id, Math.max(screenCount, 1));
+        const answerState = this.getSectionAnswerState(section.id);
+        const answeredCount = answerState.answers.filter(Boolean).length;
+        const completedSteps = Math.min(screenCount, currentScreen) + answeredCount;
+
+        return { completedSteps, totalSteps };
+    }
+
+    /**
+     * Lesson chrome: the topbar (close button, per-section progress bar +
+     * remaining-section dots, live XP/streak) and the floating mascot help
+     * button, replacing the old sidebar + mascot-panel 3-column layout.
+     */
+    renderLessonChrome() {
+        const topbar = document.getElementById('lessonTopbar');
+        const helpFab = document.getElementById('lessonHelpFab');
+        if (!topbar) return;
 
         const maxReviewable = this.getMaxReviewableSectionIndex();
-        const activeIndex = Math.max(0, Math.min(this.activeSectionIndex, maxReviewable));
-        const percent = this.getProgressPercent();
+        const sectionIndex = Math.max(0, Math.min(this.activeSectionIndex, maxReviewable));
+        const section = this.mission.sections[sectionIndex];
+        const isChapterDone = this.completedSections.size === this.mission.sections.length && this.chapterCompletionView;
 
-        const missionLayout = sidebar.closest('.mission-layout');
-        missionLayout?.classList.toggle('mission-layout--sidebar-collapsed', this.sidebarCollapsed);
+        const stepProgress = this.getSectionStepProgress(section);
+        const percent = isChapterDone ? 100 : Math.round((stepProgress.completedSteps / stepProgress.totalSteps) * 100);
+        const remainingSections = isChapterDone ? 0 : Math.max(0, this.mission.sections.length - sectionIndex - 1);
 
-        sidebar.innerHTML = `
-            <button type="button"
-                    class="mission-sidebar-toggle ${this.sidebarCollapsed ? '' : 'mission-sidebar-toggle--expanded'}"
-                    id="missionSidebarToggle"
-                    aria-label="${this.sidebarCollapsed ? 'Mostrar percurso da missão' : 'Esconder percurso da missão'}"
-                    aria-expanded="${this.sidebarCollapsed ? 'false' : 'true'}">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevrons-right-icon lucide-chevrons-right"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>
-            </button>
-            <div class="mission-sidebar-inner">
-                <div class="mission-sidebar-card">
-                    <h3 class="mission-sidebar-title">Missão: ${this.mission.title}</h3>
-                    <ol class="mission-stepper">
-                        ${this.mission.sections.map((section, idx) => {
-                            const isDone = this.completedSections.has(section.id);
-                            const isActive = idx === activeIndex;
-                            const isLocked = idx > maxReviewable;
-                            const accentColor = section.accentColor || '#1f8a5b';
-                            const iconStyle = (!isDone && !isLocked)
-                                ? `style="--mission-step-accent: ${accentColor};"`
-                                : '';
-                            return `
-                                <li class="mission-step ${isDone ? 'mission-step--done' : ''} ${isActive ? 'mission-step--active' : ''} ${isLocked ? 'mission-step--locked' : ''}">
-                                    <button type="button" class="mission-step-btn" data-section-index="${idx}" ${isLocked ? 'disabled' : ''}>
-                                        <span class="mission-step-icon" ${iconStyle}>${isDone ? '✓' : section.icon}</span>
-                                        <span class="mission-step-text">
-                                            <span class="mission-step-title">${section.title}</span>
-                                            <span class="mission-step-subtitle">${section.subtitle || ''}</span>
-                                        </span>
-                                    </button>
-                                </li>
-                            `;
-                        }).join('')}
-                    </ol>
-                </div>
-                <div class="mission-progress-card">
-                    <p class="mission-progress-heading">O teu progresso</p>
-                    <div class="mission-progress-bar-track"><div class="mission-progress-bar-fill" style="width:${percent}%"></div></div>
-                    <p class="mission-progress-percent">${percent}%</p>
-                </div>
-            </div>
-        `;
+        const fill = document.getElementById('lessonProgressFill');
+        if (fill) fill.style.width = `${percent}%`;
 
-        sidebar.querySelectorAll('[data-section-index]').forEach((btn) => {
-            btn.addEventListener('click', (event) => {
-                const target = Number(event.currentTarget.dataset.sectionIndex);
-                if (Number.isInteger(target)) {
-                    this.setActiveSection(target);
+        const dotsEl = document.getElementById('lessonProgressDots');
+        if (dotsEl) {
+            dotsEl.innerHTML = Array.from({ length: remainingSections })
+                .map(() => '<span class="lesson-progress-dot"></span>')
+                .join('');
+        }
+
+        const statsEl = document.getElementById('lessonStats');
+        if (statsEl && window.ProfileXP) {
+            const stats = window.ProfileXP.getProfileStats(window.ProfileXP.getCurrentUserProfile());
+            statsEl.innerHTML = `
+                <span class="lesson-stat" title="XP total">${stats.xp} <strong>XP</strong></span>
+            `;
+        }
+
+        if (!this._lessonChromeBound) {
+            this._lessonChromeBound = true;
+            document.getElementById('lessonCloseBtn')?.addEventListener('click', () => this.closeLessonToPath());
+            helpFab?.addEventListener('click', () => this.handleHelpFabClick());
+            window.addEventListener('explore:profile-updated', () => this.renderLessonChrome());
+
+            const themeToggle = document.getElementById('lessonThemeToggle');
+            const applyTheme = (theme) => {
+                document.documentElement.dataset.theme = theme;
+                document.documentElement.classList.toggle('dark-mode', theme === 'dark');
+                if (themeToggle) {
+                    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
                 }
+            };
+            let initialTheme = 'light';
+            try {
+                initialTheme = localStorage.getItem('explore-theme') || 'light';
+            } catch (error) {
+                // Ignore storage access errors (private browsing) — the page
+                // just falls back to light mode.
+            }
+            applyTheme(initialTheme);
+            themeToggle?.addEventListener('click', () => {
+                const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+                try {
+                    localStorage.setItem('explore-theme', next);
+                } catch (error) {
+                    // Ignore storage errors (private browsing, quota) — the
+                    // toggle still works for the rest of this visit.
+                }
+                applyTheme(next);
             });
-        });
 
-        sidebar.querySelector('#missionSidebarToggle')?.addEventListener('click', () => {
-            this.sidebarCollapsed = !this.sidebarCollapsed;
-            localStorage.setItem('explore_mission_sidebar_collapsed', this.sidebarCollapsed ? '1' : '0');
-            this.renderMissionSidebar();
-        });
+            this.startAmbientMascotTips();
+        }
     }
 
     /**
-     * Render the persistent mascot panel + speech bubble for the active card
+     * Kim chimes in on his own every so often with the current section's
+     * explorerTip, so the floating button reads as an active companion
+     * rather than a static corner icon — not just something that reacts to
+     * hover/click.
      */
-    /**
-     * Whether the mascot shows up "in person" for the current screen of
-     * this section, instead of being replaced by the inline "Ajuda"
-     * button. In guided mode she stays for every screen of the mission;
-     * otherwise only for the very first screen the student ever sees (the
-     * first card of the first section).
-     */
-    isVeryFirstScreen(section) {
-        if (this.explorationMode === 'guided') {
-            return true;
-        }
-
-        const sectionIndex = this.mission.sections.findIndex((item) => item.id === section?.id);
-        if (sectionIndex !== 0) {
-            return false;
-        }
-
-        const cardIndex = this.sectionScreenProgress?.[section.id] || 0;
-        return cardIndex === 0;
+    startAmbientMascotTips() {
+        if (this._ambientTipInterval) return;
+        this._ambientTipInterval = setInterval(() => this.maybeShowAmbientMascotTip(), 75000);
     }
 
-    renderMascotPanel(section) {
-        const panel = document.getElementById('mascotPanel');
+    maybeShowAmbientMascotTip() {
+        if (this.showPathScreen) return;
+
+        const chatPanel = document.getElementById('mascoteChatPanel');
+        if (chatPanel && !chatPanel.hidden) return;
+        if (document.getElementById('mascotOverlay')) return;
+
+        const bubble = document.getElementById('lessonAmbientTip');
+        if (!bubble || !bubble.hidden) return;
+
+        const maxReviewable = this.getMaxReviewableSectionIndex();
+        const sectionIndex = Math.max(0, Math.min(this.activeSectionIndex, maxReviewable));
+        const tip = this.mission.sections[sectionIndex]?.explorerTip;
+        if (!tip) return;
+
+        const textEl = document.getElementById('lessonAmbientTipText');
+        if (textEl) textEl.textContent = tip;
+        bubble.hidden = false;
+
+        clearTimeout(this._ambientTipTimeout);
+        this._ambientTipTimeout = setTimeout(() => {
+            bubble.hidden = true;
+        }, 7000);
+    }
+
+    /**
+     * The X button: leaves the current section and returns to the percurso
+     * map, without losing any saved progress.
+     */
+    closeLessonToPath() {
+        this.showPathScreen = true;
+        this.render();
+    }
+
+    /**
+     * Floating mascot button: opens/closes the chat panel, where the
+     * student can either replay the current card as audio or type a real
+     * question to the mascot (answered by Claude, grounded in this card's
+     * content — see mascote_chat() in views.py).
+     */
+    handleHelpFabClick() {
+        const panel = document.getElementById('mascoteChatPanel');
         if (!panel) return;
 
-        const missionLayout = panel.closest('.mission-layout');
-        const showMascot = this.isVeryFirstScreen(section);
-
-        missionLayout?.classList.toggle('mission-layout--no-mascot', !showMascot);
-
-        if (!showMascot) {
-            panel.innerHTML = '';
-            return;
+        const willOpen = panel.hidden;
+        panel.hidden = !willOpen;
+        if (willOpen) {
+            this.initMascoteChatPanel();
+            document.getElementById('mascoteChatInput')?.focus();
         }
-
-        const imageUrl = this.getMascotImageUrl();
-        const speechText = this.currentMascotSpeech
-            || 'Se tiveres alguma dúvida, pergunta-me! Estou aqui para te ajudar!';
-
-        panel.innerHTML = `
-            <div class="mascot-speech" id="mascotSpeech">
-                <p class="mascot-speech-text">${speechText}</p>
-            </div>
-            ${imageUrl ? `<img class="mascot-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
-        `;
     }
 
-    /**
-     * The "Ajuda" button's icon is the mascot image (not an emoji). Shown
-     * whenever the mascot isn't already visible in person for this screen
-     * (see isVeryFirstScreen) — in guided mode that's never, so this
-     * button only appears in the autonomous path.
-     */
-    buildMascotHelpButtonHtml() {
-        const imageUrl = this.getMascotImageUrl();
-        return `
-            <button type="button" class="mascot-help-btn">
-                ${imageUrl ? `<img class="mascot-help-btn-icon" src="${imageUrl}" alt="">` : '🙋'}
-                Ajuda
-            </button>
-        `;
+    /** Returns the currently visible screen-card or quiz question element. */
+    getActiveCardElement() {
+        return document.querySelector('.screen-card.active-screen')
+            || document.querySelector('.section-quiz:not(.quiz-entry-hidden)');
     }
 
-    attachMascotHelpButton(container) {
-        container.querySelector('.mascot-help-btn')?.addEventListener('click', () => {
-            this.handleMascotHelpClick();
+    /** Wires up the chat panel's controls once (the panel itself is static
+     *  markup that persists across renders, so this only needs to run on
+     *  first open). */
+    initMascoteChatPanel() {
+        if (this._chatPanelBound) return;
+        this._chatPanelBound = true;
+        this.chatHistory = [];
+
+        document.getElementById('mascoteChatClose')?.addEventListener('click', () => {
+            const panel = document.getElementById('mascoteChatPanel');
+            if (panel) panel.hidden = true;
+        });
+
+        document.getElementById('mascoteChatForm')?.addEventListener('submit', (event) => {
+            event.preventDefault();
+            this.sendMascoteChatMessage();
         });
     }
 
-    /**
-     * Placeholder for the help-button interaction — resets the speech
-     * bubble to its default prompt with a small acknowledgement pulse.
-     * What the mascot actually does here will be defined separately.
-     */
-    handleMascotHelpClick() {
-        const speech = document.getElementById('mascotSpeech');
-        if (!speech) return;
+    appendChatMessage(role, text, isTyping = false) {
+        const messagesEl = document.getElementById('mascoteChatMessages');
+        if (!messagesEl) return null;
 
-        speech.classList.remove('mascot-speech--pulse');
-        void speech.offsetWidth;
-        speech.classList.add('mascot-speech--pulse');
+        const bubble = document.createElement('div');
+        bubble.className = `mascote-chat-bubble mascote-chat-bubble--${role}${isTyping ? ' is-typing' : ''}`;
+        bubble.textContent = text;
+        messagesEl.appendChild(bubble);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        return bubble;
     }
 
-    updateMascotSpeech(sectionEl, section) {
-        // When screen-flow is active, updateSectionScreen() already worked
-        // out the right speech (default or a folded-in hook line) for the
-        // current screen and stored it — don't stomp that here. Missions
-        // without screen-flow have no such state, so fall back to default.
-        if (!this.isScreenFlowEnabled()) {
-            this.currentMascotSpeech = null;
+    /** Sends the student's typed question to the backend chat endpoint,
+     *  which proxies it to Claude with this section's content as context. */
+    async sendMascoteChatMessage() {
+        const input = document.getElementById('mascoteChatInput');
+        const text = input?.value.trim();
+        if (!text) return;
+
+        input.value = '';
+        this.appendChatMessage('user', text);
+        const historyBeforeThisMessage = [...(this.chatHistory || [])];
+        this.chatHistory = [...historyBeforeThisMessage, { role: 'user', text }];
+
+        const typingEl = this.appendChatMessage('assistant', '…', true);
+
+        const maxReviewable = this.getMaxReviewableSectionIndex();
+        const sectionIndex = Math.max(0, Math.min(this.activeSectionIndex, maxReviewable));
+        const section = this.mission.sections[sectionIndex];
+        const activeCard = this.getActiveCardElement();
+        const context = activeCard ? this.extractCardAudioText(activeCard) : '';
+
+        try {
+            const response = await fetch(window.exploreMascoteChatUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': window.exploreCsrfToken
+                },
+                credentials: 'same-origin',
+                body: JSON.stringify({
+                    message: text,
+                    missionTitle: this.mission.title,
+                    sectionTitle: section?.title || '',
+                    context,
+                    history: historyBeforeThisMessage
+                })
+            });
+
+            const data = await response.json().catch(() => ({}));
+            typingEl?.remove();
+
+            if (!response.ok) {
+                this.appendChatMessage('assistant', data.erro || 'Não consegui responder agora. Tenta mais tarde.');
+                if (data.limiteAtingido) {
+                    this.disableMascoteChatInput();
+                }
+                return;
+            }
+
+            this.appendChatMessage('assistant', data.reply || '...');
+            this.chatHistory.push({ role: 'assistant', text: data.reply || '' });
+        } catch (error) {
+            typingEl?.remove();
+            this.appendChatMessage('assistant', 'Não consegui ligar ao servidor. Verifica a tua ligação.');
         }
-        this.renderMascotPanel(section);
+    }
+
+    /**
+     * Once the weekly chat quota is spent, stop the student from retrying
+     * (each attempt would just re-trigger the same 429) until next week.
+     */
+    disableMascoteChatInput() {
+        const input = document.getElementById('mascoteChatInput');
+        const sendBtn = document.getElementById('mascoteChatSend');
+        if (input) {
+            input.disabled = true;
+            input.placeholder = 'Sem perguntas disponíveis esta semana';
+        }
+        if (sendBtn) sendBtn.disabled = true;
     }
 
     attachCuriosityPrompts(sectionEl) {
+        const screens = Array.from(sectionEl.querySelectorAll('.screen-card'));
+
         sectionEl.querySelectorAll('.screen-card details.did-you-know:not([data-mascot-managed])').forEach((detailsEl) => {
             detailsEl.setAttribute('data-mascot-managed', 'true');
             detailsEl.classList.add('mascot-managed-hidden');
@@ -732,6 +1170,14 @@ class MissionSystem {
             const prompt = document.createElement('div');
             prompt.className = 'mascot-curiosity-trigger';
             prompt.innerHTML = `<button type="button" class="mascot-curiosity-open-btn">💬 ${summaryText}</button>`;
+            // Remembers which screen-card this trigger belongs to, so
+            // updateSectionScreen() can relocate it into the nav row's left
+            // slot on that one screen (when there's no "Anterior" there to
+            // occupy it) and move it back home on every other screen.
+            const homeScreenIndex = screens.indexOf(detailsEl.closest('.screen-card'));
+            if (homeScreenIndex >= 0) {
+                prompt.dataset.homeScreenIndex = String(homeScreenIndex);
+            }
             detailsEl.insertAdjacentElement('afterend', prompt);
 
             prompt.querySelector('.mascot-curiosity-open-btn').addEventListener('click', () => {
@@ -741,43 +1187,25 @@ class MissionSystem {
     }
 
     showMascotCuriosityPrompt(factHtml) {
-        const panel = document.getElementById('mascotPanel');
-        const speech = panel?.querySelector('#mascotSpeech');
-        if (!speech) return;
-
-        speech.innerHTML = `
-            <p class="mascot-speech-text">${this.getMascotText('curiosityPrompt')}</p>
-            <div class="mascot-curiosity-row">
-                <button type="button" class="mascot-curiosity-btn mascot-curiosity-btn--accept">${this.getMascotText('curiosityAcceptCta')}</button>
-                <button type="button" class="mascot-curiosity-btn mascot-curiosity-btn--decline">${this.getMascotText('curiosityDeclineCta')}</button>
-            </div>
-        `;
-
-        speech.querySelector('.mascot-curiosity-btn--accept')?.addEventListener('click', () => {
-            speech.innerHTML = `<div class="mascot-speech-text mascot-curiosity-fact">${factHtml}</div>`;
-        });
-
-        speech.querySelector('.mascot-curiosity-btn--decline')?.addEventListener('click', () => {
-            const sectionEl = document.querySelector('.section');
-            const section = this.mission.sections[this.activeSectionIndex];
-            if (sectionEl && section) {
-                this.updateMascotSpeech(sectionEl, section);
-            }
-        });
+        this.showMascotOverlay(factHtml, this.getMascotText('curiosityAcceptCta') || 'Entendido', () => {}, { extraClass: 'mascot-overlay-card--curiosity' });
     }
 
-    showMascotOverlay(message, ctaLabel, onContinue) {
+    showMascotOverlay(message, ctaLabel, onContinue, { extraClass = '' } = {}) {
         const existing = document.getElementById('mascotOverlay');
         if (existing) existing.remove();
 
         const imageUrl = this.getMascotImageUrl();
+        // Curiosity popups skip the mascot figure entirely — the
+        // illustration below the (now removed) ask-mascot button already
+        // carries the topic on its own.
+        const isCuriosity = extraClass.includes('curiosity');
         const overlay = document.createElement('div');
         overlay.id = 'mascotOverlay';
         overlay.className = 'mascot-overlay';
         overlay.innerHTML = `
-            <div class="mascot-overlay-card" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
-                ${imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
-                <p class="mascot-overlay-text">${message}</p>
+            <div class="mascot-overlay-card ${extraClass}" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
+                ${!isCuriosity && imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
+                <div class="mascot-overlay-text">${message}</div>
                 <button type="button" class="mascot-overlay-btn">${ctaLabel}</button>
             </div>
         `;
@@ -791,12 +1219,6 @@ class MissionSystem {
     }
 
     showMascotIntroDialog(section) {
-        const isMissionStart = this.mission?.sections?.[0]?.id === section.id;
-        if (isMissionStart) {
-            this.showMissionStartDialog(section);
-            return;
-        }
-
         const message = section.introGreeting
             || this.getMascotText('introGreeting', { missionTitle: this.mission.title, sectionTitle: section.title });
         const cta = section.introCta || this.getMascotText('introCta') || 'Continuar';
@@ -804,106 +1226,9 @@ class MissionSystem {
     }
 
     /**
-     * Mascot dialog shown once, at the very start of the mission: greets
-     * the student by their rank title and lets them choose between a
-     * guided journey (mascot along for the ride) or an autonomous one
-     * (mascot stays available via the "Ajuda" button).
-     */
-    showMissionStartDialog(section) {
-        const bank = this.mission?.mascot || {};
-        const studentTitle = this.getStudentRankTitle();
-        const greetingTemplate = bank.startGreeting
-            || 'Olá {studentTitle}! Hoje, a tua missão é continuar a explorar {missionTitle}. Posso ser o teu ajudante nesta aventura ou podes embarcar nela sozinho! O que preferes?';
-        const message = greetingTemplate
-            .replace('{studentTitle}', studentTitle)
-            .replace('{missionTitle}', this.mission.title);
-        const guidedLabel = bank.startGuidedLabel || 'Exploração guiada (com a mascote)';
-        const autonomousLabel = bank.startAutonomousLabel || 'Exploração livre (autónomo)';
-
-        this.showMascotChoiceOverlay(message, [
-            { label: guidedLabel, onSelect: () => this.showMissionStartGuidedFollowup(section) },
-            { label: autonomousLabel, onSelect: () => this.showMissionStartAutonomousFollowup() }
-        ]);
-    }
-
-    showMissionStartGuidedFollowup(section) {
-        const bank = this.mission?.mascot || {};
-        this.explorationMode = 'guided';
-        this.refreshGuidedScreenFlow(section);
-        const message = bank.startGuidedFollowup || 'Fantástico. Que comece a aventura. Estás preparado?';
-        const cta = bank.startGuidedCta || section.introCta || this.getMascotText('introCta') || 'Estou sempre preparado';
-        this.showMascotOverlay(message, cta, () => {});
-    }
-
-    /**
-     * Section 0's screen-flow (nav buttons, per-card Ajuda buttons) mounts
-     * before the mission-start dialog resolves, since that choice is
-     * asynchronous — so it's built under the "no mode chosen yet" rules.
-     * Once the student picks guided here, rebuild it so hook screens fold
-     * into the mascot's speech and the stray Ajuda buttons go away.
-     */
-    refreshGuidedScreenFlow(section) {
-        const sectionEl = document.querySelector(`.section[data-section-id="${section.id}"]`);
-        if (!sectionEl) return;
-
-        sectionEl.querySelectorAll('.card-audio-controls').forEach((el) => el.remove());
-        this.attachCardAudioButtons(sectionEl, section);
-
-        sectionEl.querySelector('.screen-nav')?.remove();
-
-        if (this.isScreenFlowEnabled()) {
-            this.mountSectionScreenFlow(sectionEl, section);
-        }
-    }
-
-    showMissionStartAutonomousFollowup() {
-        const bank = this.mission?.mascot || {};
-        this.explorationMode = 'autonomous';
-        const message = bank.startAutonomousFollowup
-            || 'Que corajoso! Mas lembra-te... sempre que precisares, estarei aqui para ajudar.';
-        this.showMascotHelpOverlay(message);
-    }
-
-    /**
-     * Same overlay shell as showMascotOverlay, but renders multiple choice
-     * buttons instead of a single CTA — each choice runs its own callback.
-     */
-    showMascotChoiceOverlay(message, choices) {
-        const existing = document.getElementById('mascotOverlay');
-        if (existing) existing.remove();
-
-        const imageUrl = this.getMascotImageUrl();
-        const overlay = document.createElement('div');
-        overlay.id = 'mascotOverlay';
-        overlay.className = 'mascot-overlay';
-        overlay.innerHTML = `
-            <div class="mascot-overlay-card" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
-                ${imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
-                <p class="mascot-overlay-text">${message}</p>
-                <div class="mascot-overlay-choice-row">
-                    ${choices.map((choice, index) => `
-                        <button type="button" class="mascot-overlay-choice-btn" data-choice-index="${index}">${choice.label}</button>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-
-        choices.forEach((choice, index) => {
-            overlay.querySelector(`.mascot-overlay-choice-btn[data-choice-index="${index}"]`)
-                ?.addEventListener('click', () => {
-                    overlay.remove();
-                    if (typeof choice.onSelect === 'function') choice.onSelect();
-                });
-        });
-
-        document.body.appendChild(overlay);
-    }
-
-    /**
      * Same overlay shell again, but the dismiss control is styled like the
-     * mascot's "Ajuda" button rather than a plain CTA — used when the
-     * student picks the autonomous path, so the mascot visually hands them
-     * the same help affordance they'll see later in the mission.
+     * mascot's "Ajuda" button rather than a plain CTA — used by the
+     * floating help button.
      */
     showMascotHelpOverlay(message) {
         const existing = document.getElementById('mascotOverlay');
@@ -961,7 +1286,43 @@ class MissionSystem {
         this.mascotQuizIntroShown[section.id] = true;
         const message = this.getMascotText('quizIntro', { missionTitle: this.mission.title, sectionTitle: section.title });
         const cta = this.getMascotText('quizIntroCta') || 'Vamos lá!';
-        this.showMascotOverlay(message, cta, doReveal);
+        // The student can decline the quiz — nothing happens (the overlay
+        // just closes), which naturally leaves this section's circle
+        // unfinished and blocks moving on, since completion only ever
+        // happens once the quiz is actually answered.
+        this.showMascotQuizChoiceOverlay(message, cta, doReveal, 'Talvez mais tarde', () => {});
+    }
+
+    showMascotQuizChoiceOverlay(message, primaryLabel, onPrimary, secondaryLabel, onSecondary) {
+        const existing = document.getElementById('mascotOverlay');
+        if (existing) existing.remove();
+
+        const imageUrl = this.getMascotImageUrl();
+        const overlay = document.createElement('div');
+        overlay.id = 'mascotOverlay';
+        overlay.className = 'mascot-overlay';
+        overlay.innerHTML = `
+            <div class="mascot-overlay-card" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
+                ${imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
+                <div class="mascot-overlay-text">${message}</div>
+                <div class="mascot-overlay-choice-row">
+                    <button type="button" class="mascot-overlay-btn">${primaryLabel}</button>
+                    <button type="button" class="mascot-overlay-choice-btn">${secondaryLabel}</button>
+                </div>
+            </div>
+        `;
+
+        overlay.querySelector('.mascot-overlay-btn')?.addEventListener('click', () => {
+            overlay.remove();
+            if (typeof onPrimary === 'function') onPrimary();
+        });
+
+        overlay.querySelector('.mascot-overlay-choice-btn')?.addEventListener('click', () => {
+            overlay.remove();
+            if (typeof onSecondary === 'function') onSecondary();
+        });
+
+        document.body.appendChild(overlay);
     }
 
     showMascotCorrectPopup() {
@@ -982,18 +1343,6 @@ class MissionSystem {
         }, 1400);
     }
 
-    showMascotIncorrectExplanation(question) {
-        const panel = document.getElementById('mascotPanel');
-        const speech = panel?.querySelector('#mascotSpeech');
-        if (!speech) return;
-
-        const explanation = question?.alternateExplanation || question?.feedback?.incorrect || '';
-        speech.innerHTML = `
-            <p class="mascot-speech-text mascot-speech-text--alert">${this.getMascotText('incorrectIntro')}</p>
-            <p class="mascot-speech-text">${explanation}</p>
-        `;
-    }
-
     isScreenFlowEnabled() {
         return this.mission?.screenFlowEnabled === true;
     }
@@ -1005,19 +1354,22 @@ class MissionSystem {
     }
 
     extractCardAudioText(cardEl) {
-        const parts = Array.from(cardEl.querySelectorAll('h2, h3, h4, p, li'))
+        const parts = Array.from(cardEl.querySelectorAll('p:not(.quiz-question)'))
             .map((el) => el.textContent.trim())
             .filter(Boolean);
         return parts.join('. ');
     }
+
+    // Voice/read-aloud is parked as a future feature — playCardAudio,
+    // extractCardAudioText and supportsCardAudio below are the dormant
+    // engine for it; there's just no button wired to them right now.
 
     resetCardAudioButton(button) {
         if (!button) {
             return;
         }
 
-        button.classList.remove('playing');
-        button.textContent = '🔊 Ouvir áudio';
+        button.classList.remove('is-speaking');
     }
 
     stopCardAudio() {
@@ -1029,6 +1381,12 @@ class MissionSystem {
         this.activeCardAudioButton = null;
     }
 
+    /**
+     * Reads `text` aloud via the browser's speech synthesis. `button` gets
+     * an `.is-speaking` class while playing (used by the floating mascot
+     * button for a talking/pulse animation) — clicking the same button
+     * again while it's speaking stops it.
+     */
     playCardAudio(text, button) {
         if (!this.supportsCardAudio() || !text) {
             return;
@@ -1049,8 +1407,7 @@ class MissionSystem {
 
         utterance.onstart = () => {
             this.activeCardAudioButton = button;
-            button.classList.add('playing');
-            button.textContent = '⏹ Parar áudio';
+            button?.classList.add('is-speaking');
         };
 
         utterance.onend = () => {
@@ -1068,61 +1425,6 @@ class MissionSystem {
         };
 
         window.speechSynthesis.speak(utterance);
-    }
-
-    attachCardAudioButtons(sectionEl, section) {
-        if (!this.supportsCardAudio()) {
-            return;
-        }
-
-        const sectionIndex = this.mission.sections.findIndex((item) => item.id === section?.id);
-
-        sectionEl.querySelectorAll('.section-content .screen-card').forEach((cardEl, cardIndex) => {
-            const isVeryFirstScreen = this.explorationMode === 'guided'
-                ? true
-                : (sectionIndex === 0 && cardIndex === 0);
-
-            if (cardEl.querySelector('.card-audio-btn')) {
-                return;
-            }
-
-            // Hook/transition cards (the centered "🌱 ..." questions between
-            // topics) and inline mini-quiz cards don't have a heading — they
-            // aren't explaining content, so they don't need a listen button.
-            if (!cardEl.querySelector('h3')) {
-                return;
-            }
-
-            const audioText = this.extractCardAudioText(cardEl);
-            if (!audioText) {
-                return;
-            }
-
-            const controls = document.createElement('div');
-            controls.className = 'card-audio-controls';
-
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'card-audio-btn';
-            button.textContent = '🔊 Ouvir explicação';
-            button.setAttribute('aria-label', 'Ouvir texto do cartão');
-
-            button.addEventListener('click', () => {
-                this.playCardAudio(audioText, button);
-            });
-
-            controls.appendChild(button);
-
-            // The mascot only appears in person on the very first screen —
-            // every other screen (including the rest of the Introdução)
-            // gets the "Ajuda" button next to the listen button instead.
-            if (!isVeryFirstScreen) {
-                controls.insertAdjacentHTML('beforeend', this.buildMascotHelpButtonHtml());
-                this.attachMascotHelpButton(controls);
-            }
-
-            cardEl.appendChild(controls);
-        });
     }
 
     /**
@@ -1319,6 +1621,198 @@ class MissionSystem {
 
         this.bindPhaseClearSequence(sectionEl);
         this.bindCalvinCycleBuilder(sectionEl);
+        this.bindFormulaBuilder(sectionEl);
+    }
+
+    bindFormulaBuilder(sectionEl) {
+        const builder = sectionEl.querySelector('.formula-builder');
+        if (!builder) return;
+
+        const widgetKey = `formula-builder:${sectionEl.dataset.sectionId || ''}`;
+        const pool = builder.querySelector('.formula-pool');
+        const slots = Array.from(builder.querySelectorAll('.formula-slot'));
+        const reactantSlots = slots.filter((slot) => slot.dataset.zone === 'reactant');
+        const productSlots = slots.filter((slot) => slot.dataset.zone === 'product');
+        const expectedReactants = new Set(['co2', 'h2o']);
+        const expectedProducts = new Set(['glicose', 'o2']);
+        const pieces = Array.from(builder.querySelectorAll('.formula-piece'));
+        const feedbackEl = builder.querySelector('.formula-builder-feedback');
+
+        let draggedPiece = null;
+        let completed = !!this.widgetCompletions[widgetKey];
+
+        const setFeedback = (html, type) => {
+            if (!feedbackEl) return;
+            feedbackEl.innerHTML = html;
+            feedbackEl.classList.remove('success', 'error');
+            if (type) feedbackEl.classList.add(type);
+        };
+
+        const setPlaceholderHidden = (slot, hidden) => {
+            slot?.querySelector('.formula-slot-placeholder')?.classList.toggle('is-hidden', hidden);
+        };
+
+        const evaluate = () => {
+            const allFilled = slots.every((slot) => !!slot.querySelector('.formula-piece'));
+            if (!allFilled) {
+                // Red only ever applies to a fully-filled, wrong equation —
+                // as soon as a piece comes back out, the slate is clean.
+                slots.forEach((slot) => slot.classList.remove('is-wrong'));
+                setFeedback('Arrasta as 4 peças para os espaços da equação.');
+                return;
+            }
+
+            // Order within each side of the equation doesn't matter
+            // chemically (6CO2 + 6H2O reads the same as 6H2O + 6CO2), so
+            // only the reactant/product grouping is checked, not the exact
+            // slot each piece landed in.
+            const reactantsOk = reactantSlots.every((slot) => expectedReactants.has(slot.querySelector('.formula-piece')?.dataset.piece));
+            const productsOk = productSlots.every((slot) => expectedProducts.has(slot.querySelector('.formula-piece')?.dataset.piece));
+            const isCorrect = reactantsOk && productsOk;
+
+            if (!isCorrect) {
+                reactantSlots.forEach((slot) => slot.classList.toggle('is-wrong', !reactantsOk));
+                productSlots.forEach((slot) => slot.classList.toggle('is-wrong', !productsOk));
+                setFeedback('Ainda não está certo. Tenta trocar as peças.', 'error');
+                return;
+            }
+
+            slots.forEach((slot) => slot.classList.remove('is-wrong'));
+            builder.classList.add('completed');
+            pieces.forEach((piece) => piece.setAttribute('draggable', 'false'));
+            completed = true;
+
+            if (!this.widgetCompletions[widgetKey]) {
+                this.widgetCompletions[widgetKey] = true;
+                this.earnedXP += 15;
+                this.awardProfileXP(15, this.buildRewardSource('formula-builder', `${this.mission.id}:${sectionEl.dataset.sectionId || ''}`), { type: 'exercise' });
+                this.saveProgress();
+                setFeedback('Perfeito! É esta a equação da fotossíntese. +15 <strong>XP</strong>', 'success');
+            } else {
+                setFeedback('Perfeito! É esta a equação da fotossíntese.', 'success');
+            }
+        };
+
+        const placePieceInSlot = (piece, slot) => {
+            if (!piece || !slot || completed) return;
+
+            const currentParentSlot = piece.closest('.formula-slot');
+            if (currentParentSlot && currentParentSlot !== slot) {
+                setPlaceholderHidden(currentParentSlot, false);
+            }
+
+            const occupying = slot.querySelector('.formula-piece');
+            if (occupying && occupying !== piece && pool) {
+                pool.appendChild(occupying);
+            }
+
+            setPlaceholderHidden(slot, true);
+            slot.appendChild(piece);
+            evaluate();
+        };
+
+        const returnPieceToPool = (piece) => {
+            if (!piece || !pool || completed) return;
+
+            const parentSlot = piece.closest('.formula-slot');
+            if (parentSlot) setPlaceholderHidden(parentSlot, false);
+
+            pool.appendChild(piece);
+            evaluate();
+        };
+
+        pieces.forEach((piece) => {
+            piece.addEventListener('dragstart', (event) => {
+                if (completed) {
+                    event.preventDefault();
+                    return;
+                }
+
+                draggedPiece = piece;
+                event.dataTransfer.setData('text/plain', piece.dataset.piece || '');
+                event.dataTransfer.effectAllowed = 'move';
+            });
+
+            piece.addEventListener('dragend', () => {
+                draggedPiece = null;
+            });
+        });
+
+        slots.forEach((slot) => {
+            slot.addEventListener('dragover', (event) => {
+                event.preventDefault();
+                event.dataTransfer.dropEffect = 'move';
+            });
+
+            slot.addEventListener('drop', (event) => {
+                event.preventDefault();
+                if (completed) return;
+
+                const pieceName = event.dataTransfer.getData('text/plain');
+                const piece = draggedPiece || builder.querySelector(`.formula-piece[data-piece="${pieceName}"]`);
+                placePieceInSlot(piece, slot);
+            });
+        });
+
+        if (pool) {
+            pool.addEventListener('dragover', (event) => {
+                event.preventDefault();
+                event.dataTransfer.dropEffect = 'move';
+            });
+
+            pool.addEventListener('drop', (event) => {
+                event.preventDefault();
+                if (completed) return;
+
+                const pieceName = event.dataTransfer.getData('text/plain');
+                const piece = draggedPiece || builder.querySelector(`.formula-piece[data-piece="${pieceName}"]`);
+                returnPieceToPool(piece);
+            });
+        }
+
+        if (completed) {
+            // Already solved on a previous visit — restore a valid solved
+            // layout (any reactant-pair/product-pair split is equally
+            // correct, so this canonical arrangement is as good as whatever
+            // the student actually dragged) without re-awarding XP.
+            const canonicalPlacement = [
+                [reactantSlots[0], 'co2'],
+                [reactantSlots[1], 'h2o'],
+                [productSlots[0], 'glicose'],
+                [productSlots[1], 'o2']
+            ];
+            canonicalPlacement.forEach(([slot, pieceKey]) => {
+                const piece = builder.querySelector(`.formula-piece[data-piece="${pieceKey}"]`);
+                if (slot && piece) {
+                    setPlaceholderHidden(slot, true);
+                    slot.appendChild(piece);
+                    piece.setAttribute('draggable', 'false');
+                }
+            });
+            builder.classList.add('completed');
+            setFeedback('Perfeito! É esta a equação da fotossíntese.', 'success');
+        } else {
+            setFeedback('Arrasta as 4 peças para os espaços da equação.');
+        }
+
+        // Lets the student redo the exercise for practice — the XP was
+        // already banked via widgetCompletions, so solving it again never
+        // re-awards it.
+        builder.querySelector('.formula-builder-reset-btn')?.addEventListener('click', () => {
+            completed = false;
+            builder.classList.remove('completed');
+
+            pieces.forEach((piece) => {
+                piece.setAttribute('draggable', 'true');
+                pool?.appendChild(piece);
+            });
+            slots.forEach((slot) => {
+                setPlaceholderHidden(slot, false);
+                slot.classList.remove('is-wrong');
+            });
+
+            setFeedback('Arrasta as 4 peças para os espaços da equação.');
+        });
     }
 
     bindCalvinCycleBuilder(sectionEl) {
@@ -1505,6 +1999,7 @@ class MissionSystem {
     }
 
     bindPhaseClearSequence(sectionEl) {
+        const widgetKey = `phase-clear-sequence:${sectionEl.dataset.sectionId || ''}`;
         sectionEl.querySelectorAll('.phase-clear-sequence').forEach((container) => {
             const options = Array.from(container.querySelectorAll('.sequence-option'));
             const feedbackEl = container.querySelector('.sequence-feedback');
@@ -1614,6 +2109,13 @@ class MissionSystem {
                             resultEl.setAttribute('aria-hidden', 'false');
                         }
 
+                        if (!this.widgetCompletions[widgetKey]) {
+                            this.widgetCompletions[widgetKey] = true;
+                            this.earnedXP += 10;
+                            this.awardProfileXP(10, this.buildRewardSource('phase-clear-sequence', widgetKey), { type: 'exercise' });
+                            this.saveProgress();
+                        }
+
                         playChainAnimation();
                         return;
                     }
@@ -1635,53 +2137,10 @@ class MissionSystem {
     }
 
     /**
-     * Purely narrative "hook" screens (the centered 🌱 questions between
-     * topics, no heading, no interactive/visual content) are folded into
-     * the mascot's speech bubble in guided mode instead of being shown as
-     * their own screen. Interactive no-heading cards (inline mini-quiz
-     * choices) must stay their own screen, so they're excluded here.
-     */
-    isHookScreen(cardEl) {
-        if (!cardEl || cardEl.querySelector('h3')) {
-            return false;
-        }
-        if (cardEl.querySelector('.guide-options, button, input, select, textarea, img, object')) {
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * The hook text that should be "said" for the screen at `index`, if
-     * the screen immediately before it in the authored content is a hook
-     * screen — regardless of how the student navigated there (Continuar,
-     * a page-nav pip, or a quiz-shortcut jump).
-     */
-    getHookSpeechBefore(screens, index) {
-        const prevScreen = screens[index - 1];
-        if (prevScreen && this.isHookScreen(prevScreen)) {
-            return this.extractCardAudioText(prevScreen);
-        }
-        return null;
-    }
-
-    /**
-     * Whether the "← Anterior" button has anything to go back to. In
-     * guided mode a hook screen doesn't count on its own — there needs to
-     * be a real (non-hook) screen further back for the button to do
-     * anything meaningful.
+     * Whether the "← Anterior" button has anything to go back to.
      */
     hasReachablePrevScreen(screens, index) {
-        if (this.explorationMode !== 'guided') {
-            return index > 0;
-        }
-
-        for (let i = index - 1; i >= 0; i -= 1) {
-            if (!this.isHookScreen(screens[i])) {
-                return true;
-            }
-        }
-        return false;
+        return index > 0;
     }
 
     updateSectionScreen(sectionEl, section, targetIndex, shouldScroll = true, { direction = 'forward' } = {}) {
@@ -1691,41 +2150,7 @@ class MissionSystem {
         const screens = Array.from(contentEl.querySelectorAll('.screen-card'));
         if (!screens.length) return;
 
-        if (this.explorationMode === 'guided') {
-            // Hook screens never stand alone in guided mode — hop past them
-            // (their text gets picked up as mascot speech below), in
-            // whichever direction we're navigating, without ever landing
-            // outside the section's screen range.
-            const step = direction === 'backward' ? -1 : 1;
-            let hops = 0;
-            while (
-                targetIndex >= 0 && targetIndex < screens.length
-                && this.isHookScreen(screens[targetIndex])
-                && hops < screens.length
-            ) {
-                const next = targetIndex + step;
-                if (next < 0 || next >= screens.length) break;
-                targetIndex = next;
-                hops += 1;
-            }
-        }
-
         const safeIndex = this.setSectionCurrentScreen(section.id, targetIndex, screens.length);
-
-        this.currentMascotSpeech = this.explorationMode === 'guided'
-            ? this.getHookSpeechBefore(screens, safeIndex)
-            : null;
-
-        // The section title/XP badge/wavy divider only makes sense on the
-        // very first screen the student sees for this section (the
-        // sidebar already shows which section is active from then on) —
-        // it disappears for good as soon as they move to another screen.
-        const headerEl = sectionEl.querySelector('.section-header');
-        if (headerEl) {
-            const isFirstVisit = !this.sectionHeaderShown[section.id];
-            this.sectionHeaderShown[section.id] = true;
-            headerEl.classList.toggle('section-header--hidden', !isFirstVisit);
-        }
 
         screens.forEach((screen, index) => {
             screen.classList.toggle('active-screen', index === safeIndex);
@@ -1738,11 +2163,29 @@ class MissionSystem {
         if (navEl) {
             const prevBtn = navEl.querySelector('[data-nav-action="prev"]');
             const nextBtn = navEl.querySelector('[data-nav-action="next"]');
+            const hasPrev = this.hasReachablePrevScreen(screens, safeIndex);
             if (prevBtn) {
-                prevBtn.style.display = this.hasReachablePrevScreen(screens, safeIndex) ? '' : 'none';
+                prevBtn.style.display = hasPrev ? '' : 'none';
             }
             if (nextBtn) {
                 nextBtn.textContent = isLast ? 'Ver quiz →' : 'Continuar →';
+            }
+
+            // The "Saber mais" trigger lines up with Continuar, on the left,
+            // only on screens with no "Anterior" to occupy that spot (there's
+            // one shared nav row per section, so whichever screen is active
+            // "borrows" it, and any previously relocated trigger goes home).
+            const relocatedTrigger = navEl.querySelector('.mascot-curiosity-trigger');
+            if (relocatedTrigger) {
+                const homeScreen = screens[Number(relocatedTrigger.dataset.homeScreenIndex)];
+                const homeDetails = homeScreen?.querySelector('details.did-you-know[data-mascot-managed]');
+                (homeDetails || homeScreen)?.insertAdjacentElement('afterend', relocatedTrigger);
+            }
+            if (!hasPrev) {
+                const activeTrigger = screens[safeIndex]?.querySelector('.mascot-curiosity-trigger');
+                if (activeTrigger) {
+                    navEl.insertBefore(activeTrigger, navEl.firstChild);
+                }
             }
         }
 
@@ -1766,10 +2209,8 @@ class MissionSystem {
             screens[safeIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // The mascot only shows on the very first screen-card overall, so
-        // moving between cards (not just between sections) needs to
-        // re-evaluate whether it should still be visible.
-        this.renderMascotPanel(section);
+        // The lesson topbar's progress bar depends on which screen is active.
+        this.renderLessonChrome();
     }
 
     handleScreenNav(event, sectionEl, section) {
@@ -1924,21 +2365,6 @@ class MissionSystem {
         sectionEl.id = `missao-${sectionIndex + 1}`;
 
         sectionEl.innerHTML = `
-            <div class="section-header">
-                <div class="section-info">
-                    <div class="section-title-row">
-                        <h2 class="section-title-large">${section.title}</h2>
-                        <span class="mission-step-counter-badge">${sectionIndex + 1} / ${this.mission.sections.length}</span>
-                    </div>
-                    <div class="section-meta">
-                        <span class="xp-badge">+${section.xpReward} XP</span>
-                        ${isCompleted ? '<span class="status-badge completed">Concluída</span>' : '<span class="status-badge">Em progresso</span>'}
-                    </div>
-                </div>
-                <div class="section-header-actions">
-                    <a class="mission-view-btn" href="${window.exploreMissionsIndexUrl || '#'}">🚩 Ver missão</a>
-                </div>
-            </div>
             <div class="section-body"></div>
         `;
 
@@ -1947,11 +2373,20 @@ class MissionSystem {
         bodyEl.insertAdjacentHTML('beforeend', this.renderSectionQuiz(section));
 
         sectionEl.querySelectorAll('.quiz-option').forEach(option => {
-            option.addEventListener('click', (event) => this.handleQuizAnswer(event, section, sectionIndex));
+            option.addEventListener('click', (event) => this.handleQuizOptionSelect(event, section));
         });
+
+        sectionEl.querySelector('#quizContinueBtn')?.addEventListener('click', () => this.handleQuizContinue(section, sectionIndex));
 
         sectionEl.querySelectorAll('.open-quiz-submit').forEach(button => {
             button.addEventListener('click', (event) => this.handleOpenQuizAnswer(event, section, sectionIndex));
+        });
+
+        // Live-enable the open-answer Check button as the student types,
+        // without a full re-render (which would steal focus mid-keystroke).
+        sectionEl.querySelector('.open-quiz-input:not([disabled])')?.addEventListener('input', (event) => {
+            const submitBtn = sectionEl.querySelector('.open-quiz-submit');
+            if (submitBtn) submitBtn.disabled = !event.target.value.trim();
         });
 
         sectionEl.querySelectorAll('.guide-option:not(.electron-loss-option)').forEach(option => {
@@ -1966,19 +2401,25 @@ class MissionSystem {
             button.addEventListener('click', (event) => this.toggleSimpleExplanation(event));
         });
 
+        sectionEl.querySelectorAll('.plant-hotspot').forEach(button => {
+            button.addEventListener('click', (event) => this.handlePlantHotspotClick(event));
+        });
+
+        sectionEl.querySelectorAll('.plant-hotspot-back').forEach(button => {
+            button.addEventListener('click', (event) => this.handlePlantHotspotBack(event));
+        });
+
         this.hydrateGuideState(sectionEl, section);
         this.bindOpenQuizDraftAutosave(sectionEl, section);
-        this.attachCardAudioButtons(sectionEl, section);
         this.attachCuriosityPrompts(sectionEl);
         if (this.isScreenFlowEnabled()) {
             this.mountSectionScreenFlow(sectionEl, section);
         }
         wrapper.appendChild(sectionEl);
 
-        this.updateMascotSpeech(sectionEl, section);
         this.renderFactBanner(section);
 
-        if (!this.mascotIntroShown[section.id]) {
+        if (!this.showPathScreen && !this.mascotIntroShown[section.id]) {
             this.mascotIntroShown[section.id] = true;
             this.showMascotIntroDialog(section);
         }
@@ -2019,87 +2460,105 @@ class MissionSystem {
         });
     }
 
+    /**
+     * Renders exactly ONE quiz question at a time (the current unanswered
+     * one, or the just-answered one while its feedback/Continue is still
+     * showing) — a real select → Check → feedback → Continue flow, instead
+     * of the old stacked list of every question with instant reveal.
+     */
     renderSectionQuiz(section) {
         const questions = this.getSectionQuestions(section);
-        const answerState = this.getSectionAnswerState(section.id);
-        const isQuizEntryGated = this.isSectionQuizEntryGated(section);
-        const isQuizEntryOpen = this.quizEntryState?.[section.id] === true;
-
         if (!questions.length) {
             return '';
         }
 
-        return `
-            <div class="section-quiz ${isQuizEntryGated && !isQuizEntryOpen ? 'quiz-entry-hidden' : ''}" data-section-id="${section.id}">
-                <h3>Quiz da missão 📋</h3>
-                ${questions.map((question, questionIndex) => {
-                    const savedAnswer = answerState.answers[questionIndex];
-                    const openDraft = this.getOpenAnswerDraft(section.id, questionIndex);
+        const answerState = this.getSectionAnswerState(section.id);
+        const isQuizEntryGated = this.isSectionQuizEntryGated(section);
+        const isQuizEntryOpen = this.quizEntryState?.[section.id] === true;
 
-                    if (question.type === 'open') {
-                        const isAnswered = !!savedAnswer;
-                        const isCorrect = !!savedAnswer?.isCorrect;
+        const firstUnanswered = answerState.answers.findIndex((answer) => !answer);
+        const awaitingIndex = this.awaitingContinue?.[section.id];
+        const displayIndex = Number.isInteger(awaitingIndex)
+            ? awaitingIndex
+            : (firstUnanswered === -1 ? questions.length - 1 : firstUnanswered);
+
+        const question = questions[displayIndex];
+        const savedAnswer = answerState.answers[displayIndex];
+        const isShowingFeedback = !!savedAnswer && awaitingIndex === displayIndex;
+        const isLastQuestion = displayIndex === questions.length - 1;
+        const continueLabel = isLastQuestion ? 'Concluir' : 'Continuar';
+
+        const feedbackHtml = (answer) => `
+            <div class="quiz-feedback ${answer.isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
+                <span class="feedback-icon">${answer.isCorrect ? '✓' : '✕'}</span>
+                <span class="feedback-text">${question.feedback[answer.isCorrect ? 'correct' : 'incorrect']}</span>
+            </div>
+            ${!answer.isCorrect && question.alternateExplanation ? `<p class="quiz-alt-explanation">${question.alternateExplanation}</p>` : ''}
+        `;
+
+        let bodyHtml;
+        if (question.type === 'open') {
+            const openDraft = this.getOpenAnswerDraft(section.id, displayIndex);
+            const isAnswered = !!savedAnswer;
+
+            bodyHtml = `
+                <textarea
+                    class="open-quiz-input reflection-input"
+                    data-question-index="${displayIndex}"
+                    data-saved-text="${savedAnswer?.text ? encodeURIComponent(savedAnswer.text) : (openDraft ? encodeURIComponent(openDraft) : '')}"
+                    placeholder="${question.placeholder || 'Escreve aqui a tua resposta...'}"
+                    ${isAnswered ? 'disabled' : ''}
+                ></textarea>
+                ${isShowingFeedback ? feedbackHtml(savedAnswer) : ''}
+                <div class="lesson-quiz-actions">
+                    ${isShowingFeedback
+                        ? `<button type="button" class="lesson-primary-btn" id="quizContinueBtn">${continueLabel}</button>`
+                        : `<button type="button" class="lesson-primary-btn open-quiz-submit" data-question-index="${displayIndex}" disabled>Confirmar</button>`
+                    }
+                </div>
+            `;
+        } else {
+            // Selecting an option immediately commits and reveals the
+            // answer (see handleQuizOptionSelect) — no separate "Confirmar"
+            // step, so there's nothing to show until it's answered.
+            bodyHtml = `
+                <div class="quiz-options" data-section-id="${section.id}" data-question-index="${displayIndex}">
+                    ${question.options.map((option, optIdx) => {
+                        let stateClass = '';
+                        if (savedAnswer) {
+                            if (option.correct) {
+                                stateClass = 'correct';
+                            } else if (optIdx === savedAnswer.selectedOptionIndex && !savedAnswer.isCorrect) {
+                                stateClass = 'incorrect';
+                            }
+                        }
 
                         return `
-                            <div class="quiz-question-card">
-                                <p class="quiz-question">${questionIndex + 1}. ${question.question}</p>
-                                <textarea
-                                    class="open-quiz-input reflection-input"
-                                    data-question-index="${questionIndex}"
-                                    data-saved-text="${savedAnswer?.text ? encodeURIComponent(savedAnswer.text) : (openDraft ? encodeURIComponent(openDraft) : '')}"
-                                    placeholder="${question.placeholder || 'Escreve aqui a tua resposta...'}"
-                                    ${isAnswered ? 'disabled' : ''}
-                                ></textarea>
-                                <button class="open-quiz-submit" data-question-index="${questionIndex}" ${isAnswered ? 'disabled' : ''}>Validar resposta</button>
-                                ${isAnswered ? `
-                                    <div class="quiz-feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
-                                        <span class="feedback-icon">${isCorrect ? '✓' : '✕'}</span>
-                                        <span class="feedback-text">${question.feedback[isCorrect ? 'correct' : 'incorrect']}</span>
-                                    </div>
-                                ` : ''}
-                            </div>
+                            <button class="quiz-option ${stateClass}"
+                                    data-correct="${option.correct}"
+                                    data-option-index="${optIdx}"
+                                    data-question-index="${displayIndex}"
+                                    ${savedAnswer ? 'disabled' : ''}>
+                                <span class="option-letter">${String.fromCharCode(65 + optIdx)})</span>
+                                <span class="option-text">${option.text}</span>
+                            </button>
                         `;
-                    }
+                    }).join('')}
+                </div>
+                ${isShowingFeedback ? feedbackHtml(savedAnswer) : ''}
+                ${isShowingFeedback ? `
+                    <div class="lesson-quiz-actions">
+                        <button type="button" class="lesson-primary-btn" id="quizContinueBtn">${continueLabel}</button>
+                    </div>
+                ` : ''}
+            `;
+        }
 
-                    return `
-                        <div class="quiz-question-card">
-                            <p class="quiz-question">${questionIndex + 1}. ${question.question}</p>
-                            <div class="quiz-options" data-section-id="${section.id}" data-question-index="${questionIndex}">
-                                ${question.options.map((option, optIdx) => {
-                                    const isSelected = savedAnswer?.selectedOptionIndex === optIdx;
-                                    const isLocked = !!savedAnswer;
-                                    const isCorrectOption = option.correct;
-                                    let stateClass = '';
-
-                                    if (isLocked) {
-                                        if (isCorrectOption) {
-                                            stateClass = 'correct';
-                                        } else if (isSelected && !savedAnswer.isCorrect) {
-                                            stateClass = 'incorrect';
-                                        }
-                                    }
-
-                                    return `
-                                        <button class="quiz-option ${stateClass}"
-                                                data-correct="${option.correct}"
-                                                data-option-index="${optIdx}"
-                                                data-question-index="${questionIndex}"
-                                                ${isLocked ? 'disabled' : ''}>
-                                            <span class="option-letter">${String.fromCharCode(65 + optIdx)})</span>
-                                            <span class="option-text">${option.text}</span>
-                                        </button>
-                                    `;
-                                }).join('')}
-                            </div>
-                            ${savedAnswer ? `
-                                <div class="quiz-feedback ${savedAnswer.isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
-                                    <span class="feedback-icon">${savedAnswer.isCorrect ? '✓' : '✕'}</span>
-                                    <span class="feedback-text">${question.feedback[savedAnswer.isCorrect ? 'correct' : 'incorrect']}</span>
-                                </div>
-                            ` : ''}
-                        </div>
-                    `;
-                }).join('')}
+        return `
+            <div class="section-quiz ${isQuizEntryGated && !isQuizEntryOpen ? 'quiz-entry-hidden' : ''}" data-section-id="${section.id}">
+                <p class="quiz-progress-label">Pergunta ${displayIndex + 1} de ${questions.length}</p>
+                <p class="quiz-question">${question.question}</p>
+                ${bodyHtml}
             </div>
         `;
     }
@@ -2165,30 +2624,61 @@ class MissionSystem {
         const hasNextSection = sectionIndex + 1 < this.mission.sections.length;
 
         const continueToNext = () => {
-            this.render();
-
             if (hasNextSection) {
-                this.scrollToElement(`#missao-${sectionIndex + 2}`);
-            } else {
-                this.scrollToElement('#chapterCompleteCta');
+                // The sidebar (the old way to jump between sections) is
+                // gone — send the student back to the percurso map to pick
+                // the next unlocked circle themselves, rather than
+                // auto-continuing inline.
+                this.showPathScreen = true;
+                this.render();
+                return;
             }
+
+            this.render();
+            this.scrollToElement('#chapterCompleteCta');
         };
 
-        const completionMessage = hasNextSection
-            ? `Parabéns! Completaste a missão ${sectionIndex + 1}!`
-            : (typeof section.completionMessage === 'string' && section.completionMessage.trim()
-                ? section.completionMessage.trim()
-                : `Missão completa! +${section.xpReward} XP.`);
+        const reviewContent = () => this.reviewSectionContent(section, sectionIndex);
 
-        const ctaLabel = hasNextSection
-            ? `Explora a missão ${sectionIndex + 2}!`
-            : 'Ir para o desafio';
+        const rankTitle = window.ProfileXP?.getProfileOverview?.(window.ProfileXP.getCurrentUserProfile())?.rank?.title || 'Explorador';
+        const scoreLine = totalQuestions
+            ? `${correctAnswers}/${totalQuestions} perguntas acertadas, nada mau, ${rankTitle}`
+            : '';
 
-        this.showSectionCompletionDialog(completionMessage, ctaLabel, continueToNext);
+        const completionMessage = typeof section.completionMessage === 'string' && section.completionMessage.trim()
+            ? section.completionMessage.trim()
+            : `Etapa concluída! +${section.xpReward} XP.`;
+
+        const ctaLabel = hasNextSection ? 'Avança para o próximo conteúdo →' : 'Ir para o desafio';
+
+        this.showSectionCompletionDialog({
+            scoreLine,
+            message: completionMessage,
+            ctaLabel,
+            onContinue: continueToNext,
+            onReview: reviewContent
+        });
         return;
     }
 
-    showSectionCompletionDialog(message, ctaLabel, onContinue) {
+    /**
+     * Lets the student re-read the section they just finished the quiz for,
+     * instead of only being able to move forward — jumps back to its first
+     * content screen (not wherever the quiz progress left off).
+     */
+    reviewSectionContent(section, sectionIndex) {
+        this.activeSectionIndex = sectionIndex;
+        this.showPathScreen = false;
+        this.render();
+
+        const sectionEl = document.querySelector(`.section[data-section-id="${section.id}"]`);
+        const screenCount = (section.content.match(/class="screen-card/g) || []).length;
+        if (sectionEl && screenCount) {
+            this.updateSectionScreen(sectionEl, section, 0);
+        }
+    }
+
+    showSectionCompletionDialog({ scoreLine, message, ctaLabel, onContinue, onReview }) {
         const existing = document.getElementById('sectionCompletionOverlay');
         if (existing) {
             existing.remove();
@@ -2200,16 +2690,24 @@ class MissionSystem {
         overlay.innerHTML = `
             <div class="section-completion-card" role="dialog" aria-modal="true" aria-label="Missão concluída">
                 <h3>Missão concluída</h3>
+                ${scoreLine ? `<p class="section-completion-score">${scoreLine}</p>` : ''}
                 <p>${message}</p>
                 <button type="button" class="section-completion-btn">${ctaLabel}</button>
+                <button type="button" class="section-completion-review-btn">Rever conteúdo</button>
             </div>
         `;
 
-        const continueButton = overlay.querySelector('.section-completion-btn');
-        continueButton?.addEventListener('click', () => {
+        overlay.querySelector('.section-completion-btn')?.addEventListener('click', () => {
             overlay.remove();
             if (typeof onContinue === 'function') {
                 onContinue();
+            }
+        });
+
+        overlay.querySelector('.section-completion-review-btn')?.addEventListener('click', () => {
+            overlay.remove();
+            if (typeof onReview === 'function') {
+                onReview();
             }
         });
 
@@ -2229,27 +2727,45 @@ class MissionSystem {
     }
 
     /**
-     * Handle quiz answer selection
+     * Clicking an option only *selects* it (highlights it, enables the
+     * Check button) — it no longer commits/reveals the answer instantly.
      */
-    handleQuizAnswer(event, section, sectionIndex) {
+    /**
+     * Selecting an option commits it immediately — correct/incorrect
+     * feedback (+ alternate explanation on a miss) shows right away, and
+     * the action button switches to "Continuar"; completion only happens
+     * once Continuar is pressed (see handleQuizContinue).
+     */
+    handleQuizOptionSelect(event, section) {
         const button = event.target.closest('.quiz-option');
         if (!button || button.disabled) return;
 
         const questionIndex = Number(button.dataset.questionIndex);
-        const selectedOptionIndex = Number(button.dataset.optionIndex);
-        const isCorrect = button.dataset.correct === 'true';
+        const optionIndex = Number(button.dataset.optionIndex);
 
         const answerState = this.getSectionAnswerState(section.id);
-        if (answerState.answers[questionIndex]) {
-            return;
-        }
+        if (answerState.answers[questionIndex]) return;
+
+        const question = this.getSectionQuestions(section)[questionIndex];
+        const option = question.options[optionIndex];
+        const isCorrect = !!option?.correct;
 
         answerState.answers[questionIndex] = {
-            selectedOptionIndex,
+            selectedOptionIndex: optionIndex,
             isCorrect
         };
 
         this.userAnswers[section.id] = answerState;
+        this.awaitingContinue[section.id] = questionIndex;
+
+        if (isCorrect) {
+            // Kept in step with awardProfileXP (which updates the client's
+            // running total) so the amount synced to the server via
+            // saveProgress() below doesn't quietly under-count real XP.
+            this.earnedXP += 5;
+            this.awardProfileXP(5, this.buildRewardSource('quiz-question', `${this.mission.id}:${section.id}:${questionIndex}`), { type: 'quiz' });
+        }
+
         this.saveProgress();
 
         const scrollPosition = window.scrollY;
@@ -2258,13 +2774,6 @@ class MissionSystem {
 
         if (isCorrect) {
             this.showMascotCorrectPopup();
-        } else {
-            const question = this.getSectionQuestions(section)[questionIndex];
-            this.showMascotIncorrectExplanation(question);
-        }
-
-        if (this.isSectionQuizComplete(section)) {
-            this.completeSection(section, sectionIndex);
         }
     }
 
@@ -2273,12 +2782,14 @@ class MissionSystem {
         if (!button || button.disabled) return;
 
         const questionIndex = Number(button.dataset.questionIndex);
-        const container = button.closest('.quiz-question-card');
-        const input = container?.querySelector('.open-quiz-input');
+        const input = button.closest('.section-quiz')?.querySelector('.open-quiz-input');
         if (!input) return;
 
         const text = input.value.trim();
         if (!text) return;
+
+        const existingAnswerState = this.getSectionAnswerState(section.id);
+        if (existingAnswerState.answers[questionIndex]) return;
 
         const question = this.getSectionQuestions(section)[questionIndex];
         const normalizedText = this.normalizeKeywordText(text);
@@ -2315,15 +2826,37 @@ class MissionSystem {
         this.clearOpenAnswerDraft(section.id, questionIndex);
 
         this.userAnswers[section.id] = answerState;
+        this.awaitingContinue[section.id] = questionIndex;
+
+        if (isCorrect) {
+            // Kept in step with awardProfileXP (which updates the client's
+            // running total) so the amount synced to the server via
+            // saveProgress() below doesn't quietly under-count real XP.
+            this.earnedXP += 5;
+            this.awardProfileXP(5, this.buildRewardSource('quiz-question', `${this.mission.id}:${section.id}:${questionIndex}`), { type: 'quiz' });
+        }
+
         this.saveProgress();
 
         const scrollPosition = window.scrollY;
         this.render();
         window.scrollTo(0, scrollPosition);
+    }
+
+    /**
+     * The "Continuar"/"Concluir" button shown once feedback is visible:
+     * dismisses the feedback and either reveals the next question or, on
+     * the last one, completes the section.
+     */
+    handleQuizContinue(section, sectionIndex) {
+        delete this.awaitingContinue[section.id];
 
         if (this.isSectionQuizComplete(section)) {
             this.completeSection(section, sectionIndex);
+            return;
         }
+
+        this.render();
     }
 
     handleGuideOption(event) {
@@ -2398,6 +2931,117 @@ class MissionSystem {
         explanation.setAttribute('hidden', '');
         button.setAttribute('aria-expanded', 'false');
         button.textContent = button.dataset.labelShow || 'Explicação mais simples';
+    }
+
+    /**
+     * Clicking a positioned dot on a .plant-diagram image: mark it as the
+     * active hotspot and copy the matching hidden .plant-hotspot-panel's
+     * content into the visible .plant-hotspot-explanation box below the
+     * image — the panels themselves are just an authoring convenience and
+     * are never shown directly.
+     */
+    handlePlantHotspotClick(event) {
+        const button = event.currentTarget;
+        const card = button.closest('.plant-diagram-card');
+        if (!card) return;
+
+        const hotspotKey = button.dataset.hotspot;
+        card.querySelectorAll('.plant-hotspot').forEach((el) => {
+            el.classList.toggle('is-active', el === button);
+        });
+
+        const panel = card.querySelector(`.plant-hotspot-panel[data-hotspot="${hotspotKey}"]`);
+        if (!panel) return;
+
+        // Cards with a real photo per structure (see data-image on the
+        // panel) drill into a dedicated detail view instead of showing the
+        // explanation inline below the diagram.
+        const detail = card.querySelector('.plant-hotspot-detail');
+        const explanation = detail
+            ? detail.querySelector('.plant-hotspot-explanation')
+            : card.querySelector('.plant-hotspot-explanation');
+        if (!explanation) return;
+
+        explanation.innerHTML = panel.innerHTML;
+        explanation.classList.add('has-content');
+        explanation.querySelectorAll('.key-term').forEach((el) => {
+            this.registerDiscoveredWord(el.textContent);
+        });
+
+        if (detail) {
+            const photo = detail.querySelector('.plant-hotspot-photo');
+            const imageSrc = panel.dataset.image;
+            if (photo && imageSrc) {
+                photo.src = imageSrc;
+                photo.alt = panel.querySelector('h4')?.textContent || '';
+                photo.classList.toggle('is-round', panel.dataset.photoRound === 'true');
+            }
+            const overview = card.querySelector('.plant-diagram-overview');
+            if (overview) overview.hidden = true;
+            detail.hidden = false;
+        }
+    }
+
+    handlePlantHotspotBack(event) {
+        const card = event.currentTarget.closest('.plant-diagram-card');
+        if (!card) return;
+
+        const detail = card.querySelector('.plant-hotspot-detail');
+        const overview = card.querySelector('.plant-diagram-overview');
+        if (detail) detail.hidden = true;
+        if (overview) overview.hidden = false;
+
+        card.querySelectorAll('.plant-hotspot').forEach((el) => el.classList.remove('is-active'));
+    }
+
+    /**
+     * Vocabulary words (.key-term spans) get added to the student's
+     * "livro de explorador" the first time they're revealed, with a small
+     * toast — tracked globally (not per-mission) in localStorage.
+     */
+    getDictionaryStorageKey() {
+        const user = window.exploreCurrentUser;
+        const userKey = user?.uid ? `uid:${user.uid}` : (user?.email ? `email:${user.email.toLowerCase()}` : 'guest');
+        return `explore_dictionary_${userKey}`;
+    }
+
+    getDiscoveredWords() {
+        try {
+            const raw = localStorage.getItem(this.getDictionaryStorageKey());
+            const parsed = raw ? JSON.parse(raw) : [];
+            return Array.isArray(parsed) ? parsed : [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+    registerDiscoveredWord(word) {
+        const normalized = String(word || '').trim();
+        if (!normalized) return;
+
+        const key = normalized.toLowerCase();
+        const words = this.getDiscoveredWords();
+        if (words.some((entry) => entry.toLowerCase() === key)) {
+            return;
+        }
+
+        words.push(normalized);
+        localStorage.setItem(this.getDictionaryStorageKey(), JSON.stringify(words));
+        this.showDictionaryToast(normalized);
+    }
+
+    showDictionaryToast(word) {
+        const toast = document.getElementById('dictionaryToast');
+        if (!toast) return;
+
+        const textEl = document.getElementById('dictionaryToastText');
+        if (textEl) textEl.textContent = `"${word}" foi adicionada ao teu livro de explorador!`;
+
+        toast.classList.add('show');
+        clearTimeout(this._dictionaryToastTimer);
+        this._dictionaryToastTimer = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2600);
     }
 
     /**
@@ -2663,6 +3307,7 @@ class MissionSystem {
         this.chapterCompletionView = false;
         this.earnedXP = 0;
         this.completedSections = new Set();
+        this.widgetCompletions = {};
         this.isInFinalQuiz = false;
         this.finalQuizAnswers = [];
         this.render();

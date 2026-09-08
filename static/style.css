@@ -1,23 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap');
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Noto Sans', Arial, Helvetica, sans-serif;
 }
 
 html{
     scroll-behavior:smooth;
+    /* overflow-x lives here, not on body: per spec, pairing overflow-x
+       with an unset (visible) overflow-y forces that axis to auto too,
+       turning whichever element carries it into its own scroll container.
+       On body that put the page's real scrollbar on the body box instead
+       of the viewport, which is what let the fixed header paint over it.
+       Keeping both axes on html keeps the viewport as the scroller. */
+    overflow-x:clip;
 }
 
 body{
     background:linear-gradient(180deg,#eef9f5,#ffffff);
     color:#222;
-    /* overflow-x:hidden here would silently force overflow-y:auto too,
-       which breaks position:sticky on <header> since body becomes the
-       scrolling container instead of the viewport. overflow-x:clip
-       still stops horizontal scroll without that side effect. */
-    overflow-x:clip;
-    overflow-y:visible;
 }
 
 img,
@@ -29,11 +32,6 @@ svg{
 
 header{
 
-position:fixed;
-top:0;
-left:0;
-right:0;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -42,22 +40,16 @@ padding:22px 8%;
 
 background:#dabd9d;
 
-backdrop-filter:blur(12px);
-
 border-bottom:1px solid rgba(0,0,0,.06);
-
-z-index:1000;
+box-shadow:0 6px 20px rgba(0,0,0,.16);
 
 }
 
-/* header is now position:fixed (removed from normal flow), so every page
-   needs this top offset to stop its own first section from sliding under
-   it. Scoped to match the breakpoint below (480px) where header switches
-   back to position:relative and needs no compensation. */
-@media (min-width:481px){
-    body{
-        padding-top:90px;
-    }
+/* Dashboard/profile pages don't use the fixed marketing <header>, so they
+   don't need the offset above; it was pushing the profile panel down for
+   no reason. */
+body.shadcn-profile{
+    padding-top:0;
 }
 
 header .logo img {
@@ -65,6 +57,153 @@ header .logo img {
     height:auto;
 }
 
+/* ===== Off-canvas nav drawer, shared by every non-profile/non-home page.
+   Hamburger button lives inside <header>; the drawer + overlay sit right
+   after </header>. Toggled by static/nav-drawer.js. Kept deliberately
+   separate from .profile-sidebar so it never inherits that component's
+   desktop "always open" behaviour — this one only ever opens on demand. */
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.nav-drawer-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    padding:0;
+    border:none;
+    background:transparent;
+    color:#4a3626;
+    cursor:pointer;
+    border-radius:8px;
+    flex:none;
+}
+
+.nav-drawer-toggle:hover{
+    background:rgba(0,0,0,.08);
+}
+
+.nav-drawer-toggle svg{
+    width:24px;
+    height:24px;
+}
+
+.nav-drawer-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:1300;
+}
+
+.nav-drawer-overlay[hidden]{
+    display:none;
+}
+
+.nav-drawer{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    width:min(280px,84vw);
+    background:#dabd9d;
+    color:#fff;
+    padding:22px 18px;
+    box-sizing:border-box;
+    box-shadow:14px 0 32px rgba(0,0,0,.18);
+    transform:translateX(-100%);
+    transition:transform .25s ease;
+    z-index:1400;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+
+    scrollbar-width:thin;
+    scrollbar-color:rgba(255,255,255,.5) transparent;
+}
+
+.nav-drawer::-webkit-scrollbar{
+    width:5px;
+}
+
+.nav-drawer::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.nav-drawer::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.5);
+    border-radius:99px;
+}
+
+.nav-drawer::-webkit-scrollbar-thumb:hover{
+    background:rgba(255,255,255,.75);
+}
+
+.nav-drawer.is-open{
+    transform:translateX(0);
+}
+
+.nav-drawer-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.nav-drawer-brand img{
+    height:28px;
+    width:auto;
+    object-fit:contain;
+}
+
+.nav-drawer-close{
+    box-sizing:border-box;
+    margin-left:auto;
+    width:32px;
+    height:32px;
+    padding:0;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border:none;
+    background:rgba(255,255,255,.15);
+    color:#fff;
+    border-radius:8px;
+    cursor:pointer;
+    flex:none;
+}
+
+.nav-drawer-close svg{
+    width:18px;
+    height:18px;
+}
+
+.nav-drawer-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.nav-drawer-list a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 14px;
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    transition:background .2s;
+}
+
+.nav-drawer-list a:hover,
+.nav-drawer-list a.is-active{
+    background:rgba(255,255,255,.22);
+}
 
 nav{
     display:flex;
@@ -256,6 +395,31 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 .card p{
     color:#555;
     line-height:1.7;
+}
+
+.dicionario-estado{
+    display:inline-block;
+    padding:3px 10px;
+    border-radius:999px;
+    font-size:.72rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+}
+
+.dicionario-estado--dominado{
+    background:#d9f8e5;
+    color:#14844c;
+}
+
+.dicionario-estado--a_rever{
+    background:#ffe8d1;
+    color:#b45f0e;
+}
+
+.dicionario-estado--novo{
+    background:#ececec;
+    color:#666;
 }
 
 .how{
@@ -588,7 +752,7 @@ flex-direction:column;
 gap:20px;
 }
 
-nav{
+header nav{
 flex-wrap:wrap;
 justify-content:center;
 }
@@ -626,6 +790,267 @@ padding:80px 8%;
 
 }
 
+/* Missões now sits inside the profile sidebar layout (.profile-content
+   already centers and constrains the width), so it only needs its own
+   vertical rhythm here, no side padding or huge top offset. */
+body.shadcn-profile .missions-page{
+    padding: 8px 0 40px;
+}
+
+.missions-topbar{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:8px;
+}
+
+.missions-topbar-logo img{
+    height:30px;
+    width:auto;
+    object-fit:contain;
+}
+
+/* The hamburger always sits on the right, whether or not the logo next to
+   it is visible — margin-left:auto (not justify-content:space-between)
+   keeps it pinned there even when it's the row's only visible child. */
+.missions-topbar .nav-drawer-toggle{
+    margin-left:auto;
+}
+
+/* Flat, borderless — no button chrome, just the bare icon sitting on the
+   page (no rounded box, no hover tint, no shape at all). */
+body.shadcn-profile .missions-topbar .nav-drawer-toggle{
+    background:none;
+    border-radius:0;
+    box-shadow:none;
+    border:none;
+}
+
+body.shadcn-profile .missions-topbar .nav-drawer-toggle:hover{
+    background:none;
+    box-shadow:none;
+}
+
+/* The topbar's logo is a stand-in for the sidebar's own logo while the
+   sidebar is closed — shown only then, on either breakpoint, so there's
+   never a duplicate. Mobile starts closed (off-canvas); desktop starts
+   open (persistent), toggled by the same hamburger either way. */
+.missions-topbar-logo {
+    display: none;
+}
+
+@media (max-width: 980px) {
+    .profile-sidebar:not(.is-open) ~ .profile-main-shell .missions-topbar-logo {
+        display: flex;
+    }
+}
+
+@media (min-width: 981px) {
+    body.shadcn-profile .profile-layout.sidebar-collapsible {
+        transition: padding-left .25s ease;
+    }
+
+    body.shadcn-profile .profile-layout.sidebar-collapsible .profile-sidebar {
+        transition: transform .25s ease;
+    }
+
+    body.shadcn-profile .profile-layout.sidebar-collapsible.is-sidebar-collapsed {
+        padding-left: 0;
+    }
+
+    body.shadcn-profile .profile-layout.sidebar-collapsible.is-sidebar-collapsed .profile-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .profile-layout.sidebar-collapsible .missions-topbar-logo {
+        display: none;
+    }
+
+    .profile-layout.sidebar-collapsible.is-sidebar-collapsed .missions-topbar-logo {
+        display: flex;
+    }
+}
+
+/* ---- SuperExplore plans page ---- */
+
+body.shadcn-profile .plans-page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 16px 0 48px;
+}
+
+body.shadcn-profile .plans-hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+body.shadcn-profile .plans-hero h1 {
+    margin: 0 0 10px;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .plans-hero p {
+    margin: 0;
+    color: var(--sp-muted-fg);
+    font-size: 1rem;
+}
+
+body.shadcn-profile .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+body.shadcn-profile .plan-card {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .plan-card--highlight {
+    background: var(--sp-accent-soft);
+    border-color: var(--sp-primary);
+}
+
+body.shadcn-profile .plan-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+body.shadcn-profile .plan-card-name {
+    font-family: var(--sp-font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .plan-card-current {
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--sp-border);
+    color: var(--sp-muted-fg);
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+body.shadcn-profile .plan-card-badge {
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffb020, #f5860a);
+    color: #241300;
+    font-size: .68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+body.shadcn-profile .plan-card-price-old {
+    margin: 14px 0 0;
+    color: var(--sp-muted-fg);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: line-through;
+    text-decoration-color: #ff2d20;
+    text-decoration-thickness: 1px;
+}
+
+body.shadcn-profile .plan-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin: 2px 0 4px;
+}
+
+body.shadcn-profile .plan-card-price strong {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .plan-card-price span {
+    color: var(--sp-muted-fg);
+    font-size: .9rem;
+}
+
+body.shadcn-profile .plan-card-tagline {
+    margin: 0 0 22px;
+    color: var(--sp-muted-fg);
+    font-size: .88rem;
+}
+
+body.shadcn-profile .plan-card-features {
+    list-style: none;
+    margin: 0 0 26px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+body.shadcn-profile .plan-card-features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--sp-fg);
+    font-size: .9rem;
+}
+
+body.shadcn-profile .plan-card-features svg {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .plan-card-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 999px;
+    font-size: .92rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: none;
+    transition: filter .15s ease;
+}
+
+body.shadcn-profile .plan-card-btn--muted {
+    background: var(--sp-border);
+    color: var(--sp-muted-fg);
+    cursor: default;
+}
+
+body.shadcn-profile .plan-card-btn--highlight {
+    background: linear-gradient(135deg, #ffb020, #f5860a);
+    color: #241300;
+}
+
+body.shadcn-profile .plan-card-btn--highlight:hover {
+    filter: brightness(1.06);
+    transform: none;
+    box-shadow: none;
+}
+
+body.shadcn-profile .plans-note {
+    margin: 28px 0 0;
+    color: var(--sp-muted-fg);
+    font-size: .82rem;
+    text-align: center;
+}
+
 .missions-page h1{
 
 font-size:3rem;
@@ -641,12 +1066,1319 @@ margin-bottom:50px;
 
 }
 
+.missions-page-subrow{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-bottom:50px;
+}
+
+.missions-page-subrow p{
+    margin-bottom:0;
+}
+
+@media (max-width:600px){
+    .missions-page-subrow{
+        margin-bottom:28px;
+    }
+}
+
 .missions-grid{
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:30px;
+/* One card per row — missions stack vertically instead of sitting
+   side by side, matching the Testes page's single-column list. */
+grid-template-columns:1fr;
+gap:20px;
 
+}
+
+/* Testes page: wider, more rectangular card (fits the expandable list of
+   3 tests better than a near-square card would). A single stretchy column
+   so the card's right edge lines up with the end of the category title's
+   divider line instead of leaving empty space next to it. */
+.teste-missions-grid{
+    grid-template-columns:1fr;
+}
+
+.missions-category{
+    margin-bottom:44px;
+}
+
+.missions-category:last-of-type{
+    margin-bottom:0;
+}
+
+.missions-category-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:0 0 20px;
+    color:#1c1c1c;
+    font-size:1.3rem;
+    font-weight:700;
+}
+
+.missions-category-title::after{
+    content:"";
+    flex:1 1 auto;
+    height:1px;
+    background:#e2e3db;
+}
+
+.missions-category-title-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:0 0 20px;
+}
+
+.missions-category-title-row .missions-category-title{
+    flex:1 1 auto;
+    margin:0;
+}
+
+.dicionario-flashcards-link{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex:none;
+    padding:6px 14px;
+    border-radius:999px;
+    background:#f4f6f1;
+    color:#1f8a5b;
+    font-size:.82rem;
+    font-weight:700;
+    text-decoration:none;
+    white-space:nowrap;
+}
+
+.dicionario-flashcards-link:hover{
+    background:#e7efe4;
+}
+
+/* ===================== Teste (fotossíntese, etc.) ===================== */
+
+.teste-voltar{
+    display:inline-block;
+    margin-bottom:14px;
+    color:#5c6b5f;
+    font-size:.9rem;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.teste-voltar:hover{
+    color:#1f8a5b;
+}
+
+.teste-meta{
+    color:#66756e;
+    margin-bottom:32px;
+}
+
+.teste-grupo{
+    margin-bottom:40px;
+}
+
+.teste-grupo h2{
+    font-size:1.3rem;
+    font-weight:700;
+    color:#1c1c1c;
+    margin-bottom:12px;
+}
+
+.teste-texto-apoio{
+    color:#3d4640;
+    line-height:1.6;
+    margin-bottom:16px;
+}
+
+.teste-tabela-titulo{
+    font-weight:700;
+    font-size:.88rem;
+    color:#1c1c1c;
+    margin-bottom:8px;
+}
+
+.teste-tabela-wrapper{
+    overflow-x:auto;
+    margin-bottom:16px;
+}
+
+.teste-tabela{
+    border-collapse:collapse;
+    width:100%;
+    min-width:420px;
+    font-size:.92rem;
+}
+
+.teste-tabela th,
+.teste-tabela td{
+    border:1px solid #e2e3db;
+    padding:9px 14px;
+    text-align:left;
+}
+
+.teste-tabela th{
+    background:#f4f6f1;
+    font-weight:700;
+    color:#1c1c1c;
+}
+
+.teste-esquema{
+    background:#f4f6f1;
+    border:1px solid #e2e3db;
+    border-radius:12px;
+    padding:14px 18px;
+    font-family:monospace;
+    font-size:.9rem;
+    color:#3d4640;
+    margin-bottom:16px;
+}
+
+.teste-pergunta{
+    background:#ffffff;
+    border:1px solid #e2e3db;
+    border-radius:16px;
+    padding:22px 24px;
+    margin-bottom:18px;
+}
+
+.teste-pergunta-head{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    margin-bottom:16px;
+}
+
+.teste-pergunta-numero{
+    flex:none;
+    font-weight:800;
+    color:#1f8a5b;
+}
+
+.teste-pergunta-enunciado{
+    flex:1 1 auto;
+    color:#1c1c1c;
+    font-weight:600;
+    line-height:1.5;
+}
+
+.teste-pergunta-cotacao{
+    flex:none;
+    background:#f4f6f1;
+    border-radius:999px;
+    padding:3px 10px;
+    font-size:.74rem;
+    font-weight:700;
+    color:#66756e;
+    white-space:nowrap;
+}
+
+/* Escolha múltipla — mesmo cartão + círculo de letra dos quizzes das
+   missões (.quiz-option / .option-letter em mission-styles.css). O
+   <input> real fica visualmente escondido; o :has() dita o estado. */
+.teste-opcoes{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.teste-opcao{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    background:#fff;
+    border:2px solid #ddd;
+    border-radius:10px;
+    padding:15px 20px;
+    cursor:pointer;
+    transition:border-color .2s ease, background-color .2s ease;
+    font-size:1rem;
+    color:#333;
+}
+
+.teste-opcao:hover{
+    border-color:#1f8a5b;
+    background:#f5f9f7;
+}
+
+/* Requires the parent label (.teste-opcao / .teste-vf-pill) to be
+   position:relative — otherwise this absolutely positioned input's
+   containing block becomes .profile-layout (which doesn't scroll),
+   detaching it from its label inside the scrollable .profile-main-shell;
+   clicking it then makes the browser's focus-scroll jump to blank space. */
+.teste-opcao-input{
+    position:absolute;
+    width:1px;
+    height:1px;
+    opacity:0;
+    pointer-events:none;
+}
+
+.teste-opcao-letra{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    flex:none;
+    background:#eee;
+    border-radius:50%;
+    font-weight:700;
+    color:#666;
+    transition:background-color .2s ease, color .2s ease;
+}
+
+.teste-opcao-texto{
+    flex:1 1 auto;
+}
+
+.teste-opcao:has(.teste-opcao-input:checked){
+    border-color:#1f8a5b;
+    background:#f5f9f7;
+}
+
+.teste-opcao:has(.teste-opcao-input:checked) .teste-opcao-letra{
+    background:#1f8a5b;
+    color:#fff;
+}
+
+/* Correspondência — Coluna I only holds a short label + a tiny select, so
+   it doesn't need as much room as Coluna II's full sentences. */
+.teste-correspondencia{
+    display:grid;
+    grid-template-columns:1fr 1.5fr;
+    gap:28px;
+}
+
+.teste-coluna-titulo{
+    font-weight:700;
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:#66756e;
+    margin-bottom:12px;
+}
+
+.teste-correspondencia-linha{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    background:#fff;
+    border:2px solid #ddd;
+    border-radius:10px;
+    padding:12px 16px;
+    margin-bottom:10px;
+    font-size:.94rem;
+    color:#333;
+    transition:border-color .2s ease;
+}
+
+.teste-correspondencia-linha:has(select:focus){
+    border-color:#1f8a5b;
+}
+
+.teste-coluna-item{
+    font-size:.92rem;
+    color:#3d4640;
+    line-height:1.5;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+}
+
+.teste-coluna-item:last-child{
+    border-bottom:none;
+}
+
+.teste-correspondencia select,
+.teste-espacos select,
+.teste-ordenacao-posicao select{
+    flex:none;
+    padding:9px 14px;
+    border:2px solid #ddd;
+    border-radius:8px;
+    font-size:.94rem;
+    font-weight:700;
+    background:#f5f9f7;
+    color:#1f8a5b;
+    cursor:pointer;
+}
+
+.teste-correspondencia select:focus,
+.teste-espacos select:focus,
+.teste-ordenacao-posicao select:focus{
+    outline:none;
+    border-color:#1f8a5b;
+}
+
+/* Ordenação — mesma "pastilha numerada" das outras perguntas, um seletor
+   por posição (1º, 2º…), lado a lado com a lista de referência. The
+   position picker only ever holds a single letter, so it gets a narrow
+   fixed column instead of matching the sentence list's width. */
+.teste-ordenacao{
+    display:grid;
+    grid-template-columns:1fr minmax(140px, 200px);
+    gap:28px;
+    align-items:start;
+}
+
+.teste-ordenacao-opcoes p{
+    font-size:.92rem;
+    color:#3d4640;
+    line-height:1.5;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+    margin:0;
+}
+
+.teste-ordenacao-opcoes p:last-child{
+    border-bottom:none;
+}
+
+.teste-ordenacao-posicoes{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.teste-ordenacao-posicao{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:#fff;
+    border:2px solid #ddd;
+    border-radius:10px;
+    padding:10px 16px;
+    transition:border-color .2s ease;
+}
+
+.teste-ordenacao-posicao:has(select:focus){
+    border-color:#1f8a5b;
+}
+
+.teste-ordenacao-posicao > span{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    flex:none;
+    background:#eee;
+    border-radius:50%;
+    font-weight:700;
+    font-size:.86rem;
+    color:#666;
+}
+
+.teste-ordenacao-posicao select{
+    flex:1 1 auto;
+    min-width:0;
+}
+
+/* Completar texto */
+.teste-completar-texto{
+    color:#3d4640;
+    line-height:1.8;
+    font-size:1rem;
+    margin-bottom:18px;
+}
+
+.teste-espacos{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+}
+
+.teste-espaco{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    border:2px solid #ddd;
+    border-radius:10px;
+    padding:10px 16px;
+    transition:border-color .2s ease;
+}
+
+.teste-espaco:has(select:focus){
+    border-color:#1f8a5b;
+}
+
+.teste-espaco > span{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:28px;
+    height:28px;
+    flex:none;
+    background:#eee;
+    border-radius:50%;
+    font-weight:700;
+    font-size:.8rem;
+    color:#666;
+}
+
+.teste-input-curta{
+    width:100%;
+    max-width:340px;
+    padding:12px 16px;
+    border:2px solid #ddd;
+    border-radius:10px;
+    font-size:1rem;
+    transition:border-color .2s ease;
+}
+
+.teste-input-curta:focus{
+    outline:none;
+    border-color:#1f8a5b;
+}
+
+.teste-input-longa{
+    width:100%;
+    padding:14px 16px;
+    border:2px solid #ddd;
+    border-radius:10px;
+    font-size:1rem;
+    font-family:inherit;
+    resize:vertical;
+    transition:border-color .2s ease;
+}
+
+.teste-input-longa:focus{
+    outline:none;
+    border-color:#1f8a5b;
+}
+
+.teste-vf{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.teste-vf-linha{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    background:#fff;
+    border:2px solid #ddd;
+    border-radius:10px;
+    padding:14px 20px;
+    font-size:.98rem;
+    color:#333;
+}
+
+.teste-vf-texto{
+    flex:1 1 260px;
+}
+
+.teste-vf-opcoes{
+    display:flex;
+    gap:10px;
+    flex:none;
+}
+
+.teste-vf-pill{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:0;
+    padding:8px 18px;
+    border:2px solid #ddd;
+    border-radius:999px;
+    font-size:.88rem;
+    font-weight:700;
+    color:#666;
+    background:#fff;
+    cursor:pointer;
+    transition:border-color .2s ease, background-color .2s ease, color .2s ease;
+}
+
+.teste-vf-pill:hover{
+    border-color:#1f8a5b;
+}
+
+.teste-vf-pill:has(.teste-opcao-input:checked){
+    color:#fff;
+}
+
+.teste-vf-pill--v:has(.teste-opcao-input:checked){
+    background:#1f8a5b;
+    border-color:#1f8a5b;
+}
+
+.teste-vf-pill--f:has(.teste-opcao-input:checked){
+    background:#dc3545;
+    border-color:#dc3545;
+}
+
+.teste-guardado-aviso{
+    text-align:center;
+    color:#1f8a5b;
+    font-size:.84rem;
+    font-weight:600;
+    margin:0 0 8px;
+}
+
+.teste-submeter-btn{
+    display:block;
+    margin:8px auto 0;
+    padding:14px 40px;
+    border:none;
+    border-radius:999px;
+    background:#1f8a5b;
+    color:#fff;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 24px rgba(31,138,91,.25);
+}
+
+.teste-submeter-btn:hover{
+    background:#166c45;
+}
+
+.teste-submeter-btn:disabled{
+    opacity:.7;
+    cursor:default;
+}
+
+.teste-resultado-final{
+    margin-top:32px;
+    padding:28px;
+    background:#f4f6f1;
+    border:1px solid #e2e3db;
+    border-radius:16px;
+}
+
+.teste-nota-final{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+.teste-nota-final-label{
+    font-size:.85rem;
+    font-weight:700;
+    color:#66756e;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+}
+
+.teste-nota-final-valor{
+    font-size:2.4rem;
+    font-weight:800;
+    color:#1f8a5b;
+}
+
+.teste-nota-final-valor small{
+    font-size:1.1rem;
+    font-weight:600;
+    color:#66756e;
+}
+
+.teste-nota-final-pontos{
+    color:#66756e;
+    font-size:.9rem;
+}
+
+.teste-feedback-ia{
+    background:#fff;
+    border:1px solid #e2e3db;
+    border-radius:12px;
+    padding:14px 18px;
+    margin-top:12px;
+}
+
+.teste-feedback-ia-titulo{
+    display:flex;
+    justify-content:space-between;
+    font-weight:700;
+    color:#1c1c1c;
+    font-size:.9rem;
+    margin-bottom:6px;
+}
+
+.teste-feedback-ia-titulo span{
+    color:#1f8a5b;
+}
+
+.teste-feedback-ia-texto{
+    color:#3d4640;
+    font-size:.9rem;
+    line-height:1.5;
+}
+
+.teste-erro{
+    color:#b42318;
+    font-weight:600;
+}
+
+@media (max-width:700px){
+    .teste-correspondencia,
+    .teste-ordenacao{
+        grid-template-columns:1fr;
+    }
+}
+
+/* Floating mascot chat button — just the mascot itself (no badge behind
+   it), bottom-right, opens .teste-mascote-panel below. Same visual
+   language (colors, bubble shapes) as the mission player's
+   .mascote-chat-panel, but self-contained here so this page doesn't need
+   to load mission-styles.css.
+
+   The waving .webm has no alpha channel — some frames of its own loop
+   render a solid backdrop instead of a soft vignette, and that backdrop
+   is close enough to the mascot's own green to make a canvas chroma-key
+   unreliable. So instead of fighting it: the box behind the video is
+   painted the same cream as the page (matching .profile-content's actual
+   rendered background), the video is shown a little smaller than its box
+   so that color shows as a soft margin around it, and there's no
+   hover transform — any zoom would exaggerate exactly the backdrop
+   frames we're trying to stay quiet about. The intent is for this to
+   read as an ambient animation, not an interactive card. */
+.teste-mascote-fab,
+.teste-mascote-fab:hover{
+    position:fixed;
+    right:28px;
+    bottom:28px;
+    z-index:80;
+    width:96px;
+    height:96px;
+    padding:0;
+    border:none;
+    border-radius:16px;
+    background:#faf9f5;
+    box-shadow:none;
+    cursor:pointer;
+    display:grid;
+    place-items:center;
+    transform:none;
+}
+
+.teste-mascote-fab-img{
+    width:62%;
+    height:62%;
+    object-fit:contain;
+    display:block;
+    filter:drop-shadow(0 6px 12px rgba(31,138,91,.35));
+}
+
+.teste-mascote-fab-tooltip{
+    position:absolute;
+    right:0;
+    bottom:100%;
+    transform:translateY(6px);
+    margin-bottom:10px;
+    background:#ffffff;
+    color:#244a37;
+    border:1px solid #cde7d9;
+    border-radius:12px;
+    padding:8px 14px;
+    font-size:.82rem;
+    font-weight:600;
+    white-space:nowrap;
+    box-shadow:0 8px 20px rgba(18,61,40,.15);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+}
+
+.teste-mascote-fab-tooltip::after{
+    content:"";
+    position:absolute;
+    top:100%;
+    right:24px;
+    border:6px solid transparent;
+    border-top-color:#ffffff;
+}
+
+.teste-mascote-fab:hover .teste-mascote-fab-tooltip{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.teste-mascote-panel{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:auto;
+    z-index:1500;
+    width:400px;
+    max-width:100vw;
+    height:100vh;
+    max-height:none;
+    background:#ffffff;
+    border:none;
+    border-left:1px solid #cde7d9;
+    border-radius:0;
+    box-shadow:-18px 0 40px rgba(0,0,0,.18);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+.teste-mascote-panel[hidden]{
+    display:none;
+}
+
+/* Testes index: chat is opened from the "Falar com o Kim" button in the
+   page header, not a floating fab — it now docks full-height to the
+   right edge instead of popping up near a corner button. */
+.teste-mascote-panel--sem-fab{
+    bottom:0;
+}
+
+@media (max-width:480px){
+    .teste-mascote-panel{
+        width:100vw;
+    }
+}
+
+.teste-mascote-panel-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 14px;
+    background:#f4fbf7;
+    border-bottom:1px solid #cde7d9;
+    font-weight:700;
+    color:#215a3f;
+    font-size:.9rem;
+}
+
+.teste-mascote-panel-close{
+    background:none;
+    border:none;
+    box-shadow:none;
+    color:#66756e;
+    padding:2px 6px;
+    cursor:pointer;
+    font-size:.9rem;
+}
+
+.teste-mascote-messages{
+    flex:1 1 auto;
+    overflow-y:auto;
+    padding:12px 14px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    min-height:80px;
+}
+
+.teste-mascote-bubble{
+    max-width:85%;
+    padding:8px 12px;
+    border-radius:14px;
+    font-size:.88rem;
+    line-height:1.4;
+    white-space:pre-wrap;
+}
+
+.teste-mascote-bubble--user{
+    align-self:flex-end;
+    background:#1f8a5b;
+    color:#ffffff;
+    border-bottom-right-radius:4px;
+}
+
+.teste-mascote-bubble--assistant{
+    align-self:flex-start;
+    background:#f4fbf7;
+    color:#244a37;
+    border:1px solid #cde7d9;
+    border-bottom-left-radius:4px;
+}
+
+.teste-mascote-bubble--assistant.is-typing{
+    color:#8fa39a;
+    font-style:italic;
+}
+
+.teste-mascote-form{
+    display:flex;
+    gap:8px;
+    padding:10px 14px 14px;
+    border-top:1px solid #eef1ef;
+}
+
+.teste-mascote-input{
+    flex:1 1 auto;
+    border:1px solid #cde7d9;
+    border-radius:999px;
+    padding:8px 14px;
+    font-size:.88rem;
+}
+
+.teste-mascote-input:focus{
+    outline:none;
+    border-color:#1f8a5b;
+}
+
+.teste-mascote-send{
+    flex:0 0 auto;
+    width:36px;
+    height:36px;
+    padding:0;
+    border-radius:50%;
+    border:none;
+    box-shadow:none;
+    background:#1f8a5b;
+    color:#ffffff;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+}
+
+.teste-mascote-send:hover{
+    background:#166c45;
+}
+
+@media (max-width:480px){
+    .teste-mascote-fab{
+        right:16px;
+        bottom:16px;
+        width:60px;
+        height:60px;
+    }
+}
+
+/* ===================== Flashcards (Livro do explorador) ===================== */
+
+.flashcards-page p{
+    color:#66756e;
+    margin-bottom:28px;
+}
+
+.flashcards-progress{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    max-width:420px;
+    margin:0 auto 32px;
+}
+
+.flashcards-progress-track{
+    flex:1 1 auto;
+    height:8px;
+    border-radius:999px;
+    background:#e2e3db;
+    overflow:hidden;
+}
+
+.flashcards-progress-fill{
+    height:100%;
+    width:0%;
+    background:#1f8a5b;
+    border-radius:999px;
+    transition:width .25s ease;
+}
+
+.flashcards-progress-label{
+    flex:none;
+    font-weight:700;
+    font-size:.86rem;
+    color:#66756e;
+    min-width:44px;
+    text-align:right;
+}
+
+.flashcards-stage{
+    display:flex;
+    justify-content:center;
+    padding:8px 0 28px;
+    perspective:1400px;
+}
+
+.flashcard{
+    position:relative;
+    width:100%;
+    max-width:420px;
+    height:280px;
+    cursor:grab;
+    touch-action:pan-y;
+    user-select:none;
+}
+
+.flashcard:active{
+    cursor:grabbing;
+}
+
+.flashcard-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transition:transform .4s cubic-bezier(.2,.8,.3,1.1);
+    transform-style:preserve-3d;
+}
+
+.flashcard.is-flipped .flashcard-inner{
+    transform:rotateY(180deg);
+}
+
+.flashcard-face{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    padding:32px;
+    text-align:center;
+    background:#fff;
+    border:1px solid #e2e3db;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    backface-visibility:hidden;
+}
+
+.flashcard-back{
+    transform:rotateY(180deg);
+    background:#f4fbf7;
+    border-color:#cde7d9;
+}
+
+.flashcard-hint{
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    color:#8a938c;
+}
+
+.flashcard-term{
+    font-size:1.7rem;
+    font-weight:800;
+    color:#1c1c1c;
+}
+
+.flashcard-definition{
+    font-size:1.05rem;
+    line-height:1.55;
+    color:#244a37;
+}
+
+.flashcard-stamp{
+    position:absolute;
+    top:24px;
+    z-index:2;
+    padding:6px 16px;
+    border-radius:10px;
+    border:3px solid;
+    font-weight:800;
+    font-size:1rem;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .1s ease;
+}
+
+.flashcard-stamp--know{
+    left:20px;
+    color:#1f8a5b;
+    border-color:#1f8a5b;
+    transform:rotate(-14deg);
+}
+
+.flashcard-stamp--dontknow{
+    right:20px;
+    color:#dc3545;
+    border-color:#dc3545;
+    transform:rotate(14deg);
+}
+
+.flashcards-actions{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+}
+
+.flashcards-actions[hidden]{
+    display:none;
+}
+
+.flashcards-btn{
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    border:2px solid;
+    background:#fff;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    transition:transform .15s ease, background .15s ease;
+}
+
+.flashcards-btn:hover{
+    transform:translateY(-2px) scale(1.05);
+}
+
+.flashcards-btn--no{
+    color:#dc3545;
+    border-color:#f3c6cb;
+}
+
+.flashcards-btn--no:hover{
+    background:#fdf1f2;
+}
+
+.flashcards-btn--yes{
+    color:#1f8a5b;
+    border-color:#cde7d9;
+}
+
+.flashcards-btn--yes:hover{
+    background:#f4fbf7;
+}
+
+.flashcards-summary{
+    max-width:420px;
+    margin:20px auto 0;
+    text-align:center;
+    background:#fff;
+    border:1px solid #e2e3db;
+    border-radius:20px;
+    padding:36px 32px;
+}
+
+.flashcards-summary h2{
+    margin:0 0 22px;
+    font-size:1.3rem;
+    color:#1c1c1c;
+}
+
+.flashcards-summary-stats{
+    display:flex;
+    justify-content:center;
+    gap:36px;
+    margin-bottom:20px;
+}
+
+.flashcards-summary-stat{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+}
+
+.flashcards-summary-stat-value{
+    font-size:2.2rem;
+    font-weight:800;
+}
+
+.flashcards-summary-stat--yes .flashcards-summary-stat-value{
+    color:#1f8a5b;
+}
+
+.flashcards-summary-stat--no .flashcards-summary-stat-value{
+    color:#dc3545;
+}
+
+.flashcards-summary-stat-label{
+    font-size:.8rem;
+    font-weight:700;
+    color:#66756e;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+}
+
+.flashcards-summary-note{
+    color:#66756e;
+    font-size:.88rem;
+    margin:0 0 22px;
+}
+
+.flashcards-restart-btn{
+    background:#1f8a5b;
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:12px 28px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 24px rgba(31,138,91,.25);
+}
+
+.flashcards-restart-btn:hover{
+    background:#166c45;
+}
+
+/* Ecrã 2 (resumo intermédio) e Ecrã 4 (resultado final) — mascote +
+   mensagem, reaproveitando .flashcards-summary. */
+.flashcards-summary-mascote{
+    width:96px;
+    height:96px;
+    object-fit:contain;
+    margin:0 auto 16px;
+    display:block;
+}
+
+.flashcards-summary-message{
+    color:#3d4640;
+    font-size:1rem;
+    line-height:1.5;
+    margin:0 0 22px;
+}
+
+.flashcards-summary-actions{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
+.flashcards-primary-btn{
+    display:inline-block;
+    background:#1f8a5b;
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:12px 28px;
+    font-weight:700;
+    font-size:.94rem;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow:0 10px 24px rgba(31,138,91,.25);
+}
+
+.flashcards-primary-btn:hover{
+    background:#166c45;
+}
+
+.flashcards-secondary-btn{
+    background:none;
+    border:none;
+    box-shadow:none;
+    color:#66756e;
+    font-size:.86rem;
+    font-weight:600;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:6px 10px;
+}
+
+.flashcards-secondary-btn:hover{
+    color:#3d4640;
+}
+
+/* Ecrã 3 — associação */
+.flashcards-screen-title{
+    text-align:center;
+    font-size:1.3rem;
+    color:#1c1c1c;
+    margin:0 0 6px;
+}
+
+.flashcards-screen-subtitle{
+    text-align:center;
+    color:#66756e;
+    font-size:.9rem;
+    margin:0 0 28px;
+}
+
+.associacao-board{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    max-width:760px;
+    margin:0 auto;
+}
+
+.associacao-coluna{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.associacao-item{
+    width:100%;
+    text-align:left;
+    background:#fff;
+    border:2px solid #e2e3db;
+    border-radius:12px;
+    padding:12px 16px;
+    font-size:.9rem;
+    line-height:1.4;
+    color:#333;
+    cursor:pointer;
+    transition:border-color .15s ease, background-color .15s ease, opacity .15s ease;
+}
+
+.associacao-item--termo{
+    font-weight:700;
+}
+
+.associacao-item.is-selected{
+    border-color:#1f8a5b;
+    background:#f4fbf7;
+}
+
+.associacao-item.is-correct{
+    border-color:#1f8a5b;
+    background:#d9f8e5;
+    color:#14844c;
+    cursor:default;
+}
+
+.associacao-item.is-wrong{
+    border-color:#dc3545;
+    background:#fdecee;
+    color:#b42318;
+}
+
+.associacao-item.is-wrong-resolved{
+    border-color:#dc3545;
+    background:#fdecee;
+    color:#b42318;
+    cursor:default;
+}
+
+.associacao-item.is-resolved{
+    opacity:.85;
+    pointer-events:none;
+}
+
+.associacao-resultado-btn{
+    display:block;
+    margin:32px auto 0;
+}
+
+.associacao-resultado-btn[hidden]{
+    display:none;
+}
+
+@media (max-width:640px){
+    .associacao-board{
+        grid-template-columns:1fr;
+    }
+}
+
+@media (max-width:520px){
+    .flashcard{
+        height:240px;
+    }
+
+    .flashcard-term{
+        font-size:1.4rem;
+    }
+
+    .flashcard-definition{
+        font-size:.94rem;
+    }
 }
 
 .mission-card{
@@ -676,6 +2408,38 @@ margin:20px 0;
 margin-bottom:25px;
 line-height:1.6;
 
+}
+
+/* Missões index: card is a single full-width row now, so put the CTA on
+   the right instead of stacking it under the text (scoped away from
+   .teste-missions-grid, whose .mission-card has its own vertical layout
+   with a toggle/subtopics list). */
+.missions-grid:not(.teste-missions-grid) .mission-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+}
+
+.missions-grid:not(.teste-missions-grid) .mission-card-info{
+    flex:1;
+    min-width:0;
+}
+
+.missions-grid:not(.teste-missions-grid) .mission-card p{
+    margin-bottom:0;
+}
+
+.missions-grid:not(.teste-missions-grid) .mission-card > a,
+.missions-grid:not(.teste-missions-grid) .mission-card > button{
+    flex-shrink:0;
+}
+
+@media(max-width:600px){
+    .missions-grid:not(.teste-missions-grid) .mission-card{
+        flex-direction:column;
+        align-items:stretch;
+    }
 }
 
 .status{
@@ -713,6 +2477,157 @@ opacity:.75;
 background:#bdbdbd;
 cursor:not-allowed;
 
+}
+
+/* Testes page: mission card header row (title + expand toggle) and the
+   collapsible list of that mission's 3 tests — reuses .mission-card-toggle
+   / .mission-card-subtopics' open/close behavior (see profile-django.js's
+   pattern, mirrored inline in Testes.html) and the sidebar's gold
+   "SuperExplore" shine (sidebar-plan-cta-shine keyframe) for Pro-only
+   tests. */
+.mission-card-title-row h2{
+    margin:0;
+    flex:1 1 auto;
+}
+
+.mission-card-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin:12px 0 8px;
+}
+
+.mission-card-meta-pill{
+    background:#f4f6f1;
+    color:#4a5a4f;
+    font-size:.76rem;
+    font-weight:700;
+    padding:4px 10px;
+    border-radius:999px;
+}
+
+.mission-card-correcao{
+    color:#8a938c;
+    font-size:.82rem;
+    margin:0 0 25px;
+}
+
+/* Exames — simple "coming soon" placeholder until real content exists. */
+.exames-em-breve{
+    max-width:420px;
+    text-align:center;
+    margin:60px auto 0;
+    padding:36px 28px;
+    background:#fff;
+    border:1px solid #e2e3db;
+    border-radius:20px;
+}
+
+.exames-em-breve-icon{
+    display:grid;
+    place-items:center;
+    width:56px;
+    height:56px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    background:#f4f6f1;
+    color:#1f8a5b;
+}
+
+.exames-em-breve h2{
+    margin:0 0 8px;
+    font-size:1.2rem;
+    color:#1c1c1c;
+}
+
+.exames-em-breve p{
+    margin:0;
+    color:#66756e;
+    font-size:.92rem;
+    line-height:1.5;
+}
+
+.teste-lista-testes{
+    list-style:none;
+    margin:16px 0 0;
+    padding:16px 0 0;
+    border-top:1px dashed #dcebe0;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.teste-lista-testes[hidden]{
+    display:none;
+}
+
+.teste-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 14px;
+    background:#f8faf7;
+    border:1px solid #e2e3db;
+    border-radius:12px;
+}
+
+.teste-item-titulo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+    font-size:.92rem;
+    color:#1c1c1c;
+}
+
+.teste-item-badge-pro{
+    position:relative;
+    display:inline-block;
+    overflow:hidden;
+    padding:3px 10px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#ffb020,#f5860a);
+    color:#241300;
+    font-size:.68rem;
+    font-weight:800;
+    letter-spacing:.02em;
+}
+
+.teste-item-badge-pro::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(100deg, transparent 30%, rgba(255,255,255,.75) 48%, rgba(255,255,255,.75) 54%, transparent 72%);
+    background-size:250% 100%;
+    background-position:160% 0;
+    pointer-events:none;
+    animation:sidebar-plan-cta-shine 3.2s ease-in-out infinite;
+}
+
+.teste-item-btn{
+    flex:none;
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:.84rem;
+}
+
+.teste-item-btn:disabled{
+    background:#e2e3db;
+    color:#8a938c;
+    cursor:default;
+    box-shadow:none;
+}
+
+.teste-item-btn--pro{
+    background:linear-gradient(135deg,#ffb020,#f5860a);
+    color:#241300;
+    box-shadow:0 6px 16px rgba(245,134,10,.3);
+}
+
+.teste-item-btn--pro:hover{
+    background:linear-gradient(135deg,#ffb020,#f5860a);
+    filter:brightness(1.08);
 }
 .lesson{
 
@@ -855,10 +2770,6 @@ padding:72px 7%;
 font-size:3.6rem;
 }
 
-.missions-grid{
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-}
-
 }
 
 @media (max-width:768px){
@@ -868,13 +2779,13 @@ padding:16px 5%;
 }
 
 
-nav{
+header nav{
 width:100%;
 justify-content:space-between;
 gap:10px;
 }
 
-nav a{
+header nav a{
 font-size:.95rem;
 padding:8px 10px;
 }
@@ -893,7 +2804,6 @@ margin-bottom:28px;
 }
 
 .missions-grid{
-grid-template-columns:1fr;
 gap:18px;
 }
 
@@ -932,11 +2842,11 @@ position:relative;
 z-index: 10;
 }
 
-nav{
+header nav{
 justify-content:center;
 }
 
-nav a{
+header nav a{
 font-size:.9rem;
 }
 
@@ -1205,12 +3115,15 @@ background:#27ae60;
 .profile-header-actions{
     display:flex;
     align-items:center;
+    justify-content:flex-end;
     gap:10px;
-    margin-left:auto;
-    position:fixed;
-    top:18px;
-    right:4%;
-    z-index:1400;
+    width:100%;
+}
+
+.header-icon-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 
 .header-icon-wrapper{
@@ -1323,7 +3236,7 @@ background:#27ae60;
 }
 
 .profile-sidebar{
-    position:relative;
+    position:absolute;
     flex-shrink:0;
     top:0;
     left:0;
@@ -1335,6 +3248,7 @@ background:#27ae60;
     height:calc(100vh - 80px);
     min-height:calc(100vh - 80px);
 
+    --sb-pad-r:26px;
     padding:30px 26px;
     box-sizing:border-box;
 
@@ -1350,6 +3264,29 @@ background:#27ae60;
 
 .profile-sidebar.is-open{
     transform:translateX(0);
+}
+
+/* Forces the sidebar off-canvas on both breakpoints while the Kim chat
+   panel is open, overriding the desktop `transform:none` override further
+   down (which normally keeps the sidebar permanently visible). */
+.profile-sidebar.is-chat-hidden{
+    transform:translateX(-100%) !important;
+}
+
+/* While the Kim chat panel is open (desktop only — on narrower screens
+   the sidebar is already an off-canvas overlay and the chat panel covers
+   the full width anyway): the page reclaims the space the sidebar used
+   to reserve on the left (keeping a small margin instead of running
+   edge-to-edge), and gives up exactly the panel's width on the right so
+   the scrollbar sits flush against it, with nothing underneath. `!important`
+   because `.profile-layout` padding is set from several places in this file
+   (base rules, the sidebar-collapsible rail toggle, body.shadcn-profile
+   overrides) and this state must win over all of them. */
+@media (min-width:981px){
+    .profile-layout.kim-chat-open{
+        padding-left:24px !important;
+        padding-right:400px !important;
+    }
 }
 
 .profile-sidebar-brand{
@@ -1371,6 +3308,75 @@ background:#27ae60;
     display:flex;
     flex-direction:column;
     gap:14px;
+
+    flex:1 1 auto;
+    min-height:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    margin-right:calc(-1 * var(--sb-pad-r,26px));
+    padding-right:min(20px, var(--sb-pad-r,26px));
+
+    scrollbar-width:thin;
+    scrollbar-color:rgba(255,255,255,.5) transparent;
+}
+
+.profile-sidebar-nav::-webkit-scrollbar{
+    width:5px;
+}
+
+.profile-sidebar-nav::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.profile-sidebar-nav::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.5);
+    border-radius:99px;
+}
+
+.profile-sidebar-nav::-webkit-scrollbar-thumb:hover{
+    background:rgba(255,255,255,.75);
+}
+
+.profile-account{
+    flex-shrink:0;
+}
+
+.sidebar-mascot{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:11px;
+    width:100%;
+    padding:11px 13px;
+    border:none;
+    border-radius:8px;
+    background:var(--sp-accent-soft, #eaf3e9);
+    box-shadow:none;
+    font:inherit;
+    text-align:left;
+    cursor:pointer;
+    transition:background .15s ease;
+}
+
+.sidebar-mascot:hover{
+    background:var(--sp-accent-soft, #eaf3e9);
+    transform:none;
+    box-shadow:none;
+}
+
+.sidebar-mascot-img{
+    width:20px;
+    height:20px;
+    flex:none;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.sidebar-mascot-name{
+    color:var(--sp-primary, #2f6b45);
+    font-size:.88rem;
+    font-weight:600;
 }
 
 .profile-account{
@@ -1382,9 +3388,9 @@ background:#27ae60;
 .profile-account-trigger{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:9px;
     width:100%;
-    padding:10px;
+    padding:6px 9px;
     border:1px solid rgba(255,255,255,.2);
     border-radius:14px;
     background:rgba(255,255,255,.12);
@@ -1396,11 +3402,12 @@ background:#27ae60;
 .profile-account-avatar{
     display:grid;
     place-items:center;
-    width:34px;
-    height:34px;
+    width:30px;
+    height:30px;
     flex:none;
     border-radius:50%;
     background:#789b4a;
+    font-size:.85rem;
     font-weight:700;
 }
 
@@ -1409,6 +3416,7 @@ background:#27ae60;
     min-width:0;
     flex:1;
     gap:2px;
+    font-size:.85rem;
 }
 
 .profile-account-info span{
@@ -1474,12 +3482,13 @@ background:#27ae60;
 .profile-sidebar-nav a{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:11px;
     text-decoration:none;
     color:white;
     background:rgba(255,255,255,.08);
-    padding:14px 16px;
+    padding:7px 13px;
     border-radius:14px;
+    font-size:.88rem;
     font-weight:600;
     transition:.2s;
     overflow:hidden;
@@ -1493,14 +3502,14 @@ background:#27ae60;
 .profile-sidebar-icon{
     display:grid;
     place-content:center;
-    width:22px;
-    height:22px;
+    width:19px;
+    height:19px;
     flex:none;
 }
 
 .profile-sidebar-icon svg{
-    width:20px;
-    height:20px;
+    width:18px;
+    height:18px;
 }
 
 .profile-sidebar-label{
@@ -1512,26 +3521,35 @@ background:#27ae60;
 .profile-sidebar-collapse{
     display:none;
     align-items:center;
-    gap:12px;
-    width:100%;
-    margin-top:auto;
-    padding:14px 16px;
-    border:none;
-    border-top:1px solid rgba(255,255,255,.18);
-    background:transparent;
-    color:white;
-    font-weight:600;
-    font-family:inherit;
-    font-size:.95rem;
+    justify-content:center;
+    position:absolute;
+    top:calc(50% - 16px);
+    right:-16px;
+    width:32px;
+    height:32px;
+    padding:0;
+    margin:0;
+    border-radius:50%;
+    border:1px solid var(--sp-border, rgba(255,255,255,.18));
+    background:var(--sp-card, #203C2D);
+    color:var(--sp-fg, white);
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
     cursor:pointer;
+    z-index:5;
     transition:background .2s ease;
 }
 
 .profile-sidebar-collapse:hover{
-    background:rgba(255,255,255,.1);
+    background:var(--sp-accent-soft, rgba(255,255,255,.1));
+}
+
+.profile-sidebar-collapse .profile-sidebar-icon{
+    display:flex;
 }
 
 .profile-sidebar-collapse .profile-sidebar-icon svg{
+    width:16px;
+    height:16px;
     transition:transform .25s ease;
 }
 
@@ -1559,6 +3577,12 @@ background:#27ae60;
     border-radius:24px;
     box-shadow:0 18px 40px rgba(0,0,0,.08);
     padding:28px;
+}
+
+.profile-user-info > .profile-header-actions{
+    position:static;
+    margin-left:auto;
+    width:fit-content;
 }
 
 .profile-kicker{
@@ -1811,6 +3835,7 @@ background:#27ae60;
         width: 272px;
         height: 100vh;
 
+        --sb-pad-r: 18px;
         padding: 24px 18px;
         box-sizing: border-box;
 
@@ -1842,6 +3867,10 @@ background:#27ae60;
 
     .profile-sidebar.is-collapsed .profile-account-info,
     .profile-sidebar.is-collapsed .profile-account-arrow {
+        display: none;
+    }
+
+    .profile-sidebar.is-collapsed .sidebar-mascot-name {
         display: none;
     }
 
@@ -2589,18 +4618,6 @@ html.dark-mode .achievement-card{
 
 
 @media (min-width:981px){
-    .profile-header-actions{
-        position:fixed;
-        top:20px;
-        right:8%;
-        display:flex;
-        align-items:center;
-        gap:12px;
-        z-index:2000;
-    }
-}
-
-@media (min-width:981px){
 
     html,
     body{
@@ -2660,7 +4677,8 @@ html.dark-mode .achievement-card{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 100%;
+    width: calc(100% + var(--sb-pad-r,26px));
+    box-sizing: border-box;
 }
 
 .profile-sidebar-nav a {
@@ -2709,6 +4727,7 @@ html.dark-mode .achievement-card{
     margin: 0;
     padding: 0;
 
+    font-size: .85rem;
     text-align: left;
     white-space: nowrap;
     overflow: hidden;
@@ -2771,6 +4790,17 @@ body {
 
 .profile-kicker {
     color: #6F9B68;
+}
+
+.profile-rank-subtitle {
+    margin: 4px 0 0;
+    color: #6F9B68;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+body.shadcn-profile .profile-rank-subtitle {
+    color: var(--sp-muted-fg);
 }
 
 .profile-summary-card h2 {
@@ -2875,10 +4905,13 @@ body {
 /* ÍCONES DO TOPO */
 
 .header-icon-btn {
-    background: #E8F0E5;
+    background: none;
     color: #315C45;
     border: none;
     box-shadow: none;
+    padding: 4px;
+    border-radius: 8px;
+    font-size: inherit;
 }
 
 .header-icon-btn:hover {
@@ -3521,7 +5554,7 @@ html.dark-mode .account-actions #logoutBtn {
     position: relative;
     width: 100%;
     margin-top: auto;
-    padding: 12px;
+    padding: 12px 0 0;
 }
 
 .profile-account-trigger {
@@ -3530,7 +5563,7 @@ html.dark-mode .account-actions #logoutBtn {
     align-items: center;
     gap: 12px;
 
-    padding: 10px 12px;
+    padding: 6px 12px;
 
     border: 0;
     border-radius: 12px;
@@ -3752,16 +5785,17 @@ html.dark-mode .account-actions #logoutBtn {
 
 .profile-user-info {
     position: relative;
-    gap: 14px;
+    gap: 26px;
     margin-bottom: 22px;
 }
 
 .profile-avatar-circle {
-    width: 68px;
-    height: 68px;
+    width: 96px;
+    height: 96px;
     background: #e9f5e9;
     border: 1px solid #d6eadb;
     font-size: 34px;
+    overflow: hidden;
 }
 
 .profile-user-info h1 {
@@ -3781,7 +5815,6 @@ html.dark-mode .account-actions #logoutBtn {
     place-items: center;
     width: 52px;
     height: 60px;
-    margin-left: auto;
     border-radius: 12px;
     background: linear-gradient(145deg, #eee9ff, #d8cffb);
     color: #5b45d6;
@@ -3962,6 +5995,230 @@ html.dark-mode .account-actions #logoutBtn {
 
 .profile-extra-progress {
     margin-top: 16px;
+}
+
+/* Mission cards (progress ring + expandable subtopics) */
+
+.mission-card {
+    background: var(--sp-card, #fff);
+    border: 1px solid var(--sp-border, #dcebe0);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+    box-shadow: none;
+}
+
+.mission-card-main {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.mission-progress-ring {
+    --ring-color: var(--sp-primary, #3f7d3a);
+    --ring-track: var(--sp-border, #E5EAE2);
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: conic-gradient(var(--ring-color) calc(var(--progress) * 1%), var(--ring-track) 0);
+}
+
+.mission-progress-ring span {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--sp-card, #fff);
+    display: grid;
+    place-items: center;
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--sp-primary, #3f7d3a);
+}
+
+.mission-card-copy {
+    min-width: 0;
+    flex: 1;
+}
+
+.mission-card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mission-card-title-row h3 {
+    margin: 4px 0 5px;
+    color: var(--sp-fg, #20294b);
+    font-size: 1.05rem;
+}
+
+.mission-card-copy p {
+    margin: 0 0 10px;
+    color: var(--sp-muted-fg, #68718b);
+    font-size: .82rem;
+    line-height: 1.45;
+}
+
+.mission-card-toggle {
+    background: none;
+    color: var(--sp-primary, #3f7d3a);
+    border: none;
+    box-shadow: none;
+    padding: 4px;
+    margin-left: auto;
+    border-radius: 6px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: transform .2s ease;
+}
+
+.mission-card-toggle:hover {
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.mission-card-toggle svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mission-card-toggle[aria-expanded="true"] {
+    transform: rotate(180deg);
+}
+
+.mission-card-subtopics {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 12px 0 0;
+    border-top: 1px dashed var(--sp-border, #dcebe0);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mission-card-subtopics[hidden] {
+    display: none;
+}
+
+.mission-card-subtopics li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .92rem;
+    color: var(--sp-fg, #3a4a41);
+}
+
+.topic-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+.topic-dot--green { background: var(--sp-primary, #3fae5a); }
+.topic-dot--yellow { background: #e0b400; }
+.topic-dot--red { background: #e05252; }
+.topic-dot--gray { background: var(--sp-border, #c7cdc9); }
+
+/* Subject switcher (Biology / Chemistry / Physics / Geology) */
+
+.subject-switcher {
+    position: relative;
+    margin-left: auto;
+}
+
+.subject-switcher-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--sp-accent-soft, #F1F4EE);
+    color: var(--sp-primary, #315C45);
+    border: none;
+    box-shadow: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: .82rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.subject-switcher-trigger:hover {
+    background: var(--sp-border, #E5EAE2);
+}
+
+.subject-switcher-trigger svg {
+    width: 16px;
+    height: 16px;
+    transition: transform .2s ease;
+}
+
+.subject-switcher-trigger[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+.subject-switcher-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 220px;
+    list-style: none;
+    background: var(--sp-card, #fff);
+    border: 1px solid var(--sp-border, transparent);
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.14);
+    padding: 6px;
+    z-index: 20;
+}
+
+.subject-switcher-menu[hidden] {
+    display: none;
+}
+
+.subject-switcher-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    background: none;
+    color: var(--sp-fg, #20294b);
+    border: none;
+    box-shadow: none;
+    padding: 9px 10px;
+    border-radius: 8px;
+    font-size: .85rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.subject-switcher-option:hover:not(:disabled) {
+    background: var(--sp-border, #F1F4EE);
+}
+
+.subject-switcher-option.is-active {
+    color: var(--sp-primary, #315C45);
+    background: var(--sp-accent-soft, #EAF3E9);
+}
+
+.subject-switcher-option:disabled {
+    color: var(--sp-muted-fg, #a7ada9);
+    cursor: default;
+}
+
+.subject-soon {
+    font-size: .65rem;
+    font-weight: 700;
+    color: var(--sp-muted-fg, #a7ada9);
+    background: var(--sp-border, #F1F1EE);
+    padding: 2px 6px;
+    border-radius: 999px;
 }
 
 .profile-recent-achievements {
@@ -4238,7 +6495,7 @@ html.dark-mode .account-actions #logoutBtn {
 
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
     color: #17213b;
     background: #f8faf7;
 }
@@ -4937,22 +7194,31 @@ body {
    ===================================================================== */
 
 body.shadcn-profile {
-    --sp-bg: #f8f9fa;
+    --sp-bg: #faf9f5;
     --sp-card: #ffffff;
-    --sp-border: #e5e7eb;
-    --sp-fg: #18181b;
-    --sp-muted-fg: #71717a;
+    --sp-border: #e7e8e1;
+    --sp-fg: #202821;
+    --sp-muted-fg: #767c70;
     --sp-sidebar-bg: #ffffff;
-    --sp-primary: #3f7d3a;
+    --sp-primary: #2f6b45;
     --sp-primary-fg: #ffffff;
-    --sp-accent-soft: #eef6ec;
+    --sp-accent-soft: #eaf3e9;
     --sp-radius: 12px;
     --sp-sidebar-w: 264px;
-    --sp-sidebar-w-collapsed: 76px;
+    --sp-sidebar-w-collapsed: 56px;
+    --sp-font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --sp-font-sans: Outfit, system-ui, sans-serif;
 
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--sp-font-sans);
     background: var(--sp-bg);
     color: var(--sp-fg);
+}
+
+/* The global `*{font-family:'Noto Sans'}` reset sets it directly on every
+   element, not just body, so inheritance from body alone can't override
+   it — every element here needs its own (still-scoped) declaration. */
+body.shadcn-profile * {
+    font-family: var(--sp-font-sans);
 }
 
 html.dark-mode body.shadcn-profile {
@@ -4967,6 +7233,19 @@ html.dark-mode body.shadcn-profile {
     --sp-accent-soft: rgba(93, 163, 86, .14);
 }
 
+html.dark-mode body.shadcn-profile .sidebar-plan-card {
+    background: #1b1f1c;
+    border-color: transparent;
+}
+
+html.dark-mode body.shadcn-profile .sidebar-plan-label {
+    color: #8b948f;
+}
+
+html.dark-mode body.shadcn-profile .sidebar-plan-name {
+    color: #ffffff;
+}
+
 /* Sidebar shell */
 
 body.shadcn-profile .profile-sidebar {
@@ -4977,10 +7256,23 @@ body.shadcn-profile .profile-sidebar {
 }
 
 body.shadcn-profile .profile-sidebar-brand {
+    justify-content: center;
     color: var(--sp-fg);
     padding-bottom: 16px;
     margin-bottom: 12px;
     border-bottom: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-account {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-sidebar-brand img {
+    height: 34px;
+    width: auto;
+    object-fit: contain;
 }
 
 body.shadcn-profile .profile-sidebar-nav a {
@@ -4996,7 +7288,6 @@ body.shadcn-profile .profile-sidebar-nav a:hover {
 }
 
 body.shadcn-profile .profile-sidebar-nav a.is-active {
-    background: var(--sp-accent-soft);
     color: var(--sp-primary);
     font-weight: 600;
 }
@@ -5005,10 +7296,136 @@ body.shadcn-profile .profile-sidebar-nav a.is-active .profile-sidebar-icon svg {
     stroke: var(--sp-primary);
 }
 
+body.shadcn-profile .profile-sidebar-nav {
+    scrollbar-color: var(--sp-border) transparent;
+}
+
+body.shadcn-profile .profile-sidebar-nav::-webkit-scrollbar-thumb {
+    background: var(--sp-border);
+}
+
+body.shadcn-profile .profile-sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: var(--sp-muted-fg);
+}
+
+/* Plan card at the top of the sidebar nav, replacing the old "Kim, o
+   Aventureiro" shortcut (chat is still reachable from the hero card on the
+   profile page). Shows the student's real plan (PerfilAluno.plano); the
+   upgrade button only renders for students still on the free plan. No
+   pricing page exists yet, so "Seja PRO" is unwired for now. */
+body.shadcn-profile .sidebar-plan-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .sidebar-plan-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+body.shadcn-profile .sidebar-plan-label {
+    color: var(--sp-muted-fg);
+    font-size: .64rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+body.shadcn-profile .sidebar-plan-name {
+    color: var(--sp-fg);
+    font-size: .92rem;
+    font-weight: 700;
+}
+
+body.shadcn-profile .sidebar-plan-card .sidebar-plan-cta {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    flex: none;
+    width: auto;
+    min-height: 0;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffb020, #f5860a);
+    color: #241300;
+    font-size: .78rem;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: filter .15s ease;
+}
+
+/* Badge-style shine: a soft light streak sweeps left-to-right, pauses,
+   then repeats — not a pulsing glow around the button. */
+body.shadcn-profile .sidebar-plan-card .sidebar-plan-cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .75) 48%, rgba(255, 255, 255, .75) 54%, transparent 72%);
+    background-size: 250% 100%;
+    background-position: 160% 0;
+    pointer-events: none;
+    animation: sidebar-plan-cta-shine 3.2s ease-in-out infinite;
+}
+
+@keyframes sidebar-plan-cta-shine {
+    0% { background-position: 160% 0; }
+    35% { background-position: -60% 0; }
+    100% { background-position: -60% 0; }
+}
+
+body.shadcn-profile .sidebar-plan-card .sidebar-plan-cta:hover {
+    background: linear-gradient(135deg, #ffb020, #f5860a);
+    color: #241300;
+    filter: brightness(1.08);
+    transform: none;
+}
+
+body.shadcn-profile .sidebar-theme-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    gap: 10px;
+    width: 100%;
+    margin-top: 14px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .sidebar-theme-label {
+    color: var(--sp-fg);
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .sidebar-theme-card .header-icon-btn {
+    padding: 4px;
+    border-radius: 8px;
+}
+
+html.dark-mode body.shadcn-profile .sidebar-theme-card {
+    background: #1b1f1c;
+    border-color: transparent;
+}
+
 body.shadcn-profile .profile-sidebar-collapse {
     color: var(--sp-muted-fg);
     border-top: 1px solid var(--sp-border);
 }
+
 
 body.shadcn-profile .profile-sidebar-collapse:hover {
     background: var(--sp-accent-soft);
@@ -5028,8 +7445,8 @@ body.shadcn-profile .profile-account-trigger:hover {
 }
 
 body.shadcn-profile .profile-account-avatar {
-    background: var(--sp-primary);
-    color: var(--sp-primary-fg);
+    background: var(--sp-accent-soft);
+    color: var(--sp-primary);
 }
 
 body.shadcn-profile .profile-account-info strong {
@@ -5060,13 +7477,44 @@ body.shadcn-profile .profile-account-menu button:hover {
 /* Top-right header icons */
 
 body.shadcn-profile .header-icon-btn {
-    background: var(--sp-card);
-    border: 1px solid var(--sp-border);
+    background: none;
+    border: none;
     color: var(--sp-fg);
 }
 
 body.shadcn-profile .header-icon-btn:hover {
     background: var(--sp-accent-soft);
+}
+
+.profile-header-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--sp-border, #e7e8e1);
+    margin: 0 2px;
+}
+
+.profile-header-avatar {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    flex: none;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 50%;
+    background: var(--sp-accent-soft, #eaf3e9);
+    color: var(--sp-primary, #2f6b45);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.profile-header-avatar:hover {
+    background: var(--sp-accent-soft, #eaf3e9);
+    transform: none;
+    box-shadow: none;
 }
 
 body.shadcn-profile .notifications-panel {
@@ -5080,12 +7528,56 @@ body.shadcn-profile .notifications-panel li:hover {
     background: var(--sp-accent-soft);
 }
 
+body.shadcn-profile .notifications-panel li.notifications-empty {
+    color: var(--sp-muted-fg);
+    cursor: default;
+}
+
+body.shadcn-profile .notifications-panel li.notifications-empty:hover {
+    background: none;
+}
+
 /* Layout: reclaim main-content width when sidebar collapses */
 
 @media (min-width: 981px) {
     body.shadcn-profile .profile-layout {
-        padding: 28px 32px 32px calc(var(--sp-sidebar-w) + 32px);
-        transition: padding-left .25s ease;
+        padding: 0 0 0 calc(var(--sp-sidebar-w) + 32px);
+        transition: padding-left .25s ease, padding-right .25s ease;
+    }
+
+    /* The scrollbar belongs to .profile-main-shell (it's the overflow-y:auto
+       container), so the breathing room around it has to live here as
+       padding, not on .profile-layout — otherwise the scrollbar renders
+       inset from the actual page edges instead of running flush from the
+       very top of the viewport to the very bottom. */
+    body.shadcn-profile .profile-main-shell {
+        padding: 14px 40px 32px 0;
+        scrollbar-width: thin;
+        scrollbar-color: var(--sp-border) transparent;
+    }
+
+    body.shadcn-profile .profile-main-shell::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    body.shadcn-profile .profile-main-shell::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    body.shadcn-profile .profile-main-shell::-webkit-scrollbar-thumb {
+        background: var(--sp-border);
+        border-radius: 999px;
+    }
+
+    body.shadcn-profile .profile-main-shell::-webkit-scrollbar-thumb:hover {
+        background: var(--sp-muted-fg);
+    }
+
+    /* Cap the content column instead of letting it stretch across the
+       entire non-sidebar width — keeps the level block (and everything
+       else) comfortably clear of the scrollbar on wide screens. */
+    body.shadcn-profile .profile-content {
+        max-width: 1080px;
     }
 
     body.shadcn-profile .profile-sidebar {
@@ -5096,6 +7588,14 @@ body.shadcn-profile .notifications-panel li:hover {
 
     body.shadcn-profile .profile-sidebar.is-collapsed {
         width: var(--sp-sidebar-w-collapsed);
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.shadcn-profile .profile-sidebar.is-collapsed .profile-sidebar-brand,
+    body.shadcn-profile .profile-sidebar.is-collapsed .profile-sidebar-nav,
+    body.shadcn-profile .profile-sidebar.is-collapsed .profile-account {
+        display: none;
     }
 
     body.shadcn-profile .profile-layout:has(.profile-sidebar.is-collapsed) {
@@ -5105,13 +7605,40 @@ body.shadcn-profile .notifications-panel li:hover {
 
 /* Cards */
 
-body.shadcn-profile .profile-summary-card,
 body.shadcn-profile .profile-section-card {
     background: var(--sp-card);
     border: 1px solid var(--sp-border);
     border-radius: var(--sp-radius);
     box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
     color: var(--sp-fg);
+}
+
+/* Summary block: no card box, sits directly on the page — a bottom border
+   plays the "divider" role a card boundary used to. */
+body.shadcn-profile .profile-summary {
+    display: flex;
+    align-items: stretch;
+    gap: 100px;
+    padding: 0 40px 28px 0;
+    margin: 0 -40px 28px 0;
+    border-bottom: 1px solid var(--sp-border);
+    background: none;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-summary-main {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+body.shadcn-profile .profile-summary-divider {
+    flex: none;
+    align-self: stretch;
+    width: 1px;
+    background: var(--sp-border);
 }
 
 body.shadcn-profile .profile-kicker {
@@ -5144,18 +7671,11 @@ body.shadcn-profile .profile-user-level {
     color: var(--sp-muted-fg);
 }
 
-body.shadcn-profile .profile-level-badge {
-    background: var(--sp-accent-soft);
-    color: var(--sp-primary);
-    border: 1px solid var(--sp-border);
-}
-
 body.shadcn-profile .profile-avatar-circle {
     border: 1px solid var(--sp-border);
     background: var(--sp-accent-soft);
 }
 
-body.shadcn-profile .profile-stat-card,
 body.shadcn-profile .profile-biology-stat,
 body.shadcn-profile .account-summary-item,
 body.shadcn-profile .recent-achievement,
@@ -5165,6 +7685,38 @@ body.shadcn-profile .profile-action-link {
     border-radius: calc(var(--sp-radius) - 4px);
     color: var(--sp-fg);
     box-shadow: none;
+}
+
+/* The 3 stats (sequência/conquistas/missões) sit directly on the page —
+   no card box — with a thin divider marking the seam between them. */
+body.shadcn-profile .profile-stat-row {
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    gap: 0;
+    margin: 0 0 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-stat-card {
+    position: relative;
+    background: none;
+    border: none;
+    border-radius: 0;
+    color: var(--sp-fg);
+    box-shadow: none;
+    padding: 18px 8px;
+}
+
+body.shadcn-profile .profile-stat-card:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10%;
+    bottom: 10%;
+    border-left: 1px solid var(--sp-border);
 }
 
 body.shadcn-profile .recent-achievement:hover,
@@ -5235,4 +7787,1702 @@ body.shadcn-profile .profile-activity-copy strong {
 body.shadcn-profile .profile-activity-time,
 body.shadcn-profile .profile-empty-activity {
     color: var(--sp-muted-fg);
+}
+
+/* ==========================================================================
+   Onboarding (inquérito inicial do Kim)
+   ========================================================================== */
+.onboarding-page {
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px 60px;
+}
+
+.onboarding-card {
+    width: 100%;
+    max-width: 640px;
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 20px 45px rgba(18, 61, 40, 0.1);
+}
+
+.onboarding-mascot {
+    width: 90px;
+    margin: 0 auto 12px;
+    display: block;
+}
+
+.onboarding-card h1 {
+    margin: 0 0 8px;
+    font-size: 1.5rem;
+    color: #1a1a1a;
+}
+
+.onboarding-intro {
+    margin: 0 0 28px;
+    color: #4a5a52;
+}
+
+.onboarding-form {
+    text-align: left;
+}
+
+.onboarding-section {
+    margin-bottom: 30px;
+    padding-bottom: 26px;
+    border-bottom: 1px solid #eef1ef;
+}
+
+.onboarding-section:last-of-type {
+    border-bottom: none;
+}
+
+.onboarding-section h3 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+    color: #1a1a1a;
+}
+
+.onboarding-hint {
+    margin: 0 0 14px;
+    color: #6b8579;
+    font-size: 0.9rem;
+}
+
+.onboarding-pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.onboarding-pill {
+    position: relative;
+}
+
+.onboarding-pill input {
+    position: absolute;
+    opacity: 0;
+}
+
+.onboarding-pill span {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #ddd;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.onboarding-pill input:checked + span {
+    border-color: #1f8a5b;
+    background: #eaf8f1;
+    color: #166c45;
+}
+
+.onboarding-text-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.onboarding-text-input:focus {
+    outline: none;
+    border-color: #1f8a5b;
+}
+
+.onboarding-subject-row {
+    margin-bottom: 20px;
+}
+
+.onboarding-subject-row.is-disabled {
+    opacity: 0.5;
+}
+
+.onboarding-subject-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.onboarding-level-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.onboarding-level-pill {
+    position: relative;
+}
+
+.onboarding-level-pill input {
+    position: absolute;
+    opacity: 0;
+}
+
+.onboarding-level-pill span {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.onboarding-level-pill input:checked + span {
+    border-color: #1f8a5b;
+    background: #1f8a5b;
+    color: #ffffff;
+}
+
+.onboarding-level-pill input:disabled + span {
+    cursor: not-allowed;
+}
+
+.onboarding-nao-tem {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #6b8579;
+    font-size: 0.88rem;
+    cursor: pointer;
+}
+
+.onboarding-submit-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 999px;
+    background: #1f8a5b;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(31, 138, 91, 0.4);
+}
+
+.onboarding-submit-btn:hover {
+    background: #166c45;
+}
+
+.onboarding-page .form-error {
+    background: #f8d7da;
+    color: #842029;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin: 0 0 20px;
+    font-size: 0.9rem;
+}
+
+/* =====================================================================
+   Perfil — warm restyle (sidebar, avatar, level badge, stat icons)
+   Scoped to body.shadcn-profile, layered on top of the token changes
+   above so this only ever touches the profile page.
+   ===================================================================== */
+body.shadcn-profile .profile-page-header {
+    padding: 0 40px 20px 0;
+    margin: 0 -40px 20px 0;
+    border-bottom: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-page-header h1 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+body.shadcn-profile .profile-page-subtitle {
+    margin: 4px 0 0;
+    color: var(--sp-muted-fg);
+    font-size: .92rem;
+}
+
+/* The icon row sits above the greeting in normal flow now (no longer a
+   fixed overlay); pull the grid's own row gap in so it doesn't stack with
+   the row's height and read as an oversized blank strip up top. */
+
+
+/* Avatar: a plain, non-editable circle — the profile photo picker was
+   removed, so this is display-only now. */
+body.shadcn-profile .profile-avatar-circle {
+    position: relative;
+    display: block;
+    overflow: visible;
+}
+
+body.shadcn-profile .profile-avatar-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Rank label sits as plain small-caps text above the subject title, in the
+   brand green — no pill/background, just color to carry the emphasis. */
+body.shadcn-profile .profile-rank-pill {
+    display: inline-block;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--sp-primary);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+}
+
+body.shadcn-profile .profile-subject-leaf {
+    display: inline-flex;
+    vertical-align: -4px;
+    margin-right: 6px;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-subject-leaf svg {
+    width: 20px;
+    height: 20px;
+}
+
+body.shadcn-profile .profile-subject-title {
+    margin: 6px 0 0;
+    color: var(--sp-fg);
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.profile-subject-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.profile-subject-row .profile-subject-title {
+    margin-top: 0;
+}
+
+.profile-subject-row .subject-switcher {
+    margin-left: 0;
+}
+
+/* Level badge: plain right-aligned number over a "NÍVEL" label, with a
+   thin primary-colored underline — no pill/box background. */
+body.shadcn-profile .profile-level-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: auto;
+    height: auto;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    color: var(--sp-fg);
+    border: none;
+    border-radius: 0;
+    clip-path: none;
+}
+
+body.shadcn-profile .profile-level-badge span {
+    width: auto;
+    height: auto;
+    background: none;
+    clip-path: none;
+    font-size: 2.3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-level-bar {
+    width: 56px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--sp-border);
+    overflow: hidden;
+}
+
+body.shadcn-profile .profile-level-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-level-badge small {
+    color: var(--sp-muted-fg);
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    opacity: 1;
+}
+
+/* Stat card icons: plain colored line icons, no background badge. */
+body.shadcn-profile .profile-stat-icon {
+    display: grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto 6px;
+    background: none;
+    border-radius: 0;
+}
+
+body.shadcn-profile .profile-stat-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+body.shadcn-profile .profile-stat-icon--streak {
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-stat-icon--trophy {
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-stat-icon--flag {
+    color: var(--sp-primary);
+}
+
+/* "As minhas missões" sits directly on the page background (no card of its
+   own) — each mission is a flat row underneath, divided by a hairline. */
+body.shadcn-profile .profile-biology {
+    border-top: none;
+    padding-top: 0;
+    margin: 0;
+}
+
+body.shadcn-profile .mission-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--sp-border);
+    text-decoration: none;
+    color: inherit;
+}
+
+body.shadcn-profile .mission-row:last-of-type {
+    border-bottom: none;
+}
+
+body.shadcn-profile .mission-row-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--sp-accent-soft);
+    color: var(--sp-primary);
+    font-size: 1.3rem;
+}
+
+body.shadcn-profile .mission-row-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+body.shadcn-profile .mission-row-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+body.shadcn-profile .mission-row-category {
+    color: var(--sp-primary);
+    font-size: .68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+}
+
+body.shadcn-profile .mission-row-title {
+    color: var(--sp-fg);
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+body.shadcn-profile .mission-row-desc {
+    color: var(--sp-muted-fg);
+    font-size: .85rem;
+}
+
+body.shadcn-profile .mission-row-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: none;
+    width: 160px;
+}
+
+body.shadcn-profile .mission-row-bar {
+    flex: 1 1 auto;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--sp-border);
+    overflow: hidden;
+}
+
+body.shadcn-profile .mission-row-bar-fill {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--sp-primary);
+}
+
+body.shadcn-profile .mission-row-percent {
+    flex: none;
+    width: 34px;
+    text-align: right;
+    color: var(--sp-muted-fg);
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+body.shadcn-profile .mission-row-arrow {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 20px;
+    height: 20px;
+    color: var(--sp-muted-fg);
+    transition: transform .15s ease, color .15s ease;
+}
+
+body.shadcn-profile .mission-row-arrow svg {
+    width: 18px;
+    height: 18px;
+}
+
+body.shadcn-profile .mission-row:hover .mission-row-arrow {
+    color: var(--sp-primary);
+    transform: translateX(3px);
+}
+
+body.shadcn-profile .subject-switcher-trigger {
+    border-radius: 999px;
+}
+
+body.shadcn-profile .profile-locked-banner {
+    margin-top: 6px;
+    padding: 16px 20px;
+    border: 1.5px dashed var(--sp-border);
+    border-radius: 14px;
+    background: var(--sp-bg);
+    color: var(--sp-muted-fg);
+    font-size: .9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Floating "ask the mascot" button + ambient speech bubble on the profile
+   page, mirroring the mission-page help FAB but anchored bottom-right. */
+body.shadcn-profile .profile-help-fab {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    z-index: 50;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--sp-card);
+    box-shadow: 0 10px 24px rgba(43, 36, 22, .18);
+    cursor: pointer;
+    transition: transform .15s ease;
+}
+
+body.shadcn-profile .profile-help-fab:hover {
+    transform: scale(1.06);
+}
+
+body.shadcn-profile .profile-help-fab-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+body.shadcn-profile .profile-help-fab-dot {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e5484d;
+    border: 2px solid var(--sp-card);
+}
+
+body.shadcn-profile .profile-help-fab-dot[hidden] {
+    display: none;
+}
+
+body.shadcn-profile .profile-help-tip {
+    position: fixed;
+    right: 100px;
+    bottom: 42px;
+    z-index: 51;
+    max-width: 220px;
+    padding: 12px 16px;
+    background: var(--sp-card);
+    color: var(--sp-fg);
+    border: 1px solid var(--sp-border);
+    border-radius: 16px;
+    border-bottom-right-radius: 4px;
+    font-size: .88rem;
+    font-weight: 600;
+    line-height: 1.4;
+    box-shadow: 0 10px 26px rgba(43, 36, 22, .18);
+    animation: profileHelpTipIn .3s ease;
+}
+
+body.shadcn-profile .profile-help-tip[hidden] {
+    display: none;
+}
+
+@keyframes profileHelpTipIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mascot chat panel — originally the same component used on the mission
+   pages (mission-styles.css), duplicated here so it also works on /perfil/,
+   which doesn't load that stylesheet. On /perfil/ this now docks full-height
+   to the right edge instead of floating near a corner; mission-styles.css
+   keeps the original floating layout, so the two have intentionally
+   diverged. */
+.mascote-chat-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    z-index: 1500;
+    width: 400px;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: none;
+    background: #ffffff;
+    border: none;
+    border-left: 1px solid #cde7d9;
+    border-radius: 0;
+    box-shadow: -18px 0 40px rgba(0, 0, 0, .18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mascote-chat-panel[hidden] {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .mascote-chat-panel {
+        width: 100vw;
+    }
+}
+
+.mascote-chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: #f4fbf7;
+    border-bottom: 1px solid #cde7d9;
+    font-weight: 700;
+    color: #215a3f;
+    font-size: .9rem;
+}
+
+.mascote-chat-close {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #66756e;
+    padding: 2px 6px;
+    cursor: pointer;
+    font-size: .9rem;
+}
+
+.mascote-chat-messages {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 80px;
+}
+
+/* Empty-state shown before the first message — shared by #mascoteChatPanel
+   (Perfil) and #testeMascotePanel (Testes), both using this same class
+   name. Vertically centers itself in the messages column via the auto
+   top/bottom margins, and is removed from the DOM once the student sends
+   (or Kim gets asked) a first message. */
+.mascote-chat-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 16px 8px;
+    margin: auto 0;
+}
+
+.mascote-chat-welcome-video {
+    width: 108px;
+    height: 108px;
+    object-fit: contain;
+}
+
+.mascote-chat-welcome-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mascote-chat-welcome-greeting {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--sp-muted-fg, #767c70);
+}
+
+.mascote-chat-welcome-title {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--sp-fg, #202821);
+}
+
+.mascote-chat-welcome-subtitle {
+    margin: 0;
+    font-size: .88rem;
+    line-height: 1.4;
+    color: var(--sp-muted-fg, #767c70);
+    max-width: 300px;
+}
+
+.mascote-chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.mascote-chat-suggestion {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--sp-border, #e7e8e1);
+    background: var(--sp-accent-soft, #eaf3e9);
+    color: var(--sp-fg, #202821);
+    font-size: .78rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: none;
+    transition: background .15s ease;
+}
+
+.mascote-chat-suggestion svg {
+    width: 14px;
+    height: 14px;
+    flex: none;
+}
+
+.mascote-chat-suggestion:hover {
+    background: var(--sp-border, #e7e8e1);
+}
+
+.mascote-chat-bubble {
+    max-width: 85%;
+    padding: 8px 12px;
+    border-radius: 14px;
+    font-size: .88rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+}
+
+.mascote-chat-bubble--user {
+    align-self: flex-end;
+    background: #1f8a5b;
+    color: #ffffff;
+    border-bottom-right-radius: 4px;
+}
+
+.mascote-chat-bubble--assistant {
+    align-self: flex-start;
+    background: #f4fbf7;
+    color: #244a37;
+    border: 1px solid #cde7d9;
+    border-bottom-left-radius: 4px;
+}
+
+.mascote-chat-bubble--assistant.is-typing {
+    color: #8fa39a;
+    font-style: italic;
+}
+
+.mascote-chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 10px 14px 14px;
+    border-top: 1px solid #eef1ef;
+}
+
+.mascote-chat-input {
+    flex: 1 1 auto;
+    border: 1px solid #cde7d9;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: .88rem;
+}
+
+.mascote-chat-input:focus {
+    outline: none;
+    border-color: #1f8a5b;
+}
+
+.mascote-chat-send {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    background: #1f8a5b;
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.mascote-chat-send:hover {
+    background: #166c45;
+}
+
+/* =====================================================================
+   PERFIL — editorial redesign (hero + tabs), sidebar restored. Scoped to
+   body.shadcn-profile, so this only ever touches /perfil/.
+   ===================================================================== */
+
+body.shadcn-profile .profile-header-actions--icons-only {
+    margin-bottom: 8px;
+}
+
+/* ---- Hero: avatar + name + tagline + level, and the mascot invite ---- */
+
+body.shadcn-profile .profile-hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-bottom: 32px;
+}
+
+body.shadcn-profile .profile-hero-left {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+body.shadcn-profile .profile-hero-avatar {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 108px;
+    height: 108px;
+    border-radius: 50%;
+    background: var(--sp-accent-soft);
+    color: var(--sp-primary);
+    font-family: var(--sp-font-serif);
+    font-size: 2.6rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-hero-info h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-family: var(--sp-font-serif);
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-hero-leaf {
+    display: inline-flex;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-hero-leaf svg {
+    width: 22px;
+    height: 22px;
+}
+
+body.shadcn-profile .profile-hero-leaf--small svg {
+    width: 16px;
+    height: 16px;
+}
+
+body.shadcn-profile .profile-hero-rank {
+    margin: 2px 0 0;
+    color: var(--sp-muted-fg);
+    font-size: 1rem;
+}
+
+body.shadcn-profile .profile-hero-tagline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0 12px;
+    color: var(--sp-primary);
+    font-family: var(--sp-font-serif);
+    font-style: italic;
+    font-size: .98rem;
+}
+
+body.shadcn-profile .profile-hero-level-pill {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: var(--sp-accent-soft);
+    color: var(--sp-primary);
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+body.shadcn-profile .profile-hero-next-title {
+    margin: 8px 0 0;
+    color: var(--sp-muted-fg);
+    font-size: .76rem;
+}
+
+body.shadcn-profile .profile-hero-mascot-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 420px;
+    padding: 16px 22px 16px 16px;
+    border-radius: 20px;
+    background: var(--sp-accent-soft);
+}
+
+/* Hidden while the Kim chat panel is open — no point inviting the
+   student to "Falar com o Kim" when that conversation is already open. */
+body.shadcn-profile .profile-hero-mascot-card[hidden] {
+    display: none;
+}
+
+/* Same card, but blended into the page instead of standing out in its
+   own tinted box (used on the Testes index, next to the page title). */
+body.shadcn-profile .profile-hero-mascot-card--flat {
+    background: none;
+}
+
+body.shadcn-profile .profile-hero-mascot-img {
+    flex: none;
+    width: 128px;
+    height: 128px;
+    object-fit: contain;
+}
+
+body.shadcn-profile .profile-hero-mascot-greeting {
+    margin: 0 0 2px;
+    color: var(--sp-fg);
+    font-weight: 700;
+}
+
+body.shadcn-profile .profile-hero-mascot-question {
+    margin: 0 0 10px;
+    color: var(--sp-muted-fg);
+    font-size: .86rem;
+    line-height: 1.4;
+}
+
+body.shadcn-profile .profile-hero-chat-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 999px;
+    background: var(--sp-primary);
+    color: var(--sp-primary-fg);
+    font-size: .84rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+body.shadcn-profile .profile-hero-chat-btn:hover {
+    background: #24593a;
+    transform: none;
+    box-shadow: none;
+}
+
+body.shadcn-profile .profile-hero-chat-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ---- Tabs ---- */
+
+body.shadcn-profile .profile-tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    padding-bottom: 0;
+    border-bottom: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    margin-bottom: -1px;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--sp-muted-fg);
+    text-decoration: none;
+    font: inherit;
+    font-size: .92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: none;
+}
+
+body.shadcn-profile .profile-tab svg {
+    width: 18px;
+    height: 18px;
+}
+
+body.shadcn-profile .profile-tab:hover {
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-tab.is-active {
+    color: var(--sp-primary);
+    border-bottom-color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-tab.is-disabled {
+    color: var(--sp-border);
+    cursor: default;
+}
+
+body.shadcn-profile .profile-tab.is-disabled em {
+    margin-left: 2px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--sp-bg);
+    color: var(--sp-muted-fg);
+    font-size: .66rem;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+/* ---- Two-column grid ---- */
+
+body.shadcn-profile .profile-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    body.shadcn-profile .profile-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ---- Subject card ---- */
+
+body.shadcn-profile .profile-subject-card {
+    position: relative;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-subject-card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+body.shadcn-profile .profile-subject-card-head .profile-subject-leaf {
+    display: inline-flex;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-subject-card-head .profile-subject-leaf svg {
+    width: 22px;
+    height: 22px;
+}
+
+body.shadcn-profile .profile-subject-card-head .subject-switcher {
+    flex: 1 1 auto;
+}
+
+body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger:hover {
+    background: none;
+    transform: none;
+}
+
+body.shadcn-profile .profile-subject-xp {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 10px;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-subject-xp strong {
+    font-size: 2.6rem;
+    font-weight: 800;
+}
+
+body.shadcn-profile .profile-subject-xp span {
+    margin-left: 6px;
+    color: var(--sp-muted-fg);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-subject-card .profile-progress-bar {
+    position: relative;
+    z-index: 1;
+    max-width: 460px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .6);
+}
+
+body.shadcn-profile .profile-subject-card .progresso {
+    border-radius: 999px;
+    background: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-subject-caption {
+    position: relative;
+    z-index: 1;
+    margin: 10px 0 0;
+    color: var(--sp-muted-fg);
+    font-size: .82rem;
+}
+
+/* ---- Missions section ---- */
+
+body.shadcn-profile .profile-missions-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+body.shadcn-profile .profile-missions-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-missions-head h2 svg {
+    width: 20px;
+    height: 20px;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-missions-viewall {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--sp-primary);
+    text-decoration: none;
+    font-size: .86rem;
+    font-weight: 700;
+}
+
+body.shadcn-profile .profile-missions-viewall svg {
+    width: 15px;
+    height: 15px;
+}
+
+body.shadcn-profile .profile-missions-card {
+    padding: 4px 24px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-missions-card .mission-row {
+    padding: 18px 0;
+}
+
+/* ---- Conquistas tab: badge grid ---- */
+
+body.shadcn-profile .profile-badges-card {
+    padding: 24px 28px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-badges-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 4px;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-badges-head h2 svg {
+    width: 20px;
+    height: 20px;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-badges-head p {
+    margin: 0 0 20px;
+    color: var(--sp-muted-fg);
+    font-size: .88rem;
+}
+
+body.shadcn-profile .profile-badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 14px;
+}
+
+body.shadcn-profile .profile-badge-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    padding: 20px 14px;
+    border-radius: var(--sp-radius);
+    border: 1px solid var(--sp-border);
+    background: var(--sp-bg);
+}
+
+body.shadcn-profile .profile-badge-card.is-locked {
+    opacity: .55;
+}
+
+body.shadcn-profile .profile-badge-card.is-unlocked {
+    background: var(--sp-accent-soft);
+    border-color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-badge-icon {
+    font-size: 2rem;
+    margin-bottom: 4px;
+    filter: grayscale(1);
+}
+
+body.shadcn-profile .profile-badge-card.is-unlocked .profile-badge-icon {
+    filter: none;
+}
+
+body.shadcn-profile .profile-badge-name {
+    color: var(--sp-fg);
+    font-weight: 700;
+    font-size: .92rem;
+}
+
+body.shadcn-profile .profile-badge-desc {
+    color: var(--sp-muted-fg);
+    font-size: .78rem;
+    line-height: 1.35;
+}
+
+body.shadcn-profile .profile-badge-status {
+    margin-top: 8px;
+    color: var(--sp-muted-fg);
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+body.shadcn-profile .profile-badge-card.is-unlocked .profile-badge-status {
+    color: var(--sp-primary);
+}
+
+/* ---- Right column: quote + quick stats ---- */
+
+body.shadcn-profile .profile-quote-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-accent-soft);
+    /* height is kept in sync with .profile-subject-card by JS
+       (syncQuoteCardHeight in profile-django.js) so the two cards'
+       bottom edges always line up, in either direction. */
+}
+
+body.shadcn-profile .profile-quote-card .profile-subject-leaf {
+    display: inline-flex;
+    margin-bottom: 12px;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-quote-card .profile-subject-leaf svg {
+    width: 22px;
+    height: 22px;
+}
+
+body.shadcn-profile .profile-quote-text {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    max-width: 26ch;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.45;
+    transition: opacity .35s ease;
+}
+
+body.shadcn-profile .profile-quote-card.is-fading .profile-quote-text,
+body.shadcn-profile .profile-quote-card.is-fading .profile-quote-dash {
+    opacity: 0;
+}
+
+body.shadcn-profile .profile-quote-dash {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 14px;
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-quickstats-card {
+    padding: 22px 24px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-quickstats-card h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-quickstats-card h2 svg {
+    width: 18px;
+    height: 18px;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-quickstat-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-top: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-quickstat-row:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+body.shadcn-profile .profile-quickstat-row .profile-stat-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    border-radius: 50%;
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-quickstat-row .profile-stat-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+body.shadcn-profile .profile-quickstat-row > span {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+body.shadcn-profile .profile-quickstat-row b {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-quickstat-row small {
+    color: var(--sp-muted-fg);
+    font-size: .78rem;
+}
+
+@media (max-width: 720px) {
+    body.shadcn-profile .profile-hero {
+        flex-direction: column;
+    }
+
+    body.shadcn-profile .profile-hero-mascot-card {
+        max-width: none;
+        width: 100%;
+    }
+}
+
+/* Biblioteca do Explorador — estante (grelha de "livros" por unidade) e
+   página de cada unidade. Cada livro recebe a cor da sua unidade via as
+   variáveis --biblioteca-cor-* definidas inline pelo template. */
+.biblioteca-estante {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 210px);
+    gap: 30px 26px;
+}
+
+.biblioteca-livro-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Livro em "3D": .biblioteca-livro é a área de perspetiva (fica parada);
+   .biblioteca-livro-3d é o objeto que roda no hover; capa/páginas/costas
+   são as 3 faces que dão a ilusão de espessura (mesma técnica do
+   componente Book — capa à frente, tira de "páginas" rodada 90° a fazer
+   de aresta, e uma cópia da capa atrás, afastada em Z). */
+.biblioteca-livro {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #ffffff;
+    perspective: 900px;
+}
+
+.biblioteca-livro-3d {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 49 / 60;
+    transform-style: preserve-3d;
+    transition: transform .5s ease-out;
+    --livro-profundidade: 46px;
+}
+
+.biblioteca-livro:hover .biblioteca-livro-3d {
+    transform: rotateY(-32deg) scale(1.07) translateX(-16px);
+}
+
+.biblioteca-livro-capa {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 10px 6px 6px 10px;
+    background: #f5f3ee;
+    box-shadow:
+        0 1.8px 3.6px rgba(0, 0, 0, .1),
+        0 10.8px 21.6px rgba(0, 0, 0, .16),
+        inset 0 -.9px 0 rgba(0, 0, 0, .1),
+        inset 0 1.8px 1.8px hsla(0, 0%, 100%, .15),
+        inset 3.6px 0 3.6px rgba(0, 0, 0, .12);
+    backface-visibility: hidden;
+}
+
+/* Bloco de cima: cor da unidade. Bloco de baixo: continua a mostrar o
+   creme de .biblioteca-livro-capa por trás (não tem fundo próprio), com
+   texto escuro — é essa combinação que dá o aspeto de capa real. */
+.biblioteca-livro-cor {
+    position: relative;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, var(--biblioteca-cor-a), var(--biblioteca-cor-b));
+    overflow: hidden;
+}
+
+.biblioteca-livro-conteudo {
+    position: relative;
+    flex: 0 0 auto;
+    padding: 12px 14px 14px;
+    overflow: hidden;
+}
+
+.biblioteca-livro-lombada {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 10%;
+    background: linear-gradient(90deg, hsla(0, 0%, 100%, .35), hsla(0, 0%, 100%, 0) 45%, rgba(0, 0, 0, .06) 70%, rgba(0, 0, 0, .28));
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+.biblioteca-livro-ilustracao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    opacity: .95;
+}
+
+.biblioteca-livro-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.biblioteca-livro-nome {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #20252b;
+}
+
+.biblioteca-livro-total {
+    font-size: .78rem;
+    color: #767c70;
+}
+
+.biblioteca-livro-paginas {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    right: 0;
+    width: var(--livro-profundidade);
+    background: repeating-linear-gradient(90deg, #fff, #efefef 1px, #fff 3px, #9a9a9a 4px);
+    transform-origin: left center;
+    transform: translateX(100%) rotateY(90deg);
+}
+
+.biblioteca-livro-costas {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px 6px 6px 10px;
+    background: var(--biblioteca-cor-a);
+    transform: translateZ(calc(-1 * var(--livro-profundidade)));
+}
+
+.biblioteca-livro-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--biblioteca-cor-a);
+    font-size: .74rem;
+    font-weight: 800;
+}
+
+.biblioteca-livro--vazio .biblioteca-livro-cor {
+    background: #dfe2dc;
+}
+
+.biblioteca-livro--vazio .biblioteca-livro-ilustracao {
+    color: #9aa39a;
+}
+
+.biblioteca-livro--vazio .biblioteca-livro-costas {
+    background: #dfe2dc;
+}
+
+.biblioteca-livro--vazio .biblioteca-livro-nome {
+    color: #767c70;
+}
+
+.biblioteca-livro-vazio-texto {
+    font-size: .78rem;
+    font-style: italic;
+    color: #8a938c;
+}
+
+.biblioteca-livro-praticar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--biblioteca-cor-soft, #f4f6f1);
+    color: var(--biblioteca-cor-a, #1f8a5b);
+    font-size: .78rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.biblioteca-livro-praticar:hover {
+    filter: brightness(.95);
+}
+
+.biblioteca-unidade-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 24px 0 28px;
+    padding: 30px 32px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--biblioteca-cor-a), var(--biblioteca-cor-b));
+    color: #ffffff;
+}
+
+.biblioteca-unidade-header-texto h1 {
+    margin: 0 0 6px;
+    font-size: 1.7rem;
+}
+
+.biblioteca-unidade-header-texto p {
+    margin: 0;
+    opacity: .9;
+}
+
+.biblioteca-unidade-praticar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 20px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--biblioteca-cor-a);
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.biblioteca-unidade-praticar:hover {
+    filter: brightness(.96);
+}
+
+.biblioteca-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 26px;
+}
+
+.biblioteca-chip {
+    padding: 8px 16px;
+    border: 1px solid #e2e3db;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #5c6b5f;
+    font-size: .85rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+}
+
+.biblioteca-chip:hover {
+    background: #f4f6f1;
+}
+
+.biblioteca-chip.is-active {
+    border-color: transparent;
+    background: #1f8a5b;
+    color: #ffffff;
+}
+
+.biblioteca-termo-relacionados {
+    margin: 10px 0 0 !important;
+    font-size: .8rem;
+    color: #8a938c;
+}
+
+.biblioteca-unidade-vazio {
+    color: #8a938c;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .biblioteca-estante {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .biblioteca-unidade-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

@@ -3,12 +3,343 @@
  * Modern, responsive design for interactive mission system
  */
 
+/* Mascot intro tutorial (shown once per mission, over the percurso screen —
+   see .mission-path-* below) */
+
+#siteHeader[hidden] {
+    display: none;
+}
+
+body.mission-header-hidden {
+    padding-top: 0;
+}
+
+/* The lesson topbar (X, progress, XP/streak) should sit flush at the very
+   top of the viewport, not inside .mission-container's own top padding. */
+body.mission-header-hidden .mission-container {
+    padding-top: 0;
+}
+
+.mission-intro-skip {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #66756e;
+    font-weight: 600;
+    font-size: .85rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.mission-intro-skip:hover {
+    background: rgba(0,0,0,.05);
+}
+
+.mission-intro-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 420px;
+}
+
+.mission-path-intro-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 420px;
+}
+
+.mission-intro-next {
+    background: #1f8a5b;
+    color: #fff;
+    border: none;
+    box-shadow: 0 10px 24px rgba(31, 138, 91, .3);
+    padding: 16px 28px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    flex: 1 1 auto;
+}
+
+.mission-intro-next:hover {
+    background: #166c45;
+}
+
+.mission-intro-back {
+    background: none;
+    color: #1c1c1e;
+    border: 1px solid #d8dbd9;
+    box-shadow: none;
+    padding: 16px 22px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.mission-intro-back:hover {
+    background: rgba(0, 0, 0, .05);
+}
+
+/* Percurso (path) screen: forest scene with a circle per section and the
+   mascot floating above them, shown once per mission before the student
+   picks where to start. */
+.mission-path-screen {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.mission-path-screen[hidden] {
+    display: none;
+}
+
+/* While the mascot explains how missions work, keep the scene to a plain
+   white background — no forest/circles behind it yet. */
+.mission-path-screen--intro {
+    background: #ffffff;
+}
+
+.mission-path-intro-stage {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 56px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    font-family: 'Outfit', system-ui, sans-serif;
+}
+
+.mission-path-intro-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+    width: 100%;
+}
+
+.mission-path-intro-text {
+    margin: 0;
+    max-width: 420px;
+    color: #16241d;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.mission-path-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #eaf7ee 0%, #dbf0e2 45%, #c3e8ce 75%, #a8dab8 100%);
+}
+
+.mission-path-forest {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.mission-path-tree {
+    position: absolute;
+    width: 46px;
+    height: 64px;
+    opacity: .65;
+}
+
+.mission-path-tree::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 78%;
+    background: #1f8a5b;
+    clip-path: polygon(50% 0%, 0% 45%, 22% 45%, 4% 78%, 28% 78%, 50% 100%, 72% 78%, 96% 78%, 78% 45%, 100% 45%);
+}
+
+.mission-path-tree::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 14px;
+    background: #8a5a34;
+    border-radius: 2px;
+}
+
+.mission-path-tree--dark::before { background: #166c45; }
+.mission-path-tree--light::before { background: #2ea36f; }
+
+.mission-path-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 24px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mission-path-mascot-wrap {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.mission-path-quiz-demo {
+    width: 100%;
+    max-width: 340px;
+    padding: 18px;
+    text-align: left;
+}
+
+.mission-path-quiz-demo h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.mission-path-mascot {
+    width: 170px;
+    max-width: 50vw;
+    height: auto;
+    flex: 0 0 auto;
+}
+
+.mission-path-progress-track {
+    width: 100%;
+    max-width: 420px;
+    height: 8px;
+    background: #e4f1e7;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.mission-path-progress-fill {
+    height: 100%;
+    background: #1f8a5b;
+    border-radius: 999px;
+    transition: width .25s ease;
+}
+
+.mission-path-nodes {
+    position: relative;
+    list-style: none;
+    margin: 32px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+    width: 100%;
+}
+
+/* The connector line is drawn dynamically (drawPathConnectorLine) as an SVG
+   polyline through the actual node centers — the zigzag nodes below don't
+   sit on a straight line, so a plain centered ::before line missed them. */
+.mission-path-line-svg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.mission-path-node-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.mission-path-node-row:nth-child(3n+2) {
+    align-self: flex-start;
+    margin-left: 10%;
+}
+
+.mission-path-node-row:nth-child(3n) {
+    align-self: flex-end;
+    margin-right: 10%;
+}
+
+.mission-path-node {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: none;
+    background: #1f8a5b;
+    color: #fff;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 0 #145c39, 0 8px 16px rgba(0, 0, 0, .15);
+    cursor: pointer;
+    transition: transform .15s ease;
+}
+
+.mission-path-node:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.mission-path-node--done {
+    background: #f4c744;
+    box-shadow: 0 6px 0 #c99f1e, 0 8px 16px rgba(0, 0, 0, .15);
+}
+
+.mission-path-node--locked {
+    background: #cfd8d2;
+    color: #8fa39a;
+    box-shadow: 0 6px 0 #b7c2ba, 0 8px 16px rgba(0, 0, 0, .1);
+    cursor: not-allowed;
+}
+
+.mission-path-node-label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #215a3f;
+    background: rgba(255, 255, 255, .85);
+    padding: 3px 10px;
+    border-radius: 999px;
+    text-align: center;
+}
+
 /* Mission Container */
 .mission-container {
     max-width: 1440px;
     margin: 0 auto;
     padding: 40px 20px;
     min-height: 100vh;
+}
+
+/* The lesson-player page (identified by its .lesson-topbar, which the older
+   orphaned mission.html page doesn't have) fills the page edge-to-edge —
+   no side margins, so no grey bars flank the white panel on wide screens.
+   The text column itself still stays narrow via .section-body. */
+body:has(.lesson-topbar) .mission-container {
+    max-width: none;
+    margin: 0;
 }
 
 /* Mission Header */
@@ -199,119 +530,10 @@ body.quiz-popout-open {
     pointer-events: none;
 }
 
-.section-header {
-    background: transparent;
-    padding: 25px 25px 0 8px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: flex-start;
-    justify-content: space-between;
-    border-bottom: none;
-}
-
-/* Shown only for the first screen the student sees in a section — see
-   updateSectionScreen() in mission.js. */
-.section-header--hidden {
-    display: none;
-}
-
-/* Wavy divider under the section title, echoing the reference sketch's
-   hand-drawn line between the mascot dialogue and the content below. */
-.section-header::after {
-    content: "";
-    flex: 0 0 100%;
-    height: 14px;
-    margin-top: 20px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='14' viewBox='0 0 40 14'%3E%3Cpath d='M0 7 C10 0 30 14 40 7' fill='none' stroke='%237fb377' stroke-width='2'/%3E%3C/svg%3E");
-    background-repeat: repeat-x;
-    background-size: 40px 14px;
-    opacity: 0.55;
-}
-
-.mission-view-btn {
-    flex: 0 0 auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #ffffff;
-    border: 1px solid #cde7d9;
-    color: #215a3f;
-    border-radius: 999px;
-    padding: 8px 16px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.mission-view-btn:hover {
-    border-color: #1f8a5b;
-    background: #f4fbf7;
-}
-
-.section-info {
-    flex: 1;
-}
-
-.section-title-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-.mission-step-counter-badge {
-    display: inline-block;
-    flex-shrink: 0;
-    background: #1f8a5b;
-    color: #ffffff;
-    border-radius: 999px;
-    padding: 4px 14px;
-    font-size: 0.85rem;
-    font-weight: 700;
-}
-
-.section-title-large {
-    margin: 0 0 10px 0;
-    color: #215a3f;
-    font-size: 2.1rem;
-}
-
-.section-meta {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.xp-badge {
-    background: #fff3cd;
-    color: #856404;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-
-.status-badge {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    background: #e7f3ff;
-    color: #0056b3;
-}
-
-.status-badge.completed {
-    background: #d4edda;
-    color: #155724;
-}
-
-/* Section Body — transparent now: the "arbustos" backdrop lives on
-   .mission-layout so it spans the mascot column and the content column
-   as one continuous scene instead of a patch behind just the text. */
 .section-body {
     padding: 30px;
+    max-width: 720px;
+    margin: 0 auto;
 }
 
 .section-content {
@@ -331,9 +553,9 @@ body.quiz-popout-open {
     display: none;
 }
 
-/* No more card box — content sits directly on the shared arbustos scene
-   from .mission-layout. Sub-elements (.info-card, .did-you-know, etc.)
-   keep their own light backing, so they stay legible on their own. */
+/* No card box — content sits directly on the page's white background.
+   Sub-elements (.info-card, .did-you-know, etc.) keep their own light
+   backing, so they stay legible on their own. */
 .screen-card {
     background: transparent;
     border: none;
@@ -341,42 +563,16 @@ body.quiz-popout-open {
     padding: 0;
     margin: 20px 0;
     box-shadow: none;
+    text-align: center;
 }
 
-.card-audio-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 14px;
-}
-
-.card-audio-btn {
-    background: #eef7f3;
-    color: #1f8a5b;
-    border: 1px solid #cde7d9;
-    border-radius: 999px;
-    padding: 6px 12px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.card-audio-btn:hover {
-    background: #e3f3eb;
-    border-color: #1f8a5b;
-}
-
-.card-audio-btn.playing {
-    background: #1f8a5b;
-    color: #ffffff;
-    border-color: #1f8a5b;
+.screen-card p {
+    text-align: justify;
 }
 
 .screen-card h3 {
-    color: #1f8a5b;
-    margin: 0 0 10px 0;
+    color: #1a1a1a;
+    margin: 0 0 20px 0;
 }
 
 .screen-subcards .info-card h4 {
@@ -393,7 +589,6 @@ body.quiz-popout-open {
     border-radius: 10px;
     margin: 0 auto;
     display: block;
-    background: #f7fdf9;
 }
 
 object.card-visual {
@@ -504,6 +699,169 @@ object.card-visual {
     margin: 0 0 12px;
     color: #244a37;
     font-style: italic;
+}
+
+/* Interactive plant diagram: an image with positioned dots the student
+   clicks to reveal an explanation — not plain buttons under the image. */
+.plant-diagram-hint {
+    margin: 0 0 12px;
+    color: #6b8579;
+    font-size: 0.9rem;
+}
+
+.plant-diagram {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.plant-diagram-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.plant-hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.plant-hotspot-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #1f8a5b;
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 4px rgba(31, 138, 91, .35), 0 4px 10px rgba(0, 0, 0, .25);
+    animation: plantHotspotPulse 2.2s ease-in-out infinite;
+    transition: transform .15s ease;
+}
+
+/* The site's generic button{} style adds a background + upward shift on
+   :hover, which — applied to this absolutely-positioned, centering-transform
+   button — repainted it as a plain pill AND overwrote the transform that
+   keeps the dot centered on its target, making it visibly jump out of
+   place. Cancel that global hover state explicitly; only the inner dot
+   grows a little instead. */
+.plant-hotspot:hover {
+    background: none;
+    box-shadow: none;
+    transform: translate(-50%, -50%);
+}
+
+.plant-hotspot:hover .plant-hotspot-dot {
+    transform: scale(1.15);
+}
+
+@keyframes plantHotspotPulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(31, 138, 91, .35), 0 4px 10px rgba(0, 0, 0, .25); }
+    50% { box-shadow: 0 0 0 8px rgba(31, 138, 91, .12), 0 4px 10px rgba(0, 0, 0, .25); }
+}
+
+.plant-hotspot-label {
+    background: rgba(255, 255, 255, .95);
+    color: #215a3f;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+}
+
+.plant-hotspot.is-active .plant-hotspot-dot {
+    background: #166c45;
+    animation: none;
+    box-shadow: 0 0 0 6px rgba(31, 138, 91, .45), 0 4px 10px rgba(0, 0, 0, .25);
+}
+
+.plant-hotspot-panels {
+    display: none;
+}
+
+.plant-hotspot-explanation {
+    display: none;
+    margin-top: 16px;
+    padding: 18px;
+    background: #f4fbf7;
+    border: 1px solid #cde7d9;
+    border-radius: 14px;
+    min-height: 56px;
+}
+
+.plant-hotspot-explanation.has-content {
+    display: block;
+}
+
+/* Drill-down detail view (see handlePlantHotspotClick): replaces the plant
+   diagram with a close-up photo + explanation, plus a way back. */
+.plant-hotspot-back {
+    display: block;
+    margin: 0 auto 16px 0;
+    border: 1px solid #cde7d9;
+    background: #eef7f3;
+    color: #1f8a5b;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.plant-hotspot-back:hover {
+    background: #e3f3eb;
+}
+
+/* Default: a normal framed photo (Folha.png, Raízes 2.png). Only images
+   already composed as a close-up circle (Estoma.png) opt into .is-round —
+   see data-photo-round on the panel in the mission data. */
+.plant-hotspot-photo {
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    max-height: 220px;
+    margin: 0 auto 16px;
+    border-radius: 14px;
+    object-fit: contain;
+}
+
+.plant-hotspot-photo.is-round {
+    width: 180px;
+    height: 180px;
+    max-width: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 8px 24px rgba(31, 138, 91, 0.25);
+}
+
+.plant-hotspot-explanation h4 {
+    margin: 0 0 8px;
+    color: #1f8a5b;
+}
+
+.plant-hotspot-explanation p {
+    margin: 0 0 8px;
+    color: #244a37;
+    line-height: 1.5;
+}
+
+.plant-hotspot-explanation p:last-child {
+    margin-bottom: 0;
 }
 
 .phase-clear-sequence {
@@ -914,7 +1272,19 @@ object.card-visual {
     font-weight: 600;
 }
 
+.section-completion-score {
+    display: inline-block;
+    margin: 0 0 10px !important;
+    padding: 6px 14px;
+    background: #eef7f3;
+    border-radius: 999px;
+    color: #1f8a5b !important;
+    font-weight: 700 !important;
+}
+
 .section-completion-btn {
+    display: block;
+    width: 100%;
     border: 1px solid #1f8a5b;
     background: #1f8a5b;
     color: #ffffff;
@@ -928,6 +1298,18 @@ object.card-visual {
     background: #166c45;
 }
 
+.section-completion-review-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    background: none;
+    color: #1f8a5b;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .section-quiz.quiz-entry-hidden {
     display: none;
 }
@@ -936,16 +1318,26 @@ object.card-visual {
     display: none;
 }
 
-.section.quiz-only-mode .screen-nav {
+/* The "← Anterior" arrow stays available during the quiz (right above its
+   top border) so the student can back out to review the content — only
+   "Continuar/Ver quiz" is redundant here, since the quiz drives its own
+   question-to-question progress. */
+.section.quiz-only-mode .screen-nav-btn[data-nav-action="next"] {
     display: none;
 }
 
 .screen-nav {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 10px;
     margin: 8px 0 20px;
+}
+
+/* Always pinned to the right, regardless of what else is in the row
+   (Anterior, the "Saber mais" trigger, or nothing at all). */
+.screen-nav-btn[data-nav-action="next"] {
+    margin-left: auto;
 }
 
 
@@ -965,10 +1357,12 @@ object.card-visual {
     background: #1f8a5b;
     color: #ffffff;
     border-color: #1f8a5b;
+    box-shadow: 0 4px 18px rgba(31, 138, 91, 0.4);
 }
 
 .screen-nav-btn[data-nav-action="next"]:hover {
     background: #166c45;
+    box-shadow: 0 4px 22px rgba(31, 138, 91, 0.55);
 }
 
 .screen-nav-btn:disabled {
@@ -1242,6 +1636,16 @@ object.card-visual {
     font-weight: 600;
     color: #666;
     flex-shrink: 0;
+}
+
+.quiz-option.selected {
+    border-color: #1f8a5b;
+    background: #f5f9f7;
+}
+
+.quiz-option.selected .option-letter {
+    background: #1f8a5b;
+    color: white;
 }
 
 .quiz-option.correct {
@@ -1707,6 +2111,41 @@ object.card-visual {
     font-weight: bold;
 }
 
+.dictionary-toast {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    max-width: min(320px, calc(100vw - 60px));
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    color: white;
+    padding: 15px 22px;
+    border-radius: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(59, 130, 246, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 90;
+}
+
+.dictionary-toast.show {
+    opacity: 1;
+    animation: slideIn 0.3s ease;
+}
+
+.dictionary-toast-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+}
+
+.dictionary-toast-text {
+    font-weight: 600;
+    font-size: .92rem;
+    line-height: 1.35;
+}
+
 /* Correct Animation */
 .correct-animation {
     position: fixed;
@@ -1785,12 +2224,6 @@ object.card-visual {
 
     .progress-section {
         padding: 18px;
-    }
-
-    .section-header {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
     }
 
     .point-grid, .organisms-grid, .type-grid, .fact-grid, .app-grid {
@@ -1896,273 +2329,394 @@ object.card-visual {
 }
 
 /* ============================================================
-   Mascot guide, sidebar stepper & 3-column mission layout
+   Mascot guide + lesson content area
    ============================================================ */
 
-.mission-layout {
-    --mission-sidebar-w: 280px;
-    --mission-mascot-w: 260px;
-    display: grid;
-    /* Sidebar, content, then the mascot last — mascot reads to the
-       right of the lesson content. */
-    grid-template-columns: var(--mission-sidebar-w) minmax(0, 1fr) var(--mission-mascot-w);
-    gap: 28px;
-    /* A fixed, deliberately compact height — not viewport-relative, not
-       driven by any single column's content (that turned out unreliable:
-       grid auto-row sizing still counted the full content height of
-       overflow:auto items, not just their visible portion). Sidebar and
-       content are both explicitly capped to 100% of this and scroll on
-       their own; the mascot is short enough to just fit inside it. */
-    align-items: stretch;
-    height: 580px;
-    padding: 10px 14px;
-    border-radius: 24px;
-    background-color: #ffffff;
-}
-
+/* Now a plain full-width block (the lesson topbar sits above it, the old
+   sidebar/mascot-panel grid columns are gone) — content just flows down
+   the page and the page itself scrolls. */
 .mission-content {
-    height: 100%;
-    overflow-y: auto;
     background-color: #ffffff;
 }
 
-/* Sidebar */
-.mission-sidebar {
-    position: relative;
-}
-
-.mission-sidebar-inner {
-    height: 100%;
-    overflow-y: auto;
+/* Lesson topbar: close button, per-section progress, live XP/streak —
+   replaces the old sidebar + mascot-panel chrome. */
+.lesson-topbar {
+    position: sticky;
+    top: 0;
+    /* Below .mascot-overlay's 1300 (and everything else modal) so the
+       topbar dims along with the rest of the page behind a dialog, instead
+       of standing out as its own undimmed panel. */
+    z-index: 50;
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 16px;
-    /* The percurso + progresso panels stay within the same frame as the
-       content column (same top and bottom edge) — they scroll on their
-       own if they don't fit, rather than running past it. Scrollbar
-       hidden the same way as .mission-content's mascot column. */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.mission-sidebar-inner::-webkit-scrollbar {
-    display: none;
-}
-
-.mission-sidebar-toggle {
-    position: absolute;
-    /* Fixed px offset from the sidebar's own top edge (not 50%/50vh) so the
-       handle's position depends neither on the sidebar's content height
-       (which collapses to ~0 when .mission-sidebar-inner is hidden) nor on
-       the viewport size — it stays pinned near the middle of the step list. */
-    top: 230px;
-    right: -14px;
-    transform: translateY(-50%);
-    width: 28px;
-    height: 28px;
-    padding: 0;
-    border-radius: 50%;
+    padding: 16px 4px;
     background: #ffffff;
-    border: 1px solid #cde7d9;
-    color: #1f8a5b;
+}
+
+.lesson-close-btn {
+    flex: 0 0 auto;
     display: grid;
     place-items: center;
-    font-weight: 700;
-    cursor: pointer;
-    z-index: 5;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.mission-sidebar-toggle:hover {
-    border-color: #1f8a5b;
-}
-
-.mission-sidebar-toggle svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.2s ease;
-}
-
-.mission-sidebar-toggle--expanded svg {
-    transform: rotate(180deg);
-}
-
-.mission-layout--sidebar-collapsed .mission-sidebar-inner {
-    display: none;
-}
-
-.mission-layout--sidebar-collapsed {
-    --mission-sidebar-w: 20px;
-}
-
-.mission-layout--no-mascot {
-    --mission-mascot-w: 0px;
-}
-
-.mission-layout--no-mascot .mascot-panel {
-    display: none;
-}
-
-.mission-sidebar-card,
-.mission-progress-card {
-    background: #ffffff;
-    border: 1px solid #cde7d9;
-    border-radius: 14px;
-    padding: 18px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.mission-sidebar-title {
-    margin: 0 0 14px;
-    color: #1f8a5b;
-    font-size: 1.05rem;
-}
-
-.mission-stepper {
-    list-style: none;
-    margin: 0;
+    width: 36px;
+    height: 36px;
     padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+    color: #66756e;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.lesson-close-btn:hover {
+    background: rgba(0, 0, 0, .05);
+    color: #244a37;
+}
+
+.lesson-progress-track {
+    flex: 1 1 auto;
+    height: 8px;
+    /* Neutral grey, not a pale green — a near-empty green-tinted track read
+       as "already quite full" at a glance even at 0% width. */
+    background: #e2e5e2;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.lesson-progress-fill {
+    height: 100%;
+    background: #1f8a5b;
+    border-radius: 999px;
+    transition: width .25s ease;
+}
+
+.lesson-progress-dots {
+    flex: 0 0 auto;
     display: flex;
-    flex-direction: column;
     gap: 6px;
 }
 
-.mission-step-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: left;
-    cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.mission-step-btn:hover:not(:disabled) {
-    background: #f4fbf7;
-}
-
-.mission-step--active .mission-step-btn {
-    background: #eef7f3;
-    border-color: #cde7d9;
-}
-
-.mission-step--locked .mission-step-btn {
-    opacity: 0.45;
-    cursor: not-allowed;
-}
-
-.mission-step-icon {
-    position: relative;
-    flex: 0 0 auto;
-    width: 34px;
-    height: 34px;
+.lesson-progress-dot {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
+    background: #d8dbd9;
+}
+
+.lesson-stats {
+    flex: 0 0 auto;
+    display: flex;
+    gap: 10px;
+}
+
+.lesson-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f4fbf7;
+    border: 1px solid #cde7d9;
+    color: #215a3f;
+    font-weight: 700;
+    font-size: .85rem;
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.lesson-theme-toggle {
+    flex: 0 0 auto;
     display: grid;
     place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #cde7d9;
     background: #f4fbf7;
-    color: var(--mission-step-accent, #1f8a5b);
-    font-size: 1.05rem;
-    border: 1px solid var(--mission-step-accent, #cde7d9);
+    box-shadow: none;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
-.mission-step:not(:last-child) .mission-step-icon::after {
+.lesson-theme-toggle:hover {
+    background: #eaf3ee;
+}
+
+/* Floating mascot help button, replacing the old inline "Ajuda" button */
+.lesson-help-fab {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    /* Same reasoning as .lesson-topbar: stay below modal overlays so this
+       dims along with the page instead of floating above a dialog. */
+    z-index: 50;
+    width: 96px;
+    height: 96px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: transform .15s ease;
+}
+
+.lesson-help-fab:hover {
+    transform: scale(1.06);
+}
+
+.lesson-help-fab-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 6px 12px rgba(31, 138, 91, .35));
+}
+
+.lesson-help-fab-tooltip {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    transform: translateY(6px);
+    margin-bottom: 10px;
+    background: #ffffff;
+    color: #244a37;
+    border: 1px solid #cde7d9;
+    border-radius: 12px;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(18, 61, 40, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.lesson-help-fab-tooltip::after {
     content: "";
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 22px;
-    background: #cde7d9;
+    left: 24px;
+    border: 6px solid transparent;
+    border-top-color: #ffffff;
 }
 
-.mission-step--done:not(:last-child) .mission-step-icon::after {
-    background: #1f8a5b;
+.lesson-help-fab:hover .lesson-help-fab-tooltip {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.mission-step--done .mission-step-icon {
+/* Ambient tip: the mascot chiming in on its own every so often (see
+   maybeShowAmbientMascotTip), not just when hovered — so it reads as an
+   active companion rather than a static corner icon. */
+.lesson-ambient-tip {
+    position: fixed;
+    left: 100px;
+    bottom: 34px;
+    z-index: 51;
+    max-width: 260px;
+    background: #ffffff;
+    color: #244a37;
+    border: 1px solid #cde7d9;
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.4;
+    box-shadow: 0 10px 26px rgba(18, 61, 40, 0.18);
+    animation: lessonAmbientTipIn .3s ease;
+}
+
+.lesson-ambient-tip[hidden] {
+    display: none;
+}
+
+@keyframes lessonAmbientTipIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Small pulse while the mascote is reading a card aloud */
+.lesson-help-fab.is-speaking {
+    animation: lessonHelpFabPulse .6s ease-in-out infinite;
+}
+
+@keyframes lessonHelpFabPulse {
+    0%, 100% { box-shadow: 0 10px 24px rgba(31, 138, 91, .35); }
+    50% { box-shadow: 0 10px 24px rgba(31, 138, 91, .65), 0 0 0 6px rgba(31, 138, 91, .15); }
+}
+
+/* Mascot chat panel: opens above the floating mascot button */
+.mascote-chat-panel {
+    position: fixed;
+    left: 24px;
+    bottom: 90px;
+    z-index: 60;
+    width: 320px;
+    max-width: calc(100vw - 48px);
+    max-height: 420px;
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    border-radius: 16px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.mascote-chat-panel[hidden] {
+    display: none;
+}
+
+.mascote-chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: #f4fbf7;
+    border-bottom: 1px solid #cde7d9;
+    font-weight: 700;
+    color: #215a3f;
+    font-size: .9rem;
+}
+
+.mascote-chat-close {
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: #66756e;
+    padding: 2px 6px;
+    cursor: pointer;
+    font-size: .9rem;
+}
+
+.mascote-chat-messages {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 80px;
+}
+
+.mascote-chat-bubble {
+    max-width: 85%;
+    padding: 8px 12px;
+    border-radius: 14px;
+    font-size: .88rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+}
+
+.mascote-chat-bubble--user {
+    align-self: flex-end;
     background: #1f8a5b;
     color: #ffffff;
+    border-bottom-right-radius: 4px;
+}
+
+.mascote-chat-bubble--assistant {
+    align-self: flex-start;
+    background: #f4fbf7;
+    color: #244a37;
+    border: 1px solid #cde7d9;
+    border-bottom-left-radius: 4px;
+}
+
+.mascote-chat-bubble--assistant.is-typing {
+    color: #8fa39a;
+    font-style: italic;
+}
+
+.mascote-chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 10px 14px 14px;
+    border-top: 1px solid #eef1ef;
+}
+
+.mascote-chat-input {
+    flex: 1 1 auto;
+    border: 1px solid #cde7d9;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: .88rem;
+}
+
+.mascote-chat-input:focus {
+    outline: none;
     border-color: #1f8a5b;
 }
 
-.mission-step--active .mission-step-icon {
-    box-shadow: 0 0 0 3px rgba(31, 138, 91, 0.18);
+.mascote-chat-send {
+    flex: 0 0 auto;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    background: #1f8a5b;
+    color: #ffffff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
 }
 
-.mission-step-text {
+.mascote-chat-send:hover {
+    background: #166c45;
+}
+
+/* Shared "Check"/"Continuar" pill button for the lesson player, matching
+   the dark pill already established on the percurso intro screen. */
+.lesson-primary-btn {
+    background: #1c1c1e;
+    color: #fff;
+    border: none;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.lesson-primary-btn:hover:not(:disabled) {
+    background: #000000;
+}
+
+.lesson-primary-btn:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.lesson-quiz-actions {
     display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0;
+    justify-content: flex-end;
+    margin-top: 16px;
 }
 
-.mission-step-title {
-    font-weight: 700;
-    color: #215a3f;
-    font-size: 0.95rem;
-}
-
-.mission-step-subtitle {
+.quiz-progress-label {
+    margin: 0 0 6px;
     color: #6b8579;
-    font-size: 0.8rem;
+    font-size: .85rem;
+    font-weight: 600;
 }
 
-.mission-progress-heading {
-    margin: 0 0 10px;
-    font-weight: 700;
-    color: #215a3f;
-    font-size: 0.9rem;
-}
-
-.mission-progress-bar-track {
-    width: 100%;
-    height: 10px;
-    background: #eee;
+.quiz-alt-explanation {
+    margin: 10px 0 0;
+    padding: 12px 14px;
+    background: #f4fbf7;
+    border: 1px solid #cde7d9;
     border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.mission-progress-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #1f8a5b, #37d67a);
-    border-radius: 10px;
-    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.mission-progress-percent {
-    margin: 0;
-    color: #1f8a5b;
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-
-.mission-progress-label {
-    margin: 2px 0 0;
-    color: #6b8579;
-    font-size: 0.85rem;
-}
-
-/* Mascot panel */
-.mascot-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    margin-top: 95px;
-}
-
-.mascot-figure {
-    width: 100%;
-    max-width: 240px;
-    height: auto;
-    display: block;
-    margin-top: -8px;
+    color: #244a37;
+    font-size: .92rem;
+    line-height: 1.5;
 }
 
 .mascot-help-btn {
@@ -2192,14 +2746,6 @@ object.card-visual {
     background: #ffffff;
 }
 
-.section-header-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
-    flex: 0 0 auto;
-}
-
 .mission-tip-card {
     width: 100%;
     background: #f4fbf7;
@@ -2222,50 +2768,6 @@ object.card-visual {
     line-height: 1.5;
 }
 
-@keyframes mascotSpeechPulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-    100% { transform: scale(1); }
-}
-
-.mascot-speech--pulse {
-    animation: mascotSpeechPulse 0.35s ease;
-}
-
-.mascot-speech {
-    width: 100%;
-    background: #ffffff;
-    border: 1px solid #cde7d9;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    position: relative;
-}
-
-.mascot-speech::after {
-    content: "";
-    position: absolute;
-    bottom: -9px;
-    left: 50%;
-    transform: translateX(-50%) rotate(45deg);
-    width: 16px;
-    height: 16px;
-    background: #ffffff;
-    border-right: 1px solid #cde7d9;
-    border-bottom: 1px solid #cde7d9;
-}
-
-.mascot-speech-text {
-    margin: 0;
-    color: #244a37;
-    font-size: 1.05rem;
-    line-height: 1.5;
-}
-
-.mascot-speech-text--alert {
-    font-weight: 700;
-    color: #a15b1f;
-}
 
 .mascot-curiosity-row {
     display: flex;
@@ -2301,6 +2803,12 @@ object.card-visual {
 
 .mascot-curiosity-trigger {
     margin-top: 10px;
+}
+
+/* Relocated into .screen-nav (see updateSectionScreen) so it lines up with
+   Continuar on screens with no "Anterior" — no top margin needed there. */
+.screen-nav .mascot-curiosity-trigger {
+    margin-top: 0;
 }
 
 .mascot-curiosity-open-btn {
@@ -2353,13 +2861,82 @@ object.card-visual {
     line-height: 1.5;
 }
 
+.mascot-overlay-text p {
+    margin: 0 0 12px;
+}
+
+.mascot-overlay-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Curiosity popups get more room — they often carry an illustration plus
+   a couple of paragraphs, so the compact default size feels cramped. */
+.mascot-overlay-card--curiosity {
+    width: min(560px, 100%);
+    max-height: 88vh;
+    overflow-y: auto;
+    /* Still scrollable (wheel, touch, keyboard) — the scrollbar itself is
+       just hidden so a long curiosity doesn't look cluttered. */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.mascot-overlay-card--curiosity::-webkit-scrollbar {
+    display: none;
+}
+
+.mascot-overlay-card--curiosity .mascot-overlay-figure {
+    width: 72px;
+}
+
+.mascot-overlay-card--curiosity .mascot-overlay-text {
+    text-align: left;
+    font-weight: 400;
+}
+
+.curiosity-illustration {
+    display: block;
+    width: 100%;
+    max-width: 170px;
+    height: auto;
+    margin: 0 auto 16px;
+}
+
+/* Small ball-and-stick molecule icons (CO2, O2) for the formula pieces,
+   matching the atom colours already used in the intro illustration. */
+.molecule-icon {
+    display: inline-flex;
+    align-items: center;
+}
+
+.atom {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, .12);
+    margin-left: -3px;
+}
+
+.atom:first-child {
+    margin-left: 0;
+}
+
+.atom--oxygen {
+    background: #e5493c;
+}
+
+.atom--carbon {
+    background: #3a4750;
+}
+
 .mascot-overlay-btn {
-    border: 1px solid #1f8a5b;
+    border: none;
     background: #1f8a5b;
     color: #ffffff;
-    border-radius: 10px;
-    padding: 10px 18px;
+    border-radius: 999px;
+    padding: 12px 28px;
     font-weight: 700;
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -2391,95 +2968,10 @@ object.card-visual {
     margin: 0 auto;
 }
 
-/* Full mission onboarding tutorial (shown from the missions list before
-   entering a mission for the first time) — bigger than the in-mission
-   mascot overlays above. */
-.mission-tutorial-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(10, 25, 17, 0.55);
-    display: grid;
-    place-items: center;
-    z-index: 1500;
-    padding: 20px;
-}
-
-.mission-tutorial-card {
-    width: min(680px, 100%);
-    max-height: 90vh;
-    overflow-y: auto;
-    background: #ffffff;
-    border: 1px solid #cde7d9;
-    border-radius: 20px;
-    padding: 32px;
-    display: flex;
-    gap: 24px;
-    align-items: flex-start;
-    box-shadow: 0 25px 60px rgba(18, 61, 40, 0.28);
-}
-
-.mission-tutorial-figure {
-    flex: 0 0 auto;
-    width: 130px;
-    height: auto;
-}
-
-.mission-tutorial-body h2 {
-    margin: 0 0 14px;
-    color: #1f8a5b;
-}
-
-.mission-tutorial-body p {
-    margin: 0 0 14px;
-    color: #244a37;
-    line-height: 1.6;
-}
-
-.mission-tutorial-actions {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 16px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-
-.mission-tutorial-skip {
-    background: none;
-    border: none;
-    color: #6b8579;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.mission-tutorial-start {
-    border: 1px solid #1f8a5b;
-    background: #1f8a5b;
-    color: #ffffff;
-    border-radius: 999px;
-    padding: 12px 22px;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.mission-tutorial-start:hover {
-    background: #166c45;
-}
-
-@media (max-width: 560px) {
-    .mission-tutorial-card {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 24px;
-    }
-}
-
 /* Correct-answer popup (per question, lighter than the confetti overlay) */
 .mascot-popup-correct {
     position: fixed;
-    bottom: 28px;
+    bottom: 110px;
     left: 50%;
     transform: translate(-50%, 16px);
     background: #1f8a5b;
@@ -2553,6 +3045,162 @@ object.card-visual {
     margin-top: 16px;
 }
 
+/* Formula builder: the student drags each term of the photosynthesis
+   equation into its slot instead of seeing it already complete. */
+.formula-builder-hint {
+    margin: 0 0 16px;
+    color: #6b8579;
+    font-size: 0.85rem;
+}
+
+.formula-equation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.formula-operator {
+    color: #4a7a62;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.formula-operator--arrow {
+    font-size: 1.4rem;
+}
+
+.formula-slot {
+    min-width: 84px;
+    min-height: 56px;
+    padding: 6px 12px;
+    border: 2px dashed #9ecfb5;
+    border-radius: 12px;
+    background: #f2faf6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.formula-slot:has(.formula-piece) {
+    border-style: solid;
+    border-color: #61b78c;
+    background: #eaf8f1;
+}
+
+/* Only ever applied once every slot is filled (see bindFormulaBuilder) —
+   never flags a slot as wrong while the student is still placing pieces. */
+.formula-slot.is-wrong {
+    border-style: solid;
+    border-color: #dc3545;
+    background: #fbe4e6;
+}
+
+.formula-slot-placeholder {
+    color: #9ecfb5;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.formula-slot-placeholder.is-hidden {
+    display: none;
+}
+
+.formula-pool {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    min-height: 96px;
+    padding: 12px;
+    border: 1px solid #d6ebe0;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.formula-piece {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 96px;
+    padding: 12px 8px 10px;
+    border: none;
+    background: linear-gradient(180deg, #ffffff, #eaf8f1);
+    color: #1f553d;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: grab;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(31, 138, 91, 0.15), inset 0 0 0 1px #cdeadb;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.formula-piece:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(31, 138, 91, 0.22), inset 0 0 0 1px #b7dfc9;
+}
+
+.formula-piece:active {
+    cursor: grabbing;
+    transform: translateY(-1px) scale(0.97);
+}
+
+.formula-piece-arrow {
+    color: #9ecfb5;
+    font-size: 0.8rem;
+    line-height: 1;
+}
+
+.formula-piece-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+    line-height: 1;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px #d9efe3;
+}
+
+.formula-builder-feedback {
+    margin: 14px 0 0;
+    font-weight: 600;
+    color: #2f5f49;
+}
+
+.formula-builder-feedback.success {
+    color: #14683f;
+}
+
+.formula-builder-feedback.error {
+    color: #9f2f2f;
+}
+
+.formula-builder.completed .formula-pool {
+    display: none;
+}
+
+.formula-builder-reset-btn {
+    margin-top: 14px;
+    border: 1px solid #9fcfb7;
+    background: #f4fbf7;
+    color: #1e5a3f;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.formula-builder-reset-btn:hover {
+    background: #eaf3ee;
+}
+
 /* Intro callout + key terms usable inside section content */
 .mission-intro-callout {
     display: flex;
@@ -2610,34 +3258,250 @@ object.card-visual {
     font-size: 1.3rem;
 }
 
-@media (max-width: 900px) {
-    .mission-layout {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
+/* ==========================================================================
+   Modo escuro (página de conteúdos da missão)
+   Scoped to .mission-container plus the fixed help button/chat panel, since
+   the percurso (forest map) screen keeps its own illustrated background
+   regardless of theme.
+   ========================================================================== */
+html[data-theme="dark"] .mission-container {
+    background: #1c1712;
+    color: #f2e9dd;
+}
 
-    .mission-content {
-        height: auto;
-        overflow-y: visible;
-    }
+html[data-theme="dark"] .mission-content {
+    background-color: #1c1712;
+}
 
-    .mission-sidebar,
-    .mission-sidebar-inner {
-        height: auto;
-        overflow-y: visible;
-    }
+html[data-theme="dark"] .lesson-topbar {
+    background: #1c1712;
+}
 
-    .mascot-panel {
-        flex-direction: row;
-        align-items: flex-start;
-        margin-top: 0;
-        height: auto;
-        overflow-y: visible;
-    }
+html[data-theme="dark"] .lesson-close-btn {
+    color: #b8a58e;
+}
 
-    .mascot-figure {
-        max-width: 96px;
-    }
+html[data-theme="dark"] .lesson-close-btn:hover {
+    background: rgba(255, 255, 255, .08);
+    color: #f2e9dd;
+}
+
+html[data-theme="dark"] .lesson-progress-track {
+    background: #3a2f24;
+}
+
+html[data-theme="dark"] .lesson-progress-dot {
+    background: #4f4030;
+}
+
+html[data-theme="dark"] .lesson-stat,
+html[data-theme="dark"] .lesson-theme-toggle {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #c9dcae;
+}
+
+html[data-theme="dark"] .lesson-theme-toggle:hover {
+    background: #3a2f24;
+}
+
+html[data-theme="dark"] .lesson-help-fab-img {
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .5));
+}
+
+html[data-theme="dark"] .lesson-help-fab-tooltip {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .lesson-help-fab-tooltip::after {
+    border-top-color: #26201a;
+}
+
+html[data-theme="dark"] .lesson-ambient-tip {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .screen-card h3 {
+    color: #f7efe2;
+}
+
+html[data-theme="dark"] .screen-card p {
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .key-term {
+    color: #4ade80;
+}
+
+html[data-theme="dark"] .plant-diagram-hint,
+html[data-theme="dark"] .quiz-progress-label {
+    color: #ad9a83;
+}
+
+html[data-theme="dark"] .plant-hotspot-explanation {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .plant-hotspot-back {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #4ade80;
+}
+
+html[data-theme="dark"] .did-you-know {
+    background: #26201a;
+    border-color: #4a3d30;
+}
+
+html[data-theme="dark"] .did-you-know p {
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .mascot-overlay-card {
+    background: #26201a;
+    border-color: #4a3d30;
+}
+
+html[data-theme="dark"] .mascot-overlay-text {
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .mascot-overlay-choice-btn {
+    background: #201a14;
+    border-color: #4ade80;
+    color: #4ade80;
+}
+
+html[data-theme="dark"] .mission-summary-box,
+html[data-theme="dark"] .mission-intro-callout,
+html[data-theme="dark"] .quiz-alt-explanation {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .mission-intro-callout-text {
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .mission-summary-step-icon {
+    background: #1c1712;
+    border-color: #4a3d30;
+}
+
+html[data-theme="dark"] .mission-summary-step-label {
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .formula-slot {
+    background: #201a14;
+    border-color: #3a5a49;
+}
+
+html[data-theme="dark"] .formula-slot:has(.formula-piece) {
+    background: #1c3327;
+    border-color: #4ade80;
+}
+
+html[data-theme="dark"] .formula-slot.is-wrong {
+    background: #3a1e22;
+    border-color: #e5646f;
+}
+
+html[data-theme="dark"] .formula-pool {
+    background: #1c1712;
+    border-color: #4a3d30;
+}
+
+html[data-theme="dark"] .formula-piece {
+    background: linear-gradient(180deg, #21362b, #1c3327);
+    color: #d8f3e4;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .35), inset 0 0 0 1px #2f5142;
+}
+
+html[data-theme="dark"] .formula-piece:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .4), inset 0 0 0 1px #3d6a56;
+}
+
+html[data-theme="dark"] .formula-piece-icon {
+    background: #1c1712;
+    box-shadow: inset 0 0 0 1px #2f5142;
+}
+
+html[data-theme="dark"] .formula-builder-reset-btn {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #4ade80;
+}
+
+html[data-theme="dark"] .screen-nav-btn {
+    background: #26201a;
+    color: #4ade80;
+    border-color: #4a3d30;
+}
+
+html[data-theme="dark"] .screen-nav-btn[data-nav-action="next"] {
+    box-shadow: 0 0 22px rgba(79, 214, 145, 0.45);
+}
+
+html[data-theme="dark"] .quiz-option {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #f2e9dd;
+}
+
+html[data-theme="dark"] .quiz-option:hover:not(:disabled) {
+    background: #23302a;
+    border-color: #4ade80;
+}
+
+html[data-theme="dark"] .quiz-option.selected {
+    background: #23302a;
+    border-color: #4ade80;
+}
+
+html[data-theme="dark"] .option-letter {
+    background: #4a3d30;
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .mission-fact-banner {
+    background: #2e2510;
+    border-color: #5c4a1e;
+    color: #e6d9a8;
+}
+
+html[data-theme="dark"] .mascote-chat-panel {
+    background: #201a14;
+    border-color: #4a3d30;
+}
+
+html[data-theme="dark"] .mascote-chat-header {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #c9dcae;
+}
+
+html[data-theme="dark"] .mascote-chat-bubble--assistant {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .mascote-chat-form {
+    border-color: #3a2f24;
+}
+
+html[data-theme="dark"] .mascote-chat-input {
+    background: #1c1712;
+    border-color: #4a3d30;
+    color: #f2e9dd;
 }
 
 

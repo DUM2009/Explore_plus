@@ -15,7 +15,7 @@ const missionData = {
     goldTestUrl: "mission-photosynthesis-goldtest.html",
     mascot: {
         image: "Mascote Explore+ Geology.png",
-        introGreeting: "Olá, aprendiz! 👋 Hoje vamos explorar a missão {missionTitle}. Estás preparado para começar a aventura?",
+        introGreeting: "Olá, aprendiz! 👋 Sou o Kim, o teu explorador. Hoje vamos explorar a missão {missionTitle}. Estás preparado para começar a aventura?",
         introCta: "Estou sempre preparado",
         startGreeting: "Olá {studentTitle}! Hoje, a tua missão é perceber a fotossíntese. Posso ser o teu ajudante nesta aventura ou podes embarcar nela sozinho! O que preferes?",
         startGuidedLabel: "Exploração guiada (com a mascote)",
@@ -24,7 +24,7 @@ const missionData = {
         startGuidedCta: "Estou sempre preparado",
         startAutonomousFollowup: "Que corajoso! Mas lembra-te... sempre que precisares, estarei aqui para ajudar.",
         curiosityPrompt: "Queres saber uma curiosidade? 🔍",
-        curiosityAcceptCta: "Claro",
+        curiosityAcceptCta: "Que fascinante!",
         curiosityDeclineCta: "Talvez mais tarde",
         quizIntro: "Agora que já exploramos {sectionTitle}, vou desafiar-te com algumas perguntas. Estás preparado?",
         quizIntroCta: "Estou sempre preparado",
@@ -33,32 +33,120 @@ const missionData = {
     },
     sections: [
         {
-            id: "introducao",
-            title: "Introdução",
-            subtitle: "Onde tudo começa",
+            id: "componentes-da-planta",
+            title: "O que é e onde acontece",
+            subtitle: "As bases da fotossíntese",
             icon: "🌱",
             accentColor: "#1f8a5b",
-            xpReward: 30,
-            completionMessage: "Etapa concluída! +30 XP. Já sabes o que é a fotossíntese e como se resume.",
-            explorerTip: "Relembra: luz + água + CO₂ = energia para a planta! ☀️💧",
+            xpReward: 70,
+            completionMessage: "Etapa concluída! +70 XP. Já sabes o que é a fotossíntese e onde ela acontece na planta.",
+            explorerTip: "As folhas são o principal local da fotossíntese — é lá que estão a maioria dos cloroplastos! 🍃",
+            introGreeting: "Vamos descobrir o que é a fotossíntese e onde ela acontece.",
+            introCta: "Vamos descobrir",
+            formulaBuilder: true,
             content: `
             <div class="section-content">
                     <div class="screen-card">
-                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?</strong></p>
-                        <p style="text-align: center; margin-top: 18px;">
-                        </p>
-                    </div>
-
-                    <div class="screen-card">
-                        <h3>O que é a fotossíntese?</h3> <br>
+                        <h3>Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?</h3>
                         <img class="card-visual" src="/static/images/Planta-fotossíntese.png" alt="Planta a receber luz solar">
                         <p>Ao contrário dos animais, as plantas não saem à procura de alimento. Elas próprias o fabricam!</p>
-                        <p>Com a energia da luz do Sol, transformam água e dióxido de carbono em glicose, um açúcar que lhes fornece energia para crescer e sobreviver. Como "bónus", libertam oxigénio para a atmosfera. Este incrível processo chama-se <strong>fotossíntese</strong>.</p>
+                        <p>Com a energia da luz do Sol, transformam <span class="key-term">água</span> e <span class="key-term">dióxido de carbono</span> em <span class="key-term">glicose</span>, um açúcar que lhes fornece energia para crescer e sobreviver. Como "bónus", libertam <span class="key-term">oxigénio</span> para a atmosfera. Este incrível processo chama-se <strong>fotossíntese</strong>, e pode resumir-se nesta equação:</p>
+                        <p style="text-align: center; font-size: 1.2em;"><strong>6CO<sub>2</sub> + 6H<sub>2</sub>O &rarr; C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub></strong></p>
                         <details class="did-you-know">
                             <summary>Saber mais...</summary>
-                            <p>Sabias que a fotossíntese tem uma fórmula química? Parece um bicho de sete cabeças, mas não é!</p>
-                            <p style="text-align: center; font-size: 1.2em;"><strong>6CO<sub>2</sub> + 6H<sub>2</sub>O &rarr; C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub></strong></p>
+                            <img class="curiosity-illustration" src="/static/images/Jan Baptist.png" alt="Retrato de Jan Baptist van Helmont">
+                            <p>Sabias que, no século XVII, o cientista Jan van Helmont fez uma experiência com um salgueiro? Plantou-o num vaso e regou-o durante 5 anos. No final, a árvore tinha ganho dezenas de quilos... mas a terra do vaso quase não tinha perdido peso nenhum!</p>
+                            <p>Isso ajudou a perceber que as plantas não "comem" terra para crescer — fabricam o seu próprio alimento a partir de outra coisa. Hoje sabemos que essa "outra coisa" é a fotossíntese.</p>
                         </details>
+                    </div>
+
+                    <div class="screen-card plant-diagram-card">
+                        <h3>Que estruturas da planta estão envolvidas na fotossíntese?</h3>
+                        <div class="plant-diagram-overview">
+                            <p class="plant-diagram-hint">Clica num ponto da imagem para veres a explicação.</p>
+                            <div class="plant-diagram">
+                                <img class="plant-diagram-image" src="/static/images/Planta-fotossíntese.png" alt="Planta com as suas partes">
+                                <button type="button" class="plant-hotspot" data-hotspot="folhas" style="left: 68%; top: 36%;">
+                                    <span class="plant-hotspot-dot"></span>
+                                    <span class="plant-hotspot-label">Folhas</span>
+                                </button>
+                                <button type="button" class="plant-hotspot" data-hotspot="estomas" style="left: 32%; top: 48%;">
+                                    <span class="plant-hotspot-dot"></span>
+                                    <span class="plant-hotspot-label">Estomas</span>
+                                </button>
+                                <button type="button" class="plant-hotspot" data-hotspot="raizes" style="left: 50%; top: 85%;">
+                                    <span class="plant-hotspot-dot"></span>
+                                    <span class="plant-hotspot-label">Raízes</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="plant-hotspot-panels" hidden>
+                            <div class="plant-hotspot-panel" data-hotspot="folhas" data-image="/static/images/Folha.png">
+                                <h4>As folhas: o principal local da fotossíntese</h4>
+                                <p>Embora toda a planta seja importante, é nas <strong>folhas</strong> que a maior parte da fotossíntese acontece.</p>
+                                <p>As folhas possuem muitos cloroplastos concentrados num tecido chamado <span class="key-term">parênquima clorofilino</span>, recebem luz solar e estão em contacto direto com o ar, facilitando a entrada de dióxido de carbono. Vais conhecer melhor este tecido numa próxima missão.</p>
+                                <p><strong>Curiosidade:</strong> Algumas folhas conseguem “mover-se” para captar melhor a luz do Sol — esse movimento chama-se <span class="key-term">heliotropismo</span>.</p>
+                            </div>
+                            <div class="plant-hotspot-panel" data-hotspot="estomas" data-image="/static/images/Estoma.png" data-photo-round="true">
+                                <h4>Os estomas: as “portas” da folha</h4>
+                                <p>As plantas também precisam de captar dióxido de carbono do ar. Para isso existem pequenos poros nas folhas chamados <strong>estomas</strong>.</p>
+                                <p>Os estomas permitem a entrada de dióxido de carbono e a saída do oxigénio produzido durante a fotossíntese. Além disso, regulam a perda de vapor de água para o ambiente.</p>
+                                <p><strong>Curiosidade:</strong> 🌵 Algumas plantas de ambientes secos, como os cactos, abrem os estomas principalmente durante a noite, para perder menos água.</p>
+                            </div>
+                            <div class="plant-hotspot-panel" data-hotspot="raizes" data-image="/static/images/Raízes 2.png">
+                                <h4>As raízes: a origem da água</h4>
+                                <p>A água utilizada na fotossíntese é absorvida pelas <strong>raízes</strong>. Depois de entrar na planta, a água é transportada através do caule até chegar às folhas, onde será utilizada na produção de glicose.</p>
+                                <p><strong>Curiosidade:</strong> 🌳 Algumas árvores ligam as suas raízes a fungos do solo, numa relação chamada <span class="key-term">micorriza</span>: os fungos ajudam a planta a absorver água e minerais, e recebem açúcares em troca.</p>
+                            </div>
+                        </div>
+                        <div class="plant-hotspot-detail" hidden>
+                            <button type="button" class="plant-hotspot-back">← Voltar</button>
+                            <img class="plant-hotspot-photo" alt="">
+                            <div class="plant-hotspot-explanation"></div>
+                        </div>
+                    </div>
+
+                    <div class="screen-card plant-diagram-card">
+                        <h3>O que há dentro do cloroplasto?</h3>
+                        <p class="plant-diagram-hint">Antes de mais, conhece o cloroplasto. Depois, clica nas outras estruturas para veres a explicação.</p>
+                        <div class="plant-diagram">
+                            <img class="plant-diagram-image" src="/static/images/Cloroplasto com destaque para os tilacoides.png" alt="Cloroplasto com destaque interno">
+                            <button type="button" class="plant-hotspot" data-hotspot="tilacoides" style="left: 48%; top: 29%;">
+                                <span class="plant-hotspot-dot"></span>
+                                <span class="plant-hotspot-label">Tilacóides</span>
+                            </button>
+                            <button type="button" class="plant-hotspot" data-hotspot="clorofila" style="left: 63%; top: 29%;">
+                                <span class="plant-hotspot-dot"></span>
+                                <span class="plant-hotspot-label">Clorofila</span>
+                            </button>
+                            <button type="button" class="plant-hotspot" data-hotspot="estroma" style="left: 60%; top: 80%;">
+                                <span class="plant-hotspot-dot"></span>
+                                <span class="plant-hotspot-label">Estroma</span>
+                            </button>
+                        </div>
+                        <div class="plant-hotspot-panels" hidden>
+                            <div class="plant-hotspot-panel" data-hotspot="tilacoides">
+                                <h4>Os tilacóides: os “painéis solares” da fotossíntese</h4>
+                                <p>Dentro do cloroplasto existem pequenas estruturas em forma de discos empilhados chamadas <strong>tilacóides</strong>. É na sua membrana que se encontra a clorofila, o pigmento responsável por captar a energia da luz solar.</p>
+                                <p>Um único cloroplasto pode conter dezenas de tilacóides empilhados, o que aumenta a superfície disponível para captar luz.</p>
+                            </div>
+                            <div class="plant-hotspot-panel" data-hotspot="clorofila">
+                                <h4>A clorofila: o pigmento que capta a luz</h4>
+                                <p>A <strong>clorofila</strong> é o principal <span class="key-term">pigmento fotossintético</span> — um pigmento verde presente nos tilacóides. A sua principal função é captar a energia da luz solar, fornecendo a energia necessária para a fotossíntese.</p>
+                                <p>É também a clorofila que dá às plantas a sua cor verde característica.</p>
+                            </div>
+                            <div class="plant-hotspot-panel" data-hotspot="estroma">
+                                <h4>O estroma: o “citosol” do cloroplasto</h4>
+                                <p>À volta dos tilacóides encontra-se um líquido chamado <strong>estroma</strong>. É nesta região que a planta utiliza a energia captada pela luz para fabricar glicose.</p>
+                                <p>Ao contrário dos tilacóides, que captam a energia da luz, o estroma utiliza essa energia para construir moléculas de glicose.</p>
+                            </div>
+                        </div>
+                        <div class="plant-hotspot-explanation has-content">
+                            <h4>O cloroplasto: a “fábrica” da fotossíntese</h4>
+                            <p>Para fabricar o seu alimento, a planta precisa de um local onde todas as reações da fotossíntese acontecem. Esse local chama-se <strong>cloroplasto</strong>.</p>
+                            <p>O cloroplasto é um organelo presente nas células das plantas. É aqui que a energia da luz é captada e utilizada para transformar água e dióxido de carbono em glicose.</p>
+                            <p><strong>Curiosidade:</strong> Os cloroplastos têm o seu próprio DNA — há milhões de anos eram bactérias independentes, incorporadas pelas células ancestrais das plantas.</p>
+                        </div>
                     </div>
                 </div>
             `,
@@ -78,19 +166,6 @@ const missionData = {
                         alternateExplanation: "Pensa nisto como uma 'receita': a planta usa a luz do Sol como fonte de energia para combinar água e dióxido de carbono e cozinhar o seu próprio alimento — a glicose. O oxigénio que sobra desta receita é libertado para o ar que respiramos."
                     },
                     {
-                        question: "Quais são os reagentes (matérias-primas) da fotossíntese?",
-                        options: [
-                            { text: "Água e dióxido de carbono", correct: true },
-                            { text: "Oxigénio e glicose", correct: false },
-                            { text: "Azoto e glicose", correct: false }
-                        ],
-                        feedback: {
-                            correct: "Exato! Água e CO<sub>2</sub> são os ingredientes de partida.",
-                            incorrect: "Revê: os ingredientes de partida são água e dióxido de carbono."
-                        },
-                        alternateExplanation: "Se a fotossíntese fosse uma receita de cozinha, a água (que vem das raízes) e o dióxido de carbono (que entra pelos estomas) seriam os ingredientes crus. A glicose e o oxigénio só aparecem no fim, como o prato pronto."
-                    },
-                    {
                         question: "Qual é o principal açúcar produzido pela fotossíntese?",
                         options: [
                             { text: "Glicose", correct: true },
@@ -102,130 +177,7 @@ const missionData = {
                             incorrect: "O principal açúcar produzido é a glicose."
                         },
                         alternateExplanation: "De todos os produtos da fotossíntese, a glicose é o que a planta usa como 'combustível' imediato para crescer — é como o pão que sai do forno no final do processo."
-                    }
-                ]
-            }
-        },
-        {
-            id: "componentes-da-planta",
-            title: "Componentes da planta",
-            subtitle: "Quem participa?",
-            icon: "🧩",
-            accentColor: "#1f8a5b",
-            xpReward: 40,
-            completionMessage: "Etapa concluída! +40 XP. Já dominas as estruturas envolvidas na fotossíntese.",
-            explorerTip: "As folhas são o principal local da fotossíntese — é lá que estão a maioria dos cloroplastos! 🍃",
-            introGreeting: "Já sabemos que as plantas fabricam o seu alimento. Mas onde acontece essa transformação?",
-            introCta: "Vamos descobrir",
-            summarySteps: [
-                { icon: "🍃", label: "Folha" },
-                { icon: "🌬️", label: "Estomas" },
-                { icon: "🟢", label: "Cloroplasto" },
-                { icon: "🥞", label: "Tilacóides" },
-                { icon: "💚", label: "Clorofila" }
-            ],
-            content: `
-            <div class="section-content">
-                    <div class="screen-card">
-                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Já sabemos que as plantas fabricam o seu alimento. Mas onde acontece essa transformação?</strong></p>
-                        <p style="text-align: center; margin-top: 18px;"></p>
-                    </div>
-
-                    <div class="screen-card plant-diagram-card">
-                        <h3>Onde fica cada parte da planta?</h3>
-                        <p class="plant-diagram-hint">Clica num ponto da imagem para veres a explicação.</p>
-                        <div class="plant-diagram">
-                            <img class="plant-diagram-image" src="/static/images/Planta-fotossíntese.png" alt="Planta com as suas partes">
-                            <button type="button" class="plant-hotspot" data-hotspot="folhas" style="left: 65%; top: 25%;">
-                                <span class="plant-hotspot-dot"></span>
-                                <span class="plant-hotspot-label">Folhas</span>
-                            </button>
-                            <button type="button" class="plant-hotspot" data-hotspot="estomas" style="left: 32%; top: 48%;">
-                                <span class="plant-hotspot-dot"></span>
-                                <span class="plant-hotspot-label">Estomas</span>
-                            </button>
-                            <button type="button" class="plant-hotspot" data-hotspot="raizes" style="left: 50%; top: 85%;">
-                                <span class="plant-hotspot-dot"></span>
-                                <span class="plant-hotspot-label">Raízes</span>
-                            </button>
-                        </div>
-                        <div class="plant-hotspot-panels" hidden>
-                            <div class="plant-hotspot-panel" data-hotspot="folhas">
-                                <h4>As folhas: o principal local da fotossíntese</h4>
-                                <p>Embora toda a planta seja importante, é nas <strong>folhas</strong> que a maior parte da fotossíntese acontece.</p>
-                                <p>As folhas possuem muitos cloroplastos, recebem luz solar e estão em contacto direto com o ar, facilitando a entrada de dióxido de carbono.</p>
-                                <p>Algumas folhas conseguem “mover-se” para captar melhor a luz do Sol — esse movimento chama-se <strong>heliotropismo</strong>.</p>
-                            </div>
-                            <div class="plant-hotspot-panel" data-hotspot="estomas">
-                                <h4>Os estomas: as “portas” da folha</h4>
-                                <p>As plantas também precisam de captar dióxido de carbono do ar. Para isso existem pequenos poros nas folhas chamados <strong>estomas</strong>.</p>
-                                <p>Os estomas permitem a entrada de dióxido de carbono e a saída do oxigénio produzido durante a fotossíntese. Além disso, regulam a perda de vapor de água para o ambiente.</p>
-                                <p>🌵 Algumas plantas de ambientes secos, como os cactos, abrem os estomas principalmente durante a noite, para perder menos água.</p>
-                            </div>
-                            <div class="plant-hotspot-panel" data-hotspot="raizes">
-                                <h4>As raízes: a origem da água</h4>
-                                <p>A água utilizada na fotossíntese é absorvida pelas <strong>raízes</strong>. Depois de entrar na planta, a água é transportada através do caule até chegar às folhas, onde será utilizada na produção de glicose.</p>
-                                <p>🌳 Algumas árvores ligam as suas raízes a fungos do solo, numa relação chamada <strong>micorriza</strong>: os fungos ajudam a planta a absorver água e minerais, e recebem açúcares em troca.</p>
-                            </div>
-                        </div>
-                        <div class="plant-hotspot-explanation">
-                            <p class="plant-hotspot-explanation-empty">👆 Clica num ponto da imagem para veres a explicação.</p>
-                        </div>
-                    </div>
-
-                    <div class="screen-card plant-diagram-card">
-                        <h3>O que há dentro do cloroplasto?</h3>
-                        <p class="plant-diagram-hint">Clica numa estrutura do cloroplasto para veres a explicação.</p>
-                        <div class="plant-diagram">
-                            <img class="plant-diagram-image" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Cloroplasto com destaque interno">
-                            <button type="button" class="plant-hotspot" data-hotspot="cloroplasto" style="left: 15%; top: 25%;">
-                                <span class="plant-hotspot-dot"></span>
-                                <span class="plant-hotspot-label">Cloroplasto</span>
-                            </button>
-                            <button type="button" class="plant-hotspot" data-hotspot="tilacoides" style="left: 50%; top: 28%;">
-                                <span class="plant-hotspot-dot"></span>
-                                <span class="plant-hotspot-label">Tilacóides</span>
-                            </button>
-                            <button type="button" class="plant-hotspot" data-hotspot="clorofila" style="left: 78%; top: 50%;">
-                                <span class="plant-hotspot-dot"></span>
-                                <span class="plant-hotspot-label">Clorofila</span>
-                            </button>
-                            <button type="button" class="plant-hotspot" data-hotspot="estroma" style="left: 48%; top: 68%;">
-                                <span class="plant-hotspot-dot"></span>
-                                <span class="plant-hotspot-label">Estroma</span>
-                            </button>
-                        </div>
-                        <div class="plant-hotspot-panels" hidden>
-                            <div class="plant-hotspot-panel" data-hotspot="cloroplasto">
-                                <h4>O cloroplasto: a “fábrica” da fotossíntese</h4>
-                                <p>Para fabricar o seu alimento, a planta precisa de um local onde todas as reações da fotossíntese acontecem. Esse local chama-se <strong>cloroplasto</strong>.</p>
-                                <p>O cloroplasto é um organelo presente nas células das plantas. É aqui que a energia da luz é captada e utilizada para transformar água e dióxido de carbono em glicose.</p>
-                                <p>Os cloroplastos têm o seu próprio DNA — há milhões de anos eram bactérias independentes, incorporadas pelas células ancestrais das plantas.</p>
-                            </div>
-                            <div class="plant-hotspot-panel" data-hotspot="tilacoides">
-                                <h4>Os tilacóides: os “painéis solares” da fotossíntese</h4>
-                                <p>Dentro do cloroplasto existem pequenas estruturas em forma de discos empilhados chamadas <strong>tilacóides</strong>. É na sua membrana que se encontra a clorofila, o pigmento responsável por captar a energia da luz solar.</p>
-                                <p>Um único cloroplasto pode conter dezenas de tilacóides empilhados, o que aumenta a superfície disponível para captar luz.</p>
-                            </div>
-                            <div class="plant-hotspot-panel" data-hotspot="clorofila">
-                                <h4>A clorofila: o pigmento que capta a luz</h4>
-                                <p>A <strong>clorofila</strong> é um pigmento verde presente nos tilacóides. A sua principal função é captar a energia da luz solar, fornecendo a energia necessária para a fotossíntese.</p>
-                                <p>É também a clorofila que dá às plantas a sua cor verde característica.</p>
-                            </div>
-                            <div class="plant-hotspot-panel" data-hotspot="estroma">
-                                <h4>O estroma: o “citosol” do cloroplasto</h4>
-                                <p>À volta dos tilacóides encontra-se um líquido chamado <strong>estroma</strong>. É nesta região que a planta utiliza a energia captada pela luz para fabricar glicose.</p>
-                                <p>Ao contrário dos tilacóides, que captam a energia da luz, o estroma utiliza essa energia para construir moléculas de glicose.</p>
-                            </div>
-                        </div>
-                        <div class="plant-hotspot-explanation">
-                            <p class="plant-hotspot-explanation-empty">👆 Clica numa estrutura do cloroplasto para veres a explicação.</p>
-                        </div>
-                    </div>
-                </div>
-            `,
-            quiz: {
-                questions: [
+                    },
                     {
                         question: "Em que organelo ocorre a fotossíntese?",
                         options: [
@@ -266,19 +218,6 @@ const missionData = {
                         alternateExplanation: "Imagina os estomas como pequenas 'portas' microscópicas na folha: abrem para deixar entrar o CO2 e sair o O2, e fecham para a planta não perder água em excesso."
                     },
                     {
-                        question: "Onde, dentro do cloroplasto, se encontra a clorofila?",
-                        options: [
-                            { text: "Nos tilacóides", correct: true },
-                            { text: "No estroma", correct: false },
-                            { text: "No núcleo", correct: false }
-                        ],
-                        feedback: {
-                            correct: "Isso mesmo! A clorofila está na membrana dos tilacóides.",
-                            incorrect: "Revê: a clorofila encontra-se na membrana dos tilacóides."
-                        },
-                        alternateExplanation: "Os tilacóides são como pilhas de 'discos' dentro do cloroplasto, e é na sua membrana que a clorofila fica posicionada — bem exposta para captar a luz que entra na folha."
-                    },
-                    {
                         question: "De onde vem a água usada na fotossíntese?",
                         options: [
                             { text: "É absorvida pelas raízes e transportada até às folhas", correct: true },
@@ -316,15 +255,10 @@ const missionData = {
             content: `
                 <div class="section-content">
 
-                    <div class="screen-card">
-                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Já sabemos onde acontece a fotossíntese. Mas como é que a luz do Sol é transformada em energia útil para a planta?</strong></p>
-                        <p style="text-align: center; margin-top: 18px;">
-                        </p>
-                    </div>
-
  <div class="screen-card">
                         <h3>Como é que a luz inicia a fotossíntese?</h3>
-                        <img class="screen-visual" src="/static/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
+                        <p style="text-align: center; font-size: 1.1em;"><strong>🌱 Já sabemos onde acontece a fotossíntese. Mas como é que a luz do Sol é transformada em energia útil para a planta?</strong></p>
+                        <img class="screen-visual" src="/static/images/Tilacoides 2.jpg" alt="Zoom desde a folha até à membrana dos tilacóides, passando pelo parênquima clorofilino e pelo cloroplasto">
                         <p><strong>Tudo começa quando a luz do Sol atinge a clorofila.</strong>
                         <p>A clorofila não trabalha sozinha. Ela encontra-se organizada em estruturas chamadas fotossistemas, responsáveis por captar a energia luminosa.
 
@@ -372,14 +306,9 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                         </ul>
                     </div>
 
-<div class="screen-card">
-                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Agora que o Fotossistema II conseguiu repor os eletrões perdidos, é altura de acompanhar o percurso dos eletrões que saíram da clorofila.</strong></p>
-                        <p style="text-align: center; margin-top: 18px;">
-                        </p>
-                    </div>
-
                     <div class="screen-card">
                         <h3>Cadeia transportadora de eletrões</h3>
+                        <p style="text-align: center; font-size: 1.1em;"><strong>🌱 Agora que o Fotossistema II conseguiu repor os eletrões perdidos, é altura de acompanhar o percurso dos eletrões que saíram da clorofila.</strong></p>
                         <img class="card-visual" src="/static/images/Cadeia transportadora de eletrões.png" alt="Cadeia transportadora de eletrões">
                         <p>A cadeia transportadora de eletrões é uma etapa da fase luminosa da fotossíntese que ocorre na membrana dos tilacóides dos cloroplastos. Esta etapa acontece após a excitação da clorofila no fotossistema II (PSII).</p>
                         <p>Quando a luz fornece energia à clorofila, os eletrões são libertados e transferidos para uma série de proteínas e moléculas transportadoras. À medida que os eletrões passam de uma molécula para outra ao longo da cadeia transportadora, libertam energia que é utilizada para transportar protões (H⁺) para o interior do tilacóide, criando um gradiente de concentração de protões.</p>
@@ -392,13 +321,8 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                     </div>
 
 <div class="screen-card">
-                        <p style="text-align: center; font-size: 1.2em;"><strong>🌱 Mas será que os eletrões já terminaram o seu percurso?</strong></p>
-                        <p style="text-align: center; margin-top: 18px;">
-                        </p>
-                    </div>
-
-<div class="screen-card">
                         <h3>Síntese de NADPH</h3>
+                        <p style="text-align: center; font-size: 1.1em;"><strong>🌱 Mas será que os eletrões já terminaram o seu percurso?</strong></p>
                         <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Formacao de ATP e NADPH">
                         <p>Os eletrões continuam o seu percurso até chegarem ao fotossistema I (PSI), onde recebem novamente energia da luz e são transferidos para uma molécula recetora.</p>
                         <p>No final da cadeia transportadora, os eletrões são utilizados para reduzir o NADP⁺, formando NADPH, uma molécula que transporta energia química e que será utilizada na fase escura da fotossíntese (ciclo de Calvin).</p>
@@ -529,14 +453,9 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
             introHighlight: "A fase escura, ou <span class=\"key-term\">ciclo de Calvin</span>, usa o <span class=\"key-term\">ATP e NADPH</span> produzidos na fase clara para transformar <span class=\"key-term\">CO₂</span> em <span class=\"key-term\">glicose</span>, no estroma do cloroplasto.",
             content: `
                 <div class="section-content">
-                    <div class="screen-card">
-                        <p style="text-align: center; font-size: 1.2em;"><strong>☀️ A luz já fez o seu trabalho! A planta tem ATP e NADPH nas mãos... mas ainda precisa de transformar o CO₂ em alimento. Como será que o faz?</strong></p>
-                        <p style="text-align: center; margin-top: 18px;">
-                        </p>
-                    </div>
-
                 <div class="screen-card">
                         <h3>O Ciclo de Calvin</h3>
+                        <p style="text-align: center; font-size: 1.1em;"><strong>☀️ A luz já fez o seu trabalho! A planta tem ATP e NADPH nas mãos... mas ainda precisa de transformar o CO₂ em alimento. Como será que o faz?</strong></p>
                         <img class="screen-visual" src="/static/images/Membrana dos tilacoides.jpg" alt="ATP e NADPH a entrar no estroma">
                         <p><strong>É agora que começa a fase escura, também chamada Ciclo de Calvin!</strong></p>
                         <p>Nesta etapa, a planta utiliza a energia produzida na fase luminosa para captar dióxido de carbono (CO₂) e construir moléculas de açúcar — o alimento que irá sustentar o seu crescimento.</p>
@@ -569,13 +488,13 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
                     <div class="screen-card">
                         <h3>Onde ocorre</h3>
-                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Estroma no cloroplasto">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.png" alt="Estroma no cloroplasto">
                         <p>O ciclo de Calvin ocorre no <strong>estroma</strong> do cloroplasto.</p>
                     </div>
 
                     <div class="screen-card">
                         <h3>Fixação do carbono</h3>
-                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="CO2 ligado a RuBP">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.png" alt="CO2 ligado a RuBP">
                         <p>O CO2 fixa-se a <strong>RuBP</strong> com ajuda da <strong>rubisco</strong>.</p>
                     </div>
 
@@ -587,7 +506,7 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
                     <div class="screen-card">
                         <h3>Regeneração</h3>
-                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Regeneracao da RuBP">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.png" alt="Regeneracao da RuBP">
                         <p>Grande parte do G3P regenera RuBP; uma parte sai para produzir glicose.</p>
                     </div>
 
@@ -691,13 +610,8 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
             content: `
                 <div class="section-content">
                     <div class="screen-card">
-                        <p style="text-align: center; font-size: 1.2em;"><strong>🌍 Já sabemos como a fotossíntese acontece. Mas porque é que este processo é tão importante para a vida na Terra?</strong></p>
-                        <p style="text-align: center; margin-top: 18px;">
-                        </p>
-                    </div>
-
-                    <div class="screen-card">
                         <h3>Fonte de oxigénio para (quase) todos os seres vivos</h3>
+                        <p style="text-align: center; font-size: 1.1em;"><strong>🌍 Já sabemos como a fotossíntese acontece. Mas porque é que este processo é tão importante para a vida na Terra?</strong></p>
                         <img class="card-visual" src="/static/images/Planta-fotossíntese.png" alt="Planta a libertar oxigénio">
                         <p>O oxigénio libertado durante a fotossíntese não é apenas um "resíduo" — é o gás que a maioria dos seres vivos, incluindo nós, precisa de respirar para produzir energia nas suas células.</p>
                         <p>Sem a fotossíntese, a atmosfera da Terra não teria oxigénio suficiente para sustentar a vida animal como a conhecemos.</p>
@@ -710,7 +624,7 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
                     <div class="screen-card">
                         <h3>A base de quase todas as cadeias alimentares</h3>
                         <img class="card-visual" src="/static/images/Folha.png" alt="Planta como produtora">
-                        <p>As plantas, as algas e algumas bactérias são <strong>produtoras</strong>: usam a fotossíntese para transformar energia solar em energia química (glicose), que fica disponível para o resto do ecossistema.</p>
+                        <p>As plantas, as algas e algumas bactérias são <span class="key-term">fotoautotróficas</span> — organismos <span class="key-term">fotossintéticos</span> e <strong>produtores</strong> que usam a fotossíntese para transformar energia solar em energia química (glicose), que fica disponível para o resto do ecossistema.</p>
                         <p>Os herbívoros alimentam-se das plantas, os carnívoros alimentam-se dos herbívoros — e, em quase todos os casos, essa energia teve origem na fotossíntese.</p>
                         <details class="did-you-know">
                             <summary>Saber mais...</summary>
@@ -720,7 +634,7 @@ Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam n
 
                     <div class="screen-card">
                         <h3>Regulação do CO₂ atmosférico e do clima</h3>
-                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.jpg" alt="Absorção de CO2">
+                        <img class="card-visual" src="/static/images/Cloroplasto com destaque para os tilacoides.png" alt="Absorção de CO2">
                         <p>Ao absorverem dióxido de carbono (CO₂) da atmosfera para fazer a fotossíntese, as plantas ajudam a reduzir a quantidade deste gás com efeito de estufa, atenuando o aquecimento global.</p>
                         <p>Por isso, florestas como a Amazónia são muitas vezes chamadas de "pulmões verdes" do planeta.</p>
                         <details class="did-you-know">

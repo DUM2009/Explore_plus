@@ -1,0 +1,211 @@
+{
+  "id": "fotossintese-c4-milho",
+  "titulo": "Teste: Fotossíntese — Metabolismo C4 (Milho)",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Zea mays: uma planta com metabolismo C4",
+      "texto_apoio": "O milho (Zea mays) é uma planta com metabolismo fotossintético do tipo C4, uma adaptação que lhe permite manter elevada eficiência fotossintética mesmo em condições de forte luminosidade e temperaturas elevadas — condições em que muitas plantas C3 (como o trigo) veem a sua produtividade reduzida.\n\nNas folhas de milho, as células do mesofilo e as células da bainha do feixe vascular estão dispostas numa configuração característica, designada anatomia de Kranz. Nas células do mesofilo, o CO₂ é inicialmente fixado numa molécula de 4 carbonos, que é depois transportada para as células da bainha do feixe, onde é libertado o CO₂ que alimenta o ciclo de Calvin, isolado do oxigénio atmosférico.\n\nEsta separação espacial reduz significativamente a fotorrespiração — um processo em que a enzima RuBisCO fixa oxigénio em vez de dióxido de carbono, consumindo energia sem produzir açúcares, e que se torna mais frequente em condições de calor e forte luz nas plantas C3."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Fotorrespiração: comparação entre plantas C3 e C4",
+      "texto_apoio": "Um estudo mediu a taxa líquida de fotossíntese (em mg CO₂ fixado · dm² · h⁻¹) em folhas de trigo (C3) e de milho (C4), a diferentes temperaturas, mantendo constante a intensidade luminosa e a disponibilidade de água.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Taxa líquida de fotossíntese em função da temperatura",
+        "colunas": ["Temperatura (°C)", "Trigo (C3)", "Milho (C4)"],
+        "linhas": [
+          ["15", "22", "18"],
+          ["25", "28", "30"],
+          ["35", "19", "38"],
+          ["45", "8", "34"]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Componente laboratorial",
+      "texto_apoio": "Para investigar experimentalmente a diferença entre plantas C3 e C4, um grupo de alunos colocou uma planta de trigo e uma planta de milho, ambas saudáveis e do mesmo tamanho, numa câmara fechada e transparente, com um sensor de CO₂. Ambas as plantas foram submetidas às mesmas condições de luz e temperatura (35 ºC). Os alunos registaram a concentração de CO₂ no interior da câmara ao longo de 40 minutos.",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Concentração de CO₂ na câmara ao longo do tempo (35 °C)",
+        "colunas": ["Tempo (min)", "CO₂ com trigo (ppm)", "CO₂ com milho (ppm)"],
+        "linhas": [
+          ["0", "400", "400"],
+          ["10", "410", "370"],
+          ["20", "425", "345"],
+          ["30", "440", "322"],
+          ["40", "452", "300"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A concentração de CO₂ nas células da bainha do feixe vascular, nas plantas C4, é comparativamente mais elevada do que nas células do mesofilo. Esta característica tem como principal função",
+      "opcoes": [
+        { "letra": "A", "texto": "aumentar a taxa de fotorrespiração." },
+        { "letra": "B", "texto": "favorecer a atividade da RuBisCO na fixação de CO₂, em detrimento da fixação de O₂." },
+        { "letra": "C", "texto": "reduzir a necessidade de água na planta." },
+        { "letra": "D", "texto": "permitir a síntese direta de glicose no mesofilo." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A anatomia de Kranz carateriza-se, sobretudo, por",
+      "opcoes": [
+        { "letra": "A", "texto": "uma única camada de células fotossintéticas, sem compartimentação." },
+        { "letra": "B", "texto": "uma disposição concêntrica de dois tipos de células fotossintéticas com funções distintas." },
+        { "letra": "C", "texto": "ausência de cloroplastos nas células do mesofilo." },
+        { "letra": "D", "texto": "uma redução no número de estomas foliares." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada estrutura/processo da Coluna I à sua localização característica nas plantas C4 (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Fixação inicial de CO₂ (molécula de 4C)" },
+        { "letra": "b", "texto": "Ciclo de Calvin" },
+        { "letra": "c", "texto": "Libertação de CO₂ a partir da molécula de 4C" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Células da bainha do feixe vascular" },
+        { "numero": "2", "texto": "Células do mesofilo" }
+      ],
+      "resposta_correta": { "a": "2", "b": "1", "c": "1" },
+      "cotacao": 12
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F) cada uma das seguintes afirmações.",
+      "itens": [
+        { "letra": "a", "texto": "A fotorrespiração consome energia sem produzir compostos orgânicos úteis à planta." },
+        { "letra": "b", "texto": "Nas plantas C4, o ciclo de Calvin ocorre nas células do mesofilo." },
+        { "letra": "c", "texto": "A separação espacial entre a fixação inicial de CO₂ e o ciclo de Calvin reduz o contacto da RuBisCO com o oxigénio." }
+      ],
+      "resposta_correta": { "a": "V", "b": "F", "c": "V" },
+      "cotacao": 12
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica de que forma a anatomia de Kranz contribui para que o milho mantenha elevada produtividade fotossintética em climas quentes, relacionando a tua resposta com o comportamento da RuBisCO.",
+      "criterios_correcao": "Deve explicar que, ao isolar espacialmente a fixação inicial de CO₂ (mesofilo) do ciclo de Calvin (bainha do feixe), a concentração de CO₂ à volta da RuBisCO mantém-se elevada, reduzindo a probabilidade de esta enzima fixar O₂ em vez de CO₂ — logo, menos fotorrespiração e mais eficiência mesmo a altas temperaturas (quando os estomas tendem a fechar e o O₂ relativo aumenta).",
+      "cotacao": 18
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 1, a temperatura de 25 °C corresponde, aproximadamente,",
+      "opcoes": [
+        { "letra": "A", "texto": "à temperatura ótima para ambas as espécies, sem diferenças relevantes entre elas." },
+        { "letra": "B", "texto": "ao ponto a partir do qual o milho ultrapassa o trigo em taxa fotossintética líquida." },
+        { "letra": "C", "texto": "à temperatura em que a fotorrespiração é máxima em ambas as espécies." },
+        { "letra": "D", "texto": "à temperatura mínima de sobrevivência do trigo." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "O declínio acentuado da taxa fotossintética do trigo entre os 25 °C e os 45 °C está principalmente associado",
+      "opcoes": [
+        { "letra": "A", "texto": "à degradação irreversível da clorofila a temperaturas elevadas." },
+        { "letra": "B", "texto": "ao aumento da taxa de fotorrespiração, que compete com a fixação de CO₂." },
+        { "letra": "C", "texto": "ao encerramento permanente dos estomas a partir dos 25 °C." },
+        { "letra": "D", "texto": "à diminuição da intensidade luminosa incidente na folha." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_longa",
+      "enunciado": "Prevê, justificando com base no texto do Grupo I, o que aconteceria à diferença entre as taxas fotossintéticas do trigo e do milho, representadas na Tabela 1, caso a experiência fosse repetida com uma concentração atmosférica de CO₂ muito mais elevada do que a atual.",
+      "criterios_correcao": "Deve prever que a diferença diminuiria (o trigo aproximar-se-ia do milho), já que mais CO₂ disponível reduziria a fotorrespiração no trigo (menos competição do O₂ pela RuBisCO), tornando a vantagem do C4 menos decisiva.",
+      "cotacao": 18
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "ordenacao",
+      "enunciado": "Ordena, de A a D, a sequência correta de acontecimentos que conduzem à fotorrespiração numa planta C3, em condições de calor e forte luminosidade.",
+      "opcoes": [
+        { "letra": "A", "texto": "A RuBisCO liga-se ao O₂ em vez de ao CO₂." },
+        { "letra": "B", "texto": "Os estomas fecham parcialmente para reduzir a perda de água." },
+        { "letra": "C", "texto": "A concentração interna de CO₂ na folha diminui, enquanto a de O₂ se mantém elevada." },
+        { "letra": "D", "texto": "É consumida energia sem produção líquida de compostos orgânicos úteis." }
+      ],
+      "resposta_correta": ["B", "C", "A", "D"],
+      "cotacao": 10
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "Identifica a variável dependente neste procedimento experimental.",
+      "resposta_correta": "Concentração de CO₂ na câmara",
+      "palavras_chave": ["concentracao de co2", "concentração de co2", "co2 na camara", "co2 na câmara", "co2", "co₂"],
+      "cotacao": 8
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Com base na Tabela 2, indica, com justificação, qual das duas plantas apresenta maior taxa fotossintética líquida a 35 °C.",
+      "criterios_correcao": "Milho — porque a concentração de CO₂ na câmara diminui ao longo do tempo (está a ser consumido/fixado mais rapidamente do que é libertado pela respiração), enquanto no trigo aumenta (respiração/fotorrespiração supera a fixação fotossintética a esta temperatura).",
+      "cotacao": 14
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "O aumento da concentração de CO₂ observado na câmara com a planta de trigo sugere que, a 35 °C, esta planta",
+      "opcoes": [
+        { "letra": "A", "texto": "está a realizar fotossíntese a uma taxa superior à respiração celular." },
+        { "letra": "B", "texto": "está com a taxa de respiração celular (incluindo fotorrespiração) superior à fixação líquida de CO₂ pela fotossíntese." },
+        { "letra": "C", "texto": "não está a realizar qualquer processo metabólico." },
+        { "letra": "D", "texto": "está apenas a libertar O₂, sem consumir CO₂." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Os alunos utilizaram apenas uma planta de cada espécie. Identifica uma limitação desta metodologia e sugere uma melhoria.",
+      "criterios_correcao": "Limitação = uma só planta por espécie não permite avaliar variabilidade individual; melhoria = usar várias plantas (réplicas) de cada espécie e calcular médias.",
+      "cotacao": 16
+    },
+    {
+      "id": "p14",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um dos alunos propôs repetir a experiência a 15 °C, prevendo que, nessas condições, os resultados das duas plantas seriam \"muito mais semelhantes entre si\" do que a 35 °C. Avalia esta previsão, relacionando-a com a informação apresentada nos Grupos I e II.",
+      "criterios_correcao": "Deve avaliar como razoável — a 15 °C a fotorrespiração é pouco significativa em ambas (não há stress térmico), pelo que a vantagem do C4 seria menor, tornando os resultados mais próximos entre si; pode referir a Tabela 1 do Grupo II, onde a 15 °C o trigo tem mesmo valor ligeiramente superior ao milho.",
+      "cotacao": 20
+    }
+  ]
+}

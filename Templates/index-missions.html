@@ -9,56 +9,218 @@
 
 <title>Missões | Explore+</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
 <link rel="stylesheet" href="{% static 'mission-styles.css' %}?v={% now 'U' %}">
 
 
 </head>
 
-<body>
+<body class="shadcn-profile">
 
-<header>
+<div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
 
-<div class="logo">
-<img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
+<section class="profile-layout has-sidebar sidebar-collapsible">
+
+<aside class="profile-sidebar" id="profileSidebar" aria-hidden="true">
+<div class="profile-sidebar-brand">
+<div>
+            <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
+        </div>
 </div>
 
-<nav>
+<nav class="profile-sidebar-nav">
+<div class="sidebar-plan-card">
+<div class="sidebar-plan-info">
+<span class="sidebar-plan-label">Plano</span>
+<strong class="sidebar-plan-name">{% if perfil.plano == 'pro' %}Pro{% else %}Gratuito{% endif %}</strong>
+</div>
+{% if perfil.plano != 'pro' %}
+<a href="{% url 'superexplore' %}" class="sidebar-plan-cta">SuperExplore</a>
+{% endif %}
+</div>
 
-<a href="{% url 'pagina_inicial' %}">Início</a>
-<a href="{% url 'index-missions' %}">Missões</a>
-<a href="{% url 'about' %}">Sobre</a>
+<a href="{% url 'perfil' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+<span class="profile-sidebar-label">Perfil</span>
+</a>
 
+<a href="{% url 'index-missions' %}" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target-icon lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
+<span class="profile-sidebar-label">Missões</span>
+</a>
+<a href="/Testes/"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-spreadsheet-icon lucide-file-spreadsheet"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg></span>
+<span class="profile-sidebar-label">Testes</span>
+</a>
+<a href="/exames/"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+<span class="profile-sidebar-label">Exames</span>
+</a>
+<a href="{% url 'biblioteca' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked-icon lucide-book-marked"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></span>
+<span class="profile-sidebar-label">Biblioteca do Explorador</span>
+</a>
+<a href="/Resumos/"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
+<span class="profile-sidebar-label">Resumos</span>
+</a>
 </nav>
 
-</header>
+<div class="sidebar-theme-card">
+<span class="sidebar-theme-label">Tema</span>
+<button class="header-icon-btn theme-toggle-btn" id="sidebarThemeToggleBtn" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
+<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+<svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+</button>
+</div>
+
+<div class="profile-account">
+
+    <button
+        class="profile-account-trigger"
+        id="profileAccountTrigger"
+        type="button"
+        aria-expanded="false"
+        aria-controls="profileAccountMenu">
+
+        <span class="profile-account-avatar" id="profileAccountAvatar">
+            {{ request.user.username|first|upper }}
+        </span>
+
+         <span class="profile-account-info">
+            <strong id="profileAccountName">{{ request.user.username }}</strong>
+            <span id="profileAccountEmail">{{ request.user.email }}</span>
+        </span>
+
+        <span class="profile-account-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <path d="m6 9 6 6 6-6"/>
+            </svg>
+        </span>
+
+    </button>
+
+    <div
+        class="profile-account-menu"
+        id="profileAccountMenu"
+        hidden>
+
+        <a href="/Configurações/">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+            </svg>
+            <span>Configurações</span>
+        </a>
+
+        <a href="{% url 'logout' %}" class="profile-account-logout">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+                <path d="M10 17l5-5-5-5"/>
+                <path d="M15 12H3"/>
+                <path d="M21 19V5a2 2 0 0 0-2-2h-6"/>
+            </svg>
+            <span>Terminar sessão</span>
+        </a>
+
+    </div>
+
+</div>
+</aside>
+
+<div class="profile-main-shell">
+<div class="profile-content">
+
+<div class="missions-topbar">
+    <div class="missions-topbar-logo">
+        <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
+    </div>
+    <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+</div>
 
 <section class="missions-page">
     <h1>O que vamos explorar hoje?</h1>
-    <p>Escolhe uma missão e começa a tua aventura na Biologia.</p>
+    <div class="missions-page-subrow">
+        <p>Escolhe uma missão e começa a tua aventura na Biologia.</p>
+        <div class="subject-switcher">
+            <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
+                <span>Explore Biology</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
+                <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
+            </ul>
+        </div>
+    </div>
 
-    <div class="missions-grid">
-        <div class="mission-card">
-            <span class="status available">Disponível</span>
-            <h2>🌿 Fotossíntese</h2>
-            <p>Descobre como a luz vira energia e como o CO₂ se transforma em açúcar.</p>
-            <a href="{% url 'mission-photosynthesis' %}" id="photosynthesisCtaLink"><button id="photosynthesisCta" type="button">Começar</button></a>
+    <div class="missions-category">
+        <h2 class="missions-category-title">Botânica</h2>
+        <div class="missions-grid">
+            <div class="mission-card">
+                <div class="mission-card-info">
+                    <h2>Fotossíntese</h2>
+                    <p>Descobre como a luz vira energia e como o CO₂ se transforma em açúcar.</p>
+                </div>
+                <a href="{% url 'mission-photosynthesis' %}" id="photosynthesisCtaLink"><button id="photosynthesisCta" type="button">Começar</button></a>
+            </div>
+            <div class="mission-card locked"><div class="mission-card-info"><h2>Xilema e Floema</h2><p>Descobre como a planta transporta água e nutrientes.</p></div><button disabled>Em breve</button></div>
         </div>
-        <div class="mission-card">
-            <span class="status available">Disponível</span>
-            <h2>🧬 O Código da Vida</h2>
-            <p>Descobre porque o ADN é considerado o código da vida.</p>
-            <a href="{% url 'lesson' %}"><button>Começar</button></a>
+    </div>
+
+    <div class="missions-category">
+        <h2 class="missions-category-title">Genética</h2>
+        <div class="missions-grid">
+            <div class="mission-card">
+                <div class="mission-card-info">
+                    <h2>O Código da Vida</h2>
+                    <p>Descobre porque o ADN é considerado o código da vida.</p>
+                </div>
+                <a href="{% url 'lesson' %}"><button>Começar</button></a>
+            </div>
+            <div class="mission-card locked"><div class="mission-card-info"><h2>Mitose</h2><p>Aprende como as células se dividem.</p></div><button disabled>Em breve</button></div>
+            <div class="mission-card locked"><div class="mission-card-info"><h2>Meiose</h2><p>Descobre como surgem os gâmetas.</p></div><button disabled>Em breve</button></div>
         </div>
-        <div class="mission-card locked"><span class="status locked-status">Bloqueada</span><h2>🦠 A Célula</h2><p>Explora a unidade fundamental da vida.</p><button disabled>Em breve</button></div>
-        <div class="mission-card locked"><span class="status locked-status">Bloqueada</span><h2>🧫 Mitose</h2><p>Aprende como as células se dividem.</p><button disabled>Em breve</button></div>
-        <div class="mission-card locked"><span class="status locked-status">Bloqueada</span><h2>🧬 Meiose</h2><p>Descobre como surgem os gâmetas.</p><button disabled>Em breve</button></div>
-        <div class="mission-card locked"><span class="status locked-status">Bloqueada</span><h2>🌍 Ecologia</h2><p>Compreende como os ecossistemas funcionam.</p><button disabled>Em breve</button></div>
-        <div class="mission-card locked"><span class="status locked-status">Bloqueada</span><h2>🧠 Sistema Nervoso</h2><p>Viaja pelo cérebro e pelos neurónios.</p><button disabled>Em breve</button></div>
+    </div>
+
+    <div class="missions-category">
+        <h2 class="missions-category-title">Citologia</h2>
+        <div class="missions-grid">
+            <div class="mission-card locked"><div class="mission-card-info"><h2>A Célula</h2><p>Explora a unidade fundamental da vida.</p></div><button disabled>Em breve</button></div>
+        </div>
+    </div>
+
+    <div class="missions-category">
+        <h2 class="missions-category-title">Ecologia</h2>
+        <div class="missions-grid">
+            <div class="mission-card locked"><div class="mission-card-info"><h2>Ecossistemas</h2><p>Compreende como os ecossistemas funcionam.</p></div><button disabled>Em breve</button></div>
+        </div>
+    </div>
+
+    <div class="missions-category">
+        <h2 class="missions-category-title">Corpo Humano</h2>
+        <div class="missions-grid">
+            <div class="mission-card locked"><div class="mission-card-info"><h2>Sistema Nervoso</h2><p>Viaja pelo cérebro e pelos neurónios.</p></div><button disabled>Em breve</button></div>
+        </div>
     </div>
 </section>
 
-<footer><p>© Explore+ 2025</p></footer>
+</div>
+</div>
+
+</section>
 
 <script>
 window.exploreCurrentUser = { uid: 'django-{{ request.user.id }}', email: '{{ request.user.email|escapejs }}' };
@@ -108,50 +270,26 @@ function updatePhotosynthesisCta() {
 document.addEventListener('DOMContentLoaded', updatePhotosynthesisCta);
 window.addEventListener('explore:auth-changed', updatePhotosynthesisCta);
 
-function showMissionTutorialOverlay(destinationUrl) {
-    const existing = document.getElementById('missionTutorialOverlay');
-    if (existing) existing.remove();
+const accountTrigger = document.getElementById('profileAccountTrigger');
+const accountMenu = document.getElementById('profileAccountMenu');
 
-    const imageUrl = window.exploreMascotImageUrl || '';
+accountTrigger?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const isOpen = !accountMenu.hidden;
+    accountMenu.hidden = isOpen;
+    accountTrigger.setAttribute('aria-expanded', String(!isOpen));
+});
 
-    const overlay = document.createElement('div');
-    overlay.id = 'missionTutorialOverlay';
-    overlay.className = 'mission-tutorial-overlay';
-    overlay.innerHTML = `
-        <div class="mission-tutorial-card" role="dialog" aria-modal="true" aria-label="Introdução à missão">
-            ${imageUrl ? `<img class="mission-tutorial-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
-            <div class="mission-tutorial-body">
-                <h2>Olá, aprendiz! 👋</h2>
-                <p>Estás prestes a começar a missão <strong>Fotossíntese</strong>! Ao longo do caminho vais explorar 6 etapas: a introdução, os componentes da planta, a fase clara, a fase escura, a importância da fotossíntese e, no fim, um desafio final para testares tudo o que aprendeste.</p>
-                <p>Em cada etapa vais ler o conteúdo a pouco e pouco, ao teu ritmo. Se tiveres alguma dúvida, é só clicar no botão <strong>Ajuda</strong> junto de mim, que estarei sempre por perto para te dar uma mãozinha.</p>
-                <p>No final de cada etapa há um <strong>pequeno quiz</strong> para consolidares o que aprendeste — e não te preocupes se errares alguma pergunta, eu explico-te de outra forma. 😉</p>
-                <p>Estás pronto para começar esta aventura?</p>
-                <div class="mission-tutorial-actions">
-                    <button type="button" class="mission-tutorial-skip" id="missionTutorialSkip">Saltar tutorial</button>
-                    <button type="button" class="mission-tutorial-start" id="missionTutorialStart">Vamos começar a aventura! →</button>
-                </div>
-            </div>
-        </div>
-    `;
-
-    const goToMission = () => {
-        window.location.href = destinationUrl;
-    };
-
-    overlay.querySelector('#missionTutorialStart').addEventListener('click', goToMission);
-    overlay.querySelector('#missionTutorialSkip').addEventListener('click', goToMission);
-
-    document.body.appendChild(overlay);
-}
-
-const photosynthesisCtaLink = document.getElementById('photosynthesisCtaLink');
-if (photosynthesisCtaLink) {
-    photosynthesisCtaLink.addEventListener('click', (event) => {
-        event.preventDefault();
-        showMissionTutorialOverlay(photosynthesisCtaLink.getAttribute('href'));
-    });
-}
+document.addEventListener('click', (event) => {
+    if (accountMenu && !accountMenu.hidden && !accountMenu.contains(event.target) && event.target !== accountTrigger) {
+        accountMenu.hidden = true;
+        accountTrigger?.setAttribute('aria-expanded', 'false');
+    }
+});
 </script>
+<script src="{% static 'nav-drawer.js' %}" defer></script>
+<script src="{% static 'header-actions.js' %}" defer></script>
+<script src="{% static 'subject-switcher.js' %}" defer></script>
 
 </body>
 

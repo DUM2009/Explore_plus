@@ -1,0 +1,102 @@
+{
+  "unidade": "botanica",
+  "titulo": "Botânica",
+  "termos": [
+    {
+      "id": "cloroplasto",
+      "termo": "Cloroplasto",
+      "definicao": "Organelo delimitado por dupla membrana, onde ocorre a fotossíntese, contendo os tilacoides e o estroma.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["tilacoide", "estroma"]
+    },
+    {
+      "id": "tilacoide",
+      "termo": "Tilacoide",
+      "definicao": "Membrana interna do cloroplasto, organizada em pilhas (grana), onde ocorre a fase fotoquímica da fotossíntese.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["grana", "fotossistema", "clorofila"]
+    },
+    {
+      "id": "grana",
+      "termo": "Grana",
+      "definicao": "Conjunto de tilacoides empilhados no interior do cloroplasto.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["tilacoide"]
+    },
+    {
+      "id": "estroma",
+      "termo": "Estroma",
+      "definicao": "Líquido no interior do cloroplasto onde ocorre o ciclo de Calvin.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["cloroplasto", "ciclo_de_calvin"]
+    },
+    {
+      "id": "pirenoide",
+      "termo": "Pirenoide",
+      "definicao": "Estrutura densa no cloroplasto de algas, associada à enzima RuBisCO, que participa na fixação do CO₂.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["rubisco"]
+    },
+    {
+      "id": "clorofila",
+      "termo": "Clorofila",
+      "definicao": "Pigmento verde presente nos tilacoides, responsável por captar a energia da luz solar.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["fotossistema", "tilacoide"]
+    },
+    {
+      "id": "fotossistema",
+      "termo": "Fotossistema",
+      "definicao": "Conjunto de pigmentos e proteínas nos tilacoides que capta energia luminosa e inicia o transporte de eletrões.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["clorofila", "fotolise"]
+    },
+    {
+      "id": "fotolise",
+      "termo": "Fotólise",
+      "definicao": "Quebra da molécula de água, na fase fotoquímica, que liberta eletrões, protões (H⁺) e oxigénio.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["fotossistema"]
+    },
+    {
+      "id": "nadph",
+      "termo": "NADPH",
+      "definicao": "Coenzima reduzida na fase fotoquímica, que transporta poder redutor até ao ciclo de Calvin.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["ciclo_de_calvin", "fotossistema"]
+    },
+    {
+      "id": "atp_sintase",
+      "termo": "ATP sintase",
+      "definicao": "Proteína transmembranar que utiliza o gradiente de protões para produzir ATP.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["tilacoide"]
+    },
+    {
+      "id": "ciclo_de_calvin",
+      "termo": "Ciclo de Calvin",
+      "definicao": "Conjunto de reações da fase química da fotossíntese, no estroma, onde o CO₂ é fixado e convertido em glicose.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["rubisco", "estroma", "nadph"]
+    },
+    {
+      "id": "rubisco",
+      "termo": "RuBisCO",
+      "definicao": "Enzima que catalisa a fixação do dióxido de carbono no ciclo de Calvin.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["ciclo_de_calvin", "pirenoide"]
+    }
+  ]
+}

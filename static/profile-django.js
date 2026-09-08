@@ -1,14 +1,8 @@
-const themeToggleBtn = document.getElementById('themeToggleBtn');
+const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
 const notificationsBtn = document.getElementById('notificationsBtn');
 const notificationsPanel = document.getElementById('notificationsPanel');
 const accountTrigger = document.getElementById('profileAccountTrigger');
 const accountMenu = document.getElementById('profileAccountMenu');
-const sidebar = document.getElementById('profileSidebar');
-const sidebarToggle = document.getElementById('sidebarToggle');
-const sidebarOverlay = document.getElementById('sidebarOverlay');
-const sidebarCollapseToggle = document.getElementById('sidebarCollapseToggle');
-const biologyAverageProgress = document.getElementById('biologyAverageProgress');
-const biologyMissionsDone = document.getElementById('biologyMissionsDone');
 const xpAluno = document.getElementById('xpAluno');
 const nivelAluno = document.getElementById('nivelAluno');
 const xpProgressBar = document.getElementById('xpProgressBar');
@@ -16,6 +10,8 @@ const xpNextLevelText = document.getElementById('xpNextLevelText');
 const summaryXP = document.getElementById('summaryXP');
 const recentActivityList = document.getElementById('recentActivityList');
 const profileStreakCount = document.getElementById('profileStreakCount');
+const subjectSwitcherBtn = document.getElementById('subjectSwitcherBtn');
+const subjectSwitcherMenu = document.getElementById('subjectSwitcherMenu');
 
 function escapeActivityText(value) {
     return String(value || '').replace(/[&<>'"]/g, (character) => ({
@@ -207,13 +203,21 @@ const storedProfile = getStoredProfile();
 renderRecentActivity(storedProfile || {});
 if (storedProfile) {
     const xp = Math.max(0, Number(storedProfile.xp) || 0);
-    const level = Math.floor(xp / 100);
+    // +1 so a brand-new student reads as "Nível 1", not "Nível 0" — matches
+    // the same convention used server-side (PerfilAluno.nivel, models.py).
+    const level = Math.floor(xp / 100) + 1;
     const progressPercent = xp % 100;
-    if (xpAluno) xpAluno.textContent = `${xp} XP`;
+    if (xpAluno) xpAluno.textContent = `${xp} / ${level * 100} XP`;
     if (summaryXP) summaryXP.textContent = `${xp} XP`;
     if (nivelAluno) nivelAluno.textContent = `Nível ${level}`;
     if (xpProgressBar) xpProgressBar.style.width = `${progressPercent}%`;
-    if (xpNextLevelText) xpNextLevelText.textContent = `Próximo nível aos ${(level + 1) * 100} XP`;
+    if (xpNextLevelText) xpNextLevelText.textContent = `${level * 100 - xp} XP até ao nível ${level + 1}`;
+
+    // The hexagon badge is otherwise stuck with whatever the server
+    // rendered on page load — keep it showing the exact same number as the
+    // text above instead of two different totals that can drift apart.
+    const profileLevelBadge = document.getElementById('profileLevelBadge');
+    if (profileLevelBadge) profileLevelBadge.textContent = level;
 
     const streakDays = Math.max(0, Number(storedProfile.streak?.current) || 0);
     if (profileStreakCount) profileStreakCount.textContent = streakDays;
@@ -267,58 +271,22 @@ missionProgress.forEach(({ missionId, percent }) => {
     if (bar) bar.style.width = `${percent}%`;
 });
 
-const averageProgress = Math.round(
-    missionProgress.reduce((sum, item) => sum + item.percent, 0) / missionProgress.length
-);
-const completedMissions = missionProgress.filter(({ percent }) => percent >= 100).length;
-if (biologyAverageProgress) biologyAverageProgress.textContent = `${averageProgress}%`;
-if (biologyMissionsDone) biologyMissionsDone.textContent = `${completedMissions}/${missionProgress.length}`;
-
-function setSidebarOpen(isOpen) {
-    if (!sidebar) return;
-    sidebar.classList.toggle('is-open', isOpen);
-    sidebar.setAttribute('aria-hidden', String(!isOpen));
-    sidebarOverlay?.toggleAttribute('hidden', !isOpen);
-    sidebarToggle?.setAttribute('aria-expanded', String(isOpen));
-}
-
-sidebarToggle?.addEventListener('click', () => {
-    setSidebarOpen(!sidebar.classList.contains('is-open'));
-});
-
-sidebarOverlay?.addEventListener('click', () => setSidebarOpen(false));
-
-sidebarCollapseToggle?.addEventListener('click', () => {
-    const isCollapsed = sidebar.classList.toggle('is-collapsed');
-    sidebarCollapseToggle.setAttribute('aria-expanded', String(!isCollapsed));
-    sidebarCollapseToggle.setAttribute('aria-label', isCollapsed ? 'Mostrar menu' : 'Esconder menu');
-    const label = sidebarCollapseToggle.querySelector('.profile-sidebar-label');
-    if (label) label.textContent = isCollapsed ? 'Mostrar' : 'Esconder';
-    localStorage.setItem('explore-sidebar-collapsed', String(isCollapsed));
-});
-
-if (sidebar && localStorage.getItem('explore-sidebar-collapsed') === 'true') {
-    sidebar.classList.add('is-collapsed');
-    sidebarCollapseToggle?.setAttribute('aria-expanded', 'false');
-    sidebarCollapseToggle?.setAttribute('aria-label', 'Mostrar menu');
-    const label = sidebarCollapseToggle?.querySelector('.profile-sidebar-label');
-    if (label) label.textContent = 'Mostrar';
-}
-
 function applyTheme(theme) {
     document.documentElement.classList.toggle('dark-mode', theme === 'dark');
-    if (themeToggleBtn) {
-        themeToggleBtn.setAttribute('aria-pressed', String(theme === 'dark'));
-        themeToggleBtn.setAttribute('aria-label', theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro');
-    }
+    themeToggleBtns.forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(theme === 'dark'));
+        btn.setAttribute('aria-label', theme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro');
+    });
 }
 
 applyTheme(localStorage.getItem('explore-theme') || 'light');
 
-themeToggleBtn?.addEventListener('click', () => {
-    const nextTheme = document.documentElement.classList.contains('dark-mode') ? 'light' : 'dark';
-    applyTheme(nextTheme);
-    localStorage.setItem('explore-theme', nextTheme);
+themeToggleBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const nextTheme = document.documentElement.classList.contains('dark-mode') ? 'light' : 'dark';
+        applyTheme(nextTheme);
+        localStorage.setItem('explore-theme', nextTheme);
+    });
 });
 
 notificationsBtn?.addEventListener('click', (event) => {
@@ -335,10 +303,6 @@ accountTrigger?.addEventListener('click', (event) => {
     accountTrigger.setAttribute('aria-expanded', String(!isOpen));
 });
 
-document.querySelectorAll('.profile-sidebar-nav a').forEach((link) => {
-    link.addEventListener('click', () => setSidebarOpen(false));
-});
-
 document.addEventListener('click', (event) => {
     if (notificationsPanel && !notificationsPanel.contains(event.target) && event.target !== notificationsBtn) {
         notificationsPanel.hidden = true;
@@ -349,4 +313,200 @@ document.addEventListener('click', (event) => {
         accountMenu.hidden = true;
         accountTrigger?.setAttribute('aria-expanded', 'false');
     }
+
+    if (subjectSwitcherMenu && !subjectSwitcherMenu.contains(event.target) && !subjectSwitcherBtn?.contains(event.target)) {
+        subjectSwitcherMenu.hidden = true;
+        subjectSwitcherBtn?.setAttribute('aria-expanded', 'false');
+    }
+});
+
+subjectSwitcherBtn?.addEventListener('click', () => {
+    const isOpen = subjectSwitcherBtn.getAttribute('aria-expanded') === 'true';
+    subjectSwitcherBtn.setAttribute('aria-expanded', String(!isOpen));
+    subjectSwitcherMenu.hidden = isOpen;
+});
+
+const heroChatBtn = document.getElementById('heroChatBtn');
+const mascoteChatPanel = document.getElementById('mascoteChatPanel');
+const mascoteChatMessages = document.getElementById('mascoteChatMessages');
+const mascoteChatForm = document.getElementById('mascoteChatForm');
+const mascoteChatInput = document.getElementById('mascoteChatInput');
+const mascoteChatSend = document.getElementById('mascoteChatSend');
+let mascoteChatHistory = [];
+
+const profileLayoutEl = document.querySelector('.profile-layout');
+const heroMascotCard = heroChatBtn?.closest('.profile-hero-mascot-card');
+
+function setKimChatOpenLayout(isOpen) {
+    const sidebar = document.getElementById('profileSidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (sidebar) {
+        sidebar.classList.toggle('is-chat-hidden', isOpen);
+        if (isOpen) {
+            sidebar.classList.remove('is-open');
+            sidebar.setAttribute('aria-hidden', 'true');
+            overlay?.setAttribute('hidden', '');
+        }
+    }
+    profileLayoutEl?.classList.toggle('kim-chat-open', isOpen);
+    if (heroMascotCard) heroMascotCard.hidden = isOpen;
+}
+
+function openMascoteChatPanel() {
+    if (!mascoteChatPanel) return;
+    mascoteChatPanel.hidden = false;
+    setKimChatOpenLayout(true);
+    mascoteChatInput?.focus();
+}
+
+const mascoteChatWelcome = document.getElementById('mascoteChatWelcome');
+
+mascoteChatWelcome?.querySelectorAll('.mascote-chat-suggestion').forEach((button) => {
+    button.addEventListener('click', () => {
+        if (!mascoteChatInput) return;
+        mascoteChatInput.value = button.dataset.suggestion || '';
+        mascoteChatInput.focus();
+    });
+});
+
+function appendMascoteChatMessage(role, text, isTyping = false) {
+    if (!mascoteChatMessages) return null;
+    mascoteChatWelcome?.remove();
+    const bubble = document.createElement('div');
+    bubble.className = `mascote-chat-bubble mascote-chat-bubble--${role}${isTyping ? ' is-typing' : ''}`;
+    bubble.textContent = text;
+    mascoteChatMessages.appendChild(bubble);
+    mascoteChatMessages.scrollTop = mascoteChatMessages.scrollHeight;
+    return bubble;
+}
+
+async function sendMascoteChatMessage() {
+    const text = mascoteChatInput?.value.trim();
+    if (!text) return;
+
+    mascoteChatInput.value = '';
+    appendMascoteChatMessage('user', text);
+    const historyBeforeThisMessage = [...mascoteChatHistory];
+    mascoteChatHistory = [...historyBeforeThisMessage, { role: 'user', text }];
+
+    const typingEl = appendMascoteChatMessage('assistant', '…', true);
+
+    try {
+        const response = await fetch(window.exploreMascoteChatUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': window.exploreCsrfToken
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                message: text,
+                missionTitle: 'Perfil',
+                sectionTitle: '',
+                context: '',
+                history: historyBeforeThisMessage
+            })
+        });
+
+        const data = await response.json().catch(() => ({}));
+        typingEl?.remove();
+
+        if (!response.ok) {
+            appendMascoteChatMessage('assistant', data.erro || 'Não consegui responder agora. Tenta mais tarde.');
+            if (data.limiteAtingido && mascoteChatInput && mascoteChatSend) {
+                mascoteChatInput.disabled = true;
+                mascoteChatInput.placeholder = 'Sem perguntas disponíveis esta semana';
+                mascoteChatSend.disabled = true;
+            }
+            return;
+        }
+
+        appendMascoteChatMessage('assistant', data.reply || '...');
+        mascoteChatHistory.push({ role: 'assistant', text: data.reply || '' });
+    } catch (error) {
+        typingEl?.remove();
+        appendMascoteChatMessage('assistant', 'Não consegui ligar ao servidor. Verifica a tua ligação.');
+    }
+}
+
+heroChatBtn?.addEventListener('click', openMascoteChatPanel);
+
+document.getElementById('mascoteChatClose')?.addEventListener('click', () => {
+    if (mascoteChatPanel) mascoteChatPanel.hidden = true;
+    setKimChatOpenLayout(false);
+});
+
+mascoteChatForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    sendMascoteChatMessage();
+});
+
+/** Perfil/Conquistas tabs swap which panel shows in the main column —
+ *  no page navigation, the aside (quote + resumo rápido) never changes. */
+const profileTabButtons = document.querySelectorAll('.profile-tab[data-tab-target]');
+const profileTabPanels = document.querySelectorAll('.profile-tab-panel[data-tab-panel]');
+
+profileTabButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const target = button.dataset.tabTarget;
+
+        profileTabButtons.forEach((btn) => btn.classList.toggle('is-active', btn === button));
+        profileTabPanels.forEach((panel) => {
+            panel.hidden = panel.dataset.tabPanel !== target;
+        });
+    });
+});
+
+/** Motivational quote card cycles through real science quotes every 5s. */
+const SCIENCE_QUOTES = [
+    { text: 'A ciência é a forma mais bonita de explorar o mundo.', author: 'Explore+' },
+    { text: 'Nada na vida deve ser temido, apenas compreendido.', author: 'Marie Curie' },
+    { text: 'A imaginação é mais importante que o conhecimento.', author: 'Albert Einstein' },
+    { text: 'Somos feitos de poeira de estrelas.', author: 'Carl Sagan' },
+    { text: 'Não é o mais forte que sobrevive, mas o que melhor se adapta à mudança.', author: 'Charles Darwin' },
+    { text: 'A sorte favorece a mente preparada.', author: 'Louis Pasteur' },
+    { text: 'Se vi mais longe, foi por estar sobre ombros de gigantes.', author: 'Isaac Newton' },
+];
+
+const profileQuoteCard = document.querySelector('.profile-quote-card');
+const profileQuoteText = document.getElementById('profileQuoteText');
+const profileQuoteAuthor = document.getElementById('profileQuoteAuthor');
+const profileSubjectCard = document.querySelector('.profile-subject-card');
+
+/** Keeps the quote card's height matched to the subject card next to it
+ *  (same row, two different grid columns, so CSS alone can't align them). */
+function syncQuoteCardHeight() {
+    if (!profileQuoteCard || !profileSubjectCard) return;
+    profileQuoteCard.style.minHeight = `${profileSubjectCard.offsetHeight}px`;
+}
+
+if (profileQuoteCard && profileQuoteText && profileQuoteAuthor) {
+    syncQuoteCardHeight();
+    window.addEventListener('resize', syncQuoteCardHeight);
+
+    let quoteIndex = 0;
+
+    setInterval(() => {
+        quoteIndex = (quoteIndex + 1) % SCIENCE_QUOTES.length;
+        profileQuoteCard.classList.add('is-fading');
+
+        setTimeout(() => {
+            const quote = SCIENCE_QUOTES[quoteIndex];
+            profileQuoteText.textContent = quote.text;
+            profileQuoteAuthor.textContent = `— ${quote.author}`;
+            profileQuoteCard.classList.remove('is-fading');
+            syncQuoteCardHeight();
+        }, 350);
+    }, 5000);
+}
+
+document.querySelectorAll('.mission-card-toggle').forEach((toggle) => {
+    const subtopics = toggle.closest('.mission-card')?.querySelector('.mission-card-subtopics');
+    if (!subtopics) return;
+
+    toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        subtopics.hidden = isOpen;
+    });
 });

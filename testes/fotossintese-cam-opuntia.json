@@ -1,0 +1,216 @@
+{
+  "id": "fotossintese-cam-opuntia",
+  "titulo": "Teste: Fotossíntese — Metabolismo CAM (Opuntia)",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Opuntia ficus-indica: sobreviver com pouca água",
+      "texto_apoio": "A Opuntia ficus-indica (figueira-da-índia) é uma planta suculenta, nativa de ambientes áridos, que apresenta um tipo de metabolismo fotossintético designado CAM (Crassulacean Acid Metabolism). Ao contrário das plantas C3 e C4, que abrem os estomas durante o dia, as plantas CAM mantêm os estomas fechados durante o dia e abrem-nos durante a noite, período em que captam CO₂ e o armazenam sob a forma de ácido málico, num vacúolo celular.\n\nDurante o dia, com os estomas fechados (o que reduz drasticamente a perda de água por transpiração), o ácido málico armazenado é convertido, libertando CO₂ que alimenta o ciclo de Calvin, utilizando a energia (ATP e NADPH) produzida pela fase fotoquímica, que continua a depender da luz solar.\n\nEsta separação temporal (dia/noite) entre a captação de CO₂ e o ciclo de Calvin distingue-se da separação espacial (mesofilo/bainha do feixe) característica das plantas C4."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Trocas gasosas ao longo do dia",
+      "texto_apoio": "Um grupo de investigadores mediu a abertura estomática (em percentagem de estomas abertos) e a concentração de ácido málico nos tecidos de uma planta CAM, ao longo de um período de 24 horas.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Abertura estomática e concentração de ácido málico ao longo do dia",
+        "colunas": ["Hora", "Abertura estomática (%)", "Ácido málico (mmol/kg)"],
+        "linhas": [
+          ["00h", "85", "12"],
+          ["06h", "60", "42"],
+          ["12h", "5", "38"],
+          ["18h", "8", "14"],
+          ["24h (=00h)", "85", "12"]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Componente laboratorial",
+      "texto_apoio": "Para comparar a perda de água entre uma planta CAM (Opuntia) e uma planta C3 (feijoeiro), um grupo de alunos colocou um exemplar de cada espécie, com área foliar semelhante, em vasos idênticos, sob as mesmas condições de luz e temperatura (30 ºC, ambiente árido simulado). Mediram a massa de água perdida por transpiração, por unidade de área foliar, durante um período de 12 horas diurnas.",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Água perdida por transpiração (12h diurnas, 30 °C)",
+        "colunas": ["Planta", "Água perdida (mL/dm² de folha)"],
+        "linhas": [
+          ["Opuntia (CAM)", "2"],
+          ["Feijoeiro (C3)", "47"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "Nas plantas CAM, a abertura dos estomas durante a noite, em vez do dia, tem como principal vantagem adaptativa",
+      "opcoes": [
+        { "letra": "A", "texto": "aumentar a taxa de fotossíntese noturna." },
+        { "letra": "B", "texto": "reduzir a perda de água por transpiração, já que as temperaturas noturnas são mais baixas." },
+        { "letra": "C", "texto": "permitir a síntese direta de glicose durante a noite." },
+        { "letra": "D", "texto": "evitar a fotorrespiração durante a noite." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "O ácido málico produzido durante a noite, nas plantas CAM, funciona como",
+      "opcoes": [
+        { "letra": "A", "texto": "fonte direta de energia para a fase fotoquímica." },
+        { "letra": "B", "texto": "reserva temporária de CO₂, a ser libertado durante o dia." },
+        { "letra": "C", "texto": "pigmento fotossintético acessório." },
+        { "letra": "D", "texto": "substituto da glicose como produto final da fotossíntese." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada processo da Coluna I ao período em que ocorre tipicamente numa planta CAM (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Abertura dos estomas e captação de CO₂" },
+        { "letra": "b", "texto": "Ciclo de Calvin" },
+        { "letra": "c", "texto": "Fase fotoquímica" },
+        { "letra": "d", "texto": "Armazenamento de ácido málico no vacúolo" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Dia" },
+        { "numero": "2", "texto": "Noite" }
+      ],
+      "resposta_correta": { "a": "2", "b": "1", "c": "1", "d": "2" },
+      "cotacao": 12
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F) cada uma das seguintes afirmações.",
+      "itens": [
+        { "letra": "a", "texto": "Nas plantas CAM, a fixação inicial de CO₂ e o ciclo de Calvin estão separados no tempo, não no espaço." },
+        { "letra": "b", "texto": "A fase fotoquímica das plantas CAM ocorre durante a noite." },
+        { "letra": "c", "texto": "O metabolismo CAM é uma adaptação que reduz a perda de água em ambientes áridos." }
+      ],
+      "resposta_correta": { "a": "V", "b": "F", "c": "V" },
+      "cotacao": 12
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "resposta_longa",
+      "enunciado": "Compara, de forma sucinta, a estratégia de separação temporal (CAM) com a separação espacial (C4) na resolução do mesmo desafio: manter a fixação de CO₂ eficiente sem expor a RuBisCO a condições que favoreçam a fotorrespiração.",
+      "criterios_correcao": "Deve referir que ambas as estratégias evitam que a RuBisCO esteja exposta a baixas concentrações de CO₂/altas de O₂ (situação que favorece a fotorrespiração) — o C4 faz isso separando fisicamente os locais (mesofilo vs. bainha do feixe) em simultâneo no tempo, enquanto o CAM separa os momentos (noite vs. dia) mantendo o mesmo local.",
+      "cotacao": 16
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 1, o valor mais elevado de ácido málico regista-se por volta das 06h. Este resultado é consistente com o facto de, até essa hora,",
+      "opcoes": [
+        { "letra": "A", "texto": "os estomas terem estado predominantemente fechados, impedindo a entrada de CO₂." },
+        { "letra": "B", "texto": "os estomas terem estado predominantemente abertos, permitindo a captação e acumulação de CO₂ sob a forma de ácido málico." },
+        { "letra": "C", "texto": "a planta ter realizado o ciclo de Calvin durante toda a noite." },
+        { "letra": "D", "texto": "não ter ocorrido qualquer troca gasosa durante a noite." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Entre as 06h e as 12h, a concentração de ácido málico desce de 42 para 38 mmol/kg — uma redução relativamente pequena. A partir das 12h, com os estomas praticamente fechados, é expectável que essa concentração",
+      "opcoes": [
+        { "letra": "A", "texto": "se mantenha constante durante todo o resto do dia." },
+        { "letra": "B", "texto": "continue a diminuir de forma mais acentuada, à medida que o ácido málico é convertido para libertar CO₂ para o ciclo de Calvin." },
+        { "letra": "C", "texto": "aumente novamente, por nova captação de CO₂." },
+        { "letra": "D", "texto": "suba abruptamente devido à fotorrespiração." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica por que razão a abertura estomática é elevada por volta das 00h e muito reduzida por volta das 12h, relacionando a tua resposta com a estratégia adaptativa das plantas CAM.",
+      "criterios_correcao": "Deve explicar que à noite (00h) a planta abre os estomas para captar CO₂ com menor perda de água (temperaturas mais baixas, menor défice de pressão de vapor), enquanto ao meio-dia (12h), com temperaturas elevadas e forte insolação, os estomas fecham-se para minimizar a perda de água por transpiração — a captação de CO₂ já não é necessária nesse momento, pois já foi armazenado como ácido málico.",
+      "cotacao": 16
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "ordenacao",
+      "enunciado": "Ordena, de A a D, a sequência correta de acontecimentos num ciclo diário de uma planta CAM.",
+      "opcoes": [
+        { "letra": "A", "texto": "Os estomas fecham-se com o nascer do sol." },
+        { "letra": "B", "texto": "O ácido málico armazenado é convertido, libertando CO₂ para o ciclo de Calvin." },
+        { "letra": "C", "texto": "Os estomas abrem-se durante a noite, permitindo a entrada de CO₂." },
+        { "letra": "D", "texto": "O CO₂ é fixado sob a forma de ácido málico, armazenado no vacúolo." }
+      ],
+      "resposta_correta": ["C", "D", "A", "B"],
+      "cotacao": 10
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "Identifica a variável dependente neste procedimento experimental.",
+      "resposta_correta": "Massa/volume de água perdida por transpiração (por unidade de área foliar)",
+      "palavras_chave": ["agua perdida", "água perdida", "perda de agua", "perda de água", "transpiracao", "transpiração"],
+      "cotacao": 8
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Com base na Tabela 2, e no que aprendeste sobre o metabolismo CAM, explica a diferença acentuada na quantidade de água perdida entre as duas plantas.",
+      "criterios_correcao": "Deve explicar que a Opuntia, por ser CAM, mantém os estomas fechados durante o período diurno (quando a perda de água por transpiração seria maior, devido às temperaturas mais altas), ao contrário do feijoeiro (C3), que necessita de manter os estomas abertos durante o dia para captar CO₂ diretamente, perdendo por isso mais água.",
+      "cotacao": 16
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Os alunos utilizaram apenas um exemplar de cada espécie. Esta escolha metodológica tem como principal limitação",
+      "opcoes": [
+        { "letra": "A", "texto": "não permitir comparar duas espécies diferentes." },
+        { "letra": "B", "texto": "não permitir avaliar a variabilidade natural entre indivíduos da mesma espécie." },
+        { "letra": "C", "texto": "impedir a medição da transpiração em condições áridas." },
+        { "letra": "D", "texto": "tornar os resultados obtidos inválidos na totalidade." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Se a experiência fosse repetida durante um período noturno de 12 horas, em vez de diurno, é expectável que a diferença entre as duas plantas relativamente à perda de água",
+      "opcoes": [
+        { "letra": "A", "texto": "se mantivesse exatamente igual à registada durante o dia." },
+        { "letra": "B", "texto": "diminuísse, já que a Opuntia teria os estomas abertos durante a noite, ao contrário do feijoeiro." },
+        { "letra": "C", "texto": "aumentasse ainda mais a favor da Opuntia." },
+        { "letra": "D", "texto": "se invertesse, passando o feijoeiro a perder menos água do que a Opuntia." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p14",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno concluiu: \"A Opuntia realiza menos fotossíntese do que o feijoeiro, porque mantém os estomas fechados durante quase todo o dia.\" Comenta criticamente esta conclusão, tendo em conta a distinção entre o momento de captação de CO₂ e o momento em que o ciclo de Calvin efetivamente ocorre nas plantas CAM.",
+      "criterios_correcao": "Deve corrigir a afirmação do aluno, explicando que a captação de CO₂ (à noite) e a realização do ciclo de Calvin (de dia, usando o CO₂ armazenado como ácido málico) são momentos distintos — a Opuntia não deixa de realizar fotossíntese/ciclo de Calvin durante o dia só porque os estomas estão fechados; ela já tem o CO₂ necessário armazenado, pelo que a afirmação do colega está incorreta.",
+      "cotacao": 18
+    }
+  ]
+}

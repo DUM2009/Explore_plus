@@ -5,12 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fotossíntese | Explore+</title>
+    <script>
+        // Applied before the stylesheets paint, so switching pages never
+        // flashes the wrong theme for a student who picked dark mode.
+        (function () {
+            try {
+                if (localStorage.getItem('explore-theme') === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                    document.documentElement.dataset.theme = 'dark';
+                }
+            } catch (error) {
+                // Ignore storage access errors (private browsing) — the page
+                // just falls back to light mode.
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
     <link rel="stylesheet" href="{% static 'mission-styles.css' %}?v={% now 'U' %}">
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="siteHeader">
         <div class="logo">Explore+</div>
         <nav>
             <a href="{% url 'pagina_inicial' %}">Início</a>
@@ -18,42 +36,85 @@
 <a href="{% url 'about' %}">Sobre</a>
 <a href="{% url 'perfil' %}">Perfil</a>
         </nav>
+
+        <div class="header-icon-actions">
+            <div class="header-icon-wrapper">
+            <button class="header-icon-btn" id="notificationsBtn" type="button" aria-label="Notificações" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-icon lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+            <span class="header-icon-badge" id="notificationsBadge" hidden>0</span>
+            </button>
+            <ul class="notifications-panel" id="notificationsPanel" hidden>
+                <li class="notifications-empty">Nenhuma notificação</li>
+            </ul>
+            </div>
+        </div>
     </header>
+
+    <!-- Percurso screen: forest path of section circles, shown once per mission -->
+    <div class="mission-path-screen" id="missionPathScreen" hidden></div>
 
     <!-- Main Mission Container -->
     <div class="mission-container">
         <div id="missionNotice" class="locked-message" style="display:none; margin-bottom:16px;"></div>
 
-        <!-- Mission Header -->
-        <div class="mission-header">
-            <div class="header-content">
-                <a href="{% url 'index-missions' %}" class="back-button">&larr; Voltar</a>
-                <div class="mission-title-section">
-                    <h1 id="missionTitle"></h1>
-                    <p id="missionDescription"></p>
-                </div>
+        <!-- Lesson chrome: close button, per-section progress, live XP/streak -->
+        <div class="lesson-topbar" id="lessonTopbar">
+            <button type="button" class="lesson-close-btn" id="lessonCloseBtn" aria-label="Fechar e voltar ao percurso">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="lesson-progress-track" id="lessonProgressTrack">
+                <div class="lesson-progress-fill" id="lessonProgressFill"></div>
             </div>
+            <div class="lesson-progress-dots" id="lessonProgressDots"></div>
+            <div class="lesson-stats" id="lessonStats"></div>
+            <button type="button" class="lesson-theme-toggle" id="lessonThemeToggle" aria-label="Alternar modo claro/escuro">🌙</button>
         </div>
 
         <!-- Content Area -->
-        <div class="mission-layout">
-            <aside class="mission-sidebar" id="missionSidebar"></aside>
-
-            <div class="mission-content">
-                <!-- Sections Container -->
-                <div class="sections-wrapper" id="sectionsWrapper"></div>
-            </div>
-
-            <aside class="mascot-panel" id="mascotPanel"></aside>
+        <div class="mission-content">
+            <!-- Sections Container -->
+            <div class="sections-wrapper" id="sectionsWrapper"></div>
         </div>
 
         <div class="mission-fact-banner" id="missionFactBanner"></div>
+    </div>
+
+    <!-- Floating mascot button: opens the chat panel -->
+    <button type="button" class="lesson-help-fab" id="lessonHelpFab" aria-label="Falar com o Kim">
+        <img src="{% static 'images/Mascote Explore+ Biology Avatar.png' %}" alt="Mascote Explore+" class="lesson-help-fab-img" id="lessonHelpFabImg">
+        <span class="lesson-help-fab-tooltip">Clica em mim se precisares de ajuda</span>
+    </button>
+
+    <!-- Kim chiming in on his own every so often, so he reads as an active companion -->
+    <div class="lesson-ambient-tip" id="lessonAmbientTip" hidden>
+        <span id="lessonAmbientTipText"></span>
+    </div>
+
+    <!-- Mascot chat panel -->
+    <div class="mascote-chat-panel" id="mascoteChatPanel" hidden>
+        <div class="mascote-chat-header">
+            <span>Fala com o Kim</span>
+            <button type="button" class="mascote-chat-close" id="mascoteChatClose" aria-label="Fechar">✕</button>
+        </div>
+        <div class="mascote-chat-messages" id="mascoteChatMessages"></div>
+        <form class="mascote-chat-form" id="mascoteChatForm">
+            <input type="text" class="mascote-chat-input" id="mascoteChatInput" placeholder="Escreve a tua pergunta..." autocomplete="off" maxlength="500">
+            <button type="submit" class="mascote-chat-send" id="mascoteChatSend" aria-label="Enviar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            </button>
+        </form>
     </div>
 
     <!-- XP Toast Notification -->
     <div class="xp-toast" id="xpToast">
         <span class="xp-icon">⭐</span>
         <span class="xp-text" id="xpText">+50 XP</span>
+    </div>
+
+    <!-- Dictionary ("livro de explorador") Toast Notification -->
+    <div class="dictionary-toast" id="dictionaryToast">
+        <span class="dictionary-toast-icon">📖</span>
+        <span class="dictionary-toast-text" id="dictionaryToastText"></span>
     </div>
 
     <!-- Correct Answer Animation -->
@@ -68,10 +129,26 @@
     <!-- Scripts -->
     <script>
         window.exploreCurrentUser = { uid: 'django-{{ request.user.id }}', email: '{{ request.user.email|escapejs }}' };
+        window.exploreUserId = '{{ request.user.id|escapejs }}';
         window.exploreProgressSyncUrl = '{% url "salvar-progresso-missao" %}';
         window.exploreCsrfToken = '{{ csrf_token }}';
-        window.exploreMascotImageUrl = '{% static "images/Mascote Explore+ Geology.png" %}';
+        window.exploreAvatarOptions = {
+            biology: '{% static "images/Mascote Explore+ Biology Avatar.png" %}',
+            geology: '{% static "images/Mascote Explore+ Geology Avatar.png" %}',
+            chemistry: '{% static "images/Mascote Chemistry Avatar.png" %}',
+        };
         window.exploreMissionsIndexUrl = '{% url "index-missions" %}';
+        window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
+        window.exploreMascotWaveVideoUrl = '{% static "Mascote a acenar.webm" %}';
+    </script>
+    <script src="{% static 'avatar-selector.js' %}"></script>
+    <script>
+        // The mascot shown here (help-FAB + chat/curiosity overlays) follows
+        // whatever avatar the student picked on the profile page — same
+        // stored id, resolved against this page's own static paths above.
+        window.exploreMascotImageUrl = window.ExploreAvatar.getSelectedAvatarUrl();
+        const lessonHelpFabImg = document.getElementById('lessonHelpFabImg');
+        if (lessonHelpFabImg) lessonHelpFabImg.src = window.exploreMascotImageUrl;
     </script>
     <script src="{% static 'mission-data-photosynthesis.js' %}?v={% now 'U' %}"></script>
 <script src="{% static 'profile-xp.js' %}?v={% now 'U' %}"></script>
@@ -84,7 +161,7 @@
                 const notice = document.getElementById('missionNotice');
                 if (notice) {
                     notice.style.display = 'block';
-                    notice.textContent = '🔒 Termina as 6 etapas da missão para desbloquear o Teste de Ouro.';
+                    notice.textContent = '🔒 Termina todas as etapas da missão para desbloquear o Teste de Ouro.';
                 }
             }
 
@@ -123,5 +200,6 @@
     </script>
 
 <script src="{% static 'nav-tabs.js' %}" defer></script>
+<script src="{% static 'header-actions.js' %}" defer></script>
 </body>
 </html>

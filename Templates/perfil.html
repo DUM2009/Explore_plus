@@ -10,7 +10,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'style.css' %}">
 
 </head>
@@ -20,25 +20,9 @@
 <script>
     window.exploreUserId = '{{ request.user.id|escapejs }}';
     window.exploreUserEmail = '{{ request.user.email|escapejs }}';
+    window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
+    window.exploreCsrfToken = '{{ csrf_token }}';
 </script>
-
-<div class="profile-header-actions">
-
-<div class="header-icon-wrapper">
-<button class="header-icon-btn" id="notificationsBtn" type="button" aria-label="Notificações" aria-expanded="false">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 3 1 4.5 2 6H4c1-1.5 2-3 2-6Z"/><path d="M9.5 19a2.5 2.5 0 0 0 5 0"/></svg>
-<span class="header-icon-badge" id="notificationsBadge" hidden>0</span>
-</button>
-<ul class="notifications-panel" id="notificationsPanel" hidden></ul>
-</div>
-
-<button class="header-icon-btn" id="themeToggleBtn" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
-<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></svg>
-</button>
-
-</div>
-
 
 <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
 
@@ -52,40 +36,36 @@
 </div>
 
 <nav class="profile-sidebar-nav">
-<a href="/perfil/" class="is-active" aria-current="page">
-<span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+<div class="sidebar-plan-card">
+<div class="sidebar-plan-info">
+<span class="sidebar-plan-label">Plano</span>
+<strong class="sidebar-plan-name">{% if perfil.plano == 'pro' %}Pro{% else %}Gratuito{% endif %}</strong>
+</div>
+{% if perfil.plano != 'pro' %}
+<a href="{% url 'superexplore' %}" class="sidebar-plan-cta">SuperExplore</a>
+{% endif %}
+</div>
+
+<a href="/perfil/" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
 <span class="profile-sidebar-label">Perfil</span>
 </a>
-<a href="{% url 'index-missions' %}">
-<span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></span>
+
+<a href="{% url 'index-missions' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target-icon lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
 <span class="profile-sidebar-label">Missões</span>
 </a>
-<a href="/Testes/">
-<span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></span>
+<a href="/Testes/"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-spreadsheet-icon lucide-file-spreadsheet"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg></span>
 <span class="profile-sidebar-label">Testes</span>
 </a>
-<a href="/dicionario/" id="dictionaryNavItem">
-<span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h6v18H6a2 2 0 0 1-2-2z"/><path d="M20 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2z"/></svg></span>
-<span class="profile-sidebar-label">Livro do explorador</span>
+<a href="/exames/"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
+<span class="profile-sidebar-label">Exames</span>
 </a>
-<a href="/Resumos/">
-<span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
+<a href="{% url 'biblioteca' %}" id="dictionaryNavItem"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked-icon lucide-book-marked"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></span>
+<span class="profile-sidebar-label">Biblioteca do Explorador</span>
+</a>
+<a href="/Resumos/"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
 <span class="profile-sidebar-label">Resumos</span>
 </a>
-<a href="/Conquistas/" id="achievementsNavItem">
-<span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></span>
-<span class="profile-sidebar-label">Conquistas</span>
-</a>
-<a href="/about/">
-<span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg></span>
-<span class="profile-sidebar-label">Sobre</span>
-</a>
 </nav>
-
-<button class="profile-sidebar-collapse" id="sidebarCollapseToggle" type="button" aria-label="Esconder menu" aria-expanded="true">
-    <span class="profile-sidebar-icon" aria-hidden="true">&larr;</span>
-    <span class="profile-sidebar-label">Esconder</span>
-</button>
 
 <div class="profile-account">
 
@@ -123,18 +103,6 @@
         id="profileAccountMenu"
         hidden>
 
-        <a href="/perfil/">
-            <svg viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor"
-                 stroke-width="2"
-                 stroke-linecap="round"
-                 stroke-linejoin="round">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>
-            </svg>
-            <span>Meu Perfil</span>
-        </a>
-
         <a href="/Configurações/">
             <svg viewBox="0 0 24 24" fill="none"
                  stroke="currentColor"
@@ -142,7 +110,7 @@
                  stroke-linecap="round"
                  stroke-linejoin="round">
                 <circle cx="12" cy="12" r="3"/>
-                <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 1.7-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V20h-2.4v-.21a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06-1.7-1.7.06-.06A1.7 1.7 0 0 0 8.6 15a1.7 1.7 0 0 0-1.55-1H6.8v-2.4h.25a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.88L8.2 8.66l1.7-1.7.06.06a1.7 1.7 0 0 0 1.88.34 1.7 1.7 0 0 0 1-1.55V5.6h2.4v.21a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06 1.7 1.7-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.55 1h.25v2.4h-.25a1.7 1.7 0 0 0-1.55 1Z"/>
+                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
             </svg>
             <span>Configurações</span>
         </a>
@@ -167,211 +135,242 @@
 
 <div class="profile-main-shell">
 <div class="profile-content">
-<div class="profile-summary-card">
 
-    <div class="profile-user-info">
-        <div class="profile-avatar-circle">
-            <img src="{% static 'images/Mascote Explore+ Biology.png' %}" alt="Avatar do utilizador" class="profile-avatar-image">
-        </div>
+<div class="profile-header-actions profile-header-actions--icons-only">
 
-        <div>
-            <p class="profile-kicker">O meu perfil</p>
-            <h1 id="nomeAluno">Olá, {{ PROFILE_RANKS }}!</h1> <br>
-            <p class="profile-user-level">Explorador Aprendiz</p>
-        </div>
-        <div class="profile-level-badge" aria-label="Nível atual">
-            <span id="profileLevelBadge">{{ nivel }}</span>
+    <div class="header-icon-wrapper">
+    <button class="header-icon-btn" id="notificationsBtn" type="button" aria-label="Notificações" aria-expanded="false">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-icon lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+    <span class="header-icon-badge" id="notificationsBadge" hidden>0</span>
+    </button>
+    <ul class="notifications-panel" id="notificationsPanel" hidden>
+        <li class="notifications-empty">Nenhuma notificação</li>
+    </ul>
+    </div>
+
+    <button class="header-icon-btn theme-toggle-btn" id="themeToggleBtn" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+    </button>
+
+</div>
+
+<div class="profile-hero">
+
+    <div class="profile-hero-left">
+        <span class="profile-hero-avatar" aria-hidden="true">{{ request.user.username|first|upper }}</span>
+        <div class="profile-hero-info">
+            <h1 id="nomeAluno">Olá, {{ request.user.username }}!</h1>
+            <p class="profile-hero-rank" id="profileRankSubtitle" title="{{ titulo_descricao }}">{{ titulo_nome }}</p>
+            <span class="profile-hero-level-pill">Nível <span id="profileLevelBadge">{{ nivel }}</span></span>
+            {% if proximo_titulo %}
+            <p class="profile-hero-next-title">Nível {{ proximo_titulo.0 }} desbloqueia "{{ proximo_titulo.1 }}"</p>
+            {% endif %}
         </div>
     </div>
 
-    <div class="profile-xp-info">
-    <div class="profile-xp-header">
-        <h2 id="nivelAluno">Nível {{ nivel }}</h2>
-        <strong id="xpAluno">{{ xp }} XP</strong>
-    </div>
-
-
-        <div class="barra profile-progress-bar">
-            <div class="progresso" id="xpProgressBar" data-progress="{{ xp_progress_percent }}"></div>
-        </div>
-
-        <p id="xpNextLevelText">Próximo nível aos {{ proximo_nivel_xp }} XP</p>
-    </div>
-
-    <div class="profile-stat-row">
-        <div class="profile-stat-card">
-            <strong>🔥</strong>
-            <b id="profileStreakCount">0</b>
-            <span>Dias de sequência</span>
-        </div>
-        <div class="profile-stat-card">
-            <strong>🏆</strong>
-            <b id="profileAchievementCount">{{ total_conquistas }}</b>
-            <span>Conquistas</span>
-        </div>
-        <div class="profile-stat-card">
-            <strong>🚩</strong>
-            <b id="profileMissionCount">{{ missoes_completas }}</b>
-            <span>Missões concluídas</span>
+    <div class="profile-hero-mascot-card">
+        <video src="{% static 'Mascote a acenar.webm' %}" class="profile-hero-mascot-img" id="heroMascotImg" autoplay loop muted playsinline></video>
+        <div class="profile-hero-mascot-copy">
+            <p class="profile-hero-mascot-greeting">Olá, {{ request.user.username }}!</p>
+            <p class="profile-hero-mascot-question">Precisas de ajuda a esclarecer dúvidas ou tens alguma curiosidade?</p>
+            <button type="button" class="profile-hero-chat-btn" id="heroChatBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                <span>Falar com o Kim</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
         </div>
     </div>
 
-    <div class="profile-biology">
+</div>
 
-        <div class="profile-biology-heading">
-            <div>
-                <p class="profile-kicker">Continuar a aprender</p>
-                <h2>As tuas missões</h2>
+<nav class="profile-tabs">
+    <button type="button" class="profile-tab is-active" data-tab-target="perfil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        Perfil
+    </button>
+    <button type="button" class="profile-tab" data-tab-target="conquistas">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg>
+        Conquistas
+    </button>
+    <span class="profile-tab is-disabled">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        Estatísticas
+        <em>Em breve</em>
+    </span>
+</nav>
+
+<div class="profile-grid">
+
+    <div class="profile-grid-main">
+
+    <div class="profile-tab-panel" data-tab-panel="perfil">
+
+        <div class="profile-subject-card">
+            <div class="profile-subject-card-head">
+                <div class="subject-switcher">
+                    <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
+                        <span>Explore Biology</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
+                        <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
+                        <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
+                        <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="profile-biology-stats">
-                <div class="profile-biology-stat">
-                    <strong id="biologyAverageProgress">0%</strong>
-                    <span>Progresso médio</span>
-                </div>
-                <div class="profile-biology-stat">
-                    <strong id="biologyMissionsDone">0/3</strong>
-                    <span>Missões completas</span>
-                </div>
+            <p class="profile-subject-xp" id="xpAluno"><strong>{{ xp }}</strong> <span>/ {{ proximo_nivel_xp }} XP</span></p>
+
+            <div class="barra profile-progress-bar">
+                <div class="progresso" id="xpProgressBar" data-progress="{{ xp_progress_percent }}"></div>
             </div>
+
+            <p class="profile-subject-caption" id="xpNextLevelText">{{ xp_restante }} XP até ao nível {{ proximo_nivel }}</p>
+
+            <span id="nivelAluno" hidden></span>
         </div>
 
-        <article class="profile-learning-card">
-            <div class="profile-learning-art" aria-hidden="true">🌿</div>
-            <div class="profile-learning-copy">
-                <span class="profile-learning-label">Capítulo 1 · Biologia</span>
-                <h3>Fotossíntese</h3>
-                <p>Continua a descobrir como as plantas transformam luz em energia.</p>
-                <div class="profile-learning-progress">
-                    <div class="profile-learning-progress-info">
-                        <span>Progresso da missão</span>
-                        <strong data-mission-progress-value="photosynthesis">0%</strong>
-                    </div>
-                    <div class="profile-subject-bar">
-                        <div data-mission-progress-bar="photosynthesis" data-progress="{{ progresso_missoes.photosynthesis|default:0 }}"></div>
-                    </div>
-                </div>
-                <a class="profile-learning-button" href="{% url 'mission-photosynthesis' %}">
-                    Continuar missão <span aria-hidden="true">→</span>
+        <div class="profile-missions-section">
+            <div class="profile-missions-head">
+                <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> As minhas missões</h2>
+                <a href="{% url 'index-missions' %}" class="profile-missions-viewall">Ver todas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+
+            <div class="profile-missions-card">
+                {% for missao in missoes %}
+                <a class="mission-row" href="{% url missao.url %}">
+                    <span class="mission-row-icon" aria-hidden="true">{% if missao.id == 'photosynthesis' %}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20"/><path d="M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13"/></svg>{% else %}{{ missao.icone }}{% endif %}</span>
+                    <span class="mission-row-body">
+                        <span class="mission-row-category">{{ missao.categoria }}</span>
+                        <span class="mission-row-title">{{ missao.titulo }}</span>
+                        <span class="mission-row-desc">{{ missao.descricao }}</span>
+                    </span>
+                    <span class="mission-row-progress">
+                        <span class="mission-row-bar"><span class="mission-row-bar-fill" style="width: {{ missao.percent }}%"></span></span>
+                        <span class="mission-row-percent">{{ missao.percent }}%</span>
+                    </span>
+                    <span class="mission-row-arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </span>
                 </a>
+                {% endfor %}
+
+                {% if missoes_bloqueadas %}
+                <div class="profile-locked-banner">
+                    🔒 Novas missões chegam em breve — continua a explorar a Fotossíntese!
+                </div>
+                {% endif %}
             </div>
-        </article>
+        </div>
 
-        <div class="profile-subject-progress">
+    </div>
 
-            <div class="profile-subject">
-                <div class="profile-subject-info profile-extra-progress">
-                    <span>Mitose</span>
-                    <strong data-mission-progress-value="mitosis">0%</strong>
-                </div>
-
-                <div class="profile-subject-bar">
-                    <div data-mission-progress-bar="mitosis" data-progress="{{ progresso_missoes.mitosis|default:0 }}"></div>
-                </div>
+    <div class="profile-tab-panel" data-tab-panel="conquistas" hidden>
+        <div class="profile-badges-card">
+            <div class="profile-badges-head">
+                <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg> Conquistas</h2>
+                <p>{{ total_conquistas }} de {{ conquistas_lista|length }} emblemas desbloqueados</p>
             </div>
-
-            <div class="profile-subject">
-                <div class="profile-subject-info profile-extra-progress">
-                    <span>Meiose</span>
-                    <strong data-mission-progress-value="meiosis">0%</strong>
+            <div class="profile-badge-grid">
+                {% for conquista in conquistas_lista %}
+                <div class="profile-badge-card {% if conquista.desbloqueada %}is-unlocked{% else %}is-locked{% endif %}">
+                    <span class="profile-badge-icon" aria-hidden="true">{{ conquista.icone }}</span>
+                    <span class="profile-badge-name">{{ conquista.nome }}</span>
+                    <span class="profile-badge-desc">{{ conquista.descricao }}</span>
+                    <span class="profile-badge-status">{% if conquista.desbloqueada %}Desbloqueado{% else %}🔒 Bloqueado{% endif %}</span>
                 </div>
-
-                <div class="profile-subject-bar">
-                    <div data-mission-progress-bar="meiosis" data-progress="{{ progresso_missoes.meiosis|default:0 }}"></div>
-                </div>
+                {% endfor %}
             </div>
+        </div>
+    </div>
 
+    </div>
+
+    <div class="profile-grid-aside">
+
+        <div class="profile-quote-card">
+            <p class="profile-quote-text" id="profileQuoteText">A ciência é a forma mais bonita de explorar o mundo.</p>
+            <span class="profile-quote-dash" id="profileQuoteAuthor" aria-hidden="true">—</span>
+        </div>
+
+        <div class="profile-quickstats-card">
+            <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8l6 6v12a2 2 0 0 1-2 2z"/></svg> Resumo rápido</h2>
+
+            <div class="profile-quickstat-row">
+                <strong class="profile-stat-icon profile-stat-icon--streak"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg></strong>
+                <span><b id="profileStreakCount">0</b><small>Dias de sequência</small></span>
+            </div>
+            <div class="profile-quickstat-row">
+                <strong class="profile-stat-icon profile-stat-icon--trophy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2"/><path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2"/><path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3"/><path d="M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3"/></svg></strong>
+                <span><b id="profileAchievementCount">{{ total_conquistas }}</b><small>Conquistas</small></span>
+            </div>
+            <div class="profile-quickstat-row">
+                <strong class="profile-stat-icon profile-stat-icon--flag"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/></svg></strong>
+                <span><b id="profileMissionCount">{{ missoes_completas }}</b><small>Missões concluídas</small></span>
+            </div>
         </div>
 
     </div>
 
 </div>
 
-<section class="profile-section-card profile-recent-achievements">
-
-    <div class="profile-section-title">
-        <div>
-            <p class="profile-kicker">O teu percurso</p>
-            <h2>Atividade recente</h2>
-        </div>
-
-        <a href="{% url 'Conquistas' %}" class="profile-see-all">
-            Ver conquistas
-        </a>
-    </div>
-
-    <div class="recent-achievements-grid" id="recentActivityList"></div>
+</div>
+</div>
 
 </section>
 
-<div class="profile-bottom-grid">
-
-    <!-- RESUMO -->
-    <section class="profile-section-card account-summary">
-
-        <div class="profile-section-title">
-            <div>
-                <p class="profile-kicker">A tua atividade</p>
-                <h2>Resumo da conta</h2>
+<div class="mascote-chat-panel" id="mascoteChatPanel" hidden>
+    <div class="mascote-chat-header">
+        <span>Fala com o Kim</span>
+        <button type="button" class="mascote-chat-close" id="mascoteChatClose" aria-label="Fechar">✕</button>
+    </div>
+    <div class="mascote-chat-messages" id="mascoteChatMessages">
+        <div class="mascote-chat-welcome" id="mascoteChatWelcome">
+            <video src="{% static 'Mascote a acenar.webm' %}" class="mascote-chat-welcome-video" autoplay loop muted playsinline></video>
+            <div class="mascote-chat-welcome-copy">
+                <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
+                <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>
+                <p class="mascote-chat-welcome-subtitle">Estou aqui para te ajudar a estudar Biologia. Escolhe uma sugestão ou escreve a tua pergunta!</p>
+            </div>
+            <div class="mascote-chat-suggestions">
+                <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes explicar-me este conceito de forma simples?">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                    Explicar um conceito
+                </button>
+                <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes resumir a matéria desta unidade?">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+                    Resumir a matéria
+                </button>
+                <button type="button" class="mascote-chat-suggestion" data-suggestion="Ajuda-me a preparar-me para um teste.">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                    Preparar um teste
+                </button>
+                <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes dar-me um exemplo prático?">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
+                    Dar um exemplo
+                </button>
+                <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes corrigir a minha resposta?">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                    Corrigir a resposta
+                </button>
+                <button type="button" class="mascote-chat-suggestion" data-suggestion="">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+                    Mais
+                </button>
             </div>
         </div>
-
-        <div class="account-summary-list">
-
-            <div class="account-summary-item">
-                <span>Missões completas</span>
-                <strong id="summaryMissions">{{ missoes_completas }}</strong>
-            </div>
-
-            <div class="account-summary-item">
-                <span>Testes realizados</span>
-                <strong id="summaryTests">0</strong>
-            </div>
-
-            <div class="account-summary-item">
-                <span>XP total</span>
-                <strong id="summaryXP">{{ xp }} XP</strong>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- AÇÕES -->
-    <section class="profile-section-card quick-actions">
-
-        <div class="profile-section-title">
-            <div>
-                <p class="profile-kicker">Atalhos</p>
-                <h2>Ações rápidas</h2>
-            </div>
-        </div>
-
-        <div class="quick-actions-list">
-
-            <a class="profile-action-link" href="{% url 'index-missions' %}">
-                <span>🚀</span>
-                Continuar a aprender
-            </a>
-
-            <a class="profile-action-link" href="{% url 'Conquistas' %}">
-                <span>🏆</span>
-                Ver conquistas
-            </a>
-
-            <a class="profile-action-link" href="{% url 'Resumos' %}">
-                <span>📚</span>
-                Ver resumos
-            </a>
-
-        </div>
-
-    </section>
-
+    </div>
+    <form class="mascote-chat-form" id="mascoteChatForm">
+        <input type="text" class="mascote-chat-input" id="mascoteChatInput" placeholder="Escreve a tua pergunta..." autocomplete="off" maxlength="500">
+        <button type="submit" class="mascote-chat-send" id="mascoteChatSend" aria-label="Enviar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        </button>
+    </form>
 </div>
 
-</div>
 <script src="{% static 'profile-django.js' %}" defer></script>
 
 </body>

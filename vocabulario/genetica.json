@@ -1,0 +1,26 @@
+{
+  "unidade": "genetica",
+  "titulo": "Genética",
+  "termos": [
+    {
+      "id": "adn",
+      "termo": "ADN",
+      "definicao": "Molécula que guarda a informação genética necessária para o funcionamento e a reprodução dos seres vivos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "mitose"
+      ]
+    },
+    {
+      "id": "mitose",
+      "termo": "Mitose",
+      "definicao": "Tipo de divisão celular que origina duas células-filhas geneticamente semelhantes.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "adn"
+      ]
+    }
+  ]
+}
