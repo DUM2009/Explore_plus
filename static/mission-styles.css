@@ -102,6 +102,10 @@ body.mission-header-hidden .mission-container {
     background: #f6f1e6;
 }
 
+html[data-theme="dark"] .mission-path-screen {
+    background: #1c1712;
+}
+
 .mission-path-screen[hidden] {
     display: none;
 }
@@ -110,6 +114,10 @@ body.mission-header-hidden .mission-container {
    white background — no forest/circles behind it yet. */
 .mission-path-screen--intro {
     background: #ffffff;
+}
+
+html[data-theme="dark"] .mission-path-screen--intro {
+    background: #1c1712;
 }
 
 .mission-path-intro-stage {
@@ -142,6 +150,27 @@ body.mission-header-hidden .mission-container {
     font-size: 1.15rem;
     font-weight: 600;
     line-height: 1.5;
+}
+
+html[data-theme="dark"] .mission-path-intro-text {
+    color: #f2e9dd;
+}
+
+html[data-theme="dark"] .mission-intro-skip {
+    color: #b8a58e;
+}
+
+html[data-theme="dark"] .mission-intro-skip:hover {
+    background: rgba(255, 255, 255, .08);
+}
+
+html[data-theme="dark"] .mission-intro-back {
+    color: #f2e9dd;
+    border-color: #4a3d30;
+}
+
+html[data-theme="dark"] .mission-intro-back:hover {
+    background: rgba(255, 255, 255, .08);
 }
 
 /* ============================================================
@@ -177,13 +206,28 @@ body.mission-header-hidden .mission-container {
     transition: margin-left .25s ease;
 }
 
-/* Once there's enough room for the sidebar to sit beside the content
-   instead of on top of it, opening it pushes the content over rather than
-   dimming it under an overlay. */
+/* Push the content over by exactly the sidebar's own current width, at
+   every screen size — otherwise the fixed-position sidebar sits on top of
+   (and hides) the logo/hamburger in .mo-topbar instead of sitting beside
+   them. Matches .profile-sidebar's own width formula at each breakpoint
+   (see style.css: min(320px,86vw) below 981px, var(--sp-sidebar-w) at and
+   above it) so there's never a gap or overlap. */
+.mo-page.sidebar-open .mo-body {
+    margin-left: min(320px, 86vw);
+}
+
 @media (min-width: 981px) {
     .mo-page.sidebar-open .mo-body {
         margin-left: var(--sp-sidebar-w, 264px);
     }
+}
+
+/* The sidebar has its own brand logo at its top — showing this page's logo
+   too while it's open would just duplicate it, so it's hidden for as long
+   as the sidebar stays open (the hamburger toggle next to it stays visible
+   so it can still be used to close the sidebar again). */
+.mo-page.sidebar-open .mo-header-logo {
+    display: none;
 }
 
 /* No separate header bar — just the logo and the sidebar toggle, sitting
@@ -205,12 +249,20 @@ body.mission-header-hidden .mission-container {
 .mo-header-logo img {
     height: 34px;
     width: auto;
+    /* Logo.png has ~10% empty margin baked in before the "E" glyph starts
+       — pull it back so the visible letter lines up with the breadcrumb
+       text below instead of the image's own bounding box. */
+    margin-left: -16px;
 }
 
 /* .nav-drawer-toggle is the site-wide sidebar-toggle button (see style.css)
    — reused here as-is, just recoloured to match this page instead of the
    site's default brown. */
 .mo-topbar .nav-drawer-toggle {
+    /* Keeps it pinned to the right even when the logo next to it is
+       hidden (sidebar open) — with justify-content:space-between alone,
+       a single remaining flex child would snap back to the left. */
+    margin-left: auto;
     color: #4a584f;
     box-shadow: none;
 }
@@ -260,10 +312,11 @@ body.mission-header-hidden .mission-container {
     justify-content: space-between;
     gap: 32px;
     background: #ffffff;
-    border-radius: 24px;
+    border: 1px solid #e7e8e1;
+    border-radius: 12px;
     padding: 36px 40px;
     margin-bottom: 32px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, .05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
 }
 
 .mo-hero-info {
@@ -330,8 +383,9 @@ body.mission-header-hidden .mission-container {
     margin: 0;
     padding: 0;
     background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, .05);
+    border: 1px solid #e7e8e1;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
     overflow: hidden;
 }
 
@@ -377,19 +431,6 @@ body.mission-header-hidden .mission-container {
 .mo-index-row.is-locked .mo-index-row-btn {
     cursor: not-allowed;
     opacity: .7;
-}
-
-.mo-index-number {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 1.5px solid #d8ded9;
-    display: grid;
-    place-items: center;
-    font-size: .8rem;
-    font-weight: 700;
-    color: #5c6b62;
 }
 
 .mo-index-icon {
@@ -482,16 +523,36 @@ body.mission-header-hidden .mission-container {
 }
 
 .mo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
     background: #ffffff;
-    border-radius: 20px;
-    padding: 22px 24px;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, .05);
+    border: 1px solid #e7e8e1;
+    border-radius: 12px;
+    padding: 24px;
+    transition: background .15s ease;
+}
+
+.mo-card:hover {
+    background: rgba(243, 244, 242, .6);
+}
+
+.mo-card-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: rgba(31, 138, 91, .1);
+    color: #1f8a5b;
 }
 
 .mo-card h3 {
-    margin: 0 0 16px;
-    font-size: 1.02rem;
-    font-weight: 800;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -.01em;
     color: #1a2620;
 }
 
@@ -499,7 +560,6 @@ body.mission-header-hidden .mission-container {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 14px;
 }
 
 .mo-progress-ring {
@@ -538,7 +598,6 @@ body.mission-header-hidden .mission-container {
     background: #eef1ec;
     border-radius: 999px;
     overflow: hidden;
-    margin-bottom: 18px;
 }
 
 .mo-progress-bar-fill {
@@ -551,41 +610,44 @@ body.mission-header-hidden .mission-container {
 .mo-reward-row {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding-top: 16px;
-    border-top: 1px dashed #e5e5e0;
+    gap: 10px;
+    background: rgba(238, 241, 236, .6);
+    border-radius: 8px;
+    padding: 10px;
 }
 
 .mo-reward-icon {
     flex-shrink: 0;
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
     background: #eef7ee;
     display: grid;
     place-items: center;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .mo-reward-copy {
     flex: 1 1 auto;
     display: flex;
-    flex-direction: column;
-    gap: 2px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
 }
 
 .mo-reward-copy span {
-    font-size: .78rem;
-    color: #7a8880;
+    font-size: .85rem;
+    color: #4a584f;
 }
 
 .mo-reward-copy strong {
     font-size: 1rem;
+    font-weight: 600;
     color: #1a2620;
 }
 
 .mo-next-card p {
-    margin: 0 0 16px;
+    margin: 0;
     color: #6b7a71;
     font-size: .88rem;
     line-height: 1.5;
@@ -647,7 +709,17 @@ html[data-theme="dark"] .mo-hero,
 html[data-theme="dark"] .mo-index-list,
 html[data-theme="dark"] .mo-card {
     background: #26201a;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, .35);
+    border-color: #3a2f24;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
+}
+
+html[data-theme="dark"] .mo-card:hover {
+    background: rgba(58, 47, 36, .5);
+}
+
+html[data-theme="dark"] .mo-card-icon {
+    background: rgba(93, 163, 86, .16);
+    color: #7bc26c;
 }
 
 html[data-theme="dark"] .mo-hero-info h1,
@@ -676,11 +748,6 @@ html[data-theme="dark"] .mo-index-row.is-active {
     background: #2f2619;
 }
 
-html[data-theme="dark"] .mo-index-number {
-    border-color: #4a3d30;
-    color: #ddccb8;
-}
-
 html[data-theme="dark"] .mo-index-status--locked {
     background: #332a20;
     color: #b8a58e;
@@ -695,7 +762,7 @@ html[data-theme="dark"] .mo-progress-bar {
 }
 
 html[data-theme="dark"] .mo-reward-row {
-    border-top-color: #4a3d30;
+    background: rgba(58, 47, 36, .6);
 }
 
 .mission-path-quiz-demo {

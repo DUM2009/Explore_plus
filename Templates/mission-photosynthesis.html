@@ -30,8 +30,10 @@
     <!-- Percurso screen: forest path of section circles, shown once per mission -->
     <div class="mission-path-screen" id="missionPathScreen" hidden></div>
 
-    <!-- Main Mission Container -->
-    <div class="mission-container">
+    <!-- Main Mission Container: starts hidden (like #missionPathScreen above)
+         so the old lesson-topbar chrome doesn't flash empty before mission.js
+         runs on DOMContentLoaded and decides which of the two to show. -->
+    <div class="mission-container" hidden>
         <div id="missionNotice" class="locked-message" style="display:none; margin-bottom:16px;"></div>
 
         <!-- Lesson chrome: close button, per-section progress, live XP/streak -->
@@ -56,8 +58,11 @@
         <div class="mission-fact-banner" id="missionFactBanner"></div>
     </div>
 
-    <!-- Floating mascot button: opens the chat panel -->
-    <button type="button" class="lesson-help-fab" id="lessonHelpFab" aria-label="Falar com o Kim">
+    <!-- Floating mascot button: opens the chat panel. Starts hidden like the
+         containers above — mission.js decides on DOMContentLoaded whether
+         it should show (only once a lesson section is open, never on the
+         percurso screen), so it must not flash visible before that runs. -->
+    <button type="button" class="lesson-help-fab" id="lessonHelpFab" aria-label="Falar com o Kim" hidden>
         <img src="{% static 'images/Mascote Explore+ Biology Avatar.png' %}" alt="Mascote Explore+" class="lesson-help-fab-img" id="lessonHelpFabImg">
         <span class="lesson-help-fab-tooltip">Clica em mim se precisares de ajuda</span>
     </button>
