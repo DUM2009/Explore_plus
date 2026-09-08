@@ -27,29 +27,6 @@
     <link rel="stylesheet" href="{% static 'mission-styles.css' %}?v={% now 'U' %}">
 </head>
 <body>
-    <!-- Header -->
-    <header id="siteHeader">
-        <div class="logo">Explore+</div>
-        <nav>
-            <a href="{% url 'pagina_inicial' %}">Início</a>
-<a href="{% url 'index-missions' %}">Missões</a>
-<a href="{% url 'about' %}">Sobre</a>
-<a href="{% url 'perfil' %}">Perfil</a>
-        </nav>
-
-        <div class="header-icon-actions">
-            <div class="header-icon-wrapper">
-            <button class="header-icon-btn" id="notificationsBtn" type="button" aria-label="Notificações" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-icon lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
-            <span class="header-icon-badge" id="notificationsBadge" hidden>0</span>
-            </button>
-            <ul class="notifications-panel" id="notificationsPanel" hidden>
-                <li class="notifications-empty">Nenhuma notificação</li>
-            </ul>
-            </div>
-        </div>
-    </header>
-
     <!-- Percurso screen: forest path of section circles, shown once per mission -->
     <div class="mission-path-screen" id="missionPathScreen" hidden></div>
 

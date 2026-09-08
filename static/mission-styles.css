@@ -39,6 +39,39 @@ body.mission-header-hidden .mission-container {
     background: rgba(0,0,0,.05);
 }
 
+/* Back-to-missions button, shown top-left of the percurso screen now that
+   the site header (which used to hold this navigation) is gone from the
+   lesson-player page. */
+.mission-path-back-btn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #244a37;
+    box-shadow: 0 4px 14px rgba(0,0,0,.14);
+    text-decoration: none;
+}
+
+.mission-path-back-btn:hover {
+    background: #f2f7f4;
+}
+
+html[data-theme="dark"] .mission-path-back-btn {
+    background: #26201a;
+    color: #c9dcae;
+    box-shadow: 0 4px 14px rgba(0,0,0,.35);
+}
+
+html[data-theme="dark"] .mission-path-back-btn:hover {
+    background: #332a20;
+}
+
 .mission-intro-controls {
     display: flex;
     flex-direction: column;

@@ -17,13 +17,7 @@ from .models import PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_
 
 
 def redirecionar_apos_autenticacao(user):
-    """
-    Manda o aluno para o inquérito inicial se ainda não o tiver concluído,
-    ou para o perfil normal caso já o tenha feito.
-    """
-    if InqueritoAluno.objects.filter(user=user, concluido=True).exists():
-        return redirect('perfil')
-    return redirect('onboarding')
+    return redirect('perfil')
 
 
 def pagina_inicial(request):
