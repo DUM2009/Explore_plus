@@ -2995,110 +2995,109 @@ html[data-theme="dark"] .intro-equation {
     flex-direction: column;
     height: 100%;
     overflow-y: auto;
-    /* No horizontal padding here — the chat panel needs to reach both
-       edges of this rectangle. Every other child restores its own 20px
-       side inset individually (via margin) instead. */
-    padding: 24px 0;
+    /* No padding at all — the chat panel is the sidebar's only child now
+       and fills it edge-to-edge on every side, top included. */
+    padding: 0;
     background: #f7faf8;
     border-right: 1px solid #e5ece7;
 }
 
+/* Sits inline in .mascote-chat-header now (see the flex-start override
+   below) instead of its own row above the panel — frees up that vertical
+   space for the panel itself. Explicit padding/box-shadow resets defeat
+   the site-wide button{} pill/glow — this must read as a bare arrow, with
+   no button shape at all, not even on hover. */
 .sidebar-back-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    align-self: flex-start;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
     border: none;
     background: none;
-    padding: 6px 6px 6px 2px;
-    margin: 0 20px 22px;
-    border-radius: 8px;
+    box-shadow: none;
+    border-radius: 0;
     color: #4b5a52;
-    font-weight: 600;
-    font-size: .9rem;
     cursor: pointer;
 }
 
 .sidebar-back-btn:hover {
-    background: rgba(0, 0, 0, .05);
+    background: none;
+    box-shadow: none;
+    transform: none;
     color: #12261d;
 }
 
-.sidebar-mission-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 0 20px 26px;
-}
-
-.sidebar-mission-icon {
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    background: rgba(31, 138, 91, .12);
-    font-size: 1.3rem;
-}
-
-.sidebar-mission-title {
-    font-weight: 800;
-    font-size: 1.05rem;
-    color: #12261d;
-}
-
-.sidebar-mission-subtitle {
-    font-size: .8rem;
-    color: #6b7a72;
-    margin-top: 2px;
-}
-
-.sidebar-progress {
-    margin: 20px 20px 0;
-    padding-top: 16px;
-    border-top: 1px solid #e5ece7;
-}
-
-.sidebar-progress-label {
-    font-size: .78rem;
-    font-weight: 700;
-    color: #6b7a72;
-    margin-bottom: 10px;
-}
-
-.sidebar-progress-row {
-    display: flex;
-    align-items: center;
+.mission-sidebar .mascote-chat-header {
+    justify-content: flex-start;
     gap: 10px;
 }
 
-.sidebar-progress-dots {
-    display: flex;
+.mission-sidebar .mascote-chat-header span {
     flex: 1 1 auto;
-    gap: 5px;
 }
 
-.sidebar-progress-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #dfe6e1;
-}
-
-.sidebar-progress-dot.is-completed {
-    background: #1f8a5b;
-}
-
-.sidebar-progress-dot.is-active {
-    background: #7fcaa1;
-}
-
-.sidebar-progress-percent {
+/* Collapses the chat sidebar — bare icon, same reset as .sidebar-back-btn
+   (no button shape, not even on hover). Reopening it is the floating
+   .mascot-chat-fab below, not an icon in the topbar. */
+.sidebar-collapse-btn {
+    display: grid;
+    place-items: center;
     flex-shrink: 0;
-    font-size: .78rem;
-    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    cursor: pointer;
     color: #4b5a52;
+}
+
+.sidebar-collapse-btn:hover {
+    background: none;
+    box-shadow: none;
+    transform: none;
+    color: #12261d;
+}
+
+.mission-shell.is-sidebar-collapsed .mission-sidebar {
+    display: none;
+}
+
+/* Floating mascot button that reopens the chat sidebar — hidden whenever
+   the sidebar is already open, or the student isn't in a section yet (see
+   applyPathScreenVisibility). */
+.mascot-chat-fab {
+    position: fixed;
+    left: 24px;
+    bottom: 24px;
+    z-index: 50;
+    width: 96px;
+    height: 96px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: transform .15s ease;
+}
+
+.mascot-chat-fab:hover {
+    transform: scale(1.06);
+}
+
+.mascot-chat-fab video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 6px 12px rgba(31, 138, 91, .35));
 }
 
 .mission-main {
@@ -3148,7 +3147,7 @@ html[data-theme="dark"] .intro-equation {
     height: 36px;
     border-radius: 10px;
     background: rgba(31, 138, 91, .12);
-    font-size: 1.1rem;
+    color: #1f8a5b;
 }
 
 .lesson-topbar-titles {
@@ -3987,40 +3986,30 @@ html[data-theme="dark"] .sidebar-back-btn {
 }
 
 html[data-theme="dark"] .sidebar-back-btn:hover {
-    background: rgba(255, 255, 255, .08);
+    background: none;
     color: #f2e9dd;
 }
 
-html[data-theme="dark"] .sidebar-mission-title,
+html[data-theme="dark"] .sidebar-collapse-btn {
+    color: #b8a58e;
+}
+
+html[data-theme="dark"] .sidebar-collapse-btn:hover {
+    background: none;
+    color: #f2e9dd;
+}
+
 html[data-theme="dark"] .lesson-topbar-title {
     color: #f2e9dd;
 }
 
-html[data-theme="dark"] .sidebar-mission-subtitle,
-html[data-theme="dark"] .sidebar-progress-label,
 html[data-theme="dark"] .lesson-progress-percent {
     color: #b8a58e;
 }
 
-html[data-theme="dark"] .sidebar-mission-icon,
 html[data-theme="dark"] .lesson-topbar-icon {
     background: rgba(74, 222, 128, .12);
-}
-
-html[data-theme="dark"] .sidebar-progress {
-    border-top-color: #362c22;
-}
-
-html[data-theme="dark"] .sidebar-progress-dot {
-    background: #3a2f24;
-}
-
-html[data-theme="dark"] .sidebar-progress-dot.is-completed {
-    background: #4ade80;
-}
-
-html[data-theme="dark"] .sidebar-progress-percent {
-    color: #ddccb8;
+    color: #4ade80;
 }
 
 html[data-theme="dark"] .lesson-topbar-badge {

@@ -617,8 +617,16 @@ class MissionSystem {
         const pathScreen = document.getElementById('missionPathScreen');
         const container = document.querySelector('.mission-container');
         const header = document.getElementById('siteHeader');
+        const chatFab = document.getElementById('mascotChatFab');
         if (pathScreen) pathScreen.hidden = !this.showPathScreen;
         if (container) container.hidden = this.showPathScreen;
+        // The floating "talk to Kim" button only makes sense once a section
+        // is actually open, and only while the chat sidebar is collapsed
+        // (it's what reopens it) — never on the percurso overview.
+        if (chatFab) {
+            const sidebarCollapsed = document.querySelector('.mission-shell')?.classList.contains('is-sidebar-collapsed');
+            chatFab.hidden = this.showPathScreen || !sidebarCollapsed;
+        }
         // The site header stays hidden for the whole lesson-player experience
         // now (not just during the percurso's mascot intro), since the new
         // lesson topbar (close button + progress + XP/streak) replaces it.
@@ -1163,11 +1171,17 @@ class MissionSystem {
         const percentEl = document.getElementById('lessonProgressPercent');
         if (percentEl) percentEl.textContent = `${percent}%`;
 
-        const icon = this.mission.badge?.icon || '🌱';
         const iconEl = document.getElementById('lessonTopbarIcon');
-        if (iconEl) iconEl.textContent = icon;
+        // An SVG icon, not an emoji — set once since it never changes.
+        if (iconEl && !iconEl.dataset.iconSet) {
+            iconEl.dataset.iconSet = 'true';
+            iconEl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>';
+        }
         const titleEl = document.getElementById('lessonTopbarTitle');
-        if (titleEl) titleEl.textContent = this.mission.title;
+        // The current section's title (e.g. "Fase clara") rather than the
+        // mission's own title — the sidebar back button already gives
+        // context on which mission this is.
+        if (titleEl) titleEl.textContent = section.title;
 
         const statsEl = document.getElementById('lessonStats');
         if (statsEl && window.ProfileXP) {
@@ -1177,12 +1191,21 @@ class MissionSystem {
             `;
         }
 
-        this.renderMissionSidebar();
-
         if (!this._lessonChromeBound) {
             this._lessonChromeBound = true;
             document.getElementById('sidebarBackBtn')?.addEventListener('click', () => this.closeLessonToPath());
             this.initMascoteChatPanel();
+
+            const missionShell = document.querySelector('.mission-shell');
+            const chatFab = document.getElementById('mascotChatFab');
+            document.getElementById('sidebarCollapseBtn')?.addEventListener('click', () => {
+                missionShell?.classList.add('is-sidebar-collapsed');
+                if (chatFab) chatFab.hidden = false;
+            });
+            chatFab?.addEventListener('click', () => {
+                missionShell?.classList.remove('is-sidebar-collapsed');
+                chatFab.hidden = true;
+            });
             window.addEventListener('explore:profile-updated', () => this.renderLessonChrome());
 
             const themeToggle = document.getElementById('lessonThemeToggle');
@@ -1213,35 +1236,6 @@ class MissionSystem {
 
             this.startAmbientMascotTips();
         }
-    }
-
-    /**
-     * Sidebar section list + overall progress footer — the mission's
-     * persistent left-hand navigation. Rebuilt on every renderLessonChrome
-     * call so the active/completed/locked states stay in sync as the
-     * student moves between sections.
-     */
-    renderMissionSidebar() {
-        const sidebar = document.getElementById('missionSidebar');
-        if (!sidebar) return;
-
-        const icon = this.mission.badge?.icon || '🌱';
-        const iconEl = document.getElementById('sidebarMissionIcon');
-        if (iconEl) iconEl.textContent = icon;
-        const titleEl = document.getElementById('sidebarMissionTitle');
-        if (titleEl) titleEl.textContent = this.mission.title;
-
-        const dotsEl = document.getElementById('sidebarProgressDots');
-        if (dotsEl) {
-            dotsEl.innerHTML = this.mission.sections.map((section, index) => {
-                const isCompleted = this.completedSections.has(section.id);
-                const isActive = index === this.activeSectionIndex;
-                return `<span class="sidebar-progress-dot ${isCompleted ? 'is-completed' : ''} ${isActive ? 'is-active' : ''}"></span>`;
-            }).join('');
-        }
-
-        const percentEl = document.getElementById('sidebarProgressPercent');
-        if (percentEl) percentEl.textContent = `${this.getProgressPercent()}%`;
     }
 
     /**

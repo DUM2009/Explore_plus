@@ -918,6 +918,15 @@ body.shadcn-profile .plan-card--highlight {
     border-color: var(--sp-primary);
 }
 
+body.shadcn-profile .plan-card--compact {
+    align-self: start;
+}
+
+body.shadcn-profile .plan-card--compact .plan-card-features {
+    flex: none;
+    margin-bottom: 0;
+}
+
 body.shadcn-profile .plan-card-head {
     display: flex;
     align-items: center;
@@ -9497,6 +9506,53 @@ body.shadcn-profile .profile-quickstat-row small {
 
 /* Resumos */
 
+.resumo-title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 15px;
+}
+
+.resumo-title-row h1 {
+    margin: 0;
+}
+
+/* Mesmo botão "brilhante" do painel do plano na sidebar
+   (.sidebar-plan-cta), reutilizando a animação sidebar-plan-cta-shine. */
+.superexplore-inline-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffb020, #f5860a);
+    color: #241300;
+    font-size: .85rem;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: none;
+    transition: filter .15s ease;
+}
+
+.superexplore-inline-cta::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .75) 48%, rgba(255, 255, 255, .75) 54%, transparent 72%);
+    background-size: 250% 100%;
+    background-position: 160% 0;
+    pointer-events: none;
+    animation: sidebar-plan-cta-shine 3.2s ease-in-out infinite;
+}
+
+.superexplore-inline-cta:hover {
+    filter: brightness(1.08);
+}
+
 .resumo-card {
     display: flex;
     flex-direction: column;
@@ -9632,17 +9688,20 @@ body.shadcn-profile .profile-quickstat-row small {
     font-weight: 700;
     font-family: inherit;
     cursor: pointer;
+    box-shadow: none;
     transition: background-color .2s, color .2s;
 }
 
 .resumo-modo-btn:hover {
     background: #f4f6f1;
+    box-shadow: none;
 }
 
 .resumo-modo-btn.is-active {
     border-color: transparent;
     background: #1f8a5b;
     color: #ffffff;
+    box-shadow: none;
 }
 
 .resumo-equacao {
