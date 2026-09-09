@@ -38,6 +38,7 @@ urlpatterns = [
     path('flashcards/<str:missao_id>/', views.pagina_flashcards, name='flashcards'),
     path('api/atualizar-vocabulario/<str:missao_id>/', views.atualizar_vocabulario, name='atualizar-vocabulario'),
     path('Resumos/', views.pagina_Resumos, name='Resumos'),
+    path('Resumos/<str:resumo_id>/', views.pagina_resumo_detalhe, name='resumo-detalhe'),
     path('Conquistas/', views.pagina_Conquistas, name='Conquistas'),
     path('about/', views.pagina_about, name='about'),
     path('Configurações/', views.pagina_Configurações, name='Configurações'),

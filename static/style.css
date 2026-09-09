@@ -9494,3 +9494,268 @@ body.shadcn-profile .profile-quickstat-row small {
         align-items: flex-start;
     }
 }
+
+/* Resumos */
+
+.resumo-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    border-top: 6px solid var(--resumo-cor-a, #1f8a5b);
+}
+
+.resumo-card-badge {
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--resumo-cor-soft, #eaf3e9);
+    color: var(--resumo-cor-a, #1f8a5b);
+    font-size: .72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.resumo-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 6px;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--resumo-cor-a, #1f8a5b);
+}
+
+.resumo-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 24px 0 28px;
+    padding: 32px 34px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--resumo-cor-a), var(--resumo-cor-b));
+    color: #ffffff;
+}
+
+.resumo-header-badge {
+    align-self: flex-start;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .18);
+    font-size: .75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.resumo-header h1 {
+    margin: 0;
+    font-size: 1.9rem;
+}
+
+.resumo-header p {
+    margin: 0;
+    max-width: 680px;
+    font-size: 1rem;
+    line-height: 1.65;
+    opacity: .94;
+}
+
+.resumo-equacao {
+    margin: 0 0 32px;
+    padding: 22px 26px;
+    border-radius: 16px;
+    background: #eaf3e9;
+    border: 1px solid #d7ead9;
+    color: #1f4d33;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    overflow-x: auto;
+}
+
+.resumo-seccao {
+    margin-bottom: 36px;
+}
+
+.resumo-seccao h2 {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+    color: #1f4d33;
+}
+
+.resumo-seccao > p {
+    margin: 0 0 18px;
+    color: #555;
+    line-height: 1.7;
+}
+
+.resumo-definicoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.resumo-definicao-item {
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: #f7f9f5;
+    border: 1px solid #e2e3db;
+}
+
+.resumo-definicao-item strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #1f8a5b;
+    font-size: .95rem;
+}
+
+.resumo-definicao-item span {
+    color: #5c6b5f;
+    font-size: .88rem;
+    line-height: 1.6;
+}
+
+.resumo-passos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0 0 18px;
+    padding: 0;
+}
+
+.resumo-passo {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.resumo-passo-numero {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #1f8a5b;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: .85rem;
+}
+
+.resumo-passo-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.resumo-passo-texto strong {
+    color: #1f2d22;
+    font-size: .95rem;
+}
+
+.resumo-passo-texto span {
+    color: #5c6b5f;
+    font-size: .88rem;
+    line-height: 1.65;
+}
+
+.resumo-dica {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: #fff7e0;
+    border: 1px solid #f2e2a8;
+    color: #7a6320;
+    font-size: .88rem;
+    line-height: 1.65;
+}
+
+.resumo-dica svg {
+    flex: none;
+    margin-top: 2px;
+    color: #c99a1f;
+}
+
+.resumo-dica strong {
+    color: #5c4a10;
+}
+
+.resumo-fatores {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 16px;
+}
+
+.resumo-fator-card {
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e3db;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .04);
+}
+
+.resumo-fator-card strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #1f8a5b;
+    font-size: .92rem;
+}
+
+.resumo-fator-card span {
+    color: #5c6b5f;
+    font-size: .86rem;
+    line-height: 1.6;
+}
+
+.resumo-sintese {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.resumo-sintese-item {
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #eaf3e9, #f7faf1);
+    border: 1px solid #d7ead9;
+}
+
+.resumo-sintese-item strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #1f4d33;
+    font-size: .82rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+}
+
+.resumo-sintese-item span {
+    color: #3d4d40;
+    font-size: .88rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .resumo-header {
+        padding: 24px 22px;
+    }
+
+    .resumo-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .resumo-equacao {
+        padding: 18px;
+        font-size: .95rem;
+    }
+}

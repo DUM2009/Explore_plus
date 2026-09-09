@@ -850,9 +850,10 @@ class MissionSystem {
                                 <div class="mo-hero-meta">
                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-spreadsheet"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg> ${totalCount} secções</span>
                                     <span>${xpStarIconSvg} +${this.mission.totalXP || 0} XP</span>
-                                    ${this.mission.badge ? `<span>${this.mission.badge.icon} ${this.mission.badge.name}</span>` : ''}
+                                    ${this.mission.badge ? `<span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-11 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg> ${this.mission.badge.name}</span>` : ''}
                                 </div>
                             </div>
+                            ${window.exploreMascotPlantVideoUrl ? `<video class="mo-hero-video" src="${window.exploreMascotPlantVideoUrl}" autoplay loop muted playsinline></video>` : ''}
                         </section>
 
                         <section class="mo-index">
@@ -873,6 +874,7 @@ class MissionSystem {
                                                 <span>${completedCount}/${totalCount}</span>
                                             </div>
                                             <strong class="mo-progress-percent">${progressPercent}%</strong>
+                                            ${waveVideoUrl ? `<video class="mo-progress-mascot" src="${waveVideoUrl}" autoplay loop muted playsinline ${imageUrl ? `poster="${imageUrl}"` : ''}></video>` : ''}
                                         </div>
                                         <div class="mo-progress-bar"><div class="mo-progress-bar-fill" style="width:${progressPercent}%"></div></div>
                                         <div class="mo-reward-row">
@@ -886,11 +888,14 @@ class MissionSystem {
 
                                     <div class="mo-card mo-next-card">
                                         <div class="mo-card-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
                                         </div>
-                                        <h3>Pronto para o próximo desafio?</h3>
-                                        <p>Completa esta missão e desbloqueia a próxima aventura!</p>
-                                        <a href="${missionsIndexUrl}" class="mo-next-cta">Ver próxima missão →</a>
+                                        <h3>Testa os teus conhecimentos</h3>
+                                        <p>Já exploraste a matéria? Faz o Teste de Fotossíntese e vê quanto aprendeste!</p>
+                                        <a href="${window.exploreFotossinteseTesteUrl || '#'}" class="mo-next-cta">
+                                            <span>Fazer o teste</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mo-next-cta-arrow"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                        </a>
                                     </div>
                                 </aside>
                             </div>
@@ -965,6 +970,11 @@ class MissionSystem {
                     }
                 });
             }
+
+            if (!this._indexConnectorsResizeBound) {
+                this._indexConnectorsResizeBound = true;
+                window.addEventListener('resize', () => this.drawIndexConnectors());
+            }
         }
 
         screen.querySelectorAll('[data-section-index]').forEach((btn) => {
@@ -999,6 +1009,59 @@ class MissionSystem {
         }
 
         this.applyPathScreenVisibility();
+
+        // Only meaningful once the screen is actually visible — measuring
+        // icon positions while it (or an ancestor) is still hidden would
+        // just read 0×0 rects. applyPathScreenVisibility() above is what
+        // unhides it, so this has to run after that, not before.
+        if (!introActive) {
+            this.drawIndexConnectors();
+            // Row heights can shift slightly once the custom webfont finishes
+            // loading (line-height/metrics changing after the fallback font
+            // was first measured) — redraw once that settles.
+            document.fonts?.ready?.then(() => this.drawIndexConnectors());
+        }
+    }
+
+    /**
+     * Draws the dashed "percurso" trail between the índice icons — one
+     * segment per gap, from one icon's actual measured bottom edge to the
+     * next icon's top edge, so it only ever occupies the gap and can never
+     * render on top of an icon (row heights vary with title/subtitle
+     * length, so this can't be pinned down with fixed CSS offsets).
+     */
+    drawIndexConnectors() {
+        const list = document.querySelector('.mo-index-list');
+        if (!list) return;
+
+        list.querySelectorAll('.mo-index-connector').forEach((el) => el.remove());
+
+        const icons = Array.from(list.querySelectorAll('.mo-index-icon'));
+        if (icons.length < 2) return;
+
+        const listRect = list.getBoundingClientRect();
+        const edges = icons.map((icon) => {
+            const rect = icon.getBoundingClientRect();
+            return {
+                x: rect.left + rect.width / 2 - listRect.left,
+                top: rect.top - listRect.top,
+                bottom: rect.bottom - listRect.top,
+            };
+        });
+
+        for (let i = 0; i < edges.length - 1; i++) {
+            const from = edges[i];
+            const to = edges[i + 1];
+            const height = to.top - from.bottom;
+            if (height <= 0) continue;
+
+            const segment = document.createElement('div');
+            segment.className = 'mo-index-connector';
+            segment.style.left = `${from.x}px`;
+            segment.style.top = `${from.bottom}px`;
+            segment.style.height = `${height}px`;
+            list.appendChild(segment);
+        }
     }
 
     /**
@@ -1044,6 +1107,20 @@ class MissionSystem {
 
     getMascotWaveVideoUrl() {
         return window.exploreMascotWaveVideoUrl || '';
+    }
+
+    /**
+     * Mascot figure used in the overlay dialogs (intro/help/quiz-choice
+     * cards): the waving video when available, falling back to the static
+     * avatar image so the dialog still renders if the video is missing.
+     */
+    getMascotOverlayFigureHtml() {
+        const waveVideoUrl = this.getMascotWaveVideoUrl();
+        const imageUrl = this.getMascotImageUrl();
+        if (waveVideoUrl) {
+            return `<video class="mascot-overlay-figure" src="${waveVideoUrl}" autoplay loop muted playsinline ${imageUrl ? `poster="${imageUrl}"` : ''}></video>`;
+        }
+        return imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : '';
     }
 
     /**
@@ -1114,9 +1191,8 @@ class MissionSystem {
             const applyTheme = (theme) => {
                 document.documentElement.dataset.theme = theme;
                 document.documentElement.classList.toggle('dark-mode', theme === 'dark');
-                if (themeToggle) {
-                    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-                }
+                // Which icon shows (sun/moon) is handled by CSS off this
+                // data-theme attribute — see .lesson-theme-toggle rules.
             };
             let initialTheme = 'light';
             try {
@@ -1351,7 +1427,6 @@ class MissionSystem {
         const existing = document.getElementById('mascotOverlay');
         if (existing) existing.remove();
 
-        const imageUrl = this.getMascotImageUrl();
         // Curiosity popups skip the mascot figure entirely — the
         // illustration below the (now removed) ask-mascot button already
         // carries the topic on its own.
@@ -1361,7 +1436,7 @@ class MissionSystem {
         overlay.className = 'mascot-overlay';
         overlay.innerHTML = `
             <div class="mascot-overlay-card ${extraClass}" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
-                ${!isCuriosity && imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
+                ${!isCuriosity ? this.getMascotOverlayFigureHtml() : ''}
                 <div class="mascot-overlay-text">${message}</div>
                 <button type="button" class="mascot-overlay-btn">${ctaLabel}</button>
             </div>
@@ -1397,7 +1472,7 @@ class MissionSystem {
         overlay.className = 'mascot-overlay';
         overlay.innerHTML = `
             <div class="mascot-overlay-card" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
-                ${imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
+                ${this.getMascotOverlayFigureHtml()}
                 <p class="mascot-overlay-text">${message}</p>
                 <button type="button" class="mascot-help-btn mascot-overlay-help-btn">
                     ${imageUrl ? `<img class="mascot-help-btn-icon" src="${imageUrl}" alt="">` : '🙋'}
@@ -1454,13 +1529,12 @@ class MissionSystem {
         const existing = document.getElementById('mascotOverlay');
         if (existing) existing.remove();
 
-        const imageUrl = this.getMascotImageUrl();
         const overlay = document.createElement('div');
         overlay.id = 'mascotOverlay';
         overlay.className = 'mascot-overlay';
         overlay.innerHTML = `
             <div class="mascot-overlay-card" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
-                ${imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : ''}
+                ${this.getMascotOverlayFigureHtml()}
                 <div class="mascot-overlay-text">${message}</div>
                 <div class="mascot-overlay-choice-row">
                     <button type="button" class="mascot-overlay-btn">${primaryLabel}</button>

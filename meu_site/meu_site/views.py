@@ -651,6 +651,203 @@ def atualizar_vocabulario(request, missao_id):
     return JsonResponse({'ok': True})
 
 
+RESUMOS = [
+    {
+        'id': 'fotossintese',
+        'nome': 'Fotossíntese',
+        'disciplina': 'Biologia',
+        'cor_a': '#2f6b45',
+        'cor_b': '#1f8a5b',
+        'cor_soft': '#eaf3e9',
+        'descricao_curta': 'Como as plantas convertem luz solar em energia química, do cloroplasto ao Ciclo de Calvin.',
+    },
+]
+
+RESUMOS_CONTEUDO = {
+    'fotossintese': {
+        'introducao': (
+            'A fotossíntese é o processo anabólico (de construção de moléculas complexas) através do qual '
+            'organismos autotróficos — como plantas, algas e cianobactérias — convertem a energia luminosa '
+            'do Sol em energia química sob a forma de matéria orgânica (glicose). Este processo é a base de '
+            'quase todas as cadeias alimentares da Terra e o principal responsável pela manutenção dos '
+            'níveis de oxigénio na atmosfera terrestre e pela remoção do dióxido de carbono.'
+        ),
+        'equacao': '6 CO₂  +  6 H₂O  +  Energia Luminosa   →   C₆H₁₂O₆  +  6 O₂',
+        'seccoes': [
+            {
+                'titulo': 'Localização Celular: O Cloroplasto',
+                'texto': (
+                    'Nas plantas, a fotossíntese ocorre dentro de organelos celulares especializados chamados '
+                    'cloroplastos, presentes maioritariamente nas células do parênquima clorofilino das folhas.'
+                ),
+                'definicoes': [
+                    {
+                        'termo': 'Membranas e Tilacóides',
+                        'texto': (
+                            'No interior do cloroplasto existem sacos membranares achatados chamados tilacóides. '
+                            'É na membrana dos tilacóides que se encontram ancorados os pigmentos fotossintéticos '
+                            '(principalmente as clorofilas a e b e os carotenóides), organizados em fotossistemas.'
+                        ),
+                    },
+                    {
+                        'termo': 'Grana',
+                        'texto': 'O conjunto de tilacóides empilhados recebe o nome de grana (no singular, granum).',
+                    },
+                    {
+                        'termo': 'Estroma',
+                        'texto': (
+                            'O espaço fluido e denso que preenche o interior do cloroplasto, envolvendo os '
+                            'tilacóides. É rico em enzimas, ribossomas e DNA próprio.'
+                        ),
+                    },
+                ],
+                'dica': (
+                    'Associa sempre a localização à função: a fase que precisa de captação de luz ocorre nas '
+                    'membranas dos tilacóides (onde está a clorofila); a fase que transforma os gases em '
+                    'açúcares ocorre no líquido circundante, o estroma.'
+                ),
+            },
+            {
+                'titulo': 'Fase 1 — Reações Fotoquímicas (Fase Dependente da Luz)',
+                'texto': (
+                    'Esta fase ocorre exclusivamente na membrana dos tilacóides e requer a presença direta '
+                    'da luz solar.'
+                ),
+                'passos': [
+                    {
+                        'titulo': 'Excitação da clorofila e cadeia de transporte de eletrões',
+                        'texto': (
+                            'A luz incide nos pigmentos do Fotossistema II (PSII). A energia absorvida excita '
+                            'os eletrões da clorofila, que saltam para níveis de energia superiores e são '
+                            'transferidos ao longo de uma cadeia de transportadores de eletrões.'
+                        ),
+                    },
+                    {
+                        'titulo': 'Fotólise da água',
+                        'texto': (
+                            'Para substituir os eletrões perdidos pela clorofila no PSII, ocorre a quebra de '
+                            'moléculas de água (H₂O) por ação da luz e de enzimas associadas. A água divide-se '
+                            'em eletrões (que repõem os da clorofila), protões H⁺ e oxigénio gasoso.'
+                        ),
+                    },
+                    {
+                        'titulo': 'Produção de oxigénio',
+                        'texto': (
+                            'O O₂ resultante da fotólise é libertado para o meio ambiente através dos estômatos '
+                            '(poros microscópicos visíveis na epiderme da folha).'
+                        ),
+                    },
+                    {
+                        'titulo': 'Fotofosforilação (síntese de ATP)',
+                        'texto': (
+                            'O movimento dos protões H⁺ através da enzima ATP-sintase impulsiona a conversão de '
+                            'ADP em ATP, armazenando energia química.'
+                        ),
+                    },
+                    {
+                        'titulo': 'Formação de NADPH',
+                        'texto': (
+                            'Os eletrões percorrem a cadeia até ao Fotossistema I (PSI), onde voltam a ser '
+                            'energizados pela luz e são utilizados para reduzir a molécula NADP⁺ a NADPH (um '
+                            'transportador de eletrões enriquecido com protões H⁺).'
+                        ),
+                    },
+                ],
+                'dica': (
+                    'Os dois únicos produtos da fase fotoquímica que avançam para a fase seguinte são o ATP e o '
+                    'NADPH. O oxigénio é apenas um subproduto descartado.'
+                ),
+            },
+            {
+                'titulo': 'Fase 2 — Reações Químicas (Fase Independente da Luz / Ciclo de Calvin)',
+                'texto': (
+                    'Esta fase ocorre no estroma do cloroplasto e utiliza a energia química gerada na fase '
+                    'fotoquímica (ATP e NADPH) para converter o dióxido de carbono (CO₂) em compostos orgânicos.'
+                ),
+                'passos': [
+                    {
+                        'titulo': 'Fixação do carbono',
+                        'texto': (
+                            'O CO₂ atmosférico entra na folha pelos estômatos e difunde-se até ao estroma. A '
+                            'enzima RuBisCO (a proteína mais abundante do planeta) catalisa a ligação do CO₂ a '
+                            'uma molécula de 5 carbonos (RuBP — ribulose-1,5-bisfosfato), formando compostos de '
+                            '3 carbonos (3-PGA).'
+                        ),
+                    },
+                    {
+                        'titulo': 'Redução',
+                        'texto': (
+                            'O ATP fornece energia e o NADPH fornece eletrões/hidrogénios para reduzir o 3-PGA '
+                            'a G3P (gliceraldeído-3-fosfato), um açúcar simples de 3 carbonos.'
+                        ),
+                    },
+                    {
+                        'titulo': 'Produção de glicose',
+                        'texto': (
+                            'A cada 6 voltas do ciclo (ou fixação de 6 moléculas de CO₂), são produzidas '
+                            'moléculas de G3P suficientes para sintetizar uma molécula de glicose (C₆H₁₂O₆), '
+                            'além de outros hidratos de carbono como sacarose e amido.'
+                        ),
+                    },
+                    {
+                        'titulo': 'Regeneração da RuBP',
+                        'texto': (
+                            'Partes das moléculas de G3P resultantes são reorganizadas, utilizando mais ATP, '
+                            'para regenerar a RuBP, permitindo que o ciclo recomece continuamente.'
+                        ),
+                    },
+                ],
+                'dica': (
+                    'Memoriza a enzima RuBisCO. É o "gancho" que agarra o carbono do ar e o transforma em '
+                    'matéria sólida dentro da planta — uma das perguntas mais recorrentes em exames de biologia.'
+                ),
+            },
+        ],
+        'fatores_titulo': 'Fatores Limitantes da Fotossíntese',
+        'fatores_texto': 'A taxa com que a fotossíntese ocorre é influenciada por estas variáveis ambientais e biológicas:',
+        'fatores': [
+            {
+                'titulo': 'Intensidade e comprimento de onda da luz',
+                'texto': (
+                    'A taxa fotossintética aumenta com a intensidade luminosa até atingir o ponto de saturação '
+                    'luminosa. As clorofilas absorvem principalmente luz nas regiões do azul e do vermelho, '
+                    'refletindo a luz verde — o que dá a cor às plantas.'
+                ),
+            },
+            {
+                'titulo': 'Concentração de dióxido de carbono',
+                'texto': (
+                    'Sendo o CO₂ o reagente do Ciclo de Calvin, o aumento da sua concentração acelera a taxa '
+                    'fotossintética até que as enzimas (RuBisCO) fiquem totalmente saturadas.'
+                ),
+            },
+            {
+                'titulo': 'Temperatura',
+                'texto': (
+                    'Como envolve processos enzimáticos, a taxa fotossintética aumenta com a temperatura até '
+                    'atingir uma temperatura ótima. Temperaturas demasiado altas provocam a desnaturação das '
+                    'enzimas e o fecho dos estômatos, interrompendo a fotossíntese.'
+                ),
+            },
+            {
+                'titulo': 'Disponibilidade de água',
+                'texto': (
+                    'Sem água suficiente, os estômatos fecham-se para evitar a dessecação, o que impede a '
+                    'entrada de CO₂ e interrompe o Ciclo de Calvin.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Onde ocorre', 'valor': 'Cloroplastos.'},
+            {'label': 'Fase clara', 'valor': 'Ocorre nos tilacóides. Usa H₂O e luz. Produz O₂, ATP e NADPH.'},
+            {'label': 'Fase escura (Ciclo de Calvin)', 'valor': 'Ocorre no estroma. Usa CO₂, ATP e NADPH. Produz glicose.'},
+            {'label': 'Origem do oxigénio', 'valor': 'Exclusivamente a partir da molécula de água dividida na fase clara.'},
+        ],
+    },
+}
+
+
 @login_required(login_url='login')
 def pagina_Resumos(request):
     try:
@@ -659,6 +856,26 @@ def pagina_Resumos(request):
         perfil = None
     return render(request, 'Resumos.html', {
         'perfil': perfil,
+        'resumos': RESUMOS,
+    })
+
+
+@login_required(login_url='login')
+def pagina_resumo_detalhe(request, resumo_id):
+    resumo = next((r for r in RESUMOS if r['id'] == resumo_id), None)
+    conteudo = RESUMOS_CONTEUDO.get(resumo_id)
+    if resumo is None or conteudo is None:
+        raise Http404('Resumo não encontrado.')
+
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    return render(request, 'resumo-detalhe.html', {
+        'perfil': perfil,
+        'resumo': resumo,
+        'conteudo': conteudo,
     })
 
 

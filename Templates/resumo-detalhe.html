@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Resumos | Explore+</title>
+<title>{{ resumo.nome }} — Resumos | Explore+</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,26 +146,83 @@
     </button>
 </div>
 
-<section class="missions-page">
-    <h1>Resumos</h1>
-    <p>Revisões diretas ao ponto, prontas para reveres antes de um teste.</p>
+<section class="missions-page resumo-detalhe-page">
+    <a href="{% url 'Resumos' %}" class="teste-voltar">&larr; Voltar aos Resumos</a>
 
-    {% if resumos %}
-    <div class="cards resumos-grid">
-        {% for r in resumos %}
-        <a href="{% url 'resumo-detalhe' r.id %}" class="card resumo-card" style="--resumo-cor-a:{{ r.cor_a }};--resumo-cor-b:{{ r.cor_b }};--resumo-cor-soft:{{ r.cor_soft }};">
-            <span class="resumo-card-badge">{{ r.disciplina }}</span>
-            <h3>{{ r.nome }}</h3>
-            <p>{{ r.descricao_curta }}</p>
-            <span class="resumo-card-meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
-                Ler resumo
-            </span>
-        </a>
-        {% endfor %}
+    <div class="resumo-header" style="--resumo-cor-a:{{ resumo.cor_a }};--resumo-cor-b:{{ resumo.cor_b }};">
+        <span class="resumo-header-badge">{{ resumo.disciplina }}</span>
+        <h1>{{ resumo.nome }}</h1>
+        <p>{{ conteudo.introducao }}</p>
     </div>
-    {% else %}
-    <p>Estamos a preparar os resumos — volta em breve.</p>
+
+    <div class="resumo-equacao">{{ conteudo.equacao }}</div>
+
+    {% for seccao in conteudo.seccoes %}
+    <div class="resumo-seccao">
+        <h2>{{ seccao.titulo }}</h2>
+        {% if seccao.texto %}<p>{{ seccao.texto }}</p>{% endif %}
+
+        {% if seccao.definicoes %}
+        <div class="resumo-definicoes">
+            {% for item in seccao.definicoes %}
+            <div class="resumo-definicao-item">
+                <strong>{{ item.termo }}</strong>
+                <span>{{ item.texto }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if seccao.passos %}
+        <ol class="resumo-passos">
+            {% for passo in seccao.passos %}
+            <li class="resumo-passo">
+                <span class="resumo-passo-numero">{{ forloop.counter }}</span>
+                <span class="resumo-passo-texto">
+                    <strong>{{ passo.titulo }}</strong>
+                    <span>{{ passo.texto }}</span>
+                </span>
+            </li>
+            {% endfor %}
+        </ol>
+        {% endif %}
+
+        {% if seccao.dica %}
+        <div class="resumo-dica">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+            <span><strong>Dica de estudo:</strong> {{ seccao.dica }}</span>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    {% if conteudo.fatores %}
+    <div class="resumo-seccao">
+        <h2>{{ conteudo.fatores_titulo }}</h2>
+        {% if conteudo.fatores_texto %}<p>{{ conteudo.fatores_texto }}</p>{% endif %}
+        <div class="resumo-fatores">
+            {% for fator in conteudo.fatores %}
+            <div class="resumo-fator-card">
+                <strong>{{ fator.titulo }}</strong>
+                <span>{{ fator.texto }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if conteudo.sintese_final %}
+    <div class="resumo-seccao">
+        <h2>{{ conteudo.sintese_titulo }}</h2>
+        <div class="resumo-sintese">
+            {% for item in conteudo.sintese_final %}
+            <div class="resumo-sintese-item">
+                <strong>{{ item.label }}</strong>
+                <span>{{ item.valor }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
     {% endif %}
 </section>
 

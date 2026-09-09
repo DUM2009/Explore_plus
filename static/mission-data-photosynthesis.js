@@ -7,12 +7,12 @@
 
 const missionData = {
     id: "photosynthesis",
-    title: "🌿 Fotossíntese",
+    title: "Fotossíntese",
     description: "Descobre como a luz vira energia e como o CO2 se transforma em açúcar.",
     screenFlowEnabled: true,
     totalXP: 290,
     badge: { icon: "🌿", name: "Mestre da Fotossíntese" },
-    goldTestUrl: "mission-photosynthesis-goldtest.html",
+    goldTestUrl: "/mission/photosynthesis/goldtest/",
     mascot: {
         image: "Mascote Explore+ Geology.png",
         introGreeting: "Olá, aprendiz! 👋 Sou o Kim, o teu explorador. Hoje vamos explorar a missão {missionTitle}. Estás preparado para começar a aventura?",
