@@ -1,4 +1,5 @@
 {% load static %}
+{% load resumo_extras %}
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -152,25 +153,56 @@
     <div class="resumo-header" style="--resumo-cor-a:{{ resumo.cor_a }};--resumo-cor-b:{{ resumo.cor_b }};">
         <span class="resumo-header-badge">{{ resumo.disciplina }}</span>
         <h1>{{ resumo.nome }}</h1>
-        <p>{{ conteudo.introducao }}</p>
+        {% if conteudo.introducao %}<p>{{ conteudo.introducao|md_inline }}</p>{% endif %}
     </div>
 
-    <div class="resumo-equacao">{{ conteudo.equacao }}</div>
+    <div class="resumo-modos" role="group" aria-label="Modo de visualização">
+        <button type="button" class="resumo-modo-btn is-active" data-modo="completo">Resumo completo</button>
+        <button type="button" class="resumo-modo-btn" data-modo="rapido">Resumo rápido</button>
+    </div>
+
+    <div class="resumo-modo-completo">
+
+    {% if conteudo.equacao %}<div class="resumo-equacao">{{ conteudo.equacao }}</div>{% endif %}
 
     {% for seccao in conteudo.seccoes %}
     <div class="resumo-seccao">
         <h2>{{ seccao.titulo }}</h2>
-        {% if seccao.texto %}<p>{{ seccao.texto }}</p>{% endif %}
+        {% if seccao.texto %}<p>{{ seccao.texto|md_inline }}</p>{% endif %}
+
+        {% if seccao.imagem %}
+        <div class="resumo-seccao-imagem-wrap" {% if seccao.imagem_max_width %}style="max-width:{{ seccao.imagem_max_width }};"{% endif %}>
+            <img src="{% static seccao.imagem %}" alt="{{ seccao.imagem_alt }}" class="resumo-seccao-imagem">
+            {% if seccao.imagem_marcadores %}
+            <svg class="resumo-imagem-legenda" style="width:{{ seccao.imagem_svg_largura_pct }}%;" viewBox="0 0 {{ seccao.imagem_largura|add:seccao.imagem_gutter }} {{ seccao.imagem_altura }}" aria-hidden="true">
+                <defs>
+                    <marker id="resumo-seta-{{ forloop.counter }}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 Z" fill="#1f8a5b" />
+                    </marker>
+                </defs>
+                {% for marcador in seccao.imagem_marcadores %}
+                <line x1="{{ marcador.lx }}" y1="{{ marcador.ly }}" x2="{{ marcador.ax }}" y2="{{ marcador.ay }}" stroke="#1f8a5b" stroke-width="6" marker-end="url(#resumo-seta-{{ forloop.parentloop.counter }})" />
+                <circle cx="{{ marcador.ax }}" cy="{{ marcador.ay }}" r="14" fill="#1f8a5b" stroke="#ffffff" stroke-width="5" />
+                <circle cx="{{ marcador.lx }}" cy="{{ marcador.ly }}" r="50" fill="#1f8a5b" stroke="#ffffff" stroke-width="6" />
+                <text x="{{ marcador.lx }}" y="{{ marcador.ly }}" text-anchor="middle" dominant-baseline="central" fill="#ffffff" font-size="48" font-weight="800" font-family="Outfit, sans-serif">{{ marcador.numero }}</text>
+                {% endfor %}
+            </svg>
+            {% endif %}
+        </div>
+        {% endif %}
 
         {% if seccao.definicoes %}
-        <div class="resumo-definicoes">
+        <ol class="resumo-passos">
             {% for item in seccao.definicoes %}
-            <div class="resumo-definicao-item">
-                <strong>{{ item.termo }}</strong>
-                <span>{{ item.texto }}</span>
-            </div>
+            <li class="resumo-passo">
+                <span class="resumo-passo-numero">{{ forloop.counter }}</span>
+                <span class="resumo-passo-texto">
+                    <strong>{{ item.termo }}</strong>
+                    <span>{{ item.texto|md_inline }}</span>
+                </span>
+            </li>
             {% endfor %}
-        </div>
+        </ol>
         {% endif %}
 
         {% if seccao.passos %}
@@ -180,7 +212,7 @@
                 <span class="resumo-passo-numero">{{ forloop.counter }}</span>
                 <span class="resumo-passo-texto">
                     <strong>{{ passo.titulo }}</strong>
-                    <span>{{ passo.texto }}</span>
+                    <span>{{ passo.texto|md_inline }}</span>
                 </span>
             </li>
             {% endfor %}
@@ -190,7 +222,7 @@
         {% if seccao.dica %}
         <div class="resumo-dica">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-            <span><strong>Dica de estudo:</strong> {{ seccao.dica }}</span>
+            <span><strong>Dicas de estudo:</strong> {{ seccao.dica|md_inline }}</span>
         </div>
         {% endif %}
     </div>
@@ -199,29 +231,50 @@
     {% if conteudo.fatores %}
     <div class="resumo-seccao">
         <h2>{{ conteudo.fatores_titulo }}</h2>
-        {% if conteudo.fatores_texto %}<p>{{ conteudo.fatores_texto }}</p>{% endif %}
-        <div class="resumo-fatores">
+        {% if conteudo.fatores_texto %}<p>{{ conteudo.fatores_texto|md_inline }}</p>{% endif %}
+        <ol class="resumo-passos">
             {% for fator in conteudo.fatores %}
-            <div class="resumo-fator-card">
-                <strong>{{ fator.titulo }}</strong>
-                <span>{{ fator.texto }}</span>
-            </div>
+            <li class="resumo-passo">
+                <span class="resumo-passo-numero">{{ forloop.counter }}</span>
+                <span class="resumo-passo-texto">
+                    <strong>{{ fator.titulo }}</strong>
+                    <span>{{ fator.texto|md_inline }}</span>
+                </span>
+            </li>
             {% endfor %}
+        </ol>
+
+        {% if conteudo.fatores_dica %}
+        <div class="resumo-dica">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+            <span><strong>Dicas de estudo:</strong> {{ conteudo.fatores_dica|md_inline }}</span>
         </div>
+        {% endif %}
     </div>
     {% endif %}
 
+    </div>
+
     {% if conteudo.sintese_final %}
-    <div class="resumo-seccao">
+    <div class="resumo-seccao resumo-modo-rapido" hidden>
         <h2>{{ conteudo.sintese_titulo }}</h2>
-        <div class="resumo-sintese">
-            {% for item in conteudo.sintese_final %}
-            <div class="resumo-sintese-item">
-                <strong>{{ item.label }}</strong>
-                <span>{{ item.valor }}</span>
-            </div>
-            {% endfor %}
+        <table class="resumo-tabela">
+            <tbody>
+                {% for item in conteudo.sintese_final %}
+                <tr>
+                    <th scope="row">{{ item.label }}</th>
+                    <td>{{ item.valor|md_inline }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if conteudo.sintese_dica %}
+        <div class="resumo-dica">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+            <span>{{ conteudo.sintese_dica|md_inline }}</span>
         </div>
+        {% endif %}
     </div>
     {% endif %}
 </section>
@@ -247,6 +300,24 @@ document.addEventListener('click', (event) => {
         accountMenu.hidden = true;
         accountTrigger?.setAttribute('aria-expanded', 'false');
     }
+});
+
+const resumoModoBtns = document.querySelectorAll('.resumo-modo-btn');
+const resumoModoCompleto = document.querySelector('.resumo-modo-completo');
+const resumoModoRapido = document.querySelector('.resumo-modo-rapido');
+
+resumoModoBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        resumoModoBtns.forEach((outro) => outro.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const ehCompleto = btn.dataset.modo === 'completo';
+        if (resumoModoCompleto) {
+            resumoModoCompleto.hidden = !ehCompleto;
+        }
+        if (resumoModoRapido) {
+            resumoModoRapido.hidden = ehCompleto;
+        }
+    });
 });
 </script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>

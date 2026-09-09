@@ -665,185 +665,209 @@ RESUMOS = [
 
 RESUMOS_CONTEUDO = {
     'fotossintese': {
-        'introducao': (
-            'A fotossíntese é o processo anabólico (de construção de moléculas complexas) através do qual '
-            'organismos autotróficos — como plantas, algas e cianobactérias — convertem a energia luminosa '
-            'do Sol em energia química sob a forma de matéria orgânica (glicose). Este processo é a base de '
-            'quase todas as cadeias alimentares da Terra e o principal responsável pela manutenção dos '
-            'níveis de oxigénio na atmosfera terrestre e pela remoção do dióxido de carbono.'
-        ),
-        'equacao': '6 CO₂  +  6 H₂O  +  Energia Luminosa   →   C₆H₁₂O₆  +  6 O₂',
         'seccoes': [
             {
                 'titulo': 'Localização Celular: O Cloroplasto',
                 'texto': (
                     'Nas plantas, a fotossíntese ocorre dentro de organelos celulares especializados chamados '
-                    'cloroplastos, presentes maioritariamente nas células do parênquima clorofilino das folhas.'
+                    '**cloroplastos**, presentes maioritariamente nas células do parênquima clorofilino das folhas.'
                 ),
+                'imagem': 'images/Tilacoides 2.jpg',
+                'imagem_alt': 'Ilustração do zoom da folha até à membrana dos tilacoides, com a grana e o estroma dentro do cloroplasto',
+                # Coordenadas no espaço original da imagem (1536×1024 px). A
+                # legenda vive numa faixa extra à direita ("imagem_gutter"),
+                # fora dos limites da própria imagem — por isso o SVG que a
+                # desenha é mais largo do que a <img> por baixo dela (ver
+                # 'imagem_svg_largura_pct', calculado a partir destes números).
+                'imagem_largura': 1536,
+                'imagem_altura': 1024,
+                'imagem_gutter': 430,
+                # = (imagem_largura + imagem_gutter) / imagem_largura * 100 —
+                # a largura do SVG de legenda face à <img> por baixo dele.
+                'imagem_svg_largura_pct': 128,
+                'imagem_marcadores': [
+                    # Membranas e Tilacoides — ponto de ancoragem na membrana.
+                    {'numero': 1, 'ax': 1352, 'ay': 461, 'lx': 1736, 'ly': 512},
+                    # Grana — ponto de ancoragem na pilha de tilacoides.
+                    {'numero': 2, 'ax': 952, 'ay': 430, 'lx': 1736, 'ly': 200},
+                    # Estroma — ponto de ancoragem no espaço fluido entre as pilhas.
+                    {'numero': 3, 'ax': 876, 'ay': 563, 'lx': 1736, 'ly': 824},
+                ],
                 'definicoes': [
                     {
-                        'termo': 'Membranas e Tilacóides',
+                        'termo': 'Membranas e Tilacoides',
                         'texto': (
-                            'No interior do cloroplasto existem sacos membranares achatados chamados tilacóides. '
-                            'É na membrana dos tilacóides que se encontram ancorados os pigmentos fotossintéticos '
-                            '(principalmente as clorofilas a e b e os carotenóides), organizados em fotossistemas.'
+                            'No interior do cloroplasto existem sacos membranares achatados chamados '
+                            '**tilacoides**. É na membrana dos tilacoides que se encontram ancorados os pigmentos '
+                            'fotossintéticos (principalmente as clorofilas *a* e *b* e os carotenoides), '
+                            'organizados em fotossistemas.'
                         ),
                     },
                     {
                         'termo': 'Grana',
-                        'texto': 'O conjunto de tilacóides empilhados recebe o nome de grana (no singular, granum).',
+                        'texto': 'O conjunto de tilacoides empilhados recebe o nome de **grana** (no singular, *granum*).',
                     },
                     {
                         'termo': 'Estroma',
                         'texto': (
                             'O espaço fluido e denso que preenche o interior do cloroplasto, envolvendo os '
-                            'tilacóides. É rico em enzimas, ribossomas e DNA próprio.'
+                            'tilacoides. É rico em enzimas, ribossomas e DNA próprio.'
                         ),
                     },
                 ],
                 'dica': (
-                    'Associa sempre a localização à função: a fase que precisa de captação de luz ocorre nas '
-                    'membranas dos tilacóides (onde está a clorofila); a fase que transforma os gases em '
-                    'açúcares ocorre no líquido circundante, o estroma.'
+                    'pensa no cloroplasto como uma **fábrica de açúcar movida a energia solar**. Os tilacoides '
+                    'são os **painéis solares**, empilhados em torres (grana) para captar o máximo de luz '
+                    'possível. O estroma é o **chão de fábrica** à volta desses painéis, onde as peças (CO₂) são '
+                    'montadas no produto final (glicose), usando a eletricidade (ATP/NADPH) que os painéis '
+                    'acabaram de gerar.'
                 ),
             },
             {
                 'titulo': 'Fase 1 — Reações Fotoquímicas (Fase Dependente da Luz)',
                 'texto': (
-                    'Esta fase ocorre exclusivamente na membrana dos tilacóides e requer a presença direta '
+                    'Esta fase ocorre exclusivamente na membrana dos tilacoides e requer a presença direta '
                     'da luz solar.'
                 ),
+                'imagem': 'images/Cadeia transportadora de eletrões.png',
+                'imagem_alt': 'Esquema da cadeia transportadora de eletrões na membrana do tilacoide: PSII, Cyt b6f, PSI e ATP-sintase',
+                'imagem_max_width': '640px',
                 'passos': [
                     {
                         'titulo': 'Excitação da clorofila e cadeia de transporte de eletrões',
                         'texto': (
                             'A luz incide nos pigmentos do Fotossistema II (PSII). A energia absorvida excita '
                             'os eletrões da clorofila, que saltam para níveis de energia superiores e são '
-                            'transferidos ao longo de uma cadeia de transportadores de eletrões.'
+                            'transferidos ao longo de uma cadeia de transportadores.'
                         ),
                     },
                     {
                         'titulo': 'Fotólise da água',
                         'texto': (
-                            'Para substituir os eletrões perdidos pela clorofila no PSII, ocorre a quebra de '
-                            'moléculas de água (H₂O) por ação da luz e de enzimas associadas. A água divide-se '
-                            'em eletrões (que repõem os da clorofila), protões H⁺ e oxigénio gasoso.'
+                            'Para substituir os eletrões perdidos pela clorofila, ocorre a quebra de moléculas '
+                            'de água (H₂O). A água divide-se em eletrões (repõem os da clorofila), protões H⁺ '
+                            'e oxigénio gasoso.'
                         ),
                     },
                     {
                         'titulo': 'Produção de oxigénio',
-                        'texto': (
-                            'O O₂ resultante da fotólise é libertado para o meio ambiente através dos estômatos '
-                            '(poros microscópicos visíveis na epiderme da folha).'
-                        ),
+                        'texto': 'O O₂ resultante da fotólise é libertado para o meio ambiente através dos estomas.',
                     },
                     {
                         'titulo': 'Fotofosforilação (síntese de ATP)',
                         'texto': (
                             'O movimento dos protões H⁺ através da enzima ATP-sintase impulsiona a conversão de '
-                            'ADP em ATP, armazenando energia química.'
+                            'ADP em ATP.'
                         ),
                     },
                     {
                         'titulo': 'Formação de NADPH',
                         'texto': (
-                            'Os eletrões percorrem a cadeia até ao Fotossistema I (PSI), onde voltam a ser '
-                            'energizados pela luz e são utilizados para reduzir a molécula NADP⁺ a NADPH (um '
-                            'transportador de eletrões enriquecido com protões H⁺).'
+                            'Os eletrões chegam ao Fotossistema I (PSI), são novamente energizados pela luz, e '
+                            'utilizados para reduzir o NADP⁺ a NADPH.'
                         ),
                     },
                 ],
                 'dica': (
-                    'Os dois únicos produtos da fase fotoquímica que avançam para a fase seguinte são o ATP e o '
-                    'NADPH. O oxigénio é apenas um subproduto descartado.'
+                    'imagina a água como uma **garrafa reciclável que é esmagada** para libertar o que interessa '
+                    '(eletrões) — o oxigénio que sobra é literalmente **lixo descartado** para o ar, não um '
+                    'produto que a planta queira guardar. Já o ATP e o NADPH são como **dinheiro e um cartão de '
+                    'crédito**: o ATP é dinheiro pronto a gastar (energia direta), o NADPH é um cartão que '
+                    '"transporta" eletrões para serem usados como poder de compra mais tarde, na fase seguinte.'
                 ),
             },
             {
-                'titulo': 'Fase 2 — Reações Químicas (Fase Independente da Luz / Ciclo de Calvin)',
+                'titulo': 'Fase 2 — Reações Químicas (Ciclo de Calvin)',
                 'texto': (
-                    'Esta fase ocorre no estroma do cloroplasto e utiliza a energia química gerada na fase '
-                    'fotoquímica (ATP e NADPH) para converter o dióxido de carbono (CO₂) em compostos orgânicos.'
+                    'Esta fase ocorre no **estroma** e utiliza a energia química gerada na fase fotoquímica '
+                    '(ATP e NADPH) para converter o dióxido de carbono em compostos orgânicos.'
                 ),
+                'imagem': 'images/Ciclo de Calvin 2.png',
+                'imagem_alt': 'Esquema do Ciclo de Calvin: fixação do carbono, redução e regeneração da RuBP',
+                'imagem_max_width': '520px',
                 'passos': [
                     {
                         'titulo': 'Fixação do carbono',
                         'texto': (
-                            'O CO₂ atmosférico entra na folha pelos estômatos e difunde-se até ao estroma. A '
-                            'enzima RuBisCO (a proteína mais abundante do planeta) catalisa a ligação do CO₂ a '
-                            'uma molécula de 5 carbonos (RuBP — ribulose-1,5-bisfosfato), formando compostos de '
-                            '3 carbonos (3-PGA).'
+                            'O CO₂ difunde-se até ao estroma. A enzima **RuBisCO** catalisa a ligação do CO₂ a '
+                            'uma molécula de 5 carbonos (RuBP), formando compostos de 3 carbonos (3-PGA).'
                         ),
                     },
                     {
                         'titulo': 'Redução',
                         'texto': (
                             'O ATP fornece energia e o NADPH fornece eletrões/hidrogénios para reduzir o 3-PGA '
-                            'a G3P (gliceraldeído-3-fosfato), um açúcar simples de 3 carbonos.'
+                            'a G3P (gliceraldeído-3-fosfato).'
                         ),
                     },
                     {
                         'titulo': 'Produção de glicose',
                         'texto': (
-                            'A cada 6 voltas do ciclo (ou fixação de 6 moléculas de CO₂), são produzidas '
-                            'moléculas de G3P suficientes para sintetizar uma molécula de glicose (C₆H₁₂O₆), '
-                            'além de outros hidratos de carbono como sacarose e amido.'
+                            'A cada 6 voltas do ciclo, são produzidas moléculas de G3P suficientes para '
+                            'sintetizar uma molécula de glicose, além de sacarose e amido.'
                         ),
                     },
                     {
                         'titulo': 'Regeneração da RuBP',
                         'texto': (
-                            'Partes das moléculas de G3P resultantes são reorganizadas, utilizando mais ATP, '
-                            'para regenerar a RuBP, permitindo que o ciclo recomece continuamente.'
+                            'Parte das moléculas de G3P são reorganizadas, com mais ATP, para regenerar a RuBP, '
+                            'permitindo que o ciclo recomece.'
                         ),
                     },
                 ],
                 'dica': (
-                    'Memoriza a enzima RuBisCO. É o "gancho" que agarra o carbono do ar e o transforma em '
-                    'matéria sólida dentro da planta — uma das perguntas mais recorrentes em exames de biologia.'
+                    'a RuBisCO é como um **anzol lançado ao ar** — "pesca" o CO₂ que está disperso na atmosfera '
+                    'e prende-o a uma molécula maior, para deixar de andar solto. E pensa no ciclo todo como uma '
+                    '**linha de montagem circular**: parte das peças a meio da linha (G3P) segue para o produto '
+                    'final (glicose), mas outra parte volta ao início da linha (regenera a RuBP) para o processo '
+                    'nunca parar — como uma correia transportadora fechada, não uma linha reta com fim.'
                 ),
             },
         ],
         'fatores_titulo': 'Fatores Limitantes da Fotossíntese',
-        'fatores_texto': 'A taxa com que a fotossíntese ocorre é influenciada por estas variáveis ambientais e biológicas:',
         'fatores': [
             {
                 'titulo': 'Intensidade e comprimento de onda da luz',
                 'texto': (
-                    'A taxa fotossintética aumenta com a intensidade luminosa até atingir o ponto de saturação '
-                    'luminosa. As clorofilas absorvem principalmente luz nas regiões do azul e do vermelho, '
-                    'refletindo a luz verde — o que dá a cor às plantas.'
+                    'a taxa aumenta com a luz até ao ponto de saturação. As clorofilas absorvem sobretudo azul '
+                    'e vermelho, refletindo o verde (daí a cor das plantas).'
                 ),
             },
             {
-                'titulo': 'Concentração de dióxido de carbono',
-                'texto': (
-                    'Sendo o CO₂ o reagente do Ciclo de Calvin, o aumento da sua concentração acelera a taxa '
-                    'fotossintética até que as enzimas (RuBisCO) fiquem totalmente saturadas.'
-                ),
+                'titulo': 'Concentração de CO₂',
+                'texto': 'mais CO₂ acelera a taxa até a RuBisCO ficar saturada.',
             },
             {
                 'titulo': 'Temperatura',
                 'texto': (
-                    'Como envolve processos enzimáticos, a taxa fotossintética aumenta com a temperatura até '
-                    'atingir uma temperatura ótima. Temperaturas demasiado altas provocam a desnaturação das '
-                    'enzimas e o fecho dos estômatos, interrompendo a fotossíntese.'
+                    'a taxa aumenta com a temperatura até um ótimo; temperaturas excessivas desnaturam as '
+                    'enzimas e fecham os estomas.'
                 ),
             },
             {
                 'titulo': 'Disponibilidade de água',
-                'texto': (
-                    'Sem água suficiente, os estômatos fecham-se para evitar a dessecação, o que impede a '
-                    'entrada de CO₂ e interrompe o Ciclo de Calvin.'
-                ),
+                'texto': 'sem água, os estomas fecham para evitar dessecação, bloqueando a entrada de CO₂.',
             },
         ],
+        'fatores_dica': (
+            'pensa numa **autoestrada numa hora de ponta**. Mais carros (mais luz, mais CO₂) fazem o trânsito '
+            'fluir mais depressa — até a estrada ficar cheia (saturação enzimática), e a partir daí, por mais '
+            'carros que entrem, nada anda mais rápido. A temperatura é como o **motor de um carro de corrida**: '
+            'quanto mais quente, mais rápido funciona — até sobreaquecer e avariar (desnaturação). E a água é '
+            'como as **portas de um comboio no inverno**: fecham para não deixar entrar o frio (perder água), '
+            'mas ao fechar, também impedem quem quer entrar (o CO₂) de o fazer.'
+        ),
         'sintese_titulo': 'Síntese Final para Memória Rápida',
         'sintese_final': [
-            {'label': 'Onde ocorre', 'valor': 'Cloroplastos.'},
-            {'label': 'Fase clara', 'valor': 'Ocorre nos tilacóides. Usa H₂O e luz. Produz O₂, ATP e NADPH.'},
-            {'label': 'Fase escura (Ciclo de Calvin)', 'valor': 'Ocorre no estroma. Usa CO₂, ATP e NADPH. Produz glicose.'},
-            {'label': 'Origem do oxigénio', 'valor': 'Exclusivamente a partir da molécula de água dividida na fase clara.'},
+            {'label': 'Onde ocorre', 'valor': 'Cloroplastos'},
+            {'label': 'Fase clara', 'valor': 'Tilacoides · usa H₂O e luz · produz O₂, ATP e NADPH'},
+            {'label': 'Fase escura (Calvin)', 'valor': 'Estroma · usa CO₂, ATP e NADPH · produz glicose'},
+            {'label': 'Origem do oxigénio', 'valor': 'Exclusivamente da água, na fase clara'},
         ],
+        'sintese_dica': (
+            '*"A luz parte a água lá em cima (tilacoides), o carbono é pescado lá em baixo (estroma) — o que '
+            'sobe como energia (ATP/NADPH), desce para virar açúcar."*'
+        ),
     },
 }
 

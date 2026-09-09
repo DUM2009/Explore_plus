@@ -148,18 +148,37 @@
 
 <section class="missions-page">
     <h1>Resumos</h1>
-    <p>Revisões diretas ao ponto, prontas para reveres antes de um teste.</p>
+    <div class="missions-page-subrow">
+        <p>Revisões diretas ao ponto, prontas para reveres antes de um teste.</p>
+        <div class="subject-switcher">
+            <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
+                <span>Explore Biology</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
+                <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
+            </ul>
+        </div>
+    </div>
 
     {% if resumos %}
     <div class="cards resumos-grid">
         {% for r in resumos %}
         <a href="{% url 'resumo-detalhe' r.id %}" class="card resumo-card" style="--resumo-cor-a:{{ r.cor_a }};--resumo-cor-b:{{ r.cor_b }};--resumo-cor-soft:{{ r.cor_soft }};">
-            <span class="resumo-card-badge">{{ r.disciplina }}</span>
+            <div class="resumo-card-top">
+                <span class="resumo-card-icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+                </span>
+                <span class="resumo-card-badge">{{ r.disciplina }}</span>
+            </div>
             <h3>{{ r.nome }}</h3>
             <p>{{ r.descricao_curta }}</p>
-            <span class="resumo-card-meta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
+            <span class="resumo-card-cta">
                 Ler resumo
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
             </span>
         </a>
         {% endfor %}
@@ -194,6 +213,7 @@ document.addEventListener('click', (event) => {
 </script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
+<script src="{% static 'subject-switcher.js' %}" defer></script>
 
 </body>
 

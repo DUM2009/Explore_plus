@@ -47,11 +47,22 @@ const missionData = {
             content: `
             <div class="section-content">
                     <div class="screen-card">
-                        <h3>Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?</h3>
-                        <img class="card-visual" src="/static/images/Planta-fotossíntese.png" alt="Planta a receber luz solar">
-                        <p>Ao contrário dos animais, as plantas não saem à procura de alimento. Elas próprias o fabricam!</p>
-                        <p>Com a energia da luz do Sol, transformam <span class="key-term">água</span> e <span class="key-term">dióxido de carbono</span> em <span class="key-term">glicose</span>, um açúcar que lhes fornece energia para crescer e sobreviver. Como "bónus", libertam <span class="key-term">oxigénio</span> para a atmosfera. Este incrível processo chama-se <strong>fotossíntese</strong>, e pode resumir-se nesta equação:</p>
-                        <p style="text-align: center; font-size: 1.2em;"><strong>6CO<sub>2</sub> + 6H<sub>2</sub>O &rarr; C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub></strong></p>
+                        <h3 class="intro-question">Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?</h3>
+                        <img class="intro-hero-image" src="/static/images/Planta-fotossíntese.png" alt="Planta a receber luz solar">
+
+                        <div class="intro-summary-card">
+                            <span class="intro-summary-icon">🌱</span>
+                            <div class="intro-summary-body">
+                                <h4>A planta produz o seu próprio alimento</h4>
+                                <p>Ao contrário dos animais, as plantas não saem à procura de alimento. Elas próprias o fabricam! Este processo chama-se <strong>fotossíntese</strong>.</p>
+                                <p>Com a energia da luz solar, a planta transforma a <span class="key-term">água</span> e o <span class="key-term">dióxido de carbono</span> em <span class="key-term">glicose</span> (o seu alimento) e liberta <span class="key-term">oxigénio</span> para o ambiente.</p>
+                            </div>
+                        </div>
+
+                        <div class="intro-equation">
+                            6CO<sub>2</sub> + 6H<sub>2</sub>O &rarr; C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub>
+                        </div>
+
                         <details class="did-you-know">
                             <summary>Saber mais...</summary>
                             <img class="curiosity-illustration" src="/static/images/Jan Baptist.png" alt="Retrato de Jan Baptist van Helmont">

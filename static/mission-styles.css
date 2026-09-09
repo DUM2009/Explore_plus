@@ -872,18 +872,13 @@ html[data-theme="dark"] .mo-reward-row {
 body:has(.lesson-topbar) .mission-container {
     max-width: none;
     margin: 0;
-    /* No outer gutter either — the topbar and section content should
-       touch the real browser edges, not sit inset inside a padded box. */
+    /* No outer gutter either — the sidebar and topbar should touch the
+       real browser edges, not sit inset inside a padded box. Fixed to the
+       viewport height so the sidebar and main content scroll on their
+       own, independently of each other. */
     padding: 0;
-}
-
-/* .lesson-topbar is position:fixed (not sticky) so it stays in place even
-   as the section content scrolls underneath it — that takes it out of
-   normal flow, so .mission-content needs its own top offset (an
-   approximation of the topbar's rendered height) to avoid being covered
-   by it. */
-body:has(.lesson-topbar) .mission-content {
-    padding-top: 68px;
+    height: 100vh;
+    overflow: hidden;
 }
 
 /* Mission Header */
@@ -1141,6 +1136,111 @@ object.card-visual {
     vertical-align: middle;
 }
 
+/* Section intro screen: big question, hero image, a summary card (icon +
+   title + text) and a decorative formula row — the equation itself is
+   still taught precisely via the drag-and-drop .formula-builder exercise
+   later in this section; this row is just a friendly preview of it. */
+.intro-question {
+    text-align: left;
+    font-size: 1.4rem;
+    line-height: 1.35;
+}
+
+.intro-hero-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    margin: 0 0 24px;
+    display: block;
+}
+
+.intro-summary-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #f4fbf7;
+    border: 1px solid #dcefe3;
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.intro-summary-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #dcefe3;
+    font-size: 1.3rem;
+}
+
+.intro-summary-body h4 {
+    margin: 2px 0 8px;
+    color: #12261d;
+}
+
+.intro-summary-body p {
+    margin: 0 0 8px;
+    text-align: left;
+}
+
+.intro-summary-body p:last-child {
+    margin-bottom: 0;
+}
+
+.intro-equation {
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #eef2ef;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #12261d;
+}
+
+@media (max-width: 680px) {
+    .intro-summary-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .intro-summary-body p {
+        text-align: left;
+    }
+
+    .intro-equation {
+        font-size: 1.05rem;
+        padding: 16px;
+    }
+}
+
+html[data-theme="dark"] .intro-summary-card {
+    background: #201a14;
+    border-color: #3a2f24;
+}
+
+html[data-theme="dark"] .intro-summary-icon {
+    background: #2a2219;
+}
+
+html[data-theme="dark"] .intro-summary-body h4 {
+    color: #f2e9dd;
+}
+
+html[data-theme="dark"] .intro-equation {
+    background: #201a14;
+    border-color: #3a2f24;
+    color: #f2e9dd;
+}
+
 .guide-options {
     display: flex;
     flex-wrap: wrap;
@@ -1251,6 +1351,7 @@ object.card-visual {
     margin: 0 0 12px;
     color: #6b8579;
     font-size: 0.9rem;
+    text-align: center;
 }
 
 .plant-diagram {
@@ -2876,49 +2977,214 @@ object.card-visual {
    Mascot guide + lesson content area
    ============================================================ */
 
-/* Now a plain full-width block (the lesson topbar sits above it, the old
-   sidebar/mascot-panel grid columns are gone) — content just flows down
-   the page and the page itself scrolls. */
 .mission-content {
     background-color: #ffffff;
 }
 
-/* Lesson topbar: close button, per-section progress, live XP/streak —
-   replaces the old sidebar + mascot-panel chrome. */
+/* Sidebar + main-content shell: the mission's persistent chrome. Fixed
+   to the viewport height (see body:has(.lesson-topbar) .mission-container
+   above) with each side scrolling independently. */
+.mission-shell {
+    display: flex;
+    height: 100%;
+}
+
+.mission-sidebar {
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    /* No horizontal padding here — the chat panel needs to reach both
+       edges of this rectangle. Every other child restores its own 20px
+       side inset individually (via margin) instead. */
+    padding: 24px 0;
+    background: #f7faf8;
+    border-right: 1px solid #e5ece7;
+}
+
+.sidebar-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    align-self: flex-start;
+    border: none;
+    background: none;
+    padding: 6px 6px 6px 2px;
+    margin: 0 20px 22px;
+    border-radius: 8px;
+    color: #4b5a52;
+    font-weight: 600;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.sidebar-back-btn:hover {
+    background: rgba(0, 0, 0, .05);
+    color: #12261d;
+}
+
+.sidebar-mission-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 20px 26px;
+}
+
+.sidebar-mission-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(31, 138, 91, .12);
+    font-size: 1.3rem;
+}
+
+.sidebar-mission-title {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #12261d;
+}
+
+.sidebar-mission-subtitle {
+    font-size: .8rem;
+    color: #6b7a72;
+    margin-top: 2px;
+}
+
+.sidebar-progress {
+    margin: 20px 20px 0;
+    padding-top: 16px;
+    border-top: 1px solid #e5ece7;
+}
+
+.sidebar-progress-label {
+    font-size: .78rem;
+    font-weight: 700;
+    color: #6b7a72;
+    margin-bottom: 10px;
+}
+
+.sidebar-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-progress-dots {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 5px;
+}
+
+.sidebar-progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #dfe6e1;
+}
+
+.sidebar-progress-dot.is-completed {
+    background: #1f8a5b;
+}
+
+.sidebar-progress-dot.is-active {
+    background: #7fcaa1;
+}
+
+.sidebar-progress-percent {
+    flex-shrink: 0;
+    font-size: .78rem;
+    font-weight: 700;
+    color: #4b5a52;
+}
+
+.mission-main {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    overflow-y: auto;
+    /* scrollIntoView() (section/screen navigation) would otherwise align a
+       target's top edge with this container's true top edge — which the
+       sticky topbar (~75px tall) then covers, since sticky content still
+       scrolls underneath it. This keeps every scroll target clear of it. */
+    scroll-padding-top: 84px;
+}
+
+/* Lesson topbar: mission title + per-section progress, live XP/streak,
+   theme toggle. Sticky within .mission-main (not fixed to the viewport)
+   now that the sidebar owns its own independent scroll area. */
 .lesson-topbar {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     /* Below .mascot-overlay's 1300 (and everything else modal) so the
        topbar dims along with the rest of the page behind a dialog, instead
        of standing out as its own undimmed panel. */
     z-index: 50;
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 28px;
     background: #ffffff;
+    border-bottom: 1px solid #eef2ef;
 }
 
-.lesson-close-btn {
-    flex: 0 0 auto;
+.lesson-topbar-mission {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.lesson-topbar-icon {
     display: grid;
     place-items: center;
+    flex-shrink: 0;
     width: 36px;
     height: 36px;
-    padding: 0;
-    border: none;
-    background: none;
-    box-shadow: none;
-    color: #66756e;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 10px;
+    background: rgba(31, 138, 91, .12);
+    font-size: 1.1rem;
 }
 
-.lesson-close-btn:hover {
-    background: rgba(0, 0, 0, .05);
-    color: #244a37;
+.lesson-topbar-titles {
+    min-width: 0;
+    max-width: 420px;
+    flex: 1 1 auto;
+}
+
+.lesson-topbar-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+}
+
+.lesson-topbar-title {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #12261d;
+    white-space: nowrap;
+}
+
+.lesson-topbar-badge {
+    flex-shrink: 0;
+    background: #eef6f0;
+    color: #1f8a5b;
+    font-size: .72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+}
+
+.lesson-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .lesson-progress-track {
@@ -2938,17 +3204,18 @@ object.card-visual {
     transition: width .25s ease;
 }
 
-.lesson-progress-dots {
-    flex: 0 0 auto;
-    display: flex;
-    gap: 6px;
+.lesson-progress-percent {
+    flex-shrink: 0;
+    font-size: .78rem;
+    font-weight: 700;
+    color: #6b7a72;
 }
 
-.lesson-progress-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #d8dbd9;
+.lesson-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
 }
 
 .lesson-stats {
@@ -2969,6 +3236,23 @@ object.card-visual {
     padding: 5px 12px;
     border-radius: 999px;
     white-space: nowrap;
+}
+
+/* Below this width there isn't room for a 280px sidebar alongside the
+   content — drop it and let the topbar (mission title + progress) carry
+   navigation context on its own, same as before the sidebar existed. */
+@media (max-width: 900px) {
+    .mission-sidebar {
+        display: none;
+    }
+
+    .lesson-topbar {
+        padding: 14px 18px;
+    }
+
+    .lesson-topbar-titles {
+        max-width: none;
+    }
 }
 
 .lesson-theme-toggle {
@@ -3009,74 +3293,6 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     display: block;
 }
 
-/* Floating mascot help button, replacing the old inline "Ajuda" button.
-   Hidden for now — it duplicated the big mascot now shown inline in the
-   section's opening card. Markup/JS left in place in case it comes back. */
-.lesson-help-fab {
-    display: none !important;
-    position: fixed;
-    left: 24px;
-    bottom: 24px;
-    /* Same reasoning as .lesson-topbar: stay below modal overlays so this
-       dims along with the page instead of floating above a dialog. */
-    z-index: 50;
-    width: 96px;
-    height: 96px;
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    background: none;
-    box-shadow: none;
-    cursor: pointer;
-    transition: transform .15s ease;
-}
-
-.lesson-help-fab:hover {
-    transform: scale(1.06);
-}
-
-.lesson-help-fab-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    filter: drop-shadow(0 6px 12px rgba(31, 138, 91, .35));
-}
-
-.lesson-help-fab-tooltip {
-    position: absolute;
-    left: 0;
-    bottom: 100%;
-    transform: translateY(6px);
-    margin-bottom: 10px;
-    background: #ffffff;
-    color: #244a37;
-    border: 1px solid #cde7d9;
-    border-radius: 12px;
-    padding: 8px 14px;
-    font-size: 0.82rem;
-    font-weight: 600;
-    white-space: nowrap;
-    box-shadow: 0 8px 20px rgba(18, 61, 40, 0.15);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .2s ease, transform .2s ease;
-}
-
-.lesson-help-fab-tooltip::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 24px;
-    border: 6px solid transparent;
-    border-top-color: #ffffff;
-}
-
-.lesson-help-fab:hover .lesson-help-fab-tooltip {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 /* Ambient tip: the mascot chiming in on its own every so often (see
    maybeShowAmbientMascotTip), not just when hovered — so it reads as an
    active companion rather than a static corner icon. */
@@ -3111,137 +3327,44 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Small pulse while the mascote is reading a card aloud */
-.lesson-help-fab.is-speaking {
-    animation: lessonHelpFabPulse .6s ease-in-out infinite;
-}
-
-@keyframes lessonHelpFabPulse {
-    0%, 100% { box-shadow: 0 10px 24px rgba(31, 138, 91, .35); }
-    50% { box-shadow: 0 10px 24px rgba(31, 138, 91, .65), 0 0 0 6px rgba(31, 138, 91, .15); }
-}
-
-/* Mascot chat panel: opens above the floating mascot button */
+/* Mascot chat panel: a permanent fixture in the sidebar, in place of the
+   section list. style.css has its own unrelated .mascote-chat-panel (a
+   full-viewport slide-out drawer used elsewhere on the site) — every
+   property it sets has to be explicitly neutralized here too, since a
+   later same-specificity rule only overrides the properties it actually
+   redeclares, not the whole selector. */
 .mascote-chat-panel {
-    position: fixed;
-    left: 24px;
-    bottom: 90px;
-    z-index: 60;
-    width: 320px;
-    max-width: calc(100vw - 48px);
-    max-height: 420px;
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    z-index: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    max-height: none;
+    box-shadow: none;
     background: #ffffff;
-    border: 1px solid #cde7d9;
-    border-radius: 16px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, .18);
+    /* Flush with the sidebar's own edges — no side/bottom margin, no
+       rounded corners there — so it fills the whole rectangle below the
+       mission header instead of floating as an inset card. */
+    border: none;
+    border-top: 1px solid #cde7d9;
+    border-radius: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    margin: 0;
 }
 
-.mascote-chat-panel[hidden] {
-    display: none;
-}
-
-.mascote-chat-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 14px;
-    background: #f4fbf7;
-    border-bottom: 1px solid #cde7d9;
-    font-weight: 700;
-    color: #215a3f;
-    font-size: .9rem;
-}
-
-.mascote-chat-close {
-    background: none;
-    border: none;
-    box-shadow: none;
-    color: #66756e;
-    padding: 2px 6px;
-    cursor: pointer;
-    font-size: .9rem;
-}
-
-.mascote-chat-messages {
-    flex: 1 1 auto;
-    overflow-y: auto;
-    padding: 12px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-height: 80px;
-}
-
-.mascote-chat-bubble {
-    max-width: 85%;
-    padding: 8px 12px;
-    border-radius: 14px;
-    font-size: .88rem;
-    line-height: 1.4;
-    white-space: pre-wrap;
-}
-
-.mascote-chat-bubble--user {
-    align-self: flex-end;
-    background: #1f8a5b;
-    color: #ffffff;
-    border-bottom-right-radius: 4px;
-}
-
-.mascote-chat-bubble--assistant {
-    align-self: flex-start;
-    background: #f4fbf7;
-    color: #244a37;
-    border: 1px solid #cde7d9;
-    border-bottom-left-radius: 4px;
-}
-
-.mascote-chat-bubble--assistant.is-typing {
-    color: #8fa39a;
-    font-style: italic;
-}
-
-.mascote-chat-form {
-    display: flex;
-    gap: 8px;
-    padding: 10px 14px 14px;
-    border-top: 1px solid #eef1ef;
-}
-
-.mascote-chat-input {
-    flex: 1 1 auto;
-    border: 1px solid #cde7d9;
-    border-radius: 999px;
-    padding: 8px 14px;
-    font-size: .88rem;
-}
-
-.mascote-chat-input:focus {
-    outline: none;
-    border-color: #1f8a5b;
-}
-
-.mascote-chat-send {
-    flex: 0 0 auto;
-    width: 36px;
-    height: 36px;
-    padding: 0;
-    border-radius: 50%;
-    border: none;
-    box-shadow: none;
-    background: #1f8a5b;
-    color: #ffffff;
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-}
-
-.mascote-chat-send:hover {
-    background: #166c45;
-}
+/* .mascote-chat-header/-messages/-bubble*/-form/-input/-send are left to
+   style.css's shared rules (same classes, already used by the chat widget
+   on Perfil/Testes) — only the container above needs page-specific
+   layout. Dark-theme variants below are mission-page-only additions,
+   since that shared component doesn't support dark mode. */
 
 /* Shared "Check"/"Continuar" pill button for the lesson player, matching
    the dark pill already established on the percurso intro screen. */
@@ -3851,23 +3974,62 @@ html[data-theme="dark"] .mission-content {
 
 html[data-theme="dark"] .lesson-topbar {
     background: #1c1712;
+    border-bottom-color: #362c22;
 }
 
-html[data-theme="dark"] .lesson-close-btn {
+html[data-theme="dark"] .mission-sidebar {
+    background: #17130f;
+    border-right-color: #362c22;
+}
+
+html[data-theme="dark"] .sidebar-back-btn {
     color: #b8a58e;
 }
 
-html[data-theme="dark"] .lesson-close-btn:hover {
+html[data-theme="dark"] .sidebar-back-btn:hover {
     background: rgba(255, 255, 255, .08);
     color: #f2e9dd;
 }
 
-html[data-theme="dark"] .lesson-progress-track {
+html[data-theme="dark"] .sidebar-mission-title,
+html[data-theme="dark"] .lesson-topbar-title {
+    color: #f2e9dd;
+}
+
+html[data-theme="dark"] .sidebar-mission-subtitle,
+html[data-theme="dark"] .sidebar-progress-label,
+html[data-theme="dark"] .lesson-progress-percent {
+    color: #b8a58e;
+}
+
+html[data-theme="dark"] .sidebar-mission-icon,
+html[data-theme="dark"] .lesson-topbar-icon {
+    background: rgba(74, 222, 128, .12);
+}
+
+html[data-theme="dark"] .sidebar-progress {
+    border-top-color: #362c22;
+}
+
+html[data-theme="dark"] .sidebar-progress-dot {
     background: #3a2f24;
 }
 
-html[data-theme="dark"] .lesson-progress-dot {
-    background: #4f4030;
+html[data-theme="dark"] .sidebar-progress-dot.is-completed {
+    background: #4ade80;
+}
+
+html[data-theme="dark"] .sidebar-progress-percent {
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .lesson-topbar-badge {
+    background: #2a2219;
+    color: #4ade80;
+}
+
+html[data-theme="dark"] .lesson-progress-track {
+    background: #3a2f24;
 }
 
 html[data-theme="dark"] .lesson-stat,

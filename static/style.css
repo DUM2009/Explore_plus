@@ -9501,32 +9501,80 @@ body.shadcn-profile .profile-quickstat-row small {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    padding: 26px 24px;
+    border: 1px solid #e2e3db;
+    border-radius: 18px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .04);
     text-decoration: none;
     color: inherit;
-    border-top: 6px solid var(--resumo-cor-a, #1f8a5b);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.resumo-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--resumo-cor-a, #1f8a5b);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+}
+
+.resumo-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.resumo-card-icon {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--resumo-cor-soft, #eaf3e9);
+    color: var(--resumo-cor-a, #1f8a5b);
 }
 
 .resumo-card-badge {
-    align-self: flex-start;
     padding: 4px 12px;
     border-radius: 999px;
     background: var(--resumo-cor-soft, #eaf3e9);
     color: var(--resumo-cor-a, #1f8a5b);
-    font-size: .72rem;
+    font-size: .7rem;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: .04em;
 }
 
-.resumo-card-meta {
+.resumo-card h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #1f2d22;
+}
+
+.resumo-card p {
+    margin: 0;
+    color: #5c6b5f;
+    font-size: .9rem;
+    line-height: 1.6;
+}
+
+.resumo-card-cta {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: auto;
-    padding-top: 6px;
-    font-size: .8rem;
+    gap: 6px;
+    margin-top: 4px;
+    font-size: .85rem;
     font-weight: 700;
     color: var(--resumo-cor-a, #1f8a5b);
+}
+
+.resumo-card-cta svg {
+    transition: transform .2s ease;
+}
+
+.resumo-card:hover .resumo-card-cta svg {
+    transform: translateX(3px);
 }
 
 .resumo-header {
@@ -9536,15 +9584,17 @@ body.shadcn-profile .profile-quickstat-row small {
     margin: 24px 0 28px;
     padding: 32px 34px;
     border-radius: 20px;
-    background: linear-gradient(135deg, var(--resumo-cor-a), var(--resumo-cor-b));
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--resumo-cor-soft, #eaf3e9), #ffffff);
+    border: 1px solid var(--resumo-cor-soft, #d7ead9);
+    color: #1f4d33;
 }
 
 .resumo-header-badge {
     align-self: flex-start;
     padding: 4px 14px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, .18);
+    background: var(--resumo-cor-a, #1f8a5b);
+    color: #ffffff;
     font-size: .75rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -9554,6 +9604,7 @@ body.shadcn-profile .profile-quickstat-row small {
 .resumo-header h1 {
     margin: 0;
     font-size: 1.9rem;
+    color: #1f4d33;
 }
 
 .resumo-header p {
@@ -9561,7 +9612,37 @@ body.shadcn-profile .profile-quickstat-row small {
     max-width: 680px;
     font-size: 1rem;
     line-height: 1.65;
-    opacity: .94;
+    color: #3d5a48;
+}
+
+.resumo-modos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.resumo-modo-btn {
+    padding: 8px 16px;
+    border: 1px solid #e2e3db;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #5c6b5f;
+    font-size: .85rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+}
+
+.resumo-modo-btn:hover {
+    background: #f4f6f1;
+}
+
+.resumo-modo-btn.is-active {
+    border-color: transparent;
+    background: #1f8a5b;
+    color: #ffffff;
 }
 
 .resumo-equacao {
@@ -9594,31 +9675,28 @@ body.shadcn-profile .profile-quickstat-row small {
     line-height: 1.7;
 }
 
-.resumo-definicoes {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 14px;
-    margin-bottom: 18px;
-}
-
-.resumo-definicao-item {
-    padding: 16px 18px;
-    border-radius: 14px;
-    background: #f7f9f5;
-    border: 1px solid #e2e3db;
-}
-
-.resumo-definicao-item strong {
+.resumo-seccao-imagem-wrap {
+    position: relative;
     display: block;
-    margin-bottom: 6px;
-    color: #1f8a5b;
-    font-size: .95rem;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto 18px;
 }
 
-.resumo-definicao-item span {
-    color: #5c6b5f;
-    font-size: .88rem;
-    line-height: 1.6;
+.resumo-seccao-imagem {
+    display: block;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .08);
+}
+
+.resumo-imagem-legenda {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    max-width: none;
+    pointer-events: none;
 }
 
 .resumo-passos {
@@ -9690,59 +9768,54 @@ body.shadcn-profile .profile-quickstat-row small {
     color: #5c4a10;
 }
 
-.resumo-fatores {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 16px;
+.resumo-tabela {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
 }
 
-.resumo-fator-card {
-    padding: 18px 20px;
-    border-radius: 16px;
-    background: #ffffff;
-    border: 1px solid #e2e3db;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, .04);
+.resumo-tabela tr {
+    border-bottom: 1px solid #e2e3db;
 }
 
-.resumo-fator-card strong {
-    display: block;
-    margin-bottom: 6px;
-    color: #1f8a5b;
+.resumo-tabela tr:first-child {
+    border-top: 1px solid #e2e3db;
+}
+
+.resumo-tabela th,
+.resumo-tabela td {
+    padding: 14px 12px;
+    text-align: left;
+    vertical-align: top;
     font-size: .92rem;
+    font-weight: 400;
 }
 
-.resumo-fator-card span {
-    color: #5c6b5f;
-    font-size: .86rem;
-    line-height: 1.6;
+.resumo-tabela th {
+    width: 220px;
+    color: #1f2d22;
+    font-weight: 700;
 }
 
-.resumo-sintese {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 14px;
-}
-
-.resumo-sintese-item {
-    padding: 16px 18px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #eaf3e9, #f7faf1);
-    border: 1px solid #d7ead9;
-}
-
-.resumo-sintese-item strong {
-    display: block;
-    margin-bottom: 6px;
-    color: #1f4d33;
-    font-size: .82rem;
-    text-transform: uppercase;
-    letter-spacing: .03em;
-}
-
-.resumo-sintese-item span {
+.resumo-tabela td {
     color: #3d4d40;
-    font-size: .88rem;
     line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .resumo-tabela th {
+        width: auto;
+    }
+
+    .resumo-tabela th,
+    .resumo-tabela td {
+        display: block;
+        padding: 4px 0;
+    }
+
+    .resumo-tabela tr {
+        padding: 12px 0;
+    }
 }
 
 @media (max-width: 600px) {
@@ -9758,4 +9831,88 @@ body.shadcn-profile .profile-quickstat-row small {
         padding: 18px;
         font-size: .95rem;
     }
+}
+
+/* Resumos — modo escuro. As caixas de "Dicas de estudo" (.resumo-dica)
+   ficam de fora de propósito: mantêm sempre a cor atual (amarelo/creme). */
+
+html.dark-mode .missions-page p,
+html.dark-mode .teste-voltar {
+    color: #cddad2;
+}
+
+html.dark-mode .teste-voltar:hover {
+    color: #4fd897;
+}
+
+html.dark-mode .resumo-card {
+    background: #1f2b23;
+    border-color: #2c3a30;
+}
+
+html.dark-mode .resumo-card h3 {
+    color: #ffffff;
+}
+
+html.dark-mode .resumo-card p {
+    color: #b7c2ba;
+}
+
+html.dark-mode .resumo-header {
+    background: #1f2b23;
+    border-color: #2c3a30;
+    color: #e7ede8;
+}
+
+html.dark-mode .resumo-header h1 {
+    color: #ffffff;
+}
+
+html.dark-mode .resumo-header p {
+    color: #cddad2;
+}
+
+html.dark-mode .resumo-modo-btn {
+    background: #1f2b23;
+    border-color: #2c3a30;
+    color: #cddad2;
+}
+
+html.dark-mode .resumo-modo-btn:hover {
+    background: #263229;
+}
+
+html.dark-mode .resumo-equacao {
+    background: #1f2b23;
+    border-color: #2c3a30;
+    color: #ffffff;
+}
+
+html.dark-mode .resumo-seccao h2 {
+    color: #ffffff;
+}
+
+html.dark-mode .resumo-seccao > p {
+    color: #cddad2;
+}
+
+html.dark-mode .resumo-passo-texto strong {
+    color: #ffffff;
+}
+
+html.dark-mode .resumo-passo-texto span {
+    color: #b7c2ba;
+}
+
+html.dark-mode .resumo-tabela tr,
+html.dark-mode .resumo-tabela tr:first-child {
+    border-color: #2c3a30;
+}
+
+html.dark-mode .resumo-tabela th {
+    color: #ffffff;
+}
+
+html.dark-mode .resumo-tabela td {
+    color: #cddad2;
 }

@@ -617,7 +617,6 @@ class MissionSystem {
         const pathScreen = document.getElementById('missionPathScreen');
         const container = document.querySelector('.mission-container');
         const header = document.getElementById('siteHeader');
-        const helpFab = document.getElementById('lessonHelpFab');
         if (pathScreen) pathScreen.hidden = !this.showPathScreen;
         if (container) container.hidden = this.showPathScreen;
         // The site header stays hidden for the whole lesson-player experience
@@ -625,10 +624,6 @@ class MissionSystem {
         // lesson topbar (close button + progress + XP/streak) replaces it.
         const headerHidden = !this.showPathScreen || this.pathIntroActive;
         if (header) header.hidden = headerHidden;
-        // The floating "talk to Kim" mascot button stays hidden for the
-        // whole percurso overview (intro and section index alike) — only
-        // shown once a section is actually open.
-        if (helpFab) helpFab.hidden = this.showPathScreen;
         // The page normally reserves top padding for the site's fixed
         // marketing header — cancel that reserved space for as long as the
         // header itself is hidden, or the lesson topbar ends up floating
@@ -1145,13 +1140,13 @@ class MissionSystem {
     }
 
     /**
-     * Lesson chrome: the topbar (close button, per-section progress bar +
-     * remaining-section dots, live XP/streak) and the floating mascot help
-     * button, replacing the old sidebar + mascot-panel 3-column layout.
+     * Lesson chrome: the sidebar (back link, mission name, section list,
+     * overall progress) and the topbar (mission title, per-section
+     * progress, live XP/streak, theme) plus the floating mascot help
+     * button — persistent across every section/screen.
      */
     renderLessonChrome() {
         const topbar = document.getElementById('lessonTopbar');
-        const helpFab = document.getElementById('lessonHelpFab');
         if (!topbar) return;
 
         const maxReviewable = this.getMaxReviewableSectionIndex();
@@ -1161,17 +1156,18 @@ class MissionSystem {
 
         const stepProgress = this.getSectionStepProgress(section);
         const percent = isChapterDone ? 100 : Math.round((stepProgress.completedSteps / stepProgress.totalSteps) * 100);
-        const remainingSections = isChapterDone ? 0 : Math.max(0, this.mission.sections.length - sectionIndex - 1);
 
         const fill = document.getElementById('lessonProgressFill');
         if (fill) fill.style.width = `${percent}%`;
 
-        const dotsEl = document.getElementById('lessonProgressDots');
-        if (dotsEl) {
-            dotsEl.innerHTML = Array.from({ length: remainingSections })
-                .map(() => '<span class="lesson-progress-dot"></span>')
-                .join('');
-        }
+        const percentEl = document.getElementById('lessonProgressPercent');
+        if (percentEl) percentEl.textContent = `${percent}%`;
+
+        const icon = this.mission.badge?.icon || '🌱';
+        const iconEl = document.getElementById('lessonTopbarIcon');
+        if (iconEl) iconEl.textContent = icon;
+        const titleEl = document.getElementById('lessonTopbarTitle');
+        if (titleEl) titleEl.textContent = this.mission.title;
 
         const statsEl = document.getElementById('lessonStats');
         if (statsEl && window.ProfileXP) {
@@ -1181,10 +1177,12 @@ class MissionSystem {
             `;
         }
 
+        this.renderMissionSidebar();
+
         if (!this._lessonChromeBound) {
             this._lessonChromeBound = true;
-            document.getElementById('lessonCloseBtn')?.addEventListener('click', () => this.closeLessonToPath());
-            helpFab?.addEventListener('click', () => this.handleHelpFabClick());
+            document.getElementById('sidebarBackBtn')?.addEventListener('click', () => this.closeLessonToPath());
+            this.initMascoteChatPanel();
             window.addEventListener('explore:profile-updated', () => this.renderLessonChrome());
 
             const themeToggle = document.getElementById('lessonThemeToggle');
@@ -1218,6 +1216,35 @@ class MissionSystem {
     }
 
     /**
+     * Sidebar section list + overall progress footer — the mission's
+     * persistent left-hand navigation. Rebuilt on every renderLessonChrome
+     * call so the active/completed/locked states stay in sync as the
+     * student moves between sections.
+     */
+    renderMissionSidebar() {
+        const sidebar = document.getElementById('missionSidebar');
+        if (!sidebar) return;
+
+        const icon = this.mission.badge?.icon || '🌱';
+        const iconEl = document.getElementById('sidebarMissionIcon');
+        if (iconEl) iconEl.textContent = icon;
+        const titleEl = document.getElementById('sidebarMissionTitle');
+        if (titleEl) titleEl.textContent = this.mission.title;
+
+        const dotsEl = document.getElementById('sidebarProgressDots');
+        if (dotsEl) {
+            dotsEl.innerHTML = this.mission.sections.map((section, index) => {
+                const isCompleted = this.completedSections.has(section.id);
+                const isActive = index === this.activeSectionIndex;
+                return `<span class="sidebar-progress-dot ${isCompleted ? 'is-completed' : ''} ${isActive ? 'is-active' : ''}"></span>`;
+            }).join('');
+        }
+
+        const percentEl = document.getElementById('sidebarProgressPercent');
+        if (percentEl) percentEl.textContent = `${this.getProgressPercent()}%`;
+    }
+
+    /**
      * Kim chimes in on his own every so often with the current section's
      * explorerTip, so the floating button reads as an active companion
      * rather than a static corner icon — not just something that reacts to
@@ -1230,9 +1257,6 @@ class MissionSystem {
 
     maybeShowAmbientMascotTip() {
         if (this.showPathScreen) return;
-
-        const chatPanel = document.getElementById('mascoteChatPanel');
-        if (chatPanel && !chatPanel.hidden) return;
         if (document.getElementById('mascotOverlay')) return;
 
         const bubble = document.getElementById('lessonAmbientTip');
@@ -1262,42 +1286,23 @@ class MissionSystem {
         this.render();
     }
 
-    /**
-     * Floating mascot button: opens/closes the chat panel, where the
-     * student can either replay the current card as audio or type a real
-     * question to the mascot (answered by Claude, grounded in this card's
-     * content — see mascote_chat() in views.py).
-     */
-    handleHelpFabClick() {
-        const panel = document.getElementById('mascoteChatPanel');
-        if (!panel) return;
-
-        const willOpen = panel.hidden;
-        panel.hidden = !willOpen;
-        if (willOpen) {
-            this.initMascoteChatPanel();
-            document.getElementById('mascoteChatInput')?.focus();
-        }
-    }
-
     /** Returns the currently visible screen-card or quiz question element. */
     getActiveCardElement() {
         return document.querySelector('.screen-card.active-screen')
             || document.querySelector('.section-quiz:not(.quiz-entry-hidden)');
     }
 
-    /** Wires up the chat panel's controls once (the panel itself is static
-     *  markup that persists across renders, so this only needs to run on
-     *  first open). */
+    /**
+     * Wires up the chat panel's controls once — it's a permanent fixture in
+     * the sidebar now (replacing the section list), where the student can
+     * type a real question to the mascot (answered by Claude, grounded in
+     * this card's content — see mascote_chat() in views.py), so this just
+     * needs to run once on the first render rather than on open/close.
+     */
     initMascoteChatPanel() {
         if (this._chatPanelBound) return;
         this._chatPanelBound = true;
         this.chatHistory = [];
-
-        document.getElementById('mascoteChatClose')?.addEventListener('click', () => {
-            const panel = document.getElementById('mascoteChatPanel');
-            if (panel) panel.hidden = true;
-        });
 
         document.getElementById('mascoteChatForm')?.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -1614,9 +1619,8 @@ class MissionSystem {
 
     /**
      * Reads `text` aloud via the browser's speech synthesis. `button` gets
-     * an `.is-speaking` class while playing (used by the floating mascot
-     * button for a talking/pulse animation) — clicking the same button
-     * again while it's speaking stops it.
+     * an `.is-speaking` class while playing (for a talking/pulse animation)
+     * — clicking the same button again while it's speaking stops it.
      */
     playCardAudio(text, button) {
         if (!this.supportsCardAudio() || !text) {
@@ -2387,6 +2391,18 @@ class MissionSystem {
             screen.classList.toggle('active-screen', index === safeIndex);
             screen.classList.toggle('hidden-screen', index !== safeIndex);
         });
+
+        // Any vocabulary word on the screen the student just landed on goes
+        // straight into their dictionary/concepts panel — not just the ones
+        // revealed through a plant-diagram hotspot. Gated on showPathScreen
+        // because this same method also runs silently while the section's
+        // DOM is first mounted behind the percurso overview, before the
+        // student has actually opened it.
+        if (!this.showPathScreen) {
+            screens[safeIndex]?.querySelectorAll('.key-term').forEach((el) => {
+                this.registerDiscoveredWord(el.textContent);
+            });
+        }
 
         const navEl = sectionEl.querySelector('.screen-nav');
         const isLast = safeIndex === screens.length - 1;
