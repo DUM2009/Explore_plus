@@ -3245,7 +3245,11 @@ background:#27ae60;
 }
 
 .profile-sidebar{
-    position:absolute;
+    /* Fixed (not absolute) so the off-canvas drawer stays pinned to the
+       viewport — an absolutely positioned drawer scrolls away with the
+       underlying page once the user scrolls past its own height, leaving
+       the rest of a long page with no sidebar/backdrop at all. */
+    position:fixed;
     flex-shrink:0;
     top:0;
     left:0;
@@ -3254,8 +3258,8 @@ background:#27ae60;
     flex-direction:column;
 
     width:min(320px,86vw);
-    height:calc(100vh - 80px);
-    min-height:calc(100vh - 80px);
+    height:100vh;
+    min-height:100vh;
 
     --sb-pad-r:26px;
     padding:30px 26px;
@@ -9884,11 +9888,15 @@ body.shadcn-profile .profile-quickstat-row small {
 }
 
 .resumo-imagem-legenda {
+    /* Width comes from an inline style (100% of .resumo-seccao-imagem-wrap,
+       which is itself sized to the legend's full width including the
+       number-callout gutter — see resumo-detalhe.html) so this must NOT
+       clamp to the image's width like the global img/svg max-width:100%
+       reset does, or the callout numbers get squeezed back over the photo. */
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
-    max-width: none;
     pointer-events: none;
 }
 

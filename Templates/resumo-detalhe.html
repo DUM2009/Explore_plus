@@ -173,10 +173,14 @@
         {% if seccao.texto %}<p>{{ seccao.texto|md_inline }}</p>{% endif %}
 
         {% if seccao.imagem %}
-        <div class="resumo-seccao-imagem-wrap" {% if seccao.imagem_max_width %}style="max-width:{{ seccao.imagem_max_width }};"{% endif %}>
-            <img src="{% static seccao.imagem %}" alt="{{ seccao.imagem_alt }}" class="resumo-seccao-imagem">
+        <div class="resumo-seccao-imagem-wrap" {% if seccao.imagem_max_width %}style="max-width:{{ seccao.imagem_max_width }};"{% elif seccao.imagem_marcadores %}style="max-width:calc(440px * {{ seccao.imagem_svg_largura_pct }} / 100);"{% endif %}>
             {% if seccao.imagem_marcadores %}
-            <svg class="resumo-imagem-legenda" style="width:{{ seccao.imagem_svg_largura_pct }}%;" viewBox="0 0 {{ seccao.imagem_largura|add:seccao.imagem_gutter }} {{ seccao.imagem_altura }}" aria-hidden="true">
+            <img src="{% static seccao.imagem %}" alt="{{ seccao.imagem_alt }}" class="resumo-seccao-imagem" style="width:{% widthratio 100 seccao.imagem_svg_largura_pct 100 %}%;">
+            {% else %}
+            <img src="{% static seccao.imagem %}" alt="{{ seccao.imagem_alt }}" class="resumo-seccao-imagem">
+            {% endif %}
+            {% if seccao.imagem_marcadores %}
+            <svg class="resumo-imagem-legenda" style="width:100%;" viewBox="0 0 {{ seccao.imagem_largura|add:seccao.imagem_gutter }} {{ seccao.imagem_altura }}" aria-hidden="true">
                 <defs>
                     <marker id="resumo-seta-{{ forloop.counter }}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
                         <path d="M0,0 L10,5 L0,10 Z" fill="#1f8a5b" />

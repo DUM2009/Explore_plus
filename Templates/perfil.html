@@ -26,7 +26,7 @@
 
 <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
 
-<section class="profile-layout has-sidebar">
+<section class="profile-layout has-sidebar sidebar-collapsible">
 
 <aside class="profile-sidebar" id="profileSidebar" aria-hidden="true">
 <div class="profile-sidebar-brand">
@@ -145,6 +145,15 @@
 
 <div class="profile-main-shell">
 <div class="profile-content">
+
+<div class="missions-topbar">
+    <div class="missions-topbar-logo">
+        <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
+    </div>
+    <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+</div>
 
 <div class="profile-header-actions profile-header-actions--icons-only">
 
@@ -377,6 +386,7 @@
 </div>
 
 <script src="{% static 'profile-django.js' %}" defer></script>
+<script src="{% static 'nav-drawer.js' %}" defer></script>
 
 </body>
 
