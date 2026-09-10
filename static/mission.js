@@ -617,16 +617,9 @@ class MissionSystem {
         const pathScreen = document.getElementById('missionPathScreen');
         const container = document.querySelector('.mission-container');
         const header = document.getElementById('siteHeader');
-        const chatFab = document.getElementById('mascotChatFab');
         if (pathScreen) pathScreen.hidden = !this.showPathScreen;
         if (container) container.hidden = this.showPathScreen;
-        // The floating "talk to Kim" button only makes sense once a section
-        // is actually open, and only while the chat sidebar is collapsed
-        // (it's what reopens it) — never on the percurso overview.
-        if (chatFab) {
-            const sidebarCollapsed = document.querySelector('.mission-shell')?.classList.contains('is-sidebar-collapsed');
-            chatFab.hidden = this.showPathScreen || !sidebarCollapsed;
-        }
+        this.updateFloatingChatControls();
         // The site header stays hidden for the whole lesson-player experience
         // now (not just during the percurso's mascot intro), since the new
         // lesson topbar (close button + progress + XP/streak) replaces it.
@@ -637,6 +630,90 @@ class MissionSystem {
         // header itself is hidden, or the lesson topbar ends up floating
         // below a blank gap the same height as the header would have been.
         document.body.classList.toggle('mission-header-hidden', headerHidden);
+    }
+
+    /**
+     * Shows/hides the floating mascot fab and the topbar's close button.
+     * The fab only makes sense once a section is open *and* the chat
+     * sidebar is collapsed (opening it would just cover the chat panel
+     * already on screen). The close button has no such restriction — the
+     * chat header has no back arrow of its own, so it's the only way to
+     * exit back to the path screen whether the chat is open or collapsed.
+     */
+    updateFloatingChatControls() {
+        const chatFab = document.getElementById('mascotChatFab');
+        const closeBtn = document.getElementById('lessonTopbarClose');
+        const collapsed = document.querySelector('.mission-shell')?.classList.contains('is-sidebar-collapsed');
+        if (chatFab) chatFab.hidden = this.showPathScreen || !collapsed;
+        if (closeBtn) closeBtn.hidden = this.showPathScreen;
+    }
+
+    /**
+     * Lets the student drag the sidebar/main boundary to widen or narrow
+     * the chat panel. The width lives in a CSS custom property (see
+     * .mission-sidebar's flex-basis) and persists across visits via
+     * localStorage.
+     */
+    initSidebarResize() {
+        const handle = document.getElementById('missionSidebarResizeHandle');
+        const sidebar = document.getElementById('missionSidebar');
+        if (!handle || !sidebar) return;
+
+        const MIN_WIDTH = 240;
+        const MAX_WIDTH = 520;
+        const STORAGE_KEY = 'explore_mission_sidebar_width';
+
+        const applyWidth = (width) => {
+            const clamped = Math.max(MIN_WIDTH, Math.min(MAX_WIDTH, width));
+            sidebar.style.setProperty('--mission-sidebar-width', `${clamped}px`);
+            return clamped;
+        };
+
+        let savedWidth = null;
+        try {
+            savedWidth = Number(localStorage.getItem(STORAGE_KEY));
+        } catch (error) {
+            // Ignore storage access errors (private browsing) — falls back
+            // to the CSS default (280px).
+        }
+        if (Number.isFinite(savedWidth) && savedWidth > 0) {
+            applyWidth(savedWidth);
+        }
+
+        let startX = 0;
+        let startWidth = 0;
+
+        const onPointerMove = (event) => {
+            // The sidebar sits on the right now, so dragging left (negative
+            // clientX delta) is what widens it — the sign is flipped from
+            // the usual left-docked-panel math.
+            const width = applyWidth(startWidth - (event.clientX - startX));
+            try {
+                localStorage.setItem(STORAGE_KEY, String(width));
+            } catch (error) {
+                // Ignore storage errors — the resize still works for the
+                // rest of this visit, just won't be remembered.
+            }
+        };
+
+        const onPointerUp = () => {
+            handle.classList.remove('is-dragging');
+            document.body.style.removeProperty('cursor');
+            document.body.style.removeProperty('user-select');
+            window.removeEventListener('pointermove', onPointerMove);
+            window.removeEventListener('pointerup', onPointerUp);
+        };
+
+        handle.addEventListener('pointerdown', (event) => {
+            event.preventDefault();
+            startX = event.clientX;
+            startWidth = sidebar.getBoundingClientRect().width;
+            handle.classList.add('is-dragging');
+            document.body.style.cursor = 'col-resize';
+            document.body.style.userSelect = 'none';
+            window.addEventListener('pointermove', onPointerMove);
+            window.addEventListener('pointerup', onPointerUp);
+        });
     }
 
     /**
@@ -664,7 +741,6 @@ class MissionSystem {
         const introActive = this.pathIntroActive;
 
         const xpStarIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="yellow" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>';
-        const leafIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-11 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>';
         const checkIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>';
 
         const indexRowsHtml = this.mission.sections.map((section, idx) => {
@@ -737,7 +813,11 @@ class MissionSystem {
                     </div>
                     <div class="mission-path-intro-center">
                         ${waveVideoUrl
-                            ? `<video class="mission-path-mascot" src="${waveVideoUrl}" autoplay loop muted playsinline ${imageUrl ? `poster="${imageUrl}"` : ''}></video>`
+                            // No poster here either — same fixed-character
+                            // video as getMascotOverlayFigureHtml(), so the
+                            // student's own (possibly different-looking)
+                            // avatar shouldn't flash in ahead of it.
+                            ? `<video class="mission-path-mascot" src="${waveVideoUrl}" autoplay loop muted playsinline></video>`
                             : (imageUrl ? `<img class="mission-path-mascot" src="${imageUrl}" alt="Mascote Explore+">` : '')}
                         <p class="mission-path-intro-text">${steps[stepIndex]}</p>
                         ${stepIndex === quizStepIndex ? quizDemoHtml : ''}
@@ -773,7 +853,7 @@ class MissionSystem {
                                     <span class="sidebar-plan-label">Plano</span>
                                     <strong class="sidebar-plan-name">${planoIsPro ? 'Pro' : 'Gratuito'}</strong>
                                 </div>
-                                ${planoIsPro ? '' : `<a href="${window.exploreSuperExploreUrl || '#'}" class="sidebar-plan-cta">SuperExplore</a>`}
+                                ${planoIsPro ? '<span class="sidebar-plan-cta sidebar-plan-cta--badge">SuperExplore</span>' : `<a href="${window.exploreSuperExploreUrl || '#'}" class="sidebar-plan-cta">SuperExplore</a>`}
                             </div>
 
                             <a href="${window.explorePerfilUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
@@ -856,7 +936,6 @@ class MissionSystem {
                                     ${this.mission.badge ? `<span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-11 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg> ${this.mission.badge.name}</span>` : ''}
                                 </div>
                             </div>
-                            ${window.exploreMascotPlantVideoUrl ? `<video class="mo-hero-video" src="${window.exploreMascotPlantVideoUrl}" autoplay loop muted playsinline></video>` : ''}
                         </section>
 
                         <section class="mo-index">
@@ -868,33 +947,36 @@ class MissionSystem {
 
                                 <aside class="mo-sidebar">
                                     <div class="mo-card mo-progress-card">
-                                        <div class="mo-card-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-                                        </div>
-                                        <h3>O teu progresso</h3>
+                                        <h3>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                                            O teu progresso
+                                        </h3>
                                         <div class="mo-progress-row">
                                             <div class="mo-progress-ring" style="--progress: ${progressPercent}">
                                                 <span>${completedCount}/${totalCount}</span>
                                             </div>
                                             <strong class="mo-progress-percent">${progressPercent}%</strong>
-                                            ${waveVideoUrl ? `<video class="mo-progress-mascot" src="${waveVideoUrl}" autoplay loop muted playsinline ${imageUrl ? `poster="${imageUrl}"` : ''}></video>` : ''}
                                         </div>
                                         <div class="mo-progress-bar"><div class="mo-progress-bar-fill" style="width:${progressPercent}%"></div></div>
-                                        <div class="mo-reward-row">
-                                            <span class="mo-reward-icon">${leafIconSvg}</span>
-                                            <div class="mo-reward-copy">
-                                                <span>Recompensa da missão</span>
-                                                <strong>+${this.mission.totalXP || 0} XP</strong>
-                                            </div>
+                                    </div>
+
+                                    <div class="mo-card mo-rewards-card">
+                                        <h3>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+                                            Recompensas da missão
+                                        </h3>
+                                        <div class="mo-reward-buttons">
+                                            <span class="mo-reward-btn">+${this.mission.totalXP || 0} XP</span>
+                                            ${this.mission.badge ? `<span class="mo-reward-btn">${this.mission.badge.name}</span>` : ''}
                                         </div>
                                     </div>
 
                                     <div class="mo-card mo-next-card">
-                                        <div class="mo-card-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
-                                        </div>
-                                        <h3>Testa os teus conhecimentos</h3>
-                                        <p>Já exploraste a matéria? Faz o Teste de Fotossíntese e vê quanto aprendeste!</p>
+                                        <h3>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
+                                            Testa os teus conhecimentos
+                                        </h3>
+                                        <p>Já exploraste a matéria? Faz o Teste da Fotossíntese e vê quanto aprendeste!</p>
                                         <a href="${window.exploreFotossinteseTesteUrl || '#'}" class="mo-next-cta">
                                             <span>Fazer o teste</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="mo-next-cta-arrow"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -974,10 +1056,6 @@ class MissionSystem {
                 });
             }
 
-            if (!this._indexConnectorsResizeBound) {
-                this._indexConnectorsResizeBound = true;
-                window.addEventListener('resize', () => this.drawIndexConnectors());
-            }
         }
 
         screen.querySelectorAll('[data-section-index]').forEach((btn) => {
@@ -1012,59 +1090,6 @@ class MissionSystem {
         }
 
         this.applyPathScreenVisibility();
-
-        // Only meaningful once the screen is actually visible — measuring
-        // icon positions while it (or an ancestor) is still hidden would
-        // just read 0×0 rects. applyPathScreenVisibility() above is what
-        // unhides it, so this has to run after that, not before.
-        if (!introActive) {
-            this.drawIndexConnectors();
-            // Row heights can shift slightly once the custom webfont finishes
-            // loading (line-height/metrics changing after the fallback font
-            // was first measured) — redraw once that settles.
-            document.fonts?.ready?.then(() => this.drawIndexConnectors());
-        }
-    }
-
-    /**
-     * Draws the dashed "percurso" trail between the índice icons — one
-     * segment per gap, from one icon's actual measured bottom edge to the
-     * next icon's top edge, so it only ever occupies the gap and can never
-     * render on top of an icon (row heights vary with title/subtitle
-     * length, so this can't be pinned down with fixed CSS offsets).
-     */
-    drawIndexConnectors() {
-        const list = document.querySelector('.mo-index-list');
-        if (!list) return;
-
-        list.querySelectorAll('.mo-index-connector').forEach((el) => el.remove());
-
-        const icons = Array.from(list.querySelectorAll('.mo-index-icon'));
-        if (icons.length < 2) return;
-
-        const listRect = list.getBoundingClientRect();
-        const edges = icons.map((icon) => {
-            const rect = icon.getBoundingClientRect();
-            return {
-                x: rect.left + rect.width / 2 - listRect.left,
-                top: rect.top - listRect.top,
-                bottom: rect.bottom - listRect.top,
-            };
-        });
-
-        for (let i = 0; i < edges.length - 1; i++) {
-            const from = edges[i];
-            const to = edges[i + 1];
-            const height = to.top - from.bottom;
-            if (height <= 0) continue;
-
-            const segment = document.createElement('div');
-            segment.className = 'mo-index-connector';
-            segment.style.left = `${from.x}px`;
-            segment.style.top = `${from.bottom}px`;
-            segment.style.height = `${height}px`;
-            list.appendChild(segment);
-        }
     }
 
     /**
@@ -1121,7 +1146,11 @@ class MissionSystem {
         const waveVideoUrl = this.getMascotWaveVideoUrl();
         const imageUrl = this.getMascotImageUrl();
         if (waveVideoUrl) {
-            return `<video class="mascot-overlay-figure" src="${waveVideoUrl}" autoplay loop muted playsinline ${imageUrl ? `poster="${imageUrl}"` : ''}></video>`;
+            // No poster: this video is one fixed character, but imageUrl is
+            // whatever avatar skin the student picked on their profile (e.g.
+            // a different-looking mascot) — using it as a poster flashed
+            // that mismatched image before the video's first frame painted.
+            return `<video class="mascot-overlay-figure" src="${waveVideoUrl}" autoplay loop muted playsinline></video>`;
         }
         return imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : '';
     }
@@ -1171,12 +1200,6 @@ class MissionSystem {
         const percentEl = document.getElementById('lessonProgressPercent');
         if (percentEl) percentEl.textContent = `${percent}%`;
 
-        const iconEl = document.getElementById('lessonTopbarIcon');
-        // An SVG icon, not an emoji — set once since it never changes.
-        if (iconEl && !iconEl.dataset.iconSet) {
-            iconEl.dataset.iconSet = 'true';
-            iconEl.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>';
-        }
         const titleEl = document.getElementById('lessonTopbarTitle');
         // The current section's title (e.g. "Fase clara") rather than the
         // mission's own title — the sidebar back button already gives
@@ -1193,19 +1216,19 @@ class MissionSystem {
 
         if (!this._lessonChromeBound) {
             this._lessonChromeBound = true;
-            document.getElementById('sidebarBackBtn')?.addEventListener('click', () => this.closeLessonToPath());
+            document.getElementById('lessonTopbarClose')?.addEventListener('click', () => this.closeLessonToPath());
             this.initMascoteChatPanel();
 
             const missionShell = document.querySelector('.mission-shell');
-            const chatFab = document.getElementById('mascotChatFab');
             document.getElementById('sidebarCollapseBtn')?.addEventListener('click', () => {
                 missionShell?.classList.add('is-sidebar-collapsed');
-                if (chatFab) chatFab.hidden = false;
+                this.updateFloatingChatControls();
             });
-            chatFab?.addEventListener('click', () => {
+            document.getElementById('mascotChatFab')?.addEventListener('click', () => {
                 missionShell?.classList.remove('is-sidebar-collapsed');
-                chatFab.hidden = true;
+                this.updateFloatingChatControls();
             });
+            this.initSidebarResize();
             window.addEventListener('explore:profile-updated', () => this.renderLessonChrome());
 
             const themeToggle = document.getElementById('lessonThemeToggle');
@@ -1302,11 +1325,24 @@ class MissionSystem {
             event.preventDefault();
             this.sendMascoteChatMessage();
         });
+
+        const input = document.getElementById('mascoteChatInput');
+        document.getElementById('mascoteChatWelcome')?.querySelectorAll('.mascote-chat-suggestion').forEach((button) => {
+            button.addEventListener('click', () => {
+                if (!input) return;
+                input.value = button.dataset.suggestion || '';
+                input.focus();
+            });
+        });
     }
 
     appendChatMessage(role, text, isTyping = false) {
         const messagesEl = document.getElementById('mascoteChatMessages');
         if (!messagesEl) return null;
+
+        // The welcome screen (greeting + suggestion chips) only makes sense
+        // before the conversation starts.
+        document.getElementById('mascoteChatWelcome')?.remove();
 
         const bubble = document.createElement('div');
         bubble.className = `mascote-chat-bubble mascote-chat-bubble--${role}${isTyping ? ' is-typing' : ''}`;
@@ -1430,14 +1466,28 @@ class MissionSystem {
         // illustration below the (now removed) ask-mascot button already
         // carries the topic on its own.
         const isCuriosity = extraClass.includes('curiosity');
+        // Rectangular layout for the section intro: mascot on the left,
+        // greeting + CTA on the right, instead of stacked/centered.
+        const isSplit = extraClass.includes('split');
         const overlay = document.createElement('div');
         overlay.id = 'mascotOverlay';
         overlay.className = 'mascot-overlay';
-        overlay.innerHTML = `
-            <div class="mascot-overlay-card ${extraClass}" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
+        const bodyHtml = isSplit
+            ? `
+                <div class="mascot-overlay-split-figure">${this.getMascotOverlayFigureHtml()}</div>
+                <div class="mascot-overlay-split-body">
+                    <div class="mascot-overlay-text">${message}</div>
+                    <button type="button" class="mascot-overlay-btn">${ctaLabel}</button>
+                </div>
+            `
+            : `
                 ${!isCuriosity ? this.getMascotOverlayFigureHtml() : ''}
                 <div class="mascot-overlay-text">${message}</div>
                 <button type="button" class="mascot-overlay-btn">${ctaLabel}</button>
+            `;
+        overlay.innerHTML = `
+            <div class="mascot-overlay-card ${extraClass}" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
+                ${bodyHtml}
             </div>
         `;
 
@@ -1450,10 +1500,12 @@ class MissionSystem {
     }
 
     showMascotIntroDialog(section) {
-        const message = section.introGreeting
+        const studentTitle = this.getStudentRankTitle().replace(/!+$/, '');
+        const rawMessage = section.introGreeting
             || this.getMascotText('introGreeting', { missionTitle: this.mission.title, sectionTitle: section.title });
+        const message = rawMessage.replace('{studentTitle}', studentTitle);
         const cta = section.introCta || this.getMascotText('introCta') || 'Continuar';
-        this.showMascotOverlay(message, cta, () => {});
+        this.showMascotOverlay(message, cta, () => {}, { extraClass: 'mascot-overlay-card--split' });
     }
 
     /**
@@ -1824,8 +1876,8 @@ class MissionSystem {
             const navEl = document.createElement('div');
             navEl.className = 'screen-nav';
             navEl.innerHTML = `
-                <button type="button" class="screen-nav-btn screen-nav-btn--prev" data-nav-action="prev">← Anterior</button>
-                <button type="button" class="screen-nav-btn" data-nav-action="next">Continuar →</button>
+                <button type="button" class="screen-nav-btn screen-nav-btn--prev" data-nav-action="prev">Anterior</button>
+                <button type="button" class="screen-nav-btn" data-nav-action="next">Continuar</button>
             `;
 
             const quizEl = sectionEl.querySelector('.section-quiz');
@@ -2409,7 +2461,7 @@ class MissionSystem {
                 prevBtn.style.display = hasPrev ? '' : 'none';
             }
             if (nextBtn) {
-                nextBtn.textContent = isLast ? 'Ver quiz →' : 'Continuar →';
+                nextBtn.textContent = isLast ? 'Ver quiz' : 'Continuar';
             }
 
             // The "Saber mais" trigger lines up with Continuar, on the left,

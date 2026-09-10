@@ -32,9 +32,11 @@
 <div class="sidebar-plan-card">
 <div class="sidebar-plan-info">
 <span class="sidebar-plan-label">Plano</span>
-<strong class="sidebar-plan-name">{% if perfil.plano == 'pro' %}SuperExplore{% else %}Gratuito{% endif %}</strong>
+<strong class="sidebar-plan-name">{% if perfil.plano == 'pro' %}Pro{% else %}Gratuito{% endif %}</strong>
 </div>
-{% if perfil.plano != 'pro' %}
+{% if perfil.plano == 'pro' %}
+<span class="sidebar-plan-cta sidebar-plan-cta--badge">SuperExplore</span>
+{% else %}
 <a href="{% url 'superexplore' %}" class="sidebar-plan-cta">SuperExplore</a>
 {% endif %}
 </div>

@@ -46,15 +46,47 @@
                      where the student can ask Kim about the current card. -->
                 <div class="mascote-chat-panel" id="mascoteChatPanel">
                     <div class="mascote-chat-header">
-                        <button type="button" class="sidebar-back-btn" id="sidebarBackBtn" aria-label="Voltar às missões">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                        </button>
                         <span>Fala com o Kim</span>
                         <button type="button" class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Esconder o chat">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/></svg>
                         </button>
                     </div>
-                    <div class="mascote-chat-messages" id="mascoteChatMessages"></div>
+                    <div class="mascote-chat-messages" id="mascoteChatMessages">
+                        <div class="mascote-chat-welcome" id="mascoteChatWelcome">
+                            <video src="{% static 'Mascote a acenar.webm' %}" class="mascote-chat-welcome-video" autoplay loop muted playsinline></video>
+                            <div class="mascote-chat-welcome-copy">
+                                <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
+                                <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>
+                                <p class="mascote-chat-welcome-subtitle">Estou aqui para te ajudar a estudar Biologia. Escolhe uma sugestão ou escreve a tua pergunta!</p>
+                            </div>
+                            <div class="mascote-chat-suggestions">
+                                <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes explicar-me este conceito de forma simples?">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                                    Explicar um conceito
+                                </button>
+                                <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes resumir a matéria desta unidade?">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+                                    Resumir a matéria
+                                </button>
+                                <button type="button" class="mascote-chat-suggestion" data-suggestion="Ajuda-me a preparar-me para um teste.">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                                    Preparar um teste
+                                </button>
+                                <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes dar-me um exemplo prático?">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
+                                    Dar um exemplo
+                                </button>
+                                <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes corrigir a minha resposta?">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                                    Corrigir a resposta
+                                </button>
+                                <button type="button" class="mascote-chat-suggestion" data-suggestion="">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+                                    Mais
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <form class="mascote-chat-form" id="mascoteChatForm">
                         <input type="text" class="mascote-chat-input" id="mascoteChatInput" placeholder="Escreve a tua pergunta..." autocomplete="off" maxlength="500">
                         <button type="submit" class="mascote-chat-send" id="mascoteChatSend" aria-label="Enviar">
@@ -64,22 +96,23 @@
                 </div>
             </aside>
 
+            <!-- Drag handle: lets the student widen/narrow the chat sidebar.
+                 Only meaningful (and shown) while the sidebar is open. -->
+            <div class="mission-sidebar-resize-handle" id="missionSidebarResizeHandle" role="separator" aria-orientation="vertical" aria-label="Redimensionar o painel do chat"></div>
+
             <div class="mission-main">
                 <!-- Lesson chrome: mission title/progress, live XP/streak, theme -->
                 <div class="lesson-topbar" id="lessonTopbar">
-                    <div class="lesson-topbar-mission">
-                        <span class="lesson-topbar-icon" id="lessonTopbarIcon"></span>
-                        <div class="lesson-topbar-titles">
-                            <div class="lesson-topbar-title-row">
-                                <span class="lesson-topbar-title" id="lessonTopbarTitle"></span>
-                                <span class="lesson-topbar-badge">Missão 01</span>
+                    <button type="button" class="lesson-topbar-close" id="lessonTopbarClose" aria-label="Fechar e voltar às missões" hidden>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                    <div class="lesson-topbar-titles">
+                        <span class="lesson-topbar-title" id="lessonTopbarTitle"></span>
+                        <div class="lesson-progress-row">
+                            <div class="lesson-progress-track" id="lessonProgressTrack">
+                                <div class="lesson-progress-fill" id="lessonProgressFill"></div>
                             </div>
-                            <div class="lesson-progress-row">
-                                <div class="lesson-progress-track" id="lessonProgressTrack">
-                                    <div class="lesson-progress-fill" id="lessonProgressFill"></div>
-                                </div>
-                                <span class="lesson-progress-percent" id="lessonProgressPercent"></span>
-                            </div>
+                            <span class="lesson-progress-percent" id="lessonProgressPercent"></span>
                         </div>
                     </div>
                     <div class="lesson-topbar-actions">
@@ -148,7 +181,6 @@
         window.exploreMissionsIndexUrl = '{% url "index-missions" %}';
         window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
         window.exploreMascotWaveVideoUrl = '{% static "Mascote a acenar.webm" %}';
-        window.exploreMascotPlantVideoUrl = '{% static "Mascote a olhar para planta (transparente).webm" %}';
         window.explorePaginaInicialUrl = '{% url "pagina_inicial" %}';
         window.exploreAboutUrl = '{% url "about" %}';
         window.explorePerfilUrl = '{% url "perfil" %}';

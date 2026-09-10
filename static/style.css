@@ -3920,6 +3920,42 @@ background:#27ae60;
     .achievement-grid{
         grid-template-columns:1fr;
     }
+
+    /* .mission-row-progress's fixed 160px width leaves almost no room
+       for .mission-row-body on narrow screens, forcing the description
+       into a column a few pixels wide (wraps one word per line) and
+       pushing the row past the viewport. Hide the description and let
+       the progress bar shrink so the row fits on one line. */
+    body.shadcn-profile .mission-row-desc{
+        display:none;
+    }
+
+    body.shadcn-profile .mission-row-progress{
+        width:70px;
+        gap:6px;
+    }
+
+    body.shadcn-profile .mission-row-percent{
+        width:30px;
+        font-size:.75rem;
+    }
+
+    /* Three tabs (one carrying an "EM BREVE" badge) don't fit a phone's
+       width at the default padding/font-size; nowrap-flex then pushes
+       the row past the viewport instead of wrapping. Shrink them and
+       let the bar scroll horizontally as a fallback on the narrowest
+       screens. */
+    body.shadcn-profile .profile-tabs{
+        gap:2px;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    body.shadcn-profile .profile-tab{
+        padding:10px 12px;
+        font-size:.85rem;
+        white-space:nowrap;
+    }
 }
 .guide-option.correct {
     background-color: #d4edda;
@@ -7398,6 +7434,16 @@ body.shadcn-profile .sidebar-plan-card .sidebar-plan-cta:hover {
     transform: none;
 }
 
+/* Pro users see this badge next to "Plano / Pro" instead of the upgrade
+   link — same shine animation, but not a link (nothing to upgrade to). */
+body.shadcn-profile .sidebar-plan-card .sidebar-plan-cta--badge {
+    cursor: default;
+}
+
+body.shadcn-profile .sidebar-plan-card .sidebar-plan-cta--badge:hover {
+    filter: none;
+}
+
 body.shadcn-profile .sidebar-theme-card {
     display: flex;
     align-items: center;
@@ -8428,12 +8474,33 @@ body.shadcn-profile .profile-help-tip[hidden] {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 14px;
-    background: #f4fbf7;
+    gap: 10px;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, #eafaf1 0%, #f4fbf7 65%);
     border-bottom: 1px solid #cde7d9;
-    font-weight: 700;
-    color: #215a3f;
-    font-size: .9rem;
+    font-weight: 800;
+    letter-spacing: .01em;
+    color: #16382a;
+    font-size: .92rem;
+}
+
+/* Small "online" dot before the title — the header text is a bare <span>
+   in the markup, so this is styled on the span itself rather than a
+   dedicated wrapper element. */
+.mascote-chat-header span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mascote-chat-header span::before {
+    content: "";
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3ecf76;
+    box-shadow: 0 0 0 3px rgba(62, 207, 118, .22);
 }
 
 .mascote-chat-close {
@@ -8452,8 +8519,28 @@ body.shadcn-profile .profile-help-tip[hidden] {
     padding: 12px 14px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     min-height: 80px;
+    background: #f7faf8;
+    scrollbar-width: thin;
+    scrollbar-color: #cdd9d1 transparent;
+}
+
+.mascote-chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mascote-chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mascote-chat-messages::-webkit-scrollbar-thumb {
+    background: #cdd9d1;
+    border-radius: 999px;
+}
+
+.mascote-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #b7c6bd;
 }
 
 /* Empty-state shown before the first message — shared by #mascoteChatPanel
@@ -8466,28 +8553,52 @@ body.shadcn-profile .profile-help-tip[hidden] {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 20px;
-    padding: 24px 16px 8px;
+    gap: 18px;
+    padding: 32px 16px 8px;
     margin: auto 0;
+    position: relative;
+}
+
+/* Soft glow behind the mascot video — purely decorative, sits behind
+   everything else in the welcome card via z-index. */
+.mascote-chat-welcome::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(62, 207, 118, .18), rgba(62, 207, 118, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
 }
 
 .mascote-chat-welcome-video {
-    width: 108px;
-    height: 108px;
+    width: 128px;
+    height: 128px;
     object-fit: contain;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 10px 18px rgba(31, 138, 91, .2));
 }
 
 .mascote-chat-welcome-copy {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    position: relative;
+    z-index: 1;
 }
 
 .mascote-chat-welcome-greeting {
     margin: 0;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--sp-muted-fg, #767c70);
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: #1f8a5b;
 }
 
 .mascote-chat-welcome-title {
@@ -8506,104 +8617,127 @@ body.shadcn-profile .profile-help-tip[hidden] {
 }
 
 .mascote-chat-suggestions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 .mascote-chat-suggestion {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: 999px;
+    gap: 8px;
+    padding: 10px 12px;
+    border-radius: 14px;
     border: 1px solid var(--sp-border, #e7e8e1);
-    background: var(--sp-accent-soft, #eaf3e9);
+    background: var(--sp-card, #ffffff);
     color: var(--sp-fg, #202821);
     font-size: .78rem;
     font-weight: 600;
+    text-align: left;
     cursor: pointer;
-    box-shadow: none;
-    transition: background .15s ease;
+    box-shadow: 0 1px 2px rgba(16, 40, 29, .05);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease, background .15s ease;
 }
 
 .mascote-chat-suggestion svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     flex: none;
+    color: #1f8a5b;
 }
 
 .mascote-chat-suggestion:hover {
-    background: var(--sp-border, #e7e8e1);
+    transform: translateY(-2px);
+    border-color: #bfe3cf;
+    background: var(--sp-accent-soft, #eaf3e9);
+    box-shadow: 0 8px 16px rgba(31, 138, 91, .14);
 }
 
 .mascote-chat-bubble {
     max-width: 85%;
-    padding: 8px 12px;
-    border-radius: 14px;
+    padding: 10px 14px;
+    border-radius: 16px;
     font-size: .88rem;
-    line-height: 1.4;
+    line-height: 1.45;
     white-space: pre-wrap;
+    box-shadow: 0 1px 2px rgba(16, 40, 29, .05);
 }
 
 .mascote-chat-bubble--user {
     align-self: flex-end;
-    background: #1f8a5b;
+    background: linear-gradient(135deg, #23a06a, #1f8a5b);
     color: #ffffff;
     border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 12px rgba(31, 138, 91, .22);
 }
 
 .mascote-chat-bubble--assistant {
     align-self: flex-start;
-    background: #f4fbf7;
+    background: #ffffff;
     color: #244a37;
-    border: 1px solid #cde7d9;
+    border: 1px solid #e2ece6;
     border-bottom-left-radius: 4px;
 }
 
 .mascote-chat-bubble--assistant.is-typing {
     color: #8fa39a;
     font-style: italic;
+    box-shadow: none;
 }
 
 .mascote-chat-form {
     display: flex;
+    align-items: center;
     gap: 8px;
-    padding: 10px 14px 14px;
+    padding: 12px 14px 16px;
+    background: #ffffff;
     border-top: 1px solid #eef1ef;
 }
 
 .mascote-chat-input {
     flex: 1 1 auto;
-    border: 1px solid #cde7d9;
+    border: 1px solid #dce8e1;
+    background: #f7faf8;
     border-radius: 999px;
-    padding: 8px 14px;
+    padding: 10px 16px;
     font-size: .88rem;
+    transition: border-color .15s ease, background .15s ease, box-shadow .15s ease;
 }
 
 .mascote-chat-input:focus {
     outline: none;
     border-color: #1f8a5b;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(31, 138, 91, .12);
 }
 
 .mascote-chat-send {
     flex: 0 0 auto;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     padding: 0;
     border-radius: 50%;
     border: none;
-    box-shadow: none;
-    background: #1f8a5b;
+    box-shadow: 0 4px 10px rgba(31, 138, 91, .28);
+    background: linear-gradient(135deg, #23a06a, #1f8a5b);
     color: #ffffff;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
     display: grid;
     place-items: center;
     cursor: pointer;
 }
 
 .mascote-chat-send:hover {
-    background: #166c45;
+    background: linear-gradient(135deg, #1f8a5b, #166c45);
+    transform: scale(1.06);
+    box-shadow: 0 6px 14px rgba(31, 138, 91, .36);
+}
+
+.mascote-chat-send:active {
+    transform: scale(.96);
 }
 
 /* =====================================================================

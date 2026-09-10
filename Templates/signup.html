@@ -36,68 +36,59 @@ Explore+
 
 
 <section class="login-page">
+  <div class="light-login-shell">
+    <div class="light-login-card">
+      <div class="light-login-header">
+        <div class="brand-badge" aria-label="Explore+ logo">
+          <img src="{% static 'images/Logo.png' %}" alt="Logo Explore+" />
+        </div>
+        <h2>Criar conta</h2>
+        <p>Começa a tua aventura científica.</p>
+      </div>
 
-<div class="login-box">
+      <form method="post" action="{% url 'signup' %}" class="light-login-form">
+        {% csrf_token %}
+        {% if erro %}<p class="form-error">{{ erro }}</p>{% endif %}
 
-<h1>
-Criar conta
-</h1>
+        <div class="form-group">
+          <label for="nome">Nome de utilizador</label>
+          <div class="input-shell">
+            <input id="nome" name="username" type="text" placeholder="Nome de utilizador" required>
+          </div>
+        </div>
 
-<p>
-Começa a tua aventura científica.
-</p>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-shell">
+            <input id="email" name="email" type="email" placeholder="Email" required>
+          </div>
+        </div>
 
+        <div class="form-group">
+          <label for="password">Palavra-passe</label>
+          <div class="input-shell password-container">
+            <input id="password" name="password" type="password" placeholder="Criar palavra-passe" required>
+            <span id="olhoPassword" class="olho">👁</span>
+          </div>
+        </div>
 
-<form method="post" action="{% url 'signup' %}" class="signup-form">
-{% csrf_token %}
-{% if erro %}<p class="form-error">{{ erro }}</p>{% endif %}
+        <div class="form-group">
+          <label for="confirmarPassword">Confirmar palavra-passe</label>
+          <div class="input-shell password-container">
+            <input id="confirmarPassword" name="confirmarPassword" type="password" placeholder="Confirmar palavra-passe" required>
+            <span id="olhoConfirmar" class="olho">👁</span>
+          </div>
+        </div>
 
-<input id="nome" name="username" type="text" placeholder="Nome de utilizador" required>
+        <button id="criarContaBtn" type="submit" class="login-button">Criar conta</button>
+      </form>
 
-
-<input id="email" name="email" type="email" placeholder="Email" required>
-
-
-<div class="password-container">
-
-<input id="password" name="password" type="password" placeholder="Criar palavra-passe" required>
-
-<span id="olhoPassword" class="olho">👁</span>
-
-</div>
-
-
-
-
-<div class="password-container">
-
-<input id="confirmarPassword" name="confirmarPassword" type="password" placeholder="Confirmar palavra-passe" required>
-
-<span id="olhoConfirmar" class="olho">👁</span>
-
-</div>
-
-
-<button id="criarContaBtn" type="submit">
-Criar conta
-</button>
-
-</form>
-
-
-<p>
-
-Já tens conta?
-
-<a href="{% url 'login' %}">
-Entrar
-</a>
-
-</p>
-
-
-</div>
-
+      <p class="bottom-signup">
+        Já tens conta?
+        <a href="{% url 'login' %}">Entrar</a>
+      </p>
+    </div>
+  </div>
 </section>
 </body>
 

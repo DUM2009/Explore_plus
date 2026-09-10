@@ -99,7 +99,7 @@ body.mission-header-hidden .mission-container {
     overflow: hidden;
     display: flex;
     justify-content: flex-start;
-    background: #f6f1e6;
+    background: #faf6ec;
 }
 
 html[data-theme="dark"] .mission-path-screen {
@@ -392,8 +392,14 @@ html[data-theme="dark"] .mission-intro-back:hover {
 .mo-index-list {
     position: relative;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin: 0;
     padding: 0;
+}
+
+.mo-index-row {
     background: #ffffff;
     border: 1px solid #e7e8e1;
     border-radius: 12px;
@@ -401,28 +407,8 @@ html[data-theme="dark"] .mission-intro-back:hover {
     overflow: hidden;
 }
 
-/* Dashed "percurso" trail linking the section icons, one segment per gap
-   between a row's icon and the next — drawn by JS (drawIndexConnectors in
-   mission.js) from each icon's actual measured edges, so it only ever
-   occupies the gap and never overlaps the icons themselves. */
-.mo-index-connector {
-    position: absolute;
-    width: 0;
-    border-left: 2px dashed #cfe0d6;
-    pointer-events: none;
-}
-
-.mo-index-row {
-    border-bottom: 1px solid #f0efe9;
-}
-
-.mo-index-row:last-child {
-    border-bottom: none;
-}
-
 .mo-index-row.is-active {
     background: #eef7ee;
-    box-shadow: inset 4px 0 0 #1f8a5b;
 }
 
 .mo-index-row-btn {
@@ -562,23 +548,20 @@ html[data-theme="dark"] .mission-intro-back:hover {
     background: rgba(243, 244, 242, .6);
 }
 
-.mo-card-icon {
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 10px;
-    background: rgba(31, 138, 91, .1);
-    color: #1f8a5b;
-}
-
 .mo-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin: 0;
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: -.01em;
     color: #1a2620;
+}
+
+.mo-card h3 svg {
+    flex-shrink: 0;
+    color: #1f8a5b;
 }
 
 .mo-progress-row {
@@ -640,43 +623,30 @@ html[data-theme="dark"] .mission-intro-back:hover {
     transition: width .25s ease;
 }
 
-.mo-reward-row {
+.mo-reward-buttons {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
-    background: rgba(238, 241, 236, .6);
-    border-radius: 8px;
-    padding: 10px;
 }
 
-.mo-reward-icon {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #eef7ee;
-    display: grid;
-    place-items: center;
-    font-size: 1rem;
-}
-
-.mo-reward-copy {
-    flex: 1 1 auto;
-    display: flex;
+.mo-reward-btn {
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 8px;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 10px;
+    background: #eef7ee;
+    border: 1px solid #cde7d9;
+    color: #1f5c33;
+    font-size: .82rem;
+    font-weight: 700;
 }
 
-.mo-reward-copy span {
-    font-size: .85rem;
-    color: #4a584f;
-}
-
-.mo-reward-copy strong {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1a2620;
+.mo-next-card p {
+    margin: 0;
+    color: #6b7a71;
+    font-size: .88rem;
+    line-height: 1.5;
 }
 
 .mo-next-card p {
@@ -690,15 +660,16 @@ html[data-theme="dark"] .mission-intro-back:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     text-align: center;
     background: linear-gradient(135deg, #26a06a, #1f8a5b 60%, #166c45);
     color: #ffffff;
     text-decoration: none;
     font-weight: 700;
-    padding: 14px;
-    border-radius: 14px;
-    box-shadow: 0 10px 24px rgba(31, 138, 91, .32), inset 0 1px 0 rgba(255, 255, 255, .18);
+    font-size: .82rem;
+    padding: 9px 16px;
+    border-radius: 999px;
+    box-shadow: 0 8px 18px rgba(31, 138, 91, .3), inset 0 1px 0 rgba(255, 255, 255, .18);
     transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
 }
 
@@ -715,6 +686,8 @@ html[data-theme="dark"] .mission-intro-back:hover {
 
 .mo-next-cta-arrow {
     flex-shrink: 0;
+    width: 15px;
+    height: 15px;
     transition: transform .18s ease;
 }
 
@@ -759,7 +732,7 @@ html[data-theme="dark"] .mo-breadcrumb span:last-child {
 }
 
 html[data-theme="dark"] .mo-hero,
-html[data-theme="dark"] .mo-index-list,
+html[data-theme="dark"] .mo-index-row,
 html[data-theme="dark"] .mo-card {
     background: #26201a;
     border-color: #3a2f24;
@@ -770,16 +743,10 @@ html[data-theme="dark"] .mo-card:hover {
     background: rgba(58, 47, 36, .5);
 }
 
-html[data-theme="dark"] .mo-card-icon {
-    background: rgba(93, 163, 86, .16);
-    color: #7bc26c;
-}
-
 html[data-theme="dark"] .mo-hero-info h1,
 html[data-theme="dark"] .mo-index h2,
 html[data-theme="dark"] .mo-index-copy strong,
-html[data-theme="dark"] .mo-card h3,
-html[data-theme="dark"] .mo-reward-copy strong {
+html[data-theme="dark"] .mo-card h3 {
     color: #f2e9dd;
 }
 
@@ -788,21 +755,12 @@ html[data-theme="dark"] .mo-index-subtitle,
 html[data-theme="dark"] .mo-hero-meta,
 html[data-theme="dark"] .mo-index-copy span,
 html[data-theme="dark"] .mo-index-xp,
-html[data-theme="dark"] .mo-reward-copy span,
 html[data-theme="dark"] .mo-next-card p {
     color: #b8a58e;
 }
 
-html[data-theme="dark"] .mo-index-row {
-    border-bottom-color: #332a20;
-}
-
 html[data-theme="dark"] .mo-index-row.is-active {
     background: #2f2619;
-}
-
-html[data-theme="dark"] .mo-index-connector {
-    border-left-color: #3a2f24;
 }
 
 html[data-theme="dark"] .mo-index-status--locked {
@@ -818,8 +776,10 @@ html[data-theme="dark"] .mo-progress-bar {
     background: #3a2f24;
 }
 
-html[data-theme="dark"] .mo-reward-row {
+html[data-theme="dark"] .mo-reward-btn {
     background: rgba(58, 47, 36, .6);
+    border-color: #4a3d30;
+    color: #c9dcae;
 }
 
 .mission-path-quiz-demo {
@@ -1141,9 +1101,26 @@ object.card-visual {
    still taught precisely via the drag-and-drop .formula-builder exercise
    later in this section; this row is just a friendly preview of it. */
 .intro-question {
-    text-align: left;
+    text-align: center;
     font-size: 1.4rem;
     line-height: 1.35;
+}
+
+/* Breaks .intro-question out of .section-body's narrow 720px centered
+   reading column to span .mission-main's full width instead (see
+   container-type on .mission-main) — its own edge padding matches
+   .lesson-topbar's so it lines up with the chrome above it. Written as
+   ".screen-card h3.intro-question" (not just ".intro-question") so it
+   outweighs ".screen-card h3" above, which would otherwise win the
+   margin tug-of-war and collapse this back to 0. */
+.screen-card h3.intro-question {
+    box-sizing: border-box;
+    width: 100cqw;
+    max-width: 100cqw;
+    margin-left: calc(50% - 50cqw);
+    margin-right: calc(50% - 50cqw);
+    margin-bottom: 20px;
+    padding: 0 28px;
 }
 
 .intro-hero-image {
@@ -2990,7 +2967,13 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .mission-sidebar {
-    flex: 0 0 280px;
+    /* Visually on the right (see .mission-main/.mission-sidebar-resize-handle
+       order below) even though it's the first element in the DOM. */
+    order: 3;
+    /* Draggable via .mission-sidebar-resize-handle, which writes this
+       custom property (see mission.js) — falls back to 280px until the
+       student (or a saved preference) sets one. */
+    flex: 0 0 var(--mission-sidebar-width, 280px);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -2999,35 +2982,7 @@ html[data-theme="dark"] .intro-equation {
        and fills it edge-to-edge on every side, top included. */
     padding: 0;
     background: #f7faf8;
-    border-right: 1px solid #e5ece7;
-}
-
-/* Sits inline in .mascote-chat-header now (see the flex-start override
-   below) instead of its own row above the panel — frees up that vertical
-   space for the panel itself. Explicit padding/box-shadow resets defeat
-   the site-wide button{} pill/glow — this must read as a bare arrow, with
-   no button shape at all, not even on hover. */
-.sidebar-back-btn {
-    display: grid;
-    place-items: center;
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
-    color: #4b5a52;
-    cursor: pointer;
-}
-
-.sidebar-back-btn:hover {
-    background: none;
-    box-shadow: none;
-    transform: none;
-    color: #12261d;
+    border-left: 1px solid #e5ece7;
 }
 
 .mission-sidebar .mascote-chat-header {
@@ -3039,9 +2994,9 @@ html[data-theme="dark"] .intro-equation {
     flex: 1 1 auto;
 }
 
-/* Collapses the chat sidebar — bare icon, same reset as .sidebar-back-btn
-   (no button shape, not even on hover). Reopening it is the floating
-   .mascot-chat-fab below, not an icon in the topbar. */
+/* Collapses the chat sidebar — bare icon, no button shape at all, not
+   even on hover. Reopening it is the floating .mascot-chat-fab below,
+   not an icon in the topbar. */
 .sidebar-collapse-btn {
     display: grid;
     place-items: center;
@@ -3069,12 +3024,61 @@ html[data-theme="dark"] .intro-equation {
     display: none;
 }
 
+/* Drag handle between the chat sidebar and the main content — lets the
+   student widen/narrow the chat panel (see mission.js for the drag
+   logic writing --mission-sidebar-width on .mission-sidebar). Zero layout
+   width itself (no visible gap between the two panels) — the actual
+   hoverable/draggable strip is the ::after below, positioned to overlap
+   both sides equally. */
+.mission-sidebar-resize-handle {
+    /* Between .mission-main (order 1) and .mission-sidebar (order 3). */
+    order: 2;
+    flex: 0 0 0;
+    width: 0;
+    align-self: stretch;
+    cursor: col-resize;
+    position: relative;
+    z-index: 5;
+}
+
+.mission-sidebar-resize-handle::after {
+    /* The actual (invisible) hit area — wider than the visible line below
+       so the drag target isn't a literal 2px hairline. */
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -4px;
+    width: 8px;
+}
+
+.mission-sidebar-resize-handle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1px;
+    width: 2px;
+    border-radius: 999px;
+    background: transparent;
+    transition: background-color .15s ease;
+}
+
+.mission-sidebar-resize-handle:hover::before,
+.mission-sidebar-resize-handle.is-dragging::before {
+    background: #1f8a5b;
+}
+
+.mission-shell.is-sidebar-collapsed .mission-sidebar-resize-handle {
+    display: none;
+}
+
 /* Floating mascot button that reopens the chat sidebar — hidden whenever
    the sidebar is already open, or the student isn't in a section yet (see
    applyPathScreenVisibility). */
 .mascot-chat-fab {
     position: fixed;
-    left: 24px;
+    right: 24px;
     bottom: 24px;
     z-index: 50;
     width: 96px;
@@ -3089,6 +3093,10 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .mascot-chat-fab:hover {
+    /* Overrides the site-wide button:hover green fill (style.css) — this
+       button is just the mascot video, no button chrome at all. */
+    background: none;
+    box-shadow: none;
     transform: scale(1.06);
 }
 
@@ -3101,83 +3109,102 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .mission-main {
+    /* First visually, even though .mission-sidebar comes first in the DOM
+       — see the order values on .mission-sidebar and
+       .mission-sidebar-resize-handle. */
+    order: 1;
     flex: 1 1 auto;
     min-width: 0;
     height: 100%;
     overflow-y: auto;
-    /* scrollIntoView() (section/screen navigation) would otherwise align a
-       target's top edge with this container's true top edge — which the
-       sticky topbar (~75px tall) then covers, since sticky content still
-       scrolls underneath it. This keeps every scroll target clear of it. */
-    scroll-padding-top: 84px;
+    /* Lets .intro-question (nested inside the narrow, centered .section-body
+       reading column) break out to this element's own full width via cqw
+       units — its size already comes from the flex layout above, not its
+       content, so this has no effect on .mission-main itself. */
+    container-type: inline-size;
+    scrollbar-width: thin;
+    scrollbar-color: #cdd9d1 transparent;
+}
+
+.mission-main::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mission-main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mission-main::-webkit-scrollbar-thumb {
+    background: #cdd9d1;
+    border-radius: 999px;
+}
+
+.mission-main::-webkit-scrollbar-thumb:hover {
+    background: #b7c6bd;
 }
 
 /* Lesson topbar: mission title + per-section progress, live XP/streak,
-   theme toggle. Sticky within .mission-main (not fixed to the viewport)
-   now that the sidebar owns its own independent scroll area. */
+   theme toggle. Three-part grid (1fr / auto / 1fr) so the middle column —
+   title + progress — sits truly centered regardless of how wide the close
+   button and the actions group on either side happen to be. */
 .lesson-topbar {
-    position: sticky;
-    top: 0;
-    /* Below .mascot-overlay's 1300 (and everything else modal) so the
-       topbar dims along with the rest of the page behind a dialog, instead
-       of standing out as its own undimmed panel. */
-    z-index: 50;
-    display: flex;
+    /* Not sticky/fixed on purpose — it scrolls away with the rest of the
+       page instead of staying pinned while content passes underneath it. */
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
     gap: 20px;
     padding: 16px 28px;
     background: #ffffff;
     border-bottom: 1px solid #eef2ef;
 }
 
-.lesson-topbar-mission {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-    flex: 1 1 auto;
-}
-
-.lesson-topbar-icon {
+/* Only shown while the chat sidebar is collapsed — its own header has a
+   back arrow otherwise, so this is the sole way out of the mission when
+   the sidebar (and that arrow) isn't on screen. */
+.lesson-topbar-close {
+    justify-self: start;
     display: grid;
     place-items: center;
-    flex-shrink: 0;
     width: 36px;
     height: 36px;
-    border-radius: 10px;
-    background: rgba(31, 138, 91, .12);
-    color: #1f8a5b;
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+    color: #66756e;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Our own display:grid above (needed so the icon centers while visible)
+   otherwise outranks the browser's default [hidden] rule — restate it
+   explicitly so setting the `hidden` attribute actually hides this. */
+.lesson-topbar-close[hidden] {
+    display: none;
+}
+
+.lesson-topbar-close:hover {
+    background: rgba(0, 0, 0, .05);
+    color: #244a37;
 }
 
 .lesson-topbar-titles {
+    grid-column: 2;
+    justify-self: center;
     min-width: 0;
     max-width: 420px;
-    flex: 1 1 auto;
-}
-
-.lesson-topbar-title-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 6px;
+    text-align: center;
 }
 
 .lesson-topbar-title {
+    display: block;
+    margin-bottom: 6px;
     font-weight: 800;
     font-size: 1.05rem;
     color: #12261d;
     white-space: nowrap;
-}
-
-.lesson-topbar-badge {
-    flex-shrink: 0;
-    background: #eef6f0;
-    color: #1f8a5b;
-    font-size: .72rem;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 999px;
 }
 
 .lesson-progress-row {
@@ -3211,6 +3238,8 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .lesson-topbar-actions {
+    grid-column: 3;
+    justify-self: end;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -3562,6 +3591,51 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 
 .mascot-overlay-text p:last-child {
     margin-bottom: 0;
+}
+
+/* Rectangular layout for the section intro card: mascot on the left,
+   greeting + CTA on the right, instead of stacked/centered. */
+.mascot-overlay-card--split {
+    width: min(640px, 100%);
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    text-align: left;
+    padding: 28px;
+}
+
+.mascot-overlay-split-figure {
+    flex: 0 0 auto;
+}
+
+.mascot-overlay-card--split .mascot-overlay-figure {
+    width: 160px;
+    margin: 0;
+}
+
+.mascot-overlay-split-body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.mascot-overlay-card--split .mascot-overlay-text {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.mascot-overlay-card--split .mascot-overlay-btn {
+    display: inline-block;
+}
+
+@media (max-width: 520px) {
+    .mascot-overlay-card--split {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mascot-overlay-card--split .mascot-overlay-text {
+        text-align: center;
+    }
 }
 
 /* Curiosity popups get more room — they often carry an illustration plus
@@ -3981,15 +4055,6 @@ html[data-theme="dark"] .mission-sidebar {
     border-right-color: #362c22;
 }
 
-html[data-theme="dark"] .sidebar-back-btn {
-    color: #b8a58e;
-}
-
-html[data-theme="dark"] .sidebar-back-btn:hover {
-    background: none;
-    color: #f2e9dd;
-}
-
 html[data-theme="dark"] .sidebar-collapse-btn {
     color: #b8a58e;
 }
@@ -4007,14 +4072,13 @@ html[data-theme="dark"] .lesson-progress-percent {
     color: #b8a58e;
 }
 
-html[data-theme="dark"] .lesson-topbar-icon {
-    background: rgba(74, 222, 128, .12);
-    color: #4ade80;
+html[data-theme="dark"] .lesson-topbar-close {
+    color: #b8a58e;
 }
 
-html[data-theme="dark"] .lesson-topbar-badge {
-    background: #2a2219;
-    color: #4ade80;
+html[data-theme="dark"] .lesson-topbar-close:hover {
+    background: rgba(255, 255, 255, .06);
+    color: #f2e9dd;
 }
 
 html[data-theme="dark"] .lesson-progress-track {
@@ -4210,9 +4274,41 @@ html[data-theme="dark"] .mascote-chat-panel {
 }
 
 html[data-theme="dark"] .mascote-chat-header {
-    background: #26201a;
+    background: linear-gradient(135deg, #26201a 0%, #201a14 65%);
     border-color: #4a3d30;
     color: #c9dcae;
+}
+
+html[data-theme="dark"] .mascote-chat-messages {
+    background: #1c1712;
+}
+
+html[data-theme="dark"] .mascote-chat-welcome::before {
+    background: radial-gradient(circle, rgba(74, 61, 48, .5), rgba(74, 61, 48, 0) 70%);
+}
+
+html[data-theme="dark"] .mascote-chat-welcome-greeting {
+    color: #8fbf9e;
+}
+
+html[data-theme="dark"] .mascote-chat-suggestion {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #ddccb8;
+    box-shadow: none;
+}
+
+html[data-theme="dark"] .mascote-chat-suggestion svg {
+    color: #8fbf9e;
+}
+
+html[data-theme="dark"] .mascote-chat-suggestion:hover {
+    background: #2e2717;
+    border-color: #5c4a1e;
+}
+
+html[data-theme="dark"] .mascote-chat-bubble--user {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
 }
 
 html[data-theme="dark"] .mascote-chat-bubble--assistant {
@@ -4222,6 +4318,7 @@ html[data-theme="dark"] .mascote-chat-bubble--assistant {
 }
 
 html[data-theme="dark"] .mascote-chat-form {
+    background: #201a14;
     border-color: #3a2f24;
 }
 
@@ -4229,6 +4326,15 @@ html[data-theme="dark"] .mascote-chat-input {
     background: #1c1712;
     border-color: #4a3d30;
     color: #f2e9dd;
+}
+
+html[data-theme="dark"] .mascote-chat-input:focus {
+    background: #26201a;
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, .16);
+}
+
+html[data-theme="dark"] .mascote-chat-send {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .4);
 }
 
 
