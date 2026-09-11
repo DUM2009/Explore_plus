@@ -52,6 +52,7 @@ urlpatterns = [
     path('mission/photosynthesis/', views.pagina_mission_photosynthesis, name='mission-photosynthesis'),
     path('mission/photosynthesis/goldtest/', views.pagina_mission_photosynthesis_goldtest, name='mission-photosynthesis-goldtest'),
     path('api/progresso-missao/', views.salvar_progresso_missao, name='salvar-progresso-missao'),
+    path('api/pergunta-errada/', views.registar_pergunta_errada, name='registar-pergunta-errada'),
     path('api/mascote-chat/', views.mascote_chat, name='mascote-chat'),
 ]
 

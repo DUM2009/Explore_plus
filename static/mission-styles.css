@@ -1072,6 +1072,8 @@ body.quiz-popout-open {
 .screen-card h3 {
     color: #1a1a1a;
     margin: 0 0 20px 0;
+    font-size: 1.4rem;
+    line-height: 1.35;
 }
 
 .screen-subcards .info-card h4 {
@@ -1100,7 +1102,8 @@ object.card-visual {
    title + text) and a decorative formula row — the equation itself is
    still taught precisely via the drag-and-drop .formula-builder exercise
    later in this section; this row is just a friendly preview of it. */
-.intro-question {
+.intro-question,
+.screen-title-lg {
     text-align: center;
     font-size: 1.4rem;
     line-height: 1.35;
@@ -1112,7 +1115,11 @@ object.card-visual {
    .lesson-topbar's so it lines up with the chrome above it. Written as
    ".screen-card h3.intro-question" (not just ".intro-question") so it
    outweighs ".screen-card h3" above, which would otherwise win the
-   margin tug-of-war and collapse this back to 0. */
+   margin tug-of-war and collapse this back to 0.
+   The box itself stays full-width/stretched on purpose — .intro-question-text
+   below is the shrink-wrapped inline span that mission.js actually measures
+   for lining up .intro-summary-card, since this element's own box is wider
+   than its centered text. */
 .screen-card h3.intro-question {
     box-sizing: border-box;
     width: 100cqw;
@@ -1125,11 +1132,13 @@ object.card-visual {
 
 .intro-hero-image {
     width: 100%;
-    max-width: 100%;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 24px;
     height: auto;
     object-fit: contain;
     border-radius: 16px;
-    margin: 0 0 24px;
     display: block;
 }
 
@@ -1140,9 +1149,28 @@ object.card-visual {
     background: #f4fbf7;
     border: 1px solid #dcefe3;
     border-radius: 14px;
-    padding: 20px 22px;
-    margin-bottom: 20px;
+    padding: 20px 28px;
     text-align: left;
+}
+
+/* Lines this card's own left/right edges up with the actual rendered text
+   of .intro-question above it (its "C" of "Como"/"o" of "estômago") — a
+   centered title's glyphs don't reach any fixed CSS box edge, so this
+   can't be done with calc() alone. alignIntroSummaryCards() in mission.js
+   measures the title's real width after each render/resize and sets it
+   here as an inline style; these are just safety bounds for before that
+   JS runs (or if it doesn't). */
+.screen-card .intro-summary-card {
+    box-sizing: border-box;
+    width: 100%;
+    /* mission.js measures the title against the full cqw-wide breakout
+       row above, which can be wider than .section-body's own (narrower)
+       column this card actually sits in — the plain "100%" bound stops
+       that JS-set inline width from overflowing past this card's real
+       parent and shifting the whole box off-center. */
+    max-width: min(calc(100cqw - 56px), 100%);
+    min-width: min(320px, 100%);
+    margin: 0 auto 20px;
 }
 
 .intro-summary-icon {
@@ -1172,14 +1200,31 @@ object.card-visual {
 
 .intro-equation {
     text-align: center;
-    background: #ffffff;
-    border: 1px solid #eef2ef;
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 20px 0 0;
+    margin: 8px 0 0;
     font-size: 1.3rem;
     font-weight: 700;
     color: #12261d;
+}
+
+.intro-equation-arrow-group {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    vertical-align: middle;
+    margin: 0 4px;
+}
+
+.intro-equation-energy {
+    color: #b8860b;
+    font-size: 0.6rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.intro-equation-arrow {
+    line-height: 1;
 }
 
 @media (max-width: 680px) {
@@ -1213,8 +1258,6 @@ html[data-theme="dark"] .intro-summary-body h4 {
 }
 
 html[data-theme="dark"] .intro-equation {
-    background: #201a14;
-    border-color: #3a2f24;
     color: #f2e9dd;
 }
 
@@ -1284,11 +1327,40 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .did-you-know {
-    margin-top: 12px;
+    /* Breaks out of .section-body's own 30px side padding, matching
+       .intro-summary-card — reads as wider/more rectangular. */
+    margin: 12px -30px 0;
     border: 1px solid #cde7d9;
     border-radius: 10px;
     background: #f4fbf7;
-    padding: 0 12px;
+    padding: 0 42px;
+}
+
+.did-you-know-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 4px 0 14px;
+}
+
+.did-you-know-body .curiosity-illustration {
+    flex: 0 0 auto;
+    width: 160px;
+    max-width: 160px;
+    margin: 0;
+}
+
+.did-you-know-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+@media (max-width: 640px) {
+    .did-you-know-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 }
 
 .did-you-know summary {
@@ -1331,6 +1403,20 @@ html[data-theme="dark"] .intro-equation {
     text-align: center;
 }
 
+/* ".screen-card p" (text-align: justify) outranks the bare class selector
+   above on specificity, which was silently overriding this center
+   alignment — restated with the extra ".screen-card" so it actually wins. */
+.screen-card p.plant-diagram-hint {
+    text-align: center;
+}
+
+/* When the hint follows the diagram instead of introducing it (see the
+   "Que estruturas..." screen), flip its spacing to sit below the image
+   with some breathing room instead of flush against it. */
+.plant-diagram + .plant-diagram-hint {
+    margin: 12px 0 0;
+}
+
 .plant-diagram {
     position: relative;
     width: 100%;
@@ -1339,6 +1425,76 @@ html[data-theme="dark"] .intro-equation {
     border-radius: 16px;
     overflow: hidden;
     line-height: 0;
+}
+
+/* Cards with a drill-down detail panel (data-image structures like
+   folhas/estomas/raízes): the image stays full-size and centered until a
+   structure is clicked. Only then (.has-selection) does it shrink to a
+   left column so the explanation can appear beside it on the right —
+   avoids a permanently shrunken image with empty space next to it. */
+/* Breaks out of .section-body's narrow 720px reading column to use
+   .mission-main's full width instead (same cqw technique as
+   .intro-question — see the container-type on .mission-main) — this
+   screen is a two-column diagram+explanation layout, so it was reading
+   as cramped/justified-looking text in the narrow column. */
+.screen-card.plant-diagram-card {
+    box-sizing: border-box;
+    width: 100cqw;
+    max-width: 100cqw;
+    margin-left: calc(50% - 50cqw);
+    margin-right: calc(50% - 50cqw);
+    padding: 0 28px;
+}
+
+/* Fixed height so the button row below (Anterior/page numbers/Continuar)
+   stays put whether the overview diagram or the (usually shorter) detail
+   panel is showing — see .plant-diagram for where 480px comes from. */
+.plant-diagram-layout {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    min-height: 480px;
+}
+
+.plant-diagram-layout .plant-diagram-overview {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Split evenly with the detail panel instead of shrinking to a fixed
+   280px column — that let the detail side balloon to fill whatever
+   space was left, crowding out the diagram. */
+.plant-diagram-layout.has-selection .plant-diagram-overview {
+    flex: 1 1 50%;
+    width: 50%;
+    max-width: 50%;
+}
+
+.plant-diagram-layout .plant-hotspot-detail {
+    flex: 1 1 50%;
+    min-width: 0;
+    max-width: 50%;
+    text-align: left;
+}
+
+@media (max-width: 640px) {
+    .plant-diagram-layout {
+        flex-direction: column;
+        align-items: center;
+        min-height: 0;
+    }
+
+    .plant-diagram-layout .plant-diagram-overview,
+    .plant-diagram-layout.has-selection .plant-diagram-overview {
+        width: 100%;
+        max-width: 480px;
+        flex: 1 1 auto;
+    }
+
+    .plant-diagram-layout .plant-hotspot-detail {
+        max-width: 100%;
+    }
 }
 
 .plant-diagram-image {
@@ -1429,23 +1585,15 @@ html[data-theme="dark"] .intro-equation {
     display: block;
 }
 
-/* Drill-down detail view (see handlePlantHotspotClick): replaces the plant
-   diagram with a close-up photo + explanation, plus a way back. */
-.plant-hotspot-back {
-    display: block;
-    margin: 0 auto 16px 0;
-    border: 1px solid #cde7d9;
-    background: #eef7f3;
-    color: #1f8a5b;
-    border-radius: 999px;
-    padding: 8px 16px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    cursor: pointer;
-}
-
-.plant-hotspot-back:hover {
-    background: #e3f3eb;
+/* Only for the standalone case (explanation sits directly below the
+   diagram, no side-by-side .plant-diagram-layout/.plant-hotspot-detail
+   drill-down) — that one already fills its own 50% column and shouldn't
+   be narrowed further. This is the one that was stretching edge-to-edge
+   of the card's full breakout width. */
+.plant-diagram-card > .plant-hotspot-explanation {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Default: a normal framed photo (Folha.png, Raízes 2.png). Only images
@@ -1904,6 +2052,50 @@ html[data-theme="dark"] .intro-equation {
     font-weight: 700 !important;
 }
 
+.section-completion-badges {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 4px 0 18px;
+}
+
+.section-completion-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 96px;
+}
+
+.section-completion-badge-icon {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #eef7f3;
+    border: 2px solid #cde7d9;
+    color: #1f8a5b;
+    font-size: 1.6rem;
+}
+
+/* The mission's own badge (only shown once every section is done) stands
+   out gold against the ordinary per-section ones. */
+.section-completion-badge--mission .section-completion-badge-icon {
+    background: linear-gradient(160deg, #fff6dd, #ffe8a8);
+    border-color: #e0b84c;
+    box-shadow: 0 4px 14px rgba(224, 184, 76, 0.4);
+}
+
+.section-completion-badge-label {
+    color: #2e4f3f;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.25;
+}
+
 .section-completion-btn {
     display: block;
     width: 100%;
@@ -1942,18 +2134,39 @@ html[data-theme="dark"] .intro-equation {
 
 /* The "← Anterior" arrow stays available during the quiz (right above its
    top border) so the student can back out to review the content — only
-   "Continuar/Ver quiz" is redundant here, since the quiz drives its own
-   question-to-question progress. */
-.section.quiz-only-mode .screen-nav-btn[data-nav-action="next"] {
+   "Continuar" and the page-number pips are redundant here, since
+   the quiz drives its own question-to-question progress. */
+.section.quiz-only-mode .screen-nav-btn[data-nav-action="next"],
+.section.quiz-only-mode .screen-nav-pages {
     display: none;
 }
 
+/* With only Anterior left in the row, drop .screen-nav's own centered
+   480px cap (see below) so it sits flush against the column's left edge
+   instead of floating centered with a lone arrow inside it. */
+.section.quiz-only-mode .screen-nav {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* A moderate default width (not full-bleed) so Anterior/Continuar sit
+   closer together nearer the middle instead of pinned to the far edges of
+   a wide breakout screen, where Continuar also collided with the fixed
+   .mascot-chat-fab bubble in the bottom-right corner. On screens with an
+   .intro-summary-card, mission.js still sets an inline width here (see
+   alignIntroSummaryCards) to match the card's — inline style always wins
+   over this default, so that alignment is unaffected. Left/right margins
+   are auto so either width (this default or the JS-set one) centers. */
 .screen-nav {
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 10px;
-    margin: 8px 0 20px;
+    width: 480px;
+    max-width: 100%;
+    margin: 8px auto 20px;
 }
 
 /* Always pinned to the right, regardless of what else is in the row
@@ -1962,7 +2175,43 @@ html[data-theme="dark"] .intro-equation {
     margin-left: auto;
 }
 
+/* Sits between Anterior/"Saber mais" and the Continuar arrow — its own
+   auto left margin shares the row's leftover space with Continuar's
+   (above), which settles it roughly in the middle of that gap instead of
+   crowding either button. */
+.screen-nav-pages {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    flex-wrap: wrap;
+}
 
+.screen-nav-page {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #cde7d9;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #5c6b64;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.screen-nav-page:hover {
+    border-color: #1f8a5b;
+    color: #1f8a5b;
+}
+
+.screen-nav-page.active {
+    background: #1f8a5b;
+    border-color: #1f8a5b;
+    color: #ffffff;
+}
 
 
 .screen-nav-btn {
@@ -1985,6 +2234,17 @@ html[data-theme="dark"] .intro-equation {
 .screen-nav-btn[data-nav-action="next"]:hover {
     background: #166c45;
     box-shadow: 0 4px 22px rgba(31, 138, 91, 0.55);
+}
+
+/* "Continuar" shrinks to a bare arrow in a round button on every screen
+   but the section's last, which keeps the full "Continuar" text label
+   (it triggers the challenge/quiz intro instead of just paging forward). */
+.screen-nav-btn--icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
 }
 
 .screen-nav-btn:disabled {
@@ -2955,7 +3215,7 @@ html[data-theme="dark"] .intro-equation {
    ============================================================ */
 
 .mission-content {
-    background-color: #ffffff;
+    background-color: #f8f2e7;
 }
 
 /* Sidebar + main-content shell: the mission's persistent chrome. Fixed
@@ -2997,7 +3257,25 @@ html[data-theme="dark"] .intro-equation {
 /* Collapses the chat sidebar — bare icon, no button shape at all, not
    even on hover. Reopening it is the floating .mascot-chat-fab below,
    not an icon in the topbar. */
-.sidebar-collapse-btn {
+/* Restyled bare-icon "close" button in place of the .sidebar-collapse-btn
+   rectangle icon that used to sit here — its own .mascote-chat-close rules
+   are in style.css, this just fits it into this header's layout. */
+.mission-sidebar .mascote-chat-header .mascote-chat-close {
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+/* Suppresses the "online" dot (see .mascote-chat-header span::before in
+   style.css) — on this page its spot is taken by the close button above,
+   not by a status dot. */
+.mission-sidebar .mascote-chat-header span::before {
+    content: none;
+}
+
+/* Toggles between the floating overlay (default) and the docked sidebar
+   layout — see initChatDockToggle() in mission.js, which also swaps this
+   button's icon/label between the two states. */
+.mascote-chat-dock-btn {
     display: grid;
     place-items: center;
     flex-shrink: 0;
@@ -3013,7 +3291,7 @@ html[data-theme="dark"] .intro-equation {
     color: #4b5a52;
 }
 
-.sidebar-collapse-btn:hover {
+.mascote-chat-dock-btn:hover {
     background: none;
     box-shadow: none;
     transform: none;
@@ -3022,6 +3300,50 @@ html[data-theme="dark"] .intro-equation {
 
 .mission-shell.is-sidebar-collapsed .mission-sidebar {
     display: none;
+}
+
+/* Floating (default): opening the chat overlays it near the mascot fab
+   instead of reserving sidebar space, so .mission-main stays full width.
+   The sidebar itself keeps zero footprint (not display:none — that would
+   also hide the fixed-position panel inside it) while the panel escapes
+   its box via position:fixed. Docking (.is-chat-docked, toggled by the
+   expand icon in the chat header) restores the original sidebar layout
+   below. Both are skipped while is-sidebar-collapsed hides the chat
+   entirely (that display:none above wins regardless of this). */
+.mission-shell:not(.is-chat-docked) .mission-sidebar {
+    flex-basis: 0;
+    width: 0;
+    min-width: 0;
+    overflow: visible;
+    border-left: none;
+    background: none;
+}
+
+.mission-shell:not(.is-chat-docked) .mission-sidebar-resize-handle {
+    display: none;
+}
+
+.mission-shell:not(.is-chat-docked) .mascote-chat-panel {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 380px;
+    max-width: calc(100vw - 32px);
+    height: min(600px, calc(100vh - 48px));
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, .28);
+    z-index: 1500;
+}
+
+@media (max-width: 480px) {
+    .mission-shell:not(.is-chat-docked) .mascote-chat-panel {
+        right: 16px;
+        bottom: 16px;
+        left: 16px;
+        width: auto;
+        max-width: none;
+    }
 }
 
 /* Drag handle between the chat sidebar and the main content — lets the
@@ -3117,6 +3439,14 @@ html[data-theme="dark"] .intro-equation {
     min-width: 0;
     height: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
+    /* Same beige as .mission-content (which only stretches to its own
+       content's height) — on a short screen, .mission-content ends
+       before this scroll container's full viewport height does, leaving
+       a gap below it. Painting the color here too means that gap is
+       beige as well, all the way to the bottom, however short the
+       content is. */
+    background-color: #f8f2e7;
     /* Lets .intro-question (nested inside the narrow, centered .section-body
        reading column) break out to this element's own full width via cqw
        units — its size already comes from the flex layout above, not its
@@ -3156,8 +3486,7 @@ html[data-theme="dark"] .intro-equation {
     align-items: center;
     gap: 20px;
     padding: 16px 28px;
-    background: #ffffff;
-    border-bottom: 1px solid #eef2ef;
+    background: #f4fbf7;
 }
 
 /* Only shown while the chat sidebar is collapsed — its own header has a
@@ -3256,8 +3585,8 @@ html[data-theme="dark"] .intro-equation {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    background: #f4fbf7;
-    border: 1px solid #cde7d9;
+    background: none;
+    border: none;
     color: #215a3f;
     font-weight: 700;
     font-size: .85rem;
@@ -3290,8 +3619,8 @@ html[data-theme="dark"] .intro-equation {
     width: 36px;
     height: 36px;
     padding: 0;
-    border: 1px solid #cde7d9;
-    background: #f4fbf7;
+    border: none;
+    background: none;
     box-shadow: none;
     border-radius: 50%;
     color: #215a3f;
@@ -3300,7 +3629,7 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .lesson-theme-toggle:hover {
-    background: #eaf3ee;
+    background: rgba(0, 0, 0, .05);
 }
 
 .lesson-theme-toggle .icon-sun,
@@ -3388,11 +3717,129 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     margin: 0;
 }
 
-/* .mascote-chat-header/-messages/-bubble*/-form/-input/-send are left to
-   style.css's shared rules (same classes, already used by the chat widget
-   on Perfil/Testes) — only the container above needs page-specific
-   layout. Dark-theme variants below are mission-page-only additions,
-   since that shared component doesn't support dark mode. */
+/* Restyled to a light beige "AI assistant" look, mission-page-only —
+   overrides style.css's shared light/mint theme for these same classes
+   (same divergence pattern as .mascote-chat-panel above; Perfil/Testes
+   keep the original light/mint widget). */
+.mascote-chat-panel {
+    background: linear-gradient(160deg, #faf5ea 0%, #ede0c5 100%);
+}
+
+.mascote-chat-header {
+    background: rgba(224, 199, 148, .35);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(196, 164, 108, .4);
+    color: #4a3d2a;
+}
+
+.mascote-chat-header span {
+    color: #4a3d2a;
+}
+
+.mascote-chat-header span::before {
+    background: #a9784a;
+    box-shadow: 0 0 0 3px rgba(169, 120, 74, .22);
+}
+
+.mascote-chat-header .mascote-chat-close {
+    color: #8a7455;
+}
+
+.mascote-chat-header .mascote-chat-close:hover {
+    color: #4a3d2a;
+}
+
+.mascote-chat-messages {
+    background: rgba(250, 245, 234, .6);
+    scrollbar-color: #d4b896 transparent;
+}
+
+.mascote-chat-messages::-webkit-scrollbar-thumb {
+    background: #d4b896;
+}
+
+.mascote-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #c4a47c;
+}
+
+.mascote-chat-welcome::before {
+    background: radial-gradient(circle, rgba(169, 120, 74, .18), rgba(169, 120, 74, 0) 70%);
+}
+
+.mascote-chat-welcome-greeting {
+    color: #a9784a;
+}
+
+.mascote-chat-welcome-title {
+    color: #3d3223;
+}
+
+.mascote-chat-welcome-subtitle {
+    color: #8a7a63;
+}
+
+.mascote-chat-suggestion {
+    background: #fffaf0;
+    border-color: #e6d9c0;
+    color: #4a3d2a;
+    box-shadow: 0 1px 2px rgba(74, 61, 42, .06);
+}
+
+.mascote-chat-suggestion svg {
+    color: #a9784a;
+}
+
+.mascote-chat-suggestion:hover {
+    background: #f5ead0;
+    border-color: #d4b896;
+    box-shadow: 0 8px 16px rgba(169, 120, 74, .14);
+}
+
+.mascote-chat-bubble--user {
+    background: #a9784a;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(169, 120, 74, .3);
+}
+
+.mascote-chat-bubble--assistant {
+    background: #fffaf0;
+    color: #3d3223;
+    border-color: #e6d9c0;
+}
+
+.mascote-chat-bubble--assistant.is-typing {
+    color: #8a7a63;
+}
+
+.mascote-chat-form {
+    background: rgba(250, 245, 234, .7);
+    border-top: 1px solid #e6d9c0;
+}
+
+.mascote-chat-input {
+    background: #fffaf0;
+    border-color: #e6d9c0;
+    color: #3d3223;
+}
+
+.mascote-chat-input::placeholder {
+    color: #a8967a;
+}
+
+.mascote-chat-input:focus {
+    background: #ffffff;
+    border-color: #a9784a;
+    box-shadow: 0 0 0 3px rgba(169, 120, 74, .18);
+}
+
+.mascote-chat-send {
+    background: #a9784a;
+    box-shadow: 0 4px 10px rgba(169, 120, 74, .3);
+}
+
+.mascote-chat-send:hover {
+    background: #8a6238;
+}
 
 /* Shared "Check"/"Continuar" pill button for the lesson player, matching
    the dark pill already established on the percurso intro screen. */
@@ -3419,8 +3866,43 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 
 .lesson-quiz-actions {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
     margin-top: 16px;
+}
+
+/* Pushes Continuar/Concluir to the right, leaving Anterior (when present)
+   flush left — same split as .screen-nav's Anterior/Continuar row. */
+.quiz-nav-btn--next {
+    margin-left: auto;
+}
+
+.quiz-nav-btn--prev {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid #cde7d9;
+    background: #eef7f3;
+    color: #1f8a5b;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.quiz-nav-btn--prev:hover {
+    background: #e3f3eb;
+}
+
+/* Continuar shrinks to a bare arrow in a round button — Concluir (the
+   quiz's terminal action) keeps its full pill shape/label. */
+.quiz-nav-btn--icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
 }
 
 .quiz-progress-label {
@@ -3534,6 +4016,9 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 }
 
 .mascot-curiosity-open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     background: none;
     border: 1px dashed #cde7d9;
     color: #1f8a5b;
@@ -3542,6 +4027,12 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
+}
+
+.mascot-curiosity-open-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
 }
 
 .did-you-know.mascot-managed-hidden {
@@ -3639,9 +4130,14 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 }
 
 /* Curiosity popups get more room — they often carry an illustration plus
-   a couple of paragraphs, so the compact default size feels cramped. */
+   a couple of paragraphs, so the compact default size feels cramped.
+   Wider (rather than taller): the portrait + text render side by side via
+   .did-you-know-body, so more width gives the text column more room to
+   wrap into fewer lines, which is what actually keeps this short. */
 .mascot-overlay-card--curiosity {
-    width: min(560px, 100%);
+    width: min(920px, 100%);
+    background: #f4fbf7;
+    border-color: #dcefe3;
     max-height: 88vh;
     overflow-y: auto;
     /* Still scrollable (wheel, touch, keyboard) — the scrollbar itself is
@@ -3740,6 +4236,10 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     margin: 0 auto;
 }
 
+.mascot-overlay-card--split .mascot-overlay-help-btn {
+    margin: 0;
+}
+
 /* Correct-answer popup (per question, lighter than the confetti overlay) */
 .mascot-popup-correct {
     position: fixed;
@@ -3769,6 +4269,21 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     background: #f4fbf7;
     border: 1px solid #cde7d9;
     border-radius: 12px;
+}
+
+/* The formula-builder equation specifically (4 filled slots + 2 operators
+   + the energy-arrow group) needs more than .section-body's narrow 720px
+   column to stay on one line — same cqw breakout trick as
+   .plant-diagram-card. Scoped with :has() so every other "Em resumo"
+   summary card (icon + label steps, in other sections) keeps its normal
+   width. */
+.screen-card.mission-summary-card:has(.formula-builder) {
+    box-sizing: border-box;
+    width: 100cqw;
+    max-width: 100cqw;
+    margin-left: calc(50% - 50cqw);
+    margin-right: calc(50% - 50cqw);
+    padding: 0 28px;
 }
 
 .mission-summary-heading {
@@ -3840,6 +4355,20 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     font-weight: 700;
 }
 
+.formula-operator-arrow-group {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.formula-operator-energy {
+    color: #b8860b;
+    font-size: 0.65rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 .formula-operator--arrow {
     font-size: 1.4rem;
 }
@@ -3881,16 +4410,24 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     display: none;
 }
 
+/* min-height is just enough for the shorter, icon-less default card (see
+   .formula-piece) — grows once "Ajuda" reveals the icons (below). */
 .formula-pool {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
     gap: 12px;
-    min-height: 96px;
+    min-height: 52px;
     padding: 12px;
     border: 1px solid #d6ebe0;
     border-radius: 12px;
     background: #ffffff;
+}
+
+.formula-builder.hints-visible .formula-pool {
+    min-height: 96px;
+    align-items: stretch;
 }
 
 .formula-piece {
@@ -3899,7 +4436,9 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     align-items: center;
     gap: 6px;
     width: 96px;
-    padding: 12px 8px 10px;
+    /* Shorter while the icon/arrow are hidden (see .formula-piece-icon
+       below) — grows back to fit them once "Ajuda" reveals them. */
+    padding: 8px;
     border: none;
     background: linear-gradient(180deg, #ffffff, #eaf8f1);
     color: #1f553d;
@@ -3922,13 +4461,26 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     transform: translateY(-1px) scale(0.97);
 }
 
-.formula-piece-arrow {
+/* Hidden until "Ajuda" is clicked (see .formula-builder-help-btn below) —
+   the student is meant to match each term to its slot from the formula
+   itself first, with the icon as an optional crutch. */
+.formula-piece-arrow,
+.formula-piece-icon {
+    display: none;
+}
+
+.formula-builder.hints-visible .formula-piece {
+    padding: 12px 8px 10px;
+}
+
+.formula-builder.hints-visible .formula-piece-arrow {
+    display: block;
     color: #9ecfb5;
     font-size: 0.8rem;
     line-height: 1;
 }
 
-.formula-piece-icon {
+.formula-builder.hints-visible .formula-piece-icon {
     display: grid;
     place-items: center;
     width: 40px;
@@ -3938,6 +4490,23 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     background: #ffffff;
     border-radius: 50%;
     box-shadow: inset 0 0 0 1px #d9efe3;
+}
+
+.formula-builder-help-btn {
+    display: block;
+    margin: 0 auto 14px;
+    border: 1px solid #cde7d9;
+    background: #eef7f3;
+    color: #1f8a5b;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.formula-builder-help-btn:hover {
+    background: #e3f3eb;
 }
 
 .formula-builder-feedback {
@@ -4045,23 +4614,17 @@ html[data-theme="dark"] .mission-content {
     background-color: #1c1712;
 }
 
+html[data-theme="dark"] .mission-main {
+    background-color: #1c1712;
+}
+
 html[data-theme="dark"] .lesson-topbar {
     background: #1c1712;
-    border-bottom-color: #362c22;
 }
 
 html[data-theme="dark"] .mission-sidebar {
     background: #17130f;
     border-right-color: #362c22;
-}
-
-html[data-theme="dark"] .sidebar-collapse-btn {
-    color: #b8a58e;
-}
-
-html[data-theme="dark"] .sidebar-collapse-btn:hover {
-    background: none;
-    color: #f2e9dd;
 }
 
 html[data-theme="dark"] .lesson-topbar-title {
@@ -4087,13 +4650,13 @@ html[data-theme="dark"] .lesson-progress-track {
 
 html[data-theme="dark"] .lesson-stat,
 html[data-theme="dark"] .lesson-theme-toggle {
-    background: #26201a;
-    border-color: #4a3d30;
+    background: none;
+    border: none;
     color: #c9dcae;
 }
 
 html[data-theme="dark"] .lesson-theme-toggle:hover {
-    background: #3a2f24;
+    background: rgba(255, 255, 255, .06);
 }
 
 html[data-theme="dark"] .lesson-help-fab-img {
@@ -4137,12 +4700,6 @@ html[data-theme="dark"] .plant-hotspot-explanation {
     background: #26201a;
     border-color: #4a3d30;
     color: #ddccb8;
-}
-
-html[data-theme="dark"] .plant-hotspot-back {
-    background: #26201a;
-    border-color: #4a3d30;
-    color: #4ade80;
 }
 
 html[data-theme="dark"] .did-you-know {
@@ -4237,8 +4794,30 @@ html[data-theme="dark"] .screen-nav-btn {
     border-color: #4a3d30;
 }
 
+html[data-theme="dark"] .quiz-nav-btn--prev {
+    background: #26201a;
+    color: #4ade80;
+    border-color: #4a3d30;
+}
+
+html[data-theme="dark"] .quiz-nav-btn--prev:hover {
+    background: #2f2720;
+}
+
 html[data-theme="dark"] .screen-nav-btn[data-nav-action="next"] {
     box-shadow: 0 0 22px rgba(79, 214, 145, 0.45);
+}
+
+html[data-theme="dark"] .screen-nav-page {
+    background: #26201a;
+    color: #b8a58e;
+    border-color: #4a3d30;
+}
+
+html[data-theme="dark"] .screen-nav-page.active {
+    background: #2f9e64;
+    border-color: #2f9e64;
+    color: #0f1a14;
 }
 
 html[data-theme="dark"] .quiz-option {
@@ -4268,73 +4847,8 @@ html[data-theme="dark"] .mission-fact-banner {
     color: #e6d9a8;
 }
 
-html[data-theme="dark"] .mascote-chat-panel {
-    background: #201a14;
-    border-color: #4a3d30;
-}
-
-html[data-theme="dark"] .mascote-chat-header {
-    background: linear-gradient(135deg, #26201a 0%, #201a14 65%);
-    border-color: #4a3d30;
-    color: #c9dcae;
-}
-
-html[data-theme="dark"] .mascote-chat-messages {
-    background: #1c1712;
-}
-
-html[data-theme="dark"] .mascote-chat-welcome::before {
-    background: radial-gradient(circle, rgba(74, 61, 48, .5), rgba(74, 61, 48, 0) 70%);
-}
-
-html[data-theme="dark"] .mascote-chat-welcome-greeting {
-    color: #8fbf9e;
-}
-
-html[data-theme="dark"] .mascote-chat-suggestion {
-    background: #26201a;
-    border-color: #4a3d30;
-    color: #ddccb8;
-    box-shadow: none;
-}
-
-html[data-theme="dark"] .mascote-chat-suggestion svg {
-    color: #8fbf9e;
-}
-
-html[data-theme="dark"] .mascote-chat-suggestion:hover {
-    background: #2e2717;
-    border-color: #5c4a1e;
-}
-
-html[data-theme="dark"] .mascote-chat-bubble--user {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
-}
-
-html[data-theme="dark"] .mascote-chat-bubble--assistant {
-    background: #26201a;
-    border-color: #4a3d30;
-    color: #ddccb8;
-}
-
-html[data-theme="dark"] .mascote-chat-form {
-    background: #201a14;
-    border-color: #3a2f24;
-}
-
-html[data-theme="dark"] .mascote-chat-input {
-    background: #1c1712;
-    border-color: #4a3d30;
-    color: #f2e9dd;
-}
-
-html[data-theme="dark"] .mascote-chat-input:focus {
-    background: #26201a;
-    box-shadow: 0 0 0 3px rgba(74, 222, 128, .16);
-}
-
-html[data-theme="dark"] .mascote-chat-send {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, .4);
-}
+/* No html[data-theme="dark"] variants needed for .mascote-chat-* here
+   anymore — the panel above is unconditionally dark/indigo now, regardless
+   of the site's own light/dark toggle. */
 
 

@@ -46,9 +46,10 @@
                      where the student can ask Kim about the current card. -->
                 <div class="mascote-chat-panel" id="mascoteChatPanel">
                     <div class="mascote-chat-header">
+                        <button type="button" class="mascote-chat-close" id="sidebarCollapseBtn" aria-label="Fechar o chat">✕</button>
                         <span>Fala com o Kim</span>
-                        <button type="button" class="sidebar-collapse-btn" id="sidebarCollapseBtn" aria-label="Esconder o chat">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M9 3v18"/></svg>
+                        <button type="button" class="mascote-chat-dock-btn" id="mascoteChatDockBtn" aria-label="Fixar o chat à página">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
                         </button>
                     </div>
                     <div class="mascote-chat-messages" id="mascoteChatMessages">
@@ -172,6 +173,7 @@
         window.exploreCurrentUser = { uid: 'django-{{ request.user.id }}', email: '{{ request.user.email|escapejs }}' };
         window.exploreUserId = '{{ request.user.id|escapejs }}';
         window.exploreProgressSyncUrl = '{% url "salvar-progresso-missao" %}';
+        window.exploreWrongQuestionUrl = '{% url "registar-pergunta-errada" %}';
         window.exploreCsrfToken = '{{ csrf_token }}';
         window.exploreAvatarOptions = {
             biology: '{% static "images/Mascote Explore+ Biology Avatar.png" %}',

@@ -28,6 +28,8 @@ const missionData = {
         curiosityDeclineCta: "Talvez mais tarde",
         quizIntro: "Agora que já exploramos {sectionTitle}, vou desafiar-te com algumas perguntas. Estás preparado?",
         quizIntroCta: "Estou sempre preparado",
+        challengeIntro: "Agora que já viste a introdução da fotossíntese, tenho um desafio para ti! Estás preparado?",
+        challengeIntroCta: "Estou sempre preparado",
         correctPopup: "Boa! 👍",
         incorrectIntro: "Opa, vejo que não percebeste muito bem esta matéria. Deixa-me explicar de outra forma:"
     },
@@ -43,52 +45,73 @@ const missionData = {
             explorerTip: "As folhas são o principal local da fotossíntese — é lá que estão a maioria dos cloroplastos! 🍃",
             introGreeting: "Olá {studentTitle}! Hoje vamos descobrir o que é a fotossíntese e onde ela acontece. Estás preparado?",
             introCta: "Estou sempre preparado!",
+            quizIntro: "Agora que já viste a introdução, vou desafiar-te com algumas perguntas. Estás preparado?",
             formulaBuilder: true,
             content: `
             <div class="section-content">
                     <div class="screen-card">
-                        <h3 class="intro-question">Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?</h3>
+                        <h3 class="intro-question"><span class="intro-question-text">Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?</span></h3>
                         <img class="intro-hero-image" src="/static/images/Planta-fotossíntese.png" alt="Planta a receber luz solar">
 
                         <div class="intro-summary-card">
-                            <span class="intro-summary-icon">🌱</span>
+                            <span class="intro-summary-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sprout">
+                                    <path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/>
+                                    <path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/>
+                                    <path d="M5 21h14"/>
+                                </svg>
+                            </span>
                             <div class="intro-summary-body">
                                 <h4>A planta produz o seu próprio alimento</h4>
                                 <p>Ao contrário dos animais, as plantas não saem à procura de alimento. Elas próprias o fabricam! Este processo chama-se <strong>fotossíntese</strong>.</p>
                                 <p>Com a energia da luz solar, a planta transforma a <span class="key-term">água</span> e o <span class="key-term">dióxido de carbono</span> em <span class="key-term">glicose</span> (o seu alimento) e liberta <span class="key-term">oxigénio</span> para o ambiente.</p>
+                                <div class="intro-equation">
+                                    6CO<sub>2</sub> + 6H<sub>2</sub>O
+                                    <span class="intro-equation-arrow-group">
+                                        <span class="intro-equation-energy">Energia luminosa</span>
+                                        <span class="intro-equation-arrow">&rarr;</span>
+                                    </span>
+                                    C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="intro-equation">
-                            6CO<sub>2</sub> + 6H<sub>2</sub>O &rarr; C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub>
                         </div>
 
                         <details class="did-you-know">
                             <summary>Saber mais...</summary>
-                            <img class="curiosity-illustration" src="/static/images/Jan Baptist.png" alt="Retrato de Jan Baptist van Helmont">
-                            <p>Sabias que, no século XVII, o cientista Jan van Helmont fez uma experiência com um salgueiro? Plantou-o num vaso e regou-o durante 5 anos. No final, a árvore tinha ganho dezenas de quilos... mas a terra do vaso quase não tinha perdido peso nenhum!</p>
-                            <p>Isso ajudou a perceber que as plantas não "comem" terra para crescer — fabricam o seu próprio alimento a partir de outra coisa. Hoje sabemos que essa "outra coisa" é a fotossíntese.</p>
+                            <div class="did-you-know-body">
+                                <img class="curiosity-illustration" src="/static/images/Jan Baptist.png" alt="Retrato de Jan Baptist van Helmont">
+                                <div class="did-you-know-text">
+                                    <p>Sabias que, no século XVII, o cientista Jan van Helmont fez uma experiência com um salgueiro? Plantou-o num vaso e regou-o durante 5 anos. No final, a árvore tinha ganho dezenas de quilos... mas a terra do vaso quase não tinha perdido peso nenhum!</p>
+                                    <p>Isso ajudou a perceber que as plantas não "comem" terra para crescer — fabricam o seu próprio alimento a partir de outra coisa. Hoje sabemos que essa "outra coisa" é a fotossíntese.</p>
+                                </div>
+                            </div>
                         </details>
                     </div>
 
                     <div class="screen-card plant-diagram-card">
-                        <h3>Que estruturas da planta estão envolvidas na fotossíntese?</h3>
-                        <div class="plant-diagram-overview">
-                            <p class="plant-diagram-hint">Clica num ponto da imagem para veres a explicação.</p>
-                            <div class="plant-diagram">
-                                <img class="plant-diagram-image" src="/static/images/Planta-fotossíntese.png" alt="Planta com as suas partes">
-                                <button type="button" class="plant-hotspot" data-hotspot="folhas" style="left: 68%; top: 36%;">
-                                    <span class="plant-hotspot-dot"></span>
-                                    <span class="plant-hotspot-label">Folhas</span>
-                                </button>
-                                <button type="button" class="plant-hotspot" data-hotspot="estomas" style="left: 32%; top: 48%;">
-                                    <span class="plant-hotspot-dot"></span>
-                                    <span class="plant-hotspot-label">Estomas</span>
-                                </button>
-                                <button type="button" class="plant-hotspot" data-hotspot="raizes" style="left: 50%; top: 85%;">
-                                    <span class="plant-hotspot-dot"></span>
-                                    <span class="plant-hotspot-label">Raízes</span>
-                                </button>
+                        <h3 class="screen-title-lg">Que estruturas da planta estão envolvidas na fotossíntese?</h3>
+                        <div class="plant-diagram-layout">
+                            <div class="plant-diagram-overview">
+                                <div class="plant-diagram">
+                                    <img class="plant-diagram-image" src="/static/images/Planta-fotossíntese.png" alt="Planta com as suas partes">
+                                    <button type="button" class="plant-hotspot" data-hotspot="folhas" style="left: 68%; top: 36%;">
+                                        <span class="plant-hotspot-dot"></span>
+                                        <span class="plant-hotspot-label">Folhas</span>
+                                    </button>
+                                    <button type="button" class="plant-hotspot" data-hotspot="estomas" style="left: 32%; top: 48%;">
+                                        <span class="plant-hotspot-dot"></span>
+                                        <span class="plant-hotspot-label">Estomas</span>
+                                    </button>
+                                    <button type="button" class="plant-hotspot" data-hotspot="raizes" style="left: 50%; top: 85%;">
+                                        <span class="plant-hotspot-dot"></span>
+                                        <span class="plant-hotspot-label">Raízes</span>
+                                    </button>
+                                </div>
+                                <p class="plant-diagram-hint">Clica num ponto da imagem para veres a explicação.</p>
+                            </div>
+                            <div class="plant-hotspot-detail" hidden>
+                                <img class="plant-hotspot-photo" alt="">
+                                <div class="plant-hotspot-explanation"></div>
                             </div>
                         </div>
                         <div class="plant-hotspot-panels" hidden>
@@ -110,11 +133,6 @@ const missionData = {
                                 <p><strong>Curiosidade:</strong> 🌳 Algumas árvores ligam as suas raízes a fungos do solo, numa relação chamada <span class="key-term">micorriza</span>: os fungos ajudam a planta a absorver água e minerais, e recebem açúcares em troca.</p>
                             </div>
                         </div>
-                        <div class="plant-hotspot-detail" hidden>
-                            <button type="button" class="plant-hotspot-back">← Voltar</button>
-                            <img class="plant-hotspot-photo" alt="">
-                            <div class="plant-hotspot-explanation"></div>
-                        </div>
                     </div>
 
                     <div class="screen-card plant-diagram-card">
@@ -122,6 +140,10 @@ const missionData = {
                         <p class="plant-diagram-hint">Antes de mais, conhece o cloroplasto. Depois, clica nas outras estruturas para veres a explicação.</p>
                         <div class="plant-diagram">
                             <img class="plant-diagram-image" src="/static/images/Cloroplasto com destaque para os tilacoides.png" alt="Cloroplasto com destaque interno">
+                            <button type="button" class="plant-hotspot is-active" data-hotspot="cloroplasto" style="left: 20%; top: 50%;">
+                                <span class="plant-hotspot-dot"></span>
+                                <span class="plant-hotspot-label">Cloroplasto</span>
+                            </button>
                             <button type="button" class="plant-hotspot" data-hotspot="tilacoides" style="left: 48%; top: 29%;">
                                 <span class="plant-hotspot-dot"></span>
                                 <span class="plant-hotspot-label">Tilacóides</span>
@@ -136,6 +158,12 @@ const missionData = {
                             </button>
                         </div>
                         <div class="plant-hotspot-panels" hidden>
+                            <div class="plant-hotspot-panel" data-hotspot="cloroplasto">
+                                <h4>O cloroplasto: a “fábrica” da fotossíntese</h4>
+                                <p>Para fabricar o seu alimento, a planta precisa de um local onde todas as reações da fotossíntese acontecem. Esse local chama-se <strong>cloroplasto</strong>.</p>
+                                <p>O cloroplasto é um organelo presente nas células das plantas. É aqui que a energia da luz é captada e utilizada para transformar água e dióxido de carbono em glicose.</p>
+                                <p><strong>Curiosidade:</strong> Os cloroplastos têm o seu próprio DNA — há milhões de anos eram bactérias independentes, incorporadas pelas células ancestrais das plantas.</p>
+                            </div>
                             <div class="plant-hotspot-panel" data-hotspot="tilacoides">
                                 <h4>Os tilacóides: os “painéis solares” da fotossíntese</h4>
                                 <p>Dentro do cloroplasto existem pequenas estruturas em forma de discos empilhados chamadas <strong>tilacóides</strong>. É na sua membrana que se encontra a clorofila, o pigmento responsável por captar a energia da luz solar.</p>

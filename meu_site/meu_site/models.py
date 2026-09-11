@@ -61,6 +61,14 @@ class PerfilAluno(models.Model):
     progresso_secoes = models.JSONField(default=dict, blank=True)
     progresso_testes = models.JSONField(default=dict, blank=True)
     conquistas = models.JSONField(default=dict, blank=True)
+    # Banco de perguntas erradas, por aluno — sobrevive entre sessões e
+    # dispositivos (ao contrário do localStorage) para uma futura "simulação"
+    # da IA poder voltar a questionar o aluno sobre o que já errou.
+    # Chave: "<missionId>:<sectionId>:<questionIndex>". Valor:
+    # {"missionId", "sectionId", "questionIndex", "pergunta", "vezesErrada",
+    #  "ultimaVez" (ISO datetime)}. Uma resposta certa a essa mesma pergunta
+    # remove-a daqui (ver registar_pergunta_errada em views.py).
+    perguntas_erradas = models.JSONField(default=dict, blank=True)
     criado_em = models.DateTimeField(default=timezone.now)
     plano = models.CharField(max_length=4, choices=PLANOS, default='free')
     uso_chat_semana = models.JSONField(default=dict, blank=True)

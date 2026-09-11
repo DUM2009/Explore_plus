@@ -26,21 +26,25 @@ class MissionSystem {
         this.activeCardAudioButton = null;
         this.mascotIntroShown = {};
         this.mascotQuizIntroShown = {};
+        this.mascotChallengeIntroShown = {};
         this.quizViewActive = {};
         // Transient (not persisted): which just-answered question is still
         // showing its feedback, waiting for "Continuar".
         this.awaitingContinue = {};
         this.progressStorageKey = this.resolveProgressStorageKey();
+        // Percurso (path) screen: forest scene with a circle per section.
+        // Shown first on a genuinely fresh visit (loadProgress() below
+        // defaults it to true when there's no saved state yet) — but once
+        // the student has left it for a section, that choice is persisted
+        // (see saveProgress()) so a page refresh resumes where they were
+        // instead of bouncing back to the map every time.
+        this.showPathScreen = true;
         this.loadProgress();
         this.registerPersistenceListeners();
+        this.registerIntroSummaryAlignment();
         this.saveProgress();
         this.streak = window.ProfileXP?.recordActivityStreakForCurrentUser?.() || { current: 0, longest: 0 };
 
-        // Percurso (path) screen: forest scene with a circle per section.
-        // It's always the first thing shown when entering a mission
-        // (fresh visit or "Retomar"), so the student always picks their
-        // section from the map — it only clears once they click a circle.
-        this.showPathScreen = true;
         // The mascot's explanation of how missions work is a ONE-TIME thing
         // across the whole app, not per mission — it only plays the very
         // first time a student ever opens a mission, whichever one that is.
@@ -106,7 +110,10 @@ class MissionSystem {
             <div class="formula-slot" data-slot="reactant-1" data-zone="reactant"><span class="formula-slot-placeholder">?</span></div>
             <span class="formula-operator">+</span>
             <div class="formula-slot" data-slot="reactant-2" data-zone="reactant"><span class="formula-slot-placeholder">?</span></div>
-            <span class="formula-operator formula-operator--arrow">→</span>
+            <span class="formula-operator-arrow-group">
+                <span class="formula-operator-energy">Energia luminosa</span>
+                <span class="formula-operator formula-operator--arrow">→</span>
+            </span>
             <div class="formula-slot" data-slot="product-1" data-zone="product"><span class="formula-slot-placeholder">?</span></div>
             <span class="formula-operator">+</span>
             <div class="formula-slot" data-slot="product-2" data-zone="product"><span class="formula-slot-placeholder">?</span></div>
@@ -129,6 +136,7 @@ class MissionSystem {
                 <p class="formula-builder-hint">Arrasta cada peça para o espaço certo da equação da fotossíntese.</p>
                 <div class="formula-equation">${slotsHtml}</div>
                 <div class="formula-pool">${poolHtml}</div>
+                <button type="button" class="formula-builder-help-btn">💡 Ajuda</button>
                 <p class="formula-builder-feedback"></p>
                 <button type="button" class="formula-builder-reset-btn">↺ Repetir</button>
             </div>
@@ -354,6 +362,7 @@ class MissionSystem {
                 this.earnedXP = Number.isFinite(data.earnedXP) ? data.earnedXP : 0;
                 this.completedSections = new Set(Array.isArray(data.completedSections) ? data.completedSections : []);
                 this.widgetCompletions = data.widgetCompletions && typeof data.widgetCompletions === 'object' ? data.widgetCompletions : {};
+                this.showPathScreen = data.showPathScreen !== false;
             } catch (error) {
                 console.warn('Could not parse mission progress from localStorage:', error);
                 this.currentSectionIndex = 0;
@@ -367,6 +376,7 @@ class MissionSystem {
                 this.earnedXP = 0;
                 this.completedSections = new Set();
                 this.widgetCompletions = {};
+                this.showPathScreen = true;
             }
         }
 
@@ -508,6 +518,7 @@ class MissionSystem {
             earnedXP: this.earnedXP,
             completedSections: Array.from(this.completedSections),
             widgetCompletions: this.widgetCompletions,
+            showPathScreen: this.showPathScreen,
             sectionScores: this.buildSectionScores(),
             updatedAt: new Date().toISOString()
         };
@@ -558,6 +569,38 @@ class MissionSystem {
             })
         }).catch((error) => {
             console.warn('Não foi possível sincronizar o progresso com o Django:', error);
+        });
+    }
+
+    /**
+     * Keeps the student's server-side "wrong questions" bank (PerfilAluno.
+     * perguntas_erradas) up to date — a right answer heals a question that
+     * was there before, a wrong one adds/bumps it. Persisted server-side
+     * (not localStorage) so it survives across sessions/devices for a
+     * future AI "simulação" to draw on. Fire-and-forget: never blocks the
+     * quiz UI, and silently no-ops if the sync URL isn't configured.
+     */
+    reportQuizAnswerOutcome(section, questionIndex, questionText, isCorrect) {
+        if (!window.exploreWrongQuestionUrl || !window.exploreCsrfToken) {
+            return;
+        }
+
+        fetch(window.exploreWrongQuestionUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': window.exploreCsrfToken
+            },
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                missionId: this.mission.id,
+                sectionId: section.id,
+                questionIndex,
+                question: questionText,
+                isCorrect
+            })
+        }).catch((error) => {
+            console.warn('Não foi possível atualizar o banco de perguntas erradas:', error);
         });
     }
 
@@ -713,6 +756,50 @@ class MissionSystem {
             document.body.style.userSelect = 'none';
             window.addEventListener('pointermove', onPointerMove);
             window.addEventListener('pointerup', onPointerUp);
+        });
+    }
+
+    /**
+     * Opening the chat (mascot fab) defaults to a floating overlay near the
+     * fab, so it never pushes .mission-main out of the way. The expand icon
+     * in its header lets the student "dock" it back into the sidebar layout
+     * instead (today's original always-docked behaviour, with the resize
+     * handle). The choice is remembered across visits, like the sidebar
+     * width in initSidebarResize above.
+     */
+    initChatDockToggle() {
+        const dockBtn = document.getElementById('mascoteChatDockBtn');
+        const missionShell = document.querySelector('.mission-shell');
+        if (!dockBtn || !missionShell) return;
+
+        const STORAGE_KEY = 'explore_mission_chat_docked';
+        const DOCK_ICON = '<path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/>';
+        const FLOAT_ICON = '<path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="M14 10l7-7"/><path d="M3 21l7-7"/>';
+
+        const applyDocked = (isDocked) => {
+            missionShell.classList.toggle('is-chat-docked', isDocked);
+            dockBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${isDocked ? FLOAT_ICON : DOCK_ICON}</svg>`;
+            dockBtn.setAttribute('aria-label', isDocked ? 'Flutuar o chat' : 'Fixar o chat à página');
+        };
+
+        let savedDocked = false;
+        try {
+            savedDocked = localStorage.getItem(STORAGE_KEY) === '1';
+        } catch (error) {
+            // Ignore storage access errors (private browsing) — defaults to
+            // floating for the rest of this visit.
+        }
+        applyDocked(savedDocked);
+
+        dockBtn.addEventListener('click', () => {
+            const nextDocked = !missionShell.classList.contains('is-chat-docked');
+            applyDocked(nextDocked);
+            try {
+                localStorage.setItem(STORAGE_KEY, nextDocked ? '1' : '0');
+            } catch (error) {
+                // Ignore storage errors — the toggle still works for the
+                // rest of this visit, just won't be remembered.
+            }
         });
     }
 
@@ -1229,6 +1316,7 @@ class MissionSystem {
                 this.updateFloatingChatControls();
             });
             this.initSidebarResize();
+            this.initChatDockToggle();
             window.addEventListener('explore:profile-updated', () => this.renderLessonChrome());
 
             const themeToggle = document.getElementById('lessonThemeToggle');
@@ -1300,6 +1388,7 @@ class MissionSystem {
      */
     closeLessonToPath() {
         this.showPathScreen = true;
+        this.saveProgress();
         this.render();
     }
 
@@ -1437,7 +1526,7 @@ class MissionSystem {
 
             const prompt = document.createElement('div');
             prompt.className = 'mascot-curiosity-trigger';
-            prompt.innerHTML = `<button type="button" class="mascot-curiosity-open-btn">💬 ${summaryText}</button>`;
+            prompt.innerHTML = `<button type="button" class="mascot-curiosity-open-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lightbulb"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg> ${summaryText}</button>`;
             // Remembers which screen-card this trigger belongs to, so
             // updateSectionScreen() can relocate it into the nav row's left
             // slot on that one screen (when there's no "Anterior" there to
@@ -1522,13 +1611,15 @@ class MissionSystem {
         overlay.id = 'mascotOverlay';
         overlay.className = 'mascot-overlay';
         overlay.innerHTML = `
-            <div class="mascot-overlay-card" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
-                ${this.getMascotOverlayFigureHtml()}
-                <p class="mascot-overlay-text">${message}</p>
-                <button type="button" class="mascot-help-btn mascot-overlay-help-btn">
-                    ${imageUrl ? `<img class="mascot-help-btn-icon" src="${imageUrl}" alt="">` : '🙋'}
-                    Ajuda
-                </button>
+            <div class="mascot-overlay-card mascot-overlay-card--split" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
+                <div class="mascot-overlay-split-figure">${this.getMascotOverlayFigureHtml()}</div>
+                <div class="mascot-overlay-split-body">
+                    <p class="mascot-overlay-text">${message}</p>
+                    <button type="button" class="mascot-help-btn mascot-overlay-help-btn">
+                        ${imageUrl ? `<img class="mascot-help-btn-icon" src="${imageUrl}" alt="">` : '🙋'}
+                        Ajuda
+                    </button>
+                </div>
             </div>
         `;
 
@@ -1567,7 +1658,8 @@ class MissionSystem {
         }
 
         this.mascotQuizIntroShown[section.id] = true;
-        const message = this.getMascotText('quizIntro', { missionTitle: this.mission.title, sectionTitle: section.title });
+        const message = section.quizIntro
+            || this.getMascotText('quizIntro', { missionTitle: this.mission.title, sectionTitle: section.title });
         const cta = this.getMascotText('quizIntroCta') || 'Vamos lá!';
         // The student can decline the quiz — nothing happens (the overlay
         // just closes), which naturally leaves this section's circle
@@ -1584,12 +1676,14 @@ class MissionSystem {
         overlay.id = 'mascotOverlay';
         overlay.className = 'mascot-overlay';
         overlay.innerHTML = `
-            <div class="mascot-overlay-card" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
-                ${this.getMascotOverlayFigureHtml()}
-                <div class="mascot-overlay-text">${message}</div>
-                <div class="mascot-overlay-choice-row">
-                    <button type="button" class="mascot-overlay-btn">${primaryLabel}</button>
-                    <button type="button" class="mascot-overlay-choice-btn">${secondaryLabel}</button>
+            <div class="mascot-overlay-card mascot-overlay-card--split" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
+                <div class="mascot-overlay-split-figure">${this.getMascotOverlayFigureHtml()}</div>
+                <div class="mascot-overlay-split-body">
+                    <div class="mascot-overlay-text">${message}</div>
+                    <div class="mascot-overlay-choice-row">
+                        <button type="button" class="mascot-overlay-btn">${primaryLabel}</button>
+                        <button type="button" class="mascot-overlay-choice-btn">${secondaryLabel}</button>
+                    </div>
                 </div>
             </div>
         `;
@@ -1875,8 +1969,12 @@ class MissionSystem {
         if (!existingNav) {
             const navEl = document.createElement('div');
             navEl.className = 'screen-nav';
+            const pageButtons = screens
+                .map((_, i) => `<button type="button" class="screen-nav-page mission-jump-screen" data-target-screen="${i + 1}" aria-label="Ir para o ecrã ${i + 1}">${i + 1}</button>`)
+                .join('');
             navEl.innerHTML = `
-                <button type="button" class="screen-nav-btn screen-nav-btn--prev" data-nav-action="prev">Anterior</button>
+                <button type="button" class="screen-nav-btn screen-nav-btn--prev screen-nav-btn--icon" data-nav-action="prev" aria-label="Anterior"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button>
+                <div class="screen-nav-pages">${pageButtons}</div>
                 <button type="button" class="screen-nav-btn" data-nav-action="next">Continuar</button>
             `;
 
@@ -1902,10 +2000,10 @@ class MissionSystem {
 
         this.bindPhaseClearSequence(sectionEl);
         this.bindCalvinCycleBuilder(sectionEl);
-        this.bindFormulaBuilder(sectionEl);
+        this.bindFormulaBuilder(sectionEl, section);
     }
 
-    bindFormulaBuilder(sectionEl) {
+    bindFormulaBuilder(sectionEl, section) {
         const builder = sectionEl.querySelector('.formula-builder');
         if (!builder) return;
 
@@ -1969,6 +2067,7 @@ class MissionSystem {
                 this.awardProfileXP(15, this.buildRewardSource('formula-builder', `${this.mission.id}:${sectionEl.dataset.sectionId || ''}`), { type: 'exercise' });
                 this.saveProgress();
                 setFeedback('Perfeito! É esta a equação da fotossíntese. +15 <strong>XP</strong>', 'success');
+                if (section) this.showFormulaBuilderSuccessPopup(sectionEl, section);
             } else {
                 setFeedback('Perfeito! É esta a equação da fotossíntese.', 'success');
             }
@@ -2094,6 +2193,30 @@ class MissionSystem {
 
             setFeedback('Arrasta as 4 peças para os espaços da equação.');
         });
+
+        // The pieces start without their little icon, so the student
+        // matches each term to its slot from the formula alone — this
+        // button is an optional crutch that reveals the icons on request.
+        builder.querySelector('.formula-builder-help-btn')?.addEventListener('click', (event) => {
+            builder.classList.add('hints-visible');
+            event.currentTarget.remove();
+        });
+    }
+
+    /**
+     * Fires once, the first time a student solves the formula builder —
+     * congratulates them by name/rank and offers a button straight into
+     * the section quiz. Pre-marks mascotQuizIntroShown so revealSectionQuiz
+     * doesn't also pop its own (redundant) "Estás preparado?" intro right
+     * after this one.
+     */
+    showFormulaBuilderSuccessPopup(sectionEl, section) {
+        const studentTitle = this.getStudentRankTitle().replace(/!+$/, '');
+        const message = `Boa, ${studentTitle}! Agora tenho um desafio mais complexo...`;
+        this.mascotQuizIntroShown[section.id] = true;
+        this.showMascotOverlay(message, 'Vamos lá!', () => {
+            this.revealSectionQuiz(sectionEl, section);
+        }, { extraClass: 'mascot-overlay-card--split' });
     }
 
     bindCalvinCycleBuilder(sectionEl) {
@@ -2424,6 +2547,53 @@ class MissionSystem {
         return index > 0;
     }
 
+    /**
+     * .intro-summary-card is meant to line up with .intro-question above
+     * it, but that h3 is deliberately stretched full-width (see its CSS) —
+     * its centered text doesn't reach the h3's own edges, so measuring the
+     * h3 itself would just copy that full width onto the card. Measure the
+     * inline .intro-question-text span inside it instead (it shrinks to
+     * its actual rendered glyphs) and apply that as the card's width. Re-run
+     * on resize (see registerIntroSummaryAlignment) since the text's
+     * rendered width changes with viewport/sidebar width.
+     *
+     * The shared Anterior/Continuar row (.screen-nav) borrows the same
+     * width whenever the screen currently showing has one of these cards,
+     * so its edges line up with the card's too — but it resets back to
+     * its own full-width default on screens with no card to match.
+     */
+    alignIntroSummaryCards(root = document) {
+        root.querySelectorAll('.screen-card').forEach((screen) => {
+            const title = screen.querySelector('.intro-question-text') || screen.querySelector('h3.intro-question');
+            const card = screen.querySelector('.intro-summary-card');
+            if (!title || !card) return;
+            const width = title.getBoundingClientRect().width;
+            if (width > 0) card.style.width = `${Math.round(width)}px`;
+        });
+
+        const sections = root.nodeType === 1 && root.matches('.section')
+            ? [root]
+            : Array.from(root.querySelectorAll('.section'));
+        sections.forEach((sectionEl) => {
+            const nav = sectionEl.querySelector('.screen-nav');
+            if (!nav) return;
+            const activeCard = sectionEl.querySelector('.screen-card.active-screen .intro-summary-card');
+            nav.style.width = activeCard ? activeCard.style.width : '';
+        });
+    }
+
+    registerIntroSummaryAlignment() {
+        let resizeTimer = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => this.alignIntroSummaryCards(), 150);
+        });
+
+        // A late web-font swap can change the title's rendered width after
+        // our initial post-render measurement already ran.
+        document.fonts?.ready?.then(() => this.alignIntroSummaryCards());
+    }
+
     updateSectionScreen(sectionEl, section, targetIndex, shouldScroll = true, { direction = 'forward' } = {}) {
         const contentEl = sectionEl.querySelector('.section-content');
         if (!contentEl) return;
@@ -2437,6 +2607,8 @@ class MissionSystem {
             screen.classList.toggle('active-screen', index === safeIndex);
             screen.classList.toggle('hidden-screen', index !== safeIndex);
         });
+
+        requestAnimationFrame(() => this.alignIntroSummaryCards(sectionEl));
 
         // Any vocabulary word on the screen the student just landed on goes
         // straight into their dictionary/concepts panel — not just the ones
@@ -2460,8 +2632,19 @@ class MissionSystem {
             if (prevBtn) {
                 prevBtn.style.display = hasPrev ? '' : 'none';
             }
+
+            navEl.querySelectorAll('.screen-nav-page').forEach((pageBtn, i) => {
+                pageBtn.classList.toggle('active', i === safeIndex);
+            });
             if (nextBtn) {
-                nextBtn.textContent = isLast ? 'Ver quiz' : 'Continuar';
+                nextBtn.classList.toggle('screen-nav-btn--icon', !isLast);
+                if (isLast) {
+                    nextBtn.textContent = 'Continuar';
+                    nextBtn.removeAttribute('aria-label');
+                } else {
+                    nextBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+                    nextBtn.setAttribute('aria-label', 'Continuar');
+                }
             }
 
             // The "Saber mais" trigger lines up with Continuar, on the left,
@@ -2506,6 +2689,27 @@ class MissionSystem {
         this.renderLessonChrome();
     }
 
+    /**
+     * Gates entry into the drag-and-drop formula-builder screen (the
+     * section's "challenge") behind a one-time mascot popup, the same way
+     * revealSectionQuiz() gates entry into the quiz — shown once per
+     * section, tracked in mascotChallengeIntroShown. Screens without a
+     * .formula-builder (i.e. every ordinary "next"/jump) just proceed.
+     */
+    showChallengeIntroIfNeeded(section, targetScreen, proceed) {
+        const isChallengeScreen = !!targetScreen?.querySelector('.formula-builder');
+        if (!isChallengeScreen || this.mascotChallengeIntroShown[section.id]) {
+            proceed();
+            return;
+        }
+
+        this.mascotChallengeIntroShown[section.id] = true;
+        const message = this.getMascotText('challengeIntro')
+            || 'Agora que já viste a introdução, tenho um desafio para ti! Estás preparado?';
+        const cta = this.getMascotText('challengeIntroCta') || 'Estou sempre preparado';
+        this.showMascotOverlay(message, cta, proceed, { extraClass: 'mascot-overlay-card--split' });
+    }
+
     handleScreenNav(event, sectionEl, section) {
         const button = event.target.closest('[data-nav-action]');
         if (!button) return;
@@ -2521,7 +2725,10 @@ class MissionSystem {
 
         if (action === 'next') {
             if (current < screens.length - 1) {
-                this.updateSectionScreen(sectionEl, section, current + 1);
+                const targetIndex = current + 1;
+                this.showChallengeIntroIfNeeded(section, screens[targetIndex], () => {
+                    this.updateSectionScreen(sectionEl, section, targetIndex);
+                });
                 return;
             }
 
@@ -2630,8 +2837,14 @@ class MissionSystem {
             return;
         }
 
-        this.quizViewActive[section.id] = false;
-        this.updateSectionScreen(sectionEl, section, targetScreen - 1);
+        const contentEl = sectionEl.querySelector('.section-content');
+        const screens = contentEl ? Array.from(contentEl.querySelectorAll('.screen-card')) : [];
+        const targetIndex = targetScreen - 1;
+
+        this.showChallengeIntroIfNeeded(section, screens[targetIndex], () => {
+            this.quizViewActive[section.id] = false;
+            this.updateSectionScreen(sectionEl, section, targetIndex);
+        });
     }
 
     /**
@@ -2670,6 +2883,7 @@ class MissionSystem {
         });
 
         sectionEl.querySelector('#quizContinueBtn')?.addEventListener('click', () => this.handleQuizContinue(section, sectionIndex));
+        sectionEl.querySelector('#quizPrevBtn')?.addEventListener('click', () => this.handleQuizPrev(section));
 
         sectionEl.querySelectorAll('.open-quiz-submit').forEach(button => {
             button.addEventListener('click', (event) => this.handleOpenQuizAnswer(event, section, sectionIndex));
@@ -2696,10 +2910,6 @@ class MissionSystem {
 
         sectionEl.querySelectorAll('.plant-hotspot').forEach(button => {
             button.addEventListener('click', (event) => this.handlePlantHotspotClick(event));
-        });
-
-        sectionEl.querySelectorAll('.plant-hotspot-back').forEach(button => {
-            button.addEventListener('click', (event) => this.handlePlantHotspotBack(event));
         });
 
         this.hydrateGuideState(sectionEl, section);
@@ -2780,6 +2990,22 @@ class MissionSystem {
         const isShowingFeedback = !!savedAnswer && awaitingIndex === displayIndex;
         const isLastQuestion = displayIndex === questions.length - 1;
         const continueLabel = isLastQuestion ? 'Concluir' : 'Continuar';
+        // "Continuar" shrinks to a bare arrow, matching the section nav's
+        // Continuar — only "Concluir" (the quiz's own terminal action)
+        // keeps a text label. "Anterior" only shows once there's an
+        // earlier, already-answered question to step back and review.
+        const quizActionsHtml = `
+            <div class="lesson-quiz-actions">
+                ${displayIndex > 0 ? `
+                    <button type="button" class="quiz-nav-btn quiz-nav-btn--prev" id="quizPrevBtn" aria-label="Pergunta anterior">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                    </button>
+                ` : ''}
+                <button type="button" class="lesson-primary-btn quiz-nav-btn quiz-nav-btn--next ${isLastQuestion ? '' : 'quiz-nav-btn--icon'}" id="quizContinueBtn" aria-label="${continueLabel}">
+                    ${isLastQuestion ? continueLabel : '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>'}
+                </button>
+            </div>
+        `;
 
         const feedbackHtml = (answer) => `
             <div class="quiz-feedback ${answer.isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
@@ -2803,12 +3029,11 @@ class MissionSystem {
                     ${isAnswered ? 'disabled' : ''}
                 ></textarea>
                 ${isShowingFeedback ? feedbackHtml(savedAnswer) : ''}
-                <div class="lesson-quiz-actions">
-                    ${isShowingFeedback
-                        ? `<button type="button" class="lesson-primary-btn" id="quizContinueBtn">${continueLabel}</button>`
-                        : `<button type="button" class="lesson-primary-btn open-quiz-submit" data-question-index="${displayIndex}" disabled>Confirmar</button>`
-                    }
-                </div>
+                ${isShowingFeedback ? quizActionsHtml : `
+                    <div class="lesson-quiz-actions">
+                        <button type="button" class="lesson-primary-btn open-quiz-submit" data-question-index="${displayIndex}" disabled>Confirmar</button>
+                    </div>
+                `}
             `;
         } else {
             // Selecting an option immediately commits and reveals the
@@ -2839,11 +3064,7 @@ class MissionSystem {
                     }).join('')}
                 </div>
                 ${isShowingFeedback ? feedbackHtml(savedAnswer) : ''}
-                ${isShowingFeedback ? `
-                    <div class="lesson-quiz-actions">
-                        <button type="button" class="lesson-primary-btn" id="quizContinueBtn">${continueLabel}</button>
-                    </div>
-                ` : ''}
+                ${isShowingFeedback ? quizActionsHtml : ''}
             `;
         }
 
@@ -2923,6 +3144,7 @@ class MissionSystem {
                 // the next unlocked circle themselves, rather than
                 // auto-continuing inline.
                 this.showPathScreen = true;
+                this.saveProgress();
                 this.render();
                 return;
             }
@@ -2944,10 +3166,19 @@ class MissionSystem {
 
         const ctaLabel = hasNextSection ? 'Avança para o próximo conteúdo →' : 'Ir para o desafio';
 
+        // Every finished section unlocks its own little badge (icon it
+        // already carries in the mission data); the mission's overall
+        // badge only really gets "unlocked" once there's no section left.
+        const badges = [{ icon: section.icon, label: section.title }];
+        if (!hasNextSection && this.mission.badge) {
+            badges.push({ icon: this.mission.badge.icon, label: this.mission.badge.name, isMissionBadge: true });
+        }
+
         this.showSectionCompletionDialog({
             scoreLine,
             message: completionMessage,
             ctaLabel,
+            badges,
             onContinue: continueToNext,
             onReview: reviewContent
         });
@@ -2962,6 +3193,7 @@ class MissionSystem {
     reviewSectionContent(section, sectionIndex) {
         this.activeSectionIndex = sectionIndex;
         this.showPathScreen = false;
+        this.saveProgress();
         this.render();
 
         const sectionEl = document.querySelector(`.section[data-section-id="${section.id}"]`);
@@ -2971,11 +3203,22 @@ class MissionSystem {
         }
     }
 
-    showSectionCompletionDialog({ scoreLine, message, ctaLabel, onContinue, onReview }) {
+    showSectionCompletionDialog({ scoreLine, message, ctaLabel, badges, onContinue, onReview }) {
         const existing = document.getElementById('sectionCompletionOverlay');
         if (existing) {
             existing.remove();
         }
+
+        const badgesHtml = Array.isArray(badges) && badges.length ? `
+            <div class="section-completion-badges">
+                ${badges.map((badge) => `
+                    <div class="section-completion-badge ${badge.isMissionBadge ? 'section-completion-badge--mission' : ''}">
+                        <span class="section-completion-badge-icon">${badge.icon || '🏅'}</span>
+                        <span class="section-completion-badge-label">${badge.label}</span>
+                    </div>
+                `).join('')}
+            </div>
+        ` : '';
 
         const overlay = document.createElement('div');
         overlay.id = 'sectionCompletionOverlay';
@@ -2984,6 +3227,7 @@ class MissionSystem {
             <div class="section-completion-card" role="dialog" aria-modal="true" aria-label="Missão concluída">
                 <h3>Missão concluída</h3>
                 ${scoreLine ? `<p class="section-completion-score">${scoreLine}</p>` : ''}
+                ${badgesHtml}
                 <p>${message}</p>
                 <button type="button" class="section-completion-btn">${ctaLabel}</button>
                 <button type="button" class="section-completion-review-btn">Rever conteúdo</button>
@@ -3042,6 +3286,7 @@ class MissionSystem {
         const question = this.getSectionQuestions(section)[questionIndex];
         const option = question.options[optionIndex];
         const isCorrect = !!option?.correct;
+        this.reportQuizAnswerOutcome(section, questionIndex, question.question, isCorrect);
 
         answerState.answers[questionIndex] = {
             selectedOptionIndex: optionIndex,
@@ -3108,6 +3353,7 @@ class MissionSystem {
 
         const requiredKeywords = Number.isInteger(question.minKeywords) ? question.minKeywords : 2;
         const isCorrect = foundCount >= requiredKeywords;
+        this.reportQuizAnswerOutcome(section, questionIndex, question.question, isCorrect);
 
         const answerState = this.getSectionAnswerState(section.id);
         answerState.answers[questionIndex] = {
@@ -3149,6 +3395,27 @@ class MissionSystem {
             return;
         }
 
+        this.render();
+    }
+
+    /**
+     * Steps back to review the previous (already-answered) question —
+     * renderSectionQuiz() naturally renders it read-only with its saved
+     * feedback, since a saved answer already exists for that index. Only
+     * ever reachable once at least one question has been answered.
+     */
+    handleQuizPrev(section) {
+        const questions = this.getSectionQuestions(section);
+        const answerState = this.getSectionAnswerState(section.id);
+        const awaitingIndex = this.awaitingContinue?.[section.id];
+        const firstUnanswered = answerState.answers.findIndex((answer) => !answer);
+        const displayIndex = Number.isInteger(awaitingIndex)
+            ? awaitingIndex
+            : (firstUnanswered === -1 ? questions.length - 1 : firstUnanswered);
+
+        if (displayIndex <= 0) return;
+
+        this.awaitingContinue[section.id] = displayIndex - 1;
         this.render();
     }
 
@@ -3229,9 +3496,9 @@ class MissionSystem {
     /**
      * Clicking a positioned dot on a .plant-diagram image: mark it as the
      * active hotspot and copy the matching hidden .plant-hotspot-panel's
-     * content into the visible .plant-hotspot-explanation box below the
-     * image — the panels themselves are just an authoring convenience and
-     * are never shown directly.
+     * content into the visible .plant-hotspot-explanation box — the panels
+     * themselves are just an authoring convenience and are never shown
+     * directly.
      */
     handlePlantHotspotClick(event) {
         const button = event.currentTarget;
@@ -3247,8 +3514,8 @@ class MissionSystem {
         if (!panel) return;
 
         // Cards with a real photo per structure (see data-image on the
-        // panel) drill into a dedicated detail view instead of showing the
-        // explanation inline below the diagram.
+        // panel) show a dedicated detail panel alongside the diagram
+        // instead of the explanation inline below the image.
         const detail = card.querySelector('.plant-hotspot-detail');
         const explanation = detail
             ? detail.querySelector('.plant-hotspot-explanation')
@@ -3269,22 +3536,11 @@ class MissionSystem {
                 photo.alt = panel.querySelector('h4')?.textContent || '';
                 photo.classList.toggle('is-round', panel.dataset.photoRound === 'true');
             }
-            const overview = card.querySelector('.plant-diagram-overview');
-            if (overview) overview.hidden = true;
             detail.hidden = false;
         }
-    }
 
-    handlePlantHotspotBack(event) {
-        const card = event.currentTarget.closest('.plant-diagram-card');
-        if (!card) return;
-
-        const detail = card.querySelector('.plant-hotspot-detail');
-        const overview = card.querySelector('.plant-diagram-overview');
-        if (detail) detail.hidden = true;
-        if (overview) overview.hidden = false;
-
-        card.querySelectorAll('.plant-hotspot').forEach((el) => el.classList.remove('is-active'));
+        const layout = card.querySelector('.plant-diagram-layout');
+        if (layout) layout.classList.add('has-selection');
     }
 
     /**

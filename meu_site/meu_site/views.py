@@ -350,6 +350,55 @@ def salvar_progresso_missao(request):
 
 @login_required(login_url='login')
 @require_POST
+def registar_pergunta_errada(request):
+    """
+    Mantém o banco de perguntas erradas do aluno (PerfilAluno.perguntas_erradas)
+    atualizado a cada resposta de quiz — chamado tanto para respostas certas
+    (para "curar" uma pergunta já lá guardada) como erradas (para a
+    adicionar/atualizar). Pensado para uma futura funcionalidade de
+    "simulação" da IA voltar a questionar o aluno sobre o que já errou.
+    """
+    try:
+        dados = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+
+    mission_id = str(dados.get('missionId', '')).strip()
+    section_id = str(dados.get('sectionId', '')).strip()
+    question_index = dados.get('questionIndex')
+    pergunta_texto = str(dados.get('question', '')).strip()
+    is_correct = dados.get('isCorrect')
+
+    if not mission_id or not section_id or not isinstance(question_index, int) or not isinstance(is_correct, bool):
+        return JsonResponse({'erro': 'Dados da pergunta em falta.'}, status=400)
+
+    chave = f"{mission_id}:{section_id}:{question_index}"
+
+    perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    banco = dict(perfil.perguntas_erradas or {})
+
+    if is_correct:
+        # Acertou desta vez — sai do banco de perguntas erradas.
+        banco.pop(chave, None)
+    else:
+        existente = banco.get(chave) or {}
+        banco[chave] = {
+            'missionId': mission_id,
+            'sectionId': section_id,
+            'questionIndex': question_index,
+            'pergunta': pergunta_texto or existente.get('pergunta', ''),
+            'vezesErrada': int(existente.get('vezesErrada', 0)) + 1,
+            'ultimaVez': timezone.now().isoformat(),
+        }
+
+    perfil.perguntas_erradas = banco
+    perfil.save(update_fields=['perguntas_erradas'])
+
+    return JsonResponse({'ok': True})
+
+
+@login_required(login_url='login')
+@require_POST
 def mascote_chat(request):
     """
     Proxies a chat message to Claude so the mascot can answer questions
