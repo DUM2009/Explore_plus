@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -97,11 +98,18 @@ WSGI_APPLICATION = 'meu_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
+# In production, DATABASE_URL (set in the Render dashboard, not committed —
+# see render.yaml) points at a Neon Postgres instance, which survives
+# deploys/restarts — Render's own disk doesn't (it's wiped on every deploy
+# and when a free-plan instance spins down), which was silently resetting
+# student data there. Locally, with no DATABASE_URL set, this falls back to
+# SQLite at SQLITE_DB_PATH (see .env) — a folder OUTSIDE any cloud-sync
+# client, for the same reason (see git history for the OneDrive incident).
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{os.environ.get('SQLITE_DB_PATH') or (BASE_DIR / 'db.sqlite3')}",
+        conn_max_age=600,
+    )
 }
 
 

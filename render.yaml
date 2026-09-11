@@ -18,6 +18,11 @@ services:
         value: "3.12.10"
       - key: ANTHROPIC_API_KEY
         sync: false
+      # Neon Postgres connection string — set this manually in the Render
+      # dashboard (Environment tab), never committed here. Without it,
+      # settings.py falls back to SQLite on Render's own (ephemeral) disk.
+      - key: DATABASE_URL
+        sync: false
       # Used only by `createsuperuser --noinput` above, which reads these
       # three exact env var names itself (Django convention). The `|| true`
       # keeps redeploys from failing once the account already exists.
