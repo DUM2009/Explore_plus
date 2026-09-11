@@ -2024,12 +2024,85 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .section-completion-card {
-    width: min(520px, 100%);
+    width: min(420px, 100%);
     background: #ffffff;
-    border: 1px solid #cde7d9;
-    border-radius: 14px;
-    padding: 22px;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 28px 24px 24px;
     box-shadow: 0 20px 45px rgba(18, 61, 40, 0.22);
+}
+
+/* Big bold "X/Y" up top with a muted caption underneath, same proportions
+   as a stat-card hero (huge number, small label) rather than a sentence
+   buried in body text. */
+.section-completion-hero {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.section-completion-hero-number {
+    margin: 0;
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #12261d;
+}
+
+.section-completion-hero-caption {
+    margin: 6px 0 0;
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.section-completion-badges {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0 0 28px;
+}
+
+.section-completion-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 96px;
+}
+
+.section-completion-badge-icon {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: #6b7280;
+    font-size: 1.4rem;
+}
+
+/* The mission's own badge (only shown once every section is done) stands
+   out gold against the ordinary per-section ones. */
+.section-completion-badge--mission .section-completion-badge-icon {
+    background: linear-gradient(160deg, #fff6dd, #ffe8a8);
+    color: #a3790f;
+    box-shadow: 0 4px 14px rgba(224, 184, 76, 0.4);
+}
+
+.section-completion-badge-label {
+    color: #374151;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.25;
+}
+
+.section-completion-footer {
+    border-top: 1px solid #eef0ef;
+    padding-top: 20px;
 }
 
 .section-completion-card h3 {
@@ -2041,60 +2114,6 @@ html[data-theme="dark"] .intro-equation {
     margin: 0 0 16px;
     color: #2e4f3f;
     font-weight: 600;
-}
-
-.section-completion-score {
-    display: inline-block;
-    margin: 0 0 10px !important;
-    padding: 6px 14px;
-    background: #eef7f3;
-    border-radius: 999px;
-    color: #1f8a5b !important;
-    font-weight: 700 !important;
-}
-
-.section-completion-badges {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    margin: 4px 0 18px;
-}
-
-.section-completion-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    width: 96px;
-}
-
-.section-completion-badge-icon {
-    display: grid;
-    place-items: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: #eef7f3;
-    border: 2px solid #cde7d9;
-    color: #1f8a5b;
-    font-size: 1.6rem;
-}
-
-/* The mission's own badge (only shown once every section is done) stands
-   out gold against the ordinary per-section ones. */
-.section-completion-badge--mission .section-completion-badge-icon {
-    background: linear-gradient(160deg, #fff6dd, #ffe8a8);
-    border-color: #e0b84c;
-    box-shadow: 0 4px 14px rgba(224, 184, 76, 0.4);
-}
-
-.section-completion-badge-label {
-    color: #2e4f3f;
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-align: center;
-    line-height: 1.25;
 }
 
 .section-completion-btn {

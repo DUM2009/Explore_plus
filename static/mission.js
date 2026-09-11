@@ -3203,9 +3203,7 @@ class MissionSystem {
         const reviewContent = () => this.reviewSectionContent(section, sectionIndex);
 
         const rankTitle = window.ProfileXP?.getProfileOverview?.(window.ProfileXP.getCurrentUserProfile())?.rank?.title || 'Explorador';
-        const scoreLine = totalQuestions
-            ? `${correctAnswers}/${totalQuestions} perguntas acertadas, nada mau, ${rankTitle}`
-            : '';
+        const scoreCaption = totalQuestions ? `Perguntas acertadas — nada mau, ${rankTitle}` : '';
 
         const completionMessage = typeof section.completionMessage === 'string' && section.completionMessage.trim()
             ? section.completionMessage.trim()
@@ -3222,7 +3220,9 @@ class MissionSystem {
         }
 
         this.showSectionCompletionDialog({
-            scoreLine,
+            correctAnswers,
+            totalQuestions,
+            scoreCaption,
             message: completionMessage,
             ctaLabel,
             badges,
@@ -3250,11 +3250,18 @@ class MissionSystem {
         }
     }
 
-    showSectionCompletionDialog({ scoreLine, message, ctaLabel, badges, onContinue, onReview }) {
+    showSectionCompletionDialog({ correctAnswers, totalQuestions, scoreCaption, message, ctaLabel, badges, onContinue, onReview }) {
         const existing = document.getElementById('sectionCompletionOverlay');
         if (existing) {
             existing.remove();
         }
+
+        const heroHtml = totalQuestions ? `
+            <div class="section-completion-hero">
+                <p class="section-completion-hero-number">${correctAnswers}/${totalQuestions}</p>
+                <p class="section-completion-hero-caption">${scoreCaption}</p>
+            </div>
+        ` : '';
 
         const badgesHtml = Array.isArray(badges) && badges.length ? `
             <div class="section-completion-badges">
@@ -3272,12 +3279,14 @@ class MissionSystem {
         overlay.className = 'section-completion-overlay';
         overlay.innerHTML = `
             <div class="section-completion-card" role="dialog" aria-modal="true" aria-label="Missão concluída">
-                <h3>Missão concluída</h3>
-                ${scoreLine ? `<p class="section-completion-score">${scoreLine}</p>` : ''}
+                ${heroHtml}
                 ${badgesHtml}
-                <p>${message}</p>
-                <button type="button" class="section-completion-btn">${ctaLabel}</button>
-                <button type="button" class="section-completion-review-btn">Rever conteúdo</button>
+                <div class="section-completion-footer">
+                    <h3>Missão concluída</h3>
+                    <p>${message}</p>
+                    <button type="button" class="section-completion-btn">${ctaLabel}</button>
+                    <button type="button" class="section-completion-review-btn">Rever conteúdo</button>
+                </div>
             </div>
         `;
 
