@@ -1830,6 +1830,24 @@ class MissionSystem {
         return { answers: [] };
     }
 
+    /**
+     * Index of the first unanswered question, or -1 if every one of them
+     * has been answered. NOT the same as answerState.answers.findIndex()
+     * directly — that array only grows as questions get answered, so
+     * while it's still shorter than `questions` (e.g. empty, brand new)
+     * findIndex on it alone wrongly returns -1 ("all answered") instead of
+     * 0 ("first one's still empty"). Walking by `questions.length` instead
+     * treats every not-yet-existing slot as unanswered, as it should.
+     */
+    getFirstUnansweredQuestionIndex(questions, answerState) {
+        for (let i = 0; i < questions.length; i += 1) {
+            if (!answerState.answers[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     getOpenAnswerDraft(sectionId, questionIndex) {
         const sectionDrafts = this.openAnswerDrafts?.[sectionId];
         if (!sectionDrafts || typeof sectionDrafts !== 'object') {
@@ -2561,14 +2579,32 @@ class MissionSystem {
      * width whenever the screen currently showing has one of these cards,
      * so its edges line up with the card's too — but it resets back to
      * its own full-width default on screens with no card to match.
+     *
+     * Width alone isn't enough to line the card's edges up with the
+     * title's, though: the card's own centering (margin: 0 auto) is
+     * relative to its actual DOM parent (.screen-card, inside the narrow
+     * .section-body column), not to the wide cqw breakout the title uses
+     * — a mismatched centering axis. Whenever the title is wider than
+     * that column, "centered in the column" and "centered under the
+     * title" disagree, and the browser's overflow handling on top of
+     * that can shove the card off to one side instead of either. So
+     * after sizing it, this also measures where its left edge actually
+     * landed and nudges it via a `left` offset until it matches the
+     * title's — sidestepping the margin math entirely.
      */
     alignIntroSummaryCards(root = document) {
         root.querySelectorAll('.screen-card').forEach((screen) => {
             const title = screen.querySelector('.intro-question-text') || screen.querySelector('h3.intro-question');
             const card = screen.querySelector('.intro-summary-card');
             if (!title || !card) return;
-            const width = title.getBoundingClientRect().width;
-            if (width > 0) card.style.width = `${Math.round(width)}px`;
+            const titleRect = title.getBoundingClientRect();
+            if (titleRect.width <= 0) return;
+
+            card.style.width = `${Math.round(titleRect.width)}px`;
+            card.style.position = 'relative';
+            card.style.left = '0px';
+            const cardRect = card.getBoundingClientRect();
+            card.style.left = `${Math.round(titleRect.left - cardRect.left)}px`;
         });
 
         const sections = root.nodeType === 1 && root.matches('.section')
@@ -2578,7 +2614,18 @@ class MissionSystem {
             const nav = sectionEl.querySelector('.screen-nav');
             if (!nav) return;
             const activeCard = sectionEl.querySelector('.screen-card.active-screen .intro-summary-card');
-            nav.style.width = activeCard ? activeCard.style.width : '';
+            if (!activeCard) {
+                nav.style.width = '';
+                nav.style.left = '';
+                return;
+            }
+
+            nav.style.width = activeCard.style.width;
+            nav.style.position = 'relative';
+            nav.style.left = '0px';
+            const navRect = nav.getBoundingClientRect();
+            const cardRect = activeCard.getBoundingClientRect();
+            nav.style.left = `${Math.round(cardRect.left - navRect.left)}px`;
         });
     }
 
@@ -2979,7 +3026,7 @@ class MissionSystem {
         const isQuizEntryGated = this.isSectionQuizEntryGated(section);
         const isQuizEntryOpen = this.quizEntryState?.[section.id] === true;
 
-        const firstUnanswered = answerState.answers.findIndex((answer) => !answer);
+        const firstUnanswered = this.getFirstUnansweredQuestionIndex(questions, answerState);
         const awaitingIndex = this.awaitingContinue?.[section.id];
         const displayIndex = Number.isInteger(awaitingIndex)
             ? awaitingIndex
@@ -3408,7 +3455,7 @@ class MissionSystem {
         const questions = this.getSectionQuestions(section);
         const answerState = this.getSectionAnswerState(section.id);
         const awaitingIndex = this.awaitingContinue?.[section.id];
-        const firstUnanswered = answerState.answers.findIndex((answer) => !answer);
+        const firstUnanswered = this.getFirstUnansweredQuestionIndex(questions, answerState);
         const displayIndex = Number.isInteger(awaitingIndex)
             ? awaitingIndex
             : (firstUnanswered === -1 ? questions.length - 1 : firstUnanswered);

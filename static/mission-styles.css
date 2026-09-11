@@ -1163,12 +1163,13 @@ object.card-visual {
 .screen-card .intro-summary-card {
     box-sizing: border-box;
     width: 100%;
-    /* mission.js measures the title against the full cqw-wide breakout
-       row above, which can be wider than .section-body's own (narrower)
-       column this card actually sits in — the plain "100%" bound stops
-       that JS-set inline width from overflowing past this card's real
-       parent and shifting the whole box off-center. */
-    max-width: min(calc(100cqw - 56px), 100%);
+    /* Matches the title's own safety bound (see h3.intro-question) — the
+       card can legitimately be wider than .section-body's narrower column
+       it sits in, same as the title above it. alignIntroSummaryCards() in
+       mission.js handles positioning it correctly despite that (a `left`
+       offset, not margin:auto, which would just overflow/misalign once
+       the card exceeds its literal parent's width). */
+    max-width: calc(100cqw - 56px);
     min-width: min(320px, 100%);
     margin: 0 auto 20px;
 }
@@ -2165,7 +2166,12 @@ html[data-theme="dark"] .intro-equation {
     justify-content: flex-start;
     gap: 10px;
     width: 480px;
-    max-width: 100%;
+    /* Same bound as .intro-summary-card/h3.intro-question, not 100% of
+       .section-body's narrower column — this row can legitimately be
+       wider than that column when it's borrowing an intro card's width
+       (see alignIntroSummaryCards in mission.js, which also handles
+       positioning it via a `left` offset rather than margin:auto). */
+    max-width: calc(100cqw - 56px);
     margin: 8px auto 20px;
 }
 

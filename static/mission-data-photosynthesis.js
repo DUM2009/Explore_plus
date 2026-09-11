@@ -281,6 +281,8 @@ const missionData = {
             xpReward: 60,
             completionMessage: "Etapa concluída! +60 XP. Já entendes como a luz se converte em ATP e NADPH.",
             explorerTip: "A fase clara só acontece com luz — sem Sol, não há ATP nem NADPH! ☀️",
+            introGreeting: "Agora vamos explorar a fase clara!",
+            introCta: "Bora!",
             summarySteps: [
                 { icon: "☀️", label: "Luz do Sol" },
                 { icon: "🍃", label: "Absorção da luz pelos pigmentos" },
