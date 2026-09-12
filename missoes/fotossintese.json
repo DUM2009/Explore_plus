@@ -1,0 +1,349 @@
+{
+  "missao_id": "fotossintese",
+  "titulo": "Fotossíntese",
+  "disciplina": "citologia",
+  "badge": { "icone": "🌿", "nome": "Mestre da Fotossíntese" },
+  "secoes": [
+    {
+      "secao_id": "introducao",
+      "titulo": "O que é e onde acontece",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Olá, aprendiz! 🐢 Hoje vamos descobrir um dos truques mais espantosos da natureza.",
+          "texto": "Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?"
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "De onde vem o alimento da planta?",
+          "imagem": "Planta-fotossíntese.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "energia", "label": "Energia (luz solar)", "explicacao": "A luz do Sol fornece a energia que torna todo este processo possível — sem luz, não há fotossíntese." },
+            { "id": "co2", "label": "Dióxido de carbono (CO₂)", "explicacao": "Entra na planta através de pequenos poros nas folhas, chamados estomas." },
+            { "id": "agua", "label": "Água (H₂O)", "explicacao": "É absorvida pelas raízes e transportada até às folhas." },
+            { "id": "oxigenio", "label": "Oxigénio (O₂)", "explicacao": "É libertado para o ar como produto secundário — é o oxigénio que respiramos." },
+            { "id": "glicose", "label": "Glicose (C₆H₁₂O₆)", "explicacao": "O açúcar que a planta fabrica, usado como alimento e fonte de energia para crescer." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "mascote_texto": "Vamos ver se isto já ficou claro? 🐢",
+          "pergunta": "As plantas obtêm o seu alimento principalmente através de:",
+          "opcoes": ["Das raízes, absorvendo nutrientes do solo", "Da fotossíntese, usando luz, água e CO₂"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! As raízes absorvem água e minerais, mas o \"alimento\" propriamente dito é fabricado pela fotossíntese.",
+          "mascote_feedback_errado": "Quase — as raízes absorvem água e minerais, mas não fabricam alimento. Isso acontece na fotossíntese, usando luz, água e CO₂."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O oxigénio libertado pela planta durante a fotossíntese é:",
+          "opcoes": ["O produto principal que a planta usa para viver", "Um produto secundário, libertado para o ar"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo! O produto que a planta realmente \"quer\" é a glicose — o oxigénio é como um subproduto.",
+          "mascote_feedback_errado": "Na verdade, o produto que interessa à planta é a glicose. O oxigénio é libertado como subproduto, não é o objetivo do processo."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Deixa-me explicar isto de outra forma... 🐢",
+          "texto": "💡 A planta é como uma fábrica que não compra matéria-prima a ninguém — usa só o que está à sua volta de graça (luz, ar, água) para fabricar o seu próprio \"combustível\", a glicose."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A experiência que provou que as plantas não \"comem\" terra",
+          "texto": "No século XVII, o cientista Jan van Helmont fez uma experiência simples mas genial: plantou um salgueiro num vaso com terra pesada, e regou-o com água durante 5 anos, sem adicionar mais terra. No final, a árvore tinha ganhado dezenas de quilos — mas a terra do vaso quase não tinha perdido peso nenhum. Isto provou que as plantas não crescem \"a comer terra\": fabricam a sua própria massa a partir de água e ar (hoje sabemos que é o CO₂ do ar), através da fotossíntese."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "mascote_texto": "Vamos ver o que ficou da nossa primeira exploração? 🐢",
+          "perguntas": [
+            {
+              "pergunta": "Qual destes NÃO é necessário para a fotossíntese?",
+              "opcoes": ["Luz solar", "Oxigénio", "Água", "Dióxido de carbono"],
+              "correta": 1,
+              "mascote_feedback_certo": "Boa! O oxigénio é o produto da fotossíntese, não um ingrediente.",
+              "mascote_feedback_errado": "Repara bem: o oxigénio é o que a planta produz, não o que ela usa como ingrediente."
+            },
+            {
+              "pergunta": "O que a experiência de Jan van Helmont demonstrou?",
+              "opcoes": ["As plantas crescem a partir da terra", "As plantas fabricam a sua massa a partir de água e ar"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! A terra quase não perdeu peso — a árvore cresceu à custa de água e ar.",
+              "mascote_feedback_errado": "Repensa: a terra do vaso quase não perdeu peso, por isso a planta não cresceu \"a comer terra\"."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: a fotossíntese ocorre exclusivamente durante a noite.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! A fotossíntese precisa de luz, por isso ocorre na presença dela, não à noite.",
+              "mascote_feedback_errado": "Na verdade é o contrário: a fotossíntese precisa de luz, por isso ocorre quando há luz disponível."
+            }
+          ],
+          "mascote_conclusao": "Boa! Já sabes o essencial. A seguir, vamos ver exatamente ONDE dentro da planta isto acontece. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "fase-clara",
+      "titulo": "Fase clara: onde a luz vira energia",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A luz que bate nas folhas não desaparece — ela transforma-se. Mas em quê, exatamente? 🐢",
+          "texto": "Nesta secção vamos abrir o cloroplasto e ver, passo a passo, o que acontece quando a luz solar atinge a folha."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Dentro do cloroplasto, na fase clara",
+          "imagem": "Cadeia transportadora de eletrões.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "clorofila", "label": "Clorofila", "explicacao": "Pigmento verde que absorve a luz solar e inicia todo o processo, localizado na membrana dos tilacoides." },
+            { "id": "fotossistema_ii", "label": "Fotossistema II", "explicacao": "Conjunto de proteínas e pigmentos onde a luz excita os eletrões da clorofila, dando-lhes energia extra." },
+            { "id": "fotolise", "label": "Fotólise da água", "explicacao": "Para repor os eletrões perdidos, uma molécula de água é quebrada, libertando eletrões, protões H⁺ e oxigénio gasoso." },
+            { "id": "atp_sintase", "label": "ATP-sintase", "explicacao": "Enzima que usa o movimento dos protões H⁺ para produzir ATP — uma molécula que armazena energia." },
+            { "id": "fotossistema_i", "label": "Fotossistema I", "explicacao": "Os eletrões chegam aqui e são novamente energizados pela luz." },
+            { "id": "nadph", "label": "NADPH", "explicacao": "Molécula formada quando os eletrões energizados se juntam a NADP⁺ e a um protão H⁺ — funciona como \"transportador\" de poder redutor." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "De onde vem o oxigénio que a planta liberta na fotossíntese?",
+          "opcoes": ["Do CO₂", "Da água", "Da glicose"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! A fotólise (quebra) da água é a origem exclusiva do oxigénio libertado.",
+          "mascote_feedback_errado": "O oxigénio vem da água, através de um processo chamado fotólise — não do CO₂ nem da glicose."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Onde ocorre a fase clara da fotossíntese?",
+          "opcoes": ["No estroma", "Na membrana dos tilacoides"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! É nos tilacoides que estão os pigmentos que captam a luz.",
+          "mascote_feedback_errado": "A fase clara ocorre na membrana dos tilacoides, não no estroma (isso é a fase seguinte)."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quais são os dois produtos da fase clara que seguem para a fase seguinte?",
+          "opcoes": ["Glicose e O₂", "ATP e NADPH"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo! O oxigénio é libertado para o ar; o ATP e o NADPH é que continuam a \"viagem\" dentro do cloroplasto.",
+          "mascote_feedback_errado": "Repara: o oxigénio sai da planta. Quem continua para a fase seguinte é o ATP e o NADPH."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 A água é como uma garrafa reciclável esmagada para libertar o que interessa (os eletrões) — o oxigénio que sobra é literalmente lixo descartado para o ar. O ATP é como dinheiro pronto a gastar (energia imediata); o NADPH é como um cartão que \"transporta\" eletrões, prontos a serem \"gastos\" na fase seguinte."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A cadeia de transporte de eletrões, em detalhe",
+          "texto": "Entre o Fotossistema II e o Fotossistema I, os eletrões não saltam diretamente — percorrem uma série de moléculas transportadoras (como a plastoquinona e o citocromo b6f), perdendo um pouco de energia a cada passagem. Essa energia libertada é o que impulsiona o bombeamento de protões H⁺ para dentro do tilacoide, criando um gradiente que a ATP-sintase depois usa para produzir ATP — um processo chamado quimiosmose."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A fotólise da água liberta:",
+              "opcoes": ["CO₂", "Eletrões, protões e O₂", "Glicose diretamente"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! A fotólise quebra a água nesses três produtos.",
+              "mascote_feedback_errado": "Revê: a fotólise da água liberta eletrões, protões (H⁺) e oxigénio — não CO₂ nem glicose."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: o ATP produzido na fase clara é usado diretamente para fazer glicose, sem passar por mais nenhum processo.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! O ATP segue para o Ciclo de Calvin, na fase seguinte, para aí sim ajudar a formar glicose.",
+              "mascote_feedback_errado": "Na verdade é falso: o ATP é usado na fase seguinte (Ciclo de Calvin), não diretamente."
+            },
+            {
+              "pergunta": "O nome do processo que usa o gradiente de protões H⁺ para produzir ATP chama-se:",
+              "opcoes": ["Fotólise", "Quimiosmose", "Fixação de carbono"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! A quimiosmose é o processo que transforma o gradiente de H⁺ em ATP.",
+              "mascote_feedback_errado": "O nome correto é quimiosmose — a fotólise é a quebra da água, e a fixação de carbono acontece na fase escura."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como a luz vira energia! A seguir: o que a planta faz com essa energia. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "fase-escura",
+      "titulo": "Fase escura: de carbono a açúcar",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Achas que o carbono do ar consegue transformar-se em açúcar sólido? É exatamente isso que vamos ver. 🐢",
+          "texto": "Depois de vermos como a luz gera ATP e NADPH, está na hora de descobrir como a planta usa essa energia para construir açúcar a partir do CO₂ do ar."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O Ciclo de Calvin",
+          "imagem": "Ciclo de Calvin.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "fixacao", "label": "Fixação (RuBisCO)", "explicacao": "A enzima RuBisCO liga o CO₂ a uma molécula de 5 carbonos (RuBP), formando compostos de 3 carbonos (3-PGA)." },
+            { "id": "reducao", "label": "Redução", "explicacao": "O ATP e o NADPH (vindos da fase clara) fornecem energia e eletrões para transformar o 3-PGA em G3P, um açúcar simples." },
+            { "id": "regeneracao", "label": "Regeneração", "explicacao": "Parte do G3P é reorganizado, com mais ATP, para regenerar a RuBP — permitindo que o ciclo continue." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Onde ocorre o Ciclo de Calvin?",
+          "opcoes": ["Tilacoide", "Estroma"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! O estroma é o líquido que envolve os tilacoides.",
+          "mascote_feedback_errado": "O Ciclo de Calvin ocorre no estroma, não no tilacoide — esse é o local da fase clara."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual enzima fixa o CO₂ no Ciclo de Calvin?",
+          "opcoes": ["ATP-sintase", "RuBisCO", "Clorofilase"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato — a RuBisCO é considerada a proteína mais abundante do planeta!",
+          "mascote_feedback_errado": "A enzima certa é a RuBisCO — a ATP-sintase atua na fase clara, e a \"clorofilase\" nem existe neste processo."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O ATP e o NADPH usados no Ciclo de Calvin vêm de onde?",
+          "opcoes": ["Da fase clara", "São produzidos no próprio ciclo"],
+          "correta": 0,
+          "mascote_feedback_certo": "Isso mesmo — por isso é que as duas fases são interdependentes: sem a fase clara, o Ciclo de Calvin não teria energia para funcionar.",
+          "mascote_feedback_errado": "Vêm da fase clara! O Ciclo de Calvin não produz o seu próprio ATP nem NADPH."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Imagina assim... 🐢",
+          "texto": "💡 A RuBisCO é como um anzol lançado ao ar — pesca o CO₂ que está disperso na atmosfera e prende-o a uma molécula maior, para deixar de andar solto. E o ciclo todo é como uma linha de montagem circular: parte do \"produto\" segue para a frente (vira glicose), mas outra parte volta ao início da linha (regenera a RuBP) — como uma correia transportadora fechada, não uma linha reta com fim."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Os números exatos do ciclo",
+          "texto": "A cada 6 voltas do Ciclo de Calvin (ou seja, 6 moléculas de CO₂ fixadas), formam-se moléculas de G3P suficientes para sintetizar 1 molécula de glicose (C₆H₁₂O₆) — além de outros hidratos de carbono, como sacarose e amido. As restantes moléculas de G3P são recicladas para regenerar a RuBP consumida no início do ciclo, garantindo que o processo nunca para enquanto houver CO₂, ATP e NADPH disponíveis."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A cada quantas fixações de CO₂ se forma uma molécula de glicose?",
+              "opcoes": ["1", "6", "12"],
+              "correta": 1,
+              "mascote_feedback_certo": "Boa! São precisas 6 voltas do ciclo para reunir os 6 carbonos de uma glicose.",
+              "mascote_feedback_errado": "São precisas 6 fixações de CO₂ para formar uma molécula de glicose."
+            },
+            {
+              "pergunta": "O Ciclo de Calvin depende diretamente da luz solar?",
+              "opcoes": ["Sim, diretamente", "Não diretamente, mas depende dos produtos da fase clara"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Por isso se chama \"fase escura\" — não usa luz diretamente, mas precisa do ATP/NADPH que a luz ajudou a criar.",
+              "mascote_feedback_errado": "Na verdade não usa luz diretamente — depende do ATP e do NADPH produzidos na fase clara."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: toda a RuBP usada no início do ciclo é \"gasta\" e não volta a ser usada.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Parte do G3P é reciclado para regenerar a RuBP, mantendo o ciclo a funcionar.",
+              "mascote_feedback_errado": "Falso — parte do G3P produzido é reciclado para regenerar a RuBP consumida no início."
+            }
+          ],
+          "mascote_conclusao": "Já percebeste as duas fases da fotossíntese! Falta só perceber porque é que isto importa tanto — para além da própria planta. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "importancia",
+      "titulo": "Importância para o planeta",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Achas que a Amazónia é o \"pulmão do mundo\"? A resposta científica pode surpreender-te. 🐢",
+          "texto": "Já sabes como a fotossíntese acontece dentro da planta. Falta perceber porque é que este processo é tão importante para todo o planeta."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Porque é que a fotossíntese importa ao planeta",
+          "imagem": "Folha.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "base_cadeia", "label": "Base da cadeia alimentar", "explicacao": "Quase toda a energia usada pelos seres vivos vem, em última instância, da fotossíntese — mesmo um leão depende dela, indiretamente, através da zebra que comeu erva." },
+            { "id": "producao_oxigenio", "label": "Produção de oxigénio", "explicacao": "Ao contrário do que se pensa, a maior parte do oxigénio atmosférico não vem das florestas tropicais — vem do fitoplâncton oceânico." },
+            { "id": "regulacao_co2", "label": "Regulação do CO₂ atmosférico", "explicacao": "A fotossíntese remove dióxido de carbono da atmosfera, ajudando a regular o clima do planeta." },
+            { "id": "combustiveis_fosseis", "label": "Origem dos combustíveis fósseis", "explicacao": "O petróleo e o carvão são, na prática, energia solar captada por fotossíntese há milhões de anos, comprimida no subsolo." },
+            { "id": "grande_oxidacao", "label": "O Grande Evento de Oxidação", "explicacao": "Há cerca de 2,4 mil milhões de anos, organismos fotossintéticos primitivos (cianobactérias) encheram a atmosfera de oxigénio pela primeira vez na história da Terra — tornando possível, mais tarde, a vida animal como a conhecemos." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destes é o maior produtor de oxigénio do planeta?",
+          "opcoes": ["As florestas tropicais", "O fitoplâncton do oceano"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! Estudos estimam que o fitoplâncton produz entre 50% a 80% do oxigénio atmosférico.",
+          "mascote_feedback_errado": "Surpreende muita gente, mas é o fitoplâncton oceânico — não as florestas tropicais — o maior produtor de oxigénio."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O petróleo e o carvão têm origem em:",
+          "opcoes": ["Rochas vulcânicas", "Energia solar captada por fotossíntese há milhões de anos"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato — são chamados \"combustíveis fósseis\" precisamente por serem restos de organismos antigos, comprimidos ao longo de milhões de anos.",
+          "mascote_feedback_errado": "Na verdade vêm de energia solar captada por fotossíntese há milhões de anos, não de rochas vulcânicas."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O \"Grande Evento de Oxidação\" refere-se a:",
+          "opcoes": ["A extinção dos dinossauros", "O primeiro grande aumento de oxigénio na atmosfera terrestre"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! Sem esse evento, a vida animal (que precisa de oxigénio) não teria sido possível mais tarde.",
+          "mascote_feedback_errado": "O Grande Evento de Oxidação foi o primeiro grande aumento de oxigénio na atmosfera — não tem relação com os dinossauros."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Aqui está uma curiosidade que surpreende muita gente... 🐢",
+          "texto": "💡 A Amazónia costuma ser chamada de \"pulmão do mundo\", associada à produção de 20% do oxigénio do planeta — mas isso é um mito. A própria floresta consome, através da respiração das plantas e da decomposição de matéria orgânica pelos micróbios, quase todo o oxigénio que produz durante o dia. O contributo líquido da Amazónia para o oxigénio atmosférico é próximo de zero. Quem realmente sustenta a maior parte do oxigénio que respiramos é o fitoplâncton oceânico.\n\nIsto não torna a Amazónia menos importante — continua a ser essencial pela biodiversidade, pela regulação da chuva e por armazenar enormes quantidades de carbono. Só não é pela razão do oxigénio que normalmente se diz."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque é que isto importa para o clima atual",
+          "texto": "A fotossíntese é uma das poucas formas naturais de remover CO₂ da atmosfera — um gás com papel central no efeito de estufa. Florestas e oceanos funcionam como \"sumidouros de carbono\", absorvendo parte das emissões humanas. Compreender a fotossíntese, portanto, não é só biologia celular — é também a base científica para perceber debates atuais sobre desflorestação, alterações climáticas e conservação de ecossistemas marinhos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A maior parte do oxigénio atmosférico vem de:",
+              "opcoes": ["Florestas tropicais", "Fitoplâncton oceânico"],
+              "correta": 1,
+              "mascote_feedback_certo": "Boa! É o fitoplâncton que sustenta a maior parte do oxigénio que respiramos.",
+              "mascote_feedback_errado": "A maior parte vem do fitoplâncton oceânico, não das florestas tropicais."
+            },
+            {
+              "pergunta": "O petróleo é considerado um \"combustível fóssil\" porque:",
+              "opcoes": ["É extraído de rochas", "Tem origem em organismos fotossintéticos antigos"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! É energia solar captada há milhões de anos e guardada no subsolo.",
+              "mascote_feedback_errado": "O petróleo tem origem em organismos fotossintéticos antigos, não em rochas."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: a Amazónia tem um contributo líquido de oxigénio próximo de zero, apesar de ser chamada \"pulmão do mundo\".",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 0,
+              "mascote_feedback_certo": "Verdadeiro! A floresta consome quase todo o oxigénio que produz — é surpreendente, mas é o que os estudos mostram.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro — a Amazónia consome quase todo o oxigénio que produz, apesar da fama de \"pulmão do mundo\"."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão da Fotossíntese. Já sabes onde acontece, como funciona, e porque é que importa para o planeta todo. 🌿🐢"
+        }
+      ]
+    }
+  ]
+}

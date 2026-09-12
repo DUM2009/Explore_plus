@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ missao.titulo }} | Explore+</title>
+    <script>
+        (function () {
+            try {
+                if (localStorage.getItem('explore-theme') === 'dark') {
+                    document.documentElement.classList.add('dark-mode');
+                    document.documentElement.dataset.theme = 'dark';
+                }
+            } catch (error) {
+                // Ignora erros de acesso ao storage (navegação privada).
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
+    <link rel="stylesheet" href="{% static 'mission-styles.css' %}?v={% now 'U' %}">
+    <link rel="stylesheet" href="{% static 'missao-engine.css' %}?v={% now 'U' %}">
+</head>
+<body class="shadcn-profile">
+    <div class="me-root" id="missaoRoot"></div>
+
+    {{ missao_json|json_script:"missao-data" }}
+
+    <script>
+        window.exploreCurrentUser = {
+            uid: "{{ request.user.id|default:'' }}",
+            email: "{{ request.user.email|default:'' }}"
+        };
+        window.exploreProgressSyncUrl = "{% url 'salvar-progresso-missao' %}";
+        window.exploreCsrfToken = "{{ csrf_token }}";
+        window.exploreMissionsIndexUrl = "{% url 'index-missions' %}";
+        window.exploreMascotImageUrl = "{% static 'images/Mascote Explore+ Biology.png' %}";
+        window.exploreLogoUrl = "{% static 'images/Logo.png' %}";
+        window.explorePaginaInicialUrl = "{% url 'pagina_inicial' %}";
+        window.explorePerfilUrl = "{% url 'perfil' %}";
+        window.exploreTestesUrl = "{% url 'Testes' %}";
+        window.exploreExamesUrl = "{% url 'exames' %}";
+        window.exploreBibliotecaUrl = "{% url 'biblioteca' %}";
+        window.exploreResumosUrl = "{% url 'Resumos' %}";
+        window.exploreSuperExploreUrl = "{% url 'superexplore' %}";
+        window.exploreConfiguracoesUrl = "{% url 'Configurações' %}";
+        window.exploreLogoutUrl = "{% url 'logout' %}";
+        window.explorePlano = "{{ perfil.plano|default:'free' }}";
+        window.exploreUsername = "{{ request.user.username|default:'' }}";
+    </script>
+    <script src="{% static 'profile-xp.js' %}"></script>
+    <script src="{% static 'mascot-prefs.js' %}"></script>
+    <script src="{% static 'missao-engine.js' %}"></script>
+    <script>
+        const missaoData = JSON.parse(document.getElementById('missao-data').textContent);
+        new MissaoEngine(missaoData, {
+            root: document.getElementById('missaoRoot'),
+            missionsIndexUrl: window.exploreMissionsIndexUrl,
+            mascotImageUrl: window.exploreMascotImageUrl,
+            progressSyncUrl: window.exploreProgressSyncUrl,
+            csrfToken: window.exploreCsrfToken
+        });
+    </script>
+</body>
+</html>

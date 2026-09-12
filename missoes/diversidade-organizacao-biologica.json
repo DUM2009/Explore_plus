@@ -1,0 +1,344 @@
+{
+  "missao_id": "diversidade-organizacao-biologica",
+  "titulo": "Diversidade e Organização Biológica",
+  "disciplina": "biodiversidade",
+  "badge": { "icone": "🧬", "nome": "Mestre da Biodiversidade" },
+  "secoes": [
+    {
+      "secao_id": "introducao",
+      "titulo": "Porque precisamos de organizar a vida?",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Já imaginaste tentar arrumar uma biblioteca com 2 milhões de livros, sem nenhuma ordem nas prateleiras? 🐢",
+          "texto": "Já foram descritas mais de 2 milhões de espécies de seres vivos na Terra — e estima-se que existam milhões mais por descobrir. Como é que os cientistas conseguem estudar tudo isto sem se perderem?"
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Do caos à organização",
+          "imagem": "diversidade_intro.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "biodiversidade", "label": "Biodiversidade", "explicacao": "A variedade de seres vivos existentes na Terra, incluindo a diversidade dentro de cada espécie, entre espécies, e entre ecossistemas." },
+            { "id": "taxonomia", "label": "Taxonomia", "explicacao": "A ciência que classifica e nomeia os seres vivos, agrupando-os com base em características e parentesco evolutivo." },
+            { "id": "especie", "label": "Espécie", "explicacao": "O grupo de organismos capazes de se reproduzir entre si e gerar descendência fértil — é a unidade básica da classificação." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A taxonomia é a ciência que se dedica a:",
+          "opcoes": ["Descobrir novas espécies apenas", "Classificar e nomear os seres vivos de forma organizada"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exatamente! A taxonomia dá ordem a toda essa diversidade.",
+          "mascote_feedback_errado": "Quase — descobrir espécies é só parte do trabalho. A taxonomia é sobre classificar e nomear de forma organizada."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma \"espécie\" define-se principalmente por:",
+          "opcoes": ["Terem o mesmo tamanho e cor", "Conseguirem reproduzir-se entre si e gerar descendência fértil"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! Tamanho e cor podem variar muito dentro da mesma espécie.",
+          "mascote_feedback_errado": "Na verdade, o que define uma espécie é a capacidade de reprodução entre si, com descendência fértil — não a aparência."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 A taxonomia é como o sistema de arrumação de uma biblioteca gigante: sem géneros, sem secções, sem ordem alfabética, encontrar um livro específico seria quase impossível. Ao organizarmos os seres vivos em grupos (tal como os livros em secções), conseguimos estudá-los, compará-los e até prever características de espécies que acabámos de descobrir."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Antes de existir um sistema — o caos da classificação antiga",
+          "texto": "Antes do século XVIII, diferentes cientistas usavam nomes e critérios próprios para descrever os seres vivos, o que gerava enorme confusão — a mesma espécie podia ter vários nomes diferentes consoante o país ou o autor. Só com o trabalho do naturalista sueco Carlos Lineu, no século XVIII, surgiu um sistema universal e consistente de classificação, que ainda hoje usamos como base (com atualizações), e que vamos explorar na próxima secção."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O que é biodiversidade?",
+              "opcoes": ["Só o número de animais existentes", "A variedade de seres vivos, incluindo dentro e entre espécies e ecossistemas"],
+              "correta": 1,
+              "mascote_feedback_certo": "Boa! A biodiversidade vai muito além de só contar animais.",
+              "mascote_feedback_errado": "Repensa: biodiversidade é a variedade de seres vivos, dentro e entre espécies e ecossistemas — não só o número de animais."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: já se conhecem todas as espécies existentes na Terra.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Estima-se que existam ainda muitas espécies por descobrir.",
+              "mascote_feedback_errado": "Na verdade é falso — estima-se que existam muitas espécies ainda por descobrir."
+            },
+            {
+              "pergunta": "Quem criou o sistema de classificação universal ainda hoje usado como base?",
+              "opcoes": ["Charles Darwin", "Carlos Lineu"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Foi Carlos Lineu, no século XVIII.",
+              "mascote_feedback_errado": "Foi Carlos Lineu quem criou esse sistema — Charles Darwin é mais conhecido pela teoria da evolução."
+            }
+          ],
+          "mascote_conclusao": "Já percebeste porque precisamos de organizar a vida. A seguir: como a vida se organiza, desde uma única célula até ti. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "niveis-organizacao",
+      "titulo": "Níveis de organização biológica",
+      "xp": 25,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Uma única célula tua, sozinha, não consegue fazer quase nada. Mas cerca de 37 biliões delas, organizadas, formam... ti. 🐢",
+          "texto": "A vida organiza-se em níveis, cada um mais complexo do que o anterior — dos blocos mais simples até ao planeta inteiro."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Os níveis de organização biológica",
+          "imagem": "niveis_organizacao.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "celula", "label": "Célula", "explicacao": "A unidade básica de vida — a estrutura mais simples capaz de realizar todas as funções vitais." },
+            { "id": "tecido", "label": "Tecido", "explicacao": "Conjunto de células semelhantes que trabalham em conjunto numa função específica (ex: tecido muscular)." },
+            { "id": "orgao", "label": "Órgão", "explicacao": "Conjunto de diferentes tecidos organizados para desempenhar uma função conjunta (ex: o coração)." },
+            { "id": "sistema_orgaos", "label": "Sistema de órgãos", "explicacao": "Vários órgãos a trabalhar em conjunto para uma função mais ampla (ex: sistema digestivo)." },
+            { "id": "organismo", "label": "Organismo", "explicacao": "Um ser vivo completo e individual, resultado da integração de todos os seus sistemas." },
+            { "id": "populacao", "label": "População", "explicacao": "Conjunto de organismos da mesma espécie, a viver na mesma área, ao mesmo tempo." },
+            { "id": "comunidade", "label": "Comunidade", "explicacao": "Conjunto de populações de espécies diferentes que interagem na mesma área." },
+            { "id": "ecossistema", "label": "Ecossistema", "explicacao": "Uma comunidade de seres vivos, em interação com o ambiente físico (água, solo, clima) que a rodeia." },
+            { "id": "biosfera", "label": "Biosfera", "explicacao": "O conjunto de todos os ecossistemas do planeta — a camada da Terra onde existe vida." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a unidade básica de vida, capaz de realizar todas as funções vitais?",
+          "opcoes": ["O tecido", "A célula"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! Tudo começa na célula.",
+          "mascote_feedback_errado": "A unidade básica de vida é a célula, não o tecido — o tecido é um grupo de células."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um conjunto de populações de espécies diferentes, a interagir na mesma área, chama-se:",
+          "opcoes": ["Comunidade", "Ecossistema"],
+          "correta": 0,
+          "mascote_feedback_certo": "Certo! A comunidade só inclui os seres vivos — quando juntamos o ambiente físico à volta, aí sim passa a ser um ecossistema.",
+          "mascote_feedback_errado": "Quase — isso é uma comunidade. Um ecossistema inclui também o ambiente físico (água, solo, clima) à volta dessa comunidade."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Todos os leões de um determinado parque nacional, da mesma espécie, formam:",
+          "opcoes": ["Uma população", "Uma comunidade"],
+          "correta": 0,
+          "mascote_feedback_certo": "Isso mesmo! Como são todos da mesma espécie, é uma população, não uma comunidade (que teria de incluir outras espécies também).",
+          "mascote_feedback_errado": "Na verdade é uma população — a comunidade teria de incluir também outras espécies, não só leões."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Os níveis de organização são como bonecas russas (matrioskas): cada nível \"vive dentro\" do seguinte, sem nunca desaparecer — as tuas células continuam a existir dentro dos teus tecidos, que continuam a existir dentro dos teus órgãos, e assim por diante, até chegares à biosfera, que contém literalmente tudo."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Nem todos os organismos têm todos os níveis",
+          "texto": "Esta escada de 9 níveis descreve bem um organismo multicelular complexo, como um ser humano ou uma árvore. Mas organismos unicelulares (como uma bactéria ou muitas algas) não têm tecidos, órgãos, nem sistemas de órgãos — a própria célula única desempenha todas as funções vitais sozinha. Nestes casos, salta-se diretamente de \"célula\" para \"organismo\". Isto mostra que a complexidade da organização biológica varia muito consoante o tipo de ser vivo."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual destas ordens vai do mais simples para o mais complexo?",
+              "opcoes": ["Órgão → Célula → Tecido", "Célula → Tecido → Órgão", "Tecido → Órgão → Célula"],
+              "correta": 1,
+              "mascote_feedback_certo": "Boa! Célula → Tecido → Órgão é a ordem certa, do mais simples ao mais complexo.",
+              "mascote_feedback_errado": "A ordem correta é Célula → Tecido → Órgão, do mais simples ao mais complexo."
+            },
+            {
+              "pergunta": "Um organismo unicelular tem tecidos e órgãos?",
+              "opcoes": ["Sim, sempre", "Não — a própria célula realiza todas as funções"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Numa célula única, é ela sozinha que desempenha todas as funções vitais.",
+              "mascote_feedback_errado": "Na verdade não — num organismo unicelular, a própria célula realiza sozinha todas as funções vitais."
+            },
+            {
+              "pergunta": "Todos os ecossistemas do planeta juntos formam:",
+              "opcoes": ["Uma comunidade global", "A biosfera"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! A biosfera é o conjunto de todos os ecossistemas do planeta.",
+              "mascote_feedback_errado": "O nome correto é biosfera — é o conjunto de todos os ecossistemas do planeta."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como a vida se organiza em níveis. A seguir, vamos ver como os cientistas classificam e dão nome a cada espécie. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "classificacao",
+      "titulo": "Classificação dos seres vivos",
+      "xp": 25,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Sabias que, cientificamente, tu és um Homo sapiens? Mas o que significa isso, ao certo? 🐢",
+          "texto": "Todos os seres vivos têm um \"nome científico\" universal, e pertencem a uma hierarquia de grupos cada vez mais amplos. Vamos descobrir como isso funciona."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A hierarquia taxonómica (com o exemplo humano)",
+          "imagem": "classificacao_taxonomica.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "dominio", "label": "Domínio", "explicacao": "O nível mais amplo — Eukarya (organismos com células com núcleo). Os humanos pertencem ao domínio Eukarya." },
+            { "id": "reino", "label": "Reino", "explicacao": "Animalia — reino dos animais." },
+            { "id": "filo", "label": "Filo", "explicacao": "Chordata — animais com um cordão nervoso dorsal (em humanos, a espinal medula)." },
+            { "id": "classe", "label": "Classe", "explicacao": "Mammalia — animais com glândulas mamárias e geralmente pelo." },
+            { "id": "ordem", "label": "Ordem", "explicacao": "Primates." },
+            { "id": "familia", "label": "Família", "explicacao": "Hominidae." },
+            { "id": "genero", "label": "Género", "explicacao": "Homo." },
+            { "id": "especie", "label": "Espécie", "explicacao": "sapiens — o nome completo é sempre Género + espécie: Homo sapiens." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O nome científico de uma espécie é composto por:",
+          "opcoes": ["Só o nome do género", "Género + espécie"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! Por isso é que se chama nomenclatura binomial — \"bi\" de dois nomes.",
+          "mascote_feedback_errado": "O nome científico tem sempre duas partes: Género + espécie — não só o género."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quanto mais avançamos de \"Domínio\" para \"Espécie\" na hierarquia, os grupos tornam-se:",
+          "opcoes": ["Mais amplos, com mais espécies", "Mais restritos e específicos"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! O Domínio inclui milhões de espécies; a Espécie é um grupo específico só de organismos que se reproduzem entre si.",
+          "mascote_feedback_errado": "Na verdade é o contrário: os grupos tornam-se mais restritos e específicos à medida que avançamos para a Espécie."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Dois seres vivos do mesmo Género pertencem necessariamente também à mesma:",
+          "opcoes": ["Espécie", "Família"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! O Género está dentro da Família — logo, partilham automaticamente a Família (e todos os níveis acima), mas podem ser espécies diferentes.",
+          "mascote_feedback_errado": "Na verdade, podem ser espécies diferentes (ex: leão e tigre são géneros diferentes, mas ambos felinos) — mas partilham sempre a Família e níveis acima, já que o Género está contido nela."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 A classificação taxonómica é como a tua morada completa: País → Distrito → Cidade → Rua → Número da porta. Cada nível estreita o \"endereço\" um pouco mais, até chegares a um local único — tal como Domínio → Reino → ... → Espécie estreita a identificação até um único tipo de ser vivo."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "As regras de escrita do nome científico, e os \"3 domínios\"",
+          "texto": "O nome científico segue sempre regras fixas: escreve-se em itálico (ou sublinhado à mão), a primeira letra do género é maiúscula, a espécie é sempre minúscula — por exemplo, Homo sapiens, nunca \"Homo Sapiens\" ou \"homo sapiens\".\n\nQuanto aos grandes grupos: durante muito tempo usou-se o sistema dos 5 reinos (Monera, Protista, Fungi, Plantae, Animalia). Hoje, com o avanço da genética, muitos cientistas usam também o sistema dos 3 domínios (proposto por Carl Woese): Bacteria, Archaea e Eukarya — uma divisão baseada em diferenças genéticas profundas, que revelou que os antigos \"Monera\" eram, na verdade, dois grupos muito diferentes entre si (Bacteria e Archaea)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O nome científico de uma espécie escreve-se:",
+              "opcoes": ["Em itálico, género maiúsculo e espécie minúscula", "Tudo em maiúsculas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Boa! É sempre em itálico, com o género maiúsculo e a espécie minúscula.",
+              "mascote_feedback_errado": "O nome científico escreve-se em itálico, com o género maiúsculo e a espécie minúscula — nunca tudo em maiúsculas."
+            },
+            {
+              "pergunta": "O sistema dos 3 domínios foi proposto por:",
+              "opcoes": ["Carlos Lineu", "Carl Woese"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! Foi Carl Woese quem propôs esta divisão baseada em diferenças genéticas.",
+              "mascote_feedback_errado": "Foi Carl Woese quem propôs o sistema dos 3 domínios — Carlos Lineu criou o sistema de classificação original."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: dois organismos do mesmo Filo pertencem sempre à mesma Espécie.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! O Filo é um grupo muito mais amplo, com muitas espécies diferentes lá dentro.",
+              "mascote_feedback_errado": "Na verdade é falso — o Filo é um grupo muito mais amplo, com muitas espécies diferentes."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como se classificam e nomeiam os seres vivos. Por fim, vamos ver porque é que toda esta diversidade importa tanto para o planeta. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "importancia-biodiversidade",
+      "titulo": "A importância da biodiversidade",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Porque é que perder uma única espécie de inseto pode afetar centenas de outras espécies que nunca ouviste falar? 🐢",
+          "texto": "Já sabes como a vida se organiza e se classifica. Falta perceber porque é que toda essa diversidade é tão importante para o planeta — e para nós."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Os serviços que a biodiversidade nos dá",
+          "imagem": "biodiversidade_importancia.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "polinizacao", "label": "Serviços de polinização", "explicacao": "Muitas plantas, incluindo grande parte das culturas agrícolas alimentares, dependem de animais polinizadores (abelhas, borboletas, morcegos) para se reproduzirem." },
+            { "id": "purificacao", "label": "Purificação da água e do ar", "explicacao": "Ecossistemas saudáveis, como zonas húmidas e florestas, filtram naturalmente poluentes da água e do ar." },
+            { "id": "medicinais", "label": "Recursos medicinais", "explicacao": "Uma grande parte dos medicamentos atuais tem origem em compostos descobertos em plantas, fungos ou outros organismos." },
+            { "id": "regulacao_clima", "label": "Regulação do clima", "explicacao": "A diversidade de ecossistemas (florestas, oceanos, solos) ajuda a regular o clima, absorvendo e armazenando carbono." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Grande parte das culturas agrícolas alimentares depende de:",
+          "opcoes": ["Animais polinizadores", "Apenas do vento"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Sem polinizadores como as abelhas, muitas culturas teriam produção muito menor.",
+          "mascote_feedback_errado": "Na verdade dependem principalmente de animais polinizadores, não apenas do vento."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Muitos medicamentos atuais têm origem em:",
+          "opcoes": ["Compostos descobertos em seres vivos (plantas, fungos, etc.)", "Só em laboratórios, sem ligação à natureza"],
+          "correta": 0,
+          "mascote_feedback_certo": "Isso mesmo! Perder biodiversidade pode significar perder potenciais curas ainda por descobrir.",
+          "mascote_feedback_errado": "Na verdade, uma grande parte tem origem em compostos descobertos em seres vivos — plantas, fungos, entre outros."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 A biodiversidade é como uma rede de segurança feita de muitos fios entrelaçados: perder um ou dois fios pode não parecer grave à primeira vista, mas cada fio perdido enfraquece a rede toda — até que, a certo ponto, ela deixa de aguentar o peso e cede. Cada espécie extinta é um fio a menos nessa rede que sustenta os ecossistemas (e, no fim, também a nossa própria alimentação, água e saúde)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A crise atual de extinção",
+          "texto": "Ao longo da história da Terra, sempre existiu uma \"taxa de extinção de fundo\" — um ritmo natural, lento, a que as espécies se extinguem. Atualmente, estima-se que a taxa de extinção seja centenas a milhares de vezes superior a essa taxa natural, principalmente devido a atividades humanas: destruição de habitats, alterações climáticas, poluição e introdução de espécies invasoras. Por isso, muitos cientistas referem-se ao período atual como uma possível \"sexta extinção em massa\" da história da Terra — as cinco anteriores foram causadas por eventos naturais extremos (como o impacto de asteroide que extinguiu os dinossauros); esta seria a primeira causada por uma única espécie: a nossa."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A taxa de extinção atual, em comparação com a taxa natural de fundo, é:",
+              "opcoes": ["Semelhante", "Muito superior"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Estima-se que seja centenas a milhares de vezes superior à taxa natural.",
+              "mascote_feedback_errado": "Na verdade é muito superior à taxa natural de fundo — não semelhante."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: perder uma espécie nunca afeta outras espécies que não interagem diretamente com ela.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Os ecossistemas são interligados, e os efeitos podem propagar-se indiretamente.",
+              "mascote_feedback_errado": "Na verdade é falso — os ecossistemas são interligados, e os efeitos podem propagar-se mesmo a espécies sem interação direta."
+            },
+            {
+              "pergunta": "As 5 extinções em massa anteriores da história da Terra foram causadas principalmente por:",
+              "opcoes": ["Atividade de uma única espécie", "Eventos naturais extremos"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! As anteriores tiveram causas naturais — esta seria a primeira causada por uma única espécie: a nossa.",
+              "mascote_feedback_errado": "Na verdade foram causadas por eventos naturais extremos — a atual seria a primeira causada por uma única espécie."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes porque organizamos a vida, como ela se estrutura em níveis, como se classifica, e porque toda essa diversidade importa. 🌿🐢"
+        }
+      ]
+    }
+  ]
+}

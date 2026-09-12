@@ -169,6 +169,19 @@
     </div>
 
     <div class="missions-category">
+        <h2 class="missions-category-title">Diversidade e Organização Biológica</h2>
+        <div class="missions-grid">
+            <div class="mission-card">
+                <div class="mission-card-info">
+                    <h2>Diversidade e Organização Biológica</h2>
+                    <p>Descobre como a vida se organiza, se classifica, e porque a biodiversidade importa.</p>
+                </div>
+                <a href="{% url 'missao' missao_id='diversidade-organizacao-biologica' %}"><button type="button">Começar</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="missions-category">
         <h2 class="missions-category-title">Botânica</h2>
         <div class="missions-grid">
             <div class="mission-card">
@@ -200,7 +213,13 @@
     <div class="missions-category">
         <h2 class="missions-category-title">Citologia</h2>
         <div class="missions-grid">
-            <div class="mission-card locked"><div class="mission-card-info"><h2>A Célula</h2><p>Explora a unidade fundamental da vida.</p></div><button disabled>Em breve</button></div>
+            <div class="mission-card">
+                <div class="mission-card-info">
+                    <h2>Células e Organelos</h2>
+                    <p>Explora a unidade fundamental da vida e o "emprego" de cada organelo.</p>
+                </div>
+                <a href="{% url 'missao' missao_id='celulas-organelos' %}"><button type="button">Começar</button></a>
+            </div>
         </div>
     </div>
 

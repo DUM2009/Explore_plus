@@ -1344,14 +1344,23 @@ html[data-theme="dark"] .intro-equation {
 
 /* Plain explanatory paragraphs that aren't part of .intro-summary-card
    (no icon/heading) — same white-card treatment as the other content
-   panels, just a simpler shape for a screen that's only prose. */
+   panels, just a simpler shape for a screen that's only prose.
+   Widened past .section-body's narrow 720px reading column, but capped
+   at 900px (a full edge-to-edge breakout, tried first, read as too wide
+   for comfortable line lengths). Centered via an explicit offset rather
+   than `margin: auto` — measured in the browser, `auto` resolved to
+   marginLeft:0/marginRight:-240px instead of splitting the overflow
+   evenly, so the card sat flush-left instead of centered. The explicit
+   calc() reproduces the centering by hand and isn't subject to that. */
 .screen-text-card {
     background: #ffffff;
     border: 1px solid #dcefe3;
     border-radius: 14px;
     padding: 20px 28px;
-    margin: 16px 0;
     text-align: left;
+    box-sizing: border-box;
+    width: min(900px, 100cqw);
+    margin: 16px calc((100% - min(900px, 100cqw)) / 2);
 }
 
 .screen-text-card p {
@@ -1679,6 +1688,158 @@ html[data-theme="dark"] .intro-equation {
     margin-bottom: 0;
 }
 
+.diagram-zone-wrap {
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+/* The actual positioning container for the numbered .diagram-zone buttons
+   — kept separate from .diagram-zone-wrap so that .plant-diagram-hint
+   (a normal-flow sibling below it, sitting in the same column as the
+   image) can't inflate the box the buttons' top/left percentages are
+   resolved against. It used to live on .diagram-zone-wrap directly, which
+   silently broke the buttons' positions once the hint text moved inside
+   that wrap — the wrap's height then included the hint's, so "top: 7%"
+   etc. no longer meant "7% down the image". */
+.diagram-zone-stage {
+    position: relative;
+    line-height: 0;
+}
+
+.diagram-zone-wrap > .plant-diagram-hint {
+    margin-top: 12px;
+}
+
+/* .card-visual normally centers itself (max-width + margin:auto) inside a
+   wider card — here .diagram-zone-stage already does that job (it fills
+   .diagram-zone-wrap edge-to-edge), so the image needs to fill it
+   edge-to-edge too, otherwise the .diagram-zone buttons' left/top
+   percentages (resolved against the stage) land outside the actual
+   (narrower, centered) image box. */
+.diagram-zone-stage .card-visual {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+}
+
+.diagram-zone {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.diagram-zone-number {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #1f8a5b;
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 4px rgba(31, 138, 91, .35), 0 4px 10px rgba(0, 0, 0, .25);
+    animation: plantHotspotPulse 2.2s ease-in-out infinite;
+    transition: transform .15s ease;
+}
+
+.diagram-zone:hover .diagram-zone-number {
+    transform: scale(1.15);
+}
+
+.diagram-zone.is-active .diagram-zone-number {
+    background: #166c45;
+    animation: none;
+    box-shadow: 0 0 0 6px rgba(31, 138, 91, .45), 0 4px 10px rgba(0, 0, 0, .25);
+}
+
+.diagram-zone-panels {
+    display: none;
+}
+
+.diagram-zone-caption {
+    display: none;
+    margin: 16px 0;
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #cde7d9;
+    border-radius: 14px;
+    text-align: left;
+    color: #244a37;
+    line-height: 1.5;
+}
+
+.diagram-zone-caption.has-content {
+    display: block;
+}
+
+/* Puts the caption beside the diagram instead of below it, once a number
+   has been clicked — same side-by-side pattern as .plant-diagram-layout /
+   .plant-hotspot-detail elsewhere. Before any click, the wrap alone fills
+   the row (the caption is display:none via .diagram-zone-caption above,
+   so it takes no row space).
+   Full-bleed breakout of .section-body's narrow 720px reading column,
+   spanning .mission-main's full width instead — same pattern as
+   ".screen-card h3.intro-question" above (see the container-type on
+   .mission-main) — so the diagram + caption pair gets as much room as
+   possible once split 50/50, instead of each half being squeezed. */
+.diagram-zone-layout {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    box-sizing: border-box;
+    width: 100cqw;
+    margin-left: calc(50% - 50cqw);
+    margin-right: calc(50% - 50cqw);
+    padding: 0 28px;
+}
+
+.diagram-zone-layout .diagram-zone-wrap {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.diagram-zone-layout.has-selection .diagram-zone-wrap {
+    flex: 1 1 50%;
+    width: 50%;
+    max-width: 50%;
+}
+
+.diagram-zone-layout .diagram-zone-caption {
+    flex: 1 1 50%;
+    min-width: 0;
+    max-width: 50%;
+    margin: 0;
+}
+
+@media (max-width: 640px) {
+    .diagram-zone-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .diagram-zone-layout .diagram-zone-wrap,
+    .diagram-zone-layout.has-selection .diagram-zone-wrap {
+        width: 100%;
+        max-width: 560px;
+        flex: 1 1 auto;
+    }
+
+    .diagram-zone-layout .diagram-zone-caption {
+        max-width: 100%;
+    }
+}
+
 .phase-clear-sequence {
     border: 1px solid #dcefe4;
     background: #f5fbf8;
@@ -1798,16 +1959,12 @@ html[data-theme="dark"] .intro-equation {
     background: #53c487;
 }
 
+/* The numbered chain (.sequence-chain) stays visible/animates on
+   completion — this text spelled out the answer underneath it, so it's
+   hidden outright instead of just being faint (opacity: 0.2 above still
+   let it be read). */
 .sequence-final {
-    margin: 10px 0 0;
-    display: inline-block;
-    font-weight: 800;
-    color: #13643f;
-    opacity: 0.2;
-}
-
-.sequence-final.blink {
-    animation: sequenceBlink 0.8s linear infinite;
+    display: none;
 }
 
 .sequence-reset {
@@ -4829,6 +4986,12 @@ html[data-theme="dark"] .quiz-progress-label {
 }
 
 html[data-theme="dark"] .plant-hotspot-explanation {
+    background: #26201a;
+    border-color: #4a3d30;
+    color: #ddccb8;
+}
+
+html[data-theme="dark"] .diagram-zone-caption {
     background: #26201a;
     border-color: #4a3d30;
     color: #ddccb8;

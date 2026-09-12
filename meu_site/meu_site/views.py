@@ -296,6 +296,28 @@ def pagina_mission_photosynthesis_goldtest(request):
 
 
 @login_required(login_url='login')
+def pagina_missao(request, missao_id):
+    """
+    Serve qualquer missão do motor genérico (ver static/missao-engine.js):
+    basta existir um missoes/<missao_id>.json neste formato para a missão
+    ficar disponível aqui, sem código novo por missão.
+    """
+    caminho_json = settings.BASE_DIR.parent / 'missoes' / f'{missao_id}.json'
+    try:
+        with open(caminho_json, 'r', encoding='utf-8') as f:
+            missao = json.load(f)
+    except FileNotFoundError:
+        raise Http404('Missão não encontrada.')
+
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    return render(request, 'missao.html', {'missao': missao, 'missao_json': missao, 'perfil': perfil})
+
+
+@login_required(login_url='login')
 @require_POST
 def salvar_progresso_missao(request):
     try:
@@ -960,8 +982,14 @@ def pagina_about(request):
     return render(request, 'about.html')
 
 
+@login_required(login_url='login')
 def pagina_Configurações(request):
-    return render(request, 'Configurações.html')
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    return render(request, 'Configurações.html', {'perfil': perfil})
 
 
 @login_required(login_url='login')

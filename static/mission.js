@@ -28,6 +28,7 @@ class MissionSystem {
         this.mascotQuizIntroShown = {};
         this.mascotChallengeIntroShown = {};
         this.electronLossGateShown = {};
+        this.electronChainIntroShown = {};
         this.quizViewActive = {};
         // Transient (not persisted): which just-answered question is still
         // showing its feedback, waiting for "Continuar".
@@ -2448,10 +2449,14 @@ class MissionSystem {
             const renderCurrentOrder = () => {
                 if (!currentEl) return;
 
+                // The chip shows the order the student clicked things in
+                // (index + 1), never `step` itself — `step` is the item's
+                // correct position (from data-step), so printing it would
+                // hand the student the answer key before they finish.
                 currentEl.innerHTML = currentOrder
-                    .map((step) => {
+                    .map((step, index) => {
                         const label = options.find((opt) => Number(opt.dataset.step) === step)?.textContent || `Passo ${step}`;
-                        return `<span class="sequence-chip">${step}. ${label}</span>`;
+                        return `<span class="sequence-chip">${index + 1}. ${label}</span>`;
                     })
                     .join('');
             };
@@ -2767,6 +2772,26 @@ class MissionSystem {
     }
 
     /**
+     * Gates entry into the "Cadeia transportadora de eletrões" screen
+     * (marked with data-electron-chain-intro, see mission-data-*.js)
+     * behind a one-time mascot popup — same split layout (mascot left,
+     * text right) as showChallengeIntroIfNeeded, just a plain message with
+     * no question. Shown once per section, tracked in
+     * electronChainIntroShown.
+     */
+    showElectronChainIntroIfNeeded(section, targetScreen, proceed) {
+        const isGateScreen = targetScreen?.dataset.electronChainIntro === 'true';
+        if (!isGateScreen || !section.electronChainIntro || this.electronChainIntroShown[section.id]) {
+            proceed();
+            return;
+        }
+
+        this.electronChainIntroShown[section.id] = true;
+        const { message, cta } = section.electronChainIntro;
+        this.showMascotOverlay(message, cta || 'Continuar', proceed, { extraClass: 'mascot-overlay-card--split' });
+    }
+
+    /**
      * Gates entry into the screen right after "A entrada da luz" (marked
      * with data-electron-loss-gate, see mission-data-*.js) behind a
      * one-time mascot popup asking where the replacement electrons come
@@ -2863,7 +2888,9 @@ class MissionSystem {
                 const targetIndex = current + 1;
                 this.showChallengeIntroIfNeeded(section, screens[targetIndex], () => {
                     this.showElectronLossGateIfNeeded(section, screens[targetIndex], () => {
-                        this.updateSectionScreen(sectionEl, section, targetIndex);
+                        this.showElectronChainIntroIfNeeded(section, screens[targetIndex], () => {
+                            this.updateSectionScreen(sectionEl, section, targetIndex);
+                        });
                     });
                 });
                 return;
@@ -3050,6 +3077,10 @@ class MissionSystem {
 
         sectionEl.querySelectorAll('.plant-hotspot').forEach(button => {
             button.addEventListener('click', (event) => this.handlePlantHotspotClick(event));
+        });
+
+        sectionEl.querySelectorAll('.diagram-zone').forEach(button => {
+            button.addEventListener('click', (event) => this.handleDiagramZoneClick(event));
         });
 
         this.hydrateGuideState(sectionEl, section);
@@ -3742,6 +3773,32 @@ class MissionSystem {
         }
 
         const layout = card.querySelector('.plant-diagram-layout');
+        if (layout) layout.classList.add('has-selection');
+    }
+
+    /**
+     * Clicking a numbered marker on a .diagram-zone-wrap image: mark it as
+     * active and copy the matching hidden .diagram-zone-panel's content
+     * into the visible .diagram-zone-caption box below the diagram.
+     */
+    handleDiagramZoneClick(event) {
+        const button = event.currentTarget;
+        const card = button.closest('.screen-card');
+        if (!card) return;
+
+        const zoneKey = button.dataset.zone;
+        card.querySelectorAll('.diagram-zone').forEach((el) => {
+            el.classList.toggle('is-active', el === button);
+        });
+
+        const panel = card.querySelector(`.diagram-zone-panel[data-zone="${zoneKey}"]`);
+        const caption = card.querySelector('.diagram-zone-caption');
+        if (!panel || !caption) return;
+
+        caption.innerHTML = panel.innerHTML;
+        caption.classList.add('has-content');
+
+        const layout = card.querySelector('.diagram-zone-layout');
         if (layout) layout.classList.add('has-selection');
     }
 

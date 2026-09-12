@@ -1,0 +1,351 @@
+{
+  "missao_id": "celulas-organelos",
+  "titulo": "Células e Organelos",
+  "disciplina": "citologia",
+  "badge": { "icone": "🔬", "nome": "Mestre da Célula" },
+  "secoes": [
+    {
+      "secao_id": "descoberta-celula",
+      "titulo": "A Descoberta da Célula",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Há 400 anos, ninguém sabia que o teu corpo é feito de milhares de milhões de \"compartimentos\" microscópicos. Como é que isso foi descoberto? 🐢",
+          "texto": "Tudo começou com um pedaço de cortiça, um microscópio rudimentar, e uma palavra que ainda hoje usamos."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A descoberta da célula, ao longo do tempo",
+          "imagem": "descoberta_celula_timeline.png",
+          "instrucao": "Clica em cada marco para veres a explicação.",
+          "pontos": [
+            { "id": "hooke", "label": "Robert Hooke (1665)", "explicacao": "Ao observar uma fatia fina de cortiça ao microscópio, viu pequenos compartimentos vazios que lhe lembraram os quartos (cells, em inglês) de um mosteiro — e assim nasceu a palavra \"célula\". Na verdade, Hooke só viu as paredes celulares vazias de células vegetais mortas, não células vivas." },
+            { "id": "leeuwenhoek", "label": "Antonie van Leeuwenhoek (anos 1670)", "explicacao": "Construindo microscópios simples mas muito potentes para a época (com uma única lente), foi o primeiro a observar células vivas em movimento — a que chamou \"animálculos\" — incluindo bactérias e protozoários, mais de 150 anos antes de a teoria celular ser formalizada." },
+            { "id": "schleiden_schwann", "label": "Schleiden e Schwann (1838-1839)", "explicacao": "O botânico Matthias Schleiden concluiu que todas as plantas são feitas de células; um ano depois, o zoólogo Theodor Schwann chegou à mesma conclusão para os animais — lançando as bases da Teoria Celular." },
+            { "id": "virchow", "label": "Rudolf Virchow (1855)", "explicacao": "Acrescentou o princípio que faltava: todas as células surgem de células pré-existentes, por divisão — resumido na frase latina omnis cellula e cellula." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quem observou pela primeira vez células vivas em movimento?",
+          "opcoes": ["Robert Hooke", "Antonie van Leeuwenhoek"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! O Hooke viu só paredes vazias de cortiça — foi o Leeuwenhoek que viu células realmente vivas.",
+          "mascote_feedback_errado": "Foi o Leeuwenhoek quem observou células vivas em movimento — o Hooke só viu paredes vazias de cortiça."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A frase \"todas as células surgem de células pré-existentes\" é atribuída a:",
+          "opcoes": ["Rudolf Virchow", "Robert Hooke"],
+          "correta": 0,
+          "mascote_feedback_certo": "Isso mesmo! Esse princípio completou a Teoria Celular moderna.",
+          "mascote_feedback_errado": "Essa frase é atribuída a Rudolf Virchow, não a Robert Hooke."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "A Teoria Celular é como descobrir que todos os edifícios do mundo, por mais diferentes que pareçam, são feitos do mesmo tipo de tijolo básico. Um arranha-céus e uma casa de campo parecem não ter nada em comum à primeira vista — mas ambos são construídos, tijolo a tijolo, da mesma forma fundamental. Da mesma maneira, um cogumelo e um elefante não se parecem em nada, mas ambos são feitos, célula a célula, do mesmo \"tijolo\" biológico básico."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Os 3 princípios da Teoria Celular",
+          "texto": "A Teoria Celular moderna resume-se a 3 ideias centrais: (1) todos os seres vivos são constituídos por uma ou mais células; (2) a célula é a unidade básica de estrutura e função de todos os seres vivos; (3) todas as células provêm de células pré-existentes, por divisão celular. Estes três princípios, reunidos ao longo de quase 200 anos de investigação de vários cientistas diferentes, continuam válidos até hoje, sendo um dos pilares fundamentais de toda a Biologia moderna."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A palavra \"célula\" tem origem em:",
+              "opcoes": ["Um termo grego para \"vida\"", "A palavra usada por Hooke para descrever os compartimentos de um mosteiro"],
+              "correta": 1,
+              "mascote_feedback_certo": "Boa! Hooke usou essa palavra por lhe lembrarem os pequenos quartos de um mosteiro.",
+              "mascote_feedback_errado": "A palavra vem do termo que Hooke usou para os compartimentos de um mosteiro, não de um termo grego."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: Hooke observou células vegetais vivas.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Hooke observou apenas as paredes vazias de células já mortas (cortiça).",
+              "mascote_feedback_errado": "Na verdade é falso — Hooke observou apenas as paredes vazias de células já mortas (cortiça)."
+            },
+            {
+              "pergunta": "Quantos princípios centrais tem a Teoria Celular moderna?",
+              "opcoes": ["2", "3"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! São 3 princípios centrais.",
+              "mascote_feedback_errado": "A Teoria Celular moderna tem 3 princípios centrais, não 2."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como a célula foi descoberta. A seguir, vamos ver que nem todas as células são iguais entre si. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "tipos-celulas",
+      "titulo": "Tipos de Células",
+      "xp": 20,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Existem células tão simples que cabem milhares delas num grão de areia — e outras tão complexas que só uma já é um organismo inteiro. Qual é a diferença? 🐢",
+          "texto": "Nesta secção vamos comparar os dois grandes tipos de células que existem na natureza."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Procariótica vs. eucariótica, animal vs. vegetal",
+          "imagem": "tipos_celulas.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "procariotica", "label": "Célula procariótica", "explicacao": "Não tem núcleo delimitado por membrana — o material genético (DNA) fica disperso numa região chamada nucleoide. Também não tem organelos membranares complexos. Exemplo: bactérias." },
+            { "id": "eucariotica", "label": "Célula eucariótica", "explicacao": "Tem um núcleo verdadeiro, delimitado por uma membrana nuclear, e vários organelos membranares especializados. Exemplo: células animais, vegetais, fúngicas." },
+            { "id": "animal", "label": "Célula animal", "explicacao": "Célula eucariótica sem parede celular e sem cloroplastos — normalmente com formato mais arredondado e irregular." },
+            { "id": "vegetal", "label": "Célula vegetal", "explicacao": "Célula eucariótica com parede celular (rígida, feita de celulose), cloroplastos (para fotossíntese) e geralmente um grande vacúolo central." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A principal diferença entre células procarióticas e eucarióticas é:",
+          "opcoes": ["O tamanho apenas", "A presença (ou ausência) de um núcleo delimitado por membrana"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! É essa a diferença fundamental que dá nome aos dois grupos — \"pro-caryon\" e \"eu-caryon\" referem-se precisamente ao núcleo.",
+          "mascote_feedback_errado": "A diferença fundamental é a presença (ou não) de um núcleo delimitado por membrana, não apenas o tamanho."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma célula com parede celular e cloroplastos é, com certeza, uma célula:",
+          "opcoes": ["Animal", "Vegetal"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! Só as células vegetais (entre estas duas opções) têm ambas estas estruturas.",
+          "mascote_feedback_errado": "Só as células vegetais têm parede celular e cloroplastos — não as animais."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "As bactérias são organismos:",
+          "opcoes": ["Eucarióticos", "Procarióticos"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! As bactérias não têm núcleo delimitado — são o exemplo clássico de organismo procariótico.",
+          "mascote_feedback_errado": "As bactérias são procarióticas — não têm núcleo delimitado por membrana."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "Uma célula procariótica é como um estúdio (apartamento de divisão única): tudo acontece no mesmo espaço aberto, sem paredes internas a separar funções. Uma célula eucariótica é como uma casa com vários quartos: cada organelo é uma \"divisão\" especializada (o núcleo é o escritório onde ficam os documentos importantes — o DNA —, a mitocôndria é a sala de máquinas que gera energia, etc.), o que permite organizar e especializar melhor cada tarefa."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Nem toda a vida \"simples\" é menos bem-sucedida",
+          "texto": "Apesar de mais simples estruturalmente, as células procarióticas (bactérias e arqueias) são o grupo de seres vivos mais numeroso e mais amplamente distribuído do planeta, existindo em praticamente todos os ambientes imagináveis — desde fontes hidrotermais no fundo do oceano a nuvens na atmosfera. A \"simplicidade\" estrutural não significa desvantagem evolutiva; é apenas uma estratégia biológica diferente, extremamente eficiente há mais de 3.5 mil milhões de anos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O que distingue estruturalmente uma célula eucariótica de uma procariótica?",
+              "opcoes": ["O tamanho", "A presença de núcleo delimitado por membrana"],
+              "correta": 1,
+              "mascote_feedback_certo": "Boa! É a presença de um núcleo verdadeiro que define as células eucarióticas.",
+              "mascote_feedback_errado": "O que distingue é a presença de núcleo delimitado por membrana, não o tamanho."
+            },
+            {
+              "pergunta": "Uma célula com parede celular e cloroplastos é:",
+              "opcoes": ["Animal", "Vegetal"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Essas duas estruturas são características das células vegetais.",
+              "mascote_feedback_errado": "Uma célula com parede celular e cloroplastos é vegetal, não animal."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: as células procarióticas são raras na natureza.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! São o grupo mais numeroso e amplamente distribuído do planeta.",
+              "mascote_feedback_errado": "Na verdade é falso — são o grupo de seres vivos mais numeroso e amplamente distribuído do planeta."
+            }
+          ],
+          "mascote_conclusao": "Já sabes distinguir os tipos de células. A seguir, vamos abrir uma célula eucariótica e explorar cada organelo por dentro. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "organelos",
+      "titulo": "Organelos e as suas Funções",
+      "xp": 30,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Se uma célula fosse uma cidade, cada organelo teria o seu próprio \"emprego\". Vamos conhecer os trabalhadores desta cidade microscópica? 🐢",
+          "texto": "Vamos abrir uma célula eucariótica e conhecer, um a um, os organelos que a mantêm a funcionar."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Organelos principais de uma célula animal",
+          "imagem": "organelos_celula_animal.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "nucleo", "label": "Núcleo", "explicacao": "Contém o DNA (material genético) e controla todas as atividades da célula. Dentro dele está o nucléolo, onde se formam os ribossomas." },
+            { "id": "ribossomas", "label": "Ribossomas", "explicacao": "Pequenas estruturas (não delimitadas por membrana) responsáveis pela síntese de proteínas, a partir das instruções do DNA." },
+            { "id": "rer", "label": "Retículo endoplasmático rugoso (RER)", "explicacao": "Rede de membranas com ribossomas agarrados à superfície — sintetiza proteínas que serão exportadas ou usadas em membranas." },
+            { "id": "rel", "label": "Retículo endoplasmático liso (REL)", "explicacao": "Semelhante ao rugoso, mas sem ribossomas — especializado na síntese de lípidos e na desintoxicação de substâncias." },
+            { "id": "golgi", "label": "Complexo de Golgi", "explicacao": "Recebe proteínas e lípidos do retículo endoplasmático, modifica-os, e empacota-os em vesículas para serem enviados para o destino certo (dentro ou fora da célula)." },
+            { "id": "mitocondria", "label": "Mitocôndria", "explicacao": "A \"central elétrica\" da célula — produz a maior parte do ATP (energia) através da respiração celular." },
+            { "id": "lisossoma", "label": "Lisossoma", "explicacao": "Contém enzimas digestivas, usadas para decompor resíduos celulares, partículas estranhas, ou organelos danificados." },
+            { "id": "membrana_plasmatica", "label": "Membrana plasmática", "explicacao": "Delimita a célula e controla a entrada e saída de substâncias (é seletivamente permeável)." },
+            { "id": "citoesqueleto", "label": "Citoesqueleto", "explicacao": "Rede de filamentos proteicos que dá forma e suporte estrutural à célula, e permite o movimento de organelos no seu interior." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Organelos exclusivos das células vegetais",
+          "imagem": "organelos_celula_vegetal.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "cloroplasto", "label": "Cloroplasto", "explicacao": "Organelo onde ocorre a fotossíntese — presente apenas em células vegetais e de algumas algas." },
+            { "id": "vacuolo_central", "label": "Vacúolo central", "explicacao": "Grande estrutura membranar que ocupa a maior parte do volume da célula vegetal, armazenando água, nutrientes e resíduos, e ajudando a manter a rigidez da célula (turgescência)." },
+            { "id": "parede_celular", "label": "Parede celular", "explicacao": "Camada rígida externa à membrana plasmática, feita principalmente de celulose, que dá proteção e suporte estrutural extra à célula vegetal." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual organelo é responsável por produzir a maior parte da energia (ATP) da célula?",
+          "opcoes": ["O núcleo", "A mitocôndria"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! A mitocôndria é mesmo conhecida como a \"central elétrica\" da célula.",
+          "mascote_feedback_errado": "É a mitocôndria que produz a maior parte da energia (ATP), não o núcleo."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O complexo de Golgi tem como função principal:",
+          "opcoes": ["Produzir energia", "Modificar e empacotar proteínas e lípidos para o seu destino final"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! Pensa nele como o \"centro de embalagem e distribuição\" da célula.",
+          "mascote_feedback_errado": "A função do complexo de Golgi é modificar e empacotar proteínas e lípidos, não produzir energia."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destes organelos está presente numa célula vegetal, mas NÃO numa célula animal?",
+          "opcoes": ["Mitocôndria", "Cloroplasto"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! As mitocôndrias existem em ambos os tipos de células — os cloroplastos são exclusivos de plantas e algumas algas.",
+          "mascote_feedback_errado": "O cloroplasto é que é exclusivo das plantas — a mitocôndria existe em ambos os tipos de células."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "Imagina a célula como uma fábrica com departamentos especializados: o núcleo é o escritório de gestão, guardando os \"planos\" (DNA) de tudo o que a fábrica produz. O retículo endoplasmático rugoso e os ribossomas são a linha de produção, a fabricar proteínas. O complexo de Golgi é o departamento de embalagem e expedição, a preparar tudo para envio. A mitocôndria é a central elétrica, a fornecer energia a todos os outros departamentos. E os lisossomas são a equipa de limpeza e reciclagem, a decompor o que já não serve."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A origem evolutiva surpreendente da mitocôndria e do cloroplasto",
+          "texto": "A teoria endossimbiótica, hoje amplamente aceite, propõe que as mitocôndrias e os cloroplastos não surgiram \"de raiz\" dentro das células eucarióticas — na verdade, eram bactérias independentes que, há mais de mil milhões de anos, foram \"engolidas\" por uma célula maior, e em vez de serem digeridas, estabeleceram uma relação de benefício mútuo permanente. É por isso que ambos os organelos têm o seu próprio DNA circular, semelhante ao das bactérias, e se reproduzem por divisão própria dentro da célula — como se ainda fossem, em parte, organismos independentes vivendo dentro de outro organismo."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O organelo responsável pela síntese de proteínas, associado ao retículo endoplasmático rugoso, chama-se:",
+              "opcoes": ["Ribossoma", "Lisossoma"],
+              "correta": 0,
+              "mascote_feedback_certo": "Boa! Os ribossomas do RER são responsáveis pela síntese de proteínas.",
+              "mascote_feedback_errado": "O organelo certo é o ribossoma — o lisossoma tem uma função digestiva, não de síntese."
+            },
+            {
+              "pergunta": "Qual organelo tem DNA próprio, apoiando a teoria endossimbiótica?",
+              "opcoes": ["Complexo de Golgi", "Mitocôndria"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! A mitocôndria (e também o cloroplasto) têm o seu próprio DNA circular.",
+              "mascote_feedback_errado": "É a mitocôndria que tem DNA próprio — o complexo de Golgi não."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: o vacúolo central é uma estrutura exclusiva das células vegetais.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 0,
+              "mascote_feedback_certo": "Verdadeiro! Embora vacúolos pequenos possam existir noutras células, o grande vacúolo central é característico das plantas.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro — o grande vacúolo central é característico das células vegetais."
+            }
+          ],
+          "mascote_conclusao": "Já conheces os principais \"trabalhadores\" da célula. Para terminar, vamos ver como a célula controla o que entra e sai — pela membrana. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "membrana-transporte",
+      "titulo": "Membrana Celular e Transporte",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A membrana da tua célula não é uma parede fechada — é mais como um porteiro seletivo, muito exigente sobre quem entra e sai. 🐢",
+          "texto": "Vamos perceber como a membrana celular decide o que pode entrar e sair da célula."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O modelo do mosaico fluido",
+          "imagem": "membrana_mosaico_fluido.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "fosfolipidos", "label": "Dupla camada de fosfolípidos", "explicacao": "A estrutura base da membrana — moléculas com uma \"cabeça\" que gosta de água e uma \"cauda\" que a repele, organizadas em duas camadas viradas cauda-com-cauda." },
+            { "id": "proteinas", "label": "Proteínas de membrana", "explicacao": "Atuam como canais, transportadores, recetores ou marcadores de identidade celular — são elas que dão à membrana grande parte da sua função seletiva." },
+            { "id": "permeabilidade", "label": "Permeabilidade seletiva", "explicacao": "A membrana deixa passar livremente algumas substâncias (como o oxigénio) mas bloqueia ou controla rigorosamente a passagem de outras (como iões ou açúcares)." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A membrana plasmática é composta principalmente por:",
+          "opcoes": ["Celulose", "Uma dupla camada de fosfolípidos e proteínas"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! Este é chamado o modelo do \"mosaico fluido\".",
+          "mascote_feedback_errado": "A membrana é composta principalmente por uma dupla camada de fosfolípidos e proteínas, não por celulose."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Chamamos \"seletivamente permeável\" à membrana porque:",
+          "opcoes": ["Deixa passar tudo sem controlo", "Controla o que passa, deixando umas substâncias e restringindo outras"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! É essa seletividade que protege o ambiente interno da célula.",
+          "mascote_feedback_errado": "A membrana controla o que passa — não deixa tudo passar livremente."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "A membrana celular é como o segurança à entrada de um clube exclusivo: algumas pessoas (moléculas pequenas, sem carga) entram livremente sem serem sequer verificadas; outras (moléculas maiores ou com carga elétrica) só entram através de uma \"porta\" específica (uma proteína canal), muitas vezes só com \"convite\" (um transportador específico). Nada entra ou sai de forma completamente aleatória."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Difusão, osmose e transporte ativo — três formas diferentes de atravessar a membrana",
+          "texto": "Existem várias formas de uma substância atravessar a membrana. Na difusão simples, moléculas pequenas movem-se livremente de onde estão mais concentradas para onde estão menos concentradas, sem gastar energia. A osmose é um caso especial de difusão, específico da água, que se move através da membrana no sentido de equilibrar concentrações de soluto dos dois lados. Já o transporte ativo acontece quando a célula precisa de mover substâncias contra o seu gradiente de concentração (do lado menos concentrado para o mais concentrado) — isso exige gasto de energia (ATP), geralmente através de proteínas transportadoras específicas, como a bomba de sódio-potássio, fundamental no funcionamento das células nervosas."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O movimento de água através da membrana, no sentido de equilibrar concentrações, chama-se:",
+              "opcoes": ["Osmose", "Transporte ativo"],
+              "correta": 0,
+              "mascote_feedback_certo": "Boa! Esse movimento de água chama-se osmose.",
+              "mascote_feedback_errado": "O nome correto é osmose — o transporte ativo é outro processo, que gasta energia."
+            },
+            {
+              "pergunta": "O transporte ativo distingue-se da difusão simples porque:",
+              "opcoes": ["Não precisa de proteínas", "Gasta energia para mover substâncias contra o gradiente de concentração"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! O transporte ativo gasta ATP para mover substâncias contra o gradiente.",
+              "mascote_feedback_errado": "O transporte ativo gasta energia (ATP) para mover substâncias contra o gradiente — essa é a diferença."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: todas as substâncias atravessam a membrana livremente, sem qualquer regulação.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! A membrana é seletivamente permeável, não deixa passar tudo livremente.",
+              "mascote_feedback_errado": "Na verdade é falso — a membrana é seletivamente permeável."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Células e Organelos. Já sabes como a célula foi descoberta, os diferentes tipos que existem, o que cada organelo faz, e como a membrana controla tudo o que entra e sai. 🔬🐢"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+/* Motor de missões reutilizável — estilos isolados com o prefixo "me-".
+   O ecrã de mapa e o ecrã de conteúdo (secções/ecrãs) reaproveitam
+   diretamente as classes "mo-*"/"mission-*"/"lesson-*"/"screen-*"/
+   "quiz-*"/"did-you-know"/"mission-intro-callout"/"mascot-overlay-*" de
+   mission-styles.css — as mesmas usadas pelas páginas da missão da
+   Fotossíntese, sidebar de secções incluída (nenhuma aqui: tal como lá,
+   fica escondida por padrão) — para que qualquer missão deste motor
+   tenha exatamente a mesma aparência e organização, sem duplicar CSS.
+   Este ficheiro cobre só o que não tem equivalente lá: o painel de
+   pontos clicáveis do diagrama interativo (que na versão antiga é
+   específico da fotossíntese, com coordenadas fixas por imagem) e o
+   ecrã de celebração final. */
+
+.me-root {
+    min-height: 100vh;
+    background: #f8f2e7;
+    font-family: 'Outfit', system-ui, sans-serif;
+    color: #1f2a24;
+}
+
+html.dark-mode .me-root {
+    background: #1c1712;
+    color: #f2e9dd;
+}
+
+.me-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 64px;
+}
+
+/* ---- Mapa da missão (fallback simples; o mo-page já cobre o layout rico) */
+
+.me-mapa-header {
+    text-align: center;
+    padding: 32px 16px;
+}
+
+.me-mapa-badge {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* ---- Vista de secção --------------------------------------------------
+   .mission-shell/.mission-main/.mission-content vêm de mission-styles.css
+   já com a cor de fundo, mas pressupõem lá um layout de altura fixa
+   (100%) para conviver com o painel de chat lateral redimensionável —
+   aqui não há esse painel, por isso passa-se a fluxo normal da página. */
+
+.mission-shell {
+    height: auto;
+}
+
+.mission-main {
+    height: auto;
+    overflow: visible;
+}
+
+/* Cartão inline da mascote (reaproveita .mascot-overlay-card--split, mas
+   sem sombra pesada de modal nem botão — só uma fala dentro do próprio
+   ecrã). */
+.me-mascot-inline {
+    box-shadow: none;
+    margin: 0 0 20px;
+}
+
+.me-mascot-avatar--fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.6rem;
+}
+
+/* ---- Diagrama interativo: pontos clicáveis por baixo da imagem (sem
+   coordenadas fixas, ao contrário do sistema antigo específico da
+   fotossíntese) ---- */
+
+.me-diagrama-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 0 0 14px;
+}
+
+.me-diagrama-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid #cde7d9;
+    background: #eef7f3;
+    color: #1f5c33;
+    cursor: pointer;
+    font-size: .88rem;
+    font-weight: 600;
+}
+
+.me-diagrama-chip:hover {
+    border-color: #1f8a5b;
+}
+
+.me-diagrama-chip.is-active {
+    border-color: #1f8a5b;
+    background: #1f8a5b;
+    color: #fff;
+}
+
+.me-diagrama-chip-num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+.me-diagrama-chip.is-active .me-diagrama-chip-num {
+    background: rgba(255, 255, 255, .25);
+}
+
+.me-diagrama-explicacao strong {
+    display: block;
+    margin-bottom: 6px;
+    font-style: normal;
+    color: #1f8a5b;
+}
+
+html.dark-mode .me-diagrama-chip {
+    background: #24201a;
+    border-color: #3a3128;
+    color: #d7ddd3;
+}
+
+/* ---- Celebração ---- */
+
+.me-shell--celebracao {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.me-celebracao-card {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    border-radius: 24px;
+    padding: 48px 40px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .12);
+    max-width: 420px;
+}
+
+.me-celebracao-badge {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.me-celebracao-card h1 {
+    margin: 0 0 8px;
+}
+
+.me-celebracao-xp {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1f8a5b;
+    margin: 20px 0 28px;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+}
+
+.me-confetti {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.me-confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 8px;
+    height: 14px;
+    opacity: .9;
+    animation-name: me-confetti-fall;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    border-radius: 2px;
+}
+
+@keyframes me-confetti-fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+html.dark-mode .me-celebracao-card {
+    background: #26201a;
+    color: #f2e9dd;
+}

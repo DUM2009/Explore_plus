@@ -295,13 +295,10 @@ const missionData = {
                 explanation: "Os eletrões que substituem os perdidos pela clorofila vêm da fotólise da água. Vamos descobrir como!",
                 cta: "Continuar"
             },
-            summarySteps: [
-                { icon: "☀️", label: "Luz do Sol" },
-                { icon: "🍃", label: "Absorção da luz pelos pigmentos" },
-                { icon: "💧", label: "Fotólise da água (H₂O)" },
-                { icon: "🔋", label: "Produção de ATP e NADPH" },
-                { icon: "💨", label: "Libertação de oxigénio (O₂)" }
-            ],
+            electronChainIntro: {
+                message: "Agora que o Fotossistema II conseguiu repor os eletrões perdidos, é altura de acompanhar o percurso dos eletrões que saíram da clorofila.",
+                cta: "Vamos lá!"
+            },
             content: `
                 <div class="section-content">
 
@@ -317,46 +314,48 @@ const missionData = {
                         </div>
                         </div>
 
-                    <div class="screen-card" data-electron-loss-gate="true">
-                        <h3>Fotólise da água</h3>
-                        <div class="card-visual-row">
-                            <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Divisao da agua em produtos">
-                            <img class="card-visual" src="/static/images/Fotossistema II - cadeia transportadora.png" alt="Fotossistema II na membrana dos tilacóides, mostrando a fotólise da água">
-                        </div>
-                        <p>A fotólise da água é uma etapa da fase luminosa da fotossíntese que ocorre no fotossistema II (PSII), localizado na membrana dos tilacóides dos cloroplastos.</p>
-                        <p>A energia luminosa permite a quebra das moléculas de água (H₂O) em eletrões (e⁻), protões (H⁺) e oxigénio (O₂).</p>
-                        <ul>
-                            <li>Os <strong>eletrões</strong> libertados vão substituir os eletrões perdidos pela clorofila do fotossistema II, permitindo a continuação da fotossíntese.</li>
-                            <li>Os <strong>protões</strong> contribuem para a formação de um gradiente de concentração usado na produção de ATP.</li>
-                            <li>O <strong>oxigénio</strong> é libertado para a atmosfera como um produto secundário.</li>
-                        </ul>
-                    </div>
-
-                    <div class="screen-card">
+                    <div class="screen-card" data-electron-chain-intro="true">
                         <h3>Cadeia transportadora de eletrões</h3>
-                        <p style="text-align: center; font-size: 1.1em;"><strong>🌱 Agora que o Fotossistema II conseguiu repor os eletrões perdidos, é altura de acompanhar o percurso dos eletrões que saíram da clorofila.</strong></p>
-                        <img class="card-visual" src="/static/images/Cadeia transportadora de eletrões.png" alt="Cadeia transportadora de eletrões">
-                        <p>A cadeia transportadora de eletrões é uma etapa da fase luminosa da fotossíntese que ocorre na membrana dos tilacóides dos cloroplastos. Esta etapa acontece após a excitação da clorofila no fotossistema II (PSII).</p>
-                        <p>Quando a luz fornece energia à clorofila, os eletrões são libertados e transferidos para uma série de proteínas e moléculas transportadoras. À medida que os eletrões passam de uma molécula para outra ao longo da cadeia transportadora, libertam energia que é utilizada para transportar protões (H⁺) para o interior do tilacóide, criando um gradiente de concentração de protões.</p>
+                        <div class="diagram-zone-layout">
+                            <div class="diagram-zone-wrap">
+                                <div class="diagram-zone-stage">
+                                    <img class="card-visual" src="/static/images/Cadeia transportadora de eletrões.png" alt="Cadeia transportadora de eletrões">
+                                    <button type="button" class="diagram-zone" data-zone="1" style="left: 26%; top: 15%;">
+                                        <span class="diagram-zone-number">1</span>
+                                    </button>
+                                    <button type="button" class="diagram-zone" data-zone="2" style="left: 57%; top: 14%;">
+                                        <span class="diagram-zone-number">2</span>
+                                    </button>
+                                    <button type="button" class="diagram-zone" data-zone="3" style="left: 92%; top: 13%;">
+                                        <span class="diagram-zone-number">3</span>
+                                    </button>
+                                </div>
+                                <p class="plant-diagram-hint">Clica em cada número para veres o que acontece nessa parte da cadeia.</p>
+                            </div>
+                            <div class="diagram-zone-caption"></div>
+                        </div>
+                        <div class="diagram-zone-panels" hidden>
+                            <div class="diagram-zone-panel" data-zone="1">
+                                <p><strong>1. Fotossistema II (PSII):</strong> a luz excita a clorofila, que liberta eletrões. Esta é também a etapa da fotólise da água, onde o H₂O é dividido em eletrões, H⁺ e O₂.</p>
+                                <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Divisao da agua em produtos">
+                                <p>A fotólise da água é uma etapa da fase luminosa da fotossíntese que ocorre no fotossistema II (PSII), localizado na membrana dos tilacóides dos cloroplastos.</p>
+                                <p>A energia luminosa permite a quebra das moléculas de água (H₂O) em eletrões (e⁻), protões (H⁺) e oxigénio (O₂).</p>
+                                <ul>
+                                    <li>Os <strong>eletrões</strong> libertados vão substituir os eletrões perdidos pela clorofila do fotossistema II, permitindo a continuação da fotossíntese.</li>
+                                    <li>Os <strong>protões</strong> contribuem para a formação de um gradiente de concentração usado na produção de ATP.</li>
+                                    <li>O <strong>oxigénio</strong> é libertado para a atmosfera como um produto secundário.</li>
+                                </ul>
+                            </div>
+                            <div class="diagram-zone-panel" data-zone="2">
+                                <p><strong>2. Cadeia de transporte e Fotossistema I (PSI):</strong> os eletrões passam pelo complexo citocromo b6f e pelos transportadores PQ e PC, bombeando H⁺ para o lúmen, até chegarem ao PSI e reduzirem o NADP⁺ a NADPH.</p>
+                                <p>Quando a luz fornece energia à clorofila, os eletrões são libertados e transferidos para uma série de proteínas e moléculas transportadoras. À medida que os eletrões passam de uma molécula para outra ao longo da cadeia transportadora, libertam energia que é utilizada para transportar protões (H⁺) para o interior do tilacóide, criando um gradiente de concentração de protões.</p>
+                            </div>
+                            <div class="diagram-zone-panel" data-zone="3"><strong>3. ATP sintase:</strong> o gradiente de H⁺ acumulado no lúmen flui de volta para o estroma através da ATP sintase, e essa energia é usada para produzir ATP (quimiosmose).</div>
+                        </div>
                     </div>
 
                     <div class="screen-card">
-                        <h3>Protões H⁺ e ATP</h3>
-                        <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Formacao de ATP e NADPH">
-                        <p>O gradiente de protões (H⁺) permite a produção de ATP através da enzima ATP sintase, num processo chamado <strong>quimiosmose</strong>.</p>
-                    </div>
-
-<div class="screen-card">
-                        <h3>Síntese de NADPH</h3>
-                        <p style="text-align: center; font-size: 1.1em;"><strong>🌱 Mas será que os eletrões já terminaram o seu percurso?</strong></p>
-                        <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Formacao de ATP e NADPH">
-                        <p>Os eletrões continuam o seu percurso até chegarem ao fotossistema I (PSI), onde recebem novamente energia da luz e são transferidos para uma molécula recetora.</p>
-                        <p>No final da cadeia transportadora, os eletrões são utilizados para reduzir o NADP⁺, formando NADPH, uma molécula que transporta energia química e que será utilizada na fase escura da fotossíntese (ciclo de Calvin).</p>
-                    </div>
-
-<div class="screen-card">
                         <h3>Exercício</h3>
-                        <img class="screen-visual" src="/static/images/Membrana dos tilacoides.jpg" alt="Sequencia da fase clara">
                         <p>Seleciona os passos pela ordem correta para reconstruir a fase clara.</p>
                         <div class="phase-clear-sequence" aria-label="Exercicio de ordenar a fase clara">
                             <div class="sequence-options">
@@ -467,6 +466,8 @@ const missionData = {
             xpReward: 70,
             completionMessage: "Etapa concluída! +70 XP. Já consegues explicar como o CO2 vira glicose no ciclo de Calvin.",
             explorerTip: "O ciclo de Calvin usa a energia guardada na fase clara para fabricar glicose. ♻️",
+            introGreeting: "A luz já fez o seu trabalho! A planta tem ATP e NADPH nas mãos... mas ainda precisa de transformar o CO₂ em alimento. Como será que o faz?",
+            introCta: "Vamos descobrir!",
             summarySteps: [
                 { icon: "🌬️", label: "CO₂" },
                 { icon: "🔗", label: "Fixação (RuBP + Rubisco)" },
@@ -474,14 +475,10 @@ const missionData = {
                 { icon: "♻️", label: "Regeneração da RuBP" },
                 { icon: "🍬", label: "Glicose" }
             ],
-            factOfTheDay: "São precisas 6 voltas do ciclo de Calvin para produzir uma única molécula de glicose.",
-            introIcon: "🌑",
-            introHighlight: "A fase escura, ou <span class=\"key-term\">ciclo de Calvin</span>, usa o <span class=\"key-term\">ATP e NADPH</span> produzidos na fase clara para transformar <span class=\"key-term\">CO₂</span> em <span class=\"key-term\">glicose</span>, no estroma do cloroplasto.",
             content: `
                 <div class="section-content">
                 <div class="screen-card">
                         <h3>O Ciclo de Calvin</h3>
-                        <p style="text-align: center; font-size: 1.1em;"><strong>☀️ A luz já fez o seu trabalho! A planta tem ATP e NADPH nas mãos... mas ainda precisa de transformar o CO₂ em alimento. Como será que o faz?</strong></p>
                         <img class="screen-visual" src="/static/images/Membrana dos tilacoides.jpg" alt="ATP e NADPH a entrar no estroma">
                         <p><strong>É agora que começa a fase escura, também chamada Ciclo de Calvin!</strong></p>
                         <p>Nesta etapa, a planta utiliza a energia produzida na fase luminosa para captar dióxido de carbono (CO₂) e construir moléculas de açúcar — o alimento que irá sustentar o seu crescimento.</p>
