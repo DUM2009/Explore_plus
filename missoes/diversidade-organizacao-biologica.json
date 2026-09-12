@@ -5,338 +5,355 @@
   "badge": { "icone": "🧬", "nome": "Mestre da Biodiversidade" },
   "secoes": [
     {
-      "secao_id": "introducao",
-      "titulo": "Porque precisamos de organizar a vida?",
+      "secao_id": "hierarquia-biologica",
+      "titulo": "Hierarquia biológica: a escala ecológica",
       "xp": 20,
       "tempo_estimado_min": 5,
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "Já imaginaste tentar arrumar uma biblioteca com 2 milhões de livros, sem nenhuma ordem nas prateleiras? 🐢",
-          "texto": "Já foram descritas mais de 2 milhões de espécies de seres vivos na Terra — e estima-se que existam milhões mais por descobrir. Como é que os cientistas conseguem estudar tudo isto sem se perderem?"
+          "mascote_texto": "Um peixe sozinho não é um ecossistema. Mas o peixe, mais os outros peixes, mais as algas, mais o rio onde vivem... isso já é. 🐢",
+          "texto": "Para estudar a natureza, os ecólogos organizam a vida em níveis, cada um mais amplo do que o anterior — desde um único organismo até ao planeta inteiro."
         },
         {
           "tipo": "diagrama_interativo",
-          "titulo": "Do caos à organização",
-          "imagem": "diversidade_intro.png",
+          "titulo": "A escada dos níveis ecológicos",
+          "imagem": "hierarquia_ecologica.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "biodiversidade", "label": "Biodiversidade", "explicacao": "A variedade de seres vivos existentes na Terra, incluindo a diversidade dentro de cada espécie, entre espécies, e entre ecossistemas." },
-            { "id": "taxonomia", "label": "Taxonomia", "explicacao": "A ciência que classifica e nomeia os seres vivos, agrupando-os com base em características e parentesco evolutivo." },
-            { "id": "especie", "label": "Espécie", "explicacao": "O grupo de organismos capazes de se reproduzir entre si e gerar descendência fértil — é a unidade básica da classificação." }
+            { "id": "individuo", "label": "Indivíduo", "explicacao": "Um único organismo, de uma espécie específica." },
+            { "id": "populacao", "label": "População", "explicacao": "Todos os indivíduos da mesma espécie, a viver na mesma área, ao mesmo tempo." },
+            { "id": "comunidade", "label": "Comunidade", "explicacao": "Todas as populações de espécies diferentes que interagem na mesma área." },
+            { "id": "ecossistema", "label": "Ecossistema", "explicacao": "A comunidade de seres vivos, em interação com o ambiente físico (água, solo, luz, temperatura) que a rodeia." },
+            { "id": "bioma", "label": "Bioma", "explicacao": "Um conjunto de ecossistemas com características climáticas e vegetação semelhantes, numa grande região (ex: floresta tropical, tundra, savana)." },
+            { "id": "biosfera", "label": "Biosfera", "explicacao": "O conjunto de todos os ecossistemas e biomas do planeta — a camada da Terra onde existe vida." }
           ]
         },
         {
           "tipo": "micro_verificacao",
-          "pergunta": "A taxonomia é a ciência que se dedica a:",
-          "opcoes": ["Descobrir novas espécies apenas", "Classificar e nomear os seres vivos de forma organizada"],
-          "correta": 1,
-          "mascote_feedback_certo": "Exatamente! A taxonomia dá ordem a toda essa diversidade.",
-          "mascote_feedback_errado": "Quase — descobrir espécies é só parte do trabalho. A taxonomia é sobre classificar e nomear de forma organizada."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma \"espécie\" define-se principalmente por:",
-          "opcoes": ["Terem o mesmo tamanho e cor", "Conseguirem reproduzir-se entre si e gerar descendência fértil"],
-          "correta": 1,
-          "mascote_feedback_certo": "Isso mesmo! Tamanho e cor podem variar muito dentro da mesma espécie.",
-          "mascote_feedback_errado": "Na verdade, o que define uma espécie é a capacidade de reprodução entre si, com descendência fértil — não a aparência."
-        },
-        {
-          "tipo": "analogia",
-          "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 A taxonomia é como o sistema de arrumação de uma biblioteca gigante: sem géneros, sem secções, sem ordem alfabética, encontrar um livro específico seria quase impossível. Ao organizarmos os seres vivos em grupos (tal como os livros em secções), conseguimos estudá-los, compará-los e até prever características de espécies que acabámos de descobrir."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Antes de existir um sistema — o caos da classificação antiga",
-          "texto": "Antes do século XVIII, diferentes cientistas usavam nomes e critérios próprios para descrever os seres vivos, o que gerava enorme confusão — a mesma espécie podia ter vários nomes diferentes consoante o país ou o autor. Só com o trabalho do naturalista sueco Carlos Lineu, no século XVIII, surgiu um sistema universal e consistente de classificação, que ainda hoje usamos como base (com atualizações), e que vamos explorar na próxima secção."
-        },
-        {
-          "tipo": "quiz_seccao",
-          "perguntas": [
-            {
-              "pergunta": "O que é biodiversidade?",
-              "opcoes": ["Só o número de animais existentes", "A variedade de seres vivos, incluindo dentro e entre espécies e ecossistemas"],
-              "correta": 1,
-              "mascote_feedback_certo": "Boa! A biodiversidade vai muito além de só contar animais.",
-              "mascote_feedback_errado": "Repensa: biodiversidade é a variedade de seres vivos, dentro e entre espécies e ecossistemas — não só o número de animais."
-            },
-            {
-              "pergunta": "Verdadeiro ou Falso: já se conhecem todas as espécies existentes na Terra.",
-              "opcoes": ["Verdadeiro", "Falso"],
-              "correta": 1,
-              "mascote_feedback_certo": "Certo! Estima-se que existam ainda muitas espécies por descobrir.",
-              "mascote_feedback_errado": "Na verdade é falso — estima-se que existam muitas espécies ainda por descobrir."
-            },
-            {
-              "pergunta": "Quem criou o sistema de classificação universal ainda hoje usado como base?",
-              "opcoes": ["Charles Darwin", "Carlos Lineu"],
-              "correta": 1,
-              "mascote_feedback_certo": "Isso mesmo! Foi Carlos Lineu, no século XVIII.",
-              "mascote_feedback_errado": "Foi Carlos Lineu quem criou esse sistema — Charles Darwin é mais conhecido pela teoria da evolução."
-            }
-          ],
-          "mascote_conclusao": "Já percebeste porque precisamos de organizar a vida. A seguir: como a vida se organiza, desde uma única célula até ti. 🐢"
-        }
-      ]
-    },
-    {
-      "secao_id": "niveis-organizacao",
-      "titulo": "Níveis de organização biológica",
-      "xp": 25,
-      "tempo_estimado_min": 7,
-      "ecrãs": [
-        {
-          "tipo": "gancho",
-          "mascote_texto": "Uma única célula tua, sozinha, não consegue fazer quase nada. Mas cerca de 37 biliões delas, organizadas, formam... ti. 🐢",
-          "texto": "A vida organiza-se em níveis, cada um mais complexo do que o anterior — dos blocos mais simples até ao planeta inteiro."
-        },
-        {
-          "tipo": "diagrama_interativo",
-          "titulo": "Os níveis de organização biológica",
-          "imagem": "niveis_organizacao.png",
-          "instrucao": "Clica em cada ponto para veres a explicação.",
-          "pontos": [
-            { "id": "celula", "label": "Célula", "explicacao": "A unidade básica de vida — a estrutura mais simples capaz de realizar todas as funções vitais." },
-            { "id": "tecido", "label": "Tecido", "explicacao": "Conjunto de células semelhantes que trabalham em conjunto numa função específica (ex: tecido muscular)." },
-            { "id": "orgao", "label": "Órgão", "explicacao": "Conjunto de diferentes tecidos organizados para desempenhar uma função conjunta (ex: o coração)." },
-            { "id": "sistema_orgaos", "label": "Sistema de órgãos", "explicacao": "Vários órgãos a trabalhar em conjunto para uma função mais ampla (ex: sistema digestivo)." },
-            { "id": "organismo", "label": "Organismo", "explicacao": "Um ser vivo completo e individual, resultado da integração de todos os seus sistemas." },
-            { "id": "populacao", "label": "População", "explicacao": "Conjunto de organismos da mesma espécie, a viver na mesma área, ao mesmo tempo." },
-            { "id": "comunidade", "label": "Comunidade", "explicacao": "Conjunto de populações de espécies diferentes que interagem na mesma área." },
-            { "id": "ecossistema", "label": "Ecossistema", "explicacao": "Uma comunidade de seres vivos, em interação com o ambiente físico (água, solo, clima) que a rodeia." },
-            { "id": "biosfera", "label": "Biosfera", "explicacao": "O conjunto de todos os ecossistemas do planeta — a camada da Terra onde existe vida." }
-          ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a unidade básica de vida, capaz de realizar todas as funções vitais?",
-          "opcoes": ["O tecido", "A célula"],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato! Tudo começa na célula.",
-          "mascote_feedback_errado": "A unidade básica de vida é a célula, não o tecido — o tecido é um grupo de células."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um conjunto de populações de espécies diferentes, a interagir na mesma área, chama-se:",
-          "opcoes": ["Comunidade", "Ecossistema"],
-          "correta": 0,
-          "mascote_feedback_certo": "Certo! A comunidade só inclui os seres vivos — quando juntamos o ambiente físico à volta, aí sim passa a ser um ecossistema.",
-          "mascote_feedback_errado": "Quase — isso é uma comunidade. Um ecossistema inclui também o ambiente físico (água, solo, clima) à volta dessa comunidade."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Todos os leões de um determinado parque nacional, da mesma espécie, formam:",
+          "pergunta": "Todas as trutas de um rio, da mesma espécie, formam:",
           "opcoes": ["Uma população", "Uma comunidade"],
           "correta": 0,
-          "mascote_feedback_certo": "Isso mesmo! Como são todos da mesma espécie, é uma população, não uma comunidade (que teria de incluir outras espécies também).",
-          "mascote_feedback_errado": "Na verdade é uma população — a comunidade teria de incluir também outras espécies, não só leões."
+          "mascote_feedback_certo": "Exato! Como são da mesma espécie, é uma população.",
+          "mascote_feedback_errado": "Na verdade, como são todas da mesma espécie, formam uma população — uma comunidade teria de incluir espécies diferentes."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um ecossistema é composto por:",
+          "opcoes": ["Só os seres vivos de uma área", "A comunidade de seres vivos + o ambiente físico à sua volta"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! É essa combinação (seres vivos + ambiente físico) que define um ecossistema.",
+          "mascote_feedback_errado": "Na verdade, um ecossistema inclui também o ambiente físico à volta — não só os seres vivos."
         },
         {
           "tipo": "analogia",
           "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 Os níveis de organização são como bonecas russas (matrioskas): cada nível \"vive dentro\" do seguinte, sem nunca desaparecer — as tuas células continuam a existir dentro dos teus tecidos, que continuam a existir dentro dos teus órgãos, e assim por diante, até chegares à biosfera, que contém literalmente tudo."
+          "texto": "💡 A hierarquia ecológica é como o zoom de uma câmara fotográfica: começas com um zoom muito próximo (um único animal), depois afastas um pouco e vês o grupo dele (população), afastas mais e vês todos os grupos diferentes a interagir (comunidade), afastas ainda mais e vês toda a paisagem à volta (ecossistema), até que, no afastamento máximo, vês o planeta inteiro (biosfera)."
         },
         {
           "tipo": "aprofundar",
-          "titulo": "Nem todos os organismos têm todos os níveis",
-          "texto": "Esta escada de 9 níveis descreve bem um organismo multicelular complexo, como um ser humano ou uma árvore. Mas organismos unicelulares (como uma bactéria ou muitas algas) não têm tecidos, órgãos, nem sistemas de órgãos — a própria célula única desempenha todas as funções vitais sozinha. Nestes casos, salta-se diretamente de \"célula\" para \"organismo\". Isto mostra que a complexidade da organização biológica varia muito consoante o tipo de ser vivo."
+          "titulo": "Onde está a fronteira de um ecossistema?",
+          "texto": "Ao contrário do que pode parecer, os ecossistemas não têm limites rígidos e fixos na natureza — a decisão de onde começa e acaba um ecossistema (ex: \"este lago\" ou \"esta floresta\") é, em grande parte, uma escolha prática dos cientistas para facilitar o estudo, não uma fronteira física absoluta. Na realidade, os ecossistemas trocam constantemente energia, matéria e organismos com os ecossistemas vizinhos (ex: aves migratórias, água de um rio que desagua no mar), pelo que estão sempre interligados a uma escala maior."
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
             {
-              "pergunta": "Qual destas ordens vai do mais simples para o mais complexo?",
-              "opcoes": ["Órgão → Célula → Tecido", "Célula → Tecido → Órgão", "Tecido → Órgão → Célula"],
-              "correta": 1,
-              "mascote_feedback_certo": "Boa! Célula → Tecido → Órgão é a ordem certa, do mais simples ao mais complexo.",
-              "mascote_feedback_errado": "A ordem correta é Célula → Tecido → Órgão, do mais simples ao mais complexo."
+              "pergunta": "Um conjunto de ecossistemas com clima e vegetação semelhantes, numa grande região, chama-se:",
+              "opcoes": ["Bioma", "População"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Um bioma agrupa vários ecossistemas semelhantes.",
+              "mascote_feedback_errado": "O nome correto é bioma — a população é um nível bem mais restrito, dentro de uma única espécie."
             },
             {
-              "pergunta": "Um organismo unicelular tem tecidos e órgãos?",
-              "opcoes": ["Sim, sempre", "Não — a própria célula realiza todas as funções"],
+              "pergunta": "Verdadeiro ou Falso: os ecossistemas têm sempre fronteiras físicas rígidas e bem definidas na natureza.",
+              "opcoes": ["Verdadeiro", "Falso"],
               "correta": 1,
-              "mascote_feedback_certo": "Isso mesmo! Numa célula única, é ela sozinha que desempenha todas as funções vitais.",
-              "mascote_feedback_errado": "Na verdade não — num organismo unicelular, a própria célula realiza sozinha todas as funções vitais."
+              "mascote_feedback_certo": "Certo! São delimitados de forma prática pelos cientistas, mas estão sempre interligados a ecossistemas vizinhos.",
+              "mascote_feedback_errado": "Na verdade é falso — os ecossistemas são delimitados de forma prática pelos cientistas, mas estão sempre interligados a ecossistemas vizinhos."
             },
             {
-              "pergunta": "Todos os ecossistemas do planeta juntos formam:",
-              "opcoes": ["Uma comunidade global", "A biosfera"],
+              "pergunta": "O nível mais amplo da hierarquia biológica é:",
+              "opcoes": ["O bioma", "A biosfera"],
               "correta": 1,
-              "mascote_feedback_certo": "Certo! A biosfera é o conjunto de todos os ecossistemas do planeta.",
-              "mascote_feedback_errado": "O nome correto é biosfera — é o conjunto de todos os ecossistemas do planeta."
+              "mascote_feedback_certo": "Exato! A biosfera engloba todos os ecossistemas e biomas do planeta.",
+              "mascote_feedback_errado": "O nível mais amplo é a biosfera — o bioma é um nível mais restrito, dentro da biosfera."
             }
           ],
-          "mascote_conclusao": "Já sabes como a vida se organiza em níveis. A seguir, vamos ver como os cientistas classificam e dão nome a cada espécie. 🐢"
+          "mascote_conclusao": "Já sabes como a natureza se organiza em níveis. A seguir, vamos ver o que realmente \"faz funcionar\" um ecossistema por dentro. 🐢"
         }
       ]
     },
     {
-      "secao_id": "classificacao",
-      "titulo": "Classificação dos seres vivos",
-      "xp": 25,
-      "tempo_estimado_min": 7,
+      "secao_id": "funcionamento-ecossistemas",
+      "titulo": "O funcionamento dos ecossistemas",
+      "xp": 30,
+      "tempo_estimado_min": 8,
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "Sabias que, cientificamente, tu és um Homo sapiens? Mas o que significa isso, ao certo? 🐢",
-          "texto": "Todos os seres vivos têm um \"nome científico\" universal, e pertencem a uma hierarquia de grupos cada vez mais amplos. Vamos descobrir como isso funciona."
+          "mascote_texto": "A energia do Sol que chega a uma folha hoje pode, poucos dias depois, estar a mover os músculos de um leão. Como é que a energia viaja assim? 🐢",
+          "texto": "Vamos perceber como a energia e a matéria se movem entre os seres vivos de um ecossistema."
         },
         {
           "tipo": "diagrama_interativo",
-          "titulo": "A hierarquia taxonómica (com o exemplo humano)",
-          "imagem": "classificacao_taxonomica.png",
+          "titulo": "Os níveis tróficos",
+          "imagem": "piramide_niveis_troficos.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "dominio", "label": "Domínio", "explicacao": "O nível mais amplo — Eukarya (organismos com células com núcleo). Os humanos pertencem ao domínio Eukarya." },
-            { "id": "reino", "label": "Reino", "explicacao": "Animalia — reino dos animais." },
-            { "id": "filo", "label": "Filo", "explicacao": "Chordata — animais com um cordão nervoso dorsal (em humanos, a espinal medula)." },
-            { "id": "classe", "label": "Classe", "explicacao": "Mammalia — animais com glândulas mamárias e geralmente pelo." },
-            { "id": "ordem", "label": "Ordem", "explicacao": "Primates." },
-            { "id": "familia", "label": "Família", "explicacao": "Hominidae." },
-            { "id": "genero", "label": "Género", "explicacao": "Homo." },
-            { "id": "especie", "label": "Espécie", "explicacao": "sapiens — o nome completo é sempre Género + espécie: Homo sapiens." }
+            { "id": "produtores", "label": "Produtores", "explicacao": "Organismos que fabricam o seu próprio alimento (geralmente por fotossíntese), como plantas e algas. São a base de toda a cadeia alimentar." },
+            { "id": "consumidores_primarios", "label": "Consumidores primários", "explicacao": "Herbívoros, que se alimentam diretamente dos produtores." },
+            { "id": "consumidores_secundarios", "label": "Consumidores secundários", "explicacao": "Carnívoros que se alimentam de consumidores primários (herbívoros)." },
+            { "id": "consumidores_terciarios", "label": "Consumidores terciários", "explicacao": "Predadores de topo, que se alimentam de outros consumidores secundários." },
+            { "id": "decompositores", "label": "Decompositores", "explicacao": "Fungos e bactérias que decompõem matéria orgânica morta (de qualquer nível trófico), devolvendo nutrientes ao ambiente para os produtores reutilizarem." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Fluxo de energia vs. ciclo de matéria",
+          "imagem": "fluxo_energia_vs_materia.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "fluxo_energia", "label": "Fluxo de energia", "explicacao": "A energia entra no ecossistema pela luz solar, passa de nível trófico em nível trófico, mas vai-se perdendo como calor a cada transferência — nunca é reciclada, tem de entrar sempre nova energia do Sol." },
+            { "id": "ciclo_materia", "label": "Ciclo de matéria", "explicacao": "Ao contrário da energia, os átomos de carbono, azoto e outros elementos são reciclados indefinidamente entre os seres vivos e o ambiente, através dos decompositores." }
           ]
         },
         {
           "tipo": "micro_verificacao",
-          "pergunta": "O nome científico de uma espécie é composto por:",
-          "opcoes": ["Só o nome do género", "Género + espécie"],
+          "pergunta": "Os organismos que fabricam o seu próprio alimento, servindo de base à cadeia alimentar, chamam-se:",
+          "opcoes": ["Consumidores", "Produtores"],
           "correta": 1,
-          "mascote_feedback_certo": "Exato! Por isso é que se chama nomenclatura binomial — \"bi\" de dois nomes.",
-          "mascote_feedback_errado": "O nome científico tem sempre duas partes: Género + espécie — não só o género."
+          "mascote_feedback_certo": "Exato! Sem produtores, não haveria energia disponível para mais ninguém na cadeia.",
+          "mascote_feedback_errado": "O nome correto é produtores — os consumidores dependem deles para obter energia."
         },
         {
           "tipo": "micro_verificacao",
-          "pergunta": "Quanto mais avançamos de \"Domínio\" para \"Espécie\" na hierarquia, os grupos tornam-se:",
-          "opcoes": ["Mais amplos, com mais espécies", "Mais restritos e específicos"],
+          "pergunta": "A energia, ao contrário da matéria, num ecossistema:",
+          "opcoes": ["É reciclada indefinidamente", "Flui numa só direção, perdendo-se como calor"],
           "correta": 1,
-          "mascote_feedback_certo": "Isso mesmo! O Domínio inclui milhões de espécies; a Espécie é um grupo específico só de organismos que se reproduzem entre si.",
-          "mascote_feedback_errado": "Na verdade é o contrário: os grupos tornam-se mais restritos e específicos à medida que avançamos para a Espécie."
+          "mascote_feedback_certo": "Correto! Por isso é preciso entrar sempre nova energia solar — a energia não volta a circular como a matéria.",
+          "mascote_feedback_errado": "Na verdade a energia flui numa só direção e perde-se como calor — quem é reciclada é a matéria."
         },
         {
           "tipo": "micro_verificacao",
-          "pergunta": "Dois seres vivos do mesmo Género pertencem necessariamente também à mesma:",
-          "opcoes": ["Espécie", "Família"],
+          "pergunta": "Os decompositores são fundamentais porque:",
+          "opcoes": ["Produzem energia solar", "Devolvem nutrientes ao ambiente, permitindo o ciclo de matéria"],
           "correta": 1,
-          "mascote_feedback_certo": "Correto! O Género está dentro da Família — logo, partilham automaticamente a Família (e todos os níveis acima), mas podem ser espécies diferentes.",
-          "mascote_feedback_errado": "Na verdade, podem ser espécies diferentes (ex: leão e tigre são géneros diferentes, mas ambos felinos) — mas partilham sempre a Família e níveis acima, já que o Género está contido nela."
+          "mascote_feedback_certo": "Isso mesmo! Sem eles, os nutrientes ficariam presos nos corpos mortos para sempre.",
+          "mascote_feedback_errado": "Na verdade, o papel fundamental dos decompositores é devolver nutrientes ao ambiente, permitindo o ciclo de matéria."
         },
         {
           "tipo": "analogia",
           "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 A classificação taxonómica é como a tua morada completa: País → Distrito → Cidade → Rua → Número da porta. Cada nível estreita o \"endereço\" um pouco mais, até chegares a um local único — tal como Domínio → Reino → ... → Espécie estreita a identificação até um único tipo de ser vivo."
+          "texto": "💡 A energia num ecossistema é como o dinheiro que gastas num café: entra, passa de mão em mão (do dono ao fornecedor, ao empregado), mas uma parte \"escapa-se\" sempre como custos/perdas a cada troca — nunca volta inteiro ao ponto de partida. Já a matéria (nutrientes) é como garrafas de vidro num sistema de depósito e devolução: usam-se, mas voltam sempre a circular, indefinidamente, através da reciclagem feita pelos decompositores."
         },
         {
           "tipo": "aprofundar",
-          "titulo": "As regras de escrita do nome científico, e os \"3 domínios\"",
-          "texto": "O nome científico segue sempre regras fixas: escreve-se em itálico (ou sublinhado à mão), a primeira letra do género é maiúscula, a espécie é sempre minúscula — por exemplo, Homo sapiens, nunca \"Homo Sapiens\" ou \"homo sapiens\".\n\nQuanto aos grandes grupos: durante muito tempo usou-se o sistema dos 5 reinos (Monera, Protista, Fungi, Plantae, Animalia). Hoje, com o avanço da genética, muitos cientistas usam também o sistema dos 3 domínios (proposto por Carl Woese): Bacteria, Archaea e Eukarya — uma divisão baseada em diferenças genéticas profundas, que revelou que os antigos \"Monera\" eram, na verdade, dois grupos muito diferentes entre si (Bacteria e Archaea)."
+          "titulo": "Porque as cadeias alimentares raramente têm mais de 4-5 níveis",
+          "texto": "Em cada transferência de energia entre níveis tróficos, cerca de 90% da energia perde-se (como calor, através dos processos metabólicos), e só cerca de 10% passa efetivamente para o nível seguinte — esta é conhecida como a \"regra dos 10%\". É por isso que as cadeias alimentares raramente ultrapassam 4 ou 5 níveis: a partir de certo ponto, já não sobra energia suficiente para sustentar mais um nível trófico. É também por isso que existem sempre muito mais produtores do que predadores de topo num ecossistema saudável."
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
             {
-              "pergunta": "O nome científico de uma espécie escreve-se:",
-              "opcoes": ["Em itálico, género maiúsculo e espécie minúscula", "Tudo em maiúsculas"],
+              "pergunta": "A \"regra dos 10%\" refere-se a:",
+              "opcoes": ["A percentagem de energia transferida entre níveis tróficos", "A percentagem de decompositores num ecossistema"],
               "correta": 0,
-              "mascote_feedback_certo": "Boa! É sempre em itálico, com o género maiúsculo e a espécie minúscula.",
-              "mascote_feedback_errado": "O nome científico escreve-se em itálico, com o género maiúsculo e a espécie minúscula — nunca tudo em maiúsculas."
+              "mascote_feedback_certo": "Boa! Só cerca de 10% da energia passa de um nível trófico para o seguinte.",
+              "mascote_feedback_errado": "A regra dos 10% refere-se à percentagem de energia transferida entre níveis tróficos."
             },
             {
-              "pergunta": "O sistema dos 3 domínios foi proposto por:",
-              "opcoes": ["Carlos Lineu", "Carl Woese"],
-              "correta": 1,
-              "mascote_feedback_certo": "Exato! Foi Carl Woese quem propôs esta divisão baseada em diferenças genéticas.",
-              "mascote_feedback_errado": "Foi Carl Woese quem propôs o sistema dos 3 domínios — Carlos Lineu criou o sistema de classificação original."
-            },
-            {
-              "pergunta": "Verdadeiro ou Falso: dois organismos do mesmo Filo pertencem sempre à mesma Espécie.",
+              "pergunta": "Verdadeiro ou Falso: a matéria (nutrientes) é reciclada num ecossistema, mas a energia não.",
               "opcoes": ["Verdadeiro", "Falso"],
-              "correta": 1,
-              "mascote_feedback_certo": "Certo! O Filo é um grupo muito mais amplo, com muitas espécies diferentes lá dentro.",
-              "mascote_feedback_errado": "Na verdade é falso — o Filo é um grupo muito mais amplo, com muitas espécies diferentes."
+              "correta": 0,
+              "mascote_feedback_certo": "Certo! A matéria circula indefinidamente, mas a energia flui numa só direção e perde-se como calor.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro — a matéria é reciclada, mas a energia flui numa só direção e perde-se como calor."
+            },
+            {
+              "pergunta": "Um predador de topo (consumidor terciário) tem, tipicamente, muito mais ou muito menos energia disponível do que os produtores?",
+              "opcoes": ["Muito menos", "Muito mais"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A cada nível trófico perde-se cerca de 90% da energia disponível.",
+              "mascote_feedback_errado": "Na verdade tem muito menos — perde-se cerca de 90% da energia a cada nível trófico."
             }
           ],
-          "mascote_conclusao": "Já sabes como se classificam e nomeiam os seres vivos. Por fim, vamos ver porque é que toda esta diversidade importa tanto para o planeta. 🐢"
+          "mascote_conclusao": "Já percebeste como a energia e a matéria se movem num ecossistema. A seguir, vamos falar sobre a riqueza de vida que torna tudo isto possível: a biodiversidade. 🐢"
         }
       ]
     },
     {
-      "secao_id": "importancia-biodiversidade",
-      "titulo": "A importância da biodiversidade",
+      "secao_id": "biodiversidade",
+      "titulo": "Biodiversidade: mais do que contar espécies",
       "xp": 25,
       "tempo_estimado_min": 6,
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "Porque é que perder uma única espécie de inseto pode afetar centenas de outras espécies que nunca ouviste falar? 🐢",
-          "texto": "Já sabes como a vida se organiza e se classifica. Falta perceber porque é que toda essa diversidade é tão importante para o planeta — e para nós."
+          "mascote_texto": "Achas que \"biodiversidade\" é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra. 🐢",
+          "texto": "Vamos descobrir os três níveis que compõem a biodiversidade de um ecossistema."
         },
         {
           "tipo": "diagrama_interativo",
-          "titulo": "Os serviços que a biodiversidade nos dá",
-          "imagem": "biodiversidade_importancia.png",
+          "titulo": "Os três níveis de biodiversidade",
+          "imagem": "tres_niveis_biodiversidade.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "polinizacao", "label": "Serviços de polinização", "explicacao": "Muitas plantas, incluindo grande parte das culturas agrícolas alimentares, dependem de animais polinizadores (abelhas, borboletas, morcegos) para se reproduzirem." },
-            { "id": "purificacao", "label": "Purificação da água e do ar", "explicacao": "Ecossistemas saudáveis, como zonas húmidas e florestas, filtram naturalmente poluentes da água e do ar." },
-            { "id": "medicinais", "label": "Recursos medicinais", "explicacao": "Uma grande parte dos medicamentos atuais tem origem em compostos descobertos em plantas, fungos ou outros organismos." },
-            { "id": "regulacao_clima", "label": "Regulação do clima", "explicacao": "A diversidade de ecossistemas (florestas, oceanos, solos) ajuda a regular o clima, absorvendo e armazenando carbono." }
+            { "id": "diversidade_genetica", "label": "Diversidade genética", "explicacao": "A variedade de genes que existe dentro de uma mesma espécie — é o que torna, por exemplo, cada humano geneticamente único, ou permite que existam raças de cães tão diferentes entre si." },
+            { "id": "diversidade_especies", "label": "Diversidade de espécies", "explicacao": "O número e a variedade de espécies diferentes presentes numa determinada área — é o significado mais comum e intuitivo de \"biodiversidade\"." },
+            { "id": "diversidade_ecossistemas", "label": "Diversidade de ecossistemas", "explicacao": "A variedade de habitats e ecossistemas diferentes presentes numa região ou no planeta (florestas, oceanos, desertos, zonas húmidas...)." }
           ]
         },
         {
           "tipo": "micro_verificacao",
-          "pergunta": "Grande parte das culturas agrícolas alimentares depende de:",
-          "opcoes": ["Animais polinizadores", "Apenas do vento"],
+          "pergunta": "A variedade de genes dentro da mesma espécie chama-se:",
+          "opcoes": ["Diversidade genética", "Diversidade de ecossistemas"],
           "correta": 0,
-          "mascote_feedback_certo": "Exato! Sem polinizadores como as abelhas, muitas culturas teriam produção muito menor.",
-          "mascote_feedback_errado": "Na verdade dependem principalmente de animais polinizadores, não apenas do vento."
+          "mascote_feedback_certo": "Exato! É esta diversidade que, por exemplo, ajuda uma espécie a adaptar-se a mudanças ambientais.",
+          "mascote_feedback_errado": "O nome correto é diversidade genética — a diversidade de ecossistemas refere-se à variedade de habitats."
         },
         {
           "tipo": "micro_verificacao",
-          "pergunta": "Muitos medicamentos atuais têm origem em:",
-          "opcoes": ["Compostos descobertos em seres vivos (plantas, fungos, etc.)", "Só em laboratórios, sem ligação à natureza"],
-          "correta": 0,
-          "mascote_feedback_certo": "Isso mesmo! Perder biodiversidade pode significar perder potenciais curas ainda por descobrir.",
-          "mascote_feedback_errado": "Na verdade, uma grande parte tem origem em compostos descobertos em seres vivos — plantas, fungos, entre outros."
+          "pergunta": "A biodiversidade é medida apenas pelo número de espécies numa área?",
+          "opcoes": ["Sim, apenas isso", "Não — inclui também diversidade genética e de ecossistemas"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! Uma área pode ter poucas espécies mas alta diversidade genética dentro delas, ou vice-versa.",
+          "mascote_feedback_errado": "Na verdade não — a biodiversidade inclui também a diversidade genética e a diversidade de ecossistemas."
         },
         {
           "tipo": "analogia",
           "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 A biodiversidade é como uma rede de segurança feita de muitos fios entrelaçados: perder um ou dois fios pode não parecer grave à primeira vista, mas cada fio perdido enfraquece a rede toda — até que, a certo ponto, ela deixa de aguentar o peso e cede. Cada espécie extinta é um fio a menos nessa rede que sustenta os ecossistemas (e, no fim, também a nossa própria alimentação, água e saúde)."
+          "texto": "💡 A biodiversidade é como a diversidade numa biblioteca, medida a três níveis: quantos livros diferentes existem (espécies), quanta variedade de edições/traduções existe de cada livro (genética), e quantas secções/géneros literários diferentes existem na biblioteca toda (ecossistemas). Uma biblioteca \"rica\" não é só sobre ter muitos livros — é sobre ter variedade a todos estes níveis."
         },
         {
           "tipo": "aprofundar",
-          "titulo": "A crise atual de extinção",
-          "texto": "Ao longo da história da Terra, sempre existiu uma \"taxa de extinção de fundo\" — um ritmo natural, lento, a que as espécies se extinguem. Atualmente, estima-se que a taxa de extinção seja centenas a milhares de vezes superior a essa taxa natural, principalmente devido a atividades humanas: destruição de habitats, alterações climáticas, poluição e introdução de espécies invasoras. Por isso, muitos cientistas referem-se ao período atual como uma possível \"sexta extinção em massa\" da história da Terra — as cinco anteriores foram causadas por eventos naturais extremos (como o impacto de asteroide que extinguiu os dinossauros); esta seria a primeira causada por uma única espécie: a nossa."
+          "titulo": "Onde está concentrada a maior parte da biodiversidade do planeta",
+          "texto": "A biodiversidade não está distribuída de forma uniforme pelo planeta. Certas regiões, chamadas hotspots de biodiversidade, concentram uma proporção desproporcionalmente alta de espécies (muitas delas endémicas, ou seja, que não existem em mais lado nenhum) — exemplos incluem a Floresta Atlântica no Brasil, Madagáscar, ou a região do Mediterrâneo. Estas zonas são também, frequentemente, as mais ameaçadas por atividade humana, o que as torna prioridades centrais para os esforços globais de conservação."
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
             {
-              "pergunta": "A taxa de extinção atual, em comparação com a taxa natural de fundo, é:",
-              "opcoes": ["Semelhante", "Muito superior"],
+              "pergunta": "Quantos \"tipos\" ou níveis de biodiversidade foram discutidos nesta secção?",
+              "opcoes": ["2", "3"],
               "correta": 1,
-              "mascote_feedback_certo": "Certo! Estima-se que seja centenas a milhares de vezes superior à taxa natural.",
-              "mascote_feedback_errado": "Na verdade é muito superior à taxa natural de fundo — não semelhante."
+              "mascote_feedback_certo": "Isso mesmo! Genética, de espécies, e de ecossistemas.",
+              "mascote_feedback_errado": "Foram discutidos 3 níveis: diversidade genética, de espécies, e de ecossistemas."
             },
             {
-              "pergunta": "Verdadeiro ou Falso: perder uma espécie nunca afeta outras espécies que não interagem diretamente com ela.",
+              "pergunta": "Uma espécie \"endémica\" de uma região é aquela que:",
+              "opcoes": ["Existe em todo o mundo", "Não existe naturalmente em mais lado nenhum"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Por isso as espécies endémicas são especialmente vulneráveis à extinção.",
+              "mascote_feedback_errado": "Na verdade é o contrário: uma espécie endémica não existe naturalmente em mais lado nenhum."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: a biodiversidade está distribuída de forma igual por todo o planeta.",
               "opcoes": ["Verdadeiro", "Falso"],
               "correta": 1,
-              "mascote_feedback_certo": "Isso mesmo! Os ecossistemas são interligados, e os efeitos podem propagar-se indiretamente.",
-              "mascote_feedback_errado": "Na verdade é falso — os ecossistemas são interligados, e os efeitos podem propagar-se mesmo a espécies sem interação direta."
-            },
-            {
-              "pergunta": "As 5 extinções em massa anteriores da história da Terra foram causadas principalmente por:",
-              "opcoes": ["Atividade de uma única espécie", "Eventos naturais extremos"],
-              "correta": 1,
-              "mascote_feedback_certo": "Correto! As anteriores tiveram causas naturais — esta seria a primeira causada por uma única espécie: a nossa.",
-              "mascote_feedback_errado": "Na verdade foram causadas por eventos naturais extremos — a atual seria a primeira causada por uma única espécie."
+              "mascote_feedback_certo": "Correto! Concentra-se de forma desigual, com \"hotspots\" de alta biodiversidade.",
+              "mascote_feedback_errado": "Na verdade é falso — a biodiversidade concentra-se de forma desigual, com \"hotspots\" de alta biodiversidade."
             }
           ],
-          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes porque organizamos a vida, como ela se estrutura em níveis, como se classifica, e porque toda essa diversidade importa. 🌿🐢"
+          "mascote_conclusao": "Já sabes que biodiversidade é muito mais do que contar espécies. Para terminar, vamos ver o que acontece quando essa diversidade começa a desaparecer — e o que se pode fazer para a proteger. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "extincao-conservacao",
+      "titulo": "Extinção e conservação das espécies",
+      "xp": 25,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade. 🐢",
+          "texto": "Vamos ver as principais causas da perda de biodiversidade — e o que se pode fazer para a proteger."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Causas da perda de biodiversidade",
+          "imagem": "causas_extincao.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "destruicao_habitat", "label": "Destruição de habitat", "explicacao": "A principal causa de perda de biodiversidade atualmente — desflorestação, urbanização e conversão de terrenos para agricultura destroem o espaço onde as espécies vivem." },
+            { "id": "alteracoes_climaticas", "label": "Alterações climáticas", "explicacao": "Mudanças na temperatura e nos padrões climáticos alteram habitats mais depressa do que muitas espécies conseguem adaptar-se ou migrar." },
+            { "id": "especies_invasoras", "label": "Espécies invasoras", "explicacao": "Espécies introduzidas (intencionalmente ou por acidente) fora da sua área natural, que competem com ou predam espécies locais, muitas vezes sem inimigos naturais que as controlem." },
+            { "id": "poluicao", "label": "Poluição", "explicacao": "Contaminação da água, solo e ar afeta diretamente a saúde e sobrevivência de inúmeras espécies." },
+            { "id": "sobre_exploracao", "label": "Sobre-exploração", "explicacao": "Caça, pesca ou recolha de recursos naturais a um ritmo superior à capacidade de renovação natural das populações." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Estratégias de conservação",
+          "imagem": "estrategias_conservacao.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "areas_protegidas", "label": "Áreas protegidas", "explicacao": "Parques nacionais e reservas naturais, onde a atividade humana é limitada ou regulada, para proteger habitats e espécies." },
+            { "id": "reproducao_cativeiro", "label": "Reprodução em cativeiro", "explicacao": "Programas que reproduzem espécies ameaçadas em ambientes controlados (zoos, centros de conservação), por vezes com o objetivo de reintroduzi-las na natureza." },
+            { "id": "legislacao", "label": "Legislação e acordos internacionais", "explicacao": "Leis nacionais e tratados internacionais (como a CITES, que regula o comércio internacional de espécies ameaçadas) que restringem atividades prejudiciais à biodiversidade." },
+            { "id": "restauro_ecologico", "label": "Restauro ecológico", "explicacao": "Ações ativas para recuperar ecossistemas degradados, como reflorestação ou reintrodução de espécies-chave." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é, atualmente, a principal causa de perda de biodiversidade?",
+          "opcoes": ["Destruição de habitat", "Reprodução em cativeiro"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! A destruição de habitats naturais é hoje a maior ameaça à biodiversidade global.",
+          "mascote_feedback_errado": "A principal causa atual é a destruição de habitat — a reprodução em cativeiro é, na verdade, uma estratégia de conservação."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A CITES é um exemplo de:",
+          "opcoes": ["Uma espécie invasora", "Um acordo internacional de conservação"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! A CITES regula o comércio internacional de espécies ameaçadas.",
+          "mascote_feedback_errado": "A CITES é, na verdade, um acordo internacional que regula o comércio de espécies ameaçadas."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Espécies introduzidas fora da sua área natural, sem inimigos naturais que as controlem, são chamadas:",
+          "opcoes": ["Espécies endémicas", "Espécies invasoras"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! Podem causar grandes desequilíbrios nos ecossistemas onde são introduzidas.",
+          "mascote_feedback_errado": "O nome correto é espécies invasoras — endémicas são espécies que só existem naturalmente numa dada região."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Proteger a biodiversidade é como cuidar de um jardim antigo e complexo: não basta plantar novas flores (reprodução em cativeiro) se continuares a deitar químicos no solo (poluição) ou a cortar as árvores à volta (destruição de habitat). A conservação eficaz exige atuar em várias frentes ao mesmo tempo — proteger o espaço, controlar ameaças externas, e por vezes ajudar ativamente a recuperar o que já foi perdido."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A Lista Vermelha da IUCN — como se mede o risco de extinção",
+          "texto": "A União Internacional para a Conservação da Natureza (IUCN) mantém a \"Lista Vermelha\", um sistema padronizado que classifica o estado de conservação das espécies em categorias como: Pouco Preocupante, Quase Ameaçada, Vulnerável, Em Perigo, Criticamente em Perigo, Extinta na Natureza, e Extinta. Esta classificação baseia-se em critérios como a taxa de declínio populacional, o tamanho e fragmentação da área de distribuição, e o tamanho total da população — permitindo aos cientistas e governos priorizar recursos de conservação para as espécies mais urgentemente ameaçadas."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A principal causa atual de perda de biodiversidade é:",
+              "opcoes": ["Destruição de habitat", "Reprodução em cativeiro"],
+              "correta": 0,
+              "mascote_feedback_certo": "Boa! A destruição de habitats naturais é hoje a maior ameaça à biodiversidade global.",
+              "mascote_feedback_errado": "A principal causa atual é a destruição de habitat, não a reprodução em cativeiro (que é uma estratégia de conservação)."
+            },
+            {
+              "pergunta": "A Lista Vermelha, que classifica o risco de extinção das espécies, é mantida por:",
+              "opcoes": ["A IUCN", "As Nações Unidas apenas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! É a União Internacional para a Conservação da Natureza (IUCN).",
+              "mascote_feedback_errado": "A Lista Vermelha é mantida pela IUCN, não diretamente pelas Nações Unidas."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: espécies invasoras raramente causam problemas nos ecossistemas onde são introduzidas.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Podem causar grandes desequilíbrios, por não terem inimigos naturais locais.",
+              "mascote_feedback_errado": "Na verdade é falso — as espécies invasoras podem causar grandes desequilíbrios, por não terem inimigos naturais locais."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que realmente significa biodiversidade, e como podemos ajudar a proteger o que resta dela. 🌍🐢"
         }
       ]
     }

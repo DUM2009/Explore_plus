@@ -1,0 +1,26 @@
+{
+  "_comentario": "Controla que missões aparecem em /missions/. true = visível, false = oculta (não aparece de todo, nem como 'Em breve'). Para lançar uma missão basta mudar o valor para true aqui, sem tocar em código.",
+
+  "diversidade-organizacao-biologica": true,
+  "biomoleculas": true,
+  "celulas-organelos": true,
+
+  "codigo-da-vida": true,
+  "sintese-proteica": true,
+  "ciclo-celular": true,
+
+  "fotossintese": false,
+  "obtencao-materia-heterotroficos": false,
+  "xilema-floema": false,
+  "transporte-animais": false,
+  "respiracao-aerobia-fermentacao": false,
+  "trocas-gasosas": false,
+  "lamarckismo-darwinismo": false,
+  "taxonomia-sistematica": false,
+  "mitose": false,
+  "meiose-reproducao-sexuada": false,
+  "reproducao-assexuada": false,
+  "ciclos-vida": false,
+  "ecossistemas": false,
+  "sistema-nervoso": false
+}

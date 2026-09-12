@@ -272,7 +272,23 @@ def pagina_index_missions(request):
         perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
     except OperationalError:
         perfil = None
-    return render(request, 'index-missions.html', {'perfil': perfil})
+
+    missoes_lancadas = set()
+    try:
+        caminho_lancamento = settings.BASE_DIR.parent / 'missoes' / 'lancamento.json'
+        with open(caminho_lancamento, encoding='utf-8') as ficheiro:
+            configuracao_lancamento = json.load(ficheiro)
+        missoes_lancadas = {
+            chave for chave, visivel in configuracao_lancamento.items()
+            if visivel is True
+        }
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
+
+    return render(request, 'index-missions.html', {
+        'perfil': perfil,
+        'missoes_lancadas': missoes_lancadas,
+    })
 
 
 @login_required(login_url='login')
