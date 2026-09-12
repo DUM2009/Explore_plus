@@ -1642,16 +1642,16 @@ gap:20px;
     padding:14px 40px;
     border:none;
     border-radius:999px;
-    background:#1f8a5b;
+    background:#90a668;
     color:#fff;
     font-size:1rem;
     font-weight:700;
     cursor:pointer;
-    box-shadow:0 10px 24px rgba(31,138,91,.25);
+    box-shadow:0 10px 24px rgba(144,166,104,.25);
 }
 
 .teste-submeter-btn:hover{
-    background:#166c45;
+    background:#7c9457;
 }
 
 .teste-submeter-btn:disabled{
@@ -1943,7 +1943,7 @@ gap:20px;
     border-radius:50%;
     border:none;
     box-shadow:none;
-    background:#1f8a5b;
+    background:#90a668;
     color:#ffffff;
     display:grid;
     place-items:center;
@@ -1951,7 +1951,7 @@ gap:20px;
 }
 
 .teste-mascote-send:hover{
-    background:#166c45;
+    background:#7c9457;
 }
 
 @media (max-width:480px){
@@ -2212,18 +2212,18 @@ gap:20px;
 }
 
 .flashcards-restart-btn{
-    background:#1f8a5b;
+    background:#90a668;
     color:#fff;
     border:none;
     border-radius:999px;
     padding:12px 28px;
     font-weight:700;
     cursor:pointer;
-    box-shadow:0 10px 24px rgba(31,138,91,.25);
+    box-shadow:0 10px 24px rgba(144,166,104,.25);
 }
 
 .flashcards-restart-btn:hover{
-    background:#166c45;
+    background:#7c9457;
 }
 
 /* Ecrã 2 (resumo intermédio) e Ecrã 4 (resultado final) — mascote +
@@ -2252,7 +2252,7 @@ gap:20px;
 
 .flashcards-primary-btn{
     display:inline-block;
-    background:#1f8a5b;
+    background:#90a668;
     color:#fff;
     border:none;
     border-radius:999px;
@@ -2261,11 +2261,11 @@ gap:20px;
     font-size:.94rem;
     cursor:pointer;
     text-decoration:none;
-    box-shadow:0 10px 24px rgba(31,138,91,.25);
+    box-shadow:0 10px 24px rgba(144,166,104,.25);
 }
 
 .flashcards-primary-btn:hover{
-    background:#166c45;
+    background:#7c9457;
 }
 
 .flashcards-secondary-btn{
@@ -4392,7 +4392,7 @@ background:#27ae60;
     border: none;
     border-radius: 12px;
     padding: 12px 26px;
-    background: #789b4a;
+    background: #90a668;
     color: white;
     font-size: 15px;
     font-weight: 600;
@@ -4401,7 +4401,7 @@ background:#27ae60;
 }
 
 .home-mission-button:hover {
-    background: #66883d;
+    background: #7c9457;
     transform: translateY(-1px);
 }
 
@@ -7037,7 +7037,7 @@ body {
 
 
 .continue-button {
-    background: #299a4d;
+    background: #90a668;
     color: white;
 
     min-width: 180px;
@@ -8036,16 +8036,16 @@ body.shadcn-profile .profile-empty-activity {
     padding: 14px;
     border: none;
     border-radius: 999px;
-    background: #1f8a5b;
+    background: #90a668;
     color: #ffffff;
     font-weight: 700;
     font-size: 1.05rem;
     cursor: pointer;
-    box-shadow: 0 4px 18px rgba(31, 138, 91, 0.4);
+    box-shadow: 0 4px 18px rgba(144, 166, 104, 0.4);
 }
 
 .onboarding-submit-btn:hover {
-    background: #166c45;
+    background: #7c9457;
 }
 
 .onboarding-page .form-error {
@@ -8725,8 +8725,8 @@ body.shadcn-profile .profile-help-tip[hidden] {
     padding: 0;
     border-radius: 50%;
     border: none;
-    box-shadow: 0 4px 10px rgba(31, 138, 91, .28);
-    background: linear-gradient(135deg, #23a06a, #1f8a5b);
+    box-shadow: 0 4px 10px rgba(144, 166, 104, .28);
+    background: #90a668;
     color: #ffffff;
     transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
     display: grid;
@@ -8735,9 +8735,9 @@ body.shadcn-profile .profile-help-tip[hidden] {
 }
 
 .mascote-chat-send:hover {
-    background: linear-gradient(135deg, #1f8a5b, #166c45);
+    background: #7c9457;
     transform: scale(1.06);
-    box-shadow: 0 6px 14px rgba(31, 138, 91, .36);
+    box-shadow: 0 6px 14px rgba(144, 166, 104, .36);
 }
 
 .mascote-chat-send:active {
@@ -9837,7 +9837,7 @@ body.shadcn-profile .profile-quickstat-row small {
 
 .resumo-modo-btn.is-active {
     border-color: transparent;
-    background: #1f8a5b;
+    background: #90a668;
     color: #ffffff;
     box-shadow: none;
 }

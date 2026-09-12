@@ -54,25 +54,27 @@ const missionData = {
                         <img class="intro-hero-image" src="/static/images/Planta-fotossíntese.png" alt="Planta a receber luz solar">
 
                         <div class="intro-summary-card">
-                            <span class="intro-summary-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sprout">
-                                    <path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/>
-                                    <path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/>
-                                    <path d="M5 21h14"/>
-                                </svg>
-                            </span>
-                            <div class="intro-summary-body">
-                                <h4>A planta produz o seu próprio alimento</h4>
-                                <p>Ao contrário dos animais, as plantas não saem à procura de alimento. Elas próprias o fabricam! Este processo chama-se <strong>fotossíntese</strong>.</p>
-                                <p>Com a energia da luz solar, a planta transforma a <span class="key-term">água</span> e o <span class="key-term">dióxido de carbono</span> em <span class="key-term">glicose</span> (o seu alimento) e liberta <span class="key-term">oxigénio</span> para o ambiente.</p>
-                                <div class="intro-equation">
-                                    6CO<sub>2</sub> + 6H<sub>2</sub>O
-                                    <span class="intro-equation-arrow-group">
-                                        <span class="intro-equation-energy">Energia luminosa</span>
-                                        <span class="intro-equation-arrow">&rarr;</span>
-                                    </span>
-                                    C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub>
+                            <div class="intro-summary-top">
+                                <span class="intro-summary-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sprout">
+                                        <path d="M14 9.536V7a4 4 0 0 1 4-4h1.5a.5.5 0 0 1 .5.5V5a4 4 0 0 1-4 4 4 4 0 0 0-4 4c0 2 1 3 1 5a5 5 0 0 1-1 3"/>
+                                        <path d="M4 9a5 5 0 0 1 8 4 5 5 0 0 1-8-4"/>
+                                        <path d="M5 21h14"/>
+                                    </svg>
+                                </span>
+                                <div class="intro-summary-body">
+                                    <h4>A planta produz o seu próprio alimento</h4>
+                                    <p>Ao contrário dos animais, as plantas não saem à procura de alimento. Elas próprias o fabricam! Este processo chama-se <strong>fotossíntese</strong>.</p>
+                                    <p>Com a energia da luz solar, a planta transforma a <span class="key-term">água</span> e o <span class="key-term">dióxido de carbono</span> em <span class="key-term">glicose</span> (o seu alimento) e liberta <span class="key-term">oxigénio</span> para o ambiente.</p>
                                 </div>
+                            </div>
+                            <div class="intro-equation">
+                                6CO<sub>2</sub> + 6H<sub>2</sub>O
+                                <span class="intro-equation-arrow-group">
+                                    <span class="intro-equation-energy">Energia luminosa</span>
+                                    <span class="intro-equation-arrow">&rarr;</span>
+                                </span>
+                                C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub>
                             </div>
                         </div>
 
@@ -162,7 +164,7 @@ const missionData = {
                                 <h4>O cloroplasto: a “fábrica” da fotossíntese</h4>
                                 <p>Para fabricar o seu alimento, a planta precisa de um local onde todas as reações da fotossíntese acontecem. Esse local chama-se <strong>cloroplasto</strong>.</p>
                                 <p>O cloroplasto é um organelo presente nas células das plantas. É aqui que a energia da luz é captada e utilizada para transformar água e dióxido de carbono em glicose.</p>
-                                <p><strong>Curiosidade:</strong> Os cloroplastos têm o seu próprio DNA — há milhões de anos eram bactérias independentes, incorporadas pelas células ancestrais das plantas.</p>
+                                <p><strong>Curiosidade:</strong> Os cloroplastos têm o seu próprio DNA — os cientistas dizem que há milhões de anos eram bactérias independentes, incorporadas pelas células ancestrais das plantas.</p>
                             </div>
                             <div class="plant-hotspot-panel" data-hotspot="tilacoides">
                                 <h4>Os tilacóides: os “painéis solares” da fotossíntese</h4>
@@ -184,7 +186,7 @@ const missionData = {
                             <h4>O cloroplasto: a “fábrica” da fotossíntese</h4>
                             <p>Para fabricar o seu alimento, a planta precisa de um local onde todas as reações da fotossíntese acontecem. Esse local chama-se <strong>cloroplasto</strong>.</p>
                             <p>O cloroplasto é um organelo presente nas células das plantas. É aqui que a energia da luz é captada e utilizada para transformar água e dióxido de carbono em glicose.</p>
-                            <p><strong>Curiosidade:</strong> Os cloroplastos têm o seu próprio DNA — há milhões de anos eram bactérias independentes, incorporadas pelas células ancestrais das plantas.</p>
+                            <p><strong>Curiosidade:</strong> Os cloroplastos têm o seu próprio DNA — os cientistas dizem que há milhões de anos eram bactérias independentes, incorporadas pelas células ancestrais das plantas.</p>
                         </div>
                     </div>
                 </div>
@@ -248,7 +250,7 @@ const missionData = {
                         options: [
                             { text: "Estoma", correct: true },
                             { text: "Nervura", correct: false },
-                            { text: "Raiz", correct: false }
+                            { text: "Estroma", correct: false }
                         ],
                         feedback: {
                             correct: "Boa! O CO2 entra pelos estomas.",
@@ -281,8 +283,18 @@ const missionData = {
             xpReward: 60,
             completionMessage: "Etapa concluída! +60 XP. Já entendes como a luz se converte em ATP e NADPH.",
             explorerTip: "A fase clara só acontece com luz — sem Sol, não há ATP nem NADPH! ☀️",
-            introGreeting: "Agora vamos explorar a fase clara!",
-            introCta: "Bora!",
+            introGreeting: "Já sabemos onde acontece a fotossíntese. Mas como é que a luz do Sol é transformada em energia útil para a planta?",
+            introCta: "Vamos descobrir!",
+            electronLossGate: {
+                prompt: "De onde achas que vêm os eletrões que vão substituir os que a clorofila perdeu?",
+                options: [
+                    { label: "A) Do CO<sub>2</sub>", correct: false },
+                    { label: "B) Da água", correct: true },
+                    { label: "C) Da glicose", correct: false }
+                ],
+                explanation: "Os eletrões que substituem os perdidos pela clorofila vêm da fotólise da água. Vamos descobrir como!",
+                cta: "Continuar"
+            },
             summarySteps: [
                 { icon: "☀️", label: "Luz do Sol" },
                 { icon: "🍃", label: "Absorção da luz pelos pigmentos" },
@@ -290,54 +302,27 @@ const missionData = {
                 { icon: "🔋", label: "Produção de ATP e NADPH" },
                 { icon: "💨", label: "Libertação de oxigénio (O₂)" }
             ],
-            factOfTheDay: "Os cientistas só descobriram a existência de dois fotossistemas na década de 1960.",
-            introIcon: "☀️",
-            introHighlight: "A fase clara da fotossíntese ocorre nas <span class=\"key-term\">membranas dos tilacóides</span> dos cloroplastos e depende da <span class=\"key-term\">luz do Sol</span>. É nela que a energia luminosa é captada e transformada em energia química: <span class=\"key-term\">ATP e NADPH</span>.",
             content: `
                 <div class="section-content">
 
- <div class="screen-card">
-                        <h3>Como é que a luz inicia a fotossíntese?</h3>
-                        <p style="text-align: center; font-size: 1.1em;"><strong>🌱 Já sabemos onde acontece a fotossíntese. Mas como é que a luz do Sol é transformada em energia útil para a planta?</strong></p>
-                        <img class="screen-visual" src="/static/images/Tilacoides 2.jpg" alt="Zoom desde a folha até à membrana dos tilacóides, passando pelo parênquima clorofilino e pelo cloroplasto">
-                        <p><strong>Tudo começa quando a luz do Sol atinge a clorofila.</strong>
-                        <p>A clorofila não trabalha sozinha. Ela encontra-se organizada em estruturas chamadas fotossistemas, responsáveis por captar a energia luminosa.
-
-Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam na fase clara, mas desempenham funções diferentes.</p>
-                         <details class="did-you-know">
-                            <summary>Saber mais...</summary>
-                            <p>Sabias que os cientistas só descobriram que existem dois fotossistemas na década de 1960. Até então, acreditava-se que toda a fotossíntese era realizada por um único sistema de captação de luz.</p>
-                        </details>
-</div>
-
                     <div class="screen-card">
                         <h3>A entrada da luz</h3>
-                        <img class="screen-visual" src="/static/images/Membrana dos tilacoides.jpg" alt="Luz solar a atingir membrana verde">
-                        <p>A luz atinge o fotossistema II e a clorofila absorve a energia da luz. Essa energia é suficiente para fazer com que alguns eletrões da clorofila fiquem energizados e sejam libertados.</p>
-                        <p><strong>Mas surge um problema...</strong></p>
-                        <p>Ao perder eletrões (oxidar), a clorofila do Fotossistema II precisa de os substituir para continuar a captar energia luminosa.</p>
+                        <img class="screen-visual" src="/static/images/Cadeia transportadora de eletrões.png" alt="Cadeia transportadora de eletrões">
+                        <div class="screen-text-card">
+                            <p><strong>Tudo começa quando a luz do Sol atinge a clorofila.</strong></p>
+                            <p>A clorofila não trabalha sozinha. Ela encontra-se organizada em estruturas chamadas fotossistemas, responsáveis por captar a energia luminosa. Existem dois fotossistemas: Fotossistema II e Fotossistema I. Ambos participam na fase clara, mas desempenham funções diferentes.</p>
+                            <p>A luz atinge o fotossistema II e a clorofila absorve a energia da luz. Essa energia é suficiente para fazer com que alguns eletrões da clorofila fiquem energizados e sejam libertados.</p>
+                            <p><strong>Mas surge um problema...</strong></p>
+                            <p>Ao perder eletrões (oxidar), a clorofila do Fotossistema II precisa de os substituir para continuar a captar energia luminosa.</p>
+                        </div>
                         </div>
 
-
-
-                    <div class="screen-card">
-                        <p><strong>De onde achas que vêm os eletrões que vão substituir os que a clorofila perdeu?</strong></p>
-                        <div class="guide-options electron-loss-options">
-                            <button type="button" class="guide-option electron-loss-option" data-correct="false">A) Do CO<sub>2</sub></button>
-                            <button type="button" class="guide-option electron-loss-option" data-correct="true">B) Da água</button>
-                            <button type="button" class="guide-option electron-loss-option" data-correct="false">C) Da glicose</button>
-                        </div>
-                        <div class="neutral-feedback electron-loss-feedback">
-                            <p><strong>Explicação:</strong></p>
-                            <blockquote>
-                                Os eletrões que substituem os perdidos pela clorofila vêm da fotólise da água. Vamos descobrir como!
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <div class="screen-card">
+                    <div class="screen-card" data-electron-loss-gate="true">
                         <h3>Fotólise da água</h3>
-                        <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Divisao da agua em produtos">
+                        <div class="card-visual-row">
+                            <img class="card-visual" src="/static/images/Fotólise da água.jpg" alt="Divisao da agua em produtos">
+                            <img class="card-visual" src="/static/images/Fotossistema II - cadeia transportadora.png" alt="Fotossistema II na membrana dos tilacóides, mostrando a fotólise da água">
+                        </div>
                         <p>A fotólise da água é uma etapa da fase luminosa da fotossíntese que ocorre no fotossistema II (PSII), localizado na membrana dos tilacóides dos cloroplastos.</p>
                         <p>A energia luminosa permite a quebra das moléculas de água (H₂O) em eletrões (e⁻), protões (H⁺) e oxigénio (O₂).</p>
                         <ul>

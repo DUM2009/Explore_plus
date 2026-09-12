@@ -27,6 +27,7 @@ class MissionSystem {
         this.mascotIntroShown = {};
         this.mascotQuizIntroShown = {};
         this.mascotChallengeIntroShown = {};
+        this.electronLossGateShown = {};
         this.quizViewActive = {};
         // Transient (not persisted): which just-answered question is still
         // showing its feedback, waiting for "Continuar".
@@ -1992,6 +1993,7 @@ class MissionSystem {
                 .join('');
             navEl.innerHTML = `
                 <button type="button" class="screen-nav-btn screen-nav-btn--prev screen-nav-btn--icon" data-nav-action="prev" aria-label="Anterior"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg></button>
+                <button type="button" class="screen-nav-btn screen-nav-repeat-btn" data-nav-action="repeat" hidden>&#8635; Repetir quiz</button>
                 <div class="screen-nav-pages">${pageButtons}</div>
                 <button type="button" class="screen-nav-btn" data-nav-action="next">Continuar</button>
             `;
@@ -2722,6 +2724,13 @@ class MissionSystem {
             quizEl.classList.toggle('quiz-entry-hidden', !shouldShowQuiz);
             sectionEl.classList.toggle('quiz-only-mode', shouldShowQuiz);
 
+            // "Repetir quiz" only makes sense once there's a finished
+            // attempt to redo — sits right next to Anterior in the nav row.
+            const repeatBtn = navEl?.querySelector('.screen-nav-repeat-btn');
+            if (repeatBtn) {
+                repeatBtn.hidden = !(shouldShowQuiz && this.completedSections.has(section.id));
+            }
+
             if (!isLast && isQuizEntryOpen) {
                 delete this.quizEntryState[section.id];
                 this.saveProgress();
@@ -2757,6 +2766,85 @@ class MissionSystem {
         this.showMascotOverlay(message, cta, proceed, { extraClass: 'mascot-overlay-card--split' });
     }
 
+    /**
+     * Gates entry into the screen right after "A entrada da luz" (marked
+     * with data-electron-loss-gate, see mission-data-*.js) behind a
+     * one-time mascot popup asking where the replacement electrons come
+     * from — same split layout (mascot left, question right) as
+     * showMascotOverlay's split variant, but with the A/B/C options and
+     * feedback inline instead of a single CTA. Shown once per section,
+     * tracked in electronLossGateShown, the same way
+     * showChallengeIntroIfNeeded tracks its own popup.
+     */
+    showElectronLossGateIfNeeded(section, targetScreen, proceed) {
+        const isGateScreen = targetScreen?.dataset.electronLossGate === 'true';
+        if (!isGateScreen || !section.electronLossGate || this.electronLossGateShown[section.id]) {
+            proceed();
+            return;
+        }
+
+        this.electronLossGateShown[section.id] = true;
+        this.showElectronLossGateOverlay(section.electronLossGate, proceed);
+    }
+
+    showElectronLossGateOverlay(gate, proceed) {
+        const existing = document.getElementById('mascotOverlay');
+        if (existing) existing.remove();
+
+        const overlay = document.createElement('div');
+        overlay.id = 'mascotOverlay';
+        overlay.className = 'mascot-overlay';
+        const optionsHtml = gate.options.map((opt) =>
+            `<button type="button" class="guide-option electron-loss-option" data-correct="${opt.correct ? 'true' : 'false'}">${opt.label}</button>`
+        ).join('');
+        overlay.innerHTML = `
+            <div class="mascot-overlay-card mascot-overlay-card--split" role="dialog" aria-modal="true" aria-label="Pergunta da mascote">
+                <div class="mascot-overlay-split-figure">${this.getMascotOverlayFigureHtml()}</div>
+                <div class="mascot-overlay-split-body">
+                    <p class="mascot-overlay-text"><strong>${gate.prompt}</strong></p>
+                    <div class="guide-options electron-loss-options">${optionsHtml}</div>
+                    <div class="neutral-feedback electron-loss-feedback">
+                        <blockquote>${gate.explanation}</blockquote>
+                    </div>
+                    <button type="button" class="mascot-overlay-btn" disabled>${gate.cta || 'Continuar'}</button>
+                </div>
+            </div>
+        `;
+
+        const continueBtn = overlay.querySelector('.mascot-overlay-btn');
+        overlay.querySelectorAll('.electron-loss-option').forEach((button) => {
+            button.addEventListener('click', () => {
+                if (button.disabled) return;
+                overlay.querySelectorAll('.electron-loss-option').forEach((opt) => {
+                    opt.disabled = true;
+                    if (opt.dataset.correct === 'true') {
+                        opt.classList.add('correct');
+                    } else if (opt === button) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+
+                const feedbackEl = overlay.querySelector('.electron-loss-feedback');
+                if (feedbackEl) {
+                    feedbackEl.classList.add('show');
+                    if (button.dataset.correct === 'true') {
+                        const quote = feedbackEl.querySelector('blockquote');
+                        if (quote) quote.textContent = `Exatamente! ${quote.textContent.trim()}`;
+                    }
+                }
+                if (continueBtn) continueBtn.disabled = false;
+            });
+        });
+
+        continueBtn?.addEventListener('click', () => {
+            if (continueBtn.disabled) return;
+            overlay.remove();
+            proceed();
+        });
+
+        document.body.appendChild(overlay);
+    }
+
     handleScreenNav(event, sectionEl, section) {
         const button = event.target.closest('[data-nav-action]');
         if (!button) return;
@@ -2774,7 +2862,9 @@ class MissionSystem {
             if (current < screens.length - 1) {
                 const targetIndex = current + 1;
                 this.showChallengeIntroIfNeeded(section, screens[targetIndex], () => {
-                    this.updateSectionScreen(sectionEl, section, targetIndex);
+                    this.showElectronLossGateIfNeeded(section, screens[targetIndex], () => {
+                        this.updateSectionScreen(sectionEl, section, targetIndex);
+                    });
                 });
                 return;
             }
@@ -2798,6 +2888,11 @@ class MissionSystem {
 
         if (action === 'prev' && current > 0) {
             this.updateSectionScreen(sectionEl, section, current - 1, true, { direction: 'backward' });
+        }
+
+        if (action === 'repeat') {
+            const sectionIndex = this.mission.sections.findIndex((s) => s.id === section.id);
+            this.repeatSectionQuiz(section, sectionIndex);
         }
     }
 
@@ -2889,8 +2984,10 @@ class MissionSystem {
         const targetIndex = targetScreen - 1;
 
         this.showChallengeIntroIfNeeded(section, screens[targetIndex], () => {
-            this.quizViewActive[section.id] = false;
-            this.updateSectionScreen(sectionEl, section, targetIndex);
+            this.showElectronLossGateIfNeeded(section, screens[targetIndex], () => {
+                this.quizViewActive[section.id] = false;
+                this.updateSectionScreen(sectionEl, section, targetIndex);
+            });
         });
     }
 
@@ -2943,12 +3040,8 @@ class MissionSystem {
             if (submitBtn) submitBtn.disabled = !event.target.value.trim();
         });
 
-        sectionEl.querySelectorAll('.guide-option:not(.electron-loss-option)').forEach(option => {
+        sectionEl.querySelectorAll('.guide-option').forEach(option => {
             option.addEventListener('click', (event) => this.handleGuideOption(event));
-        });
-
-        sectionEl.querySelectorAll('.electron-loss-option').forEach(option => {
-            option.addEventListener('click', (event) => this.handleElectronLossOption(event));
         });
 
         sectionEl.querySelectorAll('.simple-explanation-btn').forEach(button => {
@@ -3153,9 +3246,11 @@ class MissionSystem {
     }
 
     completeSection(section, sectionIndex) {
-        if (this.completedSections.has(section.id)) {
-            return;
-        }
+        // A repeat attempt (see repeatSectionQuiz) re-enters here with the
+        // section already in completedSections — still worth showing the
+        // score dialog again, just without re-awarding XP/badges or moving
+        // the student's place in the mission a second time.
+        const alreadyCompleted = this.completedSections.has(section.id);
 
         const quizRewardSource = this.buildRewardSource('quiz', `${this.mission.id}:${section.id}`);
         const answerState = this.getSectionAnswerState(section.id);
@@ -3163,24 +3258,26 @@ class MissionSystem {
         const totalQuestions = this.getSectionQuestions(section).length;
         const quizPercentage = totalQuestions ? (correctAnswers / totalQuestions) * 100 : 0;
 
-        this.completedSections.add(section.id);
-        this.earnedXP += section.xpReward;
-        this.awardProfileXP(section.xpReward, quizRewardSource, {
-            type: 'quiz',
-            percentage: quizPercentage
-        });
-        this.showXPReward(section.xpReward);
+        if (!alreadyCompleted) {
+            this.completedSections.add(section.id);
+            this.earnedXP += section.xpReward;
+            this.awardProfileXP(section.xpReward, quizRewardSource, {
+                type: 'quiz',
+                percentage: quizPercentage
+            });
+            this.showXPReward(section.xpReward);
 
-        if (sectionIndex + 1 < this.mission.sections.length) {
-            this.currentSectionIndex = sectionIndex + 1;
-            this.activeSectionIndex = this.currentSectionIndex;
-            this.chapterCompletionView = false;
-        } else {
-            this.chapterCompletionView = true;
+            if (sectionIndex + 1 < this.mission.sections.length) {
+                this.currentSectionIndex = sectionIndex + 1;
+                this.activeSectionIndex = this.currentSectionIndex;
+                this.chapterCompletionView = false;
+            } else {
+                this.chapterCompletionView = true;
+            }
+
+            this.saveProgress();
+            this.showCorrectAnimation();
         }
-
-        this.saveProgress();
-        this.showCorrectAnimation();
 
         const hasNextSection = sectionIndex + 1 < this.mission.sections.length;
 
@@ -3201,9 +3298,35 @@ class MissionSystem {
         };
 
         const reviewContent = () => this.reviewSectionContent(section, sectionIndex);
+        const repeatQuiz = () => this.repeatSectionQuiz(section, sectionIndex);
 
-        const rankTitle = window.ProfileXP?.getProfileOverview?.(window.ProfileXP.getCurrentUserProfile())?.rank?.title || 'Explorador';
-        const scoreCaption = totalQuestions ? `Perguntas acertadas — nada mau, ${rankTitle}` : '';
+        const rankTitle = (window.ProfileXP?.getProfileOverview?.(window.ProfileXP.getCurrentUserProfile())?.rank?.title || 'Explorador').replace(/!+$/, '');
+        const scoreRatio = totalQuestions ? correctAnswers / totalQuestions : 0;
+
+        // Message and ring color both scale with the score ratio, not a
+        // fixed "out of 6" — so quizzes with a different question count
+        // still land in the right bucket (e.g. 4/6 and 2/3 both "Nada mau").
+        let scoreCaption = '';
+        let scoreColor = '';
+        if (totalQuestions) {
+            if (scoreRatio >= 1) {
+                scoreCaption = `Excelente, ${rankTitle}!`;
+            } else if (scoreRatio >= 0.6) {
+                scoreCaption = `Nada mau, ${rankTitle}!`;
+            } else if (scoreRatio >= 0.4) {
+                scoreCaption = 'Ainda podes melhorar';
+            } else {
+                scoreCaption = 'É melhor reveres a matéria';
+            }
+
+            if (scoreRatio <= 1 / 3) {
+                scoreColor = '#ef4444';
+            } else if (scoreRatio <= 2 / 3) {
+                scoreColor = '#eab308';
+            } else {
+                scoreColor = '#22c55e';
+            }
+        }
 
         const completionMessage = typeof section.completionMessage === 'string' && section.completionMessage.trim()
             ? section.completionMessage.trim()
@@ -3211,10 +3334,10 @@ class MissionSystem {
 
         const ctaLabel = hasNextSection ? 'Avança para o próximo conteúdo →' : 'Ir para o desafio';
 
-        // Every finished section unlocks its own little badge (icon it
-        // already carries in the mission data); the mission's overall
-        // badge only really gets "unlocked" once there's no section left.
-        const badges = [{ icon: section.icon, label: section.title }];
+        // Only the mission's overall badge shows here (once there's no
+        // section left) — the per-section badge/title used to show too,
+        // dropped to keep the completion panel focused on the score.
+        const badges = [];
         if (!hasNextSection && this.mission.badge) {
             badges.push({ icon: this.mission.badge.icon, label: this.mission.badge.name, isMissionBadge: true });
         }
@@ -3223,11 +3346,13 @@ class MissionSystem {
             correctAnswers,
             totalQuestions,
             scoreCaption,
+            scoreColor,
             message: completionMessage,
             ctaLabel,
             badges,
             onContinue: continueToNext,
-            onReview: reviewContent
+            onReview: reviewContent,
+            onRepeat: totalQuestions ? repeatQuiz : null
         });
         return;
     }
@@ -3250,15 +3375,51 @@ class MissionSystem {
         }
     }
 
-    showSectionCompletionDialog({ correctAnswers, totalQuestions, scoreCaption, message, ctaLabel, badges, onContinue, onReview }) {
+    /**
+     * Clears this section's saved quiz answers so the student can answer
+     * them again — completedSections/XP/badges already earned the first
+     * time stay untouched (completeSection() skips re-awarding them once
+     * it sees the section is already in completedSections). Screen/quiz
+     * navigation state (sectionScreenProgress, quizEntryState) is left
+     * alone too, so the re-render lands straight back on the quiz instead
+     * of at the section's first content screen.
+     */
+    repeatSectionQuiz(section, sectionIndex) {
+        this.userAnswers[section.id] = { answers: [] };
+        delete this.awaitingContinue[section.id];
+        this.activeSectionIndex = sectionIndex;
+        this.showPathScreen = false;
+        this.saveProgress();
+        this.render();
+
+        const sectionEl = document.querySelector(`.section[data-section-id="${section.id}"]`);
+        sectionEl?.querySelector('.section-quiz')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    showSectionCompletionDialog({ correctAnswers, totalQuestions, scoreCaption, scoreColor, message, ctaLabel, badges, onContinue, onReview, onRepeat }) {
         const existing = document.getElementById('sectionCompletionOverlay');
         if (existing) {
             existing.remove();
         }
 
+        // Ring is a plain SVG circle, its stroke "cut" to the score % via
+        // dasharray/dashoffset — radius 52 picked to match the circumference
+        // math below (2 * PI * 52).
+        const ringRadius = 52;
+        const ringCircumference = 2 * Math.PI * ringRadius;
+        const ringPercent = totalQuestions ? Math.max(0, Math.min(1, correctAnswers / totalQuestions)) : 0;
+        const ringOffset = ringCircumference * (1 - ringPercent);
+
         const heroHtml = totalQuestions ? `
             <div class="section-completion-hero">
-                <p class="section-completion-hero-number">${correctAnswers}/${totalQuestions}</p>
+                <div class="section-completion-ring">
+                    <svg viewBox="0 0 120 120">
+                        <circle class="section-completion-ring-bg" cx="60" cy="60" r="${ringRadius}"></circle>
+                        <circle class="section-completion-ring-progress" cx="60" cy="60" r="${ringRadius}"
+                            style="stroke: ${scoreColor}; stroke-dasharray: ${ringCircumference}; stroke-dashoffset: ${ringOffset};"></circle>
+                    </svg>
+                    <span class="section-completion-ring-text">${correctAnswers}/${totalQuestions}</span>
+                </div>
                 <p class="section-completion-hero-caption">${scoreCaption}</p>
             </div>
         ` : '';
@@ -3282,10 +3443,9 @@ class MissionSystem {
                 ${heroHtml}
                 ${badgesHtml}
                 <div class="section-completion-footer">
-                    <h3>Missão concluída</h3>
-                    <p>${message}</p>
                     <button type="button" class="section-completion-btn">${ctaLabel}</button>
                     <button type="button" class="section-completion-review-btn">Rever conteúdo</button>
+                    ${typeof onRepeat === 'function' ? '<button type="button" class="section-completion-review-btn section-completion-repeat-btn">Repetir quiz</button>' : ''}
                 </div>
             </div>
         `;
@@ -3297,10 +3457,17 @@ class MissionSystem {
             }
         });
 
-        overlay.querySelector('.section-completion-review-btn')?.addEventListener('click', () => {
+        overlay.querySelector('.section-completion-review-btn:not(.section-completion-repeat-btn)')?.addEventListener('click', () => {
             overlay.remove();
             if (typeof onReview === 'function') {
                 onReview();
+            }
+        });
+
+        overlay.querySelector('.section-completion-repeat-btn')?.addEventListener('click', () => {
+            overlay.remove();
+            if (typeof onRepeat === 'function') {
+                onRepeat();
             }
         });
 
@@ -3504,27 +3671,6 @@ class MissionSystem {
                 isCorrect
             };
             this.saveProgress();
-        }
-    }
-
-    handleElectronLossOption(event) {
-        const button = event.target.closest('.electron-loss-option');
-        if (!button || button.disabled) return;
-
-        const container = button.closest('.electron-loss-options');
-        const feedbackEl = container?.parentElement?.querySelector('.electron-loss-feedback');
-
-        container?.querySelectorAll('.electron-loss-option').forEach((opt) => {
-            opt.disabled = true;
-            if (opt.dataset.correct === 'true') {
-                opt.classList.add('correct');
-            } else if (opt === button) {
-                opt.classList.add('incorrect');
-            }
-        });
-
-        if (feedbackEl) {
-            feedbackEl.classList.add('show');
         }
     }
 

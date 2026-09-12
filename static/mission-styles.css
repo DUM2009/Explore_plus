@@ -57,10 +57,10 @@ body.mission-header-hidden .mission-container {
 }
 
 .mission-intro-next {
-    background: #1f8a5b;
+    background: #90a668;
     color: #fff;
     border: none;
-    box-shadow: 0 10px 24px rgba(31, 138, 91, .3);
+    box-shadow: 0 10px 24px rgba(144, 166, 104, .3);
     padding: 16px 28px;
     border-radius: 16px;
     font-weight: 700;
@@ -70,7 +70,7 @@ body.mission-header-hidden .mission-container {
 }
 
 .mission-intro-next:hover {
-    background: #166c45;
+    background: #7c9457;
 }
 
 .mission-intro-back {
@@ -662,21 +662,21 @@ html[data-theme="dark"] .mission-intro-back:hover {
     justify-content: center;
     gap: 6px;
     text-align: center;
-    background: linear-gradient(135deg, #26a06a, #1f8a5b 60%, #166c45);
+    background: #90a668;
     color: #ffffff;
     text-decoration: none;
     font-weight: 700;
     font-size: .82rem;
     padding: 9px 16px;
     border-radius: 999px;
-    box-shadow: 0 8px 18px rgba(31, 138, 91, .3), inset 0 1px 0 rgba(255, 255, 255, .18);
+    box-shadow: 0 8px 18px rgba(144, 166, 104, .3), inset 0 1px 0 rgba(255, 255, 255, .18);
     transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
 }
 
 .mo-next-cta:hover {
     filter: brightness(1.06);
     transform: translateY(-2px);
-    box-shadow: 0 14px 30px rgba(31, 138, 91, .4), inset 0 1px 0 rgba(255, 255, 255, .22);
+    box-shadow: 0 14px 30px rgba(144, 166, 104, .4), inset 0 1px 0 rgba(255, 255, 255, .22);
 }
 
 .mo-next-cta:active {
@@ -867,8 +867,8 @@ body:has(.lesson-topbar) .mission-container {
 
 .back-button {
     background: none;
-    border: 2px solid #1f8a5b;
-    color: #1f8a5b;
+    border: 2px solid #90a668;
+    color: #90a668;
     padding: 10px 15px;
     border-radius: 8px;
     cursor: pointer;
@@ -878,7 +878,7 @@ body:has(.lesson-topbar) .mission-container {
 }
 
 .back-button:hover {
-    background: #1f8a5b;
+    background: #90a668;
     color: white;
 }
 
@@ -1092,6 +1092,24 @@ body.quiz-popout-open {
     display: block;
 }
 
+/* Two images side by side on a screen-card (e.g. the full water-splitting
+   diagram next to a cropped close-up of just PSII) instead of one on top
+   of the other — each keeps its own .card-visual sizing, just narrower so
+   the pair fits the card width. Stacks on narrow screens. */
+.card-visual-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+}
+
+.card-visual-row .card-visual {
+    width: auto;
+    max-width: min(280px, 100%);
+    margin: 0;
+}
+
 object.card-visual {
     aspect-ratio: 960 / 420;
     height: auto;
@@ -1144,13 +1162,18 @@ object.card-visual {
 
 .intro-summary-card {
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    background: #f4fbf7;
+    flex-direction: column;
+    background: #ffffff;
     border: 1px solid #dcefe3;
     border-radius: 14px;
     padding: 20px 28px;
     text-align: left;
+}
+
+.intro-summary-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
 }
 
 /* Lines this card's own left/right edges up with the actual rendered text
@@ -1229,7 +1252,7 @@ object.card-visual {
 }
 
 @media (max-width: 680px) {
-    .intro-summary-card {
+    .intro-summary-top {
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -1265,6 +1288,7 @@ html[data-theme="dark"] .intro-equation {
 .guide-options {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
     margin: 12px 0;
 }
@@ -1302,9 +1326,9 @@ html[data-theme="dark"] .intro-equation {
 
 .simple-explanation-btn {
     margin-top: 8px;
-    background: #1f8a5b;
+    background: #90a668;
     color: #ffffff;
-    border: 1px solid #1f8a5b;
+    border: 1px solid #90a668;
     border-radius: 999px;
     padding: 8px 14px;
     font-size: 0.9rem;
@@ -1314,15 +1338,35 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .simple-explanation-btn:hover {
-    background: #187148;
-    border-color: #187148;
+    background: #7c9457;
+    border-color: #7c9457;
+}
+
+/* Plain explanatory paragraphs that aren't part of .intro-summary-card
+   (no icon/heading) — same white-card treatment as the other content
+   panels, just a simpler shape for a screen that's only prose. */
+.screen-text-card {
+    background: #ffffff;
+    border: 1px solid #dcefe3;
+    border-radius: 14px;
+    padding: 20px 28px;
+    margin: 16px 0;
+    text-align: left;
+}
+
+.screen-text-card p {
+    margin: 0 0 8px;
+}
+
+.screen-text-card p:last-child {
+    margin-bottom: 0;
 }
 
 .simple-explanation-text {
     margin-top: 10px;
     padding: 10px 12px;
     border-left: 4px solid #1f8a5b;
-    background: #f4fbf7;
+    background: #ffffff;
     color: #244a37;
     border-radius: 8px;
 }
@@ -1333,7 +1377,7 @@ html[data-theme="dark"] .intro-equation {
     margin: 12px -30px 0;
     border: 1px solid #cde7d9;
     border-radius: 10px;
-    background: #f4fbf7;
+    background: #ffffff;
     padding: 0 42px;
 }
 
@@ -1576,7 +1620,7 @@ html[data-theme="dark"] .intro-equation {
     display: none;
     margin-top: 16px;
     padding: 18px;
-    background: #f4fbf7;
+    background: #ffffff;
     border: 1px solid #cde7d9;
     border-radius: 14px;
     min-height: 56px;
@@ -2040,12 +2084,41 @@ html[data-theme="dark"] .intro-equation {
     margin-bottom: 28px;
 }
 
-.section-completion-hero-number {
-    margin: 0;
-    font-size: 4rem;
+.section-completion-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+.section-completion-ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.section-completion-ring circle {
+    fill: none;
+    stroke-width: 10;
+}
+
+.section-completion-ring-bg {
+    stroke: #eef0ef;
+}
+
+.section-completion-ring-progress {
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.6s ease;
+}
+
+.section-completion-ring-text {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 1.6rem;
     font-weight: 800;
     letter-spacing: -0.02em;
-    line-height: 1;
     color: #12261d;
 }
 
@@ -2119,17 +2192,17 @@ html[data-theme="dark"] .intro-equation {
 .section-completion-btn {
     display: block;
     width: 100%;
-    border: 1px solid #1f8a5b;
-    background: #1f8a5b;
+    border: 1px solid #90a668;
+    background: #90a668;
     color: #ffffff;
-    border-radius: 10px;
+    border-radius: 999px;
     padding: 10px 14px;
     font-weight: 700;
     cursor: pointer;
 }
 
 .section-completion-btn:hover {
-    background: #166c45;
+    background: #7c9457;
 }
 
 .section-completion-review-btn {
@@ -2140,7 +2213,7 @@ html[data-theme="dark"] .intro-equation {
     background: none;
     color: #1f8a5b;
     font-weight: 700;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
 }
 
@@ -2228,20 +2301,20 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .screen-nav-page:hover {
-    border-color: #1f8a5b;
-    color: #1f8a5b;
+    border-color: #90a668;
+    color: #90a668;
 }
 
 .screen-nav-page.active {
-    background: #1f8a5b;
-    border-color: #1f8a5b;
+    background: #90a668;
+    border-color: #90a668;
     color: #ffffff;
 }
 
 
 .screen-nav-btn {
     background: #eef7f3;
-    color: #1f8a5b;
+    color: #90a668;
     border: 1px solid #cde7d9;
     border-radius: 999px;
     padding: 10px 18px;
@@ -2250,15 +2323,15 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .screen-nav-btn[data-nav-action="next"] {
-    background: #1f8a5b;
+    background: #90a668;
     color: #ffffff;
-    border-color: #1f8a5b;
-    box-shadow: 0 4px 18px rgba(31, 138, 91, 0.4);
+    border-color: #90a668;
+    box-shadow: 0 4px 18px rgba(144, 166, 104, 0.4);
 }
 
 .screen-nav-btn[data-nav-action="next"]:hover {
-    background: #166c45;
-    box-shadow: 0 4px 22px rgba(31, 138, 91, 0.55);
+    background: #7c9457;
+    box-shadow: 0 4px 22px rgba(144, 166, 104, 0.55);
 }
 
 /* "Continuar" shrinks to a bare arrow in a round button on every screen
@@ -2308,7 +2381,6 @@ html[data-theme="dark"] .intro-equation {
 .electron-loss-feedback blockquote {
     margin: 0;
     padding: 10px 12px;
-    border-left: 4px solid #1f8a5b;
     background: #f4fbf7;
     color: #244a37;
     border-radius: 8px;
@@ -2471,7 +2543,7 @@ html[data-theme="dark"] .intro-equation {
 .open-quiz-submit {
     margin-top: 12px;
     border: none;
-    background: #1f8a5b;
+    background: #90a668;
     color: white;
     border-radius: 10px;
     padding: 10px 18px;
@@ -2957,23 +3029,23 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #1f8a5b, #37d67a);
+    background: linear-gradient(135deg, #90a668, #7c9457);
     color: white;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(31, 138, 91, 0.3);
+    box-shadow: 0 5px 15px rgba(144, 166, 104, 0.3);
 }
 
 .btn-secondary {
     background: white;
-    border: 2px solid #1f8a5b;
-    color: #1f8a5b;
+    border: 2px solid #90a668;
+    color: #90a668;
 }
 
 .btn-secondary:hover {
-    background: #1f8a5b;
+    background: #90a668;
     color: white;
 }
 
@@ -3271,12 +3343,16 @@ html[data-theme="dark"] .intro-equation {
 }
 
 .mission-sidebar .mascote-chat-header {
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
     gap: 10px;
 }
 
 .mission-sidebar .mascote-chat-header span {
-    flex: 1 1 auto;
+    grid-column: 2;
+    min-width: 0;
+    justify-content: center;
 }
 
 /* Collapses the chat sidebar — bare icon, no button shape at all, not
@@ -3288,6 +3364,17 @@ html[data-theme="dark"] .intro-equation {
 .mission-sidebar .mascote-chat-header .mascote-chat-close {
     flex-shrink: 0;
     font-size: 1rem;
+}
+
+/* Overrides the site-wide button:hover rule (background/transform/shadow),
+   which otherwise beats this button's own "no chrome" styling on hover —
+   this icon should only ever react to a click, never show any hover state. */
+.mascote-chat-close:hover,
+.mascote-chat-close:focus,
+.mascote-chat-close:active {
+    background: none;
+    box-shadow: none;
+    transform: none;
 }
 
 /* Suppresses the "online" dot (see .mascote-chat-header span::before in
@@ -3511,7 +3598,7 @@ html[data-theme="dark"] .intro-equation {
     align-items: center;
     gap: 20px;
     padding: 16px 28px;
-    background: #f4fbf7;
+    background: #ffffff;
 }
 
 /* Only shown while the chat sidebar is collapsed — its own header has a
@@ -3530,6 +3617,14 @@ html[data-theme="dark"] .intro-equation {
     color: #66756e;
     border-radius: 8px;
     cursor: pointer;
+}
+
+.lesson-topbar-close:hover,
+.lesson-topbar-close:focus,
+.lesson-topbar-close:active {
+    background: none;
+    box-shadow: none;
+    transform: none;
 }
 
 /* Our own display:grid above (needed so the icon centers while visible)
@@ -3952,8 +4047,8 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    border: 1px solid #1f8a5b;
-    background: #1f8a5b;
+    border: 1px solid #90a668;
+    background: #90a668;
     color: #ffffff;
     border-radius: 999px;
     padding: 8px 18px 8px 8px;
@@ -3964,7 +4059,7 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 }
 
 .mascot-help-btn:hover {
-    background: #166c45;
+    background: #7c9457;
 }
 
 .mascot-help-btn-icon {
@@ -4017,9 +4112,9 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 }
 
 .mascot-curiosity-btn--accept {
-    background: #1f8a5b;
+    background: #90a668;
     color: #ffffff;
-    border-color: #1f8a5b;
+    border-color: #90a668;
 }
 
 .mascot-curiosity-btn:hover {
@@ -4141,6 +4236,7 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 
 .mascot-overlay-card--split .mascot-overlay-btn {
     display: inline-block;
+    margin-top: 16px;
 }
 
 @media (max-width: 520px) {
@@ -4221,20 +4317,31 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 
 .mascot-overlay-btn {
     border: none;
-    background: #1f8a5b;
+    background: #90a668;
     color: #ffffff;
     border-radius: 999px;
-    padding: 13px 32px;
+    padding: 12px 22px;
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
-    box-shadow: 0 8px 18px rgba(31, 138, 91, 0.32);
+    box-shadow: 0 8px 18px rgba(144, 166, 104, 0.32);
     transition: background 0.15s ease, transform 0.15s ease;
 }
 
 .mascot-overlay-btn:hover {
-    background: #166c45;
+    background: #7c9457;
     transform: translateY(-1px);
+}
+
+.mascot-overlay-btn:disabled {
+    background: #c7d0bc;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.mascot-overlay-btn:disabled:hover {
+    background: #c7d0bc;
+    transform: none;
 }
 
 .mascot-overlay-choice-row {
@@ -4244,10 +4351,10 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 }
 
 .mascot-overlay-choice-btn {
-    border: 1px solid #1f8a5b;
+    border: 1px solid #90a668;
     background: #ffffff;
-    color: #1f8a5b;
-    border-radius: 10px;
+    color: #90a668;
+    border-radius: 999px;
     padding: 10px 18px;
     font-weight: 700;
     cursor: pointer;
@@ -4291,7 +4398,7 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 .mission-summary-box {
     margin: 20px 0;
     padding: 16px;
-    background: #f4fbf7;
+    background: #ffffff;
     border: 1px solid #cde7d9;
     border-radius: 12px;
 }
