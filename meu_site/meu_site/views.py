@@ -606,13 +606,173 @@ def pagina_Testes(request):
     })
 
 
+EXAMES_DISPONIVEIS = [
+    {
+        'exame_id': 'biologia-geologia-2026-v1',
+        'titulo': 'Exame Nacional de Biologia e Geologia — 2026, 1.ª Fase (V1)',
+        'disciplina': 'Biologia e Geologia',
+        'meta': ['11.º ano', 'Grupos I, II e III', '28 itens', '120 minutos'],
+    },
+]
+
+
+def encontrar_config_exame(exame_id):
+    for exame in EXAMES_DISPONIVEIS:
+        if exame['exame_id'] == exame_id:
+            return exame
+    return None
+
+
 @login_required(login_url='login')
 def pagina_exames(request):
     try:
         perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
     except OperationalError:
         perfil = None
-    return render(request, 'exames.html', {'perfil': perfil})
+    return render(request, 'exames.html', {
+        'perfil': perfil,
+        'exames': EXAMES_DISPONIVEIS,
+    })
+
+
+def carregar_exame(exame_id):
+    """Tal como os testes, os exames vivem fora de static/: contêm o
+    gabarito e nunca devem chegar ao browser do aluno."""
+    caminho_json = settings.BASE_DIR.parent / 'exames' / f'{exame_id}.json'
+    with open(caminho_json, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def _perguntas_publicas_por_id(perguntas):
+    return {
+        pergunta['id']: {chave: valor for chave, valor in pergunta.items() if chave not in CHAVES_SECRETAS_PERGUNTA}
+        for pergunta in perguntas
+    }
+
+
+@login_required(login_url='login')
+def pagina_exame_detalhe(request, exame_id):
+    config_exame = encontrar_config_exame(exame_id)
+    if config_exame is None:
+        raise Http404('Exame não encontrado.')
+
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    try:
+        exame = carregar_exame(exame_id)
+    except FileNotFoundError:
+        raise Http404('Exame não encontrado.')
+
+    perguntas_publicas_por_id = _perguntas_publicas_por_id(exame['perguntas'])
+
+    # Monta, para cada secção de cada grupo, a lista já resolvida das suas
+    # perguntas (sem chaves secretas) — o template não precisa de saber o
+    # gabarito, só de desenhar as perguntas na ordem certa.
+    grupos_para_template = []
+    for grupo in exame['grupos']:
+        seccoes_resolvidas = []
+        for seccao in grupo['seccoes']:
+            seccoes_resolvidas.append({
+                **seccao,
+                'perguntas': [perguntas_publicas_por_id[pid] for pid in seccao['pergunta_ids']],
+            })
+        grupos_para_template.append({**grupo, 'seccoes': seccoes_resolvidas})
+
+    progresso_guardado = {}
+    if perfil is not None:
+        progresso_testes = perfil.progresso_testes if isinstance(perfil.progresso_testes, dict) else {}
+        entrada = progresso_testes.get(exame_id)
+        if isinstance(entrada, dict) and isinstance(entrada.get('respostas'), dict):
+            progresso_guardado = entrada['respostas']
+
+    return render(request, 'exame-detalhe.html', {
+        'perfil': perfil,
+        'exame': exame,
+        'exame_id': exame_id,
+        'grupos': grupos_para_template,
+        'progresso_guardado': progresso_guardado,
+    })
+
+
+@login_required(login_url='login')
+@require_POST
+def corrigir_exame(request, exame_id):
+    config_exame = encontrar_config_exame(exame_id)
+    if config_exame is None:
+        raise Http404('Exame não encontrado.')
+
+    try:
+        perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    try:
+        dados_pedido = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+
+    respostas_aluno = dados_pedido.get('respostas')
+    if not isinstance(respostas_aluno, dict):
+        return JsonResponse({'erro': 'Respostas em falta.'}, status=400)
+
+    try:
+        exame = carregar_exame(exame_id)
+    except FileNotFoundError:
+        raise Http404('Exame não encontrado.')
+
+    resultado_perguntas = {}
+    pontos_por_pergunta = {}
+    perguntas_longas = []
+
+    for pergunta in exame['perguntas']:
+        resposta = respostas_aluno.get(pergunta['id'])
+        if pergunta['tipo'] == 'resposta_longa':
+            perguntas_longas.append((pergunta, resposta))
+            continue
+        pontos = corrigir_pergunta_automatica(pergunta, resposta)
+        pontos_por_pergunta[pergunta['id']] = pontos
+        resultado_perguntas[pergunta['id']] = {'pontos': pontos, 'cotacao': pergunta['cotacao']}
+
+    feedback_ia = {}
+    if perguntas_longas:
+        correcao_ia = corrigir_perguntas_longas_com_ia(perguntas_longas)
+        for pergunta, _ in perguntas_longas:
+            item = correcao_ia.get(pergunta['id'], {'pontos': 0, 'feedback': ''})
+            pontos_por_pergunta[pergunta['id']] = item['pontos']
+            resultado_perguntas[pergunta['id']] = {'pontos': item['pontos'], 'cotacao': pergunta['cotacao']}
+            feedback_ia[pergunta['id']] = item['feedback']
+
+    # Itens de "melhor N de M" (ex: exames nacionais) — só as melhores
+    # pontuações do conjunto opcional contam para a nota; as restantes são
+    # descartadas, tal como na classificação oficial.
+    pool_opcional = exame.get('pool_opcional')
+    if pool_opcional:
+        ids_pool = pool_opcional['ids']
+        melhores_n = pool_opcional['melhores']
+        pontuacoes_pool = sorted((pontos_por_pergunta.get(pid, 0) for pid in ids_pool), reverse=True)
+        pontos_totais = sum(pontos for pid, pontos in pontos_por_pergunta.items() if pid not in ids_pool)
+        pontos_totais += sum(pontuacoes_pool[:melhores_n])
+    else:
+        pontos_totais = sum(pontos_por_pergunta.values())
+
+    nota_final = round(pontos_totais / (exame['cotacao_total'] / 20), 1)
+
+    if perfil is not None:
+        progresso_testes = dict(perfil.progresso_testes or {})
+        if progresso_testes.pop(exame_id, None) is not None:
+            perfil.progresso_testes = progresso_testes
+            perfil.save(update_fields=['progresso_testes'])
+
+    return JsonResponse({
+        'notaFinal': nota_final,
+        'pontosTotais': round(pontos_totais, 2),
+        'cotacaoTotal': exame['cotacao_total'],
+        'perguntas': resultado_perguntas,
+        'feedbackIA': feedback_ia,
+    })
 
 
 def carregar_vocabulario(missao_id):
@@ -1181,6 +1341,15 @@ def corrigir_pergunta_automatica(pergunta, resposta_aluno):
             if normalizar_resposta(valor_aluno) == normalizar_resposta(letra_correta):
                 pontos += pontos_por_parte
         return round(pontos, 2)
+
+    if tipo == 'selecao_multipla':
+        # Escolher N de várias afirmações (ex: "as três afirmações corretas") —
+        # cotação tudo-ou-nada, sem meios pontos, tal como nos exames nacionais.
+        if not isinstance(resposta_aluno, list) or not correta:
+            return 0
+        aluno_normalizado = {normalizar_resposta(v) for v in resposta_aluno}
+        correta_normalizada = {normalizar_resposta(v) for v in correta}
+        return cotacao if aluno_normalizado == correta_normalizada else 0
 
     if tipo == 'resposta_curta':
         modo = pergunta.get('modo_correcao')

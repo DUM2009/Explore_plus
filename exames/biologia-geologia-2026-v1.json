@@ -1,0 +1,532 @@
+{
+  "id": "biologia-geologia-2026-v1",
+  "titulo": "Exame Nacional de Biologia e Geologia — 2026, 1.ª Fase (Versão 1)",
+  "disciplina": "Biologia e Geologia",
+  "ano_escolaridade": "11.º ano",
+  "duracao_sugerida_min": 120,
+  "cotacao_total": 200,
+  "pool_opcional": {
+    "ids": ["g1p4", "g1p5", "g1p11", "g1p13", "g1p14", "g2p1", "g3p1", "g3p3"],
+    "melhores": 4,
+    "nota": "Estes 8 itens não contribuem obrigatoriamente: só contam os 4 com melhor pontuação, cada um valendo 8 pontos (32 pontos no total)."
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I",
+      "seccoes": [
+        {
+          "titulo": "Texto 1 — O rifte do Mar Vermelho",
+          "texto_apoio": "O rifte do Mar Vermelho é considerado uma das zonas de expansão oceânica mais jovens do mundo, onde diferentes fases deste processo de expansão se encontram ativas. Este rifte faz parte de um sistema de riftes, ao qual a Dorsal Oceânica de Sheba está associada.\n\nA instalação da pluma térmica de Afar terá contribuído para a abertura do Mar Vermelho no Cenozoico, aproximadamente há 30 Ma (milhões de anos). Esta pluma térmica terá favorecido o estiramento da litosfera continental e a ascensão de magma que deu origem a diques basálticos e gabroicos (dique: corpo rochoso resultante da intrusão de magmas que intersectam as rochas encaixantes), bem como a fenómenos vulcânicos como os que originaram os harrats — campos vulcânicos existentes na Placa Arábica.\n\nPara o estudo da região do Mar Vermelho, tem sido utilizado um conjunto de métodos complementares, como a análise de afloramentos, de registos magnéticos e de registos sísmicos.\n\nUm estudo sísmico recente utilizou, pela primeira vez, os tempos de chegada de ondas sísmicas P e S de sismos registados nas redes sísmicas do Egito e da Arábia Saudita. A partir dos dados recolhidos identificaram-se zonas onde a velocidade de propagação das ondas sísmicas P é inferior à velocidade média esperada — anomalias de baixa velocidade —, e zonas onde essa velocidade é superior à velocidade média esperada — anomalias de alta velocidade. As anomalias de baixa velocidade ocorrem ao longo do eixo central do rifte, e as anomalias de alta velocidade coincidem com zonas de litosfera continental da bacia do Mar Vermelho, de um e de outro lado do rifte.\n\nCom base nestes resultados, foi proposto um modelo para a evolução da litosfera no Mar Vermelho ao longo do tempo (Figura 2), de modo sequencial (A, B e C): em A, a pluma térmica de Afar instala-se sob a Placa Arábica e provoca falhamento e estiramento da litosfera continental, formando uma bacia continental; em B, a bacia continental alarga-se, surgem diques de basaltos e gabros na crusta continental estirada e os harrats acima da superfície; em C, forma-se um rifte oceânico com uma zona central de fusão, ladeado pelos harrats, já com crosta oceânica nova.",
+          "figura_texto": "Figura 1 (imagem a adicionar) — Mapa esquemático do sistema de riftes do Mar Vermelho, mostrando a Placa Africana, a Placa Arábica e a Placa Eurasiática, a Falha do Mar Morto, a Dorsal Oceânica de Sheba, os harrats Shama, Khaybar e Kishb, a zona de Afar, e dois pontos assinalados X e Y sobre crusta oceânica de idades diferentes — X mais próximo da Dorsal Oceânica de Sheba, Y mais afastado dela, no sentido do Oceano Índico. | Figura 2 (imagem a adicionar) — Três esquemas sequenciais (A, B, C) da evolução da litosfera no Mar Vermelho: A) pluma térmica de Afar sob a Placa Arábica, com falhas na litosfera continental; B) bacia do Mar Vermelho com diques (basaltos e gabros) e harrats; C) bacia do Mar Vermelho com rifte oceânico, zona de fusão central e harrats.",
+          "pergunta_ids": ["g1p1", "g1p2", "g1p3", "g1p4", "g1p5", "g1p6", "g1p7", "g1p8", "g1p9"]
+        },
+        {
+          "titulo": "Texto 2 — Trichodesmium erythraeum e os recifes do Mar Vermelho",
+          "texto_apoio": "As formações avermelhadas observadas no Mar Vermelho correspondem a acumulações de Trichodesmium erythraeum, cianobactérias que, além de clorofilas, possuem ficoeritrina, um pigmento fotossintético que reflete a cor vermelha. Estas cianobactérias apresentam um sistema interno de membranas especializadas, resultantes de invaginações da membrana plasmática, onde realizam um processo fotossintético semelhante ao que ocorre nas algas e nas plantas.\n\nT. erythraeum é uma cianobactéria fixadora de nitrogénio atmosférico (N₂), desempenhando um papel importante na disponibilização deste nutriente. A nitrogenase, enzima responsável pela fixação do N₂, é constituída por duas subunidades (a proteína MoFe e a proteína Fe), estando vários genes envolvidos na sua síntese. A subunidade proteica Fe é codificada pelo gene nifH, ocorrendo, diariamente, síntese e degradação desta subunidade.\n\nApesar de T. erythraeum ter propriedades tóxicas para muitos seres vivos, as larvas da estrela-do-mar-coroa-de-espinhos (Acanthaster planci) alimentam-se ativamente desta componente do fitoplâncton. Na fase adulta, esta estrela-do-mar alimenta-se de corais e reproduz-se sexuadamente, libertando os gâmetas para a coluna de água, onde ocorre a fecundação.\n\nDe entre as centenas de espécies de peixes existentes no Mar Vermelho, destaca-se o bodião-azul-turquesa (Thalassoma purpureum), um peixe muito apreciado em aquariofilia, e o bodião-de-cabeça-corcunda (Cheilinus undulatus), ambos pertencentes à família Labridae. O bodião-de-cabeça-corcunda é um dos maiores peixes de recife e é um dos predadores conhecidos da estrela-do-mar-coroa-de-espinhos.",
+          "pergunta_ids": ["g1p10", "g1p11", "g1p12", "g1p13", "g1p14", "g1p15"]
+        },
+        {
+          "titulo": "Texto 3 — Efeito do cádmio nas brânquias de Thalassoma pavo",
+          "texto_apoio": "A água do mar é facilmente contaminada devido às atividades humanas, sendo o cádmio (Cd) um dos metais pesados que se podem encontrar em águas poluídas.\n\nFoi realizado um estudo com o objetivo de determinar os efeitos deste metal nas brânquias do peixe Thalassoma pavo.\n\nProcedimento: recolheram-se peixes adultos que foram colocados em aquários de 150 L, com água do mar do local de recolha, durante 5 dias, para aclimatação. Prepararam-se 5 tanques com soluções de água do mar com diferentes concentrações não letais de cádmio (10, 20, 40, 60 e 120 µM) e 1 tanque com água do mar não contaminada (NC), com duas réplicas de cada um dos 6 tanques. Colocaram-se 5 peixes de tamanho corporal semelhante, selecionados aleatoriamente, em cada tanque. Os peixes foram alimentados em dias alternados, mantidos num ciclo natural diário de luz/escuridão e em iguais condições de temperatura, salinidade e oxigenação. Foram realizadas observações microscópicas às brânquias ao fim de 48, 96 e 192 horas, para identificar alterações morfológicas, e analisou-se a presença de dois biomarcadores nas células das brânquias: PCNA (antigénio nuclear de proliferação celular), proteína que se liga à DNA-polimerase, possibilitando a síntese de cadeias de desoxirribonucleótidos; e MT (metalotioneínas), proteínas que, pela capacidade de se ligarem a diferentes metais, desempenham uma função importante na desintoxicação das células.\n\nResultados: as observações microscópicas revelaram alterações nas células das brânquias em todos os ensaios. Quanto aos biomarcadores — com base nos Gráficos I a IV (percentagem de células positivas para PCNA e para MT, às 48 h e às 192 h, em função da concentração de cádmio): às 48 horas, a percentagem de células positivas para PCNA aumenta com a concentração de cádmio (de cerca de 30% no grupo não contaminado até cerca de 60% a 120 µM); às 192 horas, essa percentagem diminui com a concentração de cádmio (de cerca de 28% no grupo não contaminado até cerca de 8% a 120 µM). Quanto à MT, às 48 horas mantém-se próxima de zero até cerca de 20 µM e sobe acentuadamente a partir de 40 µM (cerca de 35% a 40 µM, chegando a cerca de 38% a 120 µM); às 192 horas, a percentagem de células positivas para MT é já elevada em todas as concentrações testadas e aumenta gradualmente com a concentração de cádmio, de cerca de 45% (10 µM) até cerca de 60% (120 µM).",
+          "figura_texto": "Gráficos I a IV (imagem a adicionar) — Gráficos de barras com a percentagem de células das brânquias positivas para PCNA (Gráficos I e II, às 48 h e às 192 h) e para MT (Gráficos III e IV, às 48 h e às 192 h), em função da concentração de cádmio (NC, 10, 20, 40, 60 e 120 µM), com barras de desvio.",
+          "pergunta_ids": ["g1p16", "g1p17", "g1p18", "g1p19", "g1p20"]
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II",
+      "seccoes": [
+        {
+          "titulo": "Osmose em células da epiderme da cebola roxa (Allium cepa)",
+          "texto_apoio": "Numa aula de Biologia e Geologia, realizou-se uma experiência com o objetivo de estudar em que sentido ocorre o fluxo de água através da membrana celular, utilizando células da epiderme do bolbo da cebola roxa, Allium cepa. Nas células utilizadas, os pigmentos que lhes conferem a cor encontram-se no vacúolo hídrico.\n\nProcedimento: marcaram-se 3 lâminas (A, B e C). Destacaram-se três fragmentos da epiderme roxa da cebola. Na lâmina A, colocou-se um fragmento de epiderme, entre lâmina e lamela, com uma gota de solução de Ringer (concentração salina igual à do meio intracelular) como meio de montagem. Na lâmina B, usou-se água destilada como meio de montagem. Na lâmina C, usou-se uma gota de solução de cloreto de sódio a 12% (m/V). Observou-se cada preparação ao microscópio ótico, com ampliação de 400x.\n\nA Figura 3 mostra as microfotografias das lâminas A e C: na lâmina A, as células surgem bem coradas e túrgidas, com o vacúolo a preencher praticamente toda a célula; na lâmina C, o protoplasto surge visivelmente retraído e afastado da parede celular (plasmólise), com a coloração concentrada numa região mais pequena e reduzida da célula.",
+          "figura_texto": "Figura 3 (imagem a adicionar) — Microfotografias ao microscópio ótico (400x) das células da epiderme de cebola roxa na Lâmina A (meio isotónico, células túrgidas) e na Lâmina C (meio hipertónico, células plasmolisadas).",
+          "pergunta_ids": ["g2p1", "g2p2", "g2p3"]
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III",
+      "seccoes": [
+        {
+          "titulo": "Serra de Monchique",
+          "texto_apoio": "A serra de Monchique, localizada no Algarve, tem cerca de 80 km² e 900 metros de altitude. É maioritariamente constituída por um maciço ígneo, formado no Cretácico Superior (Mesozoico), há cerca de 72 Ma, que intruiu xistos argilosos e outras rochas de idade carbonífera (Paleozoico), provocando uma auréola de metamorfismo, onde se encontram corneanas.\n\nO maciço aflora em algumas zonas e é constituído essencialmente por sienitos nefelínicos, uma rocha leucocrática, que possui na sua composição um mineral silicatado sódico-potássico designado por nefelina [(Na,K)AlSiO4]. Existem ainda no maciço rochas resultantes da consolidação de magmas de natureza basáltica.\n\nA precipitação, associada à fraturação e à alteração dos sienitos nefelínicos próximos da superfície, deu origem a aquíferos e a um importante sistema de nascentes frias e quentes, de água mineral natural (Figura 4A).\n\nNa água de algumas nascentes de Monchique, o teor muito elevado de sódio tem vindo a despertar grande interesse. Um estudo recente veio contribuir para uma melhor compreensão das diferentes temperaturas da água nas nascentes e dos fatores que contribuem para o teor de sódio na água da região. O gráfico da Figura 4B mostra a relação entre a temperatura da água e o seu teor de sódio, nas nascentes analisadas: as nascentes frias (círculos brancos) concentram-se a temperaturas entre cerca de 14 ºC e 20 ºC, com teores de sódio baixos (até cerca de 50 mg/L); as nascentes quentes (círculos cinzentos) apresentam temperaturas entre cerca de 23 ºC e 31 ºC, com teores de sódio muito mais elevados, entre cerca de 90 mg/L e 340 mg/L, aumentando globalmente a temperatura com o teor de sódio.\n\nNum dos afloramentos do sienito nefelínico de Monchique (não representado na figura), é possível observar que esta rocha é intersectada pelo filão M. Esse afloramento de sienito apresenta, no seu interior, fragmentos (xenólitos) de rochas magmáticas de cor escura. Verifica-se ainda que um outro filão, o filão N, intersecta tanto o filão M como o afloramento de sienito nefelínico.",
+          "figura_texto": "Figura 4 (imagem a adicionar) — 4A: esquema hidrogeológico da serra de Monchique, com o sienito nefelínico, o sienito nefelínico meteorizado (aquífero superior), as rochas paleozoicas, falhas, fraturas e o sentido do escoamento da água até às nascentes fria e quente. 4B: gráfico de dispersão da temperatura da água (ºC) em função do teor de sódio, Na (mg/L), distinguindo nascentes frias (círculos brancos, agrupadas a baixa temperatura e baixo teor de sódio) de nascentes quentes (círculos cinzentos, a temperatura e teor de sódio mais elevados).",
+          "pergunta_ids": ["g3p1", "g3p2", "g3p3", "g3p4", "g3p5"]
+        }
+      ]
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "g1p1",
+      "grupo": 1,
+      "numero": 1,
+      "tipo": "selecao_multipla",
+      "numero_a_selecionar": 3,
+      "enunciado": "Identifique, de entre as afirmações relativas à geologia da região representada na Figura 1 e à evolução do Mar Vermelho representada na Figura 2, as três afirmações corretas.",
+      "opcoes": [
+        { "letra": "I", "texto": "Os harrats evidenciam a existência de vulcanismo intraplaca, que ocorreu no Mesozoico." },
+        { "letra": "II", "texto": "Amostras recolhidas em diferentes regiões da Dorsal Oceânica de Sheba poderão conter o registo de inversões da polaridade do campo magnético terrestre." },
+        { "letra": "III", "texto": "Os harrats resultaram da subida de magma que começou por se acumular em câmaras magmáticas localizadas na transição que corresponde à descontinuidade de Mohorovicic." },
+        { "letra": "IV", "texto": "Na zona norte do Mar Vermelho, acima de 20º N, é de prever que o fluxo térmico seja mais elevado do que na zona sul." },
+        { "letra": "V", "texto": "A litologia dos diques permite inferir que estes se formaram a partir de um magma com baixa viscosidade." }
+      ],
+      "resposta_correta": ["II", "III", "V"],
+      "cotacao": 8
+    },
+    {
+      "id": "g1p2",
+      "grupo": 1,
+      "numero": 2,
+      "tipo": "ordenacao",
+      "enunciado": "Ordene as expressões identificadas pelas letras de A a E, de modo a reconstituir a sequência de acontecimentos relacionados com a formação e a evolução da região do Mar Vermelho.",
+      "opcoes": [
+        { "letra": "A", "texto": "Formação do rifte oceânico do Mar Vermelho." },
+        { "letra": "B", "texto": "Instalação da pluma térmica de Afar." },
+        { "letra": "C", "texto": "Expansão do fundo oceânico." },
+        { "letra": "D", "texto": "Formação de uma bacia continental." },
+        { "letra": "E", "texto": "Instalação de diques." }
+      ],
+      "resposta_correta": ["B", "D", "E", "A", "C"],
+      "cotacao": 8
+    },
+    {
+      "id": "g1p3",
+      "grupo": 1,
+      "numero": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "No estudo efetuado, os investigadores basearam-se no comportamento das ondas sísmicas. Este é um método de estudo do interior da geosfera considerado",
+      "opcoes": [
+        { "letra": "A", "texto": "indireto, tal como o vulcanismo." },
+        { "letra": "B", "texto": "indireto, tal como o geomagnetismo." },
+        { "letra": "C", "texto": "direto, tal como as sondagens." },
+        { "letra": "D", "texto": "direto, tal como a geotermia." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p4",
+      "grupo": 1,
+      "numero": 4,
+      "tipo": "escolha_multipla",
+      "enunciado": "Selecione a opção que apresenta uma análise correta do contexto tectónico da Placa Arábica, representado na Figura 1.",
+      "opcoes": [
+        { "letra": "A", "texto": "A expansão que ocorre na região sul do Mar Vermelho contribui para que a Placa Arábica se desloque para noroeste." },
+        { "letra": "B", "texto": "A área da Placa Arábica tem tendência a aumentar, na sequência do movimento desta placa relativamente à Placa Eurasiática." },
+        { "letra": "C", "texto": "As tensões tectónicas distensivas na Dorsal Oceânica de Sheba contribuem para que a Placa Arábica se desloque para nordeste." },
+        { "letra": "D", "texto": "A Falha do Mar Morto corresponde a um limite construtivo entre as placas Arábica e Africana, onde atuam tensões tectónicas de cisalhamento." }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p5",
+      "grupo": 1,
+      "numero": 5,
+      "tipo": "escolha_multipla",
+      "enunciado": "Considerando um determinado par de isótopos, quando se compara a idade das rochas X com a das rochas Y, assinaladas na Figura 1, é de esperar que",
+      "opcoes": [
+        { "letra": "A", "texto": "a razão isótopo-pai/isótopo-filho seja maior nas rochas Y." },
+        { "letra": "B", "texto": "a desintegração radioativa do isótopo-pai se tenha iniciado primeiro nas rochas Y." },
+        { "letra": "C", "texto": "o período de semivida do isótopo-pai seja maior nas rochas X." },
+        { "letra": "D", "texto": "o teor de isótopo-filho seja igual ao teor de isótopo-pai em ambas as rochas." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p6",
+      "grupo": 1,
+      "numero": 6,
+      "tipo": "escolha_multipla",
+      "enunciado": "As falhas representadas na Figura 2A, tendo em conta o contexto tectónico da região, são consideradas",
+      "opcoes": [
+        { "letra": "A", "texto": "inversas, nas quais os blocos adjacentes se movem paralelamente à direção do plano de falha." },
+        { "letra": "B", "texto": "inversas e estão associadas a um comportamento frágil das rochas." },
+        { "letra": "C", "texto": "normais e estão associadas a um comportamento dúctil das rochas." },
+        { "letra": "D", "texto": "normais, nas quais o bloco localizado acima do plano de falha desce em relação ao outro bloco." }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p7",
+      "grupo": 1,
+      "numero": 7,
+      "tipo": "correspondencia",
+      "enunciado": "Associe cada uma das afirmações relativas a características das rochas, apresentadas na Coluna I, à designação correspondente, que consta na Coluna II.",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Rocha sedimentar quimiogénica evaporítica." },
+        { "letra": "b", "texto": "Rocha plutónica com minerais do grupo das olivinas." },
+        { "letra": "c", "texto": "Rocha vulcânica rica em minerais félsicos." }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Basalto" },
+        { "numero": "2", "texto": "Calcário" },
+        { "numero": "3", "texto": "Gabro" },
+        { "numero": "4", "texto": "Gesso" },
+        { "numero": "5", "texto": "Riólito" }
+      ],
+      "resposta_correta": { "a": "4", "b": "3", "c": "5" },
+      "cotacao": 8
+    },
+    {
+      "id": "g1p8",
+      "grupo": 1,
+      "numero": 8,
+      "tipo": "completar_texto",
+      "enunciado": "O Mar Vermelho é uma das bacias oceânicas mais salinas do mundo. Contém evaporitos que, no seu limite superior, contactam com calcários biogénicos ao longo de uma superfície de erosão, que se estende por toda a bacia. Complete o texto seguinte.",
+      "texto_com_espacos": "Considerando a sequência estratigráfica descrita, no Mar Vermelho há evidências de (a) da bacia sedimentar. Os calcários, relativamente aos evaporitos, são (b). Em determinadas zonas do fundo da bacia ocorrem acumulações de águas hipersalinas onde vivem bactérias anaeróbias, seres vivos que pertencem ao reino (c) e que são (d).",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "1", "texto": "uma única fase de inundação" },
+            { "letra": "2", "texto": "duas fases de exposição subaérea" },
+            { "letra": "3", "texto": "duas fases de inundação" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "1", "texto": "mais antigos" },
+            { "letra": "2", "texto": "mais recentes" },
+            { "letra": "3", "texto": "da mesma idade" }
+          ]
+        },
+        {
+          "id": "c",
+          "opcoes": [
+            { "letra": "1", "texto": "Protista" },
+            { "letra": "2", "texto": "Fungi" },
+            { "letra": "3", "texto": "Monera" }
+          ]
+        },
+        {
+          "id": "d",
+          "opcoes": [
+            { "letra": "1", "texto": "unicelulares" },
+            { "letra": "2", "texto": "macroconsumidores" },
+            { "letra": "3", "texto": "eucariontes" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "1", "b": "2", "c": "3", "d": "1" },
+      "cotacao": 8
+    },
+    {
+      "id": "g1p9",
+      "grupo": 1,
+      "numero": 9,
+      "tipo": "resposta_longa",
+      "enunciado": "Explique, utilizando as informações do Texto 1 e da Figura 2C, a existência, em diferentes zonas da bacia do Mar Vermelho, de anomalias: (i) de baixa velocidade na propagação das ondas sísmicas P, fazendo referência à variação da rigidez dos materiais; (ii) de alta velocidade na propagação das ondas sísmicas P, fazendo referência à diferença da litologia entre a crusta continental nesta bacia e a crusta continental em geral. Utilize a informação de que a velocidade média de propagação das ondas sísmicas P na crusta continental é geralmente inferior à velocidade média na crusta oceânica.",
+      "criterios_correcao": "Deve explicar que: (i) as anomalias de baixa velocidade ocorrem no eixo central do rifte porque aí existe material fundido/parcialmente fundido (zona de fusão, Figura 2C) associado à pluma térmica, sendo um material menos rígido (menor rigidez), o que reduz a velocidade de propagação das ondas P; (ii) as anomalias de alta velocidade ocorrem nas zonas de litosfera continental de ambos os lados da bacia porque, ao longo da evolução do rifte, essa crusta continental foi sendo intruída/substituída por material de composição mais próxima da crusta oceânica (diques basálticos e gabroicos, magmas mais densos/máficos), que é mais rígida do que a crusta continental típica, aproximando a velocidade de propagação da onda P da velocidade, mais elevada, característica da crusta oceânica.",
+      "cotacao": 9
+    },
+    {
+      "id": "g1p10",
+      "grupo": 1,
+      "numero": 10,
+      "tipo": "completar_texto",
+      "enunciado": "Complete o texto seguinte, selecionando a opção correta para cada espaço.",
+      "texto_com_espacos": "Em T. erythraeum, a fixação de N₂ requer a síntese de uma molécula complementar à cadeia molde do gene nifH, designada por (a). Nos ribossomas, ocorre a (b) da informação genética, a partir da qual se forma uma cadeia de (c). A ligação das duas subunidades confere à nitrogenase uma estrutura (d).",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "1", "texto": "RNA ribossómico" },
+            { "letra": "2", "texto": "RNA mensageiro" },
+            { "letra": "3", "texto": "RNA de transferência" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "1", "texto": "transcrição" },
+            { "letra": "2", "texto": "replicação" },
+            { "letra": "3", "texto": "tradução" }
+          ]
+        },
+        {
+          "id": "c",
+          "opcoes": [
+            { "letra": "1", "texto": "aminoácidos" },
+            { "letra": "2", "texto": "monossacáridos" },
+            { "letra": "3", "texto": "nucleótidos" }
+          ]
+        },
+        {
+          "id": "d",
+          "opcoes": [
+            { "letra": "1", "texto": "secundária" },
+            { "letra": "2", "texto": "terciária" },
+            { "letra": "3", "texto": "quaternária" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "2", "b": "3", "c": "1", "d": "3" },
+      "cotacao": 8
+    },
+    {
+      "id": "g1p11",
+      "grupo": 1,
+      "numero": 11,
+      "tipo": "escolha_multipla",
+      "enunciado": "Na fase fotoquímica da fotossíntese realizada por T. erythraeum, ocorre",
+      "opcoes": [
+        { "letra": "A", "texto": "fosforilação de moléculas de ADP em reações endoenergéticas." },
+        { "letra": "B", "texto": "mobilização de moléculas de NADP⁺ no estroma do cloroplasto." },
+        { "letra": "C", "texto": "absorção de energia pelas ficoeritrinas e pelas clorofilas nos mesmos comprimentos de onda." },
+        { "letra": "D", "texto": "libertação de oxigénio proveniente das moléculas do dióxido de carbono que é incorporado." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p12",
+      "grupo": 1,
+      "numero": 12,
+      "tipo": "escolha_multipla",
+      "enunciado": "No modelo endossimbiótico, as características das cianobactérias são utilizadas para explicar que o aparecimento",
+      "opcoes": [
+        { "letra": "A", "texto": "das mitocôndrias resultou de invaginações sucessivas da membrana plasmática de células procarióticas ancestrais." },
+        { "letra": "B", "texto": "das mitocôndrias resultou de relações benéficas que se estabeleceram entre organismos coloniais heterotróficos." },
+        { "letra": "C", "texto": "dos cloroplastos resultou da vantagem adaptativa proveniente da associação entre procariontes fotossintéticos." },
+        { "letra": "D", "texto": "dos cloroplastos resultou da incorporação de procariontes autotróficos por organismos unicelulares heterotróficos." }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p13",
+      "grupo": 1,
+      "numero": 13,
+      "tipo": "escolha_multipla",
+      "enunciado": "No que diz respeito às categorias taxonómicas, o peixe Thalassoma pavo pertence",
+      "opcoes": [
+        { "letra": "A", "texto": "ao mesmo género de Cheilinus undulatus." },
+        { "letra": "B", "texto": "a uma família diferente de Thalassoma purpureum." },
+        { "letra": "C", "texto": "ao mesmo filo de Cheilinus undulatus." },
+        { "letra": "D", "texto": "a uma ordem diferente de Thalassoma purpureum." }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p14",
+      "grupo": 1,
+      "numero": 14,
+      "tipo": "ordenacao",
+      "enunciado": "Ordene as expressões identificadas pelas letras de A a E, de modo a reconstituir a sequência de acontecimentos relacionados com a formação de gâmetas na estrela-do-mar-coroa-de-espinhos, Acanthaster planci.",
+      "opcoes": [
+        { "letra": "A", "texto": "Alinhamento de cromossomas homólogos na placa equatorial." },
+        { "letra": "B", "texto": "Redução do número de cromossomas para metade." },
+        { "letra": "C", "texto": "Formação de bivalentes com pontos de quiasma." },
+        { "letra": "D", "texto": "Duplicação do material genético." },
+        { "letra": "E", "texto": "Separação dos centrómeros de cromatídeos-irmãos." }
+      ],
+      "resposta_correta": ["D", "C", "A", "B", "E"],
+      "cotacao": 8
+    },
+    {
+      "id": "g1p15",
+      "grupo": 1,
+      "numero": 15,
+      "tipo": "resposta_longa",
+      "enunciado": "Estudos realizados na Grande Barreira de Coral da Austrália apontam Acanthaster planci como uma das principais causas da degradação dos recifes de corais. Considere: A — A grande disponibilidade de nutrientes nas águas costeiras, proveniente de atividades humanas poluentes, aumenta a biomassa do fitoplâncton. B — Diversos peixes de recife são predadores dos ovos, das larvas e dos juvenis da A. planci. Explique, utilizando os dados e a informação do Texto 2, de que modo a poluição e a pesca podem contribuir para a degradação dos recifes de corais.",
+      "criterios_correcao": "Deve explicar duas vias que convergem no aumento da população de A. planci e, logo, na maior predação sobre os corais: (i) a poluição aumenta os nutrientes disponíveis, o que aumenta a biomassa de fitoplâncton, incluindo Trichodesmium erythraeum — o único alimento das larvas de A. planci — pelo que há mais alimento disponível, aumentando a sobrevivência das larvas e, consequentemente, o número de adultos; (ii) a pesca reduz as populações de peixes de recife que predam ovos, larvas e juvenis de A. planci, diminuindo a pressão predatória sobre estas fases do ciclo de vida e permitindo que sobrevivam mais indivíduos até à fase adulta. Em ambos os casos, mais estrelas-do-mar adultas significam maior predação sobre os corais e maior degradação dos recifes.",
+      "cotacao": 12
+    },
+    {
+      "id": "g1p16",
+      "grupo": 1,
+      "numero": 16,
+      "tipo": "escolha_multipla",
+      "enunciado": "Selecione a opção que apresenta uma análise correta da experiência descrita.",
+      "opcoes": [
+        { "letra": "A", "texto": "Uma das variáveis dependentes é o tempo de exposição ao cádmio, e uma das variáveis independentes é a espécie dos peixes utilizada." },
+        { "letra": "B", "texto": "A síntese de metalotioneínas está dependente da concentração de cádmio e do tempo de exposição dos peixes ao poluente." },
+        { "letra": "C", "texto": "A hipótese testada foi: as atividades humanas contribuem para o aumento da concentração de cádmio na água do mar." },
+        { "letra": "D", "texto": "Nas células das brânquias dos peixes expostos a uma concentração de 40 µM de cádmio, a percentagem média de células que apresentam MT diminui ao longo do tempo." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p17",
+      "grupo": 1,
+      "numero": 17,
+      "tipo": "escolha_multipla",
+      "enunciado": "As alterações morfológicas observadas nas brânquias do peixe T. pavo podem contribuir para a diminuição da hematose branquial. Como consequência, a nível celular a produção de energia será menor, pois fica comprometida",
+      "opcoes": [
+        { "letra": "A", "texto": "a fosforilação oxidativa, nas cristas mitocondriais." },
+        { "letra": "B", "texto": "a oxidação da glicose, na matriz das mitocôndrias." },
+        { "letra": "C", "texto": "a redução do piruvato, no hialoplasma." },
+        { "letra": "D", "texto": "a produção de lactato, na mitocôndria." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p18",
+      "grupo": 1,
+      "numero": 18,
+      "tipo": "escolha_multipla",
+      "enunciado": "Selecione a opção que apresenta características do ciclo de vida do peixe T. pavo.",
+      "opcoes": [
+        { "letra": "A", "texto": "Ocorre meiose pós-zigótica, sendo os gâmetas haploides." },
+        { "letra": "B", "texto": "Verifica-se alternância de gerações, sendo o zigoto uma célula diploide." },
+        { "letra": "C", "texto": "Ocorre meiose pré-gamética, num ciclo de vida haplonte." },
+        { "letra": "D", "texto": "Verifica-se alternância de fases nucleares, num ciclo de vida diplonte." }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p19",
+      "grupo": 1,
+      "numero": 19,
+      "tipo": "correspondencia",
+      "enunciado": "Associe cada uma das afirmações relativas a características do sistema de transporte, apresentadas na Coluna I, ao respetivo grupo de animais, que consta na Coluna II.",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "O sangue efetua dois percursos distintos, sendo bombeado por um coração que possui três cavidades." },
+        { "letra": "b", "texto": "O coração bombeia exclusivamente sangue venoso, que, depois de percorrer a superfície respiratória, segue diretamente para os restantes órgãos." },
+        { "letra": "c", "texto": "A hemolinfa flui livremente nas lacunas até alcançar as células." }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Anelídeos" },
+        { "numero": "2", "texto": "Anfíbios" },
+        { "numero": "3", "texto": "Aves" },
+        { "numero": "4", "texto": "Insetos" },
+        { "numero": "5", "texto": "Peixes" }
+      ],
+      "resposta_correta": { "a": "2", "b": "5", "c": "4" },
+      "cotacao": 8
+    },
+    {
+      "id": "g1p20",
+      "grupo": 1,
+      "numero": 20,
+      "tipo": "resposta_longa",
+      "enunciado": "Explique de que modo a exposição prolongada ao cádmio (192 horas) afeta a capacidade de regeneração das brânquias dos peixes T. pavo. Fundamente a sua resposta com os resultados obtidos para o grupo de controlo e para os grupos experimentais, relativos à presença do biomarcador diretamente implicado na capacidade de regeneração das células, e com a função deste biomarcador.",
+      "criterios_correcao": "Deve identificar o PCNA como o biomarcador diretamente implicado na regeneração celular (por se ligar à DNA-polimerase e possibilitar a síntese de novas cadeias de DNA, logo a proliferação/divisão celular). Deve comparar: às 48 horas, a percentagem de células positivas para PCNA aumenta com a concentração de cádmio face ao controlo (resposta inicial de proliferação/tentativa de regeneração); às 192 horas, essa percentagem é inferior à do grupo de controlo e diminui com o aumento da concentração de cádmio. Deve concluir que a exposição prolongada ao cádmio reduz a capacidade de regeneração das brânquias, pois diminui a proliferação celular (menos síntese de DNA/divisão celular) em vez de a estimular, ao contrário do que sucede numa exposição mais curta.",
+      "cotacao": 9
+    },
+    {
+      "id": "g2p1",
+      "grupo": 2,
+      "numero": 1,
+      "tipo": "selecao_multipla",
+      "numero_a_selecionar": 3,
+      "enunciado": "Identifique, de entre as afirmações relativas à análise do procedimento e dos resultados obtidos, as três afirmações corretas.",
+      "opcoes": [
+        { "letra": "I", "texto": "A concentração salina do meio extracelular nas três lâminas, por ordem crescente, é B, A, C." },
+        { "letra": "II", "texto": "Esta atividade experimental permitiu verificar que a plasmólise é um processo reversível." },
+        { "letra": "III", "texto": "Na lâmina A, o meio de montagem é isotónico relativamente ao meio intracelular." },
+        { "letra": "IV", "texto": "As células da lâmina C sofrem plasmólise devido ao gradiente de concentração entre o meio intracelular e o meio extracelular." },
+        { "letra": "V", "texto": "Nas células da lâmina C, os pigmentos atravessam as membranas das células no mesmo sentido que as moléculas de água." }
+      ],
+      "resposta_correta": ["I", "III", "IV"],
+      "cotacao": 8
+    },
+    {
+      "id": "g2p2",
+      "grupo": 2,
+      "numero": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "As células da cebola e as células animais têm em comum a presença de",
+      "opcoes": [
+        { "letra": "A", "texto": "uma estrutura de natureza celulósica que confere suporte." },
+        { "letra": "B", "texto": "vesículas golgianas que intervêm diretamente na citocinese." },
+        { "letra": "C", "texto": "organelos com DNA circular que são responsáveis pela fixação de moléculas de dióxido de carbono." },
+        { "letra": "D", "texto": "um conjunto de membranas com ribossomas associados onde ocorre a síntese de biomoléculas." }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 8
+    },
+    {
+      "id": "g2p3",
+      "grupo": 2,
+      "numero": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Descreva, justificando, os resultados previstos para a lâmina B, quanto ao volume e à tonalidade dos vacúolos. Na sua justificação, faça referência à diferença de concentrações dos meios intracelular e extracelular.",
+      "criterios_correcao": "Deve descrever que o vacúolo aumenta de volume (célula fica túrgida) e que a tonalidade da cor se torna mais ténue/mais clara (pigmento diluído). Deve justificar com o facto de a água destilada (meio extracelular) ser hipotónica relativamente ao meio intracelular, pelo que a água entra na célula por osmose (a favor do gradiente de concentração), aumentando o volume do vacúolo e diluindo os pigmentos nele contidos.",
+      "cotacao": 9
+    },
+    {
+      "id": "g3p1",
+      "grupo": 3,
+      "numero": 1,
+      "tipo": "selecao_multipla",
+      "numero_a_selecionar": 3,
+      "enunciado": "Identifique, de entre as afirmações relativas à hidrogeologia do Maciço de Monchique, as três afirmações corretas, considerando os dados das Figuras 4A e 4B.",
+      "opcoes": [
+        { "letra": "I", "texto": "A presença de falhas e de fraturas confere permeabilidade ao sienito nefelínico." },
+        { "letra": "II", "texto": "A água das nascentes com temperaturas superiores a 22 ºC apresenta teores de sódio entre 100 mg/L e 350 mg/L, aproximadamente." },
+        { "letra": "III", "texto": "A variação do teor de sódio na água é independente da profundidade a que esta circula." },
+        { "letra": "IV", "texto": "A água das nascentes quentes realiza um percurso mais longo comparativamente à água das nascentes frias." },
+        { "letra": "V", "texto": "No aquífero superior, a pressão da água no nível hidrostático é superior à pressão atmosférica." }
+      ],
+      "resposta_correta": ["I", "II", "IV"],
+      "cotacao": 8
+    },
+    {
+      "id": "g3p2",
+      "grupo": 3,
+      "numero": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base nos dados, o sienito de Monchique, no que diz respeito à sua génese e às suas características litológicas, é uma rocha",
+      "opcoes": [
+        { "letra": "A", "texto": "plutónica e apresenta uma textura afanítica." },
+        { "letra": "B", "texto": "vulcânica e apresenta uma textura fanerítica." },
+        { "letra": "C", "texto": "plutónica e é constituída essencialmente por minerais félsicos." },
+        { "letra": "D", "texto": "vulcânica e é constituída essencialmente por minerais máficos." }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 8
+    },
+    {
+      "id": "g3p3",
+      "grupo": 3,
+      "numero": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "As corneanas existentes no Maciço de Monchique resultaram de processos de metamorfismo",
+      "opcoes": [
+        { "letra": "A", "texto": "de contacto, em que predominaram tensões dirigidas." },
+        { "letra": "B", "texto": "de contacto, que levaram à recristalização dos minerais das rochas do Paleozoico." },
+        { "letra": "C", "texto": "regional, que afetaram grandes extensões de sienitos nefelínicos do Mesozoico." },
+        { "letra": "D", "texto": "regional, em que atuaram fluidos hidrotermais." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "g3p4",
+      "grupo": 3,
+      "numero": 4,
+      "tipo": "escolha_multipla",
+      "enunciado": "Num dos afloramentos do sienito nefelínico de Monchique, este é intersectado pelo filão M, e o afloramento apresenta, no seu interior, fragmentos de rochas magmáticas de cor escura. Um outro filão, o filão N, intersecta tanto o filão M como o afloramento de sienito nefelínico. Aplicando os princípios estratigráficos, pode referir-se que na região ocorreu a instalação sequencial de",
+      "opcoes": [
+        { "letra": "A", "texto": "rochas magmáticas de cor escura – sienito nefelínico – filão M – filão N." },
+        { "letra": "B", "texto": "sienito nefelínico – rochas magmáticas de cor escura – filão N – filão M." },
+        { "letra": "C", "texto": "sienito nefelínico – filão N – rochas magmáticas de cor escura – filão M." },
+        { "letra": "D", "texto": "rochas magmáticas de cor escura – filão M – sienito nefelínico – filão N." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "g3p5",
+      "grupo": 3,
+      "numero": 5,
+      "tipo": "resposta_longa",
+      "enunciado": "Uma das explicações possíveis para justificar a temperatura da água das nascentes quentes de Monchique está relacionada com a presença de isótopos radioativos de urânio, de tório e de potássio no sienito nefelínico. Explique de que modo a presença de isótopos radioativos influencia a existência de teores significativos de sódio na água das nascentes quentes de Monchique. Na sua resposta, faça referência à litologia da região.",
+      "criterios_correcao": "Deve explicar que a desintegração radioativa dos isótopos de urânio, tório e potássio presentes no sienito nefelínico liberta calor (calor radiogénico), contribuindo para aquecer a água que circula em profundidade através das falhas e fraturas da rocha. Deve relacionar esse aquecimento com a litologia: o sienito nefelínico contém nefelina, um mineral silicatado rico em sódio (e potássio); a água mais quente favorece/acelera a alteração e dissolução dos minerais (maior reatividade química a temperaturas mais elevadas), permitindo que a água lixivie e dissolva mais sódio da nefelina, o que explica os teores de sódio mais elevados nas nascentes quentes do que nas nascentes frias.",
+      "cotacao": 9
+    }
+  ]
+}
