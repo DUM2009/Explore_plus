@@ -466,6 +466,7 @@ const SCIENCE_QUOTES = [
     { text: 'Não é o mais forte que sobrevive, mas o que melhor se adapta à mudança.', author: 'Charles Darwin' },
     { text: 'A sorte favorece a mente preparada.', author: 'Louis Pasteur' },
     { text: 'Se vi mais longe, foi por estar sobre ombros de gigantes.', author: 'Isaac Newton' },
+    { text: 'O que observamos não é a natureza em si, mas a natureza exposta ao nosso método de questionamento.', author: 'Werner Heisenberg' },
 ];
 
 const profileQuoteCard = document.querySelector('.profile-quote-card');
