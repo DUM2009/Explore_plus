@@ -39,6 +39,16 @@
             this.mascotImageUrl = options.mascotImageUrl || '';
             this.progressSyncUrl = options.progressSyncUrl || window.exploreProgressSyncUrl || '';
             this.csrfToken = options.csrfToken || window.exploreCsrfToken || '';
+            this.mascoteChatUrl = options.mascoteChatUrl || window.exploreMascoteChatUrl || '';
+            this.mascotWaveVideoUrl = options.mascotWaveVideoUrl || window.exploreMascotWaveVideoUrl || '';
+
+            // Estado do painel de chat — não persiste em localStorage (tal
+            // como na Fotossíntese, o chat começa sempre fechado e sem
+            // histórico a cada visita/recarregamento da página).
+            this.chatOpen = false;
+            this.chatHistory = [];
+            this.chatLimitReached = false;
+            this._lastGanchoPopupKey = null;
 
             this.storageKey = this.buildStorageKey();
             this.state = this.loadState();
@@ -385,6 +395,124 @@
             });
         }
 
+        // ---- Painel de chat com a mascote -------------------------------------
+        // Reaproveita tal e qual o botão flutuante (.mascot-chat-fab) e o
+        // painel (.mascote-chat-panel, dentro de .mission-sidebar) da missão
+        // da Fotossíntese, incluindo o próprio endpoint /api/mascote-chat/
+        // (já agnóstico da missão) — ver mascote_chat() em views.py e
+        // sendMascoteChatMessage() em mission.js, que este código espelha.
+
+        mascotFabFigureHtml() {
+            if (this.mascotWaveVideoUrl) {
+                return `<video src="${this.mascotWaveVideoUrl}" autoplay loop muted playsinline></video>`;
+            }
+            if (this.mascotImageUrl) {
+                return `<img src="${this.mascotImageUrl}" alt="Mascote">`;
+            }
+            return `<span class="me-mascot-avatar--fallback">🐢</span>`;
+        }
+
+        chatBubbleHtml(role, text, isTyping = false) {
+            return `<div class="mascote-chat-bubble mascote-chat-bubble--${role}${isTyping ? ' is-typing' : ''}">${escapeHtml(text)}</div>`;
+        }
+
+        chatWelcomeHtml() {
+            const username = window.exploreUsername || '';
+            const suggestions = [
+                'Podes explicar-me este conceito de forma simples?',
+                'Podes resumir a matéria desta unidade?',
+                'Podes dar-me um exemplo prático?'
+            ];
+            return `
+                <div class="mascote-chat-welcome" id="meChatWelcome">
+                    ${this.mascotWaveVideoUrl ? `<video src="${this.mascotWaveVideoUrl}" class="mascote-chat-welcome-video" autoplay loop muted playsinline></video>` : ''}
+                    <div class="mascote-chat-welcome-copy">
+                        <p class="mascote-chat-welcome-greeting">${username ? `Olá, ${escapeHtml(username)}!` : 'Olá!'}</p>
+                        <h3 class="mascote-chat-welcome-title">Como posso ajudar?</h3>
+                        <p class="mascote-chat-welcome-subtitle">Escolhe uma sugestão ou escreve a tua pergunta!</p>
+                    </div>
+                    <div class="mascote-chat-suggestions">
+                        ${suggestions.map((s) => `<button type="button" class="mascote-chat-suggestion" data-suggestion="${s.replace(/"/g, '&quot;')}">${escapeHtml(s)}</button>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        renderChatMessagesHtml() {
+            if (!this.chatHistory.length) return this.chatWelcomeHtml();
+            return this.chatHistory.map((m) => this.chatBubbleHtml(m.role, m.text)).join('');
+        }
+
+        appendChatBubble(role, text, isTyping = false) {
+            const messagesEl = this.root.querySelector('#meChatMessages');
+            if (!messagesEl) return null;
+            this.root.querySelector('#meChatWelcome')?.remove();
+            const bubble = document.createElement('div');
+            bubble.className = `mascote-chat-bubble mascote-chat-bubble--${role}${isTyping ? ' is-typing' : ''}`;
+            bubble.textContent = text;
+            messagesEl.appendChild(bubble);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+            return bubble;
+        }
+
+        disableChatInput() {
+            this.chatLimitReached = true;
+            const input = this.root.querySelector('#meChatInput');
+            const sendBtn = this.root.querySelector('#meChatSend');
+            if (input) {
+                input.disabled = true;
+                input.placeholder = 'Sem perguntas disponíveis esta semana';
+            }
+            if (sendBtn) sendBtn.disabled = true;
+        }
+
+        async sendChatMessage(section) {
+            const input = this.root.querySelector('#meChatInput');
+            const text = input?.value.trim();
+            if (!text || !this.mascoteChatUrl) return;
+
+            input.value = '';
+            this.appendChatBubble('user', text);
+            const historyBeforeThisMessage = this.chatHistory.map((m) => ({ role: m.role, text: m.text }));
+            this.chatHistory.push({ role: 'user', text });
+
+            const typingEl = this.appendChatBubble('assistant', '…', true);
+            const context = (this.root.querySelector('.screen-card')?.textContent || '').trim().slice(0, 6000);
+
+            try {
+                const response = await fetch(this.mascoteChatUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': this.csrfToken
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify({
+                        message: text,
+                        missionTitle: this.missao.titulo,
+                        sectionTitle: section?.titulo || '',
+                        context,
+                        history: historyBeforeThisMessage
+                    })
+                });
+
+                const data = await response.json().catch(() => ({}));
+                typingEl?.remove();
+
+                if (!response.ok) {
+                    this.appendChatBubble('assistant', data.erro || 'Não consegui responder agora. Tenta mais tarde.');
+                    if (data.limiteAtingido) this.disableChatInput();
+                    return;
+                }
+
+                this.appendChatBubble('assistant', data.reply || '...');
+                this.chatHistory.push({ role: 'assistant', text: data.reply || '' });
+            } catch (error) {
+                typingEl?.remove();
+                this.appendChatBubble('assistant', 'Não consegui ligar ao servidor. Verifica a tua ligação.');
+            }
+        }
+
         // ---- Vista: dentro de uma secção -------------------------------------
 
         getScreenIndex(section) {
@@ -448,7 +576,23 @@
             }
 
             this.root.innerHTML = `
-                <div class="mission-shell">
+                <div class="mission-shell ${this.chatOpen ? '' : 'is-sidebar-collapsed'}">
+                    <aside class="mission-sidebar" id="meMissionSidebar">
+                        <div class="mascote-chat-panel">
+                            <div class="mascote-chat-header">
+                                <button type="button" class="mascote-chat-close" id="meChatCloseBtn" aria-label="Fechar o chat">✕</button>
+                                <span>Fala com a mascote</span>
+                            </div>
+                            <div class="mascote-chat-messages" id="meChatMessages">${this.renderChatMessagesHtml()}</div>
+                            <form class="mascote-chat-form" id="meChatForm">
+                                <input type="text" class="mascote-chat-input" id="meChatInput" placeholder="${this.chatLimitReached ? 'Sem perguntas disponíveis esta semana' : 'Escreve a tua pergunta...'}" autocomplete="off" maxlength="500" ${this.chatLimitReached ? 'disabled' : ''}>
+                                <button type="submit" class="mascote-chat-send" id="meChatSend" aria-label="Enviar" ${this.chatLimitReached ? 'disabled' : ''}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                                </button>
+                            </form>
+                        </div>
+                    </aside>
+                    <div class="mission-sidebar-resize-handle"></div>
                     <div class="mission-main">
                         <div class="lesson-topbar">
                             <button type="button" class="lesson-topbar-close" id="meBackToMap" aria-label="Voltar ao mapa da missão">
@@ -484,6 +628,9 @@
                         </div>
                     </div>
                 </div>
+                <button type="button" class="mascot-chat-fab" id="meMascotFab" aria-label="Falar com a mascote" ${this.chatOpen ? 'hidden' : ''}>
+                    ${this.mascotFabFigureHtml()}
+                </button>
             `;
 
             this.bindScreenInteractions(section, screen, screenIndex);
@@ -504,6 +651,35 @@
             });
 
             this.bindThemeToggle(this.root.querySelector('#meThemeToggle'));
+
+            const chatMessagesEl = this.root.querySelector('#meChatMessages');
+            if (chatMessagesEl) chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+
+            this.root.querySelector('#meMascotFab')?.addEventListener('click', () => {
+                this.chatOpen = true;
+                this.render();
+            });
+
+            this.root.querySelector('#meChatCloseBtn')?.addEventListener('click', () => {
+                this.chatOpen = false;
+                this.render();
+            });
+
+            this.root.querySelector('#meChatForm')?.addEventListener('submit', (event) => {
+                event.preventDefault();
+                this.sendChatMessage(section);
+            });
+
+            this.root.querySelectorAll('.mascote-chat-suggestion').forEach((button) => {
+                button.addEventListener('click', () => {
+                    const input = this.root.querySelector('#meChatInput');
+                    if (!input) return;
+                    input.value = button.dataset.suggestion || '';
+                    input.focus();
+                });
+            });
+
+            this.showGanchoPopupIfNeeded(section, screen, screenIndex);
         }
 
         advance(section, sectionIndex, screenIndex, screens) {
@@ -572,28 +748,211 @@
         }
 
         renderGancho(screen) {
+            if (screen.imagem) {
+                // Com imagem própria: o painel branco só leva a imagem e o
+                // título — a fala da mascote aparece à parte, num popup
+                // (ver showMascotPopup, chamado pelo renderSeccao).
+                return `
+                    <div class="mascot-overlay-card me-mascot-inline me-gancho-card">
+                        <img class="me-gancho-hero-image" src="/static/images/${encodeURIComponent(screen.imagem)}" alt="${escapeHtml(screen.titulo || '')}" onerror="this.style.display='none'">
+                        <h3 class="screen-title-lg">${escapeHtml(screen.texto)}</h3>
+                    </div>
+                `;
+            }
             return `
                 ${this.mascotInlineCardHtml(screen.mascote_texto)}
                 <h3 class="screen-title-lg">${escapeHtml(screen.texto)}</h3>
             `;
         }
 
-        renderDiagrama(screen) {
-            const pontos = screen.pontos || [];
-            const chipsHtml = pontos.map((ponto, i) => `
-                <button type="button" class="me-diagrama-chip" data-ponto-index="${i}">
-                    <span class="me-diagrama-chip-num">${i + 1}</span>
-                    <span>${escapeHtml(ponto.label)}</span>
-                </button>
-            `).join('');
+        /**
+         * Popup com a mascote à esquerda e a fala à direita — reaproveita
+         * tal e qual .mascot-overlay-card--split (o mesmo diálogo modal
+         * usado nas saudações/curiosidades da Fotossíntese). Chamado uma
+         * vez por cada vez que se entra num ecrã de gancho com imagem
+         * própria (ver showGanchoPopupIfNeeded).
+         */
+        mascotOverlayFigureHtml() {
+            if (this.mascotWaveVideoUrl) {
+                return `<video class="mascot-overlay-figure" src="${this.mascotWaveVideoUrl}" autoplay loop muted playsinline></video>`;
+            }
+            if (this.mascotImageUrl) {
+                return `<img class="mascot-overlay-figure" src="${this.mascotImageUrl}" alt="Mascote">`;
+            }
+            return `<span class="mascot-overlay-figure me-mascot-avatar--fallback">🐢</span>`;
+        }
+
+        showMascotPopup(texto) {
+            if (!this.mascotEnabled() || !texto) return;
+            document.querySelector('.me-mascot-popup')?.remove();
+
+            const overlay = document.createElement('div');
+            overlay.className = 'mascot-overlay me-mascot-popup';
+            overlay.innerHTML = `
+                <div class="mascot-overlay-card mascot-overlay-card--split" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
+                    <div class="mascot-overlay-split-figure">${this.mascotOverlayFigureHtml()}</div>
+                    <div class="mascot-overlay-split-body">
+                        <p class="mascot-overlay-text">${escapeHtml(texto)}</p>
+                        <button type="button" class="mascot-overlay-btn">Entendido</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+
+            const close = () => overlay.remove();
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) close();
+            });
+            overlay.querySelector('.mascot-overlay-btn')?.addEventListener('click', close);
+        }
+
+        /** Só mostra o popup na primeira vez que se entra neste ecrã em
+         *  concreto — reentradas por causa de outro re-render (ex: abrir/
+         *  fechar o chat) não o voltam a mostrar. */
+        showGanchoPopupIfNeeded(section, screen, screenIndex) {
+            const temGancho = (screen.tipo === 'gancho' && screen.imagem)
+                || (screen.tipo === 'diagrama_interativo' && screen.intro_imagem);
+            if (!temGancho || !screen.mascote_texto) return;
+            const popupKey = `${section.secao_id}::${screenIndex}`;
+            if (this._lastGanchoPopupKey === popupKey) return;
+            this._lastGanchoPopupKey = popupKey;
+            this.showMascotPopup(screen.mascote_texto);
+        }
+
+        /**
+         * Formato alternativo aos chips: pontos numa linha do tempo
+         * horizontal, com o nome em diagonal por cima do ponto e o ano por
+         * baixo (extraído de labels do tipo "Nome (ano)"). Só é usado quando
+         * o próprio ecrã pede explicitamente screen.layout === "timeline"
+         * (ver renderDiagrama) — os outros diagramas mantêm os chips atuais.
+         * Reaproveita a classe "me-diagrama-chip" e o atributo
+         * data-ponto-index nos botões para que o clique continue a
+         * funcionar tal e qual (ver bindScreenInteractions), sem precisar
+         * de nenhuma lógica de clique nova.
+         */
+        renderDiagramaTimeline(pontos) {
+            const itemsHtml = pontos.map((ponto, i) => {
+                const partido = /^(.*?)\s*\(([^)]+)\)\s*$/.exec(ponto.label || '');
+                const nome = partido ? partido[1].trim() : (ponto.label || '');
+                const ano = partido ? partido[2].trim() : '';
+                return `
+                    <li class="me-timeline-item">
+                        ${nome ? `<span class="me-timeline-label">${escapeHtml(nome)}</span>` : ''}
+                        <button type="button" class="me-diagrama-chip me-timeline-dot" data-ponto-index="${i}" aria-label="${escapeHtml(ponto.label || '')}" title="${escapeHtml(ponto.label || '')}"></button>
+                        ${ano ? `<span class="me-timeline-caption">${escapeHtml(ano)}</span>` : ''}
+                    </li>
+                `;
+            }).join('');
 
             return `
-                ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
-                <img class="card-visual" src="/static/images/${encodeURIComponent(screen.imagem)}" alt="${escapeHtml(screen.titulo || '')}" onerror="this.style.display='none'">
-                <p class="plant-diagram-hint">${escapeHtml(screen.instrucao || 'Clica num ponto para veres a explicação.')}</p>
-                <div class="me-diagrama-chips">${chipsHtml}</div>
-                <div class="me-diagrama-explicacao did-you-know" id="meDiagramaExplicacao" hidden></div>
+                <div class="me-timeline-scroll">
+                    <div class="me-timeline-rail-wrap">
+                        <div class="me-timeline-rail" aria-hidden="true"></div>
+                        <ol class="me-timeline-dots" role="list">${itemsHtml}</ol>
+                    </div>
+                </div>
             `;
+        }
+
+        /**
+         * Formato "escada": um degrau por ponto, com altura crescente
+         * (--step-index) para se ler como uma escada ascendente — sem
+         * imagem de diagrama própria (os próprios degraus já são a
+         * visualização). Reaproveita data-ponto-index para o clique (ver
+         * bindScreenInteractions), tal como os outros formatos.
+         */
+        renderDiagramaEscada(pontos) {
+            const stepsHtml = pontos.map((ponto, i) => `
+                <button type="button" class="me-escada-step ${i === 0 ? 'is-active' : ''}" data-ponto-index="${i}" style="--step-index:${i}">
+                    <span class="me-escada-step-num">${i + 1}</span>
+                    <span class="me-escada-step-label">${escapeHtml(ponto.label)}</span>
+                </button>
+            `).join('');
+            return `<div class="me-escada-track">${stepsHtml}</div>`;
+        }
+
+        renderDiagrama(screen) {
+            const pontos = screen.pontos || [];
+            const isEscada = screen.layout === 'escada';
+            const isTimeline = screen.layout === 'timeline';
+            const pontosHtml = isEscada
+                ? this.renderDiagramaEscada(pontos)
+                : isTimeline
+                    ? this.renderDiagramaTimeline(pontos)
+                    : `<div class="me-diagrama-chips">${pontos.map((ponto, i) => `
+                        <button type="button" class="me-diagrama-chip" data-ponto-index="${i}">
+                            <span class="me-diagrama-chip-num">${i + 1}</span>
+                            <span>${escapeHtml(ponto.label)}</span>
+                        </button>
+                    `).join('')}</div>`;
+
+            // Introdução opcional (gancho fundido neste ecrã, ver
+            // showMascotPopupIfNeeded): imagem + frase-isco + frase-ponte a
+            // ligar esse isco ao diagrama que se segue. Na timeline, o
+            // título e a frase-ponte saem daqui — passam a aparecer juntos
+            // por cima da própria linha temporal (ver tituloPonteHtml).
+            const introHtml = screen.intro_imagem
+                ? `
+                    <img class="me-gancho-hero-image" src="/static/images/${encodeURIComponent(screen.intro_imagem)}" alt="" onerror="this.style.display='none'">
+                    ${screen.intro_texto ? `<p class="me-diagrama-intro-texto">${escapeHtml(screen.intro_texto)}</p>` : ''}
+                    ${(!isTimeline && screen.ponte_texto) ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.ponte_texto)}</p>` : ''}
+                `
+                : '';
+
+            // A escada já é a própria visualização — sem imagem de diagrama
+            // por cima, e o painel de explicação ganha o formato "Nível X
+            // de N" em vez do "did-you-know" genérico.
+            const primeiroPonto = pontos[0] || {};
+            const explicacaoHtml = isEscada
+                ? `
+                    <div class="me-escada-detail" id="meDiagramaExplicacao">
+                        <span class="me-escada-detail-badge">🎓 Nível 1 de ${pontos.length}</span>
+                        <h4 class="me-escada-detail-title">${escapeHtml(primeiroPonto.label || '')}</h4>
+                        <p class="me-escada-detail-text">${escapeHtml(primeiroPonto.explicacao || '')}</p>
+                    </div>
+                `
+                : `<div class="me-diagrama-explicacao did-you-know" id="meDiagramaExplicacao" hidden></div>`;
+
+            // Título + frase-ponte centrados por cima da linha temporal —
+            // título primeiro, frase-ponte logo a seguir.
+            const tituloPonteHtml = isTimeline
+                ? `
+                    ${screen.titulo ? `<h3 class="me-timeline-titulo">${escapeHtml(screen.titulo)}</h3>` : ''}
+                    ${screen.ponte_texto ? `<p class="me-diagrama-ponte-texto me-timeline-ponte">${escapeHtml(screen.ponte_texto)}</p>` : ''}
+                `
+                : '';
+
+            // Na timeline, a dica "Clica em cada marco..." passa a aparecer
+            // por baixo da linha temporal (junto ao início da explicação),
+            // em vez de por cima como nos outros formatos de diagrama.
+            const instrucaoHtml = `<p class="plant-diagram-hint">${escapeHtml(screen.instrucao || 'Clica num ponto para veres a explicação.')}</p>`;
+
+            const diagramaHtml = `
+                ${isTimeline ? tituloPonteHtml : (screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : '')}
+                ${isEscada ? '' : `<img class="card-visual" src="/static/images/${encodeURIComponent(screen.imagem)}" alt="${escapeHtml(screen.titulo || '')}" onerror="this.style.display='none'">`}
+                ${isTimeline ? '' : instrucaoHtml}
+                ${pontosHtml}
+                ${isTimeline ? instrucaoHtml : ''}
+                ${explicacaoHtml}
+            `;
+
+            // Com introdução (gancho fundido), tudo — imagem-isco, textos e
+            // diagrama — partilha o mesmo painel branco em vez de flutuar
+            // solto na página. A timeline recebe uma modificadora extra:
+            // precisa de mais largura do que o painel estreito normal para
+            // caberem os nomes em diagonal sem scroll horizontal (ver
+            // .me-gancho-card--timeline, que quebra a coluna de leitura
+            // estreita de .section-body tal como .plant-diagram-card).
+            if (screen.intro_imagem) {
+                const cardModifier = screen.layout === 'timeline' ? ' me-gancho-card--timeline' : '';
+                return `
+                    <div class="mascot-overlay-card me-mascot-inline me-gancho-card${cardModifier}">
+                        ${introHtml}
+                        ${diagramaHtml}
+                    </div>
+                `;
+            }
+            return diagramaHtml;
         }
 
         renderMicroVerificacao(section, screen, screenIndex) {
@@ -734,15 +1093,47 @@
 
         bindScreenInteractions(section, screen, screenIndex) {
             if (screen.tipo === 'diagrama_interativo') {
+                const isEscada = screen.layout === 'escada';
                 const explicacaoEl = this.root.querySelector('#meDiagramaExplicacao');
                 this.root.querySelectorAll('[data-ponto-index]').forEach((chip) => {
                     chip.addEventListener('click', () => {
                         const ponto = screen.pontos[Number(chip.dataset.pontoIndex)];
+                        if (isEscada) {
+                            this.root.querySelectorAll('.me-escada-step').forEach((c) => c.classList.remove('is-active'));
+                            chip.classList.add('is-active');
+                            if (explicacaoEl) {
+                                explicacaoEl.innerHTML = `
+                                    <span class="me-escada-detail-badge">🎓 Nível ${Number(chip.dataset.pontoIndex) + 1} de ${screen.pontos.length}</span>
+                                    <h4 class="me-escada-detail-title">${escapeHtml(ponto.label)}</h4>
+                                    <p class="me-escada-detail-text">${escapeHtml(ponto.explicacao)}</p>
+                                `;
+                            }
+                            return;
+                        }
                         this.root.querySelectorAll('.me-diagrama-chip').forEach((c) => c.classList.remove('is-active'));
                         chip.classList.add('is-active');
                         if (explicacaoEl) {
                             explicacaoEl.hidden = false;
-                            explicacaoEl.innerHTML = `<strong>${escapeHtml(ponto.label)}</strong><p>${escapeHtml(ponto.explicacao)}</p>`;
+                            // ponto.imagem/ponto.intro são opcionais — um
+                            // ponto (ex: Robert Hooke) pode ter foto própria
+                            // e uma frase de abertura antes da explicação em
+                            // si, para ligar ao contexto da secção.
+                            const fotoHtml = ponto.imagem
+                                ? `<img class="curiosity-illustration" src="/static/images/${encodeURIComponent(ponto.imagem)}" alt="${escapeHtml(ponto.label)}" onerror="this.remove()">`
+                                : '';
+                            const introHtml = ponto.intro
+                                ? `<p class="me-diagrama-explicacao-intro">${escapeHtml(ponto.intro)}</p>`
+                                : '';
+                            explicacaoEl.innerHTML = `
+                                <div class="did-you-know-body">
+                                    ${fotoHtml}
+                                    <div class="did-you-know-text">
+                                        <strong>${escapeHtml(ponto.label)}</strong>
+                                        ${introHtml}
+                                        <p>${escapeHtml(ponto.explicacao)}</p>
+                                    </div>
+                                </div>
+                            `;
                         }
                     });
                 });

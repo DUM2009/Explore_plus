@@ -1,0 +1,235 @@
+{
+  "id": "celulas",
+  "titulo": "Teste: Células e Organelos",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Uma célula \"fábrica de desintoxicação\"",
+      "texto_apoio": "Os hepatócitos são as células mais abundantes do fígado, responsáveis por múltiplas funções metabólicas, entre as quais a desintoxicação de substâncias nocivas (incluindo álcool e muitos medicamentos). Ao observar hepatócitos ao microscópio eletrónico, os cientistas notaram uma característica marcante: uma quantidade excecionalmente elevada de retículo endoplasmático liso (REL), muito superior à encontrada na maioria das outras células do corpo."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Organelos em diferentes condições",
+      "texto_apoio": "Um estudo mediu a quantidade relativa de REL em hepatócitos de ratinhos, antes e depois de serem expostos a doses repetidas de um composto químico que o fígado precisa de desintoxicar.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Quantidade relativa de REL em hepatócitos",
+        "colunas": ["Condição", "Quantidade relativa de REL (unidades arbitrárias)"],
+        "linhas": [
+          ["Antes da exposição ao composto", "100"],
+          ["Após 3 dias de exposição", "145"],
+          ["Após 7 dias de exposição", "210"]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Componente laboratorial: microscopia",
+      "texto_apoio": "Para observar organelos como o REL, os cientistas recorrem a diferentes tipos de microscópios. A ampliação total de uma imagem ao microscópio ótico calcula-se multiplicando a ampliação da ocular pela ampliação da objetiva. Já o poder de resolução (capacidade de distinguir dois pontos próximos como separados) depende do tipo de microscópio: o microscópio ótico tem um limite de resolução de cerca de 200 nanómetros, enquanto o microscópio eletrónico consegue resoluções muito superiores, na ordem de 0,2 nanómetros.",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Combinações usadas num laboratório escolar",
+        "colunas": ["Ocular", "Objetiva", "Ampliação total"],
+        "linhas": [
+          ["10x", "4x", "?"],
+          ["10x", "40x", "?"],
+          ["15x", "100x", "?"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "O retículo endoplasmático liso (REL) está associado, entre outras funções, a",
+      "opcoes": [
+        { "letra": "A", "texto": "síntese de proteínas destinadas à exportação." },
+        { "letra": "B", "texto": "síntese de lípidos e desintoxicação de substâncias." },
+        { "letra": "C", "texto": "produção de ATP através da respiração celular." },
+        { "letra": "D", "texto": "digestão de organelos danificados." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A elevada quantidade de REL nos hepatócitos, em comparação com outras células, é um exemplo de como",
+      "opcoes": [
+        { "letra": "A", "texto": "todas as células têm exatamente a mesma quantidade de cada organelo." },
+        { "letra": "B", "texto": "a abundância de um organelo pode estar relacionada com a função especializada da célula." },
+        { "letra": "C", "texto": "o REL não tem qualquer relação com a função da célula." },
+        { "letra": "D", "texto": "apenas células vegetais podem ter quantidades variáveis de organelos." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada organelo da Coluna I à sua função principal (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Retículo endoplasmático liso" },
+        { "letra": "b", "texto": "Retículo endoplasmático rugoso" },
+        { "letra": "c", "texto": "Lisossoma" },
+        { "letra": "d", "texto": "Mitocôndria" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Produção de energia (ATP)" },
+        { "numero": "2", "texto": "Síntese de lípidos e desintoxicação" },
+        { "numero": "3", "texto": "Síntese de proteínas para exportação" },
+        { "numero": "4", "texto": "Digestão de resíduos celulares" }
+      ],
+      "resposta_correta": { "a": "2", "b": "3", "c": "4", "d": "1" },
+      "cotacao": 14
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        { "letra": "a", "texto": "O REL tem ribossomas agarrados à sua superfície." },
+        { "letra": "b", "texto": "Um hepatócito, por realizar desintoxicação, provavelmente também possui um número elevado de mitocôndrias, para suportar a energia que esse processo exige." },
+        { "letra": "c", "texto": "Todas as células do corpo humano têm exatamente a mesma proporção de cada organelo, independentemente da sua função." }
+      ],
+      "resposta_correta": { "a": "F", "b": "V", "c": "F" },
+      "cotacao": 12
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "resposta_longa",
+      "enunciado": "Um medicamento tomado por via oral é frequentemente processado no fígado antes de chegar ao resto do corpo — um fenómeno conhecido como \"metabolismo de primeira passagem\". Explica, relacionando com a estrutura do hepatócito, por que razão o fígado (e não, por exemplo, um músculo) é o órgão mais indicado para desempenhar esta função de processamento inicial de substâncias.",
+      "criterios_correcao": "Deve relacionar a elevada quantidade de REL no hepatócito (especializado em desintoxicação) com a necessidade de processar quimicamente substâncias antes de entrarem na circulação geral; um músculo não tem esta especialização estrutural, pelo que não desempenharia esta função de forma eficiente.",
+      "cotacao": 18
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 1, a exposição repetida ao composto químico provocou",
+      "opcoes": [
+        { "letra": "A", "texto": "uma diminuição progressiva da quantidade de REL." },
+        { "letra": "B", "texto": "um aumento progressivo da quantidade de REL." },
+        { "letra": "C", "texto": "nenhuma alteração significativa." },
+        { "letra": "D", "texto": "a destruição completa do REL." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "O resultado da Tabela 1 é consistente com a ideia de que a célula",
+      "opcoes": [
+        { "letra": "A", "texto": "é incapaz de se adaptar a alterações no ambiente." },
+        { "letra": "B", "texto": "pode ajustar a quantidade de determinados organelos consoante as necessidades funcionais impostas pelo ambiente." },
+        { "letra": "C", "texto": "reduz sempre a atividade dos seus organelos quando exposta a substâncias químicas." },
+        { "letra": "D", "texto": "substitui o REL por mitocôndrias quando necessário desintoxicar." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica por que razão faz sentido biológico uma célula aumentar a quantidade de REL quando é repetidamente exposta a uma substância que precisa de desintoxicar, relacionando a tua resposta com a função deste organelo.",
+      "criterios_correcao": "Deve explicar que, como o REL é o organelo responsável pela desintoxicação, mais REL significa maior capacidade da célula para processar/neutralizar a substância — um ajuste funcional da célula à exigência do ambiente.",
+      "cotacao": 16
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Se a experiência fosse repetida medindo, em vez do REL, a quantidade de lisossomas, é mais provável que se observasse",
+      "opcoes": [
+        { "letra": "A", "texto": "um aumento proporcionalmente semelhante ao do REL, já que todos os organelos aumentam sempre em conjunto." },
+        { "letra": "B", "texto": "um aumento menos acentuado do que o REL, já que os lisossomas não estão diretamente envolvidos nesta função específica de desintoxicação." },
+        { "letra": "C", "texto": "uma diminuição obrigatória dos lisossomas." },
+        { "letra": "D", "texto": "não é possível prever nada sobre os lisossomas." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "Calcula a ampliação total para a combinação \"Ocular 10x, Objetiva 40x\".",
+      "resposta_correta": "400x",
+      "palavras_chave": ["400"],
+      "cotacao": 8
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Um organelo com cerca de 1 micrómetro (1000 nanómetros) de diâmetro, como uma mitocôndria, é, em teoria,",
+      "opcoes": [
+        { "letra": "A", "texto": "impossível de observar mesmo ao microscópio ótico." },
+        { "letra": "B", "texto": "possível de observar como um ponto ou estrutura simples ao microscópio ótico, mas os seus detalhes internos só são visíveis ao microscópio eletrónico." },
+        { "letra": "C", "texto": "só visível a olho nu." },
+        { "letra": "D", "texto": "maior do que o limite de resolução do microscópio eletrónico, tornando-o inútil para o estudo." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "A diferença fundamental entre \"ampliação\" e \"poder de resolução\" de um microscópio é que",
+      "opcoes": [
+        { "letra": "A", "texto": "são exatamente a mesma coisa." },
+        { "letra": "B", "texto": "a ampliação torna a imagem maior, mas só o poder de resolução determina se detalhes adicionais se tornam visíveis nessa imagem maior." },
+        { "letra": "C", "texto": "o poder de resolução refere-se apenas à cor da imagem." },
+        { "letra": "D", "texto": "a ampliação é sempre superior ao poder de resolução, em qualquer microscópio." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno afirma: \"Basta aumentar muito a ampliação de um microscópio ótico (por exemplo, usando uma ocular de 100x) para conseguirmos ver os detalhes internos de uma mitocôndria, tal como um microscópio eletrónico.\" Comenta criticamente esta afirmação, relacionando a tua resposta com o conceito de poder de resolução.",
+      "criterios_correcao": "Deve explicar que aumentar a ampliação de um microscópio ótico apenas torna a imagem maior, mas não melhora o seu poder de resolução (limitado a cerca de 200 nm) — acima de um certo ponto, aumentar mais a ampliação só produz uma imagem maior e mais desfocada (\"ampliação vazia\"), sem revelar novos detalhes reais.",
+      "cotacao": 16
+    },
+    {
+      "id": "p14",
+      "grupo": 3,
+      "tipo": "completar_texto",
+      "enunciado": "Com base na Tabela 2, se um investigador quiser a maior ampliação possível entre as três combinações apresentadas, deve escolher a combinação com a ocular e a objetiva corretas.",
+      "texto_com_espacos": "A combinação com maior ampliação total usa a ocular (1) e a objetiva (2).",
+      "espacos": [
+        {
+          "id": "1",
+          "opcoes": [
+            { "letra": "A", "texto": "10x" },
+            { "letra": "B", "texto": "15x" }
+          ]
+        },
+        {
+          "id": "2",
+          "opcoes": [
+            { "letra": "A", "texto": "4x" },
+            { "letra": "B", "texto": "40x" },
+            { "letra": "C", "texto": "100x" }
+          ]
+        }
+      ],
+      "resposta_correta": { "1": "B", "2": "C" },
+      "cotacao": 8
+    }
+  ]
+}

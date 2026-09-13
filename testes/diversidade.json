@@ -1,0 +1,225 @@
+{
+  "id": "diversidade",
+  "titulo": "Teste: Diversidade e Organização Biológica",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Classificar um ser vivo comum",
+      "texto_apoio": "O ouriço-cacheiro europeu (Erinaceus europaeus) é um mamífero noturno e insetívoro, comum em jardins e bosques por toda a Europa, conhecido pela capa de espinhos que cobre o seu dorso — na verdade, pelos modificados e endurecidos, usados como defesa contra predadores.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Classificação taxonómica do ouriço-cacheiro",
+        "colunas": ["Nível taxonómico", "Classificação"],
+        "linhas": [
+          ["Domínio", "Eukarya"],
+          ["Reino", "Animalia"],
+          ["Filo", "Chordata"],
+          ["Classe", "Mammalia"],
+          ["Ordem", "Eulipotyphla"],
+          ["Família", "Erinaceidae"],
+          ["Género", "Erinaceus"],
+          ["Espécie", "E. europaeus"]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — População, comunidade e o conceito de espécie",
+      "texto_apoio": "Num estudo realizado em três jardins urbanos de uma cidade europeia, investigadores contaram o número de ouriços-cacheiros e recolheram amostras genéticas para avaliar a variabilidade genética de cada grupo.",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Ouriços-cacheiros observados por jardim",
+        "colunas": ["Jardim", "Nº de indivíduos", "Diversidade genética estimada"],
+        "linhas": [
+          ["A", "12", "Alta"],
+          ["B", "3", "Baixa"],
+          ["C", "8", "Média"]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Componente laboratorial: chave dicotómica",
+      "texto_apoio": "Uma chave dicotómica é um instrumento usado para identificar espécies através de uma sequência de perguntas com duas respostas possíveis, que vão restringindo as opções até se chegar a uma identificação.",
+      "tabela_apoio": {
+        "titulo": "Chave dicotómica simplificada para 4 pequenos mamíferos europeus",
+        "colunas": ["Passo", "Opção (a)", "Opção (b)"],
+        "linhas": [
+          ["1", "Corpo coberto de espinhos → Erinaceus europaeus (ouriço-cacheiro)", "Corpo coberto de pelo, sem espinhos → vai a 2"],
+          ["2", "Cauda longa e fina, sem pelo espesso → vai a 3", "Cauda curta e peluda → Oryctolagus cuniculus (coelho-bravo)"],
+          ["3", "Orelhas pequenas e arredondadas, focinho pontiagudo → Sorex araneus (musaranho)", "Orelhas grandes, olhos grandes → Mus musculus (ratinho-doméstico)"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "O nome científico correto do ouriço-cacheiro deve ser escrito como:",
+      "opcoes": [
+        { "letra": "A", "texto": "erinaceus europaeus" },
+        { "letra": "B", "texto": "Erinaceus europaeus (em itálico)" },
+        { "letra": "C", "texto": "ERINACEUS EUROPAEUS" },
+        { "letra": "D", "texto": "Erinaceus Europaeus" }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "O ouriço-cacheiro pertence à Classe Mammalia porque, entre outras características,",
+      "opcoes": [
+        { "letra": "A", "texto": "põe ovos e não tem pelo." },
+        { "letra": "B", "texto": "tem glândulas mamárias e geralmente pelo." },
+        { "letra": "C", "texto": "respira exclusivamente por brânquias." },
+        { "letra": "D", "texto": "não possui coluna vertebral." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada nível taxonómico da Coluna I à sua amplitude relativa na Coluna II.",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Domínio" },
+        { "letra": "b", "texto": "Espécie" },
+        { "letra": "c", "texto": "Família" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "O nível mais restrito, específico deste organismo" },
+        { "numero": "2", "texto": "O nível mais amplo apresentado na tabela" },
+        { "numero": "3", "texto": "Nível intermédio, agrupa vários géneros semelhantes" }
+      ],
+      "resposta_correta": { "a": "2", "b": "1", "c": "3" },
+      "cotacao": 12
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        { "letra": "a", "texto": "Dois ouriços-cacheiros de populações diferentes, mas capazes de se reproduzir entre si com descendência fértil, pertencem à mesma espécie." },
+        { "letra": "b", "texto": "O género Erinaceus pode conter mais do que uma espécie." },
+        { "letra": "c", "texto": "A Ordem é um nível taxonómico mais restrito do que o Género." }
+      ],
+      "resposta_correta": { "a": "V", "b": "V", "c": "F" },
+      "cotacao": 12
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "resposta_longa",
+      "enunciado": "O ouriço-cacheiro é um organismo multicelular complexo. Indica, por ordem crescente de complexidade, três níveis de organização biológica (abaixo do nível \"organismo\") que este animal certamente possui, e explica brevemente a relação entre eles.",
+      "criterios_correcao": "Deve indicar 3 níveis válidos (ex: Célula → Tecido → Órgão, ou Tecido → Órgão → Sistema de órgãos) e explicar que cada nível é composto por unidades do nível anterior, organizadas para desempenhar funções cada vez mais complexas.",
+      "cotacao": 18
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "O conjunto de ouriços-cacheiros observados no Jardim A constitui, nesta situação, uma:",
+      "opcoes": [
+        { "letra": "A", "texto": "Comunidade" },
+        { "letra": "B", "texto": "População" },
+        { "letra": "C", "texto": "Espécie nova" },
+        { "letra": "D", "texto": "Ecossistema completo" }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Se, além dos ouriços-cacheiros, os investigadores tivessem também registado todas as outras espécies de animais e plantas a interagir no Jardim A, esse conjunto passaria a designar-se:",
+      "opcoes": [
+        { "letra": "A", "texto": "População" },
+        { "letra": "B", "texto": "Comunidade" },
+        { "letra": "C", "texto": "Bioma" },
+        { "letra": "D", "texto": "Domínio" }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_longa",
+      "enunciado": "Com base na Tabela 2, o Jardim B apresenta o menor número de indivíduos e a menor diversidade genética. Explica por que razão uma população pequena e isolada tende a apresentar menor diversidade genética do que uma população maior.",
+      "criterios_correcao": "Deve explicar que, numa população pequena, há menos indivíduos e por isso menos variantes genéticas diferentes presentes; o isolamento impede a chegada de novos genes de outras populações (fluxo génico), o que tende a reduzir ainda mais a diversidade ao longo do tempo (pode mencionar deriva genética).",
+      "cotacao": 16
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Dois ouriços-cacheiros, um do Jardim A e outro do Jardim C, acasalam e geram descendência fértil. Este facto é consistente com a ideia de que",
+      "opcoes": [
+        { "letra": "A", "texto": "pertencem a espécies diferentes." },
+        { "letra": "B", "texto": "pertencem à mesma espécie, apesar de estarem em populações distintas." },
+        { "letra": "C", "texto": "pertencem ao mesmo indivíduo." },
+        { "letra": "D", "texto": "não pode haver reprodução entre populações diferentes." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "Usando a chave dicotómica, identifica o animal descrito: \"Corpo coberto de pelo, cauda curta e peluda.\"",
+      "resposta_correta": "Coelho-bravo (Oryctolagus cuniculus)",
+      "palavras_chave": ["coelho", "oryctolagus"],
+      "cotacao": 8
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "Identifica a característica utilizada no primeiro passo da chave (pergunta 1) para separar imediatamente o ouriço-cacheiro dos restantes três animais.",
+      "resposta_correta": "A presença (ou ausência) de espinhos no corpo",
+      "palavras_chave": ["espinho", "espinhos"],
+      "cotacao": 10
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Uma chave dicotómica bem construída deve garantir que, em cada passo, as duas opções sejam",
+      "opcoes": [
+        { "letra": "A", "texto": "semelhantes e pouco distintas entre si." },
+        { "letra": "B", "texto": "mutuamente exclusivas e claramente distinguíveis." },
+        { "letra": "C", "texto": "baseadas apenas na cor do animal." },
+        { "letra": "D", "texto": "organizadas alfabeticamente." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Indica as duas características utilizadas nesta chave para chegar à identificação do musaranho (Sorex araneus), incluindo pelo menos uma decisão tomada num passo anterior da chave.",
+      "criterios_correcao": "Deve referir (1) corpo coberto de pelo, sem espinhos (passo 1) e (2) cauda longa e fina, sem pelo espesso, associada a orelhas pequenas e arredondadas e focinho pontiagudo (passo 3).",
+      "cotacao": 16
+    },
+    {
+      "id": "p14",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um investigador propõe adicionar uma quinta espécie a esta chave: o ouriço-cacheiro-de-orelhas-longas (Hemiechinus auritus), que também tem espinhos, mas orelhas muito maiores do que o Erinaceus europaeus. Explica por que razão a chave atual, tal como está construída, teria de ser modificada para conseguir distinguir corretamente estas duas espécies de ouriço.",
+      "criterios_correcao": "Deve explicar que a chave atual usa apenas \"presença de espinhos\" para identificar imediatamente o Erinaceus europaeus no primeiro passo — como a nova espécie também tem espinhos, o primeiro passo deixaria de conseguir distinguir as duas, sendo necessário adicionar um novo critério (ex: tamanho das orelhas) para as separar.",
+      "cotacao": 18
+    }
+  ]
+}

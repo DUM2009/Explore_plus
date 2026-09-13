@@ -1,0 +1,211 @@
+{
+  "id": "celulas-endossimbiotica",
+  "titulo": "Teste: Células e Organelos — A Teoria Endossimbiótica",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Organelos com um passado bacteriano",
+      "texto_apoio": "A teoria endossimbiótica propõe que as mitocôndrias e os cloroplastos tiveram origem em bactérias de vida livre que, há mais de mil milhões de anos, foram incorporadas no interior de uma célula maior, estabelecendo uma relação de benefício mútuo permanente. Esta teoria é sustentada por várias evidências estruturais e genéticas, incluindo o facto de ambos os organelos possuírem o seu próprio DNA circular (semelhante ao das bactérias, e diferente do DNA linear presente no núcleo) e ribossomas de tamanho semelhante aos bacterianos."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Comparando tamanhos de ribossomas",
+      "texto_apoio": "Os ribossomas são classificados por um valor chamado \"coeficiente de sedimentação\" (medido em unidades Svedberg, S), que reflete o seu tamanho e forma. Um estudo comparou o coeficiente de sedimentação dos ribossomas em diferentes localizações.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Coeficiente de sedimentação de ribossomas",
+        "colunas": ["Localização do ribossoma", "Coeficiente de sedimentação"],
+        "linhas": [
+          ["Citoplasma de célula eucariótica", "80S"],
+          ["Bactéria de vida livre", "70S"],
+          ["Interior da mitocôndria", "70S"],
+          ["Interior do cloroplasto", "70S"]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Componente laboratorial: interpretação de dados filogenéticos",
+      "texto_apoio": "Além das evidências estruturais, os cientistas compararam sequências genéticas de mitocôndrias de diferentes espécies com sequências genéticas de bactérias, para construir uma árvore filogenética (árvore que representa relações de parentesco evolutivo com base na semelhança genética). Resultado simplificado: as sequências genéticas do DNA mitocondrial mostraram maior semelhança com um grupo específico de bactérias (as alfa-proteobactérias) do que com qualquer outro grupo de bactérias ou com o DNA nuclear das próprias células eucarióticas estudadas."
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A teoria endossimbiótica propõe que as mitocôndrias tiveram origem em",
+      "opcoes": [
+        { "letra": "A", "texto": "fragmentos do núcleo celular." },
+        { "letra": "B", "texto": "bactérias de vida livre, incorporadas por uma célula maior." },
+        { "letra": "C", "texto": "vírus que infetaram a célula." },
+        { "letra": "D", "texto": "uma mutação espontânea do retículo endoplasmático." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "Uma das evidências estruturais a favor da teoria endossimbiótica é o facto de mitocôndrias e cloroplastos possuírem",
+      "opcoes": [
+        { "letra": "A", "texto": "uma membrana simples, tal como o retículo endoplasmático." },
+        { "letra": "B", "texto": "DNA próprio, circular, semelhante ao das bactérias." },
+        { "letra": "C", "texto": "a mesma cor em todas as células." },
+        { "letra": "D", "texto": "capacidade de realizar fotossíntese, tal como as bactérias." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada característica da Coluna I à sua relevância para a teoria endossimbiótica (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "DNA circular no interior do organelo" },
+        { "letra": "b", "texto": "Dupla membrana envolvente" },
+        { "letra": "c", "texto": "Capacidade de se dividir independentemente da divisão celular" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Consistente com a membrana original da bactéria + a membrana da célula hospedeira que a \"engoliu\"" },
+        { "numero": "2", "texto": "Consistente com material genético de origem bacteriana, distinto do DNA nuclear" },
+        { "numero": "3", "texto": "Consistente com o organelo ter sido, no passado, um organismo capaz de se reproduzir de forma independente" }
+      ],
+      "resposta_correta": { "a": "2", "b": "1", "c": "3" },
+      "cotacao": 14
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        { "letra": "a", "texto": "O DNA mitocondrial é idêntico ao DNA presente no núcleo da mesma célula." },
+        { "letra": "b", "texto": "Os ribossomas mitocondriais são, em tamanho, mais semelhantes aos ribossomas bacterianos do que aos ribossomas do citoplasma da célula eucariótica." },
+        { "letra": "c", "texto": "A teoria endossimbiótica aplica-se apenas às mitocôndrias, nunca aos cloroplastos." }
+      ],
+      "resposta_correta": { "a": "F", "b": "V", "c": "F" },
+      "cotacao": 12
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica por que razão a presença de DNA próprio e ribossomas próprios, dentro de um organelo, constitui uma evidência particularmente forte a favor da hipótese de que esse organelo já foi, no passado, um organismo independente.",
+      "criterios_correcao": "Deve explicar que possuir material genético e maquinaria de síntese proteica (ribossomas) próprios é característico de organismos capazes de funcionar de forma autónoma — a presença destas estruturas dentro de um organelo sugere fortemente que este já teve, no passado, essa autonomia, antes de ser incorporado noutra célula.",
+      "cotacao": 18
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 1, os ribossomas mitocondriais têm um coeficiente de sedimentação",
+      "opcoes": [
+        { "letra": "A", "texto": "idêntico ao dos ribossomas do citoplasma da mesma célula." },
+        { "letra": "B", "texto": "idêntico ao dos ribossomas de uma bactéria de vida livre." },
+        { "letra": "C", "texto": "superior ao de todos os outros ribossomas apresentados." },
+        { "letra": "D", "texto": "impossível de medir." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "O padrão apresentado na Tabela 1 reforça a teoria endossimbiótica porque",
+      "opcoes": [
+        { "letra": "A", "texto": "mostra que todos os ribossomas do planeta são exatamente iguais." },
+        { "letra": "B", "texto": "mostra uma semelhança específica entre os ribossomas de mitocôndrias/cloroplastos e os de bactérias, distinta dos ribossomas do citoplasma da própria célula que os contém." },
+        { "letra": "C", "texto": "prova que as mitocôndrias não têm ribossomas." },
+        { "letra": "D", "texto": "não tem qualquer relação com a origem evolutiva destes organelos." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_longa",
+      "enunciado": "Discute por que razão seria uma evidência mais fraca a favor da teoria endossimbiótica se, na Tabela 1, os ribossomas mitocondriais tivessem o mesmo coeficiente de sedimentação (80S) que os ribossomas do citoplasma da célula eucariótica, em vez de 70S.",
+      "criterios_correcao": "Deve explicar que, se os ribossomas mitocondriais fossem 80S (iguais aos do citoplasma), isso não distinguiria a origem da mitocôndria da própria célula hospedeira, enfraquecendo o argumento de que a mitocôndria teve uma origem separada e bacteriana.",
+      "cotacao": 18
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base apenas nesta tabela, qual das seguintes afirmações é mais bem sustentada pelos dados?",
+      "opcoes": [
+        { "letra": "A", "texto": "As mitocôndrias e os cloroplastos partilham uma característica ribossómica que os aproxima mais das bactérias do que do citoplasma da célula que os contém." },
+        { "letra": "B", "texto": "As mitocôndrias não têm ribossomas." },
+        { "letra": "C", "texto": "O citoplasma e as bactérias têm ribossomas idênticos." },
+        { "letra": "D", "texto": "Não é possível comparar ribossomas de organismos diferentes." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "O resultado descrito sugere que a bactéria ancestral das mitocôndrias pertencia especificamente ao grupo das",
+      "opcoes": [
+        { "letra": "A", "texto": "cianobactérias." },
+        { "letra": "B", "texto": "alfa-proteobactérias." },
+        { "letra": "C", "texto": "arqueias." },
+        { "letra": "D", "texto": "bactérias fotossintéticas exclusivamente." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Este tipo de análise genética comparativa é útil para testar a teoria endossimbiótica porque",
+      "opcoes": [
+        { "letra": "A", "texto": "permite comparar diretamente as sequências de DNA, procurando o grau de semelhança/parentesco genético entre organelos e diferentes grupos de organismos." },
+        { "letra": "B", "texto": "não tem qualquer relação com a origem evolutiva dos organelos." },
+        { "letra": "C", "texto": "só pode ser usada para comparar plantas entre si." },
+        { "letra": "D", "texto": "substitui a necessidade de qualquer outra evidência." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Se, hipoteticamente, o DNA mitocondrial mostrasse semelhança genética igual a TODOS os grupos de bactérias, sem se destacar nenhum em particular, isso",
+      "opcoes": [
+        { "letra": "A", "texto": "reforçaria fortemente a teoria endossimbiótica." },
+        { "letra": "B", "texto": "tornaria mais difícil identificar uma origem bacteriana específica e mais recente para a mitocôndria." },
+        { "letra": "C", "texto": "não teria qualquer impacto na teoria." },
+        { "letra": "D", "texto": "provaria definitivamente que as mitocôndrias nunca foram bactérias." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica de que forma a combinação de várias evidências independentes (DNA circular próprio, ribossomas 70S semelhantes aos bacterianos, e semelhança filogenética específica com as alfa-proteobactérias) torna a teoria endossimbiótica mais robusta do que se existisse apenas uma única evidência isolada.",
+      "criterios_correcao": "Deve explicar que evidências independentes, que apontam todas na mesma direção (origem bacteriana), tornam uma hipótese cientificamente mais robusta do que uma só evidência isolada — reduz a probabilidade de que a semelhança observada seja coincidência, e aumenta a confiança de que reflete uma relação evolutiva real.",
+      "cotacao": 18
+    },
+    {
+      "id": "p14",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno afirma: \"Como as mitocôndrias têm o seu próprio DNA, isso significa que são organismos totalmente independentes da célula onde vivem, tal como uma bactéria de vida livre.\" Comenta criticamente esta afirmação, tendo em conta que as mitocôndrias atuais dependem da célula hospedeira para sobreviver e não conseguem viver fora dela.",
+      "criterios_correcao": "Deve comentar criticamente a afirmação, explicando que, apesar de terem DNA próprio (evidência da sua origem independente no passado), as mitocôndrias atuais perderam grande parte da sua autonomia original — dependem de proteínas codificadas pelo núcleo da célula hospedeira e não sobrevivem fora dela, pelo que não podem ser consideradas \"totalmente independentes\" como uma bactéria de vida livre.",
+      "cotacao": 20
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "id": "diversidade-liquenes",
+  "titulo": "Teste: Diversidade e Organização Biológica — Quando \"uma espécie\" são duas (Líquenes)",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — O organismo que não é bem um organismo",
+      "texto_apoio": "Os líquenes são um dos casos mais estranhos da biologia: aquilo que parece um único ser vivo — normalmente crostas ou estruturas foliáceas em rochas, troncos de árvores ou solo — é, na verdade, uma associação simbiótica entre dois organismos completamente diferentes: um fungo (o parceiro dominante, que dá a forma ao líquene) e um fotobionte (uma alga verde ou uma cianobactéria, capaz de fotossíntese). Nesta associação, o fungo fornece proteção física, retenção de água e minerais; o fotobionte fornece compostos orgânicos produzidos pela fotossíntese. Esta relação é tão próxima e estável que, durante muito tempo, os líquenes foram classificados taxonomicamente como se fossem uma única espécie — hoje, a comunidade científica atribui o nome científico apenas ao componente fúngico, reconhecendo os líquenes como uma associação, não como uma espécie única no sentido tradicional."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Bioindicadores: os líquenes como \"sensores\" ambientais",
+      "texto_apoio": "Por serem particularmente sensíveis à poluição atmosférica (sobretudo dióxido de enxofre), os líquenes são amplamente usados como bioindicadores da qualidade do ar. Um estudo contou o número de espécies de líquenes presentes em troncos de árvores, a diferentes distâncias do centro de uma cidade industrial.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Número de espécies de líquenes observadas por distância ao centro urbano",
+        "colunas": ["Distância ao centro (km)", "Nº de espécies de líquenes observadas"],
+        "linhas": [
+          ["0 (centro)", "1"],
+          ["5", "4"],
+          ["10", "9"],
+          ["20", "15"],
+          ["30", "16"]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Componente laboratorial: chave dicotómica e os limites da classificação",
+      "texto_apoio": "Chave dicotómica simplificada para 4 organismos incrustantes em rochas.",
+      "tabela_apoio": {
+        "titulo": "Chave dicotómica simplificada para 4 organismos incrustantes em rochas",
+        "colunas": ["Passo", "Opção (a)", "Opção (b)"],
+        "linhas": [
+          ["1", "Estrutura verde, sem estrutura fúngica visível, cresce diretamente sobre a rocha → Pleurococcus sp. (alga verde terrestre)", "Estrutura esbranquiçada/acinzentada ou colorida, com textura crostosa ou foliácea → vai a 2"],
+          ["2", "Estrutura plana e fortemente aderente à rocha, difícil de destacar → Líquene crostoso (ex: Xanthoria parietina)", "Estrutura com lóbulos visíveis, parcialmente destacada da rocha → Líquene foliáceo"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A relação entre o fungo e o fotobionte num líquene é classificada como",
+      "opcoes": [
+        { "letra": "A", "texto": "parasitismo, em que o fungo prejudica o fotobionte." },
+        { "letra": "B", "texto": "simbiose, com benefício mútuo para ambos os organismos." },
+        { "letra": "C", "texto": "competição direta pelos mesmos recursos." },
+        { "letra": "D", "texto": "predação do fotobionte pelo fungo." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "O componente do líquene responsável por realizar fotossíntese é",
+      "opcoes": [
+        { "letra": "A", "texto": "o fungo." },
+        { "letra": "B", "texto": "o fotobionte (alga ou cianobactéria)." },
+        { "letra": "C", "texto": "ambos os componentes, em igual medida." },
+        { "letra": "D", "texto": "nenhum dos dois — os líquenes não realizam fotossíntese." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada contributo da Coluna I ao organismo responsável por ele, dentro do líquene (Coluna II). Cada opção da Coluna II pode ser usada mais do que uma vez.",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Produção de compostos orgânicos por fotossíntese" },
+        { "letra": "b", "texto": "Estrutura física, proteção e retenção de água" },
+        { "letra": "c", "texto": "Nome científico atribuído ao líquene" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Fotobionte" },
+        { "numero": "2", "texto": "Fungo" }
+      ],
+      "resposta_correta": { "a": "1", "b": "2", "c": "2" },
+      "cotacao": 12
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        { "letra": "a", "texto": "Um líquene é, geneticamente, um único organismo com um único genoma." },
+        { "letra": "b", "texto": "O fotobionte de um líquene pode ser uma alga verde ou uma cianobactéria." },
+        { "letra": "c", "texto": "A classificação taxonómica atual dos líquenes atribui o nome científico ao componente fúngico." }
+      ],
+      "resposta_correta": { "a": "F", "b": "V", "c": "V" },
+      "cotacao": 12
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "resposta_longa",
+      "enunciado": "O conceito clássico de \"espécie\" define-se, em geral, como um grupo de organismos capazes de se reproduzir entre si, gerando descendência fértil. Discute por que razão este conceito clássico se torna difícil de aplicar diretamente a um líquene, considerando que este é composto por dois organismos geneticamente distintos e independentes.",
+      "criterios_correcao": "Deve explicar que o conceito clássico assume um único \"pool genético\" reprodutivo — mas num líquene existem dois organismos com reprodução independente (o fungo reproduz-se por esporos; o fotobionte, separadamente); não faz sentido falar de \"reprodução entre líquenes\" gerando descendência fértil da mesma forma que entre dois animais da mesma espécie, o que torna a aplicação direta do conceito problemática.",
+      "cotacao": 18
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 1, a relação entre a distância ao centro urbano e o número de espécies de líquenes observadas é",
+      "opcoes": [
+        { "letra": "A", "texto": "inversa — mais perto do centro, mais espécies." },
+        { "letra": "B", "texto": "diretamente proporcional — mais longe do centro, mais espécies, até estabilizar." },
+        { "letra": "C", "texto": "não existe qualquer relação entre as duas variáveis." },
+        { "letra": "D", "texto": "aleatória, sem qualquer padrão identificável." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "O padrão observado na Tabela 1 é consistente com a ideia de que a poluição atmosférica no centro urbano",
+      "opcoes": [
+        { "letra": "A", "texto": "não afeta os líquenes." },
+        { "letra": "B", "texto": "reduz a diversidade de espécies de líquenes capazes de sobreviver nessa zona." },
+        { "letra": "C", "texto": "aumenta a diversidade de espécies de líquenes." },
+        { "letra": "D", "texto": "afeta apenas os fotobiontes, nunca os fungos." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Entre os 20 km e os 30 km, o número de espécies estabiliza (15 para 16), sugerindo que, nessa distância,",
+      "opcoes": [
+        { "letra": "A", "texto": "a poluição deixou de ser o principal fator limitante da diversidade de líquenes." },
+        { "letra": "B", "texto": "a poluição atinge o seu valor máximo." },
+        { "letra": "C", "texto": "todas as espécies de líquenes do planeta já foram contadas." },
+        { "letra": "D", "texto": "o estudo contém um erro experimental." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 10
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica por que razão a elevada sensibilidade dos líquenes à poluição (uma característica que poderia parecer uma \"fraqueza\" biológica) os torna, na realidade, cientificamente úteis para os seres humanos.",
+      "criterios_correcao": "Deve explicar que precisamente por serem tão sensíveis a pequenas alterações na qualidade do ar, os líquenes funcionam como um \"sistema de deteção precoce\" barato e natural da poluição atmosférica, permitindo monitorizar a qualidade do ar sem equipamento caro, através da simples observação de quais espécies conseguem (ou não) sobreviver numa determinada zona.",
+      "cotacao": 16
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "Usando a chave, identifica o organismo descrito: \"Estrutura esbranquiçada, plana, muito difícil de destacar da rocha.\"",
+      "resposta_correta": "Líquene crostoso (ex: Xanthoria parietina)",
+      "palavras_chave": ["crostoso", "xanthoria"],
+      "cotacao": 8
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Esta chave dicotómica identifica os líquenes (crostoso e foliáceo) apenas pela sua forma de crescimento, sem distinguir qual o fotobionte presente em cada um. Isto significa que",
+      "opcoes": [
+        { "letra": "A", "texto": "esta chave é uma classificação genética completa dos líquenes." },
+        { "letra": "B", "texto": "esta chave é apenas uma ferramenta de identificação morfológica prática, não uma classificação genética." },
+        { "letra": "C", "texto": "todos os líquenes crostosos têm exatamente o mesmo fotobionte." },
+        { "letra": "D", "texto": "a forma de crescimento determina geneticamente a espécie de fungo envolvida." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um investigador propõe adicionar um passo a esta chave, antes do passo 1, que pergunte: \"O organismo é capaz de realizar fotossíntese?\" Explica por que razão esta pergunta, aplicada a um líquene, é mais complexa de responder com um simples \"sim\" ou \"não\" do que quando aplicada a uma alga isolada como o Pleurococcus.",
+      "criterios_correcao": "Deve explicar que, num líquene, apenas o fotobionte realiza fotossíntese — o fungo não; como o líquene é a associação dos dois, a resposta depende de a que \"parte\" do organismo composto a pergunta se refere, tornando um simples sim/não insuficiente ou ambíguo.",
+      "cotacao": 16
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Nesta chave, um líquene crostoso e um líquene foliáceo, apesar de terem formas de crescimento diferentes, podem ter exatamente o mesmo fotobionte (a mesma espécie de alga) e fungos diferentes. Explica o que isto revela sobre a relação entre a \"aparência\" de um líquene e a identidade dos organismos que o compõem.",
+      "criterios_correcao": "Deve explicar que a forma de crescimento (crostoso vs. foliáceo) é determinada principalmente pelo componente fúngico, não pelo fotobionte — logo, líquenes com aparências externas muito diferentes podem partilhar o mesmo fotobionte, mostrando que a identidade \"visual\" do líquene não revela diretamente a identidade de todos os organismos que o compõem.",
+      "cotacao": 18
+    },
+    {
+      "id": "p14",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Com base em tudo o que foi discutido nesta missão sobre líquenes, avalia criticamente a seguinte afirmação: \"Os líquenes provam que o conceito tradicional de espécie é sempre fácil de aplicar a todos os seres vivos.\"",
+      "criterios_correcao": "Deve avaliar a afirmação como falsa/incorreta, usando o exemplo dos líquenes precisamente para mostrar que o conceito de espécie, apesar de útil na maioria dos casos, tem limitações e casos-limite (como organismos simbióticos) onde a sua aplicação não é simples nem direta.",
+      "cotacao": 20
+    }
+  ]
+}

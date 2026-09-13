@@ -1,0 +1,223 @@
+{
+  "id": "celulas-pancreas",
+  "titulo": "Teste: Células e Organelos — A Linha de Montagem de Proteínas (Pâncreas)",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Uma célula especializada em exportar proteínas",
+      "texto_apoio": "As células acinares do pâncreas são altamente especializadas na produção e secreção de enzimas digestivas (como a tripsina), que são libertadas para o intestino. Por desempenharem esta função, estas células possuem uma quantidade excecionalmente elevada de retículo endoplasmático rugoso (RER) e um complexo de Golgi bem desenvolvido, organizados numa sequência quase linear dentro da célula."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Efeito da estimulação hormonal na secreção",
+      "texto_apoio": "Um estudo mediu a quantidade de enzima digestiva libertada por células acinares pancreáticas, em cultura, antes e depois da adição de uma hormona que estimula a secreção.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Enzima libertada ao longo do tempo, após estimulação hormonal",
+        "colunas": ["Tempo após estimulação (min)", "Enzima libertada (unidades arbitrárias)"],
+        "linhas": [
+          ["0", "2"],
+          ["10", "8"],
+          ["20", "22"],
+          ["30", "35"],
+          ["40", "36"]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Componente laboratorial: centrifugação diferencial",
+      "texto_apoio": "A centrifugação diferencial é uma técnica laboratorial usada para separar organelos celulares, com base no seu tamanho e densidade. Uma amostra de células é primeiro rompida (homogeneizada) e depois submetida a centrifugações sucessivas, a velocidades crescentes — os organelos mais densos/pesados sedimentam (formam um depósito) a velocidades mais baixas; os mais leves só sedimentam a velocidades mais altas.",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Ordem de sedimentação de estruturas celulares, por velocidade crescente de centrifugação",
+        "colunas": ["Velocidade de centrifugação", "Estrutura que sedimenta"],
+        "linhas": [
+          ["Baixa (1 000 g)", "Núcleo e restos celulares maiores"],
+          ["Média (20 000 g)", "Mitocôndrias"],
+          ["Alta (100 000 g)", "Ribossomas e fragmentos de retículo endoplasmático"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A elevada quantidade de RER nas células acinares do pâncreas está diretamente relacionada com",
+      "opcoes": [
+        { "letra": "A", "texto": "a produção de energia para a contração muscular." },
+        { "letra": "B", "texto": "a síntese de grandes quantidades de proteínas destinadas à exportação (enzimas digestivas)." },
+        { "letra": "C", "texto": "a fotossíntese, que ocorre apenas nestas células." },
+        { "letra": "D", "texto": "o armazenamento de água na célula." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A sequência funcional correta pela qual uma proteína digestiva percorre os organelos, desde a sua síntese até à sua libertação da célula, é:",
+      "opcoes": [
+        { "letra": "A", "texto": "Complexo de Golgi → RER → membrana plasmática" },
+        { "letra": "B", "texto": "RER → Complexo de Golgi → vesícula secretora → membrana plasmática" },
+        { "letra": "C", "texto": "Núcleo → mitocôndria → membrana plasmática" },
+        { "letra": "D", "texto": "Lisossoma → RER → núcleo" }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada estrutura da Coluna I à sua função no processo de secreção proteica (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "RER" },
+        { "letra": "b", "texto": "Complexo de Golgi" },
+        { "letra": "c", "texto": "Vesícula secretora" },
+        { "letra": "d", "texto": "Ribossoma" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Síntese da cadeia de aminoácidos, a partir da informação genética" },
+        { "numero": "2", "texto": "Síntese inicial e entrada da proteína na via secretora" },
+        { "numero": "3", "texto": "Modificação e empacotamento final da proteína" },
+        { "numero": "4", "texto": "Transporte da proteína até à membrana, para libertação por exocitose" }
+      ],
+      "resposta_correta": { "a": "2", "b": "3", "c": "4", "d": "1" },
+      "cotacao": 14
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        { "letra": "a", "texto": "Uma célula que produza pouca proteína para exportação necessita, tipicamente, de menos RER do que uma célula acinar pancreática." },
+        { "letra": "b", "texto": "O complexo de Golgi é o local onde ocorre a síntese inicial da cadeia de aminoácidos." },
+        { "letra": "c", "texto": "A libertação da proteína para fora da célula, através da fusão de uma vesícula com a membrana plasmática, designa-se exocitose." }
+      ],
+      "resposta_correta": { "a": "V", "b": "F", "c": "V" },
+      "cotacao": 12
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica por que razão uma célula especializada em secretar grandes quantidades de proteína necessita de ter estes organelos (RER, Golgi, vesículas) organizados numa disposição espacial relativamente linear e próxima uns dos outros, em vez de dispersos aleatoriamente pelo citoplasma.",
+      "criterios_correcao": "Deve explicar que a proximidade espacial entre os organelos reduz o tempo e a distância que a proteína precisa de percorrer entre etapas sucessivas do processamento (síntese → modificação → empacotamento → transporte), tornando o processo de secreção mais rápido e eficiente — importante numa célula que precisa de produzir e libertar grandes quantidades de proteína continuamente.",
+      "cotacao": 18
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 1, a libertação de enzima após a estimulação hormonal",
+      "opcoes": [
+        { "letra": "A", "texto": "mantém-se constante ao longo de todo o período." },
+        { "letra": "B", "texto": "aumenta acentuadamente entre os 10 e os 30 minutos, estabilizando depois." },
+        { "letra": "C", "texto": "diminui progressivamente após a estimulação." },
+        { "letra": "D", "texto": "só ocorre a partir dos 40 minutos." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "A estabilização observada entre os 30 e os 40 minutos é mais provavelmente explicada por",
+      "opcoes": [
+        { "letra": "A", "texto": "a célula ter deixado de produzir a hormona." },
+        { "letra": "B", "texto": "o stock de vesículas secretoras já preparadas ter sido consumido, sendo necessário tempo para sintetizar e preparar mais." },
+        { "letra": "C", "texto": "o RER ter parado de funcionar permanentemente." },
+        { "letra": "D", "texto": "não existir nenhuma explicação biológica possível." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_longa",
+      "enunciado": "Discute de que forma este resultado experimental (aumento rápido seguido de estabilização) é consistente com um modelo em que a célula mantém sempre um certo número de vesículas secretoras \"prontas a usar\", em vez de sintetizar cada proteína apenas no momento exato em que é precisa.",
+      "criterios_correcao": "Deve discutir que o aumento rápido inicial é consistente com a libertação de vesículas já preparadas antecipadamente (stock), e a estabilização reflete o ritmo mais lento a que a célula consegue sintetizar e preparar novas vesículas para repor o stock consumido.",
+      "cotacao": 18
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Se a experiência fosse repetida na presença de uma substância que bloqueia especificamente o complexo de Golgi, é mais provável que se observasse",
+      "opcoes": [
+        { "letra": "A", "texto": "libertação de enzima igual à da experiência original." },
+        { "letra": "B", "texto": "uma acumulação de proteína no RER, com libertação de enzima madura muito reduzida ou ausente." },
+        { "letra": "C", "texto": "um aumento ainda maior da libertação de enzima." },
+        { "letra": "D", "texto": "destruição imediata do núcleo da célula." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 2, a estrutura que sedimenta à velocidade de centrifugação mais baixa é",
+      "opcoes": [
+        { "letra": "A", "texto": "o ribossoma." },
+        { "letra": "B", "texto": "o núcleo." },
+        { "letra": "C", "texto": "a mitocôndria." },
+        { "letra": "D", "texto": "o fragmento de retículo endoplasmático." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "O princípio geral que explica a ordem de sedimentação apresentada na Tabela 2 é que, de um modo geral,",
+      "opcoes": [
+        { "letra": "A", "texto": "as estruturas maiores e mais densas sedimentam a velocidades de centrifugação mais baixas do que as estruturas menores." },
+        { "letra": "B", "texto": "todas as estruturas celulares sedimentam exatamente à mesma velocidade." },
+        { "letra": "C", "texto": "as estruturas menores sedimentam sempre primeiro, independentemente da densidade." },
+        { "letra": "D", "texto": "a cor da estrutura determina a velocidade de sedimentação." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Um investigador quer isolar especificamente as mitocôndrias de uma amostra de células pancreáticas, com a menor contaminação possível de núcleos e restos celulares maiores. Com base na Tabela 2, o procedimento mais indicado seria",
+      "opcoes": [
+        { "letra": "A", "texto": "centrifugar uma única vez, à velocidade mais alta possível." },
+        { "letra": "B", "texto": "centrifugar primeiro a baixa velocidade para remover núcleos e restos celulares, e só depois centrifugar o sobrenadante resultante a velocidade média para sedimentar as mitocôndrias." },
+        { "letra": "C", "texto": "centrifugar apenas a velocidade média, sem qualquer passo prévio." },
+        { "letra": "D", "texto": "não é possível isolar mitocôndrias por esta técnica." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica por que razão é necessário homogeneizar (romper) as células antes de as submeter à centrifugação diferencial, relacionando a tua resposta com o objetivo da técnica.",
+      "criterios_correcao": "Deve explicar que os organelos estão normalmente contidos dentro da célula, delimitados pela membrana plasmática — é necessário romper essa membrana (homogeneizar) para libertar os organelos para a solução, tornando possível separá-los uns dos outros por centrifugação.",
+      "cotacao": 16
+    },
+    {
+      "id": "p14",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno conclui: \"Como o ribossoma sedimenta apenas à velocidade mais alta, isso prova que o ribossoma é o organelo com a função menos importante da célula.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "Deve comentar criticamente a afirmação, explicando que a velocidade de sedimentação depende do tamanho/densidade física da estrutura, não da sua \"importância\" biológica — os ribossomas são pequenos (por isso sedimentam só a alta velocidade), mas desempenham uma função essencial e insubstituível (síntese de todas as proteínas da célula), pelo que a conclusão do aluno está incorreta.",
+      "cotacao": 16
+    }
+  ]
+}

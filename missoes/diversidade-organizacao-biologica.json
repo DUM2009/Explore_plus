@@ -11,17 +11,23 @@
       "tempo_estimado_min": 5,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "mascote_texto": "Um peixe sozinho não é um ecossistema. Mas o peixe, mais os outros peixes, mais as algas, mais o rio onde vivem... isso já é. 🐢",
-          "texto": "Para estudar a natureza, os ecólogos organizam a vida em níveis, cada um mais amplo do que o anterior — desde um único organismo até ao planeta inteiro."
-        },
-        {
           "tipo": "diagrama_interativo",
-          "titulo": "A escada dos níveis ecológicos",
-          "imagem": "hierarquia_ecologica.png",
-          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "mascote_texto": "Para estudar a natureza, os ecólogos organizam a vida em níveis, cada um mais amplo do que o anterior — desde um único organismo até ao planeta inteiro. 🐢",
+          "intro_imagem": "Lago com peixes.png",
+          "intro_texto": "Um peixe sozinho não é um ecossistema. Mas o peixe, mais os outros peixes, mais as algas, mais o rio onde vivem... isso já é.",
+          "ponte_texto": "Repara que essa frase já percorre vários dos níveis que os ecólogos usam para organizar a vida: o peixe sozinho, o grupo de peixes da mesma espécie, e todo o rio à sua volta. Conhece a seguir a escada completa, do nível mais simples ao mais amplo.",
+          "titulo": "A escada dos níveis de organização biológica",
+          "layout": "escada",
+          "instrucao": "Clica em cada degrau para veres a explicação — repara como cada nível é maior e mais complexo do que o anterior.",
           "pontos": [
-            { "id": "individuo", "label": "Indivíduo", "explicacao": "Um único organismo, de uma espécie específica." },
+            { "id": "atomo", "label": "Átomo", "explicacao": "A unidade básica da matéria. Átomos como o carbono, o hidrogénio, o oxigénio e o azoto combinam-se para formar as moléculas de que os seres vivos são feitos." },
+            { "id": "molecula", "label": "Molécula", "explicacao": "Conjunto de átomos ligados quimicamente entre si (ex: água, glicose, proteínas) — as moléculas orgânicas são a base química de todos os seres vivos." },
+            { "id": "organelo", "label": "Organelo", "explicacao": "Estrutura especializada dentro de uma célula, com uma função específica (ex: mitocôndria, núcleo, cloroplasto)." },
+            { "id": "celula", "label": "Célula", "explicacao": "A unidade básica de vida — a estrutura mais simples capaz de realizar todas as funções vitais." },
+            { "id": "tecido", "label": "Tecido", "explicacao": "Conjunto de células semelhantes que trabalham em conjunto numa função específica (ex: tecido muscular)." },
+            { "id": "orgao", "label": "Órgão", "explicacao": "Conjunto de diferentes tecidos organizados para desempenhar uma função conjunta (ex: o coração)." },
+            { "id": "sistema_orgaos", "label": "Sistema de órgãos", "explicacao": "Vários órgãos a trabalhar em conjunto para uma função mais ampla (ex: sistema digestivo)." },
+            { "id": "organismo", "label": "Organismo", "explicacao": "Um ser vivo completo e individual, resultado da integração de todos os seus sistemas." },
             { "id": "populacao", "label": "População", "explicacao": "Todos os indivíduos da mesma espécie, a viver na mesma área, ao mesmo tempo." },
             { "id": "comunidade", "label": "Comunidade", "explicacao": "Todas as populações de espécies diferentes que interagem na mesma área." },
             { "id": "ecossistema", "label": "Ecossistema", "explicacao": "A comunidade de seres vivos, em interação com o ambiente físico (água, solo, luz, temperatura) que a rodeia." },

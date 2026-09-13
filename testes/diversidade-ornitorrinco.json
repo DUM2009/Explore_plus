@@ -1,0 +1,224 @@
+{
+  "id": "diversidade-ornitorrinco",
+  "titulo": "Teste: Diversidade e Organização Biológica — Os limites da classificação (Ornitorrinco)",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Um mamífero que desafiou os naturalistas",
+      "texto_apoio": "Quando os primeiros espécimes de ornitorrinco (Ornithorhynchus anatinus) chegaram à Europa, em 1799, vários naturalistas suspeitaram de fraude — um animal com bico de pato, cauda de castor, pelo, e que põe ovos parecia biologicamente impossível de classificar. Hoje sabemos que o ornitorrinco é um mamífero genuíno, pertencente a um grupo muito pequeno e antigo chamado monotremados, que inclui apenas o ornitorrinco e as équidnas.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Classificação taxonómica do ornitorrinco",
+        "colunas": ["Nível taxonómico", "Classificação"],
+        "linhas": [
+          ["Domínio", "Eukarya"],
+          ["Reino", "Animalia"],
+          ["Filo", "Chordata"],
+          ["Classe", "Mammalia"],
+          ["Ordem", "Monotremata"],
+          ["Família", "Ornithorhynchidae"],
+          ["Género", "Ornithorhynchus"],
+          ["Espécie", "O. anatinus"]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Genética e a reclassificação de grupos",
+      "texto_apoio": "A classificação de seres vivos não é estática — evolui à medida que surgem novas evidências, especialmente genéticas. Um estudo comparou a semelhança genética (percentagem de genes partilhados) entre o ornitorrinco, um marsupial (canguru) e um mamífero placentário (rato).",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Semelhança genética estimada com o ser humano",
+        "colunas": ["Espécie", "Grupo de mamíferos", "Semelhança genética estimada com o Homo sapiens"],
+        "linhas": [
+          ["Ornitorrinco", "Monotremado", "~82%"],
+          ["Canguru", "Marsupial", "~87%"],
+          ["Rato", "Placentário", "~92%"]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Componente laboratorial: chave dicotómica com um caso-limite",
+      "texto_apoio": "Uma chave dicotómica para 4 vertebrados, incluindo um caso ambíguo.",
+      "tabela_apoio": {
+        "titulo": "Chave dicotómica para 4 vertebrados, incluindo um caso ambíguo",
+        "colunas": ["Passo", "Opção (a)", "Opção (b)"],
+        "linhas": [
+          ["1", "Põe ovos → vai a 2", "Não põe ovos (dá à luz crias vivas) → vai a 3"],
+          ["2", "Tem pelo e produz leite → Ornithorhynchus anatinus (ornitorrinco)", "Tem penas → Columba livia (pombo-das-rochas)"],
+          ["3", "Tem bolsa marsupial → Macropus rufus (canguru-vermelho)", "Não tem bolsa marsupial, desenvolvimento embrionário completo no útero → Rattus norvegicus (ratazana-castanha)"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "O ornitorrinco é classificado como mamífero apesar de pôr ovos, principalmente porque",
+      "opcoes": [
+        { "letra": "A", "texto": "tem bico semelhante ao de um pato." },
+        { "letra": "B", "texto": "produz leite através de glândulas mamárias para alimentar as crias." },
+        { "letra": "C", "texto": "vive parcialmente em água doce." },
+        { "letra": "D", "texto": "tem cauda achatada." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A Ordem Monotremata é considerada muito pequena e antiga porque",
+      "opcoes": [
+        { "letra": "A", "texto": "inclui um número reduzido de espécies, com características consideradas ancestrais dentro dos mamíferos." },
+        { "letra": "B", "texto": "só existe há poucos anos." },
+        { "letra": "C", "texto": "não tem nenhuma espécie viva atualmente." },
+        { "letra": "D", "texto": "inclui todos os mamíferos marsupiais." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada característica do ornitorrinco (Coluna I) ao grupo taxonómico ao qual essa característica está associada (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Produção de leite" },
+        { "letra": "b", "texto": "Postura de ovos" },
+        { "letra": "c", "texto": "Presença de notocórdio/coluna vertebral" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Classe Mammalia" },
+        { "numero": "2", "texto": "Ordem Monotremata (característica ancestral rara entre mamíferos)" },
+        { "numero": "3", "texto": "Filo Chordata" }
+      ],
+      "resposta_correta": { "a": "1", "b": "2", "c": "3" },
+      "cotacao": 12
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        { "letra": "a", "texto": "O ornitorrinco partilha o Filo Chordata com os peixes e as aves." },
+        { "letra": "b", "texto": "Todos os membros da Classe Mammalia põem ovos, à semelhança do ornitorrinco." },
+        { "letra": "c", "texto": "A classificação de um organismo pode basear-se em várias características em simultâneo, não apenas numa." }
+      ],
+      "resposta_correta": { "a": "V", "b": "F", "c": "V" },
+      "cotacao": 12
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "resposta_longa",
+      "enunciado": "O ornitorrinco possui ainda outra característica rara entre mamíferos: os machos têm um esporão venenoso na pata traseira. Explica por que razão a presença de uma única característica pouco comum (como pôr ovos, ou ter veneno) não é suficiente, por si só, para excluir um organismo de um determinado grupo taxonómico, relacionando a tua resposta com o conjunto de critérios usados em classificação.",
+      "criterios_correcao": "Deve explicar que a classificação se baseia num conjunto amplo de características partilhadas (produção de leite, glândulas mamárias, pelo, entre outras), não numa única característica isolada — uma característica atípica não invalida a pertença ao grupo se as restantes características-chave estiverem presentes.",
+      "cotacao": 18
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 2, o grupo de mamíferos geneticamente mais distante do ser humano é:",
+      "opcoes": [
+        { "letra": "A", "texto": "Os marsupiais" },
+        { "letra": "B", "texto": "Os monotremados" },
+        { "letra": "C", "texto": "Os placentários" },
+        { "letra": "D", "texto": "Não é possível determinar" }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "O padrão observado na Tabela 2 (monotremados < marsupiais < placentários, em semelhança genética com o Homo sapiens, um placentário) é consistente com a ideia de que",
+      "opcoes": [
+        { "letra": "A", "texto": "os monotremados divergiram evolutivamente dos outros mamíferos há mais tempo do que os marsupiais." },
+        { "letra": "B", "texto": "os monotremados são mais recentes evolutivamente do que os placentários." },
+        { "letra": "C", "texto": "não existe qualquer relação evolutiva entre estes grupos." },
+        { "letra": "D", "texto": "o ornitorrinco não é geneticamente um mamífero." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 10
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_longa",
+      "enunciado": "O sequenciamento do genoma do ornitorrinco, em 2008, revelou uma mistura intrigante de genes semelhantes aos répteis (relacionados com a postura de ovos) e genes semelhantes a outros mamíferos (relacionados com a produção de leite). Discute de que forma esta descoberta genética reforça a classificação do ornitorrinco como um grupo \"de transição\" evolutiva, sem deixar de ser um mamífero genuíno.",
+      "criterios_correcao": "Deve discutir que a presença de genes \"tipo réptil\" (postura de ovos) e \"tipo mamífero\" (produção de leite) no mesmo genoma reflete a posição evolutiva intermédia dos monotremados — um grupo que divergiu antes da separação entre marsupiais e placentários, mas que continua claramente dentro da linhagem dos mamíferos (por ter pelo, glândulas mamárias e outras características mamíferas centrais).",
+      "cotacao": 20
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "ordenacao",
+      "enunciado": "Ordena, da divergência evolutiva mais antiga para a mais recente, em relação à linhagem que deu origem aos placentários.",
+      "opcoes": [
+        { "letra": "A", "texto": "Marsupiais" },
+        { "letra": "B", "texto": "Monotremados" },
+        { "letra": "C", "texto": "Placentários" }
+      ],
+      "resposta_correta": ["B", "A", "C"],
+      "cotacao": 10
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "Usando a chave, identifica o animal descrito: \"Não põe ovos, tem bolsa marsupial.\"",
+      "resposta_correta": "Canguru-vermelho (Macropus rufus)",
+      "palavras_chave": ["canguru", "macropus"],
+      "cotacao": 8
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "O primeiro passo desta chave usa \"põe ovos / não põe ovos\" para dividir os 4 animais em dois grupos. Indica quantos animais, dos 4 apresentados, ficam no ramo \"põe ovos\".",
+      "resposta_correta": "2 (ornitorrinco e pombo)",
+      "palavras_chave": ["2", "dois"],
+      "cotacao": 8
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Esta chave, ao colocar o ornitorrinco no mesmo ramo inicial que o pombo (ambos \"põem ovos\"), pode sugerir um parentesco evolutivo mais próximo entre estes dois animais do que o que realmente existe. Isto acontece porque",
+      "opcoes": [
+        { "letra": "A", "texto": "chaves dicotómicas são sempre uma representação exata do parentesco evolutivo real." },
+        { "letra": "B", "texto": "chaves dicotómicas são ferramentas práticas de identificação, baseadas em características observáveis, e não necessariamente árvores evolutivas." },
+        { "letra": "C", "texto": "o ornitorrinco é, de facto, mais próximo evolutivamente das aves do que dos restantes mamíferos." },
+        { "letra": "D", "texto": "as chaves dicotómicas nunca devem incluir mais de 3 espécies." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Sugere uma forma de reformular esta chave dicotómica para reduzir o risco de sugerir falsas relações de parentesco evolutivo, sem deixar de ser uma ferramenta prática de identificação.",
+      "criterios_correcao": "Sugestão razoável, por exemplo: usar primeiro uma característica que distinga claramente répteis/aves de mamíferos (ex: presença de pelo e glândulas mamárias) antes de usar \"põe ovos\", para não agrupar imediatamente o ornitorrinco com o pombo.",
+      "cotacao": 16
+    },
+    {
+      "id": "p14",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno afirma: \"Se dois animais ficam no mesmo ramo de uma chave dicotómica, isso prova que pertencem ao mesmo grupo taxonómico.\" Comenta criticamente esta afirmação, usando o exemplo do ornitorrinco e do pombo apresentado nesta chave.",
+      "criterios_correcao": "Deve comentar criticamente a afirmação, explicando que uma chave dicotómica agrupa por características observáveis práticas, não por parentesco evolutivo real — o ornitorrinco (mamífero) e o pombo (ave) ficam no mesmo ramo só por partilharem \"põe ovos\", mas pertencem a Classes taxonómicas completamente diferentes (Mammalia vs. Aves), pelo que a afirmação do aluno está incorreta.",
+      "cotacao": 16
+    }
+  ]
+}

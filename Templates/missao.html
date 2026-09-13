@@ -38,6 +38,8 @@
         window.exploreCsrfToken = "{{ csrf_token }}";
         window.exploreMissionsIndexUrl = "{% url 'index-missions' %}";
         window.exploreMascotImageUrl = "{% static 'images/Mascote Explore+ Biology.png' %}";
+        window.exploreMascoteChatUrl = "{% url 'mascote-chat' %}";
+        window.exploreMascotWaveVideoUrl = "{% static 'Mascote a acenar.webm' %}";
         window.exploreLogoUrl = "{% static 'images/Logo.png' %}";
         window.explorePaginaInicialUrl = "{% url 'pagina_inicial' %}";
         window.explorePerfilUrl = "{% url 'perfil' %}";
@@ -61,7 +63,9 @@
             missionsIndexUrl: window.exploreMissionsIndexUrl,
             mascotImageUrl: window.exploreMascotImageUrl,
             progressSyncUrl: window.exploreProgressSyncUrl,
-            csrfToken: window.exploreCsrfToken
+            csrfToken: window.exploreCsrfToken,
+            mascoteChatUrl: window.exploreMascoteChatUrl,
+            mascotWaveVideoUrl: window.exploreMascotWaveVideoUrl
         });
     </script>
 </body>

@@ -72,6 +72,93 @@ html.dark-mode .me-root {
     font-size: 2.6rem;
 }
 
+/* O painel branco do gancho (ver renderGancho) leva a imagem e o título —
+   mais largo do que o cartão simples de .mascot-overlay-card (420px), que
+   fica apertado com uma imagem lá dentro. A fala da mascote para este
+   ecrã aparece à parte, num popup (showMascotPopup), não neste painel.
+   Tal como .me-gancho-card--timeline, quebra a coluna estreita de leitura
+   de .section-body (720px) para caber confortavelmente — mesma técnica de
+   .screen-card.plant-diagram-card (cqw + container-type já definido em
+   .mission-main, ver mission-styles.css). */
+.screen-card:has(.me-gancho-card) {
+    box-sizing: border-box;
+    width: 100cqw;
+    max-width: 100cqw;
+    margin-left: calc(50% - 50cqw);
+    margin-right: calc(50% - 50cqw);
+    padding: 0 28px;
+}
+
+.me-gancho-card {
+    width: min(1100px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.me-gancho-hero-image {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+    object-fit: cover;
+    margin: 0 auto 24px;
+}
+
+/* Introdução opcional de um ecrã de diagrama (ver renderDiagrama) — liga a
+   frase-isco (ex: um exemplo concreto) à frase-ponte que introduz o
+   diagrama, evitando um ecrã à parte só para o isco. */
+/* Qualificado com .me-gancho-card (não só a classe sozinha) para ganhar a
+   .section-content p / .screen-card p de mission-styles.css — ambas com a
+   mesma especificidade (uma classe + elemento) que bateria numa classe
+   simples, deixando margin/text-align por aplicar. */
+.me-gancho-card .me-diagrama-intro-texto {
+    font-weight: 600;
+    font-size: 1.1rem;
+    max-width: 760px;
+    margin: 0 auto 14px;
+    text-align: center;
+}
+
+.me-gancho-card .me-diagrama-ponte-texto {
+    max-width: 760px;
+    margin: 0 auto 28px;
+    color: #4b5a52;
+    text-align: center;
+}
+
+html.dark-mode .me-gancho-card .me-diagrama-ponte-texto {
+    color: #b9c7bd;
+}
+
+/* Na timeline o cartão é bem mais largo (.me-gancho-card--timeline, até
+   1040px) do que a frase-ponte genérica de 560px — alarga-a para
+   acompanhar a largura do título por cima, em vez de continuar a quebrar
+   em 3 linhas apertadas numa coluna estreita. */
+.me-timeline-ponte {
+    max-width: 820px;
+}
+
+/* .mascot-chat-fab (posição/tamanho vêm de mission-styles.css, tal como na
+   Fotossíntese) só definia lá o miolo em <video> — aqui o motor usa a
+   imagem estática da mascote (ou o emoji de recurso), por isso precisa do
+   próprio dimensionamento do miolo. */
+.mascot-chat-fab img,
+.mascot-chat-fab .me-mascot-avatar--fallback {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 6px 12px rgba(31, 138, 91, .35));
+}
+
+.mascot-chat-fab .me-mascot-avatar--fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+}
+
 /* ---- Diagrama interativo: pontos clicáveis por baixo da imagem (sem
    coordenadas fixas, ao contrário do sistema antigo específico da
    fotossíntese) ---- */
@@ -131,10 +218,287 @@ html.dark-mode .me-root {
     color: #1f8a5b;
 }
 
+/* Frase de abertura opcional dentro da explicação de um ponto (ver
+   ponto.intro, usado em bindScreenInteractions) — antes do parágrafo da
+   explicação em si, que já vem itálico de .did-you-know p. */
+.me-diagrama-explicacao-intro {
+    font-weight: 700;
+    font-style: normal;
+    margin: 0 0 10px;
+    color: #1f5c33;
+}
+
+html.dark-mode .me-diagrama-explicacao-intro {
+    color: #b9c7bd;
+}
+
 html.dark-mode .me-diagrama-chip {
     background: #24201a;
     border-color: #3a3128;
     color: #d7ddd3;
+}
+
+/* ---- Diagrama interativo em formato "timeline" (screen.layout ===
+   "timeline", ver renderDiagramaTimeline) — pontos ao longo de uma linha
+   horizontal, com o nome em diagonal por cima e o ano por baixo. Usado só
+   no diagrama da Descoberta da Célula; os outros diagramas continuam com
+   os chips de .me-diagrama-chips acima. */
+/* A timeline precisa de mais largura do que a coluna de leitura estreita
+   de .section-body (720px) para caberem os nomes em diagonal sem scroll —
+   mesma técnica de .screen-card.plant-diagram-card (cqw + container-type
+   já definido em .mission-main, ver mission-styles.css). */
+.screen-card:has(.me-gancho-card--timeline) {
+    box-sizing: border-box;
+    width: 100cqw;
+    max-width: 100cqw;
+    margin-left: calc(50% - 50cqw);
+    margin-right: calc(50% - 50cqw);
+    padding: 0 28px;
+}
+
+.me-gancho-card--timeline {
+    width: min(1040px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.me-timeline-scroll {
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.me-timeline-rail-wrap {
+    position: relative;
+    margin: 52px 0 36px;
+}
+
+.me-timeline-rail {
+    position: absolute;
+    left: 70px;
+    right: 70px;
+    top: 50%;
+    height: 4px;
+    border-radius: 999px;
+    background: #cde7d9;
+    transform: translateY(-50%);
+}
+
+html.dark-mode .me-timeline-rail {
+    background: #3a3128;
+}
+
+.me-timeline-dots {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0 70px;
+    padding: 0;
+}
+
+.me-timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.me-diagrama-chip.me-timeline-dot {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border-radius: 50%;
+    background: #1f8a5b;
+    border: 3px solid #eef7f3;
+    box-shadow: 0 0 0 1px #cde7d9;
+}
+
+html.dark-mode .me-diagrama-chip.me-timeline-dot {
+    border-color: #24201a;
+    box-shadow: 0 0 0 1px #3a3128;
+}
+
+.me-diagrama-chip.me-timeline-dot:hover {
+    background: #17734a;
+}
+
+.me-diagrama-chip.me-timeline-dot.is-active {
+    width: 20px;
+    height: 20px;
+    background: #123f2a;
+}
+
+.me-timeline-label {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) rotate(-16deg);
+    transform-origin: bottom center;
+    white-space: nowrap;
+    font-size: .78rem;
+    font-weight: 600;
+    color: #1f5c33;
+}
+
+html.dark-mode .me-timeline-label {
+    color: #b9c7bd;
+}
+
+.me-timeline-caption {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: .78rem;
+    font-weight: 700;
+    color: #4b5a52;
+}
+
+html.dark-mode .me-timeline-caption {
+    color: #d7ddd3;
+}
+
+/* ---- Diagrama interativo em formato "escada" (screen.layout === "escada",
+   ver renderDiagramaEscada) — um degrau por ponto, com altura crescente
+   (--step-index, escrito inline por ponto) para se ler como uma escada
+   ascendente do nível mais simples ao mais amplo. Sem imagem de diagrama
+   própria — os degraus já são a visualização — e com um painel de detalhe
+   fixo por baixo em vez do "did-you-know" genérico dos outros formatos. */
+.me-escada-track {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 44px 6px 0;
+    margin: 0 0 24px;
+    border-bottom: 2px solid #e3dcc9;
+}
+
+.me-escada-step {
+    position: relative;
+    flex: 0 0 auto;
+    width: 88px;
+    height: calc(64px + (var(--step-index, 0) * 13px));
+    background: #fbf7ee;
+    border: 1px solid #e3dcc9;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 8px 6px 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background .15s ease, border-color .15s ease;
+}
+
+.me-escada-step:hover {
+    border-color: #1f8a5b;
+}
+
+.me-escada-step-num {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #eef7f3;
+    border: 1px solid #cde7d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .76rem;
+    font-weight: 700;
+    color: #1f5c33;
+}
+
+.me-escada-step-label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #3a3128;
+    line-height: 1.25;
+}
+
+.me-escada-step.is-active {
+    background: #1f8a5b;
+    border-color: #1f8a5b;
+}
+
+.me-escada-step.is-active .me-escada-step-num {
+    background: rgba(255, 255, 255, .25);
+    border-color: transparent;
+    color: #fff;
+}
+
+.me-escada-step.is-active .me-escada-step-label {
+    color: #fff;
+}
+
+html.dark-mode .me-escada-track {
+    border-bottom-color: #3a3128;
+}
+
+html.dark-mode .me-escada-step {
+    background: #24201a;
+    border-color: #3a3128;
+}
+
+html.dark-mode .me-escada-step-num {
+    background: #1c1712;
+    border-color: #3a3128;
+    color: #d7ddd3;
+}
+
+html.dark-mode .me-escada-step-label {
+    color: #d7ddd3;
+}
+
+.me-escada-detail {
+    border: 1px solid #e3dcc9;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    background: #fbf7ee;
+}
+
+.me-escada-detail-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #eef7f3;
+    color: #1f5c33;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: .8rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.me-escada-detail-title {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+}
+
+.me-escada-detail-text {
+    margin: 0;
+    color: #4b5a52;
+}
+
+html.dark-mode .me-escada-detail {
+    background: #24201a;
+    border-color: #3a3128;
+}
+
+html.dark-mode .me-escada-detail-badge {
+    background: #1c1712;
+    color: #7fd9a8;
+}
+
+html.dark-mode .me-escada-detail-text {
+    color: #b9c7bd;
 }
 
 /* ---- Celebração ---- */
