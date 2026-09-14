@@ -613,6 +613,12 @@ EXAMES_DISPONIVEIS = [
         'disciplina': 'Biologia e Geologia',
         'meta': ['11.º ano', 'Grupos I, II e III', '28 itens', '120 minutos'],
     },
+    {
+        'exame_id': 'biologia-geologia-2025-v1',
+        'titulo': 'Exame Nacional de Biologia e Geologia — 2025, 1.ª Fase (V1)',
+        'disciplina': 'Biologia e Geologia',
+        'meta': ['11.º ano', 'Grupos I, II e III', '28 itens', '120 minutos'],
+    },
 ]
 
 

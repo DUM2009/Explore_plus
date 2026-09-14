@@ -1,0 +1,529 @@
+{
+  "id": "biologia-geologia-2025-v1",
+  "titulo": "Exame Nacional de Biologia e Geologia — 2025, 1.ª Fase (Versão 1)",
+  "disciplina": "Biologia e Geologia",
+  "ano_escolaridade": "11.º ano",
+  "duracao_sugerida_min": 120,
+  "cotacao_total": 200,
+  "pool_opcional": {
+    "ids": ["g1p2", "g1p3", "g1p5", "g1p10", "g1p14", "g1p17", "g1p18", "g3p1"],
+    "melhores": 4,
+    "nota": "Estes 8 itens não contribuem obrigatoriamente: só contam os 4 com melhor pontuação, cada um valendo 8 pontos (32 pontos no total)."
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I",
+      "seccoes": [
+        {
+          "titulo": "Texto 1 — A Bacia Lusitaniana e os recifes de rudistas",
+          "texto_apoio": "Na sequência da fragmentação da Pangeia, formou-se uma bacia de sedimentação na margem ocidental ibérica, a Bacia Lusitaniana, onde, posteriormente, há cerca de 96 milhões de anos (Ma), se desenvolveram zonas recifais.\n\nHá cerca de 100 Ma, a região que hoje corresponde à Península Ibérica estava localizada mais perto do equador. Nesse contexto, começou a desenvolver-se uma plataforma carbonatada marinha. Os carbonatos depositaram-se sobre sedimentos detríticos de granulometria média e grosseira, de origem fluvial. A plataforma carbonatada foi afetada por movimentos tectónicos que levantaram algumas zonas da bacia de sedimentação, o que favoreceu a instalação de recifes de rudistas. Os rudistas, moluscos bivalves de vida fixa que se extinguiram no final do Mesozoico, foram os principais bioconstrutores destes recifes. Alimentavam-se de micro-organismos, sobretudo de fitoplâncton e de diminutas partículas orgânicas existentes em suspensão na água.\n\nHá cerca de 94 Ma, ocorreu nesta região uma alteração do nível médio do mar e, consequentemente, o topo das rochas carbonatadas ficou sujeito à ação da água das chuvas (carsificação).\n\nPosteriormente, há cerca de 70 Ma, ocorreu uma importante atividade magmática, dando origem ao Complexo Vulcânico de Lisboa-Mafra, que cobriu a superfície de carsificação. Este complexo é constituído essencialmente por escoadas de lavas basálticas, nas quais se encontram intercalados piroclastos e paleossolos.\n\nAtualmente, as rochas formadas na plataforma carbonatada, contendo fósseis de rudistas — calcário Lioz —, afloram na região de Lisboa-Cascais-Sintra e são utilizadas como rochas ornamentais.\n\nA Figura 1 mostra a localização da zona recifal no contexto paleogeográfico de há cerca de 96 Ma (Cretácico Superior — 101 a 66 Ma), com a linha de costa atual e algumas localidades (Figueira da Foz, Nazaré, Peniche, Santarém, Mafra, Cascais, Lisboa) também representadas.",
+          "figuras": [
+            {
+              "descricao_temporaria": "Mapa paleogeográfico de há cerca de 96 Ma, mostrando, de oeste para este, o ambiente marinho profundo, a plataforma carbonatada marinha (com e sem zona recifal de rudistas), a planície costeira (sistemas fluviais) e a zona exposta à erosão, sobrepostos com a linha de costa atual e as localidades Figueira da Foz, Nazaré, Peniche, Santarém, Mafra, Cascais e Lisboa.",
+              "legenda": "Figura 1"
+            }
+          ],
+          "pergunta_ids": ["g1p1", "g1p2", "g1p3", "g1p4", "g1p5", "g1p6", "g1p7", "g1p8", "g1p9"]
+        },
+        {
+          "titulo": "Texto 2 — Parque Natural Marinho do Recife do Algarve – Pedra do Valado",
+          "texto_apoio": "No Algarve, a linha de costa que existia há cerca de 20-25 mil anos, durante a última glaciação, está atualmente submersa, desenvolvendo-se nesse local um recife rochoso costeiro. Este recife foi classificado, em janeiro de 2024, como Parque Natural Marinho do Recife do Algarve – Pedra do Valado (PNMRA-PV).\n\nVários estudos científicos identificaram esta zona como uma das áreas com maior diversidade biológica da região, onde é possível observar muitas espécies com interesse comercial e outras sujeitas a medidas de proteção. Este parque natural alberga espécies únicas, algumas delas novas para a Ciência, e funciona como maternidade e porto de abrigo para muitos outros seres vivos. De entre os valores naturais que se pretende preservar, destacam-se espécies como o mero (Epinephelus marginatus) e habitats prioritários, como as pradarias de ervas-marinhas, os bancos de Maerl (aglomerados de algas calcárias) e os jardins de gorgónias (corais em forma de leque).\n\nO Recife do Algarve, localizado a baixa profundidade, está sujeito a uma elevada pressão humana, relacionada com a pesca e com o turismo.\n\nNeste parque natural, foram definidas zonas com diferentes níveis de proteção. Este zonamento resultou de um processo participativo, que envolveu a comunidade local, dinamizado pela Fundação Oceano Azul. Neste processo, foram considerados os estudos disponíveis sobre os valores naturais e sobre a utilização humana do espaço, efetuados pelo Centro de Ciências do Mar (CCMAR) da Universidade do Algarve, as regras internacionais de implementação de Áreas Marinhas Protegidas e os interesses dos agentes económicos.\n\nA Figura 2 representa a localização do parque, algumas espécies de interesse (cavala, dourada, robalo, mero), e as zonas de proteção: Proteção Total (4 km², só investigação científica mediante autorização), Proteção Parcial (16,5 km², só mergulho e desportos náuticos não motorizados), Proteção Complementar 1 / Área de Pesca Local (55,4 km², só pesca artesanal de baixo impacto) e Proteção Complementar 2 / Área de Pesca Geral (80,5 km², pesca artesanal com embarcações maiores).",
+          "figuras": [
+            {
+              "descricao_temporaria": "Mapa do Parque Natural Marinho do Recife do Algarve – Pedra do Valado, entre o Farol de Alfanzina e a Marina de Albufeira, com as zonas de Proteção Total, Proteção Parcial, Proteção Complementar 1 (Área de Pesca Local) e Proteção Complementar 2 (Área de Pesca Geral) assinaladas em tons de cinzento, e um painel com as espécies de interesse: cavala, dourada, robalo e mero.",
+              "legenda": "Figura 2"
+            }
+          ],
+          "pergunta_ids": ["g1p10", "g1p11", "g1p12", "g1p13", "g1p14", "g1p15-1", "g1p15-2", "g1p16"]
+        },
+        {
+          "titulo": "Texto 3 — Acidificação do oceano e a alga calcária Phymatolithon lusitanicum",
+          "texto_apoio": "O aumento do CO₂ atmosférico e a consequente acidificação dos oceanos podem vir a causar grandes mudanças no pH da água do mar, influenciando a capacidade de sobrevivência dos seres marinhos. Os bancos de Maerl, formados por algas calcárias, são habitats protegidos que podem ser afetados pela acidificação do oceano.\n\nEm 2018, foi realizado um estudo que permitiu avaliar os efeitos da acidificação da água do mar no crescimento da alga calcária mais comum no sul de Portugal, Phymatolithon lusitanicum, com base nas estimativas de emissão de CO₂ para o ano de 2050 e para o ano de 2100, apresentadas pelo Painel Internacional sobre Mudanças Climáticas (IPCC, 2000).\n\nProcedimento: recolheram-se algas P. lusitanicum a 22 m de profundidade, transferidas para uma caixa térmica à temperatura do local de recolha. Prepararam-se dezoito aquários com água do mar filtrada, organizados em três grupos de seis aquários, com 15 algas cada um. Cada grupo foi sujeito a diferentes condições de pressão parcial de CO₂: pCO₂ ≈ 400 µatm (valores em 2018), pCO₂ = 550 µatm (cenário projetado para 2050) e pCO₂ = 750 µatm (cenário projetado para 2100). As algas estiveram submetidas a essas pressões durante 20 meses, em iguais condições de luminosidade e de temperatura, semelhantes às do seu habitat.\n\nResultados (Gráfico I — taxa fotossintética média, ao longo do tempo, em função da pressão parcial de CO₂): no mês 0, os três grupos apresentam valores semelhantes (cerca de 2,2 µmol O₂ g⁻¹ PF h⁻¹). Ao 11.º mês, a taxa fotossintética aumenta com a pressão parcial de CO₂: cerca de 2,1 a 400 µatm, cerca de 2,7 a 550 µatm e cerca de 3,5 a 750 µatm. Ao 20.º mês, o padrão inverte-se: o grupo a 400 µatm mantém-se estável (cerca de 2,1), enquanto os grupos a 550 µatm e a 750 µatm sofrem uma quebra acentuada, para valores de cerca de 1,2 e 1,4, respetivamente — ambos bastante abaixo do grupo de controlo.",
+          "figuras": [
+            {
+              "descricao_temporaria": "Gráfico de barras (Gráfico I) com a taxa fotossintética média de Phymatolithon lusitanicum (µmol O₂ g⁻¹ PF h⁻¹), nos meses 0, 11 e 20, para as três pressões parciais de CO₂ testadas (400, 550 e 750 µatm).",
+              "legenda": "Gráfico I"
+            }
+          ],
+          "pergunta_ids": ["g1p17", "g1p18", "g1p19", "g1p20"]
+        }
+      ]
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II",
+      "seccoes": [
+        {
+          "titulo": "Absorção de luz e produção de amido nas plantas",
+          "texto_apoio": "Numa aula de Biologia e Geologia, realizou-se uma experiência com o objetivo de estudar a relação entre a absorção de luz e a produção de amido nas plantas.\n\nProcedimento: colocou-se uma planta envasada num local escuro, durante 3 dias. Retirou-se a planta desse local escuro e taparam-se duas folhas, com folha de alumínio, uma totalmente e outra parcialmente. Colocou-se a planta num local bem iluminado pela luz do Sol, durante 2 dias. Cortaram-se 3 folhas da planta: a que esteve completamente tapada, a que esteve parcialmente tapada e uma que esteve destapada. Mergulhou-se cada folha, individualmente, em água a ferver, durante 60 segundos. Preparou-se um gobelé com 150 mL de álcool a 95%, aquecido em banho-maria até à ebulição. Mergulhou-se no álcool cada folha, individualmente, até ficar com uma coloração esbranquiçada — observou-se que o álcool adquiriu uma coloração verde. Identificaram-se 3 caixas de Petri e, a cada uma, adicionou-se solução de Lugol (corante que, na presença de amido, passa de cor castanho-clara a cor azul-escura). Colocou-se cada folha, retirada do álcool, numa caixa de Petri diferente. Registou-se a coloração final: a Caixa de Petri 1 ficou totalmente azul-escura, a Caixa de Petri 2 ficou metade azul-escura e metade castanho-clara, e a Caixa de Petri 3 ficou totalmente castanho-clara.",
+          "figuras": [
+            {
+              "descricao_temporaria": "Figura 4 — três caixas de Petri com folhas após o teste do Lugol: Caixa de Petri 1 com a folha inteiramente azul-escura, Caixa de Petri 2 com a folha metade azul-escura e metade castanho-clara, e Caixa de Petri 3 com a folha inteiramente castanho-clara.",
+              "legenda": "Figura 4"
+            }
+          ],
+          "pergunta_ids": ["g2p1", "g2p2", "g2p3"]
+        }
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III",
+      "seccoes": [
+        {
+          "titulo": "Os sismos da Turquia de fevereiro de 2023",
+          "texto_apoio": "No dia 6 de fevereiro de 2023, ocorreram dois grandes sismos com epicentros na Turquia, que atingiram, sobretudo, a região entre a Turquia e a Síria.\n\nO primeiro sismo, com magnitude 7,8, ocorreu a uma profundidade de 18 km e localizou-se na região de intersecção entre a Falha do Mar Morto e a Falha Oriental da Anatólia (FOA). De acordo com alguns investigadores, este sismo terá alterado as tensões existentes na região. Cerca de nove horas depois, ocorreu um segundo sismo, também com magnitude elevada (7,5), com hipocentro a 10 km de profundidade, na Falha de Sürgü, localizada a norte do primeiro evento. Ambos os sismos foram sentidos com uma intensidade máxima de grau IX e causaram, pelo menos, 8574 mortos na Turquia e 2530 mortos na Síria.\n\nA Figura 5 representa o enquadramento tectónico da região: a Microplaca da Anatólia, limitada a norte pela Falha Norte da Anatólia (FNA) e a este/sudeste pela Falha Oriental da Anatólia (FOA), entre a Placa Eurasiática (norte), a Placa Arábica (sudeste, em convergência) e a Placa Africana (sul, separada pelo Mar Mediterrâneo), com a Falha do Mar Morto a delimitar as placas Arábica e Africana.",
+          "figuras": [
+            {
+              "descricao_temporaria": "Mapa tectónico esquemático da região da Turquia, Síria e Chipre, com a Microplaca da Anatólia, a Placa Eurasiática, a Placa Arábica e a Placa Africana, a Falha Norte da Anatólia (FNA), a Falha Oriental da Anatólia (FOA), a Falha do Mar Morto e a Falha de Sürgü, os epicentros do 1.º e do 2.º sismo, e as setas de movimento relativo das placas.",
+              "legenda": "Figura 5"
+            }
+          ],
+          "pergunta_ids": ["g3p1", "g3p2", "g3p3", "g3p4"]
+        }
+      ]
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "g1p1",
+      "grupo": 1,
+      "numero": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "De acordo com as informações do Texto 1, a formação da Bacia Lusitaniana ocorreu, genericamente, em regime",
+      "opcoes": [
+        { "letra": "A", "texto": "distensivo, associado à fraturação da crusta continental." },
+        { "letra": "B", "texto": "distensivo, associado a uma deformação dúctil da rocha." },
+        { "letra": "C", "texto": "compressivo, associado à formação de um antiforma." },
+        { "letra": "D", "texto": "compressivo, associado à formação de falhas inversas." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p2",
+      "grupo": 1,
+      "numero": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "De acordo com as informações do Texto 1, o desenvolvimento da plataforma carbonatada deveu-se essencialmente à",
+      "opcoes": [
+        { "letra": "A", "texto": "precipitação de carbonatos, em meio continental." },
+        { "letra": "B", "texto": "formação de carbonato de cálcio, numa região tropical." },
+        { "letra": "C", "texto": "acumulação de materiais de origem biogénica, em águas frias." },
+        { "letra": "D", "texto": "diagénese de sedimentos carbonatados, em meio marinho profundo." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p3",
+      "grupo": 1,
+      "numero": 3,
+      "tipo": "selecao_multipla",
+      "numero_a_selecionar": 3,
+      "enunciado": "Identifique, de entre as afirmações relacionadas com a evolução da bacia de sedimentação, as três afirmações corretas, considerando as informações do Texto 1 e da Figura 1.",
+      "opcoes": [
+        { "letra": "I", "texto": "Há cerca de 96 Ma, a este da região recifal, existia uma zona atravessada por rios." },
+        { "letra": "II", "texto": "A zona onde atualmente se encontra a Figueira da Foz estava submersa há 96 Ma." },
+        { "letra": "III", "texto": "A linha de costa atual recuou, relativamente à que existia há 96 Ma." },
+        { "letra": "IV", "texto": "Há 96 Ma, a erosão ocorria essencialmente nas planícies costeiras." },
+        { "letra": "V", "texto": "As rochas carbonatadas formaram-se sobre sedimentos depositados em ambiente continental." }
+      ],
+      "resposta_correta": ["I", "III", "V"],
+      "cotacao": 8
+    },
+    {
+      "id": "g1p4",
+      "grupo": 1,
+      "numero": 4,
+      "tipo": "ordenacao",
+      "enunciado": "Ordene, de acordo com a informação do Texto 1, as expressões identificadas pelas letras de A a E, de modo a reconstituir a sequência de acontecimentos que ocorreram na região representada no mapa da Figura 1.",
+      "opcoes": [
+        { "letra": "A", "texto": "Descida do nível do mar na região." },
+        { "letra": "B", "texto": "Início da sedimentação na Bacia Lusitaniana." },
+        { "letra": "C", "texto": "Instalação de uma plataforma carbonatada no Cretácico Superior." },
+        { "letra": "D", "texto": "Instalação do Complexo Vulcânico de Lisboa-Mafra." },
+        { "letra": "E", "texto": "Exploração do calcário Lioz." }
+      ],
+      "resposta_correta": ["B", "C", "A", "D", "E"],
+      "cotacao": 8
+    },
+    {
+      "id": "g1p5",
+      "grupo": 1,
+      "numero": 5,
+      "tipo": "escolha_multipla",
+      "enunciado": "De acordo com as informações do Texto 1, a atividade vulcânica que originou o Complexo Vulcânico de Lisboa-Mafra caracterizou-se por",
+      "opcoes": [
+        { "letra": "A", "texto": "ter ocorrido em ambiente submarino." },
+        { "letra": "B", "texto": "ter sido predominantemente explosiva." },
+        { "letra": "C", "texto": "ter tido períodos de repouso entre diferentes episódios vulcânicos." },
+        { "letra": "D", "texto": "ter resultado de um magma com composição essencialmente ácida." }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p6",
+      "grupo": 1,
+      "numero": 6,
+      "tipo": "escolha_multipla",
+      "enunciado": "Quanto às suas características físicas e químicas, o magma que deu origem ao basalto do Complexo Vulcânico de Lisboa-Mafra, por comparação com um magma que dá origem a um riólito, tinha",
+      "opcoes": [
+        { "letra": "A", "texto": "menor temperatura." },
+        { "letra": "B", "texto": "menor percentagem de cálcio." },
+        { "letra": "C", "texto": "maior viscosidade." },
+        { "letra": "D", "texto": "maior percentagem de ferro." }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p7",
+      "grupo": 1,
+      "numero": 7,
+      "tipo": "escolha_multipla",
+      "enunciado": "O calcário Lioz é considerado Rocha Património Mundial. Esta rocha é um recurso geológico",
+      "opcoes": [
+        { "letra": "A", "texto": "renovável, utilizado na construção civil." },
+        { "letra": "B", "texto": "não renovável, explorado em pedreiras." },
+        { "letra": "C", "texto": "não renovável, considerado um combustível fóssil." },
+        { "letra": "D", "texto": "renovável, cuja exploração origina escombreiras." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p8",
+      "grupo": 1,
+      "numero": 8,
+      "tipo": "correspondencia",
+      "enunciado": "Associe cada um dos processos de formação de diferentes rochas, descritos na Coluna I, à respetiva rocha, que consta na Coluna II.",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Rocha que resulta da recristalização de minerais preexistentes." },
+        { "letra": "b", "texto": "Rocha plutónica que resulta da solidificação de um magma rico em sílica." },
+        { "letra": "c", "texto": "Rocha que resulta da precipitação de sulfato de cálcio." }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Basalto" },
+        { "numero": "2", "texto": "Conglomerado" },
+        { "numero": "3", "texto": "Gesso" },
+        { "numero": "4", "texto": "Granito" },
+        { "numero": "5", "texto": "Quartzito" }
+      ],
+      "resposta_correta": { "a": "5", "b": "4", "c": "3" },
+      "cotacao": 8
+    },
+    {
+      "id": "g1p9",
+      "grupo": 1,
+      "numero": 9,
+      "tipo": "resposta_longa",
+      "enunciado": "Explique de que modo a localização geográfica da Bacia Lusitaniana e os movimentos tectónicos no interior desta bacia permitiram o desenvolvimento de zonas de recife, durante o Cretácico Superior. Na sua resposta, faça referência às condições de temperatura da água e de profundidade do mar que favoreceram o desenvolvimento dos rudistas.",
+      "criterios_correcao": "Deve referir que, há cerca de 100 Ma, a região estava localizada perto do equador, o que garantia uma temperatura da água elevada/quente, condição favorável ao desenvolvimento de organismos construtores de recifes como os rudistas (à semelhança dos corais atuais). Deve referir que os movimentos tectónicos levantaram algumas zonas da bacia, tornando o mar pouco profundo (baixa profundidade) nessas zonas, o que permitiu uma boa penetração de luz, favorável aos rudistas e ao fitoplâncton de que se alimentavam. A combinação de água quente e pouco profunda, num contexto tectonicamente ativo, terá assim favorecido a instalação dos recifes.",
+      "cotacao": 9
+    },
+    {
+      "id": "g1p10",
+      "grupo": 1,
+      "numero": 10,
+      "tipo": "selecao_multipla",
+      "numero_a_selecionar": 3,
+      "enunciado": "Identifique, de entre as afirmações seguintes, as três afirmações relativas a medidas de conservação da biodiversidade que se aplicam no Parque Natural Marinho do Recife do Algarve – Pedra do Valado e que podem ser comprovadas pela análise do Texto 2 e da Figura 2.",
+      "opcoes": [
+        { "letra": "I", "texto": "Definição de áreas para preservação do património natural." },
+        { "letra": "II", "texto": "Informação e envolvimento das comunidades locais." },
+        { "letra": "III", "texto": "Proibição da pesca em toda a extensão do parque." },
+        { "letra": "IV", "texto": "Investigação científica sobre espécies e habitats ameaçados para fundamentar tomadas de decisão." },
+        { "letra": "V", "texto": "Autorização de atividades de mergulho apenas na zona de Proteção Total." }
+      ],
+      "resposta_correta": ["I", "II", "IV"],
+      "cotacao": 8
+    },
+    {
+      "id": "g1p11",
+      "grupo": 1,
+      "numero": 11,
+      "tipo": "completar_texto",
+      "enunciado": "Complete o texto seguinte, selecionando a opção adequada a cada espaço.",
+      "texto_com_espacos": "No PNMRA-PV, encontram-se jardins de gorgónias. Estes animais possuem cavidade gastrovascular, realizam digestão (a), e as suas células apresentam (b). Neste parque, também se pode observar o mero, que apresenta uma circulação (c) e realiza hematose (d).",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "1", "texto": "exclusivamente intracelular" },
+            { "letra": "2", "texto": "extracelular e intracelular" },
+            { "letra": "3", "texto": "exclusivamente extracelular" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "1", "texto": "parede celular" },
+            { "letra": "2", "texto": "retículo endoplasmático" },
+            { "letra": "3", "texto": "nucleoide" }
+          ]
+        },
+        {
+          "id": "c",
+          "opcoes": [
+            { "letra": "1", "texto": "dupla e completa" },
+            { "letra": "2", "texto": "dupla e incompleta" },
+            { "letra": "3", "texto": "simples" }
+          ]
+        },
+        {
+          "id": "d",
+          "opcoes": [
+            { "letra": "1", "texto": "branquial" },
+            { "letra": "2", "texto": "cutânea" },
+            { "letra": "3", "texto": "pulmonar" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "2", "b": "2", "c": "3", "d": "1" },
+      "cotacao": 8
+    },
+    {
+      "id": "g1p12",
+      "grupo": 1,
+      "numero": 12,
+      "tipo": "escolha_multipla",
+      "enunciado": "No que diz respeito às categorias taxonómicas, o mero, Epinephelus marginatus, e a garoupa-legítima, Epinephelus aeneus, pertencem",
+      "opcoes": [
+        { "letra": "A", "texto": "ao mesmo reino e à mesma espécie." },
+        { "letra": "B", "texto": "à mesma ordem, mas não ao mesmo filo." },
+        { "letra": "C", "texto": "ao mesmo género e à mesma família." },
+        { "letra": "D", "texto": "à mesma ordem, mas não à mesma classe." }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p13",
+      "grupo": 1,
+      "numero": 13,
+      "tipo": "escolha_multipla",
+      "enunciado": "O mero é um peixe hermafrodita. Quando existe um elevado número de fêmeas juvenis, algumas convertem-se em machos. Na perspetiva lamarckista, o hermafroditismo do mero explica-se devido à",
+      "opcoes": [
+        { "letra": "A", "texto": "reprodução diferencial de fêmeas com capacidade para se transformarem em machos." },
+        { "letra": "B", "texto": "seleção natural de fêmeas capazes de desenvolverem diferentes órgãos reprodutores." },
+        { "letra": "C", "texto": "ocorrência de mutações que permitiram às fêmeas a produção de gâmetas masculinos." },
+        { "letra": "D", "texto": "necessidade de as fêmeas produzirem gâmetas masculinos, assegurando a sua reprodução." }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p14",
+      "grupo": 1,
+      "numero": 14,
+      "tipo": "ordenacao",
+      "enunciado": "Ordene as expressões identificadas pelas letras de A a E, de modo a reconstituir a sequência de acontecimentos relacionados com a utilização dos nutrientes por parte dos corais para a produção de energia.",
+      "opcoes": [
+        { "letra": "A", "texto": "Formação de moléculas de acetil-CoA." },
+        { "letra": "B", "texto": "Redução do oxigénio, com formação de água." },
+        { "letra": "C", "texto": "Oxidação da glicose e produção de ácido pirúvico." },
+        { "letra": "D", "texto": "Ciclo de reações em que ocorrem descarboxilações." },
+        { "letra": "E", "texto": "Fluxo de eletrões ao longo da membrana interna da mitocôndria." }
+      ],
+      "resposta_correta": ["C", "A", "D", "E", "B"],
+      "cotacao": 8
+    },
+    {
+      "id": "g1p15-1",
+      "grupo": 1,
+      "numero": "15.1",
+      "tipo": "escolha_multipla",
+      "enunciado": "Selecione a opção que interpreta corretamente o ciclo de vida da alga calcária do género Phymatolithon, representado na Figura 3.",
+      "opcoes": [
+        { "letra": "A", "texto": "A entidade produtora de tetrásporos é uma estrutura multicelular haploide." },
+        { "letra": "B", "texto": "A formação de gâmetas resulta da ocorrência de meiose." },
+        { "letra": "C", "texto": "O gametófito feminino é constituído por células diploides." },
+        { "letra": "D", "texto": "O desenvolvimento do esporófito resulta da divisão mitótica das células." }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p15-2",
+      "grupo": 1,
+      "numero": "15.2",
+      "tipo": "escolha_multipla",
+      "enunciado": "Na alga calcária do género Phymatolithon, no decurso do processo de produção dos carpósporos, ocorre",
+      "opcoes": [
+        { "letra": "A", "texto": "replicação semiconservativa do DNA durante a prófase." },
+        { "letra": "B", "texto": "descondensação dos cromossomas durante a telófase." },
+        { "letra": "C", "texto": "formação de tétradas cromatídicas na interfase." },
+        { "letra": "D", "texto": "emparelhamento de cromossomas homólogos na anáfase." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p16",
+      "grupo": 1,
+      "numero": 16,
+      "tipo": "resposta_longa",
+      "enunciado": "No Parque Natural Marinho do Recife do Algarve – Pedra do Valado, existe uma zona de Proteção Total. Explique de que modo a existência de uma zona de Proteção Total permite monitorizar e avaliar os efeitos do turismo e da pesca no parque.",
+      "criterios_correcao": "Deve explicar que, na zona de Proteção Total, não são permitidas atividades de pesca nem de turismo (só investigação científica mediante autorização), pelo que esta zona funciona como uma área de controlo/referência, livre da pressão humana associada a essas atividades. Ao comparar os valores naturais (biodiversidade, abundância de espécies, estado dos habitats) nesta zona com os observados nas restantes zonas, onde a pesca e o turismo são permitidos em diferentes graus, é possível atribuir as diferenças encontradas aos efeitos dessas atividades humanas, avaliando o seu impacto.",
+      "cotacao": 9
+    },
+    {
+      "id": "g1p17",
+      "grupo": 1,
+      "numero": 17,
+      "tipo": "escolha_multipla",
+      "enunciado": "Selecione a opção que apresenta uma análise correta dos resultados experimentais, expressos no Gráfico I.",
+      "opcoes": [
+        { "letra": "A", "texto": "Ao fim de 11 meses, com uma pressão parcial de 550 µatm, ocorreu um aumento da taxa fotossintética." },
+        { "letra": "B", "texto": "A taxa fotossintética das algas do grupo de controlo é sempre superior às taxas fotossintéticas dos grupos experimentais." },
+        { "letra": "C", "texto": "Ao 11.º mês, as algas dos grupos experimentais apresentaram um menor crescimento do que ao 20.º mês." },
+        { "letra": "D", "texto": "Com níveis de pressão parcial de CO2 de 750 µatm, o crescimento das algas foi sempre o mais baixo ao longo do tempo." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p18",
+      "grupo": 1,
+      "numero": 18,
+      "tipo": "escolha_multipla",
+      "enunciado": "No estudo realizado, uma variável dependente e uma variável independente podem ser, respetivamente,",
+      "opcoes": [
+        { "letra": "A", "texto": "a pCO2 e a luminosidade." },
+        { "letra": "B", "texto": "a espécie de alga e a taxa fotossintética." },
+        { "letra": "C", "texto": "a luminosidade e a espécie de alga." },
+        { "letra": "D", "texto": "a taxa fotossintética e a pCO2." }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p19",
+      "grupo": 1,
+      "numero": 19,
+      "tipo": "escolha_multipla",
+      "enunciado": "Na fase fotoquímica da fotossíntese ocorre",
+      "opcoes": [
+        { "letra": "A", "texto": "incorporação de carbono com origem nas moléculas de CO2." },
+        { "letra": "B", "texto": "um conjunto de reações químicas dependentes da hidrólise de ATP." },
+        { "letra": "C", "texto": "libertação de oxigénio com origem nas moléculas de H2O." },
+        { "letra": "D", "texto": "absorção máxima de energia nos comprimentos de onda da luz verde." }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 8
+    },
+    {
+      "id": "g1p20",
+      "grupo": 1,
+      "numero": 20,
+      "tipo": "resposta_longa",
+      "enunciado": "Suponha que vai apresentar, numa conferência, a conclusão deste estudo, tendo por base as estimativas de emissão de CO2 para o ano de 2100, publicadas pelo Painel Internacional sobre Mudanças Climáticas. Organize a sua comunicação, fundamentando-a com os resultados experimentais.",
+      "criterios_correcao": "Deve concluir que, no cenário de emissões projetado para 2100 (pCO2 = 750 µatm), a acidificação do oceano compromete a resiliência a longo prazo de Phymatolithon lusitanicum: embora ao 11.º mês a taxa fotossintética a 750 µatm seja superior à do grupo de controlo (cerca de 3,5 vs. cerca de 2,1), sugerindo um efeito estimulante inicial, ao 20.º mês essa taxa cai drasticamente (para cerca de 1,4), ficando bem abaixo do grupo de controlo, que se mantém estável ao longo de todo o período (cerca de 2,1). Deve fundamentar a conclusão de que a exposição prolongada a um cenário de elevada concentração de CO2 reduz a capacidade fotossintética desta alga a longo prazo, apesar de um efeito aparentemente positivo a curto prazo, o que ameaça a sobrevivência da espécie e dos bancos de Maerl que esta forma.",
+      "cotacao": 12
+    },
+    {
+      "id": "g2p1",
+      "grupo": 2,
+      "numero": 1,
+      "tipo": "selecao_multipla",
+      "numero_a_selecionar": 3,
+      "enunciado": "Identifique, de entre as afirmações relativas à finalidade dos procedimentos adotados na experiência descrita, as três afirmações corretas.",
+      "opcoes": [
+        { "letra": "I", "texto": "A colocação das folhas em álcool em ebulição permitiu remover os pigmentos fotossintéticos." },
+        { "letra": "II", "texto": "As condições iniciais de obscuridade a que a planta foi submetida contribuem para validar os resultados obtidos." },
+        { "letra": "III", "texto": "A coloração das folhas, após a utilização da solução de Lugol, permite avaliar, indiretamente, a taxa fotossintética." },
+        { "letra": "IV", "texto": "A utilização de três folhas garantiu a fiabilidade dos resultados." },
+        { "letra": "V", "texto": "A colocação das folhas em água a ferver promoveu a diminuição da permeabilidade das membranas celulares à solução de Lugol." }
+      ],
+      "resposta_correta": ["I", "II", "III"],
+      "cotacao": 8
+    },
+    {
+      "id": "g2p2",
+      "grupo": 2,
+      "numero": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "A solução de Lugol permite identificar a presença de polímeros, cujos monómeros",
+      "opcoes": [
+        { "letra": "A", "texto": "estão unidos por ligações glicosídicas." },
+        { "letra": "B", "texto": "possuem fósforo na sua composição." },
+        { "letra": "C", "texto": "são designados por aminoácidos." },
+        { "letra": "D", "texto": "apresentam um grupo carboxilo." }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 8
+    },
+    {
+      "id": "g2p3",
+      "grupo": 2,
+      "numero": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Identifique, de entre os resultados observados nas caixas de Petri 1, 2 e 3 da Figura 4, aquele que corresponde à folha que esteve completamente tapada. Justifique a sua resposta, considerando o objetivo da experiência e os procedimentos adotados.",
+      "criterios_correcao": "Deve identificar a Caixa de Petri 3 (folha totalmente castanho-clara, sem qualquer zona azul-escura). Deve justificar que, tendo a folha estado completamente tapada com folha de alumínio, não recebeu luz durante o período em que a planta esteve exposta ao Sol, pelo que não pôde realizar fotossíntese nem produzir amido; como a solução de Lugol só muda para azul-escuro na presença de amido, a ausência total de coloração azul-escura (castanho-claro em toda a folha) confirma a ausência de amido, coerente com a folha não ter recebido luz em ponto algum.",
+      "cotacao": 9
+    },
+    {
+      "id": "g3p1",
+      "grupo": 3,
+      "numero": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A Microplaca da Anatólia tem tendência a movimentar-se",
+      "opcoes": [
+        { "letra": "A", "texto": "para este, devido à existência de tensões de compressão com direção N-S." },
+        { "letra": "B", "texto": "para oeste, de acordo com o movimento que ocorre nas falhas FOA e FNA." },
+        { "letra": "C", "texto": "para este, devido ao movimento divergente entre as placas Arábica e Eurasiática." },
+        { "letra": "D", "texto": "para oeste, na sequência da subdução da placa Eurasiática sob a placa Africana." }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 8
+    },
+    {
+      "id": "g3p2",
+      "grupo": 3,
+      "numero": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Considerando as características de propagação das ondas sísmicas, será de esperar que",
+      "opcoes": [
+        { "letra": "A", "texto": "as primeiras ondas registadas nos sismogramas tenham provocado a vibração das partículas, perpendicularmente à sua direção de propagação." },
+        { "letra": "B", "texto": "as segundas ondas registadas nos sismogramas tenham provocado a vibração das partículas, paralelamente à sua direção de propagação." },
+        { "letra": "C", "texto": "as ondas sísmicas P, ao progredirem em profundidade, aumentem a sua velocidade quando atravessam a descontinuidade de Mohorovicic." },
+        { "letra": "D", "texto": "as ondas sísmicas P e as ondas sísmicas S, ao atravessarem a astenosfera, aumentem a sua velocidade de propagação." }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 8
+    },
+    {
+      "id": "g3p3",
+      "grupo": 3,
+      "numero": 3,
+      "tipo": "correspondencia",
+      "enunciado": "Associe cada uma das descrições relativas às características das zonas internas da Terra, apresentadas na Coluna I, à respetiva designação, que consta na Coluna II.",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Zona constituída essencialmente por ferro e por níquel, que é responsável pela existência do campo magnético terrestre." },
+        { "letra": "b", "texto": "Zona da geosfera com menor densidade, constituída essencialmente por rochas de natureza granítica." },
+        { "letra": "c", "texto": "Zona constituída essencialmente por silicatos de ferro e de magnésio, em cuja base se originam as plumas térmicas." }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Crusta continental" },
+        { "numero": "2", "texto": "Crusta oceânica" },
+        { "numero": "3", "texto": "Manto" },
+        { "numero": "4", "texto": "Núcleo externo" },
+        { "numero": "5", "texto": "Núcleo interno" }
+      ],
+      "resposta_correta": { "a": "4", "b": "1", "c": "3" },
+      "cotacao": 8
+    },
+    {
+      "id": "g3p4",
+      "grupo": 3,
+      "numero": 4,
+      "tipo": "resposta_longa",
+      "enunciado": "De acordo com o Instituto Português do Mar e da Atmosfera (IPMA), o segundo sismo, ocorrido também a 6 de fevereiro, não foi uma réplica do primeiro. Explique, utilizando as informações do texto, por que razão o segundo sismo registado na Turquia, no dia 6 de fevereiro de 2023, foi uma consequência do primeiro, mas poderá não ser considerado uma réplica deste.",
+      "criterios_correcao": "Deve explicar que o segundo sismo foi uma consequência do primeiro porque este terá alterado as tensões existentes na região, contribuindo para desencadear a rotura na Falha de Sürgü cerca de nove horas depois. Deve explicar que não é considerado uma réplica porque: (i) ocorreu numa falha diferente (Falha de Sürgü, a norte, e não na zona de intersecção entre a Falha do Mar Morto e a FOA onde ocorreu o primeiro sismo); e (ii) teve uma magnitude muito elevada e próxima da do primeiro sismo (7,5 face a 7,8), o que não é típico de uma réplica, que se espera ter magnitude claramente inferior à do sismo principal.",
+      "cotacao": 9
+    }
+  ]
+}
