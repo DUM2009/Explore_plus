@@ -361,9 +361,16 @@ html[data-theme="dark"] .mission-intro-back:hover {
     gap: 5px;
 }
 
+/* minmax(0, ...) rather than a bare `1fr`: a bare `1fr` track is really
+   minmax(auto, 1fr), and that auto minimum is the track's content's own
+   min-content size. .mo-index-row-btn has several flex-shrink:0 children
+   (icon, meta pill, chevron) that refuse to shrink, so without the
+   explicit 0 floor this column — and the whole grid — grows to fit them
+   even past the container's own width, instead of the column being
+   capped and the overflow handled inside it (scrolling, wrapping, etc). */
 .mo-layout {
     display: grid;
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: minmax(0, 1fr) 340px;
     gap: 28px;
     align-items: start;
 }
@@ -525,6 +532,24 @@ html[data-theme="dark"] .mission-intro-back:hover {
     flex-shrink: 0;
     color: #b7c2ba;
     display: flex;
+}
+
+/* .mo-index-copy is the only shrinkable child of .mo-index-row-btn — icon,
+   meta pill and chevron are all flex-shrink:0 by design so they stay
+   legible. On the narrowest phones (~320-360px) their combined fixed
+   width plus the row's own gaps/padding leaves copy no room and pushes
+   the row past the viewport, so trim the fixed parts here instead. */
+@media (max-width: 360px) {
+    .mo-index-row-btn {
+        gap: 10px;
+        padding: 16px 14px;
+    }
+
+    .mo-index-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
 }
 
 .mo-sidebar {
@@ -697,7 +722,7 @@ html[data-theme="dark"] .mission-intro-back:hover {
 
 @media (max-width: 900px) {
     .mo-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .mo-hero {

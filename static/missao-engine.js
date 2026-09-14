@@ -832,7 +832,67 @@
                     this._lastGanchoPopupKey = popupKey;
                     this.showMascotPopup(`Agora que já viste "${section.titulo}", tenho um desafio para ti.`);
                 }
+                return;
             }
+
+            // Perguntas de micro-verificação: a pergunta e as opções
+            // aparecem logo num popup (mascote à esquerda, pergunta +
+            // opções à direita) — só na primeira vez que se chega a esta
+            // pergunta em concreto, e não depois de já respondida (ex: ao
+            // voltar atrás com "Anterior").
+            if (screen.tipo === 'micro_verificacao' && screen.pergunta && !this.state.answers[popupKey]) {
+                this._lastGanchoPopupKey = popupKey;
+                this.showMicroVerificacaoPopup(section, screen, screenIndex);
+            }
+        }
+
+        /**
+         * Popup de pergunta: igual ao mascot-overlay-card--split (mascote à
+         * esquerda), mas o lado direito é a própria pergunta com as opções
+         * clicáveis, em vez de só texto + botão "Entendido" — responder
+         * aqui grava a resposta tal como responder no ecrã (mesma
+         * data-option-index e mesma chave em this.state.answers, ver
+         * bindScreenInteractions) e fecha o popup, revelando o ecrã por
+         * baixo já com o feedback.
+         */
+        showMicroVerificacaoPopup(section, screen, screenIndex) {
+            if (!this.mascotEnabled()) return;
+            document.querySelector('.me-mascot-popup')?.remove();
+
+            const answerKey = `${section.secao_id}::${screenIndex}`;
+            const optionsHtml = (screen.opcoes || []).map((opcao, i) => `
+                <button type="button" class="quiz-option" data-option-index="${i}">
+                    <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+                    <span class="option-text">${escapeHtml(opcao)}</span>
+                </button>
+            `).join('');
+
+            const overlay = document.createElement('div');
+            overlay.className = 'mascot-overlay me-mascot-popup';
+            overlay.innerHTML = `
+                <div class="mascot-overlay-card mascot-overlay-card--split" role="dialog" aria-modal="true" aria-label="Pergunta">
+                    <div class="mascot-overlay-split-figure">${this.mascotOverlayFigureHtml()}</div>
+                    <div class="mascot-overlay-split-body">
+                        <p class="mascot-overlay-text quiz-question">${escapeHtml(screen.pergunta)}</p>
+                        <div class="quiz-options" data-answer-key="${answerKey}">${optionsHtml}</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+
+            const close = () => overlay.remove();
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) close();
+            });
+            overlay.querySelectorAll('[data-option-index]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const selected = Number(btn.dataset.optionIndex);
+                    this.state.answers[answerKey] = { selected, correct: selected === screen.correta };
+                    this.saveState();
+                    close();
+                    this.render();
+                });
+            });
         }
 
         /**
