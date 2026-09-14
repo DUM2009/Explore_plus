@@ -182,12 +182,19 @@
                 </div>
                 {% endif %}
 
-                {% if seccao.figura_texto %}
-                <div class="exame-figura-placeholder">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-                    <span>{{ seccao.figura_texto }}</span>
-                </div>
-                {% endif %}
+                {% for figura in seccao.figuras %}
+                    {% if figura.imagem %}
+                    <figure class="exame-figura">
+                        <img src="{% static figura.imagem %}" alt="{{ figura.alt }}" class="exame-figura-imagem">
+                        <figcaption>{{ figura.legenda }}</figcaption>
+                    </figure>
+                    {% else %}
+                    <div class="exame-figura-placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                        <span><strong>{{ figura.legenda }}</strong> (imagem a adicionar) — {{ figura.descricao_temporaria }}</span>
+                    </div>
+                    {% endif %}
+                {% endfor %}
 
                 {% for pergunta in seccao.perguntas %}
                 <div class="teste-pergunta" data-pergunta-id="{{ pergunta.id }}" data-tipo="{{ pergunta.tipo }}">

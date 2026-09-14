@@ -1252,6 +1252,25 @@ gap:20px;
     margin-bottom:28px;
 }
 
+.exame-figura{
+    margin:0 0 16px;
+    text-align:center;
+}
+
+.exame-figura-imagem{
+    max-width:100%;
+    border:1px solid #e2e3db;
+    border-radius:12px;
+    background:#ffffff;
+}
+
+.exame-figura figcaption{
+    margin-top:8px;
+    font-size:.85rem;
+    font-weight:700;
+    color:#3d4640;
+}
+
 .exame-figura-placeholder{
     display:flex;
     align-items:flex-start;
