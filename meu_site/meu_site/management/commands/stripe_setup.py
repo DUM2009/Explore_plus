@@ -27,18 +27,18 @@ class Command(BaseCommand):
         )
 
         produto = next(
-            (p for p in client.products.list(active=True) if p.name == NOME_PRODUTO),
+            (p for p in client.v1.products.list({'active': True}) if p.name == NOME_PRODUTO),
             None,
         )
         if produto is None:
-            produto = client.products.create(name=NOME_PRODUTO)
+            produto = client.v1.products.create({'name': NOME_PRODUTO})
             self.stdout.write(self.style.SUCCESS(f'Produto criado: {produto.id}'))
         else:
             self.stdout.write(f'Produto já existia: {produto.id}')
 
         preco = next(
             (
-                p for p in client.prices.list(product=produto.id, active=True)
+                p for p in client.v1.prices.list({'product': produto.id, 'active': True})
                 if p.currency == MOEDA
                 and p.unit_amount == PRECO_CENTIMOS
                 and p.recurring
@@ -47,12 +47,12 @@ class Command(BaseCommand):
             None,
         )
         if preco is None:
-            preco = client.prices.create(
-                product=produto.id,
-                currency=MOEDA,
-                unit_amount=PRECO_CENTIMOS,
-                recurring={'interval': 'month'},
-            )
+            preco = client.v1.prices.create({
+                'product': produto.id,
+                'currency': MOEDA,
+                'unit_amount': PRECO_CENTIMOS,
+                'recurring': {'interval': 'month'},
+            })
             self.stdout.write(self.style.SUCCESS(f'Preço criado: {preco.id}'))
         else:
             self.stdout.write(f'Preço já existia: {preco.id}')

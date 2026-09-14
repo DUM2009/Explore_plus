@@ -53,9 +53,9 @@
         window.explorePlano = "{{ perfil.plano|default:'free' }}";
         window.exploreUsername = "{{ request.user.username|default:'' }}";
     </script>
-    <script src="{% static 'profile-xp.js' %}"></script>
-    <script src="{% static 'mascot-prefs.js' %}"></script>
-    <script src="{% static 'missao-engine.js' %}"></script>
+    <script src="{% static 'profile-xp.js' %}?v={% now 'U' %}"></script>
+    <script src="{% static 'mascot-prefs.js' %}?v={% now 'U' %}"></script>
+    <script src="{% static 'missao-engine.js' %}?v={% now 'U' %}"></script>
     <script>
         const missaoData = JSON.parse(document.getElementById('missao-data').textContent);
         new MissaoEngine(missaoData, {

@@ -1241,7 +1241,7 @@ def iniciar_checkout_superexplore(request):
         dados_sessao['customer_email'] = request.user.email
 
     try:
-        sessao = _cliente_stripe().checkout.sessions.create(**dados_sessao)
+        sessao = _cliente_stripe().v1.checkout.sessions.create(dados_sessao)
     except stripe.StripeError:
         return redirect(f'{url_base}?checkout=erro')
 
@@ -1256,10 +1256,10 @@ def gerir_subscricao(request):
 
     url_retorno = request.build_absolute_uri(reverse('superexplore'))
     try:
-        sessao_portal = _cliente_stripe().billing_portal.sessions.create(
-            customer=perfil.stripe_customer_id,
-            return_url=url_retorno,
-        )
+        sessao_portal = _cliente_stripe().v1.billing_portal.sessions.create({
+            'customer': perfil.stripe_customer_id,
+            'return_url': url_retorno,
+        })
     except stripe.StripeError:
         return redirect('superexplore')
 
