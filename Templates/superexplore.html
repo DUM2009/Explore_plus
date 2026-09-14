@@ -189,15 +189,24 @@
                 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acesso a todos os testes e exames com IA para auxiliar</li>
             </ul>
             {% if perfil.plano == 'pro' %}
-            <button type="button" class="plan-card-btn plan-card-btn--muted" disabled>Já és SuperExplore</button>
+            <a href="{% url 'gerir-subscricao' %}" class="plan-card-btn plan-card-btn--muted">Gerir subscrição</a>
             {% else %}
-            <button type="button" class="plan-card-btn plan-card-btn--highlight">Ativar SuperExplore</button>
+            <form method="post" action="{% url 'iniciar-checkout-superexplore' %}">
+                {% csrf_token %}
+                <button type="submit" class="plan-card-btn plan-card-btn--highlight">Ativar SuperExplore</button>
+            </form>
             {% endif %}
         </div>
 
     </div>
 
-    <p class="plans-note">Os pagamentos ainda não estão ligados — este botão é só uma pré-visualização de como o plano vai funcionar.</p>
+    {% if request.GET.checkout == 'sucesso' %}
+    <p class="plans-note">Pagamento confirmado! O teu plano SuperExplore fica ativo assim que o Stripe confirmar a subscrição.</p>
+    {% elif request.GET.checkout == 'cancelado' %}
+    <p class="plans-note">Checkout cancelado — não te foi cobrado nada.</p>
+    {% elif request.GET.checkout == 'erro' %}
+    <p class="plans-note">Não foi possível iniciar o pagamento. Tenta novamente.</p>
+    {% endif %}
 </section>
 
 </div>

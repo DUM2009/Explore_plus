@@ -620,9 +620,11 @@
                                 <div class="section-content">
                                     <div class="screen-card">${this.renderScreen(section, screen, screenIndex)}</div>
                                 </div>
-                                <div class="screen-nav">
-                                    <button type="button" class="screen-nav-btn" id="mePrevBtn" ${screenIndex === 0 ? 'disabled' : ''}>Anterior</button>
-                                    ${nextBtnHtml}
+                                <div class="me-gancho-nav-wrap">
+                                    <div class="screen-nav">
+                                        <button type="button" class="screen-nav-btn" id="mePrevBtn" ${screenIndex === 0 ? 'disabled' : ''}>Anterior</button>
+                                        ${nextBtnHtml}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -679,7 +681,7 @@
                 });
             });
 
-            this.showGanchoPopupIfNeeded(section, screen, screenIndex);
+            this.showEntryPopupIfNeeded(section, screen, screenIndex);
         }
 
         advance(section, sectionIndex, screenIndex, screens) {
@@ -770,7 +772,7 @@
          * tal e qual .mascot-overlay-card--split (o mesmo diálogo modal
          * usado nas saudações/curiosidades da Fotossíntese). Chamado uma
          * vez por cada vez que se entra num ecrã de gancho com imagem
-         * própria (ver showGanchoPopupIfNeeded).
+         * própria, ou no quiz de fim de secção (ver showEntryPopupIfNeeded).
          */
         mascotOverlayFigureHtml() {
             if (this.mascotWaveVideoUrl) {
@@ -809,14 +811,28 @@
         /** Só mostra o popup na primeira vez que se entra neste ecrã em
          *  concreto — reentradas por causa de outro re-render (ex: abrir/
          *  fechar o chat) não o voltam a mostrar. */
-        showGanchoPopupIfNeeded(section, screen, screenIndex) {
-            const temGancho = (screen.tipo === 'gancho' && screen.imagem)
-                || (screen.tipo === 'diagrama_interativo' && screen.intro_imagem);
-            if (!temGancho || !screen.mascote_texto) return;
+        showEntryPopupIfNeeded(section, screen, screenIndex) {
             const popupKey = `${section.secao_id}::${screenIndex}`;
             if (this._lastGanchoPopupKey === popupKey) return;
-            this._lastGanchoPopupKey = popupKey;
-            this.showMascotPopup(screen.mascote_texto);
+
+            const temGancho = (screen.tipo === 'gancho' && screen.imagem)
+                || (screen.tipo === 'diagrama_interativo' && screen.intro_imagem);
+            if (temGancho && screen.mascote_texto) {
+                this._lastGanchoPopupKey = popupKey;
+                this.showMascotPopup(screen.mascote_texto);
+                return;
+            }
+
+            // Ao chegar ao quiz da secção (só na primeira pergunta, antes
+            // de qualquer resposta), avisa que vem aí um desafio — genérico
+            // do motor, não depende de nenhum campo do JSON da missão.
+            if (screen.tipo === 'quiz_seccao') {
+                const quizState = this.getQuizState(section);
+                if (quizState.current === 0 && quizState.answers.length === 0) {
+                    this._lastGanchoPopupKey = popupKey;
+                    this.showMascotPopup(`Agora que já viste "${section.titulo}", tenho um desafio para ti.`);
+                }
+            }
         }
 
         /**
@@ -906,7 +922,7 @@
             const explicacaoHtml = isEscada
                 ? `
                     <div class="me-escada-detail" id="meDiagramaExplicacao">
-                        <span class="me-escada-detail-badge">🎓 Nível 1 de ${pontos.length}</span>
+                        ${primeiroPonto.imagem ? `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(primeiroPonto.imagem)}" alt="${escapeHtml(primeiroPonto.label || '')}" onerror="this.style.display='none'">` : ''}
                         <h4 class="me-escada-detail-title">${escapeHtml(primeiroPonto.label || '')}</h4>
                         <p class="me-escada-detail-text">${escapeHtml(primeiroPonto.explicacao || '')}</p>
                     </div>
@@ -1103,7 +1119,7 @@
                             chip.classList.add('is-active');
                             if (explicacaoEl) {
                                 explicacaoEl.innerHTML = `
-                                    <span class="me-escada-detail-badge">🎓 Nível ${Number(chip.dataset.pontoIndex) + 1} de ${screen.pontos.length}</span>
+                                    ${ponto.imagem ? `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(ponto.imagem)}" alt="${escapeHtml(ponto.label)}" onerror="this.style.display='none'">` : ''}
                                     <h4 class="me-escada-detail-title">${escapeHtml(ponto.label)}</h4>
                                     <p class="me-escada-detail-text">${escapeHtml(ponto.explicacao)}</p>
                                 `;

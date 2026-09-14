@@ -72,6 +72,10 @@ class PerfilAluno(models.Model):
     criado_em = models.DateTimeField(default=timezone.now)
     plano = models.CharField(max_length=4, choices=PLANOS, default='free')
     uso_chat_semana = models.JSONField(default=dict, blank=True)
+    # Preenchidos pelo checkout/webhook do Stripe (ver views.py) — permitem
+    # ligar eventos assíncronos de subscrição de volta a este perfil.
+    stripe_customer_id = models.CharField(max_length=255, blank=True, default='')
+    stripe_subscription_id = models.CharField(max_length=255, blank=True, default='')
 
     class Meta:
         app_label = 'meu_site'

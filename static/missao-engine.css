@@ -95,6 +95,28 @@ html.dark-mode .me-root {
     margin-right: auto;
 }
 
+/* Alinha os botões Anterior/Continuar com as margens do painel acima —
+   mesma quebra de coluna que .screen-card:has(.me-gancho-card), com o
+   .screen-nav (visto em mission-styles.css) a ficar centrado lá dentro tal
+   como o próprio .me-gancho-card, em vez de preso à coluna estreita de
+   .section-body (a única forma fiável de os alinhar em qualquer largura de
+   ecrã — ver nota em .screen-card:has(.me-gancho-card) acima). */
+.section-body:has(.me-gancho-card) .me-gancho-nav-wrap {
+    box-sizing: border-box;
+    width: 100cqw;
+    max-width: 100cqw;
+    margin-left: calc(50% - 50cqw);
+    margin-right: calc(50% - 50cqw);
+    padding: 0 28px;
+}
+
+.section-body:has(.me-gancho-card) .me-gancho-nav-wrap .screen-nav {
+    width: min(1100px, 100%);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .me-gancho-hero-image {
     width: 100%;
     max-width: 700px;
@@ -464,17 +486,15 @@ html.dark-mode .me-escada-step-label {
     background: #fbf7ee;
 }
 
-.me-escada-detail-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: #eef7f3;
-    color: #1f5c33;
-    border-radius: 999px;
-    padding: 6px 14px;
-    font-size: .8rem;
-    font-weight: 700;
-    margin-bottom: 14px;
+.me-escada-detail-image {
+    width: 100%;
+    max-width: 260px;
+    max-height: 200px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 16px;
 }
 
 .me-escada-detail-title {
@@ -490,11 +510,6 @@ html.dark-mode .me-escada-step-label {
 html.dark-mode .me-escada-detail {
     background: #24201a;
     border-color: #3a3128;
-}
-
-html.dark-mode .me-escada-detail-badge {
-    background: #1c1712;
-    color: #7fd9a8;
 }
 
 html.dark-mode .me-escada-detail-text {
