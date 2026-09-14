@@ -6,7 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore+</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
 </head>
 
 <body>
@@ -24,7 +27,7 @@
 
     <section class="hero">
         <div class="hero-left">
-            <h1>Aprender começa por compreender.</h1>
+            <h1>A ciência nasce da curiosidade.</h1>
             <p>Uma nova forma de estudar Biologia através de missões, curiosidades e desafios interativos.</p>
             <a href="/login/"><button>Que comece a aventura!</button></a>
         </div>

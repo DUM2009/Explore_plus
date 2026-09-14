@@ -53,7 +53,7 @@ body.shadcn-profile{
 }
 
 header .logo img {
-    width:180px;
+    width:220px;
     height:auto;
 }
 
@@ -235,6 +235,7 @@ header nav button{
     z-index:1;
     padding:10px 18px;
     border-radius:999px;
+    font-size:1.1rem;
     transition:color .25s ease;
 }
 
@@ -298,6 +299,8 @@ header nav .nav-tabs-indicator.is-danger{
     position:relative;
     z-index:2;
     width: 100%;
+    font-family:'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-weight:600;
     font-size:4.5rem;
     line-height:1.1;
     margin-bottom:25px;
@@ -8822,6 +8825,10 @@ body.shadcn-profile .profile-hero {
     flex-wrap: wrap;
     gap: 28px;
     margin-bottom: 32px;
+    padding: 28px 32px;
+    border: 1px solid var(--sp-border);
+    border-radius: calc(var(--sp-radius) + 6px);
+    background: linear-gradient(135deg, var(--sp-accent-soft) 0%, var(--sp-card) 70%);
 }
 
 body.shadcn-profile .profile-hero-left {
@@ -8837,7 +8844,8 @@ body.shadcn-profile .profile-hero-avatar {
     width: 108px;
     height: 108px;
     border-radius: 50%;
-    background: var(--sp-accent-soft);
+    background: linear-gradient(150deg, var(--sp-accent-soft) 0%, var(--sp-card) 100%);
+    box-shadow: 0 0 0 4px var(--sp-card), 0 0 0 5px var(--sp-border), 0 12px 24px -10px rgba(47, 107, 69, .35);
     color: var(--sp-primary);
     font-family: var(--sp-font-serif);
     font-size: 2.6rem;
