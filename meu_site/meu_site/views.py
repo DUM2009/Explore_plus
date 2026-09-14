@@ -2,8 +2,9 @@ import json
 import re
 import unicodedata
 import anthropic
+import stripe
 from django.conf import settings
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db import OperationalError
@@ -11,6 +12,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils import timezone
 from .models import PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel
@@ -1209,6 +1211,108 @@ def pagina_superexplore(request):
         'limite_chat_free': obter_limite_chat('free'),
         'limite_chat_pro': obter_limite_chat('pro'),
     })
+
+
+def _cliente_stripe():
+    return stripe.StripeClient(
+        api_key=settings.STRIPE_SECRET_KEY,
+        stripe_version=settings.STRIPE_API_VERSION,
+    )
+
+
+@login_required(login_url='login')
+@require_POST
+def iniciar_checkout_superexplore(request):
+    perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    if perfil.plano == 'pro':
+        return redirect('superexplore')
+
+    url_base = request.build_absolute_uri(reverse('superexplore'))
+    dados_sessao = {
+        'mode': 'subscription',
+        'line_items': [{'price': settings.STRIPE_PRICE_ID_PRO, 'quantity': 1}],
+        'client_reference_id': str(request.user.id),
+        'success_url': f'{url_base}?checkout=sucesso',
+        'cancel_url': f'{url_base}?checkout=cancelado',
+    }
+    if perfil.stripe_customer_id:
+        dados_sessao['customer'] = perfil.stripe_customer_id
+    else:
+        dados_sessao['customer_email'] = request.user.email
+
+    try:
+        sessao = _cliente_stripe().checkout.sessions.create(**dados_sessao)
+    except stripe.StripeError:
+        return redirect(f'{url_base}?checkout=erro')
+
+    return redirect(sessao.url)
+
+
+@login_required(login_url='login')
+def gerir_subscricao(request):
+    perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    if not perfil.stripe_customer_id:
+        return redirect('superexplore')
+
+    url_retorno = request.build_absolute_uri(reverse('superexplore'))
+    try:
+        sessao_portal = _cliente_stripe().billing_portal.sessions.create(
+            customer=perfil.stripe_customer_id,
+            return_url=url_retorno,
+        )
+    except stripe.StripeError:
+        return redirect('superexplore')
+
+    return redirect(sessao_portal.url)
+
+
+@csrf_exempt
+@require_POST
+def stripe_webhook(request):
+    try:
+        evento = stripe.Webhook.construct_event(
+            request.body,
+            request.META.get('HTTP_STRIPE_SIGNATURE', ''),
+            settings.STRIPE_WEBHOOK_SECRET,
+        )
+    except (ValueError, stripe.SignatureVerificationError):
+        return HttpResponse(status=400)
+
+    tipo = evento['type']
+    dados = evento['data']['object']
+
+    if tipo == 'checkout.session.completed' or (
+        tipo == 'checkout.session.async_payment_succeeded'
+        and dados.get('payment_status') == 'paid'
+    ):
+        utilizador_id = dados.get('client_reference_id')
+        if utilizador_id:
+            try:
+                utilizador = User.objects.get(pk=utilizador_id)
+            except User.DoesNotExist:
+                utilizador = None
+            if utilizador is not None:
+                perfil, _ = PerfilAluno.objects.get_or_create(user=utilizador)
+                perfil.stripe_customer_id = dados.get('customer', '') or perfil.stripe_customer_id
+                perfil.stripe_subscription_id = dados.get('subscription', '') or perfil.stripe_subscription_id
+                perfil.plano = 'pro'
+                perfil.save(update_fields=['stripe_customer_id', 'stripe_subscription_id', 'plano'])
+
+    elif tipo == 'customer.subscription.updated':
+        perfil = PerfilAluno.objects.filter(stripe_customer_id=dados.get('customer')).first()
+        if perfil is not None:
+            perfil.stripe_subscription_id = dados.get('id', '') or perfil.stripe_subscription_id
+            perfil.plano = 'pro' if dados.get('status') in ('active', 'trialing') else 'free'
+            perfil.save(update_fields=['stripe_subscription_id', 'plano'])
+
+    elif tipo == 'customer.subscription.deleted':
+        perfil = PerfilAluno.objects.filter(stripe_customer_id=dados.get('customer')).first()
+        if perfil is not None:
+            perfil.plano = 'free'
+            perfil.stripe_subscription_id = ''
+            perfil.save(update_fields=['plano', 'stripe_subscription_id'])
+
+    return HttpResponse(status=200)
 
 
 def carregar_teste(teste_id):

@@ -20,19 +20,19 @@
           "layout": "escada",
           "instrucao": "Clica em cada degrau para veres a explicação — repara como cada nível é maior e mais complexo do que o anterior.",
           "pontos": [
-            { "id": "atomo", "label": "Átomo", "explicacao": "A unidade básica da matéria. Átomos como o carbono, o hidrogénio, o oxigénio e o azoto combinam-se para formar as moléculas de que os seres vivos são feitos." },
-            { "id": "molecula", "label": "Molécula", "explicacao": "Conjunto de átomos ligados quimicamente entre si (ex: água, glicose, proteínas) — as moléculas orgânicas são a base química de todos os seres vivos." },
-            { "id": "organelo", "label": "Organelo", "explicacao": "Estrutura especializada dentro de uma célula, com uma função específica (ex: mitocôndria, núcleo, cloroplasto)." },
-            { "id": "celula", "label": "Célula", "explicacao": "A unidade básica de vida — a estrutura mais simples capaz de realizar todas as funções vitais." },
-            { "id": "tecido", "label": "Tecido", "explicacao": "Conjunto de células semelhantes que trabalham em conjunto numa função específica (ex: tecido muscular)." },
-            { "id": "orgao", "label": "Órgão", "explicacao": "Conjunto de diferentes tecidos organizados para desempenhar uma função conjunta (ex: o coração)." },
-            { "id": "sistema_orgaos", "label": "Sistema de órgãos", "explicacao": "Vários órgãos a trabalhar em conjunto para uma função mais ampla (ex: sistema digestivo)." },
-            { "id": "organismo", "label": "Organismo", "explicacao": "Um ser vivo completo e individual, resultado da integração de todos os seus sistemas." },
-            { "id": "populacao", "label": "População", "explicacao": "Todos os indivíduos da mesma espécie, a viver na mesma área, ao mesmo tempo." },
-            { "id": "comunidade", "label": "Comunidade", "explicacao": "Todas as populações de espécies diferentes que interagem na mesma área." },
-            { "id": "ecossistema", "label": "Ecossistema", "explicacao": "A comunidade de seres vivos, em interação com o ambiente físico (água, solo, luz, temperatura) que a rodeia." },
-            { "id": "bioma", "label": "Bioma", "explicacao": "Um conjunto de ecossistemas com características climáticas e vegetação semelhantes, numa grande região (ex: floresta tropical, tundra, savana)." },
-            { "id": "biosfera", "label": "Biosfera", "explicacao": "O conjunto de todos os ecossistemas e biomas do planeta — a camada da Terra onde existe vida." }
+            { "id": "atomo", "label": "Átomo", "imagem": "atomo.svg", "explicacao": "A unidade básica da matéria. Átomos como o carbono, o hidrogénio, o oxigénio e o azoto combinam-se para formar as moléculas de que os seres vivos são feitos." },
+            { "id": "molecula", "label": "Molécula", "imagem": "molecula.png", "explicacao": "Conjunto de átomos ligados quimicamente entre si (ex: água, glicose, proteínas) — as moléculas orgânicas são a base química de todos os seres vivos." },
+            { "id": "organelo", "label": "Organelo", "imagem": "organelo.svg", "explicacao": "Estrutura especializada dentro de uma célula, com uma função específica (ex: mitocôndria, núcleo, cloroplasto)." },
+            { "id": "celula", "label": "Célula", "imagem": "celula.svg", "explicacao": "A unidade básica de vida — a estrutura mais simples capaz de realizar todas as funções vitais." },
+            { "id": "tecido", "label": "Tecido", "imagem": "tecido.jpg", "explicacao": "Conjunto de células semelhantes que trabalham em conjunto numa função específica (ex: tecido muscular)." },
+            { "id": "orgao", "label": "Órgão", "imagem": "orgao.svg", "explicacao": "Conjunto de diferentes tecidos organizados para desempenhar uma função conjunta (ex: o coração)." },
+            { "id": "sistema_orgaos", "label": "Sistema de órgãos", "imagem": "sistema-orgaos.svg", "explicacao": "Vários órgãos a trabalhar em conjunto para uma função mais ampla (ex: sistema digestivo)." },
+            { "id": "organismo", "label": "Organismo", "imagem": "organismo.jpg", "explicacao": "Um ser vivo completo e individual, resultado da integração de todos os seus sistemas." },
+            { "id": "populacao", "label": "População", "imagem": "populacao.jpg", "explicacao": "Todos os indivíduos da mesma espécie, a viver na mesma área, ao mesmo tempo." },
+            { "id": "comunidade", "label": "Comunidade", "imagem": "comunidade.jpg", "explicacao": "Todas as populações de espécies diferentes que interagem na mesma área." },
+            { "id": "ecossistema", "label": "Ecossistema", "imagem": "ecossistema.jpg", "explicacao": "A comunidade de seres vivos, em interação com o ambiente físico (água, solo, luz, temperatura) que a rodeia." },
+            { "id": "bioma", "label": "Bioma", "imagem": "bioma.jpg", "explicacao": "Um conjunto de ecossistemas com características climáticas e vegetação semelhantes, numa grande região (ex: floresta tropical, tundra, savana)." },
+            { "id": "biosfera", "label": "Biosfera", "imagem": "biosfera.jpg", "explicacao": "O conjunto de todos os ecossistemas e biomas do planeta — a camada da Terra onde existe vida." }
           ]
         },
         {

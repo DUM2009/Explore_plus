@@ -18,6 +18,15 @@ services:
         value: "3.12.10"
       - key: ANTHROPIC_API_KEY
         sync: false
+      # Stripe (assinatura SuperExplore) — chave secreta, Price ID e segredo de
+      # assinatura do webhook, todos definidos manualmente no dashboard do
+      # Render (Environment tab), nunca aqui.
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: STRIPE_PRICE_ID_PRO
+        sync: false
       # Neon Postgres connection string — set this manually in the Render
       # dashboard (Environment tab), never committed here. Without it,
       # settings.py falls back to SQLite on Render's own (ephemeral) disk.
