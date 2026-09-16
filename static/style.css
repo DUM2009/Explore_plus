@@ -9996,6 +9996,28 @@ body.shadcn-profile .profile-hero-rank {
     margin: 0 auto 18px;
 }
 
+.resumo-seccao-imagens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 18px;
+}
+
+.resumo-seccao-imagens .resumo-seccao-imagem-wrap {
+    flex: 1 1 300px;
+    max-width: 420px;
+    margin: 0;
+}
+
+.resumo-seccao-imagem-legenda {
+    text-align: center;
+    font-size: .85rem;
+    color: #5a6259;
+    margin-top: 8px;
+}
+
 .resumo-seccao-imagem {
     display: block;
     width: 100%;

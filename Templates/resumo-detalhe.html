@@ -197,6 +197,17 @@
         </div>
         {% endif %}
 
+        {% if seccao.imagens %}
+        <div class="resumo-seccao-imagens">
+            {% for imagem in seccao.imagens %}
+            <div class="resumo-seccao-imagem-wrap" {% if imagem.imagem_max_width %}style="max-width:{{ imagem.imagem_max_width }};"{% endif %}>
+                <img src="{% static imagem.imagem %}" alt="{{ imagem.imagem_alt }}" class="resumo-seccao-imagem">
+                {% if imagem.legenda %}<p class="resumo-seccao-imagem-legenda">{{ imagem.legenda }}</p>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
         {% if seccao.definicoes %}
         <ol class="resumo-passos">
             {% for item in seccao.definicoes %}
