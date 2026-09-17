@@ -354,7 +354,173 @@
               "mascote_feedback_errado": "Na verdade é falso — as espécies invasoras podem causar grandes desequilíbrios, por não terem inimigos naturais locais."
             }
           ],
-          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que realmente significa biodiversidade, e como podemos ajudar a proteger o que resta dela. 🌍🐢"
+          "mascote_conclusao": "Já sabes proteger a vida lá fora, no ecossistema. Agora vamos encolher — muito! — e ver como essa mesma vida está organizada por dentro, ao nível da célula. 🔬🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "celula-unidade-vida",
+      "titulo": "A célula: a unidade da vida",
+      "xp": 30,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Sabias que, agora mesmo, biliões de \"fábricas\" microscópicas estão a trabalhar dentro de ti, sem parares para pensar nisso? 🐢",
+          "texto": "Vamos conhecer a célula — a unidade que constrói toda a vida, da bactéria mais simples a ti."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Célula procariótica vs. eucariótica",
+          "imagem": "celula_procariotica_vs_eucariotica.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "procariotica", "label": "Célula procariótica", "explicacao": "Não tem núcleo individualizado — o material genético anda \"solto\" no citoplasma, numa região chamada nucleoide. Também não tem organelos membranares. É a estrutura das bactérias e das arqueias." },
+            { "id": "eucariotica", "label": "Célula eucariótica", "explicacao": "Tem um núcleo verdadeiro, delimitado por uma membrana, onde guarda o material genético. Tem também vários organelos membranares especializados (mitocôndrias, retículo endoplasmático, complexo de Golgi...). É a estrutura dos protistas, fungos, plantas e animais." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Numa célula procariótica, o material genético encontra-se:",
+          "opcoes": ["Disperso no citoplasma (nucleoide)", "Dentro de um núcleo delimitado por membrana"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É precisamente a ausência de núcleo que caracteriza as células procarióticas.",
+          "mascote_feedback_errado": "Na verdade anda disperso no citoplasma, numa região chamada nucleoide — só as células eucarióticas têm núcleo."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Célula animal vs. célula vegetal",
+          "imagem": "celula_animal_vs_vegetal.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "parede_celular", "label": "Parede celular", "explicacao": "Camada rígida de celulose que envolve a célula vegetal, dando-lhe forma definida e suporte — a célula animal não tem parede celular, só a membrana plasmática." },
+            { "id": "cloroplastos", "label": "Cloroplastos", "explicacao": "Organelos presentes só nas células vegetais, onde ocorre a fotossíntese — é por isso que uma planta não precisa de \"sair de casa\" para arranjar energia." },
+            { "id": "vacuolo", "label": "Vacúolo central", "explicacao": "Nas células vegetais, existe tipicamente um grande vacúolo central, que ocupa boa parte do volume da célula; nas células animais, os vacúolos são pequenos ou até ausentes." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destas estruturas está presente numa célula vegetal, mas ausente numa célula animal?",
+          "opcoes": ["Membrana plasmática", "Cloroplastos"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! Só as células vegetais têm cloroplastos, onde ocorre a fotossíntese.",
+          "mascote_feedback_errado": "A resposta certa são os cloroplastos — a membrana plasmática existe em ambos os tipos de célula."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Uma célula procariótica é como um escritório *open-space*, sem paredes internas — tudo à vista, incluindo o DNA \"a boiar\" na sala. Uma célula eucariótica já é um escritório com salas separadas (os organelos), e o DNA tem a sua própria sala trancada: o núcleo. E se essa célula for vegetal, imagina ainda esse escritório com paredes de tijolo à volta (a parede celular) e painéis solares próprios no telhado (os cloroplastos) — não precisa de encomendar energia a ninguém."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A Teoria Celular",
+          "texto": "A ideia de que a célula é a base de toda a vida não é uma suposição — é uma das teorias mais sólidas da Biologia, assente em três princípios: (1) todos os seres vivos são constituídos por uma ou mais células; (2) a célula é a unidade básica de estrutura e de função de todos os seres vivos — é a mais pequena \"peça\" capaz de realizar, sozinha, todas as funções vitais; (3) toda a célula deriva de uma célula pré-existente, por divisão celular — nenhuma célula nasce \"do nada\". Este último princípio explica, por exemplo, porque é que a vida na Terra forma uma árvore genealógica contínua, sem interrupções, desde as primeiras células até hoje."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Bactérias e arqueias são exemplos de organismos com células:",
+              "opcoes": ["Procarióticas", "Eucarióticas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Bactérias e arqueias não têm núcleo definido.",
+              "mascote_feedback_errado": "São organismos procarióticos — não têm núcleo individualizado."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: as células animais têm parede celular, tal como as vegetais.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! A parede celular é exclusiva das células vegetais (entre outros grupos, mas não dos animais).",
+              "mascote_feedback_errado": "Na verdade é falso — só as células vegetais têm parede celular; as animais só têm membrana plasmática."
+            },
+            {
+              "pergunta": "Segundo a Teoria Celular, uma célula nova só pode surgir:",
+              "opcoes": ["A partir do nada, quando as condições são ideais", "A partir da divisão de uma célula já existente"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Toda a célula deriva de uma célula pré-existente.",
+              "mascote_feedback_errado": "Na verdade, toda a célula deriva sempre de outra célula já existente, por divisão celular."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como uma célula está organizada por dentro. Falta uma última paragem: encolher ainda mais e ver do que é que as células — e tu — são realmente feitas. 🧪🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "moleculas-da-vida",
+      "titulo": "As moléculas da vida",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Achas que uma bactéria e uma baleia têm assim tão pouco em comum? Ao nível das moléculas, são surpreendentemente parecidas. 🐢",
+          "texto": "Vamos ver que, por baixo de tanta diversidade, todos os seres vivos são feitos, no fundo, dos mesmos \"ingredientes\"."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "As moléculas que constroem a vida",
+          "imagem": "macromoleculas_da_vida.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "agua", "label": "Água", "explicacao": "A molécula mais abundante nos seres vivos. É o \"palco\" onde acontecem quase todas as reações químicas da célula, além de transportar substâncias e ajudar a regular a temperatura do corpo." },
+            { "id": "glicidos", "label": "Glícidos", "explicacao": "Feitos de monossacarídeos (como a glicose). Função principal: energia rápida e, nas plantas, também estrutura (celulose)." },
+            { "id": "lipidos", "label": "Lípidos", "explicacao": "Feitos sobretudo de ácidos gordos e glicerol. Função principal: reserva de energia a longo prazo e constituintes das membranas celulares." },
+            { "id": "proteinas", "label": "Proteínas", "explicacao": "Feitas de aminoácidos. As \"trabalhadoras\" da célula — têm função estrutural, enzimática (aceleram reações), de defesa e de transporte." },
+            { "id": "acidos_nucleicos", "label": "Ácidos nucleicos", "explicacao": "Feitos de nucleótidos. Guardam e transmitem a informação genética (DNA) e ajudam a construir as proteínas (RNA) — o \"manual de instruções\" da célula." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "As unidades básicas (monómeros) que formam as proteínas chamam-se:",
+          "opcoes": ["Aminoácidos", "Monossacarídeos"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Vários aminoácidos ligados formam uma proteína.",
+          "mascote_feedback_errado": "São os aminoácidos — os monossacarídeos são as unidades dos glícidos."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A molécula responsável por guardar a informação genética de um ser vivo é:",
+          "opcoes": ["Um lípido", "Um ácido nucleico (DNA)"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! O DNA, um ácido nucleico, guarda toda a informação genética.",
+          "mascote_feedback_errado": "É um ácido nucleico (o DNA) — os lípidos servem sobretudo para reserva de energia e membranas."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Pensa nos monómeros como peças de LEGO e nas macromoléculas como as construções feitas com elas: os glícidos são o \"lego de energia rápida\", os lípidos o \"lego de reserva a longo prazo\", as proteínas o \"lego das ferramentas\" (fazem praticamente tudo) e os ácidos nucleicos o \"lego com o manual de instruções\", que diz à célula como construir todas as outras peças."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A unidade química da vida",
+          "texto": "Um dos argumentos mais fortes a favor de que toda a vida na Terra partilha uma origem comum é a chamada unidade química: por muito diferentes que pareçam por fora, todos os seres vivos são construídos, no essencial, a partir de apenas quatro elementos químicos — Carbono (C), Hidrogénio (H), Oxigénio (O) e Azoto/Nitrogénio (N) —, organizados sempre nos mesmos quatro tipos de macromoléculas. As macromoléculas formam-se ao ligar monómeros entre si numa reação de condensação (que liberta água), e desfazem-se pelo processo inverso, a hidrólise (que consome água) — os mesmos dois processos químicos básicos, reutilizados vezes sem conta por toda a árvore da vida."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A molécula mais abundante nos seres vivos é:",
+              "opcoes": ["A água", "A glicose"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A água é a molécula mais abundante em qualquer ser vivo.",
+              "mascote_feedback_errado": "É a água — a glicose é apenas um exemplo de glícido."
+            },
+            {
+              "pergunta": "A reação que liga monómeros para formar uma macromolécula, libertando água, chama-se:",
+              "opcoes": ["Hidrólise", "Condensação"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! A condensação une monómeros e liberta água; a hidrólise faz o processo inverso.",
+              "mascote_feedback_errado": "Chama-se condensação — a hidrólise é o processo inverso, que separa os monómeros consumindo água."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: apesar da enorme diversidade de seres vivos, todos partilham essencialmente os mesmos quatro elementos químicos principais (C, H, O, N).",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo! É essa unidade química que sustenta a ideia de uma origem comum para toda a vida.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro — todos os seres vivos partilham essencialmente os mesmos quatro elementos principais."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que é a biodiversidade e como a proteger, como está organizada uma célula, e do que são feitas as moléculas que constroem toda a vida. 🌍🧬🐢"
         }
       ]
     }
