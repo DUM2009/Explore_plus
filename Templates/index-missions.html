@@ -187,7 +187,13 @@
     <div class="missions-category">
         <h2 class="missions-category-title">Bioquímica</h2>
         <div class="missions-grid">
-            <div class="mission-card locked"><div class="mission-card-info"><h2>Biomoléculas (10º ano)</h2><p>Descobre as moléculas que constroem todos os seres vivos.</p></div><button disabled>Em breve</button></div>
+            <div class="mission-card">
+                <div class="mission-card-info">
+                    <h2>Biomoléculas (10º ano)</h2>
+                    <p>Descobre as moléculas que constroem todos os seres vivos.</p>
+                </div>
+                <a href="{% url 'missao' missao_id='biomoleculas' %}"><button type="button">Começar</button></a>
+            </div>
         </div>
     </div>
     {% endif %}
