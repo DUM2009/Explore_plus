@@ -52,11 +52,6 @@
           "mascote_feedback_errado": "Na verdade, um ecossistema inclui também o ambiente físico à volta — não só os seres vivos."
         },
         {
-          "tipo": "aprofundar",
-          "titulo": "Onde está a fronteira de um ecossistema?",
-          "texto": "Ao contrário do que pode parecer, os ecossistemas não têm limites rígidos e fixos na natureza — a decisão de onde começa e acaba um ecossistema (ex: \"este lago\" ou \"esta floresta\") é, em grande parte, uma escolha prática dos cientistas para facilitar o estudo, não uma fronteira física absoluta. Na realidade, os ecossistemas trocam constantemente energia, matéria e organismos com os ecossistemas vizinhos (ex: aves migratórias, água de um rio que desagua no mar), pelo que estão sempre interligados a uma escala maior."
-        },
-        {
           "tipo": "quiz_seccao",
           "perguntas": [
             {
@@ -81,7 +76,7 @@
               "mascote_feedback_errado": "O nível mais amplo é a biosfera — o bioma é um nível mais restrito, dentro da biosfera."
             }
           ],
-          "mascote_conclusao": "Já sabes como a natureza se organiza em níveis. A seguir, vamos ver o que realmente \"faz funcionar\" um ecossistema por dentro. 🐢"
+          "mascote_conclusao": "Já sabes como a natureza se organiza em níveis. A seguir, vamos ver o que realmente \"faz funcionar\" um ecossistema por dentro."
         }
       ]
     },
@@ -92,14 +87,12 @@
       "tempo_estimado_min": 8,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "mascote_texto": "A energia do Sol que chega a uma folha hoje pode, poucos dias depois, estar a mover os músculos de um leão. Como é que a energia viaja assim? 🐢",
-          "texto": "Vamos perceber como a energia e a matéria se movem entre os seres vivos de um ecossistema."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_texto": "A energia do Sol que chega a uma folha hoje pode, poucos dias depois, estar a mover os músculos de um leão. Como é que a energia viaja assim?",
+          "intro_imagem": "sol-leao-energia.jpg",
+          "intro_texto": "Uma planta capta a luz do Sol e usa-a para crescer. Um herbívoro come essa planta. Um predador, como este leão, come o herbívoro. A cada etapa, a energia muda de um ser vivo para o seguinte.",
+          "ponte_texto": "Cada um destes \"elos\" da cadeia — planta, herbívoro, predador — corresponde a um nível trófico diferente. Conhece a seguir os níveis tróficos que compõem qualquer ecossistema.",
           "titulo": "Os níveis tróficos",
-          "imagem": "piramide_niveis_troficos.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "produtores", "label": "Produtores", "explicacao": "Organismos que fabricam o seu próprio alimento (geralmente por fotossíntese), como plantas e algas. São a base de toda a cadeia alimentar." },
@@ -112,7 +105,6 @@
         {
           "tipo": "diagrama_interativo",
           "titulo": "Fluxo de energia vs. ciclo de matéria",
-          "imagem": "fluxo_energia_vs_materia.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "fluxo_energia", "label": "Fluxo de energia", "explicacao": "A energia entra no ecossistema pela luz solar, passa de nível trófico em nível trófico, mas vai-se perdendo como calor a cada transferência — nunca é reciclada, tem de entrar sempre nova energia do Sol." },
@@ -142,16 +134,6 @@
           "correta": 1,
           "mascote_feedback_certo": "Isso mesmo! Sem eles, os nutrientes ficariam presos nos corpos mortos para sempre.",
           "mascote_feedback_errado": "Na verdade, o papel fundamental dos decompositores é devolver nutrientes ao ambiente, permitindo o ciclo de matéria."
-        },
-        {
-          "tipo": "analogia",
-          "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 A energia num ecossistema é como o dinheiro que gastas num café: entra, passa de mão em mão (do dono ao fornecedor, ao empregado), mas uma parte \"escapa-se\" sempre como custos/perdas a cada troca — nunca volta inteiro ao ponto de partida. Já a matéria (nutrientes) é como garrafas de vidro num sistema de depósito e devolução: usam-se, mas voltam sempre a circular, indefinidamente, através da reciclagem feita pelos decompositores."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Porque as cadeias alimentares raramente têm mais de 4-5 níveis",
-          "texto": "Em cada transferência de energia entre níveis tróficos, cerca de 90% da energia perde-se (como calor, através dos processos metabólicos), e só cerca de 10% passa efetivamente para o nível seguinte — esta é conhecida como a \"regra dos 10%\". É por isso que as cadeias alimentares raramente ultrapassam 4 ou 5 níveis: a partir de certo ponto, já não sobra energia suficiente para sustentar mais um nível trófico. É também por isso que existem sempre muito mais produtores do que predadores de topo num ecossistema saudável."
         },
         {
           "tipo": "quiz_seccao",
