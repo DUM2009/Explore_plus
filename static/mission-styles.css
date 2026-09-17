@@ -3928,6 +3928,46 @@ html[data-theme="dark"] .intro-equation {
     }
 }
 
+@media (max-width: 640px) {
+    /* The floating mascot button is sized for desktop (96px) — on a phone
+       it sits large enough to cover the last lines of the lesson text
+       underneath it. Shrink it and pull it closer to the corner. */
+    .mascot-chat-fab {
+        width: 56px;
+        height: 56px;
+        right: 14px;
+        bottom: 14px;
+    }
+
+    /* Removes the vertical gap above the lesson content (section-body's own
+       top padding, plus the screen-card wrapper's top margin) so the white
+       card below sits flush under the header instead of floating with a
+       beige strip separating them. */
+    .section-body {
+        padding-top: 0;
+    }
+
+    .screen-card {
+        margin-top: 0;
+    }
+
+    /* Full-bleeds the mascot/intro card (the "gancho" white panel — either
+       layout: the split mascot+text card or the diagram's intro card) to
+       .mission-main's full width instead of floating as a narrow, centered
+       card with beige gutters on both sides. Same cqw breakout technique as
+       .screen-card.plant-diagram-card above (.mission-main has
+       container-type: inline-size). Two classes on the selector so this
+       reliably outranks .mascot-overlay-card--split's own `width` rule
+       regardless of source order. */
+    .screen-card .me-mascot-inline {
+        width: 100cqw;
+        max-width: 100cqw;
+        margin-left: calc(50% - 50cqw);
+        margin-right: calc(50% - 50cqw);
+        border-radius: 0;
+    }
+}
+
 .lesson-theme-toggle {
     flex: 0 0 auto;
     display: grid;
