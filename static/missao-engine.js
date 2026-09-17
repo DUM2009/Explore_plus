@@ -522,6 +522,11 @@
         setScreenIndex(section, index) {
             this.state.screenIndexBySection[section.secao_id] = index;
             this.saveState();
+            // Limpa a marca de "popup já mostrado" ao mudar de ecrã, para
+            // que voltar a um ecrã já visitado (ex: "Anterior") reavalie
+            // showEntryPopupIfNeeded do zero em vez de assumir que já foi
+            // tratado da última vez que lá se esteve.
+            this._lastGanchoPopupKey = null;
         }
 
         // Classes "lesson-*"/"screen-*"/"quiz-*"/"did-you-know"/"mission-intro-callout"
@@ -729,6 +734,23 @@
         }
 
         /**
+         * Procura, para trás a partir de screenIndex, o ecrã de gancho ou
+         * diagrama mais recente (ex: o do lago com os peixes) — usado como
+         * pano de fundo visual atrás do popup de uma pergunta de
+         * micro-verificação (ver renderMicroVerificacao), para o conteúdo
+         * a que a pergunta se refere continuar visível.
+         */
+        findBackdropScreen(section, screenIndex) {
+            const screens = section.ecrãs || [];
+            for (let i = screenIndex - 1; i >= 0; i--) {
+                if (screens[i].tipo === 'gancho' || screens[i].tipo === 'diagrama_interativo') {
+                    return screens[i];
+                }
+            }
+            return null;
+        }
+
+        /**
          * Cartão inline com o avatar + fala da mascote, reaproveitando o
          * visual de .mascot-overlay-card--split (o mesmo usado nos diálogos
          * flutuantes da Fotossíntese) mas exibido dentro do próprio ecrã em
@@ -836,11 +858,13 @@
             }
 
             // Perguntas de micro-verificação: a pergunta e as opções
-            // aparecem logo num popup (mascote à esquerda, pergunta +
-            // opções à direita) — só na primeira vez que se chega a esta
-            // pergunta em concreto, e não depois de já respondida (ex: ao
-            // voltar atrás com "Anterior").
-            if (screen.tipo === 'micro_verificacao' && screen.pergunta && !this.state.answers[popupKey]) {
+            // aparecem sempre num popup (mascote à esquerda, pergunta +
+            // opções à direita) ao entrar neste ecrã — tanto na primeira
+            // vez como ao voltar a ele com "Anterior" (nesse caso em modo
+            // de revisão, já com a resposta e o feedback visíveis) — para
+            // nunca haver um ecrã por baixo só com o feedback (ver
+            // renderMicroVerificacao).
+            if (screen.tipo === 'micro_verificacao' && screen.pergunta) {
                 this._lastGanchoPopupKey = popupKey;
                 this.showMicroVerificacaoPopup(section, screen, screenIndex);
             }
@@ -852,20 +876,39 @@
          * clicáveis, em vez de só texto + botão "Entendido" — responder
          * aqui grava a resposta tal como responder no ecrã (mesma
          * data-option-index e mesma chave em this.state.answers, ver
-         * bindScreenInteractions) e fecha o popup, revelando o ecrã por
-         * baixo já com o feedback.
+         * bindScreenInteractions). O feedback (certo/errado) aparece dentro
+         * do próprio popup, junto da mascote e da pergunta. Se a pergunta
+         * já tinha sido respondida antes (ex: ao rever com "Anterior"),
+         * abre logo em modo de revisão — opções e feedback já preenchidos,
+         * e "Continuar" só fecha o popup sem avançar de ecrã.
          */
         showMicroVerificacaoPopup(section, screen, screenIndex) {
             if (!this.mascotEnabled()) return;
             document.querySelector('.me-mascot-popup')?.remove();
 
             const answerKey = `${section.secao_id}::${screenIndex}`;
-            const optionsHtml = (screen.opcoes || []).map((opcao, i) => `
-                <button type="button" class="quiz-option" data-option-index="${i}">
-                    <span class="option-letter">${String.fromCharCode(65 + i)}</span>
-                    <span class="option-text">${escapeHtml(opcao)}</span>
-                </button>
-            `).join('');
+            const saved = this.state.answers[answerKey];
+
+            const optionsHtml = (screen.opcoes || []).map((opcao, i) => {
+                let stateClass = '';
+                if (saved) {
+                    if (i === screen.correta) stateClass = 'correct';
+                    else if (i === saved.selected) stateClass = 'incorrect';
+                }
+                return `
+                    <button type="button" class="quiz-option ${stateClass}" data-option-index="${i}" ${saved ? 'disabled' : ''}>
+                        <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+                        <span class="option-text">${escapeHtml(opcao)}</span>
+                    </button>
+                `;
+            }).join('');
+
+            const feedbackSlotHtml = saved
+                ? `
+                    ${this.buildFeedbackHtml(saved.correct, screen.mascote_feedback_certo, screen.mascote_feedback_errado)}
+                    <button type="button" class="mascot-overlay-btn">Continuar</button>
+                `
+                : '';
 
             const overlay = document.createElement('div');
             overlay.className = 'mascot-overlay me-mascot-popup';
@@ -875,22 +918,55 @@
                     <div class="mascot-overlay-split-body">
                         <p class="mascot-overlay-text quiz-question">${escapeHtml(screen.pergunta)}</p>
                         <div class="quiz-options" data-answer-key="${answerKey}">${optionsHtml}</div>
+                        <div class="me-popup-feedback-slot">${feedbackSlotHtml}</div>
                     </div>
                 </div>
             `;
             document.body.appendChild(overlay);
 
-            const close = () => overlay.remove();
-            overlay.addEventListener('click', (event) => {
-                if (event.target === overlay) close();
-            });
+            if (saved) {
+                // Modo de revisão: já respondida antes — só fecha, sem
+                // avançar de ecrã, para o aluno poder navegar livremente.
+                const closeReview = () => overlay.remove();
+                overlay.querySelector('.mascot-overlay-btn')?.addEventListener('click', closeReview);
+                overlay.addEventListener('click', (event) => {
+                    if (event.target === overlay) closeReview();
+                });
+                return;
+            }
+
+            // Sem botão de "Entendido" nem fecho ao clicar fora: como o
+            // ecrã por baixo já não mostra a pergunta/opções nem repete o
+            // feedback (ver renderMicroVerificacao), o botão "Continuar"
+            // (depois de responder) avança logo para o ecrã seguinte, em
+            // vez de deixar o aluno num ecrã residual só com o feedback.
+            const screens = section.ecrãs || [];
+            const sectionIndex = this.state.activeSectionIndex;
             overlay.querySelectorAll('[data-option-index]').forEach((btn) => {
                 btn.addEventListener('click', () => {
                     const selected = Number(btn.dataset.optionIndex);
-                    this.state.answers[answerKey] = { selected, correct: selected === screen.correta };
+                    const correct = selected === screen.correta;
+                    this.state.answers[answerKey] = { selected, correct };
                     this.saveState();
-                    close();
-                    this.render();
+
+                    overlay.querySelectorAll('[data-option-index]').forEach((optionBtn) => {
+                        const optionIndex = Number(optionBtn.dataset.optionIndex);
+                        optionBtn.disabled = true;
+                        if (optionIndex === screen.correta) optionBtn.classList.add('correct');
+                        else if (optionIndex === selected) optionBtn.classList.add('incorrect');
+                    });
+
+                    const slot = overlay.querySelector('.me-popup-feedback-slot');
+                    if (slot) {
+                        slot.innerHTML = `
+                            ${this.buildFeedbackHtml(correct, screen.mascote_feedback_certo, screen.mascote_feedback_errado)}
+                            <button type="button" class="mascot-overlay-btn">Continuar</button>
+                        `;
+                        slot.querySelector('.mascot-overlay-btn')?.addEventListener('click', () => {
+                            overlay.remove();
+                            this.advance(section, sectionIndex, screenIndex, screens);
+                        });
+                    }
                 });
             });
         }
@@ -1034,6 +1110,24 @@
         renderMicroVerificacao(section, screen, screenIndex) {
             const answerKey = `${section.secao_id}::${screenIndex}`;
             const saved = this.state.answers[answerKey];
+            const feedbackHtml = saved
+                ? this.buildFeedbackHtml(saved.correct, screen.mascote_feedback_certo, screen.mascote_feedback_errado)
+                : '';
+
+            // Com a mascote ativa, a pergunta, as opções e o feedback
+            // aparecem sempre no popup ao entrar neste ecrã — tanto para
+            // responder como para rever (ver showMicroVerificacaoPopup).
+            // Em vez de deixar o ecrã por baixo vazio, mostra-se o último
+            // ecrã de gancho/diagrama (ex: o do lago com os peixes) como
+            // pano de fundo, para o aluno continuar a ver o conteúdo a que
+            // a pergunta se refere enquanto o popup está aberto. Sem
+            // mascote (o popup nunca chega a aparecer), mantém-se a
+            // pergunta e as opções aqui para a pergunta continuar
+            // respondível.
+            if (this.mascotEnabled() && screen.pergunta) {
+                const backdrop = this.findBackdropScreen(section, screenIndex);
+                return backdrop ? this.renderScreen(section, backdrop, screenIndex) : '';
+            }
 
             const optionsHtml = (screen.opcoes || []).map((opcao, i) => {
                 let stateClass = '';
@@ -1048,10 +1142,6 @@
                     </button>
                 `;
             }).join('');
-
-            const feedbackHtml = saved
-                ? this.buildFeedbackHtml(saved.correct, screen.mascote_feedback_certo, screen.mascote_feedback_errado)
-                : '';
 
             return `
                 ${this.mascotInlineCardHtml(screen.mascote_texto)}
@@ -1115,11 +1205,33 @@
 
             if (quizState.current >= perguntas.length) {
                 const correctCount = quizState.answers.filter((a) => a.correct).length;
-                const conclusaoHtml = this.mascotInlineCardHtml(screen.mascote_conclusao);
+                const total = perguntas.length;
+                const ratio = total ? correctCount / total : 0;
+                const allCorrect = total > 0 && correctCount === total;
+
+                // Verde se acertar tudo, amarelo se acertar metade ou mais,
+                // vermelho caso contrário — proporcional ao nº de perguntas
+                // da secção, não fixo em "3".
+                const resultModifier = allCorrect ? 'green' : (ratio >= 0.5 ? 'yellow' : 'red');
+
+                const mascoteHtml = (screen.mascote_conclusao && this.mascotEnabled())
+                    ? `
+                        <div class="me-quiz-resultado-mascote">
+                            ${this.mascotOverlayFigureHtml()}
+                            <p class="me-quiz-resultado-mascote-text">${escapeHtml(screen.mascote_conclusao)}</p>
+                        </div>
+                    `
+                    : '';
+
                 return `
-                    <h3>Resultado do quiz</h3>
-                    <p class="quiz-question">${correctCount} / ${perguntas.length} corretas</p>
-                    ${conclusaoHtml}
+                    <div class="me-quiz-seccao">
+                        <div class="me-quiz-resultado">
+                            ${allCorrect ? `<div class="me-confetti">${this.buildConfettiHtml(50)}</div>` : ''}
+                            <h3 class="me-quiz-resultado-title">Resultado do quiz</h3>
+                            <div class="me-quiz-resultado-circle me-quiz-resultado-circle--${resultModifier}">${correctCount}/${total}</div>
+                            ${mascoteHtml}
+                        </div>
+                    </div>
                 `;
             }
 
@@ -1156,12 +1268,14 @@
                 : '';
 
             return `
-                ${introHtml}
-                <p class="quiz-progress-label">Pergunta ${questionIndex + 1} de ${perguntas.length}</p>
-                <p class="quiz-question">${escapeHtml(question.pergunta)}</p>
-                <div class="quiz-options">${optionsHtml}</div>
-                ${feedbackHtml}
-                ${quizContinueHtml}
+                <div class="me-quiz-seccao">
+                    ${introHtml}
+                    <p class="quiz-progress-label">Pergunta ${questionIndex + 1} de ${perguntas.length}</p>
+                    <p class="quiz-question">${escapeHtml(question.pergunta)}</p>
+                    <div class="quiz-options">${optionsHtml}</div>
+                    ${feedbackHtml}
+                    ${quizContinueHtml}
+                </div>
             `;
         }
 
@@ -1312,15 +1426,23 @@
             });
         }
 
-        renderCelebration() {
-            const totalXP = this.totalMissionXP();
-            const confettiHtml = Array.from({ length: 60 }, (_, i) => {
+        /** Gera N peças de confetti (cor, posição e duração aleatórias) para
+         *  dentro de um contentor ".me-confetti" (position:relative na mãe,
+         *  ver missao-engine.css) — reaproveitado na celebração de fim de
+         *  missão e no resultado do quiz de secção quando acerta tudo. */
+        buildConfettiHtml(count) {
+            return Array.from({ length: count }, () => {
                 const left = Math.random() * 100;
                 const delay = Math.random() * 1.2;
                 const duration = 2.2 + Math.random() * 1.6;
                 const hue = Math.floor(Math.random() * 360);
                 return `<span class="me-confetti-piece" style="left:${left}%; animation-delay:${delay}s; animation-duration:${duration}s; background:hsl(${hue}, 80%, 60%);"></span>`;
             }).join('');
+        }
+
+        renderCelebration() {
+            const totalXP = this.totalMissionXP();
+            const confettiHtml = this.buildConfettiHtml(60);
 
             this.root.innerHTML = `
                 <div class="me-shell me-shell--celebracao">

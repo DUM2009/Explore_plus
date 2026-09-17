@@ -117,6 +117,21 @@ html.dark-mode .me-root {
     margin-right: auto;
 }
 
+/* No quiz de fim de secção (.me-quiz-seccao), a pergunta e as opções
+   ocupam toda a largura da coluna de leitura — o .screen-nav genérico de
+   mission-styles.css, em vez disso, fica com uma largura fixa de 480px
+   centrada nessa coluna, o que desalinha o "Anterior" da margem esquerda
+   das opções. Aqui não há painel largo (.me-gancho-card) para quebrar a
+   coluna, então basta o .screen-nav ocupar toda a largura do wrapper
+   (que já coincide com a coluna de .section-content) em vez de se
+   centrar com a sua própria largura fixa. */
+.section-body:has(.me-quiz-seccao) .me-gancho-nav-wrap .screen-nav {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .me-gancho-hero-image {
     width: 100%;
     max-width: 700px;
@@ -396,6 +411,26 @@ html.dark-mode .me-timeline-caption {
     padding: 44px 6px 0;
     margin: 0 0 24px;
     border-bottom: 2px solid #e3dcc9;
+    /* Barra de scroll mais fina que a espessa por defeito do browser
+       (Firefox via scrollbar-width, Chrome/Edge/Safari via ::-webkit-*). */
+    scrollbar-width: thin;
+}
+
+.me-escada-track::-webkit-scrollbar {
+    height: 6px;
+}
+
+.me-escada-track::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.me-escada-track::-webkit-scrollbar-thumb {
+    background: #d8cfb8;
+    border-radius: 6px;
+}
+
+html.dark-mode .me-escada-track::-webkit-scrollbar-thumb {
+    background: #4a3d30;
 }
 
 .me-escada-step {
@@ -587,4 +622,106 @@ html.dark-mode .me-escada-detail-text {
 html.dark-mode .me-celebracao-card {
     background: #26201a;
     color: #f2e9dd;
+}
+
+/* Painel de resultado do quiz de secção (ver renderQuizSeccao) — o
+   círculo diz "acertos/total" e muda de cor consoante a proporção de
+   acertos; confetti (reaproveita .me-confetti/-piece de cima) só aparece
+   quando acerta tudo. overflow:hidden corta o confetti nas bordas do
+   painel em vez de continuar a cair pelo ecrã fora. */
+.me-quiz-resultado {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e3f0e9;
+    border-radius: 20px;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(18, 61, 40, 0.12), 0 4px 12px rgba(18, 61, 40, 0.06);
+}
+
+.me-quiz-resultado-title {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 20px;
+}
+
+.me-quiz-resultado-circle {
+    position: relative;
+    z-index: 1;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 1.9rem;
+    font-weight: 800;
+    border: 6px solid transparent;
+}
+
+.me-quiz-resultado-circle--green {
+    background: #d4edda;
+    border-color: #37d67a;
+    color: #1f8a5b;
+}
+
+.me-quiz-resultado-circle--yellow {
+    background: #fff3cd;
+    border-color: #ffc107;
+    color: #8a6d1f;
+}
+
+.me-quiz-resultado-circle--red {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #a52834;
+}
+
+.me-quiz-resultado-mascote {
+    position: relative;
+    z-index: 1;
+}
+
+.me-quiz-resultado-mascote .mascot-overlay-figure {
+    width: 110px;
+    margin: 0 auto 12px;
+}
+
+.me-quiz-resultado-mascote-text {
+    margin: 0;
+    color: #1a3328;
+    font-weight: 600;
+    font-size: 1.05rem;
+    line-height: 1.55;
+}
+
+html.dark-mode .me-quiz-resultado {
+    background: #26201a;
+    border-color: #4a3d30;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+html.dark-mode .me-quiz-resultado-title,
+html.dark-mode .me-quiz-resultado-mascote-text {
+    color: #f2e9dd;
+}
+
+html.dark-mode .me-quiz-resultado-circle--green {
+    background: #1c3326;
+    border-color: #37d67a;
+    color: #4ade80;
+}
+
+html.dark-mode .me-quiz-resultado-circle--yellow {
+    background: #3a3218;
+    border-color: #ffc107;
+    color: #ffd54f;
+}
+
+html.dark-mode .me-quiz-resultado-circle--red {
+    background: #3a2226;
+    border-color: #dc3545;
+    color: #ff8a97;
 }

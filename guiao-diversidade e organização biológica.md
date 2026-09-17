@@ -49,7 +49,7 @@ Pontos clicáveis:
 2. Verdadeiro ou Falso: os ecossistemas têm sempre fronteiras físicas rígidas e bem definidas na natureza. **Falso** — são delimitados de forma prática pelos cientistas, mas estão sempre interligados a ecossistemas vizinhos.
 3. O nível mais amplo da hierarquia biológica é: (A) O bioma (B) A biosfera ✓
 
-🐢 *"Já sabes como a natureza se organiza em níveis. A seguir, vamos ver o que realmente 'faz funcionar' um ecossistema por dentro."*
+*"Já sabes como a natureza se organiza em níveis. A seguir, vamos ver o que realmente 'faz funcionar' um ecossistema por dentro."*
 
 ---
 
