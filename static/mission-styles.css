@@ -3907,10 +3907,24 @@ html[data-theme="dark"] .intro-equation {
 
     .lesson-topbar {
         padding: 14px 18px;
+        /* The title can wrap to two lines on narrow screens (see
+           .lesson-topbar-title below); align everything to the top of the
+           row instead of the previous vertical centering, otherwise the
+           close button and XP/theme icons float halfway down between the
+           title and progress bar instead of sitting level with the title. */
+        align-items: start;
     }
 
     .lesson-topbar-titles {
         max-width: none;
+    }
+
+    /* Long mission titles no longer force the middle grid column past the
+       viewport width (which pushed the close button and actions off-screen)
+       — let them wrap instead of overflowing on one nowrap line. */
+    .lesson-topbar-title {
+        white-space: normal;
+        overflow-wrap: break-word;
     }
 }
 
