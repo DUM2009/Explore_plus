@@ -940,6 +940,15 @@ RESUMOS = [
         'cor_soft': '#eaf3e9',
         'descricao_curta': 'Como as plantas convertem luz solar em energia química, do cloroplasto ao Ciclo de Calvin.',
     },
+    {
+        'id': 'diversidade-organizacao-biologica',
+        'nome': 'Diversidade e Organização Biológica',
+        'disciplina': 'Biologia',
+        'cor_a': '#1d5f73',
+        'cor_b': '#2a8fae',
+        'cor_soft': '#e8f4f7',
+        'descricao_curta': 'Dos átomos à biosfera, e da célula às moléculas da vida — os níveis de organização, os ecossistemas e a biodiversidade.',
+    },
 ]
 
 RESUMOS_CONTEUDO = {
@@ -1146,6 +1155,445 @@ RESUMOS_CONTEUDO = {
         'sintese_dica': (
             '*"A luz parte a água lá em cima (tilacoides), o carbono é pescado lá em baixo (estroma) — o que '
             'sobe como energia (ATP/NADPH), desce para virar açúcar."*'
+        ),
+    },
+    'diversidade-organizacao-biologica': {
+        'seccoes': [
+            {
+                'titulo': 'O que é a Biodiversidade?',
+                'texto': (
+                    'A Terra alberga uma enorme variedade de seres vivos, distribuídos pelos mais diversos '
+                    'ambientes (aquáticos, terrestres, extremos). A esta variedade dá-se o nome de '
+                    '**diversidade biológica** ou **biodiversidade**. Apesar de toda esta diversidade, todos '
+                    'os seres vivos partilham um conjunto de características comuns.'
+                ),
+                'definicoes': [
+                    {
+                        'termo': 'Constituição celular',
+                        'texto': 'Todos os seres vivos são formados por uma ou mais células.',
+                    },
+                    {
+                        'termo': 'Metabolismo',
+                        'texto': 'Utilizam energia e matéria do meio para se manterem e crescerem.',
+                    },
+                    {
+                        'termo': 'Irritabilidade',
+                        'texto': 'Reagem a estímulos do ambiente que os rodeia.',
+                    },
+                    {
+                        'termo': 'Reprodução',
+                        'texto': 'Têm capacidade de originar novos seres vivos semelhantes a si.',
+                    },
+                    {
+                        'termo': 'Crescimento e desenvolvimento',
+                        'texto': 'Sofrem alterações ao longo do seu ciclo de vida.',
+                    },
+                ],
+                'dica': (
+                    'pensa nestas cinco características como um **"checklist de admissão" ao clube da vida** '
+                    '— só entra quem tiver células, gastar energia, reagir ao que o rodeia, crescer e '
+                    'conseguir reproduzir-se. Falta uma destas condições, e já não é considerado um ser vivo.'
+                ),
+            },
+            {
+                'titulo': 'Níveis de Organização Biológica',
+                'texto': (
+                    'O mundo vivo não é caótico — apresenta-se **hierarquicamente estruturado**, em níveis '
+                    'de organização crescente, do mais simples ao mais complexo. Cada nível resulta da '
+                    'interação e organização do nível anterior — é o chamado **princípio da hierarquização '
+                    'biológica**.'
+                ),
+                'imagem': 'images/resumo-diversidade-organizacao-biologica/niveis-organizacao.png',
+                'imagem_alt': 'Esquema dos níveis de organização biológica, em sequência: molécula e célula, tecido e órgão, organismo, população e comunidade, ecossistema e biosfera.',
+                'definicoes': [
+                    {
+                        'termo': 'Átomo / Molécula',
+                        'texto': 'Unidades químicas básicas (ex.: água, glicose, proteínas) que constituem a matéria viva.',
+                    },
+                    {
+                        'termo': 'Célula',
+                        'texto': 'Unidade estrutural e funcional básica de todos os seres vivos.',
+                    },
+                    {
+                        'termo': 'Tecido',
+                        'texto': 'Conjunto de células com a mesma origem, forma e função.',
+                    },
+                    {
+                        'termo': 'Órgão',
+                        'texto': 'Conjunto de tecidos diferentes que cooperam numa função comum.',
+                    },
+                    {
+                        'termo': 'Sistema de órgãos',
+                        'texto': 'Conjunto de órgãos que trabalham de forma coordenada (ex.: sistema digestivo).',
+                    },
+                    {
+                        'termo': 'Organismo',
+                        'texto': 'Ser vivo individual, resultante da integração de todos os sistemas.',
+                    },
+                    {
+                        'termo': 'População',
+                        'texto': 'Conjunto de organismos da mesma espécie que vivem na mesma área, na mesma altura, e que podem cruzar-se entre si.',
+                    },
+                    {
+                        'termo': 'Comunidade (biocenose)',
+                        'texto': 'Conjunto de populações de espécies diferentes que coexistem numa mesma área.',
+                    },
+                    {
+                        'termo': 'Ecossistema',
+                        'texto': 'Conjunto formado pela comunidade biótica e pelo meio abiótico (fatores físico-químicos) com que interage.',
+                    },
+                    {
+                        'termo': 'Bioma',
+                        'texto': 'Grande região com características climáticas e ecológicas semelhantes, que agrupa vários ecossistemas (ex.: floresta tropical, tundra).',
+                    },
+                    {
+                        'termo': 'Biosfera',
+                        'texto': 'Conjunto de todos os ecossistemas do planeta — a "camada" da Terra onde existe vida.',
+                    },
+                ],
+                'dica': (
+                    'imagina um conjunto de **bonecas russas (matrioskas)**: cada nível está contido no '
+                    'seguinte e ajuda a construí-lo — os átomos formam moléculas, as moléculas formam '
+                    'células, as células formam tecidos, e assim sucessivamente até à biosfera. Para '
+                    'memorizar a ordem, tenta a frase: *"A Célula Trabalha Organizando Sistemas, Originando '
+                    'Populações Companheiras Em Biomas Sempre."*'
+                ),
+            },
+            {
+                'titulo': 'Estrutura do Ecossistema: Biótopo e Biocenose',
+                'texto': (
+                    'Um ecossistema é constituído por dois componentes: o **biótopo** (componente abiótica) '
+                    '— fatores físicos e químicos do meio, como luz, temperatura, água, solo, salinidade ou '
+                    'pH — e a **biocenose** (componente biótica) — o conjunto dos seres vivos presentes. '
+                    'Dentro da biocenose, os seres vivos organizam-se em três grandes grupos funcionais, '
+                    'consoante o seu papel na cadeia alimentar.'
+                ),
+                'imagem': 'images/resumo-diversidade-organizacao-biologica/produtores-consumidores-decompositores.png',
+                'imagem_alt': 'Esquema dos grupos funcionais de um ecossistema: produtores captam energia solar por fotossíntese, consumidores (herbívoros e carnívoros) alimentam-se deles, e decompositores (fungos e bactérias) devolvem a matéria ao meio, fechando o ciclo de volta aos produtores.',
+                'imagem_max_width': '520px',
+                'definicoes': [
+                    {
+                        'termo': 'Produtores',
+                        'texto': 'Organismos autotróficos (ex.: plantas, algas, cianobactérias) que produzem matéria orgânica a partir de matéria inorgânica, geralmente através da fotossíntese.',
+                    },
+                    {
+                        'termo': 'Consumidores primários',
+                        'texto': 'Herbívoros — organismos heterotróficos que se alimentam diretamente dos produtores.',
+                    },
+                    {
+                        'termo': 'Consumidores secundários e terciários',
+                        'texto': 'Carnívoros que se alimentam, respetivamente, de consumidores primários ou de outros carnívoros.',
+                    },
+                    {
+                        'termo': 'Decompositores',
+                        'texto': 'Fungos e bactérias que decompõem matéria orgânica morta (restos de seres vivos, excrementos), devolvendo matéria inorgânica ao meio e fechando os ciclos de matéria.',
+                    },
+                ],
+                'dica': (
+                    'pensa numa **economia em miniatura**: os produtores são a fábrica que cria riqueza '
+                    '(matéria orgânica) a partir do zero; os consumidores são quem compra e usa essa riqueza, '
+                    'passando-a de mão em mão; e os decompositores são a reciclagem, que devolve os '
+                    'materiais ao mercado para tudo poder recomeçar.'
+                ),
+            },
+            {
+                'titulo': 'Dinâmica do Ecossistema',
+                'texto': (
+                    'Um ecossistema não é estático — a energia e a matéria estão em constante movimento '
+                    'entre os seus componentes, através de relações alimentares e de trocas com o meio '
+                    'abiótico.'
+                ),
+                'definicoes': [
+                    {
+                        'termo': 'Fluxo de energia',
+                        'texto': 'A energia entra no ecossistema pela luz solar (captada pelos produtores) e circula, de forma unidirecional, ao longo da cadeia/teia alimentar, dissipando-se progressivamente sob a forma de calor.',
+                    },
+                    {
+                        'termo': 'Ciclo de matéria',
+                        'texto': 'Ao contrário da energia, a matéria é reciclada: os decompositores devolvem os nutrientes ao meio abiótico, que voltam a ser utilizados pelos produtores.',
+                    },
+                    {
+                        'termo': 'Cadeias e teias alimentares',
+                        'texto': 'As cadeias alimentares raramente são lineares e isoladas; interligam-se formando teias alimentares complexas, o que confere maior estabilidade ao ecossistema.',
+                    },
+                    {
+                        'termo': 'Fatores limitantes',
+                        'texto': 'Fatores abióticos ou bióticos que condicionam o crescimento e a distribuição das populações (ex.: disponibilidade de água, temperatura, competição, predação).',
+                    },
+                ],
+                'dica': (
+                    'a energia é como a **água de um rio**: corre sempre no mesmo sentido e acaba por se '
+                    'perder no mar, sob a forma de calor — nunca volta atrás. Já a matéria é como uma '
+                    '**garrafa reutilizável**: anda sempre a circular entre os seres vivos e o meio, nunca '
+                    'se perde, só muda de forma.'
+                ),
+            },
+            {
+                'titulo': 'Os Três Níveis da Biodiversidade',
+                'texto': 'A biodiversidade pode ser analisada a três níveis distintos, do mais específico ao mais amplo.',
+                'imagem': 'images/resumo-diversidade-organizacao-biologica/biodiversidade-extincao-conservacao.png',
+                'imagem_alt': 'Esquema da biodiversidade (genes, espécies, ecossistemas), representada como uma árvore, e uma balança que equilibra as causas de extinção (destruição de habitats, poluição, exploração) com as estratégias de conservação (áreas protegidas, bancos de genes, educação).',
+                'imagem_max_width': '480px',
+                'definicoes': [
+                    {
+                        'termo': 'Diversidade genética',
+                        'texto': 'Variabilidade de genes dentro de cada espécie (entre indivíduos da mesma população/espécie).',
+                    },
+                    {
+                        'termo': 'Diversidade de espécies',
+                        'texto': 'Número e variedade de espécies existentes numa determinada região ou no planeta.',
+                    },
+                    {
+                        'termo': 'Diversidade de ecossistemas',
+                        'texto': 'Variedade de habitats, comunidades bióticas e processos ecológicos numa dada área.',
+                    },
+                ],
+                'dica': (
+                    'pensa numa **biblioteca**: a diversidade de ecossistemas são as diferentes salas '
+                    '(floresta, oceano, deserto); a diversidade de espécies são os livros diferentes em '
+                    'cada sala; e a diversidade genética são as edições diferentes do mesmo livro — todas '
+                    'contam para a riqueza total da biblioteca.'
+                ),
+            },
+            {
+                'titulo': 'Porque é Importante a Biodiversidade',
+                'texto': 'A biodiversidade não é só uma curiosidade da natureza — sustenta diretamente a vida no planeta e a nossa própria qualidade de vida.',
+                'definicoes': [
+                    {
+                        'termo': 'Equilíbrio e resiliência',
+                        'texto': 'Garante o equilíbrio dos ecossistemas — quanto maior a diversidade, maior a capacidade de resposta a perturbações.',
+                    },
+                    {
+                        'termo': 'Serviços de ecossistema',
+                        'texto': 'Fornece polinização, purificação da água e do ar, regulação do clima e fertilidade do solo.',
+                    },
+                    {
+                        'termo': 'Recursos genéticos',
+                        'texto': 'Constitui uma reserva de recursos usados na alimentação, na medicina e na biotecnologia.',
+                    },
+                    {
+                        'termo': 'Valor cultural, científico e estético',
+                        'texto': 'Enriquece o conhecimento científico e a vida cultural e estética das sociedades humanas.',
+                    },
+                ],
+                'dica': (
+                    'quanto mais **ferramentas houver numa caixa de ferramentas** (biodiversidade), maior a '
+                    'probabilidade de existir a ferramenta certa quando surge um problema novo — uma seca, '
+                    'uma doença, uma alteração climática. É isso que dá **resiliência** a um ecossistema.'
+                ),
+            },
+            {
+                'titulo': 'Extinção de Espécies',
+                'texto': (
+                    'A **extinção** corresponde ao desaparecimento definitivo de uma espécie. Pode ser '
+                    '**natural** — resultante de processos evolutivos e alterações ambientais ao longo do '
+                    'tempo geológico, como as grandes extinções em massa registadas no registo fóssil — ou '
+                    '**antrópica** — causada pela ação humana, atualmente a principal causa da perda '
+                    'acelerada de biodiversidade.'
+                ),
+                'definicoes': [
+                    {
+                        'termo': 'Destruição e fragmentação de habitats',
+                        'texto': 'Desflorestação, urbanização e agricultura intensiva reduzem e dividem os espaços onde as espécies vivem.',
+                    },
+                    {
+                        'termo': 'Poluição',
+                        'texto': 'Contaminação do solo, da água e do ar, que degrada habitats e prejudica os seres vivos.',
+                    },
+                    {
+                        'termo': 'Sobre-exploração de recursos',
+                        'texto': 'Pesca e caça excessivas, além da capacidade de renovação natural das populações.',
+                    },
+                    {
+                        'termo': 'Espécies exóticas/invasoras',
+                        'texto': 'Espécies introduzidas que competem com as espécies nativas ou as predam.',
+                    },
+                    {
+                        'termo': 'Alterações climáticas globais',
+                        'texto': 'Mudanças no clima que ultrapassam a capacidade de adaptação de muitas espécies.',
+                    },
+                ],
+                'dica': (
+                    'pensa nas causas antrópicas de extinção como **ameaças a uma casa**: destruíres a casa '
+                    '(habitat), envenenares o ar lá dentro (poluição), esvaziares tudo o que lá está '
+                    '(sobre-exploração), deixares entrar intrusos (espécies invasoras), ou mudares a própria '
+                    'temperatura do bairro (alterações climáticas).'
+                ),
+            },
+            {
+                'titulo': 'Conservação da Biodiversidade',
+                'texto': (
+                    'Para travar a perda de biodiversidade, existem diferentes estratégias de conservação, '
+                    'complementadas por legislação e acordos internacionais de proteção de espécies e '
+                    'habitats, por sensibilização e educação ambiental, e pela gestão sustentável dos '
+                    'recursos naturais.'
+                ),
+                'definicoes': [
+                    {
+                        'termo': 'Conservação in situ',
+                        'texto': 'Proteção das espécies no seu habitat natural — ex.: parques naturais, reservas, áreas protegidas, corredores ecológicos.',
+                    },
+                    {
+                        'termo': 'Conservação ex situ',
+                        'texto': 'Conservação fora do habitat natural — ex.: jardins botânicos, zoológicos, bancos de sementes e de germoplasma, programas de reprodução em cativeiro.',
+                    },
+                ],
+                'dica': (
+                    'a conservação **in situ** é como tratar de um doente em casa dele; a conservação '
+                    '**ex situ** é como levá-lo para o hospital — ambas podem salvar a espécie, mas fazem-no '
+                    'em locais diferentes, e a ex situ costuma ser o último recurso quando o "ambiente '
+                    'natural" já não é seguro.'
+                ),
+            },
+            {
+                'titulo': 'A Célula: Unidade da Vida (Teoria Celular)',
+                'texto': (
+                    'A **célula** é a unidade estrutural e funcional de todos os seres vivos. Esta ideia é '
+                    'formalizada pela **Teoria Celular**, que assenta em três princípios fundamentais.'
+                ),
+                'passos': [
+                    {
+                        'titulo': 'Todos os seres vivos são celulares',
+                        'texto': 'São constituídos por uma ou mais células.',
+                    },
+                    {
+                        'titulo': 'A célula é a unidade básica',
+                        'texto': 'É a unidade básica de estrutura e função dos seres vivos.',
+                    },
+                    {
+                        'titulo': 'Continuidade celular',
+                        'texto': 'Todas as células provêm de células pré-existentes, por divisão celular.',
+                    },
+                ],
+                'dica': (
+                    'pensa na célula como o **"tijolo" de qualquer construção viva**: todo o edifício (o '
+                    'ser vivo) é feito de tijolos; cada tijolo já tem tudo o que precisa para funcionar por '
+                    'si só; e um tijolo novo só nasce a partir de outro tijolo já existente — nunca do nada.'
+                ),
+            },
+            {
+                'titulo': 'Diversidade Celular: Procariótica vs. Eucariótica',
+                'texto': (
+                    'Apesar da grande variedade de formas, tamanhos e funções das células, distinguem-se '
+                    'dois grandes tipos de organização celular.'
+                ),
+                'imagens': [
+                    {
+                        'imagem': 'images/resumo-diversidade-organizacao-biologica/procariotica-vs-eucariotica.png',
+                        'imagem_alt': 'Comparação esquemática: a célula procariótica tem o material genético disperso no citoplasma (nucleoide), sem núcleo definido; a célula eucariótica tem um núcleo delimitado por membrana e organelos como mitocôndrias e retículo endoplasmático.',
+                        'legenda': 'Célula procariótica vs. eucariótica',
+                    },
+                    {
+                        'imagem': 'images/resumo-diversidade-organizacao-biologica/celula-eucariotica-detalhe.png',
+                        'imagem_alt': 'Esquema pormenorizado de uma célula eucariótica, com a membrana celular, o núcleo, as mitocôndrias, o retículo endoplasmático, o complexo de Golgi, os ribossomas livres e um lisossoma assinalados.',
+                        'legenda': 'Constituintes de uma célula eucariótica',
+                    },
+                ],
+                'definicoes': [
+                    {
+                        'termo': 'Célula procariótica',
+                        'texto': 'Não possui núcleo individualizado — o material genético encontra-se disperso no citoplasma, numa região designada nucleoide. Não apresenta organelos membranares. Estrutura mais simples e de menores dimensões. Característica das bactérias e arqueias.',
+                    },
+                    {
+                        'termo': 'Célula eucariótica',
+                        'texto': 'Possui um núcleo individualizado, delimitado por uma membrana nuclear, que contém o material genético. Apresenta diversos organelos membranares especializados (mitocôndrias, retículo endoplasmático, complexo de Golgi, etc.). Estrutura mais complexa e, em geral, de maiores dimensões. Característica dos protistas, fungos, plantas e animais.',
+                    },
+                ],
+                'dica': (
+                    'a célula procariótica é como um **escritório open-space**, sem paredes — tudo à vista, '
+                    'incluindo o DNA "a boiar" na sala. A célula eucariótica é como um **escritório com '
+                    'salas separadas** (os organelos), e o DNA tem a sua própria sala trancada — o núcleo.'
+                ),
+            },
+            {
+                'titulo': 'Célula Animal vs. Célula Vegetal, e o Número de Células',
+                'texto': (
+                    'Dentro das células eucarióticas distinguem-se, entre outras, a célula animal e a célula '
+                    'vegetal, que apresentam diferenças estruturais. Os organismos podem ainda classificar-se '
+                    'quanto ao número de células: os **unicelulares** são constituídos por uma única célula, '
+                    'que desempenha todas as funções vitais (ex.: bactérias, muitos protistas); os '
+                    '**pluricelulares** (multicelulares) são constituídos por muitas células, geralmente '
+                    'especializadas e organizadas em tecidos, órgãos e sistemas.'
+                ),
+                'definicoes': [
+                    {
+                        'termo': 'Parede celular',
+                        'texto': 'Ausente na célula animal; presente (de celulose) na célula vegetal.',
+                    },
+                    {
+                        'termo': 'Cloroplastos',
+                        'texto': 'Ausentes na célula animal; presentes na célula vegetal.',
+                    },
+                    {
+                        'termo': 'Vacúolo',
+                        'texto': 'Pequeno ou ausente na célula animal; grande vacúolo central na célula vegetal.',
+                    },
+                    {
+                        'termo': 'Forma',
+                        'texto': 'Geralmente irregular na célula animal; geralmente regular (definida pela parede) na célula vegetal.',
+                    },
+                ],
+                'dica': (
+                    'a célula vegetal tem "paredes de tijolo" (parede celular) e "painéis solares" '
+                    '(cloroplastos) que a célula animal não tem — por isso a planta não precisa de "sair de '
+                    'casa" para ir buscar energia, produz a sua própria.'
+                ),
+            },
+            {
+                'titulo': 'Constituintes Moleculares dos Seres Vivos',
+                'texto': (
+                    'Do ponto de vista químico, todos os seres vivos são constituídos pelos mesmos tipos de '
+                    'moléculas, formadas essencialmente por um número reduzido de elementos químicos: '
+                    '**Carbono (C), Oxigénio (O), Hidrogénio (H), Azoto/Nitrogénio (N)** e, em menor '
+                    'quantidade, Fósforo (P), Enxofre (S), Cálcio (Ca), entre outros. Esta uniformidade '
+                    'química é um forte argumento a favor da **unidade da vida**. Os compostos orgânicos '
+                    '(macromoléculas) resultam da união de unidades mais simples — os monómeros — através '
+                    'de reações de polimerização/condensação, com libertação de água; o processo inverso '
+                    '(hidrólise) liberta os monómeros, com consumo de água.'
+                ),
+                'definicoes': [
+                    {
+                        'termo': 'Água',
+                        'texto': 'A molécula mais abundante nos seres vivos. É uma molécula polar, o que lhe confere elevado poder solvente, coesão e adesão, e elevado calor específico. É o meio onde ocorrem as reações metabólicas, participa no transporte de substâncias, na termorregulação e em reações químicas como a hidrólise e a fotossíntese.',
+                    },
+                    {
+                        'termo': 'Glícidos (hidratos de carbono)',
+                        'texto': 'Monómeros: monossacarídeos (ex.: glicose). Função: fonte e reserva de energia (ex.: amido, glicogénio); função estrutural (ex.: celulose).',
+                    },
+                    {
+                        'termo': 'Lípidos',
+                        'texto': 'Monómeros: ácidos gordos e glicerol, entre outros. Função: reserva energética; constituintes das membranas celulares (fosfolípidos); função hormonal e isolamento.',
+                    },
+                    {
+                        'termo': 'Proteínas',
+                        'texto': 'Monómeros: aminoácidos. Função: estrutural, enzimática (catalisadores biológicos), defesa (anticorpos), transporte, regulação (hormonas).',
+                    },
+                    {
+                        'termo': 'Ácidos nucleicos',
+                        'texto': 'Monómeros: nucleótidos. Função: armazenamento e transmissão da informação genética (DNA) e síntese proteica (RNA).',
+                    },
+                ],
+                'dica': (
+                    'a água é o **"palco"** onde todas as reações químicas da vida acontecem — sem ela, as '
+                    'moléculas não têm onde se encontrar. Já os monómeros são como **peças de LEGO**: os '
+                    'glícidos são o "lego de energia rápida", os lípidos o "lego de reserva a longo prazo", '
+                    'as proteínas o "lego das ferramentas" (fazem quase tudo) e os ácidos nucleicos o "lego '
+                    'com o manual de instruções".'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Organização da vida', 'valor': 'Níveis hierárquicos, do átomo à biosfera'},
+            {'label': 'Ecossistema', 'valor': 'Biótopo (abiótico) + Biocenose (biótico) · fluxo de energia unidirecional · ciclo de matéria'},
+            {'label': 'Biodiversidade', 'valor': '3 níveis — genética, espécies, ecossistemas · ameaçada sobretudo por ação antrópica'},
+            {'label': 'Conservação', 'valor': 'In situ (no habitat) e ex situ (fora do habitat)'},
+            {'label': 'Célula', 'valor': 'Unidade estrutural e funcional · procariótica (sem núcleo) ou eucariótica (com núcleo)'},
+            {'label': 'Moléculas da vida', 'valor': 'Água, glícidos, lípidos, proteínas e ácidos nucleicos — unidade química comum a todos os seres vivos'},
+        ],
+        'sintese_dica': (
+            '*"Do átomo à biosfera, da célula à espécie — a vida organiza-se em camadas, e cada camada só '
+            'existe porque a anterior a sustenta."*'
         ),
     },
 }
