@@ -3522,8 +3522,11 @@ html[data-theme="dark"] .intro-equation {
    Mascot guide + lesson content area
    ============================================================ */
 
+/* White, matching .lesson-topbar above it (and dark mode's own matching
+   pair below) — header and content read as one continuous surface
+   instead of a white bar floating over a beige page. */
 .mission-content {
-    background-color: #f8f2e7;
+    background-color: #ffffff;
 }
 
 /* Sidebar + main-content shell: the mission's persistent chrome. Fixed
@@ -3763,13 +3766,13 @@ html[data-theme="dark"] .intro-equation {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
-    /* Same beige as .mission-content (which only stretches to its own
+    /* Same white as .mission-content (which only stretches to its own
        content's height) — on a short screen, .mission-content ends
        before this scroll container's full viewport height does, leaving
-       a gap below it. Painting the color here too means that gap is
-       beige as well, all the way to the bottom, however short the
+       a gap below it. Painting the color here too means that gap stays
+       white as well, all the way to the bottom, however short the
        content is. */
-    background-color: #f8f2e7;
+    background-color: #ffffff;
     /* Lets .intro-question (nested inside the narrow, centered .section-body
        reading column) break out to this element's own full width via cqw
        units — its size already comes from the flex layout above, not its
@@ -3810,6 +3813,7 @@ html[data-theme="dark"] .intro-equation {
     gap: 20px;
     padding: 16px 28px;
     background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* Only shown while the chat sidebar is collapsed — its own header has a
@@ -4396,6 +4400,7 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 }
 
 .mascot-overlay-card {
+    position: relative;
     width: min(420px, 100%);
     background: #ffffff;
     border: 1px solid #e3f0e9;
@@ -4411,6 +4416,42 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     margin: 0 auto 16px;
     display: block;
     filter: drop-shadow(0 10px 16px rgba(18, 61, 40, 0.16));
+}
+
+/* Close ("X") button for a popup card — top-right corner, bare icon (no
+   button chrome) so it reads as a dismiss affordance, not a CTA. */
+.mascot-overlay-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: #6b7a72;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 1.2rem;
+}
+
+.mascot-overlay-close:hover,
+.mascot-overlay-close:focus-visible {
+    background: #eef7f3;
+    color: #1a3328;
+}
+
+html[data-theme="dark"] .mascot-overlay-close {
+    color: #b9c7bd;
+}
+
+html[data-theme="dark"] .mascot-overlay-close:hover,
+html[data-theme="dark"] .mascot-overlay-close:focus-visible {
+    background: #362c22;
+    color: #f2e9dd;
 }
 
 .mascot-overlay-text {
@@ -4975,8 +5016,10 @@ html[data-theme="dark"] .mission-main {
     background-color: #1c1712;
 }
 
-html[data-theme="dark"] .lesson-topbar {
+html[data-theme="dark"] .lesson-topbar,
+html.dark-mode .lesson-topbar {
     background: #1c1712;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 html[data-theme="dark"] .mission-sidebar {

@@ -29,22 +29,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "A água consegue dissolver a maioria das substâncias polares porque é ela própria uma molécula:",
-          "opcoes": ["Polar", "Apolar"],
-          "correta": 0,
-          "mascote_feedback_certo": "Exato! A polaridade da água é o que lhe dá esse enorme poder solvente.",
-          "mascote_feedback_errado": "Na verdade a água é polar — é essa polaridade que lhe dá o poder de dissolver tantas substâncias."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "A reação em que uma molécula se quebra com consumo de água chama-se:",
-          "opcoes": ["Hidrólise", "Polimerização"],
-          "correta": 0,
-          "mascote_feedback_certo": "Correto! Hidrólise = quebra + consumo de água. A polimerização é o processo inverso.",
-          "mascote_feedback_errado": "Chama-se hidrólise — a polimerização é o processo inverso, que une monómeros libertando água."
-        },
-        {
           "tipo": "analogia",
           "mascote_texto": "Pensa nisto como... 🐢",
           "texto": "💡 Cada molécula de água é como um pequeno íman: o lado do hidrogénio fica ligeiramente positivo, o lado do oxigénio fica ligeiramente negativo. Por isso, o hidrogénio de uma molécula de água é atraído pelo oxigénio da molécula vizinha, formando uma ligação de hidrogénio — como uma corrente de ímanes ligeiramente inclinados, todos a puxarem-se uns aos outros. É essa \"atração em cadeia\" que dá à água tantas das suas propriedades especiais."
@@ -57,6 +41,20 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "A água consegue dissolver a maioria das substâncias polares porque é ela própria uma molécula:",
+              "opcoes": ["Polar", "Apolar"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A polaridade da água é o que lhe dá esse enorme poder solvente.",
+              "mascote_feedback_errado": "Na verdade a água é polar — é essa polaridade que lhe dá o poder de dissolver tantas substâncias."
+            },
+            {
+              "pergunta": "A reação em que uma molécula se quebra com consumo de água chama-se:",
+              "opcoes": ["Hidrólise", "Polimerização"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Hidrólise = quebra + consumo de água. A polimerização é o processo inverso.",
+              "mascote_feedback_errado": "Chama-se hidrólise — a polimerização é o processo inverso, que une monómeros libertando água."
+            },
             {
               "pergunta": "A capacidade da água de dissolver substâncias e ajudar a regular a temperatura corporal deve-se, em grande parte, a ela ser uma molécula:",
               "opcoes": ["Polar", "Sem carga elétrica"],
@@ -108,22 +106,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "O glicogénio, polissacarídeo de reserva energética, é típico de células:",
-          "opcoes": ["Animais", "Vegetais"],
-          "correta": 0,
-          "mascote_feedback_certo": "Exato! Nas plantas, o equivalente é o amido.",
-          "mascote_feedback_errado": "É típico das células animais — nas vegetais, o polissacarídeo de reserva é o amido."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Os glícidos são compostos ternários porque são constituídos por:",
-          "opcoes": ["Carbono, Hidrogénio e Oxigénio", "Carbono, Hidrogénio e Azoto"],
-          "correta": 0,
-          "mascote_feedback_certo": "Correto! Tipicamente na proporção 1:2:1 (C:H:O).",
-          "mascote_feedback_errado": "São feitos de Carbono, Hidrogénio e Oxigénio — o Azoto é típico das proteínas e dos ácidos nucleicos, não dos glícidos."
-        },
-        {
           "tipo": "analogia",
           "mascote_texto": "Pensa nisto como... 🐢",
           "texto": "💡 Pensa num monossacarídeo como um único tijolo, um oligossacarídeo como um punhado de tijolos colados entre si, e um polissacarídeo como uma parede inteira construída com milhares desses tijolos. E tal como uma parede pode servir para guardar coisas lá dentro (uma despensa = glicogénio/amido) ou para dar estrutura a um edifício (uma parede-mestra = celulose), os polissacarídeos também têm essas duas grandes funções: reserva ou estrutura."
@@ -136,6 +118,20 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "O glicogénio, polissacarídeo de reserva energética, é típico de células:",
+              "opcoes": ["Animais", "Vegetais"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Nas plantas, o equivalente é o amido.",
+              "mascote_feedback_errado": "É típico das células animais — nas vegetais, o polissacarídeo de reserva é o amido."
+            },
+            {
+              "pergunta": "Os glícidos são compostos ternários porque são constituídos por:",
+              "opcoes": ["Carbono, Hidrogénio e Oxigénio", "Carbono, Hidrogénio e Azoto"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Tipicamente na proporção 1:2:1 (C:H:O).",
+              "mascote_feedback_errado": "São feitos de Carbono, Hidrogénio e Oxigénio — o Azoto é típico das proteínas e dos ácidos nucleicos, não dos glícidos."
+            },
             {
               "pergunta": "A sacarose, o açúcar de mesa comum, é um exemplo de:",
               "opcoes": ["Monossacarídeo", "Oligossacarídeo"],
@@ -185,22 +181,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Os lípidos são, de um modo geral, moléculas:",
-          "opcoes": ["Solúveis em água", "Pouco solúveis em água, mas solúveis em solventes orgânicos"],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato! São hidrofóbicos, mas dissolvem-se bem em solventes como o éter ou o clorofórmio.",
-          "mascote_feedback_errado": "Na verdade são pouco solúveis em água (hidrofóbicos), mas solúveis em solventes orgânicos."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um fosfolípido, com uma \"cabeça\" que gosta de água e \"caudas\" que a evitam, diz-se uma molécula:",
-          "opcoes": ["Anfipática", "Apolar pura"],
-          "correta": 0,
-          "mascote_feedback_certo": "Correto! Anfipática = tem uma parte hidrofílica e uma parte hidrofóbica ao mesmo tempo.",
-          "mascote_feedback_errado": "Diz-se anfipática — tem simultaneamente uma parte que gosta de água e outra que a evita."
-        },
-        {
           "tipo": "analogia",
           "mascote_texto": "Pensa nisto como... 🐢",
           "texto": "💡 Imagina um grupo de pessoas apanhadas por um aguaceiro: a \"cabeça\" delas (hidrofílica) não se importa de ficar molhada, mas os \"pés\" (as caudas hidrofóbicas) querem ficar bem longe da água. O jeito mais natural de se organizarem é ficarem de pé, em duas filas viradas de costas uma para a outra, com as cabeças viradas para fora (para a água) e os pés escondidos no meio, longe dela. É exatamente essa a forma como os fosfolípidos se organizam sozinhos — em duas camadas — para formar a membrana de qualquer célula."
@@ -213,6 +193,20 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Os lípidos são, de um modo geral, moléculas:",
+              "opcoes": ["Solúveis em água", "Pouco solúveis em água, mas solúveis em solventes orgânicos"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! São hidrofóbicos, mas dissolvem-se bem em solventes como o éter ou o clorofórmio.",
+              "mascote_feedback_errado": "Na verdade são pouco solúveis em água (hidrofóbicos), mas solúveis em solventes orgânicos."
+            },
+            {
+              "pergunta": "Um fosfolípido, com uma \"cabeça\" que gosta de água e \"caudas\" que a evitam, diz-se uma molécula:",
+              "opcoes": ["Anfipática", "Apolar pura"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Anfipática = tem uma parte hidrofílica e uma parte hidrofóbica ao mesmo tempo.",
+              "mascote_feedback_errado": "Diz-se anfipática — tem simultaneamente uma parte que gosta de água e outra que a evita."
+            },
             {
               "pergunta": "A testosterona e a progesterona são exemplos de:",
               "opcoes": ["Lípidos reguladores (esteroides)", "Lípidos de reserva"],
@@ -264,22 +258,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Os monómeros que constituem as proteínas são:",
-          "opcoes": ["Os aminoácidos", "Os nucleótidos"],
-          "correta": 0,
-          "mascote_feedback_certo": "Exato! Os aminoácidos ligam-se entre si por ligações peptídicas.",
-          "mascote_feedback_errado": "São os aminoácidos — os nucleótidos são os monómeros dos ácidos nucleicos."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Sem enzimas, as reações químicas necessárias à vida:",
-          "opcoes": ["Ocorreriam demasiado devagar", "Ocorreriam exatamente à mesma velocidade"],
-          "correta": 0,
-          "mascote_feedback_certo": "Correto! As enzimas aceleram as reações o suficiente para sustentar o metabolismo da célula.",
-          "mascote_feedback_errado": "Na verdade, ocorreriam demasiado devagar para sustentar a vida — é por isso que as enzimas são tão importantes."
-        },
-        {
           "tipo": "analogia",
           "mascote_texto": "Pensa nisto como... 🐢",
           "texto": "💡 Se os glícidos são a gasolina e os lípidos o depósito de reserva, as proteínas são como uma equipa inteira de funcionários especializados: uns constroem e reparam (função estrutural), uns aceleram o trabalho todo (enzimas), uns defendem a entrada do prédio (anticorpos), uns fazem entregas porta-a-porta (transporte) e uns dão ordens ao resto da equipa (hormonas). Uma única categoria de biomolécula, com dezenas de \"profissões\" diferentes."
@@ -292,6 +270,20 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Os monómeros que constituem as proteínas são:",
+              "opcoes": ["Os aminoácidos", "Os nucleótidos"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Os aminoácidos ligam-se entre si por ligações peptídicas.",
+              "mascote_feedback_errado": "São os aminoácidos — os nucleótidos são os monómeros dos ácidos nucleicos."
+            },
+            {
+              "pergunta": "Sem enzimas, as reações químicas necessárias à vida:",
+              "opcoes": ["Ocorreriam demasiado devagar", "Ocorreriam exatamente à mesma velocidade"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! As enzimas aceleram as reações o suficiente para sustentar o metabolismo da célula.",
+              "mascote_feedback_errado": "Na verdade, ocorreriam demasiado devagar para sustentar a vida — é por isso que as enzimas são tão importantes."
+            },
             {
               "pergunta": "A hemoglobina, proteína que transporta oxigénio no sangue, tem função:",
               "opcoes": ["De transporte", "Estrutural"],
@@ -341,14 +333,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um nucleótido é constituído por uma base azotada, um grupo fosfato e:",
-          "opcoes": ["Uma pentose", "Um aminoácido"],
-          "correta": 0,
-          "mascote_feedback_certo": "Exato! A pentose (açúcar de 5 carbonos) faz parte da estrutura de qualquer nucleótido.",
-          "mascote_feedback_errado": "É uma pentose — o aminoácido é a unidade das proteínas, não dos ácidos nucleicos."
-        },
-        {
           "tipo": "diagrama_interativo",
           "titulo": "DNA vs. RNA",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -356,14 +340,6 @@
             { "id": "dna", "label": "DNA", "explicacao": "Pentose: desoxirribose. Bases: Adenina, Citosina, Guanina, Timina. Estrutura: cadeia dupla (dupla hélice). Função: armazena e transmite a informação genética, controlando toda a atividade da célula." },
             { "id": "rna", "label": "RNA", "explicacao": "Pentose: ribose. Bases: Adenina, Citosina, Guanina, Uracilo. Estrutura: geralmente cadeia simples. Função: intervém na síntese de proteínas, traduzindo a informação genética guardada no DNA." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "A base azotada Timina está presente:",
-          "opcoes": ["No DNA", "No RNA"],
-          "correta": 0,
-          "mascote_feedback_certo": "Correto! No RNA, a Timina é substituída pelo Uracilo.",
-          "mascote_feedback_errado": "Está presente no DNA — no RNA, a Timina é substituída pelo Uracilo."
         },
         {
           "tipo": "analogia",
@@ -378,6 +354,20 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um nucleótido é constituído por uma base azotada, um grupo fosfato e:",
+              "opcoes": ["Uma pentose", "Um aminoácido"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A pentose (açúcar de 5 carbonos) faz parte da estrutura de qualquer nucleótido.",
+              "mascote_feedback_errado": "É uma pentose — o aminoácido é a unidade das proteínas, não dos ácidos nucleicos."
+            },
+            {
+              "pergunta": "A base azotada Timina está presente:",
+              "opcoes": ["No DNA", "No RNA"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! No RNA, a Timina é substituída pelo Uracilo.",
+              "mascote_feedback_errado": "Está presente no DNA — no RNA, a Timina é substituída pelo Uracilo."
+            },
             {
               "pergunta": "A pentose presente no RNA é:",
               "opcoes": ["A ribose", "A desoxirribose"],
