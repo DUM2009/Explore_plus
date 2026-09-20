@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -23,6 +23,7 @@ from . import views  # Importa o ficheiro views que criaste
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),  # Login com Google (django-allauth)
     path('', views.pagina_inicial, name='pagina_inicial'),  # Rota para a tua página inicial
     path('termos/', views.pagina_termos, name='termos'),
     path('privacidade/', views.pagina_privacidade, name='privacidade'),

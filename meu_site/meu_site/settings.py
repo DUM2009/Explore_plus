@@ -30,6 +30,12 @@ STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET', '')
 STRIPE_PRICE_ID_PRO = os.environ.get('STRIPE_PRICE_ID_PRO', '')
 STRIPE_API_VERSION = '2026-08-26.dahlia'
 
+# Login com Google (django-allauth) — o Client ID/Secret vêm da Google Cloud
+# Console (APIs & Services > Credentials > OAuth client ID, tipo "Web
+# application") e ficam no .env, nunca hardcoded aqui.
+GOOGLE_OAUTH_CLIENT_ID = os.environ.get('GOOGLE_OAUTH_CLIENT_ID', '')
+GOOGLE_OAUTH_CLIENT_SECRET = os.environ.get('GOOGLE_OAUTH_CLIENT_SECRET', '')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
 
@@ -64,9 +70,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
     'meu_site.apps.MeuSiteConfig',
 ]
+
+SITE_ID = 1
 
 
 
@@ -78,9 +92,42 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# Onde o allauth manda o utilizador depois de um login/signup bem-sucedido
+# com o Google — mesmo destino que o login normal por password (ver
+# redirecionar_apos_autenticacao em views.py).
+LOGIN_REDIRECT_URL = '/perfil/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+
+# Pula o ecrã intermédio "A ligar-te ao Google..." do allauth e vai direto
+# para o consentimento da Google.
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+# allauth cria a conta automaticamente a partir dos dados do Google (nome,
+# email) sem pedir confirmação por email extra — a Google já verificou o
+# email.
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+SOCIALACCOUNT_AUTO_SIGNUP = True
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': GOOGLE_OAUTH_CLIENT_ID,
+            'secret': GOOGLE_OAUTH_CLIENT_SECRET,
+            'key': '',
+        },
+        'SCOPE': ['profile', 'email'],
+    }
+}
 
 ROOT_URLCONF = 'meu_site.urls'
 

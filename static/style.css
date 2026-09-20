@@ -4956,13 +4956,31 @@ background:#27ae60;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 110px);
-  padding: 32px 16px;
-  background: linear-gradient(135deg, #f8fafc 0%, #eef5ff 100%);
+  gap: 64px;
+  min-height: 100vh;
+  padding: 60px 16px;
+  background: url('/static/images/Fundo login.png') center / cover no-repeat;
+}
+
+.login-illustration {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 460px;
+  align-self: center;
+}
+
+.login-illustration img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(70vh, 560px);
 }
 
 .light-login-shell {
   position: relative;
+  flex-shrink: 0;
   width: min(100%, 460px);
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid #e5e7eb;
@@ -4984,43 +5002,43 @@ background:#27ae60;
 .light-login-card {
   position: relative;
   z-index: 1;
-  padding: 32px 28px 24px;
+  padding: 20px 28px 18px;
 }
 
 .light-login-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .brand-badge {
   display: grid;
   place-items: center;
-    width: 180px;
-    height: 105px;
-    margin-bottom: 12px;
+    width: 130px;
+    height: 70px;
+    margin-bottom: 4px;
     background: transparent;
     border: 0;
     box-shadow: none;
 }
 
 .brand-badge img {
-    width: 155px;
-    height: 90px;
+    width: 110px;
+    height: 62px;
   object-fit: contain;
   display: block;
 }
 
 .light-login-header h2 {
   margin: 0;
-  font-size: clamp(1.8rem, 2vw, 2.3rem);
+  font-size: clamp(1.5rem, 2vw, 1.9rem);
   text-align: center;
   color: #111827;
 }
 
 .light-login-header p {
-  margin: 8px 0 0;
+  margin: 4px 0 0;
   color: #6b7280;
   text-align: center;
   font-size: 0.96rem;
@@ -5029,13 +5047,13 @@ background:#27ae60;
 .light-login-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .form-group label,
@@ -5069,7 +5087,7 @@ background:#27ae60;
 
 .input-shell input {
   width: 100%;
-  height: 48px;
+  height: 42px;
   padding: 0 14px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
@@ -5115,21 +5133,21 @@ background:#27ae60;
 
 .login-button {
   width: 100%;
-  height: 48px;
+  height: 44px;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(180deg, #2563eb 0%, #3b82f6 40%, #60a5fa 100%);
+  background: linear-gradient(180deg, #1f8a5b 0%, #22a06a 40%, #34b87e 100%);
   color: white;
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 12px 18px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 12px 18px rgba(31, 138, 91, 0.2);
   transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .login-button:hover {
   filter: brightness(1.02);
-  box-shadow: 0 14px 18px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 14px 18px rgba(31, 138, 91, 0.25);
   transform: translateY(-1px);
 }
 
@@ -5139,7 +5157,7 @@ background:#27ae60;
   gap: 14px;
   color: #9ca3af;
   font-size: 0.8rem;
-  margin: 4px 0;
+  margin: 12px 0 10px;
 }
 
 .divider::before,
@@ -5161,7 +5179,7 @@ background:#27ae60;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 46px;
+  height: 44px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   background: #fff;
@@ -5192,8 +5210,14 @@ background:#27ae60;
   height: 20px;
 }
 
+.google-button {
+  width: 100%;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
 .bottom-signup {
-  margin: 20px 0 0;
+  margin: 12px 0 0;
   text-align: center;
   font-size: 0.92rem;
   color: #6b7280;
@@ -5207,6 +5231,12 @@ background:#27ae60;
 
 .bottom-signup a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .login-illustration {
+    display: none;
+  }
 }
 
 @media (max-width: 520px) {
