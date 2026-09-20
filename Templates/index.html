@@ -485,15 +485,26 @@
         return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
     }
 
-    function smoothScrollTo(targetY, duration) {
-        const startY = window.scrollY;
-        const distance = targetY - startY;
+    // The page's real scroll container isn't always `window`/`html` — find
+    // whichever ancestor of the target actually has overflow to scroll.
+    function findScroller(el) {
+        let node = el.parentElement;
+        while (node) {
+            if (node.scrollHeight > node.clientHeight + 1) return node;
+            node = node.parentElement;
+        }
+        return document.scrollingElement || document.documentElement || document.body;
+    }
+
+    function smoothScrollTo(scroller, targetTop, duration) {
+        const startTop = scroller.scrollTop;
+        const distance = targetTop - startTop;
         const startTime = performance.now();
 
         function step(now) {
             const elapsed = now - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            window.scrollTo(0, startY + distance * easeInOutQuad(progress));
+            scroller.scrollTop = startTop + distance * easeInOutQuad(progress);
             if (progress < 1) requestAnimationFrame(step);
         }
 
@@ -511,8 +522,9 @@
         if (!target) return;
 
         event.preventDefault();
-        const targetY = target.getBoundingClientRect().top + window.scrollY - 20;
-        smoothScrollTo(targetY, 700);
+        const scroller = findScroller(target);
+        const targetTop = target.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - 20;
+        smoothScrollTo(scroller, targetTop, 700);
         history.pushState(null, "", "#" + id);
     });
 })();

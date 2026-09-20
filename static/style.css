@@ -279,11 +279,20 @@ header nav .nav-tabs-indicator.is-danger{
 
 header nav a.nav-cta{
     background:#90a668;
-    color:#fff !important;
+    color:#000 !important;
 }
 
 header nav a.nav-cta:hover{
-    color:#fff;
+    color:#000;
+}
+
+header nav a.nav-plain{
+    background:transparent !important;
+    color:#000 !important;
+}
+
+header nav a.nav-plain:hover{
+    color:#000;
 }
 
 .login{
