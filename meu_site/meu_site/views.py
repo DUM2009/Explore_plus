@@ -41,7 +41,6 @@ def pagina_perfil(request):
         perfil_legacy = True
     progresso = {} if perfil_legacy else (perfil.progresso_missoes or {})
     badges = {} if perfil_legacy else (perfil.conquistas or {})
-    secoes = {} if perfil_legacy else (perfil.progresso_secoes or {})
 
     (_, titulo_nome, titulo_icone, titulo_descricao), proximo_titulo = titulo_para_nivel(perfil.nivel)
     if not perfil_legacy and perfil.titulo_atual != titulo_nome:

@@ -28,7 +28,7 @@
     <section class="hero">
         <div class="hero-left">
             <h1>A ciência nasce da curiosidade.</h1>
-            <p>Uma nova forma de estudar Biologia através de missões, curiosidades e desafios interativos.</p>
+            <p>Uma nova forma de estudar Ciência através de missões, curiosidades e desafios interativos.</p>
             <a href="/login/"><button>Que comece a aventura!</button></a>
         </div>
         <div class="area-animation">
@@ -88,21 +88,6 @@
         </div>
 
         <div class="home-missions-preview" aria-label="Pré-visualização de uma missão de Fotossíntese">
-            <div class="home-mission-card">
-                <span class="status available">Disponível</span> <br> <br>
-
-                <h2>Fotossíntese 🌿</h2>
-
-                <p>
-                    Descobre como a luz vira energia e como o CO₂ se transforma em açúcar.
-                </p>
-
-                <a href="{% url 'login' %}">
-                    <button>Explorar</button>
-                </a>
-            
-            </div>
-
             <div class="home-quiz-preview" aria-label="Exemplo visual de quiz da missão Fotossíntese">
                 <div class="home-quiz-preview-heading">
                     <span class="home-quiz-progress">Pergunta 2/5</span>
@@ -117,11 +102,181 @@
         </div>
     </div>
 
-    <a href="{% url 'login' %}" class="view-all-missions">
-        <button>Ver todas as missões →</button>
-    </a>
-
 </section>
+
+    <section class="mistakes-showcase">
+        <div class="mistakes-card">
+            <div class="mistakes-card-header">
+                <span class="mistakes-card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e0453c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+                    Caderno de Erros
+                </span>
+                <span class="mistakes-card-badge">7 questões pendentes</span>
+            </div>
+            <div class="mistakes-list">
+                <div class="mistakes-item">
+                    <div class="mistakes-item-info">
+                        <span class="mistakes-item-subject">Biologia</span>
+                        <span class="mistakes-item-topic">Genética</span>
+                    </div>
+                    <span class="mistakes-item-tag">Revisar</span>
+                </div>
+                <div class="mistakes-item">
+                    <div class="mistakes-item-info">
+                        <span class="mistakes-item-subject">Biologia</span>
+                        <span class="mistakes-item-topic">Fotossíntese</span>
+                    </div>
+                    <span class="mistakes-item-tag">Revisar</span>
+                </div>
+                <div class="mistakes-item mistakes-item-done">
+                    <div class="mistakes-item-info">
+                        <span class="mistakes-item-subject">Biologia</span>
+                        <span class="mistakes-item-topic">Citologia</span>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="mistakes-text">
+            <h2>Nunca mais repitas o <span class="highlight-red">mesmo erro.</span></h2>
+            <ul class="mistakes-benefits">
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Todas as questões erradas ficam armazenadas</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Revê e refaz cada uma individualmente</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Ao acertares novamente, são removidas da lista</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>O estudo torna-se direcionado e eficiente</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="grade-estimate">
+        <h2>Se fizesses o exame hoje, <span class="highlight">qual seria a tua nota?</span></h2>
+        <p>A Explore+ estima a tua nota com base no desempenho nas tuas últimas 3 missões.</p>
+        <div class="grade-cards">
+            <div class="grade-card grade-card-highlight">
+                <span class="grade-card-label">Nota estimada</span>
+                <span class="grade-card-value">17.5</span>
+                <span class="grade-card-unit">valores</span>
+            </div>
+            <div class="grade-card">
+                <span class="grade-card-label">Nota mínima do exame</span>
+                <span class="grade-card-value">12.0</span>
+                <span class="grade-card-unit">valores</span>
+            </div>
+            <div class="grade-card">
+                <span class="grade-card-label">Domínio do tema</span>
+                <span class="grade-card-chip">↗ Alto</span>
+                <span class="grade-card-unit">probabilidade</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="evolution-showcase">
+        <div class="evolution-text">
+            <h2>Acompanha a tua evolução <span class="highlight">em tempo real.</span></h2>
+            <ul class="evolution-list">
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Gráfico de progresso por missão</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Filtros por período (hoje, 7 dias, 30 dias, sempre)</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Ranking global entre todos os exploradores</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    <span>Ranking específico por tema</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="evolution-card">
+            <div class="evolution-card-header">
+                <span>Desempenho — Últimos 30 dias</span>
+                <div class="evolution-tabs">
+                    <span>7d</span>
+                    <span class="active">30d</span>
+                    <span>Tudo</span>
+                </div>
+            </div>
+            <div class="evolution-chart" aria-hidden="true">
+                <div class="evolution-bar"><span class="bar-top" style="height:30%"></span><span class="bar-bottom" style="height:26%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:38%"></span><span class="bar-bottom" style="height:30%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:32%"></span><span class="bar-bottom" style="height:28%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:44%"></span><span class="bar-bottom" style="height:34%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:50%"></span><span class="bar-bottom" style="height:38%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:46%"></span><span class="bar-bottom" style="height:44%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:56%"></span><span class="bar-bottom" style="height:46%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:52%"></span><span class="bar-bottom" style="height:50%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:60%"></span><span class="bar-bottom" style="height:54%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:58%"></span><span class="bar-bottom" style="height:58%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:66%"></span><span class="bar-bottom" style="height:60%"></span></div>
+                <div class="evolution-bar"><span class="bar-top" style="height:64%"></span><span class="bar-bottom" style="height:66%"></span></div>
+            </div>
+            <div class="evolution-card-footer">
+                <span class="evolution-rank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    Ranking: <strong>#24</strong>
+                </span>
+                <span class="evolution-trend">↗ +18% este mês</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="mentor-showcase">
+        <div class="mentor-avatar-wrap">
+            <div class="mentor-avatar">
+                <video src="{% static 'Mascote a acenar.webm' %}" autoplay loop muted playsinline aria-label="Kim, o teu explicador pessoal, a acenar"></video>
+            </div>
+            <span class="mentor-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/></svg>
+                IA Explicadora
+            </span>
+        </div>
+
+        <div class="mentor-text">
+            <h2>Kim — <span class="highlight">O teu Explicador Pessoal.</span></h2>
+            <p>Um mentor com IA que analisa o teu desempenho real e orienta cada passo do teu estudo.</p>
+            <ul class="mentor-list">
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    <span>Analisa o teu desempenho em cada missão</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    <span>Diz-te se já dominas o tema</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    <span>Identifica o teu tema mais fraco</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    <span>Acompanha a tua evolução ao longo do tempo</span>
+                </li>
+                <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    <span>Orienta-te sobre onde focar a seguir</span>
+                </li>
+            </ul>
+        </div>
+    </section>
 
     <section class="features">
         <h2>Porque escolher a Explore+?</h2>
@@ -146,6 +301,96 @@
                 <h3>Vê-te a evoluir</h3>
                 <p>Sobe de nível, desbloqueia títulos e conquistas, e acompanha exatamente onde estás em cada tema.</p>
             </div>
+        </div>
+    </section>
+
+    <section class="home-plans">
+        <h2>Escolhe o plano certo <span class="highlight">para ti.</span></h2>
+        <p>Estuda com todas as ferramentas que precisas para dominar cada tema.</p>
+
+        <div class="home-plans-grid">
+
+            <div class="home-plan-card">
+                <div class="home-plan-card-head">
+                    <span class="home-plan-card-name">Gratuito</span>
+                </div>
+                <p class="home-plan-card-price"><strong>0€</strong><span>/mês</span></p>
+                <p class="home-plan-card-tagline">Para começar a explorar a Biologia.</p>
+                <ul class="home-plan-card-features">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acesso a todas as missões</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Quizzes básicos</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Livro do Explorador</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>IA limitada (10 perguntas semanais ao Kim)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acesso a 1 teste por matéria (com IA limitada para auxiliar)</li>
+                </ul>
+                <a href="{% url 'login' %}" class="home-plan-card-btn home-plan-card-btn--muted">Começar grátis</a>
+            </div>
+
+            <div class="home-plan-card home-plan-card--highlight">
+                <div class="home-plan-card-head">
+                    <span class="home-plan-card-name">SuperExplore</span>
+                    <span class="home-plan-card-badge">Recomendado</span>
+                </div>
+                <p class="home-plan-card-price-old">19,99€/mês</p>
+                <p class="home-plan-card-price"><strong>9,99€</strong><span>/mês</span></p>
+                <p class="home-plan-card-tagline">Para quem quer ir mais longe todas as semanas.</p>
+                <ul class="home-plan-card-features">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tudo o que está no plano Gratuito</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>IA ilimitada</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Simulados</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Plano de estudo</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Estatísticas</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acesso a todos os testes e exames com IA para auxiliar</li>
+                </ul>
+                <a href="{% url 'login' %}" class="home-plan-card-btn home-plan-card-btn--highlight">Ativar SuperExplore</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="home-faq">
+        <h2>Perguntas <span class="highlight">Frequentes</span></h2>
+
+        <div class="home-faq-list">
+            <details class="home-faq-item">
+                <summary>
+                    <span>O que é a Explore+?</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <p>A Explore+ é uma plataforma que te ajuda a estudar Biologia através de missões, quizzes e desafios interativos, com o Kim, o teu explicador pessoal com IA, sempre disponível para tirar dúvidas.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary>
+                    <span>A Explore+ é gratuita?</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <p>Sim. O plano Gratuito dá-te acesso a todas as missões e a uma versão limitada do Kim. O plano SuperExplore desbloqueia IA ilimitada, simulados, plano de estudo e estatísticas completas.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary>
+                    <span>Como funciona a estimativa da nota?</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <p>A tua nota estimada é calculada com base na média do teu desempenho nas últimas 3 missões, mostrando-te o quão perto estás de dominar cada tema.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary>
+                    <span>Quem é o Kim?</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <p>O Kim é o teu explicador pessoal com IA. Analisa o teu desempenho, identifica os teus temas mais fracos e ajuda-te a pensar até chegares à resposta, em vez de a dar feita.</p>
+            </details>
+
+            <details class="home-faq-item">
+                <summary>
+                    <span>Que temas de Biologia a Explore+ cobre?</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <p>A Explore+ cobre os temas do programa de Biologia, desde a Diversidade e Organização Biológica às Biomoléculas e Citologia, com novas missões a serem adicionadas regularmente.</p>
+            </details>
         </div>
     </section>
 
