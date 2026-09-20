@@ -18,7 +18,9 @@
         let activeTab = null;
 
         function getTabs() {
-            return Array.from(nav.querySelectorAll("a, button"));
+            return Array.from(nav.querySelectorAll("a, button")).filter(
+                (tab) => !tab.classList.contains("nav-cta") && !tab.classList.contains("nav-plain")
+            );
         }
 
         function findActiveTab() {

@@ -19,9 +19,8 @@
             <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
         </div>
         <nav>
-            <a href="/">Início</a>
-            <a href="{% url 'about' %}">Sobre</a>
-            <a href="/login/">Login</a>
+            <a href="/login/" class="nav-plain">Login</a>
+            <a href="/login/" class="nav-cta">Sign in</a>
         </nav>
     </header>
 
@@ -60,7 +59,7 @@
         </div>
     </section>
 
-<section class="featured-missions">
+<section class="featured-missions" id="missoes">
 
 
     
@@ -278,33 +277,57 @@
         </div>
     </section>
 
-    <section class="features">
+    <section class="features" id="funcionalidades">
         <h2>Porque escolher a Explore+?</h2>
         <div class="cards">
             <div class="card">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dabd9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
-                <h3>Começa pela curiosidade</h3>
-                <p>Cada missão arranca com uma pergunta real — porque é que as plantas são verdes, como uma célula se divide — nunca com uma lista de tópicos para decorar.</p>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dabd9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+                        <h3>Começa pela curiosidade</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Cada missão arranca com uma pergunta real — porque é que as plantas são verdes, como uma célula se divide — nunca com uma lista de tópicos para decorar.</p>
+                    </div>
+                </div>
             </div>
             <div class="card">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dabd9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain-icon lucide-brain"><path d="M12 18V5"/><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"/><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/><path d="M18 18a4 4 0 0 0 2-7.464"/><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/><path d="M6 18a4 4 0 0 1-2-7.464"/><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/></svg>
-                <h3>Percebe, não decores</h3>
-                <p>Explicações passo a passo que ligam os conceitos entre si, até fazerem mesmo sentido — para o teste e para a vida.</p>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dabd9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-brain-icon lucide-brain"><path d="M12 18V5"/><path d="M15 13a4.17 4.17 0 0 1-3-4 4.17 4.17 0 0 1-3 4"/><path d="M17.598 6.5A3 3 0 1 0 12 5a3 3 0 1 0-5.598 1.5"/><path d="M17.997 5.125a4 4 0 0 1 2.526 5.77"/><path d="M18 18a4 4 0 0 0 2-7.464"/><path d="M19.967 17.483A4 4 0 1 1 12 18a4 4 0 1 1-7.967-.517"/><path d="M6 18a4 4 0 0 1-2-7.464"/><path d="M6.003 5.125a4 4 0 0 0-2.526 5.77"/></svg>
+                        <h3>Percebe, não decores</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Explicações passo a passo que ligam os conceitos entre si, até fazerem mesmo sentido — para o teste e para a vida.</p>
+                    </div>
+                </div>
             </div>
             <div class="card">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dabd9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-question-icon"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-                <h3>Tira dúvidas com o Kim</h3>
-                <p>O teu explicador pessoal está sempre disponível — ajuda-te a pensar até chegares à resposta, em vez de ta dar feita.</p>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dabd9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle-question-icon"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+                        <h3>Tira dúvidas com o Kim</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>O teu explicador pessoal está sempre disponível — ajuda-te a pensar até chegares à resposta, em vez de ta dar feita.</p>
+                    </div>
+                </div>
             </div>
             <div class="card">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dabd9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rocket-icon lucide-rocket"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
-                <h3>Vê-te a evoluir</h3>
-                <p>Sobe de nível, desbloqueia títulos e conquistas, e acompanha exatamente onde estás em cada tema.</p>
+                <div class="card-inner">
+                    <div class="card-front">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dabd9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rocket-icon lucide-rocket"><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"/><path d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"/></svg>
+                        <h3>Vê-te a evoluir</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Sobe de nível, desbloqueia títulos e conquistas, e acompanha exatamente onde estás em cada tema.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="home-plans">
+    <section class="home-plans" id="precos">
         <h2>Escolhe o plano certo <span class="highlight">para ti.</span></h2>
         <p>Estuda com todas as ferramentas que precisas para dominar cada tema.</p>
 
@@ -348,7 +371,7 @@
         </div>
     </section>
 
-    <section class="home-faq">
+    <section class="home-faq" id="faq">
         <h2>Perguntas <span class="highlight">Frequentes</span></h2>
 
         <div class="home-faq-list">
@@ -357,7 +380,10 @@
                     <span>O que é a Explore+?</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                 </summary>
-                <p>A Explore+ é uma plataforma que te ajuda a estudar Biologia através de missões, quizzes e desafios interativos, com o Kim, o teu explicador pessoal com IA, sempre disponível para tirar dúvidas.</p>
+                <p>O Explore+ nasceu com uma missão simples: transformar a forma como os estudantes aprendem Ciência.</p>
+                <p>Em vez de decorar páginas e páginas de teoria, queremos que os alunos compreendam verdadeiramente os conceitos através de curiosidades, desafios, imagens, missões e explicações intuitivas.</p>
+                <p>Estamos a começar pela Biologia, mas no futuro a plataforma irá incluir Química, Física, Geologia e outras áreas da Ciência.</p>
+                <p>O nosso objetivo é tornar o estudo mais interessante, mais intuitivo e mais eficaz.</p>
             </details>
 
             <details class="home-faq-item">
@@ -396,34 +422,56 @@
 
     <footer>
         <div class="footer-content">
-            <section class="footer-legal" aria-labelledby="footer-legal-title">
+            <div class="footer-brand">
                 <div class="footer-logo">
                     <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
                 </div>
-                <h2 id="footer-legal-title">Questões legais</h2>
-                <ul class="footer-legal-links">
-                    <li>Termos e Condições de Acesso</li>
-                    <li>Política de Privacidade</li>
-                    <li>Política de <em>cookies</em></li>
-                </ul>
-            </section>
+                <p>A plataforma completa para aprender Ciência através de missões, curiosidades e desafios interativos.</p>
+            </div>
 
-            <section class="footer-support" aria-labelledby="footer-support-title">
-                <h2 id="footer-support-title">Suporte</h2>
-                <a class="footer-instagram-button" href="mailto:exploremore.pt26@gmail.com" aria-label="Enviar email para exploremore.pt26@gmail.com">
-                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect width="20" height="16" x="2" y="4" rx="2" />
-                        <path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7" />
-                    </svg>
-                </a>
-                <a class="footer-instagram-button" href="https://www.instagram.com/explore_more_pt/" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Instagram do Explore+">
-                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect width="20" height="20" x="2" y="2" rx="5" />
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                    </svg>
-                </a>
-            </section>
+            <div class="footer-column">
+                <h3>Navegação</h3>
+                <a href="/">Início</a>
+                <a href="#missoes">Missões</a>
+                <a href="#funcionalidades">Funcionalidades</a>
+                <a href="#precos">Preços</a>
+                <a href="#faq">FAQ</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <a href="#">Termos e Condições de Acesso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Política de cookies</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contactos</h3>
+                <div class="footer-social">
+                    <a class="footer-social-icon" href="mailto:exploremore.pt26@gmail.com" aria-label="Enviar email para exploremore.pt26@gmail.com">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a2 2 0 0 1-2.06 0L2 7" />
+                        </svg>
+                    </a>
+                    <a class="footer-social-icon" href="https://www.instagram.com/explore_more_pt/" target="_blank" rel="noopener noreferrer" aria-label="Visitar o Instagram do Explore+">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="20" x="2" y="2" rx="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a class="footer-social-icon" href="https://www.tiktok.com/@explore_more_pt" target="_blank" rel="noopener noreferrer" aria-label="Visitar o TikTok do Explore+">
+                        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© {% now "Y" %} Explore+. Todos os direitos reservados.</p>
         </div>
     </footer>
 
@@ -431,6 +479,44 @@
 
 
 <script src="{% static 'nav-tabs.js' %}"></script>
+<script>
+(function () {
+    function easeInOutQuad(t) {
+        return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    }
+
+    function smoothScrollTo(targetY, duration) {
+        const startY = window.scrollY;
+        const distance = targetY - startY;
+        const startTime = performance.now();
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            window.scrollTo(0, startY + distance * easeInOutQuad(progress));
+            if (progress < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    document.addEventListener("click", function (event) {
+        const link = event.target.closest('a[href^="#"]');
+        if (!link) return;
+
+        const id = link.getAttribute("href").slice(1);
+        if (!id) return;
+
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        event.preventDefault();
+        const targetY = target.getBoundingClientRect().top + window.scrollY - 20;
+        smoothScrollTo(targetY, 700);
+        history.pushState(null, "", "#" + id);
+    });
+})();
+</script>
 </body>
 
 </html>

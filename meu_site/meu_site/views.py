@@ -1627,10 +1627,6 @@ def pagina_Conquistas(request):
     return render(request, 'Conquistas.html')
 
 
-def pagina_about(request):
-    return render(request, 'about.html')
-
-
 @login_required(login_url='login')
 def pagina_Configurações(request):
     try:
