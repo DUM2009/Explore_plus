@@ -2,7 +2,7 @@
   "missao_id": "celulas-organelos",
   "titulo": "Células e Organelos",
   "disciplina": "citologia",
-  "badge": { "icone": "🔬", "nome": "Mestre da Célula" },
+  "badge": { "icone": "<img src=\"/static/images/Emblema celula.png\" alt=\"Mestre da Célula\">", "icone_creditos": "Cell icons created by dDara - Flaticon (flaticon.com/free-icons/cell)", "nome": "Mestre da Célula" },
   "secoes": [
     {
       "secao_id": "descoberta-celula",
@@ -13,6 +13,7 @@
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
           "intro_imagem": "gancho_descoberta_celula.png",
           "mascote_texto": "Há 400 anos, ninguém sabia que o teu corpo é feito de milhares de milhões de \"compartimentos\" microscópicos. Como é que isso foi descoberto?",
           "ponte_texto": "Nos séculos seguintes, vários cientistas foram juntando novas peças a este puzzle, até chegarmos à Teoria Celular que conhecemos hoje. Conhece a seguir os principais marcos dessa descoberta.",
@@ -161,6 +162,7 @@
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
           "intro_imagem": "gancho_organelos.png",
           "mascote_texto": "Se uma célula fosse uma cidade, cada organelo teria o seu próprio \"emprego\". Vamos conhecer os trabalhadores desta cidade microscópica?",
           "intro_texto": "Vamos abrir uma célula eucariótica e conhecer, um a um, os organelos que a mantêm a funcionar.",
@@ -183,23 +185,15 @@
         {
           "tipo": "diagrama_interativo",
           "titulo": "Organelos exclusivos das células vegetais",
+          "imagem": "Célula vegetal.png",
+          "layout": "mapa",
           "cartao_estilo": true,
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "cloroplasto", "label": "Cloroplasto", "explicacao": "Organelo onde ocorre a fotossíntese — presente apenas em células vegetais e de algumas algas." },
-            { "id": "vacuolo_central", "label": "Vacúolo central", "explicacao": "Grande estrutura membranar que ocupa a maior parte do volume da célula vegetal, armazenando água, nutrientes e resíduos, e ajudando a manter a rigidez da célula (turgescência)." },
-            { "id": "parede_celular", "label": "Parede celular", "explicacao": "Camada rígida externa à membrana plasmática, feita principalmente de celulose, que dá proteção e suporte estrutural extra à célula vegetal." }
+            { "id": "cloroplasto", "label": "Cloroplasto", "pos": { "x": 76, "y": 20 }, "explicacao": "Organelo onde ocorre a fotossíntese — presente apenas em células vegetais e de algumas algas." },
+            { "id": "vacuolo_central", "label": "Vacúolo central", "pos": { "x": 70, "y": 54 }, "explicacao": "Grande estrutura membranar que ocupa a maior parte do volume da célula vegetal, armazenando água, nutrientes e resíduos, e ajudando a manter a rigidez da célula (turgescência)." },
+            { "id": "parede_celular", "label": "Parede celular", "pos": { "x": 6, "y": 48 }, "explicacao": "Camada rígida externa à membrana plasmática, feita principalmente de celulose, que dá proteção e suporte estrutural extra à célula vegetal." }
           ]
-        },
-        {
-          "tipo": "analogia",
-          "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "Imagina a célula como uma fábrica com departamentos especializados: o núcleo é o escritório de gestão, guardando os \"planos\" (DNA) de tudo o que a fábrica produz. O retículo endoplasmático rugoso e os ribossomas são a linha de produção, a fabricar proteínas. O complexo de Golgi é o departamento de embalagem e expedição, a preparar tudo para envio. A mitocôndria é a central elétrica, a fornecer energia a todos os outros departamentos. E os lisossomas são a equipa de limpeza e reciclagem, a decompor o que já não serve."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "A origem evolutiva surpreendente da mitocôndria e do cloroplasto",
-          "texto": "A teoria endossimbiótica, hoje amplamente aceite, propõe que as mitocôndrias e os cloroplastos não surgiram \"de raiz\" dentro das células eucarióticas — na verdade, eram bactérias independentes que, há mais de mil milhões de anos, foram \"engolidas\" por uma célula maior, e em vez de serem digeridas, estabeleceram uma relação de benefício mútuo permanente. É por isso que ambos os organelos têm o seu próprio DNA circular, semelhante ao das bactérias, e se reproduzem por divisão própria dentro da célula — como se ainda fossem, em parte, organismos independentes vivendo dentro de outro organismo."
         },
         {
           "tipo": "quiz_seccao",

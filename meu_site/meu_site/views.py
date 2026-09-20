@@ -40,7 +40,6 @@ def pagina_perfil(request):
         perfil = PerfilAluno.objects.only('id', 'user', 'pontos_xp', 'nivel', 'titulo_atual').get(user=request.user)
         perfil_legacy = True
     progresso = {} if perfil_legacy else (perfil.progresso_missoes or {})
-    percentagens = [int(progresso.get(missao, 0)) for missao in ('photosynthesis', 'mitosis', 'meiosis')]
     badges = {} if perfil_legacy else (perfil.conquistas or {})
     secoes = {} if perfil_legacy else (perfil.progresso_secoes or {})
 
@@ -49,70 +48,65 @@ def pagina_perfil(request):
         perfil.titulo_atual = titulo_nome
         perfil.save(update_fields=['titulo_atual'])
 
-    def cor_subtopico(pontuacao):
-        if pontuacao is None:
-            return 'gray'
-        if pontuacao >= 70:
-            return 'green'
-        if pontuacao >= 40:
-            return 'yellow'
-        return 'red'
+    # Metadados (categoria/descrição) das missões do motor genérico — os
+    # próprios missoes/<id>.json não têm um campo de descrição, então
+    # mantém-se aqui o mesmo texto já usado em index-missions.html.
+    METADADOS_MISSOES = {
+        'diversidade-organizacao-biologica': {
+            'categoria': 'Biodiversidade',
+            'descricao': 'Descobre como a vida se organiza, se classifica, e porque a biodiversidade importa.',
+        },
+        'biomoleculas': {
+            'categoria': 'Bioquímica',
+            'descricao': 'Descobre as moléculas que constroem todos os seres vivos.',
+        },
+        'celulas-organelos': {
+            'categoria': 'Citologia',
+            'descricao': 'Explora a unidade fundamental da vida e o "emprego" de cada organelo.',
+        },
+    }
 
-    definicoes_missoes = [
-        {
-            'id': 'photosynthesis',
-            'titulo': 'Fotossíntese',
-            'capitulo': 'Capítulo 1 · Biologia',
-            'categoria': 'Biologia',
-            'icone': '🌿',
-            'descricao': 'Continua a descobrir como as plantas transformam luz em energia.',
-            'url': 'mission-photosynthesis',
-            'subtopicos': [('fase-clara', 'Fase clara'), ('fase-escura', 'Fase escura')],
-        },
-        {
-            'id': 'mitosis',
-            'titulo': 'Mitose',
-            'capitulo': 'Capítulo 2 · Biologia',
-            'categoria': 'Biologia',
-            'icone': '🧫',
-            'descricao': 'Em breve: como uma célula se divide em duas células idênticas.',
-            'url': None,
-            'subtopicos': [('fases-mitose', 'Fases da mitose'), ('citocinese', 'Citocinese')],
-        },
-        {
-            'id': 'meiosis',
-            'titulo': 'Meiose',
-            'capitulo': 'Capítulo 3 · Biologia',
-            'categoria': 'Biologia',
-            'icone': '🧬',
-            'descricao': 'Em breve: como se formam as células sexuais.',
-            'url': None,
-            'subtopicos': [('meiose-1', 'Meiose I'), ('meiose-2', 'Meiose II')],
-        },
-    ]
+    missoes_lancadas_perfil = set()
+    try:
+        caminho_lancamento = settings.BASE_DIR.parent / 'missoes' / 'lancamento.json'
+        with open(caminho_lancamento, encoding='utf-8') as ficheiro:
+            configuracao_lancamento = json.load(ficheiro)
+        missoes_lancadas_perfil = {
+            chave for chave, visivel in configuracao_lancamento.items()
+            if visivel is True
+        }
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
 
+    # Só as que estão de facto jogáveis (têm ficheiro json E metadados) —
+    # as outras entradas de lancamento.json ainda aparecem como "Em breve"
+    # em /missions/, não têm progresso real para mostrar aqui.
     missoes = []
-    missoes_bloqueadas = False
-    for definicao in definicoes_missoes:
-        if not definicao['url']:
-            missoes_bloqueadas = True
+    for missao_id, metadados in METADADOS_MISSOES.items():
+        if missao_id not in missoes_lancadas_perfil:
             continue
-        secoes_missao = secoes.get(definicao['id'], {}) or {}
-        subtopicos = [
-            {'label': label, 'cor': cor_subtopico(secoes_missao.get(secao_id))}
-            for secao_id, label in definicao['subtopicos']
-        ]
+        caminho_json = settings.BASE_DIR.parent / 'missoes' / f'{missao_id}.json'
+        try:
+            with open(caminho_json, encoding='utf-8') as ficheiro:
+                missao_json = json.load(ficheiro)
+        except (FileNotFoundError, json.JSONDecodeError):
+            continue
         missoes.append({
-            'id': definicao['id'],
-            'titulo': definicao['titulo'],
-            'capitulo': definicao['capitulo'],
-            'categoria': definicao['categoria'],
-            'icone': definicao['icone'],
-            'descricao': definicao['descricao'],
-            'url': definicao['url'],
-            'percent': int(progresso.get(definicao['id'], 0)),
-            'subtopicos': subtopicos,
+            'id': missao_id,
+            'titulo': missao_json.get('titulo', missao_id),
+            'categoria': metadados['categoria'],
+            'icone': (missao_json.get('badge') or {}).get('icone', '🧬'),
+            'descricao': metadados['descricao'],
+            'url': 'missao',
+            'url_kwargs': {'missao_id': missao_id},
+            'percent': int(progresso.get(missao_id, 0)),
         })
+
+    # As já concluídas a 100% vão para o fim — o topo é para o que o aluno
+    # está mesmo a explorar agora (mais progresso primeiro).
+    missoes.sort(key=lambda missao: (missao['percent'] >= 100, -missao['percent']))
+
+    missoes_bloqueadas = len(missoes_lancadas_perfil) > len(missoes)
 
     definicoes_conquistas = [
         {'id': 'primeira-missao', 'nome': 'Primeiros Passos', 'icone': '🌱', 'descricao': 'Conclui a tua primeira missão.'},
@@ -136,8 +130,8 @@ def pagina_perfil(request):
         'xp_restante': (perfil.nivel * 100) - perfil.pontos_xp,
         'proximo_nivel': perfil.nivel + 1,
         'progresso_missoes': progresso,
-        'progresso_medio': round(sum(percentagens) / len(percentagens)),
-        'missoes_completas': sum(1 for percentagem in percentagens if percentagem >= 100),
+        'progresso_medio': round(sum(missao['percent'] for missao in missoes) / len(missoes)) if missoes else 0,
+        'missoes_completas': sum(1 for missao in missoes if missao['percent'] >= 100),
         'conquistas': badges,
         'conquistas_lista': conquistas_lista,
         'total_conquistas': sum(1 for desbloqueada in badges.values() if desbloqueada),

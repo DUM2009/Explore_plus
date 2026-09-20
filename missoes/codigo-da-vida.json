@@ -1,0 +1,212 @@
+{
+  "missao_id": "codigo-da-vida",
+  "titulo": "O Código da Vida",
+  "disciplina": "genetica",
+  "badge": { "icone": "🧬", "nome": "Mestre do Código Genético" },
+  "secoes": [
+    {
+      "secao_id": "adn-ao-cromossoma",
+      "titulo": "Do ADN ao cromossoma",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "mascote_texto": "O ADN de uma única célula tua, esticado, teria quase 2 metros de comprimento — mas cabe todo dentro de um núcleo microscópico. Como é que isso é possível?",
+          "ponte_texto": "A resposta está em vários níveis de organização, do ADN em si até ao cromossoma. Conhece-os a seguir.",
+          "titulo": "Do ADN ao cromossoma",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "adn", "label": "ADN", "explicacao": "Molécula em dupla hélice que guarda toda a informação genética de um ser vivo, escrita numa sequência de quatro bases azotadas (A, T, C, G)." },
+            { "id": "gene", "label": "Gene", "explicacao": "Um segmento de ADN que contém a informação necessária para produzir uma proteína específica ou determinar uma característica do organismo." },
+            { "id": "cromatina", "label": "Cromatina", "explicacao": "A forma como o ADN se apresenta na maior parte do ciclo de vida da célula — enrolado à volta de proteínas (histonas), como um fio à volta de um carrinho, para caber dentro do núcleo." },
+            { "id": "cromossoma", "label": "Cromossoma", "explicacao": "A forma mais condensada e organizada da cromatina, visível ao microscópio sobretudo durante a divisão celular — cada espécie tem um número característico de cromossomas (o ser humano tem 46)." },
+            { "id": "genoma", "label": "Genoma", "explicacao": "O conjunto de toda a informação genética (todo o ADN) de um organismo — no ser humano, distribuído por 23 pares de cromossomas." }
+          ],
+          "aprofundar": {
+            "titulo": "Quanto ADN cabe mesmo dentro de um núcleo?",
+            "texto": "Se esticasses todo o ADN de uma única célula humana, formarias um fio com cerca de 2 metros de comprimento — e ainda assim cabe dentro de um núcleo com apenas alguns milésimos de milímetro de diâmetro. Isto só é possível graças a vários níveis de enrolamento: o ADN enrola-se à volta de proteínas histonas formando nucleossomas (como contas num colar), que por sua vez se enrolam e condensam repetidamente até formar a cromatina e, no momento da divisão celular, os cromossomas bem organizados e compactos."
+          }
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um gene é:",
+              "opcoes": ["Um segmento de ADN com a informação para uma característica", "Um cromossoma inteiro"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Um cromossoma contém muitos genes diferentes ao longo do seu comprimento.",
+              "mascote_feedback_errado": "Um gene é apenas um segmento de ADN — um cromossoma inteiro contém muitos genes diferentes."
+            },
+            {
+              "pergunta": "O conjunto de todo o ADN de um organismo chama-se:",
+              "opcoes": ["Genoma", "Gene"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! O genoma é toda a informação genética — o gene é só uma pequena parte dela.",
+              "mascote_feedback_errado": "Chama-se genoma — o gene é apenas uma pequena parte dele."
+            },
+            {
+              "pergunta": "Os cromossomas ficam visíveis ao microscópio, de forma bem organizada e condensada, sobretudo:",
+              "opcoes": ["Durante a divisão celular", "Durante todo o ciclo de vida da célula, sem exceção"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Fora da divisão celular, o ADN está descondensado, como cromatina.",
+              "mascote_feedback_errado": "É sobretudo durante a divisão celular — no resto do tempo, o ADN está descondensado, como cromatina."
+            },
+            {
+              "pergunta": "A cromatina é:",
+              "opcoes": ["ADN enrolado à volta de proteínas histonas", "Uma proteína que substitui o ADN durante a divisão"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! As histonas ajudam o ADN, muito comprido, a caber dentro do núcleo.",
+              "mascote_feedback_errado": "A cromatina é o próprio ADN, enrolado à volta de proteínas histonas — não uma proteína que o substitui."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: o ser humano tem 46 cromossomas, organizados em 23 pares.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo! 23 pares — um de cada par vem da mãe, o outro do pai.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro — são 46 cromossomas, em 23 pares (um de cada par vem da mãe, o outro do pai)."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como o ADN se organiza, do gene ao cromossoma. A seguir, vamos descobrir como essa informação é mesmo lida — o código genético."
+        }
+      ]
+    },
+    {
+      "secao_id": "codigo-genetico",
+      "titulo": "O código genético",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "mascote_texto": "O código genético é lido em grupos de exatamente 3 letras — e é praticamente igual em todos os seres vivos, de uma bactéria a um elefante. Como é que isso funciona?",
+          "ponte_texto": "Conhece os conceitos-chave por trás dessa \"linguagem\" universal da vida.",
+          "titulo": "Como se lê o código genético",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "codao", "label": "Codão", "explicacao": "Uma sequência de três bases azotadas consecutivas do ADN/RNA que codifica um aminoácido específico ou um sinal de paragem — a \"palavra\" básica do código genético." },
+            { "id": "iniciacao", "label": "Codão de iniciação", "explicacao": "O codão AUG assinala onde começa a leitura da mensagem genética, e codifica sempre o aminoácido metionina." },
+            { "id": "stop", "label": "Codões STOP", "explicacao": "Três codões (UAA, UAG, UGA) não codificam nenhum aminoácido — assinalam o fim da sequência a traduzir, terminando a síntese da proteína." },
+            { "id": "universalidade", "label": "Universalidade do código", "explicacao": "Com raríssimas exceções, o código genético é o mesmo em todos os seres vivos — o mesmo codão codifica o mesmo aminoácido numa bactéria, numa planta ou num ser humano." },
+            { "id": "degenerescencia", "label": "Redundância (degenerescência)", "explicacao": "A maioria dos aminoácidos pode ser codificada por mais do que um codão diferente — o que torna o código genético mais tolerante a pequenos erros (mutações) na sequência." }
+          ],
+          "aprofundar": {
+            "titulo": "Porque é que o código genético é (quase) universal?",
+            "texto": "O facto de praticamente todos os seres vivos — de uma bactéria a uma baleia — usarem exatamente o mesmo código genético é uma das provas mais fortes de que toda a vida na Terra partilha um antepassado comum: se a vida tivesse surgido várias vezes, de forma independente, seria extremamente improvável que todos os organismos tivessem chegado exatamente ao mesmo código, por acaso. Esta universalidade é também o que torna possível a engenharia genética — inserir um gene humano numa bactéria, por exemplo, para produzir insulina, só funciona porque ambos \"leem\" o ADN da mesma forma."
+          }
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Uma trinca de bases que codifica um aminoácido chama-se:",
+              "opcoes": ["Codão", "Gene"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Um gene é composto por muitos codões seguidos.",
+              "mascote_feedback_errado": "Chama-se codão — um gene é composto por muitos codões seguidos."
+            },
+            {
+              "pergunta": "O codão de iniciação, que marca o início da síntese proteica, é:",
+              "opcoes": ["AUG", "UAA"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! O AUG codifica também o primeiro aminoácido, a metionina.",
+              "mascote_feedback_errado": "É o AUG — o UAA é, na verdade, um dos codões STOP."
+            },
+            {
+              "pergunta": "Os codões UAA, UAG e UGA têm em comum:",
+              "opcoes": ["Codificam todos o mesmo aminoácido", "Nenhum codifica um aminoácido — são sinais de paragem"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! São os três codões STOP, que terminam a síntese da proteína.",
+              "mascote_feedback_errado": "Na verdade, nenhum deles codifica um aminoácido — são os três codões STOP, que terminam a síntese da proteína."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: o código genético é completamente diferente de espécie para espécie.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! O código genético é, com raríssimas exceções, universal — praticamente igual em todos os seres vivos.",
+              "mascote_feedback_errado": "Na verdade é falso — o código genético é, com raríssimas exceções, universal, praticamente igual em todos os seres vivos."
+            },
+            {
+              "pergunta": "Vários codões diferentes poderem codificar o mesmo aminoácido chama-se:",
+              "opcoes": ["Degenerescência (redundância) do código genético", "Mutação"],
+              "correta": 0,
+              "mascote_feedback_certo": "Boa! Essa redundância torna o código mais tolerante a pequenos erros na sequência.",
+              "mascote_feedback_errado": "Chama-se degenerescência (ou redundância) do código genético — a mutação é outra coisa: uma alteração na sequência do ADN."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como o código genético é lido. Para terminar, vamos perceber porque é que, apesar de partilharmos quase todo o ADN uns com os outros, cada pessoa continua a ser geneticamente única."
+        }
+      ]
+    },
+    {
+      "secao_id": "genes-alelos-hereditariedade",
+      "titulo": "Genes, alelos e hereditariedade",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "mascote_texto": "Porque será que duas pessoas nunca têm exatamente o mesmo ADN (a não ser gémeos idênticos)?",
+          "ponte_texto": "A resposta está nestes conceitos — a chave para perceber a hereditariedade.",
+          "titulo": "Genes, alelos e hereditariedade",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "gene_alelo", "label": "Gene e alelo", "explicacao": "Um gene é uma \"posição\" no ADN com informação para uma característica; um alelo é cada uma das versões alternativas que esse gene pode ter (ex: o gene da cor dos olhos pode ter o alelo \"castanho\" ou o alelo \"azul\")." },
+            { "id": "genotipo", "label": "Genótipo", "explicacao": "A constituição genética de um indivíduo — o conjunto de alelos que possui para um ou mais genes." },
+            { "id": "fenotipo", "label": "Fenótipo", "explicacao": "As características observáveis de um indivíduo (físicas, fisiológicas, etc.), resultantes da interação entre o genótipo e o ambiente." },
+            { "id": "homo_hetero", "label": "Homozigótico vs. heterozigótico", "explicacao": "Um indivíduo é homozigótico para um gene se tiver dois alelos iguais, e heterozigótico se tiver dois alelos diferentes." },
+            { "id": "mutacao", "label": "Mutação", "explicacao": "Uma alteração na sequência do ADN — pode ser prejudicial, neutra, ou até vantajosa, e é a principal fonte de novos alelos e de variabilidade genética numa população." }
+          ],
+          "aprofundar": {
+            "titulo": "Porque nunca há duas pessoas com o mesmo ADN (mesmo entre gémeos... quase)",
+            "texto": "Todos os seres humanos partilham cerca de 99,9% da sequência de ADN — é essa semelhança que nos torna, biologicamente, uma só espécie. Mas esse 0,1% que varia de pessoa para pessoa, espalhado por milhões de posições ao longo do genoma, é mais do que suficiente para tornar cada indivíduo único (exceto gémeos idênticos, que partilham o mesmo ADN de origem). Essa variação surge sobretudo de mutações acumuladas ao longo de gerações, e da forma como os alelos dos pais se combinam de novas maneiras em cada descendente."
+          }
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "As diferentes versões possíveis de um mesmo gene chamam-se:",
+              "opcoes": ["Alelos", "Genomas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Por exemplo, os alelos \"castanho\" e \"azul\" do gene da cor dos olhos.",
+              "mascote_feedback_errado": "Chamam-se alelos — o genoma é todo o ADN de um organismo, não uma versão de um gene."
+            },
+            {
+              "pergunta": "O conjunto de alelos que um indivíduo possui chama-se o seu:",
+              "opcoes": ["Genótipo", "Fenótipo"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! O fenótipo são as características que daí resultam, visíveis por fora.",
+              "mascote_feedback_errado": "Chama-se genótipo — o fenótipo são as características observáveis que daí resultam."
+            },
+            {
+              "pergunta": "Um indivíduo com dois alelos diferentes para o mesmo gene diz-se:",
+              "opcoes": ["Homozigótico", "Heterozigótico"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Homozigótico seria se os dois alelos fossem iguais.",
+              "mascote_feedback_errado": "Diz-se heterozigótico — homozigótico seria se os dois alelos fossem iguais."
+            },
+            {
+              "pergunta": "Uma alteração na sequência do ADN chama-se:",
+              "opcoes": ["Mutação", "Tradução"],
+              "correta": 0,
+              "mascote_feedback_certo": "Boa! As mutações são a principal fonte de novos alelos.",
+              "mascote_feedback_errado": "Chama-se mutação — a tradução é o processo de produzir uma proteína a partir do RNA."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: o fenótipo de um indivíduo depende só do genótipo, nunca do ambiente.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! O fenótipo resulta da interação entre o genótipo e o ambiente.",
+              "mascote_feedback_errado": "Na verdade é falso — o fenótipo resulta da interação entre o genótipo e o ambiente, não só do genótipo."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão O Código da Vida. Já sabes como o ADN se organiza em genes e cromossomas, como o código genético é lido em codões, e porque é que cada pessoa é geneticamente única. 🧬🐢"
+        }
+      ]
+    }
+  ]
+}

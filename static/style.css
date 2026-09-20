@@ -1135,7 +1135,7 @@ gap:20px;
     align-items:center;
     gap:12px;
     margin:0 0 20px;
-    color:#1c1c1c;
+    color: var(--sp-fg, #1c1c1c);
     font-size:1.3rem;
     font-weight:700;
 }
@@ -4699,7 +4699,7 @@ background:#27ae60;
    ===================================================== */
 
 html.dark-mode body{
-    background:linear-gradient(180deg,#111814,#1a221c);
+    background:#111113;
     color:#e7ede8;
 }
 
@@ -5058,7 +5058,7 @@ body.shadcn-profile .profile-rank-subtitle {
 /* MODO ESCURO */
 
 html.dark-mode body {
-    background: #17221B;
+    background: #111113;
     color: #E8EEE9;
 }
 

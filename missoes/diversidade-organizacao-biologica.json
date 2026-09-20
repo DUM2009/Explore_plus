@@ -12,6 +12,7 @@
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
           "mascote_texto": "Para estudar a natureza, os ecólogos organizam a vida em níveis, cada um mais amplo do que o anterior — desde um único organismo até ao planeta inteiro.",
           "intro_imagem": "Lago com peixes.png",
           "intro_texto": "Um peixe sozinho não é um ecossistema. Mas o peixe, mais os outros peixes, mais as algas, mais o rio onde vivem... isso já é.",
@@ -178,6 +179,7 @@
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
           "mascote_texto": "Achas que \"biodiversidade\" é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra. 🐢",
           "ponte_texto": "Vamos descobrir os três níveis que compõem a biodiversidade de um ecossistema.",
           "titulo": "Os três níveis de biodiversidade",

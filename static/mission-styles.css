@@ -361,6 +361,15 @@ html[data-theme="dark"] .mission-intro-back:hover {
     gap: 5px;
 }
 
+/* A mission's badge.icone can be a raw <img> (see missao-engine.js) instead
+   of an inline svg when it's a downloaded icon rather than a lucide one —
+   constrain it to the same size as the other inline meta icons. */
+.mo-hero-meta span img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
 /* minmax(0, ...) rather than a bare `1fr`: a bare `1fr` track is really
    minmax(auto, 1fr), and that auto minimum is the track's content's own
    min-content size. .mo-index-row-btn has several flex-shrink:0 children
@@ -1139,6 +1148,15 @@ object.card-visual {
     aspect-ratio: 960 / 420;
     height: auto;
     vertical-align: middle;
+}
+
+/* The visible output of a chroma-keyed decorative video (e.g. the
+   water-molecule clip) — the actual <video> stays off-screen at 1x1px
+   as a decode source (see startChromaKeyLoop in missao-engine.js, which
+   redraws each frame here with the white backing keyed to transparent),
+   so only this canvas needs the normal .card-visual framing. */
+canvas.me-video-chroma-canvas {
+    border-radius: 0;
 }
 
 /* Section intro screen: big question, hero image, a summary card (icon +

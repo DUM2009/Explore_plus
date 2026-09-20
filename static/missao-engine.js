@@ -1356,7 +1356,10 @@
 
             const diagramaHtml = `
                 ${isTimeline ? tituloPonteHtml : (screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : '')}
-                ${(isEscada || isArvore || isMapa) ? '' : `<img class="card-visual" src="/static/images/${encodeURIComponent(screen.imagem)}" alt="${escapeHtml(screen.titulo || '')}" onerror="this.style.display='none'">`}
+                ${(isEscada || isArvore || isMapa) ? '' : (screen.video
+                    ? `<video class="me-video-chroma-source" data-chroma-key="white" src="/static/${encodeURIComponent(screen.video)}" autoplay loop muted playsinline style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></video>
+                       <canvas class="card-visual me-video-chroma-canvas"></canvas>`
+                    : `<img class="card-visual" src="/static/images/${encodeURIComponent(screen.imagem)}" alt="${escapeHtml(screen.titulo || '')}" onerror="this.style.display='none'">`)}
                 ${isTimeline ? '' : instrucaoHtml}
                 ${pontosHtml}
                 ${isTimeline ? instrucaoHtml : ''}
@@ -1477,6 +1480,7 @@
                     <div class="me-analogia-cartao me-gancho-card">
                         ${imagemHtml}
                         <div class="me-analogia-texto-bloco">${paragrafosHtml}</div>
+                        ${this.aprofundarHtml(screen.aprofundar)}
                     </div>
                 `;
             }
@@ -1730,7 +1734,63 @@
             });
         }
 
+        /** Vídeos decorativos (ex: molécula a girar) vêm com fundo branco
+         *  gravado nos próprios pixels — sem canal alfa num .mp4, um
+         *  filtro CSS não consegue distinguir "fundo branco" de "peça
+         *  branca da própria molécula" (ambos ficam com a mesma
+         *  luminosidade). Por isso desenha-se cada frame num <canvas>
+         *  escondido atrás do vídeo e torna-se transparente só o que está
+         *  muito perto do branco puro do fundo (ver amostragem em
+         *  sample_video_pixels: cantos ~253-255, molécula bem mais escura
+         *  que isso) — a molécula em si fica intacta. */
+        startChromaKeyLoop(video) {
+            const canvas = video.nextElementSibling;
+            if (!canvas || !canvas.classList.contains('me-video-chroma-canvas')) return;
+            const ctx = canvas.getContext('2d', { willReadFrequently: true });
+            const NEAR = 10;
+            const FAR = 60;
+            const draw = () => {
+                if (!video.isConnected || !canvas.isConnected) return;
+                if (video.videoWidth && video.videoHeight) {
+                    if (canvas.width !== video.videoWidth || canvas.height !== video.videoHeight) {
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                    }
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    const frame = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = frame.data;
+                    for (let i = 0; i < data.length; i += 4) {
+                        const dist = (255 - data[i]) + (255 - data[i + 1]) + (255 - data[i + 2]);
+                        if (dist <= NEAR) {
+                            data[i + 3] = 0;
+                        } else if (dist < FAR) {
+                            data[i + 3] = Math.round(255 * (dist - NEAR) / (FAR - NEAR));
+                        }
+                    }
+                    ctx.putImageData(frame, 0, 0);
+                }
+                video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
+            };
+            video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
+        }
+
         bindScreenInteractions(section, screen, screenIndex) {
+            // Re-render substitui o <video> por um elemento novo a cada
+            // vez (troca de ponto, popup, etc.) — o atributo autoplay do
+            // HTML nem sempre chega a tempo de arrancar (a promise de
+            // play() pode ser interrompida pela própria substituição do
+            // nó), ficando um vídeo parado e invisível. Chamar .play()
+            // explicitamente aqui, já muted, garante que arranca sempre.
+            this.root.querySelectorAll('video[autoplay]').forEach((video) => {
+                const playPromise = video.play();
+                if (playPromise && typeof playPromise.catch === 'function') {
+                    playPromise.catch(() => {});
+                }
+            });
+            this.root.querySelectorAll('video[data-chroma-key]').forEach((video) => {
+                this.startChromaKeyLoop(video);
+            });
+
             if (screen.tipo === 'diagrama_interativo') {
                 this.bindDiagramaChips(screen);
             }
@@ -1865,12 +1925,13 @@
         renderCelebration() {
             const totalXP = this.totalMissionXP();
             const confettiHtml = this.buildConfettiHtml(60);
+            const badgeIconHtml = this.missao.badge?.icone || '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>';
 
             this.root.innerHTML = `
                 <div class="me-shell me-shell--celebracao">
                     <div class="me-confetti">${confettiHtml}</div>
                     <div class="me-celebracao-card">
-                        <span class="me-celebracao-badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg></span>
+                        <span class="me-celebracao-badge">${badgeIconHtml}</span>
                         <h1>Missão concluída!</h1>
                         <p>Completaste "${escapeHtml(this.missao.titulo)}".</p>
                         <div class="me-celebracao-xp">

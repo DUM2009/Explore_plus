@@ -11,15 +11,11 @@
       "tempo_estimado_min": 5,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "mascote_texto": "A molécula mais importante para a vida não tem nada de exótico — está no copo que tens ao lado. 🐢",
-          "texto": "Vamos perceber porque é que a água é tão especial para as células.",
-          "imagem": "constituicao_quimica_celula.png"
-        },
-        {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "mascote_texto": "A molécula mais importante para a vida não tem nada de exótico — está no copo que tens ao lado. Vamos perceber porque é que a água é tão especial para as células.",
           "titulo": "As funções da água na célula",
-          "imagem": "agua_sais_minerais.png",
+          "video": "Molécula a girar.mp4",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "solvente", "label": "Solvente universal", "explicacao": "A água dissolve a maioria das substâncias polares — é por isso que quase todas as reações químicas da célula acontecem dissolvidas em água." },
@@ -30,13 +26,13 @@
         },
         {
           "tipo": "analogia",
+          "cartao_estilo": true,
           "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 Cada molécula de água é como um pequeno íman: o lado do hidrogénio fica ligeiramente positivo, o lado do oxigénio fica ligeiramente negativo. Por isso, o hidrogénio de uma molécula de água é atraído pelo oxigénio da molécula vizinha, formando uma ligação de hidrogénio — como uma corrente de ímanes ligeiramente inclinados, todos a puxarem-se uns aos outros. É essa \"atração em cadeia\" que dá à água tantas das suas propriedades especiais."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Sais minerais: os parceiros discretos da água",
-          "texto": "Além da água, as células contêm sais minerais — compostos inorgânicos como o sódio, o potássio, o cálcio ou o magnésio — que, apesar de não serem tão \"protagonistas\" como a água, são essenciais para inúmeras funções: regulam o equilíbrio de líquidos dentro e fora da célula, participam na transmissão de impulsos nervosos, são necessários para a contração muscular, e entram na constituição de estruturas como os ossos. Muitos deles dissolvem-se facilmente em água — precisamente por esta ser tão boa solvente — o que lhes permite circular livremente pelo organismo."
+          "texto": "💡 Cada molécula de água é como um pequeno íman: o lado do hidrogénio fica ligeiramente positivo, o lado do oxigénio fica ligeiramente negativo. Por isso, o hidrogénio de uma molécula de água é atraído pelo oxigénio da molécula vizinha, formando uma ligação de hidrogénio — como uma corrente de ímanes ligeiramente inclinados, todos a puxarem-se uns aos outros. É essa \"atração em cadeia\" que dá à água tantas das suas propriedades especiais.",
+          "aprofundar": {
+            "titulo": "Sais minerais: os parceiros discretos da água",
+            "texto": "Além da água, as células contêm sais minerais — compostos inorgânicos como o sódio, o potássio, o cálcio ou o magnésio — que, apesar de não serem tão \"protagonistas\" como a água, são essenciais para inúmeras funções: regulam o equilíbrio de líquidos dentro e fora da célula, participam na transmissão de impulsos nervosos, são necessários para a contração muscular, e entram na constituição de estruturas como os ossos. Muitos deles dissolvem-se facilmente em água — precisamente por esta ser tão boa solvente — o que lhes permite circular livremente pelo organismo."
+          }
         },
         {
           "tipo": "quiz_seccao",
@@ -88,12 +84,9 @@
       "tempo_estimado_min": 5,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "mascote_texto": "A colher de açúcar no teu chá e a parede de uma árvore têm mais em comum do que imaginas — ambas são feitas da mesma \"peça\" básica. 🐢",
-          "texto": "Vamos conhecer os glícidos, desde a unidade mais simples até às cadeias gigantes."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "mascote_texto": "A colher de açúcar no teu chá e a parede de uma árvore têm mais em comum do que imaginas — ambas são feitas da mesma \"peça\" básica. Vamos conhecer os glícidos, desde a unidade mais simples até às cadeias gigantes. 🐢",
           "titulo": "Do açúcar simples às cadeias gigantes",
           "imagem": "glicidos_tipos.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -107,6 +100,7 @@
         },
         {
           "tipo": "analogia",
+          "cartao_estilo": true,
           "mascote_texto": "Pensa nisto como... 🐢",
           "texto": "💡 Pensa num monossacarídeo como um único tijolo, um oligossacarídeo como um punhado de tijolos colados entre si, e um polissacarídeo como uma parede inteira construída com milhares desses tijolos. E tal como uma parede pode servir para guardar coisas lá dentro (uma despensa = glicogénio/amido) ou para dar estrutura a um edifício (uma parede-mestra = celulose), os polissacarídeos também têm essas duas grandes funções: reserva ou estrutura."
         },
@@ -171,6 +165,7 @@
         },
         {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
           "titulo": "Os três tipos de lípidos",
           "imagem": "lipidos_tipos.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -182,6 +177,7 @@
         },
         {
           "tipo": "analogia",
+          "cartao_estilo": true,
           "mascote_texto": "Pensa nisto como... 🐢",
           "texto": "💡 Imagina um grupo de pessoas apanhadas por um aguaceiro: a \"cabeça\" delas (hidrofílica) não se importa de ficar molhada, mas os \"pés\" (as caudas hidrofóbicas) querem ficar bem longe da água. O jeito mais natural de se organizarem é ficarem de pé, em duas filas viradas de costas uma para a outra, com as cabeças viradas para fora (para a água) e os pés escondidos no meio, longe dela. É exatamente essa a forma como os fosfolípidos se organizam sozinhos — em duas camadas — para formar a membrana de qualquer célula."
         },
@@ -246,6 +242,7 @@
         },
         {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
           "titulo": "As muitas funções das proteínas",
           "imagem": "proteinas_funcoes.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -259,6 +256,7 @@
         },
         {
           "tipo": "analogia",
+          "cartao_estilo": true,
           "mascote_texto": "Pensa nisto como... 🐢",
           "texto": "💡 Se os glícidos são a gasolina e os lípidos o depósito de reserva, as proteínas são como uma equipa inteira de funcionários especializados: uns constroem e reparam (função estrutural), uns aceleram o trabalho todo (enzimas), uns defendem a entrada do prédio (anticorpos), uns fazem entregas porta-a-porta (transporte) e uns dão ordens ao resto da equipa (hormonas). Uma única categoria de biomolécula, com dezenas de \"profissões\" diferentes."
         },
@@ -323,6 +321,7 @@
         },
         {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
           "titulo": "O nucleótido: a peça base",
           "imagem": "acidos_nucleicos_dna_rna.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -334,6 +333,7 @@
         },
         {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
           "titulo": "DNA vs. RNA",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
@@ -343,6 +343,7 @@
         },
         {
           "tipo": "analogia",
+          "cartao_estilo": true,
           "mascote_texto": "Pensa nisto como... 🐢",
           "texto": "💡 O DNA é como o exemplar original de um livro de receitas, guardado a sete chaves num cofre (o núcleo) — precioso e raramente manuseado diretamente. O RNA é como uma fotocópia rápida de uma única receita, feita para sair do cofre e ir até à \"cozinha\" (os ribossomas), onde a proteína é de facto preparada. Assim, o original nunca se desgasta nem se perde — só as cópias de trabalho é que andam de um lado para o outro."
         },
