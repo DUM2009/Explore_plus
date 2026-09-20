@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos e Condições de Acesso | Explore+</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
+    <style>
+        .legal-page{
+            max-width:820px;
+            margin:0 auto;
+            padding:60px 8% 100px;
+        }
+        .legal-page .legal-header{
+            margin-bottom:40px;
+        }
+        .legal-page .legal-header p{
+            color:#5a5a5a;
+            margin-top:8px;
+        }
+        .legal-page h1{
+            font-size:2rem;
+            color:#1f8a5b;
+        }
+        .legal-page h2{
+            font-size:1.25rem;
+            color:#1f2a1f;
+            margin:36px 0 12px;
+        }
+        .legal-page p,
+        .legal-page li{
+            line-height:1.7;
+            color:#333;
+            margin-bottom:12px;
+        }
+        .legal-page ul,
+        .legal-page ol{
+            padding-left:22px;
+            margin-bottom:12px;
+        }
+        .legal-page a{
+            color:#1f8a5b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="/"><img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+"></a>
+        </div>
+        <nav>
+            <a href="/login/" class="nav-plain">Login</a>
+            <a href="/login/" class="nav-cta">Sign in</a>
+        </nav>
+    </header>
+
+    <main class="legal-page">
+        <div class="legal-header">
+            <h1>Termos e Condições de Acesso</h1>
+            <p>Última atualização: {% now "j \\d\\e F \\d\\e Y" %}</p>
+        </div>
+
+        <p>
+            Bem-vindo(a) à Explore+. Ao aceder ou utilizar a nossa plataforma, aceitas os termos e
+            condições descritos abaixo. Por favor, lê-os com atenção antes de continuares a utilizar
+            os nossos serviços.
+        </p>
+
+        <h2>1. Definições</h2>
+        <p>
+            "Explore+", "nós" ou "plataforma" refere-se ao serviço disponibilizado através deste site
+            e das suas funcionalidades associadas. "Utilizador" ou "tu" refere-se a qualquer pessoa
+            que aceda ou utilize a Explore+, incluindo alunos, encarregados de educação e visitantes.
+        </p>
+
+        <h2>2. Aceitação dos Termos</h2>
+        <p>
+            Ao criar uma conta ou utilizar a Explore+, confirmas que leste, compreendeste e aceitas
+            ficar vinculado(a) a estes Termos e Condições, bem como à nossa Política de Privacidade.
+            Se não concordares com algum destes termos, não deves utilizar a plataforma.
+        </p>
+
+        <h2>3. Elegibilidade e Contas</h2>
+        <ul>
+            <li>A criação de conta requer um endereço de email válido e informação verdadeira.</li>
+            <li>És responsável por manter a confidencialidade da tua palavra-passe e por toda a
+                atividade realizada na tua conta.</li>
+            <li>Utilizadores menores de idade devem utilizar a plataforma com o conhecimento e
+                supervisão de um encarregado de educação.</li>
+            <li>Reservamo-nos o direito de suspender ou encerrar contas que violem estes termos.</li>
+        </ul>
+
+        <h2>4. Utilização da Plataforma</h2>
+        <p>Ao usares a Explore+, comprometes-te a:</p>
+        <ul>
+            <li>Utilizar a plataforma apenas para fins educativos e pessoais, de forma lícita.</li>
+            <li>Não partilhar a tua conta com terceiros nem tentar aceder a contas de outros
+                utilizadores.</li>
+            <li>Não copiar, distribuir ou reproduzir conteúdos da plataforma sem autorização.</li>
+            <li>Não tentar interferir com o funcionamento normal do serviço, incluindo através de
+                engenharia inversa, automação abusiva ou tentativas de acesso não autorizado.</li>
+        </ul>
+
+        <h2>5. Planos e Pagamentos</h2>
+        <p>
+            A Explore+ disponibiliza um plano gratuito e um plano pago ("SuperExplore"), com acesso a
+            funcionalidades adicionais mediante subscrição. Os pagamentos são processados através de
+            um prestador de serviços de pagamento terceiro (Stripe). A subscrição renova-se
+            automaticamente até ser cancelada pelo utilizador, podendo o cancelamento ser feito a
+            qualquer momento na área de gestão de subscrição.
+        </p>
+
+        <h2>6. Propriedade Intelectual</h2>
+        <p>
+            Todos os conteúdos disponibilizados na Explore+ — incluindo textos, missões, testes,
+            imagens, logótipos e código — são propriedade da Explore+ ou dos seus licenciadores, e
+            estão protegidos pelas leis de direitos de autor aplicáveis. Nenhum conteúdo pode ser
+            reutilizado comercialmente sem autorização prévia por escrito.
+        </p>
+
+        <h2>7. Conteúdo Gerado por Inteligência Artificial</h2>
+        <p>
+            Algumas funcionalidades da Explore+ (como o assistente "Kim") utilizam modelos de
+            inteligência artificial para gerar respostas e correções. Ainda que procuremos garantir
+            rigor científico, estas respostas podem conter imprecisões e não substituem o
+            acompanhamento de um professor.
+        </p>
+
+        <h2>8. Limitação de Responsabilidade</h2>
+        <p>
+            A Explore+ é disponibilizada "tal como está", sem garantias de disponibilidade
+            ininterrupta ou de ausência de erros. Não nos responsabilizamos por danos indiretos
+            resultantes da utilização ou impossibilidade de utilização da plataforma.
+        </p>
+
+        <h2>9. Alterações aos Termos</h2>
+        <p>
+            Podemos atualizar estes Termos e Condições periodicamente. Alterações significativas
+            serão comunicadas através da plataforma ou por email. A utilização continuada da
+            Explore+ após uma alteração implica a aceitação dos novos termos.
+        </p>
+
+        <h2>10. Contactos</h2>
+        <p>
+            Para qualquer questão relacionada com estes Termos e Condições, contacta-nos através de
+            <a href="mailto:exploremore.pt26@gmail.com">exploremore.pt26@gmail.com</a>.
+        </p>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>© {% now "Y" %} Explore+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

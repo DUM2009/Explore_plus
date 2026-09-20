@@ -24,6 +24,9 @@ from . import views  # Importa o ficheiro views que criaste
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.pagina_inicial, name='pagina_inicial'),  # Rota para a tua página inicial
+    path('termos/', views.pagina_termos, name='termos'),
+    path('privacidade/', views.pagina_privacidade, name='privacidade'),
+    path('cookies/', views.pagina_cookies, name='cookies'),
     path('login/', views.pagina_login, name='login'),
     path('signup/', views.pagina_signup, name='signup'),
     path('perfil/', views.pagina_perfil, name='perfil'),

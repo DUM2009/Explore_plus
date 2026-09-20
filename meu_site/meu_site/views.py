@@ -25,6 +25,18 @@ def redirecionar_apos_autenticacao(user):
 def pagina_inicial(request):
     return render(request, 'index.html')
 
+
+def pagina_termos(request):
+    return render(request, 'termos.html')
+
+
+def pagina_privacidade(request):
+    return render(request, 'privacidade.html')
+
+
+def pagina_cookies(request):
+    return render(request, 'cookies.html')
+
 @login_required(login_url='login')
 def pagina_mission(request):
     return render(request, 'mission.html')

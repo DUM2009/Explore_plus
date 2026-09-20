@@ -36,7 +36,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 
-padding:22px 8%;
+padding:22px 8% 12px;
 
 background:white;
 
@@ -53,7 +53,7 @@ body.shadcn-profile{
 }
 
 header .logo img {
-    width:220px;
+    width:150px;
     height:auto;
 }
 
@@ -304,7 +304,7 @@ header nav a.nav-plain:hover{
     justify-content:space-between;
     align-items:center;
     gap:80px;
-    padding:70px 8% 40px;
+    padding:70px 8% 60px;
     min-height:65vh;
     background:white;
 }
@@ -313,24 +313,176 @@ header nav a.nav-plain:hover{
     flex:1;
 }
 
+.hero-badge{
+    position:relative;
+    z-index:2;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 16px 8px 8px;
+    border-radius:999px;
+    background:#f4f4f1;
+    border:1px solid rgba(0,0,0,.06);
+    font-size:.85rem;
+    font-weight:600;
+    color:#333;
+    margin-bottom:24px;
+}
+
+.hero-badge-avatars{
+    display:flex;
+}
+
+.hero-badge-avatars img{
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid white;
+    background:#e7f3ec;
+    margin-left:-10px;
+}
+
+.hero-badge-avatars img:first-child{
+    margin-left:0;
+}
+
 .hero-left h1{
     position:relative;
     z-index:2;
     width: 100%;
     font-family:'Playfair Display', Georgia, 'Times New Roman', serif;
     font-weight:600;
-    font-size:4.5rem;
-    line-height:1.1;
-    margin-bottom:25px;
+    font-size:2.9rem;
+    line-height:1.2;
+    margin-bottom:22px;
+}
+
+.hero-left h1 .highlight{
+    color:#1f8a5b;
 }
 
 .hero-left p{
     position:relative;
     z-index:2;
-    font-size:1.3rem;
-    line-height:1.8;
+    font-size:1.15rem;
+    line-height:1.7;
     color:#555;
-    margin-bottom:35px;
+    margin-bottom:28px;
+    max-width:560px;
+}
+
+.hero-checklist{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px 24px;
+    margin-bottom:32px;
+}
+
+.hero-checklist-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#444;
+    font-size:.95rem;
+}
+
+.hero-checklist-item svg{
+    flex:none;
+}
+
+.hero-buttons{
+    position:relative;
+    z-index:2;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.hero-btn-primary{
+    background:#1f8a5b;
+    color:white;
+    border:none;
+    padding:16px 28px;
+    border-radius:999px;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.hero-btn-primary:hover{
+    filter:brightness(1.08);
+    transform:translateY(-2px);
+}
+
+.hero-btn-secondary{
+    background:white;
+    color:#222;
+    border:1px solid rgba(0,0,0,.15);
+    padding:16px 28px;
+    border-radius:999px;
+    font-size:1rem;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.hero-btn-secondary:hover{
+    background:#f7f7f7;
+    transform:translateY(-2px);
+}
+
+.hero-float{
+    position:absolute;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:white;
+    border-radius:14px;
+    padding:10px 14px;
+    box-shadow:0 12px 25px rgba(0,0,0,.12);
+    font-size:.78rem;
+    pointer-events:none;
+    white-space:nowrap;
+}
+
+.hero-float strong{
+    display:block;
+    color:#222;
+    font-size:.82rem;
+}
+
+.hero-float span{
+    color:#888;
+}
+
+.hero-float-highlight{
+    color:#1f8a5b !important;
+    font-weight:700;
+}
+
+.hero-float-1{
+    top:8%;
+    left:-4%;
+}
+
+.hero-float-2{
+    top:4%;
+    left:60%;
+}
+
+.hero-float-3{
+    bottom:10%;
+    left:-6%;
+}
+
+.hero-float-4{
+    bottom:6%;
+    left:65%;
 }
 
 .hero-right{
@@ -718,6 +870,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     flex-direction:column;
     align-items:flex-start;
     gap:16px;
+    margin-left:60px;
 }
 
 .mentor-avatar{
@@ -725,15 +878,18 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     height:220px;
     border-radius:24px;
     overflow:hidden;
-    background:linear-gradient(160deg,#1f8a5b,#7fd6ac);
+    background:linear-gradient(160deg,#7fd6ac,#c3ecd9);
     box-shadow:0 20px 40px rgba(31,138,91,.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .mentor-avatar img,
 .mentor-avatar video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+    width:85%;
+    height:85%;
+    object-fit:contain;
 }
 
 .mentor-badge{
@@ -788,6 +944,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 
     .mentor-avatar-wrap{
         align-items:center;
+        margin-left:0;
     }
 
     .mentor-list li,
@@ -3580,7 +3737,7 @@ padding:72px 7%;
 }
 
 .hero-left h1{
-font-size:3.6rem;
+font-size:2.5rem;
 }
 
 }
@@ -5088,14 +5245,14 @@ background:#27ae60;
 .area-animation {
     position: absolute;
     top: 0;
-    right: 0;
+    right: -160px;
 
     width: 65%;
     height: 100%;
 
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
 
     z-index: 1;
 
@@ -5103,14 +5260,28 @@ background:#27ae60;
     pointer-events: none;
 }
 
+.hero-blob {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(92%, 620px);
+    height: 92%;
+    transform: translate(-50%, -50%);
+    background: url('/static/images/Fundo hero moleculas.png') center / cover no-repeat;
+    border-radius: 32px;
+    z-index: 0;
+    pointer-events: none;
+}
+
 .area-animation .animation {
-    width: 700px;
+    position: relative;
+    z-index: 1;
+    width: auto;
     max-width: none;
-    height: auto;
+    height: 95%;
+    max-height: 95%;
 
     object-fit: contain;
-
-    transform: translateX(20px);
 
     pointer-events: none;
 }
@@ -5134,6 +5305,11 @@ background:#27ae60;
         font-size: 3rem;
     }
 
+    .hero-left p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
     .area-animation {
         position: relative;
         width: 100%;
@@ -5146,6 +5322,27 @@ background:#27ae60;
         width: 100%;
         max-width: 550px;
         transform: none;
+    }
+
+    .hero-badge{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-checklist{
+        grid-template-columns:1fr;
+        text-align:left;
+        max-width:360px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-float{
+        display:none;
     }
 }
 

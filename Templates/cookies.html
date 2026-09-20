@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Cookies | Explore+</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
+    <style>
+        .legal-page{
+            max-width:820px;
+            margin:0 auto;
+            padding:60px 8% 100px;
+        }
+        .legal-page .legal-header{
+            margin-bottom:40px;
+        }
+        .legal-page .legal-header p{
+            color:#5a5a5a;
+            margin-top:8px;
+        }
+        .legal-page h1{
+            font-size:2rem;
+            color:#1f8a5b;
+        }
+        .legal-page h2{
+            font-size:1.25rem;
+            color:#1f2a1f;
+            margin:36px 0 12px;
+        }
+        .legal-page p,
+        .legal-page li{
+            line-height:1.7;
+            color:#333;
+            margin-bottom:12px;
+        }
+        .legal-page ul,
+        .legal-page ol{
+            padding-left:22px;
+            margin-bottom:12px;
+        }
+        .legal-page a{
+            color:#1f8a5b;
+        }
+        .legal-page table{
+            width:100%;
+            border-collapse:collapse;
+            margin-bottom:20px;
+        }
+        .legal-page th,
+        .legal-page td{
+            text-align:left;
+            padding:10px 12px;
+            border-bottom:1px solid rgba(0,0,0,.08);
+            vertical-align:top;
+        }
+        .legal-page th{
+            color:#1f2a1f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="/"><img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+"></a>
+        </div>
+        <nav>
+            <a href="/login/" class="nav-plain">Login</a>
+            <a href="/login/" class="nav-cta">Sign in</a>
+        </nav>
+    </header>
+
+    <main class="legal-page">
+        <div class="legal-header">
+            <h1>Política de Cookies</h1>
+            <p>Última atualização: {% now "j \\d\\e F \\d\\e Y" %}</p>
+        </div>
+
+        <p>
+            Esta Política de Cookies explica o que são cookies, como a Explore+ os utiliza e como
+            podes geri-los. Para mais informações sobre como tratamos os teus dados pessoais, consulta
+            a nossa <a href="{% url 'privacidade' %}">Política de Privacidade</a>.
+        </p>
+
+        <h2>1. O que são Cookies?</h2>
+        <p>
+            Cookies são pequenos ficheiros de texto guardados no teu dispositivo quando visitas um
+            website. Permitem que a plataforma reconheça o teu navegador e memorize determinadas
+            informações, como as tuas preferências ou o facto de teres a sessão iniciada.
+        </p>
+
+        <h2>2. Como Utilizamos os Cookies</h2>
+        <p>
+            A Explore+ utiliza cookies principalmente para garantir o funcionamento essencial da
+            plataforma, nomeadamente para manteres a sessão iniciada e para proteger a tua conta.
+            Não utilizamos cookies de publicidade de terceiros.
+        </p>
+
+        <h2>3. Tipos de Cookies Utilizados</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Finalidade</th>
+                    <th>Duração</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cookies essenciais (sessão)</td>
+                    <td>Mantêm-te autenticado(a) e garantem a segurança da tua conta enquanto usas a
+                        plataforma.</td>
+                    <td>Até saíres da conta ou a sessão expirar</td>
+                </tr>
+                <tr>
+                    <td>Cookies de segurança (CSRF)</td>
+                    <td>Protegem os formulários da plataforma contra pedidos maliciosos de terceiros.
+                    </td>
+                    <td>Sessão</td>
+                </tr>
+                <tr>
+                    <td>Cookies de pagamento</td>
+                    <td>Definidos pelo nosso prestador de pagamentos (Stripe) durante o processo de
+                        subscrição do plano SuperExplore.</td>
+                    <td>Definida pela Stripe</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            Os cookies essenciais e de segurança não podem ser desativados sem comprometer o
+            funcionamento da plataforma, uma vez que não recorremos a cookies de publicidade ou de
+            rastreio analítico de terceiros.
+        </p>
+
+        <h2>4. Como Gerir os Cookies</h2>
+        <p>
+            A maioria dos navegadores permite controlar e eliminar cookies através das respetivas
+            definições. Podes configurar o teu navegador para recusar cookies ou para te avisar
+            quando um cookie é enviado. No entanto, ao desativares os cookies essenciais, algumas
+            funcionalidades da Explore+ — como manter a sessão iniciada — deixarão de funcionar
+            corretamente.
+        </p>
+
+        <h2>5. Alterações a Esta Política</h2>
+        <p>
+            Podemos atualizar esta Política de Cookies periodicamente, por exemplo para refletir
+            novas funcionalidades da plataforma. Recomendamos que a consultes regularmente.
+        </p>
+
+        <h2>6. Contactos</h2>
+        <p>
+            Para qualquer questão sobre esta Política de Cookies, contacta-nos através de
+            <a href="mailto:exploremore.pt26@gmail.com">exploremore.pt26@gmail.com</a>.
+        </p>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>© {% now "Y" %} Explore+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
