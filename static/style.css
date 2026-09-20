@@ -383,6 +383,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 .grade-estimate{
     padding:70px 8% 90px;
     text-align:center;
+    background:#f5f9f7;
 }
 
 .grade-estimate h2{
@@ -471,6 +472,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     gap:60px;
     align-items:center;
     padding:20px 8% 90px;
+    background:white;
 }
 
 .evolution-text h2{
@@ -593,6 +595,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     gap:60px;
     align-items:center;
     padding:20px 8% 90px;
+    background:white;
 }
 
 .mistakes-card{
@@ -707,6 +710,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     gap:60px;
     align-items:center;
     padding:20px 8% 90px;
+    background:#f5f9f7;
 }
 
 .mentor-avatar-wrap{
@@ -795,6 +799,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 .home-plans{
     padding:90px 8%;
     text-align:center;
+    background:#f5f9f7;
 }
 
 .home-plans h2{
@@ -961,6 +966,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 .home-faq{
     padding:90px 8%;
     text-align:center;
+    background:white;
 }
 
 .home-faq h2{
@@ -1023,6 +1029,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 .features{
     padding:90px 4%;
     text-align:center;
+    background:white;
 }
 
 .features h2{
