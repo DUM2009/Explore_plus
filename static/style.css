@@ -10903,7 +10903,19 @@ body.shadcn-profile .profile-hero-rank {
     filter: brightness(1.08);
 }
 
+/* Os cartões usam também a classe .card (altura fixa de 220px, feita para os
+   cartões da página inicial) — aqui têm de crescer com o texto. */
+.resumos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    align-items: stretch;
+}
+
 .resumo-card {
+    height: auto;
+    min-height: 220px;
+    min-width: 0;
+    perspective: none;
+    overflow-wrap: anywhere;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -10969,7 +10981,8 @@ body.shadcn-profile .profile-hero-rank {
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-top: 4px;
+    margin-top: auto;
+    padding-top: 4px;
     font-size: .85rem;
     font-weight: 700;
     color: var(--resumo-cor-a, #1f8a5b);
