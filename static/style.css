@@ -11302,7 +11302,7 @@ html.dark-mode .resumo-tabela td {
    most actual phones. Restate it here, last, so it actually wins. */
 @media (max-width:900px){
     header{
-        padding-right:2px;
+        padding-right:18px;
     }
 
     header nav{
