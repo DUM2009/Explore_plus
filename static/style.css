@@ -4062,6 +4062,18 @@ text-decoration:none;
 .olho:hover{
     color:#6b7280;
 }
+
+.olho-icon-hide{
+    display:none;
+}
+
+.olho.is-visible .olho-icon-show{
+    display:none;
+}
+
+.olho.is-visible .olho-icon-hide{
+    display:block;
+}
 .dashboard{
 
 display:grid;
@@ -5208,28 +5220,27 @@ background:#27ae60;
   height: 46px;
   border: none;
   border-radius: 12px;
-  /* Matches this card's own blue accent (focus ring, links, ambient glow
-     above) instead of the site-wide green, which clashed with the rest of
-     the form. */
-  background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
-  color: white;
+  /* Light green — a softer take on the site's brand green, dark text for
+     contrast against the lighter fill. */
+  background: linear-gradient(180deg, #86efac 0%, #6ee7b7 100%);
+  color: #065f46;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   cursor: pointer;
-  box-shadow: 0 12px 20px rgba(37, 99, 235, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 20px rgba(52, 211, 153, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .login-button:hover {
-  filter: brightness(1.05);
-  box-shadow: 0 16px 24px rgba(37, 99, 235, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  filter: brightness(1.03);
+  box-shadow: 0 16px 24px rgba(52, 211, 153, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
 }
 
 .login-button:active {
   transform: translateY(0);
-  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 12px rgba(52, 211, 153, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .divider {
