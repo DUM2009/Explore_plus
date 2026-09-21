@@ -4050,9 +4050,17 @@ text-decoration:none;
     position:absolute;
     right:14px;
     top:50%;
-    transform:translateY(-100%);
+    /* Was translateY(-100%), which pushed the icon entirely above the
+       input's vertical center instead of centering it. */
+    transform:translateY(-50%);
+    display:flex;
+    align-items:center;
     cursor:pointer;
-    font-size:14px;
+    color:#9ca3af;
+}
+
+.olho:hover{
+    color:#6b7280;
 }
 .dashboard{
 
