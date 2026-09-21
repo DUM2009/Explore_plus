@@ -5218,8 +5218,22 @@ background:#27ae60;
 .login-button {
   width: 100%;
   height: 46px;
+  /* .light-login-form's 12px gap already spaces every field from the
+     next — a bit more breathing room here, between the last field and
+     the submit button specifically. */
+  margin-top: 10px;
+  /* Resets the global button{} rule's padding:16px 34px (further up this
+     file), which — fighting the fixed height above under box-sizing:
+     border-box — left too little room for the line box and threw off
+     the text's vertical centering. flex now does the centering instead,
+     so padding isn't load-bearing for that any more. */
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
-  border-radius: 12px;
+  /* More rounded than the 12px inputs above it. */
+  border-radius: 18px;
   /* Light green — a softer take on the site's brand green, dark text for
      contrast against the lighter fill. */
   background: linear-gradient(180deg, #86efac 0%, #6ee7b7 100%);
