@@ -1674,7 +1674,7 @@ header{
 /* Base header's 8% right padding held Login/Sign in well short of the
    edge — tighten just that side so the pills sit further right, close
    to the edge. */
-padding-right:4px;
+padding-right:0;
 }
 
 header .logo img{
@@ -1683,6 +1683,10 @@ width:130px;
 
 header nav{
 gap:8px;
+/* Pulls the pill's own internal padding (header nav a/button padding,
+   see below) back so the visible edge of "Sign in" sits right at the
+   screen edge instead of leaving that padding as a gap. */
+margin-right:-8px;
 }
 
 header nav a,
@@ -11290,4 +11294,20 @@ html.dark-mode .resumo-tabela th {
 
 html.dark-mode .resumo-tabela td {
     color: #cddad2;
+}
+/* Real-device follow-up: two older, narrower breakpoints declared further
+   above (max-width:768px and max-width:480px) re-set header/nav padding
+   and nav's justify-content — being later in the cascade at those widths,
+   they were winning over the earlier mobile header fix and undoing it on
+   most actual phones. Restate it here, last, so it actually wins. */
+@media (max-width:900px){
+    header{
+        padding-right:2px;
+    }
+
+    header nav{
+        justify-content:flex-end;
+        width:auto;
+        margin-right:-8px;
+    }
 }
