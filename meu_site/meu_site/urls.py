@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -23,7 +23,11 @@ from . import views  # Importa o ficheiro views que criaste
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),  # Login com Google (django-allauth)
     path('', views.pagina_inicial, name='pagina_inicial'),  # Rota para a tua página inicial
+    path('termos/', views.pagina_termos, name='termos'),
+    path('privacidade/', views.pagina_privacidade, name='privacidade'),
+    path('cookies/', views.pagina_cookies, name='cookies'),
     path('login/', views.pagina_login, name='login'),
     path('signup/', views.pagina_signup, name='signup'),
     path('perfil/', views.pagina_perfil, name='perfil'),
@@ -42,7 +46,6 @@ urlpatterns = [
     path('Resumos/', views.pagina_Resumos, name='Resumos'),
     path('Resumos/<str:resumo_id>/', views.pagina_resumo_detalhe, name='resumo-detalhe'),
     path('Conquistas/', views.pagina_Conquistas, name='Conquistas'),
-    path('about/', views.pagina_about, name='about'),
     path('Configurações/', views.pagina_Configurações, name='Configurações'),
     path('superexplore/', views.pagina_superexplore, name='superexplore'),
     path('superexplore/ativar/', views.iniciar_checkout_superexplore, name='iniciar-checkout-superexplore'),

@@ -43,18 +43,56 @@ html.dark-mode .me-root {
 }
 
 /* ---- Vista de secção --------------------------------------------------
-   .mission-shell/.mission-main/.mission-content vêm de mission-styles.css
-   já com a cor de fundo, mas pressupõem lá um layout de altura fixa
-   (100%) para conviver com o painel de chat lateral redimensionável —
-   aqui não há esse painel, por isso passa-se a fluxo normal da página. */
+   .mission-shell/.mission-main/.mission-content/.mission-sidebar vêm de
+   mission-styles.css já com a cor de fundo, mas pressupõem lá o layout
+   "app-shell" da Fotossíntese: página fixa à altura do ecrã
+   (.mission-container{height:100vh;overflow:hidden}, só ali presente),
+   com a barra lateral e o conteúdo principal a fazerem scroll cada um
+   por si, de forma independente. Aqui não existe esse .mission-container
+   — é uma página normal, com um único scroll (o do documento). */
 
 .mission-shell {
     height: auto;
 }
 
 .mission-main {
+    /* Sem altura fixa (ver nota acima), .mission-main passava a medir
+       exatamente o conteúdo — perdendo o truque do fundo branco de
+       mission-styles.css (pensado para esticar até ao fundo de um
+       .mission-container de 100vh), que aqui já não tinha nada para
+       esticar até. Numa secção curta, isso deixava a cor de fundo bege
+       do .me-root a aparecer por baixo do conteúdo branco. */
     height: auto;
+    min-height: 100vh;
     overflow: visible;
+}
+
+/* Só quando o chat está fixo à página (.is-chat-docked, ver o botão de
+   expandir) — flutuante (padrão) mantém-se inalterado (cartão pequeno de
+   posição fixa, ver style.css/mission-styles.css). Fixo herdava a altura
+   100% de mission-styles.css, pensada para um .mission-container de
+   altura fixa que não existe aqui — dentro do .mission-shell de altura
+   automática acima, isso esticava o painel para a altura de toda a
+   coluna de conteúdo (podendo ficar enorme e vazio). Em vez disso,
+   "sticky" rente ao topo do ecrã (top:0, sem espaço à volta — tal como o
+   .lesson-topbar acima e o resto da página, que também ficam rentes às
+   bordas em vez de flutuarem como um cartão): acompanha o scroll da
+   página em vez de ficar preso no sítio onde entrou no fluxo. */
+.mission-shell.is-chat-docked .mission-sidebar {
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.mission-shell.is-chat-docked .mascote-chat-panel {
+    height: 100%;
+    overflow: hidden;
+}
+
+.mission-shell.is-chat-docked .mascote-chat-messages {
+    overflow-y: auto;
 }
 
 /* Cartão inline da mascote (reaproveita .mascot-overlay-card--split, mas
@@ -89,10 +127,31 @@ html.dark-mode .me-root {
     padding: 0 28px;
 }
 
+/* Fills the row edge-to-edge instead of floating as a narrower card —
+   .mission-content/.mission-main are now the same white as .lesson-topbar
+   (see mission-styles.css), so this panel still reads as a continuation
+   of the header. A thin, soft outline (not a filled/shadowed card) frames
+   the text without breaking that continuity. */
 .me-gancho-card {
-    width: min(1100px, 100%);
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+    background: transparent;
+    border: 1px solid rgba(20, 20, 20, 0.16);
+    border-radius: 20px;
+    box-shadow: none;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+/* Wins over html[data-theme="dark"] .mascot-overlay-card (mission-styles.css,
+   same specificity but declared before this file loads) — a soft light
+   outline instead of that rule's solid fill + border, so dark mode keeps
+   the same "outline only" look instead of reverting to a boxed card. */
+html[data-theme="dark"] .me-gancho-card {
+    background: transparent;
+    border-color: rgba(242, 233, 221, 0.16);
 }
 
 /* Alinha os botões Anterior/Continuar com as margens do painel acima —
@@ -117,6 +176,21 @@ html.dark-mode .me-root {
     margin-right: auto;
 }
 
+/* No quiz de fim de secção (.me-quiz-seccao), a pergunta e as opções
+   ocupam toda a largura da coluna de leitura — o .screen-nav genérico de
+   mission-styles.css, em vez disso, fica com uma largura fixa de 480px
+   centrada nessa coluna, o que desalinha o "Anterior" da margem esquerda
+   das opções. Aqui não há painel largo (.me-gancho-card) para quebrar a
+   coluna, então basta o .screen-nav ocupar toda a largura do wrapper
+   (que já coincide com a coluna de .section-content) em vez de se
+   centrar com a sua própria largura fixa. */
+.section-body:has(.me-quiz-seccao) .me-gancho-nav-wrap .screen-nav {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .me-gancho-hero-image {
     width: 100%;
     max-width: 700px;
@@ -137,14 +211,12 @@ html.dark-mode .me-root {
 .me-gancho-card .me-diagrama-intro-texto {
     font-weight: 600;
     font-size: 1.1rem;
-    max-width: 760px;
-    margin: 0 auto 14px;
+    margin: 0 0 14px;
     text-align: center;
 }
 
 .me-gancho-card .me-diagrama-ponte-texto {
-    max-width: 760px;
-    margin: 0 auto 28px;
+    margin: 0 0 28px;
     color: #4b5a52;
     text-align: center;
 }
@@ -153,12 +225,118 @@ html.dark-mode .me-gancho-card .me-diagrama-ponte-texto {
     color: #b9c7bd;
 }
 
+/* Caixa à volta da frase-isco + frase-ponte, para se lerem como um bloco
+   único — separado da imagem por cima e do diagrama por baixo. Mesma
+   largura (a do próprio painel, sem limite de largura próprio) e mesma
+   cor de .me-escada-detail (o painel que aparece ao clicar num ponto do
+   diagrama, ex: "Produtores"/"Decompositores"), para os dois lerem-se
+   como parte do mesmo sistema visual. */
+.me-gancho-card .me-diagrama-intro-bloco {
+    margin: 0 0 24px;
+    padding: 24px;
+    border: 1px solid #e3dcc9;
+    border-radius: 16px;
+    background: #fbf7ee;
+}
+
+.me-gancho-card .me-diagrama-intro-bloco p:last-child {
+    margin-bottom: 0;
+}
+
+html.dark-mode .me-gancho-card .me-diagrama-intro-bloco {
+    background: #24201a;
+    border-color: #3a3128;
+}
+
+/* Painel de cada pergunta do quiz de fim de secção (ver renderQuizSeccao)
+   — traço fino e suave com cantos arredondados, tal como
+   .me-diagrama-intro-bloco, para a pergunta/opções/feedback se lerem
+   como um único bloco em vez de flutuarem soltos na página. Só a
+   pergunta em curso (.me-quiz-seccao--pergunta) — o ecrã de resultado
+   final (.me-quiz-resultado) já tem a sua própria caixa branca, e as
+   duas juntas ficariam com uma caixa dentro de outra caixa. */
+.me-quiz-seccao--pergunta {
+    padding: 24px 28px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    text-align: left;
+}
+
+html.dark-mode .me-quiz-seccao--pergunta {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Par de setas para navegar entre perguntas, dentro do próprio painel do
+   quiz (ver renderQuizSeccao) — a esquerda (anterior) aparece a partir da
+   2ª pergunta, a direita (seguinte) só depois de responder e só antes da
+   última; a última usa o botão "Ver resultado" por fora do painel
+   (.lesson-primary-btn), que sai do quiz em vez de avançar dentro dele.
+   Sem margin:auto individual — o wrapper .me-quiz-nav-arrows é que
+   distribui os dois lados (esquerda encostada à esquerda, direita com
+   margin-left:auto), tal como o próprio Anterior/Continuar de fora. */
+.me-quiz-nav-arrows {
+    display: flex;
+    margin-top: 16px;
+}
+
+.me-quiz-nav-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #1c1c1e;
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .18);
+    cursor: pointer;
+}
+
+.me-quiz-nav-arrow:hover {
+    background: #000000;
+}
+
+.me-quiz-nav-arrow--next {
+    margin-left: auto;
+}
+
+/* "Queres saber mais?" (ver screen.aprofundar em renderDiagrama) dentro
+   de um painel de diagrama: cancela o breakout de largura de
+   .did-you-know (que só faz sentido como ecrã à parte, ver
+   mission-styles.css) e a caixa branca própria (redundante dentro de um
+   painel já branco) — fica só uma linha divisória a separar do resto do
+   painel, na mesma largura. */
+.me-gancho-card .did-you-know {
+    margin: 20px 0 0;
+    border: none;
+    border-top: 1px solid #e3f0e9;
+    border-radius: 0;
+    background: transparent;
+    padding: 16px 0 0;
+    text-align: left;
+}
+
+html.dark-mode .me-gancho-card .did-you-know {
+    border-top-color: #4a3d30;
+}
+
 /* Na timeline o cartão é bem mais largo (.me-gancho-card--timeline, até
    1040px) do que a frase-ponte genérica de 560px — alarga-a para
    acompanhar a largura do título por cima, em vez de continuar a quebrar
-   em 3 linhas apertadas numa coluna estreita. */
-.me-timeline-ponte {
+   em 3 linhas apertadas numa coluna estreita. margin:auto centra esta
+   caixa (mais estreita que o painel) dentro dele — sem isto, ficava presa
+   à margem esquerda e o texto só parecia centrado dentro da sua própria
+   caixa, não do painel todo (como o título, que ocupa a largura toda).
+   Qualificado com ".me-gancho-card" para igualar a especificidade de
+   ".me-gancho-card .me-diagrama-ponte-texto" acima (0,0,2,0) — só a
+   classe ".me-timeline-ponte" sozinha (0,0,1,0) perdia sempre para essa
+   regra, que também define margin (shorthand, repõe left/right a 0). */
+.me-gancho-card .me-timeline-ponte {
     max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* .mascot-chat-fab (posição/tamanho vêm de mission-styles.css, tal como na
@@ -190,7 +368,7 @@ html.dark-mode .me-gancho-card .me-diagrama-ponte-texto {
     flex-wrap: wrap;
     gap: 8px;
     justify-content: center;
-    margin: 0 0 14px;
+    margin: 0 0 28px;
 }
 
 .me-diagrama-chip {
@@ -240,6 +418,29 @@ html.dark-mode .me-gancho-card .me-diagrama-ponte-texto {
     color: #1f8a5b;
 }
 
+/* Painel da explicação de um ponto do diagrama (ver bindDiagramaChips) —
+   mesma cor creme de .me-diagrama-intro-bloco/.me-escada-detail (o
+   painel do isco/ponte por cima), para os dois lerem-se como parte do
+   mesmo sistema visual. Mais específica do que .did-you-know sozinha
+   (incluindo a versão "sem caixa" de .me-gancho-card .did-you-know,
+   pensada só para o "Queres saber mais?"), para este ter sempre a sua
+   própria caixa, com traço preto suave e cantos arredondados. */
+.me-diagrama-explicacao.did-you-know,
+.me-gancho-card .me-diagrama-explicacao.did-you-know {
+    margin: 20px 0 0;
+    padding: 20px 24px;
+    border: 1px solid #e3dcc9;
+    border-radius: 16px;
+    background: #fbf7ee;
+    text-align: left;
+}
+
+html.dark-mode .me-diagrama-explicacao.did-you-know,
+html.dark-mode .me-gancho-card .me-diagrama-explicacao.did-you-know {
+    background: #24201a;
+    border-color: #3a3128;
+}
+
 /* Frase de abertura opcional dentro da explicação de um ponto (ver
    ponto.intro, usado em bindScreenInteractions) — antes do parágrafo da
    explicação em si, que já vem itálico de .did-you-know p. */
@@ -279,9 +480,9 @@ html.dark-mode .me-diagrama-chip {
 }
 
 .me-gancho-card--timeline {
-    width: min(1040px, 100%);
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .me-timeline-scroll {
@@ -396,6 +597,26 @@ html.dark-mode .me-timeline-caption {
     padding: 44px 6px 0;
     margin: 0 0 24px;
     border-bottom: 2px solid #e3dcc9;
+    /* Barra de scroll mais fina que a espessa por defeito do browser
+       (Firefox via scrollbar-width, Chrome/Edge/Safari via ::-webkit-*). */
+    scrollbar-width: thin;
+}
+
+.me-escada-track::-webkit-scrollbar {
+    height: 6px;
+}
+
+.me-escada-track::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.me-escada-track::-webkit-scrollbar-thumb {
+    background: #d8cfb8;
+    border-radius: 6px;
+}
+
+html.dark-mode .me-escada-track::-webkit-scrollbar-thumb {
+    background: #4a3d30;
 }
 
 .me-escada-step {
@@ -479,7 +700,7 @@ html.dark-mode .me-escada-step-label {
 }
 
 .me-escada-detail {
-    border: 1px solid #e3dcc9;
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 16px;
     padding: 24px;
     text-align: center;
@@ -488,8 +709,8 @@ html.dark-mode .me-escada-step-label {
 
 .me-escada-detail-image {
     width: 100%;
-    max-width: 260px;
-    max-height: 200px;
+    max-width: 420px;
+    max-height: 320px;
     height: auto;
     object-fit: contain;
     border-radius: 12px;
@@ -507,13 +728,296 @@ html.dark-mode .me-escada-step-label {
     color: #4b5a52;
 }
 
+.me-escada-detail-text + .me-escada-detail-text {
+    margin-top: 12px;
+}
+
 html.dark-mode .me-escada-detail {
     background: #24201a;
-    border-color: #3a3128;
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 html.dark-mode .me-escada-detail-text {
     color: #b9c7bd;
+}
+
+/* Botão colapsável "Saber mais" de um ponto específico (ver ponto.saber_mais
+   em pontoDetailInnerHtml) — texto extra opcional, escondido por padrão,
+   dentro do próprio cartão de explicação em vez de ser um ecrã à parte. */
+.me-ponto-saber-mais {
+    margin: 14px 0 0;
+    text-align: left;
+}
+
+.me-ponto-saber-mais summary {
+    list-style: none;
+    cursor: pointer;
+    font-weight: 700;
+    color: #1f8a5b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.me-ponto-saber-mais summary::-webkit-details-marker {
+    display: none;
+}
+
+.me-ponto-saber-mais summary::before {
+    content: "▸";
+    color: #1f8a5b;
+    transition: transform 0.2s ease;
+}
+
+.me-ponto-saber-mais[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.me-ponto-saber-mais p {
+    margin: 10px 0 0;
+    color: #4b5a52;
+}
+
+html.dark-mode .me-ponto-saber-mais p {
+    color: #b9c7bd;
+}
+
+/* ---- Diagrama interativo em formato "árvore" (screen.layout === "arvore",
+   ver renderDiagramaArvore) — organograma clássico: irmãos ligados por uma
+   "chavena" horizontal por cima, com um tronco vertical a descer até ao
+   pai, para grupos com dois níveis (ex: célula procariótica/eucariótica, e
+   esta a dividir-se em animal/vegetal). Scroll horizontal em ecrãs
+   estreitos em vez de os ramos colidirem. */
+.me-arvore-wrap {
+    overflow-x: auto;
+    padding: 4px 0 4px;
+    margin: 0 0 24px;
+}
+
+.me-arvore-tree,
+.me-arvore-tree ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+}
+
+.me-arvore-tree {
+    min-width: 100%;
+}
+
+.me-arvore-tree ul {
+    padding-top: 28px;
+    position: relative;
+}
+
+.me-arvore-tree li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 28px 14px 0;
+}
+
+/* Chavena horizontal ligando irmãos — cada li desenha metade da sua parte
+   (esquerda via ::before, direita via ::after); o primeiro/último irmão
+   perde o lado que apontaria para fora do grupo. */
+.me-arvore-tree li::before,
+.me-arvore-tree li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 50%;
+    height: 28px;
+    border-top: 2px solid #cde7d9;
+}
+
+.me-arvore-tree li::after {
+    right: auto;
+    left: 50%;
+    border-left: 2px solid #cde7d9;
+}
+
+.me-arvore-tree li:only-child {
+    padding-top: 0;
+}
+
+.me-arvore-tree li:only-child::before,
+.me-arvore-tree li:only-child::after {
+    display: none;
+}
+
+.me-arvore-tree li:first-child::before,
+.me-arvore-tree li:last-child::after {
+    border: none;
+}
+
+.me-arvore-tree li:last-child::before {
+    border-right: 2px solid #cde7d9;
+    border-radius: 0 6px 0 0;
+}
+
+.me-arvore-tree li:first-child::after {
+    border-radius: 6px 0 0 0;
+}
+
+/* Tronco vertical do pai até à chavena dos filhos. */
+.me-arvore-tree ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 28px;
+    border-left: 2px solid #cde7d9;
+}
+
+.me-arvore-node {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid #cde7d9;
+    background: #eef7f3;
+    color: #1f5c33;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+
+.me-arvore-node:hover {
+    border-color: #1f8a5b;
+}
+
+.me-arvore-node.is-active {
+    background: #1f8a5b;
+    border-color: #1f8a5b;
+    color: #fff;
+}
+
+.me-arvore-node--filho {
+    font-size: 0.86rem;
+    padding: 8px 16px;
+}
+
+html.dark-mode .me-arvore-tree li::before,
+html.dark-mode .me-arvore-tree li::after,
+html.dark-mode .me-arvore-tree li:last-child::before,
+html.dark-mode .me-arvore-tree ul::before {
+    border-color: #3a3128;
+}
+
+html.dark-mode .me-arvore-node {
+    background: #24201a;
+    border-color: #3a3128;
+    color: #d7ddd3;
+}
+
+html.dark-mode .me-arvore-node.is-active {
+    background: #1f8a5b;
+    border-color: #1f8a5b;
+    color: #fff;
+}
+
+/* Formato "mapa" (ver renderDiagramaMapa): a imagem do diagrama com um
+   marcador numerado sobre cada ponto, posicionado por percentagem
+   (ponto.pos.x/y) em vez de uma fila de chips ao lado — para diagramas
+   onde a própria imagem já mostra onde cada estrutura está (ex: os
+   organelos de uma célula). line-height:0 no wrap evita um espaço
+   fantasma por baixo da imagem (comportamento normal de <img> inline). */
+.me-mapa-wrap {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 0;
+}
+
+.me-mapa-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+}
+
+.me-mapa-marker {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border-radius: 50%;
+    background: #1f8a5b;
+    border: 3px solid #fff;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 0 4px rgba(31, 138, 91, 0.35);
+    transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+
+.me-mapa-marker:hover {
+    transform: translate(-50%, -50%) scale(1.12);
+}
+
+/* Laranja em vez de verde quando ativo — o verde do marcador confunde-se
+   facilmente com o fundo verde típico destas imagens (ex: célula
+   vegetal), o laranja destaca-se sempre. */
+.me-mapa-marker.is-active {
+    background: #f0a72c;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 0 4px rgba(240, 167, 44, 0.4);
+}
+
+.me-mapa-marker-num {
+    pointer-events: none;
+}
+
+html.dark-mode .me-mapa-marker {
+    border-color: #1c1712;
+}
+
+/* Cartão de uma analogia com imagem (ver renderAnalogia, screen.cartao_estilo)
+   — fundo branco, para a imagem e o bloco de texto lá dentro se
+   distinguirem um do outro (ao contrário de .me-escada-detail, que usa a
+   mesma cor creme para tudo). */
+.me-analogia-cartao {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    background: #ffffff;
+}
+
+/* Bloco de texto castanho-rosado dentro do cartão branco acima — traço
+   preto suave e cantos arredondados, tal como os outros painéis de
+   texto do motor (ver .me-diagrama-intro-bloco). */
+.me-analogia-texto-bloco {
+    margin-top: 16px;
+    padding: 20px 24px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    background: #f3e0d6;
+}
+
+html.dark-mode .me-analogia-cartao {
+    background: #26201a;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+html.dark-mode .me-analogia-texto-bloco {
+    background: #3a2a24;
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* ---- Celebração ---- */
@@ -539,9 +1043,22 @@ html.dark-mode .me-escada-detail-text {
 }
 
 .me-celebracao-badge {
-    font-size: 3rem;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 12px;
+}
+
+.me-celebracao-badge svg {
+    width: 48px;
+    height: 48px;
+    color: #1f8a5b;
+}
+
+.me-celebracao-badge img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
 }
 
 .me-celebracao-card h1 {
@@ -587,4 +1104,149 @@ html.dark-mode .me-escada-detail-text {
 html.dark-mode .me-celebracao-card {
     background: #26201a;
     color: #f2e9dd;
+}
+
+/* Painel de resultado do quiz de secção (ver renderQuizSeccao) — o
+   círculo diz "acertos/total" e muda de cor consoante a proporção de
+   acertos; confetti (reaproveita .me-confetti/-piece de cima) só aparece
+   quando acerta tudo. overflow:hidden corta o confetti nas bordas do
+   painel em vez de continuar a cair pelo ecrã fora. */
+.me-quiz-resultado {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e3f0e9;
+    border-radius: 20px;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(18, 61, 40, 0.12), 0 4px 12px rgba(18, 61, 40, 0.06);
+}
+
+.me-quiz-resultado-title {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 20px;
+}
+
+.me-quiz-resultado-circle {
+    position: relative;
+    z-index: 1;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 1.9rem;
+    font-weight: 800;
+    border: 6px solid transparent;
+}
+
+.me-quiz-resultado-circle--green {
+    background: #d4edda;
+    border-color: #37d67a;
+    color: #1f8a5b;
+}
+
+.me-quiz-resultado-circle--yellow {
+    background: #fff3cd;
+    border-color: #ffc107;
+    color: #8a6d1f;
+}
+
+.me-quiz-resultado-circle--red {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #a52834;
+}
+
+/* Revisão pergunta-a-pergunta do resultado (ver renderQuizSeccao) — cada
+   grupo pergunta/opções empilhado, à esquerda (o resto do painel é
+   centrado, mas uma lista de perguntas lê-se melhor alinhada ao início).
+   As opções reaproveitam tal e qual o visual de .quiz-option (ver
+   quizOptionsReviewHtml) — mesmas cores de certo/errado do quiz normal,
+   só que mostrando todas as opções, não só a escolhida. */
+.me-quiz-resultado-revisao {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    max-width: 480px;
+    margin: 0 auto 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.me-quiz-resultado-item {
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.me-quiz-resultado-item:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.me-quiz-resultado-pergunta {
+    margin: 0 0 10px;
+    font-weight: 600;
+    color: #1a3328;
+}
+
+/* Só de leitura — sem hover/cursor de clique, ao contrário da mesma
+   .quiz-option usada na pergunta em curso. */
+.me-quiz-resultado-option {
+    pointer-events: none;
+}
+
+.me-quiz-resultado-conclusao-painel {
+    position: relative;
+    z-index: 1;
+    margin: 20px 0 0;
+}
+
+.me-quiz-resultado-conclusao {
+    margin: 0;
+    color: #1a3328;
+    font-weight: 600;
+    font-size: 1.05rem;
+    line-height: 1.55;
+}
+
+html.dark-mode .me-quiz-resultado {
+    background: #26201a;
+    border-color: #4a3d30;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+html.dark-mode .me-quiz-resultado-item {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+html.dark-mode .me-quiz-resultado-pergunta {
+    color: #f2e9dd;
+}
+
+html.dark-mode .me-quiz-resultado-title,
+html.dark-mode .me-quiz-resultado-conclusao {
+    color: #f2e9dd;
+}
+
+html.dark-mode .me-quiz-resultado-circle--green {
+    background: #1c3326;
+    border-color: #37d67a;
+    color: #4ade80;
+}
+
+html.dark-mode .me-quiz-resultado-circle--yellow {
+    background: #3a3218;
+    border-color: #ffc107;
+    color: #ffd54f;
+}
+
+html.dark-mode .me-quiz-resultado-circle--red {
+    background: #3a2226;
+    border-color: #dc3545;
+    color: #ff8a97;
 }

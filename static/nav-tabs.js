@@ -18,7 +18,9 @@
         let activeTab = null;
 
         function getTabs() {
-            return Array.from(nav.querySelectorAll("a, button"));
+            return Array.from(nav.querySelectorAll("a, button")).filter(
+                (tab) => !tab.classList.contains("nav-cta") && !tab.classList.contains("nav-plain")
+            );
         }
 
         function findActiveTab() {
@@ -57,14 +59,23 @@
             moveIndicatorTo(tab);
         }
 
+        function isTrackedTab(tab) {
+            return (
+                tab &&
+                nav.contains(tab) &&
+                !tab.classList.contains("nav-cta") &&
+                !tab.classList.contains("nav-plain")
+            );
+        }
+
         nav.addEventListener("mouseover", (event) => {
             const tab = event.target.closest("a, button");
-            if (tab && nav.contains(tab)) highlight(tab);
+            if (isTrackedTab(tab)) highlight(tab);
         });
 
         nav.addEventListener("focusin", (event) => {
             const tab = event.target.closest("a, button");
-            if (tab && nav.contains(tab)) highlight(tab);
+            if (isTrackedTab(tab)) highlight(tab);
         });
 
         nav.addEventListener("mouseleave", resetToActive);

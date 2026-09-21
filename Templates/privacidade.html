@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade | Explore+</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
+    <style>
+        .legal-page{
+            max-width:820px;
+            margin:0 auto;
+            padding:60px 8% 100px;
+        }
+        .legal-page .legal-header{
+            margin-bottom:40px;
+        }
+        .legal-page .legal-header p{
+            color:#5a5a5a;
+            margin-top:8px;
+        }
+        .legal-page h1{
+            font-size:2rem;
+            color:#1f8a5b;
+        }
+        .legal-page h2{
+            font-size:1.25rem;
+            color:#1f2a1f;
+            margin:36px 0 12px;
+        }
+        .legal-page p,
+        .legal-page li{
+            line-height:1.7;
+            color:#333;
+            margin-bottom:12px;
+        }
+        .legal-page ul,
+        .legal-page ol{
+            padding-left:22px;
+            margin-bottom:12px;
+        }
+        .legal-page a{
+            color:#1f8a5b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="/"><img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+"></a>
+        </div>
+        <nav>
+            <a href="/login/" class="nav-plain">Login</a>
+            <a href="/login/" class="nav-cta">Sign in</a>
+        </nav>
+    </header>
+
+    <main class="legal-page">
+        <div class="legal-header">
+            <h1>Política de Privacidade</h1>
+            <p>Última atualização: {% now "j \\d\\e F \\d\\e Y" %}</p>
+        </div>
+
+        <p>
+            Esta Política de Privacidade explica como a Explore+ recolhe, utiliza, armazena e protege
+            os teus dados pessoais quando utilizas a nossa plataforma. Ao utilizares a Explore+,
+            aceitas as práticas descritas neste documento.
+        </p>
+
+        <h2>1. Dados que Recolhemos</h2>
+        <p>Podemos recolher os seguintes tipos de dados:</p>
+        <ul>
+            <li><strong>Dados de registo:</strong> nome de utilizador, endereço de email e
+                palavra-passe (encriptada).</li>
+            <li><strong>Dados de perfil e progresso:</strong> nível, pontos de experiência, missões
+                concluídas, resultados de testes e exames, e conquistas.</li>
+            <li><strong>Dados de utilização:</strong> interações com a plataforma, incluindo
+                perguntas feitas ao assistente "Kim" e respostas a quizzes.</li>
+            <li><strong>Dados de pagamento:</strong> no caso de subscrição do plano SuperExplore, os
+                dados de pagamento são processados diretamente pelo nosso prestador de serviços
+                (Stripe) — a Explore+ não armazena números de cartão.</li>
+            <li><strong>Dados técnicos:</strong> endereço IP, tipo de navegador e informações
+                recolhidas automaticamente para o funcionamento e segurança do serviço.</li>
+        </ul>
+
+        <h2>2. Como Utilizamos os Teus Dados</h2>
+        <p>Utilizamos os dados recolhidos para:</p>
+        <ul>
+            <li>Criar e gerir a tua conta e sessão na plataforma.</li>
+            <li>Acompanhar o teu progresso, nível e conquistas.</li>
+            <li>Personalizar a experiência de aprendizagem, incluindo as respostas do assistente
+                "Kim".</li>
+            <li>Processar pagamentos e gerir subscrições.</li>
+            <li>Comunicar contigo sobre a tua conta, atualizações ou questões de suporte.</li>
+            <li>Melhorar a plataforma e prevenir utilização abusiva ou fraudulenta.</li>
+        </ul>
+
+        <h2>3. Partilha de Dados</h2>
+        <p>
+            Não vendemos os teus dados pessoais a terceiros. Podemos partilhar dados com prestadores
+            de serviços que nos ajudam a operar a plataforma, nomeadamente:
+        </p>
+        <ul>
+            <li><strong>Stripe</strong>, para processamento de pagamentos e gestão de subscrições.</li>
+            <li><strong>Anthropic (Claude)</strong>, para gerar as respostas do assistente "Kim" —
+                apenas o conteúdo da conversa e o contexto da missão são enviados, nunca dados de
+                pagamento.</li>
+        </ul>
+        <p>
+            Estes prestadores estão contratualmente obrigados a proteger os teus dados e só os podem
+            utilizar para prestar o serviço à Explore+.
+        </p>
+
+        <h2>4. Conservação de Dados</h2>
+        <p>
+            Conservamos os teus dados enquanto a tua conta estiver ativa. Se solicitares o
+            encerramento da conta, eliminamos ou anonimizamos os teus dados pessoais, exceto quando a
+            lei nos obrigar a conservá-los por mais tempo (por exemplo, registos de faturação).
+        </p>
+
+        <h2>5. Os Teus Direitos</h2>
+        <p>Nos termos do Regulamento Geral sobre a Proteção de Dados (RGPD), tens o direito de:</p>
+        <ul>
+            <li>Aceder aos dados pessoais que temos sobre ti.</li>
+            <li>Solicitar a retificação de dados incorretos ou incompletos.</li>
+            <li>Solicitar o apagamento dos teus dados ("direito ao esquecimento").</li>
+            <li>Opor-te ao tratamento dos teus dados ou solicitar a limitação desse tratamento.</li>
+            <li>Solicitar a portabilidade dos teus dados para outro serviço.</li>
+        </ul>
+        <p>
+            Para exercer qualquer um destes direitos, contacta-nos através de
+            <a href="mailto:exploremore.pt26@gmail.com">exploremore.pt26@gmail.com</a>.
+        </p>
+
+        <h2>6. Segurança dos Dados</h2>
+        <p>
+            Implementamos medidas técnicas e organizativas adequadas para proteger os teus dados
+            contra acesso não autorizado, perda ou alteração, incluindo encriptação de
+            palavras-passe e acesso restrito aos sistemas que armazenam dados pessoais.
+        </p>
+
+        <h2>7. Dados de Menores</h2>
+        <p>
+            A Explore+ destina-se a estudantes do ensino secundário, podendo incluir menores de
+            idade. Recomendamos que a utilização por menores seja feita com o conhecimento de um
+            encarregado de educação, que pode contactar-nos a qualquer momento para rever ou
+            solicitar a eliminação dos dados do educando.
+        </p>
+
+        <h2>8. Cookies</h2>
+        <p>
+            A Explore+ utiliza cookies essenciais ao funcionamento da plataforma, nomeadamente para
+            manter a tua sessão iniciada. Para mais informações, consulta a nossa Política de
+            Cookies.
+        </p>
+
+        <h2>9. Alterações a Esta Política</h2>
+        <p>
+            Podemos atualizar esta Política de Privacidade periodicamente. Alterações significativas
+            serão comunicadas através da plataforma ou por email.
+        </p>
+
+        <h2>10. Contactos</h2>
+        <p>
+            Para qualquer questão sobre esta Política de Privacidade ou sobre os teus dados pessoais,
+            contacta-nos através de
+            <a href="mailto:exploremore.pt26@gmail.com">exploremore.pt26@gmail.com</a>.
+        </p>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>© {% now "Y" %} Explore+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

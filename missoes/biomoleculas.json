@@ -1,0 +1,399 @@
+{
+  "missao_id": "biomoleculas",
+  "titulo": "Biomoléculas",
+  "disciplina": "bioquimica",
+  "badge": { "icone": "🧪", "nome": "Mestre das Biomoléculas" },
+  "secoes": [
+    {
+      "secao_id": "agua-sais-minerais",
+      "titulo": "Água: o solvente da vida",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "mascote_texto": "A molécula mais importante para a vida não tem nada de exótico — está no copo que tens ao lado. Vamos perceber porque é que a água é tão especial para as células.",
+          "titulo": "As funções da água na célula",
+          "video": "Molécula a girar.mp4",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "solvente", "label": "Solvente universal", "explicacao": "A água dissolve a maioria das substâncias polares — é por isso que quase todas as reações químicas da célula acontecem dissolvidas em água." },
+            { "id": "transporte", "label": "Transporte", "explicacao": "Serve de meio de transporte e difusão de substâncias entre o interior e o exterior da célula, e entre células diferentes." },
+            { "id": "termorregulacao", "label": "Termorregulação", "explicacao": "Ajuda a regular a temperatura dos seres vivos — por exemplo, ao evaporar (como no suor), retira calor ao corpo." },
+            { "id": "reacoes_quimicas", "label": "Reações químicas", "explicacao": "Participa diretamente em reações como a hidrólise (quebra de moléculas com consumo de água) e reações de oxidação, graças à sua capacidade de ionização." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "cartao_estilo": true,
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Cada molécula de água é como um pequeno íman: o lado do hidrogénio fica ligeiramente positivo, o lado do oxigénio fica ligeiramente negativo. Por isso, o hidrogénio de uma molécula de água é atraído pelo oxigénio da molécula vizinha, formando uma ligação de hidrogénio — como uma corrente de ímanes ligeiramente inclinados, todos a puxarem-se uns aos outros. É essa \"atração em cadeia\" que dá à água tantas das suas propriedades especiais.",
+          "aprofundar": {
+            "titulo": "Sais minerais: os parceiros discretos da água",
+            "texto": "Além da água, as células contêm sais minerais — compostos inorgânicos como o sódio, o potássio, o cálcio ou o magnésio — que, apesar de não serem tão \"protagonistas\" como a água, são essenciais para inúmeras funções: regulam o equilíbrio de líquidos dentro e fora da célula, participam na transmissão de impulsos nervosos, são necessários para a contração muscular, e entram na constituição de estruturas como os ossos. Muitos deles dissolvem-se facilmente em água — precisamente por esta ser tão boa solvente — o que lhes permite circular livremente pelo organismo."
+          }
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A água consegue dissolver a maioria das substâncias polares porque é ela própria uma molécula:",
+              "opcoes": ["Polar", "Apolar"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A polaridade da água é o que lhe dá esse enorme poder solvente.",
+              "mascote_feedback_errado": "Na verdade a água é polar — é essa polaridade que lhe dá o poder de dissolver tantas substâncias."
+            },
+            {
+              "pergunta": "A reação em que uma molécula se quebra com consumo de água chama-se:",
+              "opcoes": ["Hidrólise", "Polimerização"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Hidrólise = quebra + consumo de água. A polimerização é o processo inverso.",
+              "mascote_feedback_errado": "Chama-se hidrólise — a polimerização é o processo inverso, que une monómeros libertando água."
+            },
+            {
+              "pergunta": "A capacidade da água de dissolver substâncias e ajudar a regular a temperatura corporal deve-se, em grande parte, a ela ser uma molécula:",
+              "opcoes": ["Polar", "Sem carga elétrica"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A polaridade explica a maior parte das propriedades biológicas da água.",
+              "mascote_feedback_errado": "Deve-se à polaridade da molécula de água."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: os sais minerais são compostos orgânicos, tal como os glícidos.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Os sais minerais são compostos inorgânicos, tal como a água.",
+              "mascote_feedback_errado": "Na verdade é falso — os sais minerais são inorgânicos, tal como a água; os glícidos é que são orgânicos."
+            },
+            {
+              "pergunta": "A ligação que se forma entre o hidrogénio de uma molécula de água e o oxigénio de outra chama-se:",
+              "opcoes": ["Ligação de hidrogénio", "Ligação peptídica"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! É a ligação de hidrogénio — a ligação peptídica é a que une aminoácidos numa proteína.",
+              "mascote_feedback_errado": "Chama-se ligação de hidrogénio — a ligação peptídica é outra coisa, própria das proteínas."
+            }
+          ],
+          "mascote_conclusao": "Já sabes porque é que a água é tão especial. Vamos agora conhecer as biomoléculas orgânicas — a começar pelos açúcares. 🍬🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "glicidos",
+      "titulo": "Glícidos: açúcares em todos os tamanhos",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "mascote_texto": "A colher de açúcar no teu chá e a parede de uma árvore têm mais em comum do que imaginas — ambas são feitas da mesma \"peça\" básica. Vamos conhecer os glícidos, desde a unidade mais simples até às cadeias gigantes. 🐢",
+          "titulo": "Do açúcar simples às cadeias gigantes",
+          "imagem": "glicidos_tipos.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "monossacarideos", "label": "Monossacarídeos", "explicacao": "A unidade mais simples de um glícido — uma só \"ose\", como a glicose. É a forma que a célula usa diretamente para obter energia rápida." },
+            { "id": "oligossacarideos", "label": "Oligossacarídeos", "explicacao": "Cadeias curtas, entre 2 e 10 monossacarídeos ligados. O exemplo mais comum é a sacarose (glicose + frutose) — o açúcar de mesa." },
+            { "id": "glicogenio", "label": "Glicogénio", "explicacao": "Polissacarídeo (mais de 10 monossacarídeos) de reserva energética nas células animais — é onde o teu corpo guarda glicose para usar mais tarde." },
+            { "id": "amido", "label": "Amido", "explicacao": "Polissacarídeo de reserva energética nas células vegetais — o equivalente ao glicogénio, mas nas plantas." },
+            { "id": "celulose", "label": "Celulose", "explicacao": "Polissacarídeo estrutural, feito de glicose — constitui a parede celular das células vegetais, dando-lhes forma e suporte." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "cartao_estilo": true,
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Pensa num monossacarídeo como um único tijolo, um oligossacarídeo como um punhado de tijolos colados entre si, e um polissacarídeo como uma parede inteira construída com milhares desses tijolos. E tal como uma parede pode servir para guardar coisas lá dentro (uma despensa = glicogénio/amido) ou para dar estrutura a um edifício (uma parede-mestra = celulose), os polissacarídeos também têm essas duas grandes funções: reserva ou estrutura."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque os glícidos são a \"gasolina rápida\" da célula",
+          "texto": "A proporção 1:2:1 de Carbono, Hidrogénio e Oxigénio nos glícidos (por exemplo, a glicose é C₆H₁₂O₆) torna-os moléculas relativamente fáceis de \"quebrar\" quimicamente para libertar energia de forma rápida — daí serem a primeira escolha da célula quando precisa de energia imediata. Já os polissacarídeos de reserva, como o glicogénio e o amido, funcionam como uma espécie de \"poupança de curto prazo\": fáceis de acumular e de mobilizar rapidamente, ao contrário dos lípidos, que são uma reserva de energia mais compacta mas mais lenta de utilizar — vais conhecê-los já a seguir."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O glicogénio, polissacarídeo de reserva energética, é típico de células:",
+              "opcoes": ["Animais", "Vegetais"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Nas plantas, o equivalente é o amido.",
+              "mascote_feedback_errado": "É típico das células animais — nas vegetais, o polissacarídeo de reserva é o amido."
+            },
+            {
+              "pergunta": "Os glícidos são compostos ternários porque são constituídos por:",
+              "opcoes": ["Carbono, Hidrogénio e Oxigénio", "Carbono, Hidrogénio e Azoto"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Tipicamente na proporção 1:2:1 (C:H:O).",
+              "mascote_feedback_errado": "São feitos de Carbono, Hidrogénio e Oxigénio — o Azoto é típico das proteínas e dos ácidos nucleicos, não dos glícidos."
+            },
+            {
+              "pergunta": "A sacarose, o açúcar de mesa comum, é um exemplo de:",
+              "opcoes": ["Monossacarídeo", "Oligossacarídeo"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! A sacarose é um dissacarídeo (glicose + frutose), um tipo de oligossacarídeo.",
+              "mascote_feedback_errado": "É um oligossacarídeo (mais concretamente, um dissacarídeo) — resulta da união de duas unidades de monossacarídeo."
+            },
+            {
+              "pergunta": "A celulose, presente na parede celular das plantas, tem sobretudo função:",
+              "opcoes": ["Energética", "Estrutural"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! A celulose dá forma e suporte à célula vegetal.",
+              "mascote_feedback_errado": "Tem sobretudo função estrutural — dá forma e suporte à célula vegetal."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: um polissacarídeo é formado por mais de 10 unidades de monossacarídeo.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo! Abaixo disso (2 a 10 unidades) já é considerado um oligossacarídeo.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro — um polissacarídeo tem mais de 10 unidades de monossacarídeo."
+            }
+          ],
+          "mascote_conclusao": "Já dominas os glícidos. A seguir vamos conhecer uma família de moléculas que foge da água — os lípidos. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "lipidos",
+      "titulo": "Lípidos: a família mais variada",
+      "xp": 20,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Nem todas as moléculas gostam de água — hoje vais conhecer a família que prefere fugir dela. 🐢",
+          "texto": "Vamos conhecer os lípidos: um grupo heterogéneo, com formas e funções muito diferentes entre si."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Os três tipos de lípidos",
+          "imagem": "lipidos_tipos.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "reserva", "label": "Lípidos de reserva", "explicacao": "Ex.: as gorduras (triglicerídeos), formadas por 3 ácidos gordos + glicerol. Função: reserva energética a longo prazo — mais compacta do que a dos glícidos." },
+            { "id": "estruturais", "label": "Lípidos estruturais", "explicacao": "Ex.: os fosfolípidos, formados por glicerol + 2 ácidos gordos + um grupo fosfato. Função: são os principais constituintes das membranas celulares." },
+            { "id": "reguladores", "label": "Lípidos reguladores", "explicacao": "Ex.: os esteroides, com uma estrutura característica em anéis. Função hormonal — por exemplo, a testosterona e a progesterona." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "cartao_estilo": true,
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Imagina um grupo de pessoas apanhadas por um aguaceiro: a \"cabeça\" delas (hidrofílica) não se importa de ficar molhada, mas os \"pés\" (as caudas hidrofóbicas) querem ficar bem longe da água. O jeito mais natural de se organizarem é ficarem de pé, em duas filas viradas de costas uma para a outra, com as cabeças viradas para fora (para a água) e os pés escondidos no meio, longe dela. É exatamente essa a forma como os fosfolípidos se organizam sozinhos — em duas camadas — para formar a membrana de qualquer célula."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Os lípidos não formam polímeros \"normais\"",
+          "texto": "Ao contrário dos glícidos, das proteínas e dos ácidos nucleicos, os lípidos não se organizam em cadeias regulares de unidades repetidas (polímeros). São, por isso, um grupo quimicamente heterogéneo — o que os une não é uma estrutura comum, mas sim uma propriedade física partilhada: a fraca solubilidade em água. É precisamente essa propriedade, mais do que a composição química exata, que define se uma molécula é considerada um lípido."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Os lípidos são, de um modo geral, moléculas:",
+              "opcoes": ["Solúveis em água", "Pouco solúveis em água, mas solúveis em solventes orgânicos"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! São hidrofóbicos, mas dissolvem-se bem em solventes como o éter ou o clorofórmio.",
+              "mascote_feedback_errado": "Na verdade são pouco solúveis em água (hidrofóbicos), mas solúveis em solventes orgânicos."
+            },
+            {
+              "pergunta": "Um fosfolípido, com uma \"cabeça\" que gosta de água e \"caudas\" que a evitam, diz-se uma molécula:",
+              "opcoes": ["Anfipática", "Apolar pura"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Anfipática = tem uma parte hidrofílica e uma parte hidrofóbica ao mesmo tempo.",
+              "mascote_feedback_errado": "Diz-se anfipática — tem simultaneamente uma parte que gosta de água e outra que a evita."
+            },
+            {
+              "pergunta": "A testosterona e a progesterona são exemplos de:",
+              "opcoes": ["Lípidos reguladores (esteroides)", "Lípidos de reserva"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! São esteroides, com função hormonal.",
+              "mascote_feedback_errado": "São lípidos reguladores (esteroides), com função hormonal."
+            },
+            {
+              "pergunta": "O principal constituinte das membranas celulares é:",
+              "opcoes": ["Um triglicerídeo (gordura de reserva)", "Um fosfolípido"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! Os fosfolípidos, por serem anfipáticos, organizam-se naturalmente em bicamada.",
+              "mascote_feedback_errado": "São os fosfolípidos — os triglicerídeos servem sobretudo para reserva energética."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: os lípidos formam polímeros regulares, tal como os glícidos e as proteínas.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Os lípidos são um grupo heterogéneo e não formam polímeros regulares.",
+              "mascote_feedback_errado": "Na verdade é falso — ao contrário dos glícidos e das proteínas, os lípidos não formam polímeros regulares."
+            }
+          ],
+          "mascote_conclusao": "Já conheces os lípidos. A seguir vamos falar das biomoléculas com mais funções diferentes de todas: as proteínas. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "proteinas",
+      "titulo": "Proteínas: as trabalhadoras da célula",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Se a célula fosse uma empresa, esta biomolécula seria responsável por quase todos os departamentos ao mesmo tempo. 🐢",
+          "texto": "Vamos conhecer as proteínas — as biomoléculas com a maior diversidade de funções."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "As muitas funções das proteínas",
+          "imagem": "proteinas_funcoes.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "estrutural", "label": "Estrutural", "explicacao": "Dão forma e suporte, como o colagénio (na pele e tendões) ou a queratina (no cabelo e nas unhas)." },
+            { "id": "enzimatica", "label": "Enzimática", "explicacao": "As enzimas são proteínas que funcionam como catalisadores biológicos — aceleram drasticamente as reações químicas da célula." },
+            { "id": "defesa", "label": "Defesa", "explicacao": "Os anticorpos são proteínas que reconhecem e neutralizam agentes estranhos ao organismo, como vírus e bactérias." },
+            { "id": "transporte", "label": "Transporte", "explicacao": "A hemoglobina, por exemplo, é uma proteína do sangue que transporta oxigénio a todas as células do corpo." },
+            { "id": "reguladora", "label": "Reguladora / hormonal", "explicacao": "A insulina é uma proteína-hormona que regula os níveis de glicose no sangue." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "cartao_estilo": true,
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Se os glícidos são a gasolina e os lípidos o depósito de reserva, as proteínas são como uma equipa inteira de funcionários especializados: uns constroem e reparam (função estrutural), uns aceleram o trabalho todo (enzimas), uns defendem a entrada do prédio (anticorpos), uns fazem entregas porta-a-porta (transporte) e uns dão ordens ao resto da equipa (hormonas). Uma única categoria de biomolécula, com dezenas de \"profissões\" diferentes."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque a forma de uma proteína é tudo",
+          "texto": "A função de uma proteína depende quase sempre da sua forma tridimensional exata, que resulta de como a sequência de aminoácidos se enrola e dobra sobre si própria. Uma enzima, por exemplo, só consegue \"encaixar\" na molécula que vai transformar (o seu substrato) se tiver exatamente a forma certa — um pouco como uma chave que só abre a fechadura para a qual foi feita. Quando uma proteína perde a sua forma normal (por exemplo, devido a temperaturas muito altas), diz-se que desnatura, e deixa geralmente de conseguir desempenhar a sua função."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Os monómeros que constituem as proteínas são:",
+              "opcoes": ["Os aminoácidos", "Os nucleótidos"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Os aminoácidos ligam-se entre si por ligações peptídicas.",
+              "mascote_feedback_errado": "São os aminoácidos — os nucleótidos são os monómeros dos ácidos nucleicos."
+            },
+            {
+              "pergunta": "Sem enzimas, as reações químicas necessárias à vida:",
+              "opcoes": ["Ocorreriam demasiado devagar", "Ocorreriam exatamente à mesma velocidade"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! As enzimas aceleram as reações o suficiente para sustentar o metabolismo da célula.",
+              "mascote_feedback_errado": "Na verdade, ocorreriam demasiado devagar para sustentar a vida — é por isso que as enzimas são tão importantes."
+            },
+            {
+              "pergunta": "A hemoglobina, proteína que transporta oxigénio no sangue, tem função:",
+              "opcoes": ["De transporte", "Estrutural"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! É uma proteína de transporte.",
+              "mascote_feedback_errado": "Tem função de transporte — leva oxigénio a todas as células do corpo."
+            },
+            {
+              "pergunta": "Os aminoácidos ligam-se entre si através de:",
+              "opcoes": ["Ligações peptídicas", "Ligações de hidrogénio"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! É a ligação peptídica que une os aminoácidos numa proteína.",
+              "mascote_feedback_errado": "Ligam-se por ligações peptídicas — as ligações de hidrogénio são o que une, por exemplo, moléculas de água entre si."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: todas as proteínas desempenham a mesma função na célula.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! As proteínas são a biomolécula com maior diversidade de funções — estrutural, enzimática, defesa, transporte, hormonal, entre outras.",
+              "mascote_feedback_errado": "Na verdade é falso — as proteínas são precisamente a biomolécula com mais funções diferentes."
+            }
+          ],
+          "mascote_conclusao": "Já conheces as proteínas. Falta a última peça do puzzle: a molécula que guarda as instruções para fazer tudo isto. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "acidos-nucleicos",
+      "titulo": "Ácidos nucleicos: o manual de instruções",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Todas as biomoléculas que já viste — glícidos, lípidos, proteínas — só existem porque uma outra molécula guarda as instruções para as construir. 🐢",
+          "texto": "Vamos conhecer os ácidos nucleicos: DNA e RNA."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "O nucleótido: a peça base",
+          "imagem": "acidos_nucleicos_dna_rna.png",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "base_azotada", "label": "Base azotada", "explicacao": "A \"letra\" que codifica a informação genética — por exemplo, a Adenina, a Citosina, a Guanina, e a Timina (no DNA) ou o Uracilo (no RNA)." },
+            { "id": "pentose", "label": "Pentose", "explicacao": "Um açúcar de 5 carbonos que faz parte da estrutura do nucleótido — desoxirribose no DNA, ribose no RNA." },
+            { "id": "grupo_fosfato", "label": "Grupo fosfato", "explicacao": "Liga-se à pentose e é o que permite aos nucleótidos ligarem-se uns aos outros, formando a cadeia do ácido nucleico." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "DNA vs. RNA",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "dna", "label": "DNA", "explicacao": "Pentose: desoxirribose. Bases: Adenina, Citosina, Guanina, Timina. Estrutura: cadeia dupla (dupla hélice). Função: armazena e transmite a informação genética, controlando toda a atividade da célula." },
+            { "id": "rna", "label": "RNA", "explicacao": "Pentose: ribose. Bases: Adenina, Citosina, Guanina, Uracilo. Estrutura: geralmente cadeia simples. Função: intervém na síntese de proteínas, traduzindo a informação genética guardada no DNA." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "cartao_estilo": true,
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 O DNA é como o exemplar original de um livro de receitas, guardado a sete chaves num cofre (o núcleo) — precioso e raramente manuseado diretamente. O RNA é como uma fotocópia rápida de uma única receita, feita para sair do cofre e ir até à \"cozinha\" (os ribossomas), onde a proteína é de facto preparada. Assim, o original nunca se desgasta nem se perde — só as cópias de trabalho é que andam de um lado para o outro."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque o DNA é uma dupla hélice — e o RNA (quase) nunca é",
+          "texto": "A estrutura em dupla cadeia do DNA não é decorativa: cada uma das duas cadeias serve de \"molde\" para reparar ou copiar a outra, o que torna a molécula muito mais estável e protegida contra erros ao longo do tempo — essencial para uma molécula que precisa de guardar a informação genética de forma fiável, ao longo de toda a vida de um organismo (e até ser transmitida à descendência). O RNA, por ser geralmente uma cadeia simples e servir sobretudo como \"mensageiro\" temporário, não precisa dessa mesma estabilidade a longo prazo — é produzido, usado, e depois degradado, sempre que a célula precisa dele."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um nucleótido é constituído por uma base azotada, um grupo fosfato e:",
+              "opcoes": ["Uma pentose", "Um aminoácido"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A pentose (açúcar de 5 carbonos) faz parte da estrutura de qualquer nucleótido.",
+              "mascote_feedback_errado": "É uma pentose — o aminoácido é a unidade das proteínas, não dos ácidos nucleicos."
+            },
+            {
+              "pergunta": "A base azotada Timina está presente:",
+              "opcoes": ["No DNA", "No RNA"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! No RNA, a Timina é substituída pelo Uracilo.",
+              "mascote_feedback_errado": "Está presente no DNA — no RNA, a Timina é substituída pelo Uracilo."
+            },
+            {
+              "pergunta": "A pentose presente no RNA é:",
+              "opcoes": ["A ribose", "A desoxirribose"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A desoxirribose é exclusiva do DNA.",
+              "mascote_feedback_errado": "É a ribose — a desoxirribose é exclusiva do DNA."
+            },
+            {
+              "pergunta": "A molécula responsável por traduzir a informação genética na síntese de proteínas é:",
+              "opcoes": ["O DNA", "O RNA"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! O RNA é quem intervém diretamente na síntese de proteínas.",
+              "mascote_feedback_errado": "É o RNA — o DNA armazena a informação, mas é o RNA que a leva até onde as proteínas são produzidas."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: o DNA forma tipicamente uma cadeia dupla, enquanto o RNA é geralmente uma cadeia simples.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo! Essa diferença estrutural está ligada às diferentes funções de cada um.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro — o DNA é tipicamente uma dupla hélice, e o RNA geralmente uma cadeia simples."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão das Biomoléculas. Já sabes porque a água é tão especial, como os glícidos e os lípidos guardam energia, como as proteínas fazem quase tudo na célula, e como o DNA e o RNA guardam e usam a informação genética. 🧪🐢"
+        }
+      ]
+    }
+  ]
+}

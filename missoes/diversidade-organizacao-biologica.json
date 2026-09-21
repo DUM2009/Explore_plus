@@ -12,53 +12,49 @@
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
           "mascote_texto": "Para estudar a natureza, os ecólogos organizam a vida em níveis, cada um mais amplo do que o anterior — desde um único organismo até ao planeta inteiro.",
           "intro_imagem": "Lago com peixes.png",
           "intro_texto": "Um peixe sozinho não é um ecossistema. Mas o peixe, mais os outros peixes, mais as algas, mais o rio onde vivem... isso já é.",
           "ponte_texto": "Repara que essa frase já percorre vários dos níveis que os ecólogos usam para organizar a vida: o peixe sozinho, o grupo de peixes da mesma espécie, e todo o rio à sua volta. Conhece a seguir a escada completa, do nível mais simples ao mais amplo.",
-          "titulo": "A escada dos níveis de organização biológica",
+          "titulo": "A escada dos níveis de hierarquia biológica",
           "layout": "escada",
           "instrucao": "Clica em cada degrau para veres a explicação — repara como cada nível é maior e mais complexo do que o anterior.",
           "pontos": [
-            { "id": "atomo", "label": "Átomo", "imagem": "atomo.svg", "explicacao": "A unidade básica da matéria. Átomos como o carbono, o hidrogénio, o oxigénio e o azoto combinam-se para formar as moléculas de que os seres vivos são feitos." },
-            { "id": "molecula", "label": "Molécula", "imagem": "molecula.png", "explicacao": "Conjunto de átomos ligados quimicamente entre si (ex: água, glicose, proteínas) — as moléculas orgânicas são a base química de todos os seres vivos." },
-            { "id": "organelo", "label": "Organelo", "imagem": "organelo.svg", "explicacao": "Estrutura especializada dentro de uma célula, com uma função específica (ex: mitocôndria, núcleo, cloroplasto)." },
-            { "id": "celula", "label": "Célula", "imagem": "celula.svg", "explicacao": "A unidade básica de vida — a estrutura mais simples capaz de realizar todas as funções vitais." },
-            { "id": "tecido", "label": "Tecido", "imagem": "tecido.jpg", "explicacao": "Conjunto de células semelhantes que trabalham em conjunto numa função específica (ex: tecido muscular)." },
-            { "id": "orgao", "label": "Órgão", "imagem": "orgao.svg", "explicacao": "Conjunto de diferentes tecidos organizados para desempenhar uma função conjunta (ex: o coração)." },
-            { "id": "sistema_orgaos", "label": "Sistema de órgãos", "imagem": "sistema-orgaos.svg", "explicacao": "Vários órgãos a trabalhar em conjunto para uma função mais ampla (ex: sistema digestivo)." },
-            { "id": "organismo", "label": "Organismo", "imagem": "organismo.jpg", "explicacao": "Um ser vivo completo e individual, resultado da integração de todos os seus sistemas." },
-            { "id": "populacao", "label": "População", "imagem": "populacao.jpg", "explicacao": "Todos os indivíduos da mesma espécie, a viver na mesma área, ao mesmo tempo." },
-            { "id": "comunidade", "label": "Comunidade", "imagem": "comunidade.jpg", "explicacao": "Todas as populações de espécies diferentes que interagem na mesma área." },
+            { "id": "atomo", "label": "Átomo", "imagem": "Átomo.png", "explicacao": "A unidade básica da matéria. Átomos como o carbono, o hidrogénio, o oxigénio e o azoto combinam-se para formar as moléculas de que os seres vivos são feitos." },
+            { "id": "molecula", "label": "Molécula", "imagem": "Molécula.png", "explicacao": "Conjunto de átomos ligados quimicamente entre si (ex: água, glicose, proteínas) — as moléculas orgânicas são a base química de todos os seres vivos." },
+            { "id": "biomolecula", "label": "Biomolécula", "imagem": "Biomolécula.png", "explicacao": "Moléculas produzidas pelos seres vivos e essenciais à vida — como as proteínas, os glícidos, os lípidos e os ácidos nucleicos (DNA e RNA) — que se combinam para formar e fazer funcionar as células." },
+            { "id": "organelo", "label": "Organelo", "imagem": "Mitocôndira.png", "explicacao": "Estrutura especializada dentro de uma célula, com uma função específica (ex: mitocôndria, núcleo, cloroplasto)." },
+            { "id": "celula", "label": "Célula", "imagem": "Célula.png", "explicacao": "A unidade básica de vida — a estrutura mais simples capaz de realizar todas as funções vitais." },
+            { "id": "tecido", "label": "Tecido", "imagem": "Tecido.png", "explicacao": "Conjunto de células semelhantes que trabalham em conjunto numa função específica (ex: tecido muscular)." },
+            { "id": "orgao", "label": "Órgão", "imagem": "Coração.png", "explicacao": "Conjunto de diferentes tecidos organizados para desempenhar uma função conjunta (ex: o coração)." },
+            { "id": "sistema_orgaos", "label": "Sistema de órgãos", "imagem": "Sistema de órgãos.png", "explicacao": "Vários órgãos a trabalhar em conjunto para uma função mais ampla (ex: sistema digestivo)." },
+            { "id": "organismo", "label": "Organismo", "imagem": "Homem.png", "explicacao": "Um ser vivo completo e individual, resultado da integração de todos os seus sistemas." },
+            { "id": "populacao", "label": "População", "imagem": "populacao.jpg", "explicacao": "Todos os indivíduos da mesma espécie, a viver na mesma área, ao mesmo tempo. Entre eles estabelecem-se relações intraespecíficas (entre indivíduos da mesma espécie, como competição ou cooperação) e relações interespecíficas (com indivíduos de outras espécies, como predação ou parasitismo) — estas últimas fazem parte dos fatores bióticos que influenciam a população." },
+            { "id": "especie", "label": "Espécie", "imagem": "especie.jpg", "explicacao": "Um grupo de organismos com características semelhantes, capazes de se reproduzir entre si e gerar descendência fértil — é isso que os torna a mesma espécie, mesmo quando parecem muito diferentes (como um chihuahua e um dogue alemão, ambos da espécie Canis familiaris)." },
+            { "id": "comunidade", "label": "Comunidade", "imagem": "comunidade.jpg", "explicacao": "Todas as populações de espécies diferentes que interagem na mesma área — também chamada comunidade biótica ou biocenose. Vive sempre sujeita às condições abióticas do meio à sua volta (temperatura, luz, água, tipo de solo), que em conjunto com a biocenose formam um ecossistema." },
             { "id": "ecossistema", "label": "Ecossistema", "imagem": "ecossistema.jpg", "explicacao": "A comunidade de seres vivos, em interação com o ambiente físico (água, solo, luz, temperatura) que a rodeia." },
             { "id": "bioma", "label": "Bioma", "imagem": "bioma.jpg", "explicacao": "Um conjunto de ecossistemas com características climáticas e vegetação semelhantes, numa grande região (ex: floresta tropical, tundra, savana)." },
             { "id": "biosfera", "label": "Biosfera", "imagem": "biosfera.jpg", "explicacao": "O conjunto de todos os ecossistemas e biomas do planeta — a camada da Terra onde existe vida." }
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Todas as trutas de um rio, da mesma espécie, formam:",
-          "opcoes": ["Uma população", "Uma comunidade"],
-          "correta": 0,
-          "mascote_feedback_certo": "Exato! Como são da mesma espécie, é uma população.",
-          "mascote_feedback_errado": "Na verdade, como são todas da mesma espécie, formam uma população — uma comunidade teria de incluir espécies diferentes."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um ecossistema é composto por:",
-          "opcoes": ["Só os seres vivos de uma área", "A comunidade de seres vivos + o ambiente físico à sua volta"],
-          "correta": 1,
-          "mascote_feedback_certo": "Correto! É essa combinação (seres vivos + ambiente físico) que define um ecossistema.",
-          "mascote_feedback_errado": "Na verdade, um ecossistema inclui também o ambiente físico à volta — não só os seres vivos."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Onde está a fronteira de um ecossistema?",
-          "texto": "Ao contrário do que pode parecer, os ecossistemas não têm limites rígidos e fixos na natureza — a decisão de onde começa e acaba um ecossistema (ex: \"este lago\" ou \"esta floresta\") é, em grande parte, uma escolha prática dos cientistas para facilitar o estudo, não uma fronteira física absoluta. Na realidade, os ecossistemas trocam constantemente energia, matéria e organismos com os ecossistemas vizinhos (ex: aves migratórias, água de um rio que desagua no mar), pelo que estão sempre interligados a uma escala maior."
-        },
-        {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Todas as trutas de um rio, da mesma espécie, formam:",
+              "opcoes": ["Uma população", "Uma comunidade"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Como são da mesma espécie, é uma população.",
+              "mascote_feedback_errado": "Na verdade, como são todas da mesma espécie, formam uma população — uma comunidade teria de incluir espécies diferentes."
+            },
+            {
+              "pergunta": "Um ecossistema é composto por:",
+              "opcoes": ["Só os seres vivos de uma área", "A comunidade de seres vivos + o ambiente físico à sua volta"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! É essa combinação (seres vivos + ambiente físico) que define um ecossistema.",
+              "mascote_feedback_errado": "Na verdade, um ecossistema inclui também o ambiente físico à volta — não só os seres vivos."
+            },
             {
               "pergunta": "Um conjunto de ecossistemas com clima e vegetação semelhantes, numa grande região, chama-se:",
               "opcoes": ["Bioma", "População"],
@@ -81,7 +77,7 @@
               "mascote_feedback_errado": "O nível mais amplo é a biosfera — o bioma é um nível mais restrito, dentro da biosfera."
             }
           ],
-          "mascote_conclusao": "Já sabes como a natureza se organiza em níveis. A seguir, vamos ver o que realmente \"faz funcionar\" um ecossistema por dentro. 🐢"
+          "mascote_conclusao": "Já sabes como a natureza se organiza em níveis. A seguir, vamos ver o que realmente \"faz funcionar\" um ecossistema por dentro."
         }
       ]
     },
@@ -92,70 +88,63 @@
       "tempo_estimado_min": 8,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "mascote_texto": "A energia do Sol que chega a uma folha hoje pode, poucos dias depois, estar a mover os músculos de um leão. Como é que a energia viaja assim? 🐢",
-          "texto": "Vamos perceber como a energia e a matéria se movem entre os seres vivos de um ecossistema."
+          "tipo": "analogia",
+          "cartao_estilo": true,
+          "mascote_texto": "A energia do Sol que chega a uma folha hoje pode, poucos dias depois, estar a mover os músculos de um leão. Como é que a energia viaja assim?",
+          "imagem": "sol-leao-energia.jpg",
+          "texto": "Uma planta capta a luz do Sol e usa-a para crescer. Um herbívoro come essa planta. Um predador, como este leão, come o herbívoro. A cada etapa, a energia passa de um ser vivo para o seguinte.\n\nCada um destes \"elos\" da cadeia — planta, herbívoro, predador — corresponde a um nível trófico diferente: a posição que um ser vivo ocupa numa cadeia alimentar, consoante o número de transferências de energia que o separam do Sol. Conhece a seguir os níveis tróficos que compõem qualquer ecossistema."
         },
         {
           "tipo": "diagrama_interativo",
           "titulo": "Os níveis tróficos",
-          "imagem": "piramide_niveis_troficos.png",
+          "cartao_estilo": true,
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "produtores", "label": "Produtores", "explicacao": "Organismos que fabricam o seu próprio alimento (geralmente por fotossíntese), como plantas e algas. São a base de toda a cadeia alimentar." },
-            { "id": "consumidores_primarios", "label": "Consumidores primários", "explicacao": "Herbívoros, que se alimentam diretamente dos produtores." },
-            { "id": "consumidores_secundarios", "label": "Consumidores secundários", "explicacao": "Carnívoros que se alimentam de consumidores primários (herbívoros)." },
-            { "id": "consumidores_terciarios", "label": "Consumidores terciários", "explicacao": "Predadores de topo, que se alimentam de outros consumidores secundários." },
-            { "id": "decompositores", "label": "Decompositores", "explicacao": "Fungos e bactérias que decompõem matéria orgânica morta (de qualquer nível trófico), devolvendo nutrientes ao ambiente para os produtores reutilizarem." }
+            { "id": "produtores", "label": "Produtores", "imagem": "Relva.jpeg", "explicacao": "Organismos que fabricam o seu próprio alimento (geralmente por fotossíntese), como plantas e algas. São a base de toda a cadeia alimentar — ocupam o 1º nível trófico." },
+            { "id": "consumidores", "label": "Consumidores", "imagem": "Leão a caçar.jpeg", "explicacao": "Seres vivos que se alimentam de outros organismos. Os herbívoros, que comem diretamente os produtores, ocupam o 2º nível trófico (consumidores primários). Os carnívoros que comem esses herbívoros ocupam o 3º nível trófico (consumidores secundários), e os predadores de topo que comem outros carnívoros ocupam o 4º nível trófico (consumidores terciários)." },
+            { "id": "decompositores", "label": "Decompositores", "imagem": "Decompositores.jpeg", "explicacao": "Fungos e bactérias que decompõem matéria orgânica morta, devolvendo nutrientes ao ambiente para os produtores reutilizarem. Não ocupam um único nível trófico fixo — atuam sobre restos de todos os níveis, dos produtores aos consumidores de topo." }
           ]
+        },
+        {
+          "tipo": "analogia",
+          "cartao_estilo": true,
+          "imagem": "Cadeia alimentar.png",
+          "texto": "Achas que cada ser vivo só come e é comido por um único outro? Na natureza é bem mais complicado do que isso.\n\nA sequência planta → herbívoro → predador que viste é uma cadeia alimentar: um único \"fio\" de transferências de energia. Mas, na realidade, um herbívoro raramente come só um tipo de planta, nem é comido só por um predador — cada espécie participa em várias cadeias ao mesmo tempo. Quando juntamos todas essas cadeias que se cruzam num ecossistema, formamos uma teia alimentar: uma rede de relações alimentares muito mais fiel a como a energia e a matéria realmente circulam."
         },
         {
           "tipo": "diagrama_interativo",
           "titulo": "Fluxo de energia vs. ciclo de matéria",
-          "imagem": "fluxo_energia_vs_materia.png",
+          "cartao_estilo": true,
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "fluxo_energia", "label": "Fluxo de energia", "explicacao": "A energia entra no ecossistema pela luz solar, passa de nível trófico em nível trófico, mas vai-se perdendo como calor a cada transferência — nunca é reciclada, tem de entrar sempre nova energia do Sol." },
-            { "id": "ciclo_materia", "label": "Ciclo de matéria", "explicacao": "Ao contrário da energia, os átomos de carbono, azoto e outros elementos são reciclados indefinidamente entre os seres vivos e o ambiente, através dos decompositores." }
+            { "id": "fluxo_energia", "label": "Fluxo de energia", "imagem": "Pirâmide energia.png", "explicacao": "A energia entra no ecossistema pela luz solar, passa de nível trófico em nível trófico ao longo das cadeias e teias alimentares, mas vai-se perdendo como calor a cada transferência — nunca é reciclada, tem de entrar sempre nova energia do Sol." },
+            { "id": "ciclo_materia", "label": "Ciclo de matéria", "imagem": "Matéria ao longo da cadeia alimentar.jpeg", "explicacao": "Ao contrário da energia, os átomos de carbono, azoto e outros elementos são reciclados indefinidamente entre os seres vivos e o ambiente, através dos decompositores." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Os organismos que fabricam o seu próprio alimento, servindo de base à cadeia alimentar, chamam-se:",
-          "opcoes": ["Consumidores", "Produtores"],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato! Sem produtores, não haveria energia disponível para mais ninguém na cadeia.",
-          "mascote_feedback_errado": "O nome correto é produtores — os consumidores dependem deles para obter energia."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "A energia, ao contrário da matéria, num ecossistema:",
-          "opcoes": ["É reciclada indefinidamente", "Flui numa só direção, perdendo-se como calor"],
-          "correta": 1,
-          "mascote_feedback_certo": "Correto! Por isso é preciso entrar sempre nova energia solar — a energia não volta a circular como a matéria.",
-          "mascote_feedback_errado": "Na verdade a energia flui numa só direção e perde-se como calor — quem é reciclada é a matéria."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Os decompositores são fundamentais porque:",
-          "opcoes": ["Produzem energia solar", "Devolvem nutrientes ao ambiente, permitindo o ciclo de matéria"],
-          "correta": 1,
-          "mascote_feedback_certo": "Isso mesmo! Sem eles, os nutrientes ficariam presos nos corpos mortos para sempre.",
-          "mascote_feedback_errado": "Na verdade, o papel fundamental dos decompositores é devolver nutrientes ao ambiente, permitindo o ciclo de matéria."
-        },
-        {
-          "tipo": "analogia",
-          "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 A energia num ecossistema é como o dinheiro que gastas num café: entra, passa de mão em mão (do dono ao fornecedor, ao empregado), mas uma parte \"escapa-se\" sempre como custos/perdas a cada troca — nunca volta inteiro ao ponto de partida. Já a matéria (nutrientes) é como garrafas de vidro num sistema de depósito e devolução: usam-se, mas voltam sempre a circular, indefinidamente, através da reciclagem feita pelos decompositores."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Porque as cadeias alimentares raramente têm mais de 4-5 níveis",
-          "texto": "Em cada transferência de energia entre níveis tróficos, cerca de 90% da energia perde-se (como calor, através dos processos metabólicos), e só cerca de 10% passa efetivamente para o nível seguinte — esta é conhecida como a \"regra dos 10%\". É por isso que as cadeias alimentares raramente ultrapassam 4 ou 5 níveis: a partir de certo ponto, já não sobra energia suficiente para sustentar mais um nível trófico. É também por isso que existem sempre muito mais produtores do que predadores de topo num ecossistema saudável."
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Os organismos que fabricam o seu próprio alimento, servindo de base à cadeia alimentar, chamam-se:",
+              "opcoes": ["Consumidores", "Produtores"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! Sem produtores, não haveria energia disponível para mais ninguém na cadeia.",
+              "mascote_feedback_errado": "O nome correto é produtores — os consumidores dependem deles para obter energia."
+            },
+            {
+              "pergunta": "A energia, ao contrário da matéria, num ecossistema:",
+              "opcoes": ["É reciclada indefinidamente", "Flui numa só direção, perdendo-se como calor"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! Por isso é preciso entrar sempre nova energia solar — a energia não volta a circular como a matéria.",
+              "mascote_feedback_errado": "Na verdade a energia flui numa só direção e perde-se como calor — quem é reciclada é a matéria."
+            },
+            {
+              "pergunta": "Os decompositores são fundamentais porque:",
+              "opcoes": ["Produzem energia solar", "Devolvem nutrientes ao ambiente, permitindo o ciclo de matéria"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Sem eles, os nutrientes ficariam presos nos corpos mortos para sempre.",
+              "mascote_feedback_errado": "Na verdade, o papel fundamental dos decompositores é devolver nutrientes ao ambiente, permitindo o ciclo de matéria."
+            },
             {
               "pergunta": "A \"regra dos 10%\" refere-se a:",
               "opcoes": ["A percentagem de energia transferida entre níveis tróficos", "A percentagem de decompositores num ecossistema"],
@@ -178,7 +167,7 @@
               "mascote_feedback_errado": "Na verdade tem muito menos — perde-se cerca de 90% da energia a cada nível trófico."
             }
           ],
-          "mascote_conclusao": "Já percebeste como a energia e a matéria se movem num ecossistema. A seguir, vamos falar sobre a riqueza de vida que torna tudo isto possível: a biodiversidade. 🐢"
+          "mascote_conclusao": "Já percebeste como a energia e a matéria se movem num ecossistema. A seguir, vamos falar sobre a riqueza de vida que torna tudo isto possível: a biodiversidade."
         }
       ]
     },
@@ -189,12 +178,10 @@
       "tempo_estimado_min": 6,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "mascote_texto": "Achas que \"biodiversidade\" é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra. 🐢",
-          "texto": "Vamos descobrir os três níveis que compõem a biodiversidade de um ecossistema."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "mascote_texto": "Achas que \"biodiversidade\" é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra. 🐢",
+          "ponte_texto": "Vamos descobrir os três níveis que compõem a biodiversidade de um ecossistema.",
           "titulo": "Os três níveis de biodiversidade",
           "imagem": "tres_niveis_biodiversidade.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -202,37 +189,29 @@
             { "id": "diversidade_genetica", "label": "Diversidade genética", "explicacao": "A variedade de genes que existe dentro de uma mesma espécie — é o que torna, por exemplo, cada humano geneticamente único, ou permite que existam raças de cães tão diferentes entre si." },
             { "id": "diversidade_especies", "label": "Diversidade de espécies", "explicacao": "O número e a variedade de espécies diferentes presentes numa determinada área — é o significado mais comum e intuitivo de \"biodiversidade\"." },
             { "id": "diversidade_ecossistemas", "label": "Diversidade de ecossistemas", "explicacao": "A variedade de habitats e ecossistemas diferentes presentes numa região ou no planeta (florestas, oceanos, desertos, zonas húmidas...)." }
-          ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "A variedade de genes dentro da mesma espécie chama-se:",
-          "opcoes": ["Diversidade genética", "Diversidade de ecossistemas"],
-          "correta": 0,
-          "mascote_feedback_certo": "Exato! É esta diversidade que, por exemplo, ajuda uma espécie a adaptar-se a mudanças ambientais.",
-          "mascote_feedback_errado": "O nome correto é diversidade genética — a diversidade de ecossistemas refere-se à variedade de habitats."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "A biodiversidade é medida apenas pelo número de espécies numa área?",
-          "opcoes": ["Sim, apenas isso", "Não — inclui também diversidade genética e de ecossistemas"],
-          "correta": 1,
-          "mascote_feedback_certo": "Correto! Uma área pode ter poucas espécies mas alta diversidade genética dentro delas, ou vice-versa.",
-          "mascote_feedback_errado": "Na verdade não — a biodiversidade inclui também a diversidade genética e a diversidade de ecossistemas."
-        },
-        {
-          "tipo": "analogia",
-          "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 A biodiversidade é como a diversidade numa biblioteca, medida a três níveis: quantos livros diferentes existem (espécies), quanta variedade de edições/traduções existe de cada livro (genética), e quantas secções/géneros literários diferentes existem na biblioteca toda (ecossistemas). Uma biblioteca \"rica\" não é só sobre ter muitos livros — é sobre ter variedade a todos estes níveis."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Onde está concentrada a maior parte da biodiversidade do planeta",
-          "texto": "A biodiversidade não está distribuída de forma uniforme pelo planeta. Certas regiões, chamadas hotspots de biodiversidade, concentram uma proporção desproporcionalmente alta de espécies (muitas delas endémicas, ou seja, que não existem em mais lado nenhum) — exemplos incluem a Floresta Atlântica no Brasil, Madagáscar, ou a região do Mediterrâneo. Estas zonas são também, frequentemente, as mais ameaçadas por atividade humana, o que as torna prioridades centrais para os esforços globais de conservação."
+          ],
+          "aprofundar": {
+            "titulo": "Onde está concentrada a maior parte da biodiversidade do planeta",
+            "texto": "A biodiversidade não está distribuída de forma uniforme pelo planeta. Certas regiões, chamadas hotspots de biodiversidade, concentram uma proporção desproporcionalmente alta de espécies (muitas delas endémicas, ou seja, que não existem em mais lado nenhum) — exemplos incluem a Floresta Atlântica no Brasil, Madagáscar, ou a região do Mediterrâneo. Estas zonas são também, frequentemente, as mais ameaçadas por atividade humana, o que as torna prioridades centrais para os esforços globais de conservação."
+          }
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "A variedade de genes dentro da mesma espécie chama-se:",
+              "opcoes": ["Diversidade genética", "Diversidade de ecossistemas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! É esta diversidade que, por exemplo, ajuda uma espécie a adaptar-se a mudanças ambientais.",
+              "mascote_feedback_errado": "O nome correto é diversidade genética — a diversidade de ecossistemas refere-se à variedade de habitats."
+            },
+            {
+              "pergunta": "A biodiversidade é medida apenas pelo número de espécies numa área?",
+              "opcoes": ["Sim, apenas isso", "Não — inclui também diversidade genética e de ecossistemas"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! Uma área pode ter poucas espécies mas alta diversidade genética dentro delas, ou vice-versa.",
+              "mascote_feedback_errado": "Na verdade não — a biodiversidade inclui também a diversidade genética e a diversidade de ecossistemas."
+            },
             {
               "pergunta": "Quantos \"tipos\" ou níveis de biodiversidade foram discutidos nesta secção?",
               "opcoes": ["2", "3"],
@@ -266,26 +245,24 @@
       "tempo_estimado_min": 7,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "mascote_texto": "Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade. 🐢",
-          "texto": "Vamos ver as principais causas da perda de biodiversidade — e o que se pode fazer para a proteger."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_texto": "Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade. 🐢",
           "titulo": "Causas da perda de biodiversidade",
+          "cartao_estilo": true,
           "imagem": "causas_extincao.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "destruicao_habitat", "label": "Destruição de habitat", "explicacao": "A principal causa de perda de biodiversidade atualmente — desflorestação, urbanização e conversão de terrenos para agricultura destroem o espaço onde as espécies vivem." },
-            { "id": "alteracoes_climaticas", "label": "Alterações climáticas", "explicacao": "Mudanças na temperatura e nos padrões climáticos alteram habitats mais depressa do que muitas espécies conseguem adaptar-se ou migrar." },
-            { "id": "especies_invasoras", "label": "Espécies invasoras", "explicacao": "Espécies introduzidas (intencionalmente ou por acidente) fora da sua área natural, que competem com ou predam espécies locais, muitas vezes sem inimigos naturais que as controlem." },
-            { "id": "poluicao", "label": "Poluição", "explicacao": "Contaminação da água, solo e ar afeta diretamente a saúde e sobrevivência de inúmeras espécies." },
-            { "id": "sobre_exploracao", "label": "Sobre-exploração", "explicacao": "Caça, pesca ou recolha de recursos naturais a um ritmo superior à capacidade de renovação natural das populações." }
+            { "id": "destruicao_habitat", "label": "Destruição de habitat", "imagem": "Destruição de habitats.jpeg", "explicacao": "A principal causa de perda de biodiversidade atualmente — desflorestação, urbanização e conversão de terrenos para agricultura destroem o espaço onde as espécies vivem." },
+            { "id": "alteracoes_climaticas", "label": "Alterações climáticas", "imagem": "Alterações climáticas.jpeg", "explicacao": "Mudanças na temperatura e nos padrões climáticos alteram habitats mais depressa do que muitas espécies conseguem adaptar-se ou migrar." },
+            { "id": "especies_invasoras", "label": "Espécies invasoras", "imagem": "Espécie invasora.jpeg", "explicacao": "Espécies introduzidas (intencionalmente ou por acidente) fora da sua área natural, que competem com ou predam espécies locais, muitas vezes sem inimigos naturais que as controlem." },
+            { "id": "poluicao", "label": "Poluição", "imagem": "Poluição.jpeg", "explicacao": "Contaminação da água, solo e ar afeta diretamente a saúde e sobrevivência de inúmeras espécies." },
+            { "id": "sobre_exploracao", "label": "Sobre-exploração", "imagem": "Sobre-exploração.jpeg", "explicacao": "Caça, pesca ou recolha de recursos naturais a um ritmo superior à capacidade de renovação natural das populações." }
           ]
         },
         {
           "tipo": "diagrama_interativo",
           "titulo": "Estratégias de conservação",
+          "cartao_estilo": true,
           "imagem": "estrategias_conservacao.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
@@ -293,45 +270,36 @@
             { "id": "reproducao_cativeiro", "label": "Reprodução em cativeiro", "explicacao": "Programas que reproduzem espécies ameaçadas em ambientes controlados (zoos, centros de conservação), por vezes com o objetivo de reintroduzi-las na natureza." },
             { "id": "legislacao", "label": "Legislação e acordos internacionais", "explicacao": "Leis nacionais e tratados internacionais (como a CITES, que regula o comércio internacional de espécies ameaçadas) que restringem atividades prejudiciais à biodiversidade." },
             { "id": "restauro_ecologico", "label": "Restauro ecológico", "explicacao": "Ações ativas para recuperar ecossistemas degradados, como reflorestação ou reintrodução de espécies-chave." }
-          ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é, atualmente, a principal causa de perda de biodiversidade?",
-          "opcoes": ["Destruição de habitat", "Reprodução em cativeiro"],
-          "correta": 0,
-          "mascote_feedback_certo": "Exato! A destruição de habitats naturais é hoje a maior ameaça à biodiversidade global.",
-          "mascote_feedback_errado": "A principal causa atual é a destruição de habitat — a reprodução em cativeiro é, na verdade, uma estratégia de conservação."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "A CITES é um exemplo de:",
-          "opcoes": ["Uma espécie invasora", "Um acordo internacional de conservação"],
-          "correta": 1,
-          "mascote_feedback_certo": "Correto! A CITES regula o comércio internacional de espécies ameaçadas.",
-          "mascote_feedback_errado": "A CITES é, na verdade, um acordo internacional que regula o comércio de espécies ameaçadas."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Espécies introduzidas fora da sua área natural, sem inimigos naturais que as controlem, são chamadas:",
-          "opcoes": ["Espécies endémicas", "Espécies invasoras"],
-          "correta": 1,
-          "mascote_feedback_certo": "Isso mesmo! Podem causar grandes desequilíbrios nos ecossistemas onde são introduzidas.",
-          "mascote_feedback_errado": "O nome correto é espécies invasoras — endémicas são espécies que só existem naturalmente numa dada região."
-        },
-        {
-          "tipo": "analogia",
-          "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 Proteger a biodiversidade é como cuidar de um jardim antigo e complexo: não basta plantar novas flores (reprodução em cativeiro) se continuares a deitar químicos no solo (poluição) ou a cortar as árvores à volta (destruição de habitat). A conservação eficaz exige atuar em várias frentes ao mesmo tempo — proteger o espaço, controlar ameaças externas, e por vezes ajudar ativamente a recuperar o que já foi perdido."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "A Lista Vermelha da IUCN — como se mede o risco de extinção",
-          "texto": "A União Internacional para a Conservação da Natureza (IUCN) mantém a \"Lista Vermelha\", um sistema padronizado que classifica o estado de conservação das espécies em categorias como: Pouco Preocupante, Quase Ameaçada, Vulnerável, Em Perigo, Criticamente em Perigo, Extinta na Natureza, e Extinta. Esta classificação baseia-se em critérios como a taxa de declínio populacional, o tamanho e fragmentação da área de distribuição, e o tamanho total da população — permitindo aos cientistas e governos priorizar recursos de conservação para as espécies mais urgentemente ameaçadas."
+          ],
+          "aprofundar": {
+            "titulo": "A Lista Vermelha da IUCN — como se mede o risco de extinção",
+            "texto": "A União Internacional para a Conservação da Natureza (IUCN) mantém a \"Lista Vermelha\", um sistema padronizado que classifica o estado de conservação das espécies em categorias como: Pouco Preocupante, Quase Ameaçada, Vulnerável, Em Perigo, Criticamente em Perigo, Extinta na Natureza, e Extinta. Esta classificação baseia-se em critérios como a taxa de declínio populacional, o tamanho e fragmentação da área de distribuição, e o tamanho total da população — permitindo aos cientistas e governos priorizar recursos de conservação para as espécies mais urgentemente ameaçadas."
+          }
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é, atualmente, a principal causa de perda de biodiversidade?",
+              "opcoes": ["Destruição de habitat", "Reprodução em cativeiro"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A destruição de habitats naturais é hoje a maior ameaça à biodiversidade global.",
+              "mascote_feedback_errado": "A principal causa atual é a destruição de habitat — a reprodução em cativeiro é, na verdade, uma estratégia de conservação."
+            },
+            {
+              "pergunta": "A CITES é um exemplo de:",
+              "opcoes": ["Uma espécie invasora", "Um acordo internacional de conservação"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! A CITES regula o comércio internacional de espécies ameaçadas.",
+              "mascote_feedback_errado": "A CITES é, na verdade, um acordo internacional que regula o comércio de espécies ameaçadas."
+            },
+            {
+              "pergunta": "Espécies introduzidas fora da sua área natural, sem inimigos naturais que as controlem, são chamadas:",
+              "opcoes": ["Espécies endémicas", "Espécies invasoras"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Podem causar grandes desequilíbrios nos ecossistemas onde são introduzidas.",
+              "mascote_feedback_errado": "O nome correto é espécies invasoras — endémicas são espécies que só existem naturalmente numa dada região."
+            },
             {
               "pergunta": "A principal causa atual de perda de biodiversidade é:",
               "opcoes": ["Destruição de habitat", "Reprodução em cativeiro"],
@@ -354,7 +322,7 @@
               "mascote_feedback_errado": "Na verdade é falso — as espécies invasoras podem causar grandes desequilíbrios, por não terem inimigos naturais locais."
             }
           ],
-          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que realmente significa biodiversidade, e como podemos ajudar a proteger o que resta dela. 🌍🐢"
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que é a biodiversidade e como a proteger. 🌍🐢"
         }
       ]
     }
