@@ -1621,18 +1621,28 @@ font-size:1.1rem;
 max-width:400px;
 }
 
+/* Stays a single row (the base header rule's flex-direction: row /
+   justify-content: space-between / align-items: center already put the
+   logo on the left and nav on the right on the same line) — just shrunk
+   so Login + Sign in fit beside the logo instead of wrapping under it. */
 header{
-flex-direction:column;
-/* Overrides the base header's align-items:center — logo and nav (Login/
-   Sign in) should hug the left edge on mobile, stacked, not center on
-   the page. */
-align-items:flex-start;
-gap:20px;
+/* Base header's 8% right padding held Login/Sign in well short of the
+   edge — tighten just that side so the pills sit further right. */
+padding-right:4%;
+}
+
+header .logo img{
+width:110px;
 }
 
 header nav{
-flex-wrap:wrap;
-justify-content:flex-start;
+gap:8px;
+}
+
+header nav a,
+header nav button{
+padding:8px 14px;
+font-size:0.95rem;
 }
 
 }
