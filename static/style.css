@@ -5389,11 +5389,15 @@ background:#27ae60;
 
 .area-animation {
     position: absolute;
-    top: 0;
-    right: -160px;
+    /* 4% mais abaixo (e 4% mais baixa) para a figura não ficar colada ao
+       topo, mantendo-se centrada na altura restante. */
+    top: 4%;
+    /* Antes -160px: encostava a figura ao canto direito. Este valor deixa-a
+       um pouco mais para dentro, acompanhando a largura do ecrã. */
+    right: clamp(-160px, -5vw, -40px);
 
     width: 65%;
-    height: 100%;
+    height: 96%;
 
     display: flex;
     align-items: center;
@@ -5467,6 +5471,7 @@ background:#27ae60;
            relative positioning that offset shifts the whole box 160px to
            the right instead, shoving the image off-screen. */
         right: auto;
+        top: auto;
         width: 100%;
         height: auto;
         margin-top: 30px;
@@ -11360,5 +11365,416 @@ html.dark-mode .resumo-tabela td {
         justify-content:flex-end;
         width:auto;
         margin-right:-8px;
+    }
+}
+
+/* =========================================
+   HERO INTERATIVO — "dá cinco" ao Kim
+   A imagem está dividida em 3 camadas (fundo, mão do rapaz, Kim) para as
+   mãos poderem afastar-se e bater. Posições em % da imagem original 1024x1536.
+   ========================================= */
+
+.area-animation .hero-hifive {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    height: 95%;
+    aspect-ratio: 1024 / 1536;
+    transform-origin: 50% 100%;
+    pointer-events: none;
+}
+
+.hifive-layer {
+    position: absolute;
+    display: block;
+    max-width: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.hifive-plate { left: 24.0234%; top: 7.0313%; width: 49.0234%; height: 91.7969%; }
+.hifive-hand  { left: 47.6563%; top: 6.9661%; width: 6.3477%; height: 11.849%; transform-origin: 49% 98%; }
+.hifive-kim   { left: 50.0977%; top: 4.1667%; width: 24.4141%; height: 23.3724%; transform-origin: 30.8% 92.2%; }
+
+/* Pose "pronto?": o Kim inclina-se para trás, a mão do rapaz recua um pouco */
+.hifive-kim  { transform: rotate(14deg); animation: hifive-kim-ready 1.6s ease-in-out infinite; }
+.hifive-hand { transform: rotate(-8deg) translate(-4.6%, 4.4%); animation: hifive-hand-ready 1.6s ease-in-out infinite; }
+
+/* Depois do "cinco": mãos juntas (pose original da imagem) */
+.hero-hifive.is-clapped .hifive-kim,
+.hero-hifive.is-clapped .hifive-hand { animation: none; }
+.hero-hifive.is-clapped .hifive-kim  { transform: rotate(0); }
+.hero-hifive.is-clapped .hifive-hand { transform: none; }
+
+.hero-hifive.is-hit .hifive-kim  { animation: hifive-kim-slap .8s cubic-bezier(.3, 1.2, .5, 1) both; }
+.hero-hifive.is-hit .hifive-hand { animation: hifive-hand-slap .8s cubic-bezier(.3, 1.2, .5, 1) both; }
+.hero-hifive.is-hit { animation: hifive-impact .8s ease-out; }
+
+.hero-hifive.is-reset .hifive-kim  { animation: hifive-kim-reset .7s ease-in-out both; }
+.hero-hifive.is-reset .hifive-hand { animation: hifive-hand-reset .7s ease-in-out both; }
+
+.hero-hifive-hotspot {
+    position: absolute;
+    left: 46%;
+    top: 3%;
+    width: 18%;
+    height: 17%;
+    z-index: 6;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* O site tem um `button:hover` global (fundo verde, sombra, translateY) que
+   faria da zona clicável uma bola verde por cima das mãos. */
+.hero-hifive .hero-hifive-hotspot,
+.hero-hifive .hero-hifive-hotspot:hover,
+.hero-hifive .hero-hifive-hotspot:active,
+.hero-hifive .hero-hifive-hotspot:focus {
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    border: 0;
+    padding: 0;
+}
+
+.hero-hifive .hero-hifive-hotspot:focus-visible {
+    outline: 3px solid #1f8a5b;
+    outline-offset: 4px;
+}
+
+.hero-hifive .hero-hifive-hotspot:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.hero-hifive-pulse {
+    position: absolute;
+    left: 51%;
+    top: 11.4%;
+    z-index: 4;
+    width: 16%;
+    aspect-ratio: 1;
+    border: 3px solid rgba(31, 138, 91, .55);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(.5);
+    opacity: 0;
+    animation: hifive-pulse 2.4s ease-out infinite;
+    pointer-events: none;
+}
+
+.hero-hifive.is-touched .hero-hifive-pulse { display: none; }
+
+.hero-hifive-bubble {
+    position: absolute;
+    right: 55%;
+    top: 0;
+    z-index: 5;
+    margin: 0;
+    padding: 8px 16px;
+    border: 2px solid #1f8a5b;
+    border-radius: 16px;
+    background: #fff;
+    color: #1f2a24;
+    font-size: .92rem;
+    font-weight: 800;
+    line-height: 1.2;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(31, 138, 91, .18);
+    transform-origin: 100% 60%;
+    pointer-events: none;
+    animation: hifive-bubble-bob 1.6s ease-in-out infinite;
+}
+
+.hero-hifive-bubble::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: calc(50% - 7px);
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid #1f8a5b;
+    border-right: 2px solid #1f8a5b;
+    background: inherit;
+    transform: rotate(45deg);
+}
+
+.hero-hifive-bubble.is-pop { animation: hifive-bubble-pop .4s cubic-bezier(.3, 1.6, .5, 1); }
+
+.hero-hifive-bubble.is-cta {
+    background: #1f8a5b;
+    color: #fff;
+    pointer-events: auto;
+    animation: hifive-bubble-pop .4s cubic-bezier(.3, 1.6, .5, 1), hifive-cta-glow 1.8s ease-in-out .5s infinite;
+}
+
+.hero-hifive-cta {
+    color: inherit;
+    text-decoration: none;
+}
+
+.hero-hifive-cta:hover { text-decoration: underline; }
+
+.hero-hifive-fx {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.hifive-ring {
+    position: absolute;
+    left: 51%;
+    top: 11.4%;
+    width: 10%;
+    aspect-ratio: 1;
+    border: 3px solid #1f8a5b;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(.3);
+    animation: hifive-ring .6s ease-out forwards;
+}
+
+.hifive-spark {
+    position: absolute;
+    left: 51%;
+    top: 11.4%;
+    font-size: clamp(14px, 1.6vw, 22px);
+    line-height: 1;
+    transform: translate(-50%, -50%);
+    animation: hifive-spark .9s ease-out forwards;
+}
+
+@keyframes hifive-kim-ready {
+    0%, 100% { transform: rotate(14deg); }
+    50% { transform: rotate(11.5deg); }
+}
+
+@keyframes hifive-hand-ready {
+    0%, 100% { transform: rotate(-8deg) translate(-4.6%, 4.4%); }
+    50% { transform: rotate(-6.5deg) translate(-4.6%, 3%); }
+}
+
+@keyframes hifive-kim-slap {
+    0% { transform: rotate(14deg); }
+    16% { transform: rotate(19deg); }
+    38% { transform: rotate(-3.5deg) scale(1.02); }
+    55% { transform: rotate(1.8deg); }
+    75% { transform: rotate(-.6deg); }
+    100% { transform: rotate(0); }
+}
+
+@keyframes hifive-hand-slap {
+    0% { transform: rotate(-8deg) translate(-4.6%, 4.4%); }
+    16% { transform: rotate(-11deg) translate(-6%, 6%); }
+    38% { transform: rotate(3deg) translate(3%, -2%); }
+    55% { transform: rotate(-1deg) translate(-.5%, .5%); }
+    100% { transform: none; }
+}
+
+@keyframes hifive-kim-reset {
+    from { transform: rotate(0); }
+    to { transform: rotate(14deg); }
+}
+
+@keyframes hifive-hand-reset {
+    from { transform: none; }
+    to { transform: rotate(-8deg) translate(-4.6%, 4.4%); }
+}
+
+@keyframes hifive-impact {
+    0%, 30% { transform: none; }
+    38% { transform: translateY(-5px) scale(1.012); }
+    52% { transform: translateY(2px); }
+    70% { transform: translateY(-1px); }
+    100% { transform: none; }
+}
+
+@keyframes hifive-pulse {
+    0% { transform: translate(-50%, -50%) scale(.5); opacity: .7; }
+    100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+@keyframes hifive-ring {
+    to { transform: translate(-50%, -50%) scale(2.6); opacity: 0; }
+}
+
+@keyframes hifive-spark {
+    0% { transform: translate(-50%, -50%) scale(.4) rotate(0); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1) rotate(var(--rot)); opacity: 0; }
+}
+
+@keyframes hifive-bubble-pop {
+    0% { transform: scale(.7); opacity: .4; }
+    60% { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+@keyframes hifive-bubble-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+@keyframes hifive-cta-glow {
+    0%, 100% { box-shadow: 0 8px 20px rgba(31, 138, 91, .25); }
+    50% { box-shadow: 0 8px 26px rgba(31, 138, 91, .55); }
+}
+
+@media (max-width: 950px) {
+    .area-animation .hero-hifive {
+        width: 100%;
+        max-width: 550px;
+        height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hifive-kim,
+    .hifive-hand,
+    .hero-hifive.is-hit,
+    .hero-hifive.is-hit .hifive-kim,
+    .hero-hifive.is-hit .hifive-hand,
+    .hero-hifive.is-reset .hifive-kim,
+    .hero-hifive.is-reset .hifive-hand,
+    .hero-hifive-bubble,
+    .hero-hifive-bubble.is-cta,
+    .hero-hifive-pulse {
+        animation: none;
+    }
+
+    .hero-hifive-pulse,
+    .hifive-ring,
+    .hifive-spark {
+        display: none;
+    }
+}
+
+/* =========================================
+   HERO — cenário atrás da figura (halo, órbita e ícones de ciência)
+   ========================================= */
+
+.hifive-scene {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hifive-blob {
+    position: absolute;
+    display: block;
+}
+
+.hifive-blob--a {
+    left: -9%;
+    top: 12%;
+    width: 118%;
+    height: 80%;
+    background: linear-gradient(140deg, #e2f3e7 0%, #cfeadb 55%, #c3e5d4 100%);
+    border-radius: 58% 42% 55% 45% / 46% 54% 46% 54%;
+    animation: hifive-morph 16s ease-in-out infinite;
+}
+
+.hifive-blob--b {
+    left: 6%;
+    top: 24%;
+    width: 92%;
+    height: 60%;
+    background: radial-gradient(circle at 30% 28%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 62%), #eaf7ee;
+    border-radius: 45% 55% 40% 60% / 55% 45% 55% 45%;
+    opacity: .9;
+    animation: hifive-morph 20s ease-in-out infinite reverse;
+}
+
+.hifive-ring {
+    position: absolute;
+    left: -15%;
+    top: 7%;
+    width: 130%;
+    aspect-ratio: 1;
+    border: 2px dashed rgba(31, 138, 91, .26);
+    border-radius: 50%;
+    animation: hifive-spin 80s linear infinite;
+}
+
+.hifive-chip {
+    position: absolute;
+    width: clamp(38px, 12%, 56px);
+    aspect-ratio: 1;
+    animation-delay: calc(var(--i) * 45ms);
+}
+
+.hifive-chip-inner {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(31, 138, 91, .16);
+    border-radius: 50%;
+    background: #fff;
+    color: #1f8a5b;
+    box-shadow: 0 10px 22px rgba(31, 138, 91, .16);
+    animation: hifive-chip-float 6s ease-in-out infinite;
+    animation-delay: calc(var(--i) * -1.1s);
+}
+
+.hifive-chip-inner svg {
+    width: 52%;
+    height: 52%;
+}
+
+.hifive-chip--dna        { left: -21%; top: 25%; }
+.hifive-chip--flask      { left: -13%; top: 57%; }
+.hifive-chip--microscope { left: -3%;  top: 83%; }
+.hifive-chip--leaf       { left: 83%;  top: 3%; }
+.hifive-chip--bulb       { left: 92%;  top: 23%; }
+.hifive-chip--atom       { left: 95%;  top: 50%; }
+
+/* Quando batem palmas, o cenário festeja */
+.hero-hifive.is-cheer .hifive-chip {
+    animation: hifive-chip-cheer .75s cubic-bezier(.3, 1.5, .5, 1) both;
+    animation-delay: calc(var(--i) * 45ms);
+}
+
+@keyframes hifive-morph {
+    0%, 100% { border-radius: 58% 42% 55% 45% / 46% 54% 46% 54%; transform: rotate(0deg) scale(1); }
+    33% { border-radius: 46% 54% 42% 58% / 58% 42% 58% 42%; transform: rotate(4deg) scale(1.03); }
+    66% { border-radius: 54% 46% 60% 40% / 42% 58% 44% 56%; transform: rotate(-3deg) scale(.98); }
+}
+
+@keyframes hifive-spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes hifive-chip-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+
+@keyframes hifive-chip-cheer {
+    0% { transform: scale(1) rotate(0); }
+    35% { transform: scale(1.28) translateY(-14px) rotate(-10deg); }
+    65% { transform: scale(.94) translateY(0) rotate(6deg); }
+    100% { transform: scale(1) rotate(0); }
+}
+
+@media (max-width: 950px) {
+    .hifive-chip--dna        { left: -3%;  top: 20%; }
+    .hifive-chip--flask      { left: 1%;   top: 54%; }
+    .hifive-chip--microscope { left: 7%;   top: 84%; }
+    .hifive-chip--leaf       { left: 78%;  top: 2%; }
+    .hifive-chip--bulb       { left: 88%;  top: 24%; }
+    .hifive-chip--atom       { left: 90%;  top: 52%; }
+    .hifive-ring { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hifive-blob,
+    .hifive-ring,
+    .hifive-chip-inner,
+    .hero-hifive.is-cheer .hifive-chip {
+        animation: none;
     }
 }
