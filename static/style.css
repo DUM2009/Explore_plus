@@ -760,7 +760,6 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 
 .mistakes-card-header{
     display:flex;
-    flex-wrap:wrap;
     justify-content:space-between;
     align-items:center;
     gap:8px;
@@ -783,10 +782,34 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     padding:5px 14px;
     border-radius:999px;
     /* Wrapping to two uneven lines left a ragged gap of empty pink space
-       next to the shorter second line — the header now wraps the badge
-       onto its own row (see .mistakes-card-header) when there isn't room,
-       so this always has the full card width to stay on one line. */
+       next to the shorter second line — keep it on one line and shrink it
+       (see the mobile media query below) instead of letting it wrap. */
     white-space:nowrap;
+}
+
+/* On phones there isn't room for "Caderno de Erros" + the full-size badge
+   side by side — shrink the card padding, title and badge so both stay on
+   the same row instead of the badge wrapping under the title. */
+@media (max-width: 480px) {
+    .mistakes-card{
+        padding:18px;
+    }
+
+    .mistakes-card-title{
+        gap:6px;
+        font-size:.92rem;
+    }
+
+    .mistakes-card-title svg{
+        width:15px;
+        height:15px;
+        flex-shrink:0;
+    }
+
+    .mistakes-card-badge{
+        font-size:.68rem;
+        padding:4px 10px;
+    }
 }
 
 .mistakes-list{
