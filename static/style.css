@@ -5234,28 +5234,28 @@ background:#27ae60;
   border: none;
   /* More rounded than the 12px inputs above it. */
   border-radius: 18px;
-  /* Light green, but muted/desaturated rather than the neon-ish emerald
-     this replaces — reads as calmer, dark text for contrast against the
-     lighter fill. */
-  background: linear-gradient(180deg, #a3d3b8 0%, #8ec3a5 100%);
-  color: #065f46;
+  /* The mascot's own green (sampled from static/images/Logo.png — its
+     body runs from #b9d461 on the lit side down to #9abe4f/#87b133 in
+     shadow), not a generic Tailwind or desaturated green. */
+  background: linear-gradient(180deg, #b9d461 0%, #9abe4f 100%);
+  color: #26380d;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   cursor: pointer;
-  box-shadow: 0 12px 20px rgba(94, 152, 122, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 12px 20px rgba(135, 177, 51, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   transition: transform 0.15s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .login-button:hover {
   filter: brightness(1.03);
-  box-shadow: 0 16px 24px rgba(94, 152, 122, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: 0 16px 24px rgba(135, 177, 51, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.5);
   transform: translateY(-1px);
 }
 
 .login-button:active {
   transform: translateY(0);
-  box-shadow: 0 6px 12px rgba(94, 152, 122, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 6px 12px rgba(135, 177, 51, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .divider {
