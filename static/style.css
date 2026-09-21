@@ -5041,7 +5041,20 @@ background:#27ae60;
   justify-content: center;
   align-items: center;
   gap: 64px;
-  min-height: 100vh;
+  /* 100dvh (with 100vh as a fallback for browsers that don't support it)
+     instead of min-height:100vh — on mobile, 100vh is measured against the
+     browser's largest possible viewport (toolbars collapsed), taller than
+     what's actually visible on first load. That let the page grow past
+     the visible area and become scrollable by that difference, and since
+     this element's own background covers only its own (100vh-tall) box,
+     scrolling into that gap showed body's plain background instead of the
+     wallpaper. 100dvh tracks the real, current viewport, and the fixed
+     height (not min-height) + overflow:hidden below stop the page itself
+     from scrolling at all; .light-login-shell scrolls internally instead
+     if its content ever doesn't fit. */
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   padding: 60px 16px;
   background: url('/static/images/Fundo login.png') center / cover no-repeat;
 }
@@ -5066,11 +5079,18 @@ background:#27ae60;
   position: relative;
   flex-shrink: 0;
   width: min(100%, 460px);
+  /* Caps it to whatever room .login-page's fixed height actually leaves
+     (its padding is excluded automatically, since percentage heights
+     resolve against the parent's content box) — if the form content
+     (e.g. a long Django error message) ever doesn't fit, this card
+     scrolls internally instead of the whole page growing past the
+     viewport. */
+  max-height: 100%;
   background: rgba(255, 255, 255, 0.96);
   border: 1px solid #e5e7eb;
   border-radius: 28px;
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
-  overflow: hidden;
+  overflow: hidden auto;
 }
 
 .light-login-shell::before {
