@@ -977,9 +977,24 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
         margin-left:0;
     }
 
-    .mentor-list li,
     .mentor-text > p{
         justify-content:center;
+    }
+
+    /* Was justify-content:center on each <li> — centering the icon+text
+       pair as a unit shifts the icon sideways by a different amount on
+       every line depending on that line's text width (worse once the
+       longer items wrap to two lines), leaving the icons staggered
+       instead of forming a column. Center the list as a block instead and
+       keep each item left-aligned internally. */
+    .mentor-list{
+        max-width:380px;
+        margin:0 auto;
+        text-align:left;
+    }
+
+    .mentor-list li{
+        align-items:flex-start;
     }
 }
 
