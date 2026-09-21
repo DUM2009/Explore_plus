@@ -1674,7 +1674,7 @@ header{
 /* Base header's 8% right padding held Login/Sign in well short of the
    edge — tighten just that side so the pills sit further right, close
    to the edge. */
-padding-right:2%;
+padding-right:4px;
 }
 
 header .logo img{
