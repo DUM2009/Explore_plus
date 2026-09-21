@@ -5356,6 +5356,12 @@ background:#27ae60;
 
     .area-animation {
         position: relative;
+        /* The desktop rule's right: -160px (meant to push the image out
+           past the hero's edge while it's position: absolute) doesn't get
+           unset just because position switches to relative here — with
+           relative positioning that offset shifts the whole box 160px to
+           the right instead, shoving the image off-screen. */
+        right: auto;
         width: 100%;
         height: auto;
         margin-top: 30px;
