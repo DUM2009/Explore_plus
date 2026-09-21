@@ -1625,6 +1625,12 @@ max-width:400px;
    justify-content: space-between / align-items: center already put the
    logo on the left and nav on the right on the same line) — just shrunk
    so Login + Sign in fit beside the logo instead of wrapping under it. */
+header{
+/* Base header's 8% right padding held Login/Sign in well short of the
+   edge — tighten just that side so the pills sit further right. */
+padding-right:4%;
+}
+
 header .logo img{
 width:110px;
 }
