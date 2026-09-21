@@ -32,6 +32,17 @@ services:
       # settings.py falls back to SQLite on Render's own (ephemeral) disk.
       - key: DATABASE_URL
         sync: false
+      # Google OAuth (login/signup "Continuar com Google") — Client ID and
+      # Secret from Google Cloud Console (APIs & Services > Credentials >
+      # OAuth client ID, type "Web application"), set manually in the
+      # Render dashboard, never committed here. Authorized redirect URI to
+      # register there: https://<este-domínio>.onrender.com/accounts/google/login/callback/
+      # Without these, settings.py falls back to empty strings and Google
+      # rejects the request with "Missing required parameter: client_id".
+      - key: GOOGLE_OAUTH_CLIENT_ID
+        sync: false
+      - key: GOOGLE_OAUTH_CLIENT_SECRET
+        sync: false
       # Used only by `createsuperuser --noinput` above, which reads these
       # three exact env var names itself (Django convention). The `|| true`
       # keeps redeploys from failing once the account already exists.
