@@ -1623,12 +1623,16 @@ max-width:400px;
 
 header{
 flex-direction:column;
+/* Overrides the base header's align-items:center — logo and nav (Login/
+   Sign in) should hug the left edge on mobile, stacked, not center on
+   the page. */
+align-items:flex-start;
 gap:20px;
 }
 
 header nav{
 flex-wrap:wrap;
-justify-content:center;
+justify-content:flex-start;
 }
 
 }
