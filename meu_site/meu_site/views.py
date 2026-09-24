@@ -967,6 +967,7 @@ def carregar_vocabulario(missao_id):
 # na estante, mas como "ainda por começar".
 UNIDADES_BIBLIOTECA = [
     {'id': 'citologia', 'nome': 'Citologia', 'cor_a': '#2f7ea6', 'cor_b': '#1fa6c9', 'cor_soft': '#e3f3f7'},
+    {'id': 'bioquimica', 'nome': 'Bioquímica', 'cor_a': '#b0762f', 'cor_b': '#d19a3f', 'cor_soft': '#fbf1e2'},
     {'id': 'genetica', 'nome': 'Genética', 'cor_a': '#6c4fb0', 'cor_b': '#8a6bd1', 'cor_soft': '#efe7fa'},
     {'id': 'ecologia', 'nome': 'Ecologia', 'cor_a': '#5f7d33', 'cor_b': '#789b4a', 'cor_soft': '#eef3e0'},
     {'id': 'corpo_humano', 'nome': 'Corpo Humano', 'cor_a': '#b03a3a', 'cor_b': '#dc3545', 'cor_soft': '#fdecee'},

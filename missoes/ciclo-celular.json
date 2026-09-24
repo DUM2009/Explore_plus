@@ -1,0 +1,466 @@
+{
+  "missao_id": "ciclo-celular",
+  "titulo": "Ciclo Celular",
+  "disciplina": "citologia",
+  "badge": { "icone": "🧫", "nome": "Mestre do Ciclo Celular" },
+  "secoes": [
+    {
+      "secao_id": "visao-geral",
+      "titulo": "Um dia na vida de uma célula",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Se olhares agora para um tecido ao microscópio, quase nenhuma célula vai estar a dividir-se. Sabes porquê? 🐢",
+          "texto": "Vamos descobrir o ciclo completo que uma célula percorre, da sua formação até se dividir em duas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "ciclo_celular_visao_geral.png",
+          "titulo": "As duas grandes fases do ciclo celular",
+          "instrucao": "Clica em cada fase para veres a explicação.",
+          "pontos": [
+            { "id": "interfase", "label": "Interfase (~90-95% do ciclo)", "explicacao": "A célula cresce e replica o seu DNA. É de longe a fase mais longa — por isso a maioria das células que vês ao microscópio está nesta fase, não a dividir-se." },
+            { "id": "fase_mitotica", "label": "Fase Mitótica (~5-10% do ciclo)", "explicacao": "A fase visivelmente \"agitada\": o núcleo divide-se (mitose) e depois o citoplasma divide-se (citocinese), originando duas células-filhas." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Ao observares um tecido ao microscópio, é mais provável encontrares a maioria das células em:",
+          "opcoes": ["Interfase", "Fase mitótica"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! A interfase ocupa 90 a 95% do tempo total do ciclo.",
+          "mascote_feedback_errado": "Na verdade é a interfase — ocupa entre 90% e 95% do ciclo, por isso é onde a maioria das células está a qualquer momento."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 O ciclo celular é como preparares-te para uma corrida: passas a maior parte do tempo a treinar e a abastecer energia (interfase) e só uns segundos, no fim, é que corres mesmo os 100 metros (fase mitótica). O treino demorado é o que torna a corrida rápida possível."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Nem todas as células \"correm\" ao mesmo ritmo",
+          "texto": "Nem todas as células passam pelo ciclo celular com a mesma frequência. Células da pele ou do revestimento intestinal dividem-se muito e depressa, para substituírem as que se desgastam. Já os neurónios, as hemácias maduras ou as células musculares dividem-se muito pouco (ou nunca mais) depois de diferenciadas — o que explica, por exemplo, porque é tão difícil o sistema nervoso recuperar de certas lesões."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "As duas grandes fases do ciclo celular são:",
+              "opcoes": ["Interfase e fase mitótica", "Mitose e citocinese"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Mitose e citocinese são, na verdade, as duas partes dentro da fase mitótica.",
+              "mascote_feedback_errado": "São a interfase e a fase mitótica — mitose e citocinese são as duas partes dentro da fase mitótica."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: todas as células do corpo se dividem ao mesmo ritmo.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Células da pele dividem-se muito; neurónios e células musculares, muito pouco ou nada.",
+              "mascote_feedback_errado": "Na verdade é falso — células da pele dividem-se muito, enquanto neurónios e células musculares quase não se dividem."
+            },
+            {
+              "pergunta": "A fase do ciclo celular que ocupa a maior parte do tempo é:",
+              "opcoes": ["A interfase", "A fase mitótica"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A interfase é a fase mais longa, de longe.",
+              "mascote_feedback_errado": "É a interfase — ocupa entre 90% a 95% do tempo total do ciclo."
+            }
+          ],
+          "mascote_conclusao": "Já sabes que uma célula passa a maior parte do tempo a preparar-se, não a dividir-se. Vamos abrir essa \"preparação\" e ver o que acontece lá dentro. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "interfase",
+      "titulo": "Interfase: os bastidores da divisão",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "mascote_texto": "A interfase não é uma pausa — é onde acontece quase todo o trabalho de preparação para a divisão. 🐢",
+          "intro_imagem": "ciclo_celular_interfase.png",
+          "intro_texto": "Antes de uma célula se poder dividir em duas, precisa de crescer, copiar o seu DNA todo, e ainda fazer uma última verificação a tudo.",
+          "ponte_texto": "Estas três tarefas correspondem a três subfases da interfase, que se seguem sempre pela mesma ordem — sobe a escada e conhece cada uma.",
+          "titulo": "A escada da interfase",
+          "layout": "escada",
+          "instrucao": "Clica em cada degrau para veres a explicação.",
+          "pontos": [
+            { "id": "g1", "label": "G1 (Gap 1)", "explicacao": "Intenso crescimento celular e síntese de biomoléculas — proteínas, organelos. A célula aumenta de tamanho e prepara-se para copiar o seu DNA." },
+            { "id": "s", "label": "S (Síntese)", "explicacao": "Ocorre a replicação semiconservativa do DNA: cada cromossoma passa a ser constituído por dois cromatídeos geneticamente idênticos, unidos pelo centrómero." },
+            { "id": "g2", "label": "G2 (Gap 2)", "explicacao": "Continua o crescimento celular e a síntese de proteínas necessárias à divisão (ex.: as que vão formar o fuso acromático). É a última paragem de verificação antes da mitose." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A replicação do DNA acontece durante a subfase:",
+          "opcoes": ["G1", "S"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! É na fase S (Síntese) que o DNA é replicado.",
+          "mascote_feedback_errado": "Acontece na fase S — G1 é sobretudo crescimento, antes de o DNA ser copiado."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Depois da replicação, cada cromossoma passa a ter:",
+          "opcoes": ["Um cromatídeo", "Dois cromatídeos unidos pelo centrómero"],
+          "correta": 1,
+          "mascote_feedback_certo": "Correto! Os dois cromatídeos-irmãos são geneticamente idênticos e mantêm-se unidos pelo centrómero.",
+          "mascote_feedback_errado": "Passa a ter dois cromatídeos, unidos pelo centrómero — são cópias idênticas um do outro."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Pensa em G1 como arrumar a mesa de trabalho e reunir material (crescer, produzir proteínas); S como fotocopiar cada página do \"livro de instruções\" (o DNA), ficando cada página agora agrafada à sua cópia idêntica (o centrómero é o agrafo); e G2 como a última revisão antes de entregares o trabalho — verificas se está tudo pronto para a grande apresentação: a mitose."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque \"semiconservativa\"?",
+          "texto": "Diz-se que a replicação do DNA é semiconservativa porque cada nova molécula de DNA fica com uma cadeia original (\"antiga\") e uma cadeia nova, recém-sintetizada — em vez de ficar toda nova ou toda velha. É como se cada fotocópia de um livro guardasse uma página verdadeira do original intercalada com uma página fotocopiada — garantindo que a cópia é fiel ao original."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A ordem correta das subfases da interfase é:",
+              "opcoes": ["G1 → S → G2", "S → G1 → G2"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Primeiro cresce (G1), depois replica o DNA (S), depois verifica tudo (G2).",
+              "mascote_feedback_errado": "A ordem correta é G1 → S → G2."
+            },
+            {
+              "pergunta": "As proteínas necessárias à formação do fuso acromático são sintetizadas principalmente em:",
+              "opcoes": ["G1", "G2"],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! G2 prepara os últimos materiais necessários à divisão, incluindo as proteínas do fuso.",
+              "mascote_feedback_errado": "São sintetizadas principalmente em G2, a última paragem antes da mitose."
+            },
+            {
+              "pergunta": "Os dois cromatídeos de um cromossoma replicado são:",
+              "opcoes": ["Geneticamente idênticos", "Geneticamente diferentes"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! São cópias idênticas uma da outra, resultado da replicação semiconservativa.",
+              "mascote_feedback_errado": "São geneticamente idênticos — é esse o objetivo da replicação do DNA."
+            }
+          ],
+          "mascote_conclusao": "Já conheces os bastidores. Está tudo pronto — é hora de subir o pano e ver a mitose em ação. 🎭🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "mitose-quatro-atos",
+      "titulo": "Mitose: uma peça em quatro atos",
+      "xp": 30,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Sobe o pano! A mitose tem sempre a mesma estrutura, ato a ato, em qualquer célula do teu corpo. 🎭",
+          "texto": "Vamos assistir à peça em quatro atos que garante que cada célula-filha recebe uma cópia perfeita do DNA."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Os quatro atos da mitose",
+          "imagem": "ciclo_celular_mitose_quatro_fases.png",
+          "layout": "timeline",
+          "instrucao": "Clica em cada marco da linha do tempo para veres o que acontece nesse ato.",
+          "pontos": [
+            { "id": "profase", "label": "Prófase (Abre o pano)", "explicacao": "A cromatina começa a condensar-se em cromossomas, cada um já com 2 cromatídeos. O invólucro nuclear desorganiza-se, o nucléolo desaparece, e começa a formar-se o fuso acromático." },
+            { "id": "metafase", "label": "Metáfase (Todos em fila)", "explicacao": "Os cromossomas atingem a condensação máxima e alinham-se na região equatorial da célula (a placa equatorial), ligados às fibras do fuso pelo centrómero." },
+            { "id": "anafase", "label": "Anáfase (A grande separação)", "explicacao": "O centrómero divide-se e os cromatídeos-irmãos separam-se, passando a ser cromossomas independentes, que migram para polos opostos da célula." },
+            { "id": "telofase", "label": "Telófase (Cai o pano, dobra)", "explicacao": "Os cromossomas descondensam-se (voltam a cromatina), o invólucro nuclear reorganiza-se à volta de cada conjunto, e o nucléolo reaparece — formam-se dois núcleos-filhos geneticamente idênticos." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O momento em que os cromossomas ficam alinhados na região equatorial da célula é a:",
+          "opcoes": ["Prófase", "Metáfase"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! É na metáfase que todos os cromossomas se alinham na placa equatorial.",
+          "mascote_feedback_errado": "É a metáfase — na prófase, os cromossomas ainda estão a condensar-se, ainda não alinhados."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A separação dos cromatídeos-irmãos, com a divisão do centrómero, ocorre na:",
+          "opcoes": ["Anáfase", "Telófase"],
+          "correta": 0,
+          "mascote_feedback_certo": "Correto! É o momento mais dramático da peça — a grande separação.",
+          "mascote_feedback_errado": "Ocorre na anáfase — na telófase os cromossomas já estão separados e começam a descondensar-se."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O reaparecimento do nucléolo e a formação de dois núcleos-filhos acontece na:",
+          "opcoes": ["Metáfase", "Telófase"],
+          "correta": 1,
+          "mascote_feedback_certo": "Isso mesmo! A telófase fecha a mitose com dois núcleos já formados.",
+          "mascote_feedback_errado": "Acontece na telófase, o último ato — a metáfase é só o alinhamento a meio da peça."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Pensa na mitose como uma peça de teatro bem ensaiada: na Prófase, os atores (cromossomas) preparam-se nos bastidores e o palco é montado (fuso acromático); na Metáfase, todos se alinham ao centro do palco, em fila; na Anáfase é o clímax — cada dupla de atores idênticos separa-se, cada um indo para o seu lado do palco; e na Telófase, cai o pano de cada lado, formando duas cenas independentes e completas."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O papel do fuso acromático",
+          "texto": "O fuso acromático — uma estrutura formada por microtúbulos proteicos, sintetizados ainda em G2 — é o \"maquinista\" invisível de toda a peça: liga-se aos centrómeros dos cromossomas na metáfase e é ele quem \"puxa\" fisicamente os cromatídeos-irmãos para polos opostos na anáfase. Sem um fuso corretamente formado, os cromossomas não se separariam de forma equilibrada, e as células-filhas resultantes poderiam ficar com quantidades erradas de material genético."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A ordem correta dos quatro atos da mitose é:",
+              "opcoes": ["Prófase → Metáfase → Anáfase → Telófase", "Prófase → Anáfase → Metáfase → Telófase"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! É sempre esta a sequência.",
+              "mascote_feedback_errado": "A ordem correta é Prófase → Metáfase → Anáfase → Telófase."
+            },
+            {
+              "pergunta": "A condensação máxima dos cromossomas atinge-se na:",
+              "opcoes": ["Metáfase", "Telófase"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Na metáfase os cromossomas estão no seu estado mais condensado e visível.",
+              "mascote_feedback_errado": "É na metáfase — na telófase os cromossomas já estão a descondensar-se, no sentido inverso."
+            },
+            {
+              "pergunta": "O desaparecimento do invólucro nuclear ocorre logo no início de qual ato?",
+              "opcoes": ["Prófase", "Anáfase"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Já na prófase o invólucro nuclear se desorganiza.",
+              "mascote_feedback_errado": "Ocorre na prófase — na anáfase o foco já é a separação dos cromatídeos."
+            },
+            {
+              "pergunta": "No fim da telófase, uma célula em mitose tem:",
+              "opcoes": ["Um único núcleo", "Dois núcleos-filhos geneticamente idênticos"],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Dois núcleos-filhos, prontos para a citocinese os separar em duas células.",
+              "mascote_feedback_errado": "Tem dois núcleos-filhos geneticamente idênticos — a divisão do citoplasma ainda está por vir."
+            }
+          ],
+          "mascote_conclusao": "A peça terminou com dois núcleos em palco. Falta só um passo: separar mesmo o cenário em dois. 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "citocinese",
+      "titulo": "Citocinese: a separação final",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Ter dois núcleos não chega — ainda falta separar mesmo a célula em duas. E isso faz-se de forma diferente consoante o tipo de célula. 🐢",
+          "texto": "Vamos comparar como uma célula animal e uma célula vegetal terminam a divisão."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "ciclo_celular_citocinese.png",
+          "titulo": "Dois métodos, um mesmo objetivo",
+          "instrucao": "Clica em cada tipo de célula para veres como se separa.",
+          "pontos": [
+            { "id": "animal", "label": "Célula animal — anel contráctil", "explicacao": "A membrana celular estrangula-se progressivamente a meio da célula, formando um \"anel contráctil\" que aperta até separar as duas células-filhas — possível porque não há parede celular rígida a impedir o estrangulamento." },
+            { "id": "vegetal", "label": "Célula vegetal — placa celular", "explicacao": "Forma-se uma placa celular a partir do centro da célula, que cresce até tocar nos lados e dá origem a uma nova parede celular entre as duas células-filhas — a parede celular rígida impede que a célula se estrangule como a animal." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A citocinese numa célula vegetal ocorre por:",
+          "opcoes": ["Estrangulamento da membrana", "Formação de uma placa celular"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! A placa celular cresce a partir do centro até formar uma nova parede.",
+          "mascote_feedback_errado": "Ocorre por formação de uma placa celular — o estrangulamento é próprio das células animais."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 A célula animal separa-se como um balão comprido que apertas a meio até se partir em dois — flexível, sem paredes rígidas a impedir. A célula vegetal já é como construir uma parede de tijolo a meio de uma sala já feita: não podes \"apertá-la\", por isso constrói-se uma divisória nova a direito, do centro para fora, até tocar nas paredes existentes."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque a diferença? Tudo se resume à parede celular",
+          "texto": "A razão desta diferença está inteiramente na presença (ou ausência) de parede celular. As células animais têm apenas uma membrana plasmática flexível, que se deixa estrangular facilmente por um anel de proteínas contrácteis. Já as células vegetais estão envolvidas por uma parede celular rígida de celulose, que impede fisicamente qualquer estrangulamento — por isso a célula \"constrói\" uma nova parede a dividir o espaço em vez de o apertar de fora para dentro."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O \"anel contráctil\" está associado à citocinese em células:",
+              "opcoes": ["Animais", "Vegetais"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! É próprio das células animais, sem parede celular.",
+              "mascote_feedback_errado": "Está associado às células animais — as vegetais usam a placa celular."
+            },
+            {
+              "pergunta": "A razão pela qual as células vegetais não se dividem por estrangulamento é:",
+              "opcoes": ["A presença de parede celular rígida", "A ausência de núcleo"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! A parede celular impede fisicamente o estrangulamento da membrana.",
+              "mascote_feedback_errado": "É a presença de parede celular rígida — todas as células (animais e vegetais) têm núcleo."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: a citocinese é a divisão do núcleo da célula.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! A divisão do núcleo é a mitose — a citocinese divide o citoplasma.",
+              "mascote_feedback_errado": "Na verdade é falso — a citocinese divide o citoplasma; a divisão do núcleo é a mitose."
+            }
+          ],
+          "mascote_conclusao": "Agora já vês o ciclo completo, do início ao fim. Mas há um detalhe escondido que os exames adoram perguntar: quanto DNA existe em cada momento? 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "quantidade-dna",
+      "titulo": "Quanto DNA tens agora? O gráfico que os exames adoram",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A quantidade de DNA de uma célula não é sempre igual ao longo do ciclo — varia de forma muito previsível. 🐢",
+          "texto": "Vamos seguir essa variação, passo a passo, como se fosses uma fotocopiadora a trabalhar."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "ciclo_celular_quantidade_dna.png",
+          "titulo": "A viagem da quantidade de DNA (em valores de C)",
+          "instrucao": "Clica em cada momento do ciclo para veres a quantidade de DNA nessa altura.",
+          "pontos": [
+            { "id": "g1_dna", "label": "G1 — 2C", "explicacao": "Quantidade de DNA constante, no valor de referência (2C) — ainda não houve replicação." },
+            { "id": "s_dna", "label": "S — de 2C para 4C", "explicacao": "A quantidade de DNA duplica progressivamente ao longo da fase S, à medida que a replicação avança, até atingir 4C." },
+            { "id": "g2_m_dna", "label": "G2 e mitose (até à anáfase) — 4C", "explicacao": "A quantidade de DNA mantém-se em 4C — o dobro do valor inicial — porque cada cromossoma ainda tem os seus dois cromatídeos, ainda unidos." },
+            { "id": "pos_citocinese_dna", "label": "Após a anáfase/telófase e citocinese — 2C", "explicacao": "Assim que os cromatídeos se separam (anáfase) e as células se dividem (citocinese), cada célula-filha volta a ter a quantidade inicial de DNA: 2C." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A quantidade de DNA duplica (de 2C para 4C) durante a fase:",
+          "opcoes": ["S", "G2"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É a fase S, onde ocorre a replicação do DNA.",
+          "mascote_feedback_errado": "É a fase S — em G2 a quantidade já se mantém constante em 4C, sem novo aumento."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O momento exato em que a quantidade de DNA volta de 4C para 2C é:",
+          "opcoes": ["A anáfase (separação dos cromatídeos)", "A fase G2"],
+          "correta": 0,
+          "mascote_feedback_certo": "Correto! É na anáfase que os cromatídeos se separam e passam a contar como cromossomas independentes, dividindo o DNA entre os futuros dois núcleos.",
+          "mascote_feedback_errado": "É a anáfase — a fase G2 ainda decorre com a quantidade de DNA em 4C, sem alterações."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 Pensa numa fotocopiadora: em G1, tens um documento original (2C). Na fase S, estás a fotocopiá-lo — no fim, tens o original mais a cópia, agrafados juntos (4C). Em G2 e durante a mitose (até à anáfase), continuas com as duas versões agrafadas (ainda 4C). Na anáfase, tiras o agrafo e separas as duas versões, uma para cada lado — e depois da citocinese, cada célula-filha fica, tal como no início, com apenas um documento (2C)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Como ler estes gráficos num exame",
+          "texto": "Este padrão — constante (2C) → duplica (2C a 4C) → constante (4C) → volta ao valor inicial (2C) — é um dos gráficos mais pedidos nos exames de Biologia. A chave é lembrar que o salto de 2C para 4C acontece de forma gradual ao longo de toda a fase S (não é instantâneo), enquanto a descida de volta a 2C acontece num único momento preciso: a anáfase, quando os cromatídeos-irmãos se separam. Reconhecer esse padrão no eixo do tempo permite identificar em que fase do ciclo uma célula representada num gráfico se encontra."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "No fim da fase G1, antes da replicação, a quantidade de DNA é:",
+              "opcoes": ["2C", "4C"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! 2C é o valor de referência, antes de qualquer replicação.",
+              "mascote_feedback_errado": "É 2C — o valor 4C só é atingido depois da replicação na fase S."
+            },
+            {
+              "pergunta": "Entre o fim da fase S e a anáfase, a quantidade de DNA:",
+              "opcoes": ["Mantém-se constante em 4C", "Continua a aumentar"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Só volta a mudar na anáfase, quando os cromatídeos se separam.",
+              "mascote_feedback_errado": "Mantém-se constante em 4C — só muda de novo na anáfase."
+            },
+            {
+              "pergunta": "Depois da citocinese, cada célula-filha tem uma quantidade de DNA:",
+              "opcoes": ["Igual à da célula-mãe em G1 (2C)", "Igual à célula-mãe em G2 (4C)"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! O ciclo fecha-se, e cada célula-filha recomeça o ciclo com 2C.",
+              "mascote_feedback_errado": "É igual à célula-mãe em G1 (2C) — o valor 4C só existe temporariamente, entre a fase S e a anáfase."
+            }
+          ],
+          "mascote_conclusao": "Já sabes ler este gráfico de olhos fechados. Só falta uma pergunta: para que serve, afinal, tanto trabalho de divisão celular? 🐢"
+        }
+      ]
+    },
+    {
+      "secao_id": "importancia-regulacao",
+      "titulo": "Porque a mitose importa — e o que acontece quando falha",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Sem a mitose, nunca terias crescido de uma única célula até ao corpo que tens hoje — nem conseguirias cicatrizar um corte. 🐢",
+          "texto": "Vamos ver para que serve a mitose, e o que acontece quando o processo foge ao controlo."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "ciclo_celular_importancia_regulacao.png",
+          "titulo": "Para que serve a mitose",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "crescimento", "label": "Crescimento", "explicacao": "Permite que organismos multicelulares cresçam, aumentando o número de células a partir de um único zigoto." },
+            { "id": "renovacao", "label": "Renovação e reparação", "explicacao": "Substitui células danificadas, envelhecidas ou perdidas — é assim, por exemplo, que a pele repara um corte." },
+            { "id": "reproducao_assexuada", "label": "Reprodução assexuada", "explicacao": "Em muitos organismos (ex.: leveduras, algumas plantas), a mitose é a base da reprodução assexuada, originando descendentes geneticamente idênticos ao progenitor." },
+            { "id": "estabilidade_genetica", "label": "Estabilidade genética", "explicacao": "Garante que as células-filhas resultantes são geneticamente idênticas à célula-mãe, mantendo a informação genética constante ao longo das divisões." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A reparação de um corte na pele depende sobretudo de:",
+          "opcoes": ["Mitose (renovação e reparação de tecidos)", "Meiose"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! A mitose produz novas células idênticas para substituir as danificadas.",
+          "mascote_feedback_errado": "Depende da mitose — a meiose está associada à formação de gâmetas, não à reparação de tecidos."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🐢",
+          "texto": "💡 O ciclo celular é controlado por semáforos: em pontos-chave do ciclo (checkpoints), proteínas reguladoras — as ciclinas — funcionam como sinais de trânsito, só deixando o \"carro\" avançar para a fase seguinte quando a fase anterior está mesmo concluída sem erros. Uma célula tumoral é como um carro com o semáforo avariado, sempre no verde — avança sem parar, dividindo-se descontroladamente, mesmo quando não devia."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Ciclinas, checkpoints, e quando tudo corre mal",
+          "texto": "O ciclo celular é vigiado em vários pontos de controlo (checkpoints), onde proteínas reguladoras — como as ciclinas — verificam se está tudo em ordem (ex: se o DNA foi bem replicado, se não há danos) antes de permitirem avançar para a fase seguinte. Quando esta regulação falha, uma célula pode continuar a dividir-se de forma descontrolada, mesmo com erros — é isto que caracteriza as células tumorais, que apresentam taxas de divisão muito superiores às células normais à sua volta, e que, ao contrário de neurónios ou células musculares (que quase não se dividem), \"ignoram\" os sinais que deveriam travá-las."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "As proteínas que regulam o avanço do ciclo celular em pontos de controlo chamam-se:",
+              "opcoes": ["Ciclinas", "Hemoglobinas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! As ciclinas atuam como \"sinais de trânsito\" do ciclo celular.",
+              "mascote_feedback_errado": "São as ciclinas — a hemoglobina não tem qualquer papel na regulação do ciclo celular."
+            },
+            {
+              "pergunta": "Uma célula tumoral caracteriza-se sobretudo por:",
+              "opcoes": ["Uma taxa de divisão muito elevada e descontrolada", "Nunca se dividir"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! A regulação do ciclo falha, e a célula divide-se sem parar.",
+              "mascote_feedback_errado": "Caracteriza-se por se dividir de forma muito elevada e descontrolada — é o oposto de nunca se dividir."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: neurónios e células musculares dividem-se tão frequentemente como as células da pele.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Dividem-se muito pouco ou nada, ao contrário das células da pele.",
+              "mascote_feedback_errado": "Na verdade é falso — neurónios e células musculares dividem-se muito pouco ou nada, ao contrário das células da pele."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão do Ciclo Celular. Já sabes distinguir interfase de fase mitótica, seguir os quatro atos da mitose, comparar a citocinese animal e vegetal, ler o gráfico da quantidade de DNA, e explicar porque a mitose é tão importante — e tão perigosa quando foge ao controlo. 🧫🐢"
+        }
+      ]
+    }
+  ]
+}

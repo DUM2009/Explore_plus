@@ -1,0 +1,126 @@
+{
+  "unidade": "bioquimica",
+  "titulo": "Bioquímica",
+  "termos": [
+    {
+      "id": "agua",
+      "termo": "Água",
+      "definicao": "A molécula mais abundante nas células; a sua polaridade dá-lhe grande poder solvente, permite o transporte de substâncias, a termorregulação, e participa em reações como a hidrólise.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["hidrolise", "sais_minerais"]
+    },
+    {
+      "id": "sais_minerais",
+      "termo": "Sais minerais",
+      "definicao": "Compostos inorgânicos essenciais ao funcionamento celular, envolvidos em funções reguladoras e estruturais.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["agua"]
+    },
+    {
+      "id": "hidrolise",
+      "termo": "Hidrólise",
+      "definicao": "Reação que quebra uma macromolécula nas suas unidades mais simples (monómeros), com consumo de água.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["condensacao", "agua"]
+    },
+    {
+      "id": "condensacao",
+      "termo": "Polimerização (condensação)",
+      "definicao": "Reação que une monómeros entre si para formar uma macromolécula, com libertação de água — o processo inverso da hidrólise.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["hidrolise"]
+    },
+    {
+      "id": "glicidos",
+      "termo": "Glícidos",
+      "definicao": "Compostos ternários (C, H, O, na proporção 1:2:1) com função energética e estrutural; classificam-se em monossacarídeos, oligossacarídeos e polissacarídeos, consoante o número de unidades.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["monossacarideo", "polissacarideo"]
+    },
+    {
+      "id": "monossacarideo",
+      "termo": "Monossacarídeo",
+      "definicao": "Unidade mais simples de um glícido — uma só \"ose\", como a glicose; é a forma que a célula usa diretamente para obter energia rápida.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["glicidos", "polissacarideo"]
+    },
+    {
+      "id": "polissacarideo",
+      "termo": "Polissacarídeo",
+      "definicao": "Cadeia com mais de 10 unidades de monossacarídeo; exemplos: glicogénio (reserva animal), amido (reserva vegetal) e celulose (estrutural, parede celular).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["glicidos", "monossacarideo"]
+    },
+    {
+      "id": "lipidos",
+      "termo": "Lípidos",
+      "definicao": "Grupo heterogéneo de moléculas, pouco solúveis em água mas solúveis em solventes orgânicos; não formam polímeros regulares. Classificam-se em lípidos de reserva, estruturais e reguladores.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["fosfolipido"]
+    },
+    {
+      "id": "fosfolipido",
+      "termo": "Fosfolípido",
+      "definicao": "Lípido anfipático (com uma \"cabeça\" hidrofílica e \"caudas\" hidrofóbicas) — o principal constituinte das membranas celulares, onde se organiza em bicamada.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["lipidos"]
+    },
+    {
+      "id": "proteinas",
+      "termo": "Proteínas",
+      "definicao": "Biomoléculas com a maior diversidade de funções (estrutural, enzimática, defesa, transporte, hormonal); os seus monómeros são os aminoácidos, unidos por ligações peptídicas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["enzima"]
+    },
+    {
+      "id": "enzima",
+      "termo": "Enzima",
+      "definicao": "Proteína que funciona como catalisador biológico, acelerando as reações químicas necessárias ao metabolismo da célula.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["proteinas"]
+    },
+    {
+      "id": "acidos_nucleicos",
+      "termo": "Ácidos nucleicos",
+      "definicao": "Polímeros de nucleótidos que armazenam (DNA) e transmitem (RNA) a informação genética de um ser vivo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["nucleotido", "dna", "rna"]
+    },
+    {
+      "id": "nucleotido",
+      "termo": "Nucleótido",
+      "definicao": "Monómero dos ácidos nucleicos, constituído por uma base azotada, uma pentose (açúcar de 5 carbonos) e um grupo fosfato.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["acidos_nucleicos"]
+    },
+    {
+      "id": "dna",
+      "termo": "DNA",
+      "definicao": "Ácido nucleico com pentose desoxirribose e bases A, C, G, T; forma tipicamente uma cadeia dupla (dupla hélice); armazena e transmite a informação genética.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["rna", "nucleotido"]
+    },
+    {
+      "id": "rna",
+      "termo": "RNA",
+      "definicao": "Ácido nucleico com pentose ribose e bases A, C, G, U; geralmente uma cadeia simples; intervém na síntese de proteínas, traduzindo a informação do DNA.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["dna", "nucleotido"]
+    }
+  ]
+}

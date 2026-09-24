@@ -154,7 +154,21 @@
 
 <section class="missions-page biblioteca-page">
     <h1>Biblioteca do Explorador</h1>
-    <p>Escolhe uma unidade para reveres os termos-chave e praticares com flashcards.</p>
+    <div class="missions-page-subrow">
+        <p>Escolhe uma unidade para reveres os termos-chave e praticares com flashcards.</p>
+        <div class="subject-switcher">
+            <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
+                <span>Explore Biology</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
+                <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
+            </ul>
+        </div>
+    </div>
 
     <div class="biblioteca-estante">
         {% for unidade in estante %}

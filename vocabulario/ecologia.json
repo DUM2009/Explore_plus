@@ -1,0 +1,166 @@
+{
+  "unidade": "ecologia",
+  "titulo": "Ecologia",
+  "termos": [
+    {
+      "id": "populacao",
+      "termo": "População",
+      "definicao": "Conjunto de organismos da mesma espécie que vivem na mesma área, na mesma altura, e que podem cruzar-se entre si.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["comunidade"]
+    },
+    {
+      "id": "comunidade",
+      "termo": "Comunidade",
+      "definicao": "Conjunto de populações de espécies diferentes que coexistem numa mesma área.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["populacao", "ecossistema"]
+    },
+    {
+      "id": "ecossistema",
+      "termo": "Ecossistema",
+      "definicao": "Comunidade de seres vivos em interação com o ambiente físico (água, solo, luz, temperatura) que a rodeia.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["comunidade", "bioma"]
+    },
+    {
+      "id": "bioma",
+      "termo": "Bioma",
+      "definicao": "Conjunto de ecossistemas com características climáticas e vegetação semelhantes, numa grande região (ex.: floresta tropical, tundra, savana).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["ecossistema", "biosfera"]
+    },
+    {
+      "id": "biosfera",
+      "termo": "Biosfera",
+      "definicao": "Conjunto de todos os ecossistemas e biomas do planeta — a camada da Terra onde existe vida.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["bioma"]
+    },
+    {
+      "id": "produtores",
+      "termo": "Produtores",
+      "definicao": "Organismos que fabricam o seu próprio alimento, geralmente por fotossíntese, como plantas e algas — são a base de toda a cadeia alimentar.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["consumidores_primarios", "decompositores"]
+    },
+    {
+      "id": "consumidores_primarios",
+      "termo": "Consumidores primários",
+      "definicao": "Herbívoros, que se alimentam diretamente dos produtores.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["produtores", "consumidores_secundarios_terciarios"]
+    },
+    {
+      "id": "consumidores_secundarios_terciarios",
+      "termo": "Consumidores secundários e terciários",
+      "definicao": "Carnívoros que se alimentam de outros consumidores: os secundários comem herbívoros, os terciários comem outros carnívoros.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["consumidores_primarios", "regra_dos_10_porcento"]
+    },
+    {
+      "id": "decompositores",
+      "termo": "Decompositores",
+      "definicao": "Fungos e bactérias que decompõem matéria orgânica morta, devolvendo nutrientes ao ambiente para os produtores reutilizarem.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["produtores", "ciclo_materia"]
+    },
+    {
+      "id": "fluxo_energia",
+      "termo": "Fluxo de energia",
+      "definicao": "A energia entra num ecossistema pela luz solar e circula numa só direção ao longo da cadeia alimentar, perdendo-se progressivamente como calor — nunca é reciclada.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["ciclo_materia", "regra_dos_10_porcento"]
+    },
+    {
+      "id": "ciclo_materia",
+      "termo": "Ciclo de matéria",
+      "definicao": "Ao contrário da energia, os átomos (carbono, azoto, etc.) são reciclados indefinidamente entre os seres vivos e o ambiente, através dos decompositores.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["fluxo_energia", "decompositores"]
+    },
+    {
+      "id": "regra_dos_10_porcento",
+      "termo": "Regra dos 10%",
+      "definicao": "Em cada transferência de energia entre níveis tróficos, cerca de 90% perde-se como calor — só cerca de 10% passa para o nível seguinte.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["fluxo_energia", "consumidores_secundarios_terciarios"]
+    },
+    {
+      "id": "diversidade_genetica",
+      "termo": "Diversidade genética",
+      "definicao": "Variedade de genes que existe dentro de uma mesma espécie — ajuda, por exemplo, a adaptar-se a mudanças ambientais.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["diversidade_especies", "diversidade_ecossistemas"]
+    },
+    {
+      "id": "diversidade_especies",
+      "termo": "Diversidade de espécies",
+      "definicao": "Número e variedade de espécies diferentes presentes numa determinada área — o significado mais comum de \"biodiversidade\".",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["diversidade_genetica", "diversidade_ecossistemas", "especie_endemica"]
+    },
+    {
+      "id": "diversidade_ecossistemas",
+      "termo": "Diversidade de ecossistemas",
+      "definicao": "Variedade de habitats e ecossistemas diferentes presentes numa região ou no planeta (florestas, oceanos, desertos, zonas húmidas...).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["diversidade_genetica", "diversidade_especies"]
+    },
+    {
+      "id": "especie_endemica",
+      "termo": "Espécie endémica",
+      "definicao": "Espécie que não existe naturalmente em mais lado nenhum além de uma determinada região — por isso, especialmente vulnerável à extinção.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["hotspot_biodiversidade", "especie_invasora"]
+    },
+    {
+      "id": "especie_invasora",
+      "termo": "Espécie invasora",
+      "definicao": "Espécie introduzida fora da sua área natural que compete com ou preda espécies locais, muitas vezes sem inimigos naturais que a controlem.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["especie_endemica"]
+    },
+    {
+      "id": "hotspot_biodiversidade",
+      "termo": "Hotspot de biodiversidade",
+      "definicao": "Região que concentra uma proporção desproporcionalmente alta de espécies (muitas delas endémicas), e que costuma estar também muito ameaçada pela atividade humana.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["especie_endemica", "diversidade_especies"]
+    },
+    {
+      "id": "conservacao_in_situ",
+      "termo": "Conservação in situ",
+      "definicao": "Proteção das espécies no seu habitat natural — por exemplo, parques naturais, reservas e áreas protegidas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["conservacao_ex_situ"]
+    },
+    {
+      "id": "conservacao_ex_situ",
+      "termo": "Conservação ex situ",
+      "definicao": "Conservação fora do habitat natural — por exemplo, jardins botânicos, zoológicos, bancos de sementes e programas de reprodução em cativeiro.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["conservacao_in_situ"]
+    }
+  ]
+}
