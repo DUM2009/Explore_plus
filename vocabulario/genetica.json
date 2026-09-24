@@ -5,22 +5,130 @@
     {
       "id": "adn",
       "termo": "ADN",
-      "definicao": "Molécula que guarda a informação genética necessária para o funcionamento e a reprodução dos seres vivos.",
-      "estado": "novo",
-      "ultima_revisao": null,
-      "relacionados": [
-        "mitose"
-      ]
+      "definicao": "Molécula em dupla hélice que guarda toda a informação genética de um ser vivo, escrita numa sequência de quatro bases azotadas (A, T, C, G).",
+      "estado": "dominado",
+      "ultima_revisao": "2026-09-24",
+      "relacionados": ["gene", "genoma", "cromatina"]
     },
     {
-      "id": "mitose",
-      "termo": "Mitose",
-      "definicao": "Tipo de divisão celular que origina duas células-filhas geneticamente semelhantes.",
+      "id": "gene",
+      "termo": "Gene",
+      "definicao": "Segmento de ADN que contém a informação necessária para produzir uma proteína específica ou determinar uma característica do organismo.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": [
-        "adn"
-      ]
+      "relacionados": ["adn", "alelo", "codao"]
+    },
+    {
+      "id": "cromatina",
+      "termo": "Cromatina",
+      "definicao": "Forma como o ADN se apresenta na maior parte do ciclo de vida da célula — enrolado à volta de proteínas histonas, para caber dentro do núcleo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["adn", "cromossoma"]
+    },
+    {
+      "id": "cromossoma",
+      "termo": "Cromossoma",
+      "definicao": "Forma mais condensada e organizada da cromatina, visível ao microscópio sobretudo durante a divisão celular — o ser humano tem 46, em 23 pares.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["cromatina", "genoma"]
+    },
+    {
+      "id": "genoma",
+      "termo": "Genoma",
+      "definicao": "Conjunto de toda a informação genética (todo o ADN) de um organismo — no ser humano, distribuído por 23 pares de cromossomas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["adn", "cromossoma"]
+    },
+    {
+      "id": "codao",
+      "termo": "Codão",
+      "definicao": "Sequência de três bases azotadas consecutivas do ADN/RNA que codifica um aminoácido específico ou um sinal de paragem — a \"palavra\" básica do código genético.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["codao_iniciacao", "codao_stop", "gene"]
+    },
+    {
+      "id": "codao_iniciacao",
+      "termo": "Codão de iniciação",
+      "definicao": "O codão AUG, que assinala onde começa a leitura da mensagem genética, e codifica sempre o aminoácido metionina.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["codao", "codao_stop"]
+    },
+    {
+      "id": "codao_stop",
+      "termo": "Codões STOP",
+      "definicao": "Os codões UAA, UAG e UGA — não codificam nenhum aminoácido; assinalam o fim da sequência a traduzir, terminando a síntese da proteína.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["codao", "codao_iniciacao"]
+    },
+    {
+      "id": "universalidade_codigo_genetico",
+      "termo": "Universalidade do código genético",
+      "definicao": "Com raríssimas exceções, o código genético é o mesmo em todos os seres vivos — o mesmo codão codifica o mesmo aminoácido numa bactéria, numa planta ou num ser humano.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["codao", "degenerescencia_codigo_genetico"]
+    },
+    {
+      "id": "degenerescencia_codigo_genetico",
+      "termo": "Degenerescência (redundância) do código genético",
+      "definicao": "A maioria dos aminoácidos pode ser codificada por mais do que um codão diferente — o que torna o código genético mais tolerante a pequenas mutações.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["codao", "mutacao"]
+    },
+    {
+      "id": "alelo",
+      "termo": "Alelo",
+      "definicao": "Cada uma das versões alternativas que um gene pode ter — por exemplo, o gene da cor dos olhos pode ter o alelo \"castanho\" ou o alelo \"azul\".",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["gene", "genotipo", "homozigotico", "heterozigotico"]
+    },
+    {
+      "id": "genotipo",
+      "termo": "Genótipo",
+      "definicao": "Constituição genética de um indivíduo — o conjunto de alelos que possui para um ou mais genes.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["alelo", "fenotipo"]
+    },
+    {
+      "id": "fenotipo",
+      "termo": "Fenótipo",
+      "definicao": "Características observáveis de um indivíduo (físicas, fisiológicas, etc.), resultantes da interação entre o genótipo e o ambiente.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["genotipo"]
+    },
+    {
+      "id": "homozigotico",
+      "termo": "Homozigótico",
+      "definicao": "Diz-se de um indivíduo que tem dois alelos iguais para um determinado gene.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["heterozigotico", "alelo"]
+    },
+    {
+      "id": "heterozigotico",
+      "termo": "Heterozigótico",
+      "definicao": "Diz-se de um indivíduo que tem dois alelos diferentes para um determinado gene.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["homozigotico", "alelo"]
+    },
+    {
+      "id": "mutacao",
+      "termo": "Mutação",
+      "definicao": "Alteração na sequência do ADN — pode ser prejudicial, neutra, ou até vantajosa, e é a principal fonte de novos alelos e de variabilidade genética numa população.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["alelo", "degenerescencia_codigo_genetico"]
     }
   ]
 }

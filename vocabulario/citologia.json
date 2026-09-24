@@ -1,0 +1,222 @@
+{
+  "unidade": "citologia",
+  "titulo": "Citologia",
+  "termos": [
+    {
+      "id": "teoria_celular",
+      "termo": "Teoria Celular",
+      "definicao": "Conjunto de 3 princípios: todos os seres vivos são constituídos por células; a célula é a unidade básica de estrutura e função; toda a célula deriva de uma célula pré-existente, por divisão.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["celula_procariotica", "celula_eucariotica"]
+    },
+    {
+      "id": "celula_procariotica",
+      "termo": "Célula procariótica",
+      "definicao": "Célula sem núcleo delimitado por membrana — o DNA fica disperso no citoplasma, numa região chamada nucleoide. Não tem organelos membranares. Exemplo: bactérias.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["celula_eucariotica", "nucleoide"]
+    },
+    {
+      "id": "nucleoide",
+      "termo": "Nucleoide",
+      "definicao": "Região do citoplasma de uma célula procariótica onde o DNA se encontra disperso, sem membrana à volta.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["celula_procariotica"]
+    },
+    {
+      "id": "celula_eucariotica",
+      "termo": "Célula eucariótica",
+      "definicao": "Célula com um núcleo verdadeiro, delimitado por membrana, e vários organelos membranares especializados. Exemplo: células animais, vegetais, fúngicas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["celula_procariotica", "nucleo", "celula_animal", "celula_vegetal"]
+    },
+    {
+      "id": "celula_animal",
+      "termo": "Célula animal",
+      "definicao": "Célula eucariótica sem parede celular e sem cloroplastos, geralmente de forma mais arredondada e irregular.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["celula_eucariotica", "celula_vegetal"]
+    },
+    {
+      "id": "celula_vegetal",
+      "termo": "Célula vegetal",
+      "definicao": "Célula eucariótica com parede celular de celulose, cloroplastos e, geralmente, um grande vacúolo central.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["celula_eucariotica", "celula_animal", "parede_celular", "cloroplasto", "vacuolo_central"]
+    },
+    {
+      "id": "nucleo",
+      "termo": "Núcleo",
+      "definicao": "Organelo que contém o DNA e controla toda a atividade da célula; no seu interior está o nucléolo, onde se formam os ribossomas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["nucleolo", "celula_eucariotica"]
+    },
+    {
+      "id": "nucleolo",
+      "termo": "Nucléolo",
+      "definicao": "Estrutura dentro do núcleo onde se formam os ribossomas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["nucleo", "ribossoma"]
+    },
+    {
+      "id": "ribossoma",
+      "termo": "Ribossoma",
+      "definicao": "Pequena estrutura, sem membrana, responsável pela síntese de proteínas a partir das instruções do DNA.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["reticulo_endoplasmatico_rugoso", "nucleolo"]
+    },
+    {
+      "id": "reticulo_endoplasmatico_rugoso",
+      "termo": "Retículo endoplasmático rugoso (RER)",
+      "definicao": "Rede de membranas com ribossomas agarrados à superfície; sintetiza proteínas que serão exportadas ou usadas em membranas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["ribossoma", "reticulo_endoplasmatico_liso", "complexo_golgi"]
+    },
+    {
+      "id": "reticulo_endoplasmatico_liso",
+      "termo": "Retículo endoplasmático liso (REL)",
+      "definicao": "Semelhante ao retículo rugoso, mas sem ribossomas; especializado na síntese de lípidos e na desintoxicação de substâncias.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["reticulo_endoplasmatico_rugoso"]
+    },
+    {
+      "id": "complexo_golgi",
+      "termo": "Complexo de Golgi",
+      "definicao": "Organelo que recebe proteínas e lípidos do retículo endoplasmático, modifica-os e empacota-os em vesículas para o destino certo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["reticulo_endoplasmatico_rugoso", "lisossoma"]
+    },
+    {
+      "id": "mitocondria",
+      "termo": "Mitocôndria",
+      "definicao": "Organelo com DNA próprio, conhecido como a \"central elétrica\" da célula — produz a maior parte do ATP através da respiração celular.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["cloroplasto"]
+    },
+    {
+      "id": "lisossoma",
+      "termo": "Lisossoma",
+      "definicao": "Organelo com enzimas digestivas, usado para decompor resíduos celulares, partículas estranhas ou organelos danificados.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["complexo_golgi"]
+    },
+    {
+      "id": "membrana_plasmatica",
+      "termo": "Membrana plasmática",
+      "definicao": "Estrutura que delimita a célula e controla, de forma seletiva, a entrada e saída de substâncias.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["parede_celular"]
+    },
+    {
+      "id": "citoesqueleto",
+      "termo": "Citoesqueleto",
+      "definicao": "Rede de filamentos proteicos que dá forma e suporte à célula e permite o movimento de organelos no seu interior.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["fuso_acromatico"]
+    },
+    {
+      "id": "cloroplasto",
+      "termo": "Cloroplasto",
+      "definicao": "Organelo com DNA próprio onde ocorre a fotossíntese; presente apenas em células vegetais e em algumas algas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["mitocondria", "celula_vegetal"]
+    },
+    {
+      "id": "vacuolo_central",
+      "termo": "Vacúolo central",
+      "definicao": "Grande estrutura membranar, característica das células vegetais, que armazena água, nutrientes e resíduos, e ajuda a manter a célula túrgida.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["celula_vegetal"]
+    },
+    {
+      "id": "parede_celular",
+      "termo": "Parede celular",
+      "definicao": "Camada rígida de celulose, externa à membrana plasmática, que dá suporte estrutural à célula vegetal.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["celula_vegetal", "membrana_plasmatica"]
+    },
+    {
+      "id": "ciclo_celular",
+      "termo": "Ciclo celular",
+      "definicao": "Conjunto de transformações que uma célula sofre desde a sua formação até se dividir em duas células-filhas; inclui a interfase e a fase mitótica.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["interfase", "mitose"]
+    },
+    {
+      "id": "interfase",
+      "termo": "Interfase",
+      "definicao": "Fase mais longa do ciclo celular (~90-95%), onde a célula cresce e replica o seu DNA; subdivide-se em G1, S e G2.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["ciclo_celular", "cromatideo"]
+    },
+    {
+      "id": "cromatideo",
+      "termo": "Cromatídeo",
+      "definicao": "Cada uma das duas cópias idênticas de um cromossoma, unidas pelo centrómero, resultantes da replicação do DNA na fase S.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["centromero", "interfase"]
+    },
+    {
+      "id": "centromero",
+      "termo": "Centrómero",
+      "definicao": "Região do cromossoma que une os dois cromatídeos-irmãos e se liga às fibras do fuso acromático durante a mitose.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["cromatideo", "fuso_acromatico"]
+    },
+    {
+      "id": "fuso_acromatico",
+      "termo": "Fuso acromático",
+      "definicao": "Estrutura de microtúbulos que se liga aos centrómeros dos cromossomas e os puxa para polos opostos da célula durante a mitose.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["centromero", "mitose"]
+    },
+    {
+      "id": "mitose",
+      "termo": "Mitose",
+      "definicao": "Processo de divisão do núcleo em 4 fases — prófase, metáfase, anáfase, telófase — que origina dois núcleos geneticamente idênticos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["interfase", "citocinese", "fuso_acromatico"]
+    },
+    {
+      "id": "citocinese",
+      "termo": "Citocinese",
+      "definicao": "Divisão do citoplasma que origina duas células-filhas separadas; ocorre por estrangulamento da membrana (célula animal) ou por formação de uma placa celular (célula vegetal).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["mitose"]
+    },
+    {
+      "id": "ciclinas",
+      "termo": "Ciclinas",
+      "definicao": "Proteínas reguladoras que atuam em pontos de controlo (checkpoints) do ciclo celular, garantindo que cada fase só avança quando a anterior está corretamente concluída.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["ciclo_celular"]
+    }
+  ]
+}
