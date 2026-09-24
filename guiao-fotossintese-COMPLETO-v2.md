@@ -1,6 +1,6 @@
 # Missão: Fotossíntese — Guião de Conteúdo COMPLETO (v2)
 
-**Modo único**: todas as missões são acompanhadas pela mascote por padrão. Nas Definições, o aluno pode desativar "Comentários da mascote" — isso esconde as falas/popups da mascote (marcadas abaixo com 🐢), mas o conteúdo central (texto, diagramas, perguntas) mantém-se sempre igual.
+**Modo único**: todas as missões são acompanhadas pela mascote por padrão. Nas Definições, o aluno pode desativar "Comentários da mascote" — isso esconde as falas/popups da mascote (marcadas abaixo com), mas o conteúdo central (texto, diagramas, perguntas) mantém-se sempre igual.
 
 Cada secção segue: **Gancho → Diagrama interativo → 2-3 Micro-verificações → Analogia → Aprofundar → Quiz da secção (3 perguntas)**.
 
@@ -11,7 +11,7 @@ Os quizzes de secção são diferentes dos 3 Testes formais (que continuam a exi
 ## SECÇÃO 1 — INTRODUÇÃO: "O que é e onde acontece"
 
 ### Ecrã 1 — Gancho
-🐢 *"Olá, aprendiz! Hoje vamos descobrir um dos truques mais espantosos da natureza."*
+*"Olá, aprendiz! Hoje vamos descobrir um dos truques mais espantosos da natureza."*
 **Texto**: Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?
 
 ### Ecrã 2 — Diagrama interativo
@@ -25,7 +25,7 @@ Pontos clicáveis:
 - **Glicose (C₆H₁₂O₆)**: "O açúcar que a planta fabrica, usado como alimento e fonte de energia para crescer."
 
 ### Ecrã 3 — Micro-verificação 1
-🐢 *"Vamos ver se isto já ficou claro?"*
+*"Vamos ver se isto já ficou claro?"*
 **Pergunta**: As plantas obtêm o seu alimento principalmente através de:
 (A) das raízes, absorvendo nutrientes do solo
 (B) da fotossíntese, usando luz, água e CO₂ ✓
@@ -40,7 +40,7 @@ Pontos clicáveis:
 **Feedback errado**: "Na verdade, o produto que interessa à planta é a glicose. O oxigénio é libertado como subproduto, não é o objetivo do processo."
 
 ### Ecrã 5 — Analogia
-🐢 *"Deixa-me explicar isto de outra forma..."*
+*"Deixa-me explicar isto de outra forma..."*
 > 💡 A planta é como uma **fábrica que não compra matéria-prima a ninguém** — usa só o que está à sua volta de graça (luz, ar, água) para fabricar o seu próprio "combustível", a glicose.
 
 ### Ecrã 6 — Aprofundar (cartão colapsável, "Queres saber mais?")
@@ -53,14 +53,14 @@ Pontos clicáveis:
 2. O que a experiência de Jan van Helmont demonstrou? (A) As plantas crescem a partir da terra (B) As plantas fabricam a sua massa a partir de água e ar ✓
 3. Verdadeiro ou Falso: a fotossíntese ocorre exclusivamente durante a noite. **Falso** — ocorre na presença de luz.
 
-🐢 *"Boa! Já sabes o essencial. A seguir, vamos ver exatamente ONDE dentro da planta isto acontece."*
+*"Boa! Já sabes o essencial. A seguir, vamos ver exatamente ONDE dentro da planta isto acontece."*
 
 ---
 
 ## SECÇÃO 2 — FASE CLARA: "Onde a luz vira energia"
 
 ### Ecrã 1 — Gancho
-🐢 *"A luz que bate nas folhas não desaparece — ela transforma-se. Mas em quê, exatamente?"*
+*"A luz que bate nas folhas não desaparece — ela transforma-se. Mas em quê, exatamente?"*
 **Texto**: Nesta secção vamos abrir o cloroplasto e ver, passo a passo, o que acontece quando a luz solar atinge a folha.
 
 ### Ecrã 2 — Diagrama interativo
@@ -92,7 +92,7 @@ Pontos clicáveis:
 **Feedback certo**: "Certo! O oxigénio é libertado para o ar; o ATP e o NADPH é que continuam a "viagem" dentro do cloroplasto."
 
 ### Ecrã 6 — Analogia
-🐢 *"Pensa nisto como..."*
+*"Pensa nisto como..."*
 > 💡 A água é como uma **garrafa reciclável esmagada** para libertar o que interessa (os eletrões) — o oxigénio que sobra é literalmente **lixo descartado** para o ar. O ATP é como **dinheiro pronto a gastar** (energia imediata); o NADPH é como um **cartão que "transporta" eletrões**, prontos a serem "gastos" na fase seguinte.
 
 ### Ecrã 7 — Aprofundar
@@ -104,14 +104,14 @@ Pontos clicáveis:
 2. Verdadeiro ou Falso: o ATP produzido na fase clara é usado diretamente para fazer glicose, sem passar por mais nenhum processo. **Falso** — é usado na fase seguinte (ciclo de Calvin) para isso.
 3. O nome do processo que usa o gradiente de protões H⁺ para produzir ATP chama-se: (A) Fotólise (B) Quimiosmose ✓ (C) Fixação de carbono
 
-🐢 *"Já sabes como a luz vira energia! A seguir: o que a planta faz com essa energia."*
+*"Já sabes como a luz vira energia! A seguir: o que a planta faz com essa energia."*
 
 ---
 
 ## SECÇÃO 3 — FASE ESCURA: "De carbono a açúcar"
 
 ### Ecrã 1 — Gancho
-🐢 *"Achas que o carbono do ar consegue transformar-se em açúcar sólido? É exatamente isso que vamos ver."*
+*"Achas que o carbono do ar consegue transformar-se em açúcar sólido? É exatamente isso que vamos ver."*
 
 ### Ecrã 2 — Diagrama interativo
 **Brief de imagem**: um ciclo circular (Ciclo de Calvin) dentro do estroma, com 3 zonas: entrada de CO₂ + RuBP → saída de 3-PGA; seta para G3P (usando ATP/NADPH que "chegam" de fora do ciclo, do lado da fase clara); parte do G3P sai como glicose, parte volta a formar RuBP.
@@ -138,7 +138,7 @@ Pontos clicáveis:
 **Feedback certo**: "Isso mesmo — por isso é que as duas fases são interdependentes: sem a fase clara, o Ciclo de Calvin não teria energia para funcionar."
 
 ### Ecrã 6 — Analogia
-🐢 *"Imagina assim..."*
+*"Imagina assim..."*
 > 💡 A RuBisCO é como um **anzol lançado ao ar** — pesca o CO₂ que está disperso na atmosfera e prende-o a uma molécula maior, para deixar de andar solto. E o ciclo todo é como uma **linha de montagem circular**: parte do "produto" segue para a frente (vira glicose), mas outra parte volta ao início da linha (regenera a RuBP) — como uma correia transportadora fechada, não uma linha reta com fim.
 
 ### Ecrã 7 — Aprofundar
@@ -150,14 +150,14 @@ Pontos clicáveis:
 2. O Ciclo de Calvin depende diretamente da luz solar? (A) Sim, diretamente (B) Não diretamente, mas depende dos produtos da fase clara ✓
 3. Verdadeiro ou Falso: toda a RuBP usada no início do ciclo é "gasta" e não volta a ser usada. **Falso** — parte é regenerada no próprio ciclo.
 
-🐢 *"Já percebeste as duas fases da fotossíntese! Falta só perceber porque é que isto importa tanto — para além da própria planta."*
+*"Já percebeste as duas fases da fotossíntese! Falta só perceber porque é que isto importa tanto — para além da própria planta."*
 
 ---
 
 ## SECÇÃO 4 — IMPORTÂNCIA DA FOTOSSÍNTESE PARA O PLANETA
 
 ### Ecrã 1 — Gancho
-🐢 *"Achas que a Amazónia é o 'pulmão do mundo'? A resposta científica pode surpreender-te."*
+*"Achas que a Amazónia é o 'pulmão do mundo'? A resposta científica pode surpreender-te."*
 
 ### Ecrã 2 — Diagrama interativo
 **Brief de imagem**: um globo terrestre estilizado, com 5 ícones à volta ligados por setas: uma folha (fotossíntese), uma cadeia alimentar simples (erva→coelho→raposa), uma nuvem de CO₂ a diminuir, uma gota de petróleo, e uma representação da atmosfera antiga/moderna.
@@ -185,7 +185,7 @@ Pontos clicáveis:
 **Feedback certo**: "Isso mesmo! Sem esse evento, a vida animal (que precisa de oxigénio) não teria sido possível mais tarde."
 
 ### Ecrš 6 — Analogia + curiosidade (mito científico)
-🐢 *"Aqui está uma curiosidade que surpreende muita gente..."*
+*"Aqui está uma curiosidade que surpreende muita gente..."*
 > 💡 A Amazónia costuma ser chamada de "pulmão do mundo", associada à produção de 20% do oxigénio do planeta — mas isso é um mito. A própria floresta consome, através da respiração das plantas e da decomposição de matéria orgânica pelos micróbios, quase todo o oxigénio que produz durante o dia. O contributo líquido da Amazónia para o oxigénio atmosférico é próximo de zero. Quem realmente sustenta a maior parte do oxigénio que respiramos é o **fitoplâncton oceânico**.
 > *Isto não torna a Amazónia menos importante — continua a ser essencial pela biodiversidade, pela regulação da chuva e por armazenar enormes quantidades de carbono. Só não é pela razão do oxigénio que normalmente se diz.*
 
@@ -198,7 +198,7 @@ Pontos clicáveis:
 2. O petróleo é considerado um "combustível fóssil" porque: (A) É extraído de rochas (B) Tem origem em organismos fotossintéticos antigos ✓
 3. Verdadeiro ou Falso: a Amazónia tem um contributo líquido de oxigénio próximo de zero, apesar de ser chamada "pulmão do mundo". **Verdadeiro**.
 
-🐢 *"Parabéns, aprendiz! Completaste a missão da Fotossíntese. Já sabes onde acontece, como funciona, e porque é que importa para o planeta todo. 🌿"*
+*"Parabéns, aprendiz! Completaste a missão da Fotossíntese. Já sabes onde acontece, como funciona, e porque é que importa para o planeta todo. 🌿"*
 
 ---
 
@@ -206,7 +206,7 @@ Pontos clicáveis:
 
 Nas Definições do perfil, incluir:
 > **"Comentários da mascote"** — [Ativado / Desativado]
-> Quando desativado, as falas 🐢 (introduções, transições, celebrações) não aparecem — o texto principal, diagramas, perguntas e feedback continuam sempre visíveis, iguais para todos.
+> Quando desativado, as falas (introduções, transições, celebrações) não aparecem — o texto principal, diagramas, perguntas e feedback continuam sempre visíveis, iguais para todos.
 
 ---
 

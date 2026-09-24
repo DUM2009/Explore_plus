@@ -13,7 +13,7 @@
         {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
-          "mascote_texto": "A molécula mais importante para a vida não tem nada de exótico — está no copo que tens ao lado. Vamos perceber porque é que a água é tão especial para as células.",
+          "mascote_texto": "Porque achas que és constituído por 70% de água?\nVamos perceber porque é que a água é tão especial para as células.",
           "titulo": "As funções da água na célula",
           "video": "Molécula a girar.mp4",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -27,7 +27,7 @@
         {
           "tipo": "analogia",
           "cartao_estilo": true,
-          "mascote_texto": "Pensa nisto como... 🐢",
+          "mascote_texto": "Pensa nisto como...",
           "texto": "💡 Cada molécula de água é como um pequeno íman: o lado do hidrogénio fica ligeiramente positivo, o lado do oxigénio fica ligeiramente negativo. Por isso, o hidrogénio de uma molécula de água é atraído pelo oxigénio da molécula vizinha, formando uma ligação de hidrogénio — como uma corrente de ímanes ligeiramente inclinados, todos a puxarem-se uns aos outros. É essa \"atração em cadeia\" que dá à água tantas das suas propriedades especiais.",
           "aprofundar": {
             "titulo": "Sais minerais: os parceiros discretos da água",
@@ -73,7 +73,7 @@
               "mascote_feedback_errado": "Chama-se ligação de hidrogénio — a ligação peptídica é outra coisa, própria das proteínas."
             }
           ],
-          "mascote_conclusao": "Já sabes porque é que a água é tão especial. Vamos agora conhecer as biomoléculas orgânicas — a começar pelos açúcares. 🍬🐢"
+          "mascote_conclusao": "Já sabes porque é que a água é tão especial. Vamos agora conhecer as biomoléculas orgânicas — a começar pelos açúcares. 🍬"
         }
       ]
     },
@@ -86,7 +86,7 @@
         {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
-          "mascote_texto": "A colher de açúcar no teu chá e a parede de uma árvore têm mais em comum do que imaginas — ambas são feitas da mesma \"peça\" básica. Vamos conhecer os glícidos, desde a unidade mais simples até às cadeias gigantes. 🐢",
+          "mascote_texto": "A colher de açúcar no teu chá e a parede de uma árvore têm mais em comum do que imaginas — ambas são feitas da mesma \"peça\" básica. Vamos conhecer os glícidos, desde a unidade mais simples até às cadeias gigantes.",
           "titulo": "Do açúcar simples às cadeias gigantes",
           "imagem": "glicidos_tipos.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -101,7 +101,7 @@
         {
           "tipo": "analogia",
           "cartao_estilo": true,
-          "mascote_texto": "Pensa nisto como... 🐢",
+          "mascote_texto": "Pensa nisto como...",
           "texto": "💡 Pensa num monossacarídeo como um único tijolo, um oligossacarídeo como um punhado de tijolos colados entre si, e um polissacarídeo como uma parede inteira construída com milhares desses tijolos. E tal como uma parede pode servir para guardar coisas lá dentro (uma despensa = glicogénio/amido) ou para dar estrutura a um edifício (uma parede-mestra = celulose), os polissacarídeos também têm essas duas grandes funções: reserva ou estrutura."
         },
         {
@@ -148,7 +148,7 @@
               "mascote_feedback_errado": "Na verdade é verdadeiro — um polissacarídeo tem mais de 10 unidades de monossacarídeo."
             }
           ],
-          "mascote_conclusao": "Já dominas os glícidos. A seguir vamos conhecer uma família de moléculas que foge da água — os lípidos. 🐢"
+          "mascote_conclusao": "Já dominas os glícidos. A seguir vamos conhecer uma família de moléculas que foge da água — os lípidos."
         }
       ]
     },
@@ -160,7 +160,7 @@
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "Nem todas as moléculas gostam de água — hoje vais conhecer a família que prefere fugir dela. 🐢",
+          "mascote_texto": "Nem todas as moléculas gostam de água — hoje vais conhecer a família que prefere fugir dela.",
           "texto": "Vamos conhecer os lípidos: um grupo heterogéneo, com formas e funções muito diferentes entre si."
         },
         {
@@ -178,7 +178,7 @@
         {
           "tipo": "analogia",
           "cartao_estilo": true,
-          "mascote_texto": "Pensa nisto como... 🐢",
+          "mascote_texto": "Pensa nisto como...",
           "texto": "💡 Imagina um grupo de pessoas apanhadas por um aguaceiro: a \"cabeça\" delas (hidrofílica) não se importa de ficar molhada, mas os \"pés\" (as caudas hidrofóbicas) querem ficar bem longe da água. O jeito mais natural de se organizarem é ficarem de pé, em duas filas viradas de costas uma para a outra, com as cabeças viradas para fora (para a água) e os pés escondidos no meio, longe dela. É exatamente essa a forma como os fosfolípidos se organizam sozinhos — em duas camadas — para formar a membrana de qualquer célula."
         },
         {
@@ -225,7 +225,7 @@
               "mascote_feedback_errado": "Na verdade é falso — ao contrário dos glícidos e das proteínas, os lípidos não formam polímeros regulares."
             }
           ],
-          "mascote_conclusao": "Já conheces os lípidos. A seguir vamos falar das biomoléculas com mais funções diferentes de todas: as proteínas. 🐢"
+          "mascote_conclusao": "Já conheces os lípidos. A seguir vamos falar das biomoléculas com mais funções diferentes de todas: as proteínas."
         }
       ]
     },
@@ -237,7 +237,7 @@
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "Se a célula fosse uma empresa, esta biomolécula seria responsável por quase todos os departamentos ao mesmo tempo. 🐢",
+          "mascote_texto": "Se a célula fosse uma empresa, esta biomolécula seria responsável por quase todos os departamentos ao mesmo tempo.",
           "texto": "Vamos conhecer as proteínas — as biomoléculas com a maior diversidade de funções."
         },
         {
@@ -257,7 +257,7 @@
         {
           "tipo": "analogia",
           "cartao_estilo": true,
-          "mascote_texto": "Pensa nisto como... 🐢",
+          "mascote_texto": "Pensa nisto como...",
           "texto": "💡 Se os glícidos são a gasolina e os lípidos o depósito de reserva, as proteínas são como uma equipa inteira de funcionários especializados: uns constroem e reparam (função estrutural), uns aceleram o trabalho todo (enzimas), uns defendem a entrada do prédio (anticorpos), uns fazem entregas porta-a-porta (transporte) e uns dão ordens ao resto da equipa (hormonas). Uma única categoria de biomolécula, com dezenas de \"profissões\" diferentes."
         },
         {
@@ -304,7 +304,7 @@
               "mascote_feedback_errado": "Na verdade é falso — as proteínas são precisamente a biomolécula com mais funções diferentes."
             }
           ],
-          "mascote_conclusao": "Já conheces as proteínas. Falta a última peça do puzzle: a molécula que guarda as instruções para fazer tudo isto. 🐢"
+          "mascote_conclusao": "Já conheces as proteínas. Falta a última peça do puzzle: a molécula que guarda as instruções para fazer tudo isto."
         }
       ]
     },
@@ -316,7 +316,7 @@
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "Todas as biomoléculas que já viste — glícidos, lípidos, proteínas — só existem porque uma outra molécula guarda as instruções para as construir. 🐢",
+          "mascote_texto": "Todas as biomoléculas que já viste — glícidos, lípidos, proteínas — só existem porque uma outra molécula guarda as instruções para as construir.",
           "texto": "Vamos conhecer os ácidos nucleicos: DNA e RNA."
         },
         {
@@ -344,7 +344,7 @@
         {
           "tipo": "analogia",
           "cartao_estilo": true,
-          "mascote_texto": "Pensa nisto como... 🐢",
+          "mascote_texto": "Pensa nisto como...",
           "texto": "💡 O DNA é como o exemplar original de um livro de receitas, guardado a sete chaves num cofre (o núcleo) — precioso e raramente manuseado diretamente. O RNA é como uma fotocópia rápida de uma única receita, feita para sair do cofre e ir até à \"cozinha\" (os ribossomas), onde a proteína é de facto preparada. Assim, o original nunca se desgasta nem se perde — só as cópias de trabalho é que andam de um lado para o outro."
         },
         {
@@ -391,7 +391,7 @@
               "mascote_feedback_errado": "Na verdade é verdadeiro — o DNA é tipicamente uma dupla hélice, e o RNA geralmente uma cadeia simples."
             }
           ],
-          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão das Biomoléculas. Já sabes porque a água é tão especial, como os glícidos e os lípidos guardam energia, como as proteínas fazem quase tudo na célula, e como o DNA e o RNA guardam e usam a informação genética. 🧪🐢"
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão das Biomoléculas. Já sabes porque a água é tão especial, como os glícidos e os lípidos guardam energia, como as proteínas fazem quase tudo na célula, e como o DNA e o RNA guardam e usam a informação genética. 🧪"
         }
       ]
     }

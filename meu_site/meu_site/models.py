@@ -76,6 +76,15 @@ class PerfilAluno(models.Model):
     # ligar eventos assíncronos de subscrição de volta a este perfil.
     stripe_customer_id = models.CharField(max_length=255, blank=True, default='')
     stripe_subscription_id = models.CharField(max_length=255, blank=True, default='')
+    # Maior sequência de dias seguidos já alcançada (a sequência atual não
+    # precisa de campo próprio — é calculada a partir de RegistoAtividadeDiaria,
+    # ver calcular_sequencia() abaixo).
+    sequencia_recorde = models.IntegerField(default=0)
+    # Estado do vocabulário (dominado/a_rever) por aluno — {"<unidade_id>":
+    # {"<termo_id>": "dominado"|"a_rever"}}. Substitui o campo "estado" que
+    # existia diretamente nos ficheiros vocabulario/<unidade>.json, que era
+    # partilhado por TODOS os alunos.
+    vocabulario_estado = models.JSONField(default=dict, blank=True)
 
     class Meta:
         app_label = 'meu_site'
@@ -106,6 +115,78 @@ class PerfilAluno(models.Model):
         self.uso_chat_semana = uso
         self.save(update_fields=['uso_chat_semana'])
         return True
+
+    def calcular_sequencia(self):
+        """Devolve (sequencia_atual, recorde) de dias seguidos com pelo
+        menos um RegistoAtividadeDiaria — conta para trás a partir de hoje
+        (ou de ontem, se ainda não houve atividade hoje, para não zerar a
+        sequência só porque o aluno ainda não abriu a app hoje)."""
+        datas = set(
+            self.user.registos_atividade.values_list('data', flat=True)
+        )
+        if not datas:
+            return 0, self.sequencia_recorde
+
+        hoje = timezone.localdate()
+        cursor = hoje if hoje in datas else hoje - timedelta(days=1)
+        atual = 0
+        while cursor in datas:
+            atual += 1
+            cursor -= timedelta(days=1)
+
+        recorde = max(self.sequencia_recorde, atual)
+        if recorde != self.sequencia_recorde:
+            self.sequencia_recorde = recorde
+            self.save(update_fields=['sequencia_recorde'])
+        return atual, recorde
+
+
+class RegistoAtividadeDiaria(models.Model):
+    """Um "carimbo" por aluno e por dia em que houve alguma atividade de
+    estudo (missão, teste, exame ou flashcards) — usado só para calcular a
+    sequência de dias e o tempo de estudo semanal na página de Estatísticas,
+    não para histórico de resultados (ver ResultadoAvaliacao)."""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='registos_atividade')
+    data = models.DateField()
+    minutos = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        app_label = 'meu_site'
+        unique_together = ('user', 'data')
+        ordering = ['-data']
+
+    def __str__(self):
+        return f"{self.user.username} — {self.data} ({self.minutos} min)"
+
+
+class ResultadoAvaliacao(models.Model):
+    """Um registo histórico por cada teste, exame ou secção de missão
+    corrigida — ao contrário de PerfilAluno.progresso_testes/progresso_secoes
+    (que só guardam o valor mais recente), isto acumula ao longo do tempo
+    para alimentar o gráfico de evolução e o desempenho por unidade na
+    página de Estatísticas."""
+    TIPOS = [
+        ('teste', 'Teste'),
+        ('exame', 'Exame'),
+        ('missao_seccao', 'Secção de missão'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='resultados_avaliacao')
+    tipo = models.CharField(max_length=20, choices=TIPOS)
+    # teste_id / exame_id, ou "<missao_id>:<secao_id>" para secções de missão.
+    identificador = models.CharField(max_length=150)
+    # Uma das UNIDADES_BIBLIOTECA (ver views.py) — '' se o teste/missão
+    # ainda não tiver correspondência a nenhuma das 5 unidades.
+    unidade = models.CharField(max_length=30, blank=True, default='')
+    nota_percentagem = models.FloatField()
+    criado_em = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        app_label = 'meu_site'
+        ordering = ['criado_em']
+
+    def __str__(self):
+        return f"{self.user.username} — {self.identificador}: {self.nota_percentagem:.0f}%"
 
 
 class InqueritoAluno(models.Model):

@@ -473,12 +473,30 @@ const profileQuoteCard = document.querySelector('.profile-quote-card');
 const profileQuoteText = document.getElementById('profileQuoteText');
 const profileQuoteAuthor = document.getElementById('profileQuoteAuthor');
 const profileSubjectCard = document.querySelector('.profile-subject-card');
+// The card "Resumo rápido" sits right below the quote card, in the same
+// column — so lining its top edge up with .profile-missions-card (the
+// bordered mission list on the left, not the plain heading above it)
+// means growing the quote card until it reaches that same height, not
+// just matching .profile-subject-card's own height.
+const profileMissionsCard = document.querySelector('.profile-missions-card');
 
-/** Keeps the quote card's height matched to the subject card next to it
- *  (same row, two different grid columns, so CSS alone can't align them). */
+/** Keeps the quote card's height matched to whatever sits next to
+ *  "Resumo rápido" on the left (same row, two different grid columns, so
+ *  CSS alone can't align them). A fixed height (not min-height) so a
+ *  longer quote can never grow the card and push "Resumo rápido" down —
+ *  .profile-quote-card has overflow:hidden as a backstop for that case. */
 function syncQuoteCardHeight() {
-    if (!profileQuoteCard || !profileSubjectCard) return;
-    profileQuoteCard.style.minHeight = `${profileSubjectCard.offsetHeight}px`;
+    if (!profileQuoteCard) return;
+    const alignTarget = profileMissionsCard || profileSubjectCard;
+    // offsetParent is null while the "Perfil" tab panel is hidden (e.g. the
+    // "Conquistas" tab is active) — skip rather than collapse the quote
+    // card to 0, since a hidden element's rect is meaningless.
+    if (!alignTarget || alignTarget.offsetParent === null) return;
+    const quoteCardMarginBottom = parseFloat(getComputedStyle(profileQuoteCard).marginBottom) || 0;
+    const targetHeight = alignTarget.getBoundingClientRect().top
+        - profileQuoteCard.getBoundingClientRect().top
+        - quoteCardMarginBottom;
+    profileQuoteCard.style.height = `${Math.max(targetHeight, 0)}px`;
 }
 
 if (profileQuoteCard && profileQuoteText && profileQuoteAuthor) {

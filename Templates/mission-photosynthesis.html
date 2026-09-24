@@ -54,7 +54,7 @@
                     </div>
                     <div class="mascote-chat-messages" id="mascoteChatMessages">
                         <div class="mascote-chat-welcome" id="mascoteChatWelcome">
-                            <video src="{% static 'Mascote a acenar.webm' %}" class="mascote-chat-welcome-video" autoplay loop muted playsinline></video>
+                            <img src="{% static 'images/Mascote com dúvidas.png' %}" class="mascote-chat-welcome-video" alt="Mascote com dúvidas">
                             <div class="mascote-chat-welcome-copy">
                                 <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
                                 <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>
@@ -183,6 +183,7 @@
         window.exploreMissionsIndexUrl = '{% url "index-missions" %}';
         window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
         window.exploreMascotWaveVideoUrl = '{% static "Mascote a acenar.webm" %}';
+        window.exploreMascotDoubtsImageUrl = '{% static "images/Mascote com dúvidas.png" %}';
         window.explorePaginaInicialUrl = '{% url "pagina_inicial" %}';
         window.exploreAboutUrl = '{% url "about" %}';
         window.explorePerfilUrl = '{% url "perfil" %}';

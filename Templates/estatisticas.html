@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Resumos | Explore+</title>
+<title>Estatísticas | Explore+</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +46,7 @@
 <span class="profile-sidebar-label">Perfil</span>
 </a>
 
-<a href="{% url 'estatisticas' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
+<a href="{% url 'estatisticas' %}" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
 <span class="profile-sidebar-label">Estatísticas</span>
 </a>
 
@@ -62,7 +62,7 @@
 <a href="{% url 'exames' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
 <span class="profile-sidebar-label">Exames</span>
 </a>
-<a href="{% url 'Resumos' %}" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
+<a href="{% url 'Resumos' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
 <span class="profile-sidebar-label">Resumos</span>
 </a>
 </nav>
@@ -152,51 +152,98 @@
     </button>
 </div>
 
-<section class="missions-page">
-    <div class="resumo-title-row">
-        <h1>Resumos</h1>
-        {% if perfil.plano != 'pro' %}
-        <a href="{% url 'superexplore' %}" class="superexplore-inline-cta">SuperExplore</a>
+<section class="missions-page estatisticas-page">
+    <h1>Estatísticas</h1>
+    <p>O teu progresso pessoal — comparado só com o teu próprio histórico, nunca com outros alunos.</p>
+
+    <div class="stats-card">
+        <h2>Evolução das notas</h2>
+        {% if evolucao %}
+        <div class="stats-chart">
+            <div class="stats-chart-yaxis">
+                <span>20</span>
+                <span>10</span>
+                <span>0</span>
+            </div>
+            <svg class="stats-chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none">
+                <line x1="0" y1="0" x2="300" y2="0" class="stats-chart-gridline"/>
+                <line x1="0" y1="50" x2="300" y2="50" class="stats-chart-gridline"/>
+                <line x1="0" y1="100" x2="300" y2="100" class="stats-chart-gridline"/>
+                <polyline points="{{ evolucao_pontos }}" class="stats-chart-line"/>
+            </svg>
+        </div>
+        <div class="stats-chart-labels">
+            <span>{{ evolucao.0.label }}</span>
+            {% with ultimo=evolucao|last %}<span>{{ ultimo.label }}</span>{% endwith %}
+        </div>
+        {% else %}
+        <p class="stats-empty">Ainda não corrigiste nenhum teste ou exame — assim que o fizeres, a tua evolução aparece aqui.</p>
         {% endif %}
     </div>
-    <div class="missions-page-subrow">
-        <p>Revisões diretas ao ponto, prontas para reveres antes de um teste.</p>
-        <div class="subject-switcher">
-            <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
-                <span>Explore Biology</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
-                <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
-                <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
-                <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
-                <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
-            </ul>
+
+    <div class="stats-card">
+        <h2>Desempenho por unidade</h2>
+        <div class="stats-unidades">
+            {% for unidade in desempenho_unidades %}
+            <div class="stats-unidade-row">
+                <span class="stats-unidade-nome">{{ unidade.nome }}</span>
+                {% if unidade.sem_dados %}
+                <span class="stats-unidade-vazio">Ainda sem dados</span>
+                {% else %}
+                <div class="stats-unidade-bar-wrap">
+                    <div class="stats-unidade-bar" style="width: {{ unidade.percent }}%; background: {{ unidade.cor_a }};"></div>
+                </div>
+                <span class="stats-unidade-percent">
+                    {{ unidade.percent }}%
+                    {% if unidade.delta %}
+                    <small class="stats-unidade-delta {% if unidade.delta > 0 %}is-up{% else %}is-down{% endif %}">({{ unidade.delta|stringformat:"+d" }}% desde o início)</small>
+                    {% endif %}
+                </span>
+                {% endif %}
+            </div>
+            {% endfor %}
         </div>
     </div>
 
-    {% if resumos %}
-    <div class="cards resumos-grid">
-        {% for r in resumos %}
-        <a href="{% url 'resumo-detalhe' r.id %}" class="card resumo-card" style="--resumo-cor-a:{{ r.cor_a }};--resumo-cor-b:{{ r.cor_b }};--resumo-cor-soft:{{ r.cor_soft }};">
-            <div class="resumo-card-top">
-                <span class="resumo-card-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
-                </span>
-                <span class="resumo-card-badge">{{ r.disciplina }}</span>
+    <div class="stats-card">
+        <h2>Hábitos de estudo</h2>
+        <div class="stats-habitos-grid">
+            <div class="stats-habito">
+                <span class="stats-habito-valor">{{ tempo_semana_min }} min</span>
+                <span class="stats-habito-label">Tempo de estudo esta semana</span>
             </div>
-            <h3>{{ r.nome }}</h3>
-            <p>{{ r.descricao_curta }}</p>
-            <span class="resumo-card-cta">
-                Ler resumo
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
-            </span>
-        </a>
-        {% endfor %}
+            <div class="stats-habito">
+                <span class="stats-habito-valor">{{ sequencia_atual }} dia{{ sequencia_atual|pluralize }}</span>
+                <span class="stats-habito-label">Sequência atual</span>
+            </div>
+            <div class="stats-habito">
+                <span class="stats-habito-valor">{{ sequencia_recorde }} dia{{ sequencia_recorde|pluralize }}</span>
+                <span class="stats-habito-label">Recorde pessoal</span>
+            </div>
+        </div>
     </div>
-    {% else %}
-    <p>Estamos a preparar os resumos — volta em breve.</p>
-    {% endif %}
+
+    <div class="stats-card">
+        <h2>Vocabulário</h2>
+        {% if vocab_total_termos > 0 %}
+        <div class="stats-vocab-row">
+            <div class="stats-vocab-item stats-vocab-item--dominado">
+                <span class="stats-vocab-valor">{{ vocab_totais.dominado }}</span>
+                <span class="stats-vocab-label">Dominados</span>
+            </div>
+            <div class="stats-vocab-item stats-vocab-item--rever">
+                <span class="stats-vocab-valor">{{ vocab_totais.a_rever }}</span>
+                <span class="stats-vocab-label">A rever</span>
+            </div>
+            <div class="stats-vocab-item">
+                <span class="stats-vocab-valor">{{ vocab_totais.novo }}</span>
+                <span class="stats-vocab-label">Por explorar</span>
+            </div>
+        </div>
+        {% else %}
+        <p class="stats-empty">A tua Biblioteca do Explorador ainda está vazia.</p>
+        {% endif %}
+    </div>
 </section>
 
 </div>
@@ -224,7 +271,6 @@ document.addEventListener('click', (event) => {
 </script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
-<script src="{% static 'subject-switcher.js' %}" defer></script>
 
 </body>
 

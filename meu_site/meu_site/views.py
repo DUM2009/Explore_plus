@@ -1,6 +1,7 @@
 import json
 import re
 import unicodedata
+from datetime import timedelta
 import anthropic
 import stripe
 from django.conf import settings
@@ -15,7 +16,42 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils import timezone
-from .models import PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel
+from .models import (
+    PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel,
+    ResultadoAvaliacao, RegistoAtividadeDiaria,
+)
+
+# Mapeia teste_id/exame_id e missao_id para uma das 5 unidades da Biblioteca
+# do Explorador (ver UNIDADES_BIBLIOTECA mais abaixo) — usado só para
+# agrupar o histórico de resultados (ResultadoAvaliacao) por unidade na
+# página de Estatísticas. Conteúdo ainda sem unidade correspondente (ex:
+# os testes de "Biodiversidade") fica de fora dessa agregação por agora.
+TESTE_ID_PARA_UNIDADE = {
+    'celulas': 'citologia',
+    'celulas-pancreas': 'citologia',
+    'celulas-endossimbiotica': 'citologia',
+}
+MISSAO_ID_PARA_UNIDADE = {
+    'celulas-organelos': 'citologia',
+}
+
+
+def registar_atividade(user, minutos=0):
+    """Marca hoje como um dia com atividade deste aluno (para a sequência
+    de dias) e, se minutos > 0, soma-os ao tempo de estudo de hoje."""
+    hoje = timezone.localdate()
+    registo, _ = RegistoAtividadeDiaria.objects.get_or_create(user=user, data=hoje)
+    if minutos > 0:
+        registo.minutos += minutos
+        registo.save(update_fields=['minutos'])
+
+
+def registar_resultado(user, tipo, identificador, unidade, nota_percentagem):
+    ResultadoAvaliacao.objects.create(
+        user=user, tipo=tipo, identificador=identificador,
+        unidade=unidade or '', nota_percentagem=nota_percentagem,
+    )
+    registar_atividade(user)
 
 
 def redirecionar_apos_autenticacao(user):
@@ -117,8 +153,6 @@ def pagina_perfil(request):
     # está mesmo a explorar agora (mais progresso primeiro).
     missoes.sort(key=lambda missao: (missao['percent'] >= 100, -missao['percent']))
 
-    missoes_bloqueadas = len(missoes_lancadas_perfil) > len(missoes)
-
     definicoes_conquistas = [
         {'id': 'primeira-missao', 'nome': 'Primeiros Passos', 'icone': '🌱', 'descricao': 'Conclui a tua primeira missão.'},
         {'id': 'fotossintese-mestre', 'nome': 'Mestre da Fotossíntese', 'icone': '🌿', 'descricao': 'Termina o capítulo da Fotossíntese a 100%.'},
@@ -147,11 +181,109 @@ def pagina_perfil(request):
         'conquistas_lista': conquistas_lista,
         'total_conquistas': sum(1 for desbloqueada in badges.values() if desbloqueada),
         'missoes': missoes,
-        'missoes_bloqueadas': missoes_bloqueadas,
         'titulo_nome': titulo_nome,
         'titulo_icone': titulo_icone,
         'titulo_descricao': titulo_descricao,
         'proximo_titulo': proximo_titulo,
+    })
+
+
+@login_required(login_url='login')
+def pagina_estatisticas(request):
+    """Progresso pessoal do aluno — nunca comparações com outros alunos
+    (sem rankings nem percentis aqui, ver Templates/estatisticas.html)."""
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    if perfil is None:
+        return render(request, 'estatisticas.html', {'perfil': None})
+
+    # (a) Gráfico de evolução — um ponto por teste/exame corrigido, na
+    # ordem em que aconteceram (mais simples de implementar com os dados
+    # que já temos do que agrupar por semana, e igualmente claro com o
+    # número de testes que um aluno costuma fazer).
+    resultados_testes = list(
+        ResultadoAvaliacao.objects.filter(user=request.user, tipo__in=('teste', 'exame')).order_by('criado_em')
+    )
+    evolucao = [
+        {
+            'label': resultado.criado_em.strftime('%d/%m'),
+            'nota': round(resultado.nota_percentagem / 100 * 20, 1),
+        }
+        for resultado in resultados_testes
+    ]
+    # Coordenadas do gráfico já calculadas aqui (viewBox 0 0 300 100) — o
+    # template só desenha o <polyline>, sem fazer contas.
+    evolucao_pontos = ''
+    if len(evolucao) == 1:
+        y = 100 - (evolucao[0]['nota'] / 20 * 100)
+        evolucao_pontos = f'150,{y:.1f}'
+    elif len(evolucao) > 1:
+        passo = 300 / (len(evolucao) - 1)
+        evolucao_pontos = ' '.join(
+            f'{i * passo:.1f},{100 - (ponto["nota"] / 20 * 100):.1f}'
+            for i, ponto in enumerate(evolucao)
+        )
+
+    # (b) Desempenho por unidade — média de testes e secções de missão já
+    # feitos nessa unidade, pior para melhor. O "desde a primeira metade"
+    # é uma comparação só com o próprio histórico do aluno (nunca com
+    # outros alunos): divide os resultados dessa unidade em dois blocos
+    # cronológicos e compara as médias, para dar contexto de progresso em
+    # vez de só o número absoluto (ver instruções da Daniela).
+    desempenho_unidades = []
+    for unidade in UNIDADES_BIBLIOTECA:
+        entradas = list(
+            ResultadoAvaliacao.objects.filter(user=request.user, unidade=unidade['id']).order_by('criado_em')
+        )
+        if not entradas:
+            desempenho_unidades.append({**unidade, 'sem_dados': True})
+            continue
+
+        media_atual = round(sum(e.nota_percentagem for e in entradas) / len(entradas))
+        delta = None
+        meio = len(entradas) // 2
+        if meio > 0:
+            media_antiga = sum(e.nota_percentagem for e in entradas[:meio]) / meio
+            media_recente = sum(e.nota_percentagem for e in entradas[meio:]) / (len(entradas) - meio)
+            delta = round(media_recente - media_antiga)
+        desempenho_unidades.append({**unidade, 'sem_dados': False, 'percent': media_atual, 'delta': delta})
+
+    com_dados = sorted((u for u in desempenho_unidades if not u['sem_dados']), key=lambda u: u['percent'])
+    sem_dados = [u for u in desempenho_unidades if u['sem_dados']]
+    desempenho_unidades = com_dados + sem_dados
+
+    # (c) Hábitos de estudo — tempo somado dos últimos 7 dias (hoje
+    # incluído) e sequência de dias seguidos (ver PerfilAluno.calcular_sequencia).
+    hoje = timezone.localdate()
+    tempo_semana = sum(
+        RegistoAtividadeDiaria.objects.filter(
+            user=request.user, data__gte=hoje - timedelta(days=6)
+        ).values_list('minutos', flat=True)
+    )
+    sequencia_atual, sequencia_recorde = perfil.calcular_sequencia()
+
+    # (d) Resumo de vocabulário — reaproveita a mesma lógica de overlay por
+    # aluno da Biblioteca do Explorador (ver aplicar_estado_vocabulario_aluno),
+    # só somado nas 5 unidades em vez de mostrado unidade a unidade.
+    vocab_totais = {'dominado': 0, 'a_rever': 0, 'novo': 0}
+    for unidade in UNIDADES_BIBLIOTECA:
+        termos = aplicar_estado_vocabulario_aluno(perfil, unidade['id'], carregar_termos_unidade(unidade['id']))
+        for termo in termos:
+            vocab_totais[termo['estado']] = vocab_totais.get(termo['estado'], 0) + 1
+
+    return render(request, 'estatisticas.html', {
+        'perfil': perfil,
+        'evolucao': evolucao,
+        'evolucao_pontos': evolucao_pontos,
+        'desempenho_unidades': desempenho_unidades,
+        'tempo_semana_min': tempo_semana,
+        'sequencia_atual': sequencia_atual,
+        'sequencia_recorde': sequencia_recorde,
+        'vocab_totais': vocab_totais,
+        'vocab_total_termos': sum(vocab_totais.values()),
     })
 
 
@@ -367,6 +499,7 @@ def salvar_progresso_missao(request):
 
     section_scores = progress.get('sectionScores')
     if isinstance(section_scores, dict) and mission_id != 'profile':
+        secoes_antigas = dict((perfil.progresso_secoes or {}).get(mission_id, {}))
         secoes = dict(perfil.progresso_secoes or {})
         secoes[mission_id] = {
             str(secao_id): int(score)
@@ -375,6 +508,17 @@ def salvar_progresso_missao(request):
         }
         perfil.progresso_secoes = secoes
         update_fields.append('progresso_secoes')
+
+        # Só regista no histórico as secções cuja nota é nova ou mudou desde
+        # a última gravação — este endpoint é chamado a cada progresso da
+        # missão, e sectionScores vem sempre completo, não só o que mudou.
+        unidade = MISSAO_ID_PARA_UNIDADE.get(mission_id, '')
+        for secao_id, score in secoes[mission_id].items():
+            if secoes_antigas.get(secao_id) != score:
+                registar_resultado(
+                    request.user, 'missao_seccao', f'{mission_id}:{secao_id}',
+                    unidade, float(score),
+                )
 
     xp = dados.get('xp')
     if isinstance(xp, (int, float)) and xp >= 0:
@@ -391,6 +535,25 @@ def salvar_progresso_missao(request):
         'xp': perfil.pontos_xp,
         'level': perfil.nivel,
     })
+
+
+@login_required(login_url='login')
+@require_POST
+def registar_atividade_view(request):
+    """Ping de "estou ativo agora" enviado pela página da missão (ver
+    startActivityHeartbeat em missao-engine.js) — soma minutos ao tempo de
+    estudo de hoje e marca o dia para a sequência. Best-effort: nunca deve
+    ser motivo para a missão falhar, por isso aceita silenciosamente
+    entradas inválidas em vez de devolver erro."""
+    try:
+        dados = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        dados = {}
+    minutos = dados.get('minutos', 1)
+    if not isinstance(minutos, (int, float)) or minutos <= 0:
+        minutos = 1
+    registar_atividade(request.user, minutos=min(int(minutos), 5))
+    return JsonResponse({'ok': True})
 
 
 @login_required(login_url='login')
@@ -778,6 +941,9 @@ def corrigir_exame(request, exame_id):
         if progresso_testes.pop(exame_id, None) is not None:
             perfil.progresso_testes = progresso_testes
             perfil.save(update_fields=['progresso_testes'])
+        # Exames nacionais cobrem várias unidades ao mesmo tempo — sem
+        # unidade específica, mas ainda conta para o gráfico de evolução.
+        registar_resultado(request.user, 'exame', exame_id, '', nota_final / 20 * 100)
 
     return JsonResponse({
         'notaFinal': nota_final,
@@ -792,13 +958,6 @@ def carregar_vocabulario(missao_id):
     caminho_json = settings.BASE_DIR.parent / 'vocabulario' / f'{missao_id}.json'
     with open(caminho_json, 'r', encoding='utf-8') as f:
         return json.load(f)
-
-
-def guardar_vocabulario(missao_id, dados):
-    caminho_json = settings.BASE_DIR.parent / 'vocabulario' / f'{missao_id}.json'
-    with open(caminho_json, 'w', encoding='utf-8') as f:
-        json.dump(dados, f, ensure_ascii=False, indent=2)
-        f.write('\n')
 
 
 # Biblioteca do Explorador: um "livro" de vocabulário por unidade, cada um
@@ -822,11 +981,30 @@ def carregar_termos_unidade(unidade_id):
         return []
 
 
-def montar_biblioteca_estante():
+def aplicar_estado_vocabulario_aluno(perfil, unidade_id, termos):
+    """Sobrepõe, em memória, o estado (dominado/a_rever) guardado por aluno
+    em perfil.vocabulario_estado a cada termo — os ficheiros
+    vocabulario/<unidade>.json só têm o conteúdo (termo, definição, etc.),
+    nunca o progresso de leitura de ninguém."""
+    estados_aluno = {}
+    if perfil is not None and isinstance(perfil.vocabulario_estado, dict):
+        estados_aluno = perfil.vocabulario_estado.get(unidade_id, {})
+    for termo in termos:
+        entrada = estados_aluno.get(termo['id'])
+        if isinstance(entrada, dict):
+            termo['estado'] = entrada.get('estado', 'novo')
+            termo['ultima_revisao'] = entrada.get('ultima_revisao')
+        else:
+            termo['estado'] = 'novo'
+            termo['ultima_revisao'] = None
+    return termos
+
+
+def montar_biblioteca_estante(perfil):
     estante = []
     for unidade in UNIDADES_BIBLIOTECA:
-        termos = carregar_termos_unidade(unidade['id'])
-        novos = sum(1 for termo in termos if termo.get('estado', 'novo') == 'novo')
+        termos = aplicar_estado_vocabulario_aluno(perfil, unidade['id'], carregar_termos_unidade(unidade['id']))
+        novos = sum(1 for termo in termos if termo['estado'] == 'novo')
         estante.append({**unidade, 'total_termos': len(termos), 'novos': novos})
     return estante
 
@@ -839,7 +1017,7 @@ def pagina_biblioteca(request):
         perfil = None
     return render(request, 'biblioteca.html', {
         'perfil': perfil,
-        'estante': montar_biblioteca_estante(),
+        'estante': montar_biblioteca_estante(perfil),
     })
 
 
@@ -854,7 +1032,7 @@ def pagina_biblioteca_unidade(request, unidade_id):
     except OperationalError:
         perfil = None
 
-    termos = carregar_termos_unidade(unidade_id)
+    termos = aplicar_estado_vocabulario_aluno(perfil, unidade_id, carregar_termos_unidade(unidade_id))
     nomes_por_id = {termo['id']: termo['termo'] for termo in termos}
     for termo in termos:
         termo['relacionados_nomes'] = [
@@ -863,7 +1041,7 @@ def pagina_biblioteca_unidade(request, unidade_id):
 
     contagens = {'novo': 0, 'dominado': 0, 'a_rever': 0}
     for termo in termos:
-        estado = termo.get('estado', 'novo')
+        estado = termo['estado']
         if estado in contagens:
             contagens[estado] += 1
 
@@ -888,6 +1066,8 @@ def pagina_flashcards(request, missao_id):
     except FileNotFoundError:
         raise Http404('Vocabulário não encontrado para esta missão.')
 
+    vocabulario['termos'] = aplicar_estado_vocabulario_aluno(perfil, missao_id, vocabulario['termos'])
+
     return render(request, 'flashcards.html', {
         'perfil': perfil,
         'vocabulario': vocabulario,
@@ -898,8 +1078,9 @@ def pagina_flashcards(request, missao_id):
 @login_required(login_url='login')
 @require_POST
 def atualizar_vocabulario(request, missao_id):
-    """Grava o resultado desta ronda de revisão diretamente no ficheiro de
-    vocabulário da missão (estado + última revisão por termo)."""
+    """Grava o resultado desta ronda de revisão no perfil do aluno (estado +
+    última revisão por termo) — nunca no ficheiro de vocabulário, que é
+    partilhado por todos os alunos."""
     try:
         dados_pedido = json.loads(request.body or '{}')
     except (TypeError, ValueError):
@@ -918,19 +1099,19 @@ def atualizar_vocabulario(request, missao_id):
         if termo_id and estado in ('dominado', 'a_rever'):
             estados_por_id[termo_id] = estado
 
-    try:
-        vocabulario = carregar_vocabulario(missao_id)
-    except FileNotFoundError:
-        raise Http404('Vocabulário não encontrado para esta missão.')
+    if not estados_por_id:
+        return JsonResponse({'ok': True})
 
+    perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
     hoje = timezone.localdate().isoformat()
-    for termo in vocabulario['termos']:
-        novo_estado = estados_por_id.get(termo['id'])
-        if novo_estado:
-            termo['estado'] = novo_estado
-            termo['ultima_revisao'] = hoje
-
-    guardar_vocabulario(missao_id, vocabulario)
+    vocabulario_estado = dict(perfil.vocabulario_estado or {})
+    unidade_estado = dict(vocabulario_estado.get(missao_id, {}))
+    for termo_id, novo_estado in estados_por_id.items():
+        unidade_estado[termo_id] = {'estado': novo_estado, 'ultima_revisao': hoje}
+    vocabulario_estado[missao_id] = unidade_estado
+    perfil.vocabulario_estado = vocabulario_estado
+    perfil.save(update_fields=['vocabulario_estado'])
+    registar_atividade(request.user)
 
     return JsonResponse({'ok': True})
 
@@ -2069,6 +2250,8 @@ def corrigir_teste_fotossintese(request, teste_id):
         if progresso_testes.pop(teste_id, None) is not None:
             perfil.progresso_testes = progresso_testes
             perfil.save(update_fields=['progresso_testes'])
+        unidade = TESTE_ID_PARA_UNIDADE.get(teste_id, '')
+        registar_resultado(request.user, 'teste', teste_id, unidade, nota_final / 20 * 100)
 
     return JsonResponse({
         'notaFinal': nota_final,

@@ -38,9 +38,11 @@
             this.missionsIndexUrl = options.missionsIndexUrl || '#';
             this.mascotImageUrl = options.mascotImageUrl || '';
             this.progressSyncUrl = options.progressSyncUrl || window.exploreProgressSyncUrl || '';
+            this.activityHeartbeatUrl = options.activityHeartbeatUrl || window.exploreActivityHeartbeatUrl || '';
             this.csrfToken = options.csrfToken || window.exploreCsrfToken || '';
             this.mascoteChatUrl = options.mascoteChatUrl || window.exploreMascoteChatUrl || '';
             this.mascotWaveVideoUrl = options.mascotWaveVideoUrl || window.exploreMascotWaveVideoUrl || '';
+            this.mascotDoubtsImageUrl = options.mascotDoubtsImageUrl || window.exploreMascotDoubtsImageUrl || '';
 
             // Estado do painel de chat — não persiste em localStorage (tal
             // como na Fotossíntese, o chat começa sempre fechado e sem
@@ -68,6 +70,25 @@
 
             this.render();
             window.addEventListener('explore:mascot-prefs-changed', () => this.render());
+            this.startActivityHeartbeat();
+        }
+
+        /** Regista tempo de estudo (para "Hábitos de estudo" nas
+         *  Estatísticas) — um ping por minuto, só enquanto o separador
+         *  estiver mesmo visível, para não contar tempo com a aba em
+         *  segundo plano. Falhas são silenciosas: isto é telemetria, não
+         *  deve nunca bloquear ou quebrar a missão em si. */
+        startActivityHeartbeat() {
+            if (!this.activityHeartbeatUrl) return;
+            const enviarPing = () => {
+                if (document.visibilityState !== 'visible') return;
+                fetch(this.activityHeartbeatUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': this.csrfToken },
+                    body: JSON.stringify({ minutos: 1 }),
+                }).catch(() => {});
+            };
+            setInterval(enviarPing, 60000);
         }
 
         // ---- Persistência -------------------------------------------------
@@ -86,7 +107,12 @@
                 answers: {},
                 quizState: {},
                 completedSections: [],
-                celebrationShown: false
+                celebrationShown: false,
+                // XP already paid out per screen — "<secao_id>::<screenIndex>"
+                // -> amount. Keyed per screen so re-entering an already-paid
+                // page (Anterior, then Próximo again) never pays twice, and
+                // going back never removes an entry (see awardPageXP).
+                xpAwardedPages: {}
             };
         }
 
@@ -166,8 +192,77 @@
             return this.sections[index];
         }
 
+        // ---- XP por página ----------------------------------------------------
+        // Cada ecrã (página) da missão vale 15 XP ao avançar por ele pela
+        // primeira vez; o quiz_seccao é a exceção — a sua recompensa depende
+        // do desempenho (ver computeQuizSectionXP). Isto substitui o antigo
+        // modelo de XP fixo por secção (o campo "xp" no JSON já não é usado
+        // para calcular recompensas).
+
+        /** Maior XP que um ecrã pode valer — usado só para os badges de
+         *  "recompensa" mostrados antes de começar (mapa da missão), que
+         *  mostram o melhor cenário possível (quiz 100% certo). */
+        screenMaxXP(screen) {
+            return screen.tipo === 'quiz_seccao' ? 30 : 15;
+        }
+
+        sectionMaxXP(section) {
+            return (section.ecrãs || []).reduce((sum, screen) => sum + this.screenMaxXP(screen), 0);
+        }
+
         totalMissionXP() {
-            return this.sections.reduce((sum, s) => sum + (Number(s.xp) || 0), 0);
+            return this.sections.reduce((sum, s) => sum + this.sectionMaxXP(s), 0);
+        }
+
+        /** Soma do que já foi mesmo pago (ver awardPageXP) — usado na
+         *  celebração final, ao contrário de totalMissionXP() (que é só a
+         *  pré-visualização do melhor cenário possível). */
+        totalMissionXpEarned() {
+            return Object.values(this.state.xpAwardedPages || {}).reduce((sum, value) => sum + (Number(value) || 0), 0);
+        }
+
+        /** Recompensa do quiz de secção, consoante o desempenho: tudo certo
+         *  = 30 XP; pelo menos metade certo (mas não tudo) = 15 XP; menos de
+         *  metade (incluindo zero) = 5 XP. */
+        computeQuizSectionXP(section, screen) {
+            const totalQuestions = (screen.perguntas || []).length;
+            if (totalQuestions === 0) return 5;
+            const quizState = this.state.quizState[section.secao_id];
+            const correct = quizState ? quizState.answers.filter((a) => a.correct).length : 0;
+            if (correct === totalQuestions) return 30;
+            if (correct >= totalQuestions / 2) return 15;
+            return 5;
+        }
+
+        /** Paga a recompensa de um ecrã exatamente uma vez — a chave
+         *  (secao::índice do ecrã) já ficar registada em xpAwardedPages
+         *  impede um segundo pagamento se o aluno voltar a passar por este
+         *  ecrã (Anterior e depois Próximo outra vez); nada aqui alguma vez
+         *  remove uma entrada, por isso ir para trás nunca tira XP já
+         *  ganho. */
+        awardPageXP(section, screenIndex, screen) {
+            const key = `${section.secao_id}::${screenIndex}`;
+            if (this.state.xpAwardedPages[key]) return;
+
+            const amount = screen.tipo === 'quiz_seccao'
+                ? this.computeQuizSectionXP(section, screen)
+                : 15;
+
+            this.state.xpAwardedPages[key] = amount;
+            this.saveState();
+
+            if (window.ProfileXP) {
+                // A source tem de ser única por página, não só por missão —
+                // awardXPToCurrentUser recusa silenciosamente (0 XP, sem
+                // erro) uma segunda chamada com a mesma source, para nunca
+                // pagar duas vezes a mesma recompensa. Usar sempre
+                // "missao:<id>" aqui faria com que só a primeira página
+                // desta missão alguma vez desse XP a sério.
+                const source = window.ProfileXP.buildRewardSource
+                    ? window.ProfileXP.buildRewardSource('missao', `${this.missao.missao_id}:${key}`)
+                    : undefined;
+                window.ProfileXP.awardXPToCurrentUser(amount, source);
+            }
         }
 
         isSectionUnlocked(index) {
@@ -234,7 +329,7 @@
                             </span>
                             <span class="mo-index-meta">
                                 ${statusHtml}
-                                <span class="mo-index-xp">${xpStarIconSvg} +${section.xp || 0} XP</span>
+                                <span class="mo-index-xp">${xpStarIconSvg} +${this.sectionMaxXP(section)} XP</span>
                             </span>
                             <span class="mo-index-chevron" aria-hidden="true">${chevronIconSvg}</span>
                         </button>
@@ -519,7 +614,7 @@
             if (this.mascotImageUrl) {
                 return `<img src="${this.mascotImageUrl}" alt="Mascote">`;
             }
-            return `<span class="me-mascot-avatar--fallback">🐢</span>`;
+            return `<span class="me-mascot-avatar--fallback"></span>`;
         }
 
         chatBubbleHtml(role, text, isTyping = false) {
@@ -535,7 +630,7 @@
             ];
             return `
                 <div class="mascote-chat-welcome" id="meChatWelcome">
-                    ${this.mascotWaveVideoUrl ? `<video src="${this.mascotWaveVideoUrl}" class="mascote-chat-welcome-video" autoplay loop muted playsinline></video>` : ''}
+                    ${this.mascotDoubtsImageUrl ? `<img src="${this.mascotDoubtsImageUrl}" class="mascote-chat-welcome-video" alt="Mascote com dúvidas">` : ''}
                     <div class="mascote-chat-welcome-copy">
                         <p class="mascote-chat-welcome-greeting">${username ? `Olá, ${escapeHtml(username)}!` : 'Olá!'}</p>
                         <h3 class="mascote-chat-welcome-title">Como posso ajudar?</h3>
@@ -684,7 +779,7 @@
             if (window.ProfileXP) {
                 try {
                     const stats = window.ProfileXP.getProfileStats(window.ProfileXP.getCurrentUserProfile());
-                    xpStat = `<span class="lesson-stat">⭐ ${stats.xp} XP</span>`;
+                    xpStat = `<span class="lesson-stat">${stats.xp} XP</span>`;
                 } catch (error) {
                     xpStat = '';
                 }
@@ -814,10 +909,18 @@
         }
 
         advance(section, sectionIndex, screenIndex, screens) {
+            // Paga a página que está a ser deixada para trás — antes de
+            // qualquer outra mudança de estado, para o quiz_seccao (sempre a
+            // última página de uma secção) já ter a secção incluída em
+            // completedSections quando syncProgressWithDjango correr mais
+            // abaixo.
+            this.awardPageXP(section, screenIndex, screens[screenIndex]);
+
             const isLastScreen = screenIndex === screens.length - 1;
 
             if (!isLastScreen) {
                 this.setScreenIndex(section, screenIndex + 1);
+                this.syncProgressWithDjango();
                 this.render();
                 return;
             }
@@ -840,6 +943,7 @@
                 this.state.screenIndexBySection[nextSection.secao_id] = 0;
             }
             this.saveState();
+            this.syncProgressWithDjango();
             this.render();
         }
 
@@ -884,12 +988,12 @@
             if (!this.mascotEnabled() || !texto) return '';
             const figureHtml = this.mascotImageUrl
                 ? `<img class="mascot-overlay-figure" src="${this.mascotImageUrl}" alt="Mascote">`
-                : `<span class="mascot-overlay-figure me-mascot-avatar--fallback">🐢</span>`;
+                : `<span class="mascot-overlay-figure me-mascot-avatar--fallback"></span>`;
             return `
                 <div class="mascot-overlay-card mascot-overlay-card--split me-mascot-inline">
                     <div class="mascot-overlay-split-figure">${figureHtml}</div>
                     <div class="mascot-overlay-split-body">
-                        <p class="mascot-overlay-text">${escapeHtml(texto)}</p>
+                        <p class="mascot-overlay-text">${escapeHtml(texto).replace(/\n/g, '<br>')}</p>
                     </div>
                 </div>
             `;
@@ -922,13 +1026,13 @@
          * própria, ou no quiz de fim de secção (ver showEntryPopupIfNeeded).
          */
         mascotOverlayFigureHtml() {
-            if (this.mascotWaveVideoUrl) {
-                return `<video class="mascot-overlay-figure" src="${this.mascotWaveVideoUrl}" autoplay loop muted playsinline></video>`;
+            if (this.mascotDoubtsImageUrl) {
+                return `<img class="mascot-overlay-figure" src="${this.mascotDoubtsImageUrl}" alt="Mascote com dúvidas">`;
             }
             if (this.mascotImageUrl) {
                 return `<img class="mascot-overlay-figure" src="${this.mascotImageUrl}" alt="Mascote">`;
             }
-            return `<span class="mascot-overlay-figure me-mascot-avatar--fallback">🐢</span>`;
+            return `<span class="mascot-overlay-figure me-mascot-avatar--fallback"></span>`;
         }
 
         showMascotPopup(texto) {
@@ -942,8 +1046,8 @@
                     <button type="button" class="mascot-overlay-close" aria-label="Fechar">✕</button>
                     <div class="mascot-overlay-split-figure">${this.mascotOverlayFigureHtml()}</div>
                     <div class="mascot-overlay-split-body">
-                        <p class="mascot-overlay-text">${escapeHtml(texto)}</p>
-                        <button type="button" class="mascot-overlay-btn">Entendido</button>
+                        <p class="mascot-overlay-text">${escapeHtml(texto).replace(/\n/g, '<br>')}</p>
+                        <button type="button" class="mascot-overlay-btn">Bora!</button>
                     </div>
                 </div>
             `;
@@ -1856,16 +1960,11 @@
         // ---- Conclusão da missão -----------------------------------------------
 
         completeMission() {
-            const totalXP = this.totalMissionXP();
-
-            if (window.ProfileXP) {
-                window.ProfileXP.awardXPToCurrentUser(
-                    totalXP,
-                    window.ProfileXP.buildRewardSource ? window.ProfileXP.buildRewardSource('missao', this.missao.missao_id) : undefined
-                );
-            }
-
-            this.syncProgressWithDjango(totalXP);
+            // O XP já foi todo pago página a página (e no quiz de cada
+            // secção) por awardPageXP, chamado em advance() antes de chegar
+            // aqui — nada a pagar de novo, só sincronizar o estado final
+            // (completedSections já inclui a última secção neste ponto).
+            this.syncProgressWithDjango();
 
             this.state.view = 'celebracao';
             this.state.celebrationShown = true;
@@ -1873,7 +1972,7 @@
             this.render();
         }
 
-        syncProgressWithDjango(totalXP) {
+        syncProgressWithDjango(totalXP = this.totalMissionXpEarned()) {
             if (!this.progressSyncUrl || !this.csrfToken) return;
 
             const sectionScores = {};
@@ -1923,7 +2022,7 @@
         }
 
         renderCelebration() {
-            const totalXP = this.totalMissionXP();
+            const totalXP = this.totalMissionXpEarned();
             const confettiHtml = this.buildConfettiHtml(60);
             const badgeIconHtml = this.missao.badge?.icone || '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"/><path d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"/><path d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"/><circle cx="12" cy="12" r="10"/></svg>';
 

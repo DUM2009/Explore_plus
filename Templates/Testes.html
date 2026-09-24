@@ -46,6 +46,10 @@
 <span class="profile-sidebar-label">Perfil</span>
 </a>
 
+<a href="{% url 'estatisticas' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
+<span class="profile-sidebar-label">Estatísticas</span>
+</a>
+
 <a href="{% url 'index-missions' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target-icon lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
 <span class="profile-sidebar-label">Missões</span>
 </a>
@@ -222,7 +226,7 @@
     </div>
     <div class="teste-mascote-messages" id="testeMascoteMessages">
         <div class="mascote-chat-welcome" id="testeMascoteWelcome">
-            <video src="{% static 'Mascote a acenar.webm' %}" class="mascote-chat-welcome-video" autoplay loop muted playsinline></video>
+            <img src="{% static 'images/Mascote com dúvidas.png' %}" class="mascote-chat-welcome-video" alt="Mascote com dúvidas">
             <div class="mascote-chat-welcome-copy">
                 <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
                 <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>

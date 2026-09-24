@@ -28,7 +28,7 @@
 
 <section class="profile-layout has-sidebar sidebar-collapsible">
 
-<aside class="profile-sidebar" id="profileSidebar" aria-hidden="true">
+<aside class="profile-sidebar is-open" id="profileSidebar" aria-hidden="false">
 <div class="profile-sidebar-brand">
 <div>
             <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
@@ -50,6 +50,10 @@
 
 <a href="/perfil/" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
 <span class="profile-sidebar-label">Perfil</span>
+</a>
+
+<a href="{% url 'estatisticas' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
+<span class="profile-sidebar-label">Estatísticas</span>
 </a>
 
 <a href="{% url 'index-missions' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target-icon lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
@@ -150,13 +154,6 @@
     <div class="missions-topbar-logo">
         <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
     </div>
-    <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="Abrir menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-    </button>
-</div>
-
-<div class="profile-header-actions profile-header-actions--icons-only">
-
     <div class="header-icon-wrapper">
     <button class="header-icon-btn" id="notificationsBtn" type="button" aria-label="Notificações" aria-expanded="false">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-icon lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
@@ -166,7 +163,6 @@
         <li class="notifications-empty">Nenhuma notificação</li>
     </ul>
     </div>
-
 </div>
 
 <div class="profile-hero">
@@ -177,9 +173,6 @@
             <h1 id="nomeAluno">Olá, {{ request.user.username }}!</h1>
             <p class="profile-hero-rank" id="profileRankSubtitle" title="{{ titulo_descricao }}">{{ titulo_nome }}</p>
             <span class="profile-hero-level-pill">Nível <span id="profileLevelBadge">{{ nivel }}</span></span>
-            {% if proximo_titulo %}
-            <p class="profile-hero-next-title">Nível {{ proximo_titulo.0 }} desbloqueia "{{ proximo_titulo.1 }}"</p>
-            {% endif %}
         </div>
     </div>
 
@@ -207,11 +200,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg>
         Conquistas
     </button>
-    <span class="profile-tab is-disabled">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-        Estatísticas
-        <em>Em breve</em>
-    </span>
 </nav>
 
 <div class="profile-grid">
@@ -242,7 +230,11 @@
                 <div class="progresso" id="xpProgressBar" data-progress="{{ xp_progress_percent }}"></div>
             </div>
 
+            {% if proximo_titulo and proximo_titulo.0 == proximo_nivel %}
+            <p class="profile-subject-caption" id="xpNextLevelText">Nível {{ proximo_titulo.0 }} desbloqueia "{{ proximo_titulo.1 }}"</p>
+            {% else %}
             <p class="profile-subject-caption" id="xpNextLevelText">{{ xp_restante }} XP até ao nível {{ proximo_nivel }}</p>
+            {% endif %}
 
             <span id="nivelAluno" hidden></span>
         </div>
@@ -271,12 +263,6 @@
                     </span>
                 </a>
                 {% endfor %}
-
-                {% if missoes_bloqueadas %}
-                <div class="profile-locked-banner">
-                    {% if missoes %}🔒 Novas missões chegam em breve — continua a explorar {{ missoes.0.titulo }}!{% else %}🔒 Novas missões chegam em breve!{% endif %}
-                </div>
-                {% endif %}
             </div>
         </div>
 
@@ -343,7 +329,7 @@
     </div>
     <div class="mascote-chat-messages" id="mascoteChatMessages">
         <div class="mascote-chat-welcome" id="mascoteChatWelcome">
-            <video src="{% static 'Mascote a acenar.webm' %}" class="mascote-chat-welcome-video" autoplay loop muted playsinline></video>
+            <img src="{% static 'images/Mascote com dúvidas.png' %}" class="mascote-chat-welcome-video" alt="Mascote com dúvidas">
             <div class="mascote-chat-welcome-copy">
                 <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
                 <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>

@@ -180,7 +180,7 @@
         {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
-          "mascote_texto": "Achas que \"biodiversidade\" é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra. 🐢",
+          "mascote_texto": "Achas que \"biodiversidade\" é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra.",
           "ponte_texto": "Vamos descobrir os três níveis que compõem a biodiversidade de um ecossistema.",
           "titulo": "Os três níveis de biodiversidade",
           "imagem": "tres_niveis_biodiversidade.png",
@@ -234,7 +234,7 @@
               "mascote_feedback_errado": "Na verdade é falso — a biodiversidade concentra-se de forma desigual, com \"hotspots\" de alta biodiversidade."
             }
           ],
-          "mascote_conclusao": "Já sabes que biodiversidade é muito mais do que contar espécies. Para terminar, vamos ver o que acontece quando essa diversidade começa a desaparecer — e o que se pode fazer para a proteger. 🐢"
+          "mascote_conclusao": "Já sabes que biodiversidade é muito mais do que contar espécies. Para terminar, vamos ver o que acontece quando essa diversidade começa a desaparecer — e o que se pode fazer para a proteger."
         }
       ]
     },
@@ -246,7 +246,7 @@
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
-          "mascote_texto": "Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade. 🐢",
+          "mascote_texto": "Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade.",
           "titulo": "Causas da perda de biodiversidade",
           "cartao_estilo": true,
           "imagem": "causas_extincao.png",
@@ -322,7 +322,7 @@
               "mascote_feedback_errado": "Na verdade é falso — as espécies invasoras podem causar grandes desequilíbrios, por não terem inimigos naturais locais."
             }
           ],
-          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que é a biodiversidade e como a proteger. 🌍🐢"
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que é a biodiversidade e como a proteger. 🌍"
         }
       ]
     }
