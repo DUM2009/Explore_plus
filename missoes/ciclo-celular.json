@@ -11,11 +11,6 @@
       "tempo_estimado_min": 5,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "mascote_texto": "Se olhares agora para um tecido ao microscópio, quase nenhuma célula vai estar a dividir-se. Sabes porquê? 🐢",
-          "texto": "Vamos descobrir o ciclo completo que uma célula percorre, da sua formação até se dividir em duas."
-        },
-        {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
           "imagem": "ciclo_celular_visao_geral.png",
@@ -23,21 +18,8 @@
           "instrucao": "Clica em cada fase para veres a explicação.",
           "pontos": [
             { "id": "interfase", "label": "Interfase (~90-95% do ciclo)", "explicacao": "A célula cresce e replica o seu DNA. É de longe a fase mais longa — por isso a maioria das células que vês ao microscópio está nesta fase, não a dividir-se." },
-            { "id": "fase_mitotica", "label": "Fase Mitótica (~5-10% do ciclo)", "explicacao": "A fase visivelmente \"agitada\": o núcleo divide-se (mitose) e depois o citoplasma divide-se (citocinese), originando duas células-filhas." }
+            { "id": "fase_mitotica", "label": "Fase Mitótica (~5-10% do ciclo)", "explicacao": "A fase visivelmente \"agitada\": o núcleo divide-se (mitose) e depois o citoplasma divide-se (citocinese), originando duas células-filhas.", "dica_estudo": "O ciclo celular é como preparares-te para uma corrida: passas a maior parte do tempo a treinar e a abastecer energia (interfase) e só uns segundos, no fim, é que corres mesmo os 100 metros (fase mitótica). O treino demorado é o que torna a corrida rápida possível." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Ao observares um tecido ao microscópio, é mais provável encontrares a maioria das células em:",
-          "opcoes": ["Interfase", "Fase mitótica"],
-          "correta": 0,
-          "mascote_feedback_certo": "Exato! A interfase ocupa 90 a 95% do tempo total do ciclo.",
-          "mascote_feedback_errado": "Na verdade é a interfase — ocupa entre 90% e 95% do ciclo, por isso é onde a maioria das células está a qualquer momento."
-        },
-        {
-          "tipo": "analogia",
-          "mascote_texto": "Pensa nisto como... 🐢",
-          "texto": "💡 O ciclo celular é como preparares-te para uma corrida: passas a maior parte do tempo a treinar e a abastecer energia (interfase) e só uns segundos, no fim, é que corres mesmo os 100 metros (fase mitótica). O treino demorado é o que torna a corrida rápida possível."
         },
         {
           "tipo": "aprofundar",
@@ -47,6 +29,13 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Ao observares um tecido ao microscópio, é mais provável encontrares a maioria das células em:",
+              "opcoes": ["Interfase", "Fase mitótica"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A interfase ocupa 90 a 95% do tempo total do ciclo.",
+              "mascote_feedback_errado": "Na verdade é a interfase — ocupa entre 90% e 95% do ciclo, por isso é onde a maioria das células está a qualquer momento."
+            },
             {
               "pergunta": "As duas grandes fases do ciclo celular são:",
               "opcoes": ["Interfase e fase mitótica", "Mitose e citocinese"],

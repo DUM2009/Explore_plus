@@ -522,6 +522,13 @@ def salvar_progresso_missao(request):
 
     xp = dados.get('xp')
     if isinstance(xp, (int, float)) and xp >= 0:
+        # max() é de propósito: o XP "oficial" de cada aluno vive no
+        # localStorage do browser (ver profile-xp.js), não só aqui — um
+        # browser novo ou com cache limpa manda XP baixo (ou 0) nesta
+        # sincronização, e sem o max() isso apagaria XP já ganho noutro
+        # dispositivo. O efeito secundário é que uma alteração manual no
+        # admin não "pega" enquanto o browser do aluno continuar a
+        # ressincronizar o valor antigo por cima.
         perfil.pontos_xp = max(perfil.pontos_xp, int(xp))
         perfil.nivel = perfil.pontos_xp // 100 + 1
         update_fields.extend(['pontos_xp', 'nivel'])

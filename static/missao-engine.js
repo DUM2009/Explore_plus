@@ -1272,6 +1272,19 @@
             `;
         }
 
+        /** Botão colapsável "💡 Dica de estudo" com ponto.dica_estudo, se
+         *  existir — mesmo mecanismo de saberMaisHtml, mas com rótulo e
+         *  ícone próprios para uma dica de estudo (ex: uma analogia). */
+        dicaEstudoHtml(ponto) {
+            if (!ponto.dica_estudo) return '';
+            return `
+                <details class="me-ponto-dica-estudo">
+                    <summary>💡 Dica de estudo</summary>
+                    <p>${escapeHtml(ponto.dica_estudo)}</p>
+                </details>
+            `;
+        }
+
         /**
          * Conteúdo do cartão "Nível X de N" (ver .me-escada-detail no CSS) —
          * imagem opcional, título, explicação e o botão "Saber mais" (ver
@@ -1285,6 +1298,7 @@
                 ${ponto.imagem ? `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(ponto.imagem)}" alt="${escapeHtml(ponto.label || '')}" onerror="this.style.display='none'">` : ''}
                 <h4 class="me-escada-detail-title">${escapeHtml(ponto.label || '')}</h4>
                 <p class="me-escada-detail-text">${escapeHtml(ponto.explicacao || '')}</p>
+                ${this.dicaEstudoHtml(ponto)}
                 ${this.saberMaisHtml(ponto)}
             `;
         }

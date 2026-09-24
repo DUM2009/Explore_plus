@@ -10676,12 +10676,7 @@ body.shadcn-profile .profile-hero-rank {
     overflow: hidden;
     border-radius: 10px 6px 6px 10px;
     background: #f5f3ee;
-    box-shadow:
-        0 1.8px 3.6px rgba(0, 0, 0, .1),
-        0 10.8px 21.6px rgba(0, 0, 0, .16),
-        inset 0 -.9px 0 rgba(0, 0, 0, .1),
-        inset 0 1.8px 1.8px hsla(0, 0%, 100%, .15),
-        inset 3.6px 0 3.6px rgba(0, 0, 0, .12);
+    box-shadow: none;
     backface-visibility: hidden;
 }
 

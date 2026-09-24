@@ -782,6 +782,51 @@ html.dark-mode .me-ponto-saber-mais p {
     color: #b9c7bd;
 }
 
+/* Botão colapsável "💡 Dica de estudo" de um ponto específico (ver
+   ponto.dica_estudo em pontoDetailInnerHtml) — mesmo mecanismo do "Saber
+   mais", mas como um botão em pílula (em vez de texto com seta), para se
+   destacar como uma ação a clicar, não só um extra a expandir. */
+.me-ponto-dica-estudo {
+    margin: 14px 0 0;
+    text-align: left;
+}
+
+.me-ponto-dica-estudo summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #f4f6f1;
+    color: #1f8a5b;
+    font-weight: 700;
+    font-size: .85rem;
+}
+
+.me-ponto-dica-estudo summary:hover {
+    filter: brightness(.96);
+}
+
+.me-ponto-dica-estudo summary::-webkit-details-marker {
+    display: none;
+}
+
+.me-ponto-dica-estudo p {
+    margin: 10px 0 0;
+    color: #4b5a52;
+}
+
+html.dark-mode .me-ponto-dica-estudo summary {
+    background: rgba(31, 138, 91, .18);
+    color: #7fd6a8;
+}
+
+html.dark-mode .me-ponto-dica-estudo p {
+    color: #b9c7bd;
+}
+
 /* ---- Diagrama interativo em formato "árvore" (screen.layout === "arvore",
    ver renderDiagramaArvore) — organograma clássico: irmãos ligados por uma
    "chavena" horizontal por cima, com um tronco vertical a descer até ao
