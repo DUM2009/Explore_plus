@@ -2085,10 +2085,18 @@ def iniciar_checkout_superexplore(request):
     if perfil.plano == 'pro':
         return redirect('superexplore')
 
+    precos = {
+        'quinzenal': settings.STRIPE_PRICE_ID_PRO_QUINZENAL,
+        'mensal': settings.STRIPE_PRICE_ID_PRO,
+        'anual': settings.STRIPE_PRICE_ID_PRO_ANUAL,
+    }
+    price_id = precos.get(request.POST.get('intervalo', 'mensal'))
     url_base = request.build_absolute_uri(reverse('superexplore'))
+    if not price_id:
+        return redirect(f'{url_base}?checkout=erro')
     dados_sessao = {
         'mode': 'subscription',
-        'line_items': [{'price': settings.STRIPE_PRICE_ID_PRO, 'quantity': 1}],
+        'line_items': [{'price': price_id, 'quantity': 1}],
         'client_reference_id': str(request.user.id),
         'success_url': f'{url_base}?checkout=sucesso',
         'cancel_url': f'{url_base}?checkout=cancelado',

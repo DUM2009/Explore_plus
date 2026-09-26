@@ -12420,3 +12420,52 @@ html.dark-mode .resumo-tabela td {
     }
 }
 
+
+
+body.shadcn-profile .plan-interval {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border-radius: 999px;
+    background: var(--sp-accent-soft);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .plan-interval-btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--sp-muted-fg);
+    font-family: inherit;
+    font-size: .78rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+}
+
+body.shadcn-profile .plan-interval-btn:hover {
+    background: transparent;
+    color: var(--sp-primary);
+    transform: none;
+    box-shadow: none;
+}
+
+body.shadcn-profile .plan-interval-btn.is-active,
+body.shadcn-profile .plan-interval-btn.is-active:hover {
+    background: var(--sp-primary);
+    color: var(--sp-primary-fg);
+}
+
+body.shadcn-profile .plan-card-price-old {
+    min-height: 1.6em;
+}
+
+body.shadcn-profile .plan-card-saving {
+    min-height: 2.6em;
+    margin: 0 0 6px;
+    color: var(--sp-primary);
+    font-size: .8rem;
+    font-weight: 600;
+}

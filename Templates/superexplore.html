@@ -178,8 +178,14 @@
                 <span class="plan-card-name">SuperExplore</span>
                 {% if perfil.plano == 'pro' %}<span class="plan-card-current">Plano atual</span>{% else %}<span class="plan-card-badge">Recomendado</span>{% endif %}
             </div>
-            <p class="plan-card-price-old">19,99€/mês</p>
-            <p class="plan-card-price"><strong>9,99€</strong><span>/mês</span></p>
+            <div class="plan-interval" role="radiogroup" aria-label="Periodicidade">
+                <button type="button" class="plan-interval-btn" role="radio" aria-checked="false" data-intervalo="quinzenal">Quinzenal</button>
+                <button type="button" class="plan-interval-btn is-active" role="radio" aria-checked="true" data-intervalo="mensal">Mensal</button>
+                <button type="button" class="plan-interval-btn" role="radio" aria-checked="false" data-intervalo="anual">Anual</button>
+            </div>
+            <p class="plan-card-price-old" id="planPriceOld">19,99€/mês</p>
+            <p class="plan-card-price"><strong id="planPriceValue">9,99€</strong><span id="planPricePeriod">/mês</span></p>
+            <p class="plan-card-saving" id="planPriceSaving"></p>
             <p class="plan-card-tagline">Para quem quer ir mais longe todas as semanas.</p>
             <ul class="plan-card-features">
                 <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tudo o que está no plano Gratuito</li>
@@ -194,6 +200,7 @@
             {% else %}
             <form method="post" action="{% url 'iniciar-checkout-superexplore' %}">
                 {% csrf_token %}
+                <input type="hidden" name="intervalo" id="planIntervaloInput" value="mensal">
                 <button type="submit" class="plan-card-btn plan-card-btn--highlight">Ativar SuperExplore</button>
             </form>
             {% endif %}
@@ -214,6 +221,34 @@
 </div>
 
 </section>
+
+<script>
+(function () {
+    const planos = {
+        quinzenal: { valor: '5,99€', periodo: '/quinzena', antigo: '', poupanca: 'Sem fidelização. Cancelas quando quiseres.' },
+        mensal: { valor: '9,99€', periodo: '/mês', antigo: '19,99€/mês', poupanca: '' },
+        anual: { valor: '69,99€', periodo: '/ano', antigo: '', poupanca: 'Só 5,83€ por mês — poupas cerca de 42% face ao plano mensal.' }
+    };
+    const botoes = document.querySelectorAll('.plan-interval-btn');
+    const el = (id) => document.getElementById(id);
+    if (!botoes.length) return;
+    botoes.forEach((btn) => btn.addEventListener('click', () => {
+        const p = planos[btn.dataset.intervalo];
+        botoes.forEach((b) => {
+            const ativo = b === btn;
+            b.classList.toggle('is-active', ativo);
+            b.setAttribute('aria-checked', String(ativo));
+        });
+        el('planPriceValue').textContent = p.valor;
+        el('planPricePeriod').textContent = p.periodo;
+        el('planPriceOld').textContent = p.antigo;
+        el('planPriceOld').style.visibility = p.antigo ? 'visible' : 'hidden';
+        el('planPriceSaving').textContent = p.poupanca;
+        const input = el('planIntervaloInput');
+        if (input) input.value = btn.dataset.intervalo;
+    }));
+})();
+</script>
 
 <script>
 const accountTrigger = document.getElementById('profileAccountTrigger');
