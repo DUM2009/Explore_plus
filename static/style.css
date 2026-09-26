@@ -2478,6 +2478,215 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
     margin-bottom:32px;
 }
 
+/* White card with a light black border around the whole test — asked
+   for explicitly so it stays this way even in dark mode, unlike most
+   other panels which follow the --sp-card theme variable. Centered on
+   the page instead of stretching edge to edge. */
+.teste-container{
+    max-width:900px;
+    margin:0 auto;
+    background:#ffffff;
+    border:1px solid rgba(0,0,0,.15);
+    border-radius:16px;
+    padding:32px;
+}
+
+.teste-timer-bar{
+    margin-bottom:32px;
+}
+
+.teste-timer-toggle-btn{
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:.85rem;
+}
+
+/* Popup where the timer is configured/controlled — opened by the
+   in-page button or by clicking the floating circle once running. */
+.teste-timer-modal-overlay{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.45);
+}
+
+.teste-timer-modal-overlay[hidden]{
+    display:none;
+}
+
+.teste-timer-modal{
+    position:relative;
+    width:100%;
+    max-width:320px;
+    background:#ffffff;
+    border-radius:18px;
+    padding:28px 24px 24px;
+    box-shadow:0 24px 60px rgba(0,0,0,.25);
+    text-align:center;
+}
+
+.teste-timer-modal h3{
+    margin:0 0 16px;
+    font-size:1.1rem;
+    color:#1c1c1c;
+}
+
+.teste-timer-modal-close{
+    position:absolute;
+    top:12px;
+    right:12px;
+    width:28px;
+    height:28px;
+    padding:0;
+    border:none;
+    border-radius:50%;
+    background:#f0f1ec;
+    color:#4a5650;
+    box-shadow:none;
+    font-size:.85rem;
+    line-height:1;
+}
+
+.teste-timer-modal-display{
+    margin-bottom:20px;
+    font-size:2.4rem;
+    font-weight:800;
+    font-variant-numeric:tabular-nums;
+    color:#1c1c1c;
+}
+
+.teste-timer-modal-display.is-esgotado{
+    color:#d64545;
+}
+
+.teste-timer-duration{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:16px;
+    font-size:.9rem;
+    font-weight:600;
+    color:#4a5650;
+}
+
+.teste-timer-duration input{
+    width:64px;
+    padding:6px 8px;
+    border:1px solid #e2e3db;
+    border-radius:8px;
+    font-size:.9rem;
+    text-align:center;
+}
+
+/* "Ocultar temporizador" toggle — a plain checkbox hidden behind a
+   custom round dot ("bolinha"), filled in when checked. */
+.teste-timer-hide-option{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-bottom:22px;
+    font-size:.88rem;
+    color:#4a5650;
+    cursor:pointer;
+}
+
+.teste-timer-hide-option input{
+    position:absolute;
+    opacity:0;
+    width:1px;
+    height:1px;
+}
+
+.teste-timer-hide-dot{
+    width:18px;
+    height:18px;
+    flex-shrink:0;
+    border:2px solid #c7cdc9;
+    border-radius:50%;
+    background:#fff;
+    transition:.15s;
+}
+
+.teste-timer-hide-option input:checked ~ .teste-timer-hide-dot{
+    border-color:#3f7d3a;
+    background:#3f7d3a;
+    box-shadow:inset 0 0 0 3px #fff;
+}
+
+.teste-timer-modal-actions{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.teste-timer-btn{
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:.85rem;
+}
+
+.teste-timer-btn--stop{
+    background:#e2e3db;
+    color:#4a5650;
+    box-shadow:none;
+}
+
+/* Floating circular timer, bottom-right — stacked above the mascot fab
+   which already sits there (see .teste-mascote-fab). Only shown while
+   a timer is running and "Ocultar temporizador" isn't checked. */
+.teste-timer-fab{
+    position:fixed;
+    right:28px;
+    bottom:138px;
+    z-index:70;
+    width:72px;
+    height:72px;
+    padding:0;
+    border:none;
+    border-radius:50%;
+    background:#1c1c1c;
+    color:#ffffff;
+    font-weight:800;
+    font-size:.95rem;
+    font-variant-numeric:tabular-nums;
+    box-shadow:0 10px 24px rgba(0,0,0,.25);
+    display:grid;
+    place-items:center;
+    transform:none;
+}
+
+.teste-timer-fab:hover{
+    background:#1c1c1c;
+    box-shadow:0 10px 24px rgba(0,0,0,.25);
+    transform:none;
+}
+
+.teste-timer-fab[hidden]{
+    display:none;
+}
+
+.teste-timer-fab.is-esgotado{
+    background:#d64545;
+}
+
+@media (max-width:480px){
+    .teste-timer-fab{
+        right:16px;
+        bottom:96px;
+        width:60px;
+        height:60px;
+        font-size:.85rem;
+    }
+}
+
 .teste-grupo{
     margin-bottom:40px;
 }
@@ -5319,6 +5528,16 @@ background:#27ae60;
 
         overflow-y: auto;
         overflow-x: hidden;
+    }
+}
+
+/* Pages with no sidebar at all (e.g. taking a test) shouldn't keep the
+   300px gutter the rule above reserves for it on desktop — this needs
+   its own class rather than relying on the .has-sidebar opt-in, since
+   the base .profile-layout rule at 981px applies unconditionally. */
+@media (min-width: 981px) {
+    .profile-layout.profile-layout--no-sidebar {
+        padding-left: 4%;
     }
 }
 
