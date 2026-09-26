@@ -233,7 +233,7 @@ const missionData = {
                         alternateExplanation: "Pensa no cloroplasto como a 'fábrica' dentro da célula vegetal: é lá dentro, e só lá, que existem as estruturas e os pigmentos necessários para captar luz e fabricar glicose."
                     },
                     {
-                        question: "Qual pigmento capta a luz?",
+                        question: "Qual é o pigmento que capta a luz?",
                         options: [
                             { text: "Rubisco", correct: false },
                             { text: "Clorofila", correct: true },

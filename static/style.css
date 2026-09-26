@@ -359,6 +359,7 @@ header nav a.nav-plain:hover{
 }
 
 .hero-left h1 .highlight{
+    font-family:inherit;
     color:#1f8a5b;
 }
 
@@ -402,8 +403,8 @@ header nav a.nav-plain:hover{
 }
 
 .hero-btn-primary{
-    background:#1f8a5b;
-    color:white;
+    background:#90a668;
+    color:#000;
     border:none;
     padding:16px 28px;
     border-radius:999px;
@@ -539,6 +540,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     align-items:center;
     padding:20px 8% 90px;
     background:white;
+    border-top:1px solid rgba(0,0,0,.08);
 }
 
 .evolution-text h2{
@@ -580,9 +582,20 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     margin-bottom:24px;
 }
 
-.evolution-card-header > span{
+.evolution-card-heading{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+
+.evolution-card-heading > span:first-child{
     font-weight:600;
     color:#333;
+}
+
+.evolution-card-subtitle{
+    font-size:.78rem;
+    color:#999;
 }
 
 .evolution-tabs{
@@ -606,42 +619,48 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 .evolution-chart{
     display:flex;
     align-items:flex-end;
-    gap:8px;
+    gap:10px;
     height:160px;
     border-bottom:1px solid rgba(0,0,0,.08);
     padding-bottom:6px;
 }
 
-.evolution-bar{
+.evolution-bar-col{
     flex:1;
     display:flex;
-    flex-direction:column-reverse;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end;
     height:100%;
-    border-radius:6px 6px 0 0;
-    overflow:hidden;
+    gap:8px;
 }
 
-.evolution-bar .bar-bottom{
+.evolution-bar-value{
+    font-size:.7rem;
+    font-weight:700;
+    color:#1f8a5b;
+}
+
+.evolution-bar{
+    width:100%;
+    max-width:34px;
+    border-radius:8px;
     background:#1f8a5b;
 }
 
-.evolution-bar .bar-top{
-    background:rgba(31,138,91,.25);
+.evolution-bar-label{
+    font-size:.68rem;
+    color:#999;
+    white-space:nowrap;
 }
 
 .evolution-card-footer{
     display:flex;
-    justify-content:space-between;
+    justify-content:flex-end;
     align-items:center;
     margin-top:18px;
     font-size:.9rem;
     color:#555;
-}
-
-.evolution-rank{
-    display:flex;
-    align-items:center;
-    gap:8px;
 }
 
 .evolution-trend{
@@ -662,6 +681,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     align-items:center;
     padding:20px 8% 90px;
     background:white;
+    border-top:1px solid rgba(0,0,0,.08);
 }
 
 .mistakes-card{
@@ -806,13 +826,14 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     gap:60px;
     align-items:center;
     padding:20px 8% 90px;
-    background:#f5f9f7;
+    background:white;
+    border-top:1px solid rgba(0,0,0,.08);
 }
 
 .mentor-avatar-wrap{
     display:flex;
     flex-direction:column;
-    align-items:flex-start;
+    align-items:center;
     gap:16px;
     margin-left:60px;
 }
@@ -917,8 +938,9 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     grid-template-columns:1fr 1fr;
     gap:60px;
     align-items:center;
-    padding:20px 8% 90px;
+    padding:90px 8%;
     background:white;
+    border-top:1px solid rgba(0,0,0,.08);
 }
 
 .library-text h2{
@@ -952,51 +974,86 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     color:#444;
 }
 
-.library-shelf{
+.library-mini-shelf-wrap{
     display:flex;
     flex-direction:column;
-    gap:14px;
+    gap:22px;
 }
 
-.library-book{
-    position:relative;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    padding:18px 22px;
-    border-radius:14px;
-    background:white;
-    border:1px solid rgba(0,0,0,.05);
-    border-left:8px solid var(--book-cor);
-    box-shadow:0 12px 25px rgba(0,0,0,.06);
-}
-
-.library-book-nome{
-    font-weight:700;
-    color:#222;
-}
-
-.library-book-total{
-    margin-left:auto;
+.library-mini-subject-title{
+    display:inline-block;
     font-size:.85rem;
-    color:#888;
+    font-weight:700;
+    color:#1f8a5b;
+    background:rgba(31,138,91,.12);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:14px;
 }
 
-.library-book-badge{
-    position:absolute;
-    top:-8px;
-    left:-8px;
-    width:22px;
-    height:22px;
+.library-mini-shelf{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    max-width:600px;
+}
+
+.library-mini-book{
+    position:relative;
+    width:120px;
+    aspect-ratio:49/60;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    border-radius:12px 7px 7px 12px;
+    background:#f5f3ee;
+}
+
+.library-mini-book-top{
+    flex:1 1 auto;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:var(--book-cor);
-    color:white;
-    font-size:.72rem;
+    background:linear-gradient(160deg,var(--book-cor-a),var(--book-cor-b));
+    color:#fff;
+}
+
+.library-mini-book-bottom{
+    flex:0 0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+    padding:10px 12px 12px;
+}
+
+.library-mini-book-nome{
+    font-size:.82rem;
     font-weight:700;
+    line-height:1.15;
+    color:#20252b;
+}
+
+.library-mini-book-total{
+    font-size:.7rem;
+    color:#767c70;
+}
+
+.library-mini-book-badge{
+    position:absolute;
+    top:10px;
+    right:10px;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:22px;
+    height:22px;
+    padding:0 5px;
     border-radius:999px;
-    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    background:#fff;
+    color:var(--book-cor-a);
+    font-size:.72rem;
+    font-weight:800;
 }
 
 @media(max-width:900px){
@@ -1004,17 +1061,18 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
         grid-template-columns:1fr;
     }
 
-    .library-shelf{
-        width:100%;
-        max-width:380px;
+    .library-mini-shelf{
+        justify-content:center;
         margin:0 auto;
+        max-width:100%;
     }
 }
 
 .home-plans{
     padding:90px 8%;
     text-align:center;
-    background:#f5f9f7;
+    background:white;
+    border-top:1px solid rgba(0,0,0,.08);
 }
 
 .home-plans h2{
@@ -1182,6 +1240,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     padding:90px 8%;
     text-align:center;
     background:white;
+    border-top:1px solid rgba(0,0,0,.08);
 }
 
 .home-faq h2{
@@ -1245,6 +1304,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     padding:90px 4%;
     text-align:center;
     background:white;
+    border-top:1px solid rgba(0,0,0,.08);
 }
 
 .features h2{
@@ -1403,6 +1463,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     padding:70px 8% 60px;
     background:white;
     text-align:center;
+    border-top:1px solid rgba(0,0,0,.08);
 }
 
 .how h2{
@@ -1411,8 +1472,9 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 }
 .featured-missions{
     padding:60px 8%;
-    background:#f5f9f7;
+    background:white;
     text-align:center;
+    border-top:1px solid rgba(0,0,0,.08);
 }
 
 .featured-missions h2{
@@ -2131,12 +2193,42 @@ gap:20px;
     grid-template-columns:1fr;
 }
 
+/* Author styles beat the UA [hidden] default once a selector like
+   .missions-grid sets its own display, so the collapse toggle needs
+   this rule spelled out explicitly or the grid stays visible. */
+.missions-grid[hidden]{
+    display:none;
+}
+
+.missions-category-panel ~ .missions-grid{
+    padding:0 18px 20px;
+    border-top:1px solid var(--sp-border, #e2e3db);
+    margin-top:4px;
+    padding-top:20px;
+}
+
 .missions-category{
     margin-bottom:44px;
 }
 
 .missions-category:last-of-type{
     margin-bottom:0;
+}
+
+/* Missões index: category panel + its missions grid are visually one
+   card — the panel is the always-visible header, the grid is the part
+   that expands/collapses inside it (see [data-missions-toggle]). */
+.missions-category:has(.missions-category-panel){
+    background:var(--sp-card, #fff);
+    border:1px solid var(--sp-border, #e2e3db);
+    border-radius:16px;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.missions-category-panel ~ .missions-grid .mission-card{
+    box-shadow:none;
+    border:1px solid var(--sp-border, #e2e3db);
 }
 
 .missions-category-title{
@@ -2166,6 +2258,62 @@ gap:20px;
 .missions-category-title-row .missions-category-title{
     flex:1 1 auto;
     margin:0;
+}
+
+/* Missões index: category header is a clickable square panel with a
+   themed image (cell for Citologia, grass for Biodiversidade, etc.)
+   instead of a plain text title. Clicking it expands/collapses the
+   missions grid below (see [data-missions-toggle] in index-missions.html). */
+.missions-category-panel{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    width:100%;
+    padding:14px 18px;
+    margin:0;
+    background:none;
+    border:none;
+    border-radius:0;
+    cursor:pointer;
+    text-align:left;
+}
+
+.missions-category-panel:hover{
+    background:rgba(0,0,0,.03);
+}
+
+.missions-category-panel:focus,
+.missions-category-panel:focus-visible{
+    outline:none;
+}
+
+.missions-category-panel-image{
+    flex-shrink:0;
+    width:56px;
+    height:56px;
+    border-radius:12px;
+    background-color:var(--sp-border, #e2e3db);
+    background-size:cover;
+    background-position:center;
+}
+
+.missions-category-panel-name{
+    flex:1 1 auto;
+    color:var(--sp-fg, #1c1c1c);
+    font-size:1.15rem;
+    font-weight:700;
+}
+
+.missions-category-panel-arrow{
+    flex-shrink:0;
+    width:22px;
+    height:22px;
+    color:var(--sp-muted-fg, #68718b);
+    transition:transform .2s ease;
+}
+
+.missions-category-panel[aria-expanded="true"] .missions-category-panel-arrow{
+    transform:rotate(180deg);
 }
 
 .dicionario-flashcards-link{
@@ -10216,6 +10364,14 @@ body.shadcn-profile .profile-grid {
     align-items: start;
 }
 
+/* Separador "Conquistas": a aside (citação + resumo rápido) só existe no
+   separador "Perfil", então aqui a coluna de 320px fica vazia — esta
+   classe (posta por profile-django.js ao trocar de separador) tira essa
+   coluna para o conteúdo principal esticar até à largura toda. */
+body.shadcn-profile .profile-grid.is-single-column {
+    grid-template-columns: minmax(0, 1fr);
+}
+
 @media (max-width: 900px) {
     body.shadcn-profile .profile-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -10468,12 +10624,14 @@ body.shadcn-profile .profile-quote-card {
     border-radius: var(--sp-radius);
     background: var(--sp-accent-soft);
     overflow: hidden;
-    /* height is kept in sync with .profile-subject-card by JS
-       (syncQuoteCardHeight in profile-django.js) so the two cards'
-       bottom edges always line up, in either direction — a fixed
-       height, so rotating to a longer quote can't grow this card and
-       shift "Resumo rápido" (the card below it) down; overflow:hidden
-       is just the backstop if a future quote is too long to fit. */
+    /* height and margin-bottom are kept in sync by JS (syncQuoteCardHeight
+       in profile-django.js): height matches .profile-subject-card (the XP
+       panel next to it) so this card looks the same size as that one, and
+       margin-bottom is padded out so "Resumo rápido" (the card below it)
+       still lines up with .profile-missions-card despite this card being
+       shorter than the gap between them. A fixed height, so rotating to a
+       longer quote can't grow this card — overflow:hidden is just the
+       backstop if a future quote is too long to fit. */
 }
 
 body.shadcn-profile .profile-quote-card .profile-subject-leaf {
@@ -10916,6 +11074,16 @@ body.shadcn-profile .profile-hero-rank {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+/* Mesmo texto de estatisticas.html (ali é um <p> dentro de .missions-page,
+   que já tem esse estilo por herança) — aqui vive dentro do separador
+   "Estatísticas" do perfil, fora de .missions-page, por isso precisa da
+   sua própria regra em vez de depender daquela. */
+.profile-stats-intro {
+    margin: -8px 0 4px;
+    color: #666;
+    font-size: 1rem;
 }
 
 .stats-card {
@@ -11651,9 +11819,7 @@ html.dark-mode .resumo-tabela td {
 }
 
 /* =========================================
-   HERO INTERATIVO — "dá cinco" ao Kim
-   A imagem está dividida em 3 camadas (fundo, mão do rapaz, Kim) para as
-   mãos poderem afastar-se e bater. Posições em % da imagem original 1024x1536.
+   HERO — rapaz com o Kim
    ========================================= */
 
 .area-animation .hero-hifive {
@@ -11674,234 +11840,90 @@ html.dark-mode .resumo-tabela td {
     -webkit-user-drag: none;
 }
 
-.hifive-plate { left: 24.0234%; top: 7.0313%; width: 49.0234%; height: 91.7969%; }
-.hifive-hand  { left: 47.6563%; top: 6.9661%; width: 6.3477%; height: 11.849%; transform-origin: 49% 98%; }
-.hifive-kim   { left: 50.0977%; top: 4.1667%; width: 24.4141%; height: 23.3724%; transform-origin: 30.8% 92.2%; }
+.hifive-plate { inset: 0; width: 100%; height: 100%; }
 
-/* Pose "pronto?": o Kim inclina-se para trás, a mão do rapaz recua um pouco */
-.hifive-kim  { transform: rotate(14deg); animation: hifive-kim-ready 1.6s ease-in-out infinite; }
-.hifive-hand { transform: rotate(-8deg) translate(-4.6%, 4.4%); animation: hifive-hand-ready 1.6s ease-in-out infinite; }
-
-/* Depois do "cinco": mãos juntas (pose original da imagem) */
-.hero-hifive.is-clapped .hifive-kim,
-.hero-hifive.is-clapped .hifive-hand { animation: none; }
-.hero-hifive.is-clapped .hifive-kim  { transform: rotate(0); }
-.hero-hifive.is-clapped .hifive-hand { transform: none; }
-
-.hero-hifive.is-hit .hifive-kim  { animation: hifive-kim-slap .8s cubic-bezier(.3, 1.2, .5, 1) both; }
-.hero-hifive.is-hit .hifive-hand { animation: hifive-hand-slap .8s cubic-bezier(.3, 1.2, .5, 1) both; }
-.hero-hifive.is-hit { animation: hifive-impact .8s ease-out; }
-
-.hero-hifive.is-reset .hifive-kim  { animation: hifive-kim-reset .7s ease-in-out both; }
-.hero-hifive.is-reset .hifive-hand { animation: hifive-hand-reset .7s ease-in-out both; }
-
-.hero-hifive-hotspot {
+.hero-float-card {
     position: absolute;
-    left: 46%;
-    top: 3%;
-    width: 18%;
-    height: 17%;
-    z-index: 6;
-    padding: 0;
-    border: 0;
-    border-radius: 50%;
-    background: transparent;
-    cursor: pointer;
-    pointer-events: auto;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* O site tem um `button:hover` global (fundo verde, sombra, translateY) que
-   faria da zona clicável uma bola verde por cima das mãos. */
-.hero-hifive .hero-hifive-hotspot,
-.hero-hifive .hero-hifive-hotspot:hover,
-.hero-hifive .hero-hifive-hotspot:active,
-.hero-hifive .hero-hifive-hotspot:focus {
-    background: transparent;
-    box-shadow: none;
-    transform: none;
-    border: 0;
-    padding: 0;
-}
-
-.hero-hifive .hero-hifive-hotspot:focus-visible {
-    outline: 3px solid #1f8a5b;
-    outline-offset: 4px;
-}
-
-.hero-hifive .hero-hifive-hotspot:focus:not(:focus-visible) {
-    outline: none;
-}
-
-.hero-hifive-pulse {
-    position: absolute;
-    left: 51%;
-    top: 11.4%;
-    z-index: 4;
-    width: 16%;
-    aspect-ratio: 1;
-    border: 3px solid rgba(31, 138, 91, .55);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(.5);
-    opacity: 0;
-    animation: hifive-pulse 2.4s ease-out infinite;
-    pointer-events: none;
-}
-
-.hero-hifive.is-touched .hero-hifive-pulse { display: none; }
-
-.hero-hifive-bubble {
-    position: absolute;
-    right: 55%;
-    top: 0;
-    z-index: 5;
-    margin: 0;
-    padding: 8px 16px;
-    border: 2px solid #1f8a5b;
-    border-radius: 16px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 14px;
     background: #fff;
-    color: #1f2a24;
-    font-size: .92rem;
-    font-weight: 800;
-    line-height: 1.2;
+    box-shadow: 0 12px 28px rgba(31, 43, 75, .12);
     white-space: nowrap;
-    box-shadow: 0 8px 20px rgba(31, 138, 91, .18);
-    transform-origin: 100% 60%;
-    pointer-events: none;
-    animation: hifive-bubble-bob 1.6s ease-in-out infinite;
+    animation: hero-float-card-bob 5s ease-in-out infinite;
 }
 
-.hero-hifive-bubble::after {
-    content: '';
-    position: absolute;
-    right: -8px;
-    top: calc(50% - 7px);
-    width: 12px;
-    height: 12px;
-    border-top: 2px solid #1f8a5b;
-    border-right: 2px solid #1f8a5b;
-    background: inherit;
-    transform: rotate(45deg);
-}
-
-.hero-hifive-bubble.is-pop { animation: hifive-bubble-pop .4s cubic-bezier(.3, 1.6, .5, 1); }
-
-.hero-hifive-bubble.is-cta {
-    background: #1f8a5b;
-    color: #fff;
-    pointer-events: auto;
-    animation: hifive-bubble-pop .4s cubic-bezier(.3, 1.6, .5, 1), hifive-cta-glow 1.8s ease-in-out .5s infinite;
-}
-
-.hero-hifive-cta {
-    color: inherit;
-    text-decoration: none;
-}
-
-.hero-hifive-cta:hover { text-decoration: underline; }
-
-.hero-hifive-fx {
-    position: absolute;
-    inset: 0;
-    z-index: 4;
-    pointer-events: none;
-}
-
-.hifive-ring {
-    position: absolute;
-    left: 51%;
-    top: 11.4%;
-    width: 10%;
-    aspect-ratio: 1;
-    border: 3px solid #1f8a5b;
+.hero-float-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex: none;
     border-radius: 50%;
-    transform: translate(-50%, -50%) scale(.3);
-    animation: hifive-ring .6s ease-out forwards;
+    background: rgba(31, 138, 91, .12);
 }
 
-.hifive-spark {
-    position: absolute;
-    left: 51%;
-    top: 11.4%;
-    font-size: clamp(14px, 1.6vw, 22px);
-    line-height: 1;
-    transform: translate(-50%, -50%);
-    animation: hifive-spark .9s ease-out forwards;
+.hero-float-card-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.3;
 }
 
-@keyframes hifive-kim-ready {
-    0%, 100% { transform: rotate(14deg); }
-    50% { transform: rotate(11.5deg); }
+.hero-float-card-text strong {
+    font-size: .82rem;
+    color: #1f2a24;
 }
 
-@keyframes hifive-hand-ready {
-    0%, 100% { transform: rotate(-8deg) translate(-4.6%, 4.4%); }
-    50% { transform: rotate(-6.5deg) translate(-4.6%, 3%); }
+.hero-float-card-text span {
+    font-size: .74rem;
+    color: #8a938c;
 }
 
-@keyframes hifive-kim-slap {
-    0% { transform: rotate(14deg); }
-    16% { transform: rotate(19deg); }
-    38% { transform: rotate(-3.5deg) scale(1.02); }
-    55% { transform: rotate(1.8deg); }
-    75% { transform: rotate(-.6deg); }
-    100% { transform: rotate(0); }
+.hero-float-card-highlight {
+    color: #1f8a5b !important;
+    font-weight: 700;
 }
 
-@keyframes hifive-hand-slap {
-    0% { transform: rotate(-8deg) translate(-4.6%, 4.4%); }
-    16% { transform: rotate(-11deg) translate(-6%, 6%); }
-    38% { transform: rotate(3deg) translate(3%, -2%); }
-    55% { transform: rotate(-1deg) translate(-.5%, .5%); }
-    100% { transform: none; }
-}
+.hero-float-card--top-left     { left: -38%; top: 10%;   animation-delay: 0s; }
+.hero-float-card--top-right    { right: -42%; top: 4%;   animation-delay: 1.2s; }
+.hero-float-card--bottom-left  { left: -42%; bottom: 18%; animation-delay: 2.4s; }
+.hero-float-card--bottom-right { right: -38%; bottom: 10%;  animation-delay: .6s; }
 
-@keyframes hifive-kim-reset {
-    from { transform: rotate(0); }
-    to { transform: rotate(14deg); }
-}
-
-@keyframes hifive-hand-reset {
-    from { transform: none; }
-    to { transform: rotate(-8deg) translate(-4.6%, 4.4%); }
-}
-
-@keyframes hifive-impact {
-    0%, 30% { transform: none; }
-    38% { transform: translateY(-5px) scale(1.012); }
-    52% { transform: translateY(2px); }
-    70% { transform: translateY(-1px); }
-    100% { transform: none; }
-}
-
-@keyframes hifive-pulse {
-    0% { transform: translate(-50%, -50%) scale(.5); opacity: .7; }
-    100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
-}
-
-@keyframes hifive-ring {
-    to { transform: translate(-50%, -50%) scale(2.6); opacity: 0; }
-}
-
-@keyframes hifive-spark {
-    0% { transform: translate(-50%, -50%) scale(.4) rotate(0); opacity: 1; }
-    100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1) rotate(var(--rot)); opacity: 0; }
-}
-
-@keyframes hifive-bubble-pop {
-    0% { transform: scale(.7); opacity: .4; }
-    60% { transform: scale(1.08); opacity: 1; }
-    100% { transform: scale(1); }
-}
-
-@keyframes hifive-bubble-bob {
+@keyframes hero-float-card-bob {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
+    50% { transform: translateY(-8px); }
 }
 
-@keyframes hifive-cta-glow {
-    0%, 100% { box-shadow: 0 8px 20px rgba(31, 138, 91, .25); }
-    50% { box-shadow: 0 8px 26px rgba(31, 138, 91, .55); }
+@media (max-width: 950px) {
+    .hero-float-card {
+        padding: 8px 12px;
+        border-radius: 12px;
+    }
+
+    .hero-float-card-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    .hero-float-card-text strong { font-size: .74rem; }
+    .hero-float-card-text span { font-size: .66rem; }
+
+    .hero-float-card--top-left     { left: -18%; top: 6%; }
+    .hero-float-card--top-right    { right: -20%; top: 2%; }
+    .hero-float-card--bottom-left  { left: -20%; bottom: 14%; }
+    .hero-float-card--bottom-right { right: -18%; bottom: 6%; }
+}
+
+@media (max-width: 640px) {
+    .hero-float-card { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-float-card { animation: none; }
 }
 
 @media (max-width: 950px) {
@@ -11909,27 +11931,6 @@ html.dark-mode .resumo-tabela td {
         width: 100%;
         max-width: 550px;
         height: auto;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .hifive-kim,
-    .hifive-hand,
-    .hero-hifive.is-hit,
-    .hero-hifive.is-hit .hifive-kim,
-    .hero-hifive.is-hit .hifive-hand,
-    .hero-hifive.is-reset .hifive-kim,
-    .hero-hifive.is-reset .hifive-hand,
-    .hero-hifive-bubble,
-    .hero-hifive-bubble.is-cta,
-    .hero-hifive-pulse {
-        animation: none;
-    }
-
-    .hero-hifive-pulse,
-    .hifive-ring,
-    .hifive-spark {
-        display: none;
     }
 }
 
@@ -11947,77 +11948,34 @@ html.dark-mode .resumo-tabela td {
 .hifive-blob {
     position: absolute;
     display: block;
+    /* Sem isto, animar border-radius + transform ao mesmo tempo faz o
+       Chrome/Edge "invalidar" o arredondamento em certos níveis de zoom
+       da página (não a 100%) — o blob pisca e aparece por instantes como
+       um quadrado reto. Forçar sempre a mesma camada composta na GPU
+       resolve, em vez de andar a criar/destruir a camada a cada frame. */
+    will-change: transform, border-radius;
+    backface-visibility: hidden;
 }
 
 .hifive-blob--a {
-    left: -9%;
-    top: 12%;
-    width: 118%;
-    height: 80%;
+    left: -21%;
+    top: 4%;
+    width: 142%;
+    height: 96%;
     background: linear-gradient(140deg, #e2f3e7 0%, #cfeadb 55%, #c3e5d4 100%);
     border-radius: 58% 42% 55% 45% / 46% 54% 46% 54%;
     animation: hifive-morph 16s ease-in-out infinite;
 }
 
 .hifive-blob--b {
-    left: 6%;
-    top: 24%;
-    width: 92%;
-    height: 60%;
-    background: radial-gradient(circle at 30% 28%, rgba(255, 255, 255, .85), rgba(255, 255, 255, 0) 62%), #eaf7ee;
+    left: -3%;
+    top: 18%;
+    width: 110%;
+    height: 72%;
+    background: radial-gradient(circle at 30% 28%, rgba(255, 255, 255, .35), rgba(255, 255, 255, 0) 62%), #cfeadb;
     border-radius: 45% 55% 40% 60% / 55% 45% 55% 45%;
     opacity: .9;
     animation: hifive-morph 20s ease-in-out infinite reverse;
-}
-
-.hifive-ring {
-    position: absolute;
-    left: -15%;
-    top: 7%;
-    width: 130%;
-    aspect-ratio: 1;
-    border: 2px dashed rgba(31, 138, 91, .26);
-    border-radius: 50%;
-    animation: hifive-spin 80s linear infinite;
-}
-
-.hifive-chip {
-    position: absolute;
-    width: clamp(38px, 12%, 56px);
-    aspect-ratio: 1;
-    animation-delay: calc(var(--i) * 45ms);
-}
-
-.hifive-chip-inner {
-    display: grid;
-    place-items: center;
-    width: 100%;
-    height: 100%;
-    border: 1px solid rgba(31, 138, 91, .16);
-    border-radius: 50%;
-    background: #fff;
-    color: #1f8a5b;
-    box-shadow: 0 10px 22px rgba(31, 138, 91, .16);
-    animation: hifive-chip-float 6s ease-in-out infinite;
-    animation-delay: calc(var(--i) * -1.1s);
-}
-
-.hifive-chip-inner svg {
-    width: 52%;
-    height: 52%;
-}
-
-.hifive-chip--dna        { left: -21%; top: 25%; }
-.hifive-chip--flask      { left: -13%; top: 57%; }
-.hifive-chip--microscope { left: -3%;  top: 83%; }
-.hifive-chip--leaf       { left: 83%;  top: 3%; }
-.hifive-chip--bulb       { left: 92%;  top: 23%; }
-.hifive-chip--atom       { left: 95%;  top: 50%; }
-
-/* Quando batem palmas, o cenário festeja */
-.hero-hifive.is-cheer .hifive-chip {
-    animation: hifive-chip-cheer .75s cubic-bezier(.3, 1.5, .5, 1) both;
-    animation-delay: calc(var(--i) * 45ms);
 }
 
 @keyframes hifive-morph {
@@ -12026,37 +11984,9 @@ html.dark-mode .resumo-tabela td {
     66% { border-radius: 54% 46% 60% 40% / 42% 58% 44% 56%; transform: rotate(-3deg) scale(.98); }
 }
 
-@keyframes hifive-spin {
-    to { transform: rotate(360deg); }
-}
-
-@keyframes hifive-chip-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-9px); }
-}
-
-@keyframes hifive-chip-cheer {
-    0% { transform: scale(1) rotate(0); }
-    35% { transform: scale(1.28) translateY(-14px) rotate(-10deg); }
-    65% { transform: scale(.94) translateY(0) rotate(6deg); }
-    100% { transform: scale(1) rotate(0); }
-}
-
-@media (max-width: 950px) {
-    .hifive-chip--dna        { left: -3%;  top: 20%; }
-    .hifive-chip--flask      { left: 1%;   top: 54%; }
-    .hifive-chip--microscope { left: 7%;   top: 84%; }
-    .hifive-chip--leaf       { left: 78%;  top: 2%; }
-    .hifive-chip--bulb       { left: 88%;  top: 24%; }
-    .hifive-chip--atom       { left: 90%;  top: 52%; }
-    .hifive-ring { display: none; }
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .hifive-blob,
-    .hifive-ring,
-    .hifive-chip-inner,
-    .hero-hifive.is-cheer .hifive-chip {
+    .hifive-blob {
         animation: none;
     }
 }
+

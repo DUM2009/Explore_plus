@@ -441,10 +441,15 @@ mascoteChatForm?.addEventListener('submit', (event) => {
     sendMascoteChatMessage();
 });
 
-/** Perfil/Conquistas tabs swap which panel shows in the main column —
- *  no page navigation, the aside (quote + resumo rápido) never changes. */
+/** Perfil/Conquistas tabs swap which panel shows in the main column — no
+ *  page navigation. The aside (quote + resumo rápido) only shows on
+ *  "Perfil" (ver data-tab-panel="perfil" no .profile-grid-aside); quando
+ *  está escondida, .profile-grid ganha is-single-column para o grid deixar
+ *  de reservar a coluna de 320px que ela ocupava, e o cartão de conquistas
+ *  esticar para a largura toda em vez de deixar aquele espaço vazio. */
 const profileTabButtons = document.querySelectorAll('.profile-tab[data-tab-target]');
-const profileTabPanels = document.querySelectorAll('.profile-tab-panel[data-tab-panel]');
+const profileTabPanels = document.querySelectorAll('[data-tab-panel]');
+const profileGrid = document.querySelector('.profile-grid');
 
 profileTabButtons.forEach((button) => {
     button.addEventListener('click', () => {
@@ -454,6 +459,7 @@ profileTabButtons.forEach((button) => {
         profileTabPanels.forEach((panel) => {
             panel.hidden = panel.dataset.tabPanel !== target;
         });
+        profileGrid?.classList.toggle('is-single-column', target !== 'perfil');
     });
 });
 
@@ -473,30 +479,32 @@ const profileQuoteCard = document.querySelector('.profile-quote-card');
 const profileQuoteText = document.getElementById('profileQuoteText');
 const profileQuoteAuthor = document.getElementById('profileQuoteAuthor');
 const profileSubjectCard = document.querySelector('.profile-subject-card');
-// The card "Resumo rápido" sits right below the quote card, in the same
-// column — so lining its top edge up with .profile-missions-card (the
-// bordered mission list on the left, not the plain heading above it)
-// means growing the quote card until it reaches that same height, not
-// just matching .profile-subject-card's own height.
+// "Resumo rápido" sits right below the quote card, in the same column, and
+// still needs to line up with .profile-missions-card (the bordered mission
+// list next to it) — so the quote card itself is only as tall as the XP
+// panel, but gets a bottom margin that makes up the rest of the gap.
 const profileMissionsCard = document.querySelector('.profile-missions-card');
 
-/** Keeps the quote card's height matched to whatever sits next to
- *  "Resumo rápido" on the left (same row, two different grid columns, so
- *  CSS alone can't align them). A fixed height (not min-height) so a
- *  longer quote can never grow the card and push "Resumo rápido" down —
+/** Keeps the quote card's own height matched to .profile-subject-card (the
+ *  XP panel, same row, different grid column — CSS alone can't align them),
+ *  then pads its bottom margin so "Resumo rápido" still starts level with
+ *  .profile-missions-card. A fixed height (not min-height) so a longer
+ *  quote can never grow the card taller than the XP panel —
  *  .profile-quote-card has overflow:hidden as a backstop for that case. */
 function syncQuoteCardHeight() {
-    if (!profileQuoteCard) return;
-    const alignTarget = profileMissionsCard || profileSubjectCard;
+    if (!profileQuoteCard || !profileSubjectCard) return;
     // offsetParent is null while the "Perfil" tab panel is hidden (e.g. the
     // "Conquistas" tab is active) — skip rather than collapse the quote
     // card to 0, since a hidden element's rect is meaningless.
-    if (!alignTarget || alignTarget.offsetParent === null) return;
-    const quoteCardMarginBottom = parseFloat(getComputedStyle(profileQuoteCard).marginBottom) || 0;
-    const targetHeight = alignTarget.getBoundingClientRect().top
-        - profileQuoteCard.getBoundingClientRect().top
-        - quoteCardMarginBottom;
+    if (profileSubjectCard.offsetParent === null) return;
+    const targetHeight = profileSubjectCard.getBoundingClientRect().height;
     profileQuoteCard.style.height = `${Math.max(targetHeight, 0)}px`;
+
+    if (profileMissionsCard && profileMissionsCard.offsetParent !== null) {
+        const quoteBottom = profileQuoteCard.getBoundingClientRect().bottom;
+        const missionsTop = profileMissionsCard.getBoundingClientRect().top;
+        profileQuoteCard.style.marginBottom = `${Math.max(missionsTop - quoteBottom, 0)}px`;
+    }
 }
 
 if (profileQuoteCard && profileQuoteText && profileQuoteAuthor) {

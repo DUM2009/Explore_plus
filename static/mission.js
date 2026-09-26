@@ -877,7 +877,7 @@ class MissionSystem {
         const quizDemoHtml = `
             <div class="home-quiz-preview mission-path-quiz-demo" aria-hidden="true">
                 <div class="home-quiz-preview-heading"><span class="home-quiz-progress">Pergunta 2/5</span></div>
-                <h3>Qual pigmento capta a luz?</h3>
+                <h3>Qual é o pigmento que capta a luz?</h3>
                 <div class="home-quiz-options">
                     <div class="home-quiz-option"><span>A</span> Rubisco</div>
                     <div class="home-quiz-option is-correct"><span>B</span> Clorofila</div>

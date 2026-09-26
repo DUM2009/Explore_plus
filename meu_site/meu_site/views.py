@@ -166,6 +166,12 @@ def pagina_perfil(request):
         for definicao in definicoes_conquistas
     ]
 
+    # Separador "Estatísticas" do perfil: mesmos dados de pagina_estatisticas
+    # (ver calcular_dados_estatisticas), só que aqui dentro de um separador
+    # em vez de página à parte. perfil_legacy não tem os campos que essa
+    # função precisa (vocabulario_estado, etc.), por isso fica de fora.
+    dados_estatisticas = {} if perfil_legacy else calcular_dados_estatisticas(request, perfil)
+
     return render(request, 'perfil.html', {
         'perfil': perfil,
         'nivel': perfil.nivel,
@@ -185,21 +191,15 @@ def pagina_perfil(request):
         'titulo_icone': titulo_icone,
         'titulo_descricao': titulo_descricao,
         'proximo_titulo': proximo_titulo,
+        **dados_estatisticas,
     })
 
 
-@login_required(login_url='login')
-def pagina_estatisticas(request):
+def calcular_dados_estatisticas(request, perfil):
     """Progresso pessoal do aluno — nunca comparações com outros alunos
-    (sem rankings nem percentis aqui, ver Templates/estatisticas.html)."""
-    try:
-        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
-    except OperationalError:
-        perfil = None
-
-    if perfil is None:
-        return render(request, 'estatisticas.html', {'perfil': None})
-
+    (sem rankings nem percentis aqui, ver Templates/estatisticas.html).
+    Reaproveitado por pagina_estatisticas e pelo separador "Estatísticas"
+    de pagina_perfil, para não duplicar esta lógica nos dois sítios."""
     # (a) Gráfico de evolução — um ponto por teste/exame corrigido, na
     # ordem em que aconteceram (mais simples de implementar com os dados
     # que já temos do que agrupar por semana, e igualmente claro com o
@@ -274,8 +274,7 @@ def pagina_estatisticas(request):
         for termo in termos:
             vocab_totais[termo['estado']] = vocab_totais.get(termo['estado'], 0) + 1
 
-    return render(request, 'estatisticas.html', {
-        'perfil': perfil,
+    return {
         'evolucao': evolucao,
         'evolucao_pontos': evolucao_pontos,
         'desempenho_unidades': desempenho_unidades,
@@ -284,6 +283,22 @@ def pagina_estatisticas(request):
         'sequencia_recorde': sequencia_recorde,
         'vocab_totais': vocab_totais,
         'vocab_total_termos': sum(vocab_totais.values()),
+    }
+
+
+@login_required(login_url='login')
+def pagina_estatisticas(request):
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    if perfil is None:
+        return render(request, 'estatisticas.html', {'perfil': None})
+
+    return render(request, 'estatisticas.html', {
+        'perfil': perfil,
+        **calcular_dados_estatisticas(request, perfil),
     })
 
 

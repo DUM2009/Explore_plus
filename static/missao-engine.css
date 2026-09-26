@@ -700,11 +700,54 @@ html.dark-mode .me-escada-step-label {
 }
 
 .me-escada-detail {
+    position: relative;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 16px;
     padding: 24px;
     text-align: center;
     background: #fbf7ee;
+}
+
+/* Botão "➕" de curiosidade (ver ponto.curiosidade em curiosidadeHtml),
+   ancorado no canto superior direito do cartão em vez de competir por
+   espaço com o título/explicação. */
+.me-ponto-curiosidade summary {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    list-style: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f6f1;
+    font-size: .95rem;
+    line-height: 1;
+}
+
+.me-ponto-curiosidade summary:hover {
+    filter: brightness(.96);
+}
+
+.me-ponto-curiosidade summary::-webkit-details-marker {
+    display: none;
+}
+
+.me-ponto-curiosidade p {
+    margin: 14px 0 0;
+    color: #4b5a52;
+    text-align: left;
+}
+
+html.dark-mode .me-ponto-curiosidade summary {
+    background: rgba(31, 138, 91, .18);
+}
+
+html.dark-mode .me-ponto-curiosidade p {
+    color: #b9c7bd;
 }
 
 .me-escada-detail-image {

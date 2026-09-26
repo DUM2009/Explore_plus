@@ -1285,6 +1285,21 @@
             `;
         }
 
+        /** Botão "➕" no canto superior direito do cartão com ponto.curiosidade,
+         *  se existir — ao contrário de saberMaisHtml/dicaEstudoHtml (pílulas
+         *  no fim do texto), este fica ancorado no canto (ver position:relative
+         *  em .me-escada-detail) para não competir por espaço com o resto do
+         *  cartão; o texto revelado aparece por baixo, como os outros. */
+        curiosidadeHtml(ponto) {
+            if (!ponto.curiosidade) return '';
+            return `
+                <details class="me-ponto-curiosidade">
+                    <summary aria-label="Ver curiosidade">➕</summary>
+                    <p>${escapeHtml(ponto.curiosidade)}</p>
+                </details>
+            `;
+        }
+
         /**
          * Conteúdo do cartão "Nível X de N" (ver .me-escada-detail no CSS) —
          * imagem opcional, título, explicação e o botão "Saber mais" (ver
@@ -1295,6 +1310,7 @@
          */
         pontoDetailInnerHtml(ponto) {
             return `
+                ${this.curiosidadeHtml(ponto)}
                 ${ponto.imagem ? `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(ponto.imagem)}" alt="${escapeHtml(ponto.label || '')}" onerror="this.style.display='none'">` : ''}
                 <h4 class="me-escada-detail-title">${escapeHtml(ponto.label || '')}</h4>
                 <p class="me-escada-detail-text">${escapeHtml(ponto.explicacao || '')}</p>

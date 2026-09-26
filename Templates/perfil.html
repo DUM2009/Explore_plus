@@ -52,9 +52,6 @@
 <span class="profile-sidebar-label">Perfil</span>
 </a>
 
-<a href="{% url 'estatisticas' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>
-<span class="profile-sidebar-label">Estatísticas</span>
-</a>
 
 <a href="{% url 'index-missions' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target-icon lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
 <span class="profile-sidebar-label">Missões</span>
@@ -200,6 +197,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg>
         Conquistas
     </button>
+    <button type="button" class="profile-tab" data-tab-target="estatisticas">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        Estatísticas
+    </button>
 </nav>
 
 <div class="profile-grid">
@@ -287,9 +288,102 @@
         </div>
     </div>
 
+    <div class="profile-tab-panel estatisticas-page" data-tab-panel="estatisticas" hidden>
+        <p class="profile-stats-intro">O teu progresso pessoal — comparado só com o teu próprio histórico, nunca com outros alunos.</p>
+
+        <div class="stats-card">
+            <h2>Evolução das notas</h2>
+            {% if evolucao %}
+            <div class="stats-chart">
+                <div class="stats-chart-yaxis">
+                    <span>20</span>
+                    <span>10</span>
+                    <span>0</span>
+                </div>
+                <svg class="stats-chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none">
+                    <line x1="0" y1="0" x2="300" y2="0" class="stats-chart-gridline"/>
+                    <line x1="0" y1="50" x2="300" y2="50" class="stats-chart-gridline"/>
+                    <line x1="0" y1="100" x2="300" y2="100" class="stats-chart-gridline"/>
+                    <polyline points="{{ evolucao_pontos }}" class="stats-chart-line"/>
+                </svg>
+            </div>
+            <div class="stats-chart-labels">
+                <span>{{ evolucao.0.label }}</span>
+                {% with ultimo=evolucao|last %}<span>{{ ultimo.label }}</span>{% endwith %}
+            </div>
+            {% else %}
+            <p class="stats-empty">Ainda não corrigiste nenhum teste ou exame — assim que o fizeres, a tua evolução aparece aqui.</p>
+            {% endif %}
+        </div>
+
+        <div class="stats-card">
+            <h2>Desempenho por unidade</h2>
+            <div class="stats-unidades">
+                {% for unidade in desempenho_unidades %}
+                <div class="stats-unidade-row">
+                    <span class="stats-unidade-nome">{{ unidade.nome }}</span>
+                    {% if unidade.sem_dados %}
+                    <span class="stats-unidade-vazio">Ainda sem dados</span>
+                    {% else %}
+                    <div class="stats-unidade-bar-wrap">
+                        <div class="stats-unidade-bar" style="width: {{ unidade.percent }}%; background: {{ unidade.cor_a }};"></div>
+                    </div>
+                    <span class="stats-unidade-percent">
+                        {{ unidade.percent }}%
+                        {% if unidade.delta %}
+                        <small class="stats-unidade-delta {% if unidade.delta > 0 %}is-up{% else %}is-down{% endif %}">({{ unidade.delta|stringformat:"+d" }}% desde o início)</small>
+                        {% endif %}
+                    </span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="stats-card">
+            <h2>Hábitos de estudo</h2>
+            <div class="stats-habitos-grid">
+                <div class="stats-habito">
+                    <span class="stats-habito-valor">{{ tempo_semana_min }} min</span>
+                    <span class="stats-habito-label">Tempo de estudo esta semana</span>
+                </div>
+                <div class="stats-habito">
+                    <span class="stats-habito-valor">{{ sequencia_atual }} dia{{ sequencia_atual|pluralize }}</span>
+                    <span class="stats-habito-label">Sequência atual</span>
+                </div>
+                <div class="stats-habito">
+                    <span class="stats-habito-valor">{{ sequencia_recorde }} dia{{ sequencia_recorde|pluralize }}</span>
+                    <span class="stats-habito-label">Recorde pessoal</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-card">
+            <h2>Vocabulário</h2>
+            {% if vocab_total_termos > 0 %}
+            <div class="stats-vocab-row">
+                <div class="stats-vocab-item stats-vocab-item--dominado">
+                    <span class="stats-vocab-valor">{{ vocab_totais.dominado }}</span>
+                    <span class="stats-vocab-label">Dominados</span>
+                </div>
+                <div class="stats-vocab-item stats-vocab-item--rever">
+                    <span class="stats-vocab-valor">{{ vocab_totais.a_rever }}</span>
+                    <span class="stats-vocab-label">A rever</span>
+                </div>
+                <div class="stats-vocab-item">
+                    <span class="stats-vocab-valor">{{ vocab_totais.novo }}</span>
+                    <span class="stats-vocab-label">Por explorar</span>
+                </div>
+            </div>
+            {% else %}
+            <p class="stats-empty">A tua Biblioteca do Explorador ainda está vazia.</p>
+            {% endif %}
+        </div>
     </div>
 
-    <div class="profile-grid-aside">
+    </div>
+
+    <div class="profile-grid-aside" data-tab-panel="perfil">
 
         <div class="profile-quote-card">
             <p class="profile-quote-text" id="profileQuoteText">A ciência é a forma mais bonita de explorar o mundo.</p>

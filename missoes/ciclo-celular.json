@@ -17,14 +17,9 @@
           "titulo": "As duas grandes fases do ciclo celular",
           "instrucao": "Clica em cada fase para veres a explicação.",
           "pontos": [
-            { "id": "interfase", "label": "Interfase (~90-95% do ciclo)", "explicacao": "A célula cresce e replica o seu DNA. É de longe a fase mais longa — por isso a maioria das células que vês ao microscópio está nesta fase, não a dividir-se." },
+            { "id": "interfase", "label": "Interfase (~90-95% do ciclo)", "explicacao": "A célula cresce e replica o seu DNA. É de longe a fase mais longa — por isso a maioria das células que vês ao microscópio está nesta fase, não a dividir-se.", "curiosidade": "Nem todas as células passam pelo ciclo celular com a mesma frequência. Células da pele ou do revestimento intestinal dividem-se muito e depressa, para substituírem as que se desgastam. Já os neurónios, as hemácias maduras ou as células musculares dividem-se muito pouco (ou nunca mais) depois de diferenciadas — o que explica, por exemplo, porque é tão difícil o sistema nervoso recuperar de certas lesões." },
             { "id": "fase_mitotica", "label": "Fase Mitótica (~5-10% do ciclo)", "explicacao": "A fase visivelmente \"agitada\": o núcleo divide-se (mitose) e depois o citoplasma divide-se (citocinese), originando duas células-filhas.", "dica_estudo": "O ciclo celular é como preparares-te para uma corrida: passas a maior parte do tempo a treinar e a abastecer energia (interfase) e só uns segundos, no fim, é que corres mesmo os 100 metros (fase mitótica). O treino demorado é o que torna a corrida rápida possível." }
           ]
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Nem todas as células \"correm\" ao mesmo ritmo",
-          "texto": "Nem todas as células passam pelo ciclo celular com a mesma frequência. Células da pele ou do revestimento intestinal dividem-se muito e depressa, para substituírem as que se desgastam. Já os neurónios, as hemácias maduras ou as células musculares dividem-se muito pouco (ou nunca mais) depois de diferenciadas — o que explica, por exemplo, porque é tão difícil o sistema nervoso recuperar de certas lesões."
         },
         {
           "tipo": "quiz_seccao",
