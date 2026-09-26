@@ -166,7 +166,30 @@
 <div class="profile-hero">
 
     <div class="profile-hero-left">
-        <span class="profile-hero-avatar" aria-hidden="true">{{ request.user.username|first|upper }}</span>
+        <div class="profile-hero-avatar-wrap">
+            <span class="profile-hero-avatar" id="profileHeroAvatar" aria-hidden="true">{{ request.user.username|first|upper }}</span>
+            <button type="button" class="profile-hero-avatar-edit" id="profileAvatarEditBtn" aria-haspopup="true" aria-expanded="false" aria-controls="profileAvatarPicker" aria-label="Escolher avatar do Kim">Mudar avatar</button>
+
+            <div class="profile-avatar-picker" id="profileAvatarPicker" hidden>
+                <p class="profile-avatar-picker-title">Avatar do Kim</p>
+                <div class="profile-avatar-picker-options">
+                    <button type="button" class="profile-avatar-option is-active" id="profileAvatarOptionPadrao" data-avatar-id="padrao">
+                        <span class="profile-avatar-option-preview profile-avatar-option-preview--letra" aria-hidden="true">{{ request.user.username|first|upper }}</span>
+                        <span class="profile-avatar-option-label">Padrão</span>
+                    </button>
+                    <button type="button" class="profile-avatar-option{% if nivel < 10 %} is-locked{% endif %}" id="profileAvatarOptionNivel10" data-avatar-id="nivel10" {% if nivel < 10 %}aria-disabled="true"{% endif %}>
+                        <span class="profile-avatar-option-preview" aria-hidden="true">
+                            <img src="{% static 'images/Mascote nivel 10 oculos.png' %}" alt="">
+                            {% if nivel < 10 %}<span class="profile-avatar-option-lock" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>{% endif %}
+                        </span>
+                        <span class="profile-avatar-option-label">{% if nivel < 10 %}Nível 10{% else %}Kim Explorador{% endif %}</span>
+                    </button>
+                </div>
+                {% if nivel < 10 %}
+                <p class="profile-avatar-picker-hint">Chega ao nível 10 para desbloquear este visual do Kim — faltam {{ niveis_para_kim_nivel10 }} nível{{ niveis_para_kim_nivel10|pluralize }}.</p>
+                {% endif %}
+            </div>
+        </div>
         <div class="profile-hero-info">
             <h1 id="nomeAluno">Olá, {{ request.user.username }}!</h1>
             <p class="profile-hero-rank" id="profileRankSubtitle" title="{{ titulo_descricao }}">{{ titulo_nome }}</p>
@@ -496,6 +519,72 @@
     </form>
 </div>
 
+<script>
+    window.exploreAvatarOptions = {
+        nivel10: '{% static "images/Mascote nivel 10 oculos.png" %}',
+    };
+</script>
+<script src="{% static 'avatar-selector.js' %}"></script>
+<script>
+(function () {
+    const nivelAtual = {{ nivel }};
+    const avatarSpan = document.getElementById('profileHeroAvatar');
+    const editBtn = document.getElementById('profileAvatarEditBtn');
+    const picker = document.getElementById('profileAvatarPicker');
+    const opcaoPadrao = document.getElementById('profileAvatarOptionPadrao');
+    const opcaoNivel10 = document.getElementById('profileAvatarOptionNivel10');
+    if (!window.ExploreAvatar || !avatarSpan || !editBtn || !picker) return;
+
+    const letraOriginal = avatarSpan.textContent;
+
+    function aplicarAvatar() {
+        const url = window.ExploreAvatar.getSelectedAvatarUrl();
+        if (url) {
+            avatarSpan.innerHTML = `<img src="${url}" alt="">`;
+            avatarSpan.classList.add('profile-hero-avatar--imagem');
+        } else {
+            avatarSpan.textContent = letraOriginal;
+            avatarSpan.classList.remove('profile-hero-avatar--imagem');
+        }
+        const idAtual = window.ExploreAvatar.getSelectedAvatarId();
+        opcaoNivel10.classList.toggle('is-active', idAtual === 'nivel10');
+        opcaoPadrao.classList.toggle('is-active', idAtual !== 'nivel10');
+    }
+
+    function fecharPicker() {
+        picker.hidden = true;
+        editBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    editBtn.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const abrir = picker.hidden;
+        picker.hidden = !abrir;
+        editBtn.setAttribute('aria-expanded', String(abrir));
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!picker.hidden && !picker.contains(event.target) && event.target !== editBtn) {
+            fecharPicker();
+        }
+    });
+
+    opcaoPadrao.addEventListener('click', () => {
+        window.ExploreAvatar.setSelectedAvatarId('padrao');
+        aplicarAvatar();
+        fecharPicker();
+    });
+
+    opcaoNivel10.addEventListener('click', () => {
+        if (nivelAtual < 10) return;
+        window.ExploreAvatar.setSelectedAvatarId('nivel10');
+        aplicarAvatar();
+        fecharPicker();
+    });
+
+    aplicarAvatar();
+})();
+</script>
 <script src="{% static 'profile-django.js' %}" defer></script>
 <script src="{% static 'stats-tempo.js' %}" defer></script>
 <script src="{% static 'stats-desempenho.js' %}" defer></script>

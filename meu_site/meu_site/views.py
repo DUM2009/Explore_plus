@@ -193,6 +193,7 @@ def pagina_perfil(request):
         'titulo_icone': titulo_icone,
         'titulo_descricao': titulo_descricao,
         'proximo_titulo': proximo_titulo,
+        'niveis_para_kim_nivel10': max(0, 10 - perfil.nivel),
         **dados_estatisticas,
     })
 
