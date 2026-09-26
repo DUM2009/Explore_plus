@@ -9999,6 +9999,11 @@ body.shadcn-profile .profile-hero-left {
     gap: 22px;
 }
 
+body.shadcn-profile .profile-hero-avatar-wrap {
+    position: relative;
+    flex: none;
+}
+
 body.shadcn-profile .profile-hero-avatar {
     display: grid;
     place-items: center;
@@ -10012,6 +10017,145 @@ body.shadcn-profile .profile-hero-avatar {
     font-family: var(--sp-font-serif);
     font-size: 2.6rem;
     font-weight: 600;
+    overflow: hidden;
+}
+
+body.shadcn-profile .profile-hero-avatar--imagem {
+    background: var(--sp-card);
+}
+
+body.shadcn-profile .profile-hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.shadcn-profile .profile-hero-avatar-edit {
+    display: block;
+    margin: 10px auto 0;
+    padding: 2px 4px;
+    border: none;
+    background: transparent;
+    color: var(--sp-muted-fg);
+    font-family: inherit;
+    font-size: .74rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+body.shadcn-profile .profile-hero-avatar-edit:hover {
+    background: transparent;
+    color: var(--sp-primary);
+    box-shadow: none;
+    transform: none;
+}
+
+body.shadcn-profile .profile-avatar-picker {
+    position: absolute;
+    z-index: 20;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 240px;
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .18);
+}
+
+body.shadcn-profile .profile-avatar-picker-title {
+    margin: 0 0 12px;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-avatar-picker-options {
+    display: flex;
+    gap: 14px;
+}
+
+body.shadcn-profile .profile-avatar-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-avatar-option-preview {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--sp-accent-soft);
+    border: 2px solid transparent;
+    transition: border-color .15s ease, transform .15s ease;
+}
+
+body.shadcn-profile .profile-avatar-option-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+body.shadcn-profile .profile-avatar-option-preview--letra {
+    font-family: var(--sp-font-serif);
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-avatar-option.is-active .profile-avatar-option-preview {
+    border-color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-avatar-option:not(.is-locked):hover .profile-avatar-option-preview {
+    transform: scale(1.05);
+}
+
+body.shadcn-profile .profile-avatar-option-label {
+    font-size: .74rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-avatar-option.is-active .profile-avatar-option-label {
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-avatar-option.is-locked {
+    cursor: default;
+}
+
+body.shadcn-profile .profile-avatar-option.is-locked .profile-avatar-option-preview {
+    opacity: .55;
+}
+
+body.shadcn-profile .profile-avatar-option-lock {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: rgba(20, 24, 21, .45);
+    color: #fff;
+}
+
+body.shadcn-profile .profile-avatar-picker-hint {
+    margin: 12px 0 0;
+    font-size: .74rem;
+    line-height: 1.5;
+    color: var(--sp-muted-fg);
 }
 
 body.shadcn-profile .profile-hero-info h1 {
