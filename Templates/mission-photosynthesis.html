@@ -175,6 +175,7 @@
         window.exploreProgressSyncUrl = '{% url "salvar-progresso-missao" %}';
         window.exploreWrongQuestionUrl = '{% url "registar-pergunta-errada" %}';
         window.exploreCsrfToken = '{{ csrf_token }}';
+        window.exploreActivityHeartbeatUrl = '{% url "registar-atividade" %}';
         window.exploreAvatarOptions = {
             biology: '{% static "images/Mascote Explore+ Biology Avatar.png" %}',
             geology: '{% static "images/Mascote Explore+ Geology Avatar.png" %}',
@@ -257,5 +258,6 @@
 
 <script src="{% static 'nav-tabs.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
+<script src="{% static 'activity-heartbeat.js' %}" defer></script>
 </body>
 </html>

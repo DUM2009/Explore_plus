@@ -249,6 +249,7 @@
 {{ vocabulario.termos|json_script:"flashcards-data" }}
 <script>
 window.exploreCsrfToken = '{{ csrf_token }}';
+window.exploreActivityHeartbeatUrl = '{% url "registar-atividade" %}';
 window.exploreMissaoId = '{{ missao_id|escapejs }}';
 window.exploreAtualizarVocabularioUrl = '{% url "atualizar-vocabulario" missao_id %}';
 
@@ -272,6 +273,7 @@ document.addEventListener('click', (event) => {
 <script src="{% static 'flashcards.js' %}?v={% now 'U' %}"></script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
+<script src="{% static 'activity-heartbeat.js' %}" defer></script>
 
 </body>
 

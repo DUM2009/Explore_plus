@@ -2200,35 +2200,214 @@ gap:20px;
     display:none;
 }
 
-.missions-category-panel ~ .missions-grid{
-    padding:0 18px 20px;
-    border-top:1px solid var(--sp-border, #e2e3db);
-    margin-top:4px;
-    padding-top:20px;
+/* Missões index: categories sit side by side as square panels. Each
+   panel is image-on-top + name/tagline/arrow below; clicking the arrow
+   grows that same panel downward to reveal its missions underneath
+   (see [data-missions-toggle] in index-missions.html), so the grid
+   layout only needs to size the panels themselves. */
+.missions-categories-board{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+    gap:20px;
+    align-items:start;
+    margin-bottom:20px;
 }
 
-.missions-category{
-    margin-bottom:44px;
-}
-
-.missions-category:last-of-type{
-    margin-bottom:0;
-}
-
-/* Missões index: category panel + its missions grid are visually one
-   card — the panel is the always-visible header, the grid is the part
-   that expands/collapses inside it (see [data-missions-toggle]). */
-.missions-category:has(.missions-category-panel){
+.missions-category-panel{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    width:100%;
     background:var(--sp-card, #fff);
     border:1px solid var(--sp-border, #e2e3db);
     border-radius:16px;
     overflow:hidden;
-    margin-bottom:20px;
+    transition:box-shadow .2s;
 }
 
-.missions-category-panel ~ .missions-grid .mission-card{
+.missions-category-panel:hover{
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+}
+
+/* Fixed pixel height (not a % of the card) so the image never eats
+   into the space the name/tagline/arrow below it need — that's what
+   was clipping the arrow off on categories with more text. */
+.missions-category-panel-image{
+    flex:0 0 140px;
+    background-color:var(--sp-border, #e2e3db);
+    background-size:cover;
+    background-position:center;
+}
+
+.missions-category-panel-body{
+    display:flex;
+    flex-direction:column;
+    padding:14px 16px 16px;
+}
+
+.missions-category-panel-name{
+    flex-shrink:0;
+    margin:0 0 8px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--sp-border, #d8d9d2);
+    color:var(--sp-fg, #1c1c1c);
+    font-size:1.05rem;
+    font-weight:700;
+    line-height:1.2;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+/* Testes page: no tagline sits between the name and the toggle, so the
+   arrow moves up next to the category name instead of sitting alone
+   far below it — the divider then belongs to this row, not the name
+   itself (see Testes.html's .missions-category-panel-header markup). */
+.missions-category-panel-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding-bottom:10px;
+    margin-bottom:8px;
+    border-bottom:1px solid var(--sp-border, #d8d9d2);
+}
+
+.missions-category-panel-header .missions-category-panel-name{
+    flex:1 1 auto;
+    margin:0;
+    padding-bottom:0;
+    border-bottom:none;
+}
+
+.missions-category-panel-header .missions-category-panel-toggle{
+    margin-top:0;
+    align-self:center;
+}
+
+/* Reserves a fixed height for up to 3 lines regardless of how many
+   lines the text actually wraps to, so every card ends up the same
+   height and the arrow below always sits in the same place. */
+.missions-category-panel-tagline{
+    flex-shrink:0;
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    min-height:calc(1.5em * 3);
+    margin:0 0 14px;
+    color:var(--sp-muted-fg, #68718b);
+    font-size:.85rem;
+    line-height:1.5;
+}
+
+/* The site-wide button{} / button:hover{} reset (green background,
+   shadow, hover lift) is an element selector, but button:hover's
+   pseudo-class still makes it as specific as a plain hover class, so
+   it keeps winning on any property this rule doesn't restate. Using
+   button.missions-category-panel-toggle (element+class) instead is
+   specific enough to beat it outright on every state. */
+button.missions-category-panel-toggle{
+    flex-shrink:0;
+    align-self:flex-end;
+    margin-top:8px;
+    width:28px;
+    height:28px;
+    padding:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:none;
+    color:var(--sp-fg, #1c1c1c);
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
     box-shadow:none;
-    border:1px solid var(--sp-border, #e2e3db);
+    transform:none;
+    transition:color .2s ease;
+}
+
+button.missions-category-panel-toggle:hover{
+    background:none;
+    box-shadow:none;
+    transform:none;
+    color:var(--sp-fg, #1c1c1c);
+}
+
+button.missions-category-panel-toggle svg{
+    width:20px;
+    height:20px;
+}
+
+button.missions-category-panel-toggle[aria-expanded="true"],
+button.missions-category-panel-toggle[aria-expanded="true"]:hover{
+    transform:rotate(180deg);
+}
+
+.missions-category-panel .missions-grid{
+    margin-top:16px;
+}
+
+/* Hides the tagline once a category is expanded so the mission card
+   takes its place right under the arrow, instead of sitting below a
+   now-redundant block of intro text (see .is-open toggled by JS). */
+.missions-category-panel.is-open .missions-category-panel-tagline{
+    display:none;
+}
+
+/* Missões index: inside the accordion, the mission's own CTA is a
+   plain green arrow instead of the site-wide filled "Começar" pill —
+   the pill reads as a second, competing button right under the arrow
+   that already opened this card. Locked/disabled "Em breve" buttons
+   are untouched (:not(.locked) excludes them). */
+.missions-category-panel .mission-card:not(.locked) > a > button,
+.missions-category-panel .mission-card:not(.locked) > button{
+    align-self:flex-end;
+    width:36px;
+    height:36px;
+    padding:0;
+    background:none;
+    border:none;
+    border-radius:50%;
+    box-shadow:none;
+    color:transparent;
+    font-size:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transform:none;
+    transition:background .2s ease;
+}
+
+.missions-category-panel .mission-card:not(.locked) > a > button:hover,
+.missions-category-panel .mission-card:not(.locked) > button:hover{
+    background:rgba(63,125,58,.12);
+    box-shadow:none;
+    transform:none;
+}
+
+.missions-category-panel .mission-card:not(.locked) > a > button::after,
+.missions-category-panel .mission-card:not(.locked) > button::after{
+    content:"";
+    width:0;
+    height:0;
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+    border-left:10px solid var(--sp-primary, #3f7d3a);
+}
+
+/* Inside the accordion the mission card's own title/text competed with
+   the category name above it for attention — scaled down to match the
+   panel's own type sizes (name: 1.05rem, tagline: .85rem). */
+.missions-category-panel .mission-card h2{
+    margin:0 0 8px;
+    font-size:1.05rem;
+}
+
+.missions-category-panel .mission-card p{
+    font-size:.85rem;
+    line-height:1.5;
 }
 
 .missions-category-title{
@@ -2258,62 +2437,6 @@ gap:20px;
 .missions-category-title-row .missions-category-title{
     flex:1 1 auto;
     margin:0;
-}
-
-/* Missões index: category header is a clickable square panel with a
-   themed image (cell for Citologia, grass for Biodiversidade, etc.)
-   instead of a plain text title. Clicking it expands/collapses the
-   missions grid below (see [data-missions-toggle] in index-missions.html). */
-.missions-category-panel{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    width:100%;
-    padding:14px 18px;
-    margin:0;
-    background:none;
-    border:none;
-    border-radius:0;
-    cursor:pointer;
-    text-align:left;
-}
-
-.missions-category-panel:hover{
-    background:rgba(0,0,0,.03);
-}
-
-.missions-category-panel:focus,
-.missions-category-panel:focus-visible{
-    outline:none;
-}
-
-.missions-category-panel-image{
-    flex-shrink:0;
-    width:56px;
-    height:56px;
-    border-radius:12px;
-    background-color:var(--sp-border, #e2e3db);
-    background-size:cover;
-    background-position:center;
-}
-
-.missions-category-panel-name{
-    flex:1 1 auto;
-    color:var(--sp-fg, #1c1c1c);
-    font-size:1.15rem;
-    font-weight:700;
-}
-
-.missions-category-panel-arrow{
-    flex-shrink:0;
-    width:22px;
-    height:22px;
-    color:var(--sp-muted-fg, #68718b);
-    transition:transform .2s ease;
-}
-
-.missions-category-panel[aria-expanded="true"] .missions-category-panel-arrow{
-    transform:rotate(180deg);
 }
 
 .dicionario-flashcards-link{
@@ -3023,6 +3146,14 @@ gap:20px;
     filter:drop-shadow(0 6px 12px rgba(31,138,91,.35));
 }
 
+/* The cream box above only hides the video's baked-in light backdrop on
+   the light page background it matches — in dark mode it just reads as
+   a stray white square, which is worse than the backdrop it was hiding. */
+html.dark-mode .teste-mascote-fab,
+html.dark-mode .teste-mascote-fab:hover{
+    background:none;
+}
+
 .teste-mascote-fab-tooltip{
     position:absolute;
     right:0;
@@ -3690,6 +3821,16 @@ line-height:1.6;
         flex-direction:column;
         align-items:stretch;
     }
+}
+
+/* Missões index: the mission card sits inside a narrow square category
+   panel now, not a full-width row, so it always needs the stacked
+   (column) layout regardless of viewport width. */
+.missions-category-panel .missions-grid:not(.teste-missions-grid) .mission-card{
+    flex-direction:column;
+    align-items:stretch;
+    box-shadow:none;
+    border:1px solid var(--sp-border, #e2e3db);
 }
 
 .status{
@@ -8873,6 +9014,17 @@ body.shadcn-profile .sidebar-theme-card .header-icon-btn {
     border-radius: 8px;
 }
 
+/* The theme toggle should read as "clicking the sun/moon icon", not as
+   pressing a button — no hover box behind it. Needs background, AND the
+   site-wide button:hover's box-shadow/transform (its green glow + lift),
+   reset explicitly: overriding just background left that glow visible,
+   still reading as a hover "box" behind the icon. */
+body.shadcn-profile .sidebar-theme-card .header-icon-btn:hover {
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
 html.dark-mode body.shadcn-profile .sidebar-theme-card {
     background: #1b1f1c;
     border-color: transparent;
@@ -11244,6 +11396,128 @@ body.shadcn-profile .profile-hero-rank {
     color: var(--sp-muted-fg, #767c70);
 }
 
+/* c.1) Tempo de estudo por dia — barras verticais com os minutos reais
+   dos últimos 7 dias (RegistoAtividadeDiaria), mesma ideia visual do
+   gráfico estático da página inicial, mas com dados reais do aluno. */
+#statsTempoTabs span {
+    cursor: pointer;
+    user-select: none;
+}
+
+.stats-tempo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.stats-tempo-header h2 {
+    margin: 0;
+}
+
+.stats-tempo-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    height: 160px;
+    border-bottom: 1px solid var(--sp-border, #e5e7eb);
+    padding-bottom: 6px;
+}
+
+.stats-tempo-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 8px;
+}
+
+.stats-tempo-valor {
+    font-size: .7rem;
+    font-weight: 700;
+    color: #1f8a5b;
+}
+
+.stats-tempo-bar {
+    width: 100%;
+    max-width: 34px;
+    min-height: 2px;
+    border-radius: 8px;
+    background: #1f8a5b;
+}
+
+.stats-tempo-label {
+    font-size: .68rem;
+    color: var(--sp-muted-fg, #9ca3af);
+    white-space: nowrap;
+}
+
+/* Aba "30d" — gráfico de linha com um ponto por dia (evolução real), em
+   vez de barras: os pontos são elementos HTML posicionados em % sobre o
+   plot (mantêm-se circulares mesmo com o SVG da linha esticado por
+   preserveAspectRatio="none"). */
+.stats-linha-chart {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-linha-plot {
+    position: relative;
+    height: 160px;
+    border-bottom: 1px solid var(--sp-border, #e5e7eb);
+    padding-bottom: 6px;
+}
+
+.stats-linha-plot .stats-chart-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stats-linha-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    margin-bottom: 6px;
+    border-radius: 50%;
+    background: #1f8a5b;
+    box-shadow: 0 0 0 2px var(--sp-card, #ffffff);
+    transform: translate(-50%, 50%);
+}
+
+.stats-linha-labels {
+    margin: 8px 0 0;
+}
+
+/* b) Desempenho por unidade — modo "Quizz por missão": chips para
+   escolher o capítulo antes de ver as missões desse capítulo no gráfico. */
+.stats-desempenho-capitulos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.stats-desempenho-chip {
+    border: 1px solid var(--sp-border, #e5e7eb);
+    background: var(--sp-bg, #f5f9f7);
+    color: var(--sp-muted-fg, #767c70);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: .8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.stats-desempenho-chip.is-active {
+    background: rgba(31, 138, 91, .12);
+    border-color: transparent;
+    color: #1f8a5b;
+}
+
 /* d) Resumo de vocabulário */
 .stats-vocab-row {
     display: grid;
@@ -11728,6 +12002,18 @@ html.dark-mode .teste-voltar {
 
 html.dark-mode .teste-voltar:hover {
     color: #4fd897;
+}
+
+/* Testes: os painéis "Teste 1/2/3" dentro de cada missão ficam pretos
+   com texto branco em modo escuro (mantêm o botão "Começar" e o selo
+   "SuperExplore" como estão, já se destacam bem no fundo escuro). */
+html.dark-mode .teste-item {
+    background: #000000;
+    border-color: #27272a;
+}
+
+html.dark-mode .teste-item-titulo {
+    color: #ffffff;
 }
 
 html.dark-mode .resumo-card {

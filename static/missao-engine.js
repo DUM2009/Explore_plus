@@ -73,15 +73,27 @@
             this.startActivityHeartbeat();
         }
 
-        /** Regista tempo de estudo (para "Hábitos de estudo" nas
-         *  Estatísticas) — um ping por minuto, só enquanto o separador
-         *  estiver mesmo visível, para não contar tempo com a aba em
-         *  segundo plano. Falhas são silenciosas: isto é telemetria, não
-         *  deve nunca bloquear ou quebrar a missão em si. */
+        /** Regista tempo de estudo (para "Hábitos de estudo" e os gráficos
+         *  de tempo de estudo nas Estatísticas) — um ping por minuto, só
+         *  enquanto o separador estiver mesmo visível E o aluno tiver
+         *  interagido (rato, teclado, scroll ou toque) nos últimos 5
+         *  minutos. Sem isto, deixar a página aberta e esquecida faria o
+         *  temporizador contar tempo indefinidamente, o que não seria
+         *  tempo de estudo real. Falhas são silenciosas: isto é
+         *  telemetria, não deve nunca bloquear ou quebrar a missão em si. */
         startActivityHeartbeat() {
             if (!this.activityHeartbeatUrl) return;
+
+            const LIMITE_INATIVIDADE_MS = 5 * 60 * 1000;
+            let ultimaInteracao = Date.now();
+            const marcarInteracao = () => { ultimaInteracao = Date.now(); };
+            ['mousemove', 'mousedown', 'keydown', 'scroll', 'touchstart', 'wheel'].forEach((evento) => {
+                window.addEventListener(evento, marcarInteracao, { passive: true });
+            });
+
             const enviarPing = () => {
                 if (document.visibilityState !== 'visible') return;
+                if (Date.now() - ultimaInteracao > LIMITE_INATIVIDADE_MS) return;
                 fetch(this.activityHeartbeatUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'X-CSRFToken': this.csrfToken },

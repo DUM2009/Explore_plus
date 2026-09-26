@@ -151,7 +151,42 @@
 
 <section class="missions-page estatisticas-page">
     <h1>Estatísticas</h1>
-    <p>O teu progresso pessoal — comparado só com o teu próprio histórico, nunca com outros alunos.</p>
+    <div class="missions-page-subrow">
+        <p>O teu progresso pessoal — comparado só com o teu próprio histórico, nunca com outros alunos.</p>
+        <div class="subject-switcher">
+            <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
+                <span>Explore Biology</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
+                <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="stats-card">
+        <div class="stats-tempo-header">
+            <h2 id="statsTempoTitle">Tempo de estudo — esta semana</h2>
+            <div class="evolution-tabs" id="statsTempoTabs">
+                <span class="active" data-periodo="7d">7d</span>
+                <span data-periodo="30d">30d</span>
+                <span data-periodo="sempre">Sempre</span>
+            </div>
+        </div>
+        <div class="stats-tempo-chart" id="statsTempoChart">
+            {% for dia in tempo_estudo_dias %}
+            <div class="stats-tempo-col">
+                <span class="stats-tempo-valor">{{ dia.valor_label }}</span>
+                <span class="stats-tempo-bar" style="height: {{ dia.percent }}%"></span>
+                <span class="stats-tempo-label">{{ dia.label }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {{ tempo_estudo_periodos|json_script:"statsTempoPeriodos" }}
 
     <div class="stats-card">
         <h2>Evolução das notas</h2>
@@ -179,28 +214,37 @@
     </div>
 
     <div class="stats-card">
-        <h2>Desempenho por unidade</h2>
-        <div class="stats-unidades">
-            {% for unidade in desempenho_unidades %}
-            <div class="stats-unidade-row">
-                <span class="stats-unidade-nome">{{ unidade.nome }}</span>
-                {% if unidade.sem_dados %}
-                <span class="stats-unidade-vazio">Ainda sem dados</span>
-                {% else %}
-                <div class="stats-unidade-bar-wrap">
-                    <div class="stats-unidade-bar" style="width: {{ unidade.percent }}%; background: {{ unidade.cor_a }};"></div>
-                </div>
-                <span class="stats-unidade-percent">
-                    {{ unidade.percent }}%
-                    {% if unidade.delta %}
-                    <small class="stats-unidade-delta {% if unidade.delta > 0 %}is-up{% else %}is-down{% endif %}">({{ unidade.delta|stringformat:"+d" }}% desde o início)</small>
-                    {% endif %}
-                </span>
-                {% endif %}
+        <div class="stats-tempo-header">
+            <h2 id="statsDesempenhoTitle">Desempenho por unidade</h2>
+            <div class="subject-switcher" id="statsDesempenhoModo">
+                <button type="button" class="subject-switcher-trigger" id="statsDesempenhoModoBtn" aria-haspopup="true" aria-expanded="false">
+                    <span id="statsDesempenhoModoLabel">Quizzes por capítulo</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <ul class="subject-switcher-menu" id="statsDesempenhoModoMenu" hidden>
+                    <li><button type="button" class="subject-switcher-option is-active" data-modo="quizzes_capitulo">Quizzes por capítulo</button></li>
+                    <li><button type="button" class="subject-switcher-option" data-modo="missoes">Evolução das missões</button></li>
+                    <li><button type="button" class="subject-switcher-option" data-modo="quizzes_missao">Quizz por missão</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="stats-desempenho-capitulos" id="statsDesempenhoCapitulos" hidden>
+            {% for capitulo in desempenho_capitulos %}
+            <button type="button" class="stats-desempenho-chip" data-capitulo="{{ capitulo.id }}">{{ capitulo.label }}</button>
+            {% endfor %}
+        </div>
+        <div class="stats-tempo-chart" id="statsDesempenhoChart">
+            {% for ponto in desempenho_quizzes_capitulo %}
+            <div class="stats-tempo-col">
+                <span class="stats-tempo-valor">{{ ponto.valor_label }}</span>
+                <span class="stats-tempo-bar" style="height: {{ ponto.percent }}%; background: {{ ponto.cor }};"></span>
+                <span class="stats-tempo-label">{{ ponto.label }}</span>
             </div>
             {% endfor %}
         </div>
     </div>
+    {{ desempenho_periodos|json_script:"statsDesempenhoDados" }}
+    {{ desempenho_capitulos|json_script:"statsDesempenhoCapitulosDados" }}
 
     <div class="stats-card">
         <h2>Hábitos de estudo</h2>
@@ -249,6 +293,9 @@
 </section>
 
 <script>
+window.exploreActivityHeartbeatUrl = "{% url 'registar-atividade' %}";
+window.exploreCsrfToken = "{{ csrf_token }}";
+
 const accountTrigger = document.getElementById('profileAccountTrigger');
 const accountMenu = document.getElementById('profileAccountMenu');
 
@@ -266,6 +313,10 @@ document.addEventListener('click', (event) => {
     }
 });
 </script>
+<script src="{% static 'subject-switcher.js' %}" defer></script>
+<script src="{% static 'stats-tempo.js' %}" defer></script>
+<script src="{% static 'stats-desempenho.js' %}" defer></script>
+<script src="{% static 'activity-heartbeat.js' %}" defer></script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
 
