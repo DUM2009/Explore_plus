@@ -22,13 +22,14 @@
     window.exploreUserEmail = '{{ request.user.email|escapejs }}';
     window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
     window.exploreCsrfToken = '{{ csrf_token }}';
+    window.exploreActivityHeartbeatUrl = '{% url "registar-atividade" %}';
 </script>
 
 <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
 
 <section class="profile-layout has-sidebar sidebar-collapsible">
 
-<aside class="profile-sidebar" id="profileSidebar" aria-hidden="true">
+<aside class="profile-sidebar is-open" id="profileSidebar" aria-hidden="false">
 <div class="profile-sidebar-brand">
 <div>
             <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
@@ -51,6 +52,7 @@
 <a href="/perfil/" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
 <span class="profile-sidebar-label">Perfil</span>
 </a>
+
 
 <a href="{% url 'index-missions' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target-icon lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
 <span class="profile-sidebar-label">Missões</span>
@@ -150,13 +152,6 @@
     <div class="missions-topbar-logo">
         <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
     </div>
-    <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="Abrir menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-    </button>
-</div>
-
-<div class="profile-header-actions profile-header-actions--icons-only">
-
     <div class="header-icon-wrapper">
     <button class="header-icon-btn" id="notificationsBtn" type="button" aria-label="Notificações" aria-expanded="false">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-icon lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
@@ -166,7 +161,6 @@
         <li class="notifications-empty">Nenhuma notificação</li>
     </ul>
     </div>
-
 </div>
 
 <div class="profile-hero">
@@ -200,9 +194,6 @@
             <h1 id="nomeAluno">Olá, {{ request.user.username }}!</h1>
             <p class="profile-hero-rank" id="profileRankSubtitle" title="{{ titulo_descricao }}">{{ titulo_nome }}</p>
             <span class="profile-hero-level-pill">Nível <span id="profileLevelBadge">{{ nivel }}</span></span>
-            {% if proximo_titulo %}
-            <p class="profile-hero-next-title">Nível {{ proximo_titulo.0 }} desbloqueia "{{ proximo_titulo.1 }}"</p>
-            {% endif %}
         </div>
     </div>
 
@@ -230,11 +221,10 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg>
         Conquistas
     </button>
-    <span class="profile-tab is-disabled">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+    <button type="button" class="profile-tab" data-tab-target="estatisticas">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chart-column"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
         Estatísticas
-        <em>Em breve</em>
-    </span>
+    </button>
 </nav>
 
 <div class="profile-grid">
@@ -265,7 +255,11 @@
                 <div class="progresso" id="xpProgressBar" data-progress="{{ xp_progress_percent }}"></div>
             </div>
 
+            {% if proximo_titulo and proximo_titulo.0 == proximo_nivel %}
+            <p class="profile-subject-caption" id="xpNextLevelText">Nível {{ proximo_titulo.0 }} desbloqueia "{{ proximo_titulo.1 }}"</p>
+            {% else %}
             <p class="profile-subject-caption" id="xpNextLevelText">{{ xp_restante }} XP até ao nível {{ proximo_nivel }}</p>
+            {% endif %}
 
             <span id="nivelAluno" hidden></span>
         </div>
@@ -294,12 +288,6 @@
                     </span>
                 </a>
                 {% endfor %}
-
-                {% if missoes_bloqueadas %}
-                <div class="profile-locked-banner">
-                    {% if missoes %}🔒 Novas missões chegam em breve — continua a explorar {{ missoes.0.titulo }}!{% else %}🔒 Novas missões chegam em breve!{% endif %}
-                </div>
-                {% endif %}
             </div>
         </div>
 
@@ -324,9 +312,132 @@
         </div>
     </div>
 
+    <div class="profile-tab-panel estatisticas-page" data-tab-panel="estatisticas" hidden>
+        <p class="profile-stats-intro">O teu progresso pessoal — comparado só com o teu próprio histórico, nunca com outros alunos.</p>
+
+        <div class="stats-card">
+            <div class="stats-tempo-header">
+                <h2 id="statsTempoTitle">Tempo de estudo — esta semana</h2>
+                <div class="evolution-tabs" id="statsTempoTabs">
+                    <span class="active" data-periodo="7d">7d</span>
+                    <span data-periodo="30d">30d</span>
+                    <span data-periodo="sempre">Sempre</span>
+                </div>
+            </div>
+            <div class="stats-tempo-chart" id="statsTempoChart">
+                {% for dia in tempo_estudo_dias %}
+                <div class="stats-tempo-col">
+                    <span class="stats-tempo-valor">{{ dia.valor_label }}</span>
+                    <span class="stats-tempo-bar" style="height: {{ dia.percent }}%"></span>
+                    <span class="stats-tempo-label">{{ dia.label }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {{ tempo_estudo_periodos|json_script:"statsTempoPeriodos" }}
+
+        <div class="stats-card">
+            <h2>Evolução das notas</h2>
+            {% if evolucao %}
+            <div class="stats-chart">
+                <div class="stats-chart-yaxis">
+                    <span>20</span>
+                    <span>10</span>
+                    <span>0</span>
+                </div>
+                <svg class="stats-chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none">
+                    <line x1="0" y1="0" x2="300" y2="0" class="stats-chart-gridline"/>
+                    <line x1="0" y1="50" x2="300" y2="50" class="stats-chart-gridline"/>
+                    <line x1="0" y1="100" x2="300" y2="100" class="stats-chart-gridline"/>
+                    <polyline points="{{ evolucao_pontos }}" class="stats-chart-line"/>
+                </svg>
+            </div>
+            <div class="stats-chart-labels">
+                <span>{{ evolucao.0.label }}</span>
+                {% with ultimo=evolucao|last %}<span>{{ ultimo.label }}</span>{% endwith %}
+            </div>
+            {% else %}
+            <p class="stats-empty">Ainda não corrigiste nenhum teste ou exame — assim que o fizeres, a tua evolução aparece aqui.</p>
+            {% endif %}
+        </div>
+
+        <div class="stats-card">
+            <div class="stats-tempo-header">
+                <h2 id="statsDesempenhoTitle">Desempenho por unidade</h2>
+                <div class="subject-switcher" id="statsDesempenhoModo">
+                    <button type="button" class="subject-switcher-trigger" id="statsDesempenhoModoBtn" aria-haspopup="true" aria-expanded="false">
+                        <span id="statsDesempenhoModoLabel">Quizzes por capítulo</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <ul class="subject-switcher-menu" id="statsDesempenhoModoMenu" hidden>
+                        <li><button type="button" class="subject-switcher-option is-active" data-modo="quizzes_capitulo">Quizzes por capítulo</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-modo="missoes">Evolução das missões</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-modo="quizzes_missao">Quizz por missão</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stats-desempenho-capitulos" id="statsDesempenhoCapitulos" hidden>
+                {% for capitulo in desempenho_capitulos %}
+                <button type="button" class="stats-desempenho-chip" data-capitulo="{{ capitulo.id }}">{{ capitulo.label }}</button>
+                {% endfor %}
+            </div>
+            <div class="stats-tempo-chart" id="statsDesempenhoChart">
+                {% for ponto in desempenho_quizzes_capitulo %}
+                <div class="stats-tempo-col">
+                    <span class="stats-tempo-valor">{{ ponto.valor_label }}</span>
+                    <span class="stats-tempo-bar" style="height: {{ ponto.percent }}%; background: {{ ponto.cor }};"></span>
+                    <span class="stats-tempo-label">{{ ponto.label }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {{ desempenho_periodos|json_script:"statsDesempenhoDados" }}
+        {{ desempenho_capitulos|json_script:"statsDesempenhoCapitulosDados" }}
+
+        <div class="stats-card">
+            <h2>Hábitos de estudo</h2>
+            <div class="stats-habitos-grid">
+                <div class="stats-habito">
+                    <span class="stats-habito-valor">{{ tempo_semana_min }} min</span>
+                    <span class="stats-habito-label">Tempo de estudo esta semana</span>
+                </div>
+                <div class="stats-habito">
+                    <span class="stats-habito-valor">{{ sequencia_atual }} dia{{ sequencia_atual|pluralize }}</span>
+                    <span class="stats-habito-label">Sequência atual</span>
+                </div>
+                <div class="stats-habito">
+                    <span class="stats-habito-valor">{{ sequencia_recorde }} dia{{ sequencia_recorde|pluralize }}</span>
+                    <span class="stats-habito-label">Recorde pessoal</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-card">
+            <h2>Vocabulário</h2>
+            {% if vocab_total_termos > 0 %}
+            <div class="stats-vocab-row">
+                <div class="stats-vocab-item stats-vocab-item--dominado">
+                    <span class="stats-vocab-valor">{{ vocab_totais.dominado }}</span>
+                    <span class="stats-vocab-label">Dominados</span>
+                </div>
+                <div class="stats-vocab-item stats-vocab-item--rever">
+                    <span class="stats-vocab-valor">{{ vocab_totais.a_rever }}</span>
+                    <span class="stats-vocab-label">A rever</span>
+                </div>
+                <div class="stats-vocab-item">
+                    <span class="stats-vocab-valor">{{ vocab_totais.novo }}</span>
+                    <span class="stats-vocab-label">Por explorar</span>
+                </div>
+            </div>
+            {% else %}
+            <p class="stats-empty">A tua Biblioteca do Explorador ainda está vazia.</p>
+            {% endif %}
+        </div>
     </div>
 
-    <div class="profile-grid-aside">
+    </div>
+
+    <div class="profile-grid-aside" data-tab-panel="perfil">
 
         <div class="profile-quote-card">
             <p class="profile-quote-text" id="profileQuoteText">A ciência é a forma mais bonita de explorar o mundo.</p>
@@ -366,7 +477,7 @@
     </div>
     <div class="mascote-chat-messages" id="mascoteChatMessages">
         <div class="mascote-chat-welcome" id="mascoteChatWelcome">
-            <video src="{% static 'Mascote a acenar.webm' %}" class="mascote-chat-welcome-video" autoplay loop muted playsinline></video>
+            <img src="{% static 'images/Mascote com dúvidas.png' %}" class="mascote-chat-welcome-video" alt="Mascote com dúvidas">
             <div class="mascote-chat-welcome-copy">
                 <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
                 <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>
@@ -475,6 +586,9 @@
 })();
 </script>
 <script src="{% static 'profile-django.js' %}" defer></script>
+<script src="{% static 'stats-tempo.js' %}" defer></script>
+<script src="{% static 'stats-desempenho.js' %}" defer></script>
+<script src="{% static 'activity-heartbeat.js' %}" defer></script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 
 </body>

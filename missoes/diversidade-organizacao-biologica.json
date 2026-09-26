@@ -2,7 +2,7 @@
   "missao_id": "diversidade-organizacao-biologica",
   "titulo": "Diversidade e Organização Biológica",
   "disciplina": "biodiversidade",
-  "badge": { "icone": "🧬", "nome": "Mestre da Biodiversidade" },
+  "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z\"/><path d=\"M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12\"/></svg>", "nome": "Mestre da Biodiversidade" },
   "secoes": [
     {
       "secao_id": "hierarquia-biologica",
@@ -180,7 +180,7 @@
         {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
-          "mascote_texto": "Achas que \"biodiversidade\" é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra. 🐢",
+          "mascote_texto": "Achas que \"biodiversidade\" é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra.",
           "ponte_texto": "Vamos descobrir os três níveis que compõem a biodiversidade de um ecossistema.",
           "titulo": "Os três níveis de biodiversidade",
           "imagem": "tres_niveis_biodiversidade.png",
@@ -234,7 +234,7 @@
               "mascote_feedback_errado": "Na verdade é falso — a biodiversidade concentra-se de forma desigual, com \"hotspots\" de alta biodiversidade."
             }
           ],
-          "mascote_conclusao": "Já sabes que biodiversidade é muito mais do que contar espécies. Para terminar, vamos ver o que acontece quando essa diversidade começa a desaparecer — e o que se pode fazer para a proteger. 🐢"
+          "mascote_conclusao": "Já sabes que biodiversidade é muito mais do que contar espécies. Para terminar, vamos ver o que acontece quando essa diversidade começa a desaparecer — e o que se pode fazer para a proteger."
         }
       ]
     },
@@ -246,7 +246,7 @@
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
-          "mascote_texto": "Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade. 🐢",
+          "mascote_texto": "Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade.",
           "titulo": "Causas da perda de biodiversidade",
           "cartao_estilo": true,
           "imagem": "causas_extincao.png",
@@ -322,7 +322,7 @@
               "mascote_feedback_errado": "Na verdade é falso — as espécies invasoras podem causar grandes desequilíbrios, por não terem inimigos naturais locais."
             }
           ],
-          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que é a biodiversidade e como a proteger. 🌍🐢"
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão sobre Diversidade e Organização Biológica. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que é a biodiversidade e como a proteger. 🌍"
         }
       ]
     }

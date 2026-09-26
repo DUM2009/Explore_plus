@@ -1,6 +1,6 @@
 # Missão: Ecossistemas, Biodiversidade e Conservação — Guião de Conteúdo COMPLETO
 
-**Modo único acompanhado** (mascote sempre presente por padrão; toggle nas Definições para desativar comentários 🐢).
+**Modo único acompanhado** (mascote sempre presente por padrão; toggle nas Definições para desativar comentários).
 
 Cada secção segue: **Gancho → Diagrama interativo → 2-3 Micro-verificações → Analogia → Aprofundar → Quiz da secção (3 perguntas)**.
 
@@ -12,7 +12,7 @@ Cada secção segue: **Gancho → Diagrama interativo → 2-3 Micro-verificaçõ
 **XP: 20 · Tempo estimado: 5 min**
 
 ### Ecrã 1 — Gancho
-🐢 *"Um peixe sozinho não é um ecossistema. Mas o peixe, mais os outros peixes, mais as algas, mais o rio onde vivem... isso já é."*
+*"Um peixe sozinho não é um ecossistema. Mas o peixe, mais os outros peixes, mais as algas, mais o rio onde vivem... isso já é."*
 **Texto**: Para estudar a natureza, os ecólogos organizam a vida em níveis, cada um mais amplo do que o anterior — desde um único organismo até ao planeta inteiro.
 
 ### Ecrã 2 — Diagrama interativo
@@ -29,15 +29,15 @@ Pontos clicáveis:
 ### Ecrã 3 — Micro-verificação 1
 **Pergunta**: Todas as trutas de um rio, da mesma espécie, formam:
 (A) Uma população ✓ (B) Uma comunidade
-🐢 *Certo*: "Exato! Como são da mesma espécie, é uma população."
+*Certo*: "Exato! Como são da mesma espécie, é uma população."
 
 ### Ecrã 4 — Micro-verificação 2
 **Pergunta**: Um ecossistema é composto por:
 (A) Só os seres vivos de uma área (B) A comunidade de seres vivos + o ambiente físico à sua volta ✓
-🐢 *Certo*: "Correto! É essa combinação (seres vivos + ambiente físico) que define um ecossistema."
+*Certo*: "Correto! É essa combinação (seres vivos + ambiente físico) que define um ecossistema."
 
 ### Ecrã 5 — Analogia
-🐢 *"Pensa nisto como..."*
+*"Pensa nisto como..."*
 > 💡 A hierarquia ecológica é como o **zoom de uma câmara fotográfica**: começas com um zoom muito próximo (um único animal), depois afastas um pouco e vês o grupo dele (população), afastas mais e vês todos os grupos diferentes a interagir (comunidade), afastas ainda mais e vês toda a paisagem à volta (ecossistema), até que, no afastamento máximo, vês o planeta inteiro (biosfera).
 
 ### Ecrã 6 — Aprofundar
@@ -57,7 +57,7 @@ Pontos clicáveis:
 **XP: 30 · Tempo estimado: 8 min**
 
 ### Ecrã 1 — Gancho
-🐢 *"A energia do Sol que chega a uma folha hoje pode, poucos dias depois, estar a mover os músculos de um leão. Como é que a energia viaja assim?"*
+*"A energia do Sol que chega a uma folha hoje pode, poucos dias depois, estar a mover os músculos de um leão. Como é que a energia viaja assim?"*
 
 ### Ecrã 2 — Diagrama interativo (parte 1 — níveis tróficos)
 **Brief de imagem**: pirâmide com 4 níveis, larga na base e estreita no topo: Produtores (plantas/algas, verde) → Consumidores primários (herbívoros) → Consumidores secundários (carnívoros que comem herbívoros) → Consumidores terciários (carnívoros de topo). Ao lado da pirâmide, setas a apontar para baixo desde todos os níveis até um grupo de "Decompositores" na base.
@@ -79,20 +79,20 @@ Pontos clicáveis:
 ### Ecrã 4 — Micro-verificação 1
 **Pergunta**: Os organismos que fabricam o seu próprio alimento, servindo de base à cadeia alimentar, chamam-se:
 (A) Consumidores (B) Produtores ✓
-🐢 *Certo*: "Exato! Sem produtores, não haveria energia disponível para mais ninguém na cadeia."
+*Certo*: "Exato! Sem produtores, não haveria energia disponível para mais ninguém na cadeia."
 
 ### Ecrã 5 — Micro-verificação 2
 **Pergunta**: A energia, ao contrário da matéria, num ecossistema:
 (A) É reciclada indefinidamente (B) Flui numa só direção, perdendo-se como calor ✓
-🐢 *Certo*: "Correto! Por isso é preciso entrar sempre nova energia solar — a energia não volta a circular como a matéria."
+*Certo*: "Correto! Por isso é preciso entrar sempre nova energia solar — a energia não volta a circular como a matéria."
 
 ### Ecrã 6 — Micro-verificação 3
 **Pergunta**: Os decompositores são fundamentais porque:
 (A) Produzem energia solar (B) Devolvem nutrientes ao ambiente, permitindo o ciclo de matéria ✓
-🐢 *Certo*: "Isso mesmo! Sem eles, os nutrientes ficariam presos nos corpos mortos para sempre."
+*Certo*: "Isso mesmo! Sem eles, os nutrientes ficariam presos nos corpos mortos para sempre."
 
 ### Ecrã 7 — Analogia
-🐢 *"Pensa nisto como..."*
+*"Pensa nisto como..."*
 > 💡 A energia num ecossistema é como o **dinheiro que gastas num café**: entra, passa de mão em mão (do dono ao fornecedor, ao empregado), mas uma parte "escapa-se" sempre como custos/perdas a cada troca — nunca volta inteiro ao ponto de partida. Já a matéria (nutrientes) é como **garrafas de vidro num sistema de depósito e devolução**: usam-se, mas voltam sempre a circular, indefinidamente, através da reciclagem feita pelos decompositores.
 
 ### Ecrã 8 — Aprofundar
@@ -104,7 +104,7 @@ Pontos clicáveis:
 2. Verdadeiro ou Falso: a matéria (nutrientes) é reciclada num ecossistema, mas a energia não. **Verdadeiro**.
 3. Um predador de topo (consumidor terciário) tem, tipicamente, muito mais ou muito menos energia disponível do que os produtores? (A) Muito menos ✓ (B) Muito mais
 
-🐢 *"Já percebeste como a energia e a matéria se movem num ecossistema. A seguir, vamos falar sobre a riqueza de vida que torna tudo isto possível: a biodiversidade."*
+*"Já percebeste como a energia e a matéria se movem num ecossistema. A seguir, vamos falar sobre a riqueza de vida que torna tudo isto possível: a biodiversidade."*
 
 ---
 
@@ -112,7 +112,7 @@ Pontos clicáveis:
 **XP: 25 · Tempo estimado: 6 min**
 
 ### Ecrã 1 — Gancho
-🐢 *"Achas que 'biodiversidade' é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra."*
+*"Achas que 'biodiversidade' é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra."*
 
 ### Ecrã 2 — Diagrama interativo
 **Brief de imagem**: 3 círculos lado a lado, cada um com uma ilustração diferente: (1) vários cães de raças muito diferentes entre si (diversidade genética dentro da mesma espécie), (2) vários animais diferentes num mesmo habitat — leão, zebra, elefante (diversidade de espécies), (3) uma paisagem com vários ecossistemas visíveis lado a lado — floresta, rio, savana (diversidade de ecossistemas).
@@ -125,15 +125,15 @@ Pontos clicáveis:
 ### Ecrã 3 — Micro-verificação 1
 **Pergunta**: A variedade de genes dentro da mesma espécie chama-se:
 (A) Diversidade genética ✓ (B) Diversidade de ecossistemas
-🐢 *Certo*: "Exato! É esta diversidade que, por exemplo, ajuda uma espécie a adaptar-se a mudanças ambientais."
+*Certo*: "Exato! É esta diversidade que, por exemplo, ajuda uma espécie a adaptar-se a mudanças ambientais."
 
 ### Ecrã 4 — Micro-verificação 2
 **Pergunta**: A biodiversidade é medida apenas pelo número de espécies numa área?
 (A) Sim, apenas isso (B) Não — inclui também diversidade genética e de ecossistemas ✓
-🐢 *Certo*: "Correto! Uma área pode ter poucas espécies mas alta diversidade genética dentro delas, ou vice-versa."
+*Certo*: "Correto! Uma área pode ter poucas espécies mas alta diversidade genética dentro delas, ou vice-versa."
 
 ### Ecrã 5 — Analogia
-🐢 *"Pensa nisto como..."*
+*"Pensa nisto como..."*
 > 💡 A biodiversidade é como a **diversidade numa biblioteca**, medida a três níveis: quantos livros diferentes existem (espécies), quanta variedade de edições/traduções existe de cada livro (genética), e quantas secções/géneros literários diferentes existem na biblioteca toda (ecossistemas). Uma biblioteca "rica" não é só sobre ter muitos livros — é sobre ter variedade a todos estes níveis.
 
 ### Ecrã 6 — Aprofundar
@@ -145,7 +145,7 @@ Pontos clicáveis:
 2. Uma espécie "endémica" de uma região é aquela que: (A) Existe em todo o mundo (B) Não existe naturalmente em mais lado nenhum ✓
 3. Verdadeiro ou Falso: a biodiversidade está distribuída de forma igual por todo o planeta. **Falso** — concentra-se de forma desigual, com "hotspots" de alta biodiversidade.
 
-🐢 *"Já sabes que biodiversidade é muito mais do que contar espécies. Para terminar, vamos ver o que acontece quando essa diversidade começa a desaparecer — e o que se pode fazer para a proteger."*
+*"Já sabes que biodiversidade é muito mais do que contar espécies. Para terminar, vamos ver o que acontece quando essa diversidade começa a desaparecer — e o que se pode fazer para a proteger."*
 
 ---
 
@@ -153,7 +153,7 @@ Pontos clicáveis:
 **XP: 25 · Tempo estimado: 7 min**
 
 ### Ecrã 1 — Gancho
-🐢 *"Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade."*
+*"Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade."*
 
 ### Ecrã 2 — Diagrama interativo (parte 1 — causas de extinção)
 **Brief de imagem**: um mapa/ilustração central de um habitat, com 5 ícones de ameaças à volta, cada um com uma seta a "atacar" o habitat: uma serra elétrica (destruição de habitat), um termómetro a subir (alterações climáticas), uma espécie estranha a chegar de barco (espécies invasoras), uma fábrica a poluir (poluição), e uma rede de pesca sobrecarregada (sobre-exploração).
@@ -177,20 +177,20 @@ Pontos clicáveis:
 ### Ecrã 4 — Micro-verificação 1
 **Pergunta**: Qual é, atualmente, a principal causa de perda de biodiversidade?
 (A) Destruição de habitat ✓ (B) Reprodução em cativeiro
-🐢 *Certo*: "Exato! A destruição de habitats naturais é hoje a maior ameaça à biodiversidade global."
+*Certo*: "Exato! A destruição de habitats naturais é hoje a maior ameaça à biodiversidade global."
 
 ### Ecrã 5 — Micro-verificação 2
 **Pergunta**: A CITES é um exemplo de:
 (A) Uma espécie invasora (B) Um acordo internacional de conservação ✓
-🐢 *Certo*: "Correto! A CITES regula o comércio internacional de espécies ameaçadas."
+*Certo*: "Correto! A CITES regula o comércio internacional de espécies ameaçadas."
 
 ### Ecrã 6 — Micro-verificação 3
 **Pergunta**: Espécies introduzidas fora da sua área natural, sem inimigos naturais que as controlem, são chamadas:
 (A) Espécies endémicas (B) Espécies invasoras ✓
-🐢 *Certo*: "Isso mesmo! Podem causar grandes desequilíbrios nos ecossistemas onde são introduzidas."
+*Certo*: "Isso mesmo! Podem causar grandes desequilíbrios nos ecossistemas onde são introduzidas."
 
 ### Ecrã 7 — Analogia
-🐢 *"Pensa nisto como..."*
+*"Pensa nisto como..."*
 > 💡 Proteger a biodiversidade é como **cuidar de um jardim antigo e complexo**: não basta plantar novas flores (reprodução em cativeiro) se continuares a deitar químicos no solo (poluição) ou a cortar as árvores à volta (destruição de habitat). A conservação eficaz exige atuar em várias frentes ao mesmo tempo — proteger o espaço, controlar ameaças externas, e por vezes ajudar ativamente a recuperar o que já foi perdido.
 
 ### Ecrã 8 — Aprofundar
@@ -202,7 +202,7 @@ Pontos clicáveis:
 2. A Lista Vermelha, que classifica o risco de extinção das espécies, é mantida por: (A) A IUCN ✓ (B) As Nações Unidas apenas
 3. Verdadeiro ou Falso: espécies invasoras raramente causam problemas nos ecossistemas onde são introduzidas. **Falso** — podem causar grandes desequilíbrios, por não terem inimigos naturais locais.
 
-🐢 *"Parabéns, aprendiz! Completaste a missão sobre Ecossistemas, Biodiversidade e Conservação. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que realmente significa biodiversidade, e como podemos ajudar a proteger o que resta dela. 🌍"*
+*"Parabéns, aprendiz! Completaste a missão sobre Ecossistemas, Biodiversidade e Conservação. Já sabes como a vida se organiza em níveis ecológicos, como a energia e a matéria fluem num ecossistema, o que realmente significa biodiversidade, e como podemos ajudar a proteger o que resta dela. 🌍"*
 
 ---
 

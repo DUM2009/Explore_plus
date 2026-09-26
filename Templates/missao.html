@@ -35,11 +35,13 @@
             email: "{{ request.user.email|default:'' }}"
         };
         window.exploreProgressSyncUrl = "{% url 'salvar-progresso-missao' %}";
+        window.exploreActivityHeartbeatUrl = "{% url 'registar-atividade' %}";
         window.exploreCsrfToken = "{{ csrf_token }}";
         window.exploreMissionsIndexUrl = "{% url 'index-missions' %}";
         window.exploreMascotImageUrl = "{% static 'images/Mascote Explore+ Biology.png' %}";
         window.exploreMascoteChatUrl = "{% url 'mascote-chat' %}";
         window.exploreMascotWaveVideoUrl = "{% static 'Mascote a acenar.webm' %}";
+        window.exploreMascotDoubtsImageUrl = "{% static 'images/Mascote com dúvidas.png' %}";
         window.exploreLogoUrl = "{% static 'images/Logo.png' %}";
         window.explorePaginaInicialUrl = "{% url 'pagina_inicial' %}";
         window.explorePerfilUrl = "{% url 'perfil' %}";
@@ -63,9 +65,11 @@
             missionsIndexUrl: window.exploreMissionsIndexUrl,
             mascotImageUrl: window.exploreMascotImageUrl,
             progressSyncUrl: window.exploreProgressSyncUrl,
+            activityHeartbeatUrl: window.exploreActivityHeartbeatUrl,
             csrfToken: window.exploreCsrfToken,
             mascoteChatUrl: window.exploreMascoteChatUrl,
-            mascotWaveVideoUrl: window.exploreMascotWaveVideoUrl
+            mascotWaveVideoUrl: window.exploreMascotWaveVideoUrl,
+            mascotDoubtsImageUrl: window.exploreMascotDoubtsImageUrl
         });
     </script>
 </body>

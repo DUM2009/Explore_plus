@@ -877,7 +877,7 @@ class MissionSystem {
         const quizDemoHtml = `
             <div class="home-quiz-preview mission-path-quiz-demo" aria-hidden="true">
                 <div class="home-quiz-preview-heading"><span class="home-quiz-progress">Pergunta 2/5</span></div>
-                <h3>Qual pigmento capta a luz?</h3>
+                <h3>Qual é o pigmento que capta a luz?</h3>
                 <div class="home-quiz-options">
                     <div class="home-quiz-option"><span>A</span> Rubisco</div>
                     <div class="home-quiz-option is-correct"><span>B</span> Clorofila</div>
@@ -1226,20 +1226,20 @@ class MissionSystem {
         return window.exploreMascotWaveVideoUrl || '';
     }
 
+    getMascotDoubtsImageUrl() {
+        return window.exploreMascotDoubtsImageUrl || '';
+    }
+
     /**
      * Mascot figure used in the overlay dialogs (intro/help/quiz-choice
-     * cards): the waving video when available, falling back to the static
-     * avatar image so the dialog still renders if the video is missing.
+     * cards): the "com dúvidas" image when available, falling back to the
+     * student's own avatar image so the dialog still renders if it's missing.
      */
     getMascotOverlayFigureHtml() {
-        const waveVideoUrl = this.getMascotWaveVideoUrl();
+        const doubtsImageUrl = this.getMascotDoubtsImageUrl();
         const imageUrl = this.getMascotImageUrl();
-        if (waveVideoUrl) {
-            // No poster: this video is one fixed character, but imageUrl is
-            // whatever avatar skin the student picked on their profile (e.g.
-            // a different-looking mascot) — using it as a poster flashed
-            // that mismatched image before the video's first frame painted.
-            return `<video class="mascot-overlay-figure" src="${waveVideoUrl}" autoplay loop muted playsinline></video>`;
+        if (doubtsImageUrl) {
+            return `<img class="mascot-overlay-figure" src="${doubtsImageUrl}" alt="Mascote Explore+ com dúvidas">`;
         }
         return imageUrl ? `<img class="mascot-overlay-figure" src="${imageUrl}" alt="Mascote Explore+">` : '';
     }

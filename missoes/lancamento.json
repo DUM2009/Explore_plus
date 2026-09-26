@@ -21,6 +21,7 @@
   "meiose-reproducao-sexuada": false,
   "reproducao-assexuada": false,
   "ciclos-vida": false,
-  "ecossistemas": false,
-  "sistema-nervoso": false
+  "ecossistemas": true,
+  "sistema-nervoso": true,
+  "fisiologia-vegetal": true
 }

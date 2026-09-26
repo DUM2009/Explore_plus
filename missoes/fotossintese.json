@@ -12,7 +12,7 @@
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "Olá, aprendiz! 🐢 Hoje vamos descobrir um dos truques mais espantosos da natureza.",
+          "mascote_texto": "Olá, aprendiz! Hoje vamos descobrir um dos truques mais espantosos da natureza.",
           "texto": "Como é que uma planta consegue fabricar o próprio alimento sem cozinhar, sem boca e sem estômago?"
         },
         {
@@ -30,7 +30,7 @@
         },
         {
           "tipo": "micro_verificacao",
-          "mascote_texto": "Vamos ver se isto já ficou claro? 🐢",
+          "mascote_texto": "Vamos ver se isto já ficou claro?",
           "pergunta": "As plantas obtêm o seu alimento principalmente através de:",
           "opcoes": ["Das raízes, absorvendo nutrientes do solo", "Da fotossíntese, usando luz, água e CO₂"],
           "correta": 1,
@@ -47,7 +47,7 @@
         },
         {
           "tipo": "analogia",
-          "mascote_texto": "Deixa-me explicar isto de outra forma... 🐢",
+          "mascote_texto": "Deixa-me explicar isto de outra forma...",
           "texto": "💡 A planta é como uma fábrica que não compra matéria-prima a ninguém — usa só o que está à sua volta de graça (luz, ar, água) para fabricar o seu próprio \"combustível\", a glicose."
         },
         {
@@ -57,7 +57,7 @@
         },
         {
           "tipo": "quiz_seccao",
-          "mascote_texto": "Vamos ver o que ficou da nossa primeira exploração? 🐢",
+          "mascote_texto": "Vamos ver o que ficou da nossa primeira exploração?",
           "perguntas": [
             {
               "pergunta": "Qual destes NÃO é necessário para a fotossíntese?",
@@ -81,7 +81,7 @@
               "mascote_feedback_errado": "Na verdade é o contrário: a fotossíntese precisa de luz, por isso ocorre quando há luz disponível."
             }
           ],
-          "mascote_conclusao": "Boa! Já sabes o essencial. A seguir, vamos ver exatamente ONDE dentro da planta isto acontece. 🐢"
+          "mascote_conclusao": "Boa! Já sabes o essencial. A seguir, vamos ver exatamente ONDE dentro da planta isto acontece."
         }
       ]
     },
@@ -93,7 +93,7 @@
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "A luz que bate nas folhas não desaparece — ela transforma-se. Mas em quê, exatamente? 🐢",
+          "mascote_texto": "A luz que bate nas folhas não desaparece — ela transforma-se. Mas em quê, exatamente?",
           "texto": "Nesta secção vamos abrir o cloroplasto e ver, passo a passo, o que acontece quando a luz solar atinge a folha."
         },
         {
@@ -136,7 +136,7 @@
         },
         {
           "tipo": "analogia",
-          "mascote_texto": "Pensa nisto como... 🐢",
+          "mascote_texto": "Pensa nisto como...",
           "texto": "💡 A água é como uma garrafa reciclável esmagada para libertar o que interessa (os eletrões) — o oxigénio que sobra é literalmente lixo descartado para o ar. O ATP é como dinheiro pronto a gastar (energia imediata); o NADPH é como um cartão que \"transporta\" eletrões, prontos a serem \"gastos\" na fase seguinte."
         },
         {
@@ -169,7 +169,7 @@
               "mascote_feedback_errado": "O nome correto é quimiosmose — a fotólise é a quebra da água, e a fixação de carbono acontece na fase escura."
             }
           ],
-          "mascote_conclusao": "Já sabes como a luz vira energia! A seguir: o que a planta faz com essa energia. 🐢"
+          "mascote_conclusao": "Já sabes como a luz vira energia! A seguir: o que a planta faz com essa energia."
         }
       ]
     },
@@ -181,7 +181,7 @@
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "Achas que o carbono do ar consegue transformar-se em açúcar sólido? É exatamente isso que vamos ver. 🐢",
+          "mascote_texto": "Achas que o carbono do ar consegue transformar-se em açúcar sólido? É exatamente isso que vamos ver.",
           "texto": "Depois de vermos como a luz gera ATP e NADPH, está na hora de descobrir como a planta usa essa energia para construir açúcar a partir do CO₂ do ar."
         },
         {
@@ -221,7 +221,7 @@
         },
         {
           "tipo": "analogia",
-          "mascote_texto": "Imagina assim... 🐢",
+          "mascote_texto": "Imagina assim...",
           "texto": "💡 A RuBisCO é como um anzol lançado ao ar — pesca o CO₂ que está disperso na atmosfera e prende-o a uma molécula maior, para deixar de andar solto. E o ciclo todo é como uma linha de montagem circular: parte do \"produto\" segue para a frente (vira glicose), mas outra parte volta ao início da linha (regenera a RuBP) — como uma correia transportadora fechada, não uma linha reta com fim."
         },
         {
@@ -254,7 +254,7 @@
               "mascote_feedback_errado": "Falso — parte do G3P produzido é reciclado para regenerar a RuBP consumida no início."
             }
           ],
-          "mascote_conclusao": "Já percebeste as duas fases da fotossíntese! Falta só perceber porque é que isto importa tanto — para além da própria planta. 🐢"
+          "mascote_conclusao": "Já percebeste as duas fases da fotossíntese! Falta só perceber porque é que isto importa tanto — para além da própria planta."
         }
       ]
     },
@@ -266,7 +266,7 @@
       "ecrãs": [
         {
           "tipo": "gancho",
-          "mascote_texto": "Achas que a Amazónia é o \"pulmão do mundo\"? A resposta científica pode surpreender-te. 🐢",
+          "mascote_texto": "Achas que a Amazónia é o \"pulmão do mundo\"? A resposta científica pode surpreender-te.",
           "texto": "Já sabes como a fotossíntese acontece dentro da planta. Falta perceber porque é que este processo é tão importante para todo o planeta."
         },
         {
@@ -308,7 +308,7 @@
         },
         {
           "tipo": "analogia",
-          "mascote_texto": "Aqui está uma curiosidade que surpreende muita gente... 🐢",
+          "mascote_texto": "Aqui está uma curiosidade que surpreende muita gente...",
           "texto": "💡 A Amazónia costuma ser chamada de \"pulmão do mundo\", associada à produção de 20% do oxigénio do planeta — mas isso é um mito. A própria floresta consome, através da respiração das plantas e da decomposição de matéria orgânica pelos micróbios, quase todo o oxigénio que produz durante o dia. O contributo líquido da Amazónia para o oxigénio atmosférico é próximo de zero. Quem realmente sustenta a maior parte do oxigénio que respiramos é o fitoplâncton oceânico.\n\nIsto não torna a Amazónia menos importante — continua a ser essencial pela biodiversidade, pela regulação da chuva e por armazenar enormes quantidades de carbono. Só não é pela razão do oxigénio que normalmente se diz."
         },
         {
@@ -341,7 +341,7 @@
               "mascote_feedback_errado": "Na verdade é verdadeiro — a Amazónia consome quase todo o oxigénio que produz, apesar da fama de \"pulmão do mundo\"."
             }
           ],
-          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão da Fotossíntese. Já sabes onde acontece, como funciona, e porque é que importa para o planeta todo. 🌿🐢"
+          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão da Fotossíntese. Já sabes onde acontece, como funciona, e porque é que importa para o planeta todo. 🌿"
         }
       ]
     }

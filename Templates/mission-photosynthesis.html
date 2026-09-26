@@ -54,7 +54,7 @@
                     </div>
                     <div class="mascote-chat-messages" id="mascoteChatMessages">
                         <div class="mascote-chat-welcome" id="mascoteChatWelcome">
-                            <video src="{% static 'Mascote a acenar.webm' %}" class="mascote-chat-welcome-video" autoplay loop muted playsinline></video>
+                            <img src="{% static 'images/Mascote com dúvidas.png' %}" class="mascote-chat-welcome-video" alt="Mascote com dúvidas">
                             <div class="mascote-chat-welcome-copy">
                                 <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
                                 <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>
@@ -175,6 +175,7 @@
         window.exploreProgressSyncUrl = '{% url "salvar-progresso-missao" %}';
         window.exploreWrongQuestionUrl = '{% url "registar-pergunta-errada" %}';
         window.exploreCsrfToken = '{{ csrf_token }}';
+        window.exploreActivityHeartbeatUrl = '{% url "registar-atividade" %}';
         window.exploreAvatarOptions = {
             biology: '{% static "images/Mascote Explore+ Biology Avatar.png" %}',
             geology: '{% static "images/Mascote Explore+ Geology Avatar.png" %}',
@@ -183,6 +184,7 @@
         window.exploreMissionsIndexUrl = '{% url "index-missions" %}';
         window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
         window.exploreMascotWaveVideoUrl = '{% static "Mascote a acenar.webm" %}';
+        window.exploreMascotDoubtsImageUrl = '{% static "images/Mascote com dúvidas.png" %}';
         window.explorePaginaInicialUrl = '{% url "pagina_inicial" %}';
         window.exploreAboutUrl = '{% url "about" %}';
         window.explorePerfilUrl = '{% url "perfil" %}';
@@ -256,5 +258,6 @@
 
 <script src="{% static 'nav-tabs.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
+<script src="{% static 'activity-heartbeat.js' %}" defer></script>
 </body>
 </html>

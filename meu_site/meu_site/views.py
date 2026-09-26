@@ -1,6 +1,8 @@
 import json
 import re
 import unicodedata
+from collections import defaultdict
+from datetime import timedelta
 import anthropic
 import stripe
 from django.conf import settings
@@ -15,7 +17,43 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils import timezone
-from .models import PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel
+from .models import (
+    PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel,
+    ResultadoAvaliacao, RegistoAtividadeDiaria,
+)
+
+# Mapeia teste_id/exame_id e missao_id para uma das 5 unidades da Biblioteca
+# do Explorador (ver UNIDADES_BIBLIOTECA mais abaixo) — usado só para
+# agrupar o histórico de resultados (ResultadoAvaliacao) por unidade na
+# página de Estatísticas. Conteúdo ainda sem unidade correspondente (ex:
+# os testes de "Biodiversidade") fica de fora dessa agregação por agora.
+TESTE_ID_PARA_UNIDADE = {
+    'celulas': 'citologia',
+    'celulas-pancreas': 'citologia',
+    'celulas-endossimbiotica': 'citologia',
+}
+MISSAO_ID_PARA_UNIDADE = {
+    'celulas-organelos': 'citologia',
+    'biomoleculas': 'bioquimica',
+}
+
+
+def registar_atividade(user, minutos=0):
+    """Marca hoje como um dia com atividade deste aluno (para a sequência
+    de dias) e, se minutos > 0, soma-os ao tempo de estudo de hoje."""
+    hoje = timezone.localdate()
+    registo, _ = RegistoAtividadeDiaria.objects.get_or_create(user=user, data=hoje)
+    if minutos > 0:
+        registo.minutos += minutos
+        registo.save(update_fields=['minutos'])
+
+
+def registar_resultado(user, tipo, identificador, unidade, nota_percentagem):
+    ResultadoAvaliacao.objects.create(
+        user=user, tipo=tipo, identificador=identificador,
+        unidade=unidade or '', nota_percentagem=nota_percentagem,
+    )
+    registar_atividade(user)
 
 
 def redirecionar_apos_autenticacao(user):
@@ -117,8 +155,6 @@ def pagina_perfil(request):
     # está mesmo a explorar agora (mais progresso primeiro).
     missoes.sort(key=lambda missao: (missao['percent'] >= 100, -missao['percent']))
 
-    missoes_bloqueadas = len(missoes_lancadas_perfil) > len(missoes)
-
     definicoes_conquistas = [
         {'id': 'primeira-missao', 'nome': 'Primeiros Passos', 'icone': '🌱', 'descricao': 'Conclui a tua primeira missão.'},
         {'id': 'fotossintese-mestre', 'nome': 'Mestre da Fotossíntese', 'icone': '🌿', 'descricao': 'Termina o capítulo da Fotossíntese a 100%.'},
@@ -131,6 +167,12 @@ def pagina_perfil(request):
         {**definicao, 'desbloqueada': bool(badges.get(definicao['id']))}
         for definicao in definicoes_conquistas
     ]
+
+    # Separador "Estatísticas" do perfil: mesmos dados de pagina_estatisticas
+    # (ver calcular_dados_estatisticas), só que aqui dentro de um separador
+    # em vez de página à parte. perfil_legacy não tem os campos que essa
+    # função precisa (vocabulario_estado, etc.), por isso fica de fora.
+    dados_estatisticas = {} if perfil_legacy else calcular_dados_estatisticas(request, perfil)
 
     return render(request, 'perfil.html', {
         'perfil': perfil,
@@ -147,12 +189,305 @@ def pagina_perfil(request):
         'conquistas_lista': conquistas_lista,
         'total_conquistas': sum(1 for desbloqueada in badges.values() if desbloqueada),
         'missoes': missoes,
-        'missoes_bloqueadas': missoes_bloqueadas,
         'titulo_nome': titulo_nome,
         'titulo_icone': titulo_icone,
         'titulo_descricao': titulo_descricao,
         'proximo_titulo': proximo_titulo,
         'niveis_para_kim_nivel10': max(0, 10 - perfil.nivel),
+        **dados_estatisticas,
+    })
+
+
+def _formatar_minutos(minutos):
+    if minutos <= 0:
+        return '0min'
+    if minutos < 60:
+        return f'{minutos}min'
+    horas_texto = f'{minutos / 60:.1f}'.rstrip('0').rstrip('.')
+    return f'{horas_texto}h'
+
+
+def _com_percentagens(pontos):
+    """Acrescenta 'percent' (altura da barra, relativa ao máximo do
+    período) e 'valor_label' a cada ponto de um período do gráfico de
+    tempo de estudo."""
+    maximo = max((ponto['minutos'] for ponto in pontos), default=0)
+    for ponto in pontos:
+        ponto['percent'] = round(ponto['minutos'] / maximo * 100) if maximo else 0
+        ponto['valor_label'] = _formatar_minutos(ponto['minutos'])
+    return pontos
+
+
+def _tempo_estudo_semana_atual(user, hoje):
+    """Aba "7d" — semana civil atual, de segunda a domingo, um ponto por dia."""
+    dias_semana_pt = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']
+    segunda_feira = hoje - timedelta(days=hoje.weekday())
+    domingo = segunda_feira + timedelta(days=6)
+    registos_por_dia = {
+        registo.data: registo.minutos
+        for registo in RegistoAtividadeDiaria.objects.filter(
+            user=user, data__gte=segunda_feira, data__lte=domingo
+        )
+    }
+    pontos = [
+        {
+            'label': dias_semana_pt[(segunda_feira + timedelta(days=offset)).weekday()],
+            'minutos': registos_por_dia.get(segunda_feira + timedelta(days=offset), 0),
+        }
+        for offset in range(7)
+    ]
+    return _com_percentagens(pontos)
+
+
+def _tempo_estudo_ultimos_30_dias(user, hoje):
+    """Aba "30d" — um ponto por dia, dos últimos 30 dias (hoje incluído),
+    para o aluno ver a evolução dia a dia (gráfico de linha com pontos,
+    não barras — ver render_linha em stats-tempo.js)."""
+    inicio = hoje - timedelta(days=29)
+    registos_por_dia = {
+        registo.data: registo.minutos
+        for registo in RegistoAtividadeDiaria.objects.filter(user=user, data__gte=inicio, data__lte=hoje)
+    }
+    pontos = [
+        {
+            'label': (inicio + timedelta(days=offset)).strftime('%d/%m'),
+            'minutos': registos_por_dia.get(inicio + timedelta(days=offset), 0),
+        }
+        for offset in range(30)
+    ]
+    return _com_percentagens(pontos)
+
+
+def _tempo_estudo_por_mes(user, hoje):
+    """Aba "Sempre" — um ponto por mês, do primeiro registo de atividade do
+    aluno até ao mês atual. Sem registos ainda, devolve uma lista vazia
+    (o template mostra a mensagem de "ainda sem dados")."""
+    primeiro_registo = RegistoAtividadeDiaria.objects.filter(user=user).order_by('data').first()
+    if not primeiro_registo:
+        return []
+
+    meses_pt = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
+    somas_por_mes = defaultdict(int)
+    for registo in RegistoAtividadeDiaria.objects.filter(user=user):
+        somas_por_mes[registo.data.replace(day=1)] += registo.minutos
+
+    pontos = []
+    mes = primeiro_registo.data.replace(day=1)
+    ultimo_mes = hoje.replace(day=1)
+    while mes <= ultimo_mes:
+        pontos.append({
+            'label': f'{meses_pt[mes.month - 1]}/{mes.strftime("%y")}',
+            'minutos': somas_por_mes.get(mes, 0),
+        })
+        mes = (mes.replace(year=mes.year + 1, month=1) if mes.month == 12
+               else mes.replace(month=mes.month + 1))
+    return _com_percentagens(pontos)
+
+
+def _cor_desempenho(percent):
+    """Vermelho/amarelo/verde consoante a nota — mesmos limiares usados
+    nos badges de teste final (ver corrigir_teste/corrigir_exame)."""
+    if percent < 50:
+        return '#dc3545'
+    if percent < 75:
+        return '#e0a52c'
+    return '#1f8a5b'
+
+
+def _titulo_missao(missao_id):
+    try:
+        caminho = settings.BASE_DIR.parent / 'missoes' / f'{missao_id}.json'
+        with open(caminho, encoding='utf-8') as ficheiro:
+            dados = json.load(ficheiro)
+        return dados.get('titulo', missao_id)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return missao_id
+
+
+def _progresso_missoes_por_unidade(perfil):
+    """Modo "Evolução das missões" — % de conclusão média das missões de
+    cada capítulo da Biblioteca (perfil.progresso_missoes), não a nota dos
+    quizzes (ver _quizzes_por_unidade para isso). Barra sempre verde: isto
+    é progresso, não uma nota a avaliar."""
+    progresso = perfil.progresso_missoes or {}
+    missoes_por_unidade = defaultdict(list)
+    for missao_id, unidade_id in MISSAO_ID_PARA_UNIDADE.items():
+        missoes_por_unidade[unidade_id].append(missao_id)
+
+    pontos = []
+    for unidade in UNIDADES_BIBLIOTECA:
+        missao_ids = missoes_por_unidade.get(unidade['id'], [])
+        if not missao_ids:
+            pontos.append({
+                'id': unidade['id'], 'label': unidade['nome'],
+                'percent': 0, 'cor': '#c7cbd1', 'sem_dados': True, 'valor_label': 'Sem missões',
+            })
+            continue
+        percent = round(sum(progresso.get(mid, 0) for mid in missao_ids) / len(missao_ids))
+        pontos.append({
+            'id': unidade['id'], 'label': unidade['nome'],
+            'percent': percent, 'cor': '#1f8a5b', 'sem_dados': False, 'valor_label': f'{percent}%',
+        })
+    return pontos
+
+
+def _quizzes_por_unidade(user):
+    """Modo "Quizzes por capítulo" — média de todos os resultados de
+    quizzes (testes, exames e secções de missão) de cada capítulo, com a
+    barra colorida consoante o desempenho (vermelho/amarelo/verde)."""
+    pontos = []
+    for unidade in UNIDADES_BIBLIOTECA:
+        notas = list(
+            ResultadoAvaliacao.objects.filter(user=user, unidade=unidade['id'])
+            .values_list('nota_percentagem', flat=True)
+        )
+        if not notas:
+            pontos.append({
+                'id': unidade['id'], 'label': unidade['nome'],
+                'percent': 0, 'cor': '#c7cbd1', 'sem_dados': True, 'valor_label': 'Sem dados',
+            })
+            continue
+        media = round(sum(notas) / len(notas))
+        pontos.append({
+            'id': unidade['id'], 'label': unidade['nome'],
+            'percent': media, 'cor': _cor_desempenho(media), 'sem_dados': False, 'valor_label': f'{media}%',
+        })
+    return pontos
+
+
+def _quizzes_por_missao(user):
+    """Modo "Quizz por missão" — mesma ideia de _quizzes_por_unidade, mas
+    quebrada por missão dentro de cada capítulo (só quizzes de secção de
+    missão, ver tipo='missao_seccao' em salvar_progresso_missao), para o
+    aluno escolher um capítulo e ver o desempenho missão a missão.
+    Devolve {unidade_id: [pontos]}, só com capítulos que já têm dados —
+    o frontend mostra "ainda sem dados" para os restantes."""
+    resultados = ResultadoAvaliacao.objects.filter(user=user, tipo='missao_seccao')
+    notas_por_missao = defaultdict(list)
+    for resultado in resultados:
+        missao_id = resultado.identificador.split(':', 1)[0]
+        notas_por_missao[missao_id].append(resultado.nota_percentagem)
+
+    por_unidade = defaultdict(list)
+    for missao_id, notas in notas_por_missao.items():
+        unidade_id = MISSAO_ID_PARA_UNIDADE.get(missao_id)
+        if not unidade_id:
+            continue
+        media = round(sum(notas) / len(notas))
+        por_unidade[unidade_id].append({
+            'id': missao_id, 'label': _titulo_missao(missao_id),
+            'percent': media, 'cor': _cor_desempenho(media), 'sem_dados': False, 'valor_label': f'{media}%',
+        })
+    return por_unidade
+
+
+def calcular_dados_estatisticas(request, perfil):
+    """Progresso pessoal do aluno — nunca comparações com outros alunos
+    (sem rankings nem percentis aqui, ver Templates/estatisticas.html).
+    Reaproveitado por pagina_estatisticas e pelo separador "Estatísticas"
+    de pagina_perfil, para não duplicar esta lógica nos dois sítios."""
+    # (a) Gráfico de evolução — um ponto por teste/exame corrigido, na
+    # ordem em que aconteceram (mais simples de implementar com os dados
+    # que já temos do que agrupar por semana, e igualmente claro com o
+    # número de testes que um aluno costuma fazer).
+    resultados_testes = list(
+        ResultadoAvaliacao.objects.filter(user=request.user, tipo__in=('teste', 'exame')).order_by('criado_em')
+    )
+    evolucao = [
+        {
+            'label': resultado.criado_em.strftime('%d/%m'),
+            'nota': round(resultado.nota_percentagem / 100 * 20, 1),
+        }
+        for resultado in resultados_testes
+    ]
+    # Coordenadas do gráfico já calculadas aqui (viewBox 0 0 300 100) — o
+    # template só desenha o <polyline>, sem fazer contas.
+    evolucao_pontos = ''
+    if len(evolucao) == 1:
+        y = 100 - (evolucao[0]['nota'] / 20 * 100)
+        evolucao_pontos = f'150,{y:.1f}'
+    elif len(evolucao) > 1:
+        passo = 300 / (len(evolucao) - 1)
+        evolucao_pontos = ' '.join(
+            f'{i * passo:.1f},{100 - (ponto["nota"] / 20 * 100):.1f}'
+            for i, ponto in enumerate(evolucao)
+        )
+
+    # (b) Desempenho por unidade — três formas de ver o mesmo capítulo,
+    # trocáveis no dropdown do cartão (ver stats-desempenho.js):
+    #  - "missoes": % de conclusão média das missões de cada capítulo;
+    #  - "quizzes_capitulo": média das notas de quizzes (testes, exames e
+    #    secções de missão) de cada capítulo, barra colorida a
+    #    vermelho/amarelo/verde consoante o desempenho;
+    #  - "quizzes_missao": a mesma ideia da anterior, mas quebrada por
+    #    missão dentro do capítulo escolhido pelo aluno (só quizzes de
+    #    secção de missão, não testes/exames — esses não pertencem a
+    #    nenhuma missão em concreto).
+    desempenho_periodos = {
+        'missoes': _progresso_missoes_por_unidade(perfil),
+        'quizzes_capitulo': _quizzes_por_unidade(request.user),
+        'quizzes_missao': _quizzes_por_missao(request.user),
+    }
+
+    # (c) Hábitos de estudo — tempo somado dos últimos 7 dias (hoje
+    # incluído) e sequência de dias seguidos (ver PerfilAluno.calcular_sequencia).
+    hoje = timezone.localdate()
+    tempo_semana = sum(
+        RegistoAtividadeDiaria.objects.filter(
+            user=request.user, data__gte=hoje - timedelta(days=6)
+        ).values_list('minutos', flat=True)
+    )
+    sequencia_atual, sequencia_recorde = perfil.calcular_sequencia()
+
+    # (c.1) Tempo de estudo — três períodos para as abas "7d / 30d /
+    # Sempre" do gráfico acima de "Evolução das notas" (mesma ideia
+    # visual do gráfico estático da página inicial, mas com dados reais
+    # do aluno e navegável entre períodos no frontend, ver stats-tempo.js).
+    tempo_estudo_periodos = {
+        '7d': _tempo_estudo_semana_atual(request.user, hoje),
+        '30d': _tempo_estudo_ultimos_30_dias(request.user, hoje),
+        'sempre': _tempo_estudo_por_mes(request.user, hoje),
+    }
+    tempo_estudo_dias = tempo_estudo_periodos['7d']
+
+    # (d) Resumo de vocabulário — reaproveita a mesma lógica de overlay por
+    # aluno da Biblioteca do Explorador (ver aplicar_estado_vocabulario_aluno),
+    # só somado nas 5 unidades em vez de mostrado unidade a unidade.
+    vocab_totais = {'dominado': 0, 'a_rever': 0, 'novo': 0}
+    for unidade in UNIDADES_BIBLIOTECA:
+        termos = aplicar_estado_vocabulario_aluno(perfil, unidade['id'], carregar_termos_unidade(unidade['id']))
+        for termo in termos:
+            vocab_totais[termo['estado']] = vocab_totais.get(termo['estado'], 0) + 1
+
+    return {
+        'evolucao': evolucao,
+        'evolucao_pontos': evolucao_pontos,
+        'desempenho_periodos': desempenho_periodos,
+        'desempenho_quizzes_capitulo': desempenho_periodos['quizzes_capitulo'],
+        'desempenho_capitulos': [{'id': u['id'], 'label': u['nome']} for u in UNIDADES_BIBLIOTECA],
+        'tempo_semana_min': tempo_semana,
+        'tempo_estudo_dias': tempo_estudo_dias,
+        'tempo_estudo_periodos': tempo_estudo_periodos,
+        'sequencia_atual': sequencia_atual,
+        'sequencia_recorde': sequencia_recorde,
+        'vocab_totais': vocab_totais,
+        'vocab_total_termos': sum(vocab_totais.values()),
+    }
+
+
+@login_required(login_url='login')
+def pagina_estatisticas(request):
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    if perfil is None:
+        return render(request, 'estatisticas.html', {'perfil': None})
+
+    return render(request, 'estatisticas.html', {
+        'perfil': perfil,
+        **calcular_dados_estatisticas(request, perfil),
     })
 
 
@@ -368,6 +703,7 @@ def salvar_progresso_missao(request):
 
     section_scores = progress.get('sectionScores')
     if isinstance(section_scores, dict) and mission_id != 'profile':
+        secoes_antigas = dict((perfil.progresso_secoes or {}).get(mission_id, {}))
         secoes = dict(perfil.progresso_secoes or {})
         secoes[mission_id] = {
             str(secao_id): int(score)
@@ -377,8 +713,26 @@ def salvar_progresso_missao(request):
         perfil.progresso_secoes = secoes
         update_fields.append('progresso_secoes')
 
+        # Só regista no histórico as secções cuja nota é nova ou mudou desde
+        # a última gravação — este endpoint é chamado a cada progresso da
+        # missão, e sectionScores vem sempre completo, não só o que mudou.
+        unidade = MISSAO_ID_PARA_UNIDADE.get(mission_id, '')
+        for secao_id, score in secoes[mission_id].items():
+            if secoes_antigas.get(secao_id) != score:
+                registar_resultado(
+                    request.user, 'missao_seccao', f'{mission_id}:{secao_id}',
+                    unidade, float(score),
+                )
+
     xp = dados.get('xp')
     if isinstance(xp, (int, float)) and xp >= 0:
+        # max() é de propósito: o XP "oficial" de cada aluno vive no
+        # localStorage do browser (ver profile-xp.js), não só aqui — um
+        # browser novo ou com cache limpa manda XP baixo (ou 0) nesta
+        # sincronização, e sem o max() isso apagaria XP já ganho noutro
+        # dispositivo. O efeito secundário é que uma alteração manual no
+        # admin não "pega" enquanto o browser do aluno continuar a
+        # ressincronizar o valor antigo por cima.
         perfil.pontos_xp = max(perfil.pontos_xp, int(xp))
         perfil.nivel = perfil.pontos_xp // 100 + 1
         update_fields.extend(['pontos_xp', 'nivel'])
@@ -392,6 +746,25 @@ def salvar_progresso_missao(request):
         'xp': perfil.pontos_xp,
         'level': perfil.nivel,
     })
+
+
+@login_required(login_url='login')
+@require_POST
+def registar_atividade_view(request):
+    """Ping de "estou ativo agora" enviado pela página da missão (ver
+    startActivityHeartbeat em missao-engine.js) — soma minutos ao tempo de
+    estudo de hoje e marca o dia para a sequência. Best-effort: nunca deve
+    ser motivo para a missão falhar, por isso aceita silenciosamente
+    entradas inválidas em vez de devolver erro."""
+    try:
+        dados = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        dados = {}
+    minutos = dados.get('minutos', 1)
+    if not isinstance(minutos, (int, float)) or minutos <= 0:
+        minutos = 1
+    registar_atividade(request.user, minutos=min(int(minutos), 5))
+    return JsonResponse({'ok': True})
 
 
 @login_required(login_url='login')
@@ -533,6 +906,15 @@ def mascote_chat(request):
     return JsonResponse({'reply': reply})
 
 
+# Imagem do painel quadrado de cada categoria na página de Testes — mesma
+# lógica visual da página de Missões. Categoria sem entrada aqui cai no
+# genérico 'images/Biology image.jpg'.
+CATEGORIA_TESTES_IMAGENS = {
+    'Biodiversidade': 'images/Relva.jpeg',
+    'Citologia': 'images/Célula.png',
+    'Botânica': 'images/Planta.png',
+}
+
 # Cada missão tem 3 testes: o primeiro incluído no plano Free, os outros
 # dois exclusivos do SuperExplore (Pro). 'teste_id' fica a None enquanto o
 # teste ainda não tiver conteúdo — a página mostra-o como "Em breve".
@@ -597,7 +979,14 @@ def montar_categorias_testes(plano_aluno):
                 'url': reverse('teste-fotossintese', args=[teste['teste_id']]) if disponivel else None,
             })
         categorias.setdefault(missao['categoria'], []).append({**missao, 'testes': testes})
-    return [{'nome': nome, 'missoes': missoes} for nome, missoes in categorias.items()]
+    return [
+        {
+            'nome': nome,
+            'missoes': missoes,
+            'imagem': CATEGORIA_TESTES_IMAGENS.get(nome, 'images/Biology image.jpg'),
+        }
+        for nome, missoes in categorias.items()
+    ]
 
 
 @login_required(login_url='login')
@@ -779,6 +1168,9 @@ def corrigir_exame(request, exame_id):
         if progresso_testes.pop(exame_id, None) is not None:
             perfil.progresso_testes = progresso_testes
             perfil.save(update_fields=['progresso_testes'])
+        # Exames nacionais cobrem várias unidades ao mesmo tempo — sem
+        # unidade específica, mas ainda conta para o gráfico de evolução.
+        registar_resultado(request.user, 'exame', exame_id, '', nota_final / 20 * 100)
 
     return JsonResponse({
         'notaFinal': nota_final,
@@ -793,13 +1185,6 @@ def carregar_vocabulario(missao_id):
     caminho_json = settings.BASE_DIR.parent / 'vocabulario' / f'{missao_id}.json'
     with open(caminho_json, 'r', encoding='utf-8') as f:
         return json.load(f)
-
-
-def guardar_vocabulario(missao_id, dados):
-    caminho_json = settings.BASE_DIR.parent / 'vocabulario' / f'{missao_id}.json'
-    with open(caminho_json, 'w', encoding='utf-8') as f:
-        json.dump(dados, f, ensure_ascii=False, indent=2)
-        f.write('\n')
 
 
 # Biblioteca do Explorador: um "livro" de vocabulário por unidade, cada um
@@ -824,11 +1209,30 @@ def carregar_termos_unidade(unidade_id):
         return []
 
 
-def montar_biblioteca_estante():
+def aplicar_estado_vocabulario_aluno(perfil, unidade_id, termos):
+    """Sobrepõe, em memória, o estado (dominado/a_rever) guardado por aluno
+    em perfil.vocabulario_estado a cada termo — os ficheiros
+    vocabulario/<unidade>.json só têm o conteúdo (termo, definição, etc.),
+    nunca o progresso de leitura de ninguém."""
+    estados_aluno = {}
+    if perfil is not None and isinstance(perfil.vocabulario_estado, dict):
+        estados_aluno = perfil.vocabulario_estado.get(unidade_id, {})
+    for termo in termos:
+        entrada = estados_aluno.get(termo['id'])
+        if isinstance(entrada, dict):
+            termo['estado'] = entrada.get('estado', 'novo')
+            termo['ultima_revisao'] = entrada.get('ultima_revisao')
+        else:
+            termo['estado'] = 'novo'
+            termo['ultima_revisao'] = None
+    return termos
+
+
+def montar_biblioteca_estante(perfil):
     estante = []
     for unidade in UNIDADES_BIBLIOTECA:
-        termos = carregar_termos_unidade(unidade['id'])
-        novos = sum(1 for termo in termos if termo.get('estado', 'novo') == 'novo')
+        termos = aplicar_estado_vocabulario_aluno(perfil, unidade['id'], carregar_termos_unidade(unidade['id']))
+        novos = sum(1 for termo in termos if termo['estado'] == 'novo')
         estante.append({**unidade, 'total_termos': len(termos), 'novos': novos})
     return estante
 
@@ -841,7 +1245,7 @@ def pagina_biblioteca(request):
         perfil = None
     return render(request, 'biblioteca.html', {
         'perfil': perfil,
-        'estante': montar_biblioteca_estante(),
+        'estante': montar_biblioteca_estante(perfil),
     })
 
 
@@ -856,7 +1260,7 @@ def pagina_biblioteca_unidade(request, unidade_id):
     except OperationalError:
         perfil = None
 
-    termos = carregar_termos_unidade(unidade_id)
+    termos = aplicar_estado_vocabulario_aluno(perfil, unidade_id, carregar_termos_unidade(unidade_id))
     nomes_por_id = {termo['id']: termo['termo'] for termo in termos}
     for termo in termos:
         termo['relacionados_nomes'] = [
@@ -865,7 +1269,7 @@ def pagina_biblioteca_unidade(request, unidade_id):
 
     contagens = {'novo': 0, 'dominado': 0, 'a_rever': 0}
     for termo in termos:
-        estado = termo.get('estado', 'novo')
+        estado = termo['estado']
         if estado in contagens:
             contagens[estado] += 1
 
@@ -890,6 +1294,8 @@ def pagina_flashcards(request, missao_id):
     except FileNotFoundError:
         raise Http404('Vocabulário não encontrado para esta missão.')
 
+    vocabulario['termos'] = aplicar_estado_vocabulario_aluno(perfil, missao_id, vocabulario['termos'])
+
     return render(request, 'flashcards.html', {
         'perfil': perfil,
         'vocabulario': vocabulario,
@@ -900,8 +1306,9 @@ def pagina_flashcards(request, missao_id):
 @login_required(login_url='login')
 @require_POST
 def atualizar_vocabulario(request, missao_id):
-    """Grava o resultado desta ronda de revisão diretamente no ficheiro de
-    vocabulário da missão (estado + última revisão por termo)."""
+    """Grava o resultado desta ronda de revisão no perfil do aluno (estado +
+    última revisão por termo) — nunca no ficheiro de vocabulário, que é
+    partilhado por todos os alunos."""
     try:
         dados_pedido = json.loads(request.body or '{}')
     except (TypeError, ValueError):
@@ -920,19 +1327,19 @@ def atualizar_vocabulario(request, missao_id):
         if termo_id and estado in ('dominado', 'a_rever'):
             estados_por_id[termo_id] = estado
 
-    try:
-        vocabulario = carregar_vocabulario(missao_id)
-    except FileNotFoundError:
-        raise Http404('Vocabulário não encontrado para esta missão.')
+    if not estados_por_id:
+        return JsonResponse({'ok': True})
 
+    perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
     hoje = timezone.localdate().isoformat()
-    for termo in vocabulario['termos']:
-        novo_estado = estados_por_id.get(termo['id'])
-        if novo_estado:
-            termo['estado'] = novo_estado
-            termo['ultima_revisao'] = hoje
-
-    guardar_vocabulario(missao_id, vocabulario)
+    vocabulario_estado = dict(perfil.vocabulario_estado or {})
+    unidade_estado = dict(vocabulario_estado.get(missao_id, {}))
+    for termo_id, novo_estado in estados_por_id.items():
+        unidade_estado[termo_id] = {'estado': novo_estado, 'ultima_revisao': hoje}
+    vocabulario_estado[missao_id] = unidade_estado
+    perfil.vocabulario_estado = vocabulario_estado
+    perfil.save(update_fields=['vocabulario_estado'])
+    registar_atividade(request.user)
 
     return JsonResponse({'ok': True})
 
@@ -2071,6 +2478,8 @@ def corrigir_teste_fotossintese(request, teste_id):
         if progresso_testes.pop(teste_id, None) is not None:
             perfil.progresso_testes = progresso_testes
             perfil.save(update_fields=['progresso_testes'])
+        unidade = TESTE_ID_PARA_UNIDADE.get(teste_id, '')
+        registar_resultado(request.user, 'teste', teste_id, unidade, nota_final / 20 * 100)
 
     return JsonResponse({
         'notaFinal': nota_final,

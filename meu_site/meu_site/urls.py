@@ -31,6 +31,7 @@ urlpatterns = [
     path('login/', views.pagina_login, name='login'),
     path('signup/', views.pagina_signup, name='signup'),
     path('perfil/', views.pagina_perfil, name='perfil'),
+    path('estatisticas/', views.pagina_estatisticas, name='estatisticas'),
     path('onboarding/', views.pagina_onboarding, name='onboarding'),
     path('missions/', views.pagina_index_missions, name='index-missions'),
     path('dashboard/', views.pagina_dashboard, name='dashboard'),
@@ -61,6 +62,7 @@ urlpatterns = [
     path('mission/photosynthesis/goldtest/', views.pagina_mission_photosynthesis_goldtest, name='mission-photosynthesis-goldtest'),
     path('missao/<str:missao_id>/', views.pagina_missao, name='missao'),
     path('api/progresso-missao/', views.salvar_progresso_missao, name='salvar-progresso-missao'),
+    path('api/registar-atividade/', views.registar_atividade_view, name='registar-atividade'),
     path('api/pergunta-errada/', views.registar_pergunta_errada, name='registar-pergunta-errada'),
     path('api/mascote-chat/', views.mascote_chat, name='mascote-chat'),
 ]
