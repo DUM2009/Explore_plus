@@ -27,7 +27,9 @@ ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
 # comando `python manage.py stripe_setup`).
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET', '')
-STRIPE_PRICE_ID_PRO = os.environ.get('STRIPE_PRICE_ID_PRO', '')
+STRIPE_PRICE_ID_PRO = os.environ.get('STRIPE_PRICE_ID_PRO', '')  # mensal
+STRIPE_PRICE_ID_PRO_QUINZENAL = os.environ.get('STRIPE_PRICE_ID_PRO_QUINZENAL', '')
+STRIPE_PRICE_ID_PRO_ANUAL = os.environ.get('STRIPE_PRICE_ID_PRO_ANUAL', '')
 STRIPE_API_VERSION = '2026-08-26.dahlia'
 
 # Login com Google (django-allauth) — o Client ID/Secret vêm da Google Cloud

@@ -3,7 +3,11 @@ from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 NOME_PRODUTO = 'SuperExplore'
-PRECO_CENTIMOS = 499
+PRECOS = [
+    ('STRIPE_PRICE_ID_PRO_QUINZENAL', 599, {'interval': 'week', 'interval_count': 2}),
+    ('STRIPE_PRICE_ID_PRO', 999, {'interval': 'month'}),
+    ('STRIPE_PRICE_ID_PRO_ANUAL', 6999, {'interval': 'year'}),
+]
 MOEDA = 'eur'
 
 
@@ -36,27 +40,31 @@ class Command(BaseCommand):
         else:
             self.stdout.write(f'Produto já existia: {produto.id}')
 
-        preco = next(
-            (
-                p for p in client.v1.prices.list({'product': produto.id, 'active': True})
-                if p.currency == MOEDA
-                and p.unit_amount == PRECO_CENTIMOS
-                and p.recurring
-                and p.recurring.interval == 'month'
-            ),
-            None,
-        )
-        if preco is None:
-            preco = client.v1.prices.create({
-                'product': produto.id,
-                'currency': MOEDA,
-                'unit_amount': PRECO_CENTIMOS,
-                'recurring': {'interval': 'month'},
-            })
-            self.stdout.write(self.style.SUCCESS(f'Preço criado: {preco.id}'))
-        else:
-            self.stdout.write(f'Preço já existia: {preco.id}')
+        linhas_env = []
+        for variavel, centimos, recorrencia in PRECOS:
+            preco = next(
+                (
+                    p for p in client.v1.prices.list({'product': produto.id, 'active': True})
+                    if p.currency == MOEDA
+                    and p.unit_amount == centimos
+                    and p.recurring
+                    and p.recurring.interval == recorrencia['interval']
+                    and p.recurring.interval_count == recorrencia.get('interval_count', 1)
+                ),
+                None,
+            )
+            if preco is None:
+                preco = client.v1.prices.create({
+                    'product': produto.id,
+                    'currency': MOEDA,
+                    'unit_amount': centimos,
+                    'recurring': recorrencia,
+                })
+                self.stdout.write(self.style.SUCCESS(f'Preço criado ({variavel}): {preco.id}'))
+            else:
+                self.stdout.write(f'Preço já existia ({variavel}): {preco.id}')
+            linhas_env.append(f'{variavel}={preco.id}')
 
         self.stdout.write(self.style.SUCCESS(
-            f'\nColoca isto no teu .env:\nSTRIPE_PRICE_ID_PRO={preco.id}'
+            '\nColoca isto no teu .env:\n' + '\n'.join(linhas_env)
         ))
