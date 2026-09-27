@@ -198,6 +198,35 @@ def pagina_perfil(request):
     })
 
 
+def _evolucao_notas(user, tipo):
+    """Gráfico "Evolução das notas" — um ponto por teste ou exame
+    corrigido (consoante `tipo`), na ordem em que aconteceram. Devolve os
+    pontos e já as coordenadas do <polyline> (viewBox 0 0 300 100), para o
+    template só desenhar, sem fazer contas — ver stats-evolucao.js para a
+    troca entre "Testes" e "Exames"."""
+    resultados = list(
+        ResultadoAvaliacao.objects.filter(user=user, tipo=tipo).order_by('criado_em')
+    )
+    pontos = [
+        {
+            'label': resultado.criado_em.strftime('%d/%m'),
+            'nota': round(resultado.nota_percentagem / 100 * 20, 1),
+        }
+        for resultado in resultados
+    ]
+    coords = ''
+    if len(pontos) == 1:
+        y = 100 - (pontos[0]['nota'] / 20 * 100)
+        coords = f'150,{y:.1f}'
+    elif len(pontos) > 1:
+        passo = 300 / (len(pontos) - 1)
+        coords = ' '.join(
+            f'{i * passo:.1f},{100 - (ponto["nota"] / 20 * 100):.1f}'
+            for i, ponto in enumerate(pontos)
+        )
+    return {'pontos': pontos, 'coords': coords}
+
+
 def _formatar_minutos(minutos):
     if minutos <= 0:
         return '0min'
@@ -357,28 +386,23 @@ def _quizzes_por_unidade(user):
 
 def _quizzes_por_missao(user):
     """Modo "Quizz por missão" — mesma ideia de _quizzes_por_unidade, mas
-    quebrada por missão dentro de cada capítulo (só quizzes de secção de
-    missão, ver tipo='missao_seccao' em salvar_progresso_missao), para o
-    aluno escolher um capítulo e ver o desempenho missão a missão.
-    Devolve {unidade_id: [pontos]}, só com capítulos que já têm dados —
-    o frontend mostra "ainda sem dados" para os restantes."""
+    quebrada por missão em vez de por capítulo (só quizzes de secção de
+    missão, ver tipo='missao_seccao' em salvar_progresso_missao): uma
+    barra por missão já tentada, todas juntas no mesmo gráfico."""
     resultados = ResultadoAvaliacao.objects.filter(user=user, tipo='missao_seccao')
     notas_por_missao = defaultdict(list)
     for resultado in resultados:
         missao_id = resultado.identificador.split(':', 1)[0]
         notas_por_missao[missao_id].append(resultado.nota_percentagem)
 
-    por_unidade = defaultdict(list)
+    pontos = []
     for missao_id, notas in notas_por_missao.items():
-        unidade_id = MISSAO_ID_PARA_UNIDADE.get(missao_id)
-        if not unidade_id:
-            continue
         media = round(sum(notas) / len(notas))
-        por_unidade[unidade_id].append({
+        pontos.append({
             'id': missao_id, 'label': _titulo_missao(missao_id),
             'percent': media, 'cor': _cor_desempenho(media), 'sem_dados': False, 'valor_label': f'{media}%',
         })
-    return por_unidade
+    return pontos
 
 
 def calcular_dados_estatisticas(request, perfil):
@@ -386,32 +410,15 @@ def calcular_dados_estatisticas(request, perfil):
     (sem rankings nem percentis aqui, ver Templates/estatisticas.html).
     Reaproveitado por pagina_estatisticas e pelo separador "Estatísticas"
     de pagina_perfil, para não duplicar esta lógica nos dois sítios."""
-    # (a) Gráfico de evolução — um ponto por teste/exame corrigido, na
-    # ordem em que aconteceram (mais simples de implementar com os dados
-    # que já temos do que agrupar por semana, e igualmente claro com o
-    # número de testes que um aluno costuma fazer).
-    resultados_testes = list(
-        ResultadoAvaliacao.objects.filter(user=request.user, tipo__in=('teste', 'exame')).order_by('criado_em')
-    )
-    evolucao = [
-        {
-            'label': resultado.criado_em.strftime('%d/%m'),
-            'nota': round(resultado.nota_percentagem / 100 * 20, 1),
-        }
-        for resultado in resultados_testes
-    ]
-    # Coordenadas do gráfico já calculadas aqui (viewBox 0 0 300 100) — o
-    # template só desenha o <polyline>, sem fazer contas.
-    evolucao_pontos = ''
-    if len(evolucao) == 1:
-        y = 100 - (evolucao[0]['nota'] / 20 * 100)
-        evolucao_pontos = f'150,{y:.1f}'
-    elif len(evolucao) > 1:
-        passo = 300 / (len(evolucao) - 1)
-        evolucao_pontos = ' '.join(
-            f'{i * passo:.1f},{100 - (ponto["nota"] / 20 * 100):.1f}'
-            for i, ponto in enumerate(evolucao)
-        )
+    # (a) Gráfico de evolução — um ponto por teste ou exame corrigido, na
+    # ordem em que aconteceram, trocável entre "Testes" e "Exames" no
+    # dropdown do cartão (ver stats-evolucao.js).
+    evolucao_periodos = {
+        'teste': _evolucao_notas(request.user, 'teste'),
+        'exame': _evolucao_notas(request.user, 'exame'),
+    }
+    evolucao = evolucao_periodos['teste']['pontos']
+    evolucao_pontos = evolucao_periodos['teste']['coords']
 
     # (b) Desempenho por unidade — três formas de ver o mesmo capítulo,
     # trocáveis no dropdown do cartão (ver stats-desempenho.js):
@@ -462,9 +469,9 @@ def calcular_dados_estatisticas(request, perfil):
     return {
         'evolucao': evolucao,
         'evolucao_pontos': evolucao_pontos,
+        'evolucao_periodos': evolucao_periodos,
         'desempenho_periodos': desempenho_periodos,
         'desempenho_quizzes_capitulo': desempenho_periodos['quizzes_capitulo'],
-        'desempenho_capitulos': [{'id': u['id'], 'label': u['nome']} for u in UNIDADES_BIBLIOTECA],
         'tempo_semana_min': tempo_semana,
         'tempo_estudo_dias': tempo_estudo_dias,
         'tempo_estudo_periodos': tempo_estudo_periodos,
@@ -1349,6 +1356,8 @@ RESUMOS = [
         'id': 'fotossintese',
         'nome': 'Fotossíntese',
         'disciplina': 'Biologia',
+        'categoria': 'Botânica',
+        'imagem': 'images/Planta.png',
         'cor_a': '#2f6b45',
         'cor_b': '#1f8a5b',
         'cor_soft': '#eaf3e9',
@@ -1358,6 +1367,8 @@ RESUMOS = [
         'id': 'diversidade-organizacao-biologica',
         'nome': 'Diversidade e Organização Biológica',
         'disciplina': 'Biologia',
+        'categoria': 'Biodiversidade',
+        'imagem': 'images/Relva.jpeg',
         'cor_a': '#1d5f73',
         'cor_b': '#2a8fae',
         'cor_soft': '#e8f4f7',

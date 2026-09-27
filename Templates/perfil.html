@@ -333,33 +333,63 @@
                 </div>
                 {% endfor %}
             </div>
+
+            <div class="stats-habitos-grid stats-habitos-grid--aninhado">
+                <div class="stats-habito">
+                    <span class="stats-habito-valor">{{ tempo_semana_min }} min</span>
+                    <span class="stats-habito-label">Tempo de estudo esta semana</span>
+                </div>
+                <div class="stats-habito">
+                    <span class="stats-habito-valor">{{ sequencia_atual }} dia{{ sequencia_atual|pluralize }}</span>
+                    <span class="stats-habito-label">Sequência atual</span>
+                </div>
+                <div class="stats-habito">
+                    <span class="stats-habito-valor">{{ sequencia_recorde }} dia{{ sequencia_recorde|pluralize }}</span>
+                    <span class="stats-habito-label">Recorde pessoal</span>
+                </div>
+            </div>
         </div>
         {{ tempo_estudo_periodos|json_script:"statsTempoPeriodos" }}
 
         <div class="stats-card">
-            <h2>Evolução das notas</h2>
-            {% if evolucao %}
-            <div class="stats-chart">
-                <div class="stats-chart-yaxis">
-                    <span>20</span>
-                    <span>10</span>
-                    <span>0</span>
+            <div class="stats-tempo-header">
+                <h2>Evolução das notas</h2>
+                <div class="subject-switcher" id="statsEvolucaoModo">
+                    <button type="button" class="subject-switcher-trigger" id="statsEvolucaoModoBtn" aria-haspopup="true" aria-expanded="false">
+                        <span id="statsEvolucaoModoLabel">Testes</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <ul class="subject-switcher-menu" id="statsEvolucaoModoMenu" hidden>
+                        <li><button type="button" class="subject-switcher-option is-active" data-modo="teste">Testes</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-modo="exame">Exames</button></li>
+                    </ul>
                 </div>
-                <svg class="stats-chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none">
-                    <line x1="0" y1="0" x2="300" y2="0" class="stats-chart-gridline"/>
-                    <line x1="0" y1="50" x2="300" y2="50" class="stats-chart-gridline"/>
-                    <line x1="0" y1="100" x2="300" y2="100" class="stats-chart-gridline"/>
-                    <polyline points="{{ evolucao_pontos }}" class="stats-chart-line"/>
-                </svg>
             </div>
-            <div class="stats-chart-labels">
-                <span>{{ evolucao.0.label }}</span>
-                {% with ultimo=evolucao|last %}<span>{{ ultimo.label }}</span>{% endwith %}
+            <div id="statsEvolucaoChart">
+                {% if evolucao %}
+                <div class="stats-chart">
+                    <div class="stats-chart-yaxis">
+                        <span>20</span>
+                        <span>10</span>
+                        <span>0</span>
+                    </div>
+                    <svg class="stats-chart-svg" viewBox="0 0 300 100" preserveAspectRatio="none">
+                        <line x1="0" y1="0" x2="300" y2="0" class="stats-chart-gridline"/>
+                        <line x1="0" y1="50" x2="300" y2="50" class="stats-chart-gridline"/>
+                        <line x1="0" y1="100" x2="300" y2="100" class="stats-chart-gridline"/>
+                        <polyline points="{{ evolucao_pontos }}" class="stats-chart-line"/>
+                    </svg>
+                </div>
+                <div class="stats-chart-labels">
+                    <span>{{ evolucao.0.label }}</span>
+                    {% with ultimo=evolucao|last %}<span>{{ ultimo.label }}</span>{% endwith %}
+                </div>
+                {% else %}
+                <p class="stats-empty">Ainda não corrigiste nenhum teste — assim que o fizeres, a tua evolução aparece aqui.</p>
+                {% endif %}
             </div>
-            {% else %}
-            <p class="stats-empty">Ainda não corrigiste nenhum teste ou exame — assim que o fizeres, a tua evolução aparece aqui.</p>
-            {% endif %}
         </div>
+        {{ evolucao_periodos|json_script:"statsEvolucaoDados" }}
 
         <div class="stats-card">
             <div class="stats-tempo-header">
@@ -376,11 +406,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="stats-desempenho-capitulos" id="statsDesempenhoCapitulos" hidden>
-                {% for capitulo in desempenho_capitulos %}
-                <button type="button" class="stats-desempenho-chip" data-capitulo="{{ capitulo.id }}">{{ capitulo.label }}</button>
-                {% endfor %}
-            </div>
             <div class="stats-tempo-chart" id="statsDesempenhoChart">
                 {% for ponto in desempenho_quizzes_capitulo %}
                 <div class="stats-tempo-col">
@@ -392,25 +417,6 @@
             </div>
         </div>
         {{ desempenho_periodos|json_script:"statsDesempenhoDados" }}
-        {{ desempenho_capitulos|json_script:"statsDesempenhoCapitulosDados" }}
-
-        <div class="stats-card">
-            <h2>Hábitos de estudo</h2>
-            <div class="stats-habitos-grid">
-                <div class="stats-habito">
-                    <span class="stats-habito-valor">{{ tempo_semana_min }} min</span>
-                    <span class="stats-habito-label">Tempo de estudo esta semana</span>
-                </div>
-                <div class="stats-habito">
-                    <span class="stats-habito-valor">{{ sequencia_atual }} dia{{ sequencia_atual|pluralize }}</span>
-                    <span class="stats-habito-label">Sequência atual</span>
-                </div>
-                <div class="stats-habito">
-                    <span class="stats-habito-valor">{{ sequencia_recorde }} dia{{ sequencia_recorde|pluralize }}</span>
-                    <span class="stats-habito-label">Recorde pessoal</span>
-                </div>
-            </div>
-        </div>
 
         <div class="stats-card">
             <h2>Vocabulário</h2>
@@ -587,6 +593,7 @@
 </script>
 <script src="{% static 'profile-django.js' %}" defer></script>
 <script src="{% static 'stats-tempo.js' %}" defer></script>
+<script src="{% static 'stats-evolucao.js' %}" defer></script>
 <script src="{% static 'stats-desempenho.js' %}" defer></script>
 <script src="{% static 'activity-heartbeat.js' %}" defer></script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>

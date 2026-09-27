@@ -2205,9 +2205,12 @@ gap:20px;
    grows that same panel downward to reveal its missions underneath
    (see [data-missions-toggle] in index-missions.html), so the grid
    layout only needs to size the panels themselves. */
+/* Fixed-width columns (not 1fr) so panels stay the same size whether
+   the sidebar is collapsed or expanded — with 1fr they'd stretch to
+   fill whatever extra width the collapsed sidebar frees up. */
 .missions-categories-board{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns:repeat(auto-fill, 340px);
     gap:20px;
     align-items:start;
     margin-bottom:20px;
@@ -2231,24 +2234,34 @@ gap:20px;
 
 /* Fixed pixel height (not a % of the card) so the image never eats
    into the space the name/tagline/arrow below it need — that's what
-   was clipping the arrow off on categories with more text. */
+   was clipping the arrow off on categories with more text. Bigger than
+   it used to be (140px): the body below was tightened up to match, so
+   the panel's total height doesn't grow. */
 .missions-category-panel-image{
-    flex:0 0 140px;
+    flex:0 0 195px;
     background-color:var(--sp-border, #e2e3db);
     background-size:cover;
     background-position:center;
 }
 
+/* Citologia's cell illustration reads as a whole diagram (organelle
+   labels etc.), not a photo — cropping it with cover, like the other
+   panels, cuts pieces off it. Shown in full instead, letterboxed. */
+.missions-category-panel-image--contain{
+    background-size:contain;
+    background-repeat:no-repeat;
+}
+
 .missions-category-panel-body{
     display:flex;
     flex-direction:column;
-    padding:14px 16px 16px;
+    padding:6px 16px 10px;
 }
 
 .missions-category-panel-name{
     flex-shrink:0;
-    margin:0 0 8px;
-    padding-bottom:10px;
+    margin:0 0 6px;
+    padding-bottom:8px;
     border-bottom:1px solid var(--sp-border, #d8d9d2);
     color:var(--sp-fg, #1c1c1c);
     font-size:1.05rem;
@@ -2284,18 +2297,20 @@ gap:20px;
     align-self:center;
 }
 
-/* Reserves a fixed height for up to 3 lines regardless of how many
+/* Reserves a fixed height for up to 2 lines regardless of how many
    lines the text actually wraps to, so every card ends up the same
-   height and the arrow below always sits in the same place. */
+   height and the arrow below always sits in the same place. Trimmed
+   from 3 lines to 2 to make room for the taller image above without
+   growing the panel overall. */
 .missions-category-panel-tagline{
     flex-shrink:0;
     display:-webkit-box;
-    -webkit-line-clamp:3;
-    line-clamp:3;
+    -webkit-line-clamp:2;
+    line-clamp:2;
     -webkit-box-orient:vertical;
     overflow:hidden;
-    min-height:calc(1.5em * 3);
-    margin:0 0 14px;
+    min-height:calc(1.5em * 2);
+    margin:0 0 8px;
     color:var(--sp-muted-fg, #68718b);
     font-size:.85rem;
     line-height:1.5;
@@ -2310,7 +2325,7 @@ gap:20px;
 button.missions-category-panel-toggle{
     flex-shrink:0;
     align-self:flex-end;
-    margin-top:8px;
+    margin-top:4px;
     width:28px;
     height:28px;
     padding:0;
@@ -2483,7 +2498,7 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
    other panels which follow the --sp-card theme variable. Centered on
    the page instead of stretching edge to edge. */
 .teste-container{
-    max-width:900px;
+    max-width:1100px;
     margin:0 auto;
     background:#ffffff;
     border:1px solid rgba(0,0,0,.15);
@@ -5532,12 +5547,18 @@ background:#27ae60;
 }
 
 /* Pages with no sidebar at all (e.g. taking a test) shouldn't keep the
-   300px gutter the rule above reserves for it on desktop — this needs
-   its own class rather than relying on the .has-sidebar opt-in, since
-   the base .profile-layout rule at 981px applies unconditionally. */
+   gutter reserved for it on desktop. This overrides the real active
+   rule (body.shadcn-profile .profile-layout further down, using
+   --sp-sidebar-w) rather than the older 300px-based one above — that
+   one no longer wins the cascade but is left in place since other
+   pages still rely on it. */
 @media (min-width: 981px) {
-    .profile-layout.profile-layout--no-sidebar {
-        padding-left: 4%;
+    body.shadcn-profile .profile-layout.profile-layout--no-sidebar {
+        padding: 0 4%;
+    }
+
+    body.shadcn-profile .profile-layout.profile-layout--no-sidebar .profile-main-shell {
+        padding: 14px 0 32px;
     }
 }
 
@@ -5639,6 +5660,56 @@ background:#27ae60;
   height: auto;
   max-width: 100%;
   max-height: min(70vh, 560px);
+}
+
+/* Same green blob backdrop + floating stat cards as the homepage hero
+   (.hifive-scene / .hifive-blob / .hero-float-card, reused as-is) —
+   just a fresh, non-absolute wrapper sized for the login card's own
+   layout instead of the marketing hero's. No explicit width: as a flex
+   item it shrink-wraps to the image's own size, so the blob (sized off
+   the wrapper box) matches the figure instead of the wider flex slot —
+   without this it stretched to fill that slot, ballooning the blob
+   into a huge oval taller/wider than the figure itself. */
+.login-hifive {
+  position: relative;
+  z-index: 1;
+}
+
+.login-hifive img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(70vh, 560px);
+}
+
+/* Smaller and closer-in than the homepage version — that one has a
+   wide hero to spread out in, this one sits in a narrow card column. */
+.login-hifive .hifive-blob--a {
+  left: -8%;
+  top: 8%;
+  width: 116%;
+  height: 84%;
+}
+
+.login-hifive .hifive-blob--b {
+  left: 4%;
+  top: 20%;
+  width: 88%;
+  height: 62%;
+}
+
+.login-hifive .hero-float-card--top-left     { left: -8%; top: 12%; }
+.login-hifive .hero-float-card--top-right    { right: -10%; top: 6%; }
+.login-hifive .hero-float-card--bottom-left  { left: -10%; bottom: 20%; }
+.login-hifive .hero-float-card--bottom-right { right: -8%; bottom: 12%; }
+
+@media (max-width: 640px) {
+  .login-hifive .hero-float-card {
+    display: none;
+  }
 }
 
 .light-login-shell {
@@ -10870,6 +10941,16 @@ body.shadcn-profile .profile-tab.is-disabled em {
     letter-spacing: .04em;
 }
 
+/* Belt-and-braces: this codebase has already hit cases where an author
+   rule's own `display` unintentionally beats the browser's [hidden]
+   default (see .missions-grid[hidden] in the Missões accordion), so the
+   Perfil/Conquistas/Estatísticas tab panels get the same explicit
+   guarantee — a hidden tab must never render alongside the active one. */
+body.shadcn-profile .profile-tab-panel[hidden],
+body.shadcn-profile .profile-grid-aside[hidden] {
+    display: none !important;
+}
+
 /* ---- Two-column grid ---- */
 
 body.shadcn-profile .profile-grid {
@@ -11738,6 +11819,15 @@ body.shadcn-profile .profile-hero-rank {
     gap: 16px;
 }
 
+/* Aninhado dentro do cartão "Tempo de estudo", por baixo do gráfico —
+   separador a marcar que passou de resumo semanal para o gráfico de
+   barras/linha em cima. */
+.stats-habitos-grid--aninhado {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--sp-border, #e5e7eb);
+}
+
 .stats-habito {
     display: flex;
     flex-direction: column;
@@ -11853,32 +11943,6 @@ body.shadcn-profile .profile-hero-rank {
 
 .stats-linha-labels {
     margin: 8px 0 0;
-}
-
-/* b) Desempenho por unidade — modo "Quizz por missão": chips para
-   escolher o capítulo antes de ver as missões desse capítulo no gráfico. */
-.stats-desempenho-capitulos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 18px;
-}
-
-.stats-desempenho-chip {
-    border: 1px solid var(--sp-border, #e5e7eb);
-    background: var(--sp-bg, #f5f9f7);
-    color: var(--sp-muted-fg, #767c70);
-    border-radius: 999px;
-    padding: 6px 14px;
-    font-size: .8rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.stats-desempenho-chip.is-active {
-    background: rgba(31, 138, 91, .12);
-    border-color: transparent;
-    color: #1f8a5b;
 }
 
 /* d) Resumo de vocabulário */
@@ -12106,6 +12170,21 @@ body.shadcn-profile .profile-hero-rank {
     font-size: 1rem;
     line-height: 1.65;
     color: #3d5a48;
+}
+
+/* Header shows the chapter's own image as background (see resumo.imagem
+   in views.py) with a dark gradient baked into the same background-image
+   (inline style) for contrast, instead of the plain colour gradient. */
+.resumo-header--has-image {
+    background-color: #1f2b23;
+    background-size: cover;
+    background-position: center;
+    border-color: rgba(255, 255, 255, .18);
+}
+
+.resumo-header--has-image h1,
+.resumo-header--has-image p {
+    color: #ffffff;
 }
 
 .resumo-modos {
