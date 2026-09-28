@@ -531,6 +531,41 @@ document.querySelectorAll('[data-missions-toggle]').forEach((toggle) => {
     });
 });
 
+/** Pins the category panels' grid to the width it has with the sidebar
+ *  open — collapsing the sidebar frees up extra horizontal space, and
+ *  without this the panels would stretch into it. Measures the real
+ *  rendered width instead of trying to recompute it from CSS
+ *  variables, which proved unreliable across breakpoints. */
+(function () {
+    const board = document.querySelector('.missions-categories-board');
+    const layout = board?.closest('.profile-layout');
+    if (!board || !layout) return;
+
+    const isCollapsed = () => layout.classList.contains('is-sidebar-collapsed');
+
+    function recordOpenWidth() {
+        if (isCollapsed()) return;
+        board.style.maxWidth = 'none';
+        const width = board.getBoundingClientRect().width;
+        if (width > 0) board.dataset.openWidth = String(width);
+    }
+
+    function applyState() {
+        if (isCollapsed() && board.dataset.openWidth) {
+            board.style.maxWidth = `${board.dataset.openWidth}px`;
+        } else {
+            recordOpenWidth();
+        }
+    }
+
+    new MutationObserver(applyState).observe(layout, { attributes: true, attributeFilter: ['class'] });
+    window.addEventListener('resize', () => {
+        if (!isCollapsed()) recordOpenWidth();
+    });
+
+    recordOpenWidth();
+})();
+
 const accountTrigger = document.getElementById('profileAccountTrigger');
 const accountMenu = document.getElementById('profileAccountMenu');
 

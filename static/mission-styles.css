@@ -370,6 +370,68 @@ html[data-theme="dark"] .mission-intro-back:hover {
     object-fit: contain;
 }
 
+/* Silver badge (mission reward, e.g. "Mestre da Biodiversidade") with the
+   same shine sweep as the SuperExplore badge (sidebar-plan-cta-shine,
+   defined in style.css) — same animation, silver gradient instead of
+   gold, and overflow:hidden so the sweep stays clipped to the pill. */
+.mo-hero-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    overflow: hidden;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #e2e6ea, #9aa3ab 45%, #d4d8dc 65%, #7c848c);
+    color: #20242a;
+    font-size: .74rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+/* The badge icon is an inline <svg> (see missao-engine.js) with no
+   width/height of its own, only a viewBox — without this it falls back
+   to the browser's oversized default intrinsic size instead of matching
+   the other .mo-hero-meta icons (14px). */
+.mo-hero-badge svg {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+}
+
+.mo-hero-badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .8) 48%, rgba(255, 255, 255, .8) 54%, transparent 72%);
+    background-size: 250% 100%;
+    background-position: 160% 0;
+    pointer-events: none;
+    animation: sidebar-plan-cta-shine 3.2s ease-in-out infinite;
+}
+
+html.dark-mode .mo-hero-badge {
+    background: linear-gradient(135deg, #c7ccd1, #7d858d 45%, #b9bfc4 65%, #5c636a);
+    color: #14171b;
+}
+
+/* Chapter image (this.missao.imagem in missao-engine.js) fills the
+   whole hero card as a cover background — the dark gradient baked
+   into the same background-image (inline style) keeps the title/meta
+   text on top readable. */
+.mo-hero--has-image {
+    background-color: #1f2b23;
+    background-size: cover;
+    background-position: center;
+    border-color: rgba(255, 255, 255, .18);
+}
+
+.mo-hero--has-image .mo-hero-info h1,
+.mo-hero--has-image .mo-hero-info p,
+.mo-hero--has-image .mo-hero-meta {
+    color: #ffffff;
+}
+
 /* minmax(0, ...) rather than a bare `1fr`: a bare `1fr` track is really
    minmax(auto, 1fr), and that auto minimum is the track's content's own
    min-content size. .mo-index-row-btn has several flex-shrink:0 children
@@ -4037,6 +4099,8 @@ html[data-theme="dark"] .intro-equation {
 
 .lesson-theme-toggle:hover {
     background: rgba(0, 0, 0, .05);
+    box-shadow: none;
+    transform: none;
 }
 
 .lesson-theme-toggle .icon-sun,
@@ -4055,6 +4119,41 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-sun {
 
 html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     display: block;
+}
+
+/* Confetti burst on a correct quiz answer (see celebrateCorrectAnswer in
+   missao-engine.js) — a loose full-screen overlay appended to
+   document.body and removed by its own setTimeout, not tied to the quiz
+   screen's own DOM (which typically re-renders right after the answer). */
+.me-confetti-burst {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.me-confetti-piece {
+    position: absolute;
+    top: -20px;
+    width: 9px;
+    height: 15px;
+    border-radius: 2px;
+    opacity: 0;
+    animation-name: me-confetti-fall;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes me-confetti-fall {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--drift, 0), 78vh) rotate(var(--spin, 180deg));
+        opacity: 0;
+    }
 }
 
 /* Ambient tip: the mascot chiming in on its own every so often (see
@@ -4478,7 +4577,14 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
 
 /* Close ("X") button for a popup card — top-right corner, bare icon (no
    button chrome) so it reads as a dismiss affordance, not a CTA. */
-.mascot-overlay-close {
+/* button.mascot-overlay-close (element+class), not just .mascot-overlay-close:
+   the site-wide button{} reset's own box-shadow (a soft green halo) was
+   never overridden here, so even with background:transparent the X still
+   showed a shadowed circle behind it — needed enough specificity to zero
+   that out too, on both rest and hover/focus. */
+button.mascot-overlay-close,
+button.mascot-overlay-close:hover,
+button.mascot-overlay-close:focus-visible {
     position: absolute;
     top: 14px;
     right: 14px;
@@ -4490,15 +4596,16 @@ html[data-theme="dark"] .lesson-theme-toggle .icon-moon {
     border: none;
     border-radius: 999px;
     background: transparent;
+    box-shadow: none;
+    transform: none;
     color: #6b7a72;
     cursor: pointer;
     line-height: 1;
     font-size: 1.2rem;
 }
 
-.mascot-overlay-close:hover,
-.mascot-overlay-close:focus-visible {
-    background: #eef7f3;
+button.mascot-overlay-close:hover,
+button.mascot-overlay-close:focus-visible {
     color: #1a3328;
 }
 
@@ -5115,6 +5222,8 @@ html[data-theme="dark"] .lesson-theme-toggle {
 
 html[data-theme="dark"] .lesson-theme-toggle:hover {
     background: rgba(255, 255, 255, .06);
+    box-shadow: none;
+    transform: none;
 }
 
 html[data-theme="dark"] .lesson-help-fab-img {

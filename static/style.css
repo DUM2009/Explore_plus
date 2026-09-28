@@ -1884,6 +1884,15 @@ body.shadcn-profile .missions-page{
     margin-left:auto;
 }
 
+/* On desktop the missions sidebar stays permanently open (mirrors the
+   perfil page above), so the hamburger only needs to exist for the
+   off-canvas drawer on mobile. */
+@media (min-width: 981px) {
+    .missions-topbar .nav-drawer-toggle{
+        display:none;
+    }
+}
+
 /* Perfil page has no hamburger (its sidebar stays permanently open, so
    there's nothing to toggle) — the notifications bell takes the same
    right-aligned spot instead. */
@@ -2205,16 +2214,20 @@ gap:20px;
    grows that same panel downward to reveal its missions underneath
    (see [data-missions-toggle] in index-missions.html), so the grid
    layout only needs to size the panels themselves. */
-/* Fixed-width columns (not 1fr) so panels stay the same size whether
-   the sidebar is collapsed or expanded — with 1fr they'd stretch to
-   fill whatever extra width the collapsed sidebar frees up. */
 .missions-categories-board{
     display:grid;
-    grid-template-columns:repeat(auto-fill, 340px);
+    grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
     gap:20px;
     align-items:start;
     margin-bottom:20px;
 }
+
+/* Panels should stay the size they were with the sidebar OPEN — not
+   grow into the extra width freed up once it's collapsed. Two attempts
+   at computing that open-state width from CSS custom properties/calc()
+   didn't hold up, so index-missions.html measures it directly in JS
+   (the real rendered width, not a guess) and pins it as max-width via
+   an inline style whenever the sidebar is collapsed. */
 
 .missions-category-panel{
     position:relative;

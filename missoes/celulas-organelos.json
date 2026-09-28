@@ -2,6 +2,7 @@
   "missao_id": "celulas-organelos",
   "titulo": "Células e Organelos",
   "disciplina": "citologia",
+  "imagem": "Célula.png",
   "badge": { "icone": "<img src=\"/static/images/Emblema celula.png\" alt=\"Mestre da Célula\">", "icone_creditos": "Cell icons created by dDara - Flaticon (flaticon.com/free-icons/cell)", "nome": "Mestre da Célula" },
   "secoes": [
     {

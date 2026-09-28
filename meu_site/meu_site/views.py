@@ -926,19 +926,17 @@ CATEGORIA_TESTES_IMAGENS = {
 # dois exclusivos do SuperExplore (Pro). 'teste_id' fica a None enquanto o
 # teste ainda não tiver conteúdo — a página mostra-o como "Em breve".
 MISSOES_TESTES = [
-    # Fotossíntese temporariamente ocultada da lista de testes a pedido da
-    # Daniela — voltar a incluir este bloco quando ela pedir para reativar.
-    # {
-    #     'categoria': 'Botânica',
-    #     'titulo': 'Fotossíntese',
-    #     'meta': ['Grupos I, II e III', '14-16 perguntas', '45 minutos'],
-    #     'correcao': 'Correção automática e por IA.',
-    #     'testes': [
-    #         {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fotossintese'},
-    #         {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fotossintese-c4-milho'},
-    #         {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fotossintese-cam-opuntia'},
-    #     ],
-    # },
+    {
+        'categoria': 'Botânica',
+        'titulo': 'Fotossíntese',
+        'meta': ['Grupos I, II e III', '14-16 perguntas', '45 minutos'],
+        'correcao': 'Correção automática e por IA.',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fotossintese'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fotossintese-c4-milho'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fotossintese-cam-opuntia'},
+        ],
+    },
     {
         'categoria': 'Biodiversidade',
         'titulo': 'Diversidade e Organização Biológica',

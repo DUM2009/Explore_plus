@@ -2,6 +2,7 @@
   "missao_id": "ciclo-celular",
   "titulo": "Ciclo Celular",
   "disciplina": "citologia",
+  "imagem": "Célula.png",
   "badge": { "icone": "🧫", "nome": "Mestre do Ciclo Celular" },
   "secoes": [
     {
