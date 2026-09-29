@@ -1,0 +1,415 @@
+{
+  "missao_id": "11-eletromagnetismo",
+  "id_guiao": "fis11-m4",
+  "titulo": "Eletromagnetismo",
+  "disciplina": "fisica",
+  "ano": 11,
+  "imagem": "f11_eolica_barragem.png",
+  "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 14a8 8 0 0 1 16 0\"/><path d=\"M4 14v6h16v-6\"/><path d=\"M12 6V2\"/></svg>", "nome": "Mestre do Eletromagnetismo" },
+  "secoes": [
+    {
+      "secao_id": "carga-eletrica-campo-eletrico",
+      "titulo": "Carga elétrica e campo elétrico",
+      "xp": 25,
+      "tempo_estimado_min": 10,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f11_balao_cabelo.png",
+          "texto": "Esfregas um balão no cabelo e, de repente, o cabelo levanta-se e segue o balão sem lhe tocar. O balão fica colado à parede. Nada está a tocar em nada, e mesmo assim há forças a atuar. Estas forças à distância explicam-se com um conceito que vai ser central nesta missão: o campo.",
+          "mascote_texto": "O eletromagnetismo parece abstrato, mas tudo o que é elétrico em tua casa funciona graças a ele. Vai por partes."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Carga elétrica",
+          "imagem": "f11_cargas_eletricas.png",
+          "texto_principal": "A carga elétrica é uma propriedade de algumas partículas: os protões têm carga positiva e os eletrões têm carga negativa, de igual valor absoluto. Um corpo fica eletrizado quando ganha ou perde eletrões. Cargas do mesmo sinal repelem-se; cargas de sinais opostos atraem-se.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "carga-elementar", "label": "Carga elementar", "explicacao": "e = 1,60 × 10⁻¹⁹ C. A carga de qualquer corpo é um múltiplo inteiro desta carga: diz-se que a carga elétrica está quantizada." },
+            { "id": "conservacao-carga", "label": "Conservação da carga", "explicacao": "Num sistema isolado, a carga total mantém-se. Quando esfregas o balão no cabelo, os eletrões passam do cabelo para o balão: o balão fica negativo e o cabelo fica positivo com carga de igual valor absoluto." },
+            { "id": "unidade-coulomb", "label": "Unidade", "explicacao": "Coulomb (C)." },
+            { "id": "corpo-neutro", "label": "Corpo neutro", "explicacao": "Tem igual número de protões e de eletrões. Não quer dizer que não tenha cargas: quer dizer que se compensam." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Campo elétrico e linhas de campo",
+          "imagem": "f11_linhas_campo_eletrico.png",
+          "texto_principal": "Uma carga elétrica cria à sua volta um campo elétrico. Qualquer outra carga colocada nesse campo fica sujeita a uma força elétrica. O campo elétrico é uma grandeza vetorial e representa-se por linhas de campo.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "carga-positiva-linhas", "label": "Carga positiva", "explicacao": "Linhas de campo radiais, a divergir da carga (a sair)." },
+            { "id": "carga-negativa-linhas", "label": "Carga negativa", "explicacao": "Linhas de campo radiais, a convergir para a carga (a entrar)." },
+            { "id": "regras-linhas", "label": "Regras das linhas", "explicacao": "O vetor campo é tangente às linhas em cada ponto e tem o sentido delas. Onde as linhas estão mais juntas, o campo é mais intenso. As linhas nunca se cruzam." },
+            { "id": "campo-carga-pontual", "label": "Campo criado por uma carga pontual", "explicacao": "É mais intenso perto da carga e diminui com a distância." },
+            { "id": "campo-uniforme", "label": "Campo elétrico uniforme", "explicacao": "Entre duas placas planas e paralelas com cargas de sinais opostos (condensador plano), as linhas são paralelas e igualmente espaçadas. O campo tem a mesma direção, sentido e intensidade em todos os pontos entre as placas." },
+            { "id": "forca-sobre-carga", "label": "Força sobre uma carga", "explicacao": "Numa carga positiva, a força tem o sentido do campo. Numa carga negativa (um eletrão), tem sentido oposto." }
+          ],
+          "caixa_formula": [
+            { "expressao": "F e = |q| E", "significado": "Intensidade da força elétrica sobre uma carga q num campo de intensidade E.", "unidades": "" },
+            { "expressao": "Unidade do campo elétrico: N/C", "significado": "Equivalente a V/m.", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um eletrão é colocado num campo elétrico uniforme que aponta para a direita. Para onde aponta a força elétrica que atua sobre ele?",
+          "opcoes": ["Para a direita.", "Para a esquerda.", "Para cima.", "É nula, porque o campo é uniforme."],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O eletrão tem carga negativa, por isso a força tem sentido oposto ao do campo.",
+          "mascote_feedback_errado": "O sentido do campo é o da força sobre uma carga positiva. Como o eletrão é negativo, a força aponta no sentido oposto: para a esquerda."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma carga de 2,0 µC é colocada num campo elétrico de intensidade 5,0 × 10³ N/C. Qual é a intensidade da força elétrica? (1 µC = 10⁻⁶ C)",
+          "opcoes": ["1,0 × 10⁻² N", "2,5 × 10³ N", "1,0 × 10⁴ N", "4,0 × 10⁻¹⁰ N"],
+          "correta": 0,
+          "mascote_feedback_certo": "Certo. F = |q| E = 2,0 × 10⁻⁶ × 5,0 × 10³ = 1,0 × 10⁻² N.",
+          "mascote_feedback_errado": "Converte a carga: 2,0 µC = 2,0 × 10⁻⁶ C. F = |q| E = 2,0 × 10⁻⁶ × 5,0 × 10³ = 1,0 × 10⁻² N."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O cheiro de um perfume.** Quando alguém entra numa sala com perfume, não precisa de te tocar para \"chegar\" até ti: o cheiro espalha-se pelo espaço à volta da pessoa, mais intenso perto dela e mais fraco ao longe. O campo elétrico é parecido: uma carga \"modifica\" o espaço à sua volta, e qualquer outra carga que entre nesse espaço sente o efeito, mais forte perto e mais fraco longe. A diferença é que o campo não é feito de partículas que se espalham: é uma propriedade do próprio espaço."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O relâmpago, aplicações do campo uniforme e um erro comum",
+          "texto": "**Curiosidade: o relâmpago**\n\nDentro das nuvens de tempestade, as colisões entre gotas e cristais de gelo separam cargas: a base da nuvem fica negativa e o solo fica positivo. Cria-se um campo elétrico tão intenso que o ar deixa de ser isolador e há uma descarga: o relâmpago.\n\n**Aplicações do campo elétrico uniforme**\n\nOs condensadores planos existem em quase todos os aparelhos eletrónicos. Os campos elétricos são usados em fotocopiadoras e impressoras laser (para atrair o toner ao papel), em filtros de chaminés industriais (para reter partículas de fumo) e em ecrãs sensíveis ao toque.\n\n**Erro comum**\n\nPensar que as linhas de campo são o caminho que uma carga percorre. As linhas indicam a direção e o sentido da força em cada ponto, não a trajetória."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Esfrega-se uma vareta de vidro num pano de seda e o vidro fica com carga positiva. O que aconteceu?",
+              "opcoes": ["O vidro ganhou protões.", "O vidro perdeu eletrões, que passaram para a seda.", "Foi criada carga positiva no vidro.", "A seda perdeu protões."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Só os eletrões se transferem facilmente.",
+              "mascote_feedback_errado": "Só os eletrões se transferem facilmente. O vidro perdeu eletrões (ficou positivo) e a seda ganhou-os (ficou negativa). A carga total conserva-se."
+            },
+            {
+              "pergunta": "Num campo elétrico uniforme, as linhas de campo são:",
+              "opcoes": ["radiais, a sair de um ponto.", "circunferências fechadas.", "retas paralelas e igualmente espaçadas.", "retas paralelas, mais juntas de um lado do que do outro."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Campo uniforme significa mesma direção, sentido e intensidade em todos os pontos.",
+              "mascote_feedback_errado": "Campo uniforme significa mesma direção, sentido e intensidade em todos os pontos, o que se representa por linhas paralelas e equidistantes."
+            },
+            {
+              "pergunta": "A carga de um corpo pode ser 4,0 × 10⁻¹⁹ C?",
+              "opcoes": ["Sim, qualquer valor é possível.", "Não, porque não é múltiplo inteiro da carga elementar (4,0 / 1,6 = 2,5).", "Sim, corresponde a 4 eletrões.", "Não, porque a carga tem de ser negativa."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A carga está quantizada: tem de ser um múltiplo inteiro de 1,60 × 10⁻¹⁹ C.",
+              "mascote_feedback_errado": "A carga está quantizada: tem de ser um múltiplo inteiro de 1,60 × 10⁻¹⁹ C. 4,0 × 10⁻¹⁹ C daria 2,5 eletrões, o que é impossível."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "campo-magnetico",
+      "titulo": "Campo magnético",
+      "xp": 25,
+      "tempo_estimado_min": 9,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f11_bussola_oersted.png",
+          "texto": "Em 1820, o professor dinamarquês Hans Christian Ørsted estava a dar uma aula com uma pilha e um fio. Ao lado, por acaso, estava uma bússola. Quando ligou a corrente, a agulha da bússola desviou-se. Até esse dia, a eletricidade e o magnetismo eram estudados como fenómenos separados. Ørsted tinha acabado de mostrar que uma corrente elétrica cria um campo magnético.",
+          "mascote_texto": "Nesta secção não há contas. É tudo sobre saber desenhar e interpretar linhas de campo magnético."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Campo magnético de um íman",
+          "imagem": "f11_campo_iman.png",
+          "texto_principal": "Os ímanes criam à sua volta um campo magnético, também uma grandeza vetorial, representado por linhas de campo. A unidade SI do campo magnético é o tesla (T).",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "polos", "label": "Polos", "explicacao": "Todos os ímanes têm um polo norte e um polo sul. Polos iguais repelem-se, polos diferentes atraem-se. Se partires um íman ao meio, obténs dois ímanes, cada um com os dois polos: não existem polos isolados." },
+            { "id": "linhas-campo-iman", "label": "Linhas de campo", "explicacao": "No exterior do íman, saem do polo norte e entram no polo sul. São linhas fechadas: continuam por dentro do íman, do sul para o norte." },
+            { "id": "bussola", "label": "Bússola", "explicacao": "A agulha de uma bússola é um pequeno íman que se alinha com as linhas de campo, com o seu polo norte a apontar no sentido do campo." },
+            { "id": "intensidade-iman", "label": "Intensidade", "explicacao": "Onde as linhas estão mais juntas (junto aos polos), o campo é mais intenso." },
+            { "id": "campo-uniforme-iman", "label": "Campo magnético uniforme", "explicacao": "Entre os polos de um íman em U, as linhas são aproximadamente paralelas e equidistantes." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Campo criado por correntes",
+          "imagem": "f11_campo_correntes.png",
+          "texto_principal": "Uma corrente elétrica cria um campo magnético. A forma das linhas depende da forma do condutor.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "fio-retilineo", "label": "Fio retilíneo", "explicacao": "Linhas de campo em circunferências centradas no fio, em planos perpendiculares a ele. O campo é mais intenso perto do fio." },
+            { "id": "regra-mao-direita", "label": "Regra da mão direita", "explicacao": "Aponta o polegar no sentido da corrente; os outros dedos, ao dobrar, indicam o sentido das linhas de campo." },
+            { "id": "bobina-solenoide", "label": "Bobina (solenoide)", "explicacao": "Um fio enrolado em muitas espiras. No interior, o campo é praticamente uniforme; no exterior, é semelhante ao de um íman em barra. É um eletroíman: desliga-se quando se desliga a corrente." },
+            { "id": "intensidade-bobina", "label": "Intensidade na bobina", "explicacao": "Aumenta com a corrente e com o número de espiras por unidade de comprimento. Um núcleo de ferro no interior torna-o muito mais intenso." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a diferença essencial entre as linhas de campo magnético de um íman e as linhas de campo elétrico de duas cargas opostas?",
+          "opcoes": ["As linhas magnéticas cruzam-se.", "As linhas magnéticas são fechadas; as elétricas começam nas cargas positivas e terminam nas negativas.", "As linhas elétricas são sempre circulares.", "Não há diferença."],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Não existem \"cargas magnéticas\" isoladas, por isso as linhas de campo magnético são fechadas.",
+          "mascote_feedback_errado": "As linhas de campo elétrico nascem nas cargas positivas e morrem nas negativas. As magnéticas não têm início nem fim: são fechadas, continuando por dentro do íman."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O polo norte da agulha de uma bússola aponta para o norte geográfico. O que se pode concluir sobre o campo magnético da Terra?",
+          "opcoes": ["Perto do polo norte geográfico existe um polo norte magnético.", "Perto do polo norte geográfico existe um polo sul magnético.", "A Terra não tem campo magnético; a bússola aponta para norte por causa da rotação.", "O campo magnético terrestre aponta para sul."],
+          "correta": 1,
+          "mascote_feedback_certo": "Muito bem. Polos diferentes atraem-se.",
+          "mascote_feedback_errado": "O polo norte da agulha é atraído por um polo sul. Por isso, perto do polo norte geográfico está o polo sul magnético da Terra."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A pista de corrida fechada.** As linhas de campo elétrico são como estradas que começam numa cidade (carga positiva) e terminam noutra (carga negativa). As linhas de campo magnético são como uma pista de corrida fechada: não têm partida nem chegada, dão a volta e voltam ao mesmo sítio. No íman, a \"pista\" passa por fora do norte para o sul e fecha por dentro, do sul para o norte."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O campo magnético da Terra e eletroímanes no dia a dia",
+          "texto": "**O campo magnético da Terra protege a vida**\n\nO núcleo externo da Terra, de ferro líquido em movimento, gera um campo magnético. Esse campo desvia a maior parte das partículas com carga que vêm do Sol (vento solar). Perto dos polos, algumas entram na atmosfera e fazem brilhar os gases: são as auroras boreais e austrais.\n\n**Eletroímanes no dia a dia**\n\nCampainhas, gruas de sucata, fechaduras elétricas, discos rígidos antigos, altifalantes e as máquinas de ressonância magnética usam bobinas percorridas por corrente para criar campos magnéticos que se podem ligar e desligar."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Partindo um íman em barra ao meio, obtém-se:",
+              "opcoes": ["um polo norte isolado e um polo sul isolado.", "dois ímanes, cada um com polo norte e polo sul.", "dois pedaços de ferro sem propriedades magnéticas.", "dois polos norte."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Não existem polos magnéticos isolados.",
+              "mascote_feedback_errado": "Não existem polos magnéticos isolados. Cada pedaço é um novo íman completo."
+            },
+            {
+              "pergunta": "As linhas do campo magnético criado por um fio retilíneo percorrido por corrente são:",
+              "opcoes": ["retas paralelas ao fio.", "retas que saem radialmente do fio.", "circunferências centradas no fio, em planos perpendiculares a ele.", "inexistentes, porque o fio não é um íman."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Foi o que Ørsted descobriu.",
+              "mascote_feedback_errado": "Foi o que Ørsted descobriu: a corrente cria um campo magnético com linhas circulares à volta do fio."
+            },
+            {
+              "pergunta": "No interior de uma bobina longa percorrida por corrente, o campo magnético é:",
+              "opcoes": ["nulo.", "aproximadamente uniforme.", "mais intenso junto às paredes.", "radial."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. No interior de uma bobina, o campo é aproximadamente uniforme.",
+              "mascote_feedback_errado": "No interior de uma bobina (solenoide), as linhas são paralelas e igualmente espaçadas: o campo é aproximadamente uniforme."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "fluxo-magnetico-inducao",
+      "titulo": "Fluxo magnético e indução eletromagnética",
+      "xp": 25,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f11_iman_bobina.png",
+          "texto": "Ørsted mostrou que uma corrente cria um campo magnético. Onze anos depois, em 1831, o inglês Michael Faraday fez a pergunta ao contrário: será que um campo magnético consegue criar uma corrente? Descobriu que sim, mas com uma condição surpreendente: o campo tem de estar a variar. Um íman parado dentro de uma bobina não faz nada. Um íman a entrar e a sair produz corrente. Quase toda a eletricidade do mundo é produzida com esta ideia.",
+          "mascote_texto": "Esta é a secção mais exigente da missão. A lei de Faraday sai em quase todos os exames."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Fluxo magnético",
+          "imagem": "f11_fluxo_magnetico.png",
+          "texto_principal": "O fluxo magnético através de uma superfície mede, de forma simplificada, \"quantas linhas de campo\" atravessam essa superfície. Depende da intensidade do campo, da área da superfície e da orientação da superfície em relação ao campo.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "area-fluxo", "label": "Área (A)", "explicacao": "Área da superfície limitada pela espira, em m²." },
+            { "id": "normal-superficie", "label": "Normal à superfície", "explicacao": "Direção perpendicular ao plano da espira." },
+            { "id": "angulo-alfa", "label": "Ângulo α", "explicacao": "Ângulo entre o campo magnético e a normal à superfície. Atenção: não é o ângulo entre o campo e o plano da espira." },
+            { "id": "alfa-zero", "label": "α = 0°", "explicacao": "As linhas atravessam a espira perpendicularmente. Fluxo máximo: Φ = B A." },
+            { "id": "alfa-noventa", "label": "α = 90°", "explicacao": "As linhas são paralelas ao plano da espira e não a atravessam. Fluxo nulo." },
+            { "id": "bobina-n-espiras", "label": "Bobina com N espiras", "explicacao": "O fluxo total é N vezes o fluxo através de uma espira." }
+          ],
+          "caixa_formula": [
+            { "expressao": "Φ = B A cos α", "significado": "Fluxo magnético através de uma espira.", "unidades": "Φ em weber (Wb), B em tesla (T), A em m². 1 Wb = 1 T m²." },
+            { "expressao": "Φ = N B A cos α", "significado": "Fluxo através de uma bobina com N espiras.", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Lei de Faraday",
+          "imagem": "f11_lei_faraday.png",
+          "texto_principal": "Quando o fluxo magnético através de um circuito varia, gera-se nesse circuito uma força eletromotriz induzida. Se o circuito estiver fechado, surge uma corrente induzida. É o fenómeno da indução eletromagnética. A lei de Faraday diz quanto vale essa força eletromotriz.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "condicao-essencial", "label": "Condição essencial", "explicacao": "Só há força eletromotriz induzida enquanto o fluxo estiver a variar. Fluxo constante (mesmo que grande) não induz nada." },
+            { "id": "formas-variar-fluxo", "label": "Formas de variar o fluxo", "explicacao": "Variar B (aproximar ou afastar um íman; ligar e desligar uma bobina vizinha), variar A, ou variar α (rodar a espira)." },
+            { "id": "rapidez-faraday", "label": "Rapidez", "explicacao": "Quanto mais depressa o fluxo varia, maior a força eletromotriz induzida. Mover o íman mais depressa dá mais tensão." },
+            { "id": "sentido-faraday", "label": "Sentido", "explicacao": "Aproximar e afastar o íman induzem correntes de sentidos opostos." },
+            { "id": "numero-espiras-faraday", "label": "Número de espiras", "explicacao": "Uma bobina com mais espiras dá uma força eletromotriz maior, porque o fluxo total é N vezes maior." }
+          ],
+          "caixa_formula": [
+            { "expressao": "|ε i| = |ΔΦ| / Δt", "significado": "Lei de Faraday.", "unidades": "ε i (força eletromotriz induzida) em V, ΔΦ em Wb, Δt em s." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma espira de área 0,020 m² está num campo magnético uniforme de 0,50 T, perpendicular ao plano da espira. Qual é o fluxo magnético?",
+          "opcoes": ["0 Wb", "0,010 Wb", "0,025 Wb", "25 Wb"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. α = 0°, cos 0° = 1. Φ = 0,50 × 0,020 × 1 = 0,010 Wb.",
+          "mascote_feedback_errado": "Campo perpendicular ao plano da espira quer dizer campo paralelo à normal, ou seja, α = 0°. Φ = B A cos 0° = 0,50 × 0,020 = 0,010 Wb."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O campo magnético do exercício anterior é desligado e o fluxo passa de 0,010 Wb para zero em 0,10 s. Se em vez de uma espira houver uma bobina com 100 espiras, qual é a força eletromotriz induzida média?",
+          "opcoes": ["0,10 V", "1,0 V", "10 V", "100 V"],
+          "correta": 2,
+          "mascote_feedback_certo": "Muito bem. Com 100 espiras: 100 × 0,10 = 10 V.",
+          "mascote_feedback_errado": "A variação de fluxo total é N × ΔΦ = 100 × 0,010 = 1,0 Wb. |ε| = 1,0 / 0,10 = 10 V."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_faraday",
+          "titulo": "Íman e bobina",
+          "instrucao": "Escolhe a velocidade do íman (positiva a entrar, negativa a sair) e o número de espiras. Observa a força eletromotriz induzida.",
+          "controlos": [
+            { "id": "velocidade", "rotulo": "Velocidade do íman", "min": -2, "max": 2, "passo": 0.1, "valor_inicial": 0.5, "unidade": "m/s" },
+            { "id": "N", "rotulo": "Número de espiras", "min": 10, "max": 500, "passo": 10, "valor_inicial": 100, "unidade": "" }
+          ],
+          "saidas": [
+            { "rotulo": "Variação de fluxo por segundo (por espira)", "formula": "0.10 * 1.0e-3 * Math.abs(velocidade) / 0.01", "unidade": "Wb/s", "casas_decimais": 5 },
+            { "rotulo": "Força eletromotriz induzida", "formula": "N * 0.10 * 1.0e-3 * Math.abs(velocidade) / 0.01 * 1000", "unidade": "mV", "casas_decimais": 1 },
+            { "rotulo": "Sentido da deflexão", "formula": "velocidade > 0 ? 'entrar' : (velocidade < 0 ? 'sair' : 'parado, sem deflexão')" }
+          ],
+          "pergunta_final": "Com o íman parado dentro da bobina, o ponteiro mexe-se? Resposta esperada: não, porque o fluxo não está a variar."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A campainha que só toca quando a porta se mexe.** Imagina uma porta com um sensor que só toca quando a porta se está a abrir ou a fechar. Com a porta escancarada, não toca. Com a porta fechada, também não. Só toca durante o movimento, e toca mais alto se a abrires de rompante. O fluxo magnético é o quanto a porta está aberta. A força eletromotriz induzida é o toque: só existe enquanto o fluxo muda, e é tanto maior quanto mais depressa ele muda."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A indução no dia a dia, um erro comum e Faraday",
+          "texto": "**Onde está a indução no teu dia a dia**\n\nCarregadores sem fios de telemóveis: uma bobina na base cria um campo magnético variável que induz corrente numa bobina dentro do telemóvel. Placas de indução: o campo magnético variável induz correntes no fundo metálico do tacho, que aquece por efeito Joule. Cartões de transportes e de pagamento sem contacto: o leitor induz uma pequena corrente no cartão, suficiente para ele responder. Microfones dinâmicos: o som faz vibrar uma bobina junto a um íman, o que induz um sinal elétrico.\n\n**Erro comum**\n\nDizer que um íman dentro de uma bobina \"produz corrente\". Só produz se estiver em movimento (ou se o campo variar). O que conta é a variação do fluxo, não o seu valor.\n\n**Curiosidade: Faraday**\n\nMichael Faraday nasceu numa família pobre, deixou a escola muito cedo e, aos 14 anos, começou a trabalhar como aprendiz de encadernador. Aprendeu ciência a ler os livros que encadernava. Tornou-se um dos físicos experimentais mais importantes da história, e a unidade de capacidade elétrica, o farad, tem o seu nome."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Uma espira está num campo magnético uniforme e constante. Qual das situações NÃO induz corrente na espira?",
+              "opcoes": ["Rodar a espira.", "Aumentar a intensidade do campo.", "Deslocar a espira dentro do campo uniforme, sem a rodar.", "Deformar a espira, diminuindo a sua área."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Deslocar sem rodar não altera B, A nem α: o fluxo não varia.",
+              "mascote_feedback_errado": "Num campo uniforme, deslocar a espira sem rodar não altera B, A nem α: o fluxo não varia e não há indução."
+            },
+            {
+              "pergunta": "Uma espira roda de uma posição em que o campo é perpendicular ao seu plano para uma posição em que o campo é paralelo ao seu plano. O fluxo magnético:",
+              "opcoes": ["passa de zero para o máximo.", "passa do máximo para zero.", "mantém-se.", "duplica."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Com o campo perpendicular ao plano, α = 0° e o fluxo é máximo. Paralelo, α = 90° e o fluxo é nulo.",
+              "mascote_feedback_errado": "Com o campo perpendicular ao plano, α = 0° e o fluxo é máximo (B A). Com o campo paralelo ao plano, α = 90° e o fluxo é nulo."
+            },
+            {
+              "pergunta": "Se um íman for introduzido numa bobina com o dobro da rapidez, a força eletromotriz induzida:",
+              "opcoes": ["mantém-se.", "reduz-se a metade.", "duplica, porque a mesma variação de fluxo ocorre em metade do tempo.", "quadruplica."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. |ε| = |ΔΦ| / Δt. A variação de fluxo é a mesma; o tempo é metade.",
+              "mascote_feedback_errado": "|ε| = |ΔΦ| / Δt. A variação de fluxo é a mesma; o tempo é metade; a força eletromotriz duplica."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "corrente-alternada-transformadores",
+      "titulo": "Produção de corrente alternada e transformadores",
+      "xp": 25,
+      "tempo_estimado_min": 10,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f11_eolica_barragem.png",
+          "texto": "Uma barragem, uma central eólica e uma central térmica parecem completamente diferentes. Mas por dentro fazem todas a mesma coisa: rodam um eixo. A água, o vento ou o vapor fazem girar uma turbina, e a turbina faz girar um gerador. Depois, antes de a eletricidade chegar a tua casa, passa por vários transformadores. Nesta secção vais perceber os dois aparelhos.",
+          "mascote_texto": "Última secção da missão. Liga o que aprendeste sobre indução ao transporte de energia do 10.º ano."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O alternador",
+          "imagem": "f11_alternador.png",
+          "texto_principal": "Num gerador de corrente alternada (alternador), uma bobina roda num campo magnético (ou um íman roda dentro de bobinas fixas). Ao rodar, o ângulo entre o campo e a normal à bobina muda continuamente, por isso o fluxo varia periodicamente. Pela lei de Faraday, surge uma força eletromotriz induzida que muda de sentido a cada meia volta: uma tensão alternada sinusoidal.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "rotacao-alternador", "label": "Rotação", "explicacao": "A cada volta completa da bobina corresponde um período da tensão alternada." },
+            { "id": "fluxo-maximo-alternador", "label": "Fluxo máximo", "explicacao": "Quando o plano da espira é perpendicular ao campo. Nesse instante a rapidez de variação do fluxo é nula, por isso a força eletromotriz é nula." },
+            { "id": "fluxo-nulo-alternador", "label": "Fluxo nulo", "explicacao": "Quando o plano da espira é paralelo ao campo. É aí que o fluxo varia mais depressa, por isso a força eletromotriz é máxima." },
+            { "id": "frequencia-rede", "label": "Frequência", "explicacao": "Na rede elétrica europeia, 50 Hz: a tensão muda de sentido 100 vezes por segundo." },
+            { "id": "centrais-alternador", "label": "Centrais", "explicacao": "Hidroelétricas, eólicas, térmicas (a carvão, gás, biomassa, nucleares) usam todas alternadores. A exceção importante são os painéis fotovoltaicos, que produzem corrente contínua sem indução." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O transformador",
+          "imagem": "f11_transformador.png",
+          "texto_principal": "Um transformador é formado por duas bobinas enroladas num núcleo de ferro. A corrente alternada no primário cria um campo magnético variável, que o núcleo conduz até ao secundário. A variação do fluxo no secundário induz nele uma tensão alternada. A razão entre as tensões é igual à razão entre os números de espiras.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "primario", "label": "Primário", "explicacao": "Bobina ligada à fonte de tensão alternada, com N p espiras." },
+            { "id": "nucleo-ferro", "label": "Núcleo de ferro", "explicacao": "Concentra e guia o campo magnético de uma bobina para a outra." },
+            { "id": "secundario", "label": "Secundário", "explicacao": "Bobina onde se induz a tensão de saída, com N s espiras." },
+            { "id": "elevador-tensao", "label": "Elevador de tensão", "explicacao": "N s > N p, logo U s > U p. Usado à saída das centrais." },
+            { "id": "redutor-tensao", "label": "Redutor de tensão", "explicacao": "N s < N p, logo U s < U p. Usado nos postos de transformação perto das casas e nos carregadores." },
+            { "id": "so-corrente-alternada", "label": "Só funciona em corrente alternada", "explicacao": "Com corrente contínua, o campo magnético é constante, o fluxo não varia e não há indução no secundário." }
+          ],
+          "caixa_formula": [
+            { "expressao": "U p / U s = N p / N s", "significado": "Transformador ideal (sem perdas).", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um transformador tem 1000 espiras no primário e 50 no secundário. O primário está ligado a 230 V. Qual é a tensão no secundário?",
+          "opcoes": ["4600 V", "230 V", "23 V", "11,5 V"],
+          "correta": 3,
+          "mascote_feedback_certo": "Certo. U s = U p × N s / N p = 230 × 50 / 1000 = 11,5 V.",
+          "mascote_feedback_errado": "De U p / U s = N p / N s: U s = 230 × 50 / 1000 = 11,5 V. Menos espiras no secundário, menos tensão."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que não se pode ligar um transformador a uma pilha?",
+          "opcoes": ["Porque a pilha tem tensão demasiado baixa.", "Porque a corrente contínua cria um fluxo magnético constante e não há indução no secundário.", "Porque a pilha tem resistência interna.", "Porque o núcleo de ferro bloqueia a corrente contínua."],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Sem variação de fluxo, não há força eletromotriz induzida.",
+          "mascote_feedback_errado": "O transformador funciona por indução, que exige fluxo variável. A corrente contínua de uma pilha cria um campo constante, e no secundário não se induz nada."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**As mudanças da bicicleta.** Um transformador é como as mudanças de uma bicicleta. Com uma mudança \"pesada\", cada pedalada faz a roda andar muito, mas custa mais força. Com uma mudança \"leve\", pedalas com pouca força mas a roda anda pouco. A energia que pões nos pedais é a mesma; só muda a forma como se reparte entre força e rapidez. No transformador, a potência é (idealmente) a mesma nos dois lados; só muda a forma como se reparte entre tensão e corrente. Mais tensão no secundário significa menos corrente, e vice-versa."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O percurso da eletricidade, o transformador ideal e a guerra das correntes",
+          "texto": "**O percurso da eletricidade até tua casa**\n\n1. Na central, o alternador produz tensão alternada de alguns milhares de volts. 2. Um transformador elevador sobe a tensão para centenas de milhares de volts (em Portugal, as linhas de muito alta tensão usam 150 kV, 220 kV e 400 kV). 3. A energia é transportada a alta tensão e baixa corrente, para reduzir as perdas por efeito Joule nos cabos (P dissipada = R I², que aprendeste no 10.º ano). 4. Perto das localidades, transformadores redutores baixam a tensão por etapas até 230 V.\n\n**Porque é que o transformador ideal conserva a potência**\n\nNum transformador ideal, U p I p = U s I s. Se a tensão sobe 10 vezes, a corrente desce 10 vezes. Nos transformadores reais há pequenas perdas (aquecimento das bobinas e do núcleo), mas os bons transformadores têm rendimentos acima de 95 %.\n\n**Curiosidade: a \"guerra das correntes\"**\n\nNo fim do século XIX, Thomas Edison defendia a distribuição de energia em corrente contínua e Nikola Tesla e George Westinghouse a corrente alternada. Ganhou a alternada, precisamente porque podia ser elevada e reduzida com transformadores, o que tornava possível transportar energia a longas distâncias com poucas perdas."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Num alternador, a força eletromotriz induzida é máxima quando:",
+              "opcoes": ["o fluxo magnético através da bobina é máximo.", "o fluxo magnético está a variar mais depressa, isto é, quando o plano da bobina é paralelo ao campo.", "a bobina está parada.", "o campo magnético é nulo."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O que conta é a rapidez de variação do fluxo.",
+              "mascote_feedback_errado": "Pela lei de Faraday, o que conta é a rapidez de variação do fluxo. Essa rapidez é máxima quando o fluxo passa por zero (plano da bobina paralelo ao campo)."
+            },
+            {
+              "pergunta": "Pretende-se obter 12 V a partir da rede de 230 V com um transformador cujo primário tem 1150 espiras. Quantas espiras deve ter o secundário?",
+              "opcoes": ["12", "60", "96", "22 042"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. N s = N p × U s / U p = 1150 × 12 / 230 = 60 espiras.",
+              "mascote_feedback_errado": "N s = N p × U s / U p = 1150 × 12 / 230 = 60 espiras."
+            },
+            {
+              "pergunta": "Porque é que a energia elétrica é transportada a alta tensão?",
+              "opcoes": ["Porque a alta tensão é mais segura.", "Porque, para a mesma potência, a corrente é menor e as perdas por efeito Joule nos cabos diminuem.", "Porque os cabos de alta tensão não têm resistência.", "Porque os transformadores só funcionam a alta tensão."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. P = U I: com mais tensão, precisa-se de menos corrente e as perdas R I² diminuem.",
+              "mascote_feedback_errado": "P = U I: para transportar a mesma potência com mais tensão, precisa-se de menos corrente. As perdas nos cabos são R I², por isso diminuem muito."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 4 concluída. Sabes o que é carga e campo elétrico, desenhas linhas de campo elétrico e magnético, calculas fluxo magnético, aplicas a lei de Faraday e explicas como funcionam um alternador e um transformador. Última missão do 11.º ano: a luz e as outras ondas eletromagnéticas."
+}

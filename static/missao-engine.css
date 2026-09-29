@@ -258,6 +258,80 @@ html.dark-mode .me-gancho-card .me-diagrama-ponte-texto {
     color: #b9c7bd;
 }
 
+/* Corpo principal de um ecrã de diagrama (Física, ver screen.texto_principal
+   em renderDiagrama) — parágrafo(s) corridos, alinhados à esquerda (ao
+   contrário da frase-ponte, curta e centrada) e com mais espaço até ao
+   diagrama a seguir. */
+.me-gancho-card .me-diagrama-texto-principal {
+    margin: 0 0 24px;
+    color: #3d4640;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.me-gancho-card .me-diagrama-texto-principal p + p {
+    margin-top: 12px;
+}
+
+html.dark-mode .me-gancho-card .me-diagrama-texto-principal {
+    color: #cddad2;
+}
+
+/* Caixa de fórmulas (Física, ver screen.caixa_formula) — fundo ligeiramente
+   colorido para se destacar do resto do painel, uma entrada por fórmula. */
+.me-caixa-formula {
+    margin-top: 20px;
+    padding: 18px 20px;
+    border: 1px solid rgba(31, 138, 91, .25);
+    border-radius: 14px;
+    background: rgba(31, 138, 91, .07);
+}
+
+.me-caixa-formula-item + .me-caixa-formula-item {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(31, 138, 91, .25);
+}
+
+.me-caixa-formula-expressao {
+    margin: 0 0 4px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1c2a22;
+}
+
+.me-caixa-formula-significado {
+    margin: 0;
+    color: #4b5a52;
+}
+
+.me-caixa-formula-unidades {
+    margin: 4px 0 0;
+    color: #6b7a72;
+    font-size: .82rem;
+}
+
+html.dark-mode .me-caixa-formula {
+    border-color: rgba(127, 214, 168, .3);
+    background: rgba(127, 214, 168, .08);
+}
+
+html.dark-mode .me-caixa-formula-item + .me-caixa-formula-item {
+    border-top-color: rgba(127, 214, 168, .25);
+}
+
+html.dark-mode .me-caixa-formula-expressao {
+    color: #e6ede9;
+}
+
+html.dark-mode .me-caixa-formula-significado {
+    color: #b9c7bd;
+}
+
+html.dark-mode .me-caixa-formula-unidades {
+    color: #8fa199;
+}
+
 /* Caixa à volta da frase-isco + frase-ponte, para se lerem como um bloco
    único — separado da imagem por cima e do diagrama por baixo. Mesma
    largura (a do próprio painel, sem limite de largura próprio) e mesma
@@ -1779,4 +1853,159 @@ html.dark-mode .me-quiz-resultado-circle--red {
     background: #3a2226;
     border-color: #dc3545;
     color: #ff8a97;
+}
+
+/* ===== Atividade laboratorial (Física) — ver renderAtividadeLaboratorial.
+   Reaproveita .did-you-know/.did-you-know-body para cada bloco, só
+   ganhando espaçamento próprio entre blocos consecutivos. */
+.me-laboratorio-codigo {
+    margin: 0 0 4px;
+    font-weight: 700;
+    font-size: .8rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #1f8a5b;
+}
+
+.me-laboratorio-bloco + .me-laboratorio-bloco {
+    margin-top: 10px;
+}
+
+.me-laboratorio-lista {
+    margin: 0;
+    padding-left: 20px;
+    color: #4b5a52;
+    line-height: 1.6;
+}
+
+.me-laboratorio-lista--numerada li + li,
+.me-laboratorio-lista:not(.me-laboratorio-lista--numerada) li + li {
+    margin-top: 6px;
+}
+
+html.dark-mode .me-laboratorio-codigo {
+    color: #7fd6a8;
+}
+
+html.dark-mode .me-laboratorio-lista {
+    color: #b9c7bd;
+}
+
+/* ===== Simulação (Física) — ver renderSimulacao/bindSimulacao. Sliders e
+   saídas calculadas em tempo real no browser. */
+.me-simulacao-controlos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.me-simulacao-controlo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.me-simulacao-rotulo {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-weight: 600;
+    font-size: .88rem;
+    color: #1f2d22;
+}
+
+.me-simulacao-valor {
+    font-weight: 700;
+    color: #1f8a5b;
+}
+
+.me-simulacao-unidade {
+    color: #6b7a72;
+    font-size: .8rem;
+}
+
+.me-simulacao-slider {
+    width: 100%;
+    accent-color: #1f8a5b;
+}
+
+.me-simulacao-select {
+    padding: 8px 12px;
+    border: 1px solid #e2e3db;
+    border-radius: 10px;
+    background: #ffffff;
+    font-size: .85rem;
+    color: #3d4640;
+}
+
+.me-simulacao-botao {
+    align-self: flex-start;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 999px;
+    background: #1f8a5b;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: .85rem;
+    cursor: pointer;
+}
+
+.me-simulacao-botao:hover {
+    filter: brightness(.95);
+}
+
+.me-simulacao-saidas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 18px;
+    border: 1px solid rgba(31, 138, 91, .25);
+    border-radius: 14px;
+    background: rgba(31, 138, 91, .07);
+}
+
+.me-simulacao-saida {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.me-simulacao-saida-rotulo {
+    color: #4b5a52;
+    font-size: .85rem;
+}
+
+.me-simulacao-saida-valor {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1c2a22;
+}
+
+html.dark-mode .me-simulacao-rotulo {
+    color: #e6ede9;
+}
+
+html.dark-mode .me-simulacao-valor {
+    color: #7fd6a8;
+}
+
+html.dark-mode .me-simulacao-unidade,
+html.dark-mode .me-simulacao-saida-rotulo {
+    color: #b9c7bd;
+}
+
+html.dark-mode .me-simulacao-select {
+    background: #24201a;
+    border-color: #3a2f24;
+    color: #ddccb8;
+}
+
+html.dark-mode .me-simulacao-saidas {
+    border-color: rgba(127, 214, 168, .3);
+    background: rgba(127, 214, 168, .08);
+}
+
+html.dark-mode .me-simulacao-saida-valor {
+    color: #e6ede9;
 }

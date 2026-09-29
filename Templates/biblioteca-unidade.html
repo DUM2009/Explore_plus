@@ -166,16 +166,32 @@
     </div>
 
     {% if total_termos > 0 %}
-    <div class="biblioteca-chips">
-        <button type="button" class="biblioteca-chip is-active" data-estado="todos">Todos ({{ total_termos }})</button>
-        <button type="button" class="biblioteca-chip" data-estado="novo">Novos ({{ contagens.novo }})</button>
-        <button type="button" class="biblioteca-chip" data-estado="a_rever">A rever ({{ contagens.a_rever }})</button>
-        <button type="button" class="biblioteca-chip" data-estado="dominado">Dominados ({{ contagens.dominado }})</button>
+    <div class="biblioteca-chips-row">
+        <div class="biblioteca-chips">
+            <button type="button" class="biblioteca-chip" data-estado="novo">Novos ({{ contagens.novo }})</button>
+            <button type="button" class="biblioteca-chip" data-estado="a_rever">A rever ({{ contagens.a_rever }})</button>
+            <button type="button" class="biblioteca-chip" data-estado="dominado">Dominados ({{ contagens.dominado }})</button>
+        </div>
+
+        {% if missoes_capitulo %}
+        <div class="biblioteca-filter" id="bibliotecaFilter">
+            <button type="button" class="biblioteca-filter-trigger" id="bibliotecaFilterTrigger" aria-haspopup="listbox" aria-expanded="false">
+                <span id="bibliotecaFilterLabel">Todos</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="biblioteca-filter-menu" id="bibliotecaFilterMenu" role="listbox" hidden>
+                <button type="button" class="biblioteca-filter-option is-active" data-missao-id="" role="option" aria-selected="true">Todos</button>
+                {% for missao in missoes_capitulo %}
+                <button type="button" class="biblioteca-filter-option" data-missao-id="{{ missao.id }}" role="option" aria-selected="false">{{ missao.titulo }}</button>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
     </div>
 
     <div class="cards biblioteca-termos-grid" id="bibliotecaTermosGrid">
         {% for termo in termos %}
-        <article class="card biblioteca-termo-card" data-estado="{{ termo.estado }}">
+        <article class="card biblioteca-termo-card" data-estado="{{ termo.estado }}" data-missao="{{ termo.missao|default:'' }}">
             <span class="dicionario-estado dicionario-estado--{{ termo.estado }}">
                 {% if termo.estado == 'dominado' %}Dominado{% elif termo.estado == 'a_rever' %}A rever{% else %}Novo{% endif %}
             </span>
@@ -221,16 +237,74 @@ document.addEventListener('click', (event) => {
 const bibliotecaChips = document.querySelectorAll('.biblioteca-chip');
 const bibliotecaTermoCards = document.querySelectorAll('.biblioteca-termo-card');
 
+let bibliotecaEstadoAtivo = null;
+let bibliotecaMissaoAtiva = '';
+
+function aplicarFiltrosBiblioteca() {
+    bibliotecaTermoCards.forEach((card) => {
+        const passaEstado = !bibliotecaEstadoAtivo || card.dataset.estado === bibliotecaEstadoAtivo;
+        const passaMissao = !bibliotecaMissaoAtiva || card.dataset.missao === bibliotecaMissaoAtiva;
+        card.hidden = !(passaEstado && passaMissao);
+    });
+}
+
 bibliotecaChips.forEach((chip) => {
     chip.addEventListener('click', () => {
+        const jaAtivo = chip.classList.contains('is-active');
         bibliotecaChips.forEach((outro) => outro.classList.remove('is-active'));
-        chip.classList.add('is-active');
-        const estado = chip.dataset.estado;
-        bibliotecaTermoCards.forEach((card) => {
-            card.hidden = estado !== 'todos' && card.dataset.estado !== estado;
-        });
+        bibliotecaEstadoAtivo = jaAtivo ? null : chip.dataset.estado;
+        if (!jaAtivo) chip.classList.add('is-active');
+        aplicarFiltrosBiblioteca();
     });
 });
+
+const bibliotecaFilterEl = document.getElementById('bibliotecaFilter');
+const bibliotecaFilterTrigger = document.getElementById('bibliotecaFilterTrigger');
+const bibliotecaFilterLabel = document.getElementById('bibliotecaFilterLabel');
+const bibliotecaFilterMenu = document.getElementById('bibliotecaFilterMenu');
+
+if (bibliotecaFilterEl && bibliotecaFilterTrigger && bibliotecaFilterMenu) {
+    const bibliotecaFilterOptions = Array.from(bibliotecaFilterMenu.querySelectorAll('.biblioteca-filter-option'));
+
+    const fecharFiltroBiblioteca = () => {
+        bibliotecaFilterMenu.hidden = true;
+        bibliotecaFilterEl.classList.remove('is-open');
+        bibliotecaFilterTrigger.setAttribute('aria-expanded', 'false');
+    };
+
+    bibliotecaFilterTrigger.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const abrir = bibliotecaFilterMenu.hidden;
+        if (abrir) {
+            bibliotecaFilterMenu.hidden = false;
+            bibliotecaFilterEl.classList.add('is-open');
+            bibliotecaFilterTrigger.setAttribute('aria-expanded', 'true');
+        } else {
+            fecharFiltroBiblioteca();
+        }
+    });
+
+    bibliotecaFilterOptions.forEach((option) => {
+        option.addEventListener('click', () => {
+            bibliotecaFilterOptions.forEach((opt) => {
+                opt.classList.remove('is-active');
+                opt.setAttribute('aria-selected', 'false');
+            });
+            option.classList.add('is-active');
+            option.setAttribute('aria-selected', 'true');
+            bibliotecaFilterLabel.textContent = option.textContent;
+            bibliotecaMissaoAtiva = option.dataset.missaoId || '';
+            fecharFiltroBiblioteca();
+            aplicarFiltrosBiblioteca();
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!bibliotecaFilterMenu.hidden && !bibliotecaFilterEl.contains(event.target)) {
+            fecharFiltroBiblioteca();
+        }
+    });
+}
 </script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>

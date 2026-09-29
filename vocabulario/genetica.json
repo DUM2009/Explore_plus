@@ -8,7 +8,12 @@
       "definicao": "Molécula em dupla hélice que guarda toda a informação genética de um ser vivo, escrita numa sequência de quatro bases azotadas (A, T, C, G).",
       "estado": "dominado",
       "ultima_revisao": "2026-09-24",
-      "relacionados": ["gene", "genoma", "cromatina"]
+      "relacionados": [
+        "gene",
+        "genoma",
+        "cromatina"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "gene",
@@ -16,7 +21,12 @@
       "definicao": "Segmento de ADN que contém a informação necessária para produzir uma proteína específica ou determinar uma característica do organismo.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["adn", "alelo", "codao"]
+      "relacionados": [
+        "adn",
+        "alelo",
+        "codao"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "cromatina",
@@ -24,7 +34,11 @@
       "definicao": "Forma como o ADN se apresenta na maior parte do ciclo de vida da célula — enrolado à volta de proteínas histonas, para caber dentro do núcleo.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["adn", "cromossoma"]
+      "relacionados": [
+        "adn",
+        "cromossoma"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "cromossoma",
@@ -32,7 +46,11 @@
       "definicao": "Forma mais condensada e organizada da cromatina, visível ao microscópio sobretudo durante a divisão celular — o ser humano tem 46, em 23 pares.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["cromatina", "genoma"]
+      "relacionados": [
+        "cromatina",
+        "genoma"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "genoma",
@@ -40,7 +58,11 @@
       "definicao": "Conjunto de toda a informação genética (todo o ADN) de um organismo — no ser humano, distribuído por 23 pares de cromossomas.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["adn", "cromossoma"]
+      "relacionados": [
+        "adn",
+        "cromossoma"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "codao",
@@ -48,7 +70,12 @@
       "definicao": "Sequência de três bases azotadas consecutivas do ADN/RNA que codifica um aminoácido específico ou um sinal de paragem — a \"palavra\" básica do código genético.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["codao_iniciacao", "codao_stop", "gene"]
+      "relacionados": [
+        "codao_iniciacao",
+        "codao_stop",
+        "gene"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "codao_iniciacao",
@@ -56,7 +83,11 @@
       "definicao": "O codão AUG, que assinala onde começa a leitura da mensagem genética, e codifica sempre o aminoácido metionina.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["codao", "codao_stop"]
+      "relacionados": [
+        "codao",
+        "codao_stop"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "codao_stop",
@@ -64,7 +95,11 @@
       "definicao": "Os codões UAA, UAG e UGA — não codificam nenhum aminoácido; assinalam o fim da sequência a traduzir, terminando a síntese da proteína.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["codao", "codao_iniciacao"]
+      "relacionados": [
+        "codao",
+        "codao_iniciacao"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "universalidade_codigo_genetico",
@@ -72,7 +107,11 @@
       "definicao": "Com raríssimas exceções, o código genético é o mesmo em todos os seres vivos — o mesmo codão codifica o mesmo aminoácido numa bactéria, numa planta ou num ser humano.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["codao", "degenerescencia_codigo_genetico"]
+      "relacionados": [
+        "codao",
+        "degenerescencia_codigo_genetico"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "degenerescencia_codigo_genetico",
@@ -80,7 +119,11 @@
       "definicao": "A maioria dos aminoácidos pode ser codificada por mais do que um codão diferente — o que torna o código genético mais tolerante a pequenas mutações.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["codao", "mutacao"]
+      "relacionados": [
+        "codao",
+        "mutacao"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "alelo",
@@ -88,7 +131,13 @@
       "definicao": "Cada uma das versões alternativas que um gene pode ter — por exemplo, o gene da cor dos olhos pode ter o alelo \"castanho\" ou o alelo \"azul\".",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["gene", "genotipo", "homozigotico", "heterozigotico"]
+      "relacionados": [
+        "gene",
+        "genotipo",
+        "homozigotico",
+        "heterozigotico"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "genotipo",
@@ -96,7 +145,11 @@
       "definicao": "Constituição genética de um indivíduo — o conjunto de alelos que possui para um ou mais genes.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["alelo", "fenotipo"]
+      "relacionados": [
+        "alelo",
+        "fenotipo"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "fenotipo",
@@ -104,7 +157,10 @@
       "definicao": "Características observáveis de um indivíduo (físicas, fisiológicas, etc.), resultantes da interação entre o genótipo e o ambiente.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["genotipo"]
+      "relacionados": [
+        "genotipo"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "homozigotico",
@@ -112,7 +168,11 @@
       "definicao": "Diz-se de um indivíduo que tem dois alelos iguais para um determinado gene.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["heterozigotico", "alelo"]
+      "relacionados": [
+        "heterozigotico",
+        "alelo"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "heterozigotico",
@@ -120,7 +180,11 @@
       "definicao": "Diz-se de um indivíduo que tem dois alelos diferentes para um determinado gene.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["homozigotico", "alelo"]
+      "relacionados": [
+        "homozigotico",
+        "alelo"
+      ],
+      "missao": "codigo-da-vida"
     },
     {
       "id": "mutacao",
@@ -128,7 +192,11 @@
       "definicao": "Alteração na sequência do ADN — pode ser prejudicial, neutra, ou até vantajosa, e é a principal fonte de novos alelos e de variabilidade genética numa população.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["alelo", "degenerescencia_codigo_genetico"]
+      "relacionados": [
+        "alelo",
+        "degenerescencia_codigo_genetico"
+      ],
+      "missao": "codigo-da-vida"
     }
   ]
 }

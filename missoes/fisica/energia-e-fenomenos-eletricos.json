@@ -1,0 +1,553 @@
+{
+  "missao_id": "energia-e-fenomenos-eletricos",
+  "titulo": "Energia e fenómenos elétricos",
+  "disciplina": "fisica",
+  "ano": 10,
+  "imagem": "f10_circuito_simples.png",
+  "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8\"/></svg>", "nome": "Mestre da Eletricidade" },
+  "secoes": [
+    {
+      "secao_id": "corrente-diferenca-potencial",
+      "titulo": "Corrente elétrica e diferença de potencial",
+      "xp": 24,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_interruptor.png",
+          "texto": "Carregas no interruptor e a luz acende instantaneamente. Mas os eletrões dentro do fio andam a uma velocidade média de poucos milímetros por segundo, mais devagar do que um caracol. Como é que a luz acende logo? Porque o fio já está cheio de eletrões. Quando fechas o circuito, todos começam a mover-se ao mesmo tempo, como a água num cano que já está cheio.",
+          "mascote_texto": "Nesta missão vais usar a mesma ideia da Missão 1: energia a ser transferida. Só muda quem a transporta."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O circuito elétrico simples",
+          "imagem": "f10_circuito_simples.png",
+          "texto_principal": "A corrente elétrica é um movimento orientado de partículas com carga elétrica. Nos metais, essas partículas são os eletrões livres. Para haver corrente é preciso um circuito fechado e um gerador, que cria uma diferença de potencial entre os seus terminais.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "gerador", "label": "Gerador (pilha)", "explicacao": "Fornece energia às cargas. Tem um terminal positivo (polo +) e um negativo (polo −)." },
+            { "id": "sentido-convencional", "label": "Sentido convencional", "explicacao": "Por convenção, a corrente vai do polo positivo para o negativo, no circuito exterior ao gerador." },
+            { "id": "sentido-eletroes", "label": "Sentido real dos eletrões", "explicacao": "Os eletrões, que têm carga negativa, deslocam-se no sentido oposto: do polo negativo para o positivo." },
+            { "id": "recetor", "label": "Recetor (lâmpada)", "explicacao": "Transforma a energia elétrica noutras formas (luz e aquecimento)." },
+            { "id": "interruptor", "label": "Interruptor", "explicacao": "Abre ou fecha o circuito. Circuito aberto: não há corrente." }
+          ],
+          "caixa_formula": [
+            { "expressao": "I = Q / Δt", "significado": "Corrente elétrica.", "unidades": "I em ampere (A), Q (carga) em coulomb (C), Δt em segundo (s). 1 A = 1 C/s." },
+            { "expressao": "U = E / Q", "significado": "Diferença de potencial (tensão): energia transferida por unidade de carga.", "unidades": "U em volt (V). 1 V = 1 J/C." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Instrumentos de medida",
+          "imagem": "f10_amperimetro_voltimetro.png",
+          "texto_principal": "Para medir grandezas elétricas usa-se o multímetro, que pode funcionar como amperímetro ou como voltímetro. A forma de o ligar é diferente em cada caso e é uma pergunta clássica de exame.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "amperimetro", "label": "Amperímetro", "explicacao": "Mede a corrente elétrica. Liga-se em série, ou seja, a corrente tem de passar por dentro dele. É preciso abrir o circuito para o intercalar." },
+            { "id": "voltimetro", "label": "Voltímetro", "explicacao": "Mede a diferença de potencial entre dois pontos. Liga-se em paralelo com o componente, isto é, aos seus dois terminais." },
+            { "id": "cc", "label": "Corrente contínua (CC ou DC)", "explicacao": "Corrente com sentido sempre igual. É a que uma pilha fornece." },
+            { "id": "ca", "label": "Corrente alternada (CA ou AC)", "explicacao": "Corrente que muda de sentido periodicamente. É a que existe nas tomadas de casa (em Portugal, 230 V e 50 Hz)." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Através de um fio passam 3,0 C de carga em 2,0 s. Qual é a corrente elétrica?",
+          "opcoes": ["0,67 A", "1,5 A", "5,0 A", "6,0 A"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. I = Q / Δt = 3,0 / 2,0 = 1,5 A.",
+          "mascote_feedback_errado": "A corrente é a carga que passa por segundo: I = Q / Δt = 3,0 / 2,0 = 1,5 A."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Queres medir a diferença de potencial nos terminais de uma lâmpada. Como ligas o voltímetro?",
+          "opcoes": ["Em série com a lâmpada.", "Em paralelo com a lâmpada.", "Em série com a pilha, depois de retirar a lâmpada.", "Tanto faz, o valor é o mesmo."],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O voltímetro compara dois pontos, por isso liga-se aos dois terminais da lâmpada, em paralelo.",
+          "mascote_feedback_errado": "O voltímetro mede a diferença entre dois pontos: liga-se em paralelo, aos terminais do componente. Em série liga-se o amperímetro."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O circuito como um sistema de rega.** Pensa num sistema de rega fechado com uma bomba. A bomba é a pilha: eleva a água e dá-lhe energia. A pressão que a bomba cria é a diferença de potencial: quanto maior, mais energia recebe cada litro de água. O caudal, os litros que passam por segundo, é a corrente elétrica. A água a passar numa turbina e a fazê-la rodar é a corrente a passar na lâmpada e a fazê-la brilhar. A água não se gasta: volta à bomba e dá outra volta. As cargas elétricas também não se gastam. O que se gasta, ou melhor, o que se transfere, é a energia."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A pilha, Volta e a carga do eletrão",
+          "texto": "**A pilha não \"gasta\" carga**\n\nUm erro muito comum é pensar que a pilha fornece eletrões que se vão consumindo na lâmpada. Não é assim: os eletrões já estão nos fios e circulam sempre. A pilha fornece energia às cargas. Quando a pilha se \"gasta\", é a energia química que acabou, não a carga.\n\n**Curiosidade: Alessandro Volta e a primeira pilha**\n\nEm 1800, o italiano Alessandro Volta empilhou discos de zinco e de cobre separados por cartão embebido em água salgada. Foi a primeira fonte de corrente elétrica contínua da história, e é por isso que ainda hoje lhe chamamos \"pilha\". A unidade de diferença de potencial, o volt, tem o nome dele.\n\n**Carga do eletrão**\n\nCada eletrão tem uma carga de −1,6 × 10⁻¹⁹ C. Uma corrente de 1 A corresponde à passagem de cerca de 6,2 × 10¹⁸ eletrões por segundo numa secção do fio."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é o sentido convencional da corrente elétrica no circuito exterior a uma pilha?",
+              "opcoes": ["Do polo negativo para o polo positivo.", "Do polo positivo para o polo negativo.", "Não tem sentido definido em corrente contínua.", "O mesmo sentido do movimento dos eletrões."],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Por convenção histórica, a corrente vai do polo positivo para o negativo no circuito exterior.",
+              "mascote_feedback_errado": "Por convenção histórica, a corrente vai do polo positivo para o negativo no circuito exterior. Os eletrões movem-se no sentido contrário."
+            },
+            {
+              "pergunta": "Uma pilha de 9,0 V fornece energia a uma carga de 2,0 C. Quanta energia é transferida para essa carga?",
+              "opcoes": ["4,5 J", "11 J", "18 J", "0,22 J"],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. U = E / Q, logo E = U × Q = 9,0 × 2,0 = 18 J.",
+              "mascote_feedback_errado": "U = E / Q, logo E = U × Q = 9,0 × 2,0 = 18 J."
+            },
+            {
+              "pergunta": "Qual é a forma correta de ligar um amperímetro para medir a corrente numa lâmpada?",
+              "opcoes": ["Em paralelo com a lâmpada.", "Em série com a lâmpada.", "Diretamente aos terminais da pilha, sem mais nada.", "Em paralelo com a pilha."],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. A corrente tem de passar pelo amperímetro, por isso liga-se em série.",
+              "mascote_feedback_errado": "A corrente tem de passar pelo amperímetro, por isso liga-se em série. Ligá-lo em paralelo ou diretamente à pilha pode danificá-lo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "resistencia-eletrica-resistividade",
+      "titulo": "Resistência elétrica e resistividade",
+      "xp": 24,
+      "tempo_estimado_min": 9,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_torradeira.png",
+          "texto": "Dentro de uma torradeira há fios que ficam em brasa. Os fios que ligam a torradeira à tomada transportam a mesma corrente e ficam praticamente frios. Porquê? Porque não são feitos do mesmo material. Uns deixam a corrente passar com facilidade, outros oferecem muita oposição. Essa oposição tem um nome: resistência elétrica.",
+          "mascote_texto": "Vais conhecer uma das leis mais famosas da eletricidade. Mas cuidado: nem todos os materiais a cumprem."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Resistência elétrica",
+          "imagem": "f10_grafico_UI.png",
+          "texto_principal": "A resistência elétrica de um componente mede a oposição que oferece à passagem da corrente. Define-se como a razão entre a diferença de potencial nos seus terminais e a corrente que o percorre. Se essa razão for constante, o condutor diz-se óhmico.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "ohmico", "label": "Condutor óhmico", "explicacao": "A resistência é constante (a temperatura constante). O gráfico U-I é uma reta que passa pela origem. O declive da reta é a resistência. Diz-se que cumpre a lei de Ohm." },
+            { "id": "nao-ohmico", "label": "Condutor não óhmico", "explicacao": "A resistência varia com a corrente. O gráfico U-I não é uma reta. Exemplo: o filamento de uma lâmpada, que aquece muito e cuja resistência aumenta." },
+            { "id": "declive", "label": "Declive", "explicacao": "Num gráfico U (vertical) em função de I (horizontal), o declive é R. Se os eixos estiverem trocados, o declive é 1/R. Lê sempre os eixos." }
+          ],
+          "caixa_formula": [
+            { "expressao": "R = U / I", "significado": "Resistência elétrica.", "unidades": "R em ohm (Ω), U em volt (V), I em ampere (A). 1 Ω = 1 V/A." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Resistividade",
+          "imagem": "f10_fio_resistividade.png",
+          "texto_principal": "A resistência de um fio depende do material, do comprimento e da espessura. A propriedade que depende só do material (e da temperatura) chama-se resistividade.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "comprimento", "label": "Comprimento l", "explicacao": "Quanto mais comprido o fio, maior a resistência. É diretamente proporcional." },
+            { "id": "area", "label": "Área da secção reta A", "explicacao": "Quanto mais grosso o fio, menor a resistência. É inversamente proporcional." },
+            { "id": "resistividade", "label": "Resistividade ρ", "explicacao": "Característica do material. Metais como o cobre têm resistividade muito baixa (bons condutores). O nicrómio, usado em resistências de aquecimento, tem resistividade cerca de 65 vezes maior do que o cobre." },
+            { "id": "temperatura-metais", "label": "Temperatura nos metais", "explicacao": "Nos metais, a resistividade aumenta com a temperatura." },
+            { "id": "temperatura-semicondutores", "label": "Temperatura nos semicondutores", "explicacao": "Em alguns materiais semicondutores, a resistividade diminui quando a temperatura aumenta. É o princípio dos termístores, usados como sensores de temperatura." }
+          ],
+          "caixa_formula": [
+            { "expressao": "R = ρ l / A", "significado": "Resistência de um fio condutor.", "unidades": "ρ em ohm metro (Ω m), l em metro (m), A em metro quadrado (m²)." },
+            { "expressao": "Valores de referência (a 20 °C)", "significado": "cobre 1,7 × 10⁻⁸ Ω m; alumínio 2,8 × 10⁻⁸ Ω m; nicrómio 1,1 × 10⁻⁶ Ω m.", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma resistência ligada a 12 V é percorrida por uma corrente de 0,50 A. Qual é o valor da resistência?",
+          "opcoes": ["6,0 Ω", "12 Ω", "24 Ω", "0,042 Ω"],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. R = U / I = 12 / 0,50 = 24 Ω.",
+          "mascote_feedback_errado": "R = U / I = 12 / 0,50 = 24 Ω. Atenção: dividir por 0,5 é o mesmo que multiplicar por 2."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um fio de cobre tem resistência R. Outro fio de cobre tem o dobro do comprimento e o dobro da área de secção. Qual é a resistência do segundo fio?",
+          "opcoes": ["R / 4", "R / 2", "R", "4R"],
+          "correta": 2,
+          "mascote_feedback_certo": "Muito bem. O dobro do comprimento duplica a resistência, o dobro da área reduz para metade. Os dois efeitos anulam-se: R' = ρ (2l) / (2A) = R.",
+          "mascote_feedback_errado": "Usa R = ρ l / A. Com 2l e 2A: R' = ρ × 2l / 2A = ρ l / A = R. Os dois fatores cancelam."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_resistividade",
+          "titulo": "Que fio escolherias?",
+          "instrucao": "Escolhe o material, o comprimento e a espessura do fio. Vê como muda a resistência.",
+          "controlos": [
+            { "id": "rho", "rotulo": "Material", "opcoes": [
+              { "valor": 0.000000017, "label": "Cobre (1,7 × 10⁻⁸ Ω m)" },
+              { "valor": 0.000000028, "label": "Alumínio (2,8 × 10⁻⁸ Ω m)" },
+              { "valor": 0.0000011, "label": "Nicrómio (1,1 × 10⁻⁶ Ω m)" }
+            ] },
+            { "id": "l", "rotulo": "Comprimento", "min": 1, "max": 100, "passo": 1, "valor_inicial": 10, "unidade": "m" },
+            { "id": "A", "rotulo": "Área da secção", "min": 0.5, "max": 10, "passo": 0.5, "valor_inicial": 1, "unidade": "mm²" }
+          ],
+          "saidas": [
+            { "rotulo": "Resistência", "formula": "rho * l / (A * 0.000001)", "unidade": "Ω", "casas_decimais": 2 }
+          ],
+          "pergunta_final": "Porque é que os fios das instalações elétricas são de cobre e as resistências de aquecimento são de nicrómio? Resposta esperada: o cobre tem resistividade muito baixa e quase não aquece; o nicrómio tem resistividade alta e aquece muito, que é o que se quer num aquecedor."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Um corredor cheio de gente.** Imagina que tens de atravessar um corredor cheio de pessoas. Quanto mais comprido o corredor, mais demoras (maior comprimento, maior resistência). Quanto mais largo, mais fácil é passar (maior área, menor resistência). E há corredores em que as pessoas estão quietas e outros em que estão sempre a mexer-se e a empurrar (materiais diferentes, resistividades diferentes). Se aquecerem o corredor, as pessoas ficam mais agitadas e é ainda mais difícil passar: é o que acontece aos metais quando a temperatura sobe."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Supercondutores, termístores e o filamento da lâmpada",
+          "texto": "**Supercondutores**\n\nAlguns materiais, quando arrefecidos a temperaturas muito baixas, perdem completamente a resistência elétrica: a resistividade torna-se nula. Chamam-se supercondutores. Uma corrente num anel supercondutor pode circular durante anos sem perder energia. São usados nos eletroímanes das máquinas de ressonância magnética dos hospitais e em comboios de levitação magnética.\n\n**Termístores**\n\nUm termístor é um componente cuja resistência varia muito com a temperatura. Os mais comuns são feitos de semicondutores e a sua resistência diminui quando a temperatura aumenta. Estão nos termómetros digitais, nos frigoríficos, nos carros e nos telemóveis, para proteger a bateria do sobreaquecimento.\n\n**Porque é que o filamento de uma lâmpada não é óhmico**\n\nQuando a corrente aumenta, o filamento aquece até mais de 2000 °C. Como é metálico, a sua resistividade aumenta muito com a temperatura. Por isso a resistência não é constante e o gráfico U-I curva. É também por isso que as lâmpadas de filamento fundem quase sempre no momento em que se ligam: com o filamento frio, a resistência é baixa e a corrente inicial é muito alta."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O gráfico U-I de um condutor é uma reta que passa pela origem, com U = 6,0 V quando I = 0,20 A. Qual é a resistência?",
+              "opcoes": ["1,2 Ω", "3,3 × 10⁻² Ω", "30 Ω", "Não se pode calcular porque o condutor não é óhmico."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Reta pela origem significa condutor óhmico. R = U / I = 6,0 / 0,20 = 30 Ω.",
+              "mascote_feedback_errado": "Reta pela origem significa condutor óhmico. R = U / I = 6,0 / 0,20 = 30 Ω."
+            },
+            {
+              "pergunta": "Qual é a resistência de um fio de nicrómio com 5,0 m de comprimento e 0,50 mm² de secção? (ρ = 1,1 × 10⁻⁶ Ω m)",
+              "opcoes": ["1,1 Ω", "2,75 Ω", "11 Ω", "1,1 × 10⁻⁵ Ω"],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. A = 0,50 mm² = 0,50 × 10⁻⁶ m². R = ρ l / A = 1,1 × 10⁻⁶ × 5,0 / (0,50 × 10⁻⁶) = 11 Ω.",
+              "mascote_feedback_errado": "A = 0,50 mm² = 0,50 × 10⁻⁶ m². R = ρ l / A = 1,1 × 10⁻⁶ × 5,0 / (0,50 × 10⁻⁶) = 11 Ω."
+            },
+            {
+              "pergunta": "Quando a temperatura de um fio de cobre aumenta:",
+              "opcoes": ["a resistividade diminui, porque os eletrões ficam mais rápidos.", "a resistividade aumenta.", "a resistência mantém-se, porque o comprimento não muda.", "o fio torna-se supercondutor."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Nos metais, a resistividade aumenta com a temperatura.",
+              "mascote_feedback_errado": "Nos metais, a resistividade aumenta com a temperatura. Os iões da rede vibram mais e dificultam a passagem dos eletrões."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "potencia-eletrica-efeito-joule",
+      "titulo": "Potência elétrica, energia e efeito Joule",
+      "xp": 24,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_fatura_luz.png",
+          "texto": "Na fatura da eletricidade não aparece nenhum joule. Aparece \"kWh\". Será uma unidade de potência? Não: é uma unidade de energia, e é enorme em comparação com o joule. Nesta secção vais perceber o que pagas realmente à companhia elétrica e porque é que um aquecedor gasta muito mais do que uma lâmpada LED.",
+          "mascote_texto": "Esta secção tem utilidade imediata: no fim, consegues calcular quanto custa deixar um aparelho ligado."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Potência elétrica e energia",
+          "imagem": "f10_etiqueta_aparelho.png",
+          "texto_principal": "A potência elétrica de um aparelho é a energia que transfere por unidade de tempo. Pode calcular-se a partir da diferença de potencial nos seus terminais e da corrente que o percorre. As etiquetas dos aparelhos indicam a potência nominal: a potência que desenvolvem quando ligados à tensão indicada.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "tensao-nominal", "label": "Tensão nominal (230 V)", "explicacao": "A diferença de potencial para que o aparelho foi projetado. Em Portugal, a rede doméstica é de 230 V." },
+            { "id": "potencia-nominal", "label": "Potência nominal (2000 W)", "explicacao": "A energia transferida por segundo quando ligado a 230 V: 2000 J em cada segundo." },
+            { "id": "kwh", "label": "Quilowatt-hora (kWh)", "explicacao": "Energia transferida por um aparelho de 1 kW durante 1 hora. 1 kWh = 1000 W × 3600 s = 3,6 × 10⁶ J." }
+          ],
+          "caixa_formula": [
+            { "expressao": "P = U I", "significado": "Potência elétrica.", "unidades": "P em watt (W), U em volt (V), I em ampere (A)." },
+            { "expressao": "E = P Δt", "significado": "Energia elétrica transferida.", "unidades": "Em joule (P em W, Δt em s) ou em kWh (P em kW, Δt em h)." },
+            { "expressao": "1 kWh = 3,6 × 10⁶ J", "significado": "", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Efeito Joule",
+          "imagem": "f10_efeito_joule.png",
+          "texto_principal": "Quando a corrente percorre um condutor com resistência, parte da energia elétrica transforma-se em energia interna do condutor, que aquece. Chama-se efeito Joule. É útil nos aquecedores, torradeiras, secadores e fusíveis. É indesejável nos fios de transporte, nos computadores e nos carregadores, porque é energia desperdiçada.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "colisoes", "label": "Colisões", "explicacao": "Os eletrões em movimento colidem com os iões da rede do metal e transferem-lhes energia, que aumenta a sua agitação." },
+            { "id": "potencia-dissipada", "label": "Potência dissipada", "explicacao": "Numa resistência, a potência dissipada por efeito Joule é P = R I². Se a corrente duplicar, a potência dissipada fica quatro vezes maior." },
+            { "id": "fusivel", "label": "Fusível", "explicacao": "Fio fino que funde quando a corrente é excessiva, abrindo o circuito e protegendo a instalação." }
+          ],
+          "caixa_formula": [
+            { "expressao": "P = R I²", "significado": "Potência dissipada por efeito Joule num condutor de resistência R.", "unidades": "" },
+            { "expressao": "P = U² / R", "significado": "Forma equivalente, útil quando se conhece a tensão.", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma chaleira de 2000 W está ligada durante 3 minutos. Quanta energia consome, em kWh?",
+          "opcoes": ["6,0 kWh", "0,60 kWh", "0,10 kWh", "0,033 kWh"],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. 2000 W = 2,0 kW e 3 min = 0,05 h. E = 2,0 × 0,05 = 0,10 kWh.",
+          "mascote_feedback_errado": "Converte primeiro as unidades: 2000 W = 2,0 kW e 3 min = 3/60 h = 0,05 h. E = P Δt = 2,0 × 0,05 = 0,10 kWh."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um secador de 2000 W está ligado a 230 V. Qual é a corrente que o percorre?",
+          "opcoes": ["0,12 A", "8,7 A", "115 A", "4,6 × 10⁵ A"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. I = P / U = 2000 / 230 = 8,7 A.",
+          "mascote_feedback_errado": "De P = U I tiras I = P / U = 2000 / 230 ≈ 8,7 A."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O táxi e o taxímetro.** A potência é como o preço por minuto de um táxi, e a energia é o valor final da viagem. Um táxi caro (aparelho de grande potência) durante pouco tempo pode custar o mesmo que um táxi barato (aparelho de pequena potência) durante muito tempo. A companhia elétrica cobra-te o valor final, a energia, e por isso a fatura vem em kWh e não em kW. Um aquecedor de 2 kW ligado 1 hora custa o mesmo que uma lâmpada LED de 10 W ligada 200 horas."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Transporte a alta tensão, custo de um aparelho e as três fórmulas da potência",
+          "texto": "**Porque é que a eletricidade é transportada a alta tensão**\n\nA energia sai das centrais para as cidades por cabos com muitos quilómetros e com resistência. Para transportar a mesma potência (P = U I), pode usar-se alta tensão e corrente baixa, ou baixa tensão e corrente alta. Como a potência dissipada nos cabos é R I², reduzir a corrente para metade reduz as perdas para um quarto. Por isso as linhas de transporte usam centenas de milhares de volts, e a tensão só é baixada para 230 V perto das casas, nos postos de transformação.\n\n**Calcular o custo de um aparelho**\n\nCusto = energia (kWh) × preço do kWh. Exemplo: com o kWh a 0,16 €, um aquecedor de 2,0 kW ligado 5 horas por dia durante 30 dias consome 2,0 × 5 × 30 = 300 kWh e custa 300 × 0,16 = 48 €.\n\n**As três fórmulas da potência**\n\nP = U I serve para qualquer componente. P = R I² e P = U² / R obtêm-se substituindo U = R I e só se aplicam a condutores com resistência R, onde toda a energia elétrica é dissipada por efeito Joule."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Quantos joules correspondem a 2,5 kWh?",
+              "opcoes": ["2,5 × 10³ J", "9,0 × 10³ J", "9,0 × 10⁶ J", "1,44 × 10⁶ J"],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. 1 kWh = 3,6 × 10⁶ J. Logo 2,5 × 3,6 × 10⁶ = 9,0 × 10⁶ J.",
+              "mascote_feedback_errado": "1 kWh = 3,6 × 10⁶ J. Logo 2,5 × 3,6 × 10⁶ = 9,0 × 10⁶ J."
+            },
+            {
+              "pergunta": "Numa resistência, a corrente passa de 2 A para 4 A. A potência dissipada por efeito Joule:",
+              "opcoes": ["duplica.", "fica quatro vezes maior.", "fica igual.", "fica reduzida a metade."],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. P = R I². Se I duplica, I² fica quatro vezes maior e a potência também.",
+              "mascote_feedback_errado": "P = R I². Se I duplica, I² fica quatro vezes maior e a potência também."
+            },
+            {
+              "pergunta": "Uma lâmpada tem a indicação \"12 V, 36 W\". Qual é a sua resistência em funcionamento normal?",
+              "opcoes": ["3,0 Ω", "4,0 Ω", "0,33 Ω", "432 Ω"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. P = U² / R, logo R = U² / P = 12² / 36 = 144 / 36 = 4,0 Ω.",
+              "mascote_feedback_errado": "P = U² / R, logo R = U² / P = 12² / 36 = 144 / 36 = 4,0 Ω. Em alternativa: I = P / U = 3,0 A e R = U / I = 4,0 Ω."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "circuitos-serie-paralelo",
+      "titulo": "Circuitos em série e em paralelo",
+      "xp": 24,
+      "tempo_estimado_min": 10,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_luzes_natal.png",
+          "texto": "Nas luzes de Natal antigas, se uma lâmpada fundia, apagava-se o fio inteiro e passavas a noite a testar lâmpada a lâmpada. Em tua casa, se uma lâmpada da sala funde, a da cozinha continua acesa. A diferença está na forma como os componentes estão ligados: em série ou em paralelo.",
+          "mascote_texto": "Esta secção tem regras curtas mas muito usadas. Faz a simulação no fim: ajuda mesmo a fixar."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Série vs. paralelo",
+          "imagem": "f10_serie_paralelo.png",
+          "texto_principal": "Em série, os componentes estão ligados um a seguir ao outro, num só caminho. Em paralelo, estão ligados a dois pontos comuns, criando caminhos alternativos para a corrente. Os pontos onde a corrente se divide ou se junta chamam-se nós.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "serie-corrente", "label": "Série, corrente", "explicacao": "A corrente é a mesma em todos os componentes. I = I1 = I2." },
+            { "id": "serie-tensao", "label": "Série, tensão", "explicacao": "A tensão do gerador divide-se pelos componentes. U = U1 + U2." },
+            { "id": "serie-avaria", "label": "Série, avaria", "explicacao": "Se um componente avariar (abrir o circuito), deixa de haver corrente em todos." },
+            { "id": "paralelo-tensao", "label": "Paralelo, tensão", "explicacao": "A diferença de potencial é igual em todos os ramos. U = U1 = U2." },
+            { "id": "paralelo-corrente", "label": "Paralelo, corrente", "explicacao": "A corrente divide-se pelos ramos. I = I1 + I2. O ramo com menor resistência recebe mais corrente." },
+            { "id": "paralelo-avaria", "label": "Paralelo, avaria", "explicacao": "Se um ramo abrir, os outros continuam a funcionar. É assim a instalação elétrica de uma casa." },
+            { "id": "no", "label": "Nó", "explicacao": "Ponto onde se ligam três ou mais condutores. A soma das correntes que entram num nó é igual à soma das que saem (conservação da carga)." }
+          ],
+          "caixa_formula": [
+            { "expressao": "Série: I igual em todos; U total = U1 + U2 + ...", "significado": "", "unidades": "" },
+            { "expressao": "Paralelo: U igual em todos; I total = I1 + I2 + ...", "significado": "", "unidades": "" },
+            { "expressao": "Req = R1 + R2 + ... (em série)", "significado": "Resistência equivalente em série.", "unidades": "" },
+            { "expressao": "1/Req = 1/R1 + 1/R2 + ... (em paralelo)", "significado": "Resistência equivalente em paralelo.", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Duas resistências de 2,0 Ω e 4,0 Ω estão ligadas em série a uma fonte de 12 V. Qual é a corrente no circuito?",
+          "opcoes": ["1,0 A", "2,0 A", "3,0 A", "9,0 A"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Em série, Req = 2,0 + 4,0 = 6,0 Ω. I = U / Req = 12 / 6,0 = 2,0 A.",
+          "mascote_feedback_errado": "Em série as resistências somam-se: 2,0 + 4,0 = 6,0 Ω. I = 12 / 6,0 = 2,0 A."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "As mesmas resistências (2,0 Ω e 4,0 Ω) são agora ligadas em paralelo à fonte de 12 V. Qual é a corrente total fornecida pela fonte?",
+          "opcoes": ["2,0 A", "4,5 A", "6,0 A", "9,0 A"],
+          "correta": 3,
+          "mascote_feedback_certo": "Muito bem. Em paralelo cada resistência tem 12 V. I1 = 12 / 2,0 = 6,0 A; I2 = 12 / 4,0 = 3,0 A. Total: 9,0 A.",
+          "mascote_feedback_errado": "Em paralelo, cada resistência está sujeita aos 12 V. I1 = 12 / 2,0 = 6,0 A e I2 = 12 / 4,0 = 3,0 A. A corrente total é a soma: 9,0 A."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_serie_paralelo",
+          "titulo": "Monta o teu circuito",
+          "instrucao": "Escolhe o tipo de ligação e o valor das resistências, com uma fonte fixa de 12 V.",
+          "controlos": [
+            { "id": "ligacao", "rotulo": "Ligação", "opcoes": [ { "valor": 0, "label": "Série" }, { "valor": 1, "label": "Paralelo" } ] },
+            { "id": "R1", "rotulo": "R1", "min": 1, "max": 20, "passo": 1, "valor_inicial": 2, "unidade": "Ω" },
+            { "id": "R2", "rotulo": "R2", "min": 1, "max": 20, "passo": 1, "valor_inicial": 4, "unidade": "Ω" }
+          ],
+          "saidas": [
+            { "rotulo": "Resistência equivalente", "formula": "ligacao === 0 ? (R1 + R2) : (1 / (1/R1 + 1/R2))", "unidade": "Ω", "casas_decimais": 2 },
+            { "rotulo": "Corrente total fornecida pela fonte", "formula": "12 / (ligacao === 0 ? (R1 + R2) : (1 / (1/R1 + 1/R2)))", "unidade": "A", "casas_decimais": 2 },
+            { "rotulo": "Corrente em R2 (só em paralelo)", "formula": "ligacao === 0 ? (12 / (R1 + R2)) : (12 / R2)", "unidade": "A", "casas_decimais": 2 }
+          ],
+          "pergunta_final": "Em paralelo, qual das lâmpadas brilha mais, a de maior ou a de menor resistência? Resposta esperada: a de menor resistência, porque tem a mesma tensão e é percorrida por mais corrente (P = U² / R)."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Portagens numa autoestrada.** Em série é como uma estrada com duas portagens seguidas: todos os carros passam pelas duas (mesma corrente) e o tempo total perdido é a soma das duas paragens (as tensões somam-se). Se uma portagem fechar, a estrada fica bloqueada. Em paralelo é como uma praça de portagem com várias cabines lado a lado: os carros dividem-se (a corrente divide-se), e as cabines mais rápidas recebem mais carros (menor resistência, mais corrente). Se uma cabine fechar, as outras continuam a funcionar. E quantas mais cabines abrirem, mais carros passam no total: por isso, em paralelo, juntar resistências diminui a resistência equivalente."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque o paralelo diminui a resistência, tomadas múltiplas e conservação da energia",
+          "texto": "**Porque é que em paralelo a resistência equivalente é menor**\n\nCada novo ramo é um caminho extra para a corrente. Com a mesma tensão, passa mais corrente no total, o que corresponde a uma resistência equivalente menor. A resistência equivalente em paralelo é sempre menor do que a menor das resistências.\n\n**Atenção às tomadas múltiplas**\n\nOs aparelhos ligados a uma tomada múltipla ficam em paralelo. Cada um recebe 230 V, mas as correntes somam-se no fio da tomada. Ligar muitos aparelhos potentes à mesma extensão pode fazer passar uma corrente excessiva, aquecer os fios por efeito Joule e provocar um incêndio. É para isso que servem os disjuntores do quadro elétrico.\n\n**Conservação da energia num circuito**\n\nA energia fornecida pelo gerador às cargas é igual à soma das energias transferidas em todos os componentes. Em série, isso traduz-se em U = U1 + U2: cada unidade de carga recebe U joules no gerador e entrega-os pelos vários componentes."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Três lâmpadas iguais estão ligadas em série a uma pilha de 9,0 V. Qual é a diferença de potencial em cada uma?",
+              "opcoes": ["9,0 V", "3,0 V", "27 V", "4,5 V"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Em série, a tensão divide-se pelos componentes. Cada lâmpada fica com 9,0 / 3 = 3,0 V.",
+              "mascote_feedback_errado": "Em série, a tensão divide-se pelos componentes. Como as lâmpadas são iguais, cada uma fica com 9,0 / 3 = 3,0 V."
+            },
+            {
+              "pergunta": "Num nó de um circuito entram 5,0 A por um fio. Saem dois fios: num deles passam 2,0 A. Qual é a corrente no outro?",
+              "opcoes": ["2,0 A", "3,0 A", "5,0 A", "7,0 A"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. A carga conserva-se: o que entra num nó é igual ao que sai. 5,0 = 2,0 + I, logo I = 3,0 A.",
+              "mascote_feedback_errado": "A carga conserva-se: o que entra num nó é igual ao que sai. 5,0 = 2,0 + I, logo I = 3,0 A."
+            },
+            {
+              "pergunta": "Qual é a razão pela qual a instalação elétrica de uma casa é feita em paralelo?",
+              "opcoes": ["Para que a corrente seja igual em todos os aparelhos.", "Para que todos os aparelhos fiquem sujeitos à mesma tensão e funcionem de forma independente.", "Para diminuir o consumo de energia.", "Porque em paralelo não há efeito Joule."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Em paralelo, todos os aparelhos recebem os 230 V para que foram projetados e cada um pode ser ligado ou desligado sem afetar os outros.",
+              "mascote_feedback_errado": "Em paralelo, todos os aparelhos recebem os 230 V para que foram projetados e cada um pode ser ligado ou desligado sem afetar os outros."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "geradores-fem-resistencia-interna",
+      "titulo": "Geradores: força eletromotriz e resistência interna",
+      "xp": 24,
+      "tempo_estimado_min": 10,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_pilha_quente.png",
+          "texto": "Uma pilha de 9 V nunca dá exatamente 9 V quando está a trabalhar. Liga-a a um motor que puxa muita corrente e a tensão nos terminais desce para 8 V, 7 V ou menos. E a própria pilha aquece. Onde fica essa energia? Dentro da pilha. Todas as pilhas reais têm uma resistência interna, e isso muda as contas.",
+          "mascote_texto": "Esta é a última secção da missão e inclui a AL 2.1. É a AL de eletricidade que mais sai em exame."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O gerador real",
+          "imagem": "f10_gerador_real.png",
+          "texto_principal": "Um gerador real pode ser representado como uma fonte ideal em série com uma resistência interna. A força eletromotriz é a energia que o gerador fornece a cada unidade de carga. Parte dessa energia é dissipada dentro do próprio gerador. O que sobra é a tensão disponível nos terminais.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "fem", "label": "Força eletromotriz (ε)", "explicacao": "Energia fornecida pelo gerador por unidade de carga. Mede-se em volt. É a tensão nos terminais quando o gerador não fornece corrente (circuito aberto)." },
+            { "id": "resistencia-interna", "label": "Resistência interna (r)", "explicacao": "Resistência dos materiais dentro do gerador. Provoca dissipação de energia no interior, por efeito Joule, e é a razão por que as pilhas aquecem." },
+            { "id": "tensao-terminais", "label": "Tensão nos terminais (U)", "explicacao": "É a força eletromotriz menos a queda de tensão na resistência interna. Diminui quando a corrente aumenta." },
+            { "id": "gerador-ideal", "label": "Gerador ideal", "explicacao": "Teria r = 0 e U = ε sempre. Não existe na prática." }
+          ],
+          "caixa_formula": [
+            { "expressao": "U = ε − r I", "significado": "Tensão nos terminais de um gerador real.", "unidades": "" },
+            { "expressao": "ε I = U I + r I²", "significado": "Balanço energético (em potência): potência total fornecida pelo gerador = potência útil fornecida ao circuito exterior + potência dissipada no interior.", "unidades": "" },
+            { "expressao": "η = U / ε × 100", "significado": "Rendimento do gerador (equivalente a P útil / P total).", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Curva característica do gerador",
+          "imagem": "f10_curva_caracteristica.png",
+          "texto_principal": "O gráfico da tensão nos terminais em função da corrente chama-se curva característica do gerador. Para um gerador real é uma reta com declive negativo.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "ordenada", "label": "Ordenada na origem", "explicacao": "Valor de U quando I = 0. É a força eletromotriz ε." },
+            { "id": "declive-curva", "label": "Declive", "explicacao": "Vale −r. A resistência interna é o valor absoluto do declive." },
+            { "id": "curto-circuito", "label": "Ponto de curto-circuito", "explicacao": "Onde a reta corta o eixo das correntes (U = 0). Corresponde a ligar os terminais diretamente com um fio. A corrente é máxima (I = ε / r) e toda a energia é dissipada dentro do gerador. É perigoso e danifica a pilha." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma pilha com ε = 9,0 V e r = 1,0 Ω fornece uma corrente de 0,50 A. Qual é a tensão nos seus terminais?",
+          "opcoes": ["9,5 V", "9,0 V", "8,5 V", "4,5 V"],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. U = ε − r I = 9,0 − 1,0 × 0,50 = 8,5 V. O rendimento é 8,5 / 9,0 × 100 = 94 %.",
+          "mascote_feedback_errado": "A tensão nos terminais é menor do que a força eletromotriz: U = ε − r I = 9,0 − 1,0 × 0,50 = 8,5 V."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A curva característica de um gerador corta o eixo U em 6,0 V e o eixo I em 3,0 A. Qual é a sua resistência interna?",
+          "opcoes": ["0,50 Ω", "2,0 Ω", "3,0 Ω", "18 Ω"],
+          "correta": 1,
+          "mascote_feedback_certo": "Muito bem. ε = 6,0 V (ordenada na origem). Declive = (0 − 6,0) / (3,0 − 0) = −2,0 V/A. r = 2,0 Ω.",
+          "mascote_feedback_errado": "A resistência interna é o módulo do declive: |ΔU / ΔI| = 6,0 / 3,0 = 2,0 Ω. Também podes pensar que no curto-circuito I = ε / r, logo r = 6,0 / 3,0 = 2,0 Ω."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O salário bruto e o salário líquido.** A força eletromotriz é como o salário bruto: é o que o gerador \"ganha\" por cada unidade de carga. A resistência interna é como os descontos: uma parte fica logo retida antes de chegar à tua conta. A tensão nos terminais é o salário líquido, o que realmente chega ao circuito. E há uma diferença: aqui, quanto mais corrente pedes ao gerador, maiores são os descontos (r I aumenta com I). Se exigires corrente a mais, quase tudo fica retido na pilha, que aquece, e ao circuito chega muito pouco."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.1",
+          "titulo": "Características de uma pilha",
+          "objetivo": "Determinar a força eletromotriz e a resistência interna de uma pilha a partir da sua curva característica.",
+          "material": [
+            "Pilha (por exemplo, de 4,5 V ou 9 V)",
+            "Reóstato (resistência variável) ou conjunto de resistências de valores diferentes",
+            "Amperímetro (ou multímetro em modo amperímetro)",
+            "Voltímetro (ou multímetro em modo voltímetro)",
+            "Interruptor",
+            "Fios de ligação"
+          ],
+          "procedimento": [
+            "Montar o circuito: pilha, interruptor, reóstato e amperímetro, todos em série. Ligar o voltímetro em paralelo com a pilha, aos seus terminais.",
+            "Com o interruptor aberto, ler a tensão no voltímetro (é aproximadamente ε, porque não há corrente).",
+            "Fechar o interruptor e registar os valores de U e de I.",
+            "Variar a resistência do reóstato e registar pelo menos seis pares de valores (U, I).",
+            "Manter o interruptor fechado apenas o tempo necessário para cada leitura, para a pilha não aquecer (o que alteraria r).",
+            "Nunca reduzir a resistência exterior a zero: seria um curto-circuito."
+          ],
+          "tratamento_de_dados": "Construir o gráfico de U (eixo vertical) em função de I (eixo horizontal). Traçar a reta de ajuste (regressão linear na calculadora). A equação tem a forma U = ε − r I.\n\nA ordenada na origem é a força eletromotriz ε. O módulo do declive é a resistência interna r.\n\nComparar o valor de ε obtido com o valor indicado na pilha e calcular o erro percentual.",
+          "conclusao": "A tensão nos terminais da pilha diminui linearmente com a corrente. A ordenada na origem da reta dá a força eletromotriz e o módulo do declive dá a resistência interna. Uma pilha gasta tem uma resistência interna maior.",
+          "erros_comuns": [
+            "Ligar o voltímetro em série ou o amperímetro em paralelo.",
+            "Confundir ε com a tensão nos terminais quando há corrente.",
+            "Afirmar que r é o declive: é o módulo do declive (o declive é negativo).",
+            "Deixar o circuito fechado durante muito tempo: a pilha aquece, a resistência interna muda e os pontos deixam de estar alinhados.",
+            "Trocar os eixos: se o gráfico for I em função de U, o declive é −1/r.",
+            "Rever a secção sobre medição e incertezas (Missão 1, Energia e movimentos) para as incertezas de leitura do voltímetro e do amperímetro."
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Pilhas gastas e balanço energético do gerador",
+          "texto": "**Porque é que as pilhas gastas \"não dão\"**\n\nCom o uso, as reações químicas dentro da pilha tornam-se menos eficientes e a resistência interna aumenta. A força eletromotriz pode até manter-se parecida, mas quando pedes corrente a tensão nos terminais cai muito. É por isso que uma pilha gasta pode marcar quase 1,5 V no voltímetro (sem corrente) e mesmo assim não conseguir pôr um brinquedo a funcionar.\n\n**Balanço energético completo**\n\nMultiplicando U = ε − r I por I obtém-se ε I = U I + r I². ε I é a potência total que o gerador fornece às cargas (vem da energia química, no caso de uma pilha). U I é a potência útil, entregue ao circuito exterior. r I² é a potência dissipada no interior do gerador. Esta equação é a conservação da energia aplicada ao gerador."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na AL 2.1, a reta de ajuste obtida foi U = 4,52 − 0,85 I (SI). Quais são a força eletromotriz e a resistência interna da pilha?",
+              "opcoes": ["ε = 0,85 V; r = 4,52 Ω", "ε = 4,52 V; r = 0,85 Ω", "ε = 4,52 V; r = −0,85 Ω", "ε = 3,67 V; r = 0,85 Ω"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Comparando com U = ε − r I: a ordenada na origem é ε = 4,52 V e o módulo do declive é r = 0,85 Ω.",
+              "mascote_feedback_errado": "Comparando com U = ε − r I: a ordenada na origem é ε = 4,52 V e o módulo do declive é r = 0,85 Ω. A resistência nunca é negativa."
+            },
+            {
+              "pergunta": "Um gerador com ε = 12 V e r = 0,50 Ω fornece 4,0 A a um circuito. Qual é a potência dissipada no seu interior?",
+              "opcoes": ["2,0 W", "8,0 W", "40 W", "48 W"],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. P dissipada = r I² = 0,50 × 4,0² = 8,0 W.",
+              "mascote_feedback_errado": "P dissipada = r I² = 0,50 × 4,0² = 0,50 × 16 = 8,0 W. A potência total é ε I = 48 W e a útil é U I = (12 − 2,0) × 4,0 = 40 W. 40 + 8 = 48 W."
+            },
+            {
+              "pergunta": "Quando a corrente fornecida por um gerador real aumenta, a tensão nos seus terminais:",
+              "opcoes": ["aumenta, porque há mais energia.", "mantém-se igual à força eletromotriz.", "diminui, porque aumenta a energia dissipada na resistência interna.", "passa a ser negativa."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. U = ε − r I. Com mais corrente, o termo r I cresce e U diminui.",
+              "mascote_feedback_errado": "U = ε − r I. Com mais corrente, o termo r I cresce e U diminui."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 2 concluída. Já sabes o que é corrente, tensão e resistência, calculas energia em kWh, resolves circuitos em série e em paralelo e sabes tirar a força eletromotriz e a resistência interna de um gráfico. Falta a última missão: calor, temperatura e radiação. Continua a ser energia, só que agora à escala das partículas."
+}

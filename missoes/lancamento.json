@@ -23,5 +23,15 @@
   "ciclos-vida": false,
   "ecossistemas": true,
   "sistema-nervoso": true,
-  "fisiologia-vegetal": true
+  "fisiologia-vegetal": true,
+
+  "energia-e-movimentos": true,
+  "energia-e-fenomenos-eletricos": true,
+  "energia-fenomenos-termicos-radiacao": true,
+
+  "11-movimento-e-interacoes": true,
+  "11-forcas-e-movimentos": true,
+  "11-sinais-ondas-som": true,
+  "11-eletromagnetismo": true,
+  "11-ondas-eletromagneticas": true
 }

@@ -2,8 +2,15 @@
     const dataEl = document.getElementById('flashcards-data');
     if (!dataEl) return;
 
-    const termos = JSON.parse(dataEl.textContent);
-    const total = termos.length;
+    const todosOsTermos = JSON.parse(dataEl.textContent);
+    let termos = todosOsTermos;
+    let total = termos.length;
+
+    // ---- Filtro "Todos / <missão>" ----
+    const filterEl = document.getElementById('flashcardsFilter');
+    const filterTrigger = document.getElementById('flashcardsFilterTrigger');
+    const filterLabel = document.getElementById('flashcardsFilterLabel');
+    const filterMenu = document.getElementById('flashcardsFilterMenu');
 
     // ---- Ecrã 1: flashcards ----
     const screen1 = document.getElementById('flashcardsScreen1');
@@ -58,6 +65,69 @@
         screen2.hidden = true;
         screen3.hidden = true;
         screen4.hidden = true;
+    }
+
+    // ---------------- Filtro "Todos / <missão>" ----------------
+
+    function aplicarFiltro(missaoId) {
+        const filtrados = missaoId
+            ? todosOsTermos.filter((termo) => termo.missao === missaoId)
+            : todosOsTermos;
+
+        if (filtrados.length === 0) return;
+
+        termos = filtrados;
+        total = termos.length;
+        currentIndex = 0;
+        respostas = [];
+        outcomesAssociacao = {};
+        associacaoFoiSaltada = false;
+
+        esconderTodosOsEcras();
+        screen1.hidden = false;
+        renderCard();
+    }
+
+    if (filterEl && filterTrigger && filterMenu) {
+        const filterOptions = Array.from(filterMenu.querySelectorAll('.flashcards-filter-option'));
+
+        const fecharFiltro = () => {
+            filterMenu.hidden = true;
+            filterEl.classList.remove('is-open');
+            filterTrigger.setAttribute('aria-expanded', 'false');
+        };
+
+        filterTrigger.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const abrir = filterMenu.hidden;
+            if (abrir) {
+                filterMenu.hidden = false;
+                filterEl.classList.add('is-open');
+                filterTrigger.setAttribute('aria-expanded', 'true');
+            } else {
+                fecharFiltro();
+            }
+        });
+
+        filterOptions.forEach((option) => {
+            option.addEventListener('click', () => {
+                filterOptions.forEach((opt) => {
+                    opt.classList.remove('is-active');
+                    opt.setAttribute('aria-selected', 'false');
+                });
+                option.classList.add('is-active');
+                option.setAttribute('aria-selected', 'true');
+                filterLabel.textContent = option.textContent;
+                fecharFiltro();
+                aplicarFiltro(option.dataset.missaoId || null);
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!filterMenu.hidden && !filterEl.contains(event.target)) {
+                fecharFiltro();
+            }
+        });
     }
 
     // ---------------- Ecrã 1 ----------------

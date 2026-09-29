@@ -153,14 +153,26 @@
     <h1>Testes</h1>
     <div class="missions-page-subrow">
         <p>Escolhe um teste e avalia o que já sabes.</p>
+        <div class="subject-switcher">
+            <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
+                <span>Explore Biology</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
+                <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="physics">Explore Physics</button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
+            </ul>
+        </div>
     </div>
 
     <div class="missions-categories-board">
 
     {% for categoria in categorias_testes %}
-    <div class="missions-category">
+    <div class="missions-category" data-subject="{{ categoria.disciplina }}"{% if categoria.disciplina != 'biology' %} hidden{% endif %}>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static categoria.imagem %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image{% if categoria.imagem_contain %} missions-category-panel-image--contain{% endif %}" style="background-image:url('{% static categoria.imagem %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <div class="missions-category-panel-header">
                     <h3 class="missions-category-panel-name">{{ categoria.nome }}</h3>
@@ -455,6 +467,7 @@ window.exploreActivityHeartbeatUrl = '{% url "registar-atividade" %}';
     });
 })();
 </script>
+<script src="{% static 'subject-switcher.js' %}" defer></script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
 <script src="{% static 'activity-heartbeat.js' %}" defer></script>

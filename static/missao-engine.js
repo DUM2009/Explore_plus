@@ -39,6 +39,41 @@
         return paragraphs.map((p) => `<p>${boldMarkdown(escapeHtml(p))}</p>`).join('');
     }
 
+    // Bloco "Medição e incertezas" partilhado por todas as atividades
+    // laboratoriais de Física (10.º e 11.º ano) — ver renderAtividadeLaboratorial
+    // e screen.rever_medicao_incertezas. Escrito uma única vez aqui em vez de
+    // duplicado em cada missões/fisica/*.json, para o botão "Rever" abrir
+    // sempre o mesmo texto, esteja em que missão estiver.
+    const MEDICAO_INCERTEZAS_TEXTO = `Medir é comparar uma grandeza com uma unidade. Nenhuma medição é perfeita: há sempre uma incerteza associada.
+
+**1. Incerteza de leitura**
+
+Instrumento analógico (régua, termómetro de mercúrio, proveta): metade da menor divisão da escala. Régua graduada em milímetros: incerteza de leitura = 0,5 mm. Instrumento digital (cronómetro digital, multímetro, balança digital): uma unidade do último dígito. Balança que mostra 12,34 g: incerteza = 0,01 g. O resultado escreve-se com a incerteza: comprimento = (12,5 ± 0,5) mm.
+
+**2. Medições repetidas**
+
+Quando se repete uma medição várias vezes, o valor mais provável é a média dos valores obtidos. A incerteza absoluta pode ser estimada pelo maior desvio em módulo em relação à média. Exemplo: tempos 1,52 s; 1,48 s; 1,55 s. Média = 1,52 s. Desvios: 0,00; 0,04; 0,03. Maior desvio = 0,04 s. Resultado: t = (1,52 ± 0,04) s.
+
+**3. Incerteza relativa**
+
+Incerteza relativa = incerteza absoluta / valor medido, normalmente em percentagem. No exemplo anterior: 0,04 / 1,52 × 100 = 2,6 %. Quanto menor a incerteza relativa, mais precisa é a medição.
+
+**4. Erro percentual (quando se conhece o valor de referência)**
+
+Erro percentual = |valor experimental − valor de referência| / valor de referência × 100. Mede a exatidão do resultado.
+
+**5. Precisão e exatidão**
+
+Precisão: os valores medidos estão próximos uns dos outros (pouca dispersão). Exatidão: o valor medido está próximo do valor verdadeiro. Uma medição pode ser precisa e pouco exata (todos os tiros agrupados, mas longe do centro do alvo).
+
+**6. Erros sistemáticos e aleatórios**
+
+Erros sistemáticos: afetam sempre no mesmo sentido (balança mal calibrada, zero da escala deslocado, paralaxe feita sempre do mesmo lado). Não se eliminam repetindo a medição. Afetam a exatidão. Erros aleatórios: variam de medição para medição, em sentido imprevisível (tempo de reação a acionar o cronómetro, pequenas vibrações). Reduzem-se repetindo a medição e calculando a média. Afetam a precisão.
+
+**7. Algarismos significativos**
+
+O resultado final não pode ter mais algarismos significativos do que os dados permitem. A incerteza escreve-se normalmente com um algarismo significativo, e o valor medido acaba na mesma casa decimal da incerteza.`;
+
     class MissaoEngine {
         constructor(missao, options = {}) {
             this.missao = missao;
@@ -978,6 +1013,8 @@
                 case 'analogia': return this.renderAnalogia(screen);
                 case 'aprofundar': return this.renderAprofundar(screen);
                 case 'quiz_seccao': return this.renderQuizSeccao(section, screen);
+                case 'atividade_laboratorial': return this.renderAtividadeLaboratorial(screen);
+                case 'simulacao': return this.renderSimulacao(screen);
                 default: return '';
             }
         }
@@ -1281,6 +1318,21 @@
                     </div>
                 </div>
             `;
+        }
+
+        /** Caixa destacada com as fórmulas de um ecrã de diagrama (Física,
+         *  ver screen.caixa_formula) — lista de { expressao, significado,
+         *  unidades }, cada uma num bloco próprio dentro da mesma caixa. */
+        caixaFormulaHtml(caixaFormula) {
+            if (!Array.isArray(caixaFormula) || caixaFormula.length === 0) return '';
+            const itensHtml = caixaFormula.map((formula) => `
+                <div class="me-caixa-formula-item">
+                    <p class="me-caixa-formula-expressao">${escapeHtml(formula.expressao || '')}</p>
+                    ${formula.significado ? `<p class="me-caixa-formula-significado">${escapeHtml(formula.significado)}</p>` : ''}
+                    ${formula.unidades ? `<p class="me-caixa-formula-unidades">${escapeHtml(formula.unidades)}</p>` : ''}
+                </div>
+            `).join('');
+            return `<div class="me-caixa-formula">${itensHtml}</div>`;
         }
 
         /** Botão colapsável "Saber mais" com ponto.saber_mais, se existir —
@@ -1727,11 +1779,20 @@
             // em vez de por cima como nos outros formatos de diagrama.
             const instrucaoHtml = `<p class="plant-diagram-hint">${escapeHtml(screen.instrucao || 'Clica num ponto para veres a explicação.')}</p>`;
 
+            // texto_principal (Física) — explicação corrida que acompanha o
+            // diagrama, distinta da frase-ponte (uma frase curta) e do
+            // intro_texto (isco antes do título): aqui é o corpo principal
+            // do ecrã, por isso vem depois da ponte e antes da imagem.
+            const textoPrincipalHtml = screen.texto_principal
+                ? `<div class="me-diagrama-texto-principal">${textToHtml(screen.texto_principal)}</div>`
+                : '';
+
             const diagramaHtml = `
                 ${isTimeline ? tituloPonteHtml : `
                     ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
                     ${screen.ponte_texto ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.ponte_texto)}</p>` : ''}
                 `}
+                ${textoPrincipalHtml}
                 ${(isEscada || isArvore || isMapa) ? '' : (screen.video
                     ? `<video class="me-video-chroma-source" data-chroma-key="white" src="/static/${encodeURIComponent(screen.video)}" autoplay loop muted playsinline style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></video>
                        <canvas class="card-visual me-video-chroma-canvas"></canvas>`
@@ -1740,6 +1801,7 @@
                 ${pontosHtml}
                 ${isTimeline ? instrucaoHtml : ''}
                 ${explicacaoHtml}
+                ${this.caixaFormulaHtml(screen.caixa_formula)}
             `;
 
             // "Queres saber mais?" opcional, dentro do mesmo painel branco
@@ -1757,7 +1819,7 @@
             // nomes em diagonal sem scroll horizontal (ver
             // .me-gancho-card--timeline, que quebra a coluna de leitura
             // estreita de .section-body tal como .plant-diagram-card).
-            if (hasIntro || screen.aprofundar || screen.cartao_estilo) {
+            if (hasIntro || screen.aprofundar || screen.cartao_estilo || screen.texto_principal || screen.caixa_formula) {
                 const cardModifier = screen.layout === 'timeline' ? ' me-gancho-card--timeline' : '';
                 return `
                     <div class="mascot-overlay-card me-mascot-inline me-gancho-card${cardModifier}">
@@ -1932,6 +1994,160 @@
 
         renderAprofundar(screen) {
             return this.aprofundarHtml(screen);
+        }
+
+        /** Ecrã "atividade_laboratorial" (Física) — cada campo da AL é o seu
+         *  próprio bloco colapsável, reaproveitando o visual .did-you-know
+         *  do "aprofundar" (ver aprofundarHtml) em vez de inventar um
+         *  componente novo. Ao contrário do "aprofundar", os campos são
+         *  fixos (objetivo, material, procedimento, tratamento de dados,
+         *  conclusão, erros comuns), não uma lista livre de "blocos". */
+        renderAtividadeLaboratorial(screen) {
+            const listaHtml = (itens) => `<ul class="me-laboratorio-lista">${(itens || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+            const blocoHtml = (rotulo, corpoHtml, aberto) => corpoHtml ? `
+                <details class="did-you-know me-laboratorio-bloco"${aberto ? ' open' : ''}>
+                    <summary>${escapeHtml(rotulo)}</summary>
+                    <div class="did-you-know-body">${corpoHtml}</div>
+                </details>
+            ` : '';
+
+            return `
+                <div class="me-laboratorio-cartao mascot-overlay-card me-mascot-inline me-gancho-card">
+                    <p class="me-laboratorio-codigo">${escapeHtml(screen.codigo || '')}</p>
+                    <h3>${escapeHtml(screen.titulo || '')}</h3>
+                    ${blocoHtml('Objetivo', screen.objetivo ? textToHtml(screen.objetivo) : '', true)}
+                    ${blocoHtml('Material', screen.material ? listaHtml(screen.material) : '')}
+                    ${blocoHtml('Procedimento', screen.procedimento ? `<ol class="me-laboratorio-lista me-laboratorio-lista--numerada">${screen.procedimento.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ol>` : '')}
+                    ${blocoHtml('Tratamento de dados', screen.tratamento_de_dados ? textToHtml(screen.tratamento_de_dados) : '')}
+                    ${blocoHtml('Conclusão', screen.conclusao ? textToHtml(screen.conclusao) : '')}
+                    ${blocoHtml('Erros comuns', screen.erros_comuns ? listaHtml(screen.erros_comuns) : '')}
+                    ${screen.rever_medicao_incertezas ? blocoHtml('Rever: medição e incertezas', textToHtml(MEDICAO_INCERTEZAS_TEXTO)) : ''}
+                </div>
+            `;
+        }
+
+        /** Ecrã "simulacao" (Física) — sliders/controlos que recalculam
+         *  saídas em tempo real, sem chamadas ao servidor. As fórmulas em
+         *  screen.saidas/controlos.formula são expressões JS em texto
+         *  (ver guião), avaliadas com Function() num âmbito isolado onde só
+         *  os ids dos controlos existem como variáveis — nunca com dados
+         *  vindos do aluno, só do JSON da própria missão. */
+        renderSimulacao(screen) {
+            const controlos = screen.controlos || [];
+            const controlosHtml = controlos.map((controlo) => {
+                if (controlo.tipo === 'botao') {
+                    return `<button type="button" class="me-simulacao-botao" data-simulacao-botao="${escapeHtml(controlo.id)}">${escapeHtml(controlo.rotulo || controlo.id)}</button>`;
+                }
+                if (Array.isArray(controlo.opcoes)) {
+                    return `
+                        <div class="me-simulacao-controlo">
+                            <label class="me-simulacao-rotulo" for="sim-${escapeHtml(controlo.id)}">${escapeHtml(controlo.rotulo || controlo.id)}</label>
+                            <select class="me-simulacao-select" id="sim-${escapeHtml(controlo.id)}" data-simulacao-controlo="${escapeHtml(controlo.id)}" data-tipo="opcao">
+                                ${controlo.opcoes.map((opcao) => `<option value="${escapeHtml(String(opcao.valor))}">${escapeHtml(opcao.label)}</option>`).join('')}
+                            </select>
+                        </div>
+                    `;
+                }
+                return `
+                    <div class="me-simulacao-controlo">
+                        <label class="me-simulacao-rotulo" for="sim-${escapeHtml(controlo.id)}">
+                            ${escapeHtml(controlo.rotulo || controlo.id)}
+                            <span class="me-simulacao-valor" data-simulacao-valor-de="${escapeHtml(controlo.id)}">${controlo.valor_inicial}</span>
+                            ${controlo.unidade ? `<span class="me-simulacao-unidade">${escapeHtml(controlo.unidade)}</span>` : ''}
+                        </label>
+                        <input type="range" class="me-simulacao-slider" id="sim-${escapeHtml(controlo.id)}"
+                            data-simulacao-controlo="${escapeHtml(controlo.id)}" data-tipo="slider"
+                            min="${controlo.min}" max="${controlo.max}" step="${controlo.passo || 1}" value="${controlo.valor_inicial}">
+                    </div>
+                `;
+            }).join('');
+
+            const saidasHtml = (screen.saidas || []).map((saida, i) => `
+                <div class="me-simulacao-saida">
+                    <span class="me-simulacao-saida-rotulo">${escapeHtml(saida.rotulo)}</span>
+                    <span class="me-simulacao-saida-valor" data-simulacao-saida="${i}">—</span>
+                    ${saida.unidade ? `<span class="me-simulacao-unidade">${escapeHtml(saida.unidade)}</span>` : ''}
+                </div>
+            `).join('');
+
+            return `
+                <div class="me-simulacao-cartao mascot-overlay-card me-mascot-inline me-gancho-card" id="meSimulacao-${escapeHtml(screen.id || '')}" data-simulacao-id="${escapeHtml(screen.id || '')}">
+                    ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
+                    ${screen.instrucao ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.instrucao)}</p>` : ''}
+                    <div class="me-simulacao-controlos">${controlosHtml}</div>
+                    <div class="me-simulacao-saidas">${saidasHtml}</div>
+                    ${screen.pergunta_final ? `
+                        <details class="did-you-know me-laboratorio-bloco">
+                            <summary>Pergunta final</summary>
+                            <div class="did-you-know-body"><p>${escapeHtml(screen.pergunta_final)}</p></div>
+                        </details>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        /** Liga os sliders/selects/botões de uma simulação (ver
+         *  renderSimulacao) a um recálculo em tempo real das saídas. Cada
+         *  fórmula é avaliada com os ids dos controlos como variáveis
+         *  soltas no âmbito — new Function(...ids, 'return (' + formula +
+         *  ')') em vez de eval(), para não herdar o âmbito local daqui. */
+        bindSimulacao(screen) {
+            const container = this.root.querySelector(`[data-simulacao-id="${screen.id || ''}"]`);
+            if (!container || container.dataset.bound === 'true') return;
+            container.dataset.bound = 'true';
+
+            const controlos = screen.controlos || [];
+            const saidas = screen.saidas || [];
+            const ids = controlos.filter((c) => c.tipo !== 'botao').map((c) => c.id);
+            const estadoBotoes = {};
+
+            const lerValores = () => {
+                const valores = {};
+                ids.forEach((id) => {
+                    const el = container.querySelector(`[data-simulacao-controlo="${id}"]`);
+                    valores[id] = el ? Number(el.value) || el.value : 0;
+                });
+                Object.assign(valores, estadoBotoes);
+                return valores;
+            };
+
+            const recalcular = () => {
+                const valores = lerValores();
+                ids.forEach((id) => {
+                    const span = container.querySelector(`[data-simulacao-valor-de="${id}"]`);
+                    if (span) span.textContent = valores[id];
+                });
+                saidas.forEach((saida, i) => {
+                    const span = container.querySelector(`[data-simulacao-saida="${i}"]`);
+                    if (!span) return;
+                    let resultado;
+                    try {
+                        resultado = new Function(...Object.keys(valores), `return (${saida.formula});`)(...Object.values(valores));
+                    } catch (erro) {
+                        resultado = null;
+                    }
+                    if (typeof resultado === 'number' && Number.isFinite(resultado)) {
+                        span.textContent = saida.casas_decimais != null ? resultado.toFixed(saida.casas_decimais) : String(resultado);
+                    } else if (typeof resultado === 'string') {
+                        span.textContent = resultado;
+                    } else {
+                        span.textContent = '—';
+                    }
+                });
+            };
+
+            container.querySelectorAll('[data-simulacao-controlo]').forEach((el) => {
+                el.addEventListener('input', recalcular);
+                el.addEventListener('change', recalcular);
+            });
+            container.querySelectorAll('[data-simulacao-botao]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    estadoBotoes[btn.dataset.simulacaoBotao] = true;
+                    recalcular();
+                });
+            });
+
+            recalcular();
         }
 
         getQuizState(section) {
@@ -2220,6 +2436,10 @@
 
             if (screen.tipo === 'diagrama_interativo') {
                 this.bindDiagramaChips(screen);
+            }
+
+            if (screen.tipo === 'simulacao') {
+                this.bindSimulacao(screen);
             }
 
             // Quando o ecrã de baixo é uma micro-verificação com pano de

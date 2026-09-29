@@ -151,12 +151,20 @@
 
 <section class="missions-page">
     <h1>Exames</h1>
-    <p>Exames nacionais e provas oficiais de anos anteriores.</p>
+    <div class="missions-page-subrow">
+        <p>Exames nacionais e provas oficiais de anos anteriores.</p>
+        {% if exames %}
+        <div class="ano-switcher" id="exameDisciplinaSwitcher">
+            <button type="button" class="ano-switcher-option is-active" data-disciplina="Biologia e Geologia">Biologia e Geologia</button>
+            <button type="button" class="ano-switcher-option" data-disciplina="Física e Química">Física e Química</button>
+        </div>
+        {% endif %}
+    </div>
 
     {% if exames %}
-    <div class="missions-grid teste-missions-grid">
+    <div class="missions-grid teste-missions-grid" id="exameMissionsGrid">
         {% for exame in exames %}
-        <div class="mission-card">
+        <div class="mission-card" data-disciplina="{{ exame.disciplina }}">
             <div class="mission-card-title-row">
                 <h2>{{ exame.titulo }}</h2>
             </div>
@@ -171,6 +179,13 @@
             <a href="{% url 'exame-detalhe' exame.exame_id %}"><button type="button" class="teste-item-btn">Começar</button></a>
         </div>
         {% endfor %}
+    </div>
+    <div class="exames-em-breve" id="exameDisciplinaVazio" hidden>
+        <span class="exames-em-breve-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+        </span>
+        <h2>Em breve</h2>
+        <p>Estamos a preparar os exames nacionais e provas oficiais de Física e Química. Volta a esta página brevemente.</p>
     </div>
     {% else %}
     <div class="exames-em-breve">
@@ -209,6 +224,7 @@ document.addEventListener('click', (event) => {
     }
 });
 </script>
+<script src="{% static 'exame-disciplina-switcher.js' %}" defer></script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
 <script src="{% static 'activity-heartbeat.js' %}" defer></script>
