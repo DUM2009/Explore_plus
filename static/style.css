@@ -11616,6 +11616,71 @@ body.shadcn-profile .profile-quickstat-row small {
     font-size: .78rem;
 }
 
+body.shadcn-profile .profile-vocacional-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+    padding: 18px 20px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-vocacional-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+body.shadcn-profile .profile-vocacional-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--sp-card);
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-vocacional-copy h3 {
+    margin: 0 0 2px;
+    font-family: var(--sp-font-serif);
+    font-size: .98rem;
+    font-weight: 600;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-vocacional-copy p {
+    margin: 0;
+    font-size: .8rem;
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-vocacional-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 999px;
+    background: var(--sp-card);
+    color: var(--sp-muted-fg);
+    font-family: inherit;
+    font-size: .85rem;
+    font-weight: 700;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+body.shadcn-profile .profile-vocacional-btn:hover {
+    background: var(--sp-card);
+    transform: none;
+    box-shadow: none;
+}
+
 @media (max-width: 720px) {
     body.shadcn-profile .profile-hero {
         flex-direction: column;

@@ -1,0 +1,267 @@
+{
+  "missao_id": "12-campo-gravitico",
+  "id_guiao": "fis12-m4",
+  "titulo": "Campo gravítico",
+  "disciplina": "fisica",
+  "ano": 12,
+  "imagem": "f12_orbitas_kepler.png",
+  "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><ellipse cx=\"12\" cy=\"12\" rx=\"9\" ry=\"5\"/><circle cx=\"18\" cy=\"12\" r=\"1.5\"/></svg>", "nome": "Mestre do Campo Gravítico" },
+  "secoes": [
+    {
+      "secao_id": "leis-kepler-gravitacao-universal",
+      "titulo": "Leis de Kepler e gravitação universal",
+      "xp": 25,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f12_orbitas_kepler.png",
+          "texto": "Durante 20 anos, o astrónomo dinamarquês Tycho Brahe mediu a posição dos planetas no céu, noite após noite, sem telescópio. Depois da sua morte, o seu assistente, Johannes Kepler, passou anos a tentar encaixar esses números em órbitas circulares. Não encaixavam. Até que experimentou elipses. Descobriu três leis que Newton, décadas depois, explicaria com uma só: a lei da gravitação universal.",
+          "mascote_texto": "Esta secção tem história da ciência a sério. E a terceira lei de Kepler dá contas muito rápidas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "As leis de Kepler",
+          "imagem": "f12_leis_kepler.png",
+          "texto_principal": "As leis de Kepler descrevem o movimento dos planetas à volta do Sol. São empíricas: resultam das observações. Newton mostrou que se podem deduzir da sua lei da gravitação e das leis do movimento.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "primeira-lei-kepler", "label": "Primeira lei (lei das órbitas)", "explicacao": "Os planetas descrevem órbitas elípticas, com o Sol num dos focos. (Muitas órbitas são quase circulares.)" },
+            { "id": "segunda-lei-kepler", "label": "Segunda lei (lei das áreas)", "explicacao": "O segmento que une o Sol ao planeta varre áreas iguais em intervalos de tempo iguais. Consequência: o planeta move-se mais depressa quando está mais perto do Sol." },
+            { "id": "terceira-lei-kepler", "label": "Terceira lei (lei dos períodos)", "explicacao": "O quadrado do período orbital é proporcional ao cubo do raio médio da órbita. A constante é a mesma para todos os planetas do Sistema Solar." },
+            { "id": "ligacao-newton", "label": "Ligação a Newton", "explicacao": "Aplicando a segunda lei de Newton a uma órbita circular e a terceira lei de Kepler, conclui-se que a força gravítica tem de ser inversamente proporcional ao quadrado da distância." },
+            { "id": "lei-gravitacao-universal", "label": "Lei da gravitação universal", "explicacao": "F = G m₁ m₂ / r², atrativa, dirigida segundo a reta que une os dois corpos." }
+          ],
+          "caixa_formula": [
+            { "expressao": "T² / r³ = constante", "significado": "Terceira lei de Kepler.", "unidades": "" },
+            { "expressao": "Para órbitas circulares: T² / r³ = 4π² / (G M)", "significado": "M = massa do corpo central.", "unidades": "" },
+            { "expressao": "F g = G m₁ m₂ / r²", "significado": "Lei da gravitação universal.", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A distância média de Marte ao Sol é 1,52 vezes a da Terra. Qual é, aproximadamente, o período orbital de Marte?",
+          "opcoes": ["1,52 anos", "1,87 anos", "2,31 anos", "3,51 anos"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. T Marte ≈ 1,87 anos.",
+          "mascote_feedback_errado": "Usa T² ∝ r³: T Marte = T Terra × (1,52)^(3/2) ≈ 1,87 anos."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Pela segunda lei de Kepler, onde é que a Terra se move mais depressa na sua órbita?",
+          "opcoes": ["No ponto mais afastado do Sol (afélio).", "No ponto mais próximo do Sol (periélio).", "A velocidade é igual em todos os pontos.", "Quando está alinhada com a Lua."],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Perto do Sol, o planeta move-se mais depressa para varrer a mesma área.",
+          "mascote_feedback_errado": "A área varrida por unidade de tempo é constante. Perto do Sol, o \"raio\" é mais curto, por isso o planeta tem de andar mais depressa para varrer a mesma área."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A patinadora que encolhe os braços.** Uma patinadora a rodar sobre si própria roda mais depressa quando encolhe os braços e mais devagar quando os estica. Um planeta faz algo parecido: quando se aproxima do Sol (encolhe a \"distância\"), acelera; quando se afasta, abranda. A segunda lei de Kepler é a forma de dizer isto em linguagem de áreas."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Da Terra ao centro: uma breve história, e a dedução para órbitas circulares",
+          "texto": "**Da Terra ao centro: uma breve história**\n\nPtolomeu (século II): modelo geocêntrico. Copérnico (1543): modelo heliocêntrico, com órbitas circulares. Tycho Brahe (final do século XVI): as medições astronómicas mais precisas antes do telescópio. Galileu (1610): com o telescópio, observa as luas de Júpiter e as fases de Vénus, que apoiam o heliocentrismo. Kepler (1609 e 1619): órbitas elípticas e as três leis. Newton (1687): a lei da gravitação universal explica as leis de Kepler, a queda dos corpos e as marés.\n\n**Dedução para órbitas circulares**\n\nG M m / r² = m v² / r e v = 2π r / T. Substituindo: T² / r³ = 4π² / (G M). A constante só depende da massa do corpo central. Isto permite \"pesar\" o Sol ou a Terra a partir dos períodos dos corpos que orbitam à sua volta."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Segundo a primeira lei de Kepler, as órbitas dos planetas são:",
+              "opcoes": ["circunferências centradas no Sol.", "elipses, com o Sol num dos focos.", "elipses, com o Sol no centro.", "espirais."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. As órbitas são elípticas, com o Sol num dos focos.",
+              "mascote_feedback_errado": "A primeira lei diz que as órbitas são elípticas e que o Sol ocupa um dos focos, não o centro."
+            },
+            {
+              "pergunta": "A Terra orbita o Sol a 1,50 × 10¹¹ m com período de 1 ano (3,16 × 10⁷ s). Qual é a massa do Sol, aproximadamente?",
+              "opcoes": ["6,0 × 10²⁴ kg", "2,0 × 10³⁰ kg", "2,0 × 10²⁷ kg", "1,0 × 10³⁵ kg"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. M ≈ 2,0 × 10³⁰ kg.",
+              "mascote_feedback_errado": "M = 4π² r³ / (G T²) ≈ 2,0 × 10³⁰ kg."
+            },
+            {
+              "pergunta": "Se a distância entre dois corpos triplicar, a força gravítica entre eles:",
+              "opcoes": ["triplica.", "fica 3 vezes menor.", "fica 9 vezes menor.", "fica 27 vezes menor."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. A força é inversamente proporcional a r².",
+              "mascote_feedback_errado": "A força é inversamente proporcional a r². Com 3r, fica dividida por 3² = 9."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "campo-gravitico",
+      "titulo": "Campo gravítico",
+      "xp": 25,
+      "tempo_estimado_min": 10,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f12_linhas_campo_gravitico.png",
+          "texto": "No 11.º ano, a Terra \"puxava\" os corpos à distância. Mas como é que um corpo sabe que a Terra está lá, se não lhe toca? A Física responde com o conceito de campo: a Terra altera o espaço à sua volta, e qualquer massa que lá esteja sente esse campo. É a mesma ideia que viste no campo elétrico, agora aplicada às massas.",
+          "mascote_texto": "Campo gravítico e campo elétrico são \"primos\". Vais ver as semelhanças na Missão 5."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O campo gravítico",
+          "imagem": "f12_campo_gravitico.png",
+          "texto_principal": "Uma massa cria à sua volta um campo gravítico. O campo gravítico num ponto é a força gravítica que atuaria sobre uma massa de 1 kg colocada nesse ponto. É um vetor dirigido para o corpo que cria o campo.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "campo-massa-pontual", "label": "Campo de uma massa pontual (ou esférica)", "explicacao": "Radial, dirigido para o centro, com intensidade g = G M / r²." },
+            { "id": "unidade-campo-gravitico", "label": "Unidade", "explicacao": "N/kg, equivalente a m s⁻². O campo gravítico num ponto é igual à aceleração que um corpo em queda livre teria nesse ponto." },
+            { "id": "linhas-campo-gravitico", "label": "Linhas de campo", "explicacao": "Radiais, a apontar para a massa. Mais juntas onde o campo é mais intenso." },
+            { "id": "fora-terra", "label": "Fora da Terra", "explicacao": "Para r ≥ R Terra, o campo da Terra é igual ao de uma massa pontual colocada no seu centro." },
+            { "id": "campo-uniforme-gravitico", "label": "Campo uniforme", "explicacao": "Numa região pequena junto à superfície, o campo é aproximadamente uniforme: g ≈ 9,8 N/kg, vertical, para baixo." },
+            { "id": "forca-sobre-massa", "label": "Força sobre uma massa", "explicacao": "F g = m g (vetorial)." }
+          ],
+          "caixa_formula": [
+            { "expressao": "g = G M / r²", "significado": "Intensidade do campo gravítico criado por uma massa M a uma distância r do seu centro.", "unidades": "" },
+            { "expressao": "F g = m g", "significado": "", "unidades": "" },
+            { "expressao": "À altitude h: g = G M / (R + h)²", "significado": "", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A que distância do centro da Terra o campo gravítico é um quarto do valor à superfície?",
+          "opcoes": ["1,25 R", "2 R", "4 R", "16 R"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. r = 2R, ou seja, uma altitude igual ao raio da Terra.",
+          "mascote_feedback_errado": "O campo é inversamente proporcional ao quadrado da distância ao centro. Para dividir g por 4 = 2², a distância ao centro duplica: r = 2R."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a intensidade do campo gravítico da Terra à altitude da Estação Espacial Internacional (400 km)?",
+          "opcoes": ["0 N/kg", "2,5 N/kg", "8,7 N/kg", "9,8 N/kg"],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. g ≈ 8,7 N/kg.",
+          "mascote_feedback_errado": "Usa r = R + h = 6,77 × 10⁶ m. g = G M / r² ≈ 8,7 N/kg, ainda cerca de 89 % do valor à superfície."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A luz de uma lâmpada.** A luz de uma lâmpada espalha-se em todas as direções. A uma certa distância, espalha-se por uma esfera; ao dobro da distância, por uma esfera com quatro vezes mais área, e em cada ponto chega um quarto da luz. O campo gravítico comporta-se da mesma forma: \"espalha-se\" pelo espaço e enfraquece com o quadrado da distância. É por isso que a mesma lei 1 / r² aparece na luz, na gravidade e na eletricidade."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque g não é igual em toda a Terra, e campo vs. força",
+          "texto": "**Porque é que g não é igual em toda a Terra**\n\nA Terra não é uma esfera perfeita (é ligeiramente achatada nos polos) e roda sobre si própria. Por isso, g vale cerca de 9,78 N/kg no equador e 9,83 N/kg nos polos. Também varia um pouco com a geologia local, o que é usado para prospeção de minérios e petróleo.\n\n**Campo e força não são a mesma coisa**\n\nO campo existe num ponto mesmo que lá não esteja nenhum corpo: é uma propriedade do espaço criada pela massa M. A força só existe quando lá se coloca uma massa m. A relação é F = m g."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "As linhas de campo gravítico criado por uma massa pontual são:",
+              "opcoes": ["radiais, a apontar para fora da massa.", "radiais, a apontar para a massa.", "circunferências centradas na massa.", "paralelas e equidistantes em todo o espaço."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O campo gravítico é sempre atrativo.",
+              "mascote_feedback_errado": "O campo gravítico é sempre atrativo, por isso as linhas apontam para a massa que o cria."
+            },
+            {
+              "pergunta": "A unidade SI do campo gravítico é:",
+              "opcoes": ["N", "N/kg", "J/kg", "kg/m²"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. N/kg, equivalente a m s⁻².",
+              "mascote_feedback_errado": "O campo gravítico é força por unidade de massa: N/kg, que é equivalente a m s⁻²."
+            },
+            {
+              "pergunta": "Porque é que, junto à superfície da Terra, se pode considerar o campo gravítico uniforme?",
+              "opcoes": ["Porque a Terra é plana.", "Porque em regiões muito pequenas em comparação com o raio da Terra, a direção e a intensidade do campo quase não variam.", "Porque a massa da Terra está concentrada à superfície.", "Porque a gravidade não depende da distância."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Numa região pequena, as linhas são praticamente paralelas.",
+              "mascote_feedback_errado": "Numa região com dimensões muito menores do que o raio terrestre, as linhas são praticamente paralelas e a distância ao centro quase não muda."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "energia-campo-gravitico-velocidade-escape",
+      "titulo": "Energia no campo gravítico e velocidade de escape",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f12_lua_terra_atmosfera.png",
+          "texto": "A Terra tem atmosfera. A Lua, praticamente não. Marte tem uma atmosfera muito fina. Porquê? Em parte, porque a Lua é pequena demais para \"segurar\" os gases: as moléculas do gás, agitadas pelo calor, atingem velocidades suficientes para escapar à sua gravidade e perdem-se no espaço. Nesta secção vais calcular a velocidade necessária para escapar de um planeta.",
+          "mascote_texto": "Aqui vais perceber que m g h só funciona perto da superfície. Longe, a energia potencial tem outra fórmula, e é negativa."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Energia potencial gravítica e velocidade de escape",
+          "imagem": "f12_energia_potencial_gravitica.png",
+          "texto_principal": "Quando o campo gravítico não pode ser considerado uniforme (grandes distâncias), a energia potencial gravítica de um sistema de duas massas é dada por Ep = −G M m / r, tomando como referência (Ep = 0) a situação em que as massas estão infinitamente afastadas. É sempre negativa: é preciso fornecer energia para separar os corpos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "energia-potencial-gravitica", "label": "Energia potencial gravítica", "explicacao": "Ep = −G M m / r. Negativa, e aumenta (fica menos negativa) quando r aumenta." },
+            { "id": "referencia-infinito", "label": "Referência no infinito", "explicacao": "Ep = 0 quando r → ∞." },
+            { "id": "peso-forca-conservativa", "label": "O peso é uma força conservativa", "explicacao": "A energia mecânica conserva-se se só atuar a força gravítica." },
+            { "id": "velocidade-escape", "label": "Velocidade de escape", "explicacao": "Velocidade mínima que um corpo deve ter à superfície de um planeta para se afastar indefinidamente (chegar ao \"infinito\" com velocidade nula). Corresponde a Em = 0." },
+            { "id": "nao-depende-massa-corpo", "label": "Não depende da massa do corpo", "explicacao": "Só depende da massa e do raio do planeta." },
+            { "id": "atmosferas-escape", "label": "Atmosferas", "explicacao": "Num planeta com velocidade de escape baixa, as moléculas de gás mais rápidas escapam com facilidade, e o planeta vai perdendo a atmosfera." }
+          ],
+          "caixa_formula": [
+            { "expressao": "Ep = −G M m / r", "significado": "", "unidades": "" },
+            { "expressao": "Em = ½ m v² − G M m / r", "significado": "", "unidades": "" },
+            { "expressao": "v e = √(2 G M / R)", "significado": "Velocidade de escape.", "unidades": "" },
+            { "expressao": "Satélite em órbita circular: Ec = G M m / (2r) e Em = −G M m / (2r)", "significado": "", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a velocidade de escape da Terra?",
+          "opcoes": ["7,9 km/s", "11,2 km/s", "9,8 km/s", "3,0 × 10⁵ km/s"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. v e ≈ 11,2 km/s, cerca de 40 000 km/h.",
+          "mascote_feedback_errado": "v e = √(2 G M / R) ≈ 1,12 × 10⁴ m/s. O valor 7,9 km/s é a velocidade de um satélite em órbita rasante, não a de escape."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A Lua tem massa 7,35 × 10²² kg e raio 1,74 × 10⁶ m. Qual é a sua velocidade de escape?",
+          "opcoes": ["1,7 km/s", "2,4 km/s", "11,2 km/s", "0,24 km/s"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. v e ≈ 2,4 km/s. Quase cinco vezes menor do que a da Terra.",
+          "mascote_feedback_errado": "Aplica v e = √(2 G M / R) com os dados da Lua: ≈ 2,4 × 10³ m/s."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O poço.** Imagina a Terra no fundo de um poço muito fundo, cujas paredes ficam cada vez menos inclinadas à medida que sobes. O \"nível do chão\" lá em cima (o infinito) é a energia zero. Estar no fundo é ter energia negativa: estás \"a dever\" energia. Para sair do poço, tens de pagar essa dívida toda com energia cinética. A velocidade de escape é a velocidade que te dá exatamente a energia para chegar à borda. Um planeta pequeno, como a Lua, é um poço pouco fundo: sai-se com pouco."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque m g h deixa de servir, energia de um satélite, e buracos negros",
+          "texto": "**Porque é que m g h deixa de servir**\n\nm g h vem de considerar g constante. Para elevar 1000 kg da superfície até 400 km: com m g h obtém-se cerca de 3,9 × 10⁹ J. Com a expressão exata, ΔEp ≈ 3,7 × 10⁹ J. A diferença (cerca de 6 %) vem de g diminuir com a altitude. Para alturas muito maiores, o erro é enorme.\n\n**Energia de um satélite**\n\nNum satélite em órbita circular, a energia cinética é positiva e metade do valor absoluto da energia potencial. A energia mecânica é negativa: o satélite está \"ligado\" à Terra. Para passar para uma órbita mais alta é preciso fornecer energia (a energia mecânica aumenta, fica menos negativa), embora a velocidade na nova órbita seja menor.\n\n**Curiosidade: buracos negros**\n\nSe toda a massa da Terra fosse comprimida numa esfera com cerca de 9 mm de raio, a velocidade de escape à sua superfície seria superior à velocidade da luz. Nada, nem a luz, poderia escapar: seria um buraco negro."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A energia potencial gravítica do sistema Terra-satélite é:",
+              "opcoes": ["sempre positiva.", "sempre negativa, com zero no infinito.", "nula à superfície da Terra.", "independente da distância."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Ep = −G M m / r é sempre negativa.",
+              "mascote_feedback_errado": "Com a referência no infinito, Ep = −G M m / r é sempre negativa e tende para zero quando r aumenta."
+            },
+            {
+              "pergunta": "A velocidade de escape de um planeta depende:",
+              "opcoes": ["da massa do corpo que escapa.", "da massa e do raio do planeta.", "apenas do raio do planeta.", "da direção de lançamento."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. v e = √(2 G M / R). A massa do corpo que escapa cancela-se.",
+              "mascote_feedback_errado": "v e = √(2 G M / R). A massa do corpo que escapa cancela-se."
+            },
+            {
+              "pergunta": "Um satélite de 1000 kg está numa órbita circular de raio 6,77 × 10⁶ m. Qual é a sua energia mecânica?",
+              "opcoes": ["2,9 × 10¹⁰ J", "−2,9 × 10¹⁰ J", "−5,9 × 10¹⁰ J", "0 J"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Em ≈ −2,9 × 10¹⁰ J.",
+              "mascote_feedback_errado": "Em = −G M m / (2r) ≈ −2,9 × 10¹⁰ J."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 4 concluída. Conheces as leis de Kepler e a sua ligação à gravitação de Newton, calculas o campo gravítico a qualquer distância, usas a energia potencial gravítica na forma geral e calculas velocidades de escape. A seguir: o campo elétrico, que tem a mesma matemática mas com cargas em vez de massas."
+}

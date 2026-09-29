@@ -154,6 +154,34 @@ def pagina_perfil(request):
             'categoria': 'Ondas Eletromagnéticas',
             'descricao': 'Espetro eletromagnético, reflexão, refração, fibras óticas, difração, efeito Doppler e Big Bang.',
         },
+        '12-cinematica-dinamica-2d': {
+            'categoria': 'Cinemática e Dinâmica 2D',
+            'descricao': 'Movimentos a duas dimensões, projéteis, atrito e curvas.',
+        },
+        '12-centro-massa-momento-linear': {
+            'categoria': 'Centro de Massa e Momento Linear',
+            'descricao': 'Centro de massa, momento linear, conservação e colisões.',
+        },
+        '12-fluidos': {
+            'categoria': 'Fluidos',
+            'descricao': 'Pressão, hidrostática, impulsão e viscosidade.',
+        },
+        '12-campo-gravitico': {
+            'categoria': 'Campo Gravítico',
+            'descricao': 'Leis de Kepler, campo gravítico, energia potencial gravítica e velocidade de escape.',
+        },
+        '12-campo-eletrico': {
+            'categoria': 'Campo Elétrico',
+            'descricao': 'Lei de Coulomb, potencial elétrico, condutores, cargas em movimento e condensadores.',
+        },
+        '12-campo-magnetico': {
+            'categoria': 'Campo Magnético',
+            'descricao': 'Força magnética, movimento circular de cargas e espectrómetro de massa.',
+        },
+        '12-fisica-moderna': {
+            'categoria': 'Física Moderna',
+            'descricao': 'Radiação térmica, fotões, efeito fotoelétrico, núcleos e radioatividade.',
+        },
     }
 
     missoes_lancadas_perfil = set()

@@ -170,6 +170,7 @@
         <div class="ano-switcher" id="anoSwitcher" hidden>
             <button type="button" class="ano-switcher-option is-active" data-ano="10">10º ano</button>
             <button type="button" class="ano-switcher-option" data-ano="11">11º ano</button>
+            <button type="button" class="ano-switcher-option" data-ano="12">12º ano</button>
         </div>
     </div>
 
@@ -649,6 +650,174 @@
                     </div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Ondas Eletromagnéticas" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-cinematica-dinamica-2d' in missoes_lancadas %}
+    <div class="missions-category" data-subject="physics" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f12_remate_futebol.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Cinemática e Dinâmica 2D</h3>
+                <p class="missions-category-panel-tagline">Porque é que um remate de futebol faz uma curva no ar? Movimentos a duas dimensões, projéteis, atrito e curvas.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Cinemática e Dinâmica 2D (12º ano)</h2>
+                            <p>Movimentos a duas dimensões, projéteis, atrito e curvas.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='12-cinematica-dinamica-2d' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Cinemática e Dinâmica 2D" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-centro-massa-momento-linear' in missoes_lancadas %}
+    <div class="missions-category" data-subject="physics" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f12_airbag.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Centro de Massa e Momento Linear</h3>
+                <p class="missions-category-panel-tagline">Porque é que um airbag salva vidas? Centro de massa, momento linear, conservação e colisões.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Centro de Massa e Momento Linear (12º ano)</h2>
+                            <p>Centro de massa, momento linear, conservação e colisões.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='12-centro-massa-momento-linear' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Centro de Massa e Momento Linear" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-fluidos' in missoes_lancadas %}
+    <div class="missions-category" data-subject="physics" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f12_navio_iceberg.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Fluidos</h3>
+                <p class="missions-category-panel-tagline">Como é que um navio de milhares de toneladas flutua? Pressão, hidrostática, impulsão e viscosidade.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Fluidos (12º ano)</h2>
+                            <p>Pressão, hidrostática, impulsão e viscosidade.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='12-fluidos' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Fluidos" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-campo-gravitico' in missoes_lancadas %}
+    <div class="missions-category" data-subject="physics" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f12_orbitas_kepler.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Campo Gravítico</h3>
+                <p class="missions-category-panel-tagline">Porque é que a Lua não tem atmosfera? Leis de Kepler, campo gravítico, energia potencial gravítica e velocidade de escape.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Campo Gravítico (12º ano)</h2>
+                            <p>Leis de Kepler, campo gravítico, energia potencial gravítica e velocidade de escape.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='12-campo-gravitico' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Campo Gravítico" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-campo-eletrico' in missoes_lancadas %}
+    <div class="missions-category" data-subject="physics" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f12_atomo_hidrogenio.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Campo Elétrico</h3>
+                <p class="missions-category-panel-tagline">Porque é que estás seguro dentro de um carro durante uma trovoada? Lei de Coulomb, potencial elétrico, condutores, cargas em movimento e condensadores.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Campo Elétrico (12º ano)</h2>
+                            <p>Lei de Coulomb, potencial elétrico, condutores, cargas em movimento e condensadores.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='12-campo-eletrico' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Campo Elétrico" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-campo-magnetico' in missoes_lancadas %}
+    <div class="missions-category" data-subject="physics" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f12_aurora_boreal.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Campo Magnético</h3>
+                <p class="missions-category-panel-tagline">Como se separam isótopos ou se fazem as auroras boreais? Força magnética, movimento circular de cargas e espectrómetro de massa.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Campo Magnético (12º ano)</h2>
+                            <p>Força magnética, movimento circular de cargas e espectrómetro de massa.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='12-campo-magnetico' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Campo Magnético" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-fisica-moderna' in missoes_lancadas %}
+    <div class="missions-category" data-subject="physics" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f12_ferro_incandescente.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Física Moderna</h3>
+                <p class="missions-category-panel-tagline">A luz é onda ou partícula? E porque é que o radão é um problema nas casas do interior norte? Radiação térmica, fotões, efeito fotoelétrico, núcleos e radioatividade.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Física Moderna (12º ano)</h2>
+                            <p>Radiação térmica, fotões, efeito fotoelétrico, núcleos e radioatividade.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='12-fisica-moderna' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Física Moderna" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>

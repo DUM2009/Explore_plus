@@ -1,0 +1,496 @@
+{
+  "missao_id": "12-fisica-moderna",
+  "id_guiao": "fis12-m7",
+  "titulo": "Física moderna",
+  "disciplina": "fisica",
+  "ano": 12,
+  "imagem": "f12_ferro_incandescente.png",
+  "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><ellipse cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\"/><ellipse cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\" transform=\"rotate(60 12 12)\"/><ellipse cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\" transform=\"rotate(120 12 12)\"/></svg>", "nome": "Mestre da Física Moderna" },
+  "secoes": [
+    {
+      "secao_id": "radiacao-termica-hipotese-planck",
+      "titulo": "Radiação térmica e a hipótese de Planck",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f12_ferro_incandescente.png",
+          "texto": "No final do século XIX, muitos físicos achavam que a Física estava praticamente terminada: faltava explicar só \"duas pequenas nuvens\". Uma delas era a cor da luz emitida por um corpo quente. As teorias da época previam que um forno aquecido emitisse uma quantidade infinita de radiação ultravioleta. Obviamente, não emite. Para resolver este problema, Max Planck teve de fazer uma hipótese que ele próprio considerou \"um ato de desespero\". Nasceu a física quântica.",
+          "mascote_texto": "No 10.º ano viste que todos os corpos emitem radiação. Agora vais ver as leis exatas e o problema que elas levantaram."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Radiação térmica e o corpo negro",
+          "imagem": "f12_espetro_corpo_negro.png",
+          "texto_principal": "Todos os corpos emitem radiação eletromagnética devido à agitação das suas partículas: é a radiação térmica. Um corpo negro é um emissor (e absorsor) ideal. O espetro da radiação térmica tem um máximo que depende da temperatura, e a potência total emitida cresce muito com a temperatura.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "corpo-negro-def", "label": "Corpo negro", "explicacao": "Absorve toda a radiação que nele incide e é o emissor ideal. Emissividade e = 1. Os corpos reais têm 0 < e < 1." },
+            { "id": "lei-stefan-boltzmann", "label": "Lei de Stefan-Boltzmann", "explicacao": "A potência total emitida é proporcional à área, à emissividade e à quarta potência da temperatura absoluta." },
+            { "id": "lei-wien", "label": "Lei de Wien", "explicacao": "O comprimento de onda do máximo de emissão é inversamente proporcional à temperatura absoluta. Corpos mais quentes emitem com o máximo a comprimentos de onda menores." },
+            { "id": "catastrofe-ultravioleta", "label": "Catástrofe do ultravioleta", "explicacao": "A teoria eletromagnética clássica previa que a intensidade continuasse a aumentar para comprimentos de onda cada vez menores (ultravioleta), o que dava uma energia total infinita. Não correspondia às experiências." },
+            { "id": "hipotese-planck", "label": "Hipótese de Planck (1900)", "explicacao": "A energia só é emitida ou absorvida em quantidades discretas (quanta), proporcionais à frequência: E = h f. Com esta hipótese, a teoria passou a coincidir exatamente com as experiências." }
+          ],
+          "caixa_formula": [
+            { "expressao": "P = e σ A T⁴", "significado": "Lei de Stefan-Boltzmann.", "unidades": "σ = 5,67 × 10⁻⁸ W m⁻² K⁻⁴; T em kelvin." },
+            { "expressao": "λ máx T = b", "significado": "Lei de Wien.", "unidades": "b = 2,90 × 10⁻³ m K." },
+            { "expressao": "E = h f", "significado": "Relação de Planck.", "unidades": "h = 6,63 × 10⁻³⁴ J s." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A temperatura da superfície do Sol é cerca de 5800 K. Para que comprimento de onda é máxima a emissão?",
+          "opcoes": ["5,0 × 10⁻⁷ m (500 nm, visível)", "5,0 × 10⁻⁵ m (infravermelho)", "5,0 × 10⁻⁹ m (raios X)", "1,7 × 10⁻⁷ m (ultravioleta)"],
+          "correta": 0,
+          "mascote_feedback_certo": "Certo. λ máx = b / T ≈ 500 nm, a meio do visível.",
+          "mascote_feedback_errado": "Pela lei de Wien, λ máx = b / T = 2,90 × 10⁻³ / 5800 = 5,0 × 10⁻⁷ m = 500 nm."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Se a temperatura absoluta de um corpo duplicar, a potência que emite por radiação:",
+          "opcoes": ["duplica.", "quadruplica.", "fica 8 vezes maior.", "fica 16 vezes maior."],
+          "correta": 3,
+          "mascote_feedback_certo": "Exato. P ∝ T⁴. 2⁴ = 16.",
+          "mascote_feedback_errado": "Pela lei de Stefan-Boltzmann, P é proporcional a T⁴. Com o dobro da temperatura absoluta: 2⁴ = 16 vezes mais potência."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_corpo_negro",
+          "titulo": "A cor de um corpo quente",
+          "instrucao": "Muda a temperatura do corpo negro e observa o comprimento de onda do máximo e a potência emitida.",
+          "controlos": [
+            { "id": "T", "rotulo": "Temperatura", "min": 300, "max": 10000, "passo": 100, "valor_inicial": 3000, "unidade": "K" }
+          ],
+          "saidas": [
+            { "rotulo": "Comprimento de onda do máximo", "formula": "2.90e-3 / T * 1e9", "unidade": "nm", "casas_decimais": 1 },
+            { "rotulo": "Potência emitida por m²", "formula": "5.67e-8 * Math.pow(T, 4)", "unidade": "W/m²", "casas_decimais": 0 },
+            { "rotulo": "Aparência", "formula": "(function(){ if (T < 1000) return 'vermelho escuro'; if (T < 3500) return 'laranja'; if (T < 6000) return 'branco'; return 'branco-azulado'; })()" }
+          ],
+          "pergunta_final": "Porque é que o corpo humano não brilha no escuro? Resposta esperada: a 310 K, o máximo de emissão está em cerca de 9,4 µm, no infravermelho, invisível para nós."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**As escadas e a rampa.** Na física clássica, a energia de uma onda podia ter qualquer valor, como a altura numa rampa: podes parar em qualquer ponto. Planck propôs que a energia só pode ser trocada em \"degraus\", como numa escada: podes estar no 3.º ou no 4.º degrau, mas nunca no 3,5.º. E o tamanho de cada degrau depende da frequência: para frequências altas (ultravioleta), os degraus são tão altos que é muito difícil subi-los. Foi isto que eliminou a catástrofe do ultravioleta."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Aplicações da lei de Wien, a potência do Sol, e Planck contra a sua própria ideia",
+          "texto": "**Aplicações da lei de Wien**\n\nTermómetros de infravermelhos (de testa ou de ouvido) medem a radiação emitida pelo corpo. Os astrónomos determinam a temperatura das estrelas pela cor: estrelas vermelhas são mais frias (cerca de 3000 K), estrelas azuis mais quentes (mais de 10 000 K). A radiação cósmica de fundo (Missão 5 do 11.º ano) tem o máximo em cerca de 1 mm, o que corresponde a 2,7 K.\n\n**A potência do Sol**\n\nCom raio 6,96 × 10⁸ m e temperatura 5800 K, o Sol emite P = σ 4π R² T⁴ ≈ 3,9 × 10²⁶ W.\n\n**Curiosidade: Planck não acreditava na sua própria ideia**\n\nMax Planck achou durante anos que a quantização era apenas um truque matemático e que alguém acabaria por encontrar uma explicação clássica. Foi Einstein, em 1905, quem levou a ideia a sério e propôs que a própria luz é feita de quanta: os fotões."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A lei de Wien estabelece que:",
+              "opcoes": ["a potência emitida é proporcional a T⁴.", "o comprimento de onda do máximo de emissão é inversamente proporcional à temperatura absoluta.", "a energia de um fotão é proporcional à frequência.", "todos os corpos emitem o mesmo espetro."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. λ máx T = constante.",
+              "mascote_feedback_errado": "λ máx T = constante. Temperatura maior, máximo a comprimento de onda menor."
+            },
+            {
+              "pergunta": "Qual é o comprimento de onda do máximo de emissão do corpo humano (310 K)?",
+              "opcoes": ["9,4 × 10⁻⁷ m", "9,4 × 10⁻⁶ m", "9,4 × 10⁻⁵ m", "0,90 m"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. ≈ 9,4 µm, no infravermelho.",
+              "mascote_feedback_errado": "λ máx = 2,90 × 10⁻³ / 310 ≈ 9,4 × 10⁻⁶ m (9,4 µm), no infravermelho."
+            },
+            {
+              "pergunta": "A catástrofe do ultravioleta foi resolvida por:",
+              "opcoes": ["Einstein, com a teoria da relatividade.", "Planck, com a hipótese da quantização da energia.", "Maxwell, com as equações do eletromagnetismo.", "Newton, com a teoria corpuscular da luz."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Planck mostrou que a energia trocada em quanta reproduzia o espetro experimental.",
+              "mascote_feedback_errado": "Planck mostrou que, se a energia fosse trocada em quanta E = h f, a teoria reproduzia o espetro experimental."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "fotao-efeito-fotoeletrico",
+      "titulo": "O fotão e o efeito fotoelétrico",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f12_porta_automatica.png",
+          "texto": "As portas automáticas, as células que acendem a iluminação pública quando escurece, os sensores das câmaras digitais: muitos funcionam com base no efeito fotoelétrico, a emissão de eletrões por um metal iluminado. Explicar este efeito valeu a Albert Einstein o Prémio Nobel da Física em 1921. Não foi pela relatividade: foi por mostrar que a luz também se comporta como partícula.",
+          "mascote_texto": "O efeito fotoelétrico tem uma surpresa: uma luz vermelha muito intensa pode não arrancar nenhum eletrão, e uma luz ultravioleta fraquinha pode arrancar."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O efeito fotoelétrico",
+          "imagem": "f12_efeito_fotoeletrico.png",
+          "texto_principal": "O efeito fotoelétrico é a emissão de eletrões por um metal quando nele incide radiação eletromagnética de frequência suficientemente elevada. As observações experimentais não podiam ser explicadas pela teoria ondulatória da luz. Einstein explicou-as propondo que a luz é formada por partículas de energia, os fotões.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "frequencia-limiar", "label": "Frequência limiar (f₀)", "explicacao": "Para cada metal, abaixo de uma certa frequência não há emissão de eletrões, por mais intensa que seja a luz." },
+            { "id": "emissao-instantanea", "label": "Emissão instantânea", "explicacao": "Acima da frequência limiar, os eletrões são emitidos imediatamente, mesmo com luz muito fraca." },
+            { "id": "energia-eletroes", "label": "Energia dos eletrões", "explicacao": "A energia cinética máxima dos eletrões emitidos depende da frequência da luz, não da sua intensidade." },
+            { "id": "numero-eletroes", "label": "Número de eletrões", "explicacao": "Aumentar a intensidade (acima da frequência limiar) aumenta o número de eletrões emitidos, não a sua energia." },
+            { "id": "explicacao-einstein", "label": "Explicação de Einstein", "explicacao": "Cada fotão tem energia E = h f e interage com um único eletrão. Parte da energia é usada para arrancar o eletrão (energia de remoção W, característica do metal) e o resto fica como energia cinética." },
+            { "id": "intensidade-fotoeletrico", "label": "Intensidade", "explicacao": "Luz mais intensa significa mais fotões por segundo, não fotões com mais energia." }
+          ],
+          "caixa_formula": [
+            { "expressao": "E fotão = h f = h c / λ", "significado": "", "unidades": "" },
+            { "expressao": "h f = W + Ec máx", "significado": "Equação de Einstein para o efeito fotoelétrico (W = energia de remoção do metal).", "unidades": "" },
+            { "expressao": "f₀ = W / h", "significado": "Frequência limiar.", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a energia de um fotão de luz verde com comprimento de onda 550 nm?",
+          "opcoes": ["3,6 × 10⁻¹⁹ J (cerca de 2,3 eV)", "3,6 × 10⁻²⁸ J", "1,2 × 10⁻³⁰ J", "5,5 × 10⁻⁷ J"],
+          "correta": 0,
+          "mascote_feedback_certo": "Certo. E ≈ 3,6 × 10⁻¹⁹ J, cerca de 2,3 eV.",
+          "mascote_feedback_errado": "Usa E = h c / λ, com λ em metros (550 × 10⁻⁹ m): E ≈ 3,6 × 10⁻¹⁹ J."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um metal tem energia de remoção 3,6 × 10⁻¹⁹ J. Nele incide radiação ultravioleta de 300 nm. Qual é a energia cinética máxima dos eletrões emitidos?",
+          "opcoes": ["6,6 × 10⁻¹⁹ J", "3,0 × 10⁻¹⁹ J", "3,6 × 10⁻¹⁹ J", "Não há emissão."],
+          "correta": 1,
+          "mascote_feedback_certo": "Muito bem. Ec máx ≈ 3,0 × 10⁻¹⁹ J.",
+          "mascote_feedback_errado": "Calcula a energia do fotão: 6,63 × 10⁻¹⁹ J. Subtrai a energia de remoção: Ec máx ≈ 3,0 × 10⁻¹⁹ J."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_fotoeletrico",
+          "titulo": "Arranca eletrões com luz",
+          "instrucao": "Escolhe o metal, o comprimento de onda e a intensidade da luz.",
+          "controlos": [
+            { "id": "W_eV", "rotulo": "Metal", "opcoes": [
+              { "valor": 2.28, "label": "Sódio (W = 2,28 eV)" },
+              { "valor": 4.3, "label": "Zinco (W = 4,3 eV)" },
+              { "valor": 4.7, "label": "Cobre (W = 4,7 eV)" },
+              { "valor": 2.1, "label": "Césio (W = 2,1 eV)" }
+            ] },
+            { "id": "lambda", "rotulo": "Comprimento de onda", "min": 100, "max": 800, "passo": 5, "valor_inicial": 500, "unidade": "nm" }
+          ],
+          "saidas": [
+            { "rotulo": "Energia do fotão", "formula": "(6.63e-34 * 3.00e8 / (lambda * 1e-9)) / 1.60e-19", "unidade": "eV", "casas_decimais": 2 },
+            { "rotulo": "Comprimento de onda limiar", "formula": "6.63e-34 * 3.00e8 / (W_eV * 1.60e-19) * 1e9", "unidade": "nm", "casas_decimais": 1 },
+            { "rotulo": "Há emissão?", "formula": "(6.63e-34 * 3.00e8 / (lambda * 1e-9)) / 1.60e-19 > W_eV ? 'Sim' : 'Não'" },
+            { "rotulo": "Energia cinética máxima (se houver emissão)", "formula": "(function(){ var Ef = (6.63e-34 * 3.00e8 / (lambda * 1e-9)) / 1.60e-19; return Ef > W_eV ? (Ef - W_eV) : 0; })()", "unidade": "eV", "casas_decimais": 2 }
+          ],
+          "pergunta_final": "Com o sódio e luz vermelha (700 nm), aumentar a intensidade para 100 % faz sair eletrões? Resposta esperada: não. A energia de cada fotão (cerca de 1,8 eV) é menor do que a energia de remoção (2,28 eV)."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A máquina de vending que só aceita moedas de 2 euros.** Imagina uma máquina que só dá um chocolate se lhe meteres uma moeda de 2 euros de uma vez. Podes meter mil moedas de 1 cêntimo que não sai nada: não se somam. Cada fotão é uma moeda, e a sua energia (h f) é o valor da moeda. A energia de remoção é o preço do chocolate. Luz vermelha intensa é um saco cheio de cêntimos: muitas moedas, mas nenhuma chega. Luz ultravioleta fraca são poucas moedas de 2 euros: cada uma compra um chocolate e ainda dá troco (a energia cinética do eletrão)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Dualidade onda-partícula, e aplicações do efeito fotoelétrico",
+          "texto": "**Dualidade onda-partícula**\n\nA difração e a interferência (11.º ano) só se explicam se a luz for uma onda. O efeito fotoelétrico só se explica se a luz for formada por partículas (fotões). A conclusão é que a luz tem comportamento dual: manifesta propriedades ondulatórias ou corpusculares consoante a experiência. Mais tarde percebeu-se que o mesmo acontece com os eletrões e as outras partículas.\n\n**Aplicações do efeito fotoelétrico**\n\nCélulas fotoelétricas (portas automáticas, alarmes, iluminação pública automática), fotomultiplicadores (detetores de luz muito fraca usados em medicina e em física de partículas) e os primeiros sensores de imagem. Os painéis fotovoltaicos e os sensores das câmaras atuais usam um efeito aparentado (o efeito fotoelétrico interno, em semicondutores).\n\n**Planck e Einstein, precursores da física quântica**\n\nPlanck (1900) quantizou a energia trocada pela matéria. Einstein (1905) quantizou a própria luz. Os dois são considerados os fundadores da física quântica, que mais tarde explicaria os átomos, os lasers, os semicondutores e quase toda a tecnologia moderna."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "No efeito fotoelétrico, aumentar a intensidade da luz (acima da frequência limiar):",
+              "opcoes": ["aumenta a energia cinética máxima dos eletrões.", "aumenta o número de eletrões emitidos por segundo.", "diminui a frequência limiar.", "não tem qualquer efeito."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Mais intensidade significa mais fotões por segundo.",
+              "mascote_feedback_errado": "Mais intensidade significa mais fotões por segundo. Cada fotão arranca no máximo um eletrão, por isso saem mais eletrões, mas cada fotão continua a ter a mesma energia."
+            },
+            {
+              "pergunta": "Qual é a frequência limiar de um metal com energia de remoção 3,6 × 10⁻¹⁹ J?",
+              "opcoes": ["5,4 × 10¹⁴ Hz", "2,4 × 10¹⁵ Hz", "1,8 × 10⁻⁵³ Hz", "3,6 × 10¹⁴ Hz"],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. f₀ ≈ 5,4 × 10¹⁴ Hz.",
+              "mascote_feedback_errado": "f₀ = W / h = 3,6 × 10⁻¹⁹ / 6,63 × 10⁻³⁴ ≈ 5,4 × 10¹⁴ Hz."
+            },
+            {
+              "pergunta": "O efeito fotoelétrico evidencia:",
+              "opcoes": ["a natureza ondulatória da luz.", "a natureza corpuscular da luz.", "a quantização da carga elétrica.", "a conservação do momento linear."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Só a ideia de fotões explica a frequência limiar.",
+              "mascote_feedback_errado": "Só a ideia de fotões (partículas de luz com energia h f) explica a existência de uma frequência limiar e a independência da energia dos eletrões em relação à intensidade."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "nucleo-atomico-estabilidade-energia-ligacao-fusao-cisao",
+      "titulo": "O núcleo atómico: estabilidade, energia de ligação, fusão e cisão",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f12_sol_central_nuclear.png",
+          "texto": "O Sol brilha há cerca de 4,6 mil milhões de anos e vai continuar a brilhar outro tanto. Nenhuma reação química aguentaria tanto tempo. A sua energia vem do núcleo dos átomos: núcleos de hidrogénio que se fundem em hélio. Nas centrais nucleares acontece o contrário: núcleos pesados de urânio que se partem. Em ambos os casos, uma pequena quantidade de massa desaparece e transforma-se numa enorme quantidade de energia.",
+          "mascote_texto": "A equação mais famosa da Física, E = m c², aparece aqui a sério. E vais perceber porque é que o ferro é o elemento mais estável."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Energia de ligação nuclear",
+          "imagem": "f12_energia_ligacao.png",
+          "texto_principal": "O núcleo é formado por protões e neutrões (nucleões). Os protões repelem-se eletricamente, mas o núcleo mantém-se unido graças à força nuclear forte, muito intensa e de muito curto alcance. A massa de um núcleo é sempre menor do que a soma das massas dos seus nucleões separados. Essa diferença de massa corresponde à energia de ligação.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "forca-nuclear-forte", "label": "Força nuclear forte", "explicacao": "Atrativa entre nucleões (protão-protão, neutrão-neutrão, protão-neutrão). Muito mais intensa do que a repulsão elétrica, mas só atua a distâncias da ordem de 10⁻¹⁵ m." },
+            { "id": "defeito-massa", "label": "Defeito de massa (Δm)", "explicacao": "Diferença entre a soma das massas dos nucleões separados e a massa do núcleo." },
+            { "id": "energia-ligacao-nuclear", "label": "Energia de ligação", "explicacao": "Energia necessária para separar completamente os nucleões de um núcleo. É igual a Δm c²." },
+            { "id": "energia-ligacao-nucleao", "label": "Energia de ligação por nucleão", "explicacao": "Mede a estabilidade do núcleo. É máxima para o ferro-56 (cerca de 8,8 MeV por nucleão)." },
+            { "id": "fusao-nuclear", "label": "Fusão nuclear", "explicacao": "Núcleos leves juntam-se num núcleo mais pesado e mais estável, libertando energia. Acontece nas estrelas." },
+            { "id": "cisao-nuclear", "label": "Cisão (fissão) nuclear", "explicacao": "Um núcleo pesado (como o urânio-235), ao absorver um neutrão, divide-se em dois núcleos mais leves e mais estáveis, libertando energia e outros neutrões (reação em cadeia). Acontece nas centrais nucleares." }
+          ],
+          "caixa_formula": [
+            { "expressao": "E = m c²", "significado": "Equivalência massa-energia.", "unidades": "" },
+            { "expressao": "E ligação = Δm c²", "significado": "", "unidades": "" },
+            { "expressao": "1 u × c² corresponde a 931,5 MeV", "significado": "", "unidades": "" },
+            { "expressao": "1 MeV = 1,60 × 10⁻¹³ J", "significado": "", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O núcleo de hélio-4 tem 2 protões e 2 neutrões. A soma das massas dos nucleões separados é 4,031882 u e a massa do núcleo é 4,001506 u. Qual é a energia de ligação?",
+          "opcoes": ["0,030 MeV", "7,1 MeV", "28,3 MeV", "3730 MeV"],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. E ≈ 28,3 MeV.",
+          "mascote_feedback_errado": "Calcula o defeito de massa (0,030376 u) e converte com 1 u → 931,5 MeV: E ≈ 28,3 MeV."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que a fusão de núcleos muito pesados não liberta energia?",
+          "opcoes": ["Porque os núcleos pesados não têm energia de ligação.", "Porque, para além do ferro, a energia de ligação por nucleão diminui: o produto seria menos estável.", "Porque os núcleos pesados não existem na natureza.", "Porque a força nuclear forte não atua em núcleos pesados."],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Só há libertação de energia quando o produto é mais estável.",
+          "mascote_feedback_errado": "Olha para o gráfico: a energia de ligação por nucleão é máxima perto do ferro. Juntar núcleos pesados afasta-os do máximo."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A bola no fundo do vale.** Pensa no gráfico da energia de ligação por nucleão como um vale visto ao contrário, com o ferro no fundo. Tanto os núcleos leves (na encosta da esquerda) como os pesados (na encosta da direita) \"rolam\" para o fundo, libertando energia. Os leves chegam lá juntando-se (fusão). Os pesados chegam lá partindo-se (cisão). O ferro, já no fundo, não tem para onde ir: é por isso que as estrelas deixam de produzir energia quando o seu núcleo se transforma em ferro."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Energia nuclear vs. química, fusão no Sol e na Terra, e conservação nas reações nucleares",
+          "texto": "**Energia libertada: nuclear versus química**\n\nA cisão de um núcleo de urânio-235 liberta cerca de 200 MeV. A combustão de uma molécula de metano liberta cerca de 9 eV. Por unidade de massa, o combustível nuclear liberta milhões de vezes mais energia do que os combustíveis fósseis.\n\n**Fusão no Sol e na Terra**\n\nNo Sol, quatro núcleos de hidrogénio acabam por formar um núcleo de hélio-4, e cerca de 0,7 % da massa transforma-se em energia. Na Terra, a fusão controlada ainda está em investigação (por exemplo, no projeto internacional ITER, em França). A reação mais estudada é deutério + trítio → hélio-4 + neutrão, que liberta 17,6 MeV.\n\n**Conservação nas reações nucleares**\n\nEm qualquer reação nuclear, conservam-se a carga total (soma dos números atómicos) e o número total de nucleões (soma dos números de massa)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A força responsável pela estabilidade dos núcleos atómicos é:",
+              "opcoes": ["a força gravítica.", "a força elétrica.", "a força nuclear forte.", "a força nuclear fraca."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. A força nuclear forte mantém os nucleões unidos.",
+              "mascote_feedback_errado": "A força nuclear forte mantém os nucleões unidos, vencendo a repulsão elétrica entre os protões."
+            },
+            {
+              "pergunta": "O núcleo mais estável é aquele que tem:",
+              "opcoes": ["maior energia de ligação total.", "maior energia de ligação por nucleão.", "maior número de protões.", "menor massa."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A estabilidade avalia-se pela energia de ligação por nucleão.",
+              "mascote_feedback_errado": "A estabilidade avalia-se pela energia de ligação por nucleão, que é máxima perto do ferro-56."
+            },
+            {
+              "pergunta": "Na cisão nuclear:",
+              "opcoes": ["dois núcleos leves juntam-se.", "um núcleo pesado divide-se em núcleos mais leves, libertando energia.", "a massa total aumenta.", "não há libertação de neutrões."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Um núcleo pesado parte-se em dois mais leves e mais estáveis.",
+              "mascote_feedback_errado": "Na cisão, um núcleo pesado parte-se em dois mais leves e mais estáveis. A massa total diminui ligeiramente (convertida em energia) e são libertados neutrões."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "radioatividade-emissoes-fontes-efeitos-detetores",
+      "titulo": "Radioatividade: emissões, fontes, efeitos e detetores",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f12_radao_casa.png",
+          "texto": "Em muitas casas do norte e do centro de Portugal, construídas sobre granito, acumula-se um gás invisível e sem cheiro: o radão. É radioativo e, segundo a Organização Mundial da Saúde, é a segunda maior causa de cancro do pulmão, depois do tabaco. Para perceber de onde vem e porque é perigoso, é preciso perceber o que é a radioatividade.",
+          "mascote_texto": "Esta secção tem história, química nuclear e saúde pública. As equações nucleares parecem difíceis, mas seguem duas regras simples."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Emissões radioativas",
+          "imagem": "f12_emissoes_radioativas.png",
+          "texto_principal": "Alguns núcleos são instáveis e transformam-se espontaneamente noutros núcleos, emitindo partículas ou radiação. Este processo chama-se decaimento radioativo. As emissões mais comuns são alfa, beta e gama. Em todas as reações nucleares conserva-se a carga total e o número total de nucleões.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "decaimento-alfa", "label": "Decaimento alfa (α)", "explicacao": "O núcleo emite uma partícula alfa (núcleo de hélio-4, ⁴₂He). O número de massa diminui 4 e o número atómico diminui 2. Muito ionizante, pouco penetrante: é travada por uma folha de papel ou pela pele." },
+            { "id": "decaimento-beta-menos", "label": "Decaimento beta menos (β⁻)", "explicacao": "Um neutrão transforma-se num protão, e o núcleo emite um eletrão (e um antineutrino). O número atómico aumenta 1; o número de massa mantém-se." },
+            { "id": "decaimento-beta-mais", "label": "Decaimento beta mais (β⁺)", "explicacao": "Um protão transforma-se num neutrão, e o núcleo emite um positrão (antipartícula do eletrão) e um neutrino. O número atómico diminui 1." },
+            { "id": "emissao-gama", "label": "Emissão gama (γ)", "explicacao": "Radiação eletromagnética de energia muito elevada, emitida quando um núcleo excitado passa para um estado de menor energia. Não altera A nem Z. Muito penetrante: exige blindagens espessas de chumbo ou betão." },
+            { "id": "historia-radioatividade", "label": "História", "explicacao": "Becquerel descobriu a radioatividade do urânio em 1896, por acaso, com chapas fotográficas. Marie e Pierre Curie descobriram o polónio e o rádio (1898). Marie Curie ganhou dois Prémios Nobel, em Física e em Química." }
+          ],
+          "caixa_formula": [
+            { "expressao": "Alfa: ᴬ_Z X → ᴬ⁻⁴_(Z−2) Y + ⁴₂He", "significado": "", "unidades": "" },
+            { "expressao": "Beta menos: ᴬ_Z X → ᴬ_(Z+1) Y + ⁰₋₁e (+ antineutrino)", "significado": "", "unidades": "" },
+            { "expressao": "Beta mais: ᴬ_Z X → ᴬ_(Z−1) Y + ⁰₊₁e (+ neutrino)", "significado": "", "unidades": "" },
+            { "expressao": "Exemplos: ²³⁸₉₂U → ²³⁴₉₀Th + ⁴₂He; ¹⁴₆C → ¹⁴₇N + ⁰₋₁e", "significado": "", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O rádio-226 (²²⁶₈₈Ra) sofre decaimento alfa. Qual é o núcleo resultante?",
+          "opcoes": ["²²⁶₈₆Rn", "²²²₈₆Rn", "²²²₈₈Ra", "²²⁶₈₉Ac"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. ²²⁶₈₈Ra → ²²²₈₆Rn + ⁴₂He.",
+          "mascote_feedback_errado": "Na emissão alfa, o núcleo perde 2 protões e 2 neutrões: A = 226 − 4 = 222 e Z = 88 − 2 = 86 (radão)."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a emissão radioativa mais penetrante?",
+          "opcoes": ["Alfa", "Beta", "Gama", "Todas iguais"],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. A radiação gama atravessa facilmente a matéria.",
+          "mascote_feedback_errado": "A radiação gama é a mais penetrante. A alfa é travada por papel e a beta por alguns milímetros de alumínio."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Bolas de bowling, berlindes e luz.** Imagina que atiras três coisas contra uma parede de cartão. Uma bola de bowling (alfa): pesada e lenta, faz um estrago enorme no primeiro sítio onde bate, mas não atravessa o cartão. Um berlinde (beta): mais pequeno e rápido, atravessa o cartão mas fica numa placa de madeira. Um feixe de luz muito energética (gama): passa por quase tudo, mas vai deixando pequenos danos pelo caminho. Por isso a alfa é inofensiva fora do corpo, mas muito perigosa se for inalada, que é exatamente o problema do radão."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Fontes de radiação, efeitos biológicos, detetores, e o radão em Portugal",
+          "texto": "**Fontes naturais e artificiais**\n\nNaturais: radão (a maior parte da dose que recebemos), rochas e solos (urânio, tório, potássio-40), radiação cósmica, alimentos (potássio-40 nas bananas, por exemplo) e o próprio corpo. Artificiais: exames médicos (radiografias, TAC, medicina nuclear), radioterapia, indústria, centrais nucleares e testes nucleares antigos.\n\n**Efeitos biológicos**\n\nAs radiações ionizantes podem arrancar eletrões às moléculas das células e danificar o ADN. Doses elevadas e curtas provocam efeitos imediatos (queimaduras, doença das radiações). Doses baixas e prolongadas aumentam a probabilidade de cancro. A dose de radiação absorvida pelo corpo mede-se em sievert (Sv); na prática, usa-se o milisievert (mSv).\n\n**Detetores**\n\nContador Geiger-Müller: a radiação ioniza o gás de um tubo e produz impulsos elétricos que se contam. Dosímetros: usados por quem trabalha com radiação, registam a dose acumulada. Câmara de nevoeiro: torna visíveis as trajetórias das partículas.\n\n**O radão em Portugal**\n\nO radão-222 forma-se no decaimento do urânio presente nos granitos. Como é um gás, sai do solo e acumula-se em caves e rés-do-chão mal ventilados. As regiões graníticas do norte e centro do país (distritos como Guarda, Viseu, Vila Real, Braga e Porto) são as mais afetadas. As medidas mais eficazes são ventilar bem as casas e selar as fissuras do pavimento."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "No decaimento beta menos de um núcleo:",
+              "opcoes": ["A e Z diminuem.", "A mantém-se e Z aumenta 1.", "A diminui 4 e Z diminui 2.", "A e Z mantêm-se."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Um neutrão transforma-se num protão.",
+              "mascote_feedback_errado": "Um neutrão transforma-se num protão (Z aumenta 1) e é emitido um eletrão. O número total de nucleões não muda."
+            },
+            {
+              "pergunta": "Complete a equação: ¹³¹₅₃I → ¹³¹₅₄Xe + ?",
+              "opcoes": ["⁴₂He", "⁰₋₁e", "⁰₊₁e", "¹₀n"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. É emitido um eletrão (decaimento beta menos).",
+              "mascote_feedback_errado": "A mantém-se (131) e Z aumenta de 53 para 54: é emitido um eletrão (decaimento beta menos)."
+            },
+            {
+              "pergunta": "Quem descobriu a radioatividade?",
+              "opcoes": ["Marie Curie, em 1898.", "Henri Becquerel, em 1896.", "Ernest Rutherford, em 1911.", "Albert Einstein, em 1905."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Becquerel, em 1896.",
+              "mascote_feedback_errado": "Becquerel descobriu a radioatividade do urânio em 1896. O casal Curie descobriu depois o polónio e o rádio."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "lei-decaimento-radioativo-atividade",
+      "titulo": "Lei do decaimento radioativo e atividade",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f12_datacao_carbono.png",
+          "texto": "Como é que se sabe que um osso de mamute tem 30 000 anos, ou que o Sudário de Turim é da Idade Média? Pela quantidade de carbono-14 que ainda lá está. Os núcleos radioativos decaem a um ritmo tão regular que funcionam como relógios. Nos hospitais, este mesmo ritmo permite calcular a dose exata de um marcador radioativo para um exame.",
+          "mascote_texto": "Esta secção tem a mesma matemática da descarga do condensador da Missão 5. Se percebeste o relógio logarítmico, já sabes quase tudo."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Lei do decaimento radioativo",
+          "imagem": "f12_decaimento_meia_vida.png",
+          "texto_principal": "O decaimento radioativo é um processo aleatório: não se sabe quando um núcleo concreto vai decair. Mas, com um número enorme de núcleos, o número de núcleos que ainda não decaíram diminui exponencialmente com o tempo. Cada núcleo radioativo tem uma probabilidade característica de decair por unidade de tempo: a constante de decaimento.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "lei-decaimento", "label": "Lei do decaimento radioativo", "explicacao": "N = N₀ e^(−λt). N₀: núcleos iniciais; λ: constante de decaimento (s⁻¹)." },
+            { "id": "periodo-semidesintegracao", "label": "Período de semidesintegração (tempo de meia-vida, T ½)", "explicacao": "Tempo ao fim do qual metade dos núcleos presentes decaiu. Não depende da quantidade inicial nem da temperatura." },
+            { "id": "relacao-t-meio-lambda", "label": "Relação", "explicacao": "T ½ = ln 2 / λ." },
+            { "id": "atividade-def", "label": "Atividade (A)", "explicacao": "Número de decaimentos por unidade de tempo. A = λ N. Unidade SI: becquerel (Bq), 1 Bq = 1 decaimento por segundo." },
+            { "id": "atividade-decai", "label": "A atividade também decai exponencialmente", "explicacao": "A = A₀ e^(−λt), com o mesmo período de semidesintegração." },
+            { "id": "apos-n-meias-vidas", "label": "Após n meias-vidas", "explicacao": "Resta (1/2)ⁿ da quantidade inicial." }
+          ],
+          "caixa_formula": [
+            { "expressao": "N = N₀ e^(−λt)", "significado": "", "unidades": "" },
+            { "expressao": "T ½ = ln 2 / λ", "significado": "", "unidades": "" },
+            { "expressao": "A = λ N e A = A₀ e^(−λt)", "significado": "", "unidades": "" },
+            { "expressao": "Após n meias-vidas: N = N₀ / 2ⁿ", "significado": "", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O iodo-131, usado no tratamento da tiroide, tem T ½ = 8,0 dias. Uma amostra tem atividade inicial de 8,0 × 10⁶ Bq. Qual é a atividade ao fim de 24 dias?",
+          "opcoes": ["4,0 × 10⁶ Bq", "2,7 × 10⁶ Bq", "1,0 × 10⁶ Bq", "0 Bq"],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. 24 dias = 3 meias-vidas. A = 1,0 × 10⁶ Bq.",
+          "mascote_feedback_errado": "Conta as meias-vidas: 24 / 8,0 = 3. Em cada uma, a atividade cai para metade: 8,0 → 4,0 → 2,0 → 1,0 × 10⁶ Bq."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um fragmento de madeira tem 25 % do carbono-14 que tinha quando a árvore morreu (T ½ = 5730 anos). Que idade tem?",
+          "opcoes": ["1430 anos", "5730 anos", "11 460 anos", "22 920 anos"],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. 2 meias-vidas: 11 460 anos.",
+          "mascote_feedback_errado": "25 % corresponde a um quarto, ou seja, duas vezes metade. Passaram 2 meias-vidas: 11 460 anos."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_decaimento",
+          "titulo": "Relógio radioativo",
+          "instrucao": "Escolhe o isótopo, o número inicial de núcleos e o instante de tempo.",
+          "controlos": [
+            { "id": "T_meia", "rotulo": "Isótopo", "opcoes": [
+              { "valor": 6, "label": "Tecnécio-99m (T ½ = 6,0 h)" },
+              { "valor": 192, "label": "Iodo-131 (T ½ = 8,0 dias, em horas)" },
+              { "valor": 91.2, "label": "Radão-222 (T ½ = 3,8 dias, em horas)" }
+            ] },
+            { "id": "N0", "rotulo": "Núcleos iniciais", "min": 100, "max": 2500, "passo": 100, "valor_inicial": 1000, "unidade": "" },
+            { "id": "t", "rotulo": "Tempo decorrido", "min": 0, "max": 48, "passo": 1, "valor_inicial": 6, "unidade": "h" }
+          ],
+          "saidas": [
+            { "rotulo": "Constante de decaimento λ", "formula": "Math.log(2) / T_meia", "unidade": "h⁻¹", "casas_decimais": 4 },
+            { "rotulo": "Núcleos restantes N(t)", "formula": "N0 * Math.exp(-(Math.log(2) / T_meia) * t)", "unidade": "", "casas_decimais": 1 },
+            { "rotulo": "Número de meias-vidas decorridas", "formula": "t / T_meia", "unidade": "", "casas_decimais": 2 }
+          ],
+          "pergunta_final": "Com N0 = 100, a curva simulada acompanha bem a teórica? E com N0 = 2500? Resposta esperada: com poucos núcleos há muitas flutuações; com muitos, a curva simulada aproxima-se da teórica, porque o decaimento é um processo estatístico."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Pipocas no micro-ondas.** Num saco de pipocas, não sabes qual será o próximo grão a rebentar, nem quando. Mas sabes que, a cada certo intervalo de tempo, rebenta mais ou menos a mesma fração dos grãos que ainda faltam. No início ouves muitos estalos, depois cada vez menos. Os núcleos radioativos são grãos de milho que nunca se sabe quando rebentam, mas que, em conjunto, seguem uma regra certinha: metade em cada meia-vida."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Marcadores radioativos, exemplo com atividade, e datação por carbono-14",
+          "texto": "**Diagnóstico com marcadores radioativos**\n\nEm medicina nuclear, injeta-se no doente uma pequena quantidade de um isótopo radioativo ligado a uma molécula que se acumula num órgão. Uma câmara deteta a radiação gama emitida e forma uma imagem do funcionamento do órgão. O mais usado é o tecnécio-99m (T ½ = 6,0 h). Na PET, usam-se emissores beta mais, como o flúor-18 (T ½ ≈ 110 min).\n\n**Exemplo com atividade**\n\nUma amostra tem 1,0 × 10¹⁵ núcleos de tecnécio-99m. λ ≈ 3,2 × 10⁻⁵ s⁻¹. A = λ N ≈ 3,2 × 10¹⁰ Bq. Ao fim de 24 h (4 meias-vidas), a atividade é 1/16 da inicial, cerca de 2,0 × 10⁹ Bq.\n\n**Datação por carbono-14**\n\nEnquanto um ser vivo está vivo, troca carbono com o ambiente e mantém a mesma proporção de carbono-14 que a atmosfera. Quando morre, deixa de trocar e o carbono-14 decai. Medindo a proporção que resta, calcula-se há quanto tempo morreu. O método funciona até cerca de 50 000 anos.\n\n**Linearização (como na AL 2.2)**\n\nAplicando ln: ln N = ln N₀ − λ t. O gráfico de ln N (ou ln A) em função do tempo é uma reta com declive −λ."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O período de semidesintegração de um isótopo:",
+              "opcoes": ["diminui quando a amostra é aquecida.", "depende da quantidade inicial de núcleos.", "é característico de cada isótopo e não depende da quantidade nem das condições externas.", "é igual para todos os isótopos do mesmo elemento."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O decaimento é um processo nuclear, não químico.",
+              "mascote_feedback_errado": "O decaimento é um processo nuclear, não químico: não depende da temperatura, da pressão nem da quantidade de material."
+            },
+            {
+              "pergunta": "Ao fim de 3 meias-vidas, que percentagem de uma amostra radioativa ainda não decaiu?",
+              "opcoes": ["33 %", "25 %", "12,5 %", "0 %"],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. (1/2)³ = 12,5 %.",
+              "mascote_feedback_errado": "(1/2)³ = 1/8 = 12,5 %."
+            },
+            {
+              "pergunta": "A constante de decaimento do carbono-14 (T ½ = 5730 anos) é:",
+              "opcoes": ["5730 anos⁻¹", "1,21 × 10⁻⁴ anos⁻¹", "8,27 × 10³ anos⁻¹", "0,693 anos⁻¹"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. λ ≈ 1,21 × 10⁻⁴ anos⁻¹.",
+              "mascote_feedback_errado": "λ = ln 2 / T ½ = 0,693 / 5730 ≈ 1,21 × 10⁻⁴ anos⁻¹."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 7 concluída, e com ela toda a Física do 12.º ano. Explicas a radiação térmica com as leis de Stefan-Boltzmann e de Wien, usas a relação de Planck e a equação de Einstein para o efeito fotoelétrico, calculas energias de ligação, escreves equações nucleares e aplicas a lei do decaimento radioativo. Com o 10.º, o 11.º e o 12.º ano, tens toda a Física do secundário."
+}
