@@ -154,7 +154,7 @@
 <section class="missions-page">
     <h1>O que vamos explorar hoje?</h1>
     <div class="missions-page-subrow">
-        <p>Escolhe uma missão e começa a tua aventura na Biologia.</p>
+        <p id="missionsPageIntro">Escolhe uma missão e começa a tua aventura na Biologia.</p>
         <div class="subject-switcher">
             <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
                 <span>Explore Biology</span>
@@ -162,7 +162,7 @@
             </button>
             <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
                 <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
-                <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
+                <li><button type="button" class="subject-switcher-option" data-subject="chemistry">Explore Chemistry</button></li>
                 <li><button type="button" class="subject-switcher-option" data-subject="physics">Explore Physics</button></li>
                 <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
             </ul>
@@ -468,7 +468,7 @@
     {% if 'energia-e-movimentos' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="10" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f10_montanha_russa.png' %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Energia e movimentos.png' %}');background-position:center top;" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Energia e Movimentos</h3>
                 <p class="missions-category-panel-tagline">Porque é que uma montanha-russa nunca volta à altura inicial? Energia cinética, potencial e mecânica, trabalho, potência e rendimento.</p>
@@ -516,7 +516,7 @@
     {% if 'energia-fenomenos-termicos-radiacao' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="10" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f10_sol_paineis.png' %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Fenómenos térmicos e radiação.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Energia, Fenómenos Térmicos e Radiação</h3>
                 <p class="missions-category-panel-tagline">Porque é que um banco de metal parece mais frio do que um de madeira, se estão à mesma temperatura? Temperatura, calor, radiação e as leis da termodinâmica.</p>
@@ -537,14 +537,15 @@
     </div>
     {% endif %}
 
-    {% if '11-movimento-e-interacoes' in missoes_lancadas %}
+    {% if '11-movimento-e-interacoes' in missoes_lancadas or '11-forcas-e-movimentos' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="11" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f11_terra_lua.png' %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Movimentos e interações.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Movimento e Interações</h3>
                 <p class="missions-category-panel-tagline">Estás parado ou em movimento? Depende de quem vê. Referenciais, posição, velocidade, as quatro interações fundamentais e as leis de Newton.</p>
                 <div class="missions-grid" hidden>
+                    {% if '11-movimento-e-interacoes' in missoes_lancadas %}
                     <div class="mission-card">
                         <div class="mission-card-info">
                             <h2>Movimento e Interações (11º ano)</h2>
@@ -552,23 +553,8 @@
                         </div>
                         <a href="{% url 'missao' missao_id='11-movimento-e-interacoes' %}"><button type="button">Começar</button></a>
                     </div>
-                </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Movimento e Interações" data-missions-toggle>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
-    {% if '11-forcas-e-movimentos' in missoes_lancadas %}
-    <div class="missions-category" data-subject="physics" data-ano="11" hidden>
-        <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f11_pena_martelo_lua.png' %}')" aria-hidden="true"></span>
-            <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Forças e Movimentos</h3>
-                <p class="missions-category-panel-tagline">Uma pena e um martelo caem ao mesmo tempo na Lua. Gráficos velocidade-tempo, queda livre, planos inclinados, velocidade terminal e satélites.</p>
-                <div class="missions-grid" hidden>
+                    {% endif %}
+                    {% if '11-forcas-e-movimentos' in missoes_lancadas %}
                     <div class="mission-card">
                         <div class="mission-card-info">
                             <h2>Forças e Movimentos (11º ano)</h2>
@@ -576,8 +562,9 @@
                         </div>
                         <a href="{% url 'missao' missao_id='11-forcas-e-movimentos' %}"><button type="button">Começar</button></a>
                     </div>
+                    {% endif %}
                 </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Forças e Movimentos" data-missions-toggle>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Movimento e Interações" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -588,7 +575,7 @@
     {% if '11-sinais-ondas-som' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="11" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f11_diapasao.png' %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Sinais e ondas.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Sinais, Ondas e Som</h3>
                 <p class="missions-category-panel-tagline">Porque é que no espaço ninguém te ouve gritar? Sinais, ondas, período, frequência, comprimento de onda e as características do som.</p>
@@ -609,7 +596,7 @@
     </div>
     {% endif %}
 
-    {% if '11-eletromagnetismo' in missoes_lancadas %}
+    {% if '11-eletromagnetismo' in missoes_lancadas or '11-ondas-eletromagneticas' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f11_eolica_barragem.png' %}')" aria-hidden="true"></span>
@@ -617,6 +604,7 @@
                 <h3 class="missions-category-panel-name">Eletromagnetismo</h3>
                 <p class="missions-category-panel-tagline">Como é que uma barragem ou uma eólica produz eletricidade? Carga, campo elétrico, campo magnético, indução eletromagnética e transformadores.</p>
                 <div class="missions-grid" hidden>
+                    {% if '11-eletromagnetismo' in missoes_lancadas %}
                     <div class="mission-card">
                         <div class="mission-card-info">
                             <h2>Eletromagnetismo (11º ano)</h2>
@@ -624,23 +612,8 @@
                         </div>
                         <a href="{% url 'missao' missao_id='11-eletromagnetismo' %}"><button type="button">Começar</button></a>
                     </div>
-                </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Eletromagnetismo" data-missions-toggle>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
-    {% if '11-ondas-eletromagneticas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="physics" data-ano="11" hidden>
-        <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f11_espetro_dia_a_dia.png' %}')" aria-hidden="true"></span>
-            <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Ondas Eletromagnéticas</h3>
-                <p class="missions-category-panel-tagline">Porque é que uma palhinha parece partida dentro de um copo de água? Espetro eletromagnético, reflexão, refração, fibras óticas, difração, efeito Doppler e Big Bang.</p>
-                <div class="missions-grid" hidden>
+                    {% endif %}
+                    {% if '11-ondas-eletromagneticas' in missoes_lancadas %}
                     <div class="mission-card">
                         <div class="mission-card-info">
                             <h2>Ondas Eletromagnéticas (11º ano)</h2>
@@ -648,8 +621,9 @@
                         </div>
                         <a href="{% url 'missao' missao_id='11-ondas-eletromagneticas' %}"><button type="button">Começar</button></a>
                     </div>
+                    {% endif %}
                 </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Ondas Eletromagnéticas" data-missions-toggle>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Eletromagnetismo" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -818,6 +792,270 @@
                     </div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Física Moderna" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '10-massa-tamanho-atomos' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Massa e tamanho dos átomos.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Massa e Tamanho dos Átomos</h3>
+                <p class="missions-category-panel-tagline">Quantas moléculas há numa gota de água? Escala atómica, isótopos, massa atómica relativa, mole e massa molar.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Massa e tamanho dos átomos (10º ano)</h2>
+                            <p>Escala atómica, isótopos, massa atómica relativa, mole e massa molar.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='10-massa-tamanho-atomos' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Massa e Tamanho dos Átomos" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '10-energia-eletroes' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Energia dos eletrões.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Energia dos Eletrões</h3>
+                <p class="missions-category-panel-tagline">Porque é que o fogo de artifício tem cores diferentes? Espetros, modelo de Bohr, orbitais e configurações eletrónicas.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Energia dos eletrões nos átomos (10º ano)</h2>
+                            <p>Espetros, modelo de Bohr, orbitais e configurações eletrónicas.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='10-energia-eletroes' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Energia dos Eletrões" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '10-tabela-periodica' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Tabela periódica.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Tabela Periódica</h3>
+                <p class="missions-category-panel-tagline">Porque é que o sódio explode na água e o hélio não reage com nada? Organização da tabela periódica, raio atómico, energia de ionização e densidade de metais.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Tabela Periódica (10º ano)</h2>
+                            <p>Organização da tabela periódica, raio atómico, energia de ionização e densidade de metais.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='10-tabela-periodica' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Tabela Periódica" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '10-ligacao-quimica' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Ligação química.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Ligação Química</h3>
+                <p class="missions-category-panel-tagline">Porque é que a água e o azeite não se misturam? Ligações covalentes, iónicas e metálicas, Lewis, geometria molecular, compostos de carbono e forças intermoleculares.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Ligação química (10º ano)</h2>
+                            <p>Ligações covalentes, iónicas e metálicas, Lewis, geometria molecular, compostos de carbono e forças intermoleculares.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='10-ligacao-quimica' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Ligação Química" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '10-gases-dispersoes' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Gases e dispersão.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Gases e Dispersões</h3>
+                <p class="missions-category-panel-tagline">Porque é que um balão de hélio sobe e um de ar não? Volume molar, composição da atmosfera, poluentes, soluções e diluições.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Gases e dispersões (10º ano)</h2>
+                            <p>Volume molar, composição da atmosfera, poluentes, soluções e diluições.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='10-gases-dispersoes' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Gases e Dispersões" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '10-transformacoes-quimicas' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Transformações químicas.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Transformações Químicas</h3>
+                <p class="missions-category-panel-tagline">De onde vem a energia de uma chama? Reações exotérmicas e endotérmicas, entalpia, energias de ligação, reações fotoquímicas e a camada de ozono.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Transformações químicas (10º ano)</h2>
+                            <p>Reações exotérmicas e endotérmicas, entalpia, energias de ligação, reações fotoquímicas e a camada de ozono.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='10-transformacoes-quimicas' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Transformações Químicas" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '11-aspetos-quantitativos' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Aspetos quantitativos das reações.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Aspetos Quantitativos das Reações</h3>
+                <p class="missions-category-panel-tagline">Quanta aspirina se consegue fazer com 2 gramas de reagente? Estequiometria, reagente limitante, pureza, rendimento e química verde.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Aspetos quantitativos das reações químicas (11º ano)</h2>
+                            <p>Estequiometria, reagente limitante, pureza, rendimento e química verde.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='11-aspetos-quantitativos' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Aspetos Quantitativos das Reações" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '11-equilibrio-quimico' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Equilíbrio químico.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Equilíbrio Químico</h3>
+                <p class="missions-category-panel-tagline">Porque é que a indústria produz amoníaco a 450 °C e não a temperaturas mais baixas? Reações incompletas, constante de equilíbrio, quociente da reação e Princípio de Le Châtelier.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Equilíbrio químico e extensão das reações (11º ano)</h2>
+                            <p>Reações incompletas, constante de equilíbrio, quociente da reação e Princípio de Le Châtelier.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='11-equilibrio-quimico' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Equilíbrio Químico" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '11-acido-base' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Reações ácido-base.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Reações Ácido-Base</h3>
+                <p class="missions-category-panel-tagline">Porque é que o vinagre e o limão são ácidos e o sabão é básico? Teoria de Brönsted-Lowry, pH, constantes de acidez, titulações e chuva ácida.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Reações ácido-base (11º ano)</h2>
+                            <p>Teoria de Brönsted-Lowry, pH, constantes de acidez, titulações e chuva ácida.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='11-acido-base' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Reações Ácido-Base" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '11-oxidacao-reducao' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Oxidação-Redução.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Oxidação-Redução</h3>
+                <p class="missions-category-panel-tagline">Porque é que o ferro enferruja e o ouro não? Oxidação, redução, números de oxidação, reação ácido-metal e série eletroquímica.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Reações de oxidação-redução (11º ano)</h2>
+                            <p>Oxidação, redução, números de oxidação, reação ácido-metal e série eletroquímica.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='11-oxidacao-reducao' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Oxidação-Redução" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '11-solubilidade' in missoes_lancadas %}
+    <div class="missions-category" data-subject="chemistry" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Soluções e solubilidade.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Soluções e Solubilidade</h3>
+                <p class="missions-category-panel-tagline">Porque é que a chaleira ganha calcário e o mar é salgado? Dissolução, solubilidade, produto de solubilidade, ião comum e dureza da água.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Soluções e equilíbrio de solubilidade (11º ano)</h2>
+                            <p>Dissolução, solubilidade, produto de solubilidade, ião comum e dureza da água.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='11-solubilidade' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Soluções e Solubilidade" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>

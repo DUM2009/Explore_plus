@@ -1,0 +1,1066 @@
+{
+  "missao_id": "10-ligacao-quimica",
+  "id_guiao": "qui10-m4",
+  "titulo": "Ligação química",
+  "disciplina": "quimica",
+  "ano": 10,
+  "imagem": "q10_sal_diamante_cobre.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"12\" r=\"3\"/><path d=\"M9 11h6\"/><path d=\"M9 13h6\"/></svg>",
+    "nome": "Mestre das Ligações"
+  },
+  "secoes": [
+    {
+      "secao_id": "formacao-tipos-ligacao",
+      "titulo": "Formação de ligações e tipos de ligação química",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_sal_diamante_cobre.png",
+          "imagem_legenda": "Cristais de sal, um diamante e um fio de cobre lado a lado.",
+          "texto": "O sal de cozinha dissolve-se em água e parte-se se lhe bateres com um martelo. O diamante é o material natural mais duro que existe. O cobre dobra-se sem partir e conduz eletricidade. Três substâncias sólidas com comportamentos completamente diferentes. A diferença está na forma como os átomos se ligam uns aos outros.",
+          "mascote_texto": "Esta missão é a mais comprida da Química do 10.º ano. É também a base de tudo o que vais estudar a seguir."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Energia e distância entre núcleos",
+          "imagem": "q10_curva_energia_ligacao.png",
+          "imagem_legenda": "Energia do H₂ em função da distância internuclear.",
+          "texto_principal": "Uma ligação química forma-se quando o balanço entre as atrações (núcleos-eletrões) e as repulsões (núcleo-núcleo e eletrão-eletrão) torna o sistema de átomos mais estável, isto é, com menor energia do que os átomos separados. Na formação de uma ligação liberta-se energia; para a quebrar, é preciso fornecer energia.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Átomos afastados",
+              "explicacao": "Não interagem. Energia do sistema considerada zero."
+            },
+            {
+              "id": "p2",
+              "label": "Aproximação",
+              "explicacao": "As atrações entre o núcleo de um átomo e o eletrão do outro começam a dominar. A energia diminui."
+            },
+            {
+              "id": "p3",
+              "label": "Mínimo de energia",
+              "explicacao": "Distância de equilíbrio (comprimento de ligação). No H₂: 74 pm. O sistema é mais estável."
+            },
+            {
+              "id": "p4",
+              "label": "Energia de ligação",
+              "explicacao": "Energia libertada quando a ligação se forma, igual à energia necessária para a quebrar. No H₂: 436 kJ/mol."
+            },
+            {
+              "id": "p5",
+              "label": "Muito próximos",
+              "explicacao": "As repulsões entre os núcleos dominam e a energia sobe muito."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Formação de uma ligação: liberta energia",
+              "significado": "Processo exoenergético.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Quebra de uma ligação: absorve energia",
+              "significado": "Processo endoenergético.",
+              "unidades": ""
+            },
+            {
+              "expressao": "H₂: comprimento de ligação 74 pm; energia de ligação 436 kJ/mol",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Três tipos de ligação",
+          "imagem": "q10_tipos_ligacao.png",
+          "imagem_legenda": "Ligação covalente (Cl₂), iónica (rede de NaCl) e metálica.",
+          "texto_principal": "Há três grandes tipos de ligação química entre átomos. O tipo depende sobretudo de os elementos envolvidos serem metais ou não metais.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ligação covalente",
+              "explicacao": "Partilha de pares de eletrões entre átomos, em geral de não metais. Forma moléculas (H₂, H₂O, CO₂) ou redes covalentes (diamante, grafite, quartzo)."
+            },
+            {
+              "id": "p2",
+              "label": "Ligação iónica",
+              "explicacao": "Atração elétrica entre iões de carga oposta, formados por transferência de eletrões de um metal para um não metal. Forma redes cristalinas iónicas (NaCl, CaF₂). Os compostos iónicos são sólidos, duros mas quebradiços, e conduzem a corrente quando fundidos ou dissolvidos."
+            },
+            {
+              "id": "p3",
+              "label": "Ligação metálica",
+              "explicacao": "Catiões metálicos organizados numa rede, mergulhados num \"mar\" de eletrões de valência deslocalizados, que se movem livremente. Explica a condutividade elétrica e térmica, o brilho e a maleabilidade dos metais."
+            },
+            {
+              "id": "p4",
+              "label": "Regra prática",
+              "explicacao": "Não metal + não metal: covalente. Metal + não metal: iónica. Metal + metal: metálica."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Que tipo de ligação existe no brometo de potássio, KBr?",
+          "opcoes": [
+            "Covalente",
+            "Iónica",
+            "Metálica",
+            "Não há ligação"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O potássio (metal alcalino) transfere um eletrão para o bromo (halogéneo), formando K⁺ e Br⁻, que se atraem numa rede cristalina.",
+          "mascote_feedback_errado": "K é um metal e Br é um não metal. Há transferência de eletrões e formação de iões K⁺ e Br⁻: ligação iónica."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "No gráfico da energia do H₂ em função da distância internuclear, o que representa o valor mínimo de energia?",
+          "opcoes": [
+            "A distância a que os átomos se repelem ao máximo.",
+            "A situação de maior estabilidade, com o comprimento de ligação e a energia de ligação.",
+            "A distância a que os átomos deixam de interagir.",
+            "A energia de ionização do hidrogénio."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O mínimo corresponde ao equilíbrio entre atrações e repulsões: a distância é o comprimento de ligação e a profundidade é a energia de ligação.",
+          "mascote_feedback_errado": "No mínimo da curva, o sistema tem a menor energia possível: é a molécula estável. A distância do mínimo é o comprimento de ligação e a profundidade é a energia de ligação."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Três formas de partilhar.** Imagina três formas de resolver quem fica com uma bola. Na ligação covalente, dois amigos seguram a mesma bola ao mesmo tempo, e isso mantém-nos juntos. Na ligação iónica, um dá a bola ao outro: um fica \"positivo\" (sem bola), outro \"negativo\" (com bola a mais), e atraem-se porque ficaram diferentes. Na ligação metálica, há um monte de bolas no meio de uma multidão e ninguém é dono de nenhuma: todos as passam uns aos outros, o que mantém a multidão unida e permite às bolas circular de um lado ao outro (condução elétrica)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Energia por molécula e redes covalentes",
+          "texto": "**Energia por molécula e por mole**\n\n436 kJ/mol é a energia de ligação de uma mole de moléculas de H₂. Por molécula: 436 × 10³ / 6,02 × 10²³ ≈ 7,24 × 10⁻¹⁹ J.\n\n**Redes covalentes**\n\nO diamante e a grafite são só carbono, mas com estruturas diferentes. No diamante, cada carbono liga-se a outros quatro numa rede tridimensional muito rígida (duríssimo, não conduz). Na grafite, os carbonos formam camadas planas com eletrões deslocalizados (macia, escreve no papel, conduz eletricidade)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A formação de uma ligação química:",
+              "opcoes": [
+                "absorve energia.",
+                "liberta energia e torna o sistema mais estável.",
+                "não envolve variação de energia.",
+                "só ocorre entre metais."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Ao formar-se a ligação, a energia do sistema diminui: liberta-se energia e o sistema fica mais estável.",
+              "mascote_feedback_errado": "Ao formar-se a ligação, a energia do sistema diminui: liberta-se energia e o sistema fica mais estável."
+            },
+            {
+              "pergunta": "A condutividade elétrica dos metais explica-se:",
+              "opcoes": [
+                "pelos iões presos na rede.",
+                "pelos eletrões de valência deslocalizados, que se movem livremente.",
+                "pelos pares de eletrões partilhados.",
+                "pela massa elevada dos átomos."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Na ligação metálica, os eletrões de valência não pertencem a nenhum átomo e podem mover-se por toda a rede, conduzindo a corrente.",
+              "mascote_feedback_errado": "Na ligação metálica, os eletrões de valência não pertencem a nenhum átomo e podem mover-se por toda a rede, conduzindo a corrente."
+            },
+            {
+              "pergunta": "Um composto iónico sólido não conduz eletricidade, mas dissolvido em água conduz. Porquê?",
+              "opcoes": [
+                "Porque a água é condutora por si só.",
+                "Porque, dissolvido, os iões ficam livres para se mover.",
+                "Porque a água transforma os iões em eletrões.",
+                "Porque a ligação passa a metálica."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "No sólido, os iões estão presos na rede. Em solução (ou fundido), os iões movem-se e transportam carga.",
+              "mascote_feedback_errado": "No sólido, os iões estão presos na rede. Em solução (ou fundido), os iões movem-se e transportam carga."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "covalente-lewis",
+      "titulo": "Ligação covalente e modelo de Lewis",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_azoto_ar.png",
+          "imagem_legenda": "Campo agrícola com um relâmpago e moléculas de N₂ no ar.",
+          "texto": "78 % do ar que respiras é azoto, N₂. As plantas precisam de azoto para crescer, mas não o conseguem tirar do ar: a ligação entre os dois átomos de azoto é das mais fortes que existem. Só algumas bactérias e os relâmpagos a conseguem quebrar. Para perceber porque é tão forte, vais aprender a desenhar moléculas com o modelo de Lewis.",
+          "mascote_texto": "Desenhar estruturas de Lewis é como resolver um puzzle. Com três regras e um pouco de treino, faz-se em segundos."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Estruturas de Lewis",
+          "imagem": "q10_lewis_exemplos.png",
+          "imagem_legenda": "Estruturas de Lewis de H₂, Cl₂, H₂O, NH₃, CH₄, O₂, N₂, CO₂, HCN.",
+          "texto_principal": "No modelo de Lewis, representam-se apenas os eletrões de valência. Numa ligação covalente, os átomos partilham pares de eletrões de modo a ficarem, em geral, com 8 eletrões de valência à sua volta (regra do octeto), tal como os gases nobres. O hidrogénio fica com 2 (como o hélio).",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Notação de Lewis de um átomo",
+              "explicacao": "Símbolo com pontos à volta (um por eletrão de valência). C: 4 pontos; N: 5; O: 6; Cl: 7."
+            },
+            {
+              "id": "p2",
+              "label": "Par ligante",
+              "explicacao": "Par de eletrões partilhado entre dois átomos. Representa-se por um traço."
+            },
+            {
+              "id": "p3",
+              "label": "Par não ligante",
+              "explicacao": "Par de eletrões de valência que pertence só a um átomo. Representa-se por dois pontos."
+            },
+            {
+              "id": "p4",
+              "label": "Ligação simples",
+              "explicacao": "Um par partilhado (H–H, H–Cl, C–H)."
+            },
+            {
+              "id": "p5",
+              "label": "Ligação dupla",
+              "explicacao": "Dois pares partilhados (O=O, C=O no CO₂)."
+            },
+            {
+              "id": "p6",
+              "label": "Ligação tripla",
+              "explicacao": "Três pares partilhados (N≡N, C≡N no HCN)."
+            },
+            {
+              "id": "p7",
+              "label": "Como desenhar",
+              "explicacao": "1) contar os eletrões de valência de todos os átomos; 2) ligar os átomos ao átomo central com ligações simples; 3) completar os octetos dos átomos periféricos com pares não ligantes; 4) se o átomo central não tiver octeto, transformar pares não ligantes vizinhos em ligações duplas ou triplas."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Regra do octeto: 8 eletrões de valência à volta de cada átomo (2 para o H)",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "H 1; C 4; N 5; O 6; F e Cl 7",
+              "significado": "Eletrões de valência.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Parâmetros de ligação",
+          "imagem": "q10_comprimento_energia.png",
+          "imagem_legenda": "Etano, eteno e etino com comprimentos C–C, C=C, C≡C.",
+          "texto_principal": "As ligações covalentes caracterizam-se por parâmetros de ligação: comprimento de ligação (distância entre os núcleos) e energia de ligação. Para ligações entre átomos dos mesmos elementos, quanto maior o número de pares partilhados, menor o comprimento e maior a energia de ligação.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ordem de ligação",
+              "explicacao": "Número de pares de eletrões partilhados: 1 (simples), 2 (dupla), 3 (tripla)."
+            },
+            {
+              "id": "p2",
+              "label": "C–C",
+              "explicacao": "154 pm; 347 kJ/mol."
+            },
+            {
+              "id": "p3",
+              "label": "C=C",
+              "explicacao": "134 pm; 614 kJ/mol."
+            },
+            {
+              "id": "p4",
+              "label": "C≡C",
+              "explicacao": "120 pm; 839 kJ/mol."
+            },
+            {
+              "id": "p5",
+              "label": "N≡N",
+              "explicacao": "110 pm; 945 kJ/mol. É por isso que o azoto é tão pouco reativo."
+            },
+            {
+              "id": "p6",
+              "label": "Ângulo de ligação",
+              "explicacao": "Ângulo entre duas ligações com um átomo em comum. Estudado na secção seguinte."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Maior ordem de ligação → menor comprimento → maior energia de ligação",
+              "significado": "Entre os mesmos elementos.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quantos pares de eletrões não ligantes tem o átomo de oxigénio na molécula de água?",
+          "opcoes": [
+            "0",
+            "1",
+            "2",
+            "4"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. O oxigénio tem 6 eletrões de valência: usa 2 em duas ligações simples com os H e fica com 4, ou seja, 2 pares não ligantes. Com os 2 pares ligantes, completa o octeto.",
+          "mascote_feedback_errado": "O oxigénio tem 6 eletrões de valência. Partilha um com cada H (2 pares ligantes) e sobram 4 eletrões: 2 pares não ligantes."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na molécula de CO₂ (O=C=O), quantos eletrões de valência há no total?",
+          "opcoes": [
+            "12",
+            "16",
+            "18",
+            "22"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. C: 4; O: 6 × 2 = 12. Total 16 eletrões: 4 pares ligantes (duas ligações duplas) e 4 pares não ligantes (2 em cada O).",
+          "mascote_feedback_errado": "Soma os eletrões de valência: carbono 4 + 2 oxigénios × 6 = 16. São 8 pares: 4 ligantes (nas duas ligações duplas) e 4 não ligantes."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Os lugares à mesa.** Imagina que cada átomo quer ter 8 lugares ocupados à sua mesa. O oxigénio traz 6 pessoas e precisa de mais 2. Se se sentar ao lado de dois hidrogénios, cada um \"empresta\" uma pessoa e o oxigénio \"empresta\" uma de volta: cada par partilhado conta para os dois lados. No azoto (N₂), cada átomo traz 5 e precisa de 3: os dois partilham 3 pares, uma ligação tripla. Quanto mais pares se partilham, mais apertado e mais forte fica o abraço entre os átomos."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Exceções ao octeto e fixação do azoto",
+          "texto": "**Exceções à regra do octeto**\n\nAlgumas moléculas não cumprem a regra do octeto. O boro no BF₃ fica com 6 eletrões; o enxofre no SF₆ fica com 12. No 10.º ano, trabalha-se sobretudo com moléculas que a cumprem.\n\n**A fixação do azoto**\n\nQuebrar a ligação tripla do N₂ exige muita energia. A indústria faz isso no processo de Haber-Bosch, que produz amoníaco para adubos a altas pressões e temperaturas. Estima-se que metade das pessoas no mundo seja alimentada graças a este processo."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é a ligação entre os átomos de azoto na molécula de N₂?",
+              "opcoes": [
+                "Simples",
+                "Dupla",
+                "Tripla",
+                "Iónica"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Cada N tem 5 eletrões de valência e precisa de 3 para o octeto. Partilham 3 pares: ligação tripla, com um par não ligante em cada átomo.",
+              "mascote_feedback_errado": "Cada N tem 5 eletrões de valência e precisa de 3 para o octeto. Partilham 3 pares: ligação tripla, com um par não ligante em cada átomo."
+            },
+            {
+              "pergunta": "Comparando as ligações C–C, C=C e C≡C, qual é a mais curta e a mais forte?",
+              "opcoes": [
+                "C–C",
+                "C=C",
+                "C≡C",
+                "Todas iguais."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Para os mesmos átomos, maior ordem de ligação significa menor comprimento e maior energia de ligação.",
+              "mascote_feedback_errado": "Para os mesmos átomos, maior ordem de ligação significa menor comprimento e maior energia de ligação."
+            },
+            {
+              "pergunta": "Quantos pares ligantes tem a molécula de amoníaco (NH₃)?",
+              "opcoes": [
+                "1",
+                "3",
+                "4",
+                "5"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O azoto liga-se a três hidrogénios por três ligações simples (3 pares ligantes) e fica com 1 par não ligante.",
+              "mascote_feedback_errado": "O azoto liga-se a três hidrogénios por três ligações simples (3 pares ligantes) e fica com 1 par não ligante."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "geometria-polaridade",
+      "titulo": "Geometria e polaridade das moléculas",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_forno_microondas_agua.png",
+          "imagem_legenda": "Moléculas de água a rodar dentro de um micro-ondas.",
+          "texto": "O forno micro-ondas aquece a comida porque as moléculas de água rodam para acompanhar o campo elétrico que muda de sentido milhares de milhões de vezes por segundo. Mas só moléculas com \"polos\" elétricos rodam assim. O dióxido de carbono, por exemplo, não aquece no micro-ondas. A diferença está na forma das moléculas.",
+          "mascote_texto": "A forma de uma molécula decide se ela é polar ou não. E a polaridade decide se se mistura com água, a que temperatura ferve e muito mais."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Geometria molecular",
+          "imagem": "q10_geometrias.png",
+          "imagem_legenda": "Modelos 3D: linear, triangular plana, tetraédrica, piramidal, angular.",
+          "texto_principal": "Os pares de eletrões de valência à volta do átomo central (ligantes e não ligantes) repelem-se e afastam-se o máximo possível. Esta ideia (teoria da repulsão dos pares de eletrões de valência) permite prever a geometria das moléculas. A geometria é descrita pela posição dos átomos, mas os pares não ligantes influenciam-na.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Linear (180°)",
+              "explicacao": "2 zonas de eletrões à volta do átomo central, sem pares não ligantes. Ex.: CO₂, HCN."
+            },
+            {
+              "id": "p2",
+              "label": "Triangular plana (cerca de 120°)",
+              "explicacao": "3 zonas, sem pares não ligantes. Ex.: metanal (CH₂O)."
+            },
+            {
+              "id": "p3",
+              "label": "Tetraédrica (109,5°)",
+              "explicacao": "4 pares ligantes. Ex.: CH₄."
+            },
+            {
+              "id": "p4",
+              "label": "Piramidal trigonal (cerca de 107°)",
+              "explicacao": "3 pares ligantes e 1 não ligante. Ex.: NH₃."
+            },
+            {
+              "id": "p5",
+              "label": "Angular (cerca de 104,5°)",
+              "explicacao": "2 pares ligantes e 2 não ligantes. Ex.: H₂O."
+            },
+            {
+              "id": "p6",
+              "label": "Pares não ligantes repelem mais",
+              "explicacao": "Por isso o ângulo diminui de 109,5° (CH₄) para 107° (NH₃) e para 104,5° (H₂O)."
+            },
+            {
+              "id": "p7",
+              "label": "Ligações múltiplas",
+              "explicacao": "Uma ligação dupla ou tripla conta como uma única zona de eletrões."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Polaridade das ligações e das moléculas",
+          "imagem": "q10_polaridade.png",
+          "imagem_legenda": "HCl, CO₂ e H₂O com cargas parciais e setas de polaridade.",
+          "texto_principal": "Numa ligação entre átomos de elementos diferentes, os eletrões partilhados são mais atraídos pelo átomo mais eletronegativo, que fica com uma carga parcial negativa (δ−); o outro fica com carga parcial positiva (δ+). A ligação é polar. Uma molécula é polar se a distribuição das cargas for assimétrica, o que depende das ligações e da geometria.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Eletronegatividade",
+              "explicacao": "Tendência de um átomo para atrair os eletrões de uma ligação. Ordem útil: F > O > N ≈ Cl > C > H."
+            },
+            {
+              "id": "p2",
+              "label": "Ligação apolar",
+              "explicacao": "Entre átomos iguais (H–H, Cl–Cl, O=O)."
+            },
+            {
+              "id": "p3",
+              "label": "Ligação polar",
+              "explicacao": "Entre átomos diferentes (H–Cl, O–H, C=O)."
+            },
+            {
+              "id": "p4",
+              "label": "Molécula polar",
+              "explicacao": "Distribuição de carga assimétrica. Ex.: HCl, H₂O, NH₃."
+            },
+            {
+              "id": "p5",
+              "label": "Molécula apolar com ligações polares",
+              "explicacao": "Se a geometria for simétrica, as polaridades anulam-se. Ex.: CO₂ (linear), CH₄ (tetraédrica)."
+            },
+            {
+              "id": "p6",
+              "label": "Moléculas diatómicas de um só elemento",
+              "explicacao": "Sempre apolares (H₂, N₂, O₂, Cl₂)."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a geometria da molécula de amoníaco, NH₃?",
+          "opcoes": [
+            "Triangular plana",
+            "Tetraédrica",
+            "Piramidal trigonal",
+            "Angular"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. O azoto tem 3 pares ligantes e 1 par não ligante. Os quatro pares distribuem-se num tetraedro, mas a geometria (posição dos átomos) é uma pirâmide com o N no topo.",
+          "mascote_feedback_errado": "À volta do N há 4 pares (3 ligantes e 1 não ligante). A geometria descreve-se pela posição dos átomos: os 3 H formam a base e o N fica no topo de uma pirâmide trigonal."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O dióxido de carbono tem ligações C=O polares. A molécula é:",
+          "opcoes": [
+            "polar, porque as ligações são polares.",
+            "apolar, porque é linear e as polaridades das duas ligações se anulam.",
+            "polar, porque o oxigénio é mais eletronegativo.",
+            "iónica."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. As duas ligações C=O são iguais e estão em sentidos opostos (180°): as polaridades anulam-se e a molécula é apolar.",
+          "mascote_feedback_errado": "Ter ligações polares não chega. No CO₂, as duas ligações são iguais e opostas (geometria linear) e anulam-se: a molécula é apolar."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_geometria",
+          "titulo": "Constrói a molécula",
+          "instrucao": "Escolhe uma molécula. Vê a geometria, o ângulo de ligação, os pares ligantes e não ligantes, a estrutura de Lewis, as cargas parciais e se a molécula é polar.",
+          "controlos": [
+            {
+              "id": "molecula",
+              "rotulo": "Molécula",
+              "opcoes": [
+                {
+                  "valor": "H2",
+                  "label": "H₂"
+                },
+                {
+                  "valor": "Cl2",
+                  "label": "Cl₂"
+                },
+                {
+                  "valor": "HCl",
+                  "label": "HCl"
+                },
+                {
+                  "valor": "H2O",
+                  "label": "H₂O"
+                },
+                {
+                  "valor": "NH3",
+                  "label": "NH₃"
+                },
+                {
+                  "valor": "CH4",
+                  "label": "CH₄"
+                },
+                {
+                  "valor": "CO2",
+                  "label": "CO₂"
+                },
+                {
+                  "valor": "HCN",
+                  "label": "HCN"
+                },
+                {
+                  "valor": "CH2O",
+                  "label": "CH₂O (metanal)"
+                },
+                {
+                  "valor": "N2",
+                  "label": "N₂"
+                },
+                {
+                  "valor": "O2",
+                  "label": "O₂"
+                }
+              ]
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Geometria",
+              "formula": "dados.m[molecula].geometria"
+            },
+            {
+              "rotulo": "Ângulo de ligação",
+              "formula": "dados.m[molecula].angulo"
+            },
+            {
+              "rotulo": "Polaridade",
+              "formula": "dados.m[molecula].polaridade"
+            },
+            {
+              "rotulo": "Pares de eletrões",
+              "formula": "dados.m[molecula].pares"
+            },
+            {
+              "rotulo": "Estrutura de Lewis",
+              "formula": "dados.m[molecula].lewis"
+            },
+            {
+              "rotulo": "Cargas parciais",
+              "formula": "dados.m[molecula].cargas"
+            }
+          ],
+          "pergunta_final": "Porque é que o HCN é polar e o CO₂ não, se ambos são lineares? Resposta esperada: no CO₂ as duas extremidades são iguais (O) e as polaridades anulam-se; no HCN as extremidades são diferentes (H e N) e não se anulam.",
+          "dados": {
+            "m": {
+              "H2": {
+                "geometria": "Linear",
+                "angulo": "— (molécula diatómica)",
+                "polaridade": "Apolar (átomos iguais)",
+                "pares": "1 par ligante (ligação simples); o H não tem pares não ligantes",
+                "lewis": "H–H",
+                "cargas": "Sem cargas parciais: os dois átomos são iguais."
+              },
+              "Cl2": {
+                "geometria": "Linear",
+                "angulo": "— (molécula diatómica)",
+                "polaridade": "Apolar (átomos iguais)",
+                "pares": "1 par ligante (ligação simples); 3 pares não ligantes em cada Cl",
+                "lewis": "Cl–Cl, com 3 pares não ligantes em cada Cl",
+                "cargas": "Sem cargas parciais: os dois átomos são iguais."
+              },
+              "HCl": {
+                "geometria": "Linear",
+                "angulo": "— (molécula diatómica)",
+                "polaridade": "Polar",
+                "pares": "1 par ligante (ligação simples); 3 pares não ligantes no Cl",
+                "lewis": "H–Cl, com 3 pares não ligantes no Cl",
+                "cargas": "H δ+ e Cl δ− (o cloro é mais eletronegativo)."
+              },
+              "H2O": {
+                "geometria": "Angular",
+                "angulo": "104,5°",
+                "polaridade": "Polar",
+                "pares": "No O: 2 pares ligantes e 2 pares não ligantes",
+                "lewis": "H–O–H, com 2 pares não ligantes no O",
+                "cargas": "O δ− e H δ+. A forma angular impede que as polaridades se anulem."
+              },
+              "NH3": {
+                "geometria": "Piramidal trigonal",
+                "angulo": "107°",
+                "polaridade": "Polar",
+                "pares": "No N: 3 pares ligantes e 1 par não ligante",
+                "lewis": "N ligado a 3 H por ligações simples, com 1 par não ligante no N",
+                "cargas": "N δ− e H δ+. A forma de pirâmide impede que as polaridades se anulem."
+              },
+              "CH4": {
+                "geometria": "Tetraédrica",
+                "angulo": "109,5°",
+                "polaridade": "Apolar",
+                "pares": "No C: 4 pares ligantes e 0 pares não ligantes",
+                "lewis": "C ligado a 4 H por ligações simples",
+                "cargas": "Ligações C–H pouco polares, dispostas de forma simétrica: as polaridades anulam-se."
+              },
+              "CO2": {
+                "geometria": "Linear",
+                "angulo": "180°",
+                "polaridade": "Apolar",
+                "pares": "No C: 4 pares ligantes (duas ligações duplas) e 0 pares não ligantes",
+                "lewis": "O=C=O, com 2 pares não ligantes em cada O",
+                "cargas": "C δ+ e O δ−, mas as duas ligações C=O são iguais e opostas: as polaridades anulam-se."
+              },
+              "HCN": {
+                "geometria": "Linear",
+                "angulo": "180°",
+                "polaridade": "Polar",
+                "pares": "No C: 4 pares ligantes (uma ligação simples e uma tripla) e 0 pares não ligantes",
+                "lewis": "H–C≡N, com 1 par não ligante no N",
+                "cargas": "H δ+ e N δ−. As extremidades são diferentes, por isso as polaridades não se anulam."
+              },
+              "CH2O": {
+                "geometria": "Triangular plana",
+                "angulo": "cerca de 120°",
+                "polaridade": "Polar",
+                "pares": "No C: 4 pares ligantes (duas ligações simples e uma dupla) e 0 pares não ligantes",
+                "lewis": "H₂C=O, com 2 pares não ligantes no O",
+                "cargas": "O δ− e C δ+. A ligação C=O é muito mais polar do que as C–H."
+              },
+              "N2": {
+                "geometria": "Linear",
+                "angulo": "— (molécula diatómica)",
+                "polaridade": "Apolar (átomos iguais)",
+                "pares": "3 pares ligantes (ligação tripla); 1 par não ligante em cada N",
+                "lewis": "N≡N, com 1 par não ligante em cada N",
+                "cargas": "Sem cargas parciais: os dois átomos são iguais."
+              },
+              "O2": {
+                "geometria": "Linear",
+                "angulo": "— (molécula diatómica)",
+                "polaridade": "Apolar (átomos iguais)",
+                "pares": "2 pares ligantes (ligação dupla); 2 pares não ligantes em cada O",
+                "lewis": "O=O, com 2 pares não ligantes em cada O",
+                "cargas": "Sem cargas parciais: os dois átomos são iguais."
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Balões atados pelo nó.** Ata dois balões pelo nó: ficam em lados opostos (linear). Três balões: formam um triângulo plano. Quatro balões: formam um tetraedro, com as pontas o mais afastadas possível. Os pares de eletrões comportam-se como estes balões: afastam-se o máximo uns dos outros. Os pares não ligantes são como balões um pouco maiores: empurram mais os outros e fecham o ângulo entre eles."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Polaridade, solubilidade e a forma da água",
+          "texto": "**Polaridade e solubilidade**\n\nAs moléculas polares dissolvem-se bem em solventes polares (como a água) e as apolares em solventes apolares (como o hexano). \"Semelhante dissolve semelhante\". Vais testar isto na AL 2.1.\n\n**Porque é que o ângulo da água é tão importante**\n\nSe a água fosse linear, seria apolar: não dissolveria sais, não teria pontos de ebulição tão altos, e a vida como a conhecemos não existiria. A forma angular é a razão de quase todas as propriedades especiais da água."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A geometria do metano (CH₄) é:",
+              "opcoes": [
+                "quadrangular plana, com ângulos de 90°.",
+                "tetraédrica, com ângulos de 109,5°.",
+                "piramidal trigonal.",
+                "linear."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Quatro pares ligantes à volta do carbono afastam-se o máximo possível, formando um tetraedro com ângulos de 109,5°.",
+              "mascote_feedback_errado": "Quatro pares ligantes à volta do carbono afastam-se o máximo possível, formando um tetraedro com ângulos de 109,5°."
+            },
+            {
+              "pergunta": "Qual das moléculas é polar?",
+              "opcoes": [
+                "CH₄",
+                "CO₂",
+                "H₂O",
+                "N₂"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "A água tem ligações O–H polares numa geometria angular: as polaridades não se anulam. As outras são apolares.",
+              "mascote_feedback_errado": "A água tem ligações O–H polares numa geometria angular: as polaridades não se anulam. As outras são apolares."
+            },
+            {
+              "pergunta": "Porque é que o ângulo H–O–H (104,5°) é menor do que o H–C–H no metano (109,5°)?",
+              "opcoes": [
+                "Porque o oxigénio é maior do que o carbono.",
+                "Porque os dois pares não ligantes do oxigénio repelem mais os pares ligantes.",
+                "Porque a água é uma molécula linear.",
+                "Porque o hidrogénio é mais eletronegativo."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os pares não ligantes ocupam mais espaço e repelem mais, \"empurrando\" as ligações O–H e fechando o ângulo.",
+              "mascote_feedback_errado": "Os pares não ligantes ocupam mais espaço e repelem mais, \"empurrando\" as ligações O–H e fechando o ângulo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "compostos-carbono",
+      "titulo": "Compostos de carbono: hidrocarbonetos e grupos funcionais",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_compostos_carbono_dia.png",
+          "imagem_legenda": "Colagem de produtos do dia a dia feitos de compostos de carbono.",
+          "texto": "Conhecem-se mais de 100 milhões de compostos químicos diferentes. A grande maioria contém carbono. O carbono consegue fazer quatro ligações, formar cadeias longas, anéis, ligações simples, duplas e triplas. É por isso que é a base da vida: o ADN, as proteínas, os açúcares e as gorduras são todos compostos de carbono. E também os combustíveis, os plásticos e quase todos os medicamentos.",
+          "mascote_texto": "Nesta secção não precisas de decorar nomes complicados. Precisas de reconhecer famílias e grupos funcionais."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Hidrocarbonetos",
+          "imagem": "q10_hidrocarbonetos.png",
+          "imagem_legenda": "Fórmulas de estrutura de alcanos, alcenos e alcinos.",
+          "texto_principal": "Os hidrocarbonetos são compostos formados apenas por carbono e hidrogénio. São saturados se só tiverem ligações simples entre carbonos, e insaturados se tiverem pelo menos uma ligação dupla ou tripla.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Alcanos (saturados)",
+              "explicacao": "Só ligações simples. Fórmula geral C n H 2n+2. Ex.: metano CH₄, etano C₂H₆, propano C₃H₈, butano C₄H₁₀."
+            },
+            {
+              "id": "p2",
+              "label": "Alcenos (insaturados)",
+              "explicacao": "Pelo menos uma ligação dupla C=C. Ex.: eteno C₂H₄."
+            },
+            {
+              "id": "p3",
+              "label": "Alcinos (insaturados)",
+              "explicacao": "Pelo menos uma ligação tripla C≡C. Ex.: etino C₂H₂."
+            },
+            {
+              "id": "p4",
+              "label": "Prefixos do número de carbonos",
+              "explicacao": "met (1), et (2), prop (3), but (4), pent (5), hex (6), hept (7), oct (8), non (9), dec (10)."
+            },
+            {
+              "id": "p5",
+              "label": "Terminações",
+              "explicacao": "-ano (alcanos), -eno (alcenos), -ino (alcinos)."
+            },
+            {
+              "id": "p6",
+              "label": "Posição da ligação múltipla",
+              "explicacao": "Indica-se com o número do primeiro carbono da ligação, a contar da ponta mais próxima: but-1-eno (CH₂=CH–CH₂–CH₃), but-2-eno (CH₃–CH=CH–CH₃)."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Grupos funcionais",
+          "imagem": "q10_grupos_funcionais.png",
+          "imagem_legenda": "Cinco cartões com os grupos funcionais e exemplos.",
+          "texto_principal": "Um grupo funcional é um átomo ou grupo de átomos que confere propriedades características a uma família de compostos orgânicos. Reconhecê-los permite prever o comportamento de moléculas, incluindo biomoléculas e medicamentos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Álcoois",
+              "explicacao": "Grupo hidroxilo, –OH, ligado a um carbono saturado. Ex.: etanol (CH₃–CH₂–OH), presente nas bebidas alcoólicas e em desinfetantes."
+            },
+            {
+              "id": "p2",
+              "label": "Aldeídos",
+              "explicacao": "Grupo carbonilo (C=O) num carbono de extremidade, –CHO. Ex.: metanal (formaldeído), usado como conservante."
+            },
+            {
+              "id": "p3",
+              "label": "Cetonas",
+              "explicacao": "Grupo carbonilo (C=O) entre dois carbonos. Ex.: propanona (acetona), o solvente do verniz das unhas."
+            },
+            {
+              "id": "p4",
+              "label": "Ácidos carboxílicos",
+              "explicacao": "Grupo carboxilo, –COOH. Ex.: ácido etanoico (acético), que dá o sabor ao vinagre."
+            },
+            {
+              "id": "p5",
+              "label": "Aminas",
+              "explicacao": "Grupo amino, –NH₂ (ou N ligado a carbonos). Ex.: metilamina. Muitas aminas têm cheiro a peixe."
+            },
+            {
+              "id": "p6",
+              "label": "Nas biomoléculas",
+              "explicacao": "A glicose tem vários grupos hidroxilo e um grupo aldeído (na forma de cadeia aberta). Os aminoácidos têm um grupo amina e um grupo ácido carboxílico. O ibuprofeno e a aspirina têm um grupo ácido carboxílico."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O propano é usado no gás de botija. Qual é a sua fórmula molecular?",
+          "opcoes": [
+            "C₃H₆",
+            "C₃H₈",
+            "C₃H₄",
+            "CH₃"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Alcano com 3 carbonos: C n H 2n+2 = C₃H₈.",
+          "mascote_feedback_errado": "O propano é um alcano (terminação -ano) com 3 carbonos (prefixo prop-). Fórmula geral C n H 2n+2: C₃H₈."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A molécula CH₃–CO–CH₃ (propanona) pertence à família dos(as):",
+          "opcoes": [
+            "álcoois",
+            "aldeídos",
+            "cetonas",
+            "ácidos carboxílicos"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. O grupo carbonilo (C=O) está num carbono ligado a dois outros carbonos: é uma cetona.",
+          "mascote_feedback_errado": "O C=O está no carbono do meio, entre dois carbonos. Quando o carbonilo não está na ponta da cadeia, trata-se de uma cetona. Se estivesse na ponta, seria um aldeído."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A estrutura do carro e os acessórios.** A cadeia de carbonos é como a estrutura de um carro: pode ser curta ou comprida, com várias formas. Os grupos funcionais são os acessórios que definem para que serve o carro: um reboque, uma escada de bombeiros, uma sirene de ambulância. Carros com estruturas diferentes mas com a mesma escada de bombeiros fazem trabalhos parecidos. Moléculas com cadeias diferentes mas com o mesmo grupo funcional (por exemplo, –OH) têm propriedades químicas parecidas."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Ramificações, gorduras e a versatilidade do carbono",
+          "texto": "**Alcanos ramificados**\n\nQuando há ramificações, escolhe-se a cadeia mais longa como cadeia principal, numera-se de forma a dar o número mais baixo às ramificações e indica-se a posição e o nome de cada ramificação. Ex.: CH₃–CH(CH₃)–CH₃ é o 2-metilpropano. (Consulta o manual adotado sobre a extensão exigida.)\n\n**Saturados e insaturados na alimentação**\n\nAs gorduras \"saturadas\" (manteiga, banha) têm cadeias com só ligações simples. As \"insaturadas\" (azeite, óleos vegetais) têm ligações duplas C=C. As ligações duplas dobram as cadeias e impedem-nas de se arrumar bem, e por isso as gorduras insaturadas tendem a ser líquidas à temperatura ambiente.\n\n**A versatilidade do carbono**\n\nO carbono tem 4 eletrões de valência e forma 4 ligações covalentes. Consegue ligar-se a si próprio em cadeias longas e estáveis, o que quase nenhum outro elemento faz. É isso que permite a enorme variedade de compostos orgânicos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual dos compostos é um hidrocarboneto insaturado?",
+              "opcoes": [
+                "Etano (C₂H₆)",
+                "Propano (C₃H₈)",
+                "Eteno (C₂H₄)",
+                "Metano (CH₄)"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "O eteno tem uma ligação dupla C=C: é insaturado (alceno). Os outros são alcanos, saturados.",
+              "mascote_feedback_errado": "O eteno tem uma ligação dupla C=C: é insaturado (alceno). Os outros são alcanos, saturados."
+            },
+            {
+              "pergunta": "O grupo funcional –COOH caracteriza os:",
+              "opcoes": [
+                "álcoois",
+                "aminas",
+                "ácidos carboxílicos",
+                "aldeídos"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "O grupo carboxilo (–COOH) é típico dos ácidos carboxílicos, como o ácido acético do vinagre.",
+              "mascote_feedback_errado": "O grupo carboxilo (–COOH) é típico dos ácidos carboxílicos, como o ácido acético do vinagre."
+            },
+            {
+              "pergunta": "Um aminoácido contém, obrigatoriamente, os grupos funcionais:",
+              "opcoes": [
+                "álcool e aldeído",
+                "amina e ácido carboxílico",
+                "cetona e álcool",
+                "só amina"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O próprio nome indica: \"amino\" (grupo amina) e \"ácido\" (grupo ácido carboxílico).",
+              "mascote_feedback_errado": "O próprio nome indica: \"amino\" (grupo amina) e \"ácido\" (grupo ácido carboxílico)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "forcas-intermoleculares-al-2-1",
+      "titulo": "Forças intermoleculares; AL 2.1",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_osga_parede.png",
+          "imagem_legenda": "Osga num vidro, com ampliação dos pelos das patas.",
+          "texto": "Uma osga consegue andar de cabeça para baixo num teto de vidro. As patas não têm cola nem ventosas: têm milhões de pelos microscópicos que se aproximam tanto do vidro que as moléculas se atraem. São forças muito fracas, uma a uma, mas somadas aos milhões seguram o animal. As mesmas forças explicam porque é que a água ferve a 100 °C e porque é que a água e o azeite não se misturam.",
+          "mascote_texto": "Atenção: estas forças são entre moléculas diferentes, não dentro da molécula. Esta distinção sai muito em exame."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Forças entre moléculas",
+          "imagem": "q10_forcas_intermoleculares.png",
+          "imagem_legenda": "Forças de London, dipolo-dipolo, dipolo-dipolo induzido e ligações de hidrogénio.",
+          "texto_principal": "As forças intermoleculares são forças de atração entre moléculas. São muito mais fracas do que as ligações covalentes dentro das moléculas, mas determinam os pontos de fusão e de ebulição, a solubilidade e muitas outras propriedades. Chamam-se, em conjunto, forças de Van der Waals (e, à parte, as ligações de hidrogénio).",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Forças de London (dipolo instantâneo-dipolo induzido)",
+              "explicacao": "Existem entre todas as moléculas. São as únicas entre moléculas apolares. São mais intensas em moléculas maiores (mais eletrões, nuvem eletrónica mais deformável)."
+            },
+            {
+              "id": "p2",
+              "label": "Dipolo permanente-dipolo permanente",
+              "explicacao": "Entre moléculas polares. O polo δ+ de uma atrai o polo δ− de outra."
+            },
+            {
+              "id": "p3",
+              "label": "Dipolo permanente-dipolo induzido",
+              "explicacao": "Entre uma molécula polar e uma apolar. A polar deforma a nuvem eletrónica da apolar."
+            },
+            {
+              "id": "p4",
+              "label": "Ligações de hidrogénio",
+              "explicacao": "Entre um átomo de H ligado a F, O ou N de uma molécula e um átomo de F, O ou N de outra molécula. São as forças intermoleculares mais intensas. Existem na água, no amoníaco, nos álcoois e nas biomoléculas."
+            },
+            {
+              "id": "p5",
+              "label": "Pontos de ebulição",
+              "explicacao": "Quanto mais intensas as forças intermoleculares, maior o ponto de ebulição. H₂O (100 °C) ferve muito acima de H₂S (−60 °C), por causa das ligações de hidrogénio."
+            },
+            {
+              "id": "p6",
+              "label": "Miscibilidade",
+              "explicacao": "Líquidos com forças intermoleculares semelhantes misturam-se (são miscíveis). Água e etanol: miscíveis. Água e hexano: imiscíveis."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Que forças intermoleculares predominam entre moléculas de metano (CH₄)?",
+          "opcoes": [
+            "Ligações de hidrogénio",
+            "Dipolo permanente-dipolo permanente",
+            "Forças de London",
+            "Ligações covalentes"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. O metano é apolar, por isso as únicas forças entre as suas moléculas são as de London. São fracas: o metano ferve a −162 °C.",
+          "mascote_feedback_errado": "O metano é apolar e o H está ligado a C (não a F, O ou N): não há ligações de hidrogénio nem dipolos permanentes. Só forças de London."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que a água (H₂O, M = 18 g/mol) ferve a 100 °C e o sulfureto de hidrogénio (H₂S, M = 34 g/mol) a −60 °C?",
+          "opcoes": [
+            "Porque o H₂S é mais pesado.",
+            "Porque entre as moléculas de água se estabelecem ligações de hidrogénio, muito mais intensas.",
+            "Porque o H₂S é apolar.",
+            "Porque a água tem ligações covalentes mais fortes."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O H ligado ao O, muito eletronegativo, permite ligações de hidrogénio entre moléculas de água. O enxofre não é suficientemente eletronegativo para isso.",
+          "mascote_feedback_errado": "Pelas forças de London, o H₂S (maior) até deveria ferver a temperatura mais alta. A diferença está nas ligações de hidrogénio da água, que o H₂S não forma."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Velcro, ímanes e fita-cola.** As forças de London são como fita-cola fraquinha: todas as moléculas a têm, e quanto maior a superfície, mais cola. As forças entre dipolos permanentes são como pequenos ímanes: as moléculas polares alinham-se e atraem-se. As ligações de hidrogénio são como velcro: bem mais fortes, e só funcionam entre certas peças (H ligado a N, O ou F). E nenhuma destas \"colas\" é tão forte como a solda que mantém os átomos unidos dentro da molécula (a ligação covalente)."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.1",
+          "titulo": "Miscibilidade de líquidos",
+          "objetivo": "Prever e verificar a miscibilidade de pares de líquidos com base nas interações intermoleculares, e relacionar a miscibilidade com a polaridade das moléculas.",
+          "material": [
+            "Tubos de ensaio com suporte",
+            "Pipetas de Pasteur ou conta-gotas",
+            "Líquidos: água, etanol, propanona (acetona), hexano (ou ciclo-hexano), óleo alimentar",
+            "Óculos de proteção e luvas; hotte (se disponível)"
+          ],
+          "procedimento": [
+            "Antes de misturar, prever para cada par de líquidos se serão miscíveis, com base nas polaridades e nas forças intermoleculares.",
+            "Num tubo de ensaio, colocar cerca de 2 cm³ de um líquido e juntar cerca de 2 cm³ de outro.",
+            "Agitar suavemente e deixar repousar.",
+            "Observar se se forma uma só fase (miscíveis) ou duas fases (imiscíveis). No caso de duas fases, identificar qual fica por cima.",
+            "Testar os pares: água-etanol, água-propanona, água-hexano, água-óleo, etanol-hexano, hexano-óleo."
+          ],
+          "tratamento_de_dados": "Registar numa tabela a previsão e o resultado para cada par. Resultados esperados:\n\nÁgua + etanol: miscíveis (ligações de hidrogénio entre as duas substâncias).\n\nÁgua + propanona: miscíveis (a propanona é polar e aceita ligações de hidrogénio da água).\n\nÁgua + hexano: imiscíveis (o hexano é apolar; fica por cima, por ser menos denso).\n\nÁgua + óleo: imiscíveis (o óleo fica por cima).\n\nHexano + óleo: miscíveis (ambos apolares, forças de London).\n\nEtanol + hexano: miscíveis (o etanol tem uma parte apolar, a cadeia carbonada, e uma parte polar).",
+          "conclusao": "Líquidos com interações intermoleculares semelhantes são miscíveis (\"semelhante dissolve semelhante\"). Substâncias polares misturam-se com substâncias polares; apolares com apolares. Quando dois líquidos são imiscíveis, o menos denso fica por cima.",
+          "erros_comuns": [
+            "Confundir miscibilidade com densidade: o facto de um líquido ficar por cima diz respeito à densidade, não à miscibilidade.",
+            "Dizer que o óleo \"não se mistura porque é mais leve\".",
+            "Usar quantidades muito diferentes dos dois líquidos, o que dificulta a observação.",
+            "Não prever antes de observar (a AL pede previsão e verificação)."
+          ],
+          "seguranca": "O hexano e a propanona são inflamáveis e voláteis: longe de chamas, em local ventilado. Os resíduos orgânicos vão para o recipiente próprio, não para o lava-loiça."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Ligações de hidrogénio na vida e os halogéneos",
+          "texto": "**Ligações de hidrogénio na vida**\n\nO ADN: as duas cadeias estão unidas por ligações de hidrogénio entre as bases (adenina-timina e citosina-guanina). São suficientemente fracas para se separarem quando o ADN é copiado.\n\nAs proteínas: a sua forma tridimensional depende em grande parte de ligações de hidrogénio.\n\nO gelo flutua: no gelo, as ligações de hidrogénio arrumam as moléculas numa rede aberta, com mais espaço do que na água líquida. Por isso o gelo é menos denso e os lagos gelam de cima para baixo, protegendo a vida no fundo.\n\n**Pontos de ebulição dos halogéneos**\n\nF₂ (−188 °C), Cl₂ (−34 °C), Br₂ (59 °C) e I₂ (sólido à temperatura ambiente). São todos apolares: a diferença deve-se às forças de London, que aumentam com o tamanho da molécula."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Entre moléculas de água estabelecem-se, entre outras, ligações de hidrogénio porque:",
+              "opcoes": [
+                "a água é uma molécula apolar.",
+                "o hidrogénio está ligado a um átomo muito eletronegativo (O), que tem pares não ligantes.",
+                "a água tem massa molar baixa.",
+                "a água tem ligações iónicas."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "As ligações de hidrogénio formam-se entre um H ligado a F, O ou N e um átomo de F, O ou N (com par não ligante) de outra molécula.",
+              "mascote_feedback_errado": "As ligações de hidrogénio formam-se entre um H ligado a F, O ou N e um átomo de F, O ou N (com par não ligante) de outra molécula."
+            },
+            {
+              "pergunta": "Na AL 2.1, a água e o hexano são imiscíveis porque:",
+              "opcoes": [
+                "o hexano é mais denso.",
+                "a água é polar e forma ligações de hidrogénio, e o hexano é apolar.",
+                "o hexano é um ácido.",
+                "ambos são apolares."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "As interações entre as moléculas de água são muito mais fortes do que as que a água formaria com o hexano, apolar. As moléculas de água \"preferem\" ficar juntas.",
+              "mascote_feedback_errado": "As interações entre as moléculas de água são muito mais fortes do que as que a água formaria com o hexano, apolar. As moléculas de água \"preferem\" ficar juntas."
+            },
+            {
+              "pergunta": "Qual das substâncias tem, previsivelmente, maior ponto de ebulição?",
+              "opcoes": [
+                "Metano (CH₄)",
+                "Etano (C₂H₆)",
+                "Octano (C₈H₁₈)",
+                "Propano (C₃H₈)"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "São todos alcanos apolares. As forças de London aumentam com o tamanho da molécula: o octano, o maior, tem o ponto de ebulição mais alto (cerca de 126 °C).",
+              "mascote_feedback_errado": "São todos alcanos apolares. As forças de London aumentam com o tamanho da molécula: o octano, o maior, tem o ponto de ebulição mais alto (cerca de 126 °C)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 4 concluída. Distingues ligações covalentes, iónicas e metálicas, desenhas estruturas de Lewis, prevês geometrias e polaridades, reconheces hidrocarbonetos e grupos funcionais e explicas pontos de ebulição e miscibilidade com as forças intermoleculares. A seguir: gases, a atmosfera e soluções."
+}

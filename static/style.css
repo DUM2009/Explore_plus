@@ -8340,7 +8340,8 @@ html.dark-mode .account-actions #logoutBtn {
     border-radius: 10px;
 }
 
-.ano-switcher[hidden] {
+.ano-switcher[hidden],
+.ano-switcher-option[hidden] {
     display: none;
 }
 
@@ -10929,10 +10930,13 @@ body.shadcn-profile .profile-avatar-picker {
     z-index: 20;
     top: calc(100% + 10px);
     left: 0;
-    width: 240px;
+    width: 288px;
     padding: 16px;
     border-radius: 16px;
-    background: var(--sp-card);
+    background-color: var(--sp-card);
+    background-image: none;
+    filter: none;
+    backdrop-filter: none;
     border: 1px solid var(--sp-border);
     box-shadow: 0 16px 40px rgba(0, 0, 0, .18);
 }
@@ -10946,10 +10950,24 @@ body.shadcn-profile .profile-avatar-picker-title {
 
 body.shadcn-profile .profile-avatar-picker-options {
     display: flex;
-    gap: 14px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 14px 12px;
 }
 
 body.shadcn-profile .profile-avatar-option {
+    flex: 0 0 auto;
+    width: 56px;
+}
+
+/* button.profile-avatar-option (element+class), not just the class: the
+   site-wide button{}/button:hover{} reset's own box-shadow (a soft green
+   blob) and lift were never zeroed out here, so each option still showed
+   that shadow as a blurry shape behind the circle — on both rest and
+   hover, hence both listed below. */
+body.shadcn-profile button.profile-avatar-option,
+body.shadcn-profile button.profile-avatar-option:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10957,6 +10975,8 @@ body.shadcn-profile .profile-avatar-option {
     padding: 0;
     border: none;
     background: none;
+    box-shadow: none;
+    transform: none;
     cursor: pointer;
     font-family: inherit;
     color: var(--sp-muted-fg);
@@ -10966,16 +10986,20 @@ body.shadcn-profile .profile-avatar-option-preview {
     position: relative;
     display: grid;
     place-items: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
     width: 56px;
     height: 56px;
     border-radius: 50%;
     overflow: hidden;
-    background: var(--sp-accent-soft);
+    background-color: var(--sp-accent-soft);
+    background-image: none;
     border: 2px solid transparent;
     transition: border-color .15s ease, transform .15s ease;
 }
 
 body.shadcn-profile .profile-avatar-option-preview img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;

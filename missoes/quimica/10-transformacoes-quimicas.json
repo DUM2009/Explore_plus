@@ -1,0 +1,782 @@
+{
+  "missao_id": "10-transformacoes-quimicas",
+  "id_guiao": "qui10-m6",
+  "titulo": "Transformações químicas",
+  "disciplina": "quimica",
+  "ano": 10,
+  "imagem": "q10_compressas_quentes_frias.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2c1 3 4 5 4 9a4 4 0 0 1-8 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 0-8z\"/><path d=\"M8 21h8\"/></svg>",
+    "nome": "Mestre das Reações"
+  },
+  "secoes": [
+    {
+      "secao_id": "exotermicas-endotermicas",
+      "titulo": "Energia nas reações químicas: exotérmicas e endotérmicas",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_compressas_quentes_frias.png",
+          "imagem_legenda": "Duas compressas instantâneas, uma quente e uma fria.",
+          "texto": "Nas farmácias vendem-se compressas instantâneas: dobras a embalagem, rompe-se uma bolsa interior e, em segundos, a compressa fica gelada ou quente, sem frigorífico nem micro-ondas. Numa delas, a transformação absorve energia do exterior; na outra, liberta energia. Todas as reações químicas envolvem trocas de energia, e é isso que vais aprender a medir.",
+          "mascote_texto": "Liga esta secção à Física do 10.º ano: sistema, vizinhança, calor. É a mesma energia, agora vista pela Química."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Reações exotérmicas e endotérmicas",
+          "imagem": "q10_diagramas_entalpia.png",
+          "imagem_legenda": "Diagramas de entalpia de reações exotérmica e endotérmica.",
+          "texto_principal": "Numa reação química, quebram-se as ligações dos reagentes (o que absorve energia) e formam-se as ligações dos produtos (o que liberta energia). O saldo determina se a reação liberta ou absorve energia. A variação de energia entre produtos e reagentes, a pressão constante, chama-se variação de entalpia (ΔH) e é igual ao calor trocado com o exterior.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Sistema e vizinhança",
+              "explicacao": "O sistema é a reação (reagentes e produtos); a vizinhança é tudo o resto (o recipiente, o ar, a tua mão)."
+            },
+            {
+              "id": "p2",
+              "label": "Reação exotérmica",
+              "explicacao": "Liberta energia para a vizinhança, sob a forma de calor. ΔH < 0. A vizinhança aquece. Ex.: combustões, respiração celular, reação do cálcio com a água."
+            },
+            {
+              "id": "p3",
+              "label": "Reação endotérmica",
+              "explicacao": "Absorve energia da vizinhança. ΔH > 0. A vizinhança arrefece. Ex.: fotossíntese, decomposição do calcário, dissolução do nitrato de amónio."
+            },
+            {
+              "id": "p4",
+              "label": "Entalpia (H)",
+              "explicacao": "Grandeza associada à energia de um sistema. Só se medem as suas variações (ΔH = H produtos − H reagentes)."
+            },
+            {
+              "id": "p5",
+              "label": "Unidade",
+              "explicacao": "kJ/mol (por mole de reação, tal como está escrita a equação química)."
+            },
+            {
+              "id": "p6",
+              "label": "Equação termoquímica",
+              "explicacao": "Equação química acompanhada do ΔH. Ex.: CH₄(g) + 2 O₂(g) → CO₂(g) + 2 H₂O(l); ΔH = −890 kJ/mol."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "ΔH = H produtos − H reagentes",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "ΔH < 0: exotérmica; ΔH > 0: endotérmica",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "A pressão constante: ΔH = calor trocado com o exterior",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na fotossíntese, 6 CO₂ + 6 H₂O → C₆H₁₂O₆ + 6 O₂, ΔH = +2803 kJ/mol. Qual é a afirmação correta?",
+          "opcoes": [
+            "É exotérmica, porque produz oxigénio.",
+            "É endotérmica: absorve energia, que as plantas obtêm da luz.",
+            "Não envolve trocas de energia.",
+            "Liberta 2803 kJ por mole de glicose."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. ΔH > 0: a reação absorve energia. Os produtos (glicose e oxigénio) têm mais energia do que os reagentes. A respiração celular é o processo inverso, exotérmico.",
+          "mascote_feedback_errado": "O sinal positivo de ΔH indica uma reação endotérmica: é preciso fornecer energia (luz) para que ocorra."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Numa compressa fria, o nitrato de amónio dissolve-se em água e a compressa arrefece. O processo é:",
+          "opcoes": [
+            "exotérmico, porque a compressa arrefece.",
+            "endotérmico, porque o sistema absorve energia da vizinhança (a tua pele).",
+            "nem exotérmico nem endotérmico.",
+            "exotérmico, porque liberta frio."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O sistema absorve energia da vizinhança, e é por isso que a sentes fria. \"Frio\" não se liberta: o que acontece é energia a sair da tua pele para a compressa.",
+          "mascote_feedback_errado": "Se a vizinhança (a pele) arrefece, é porque perde energia para o sistema. O sistema absorve energia: o processo é endotérmico."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Desmontar e montar Lego.** Uma reação química é como desmontar uma construção de Lego e montar outra com as mesmas peças. Separar peças custa esforço (quebrar ligações absorve energia). Encaixar peças \"dá um estalo\" e liberta (formar ligações liberta energia). Se as peças da nova construção ficarem mais bem encaixadas do que as da antiga, no fim sobra energia: a reação é exotérmica. Se ficarem menos encaixadas, gastaste mais a desmontar do que ganhaste a montar: é endotérmica."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Sistemas e a energia dos alimentos",
+          "texto": "**Sistemas isolados, fechados e abertos**\n\nLigação à Física do 10.º ano: num sistema isolado (por exemplo, um calorímetro bem fechado), uma reação exotérmica faz subir a temperatura do próprio sistema, porque a energia não sai. Num sistema aberto, a energia libertada passa para a vizinhança.\n\n**A energia dos alimentos**\n\nAs calorias indicadas nos alimentos correspondem à energia libertada quando são \"queimados\" no corpo (na respiração celular, exotérmica). 1 kcal ≈ 4,18 kJ."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Numa reação exotérmica:",
+              "opcoes": [
+                "ΔH > 0 e a vizinhança arrefece.",
+                "ΔH < 0 e a vizinhança aquece.",
+                "ΔH = 0.",
+                "os produtos têm mais energia do que os reagentes."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Na reação exotérmica, os produtos têm menor entalpia do que os reagentes (ΔH < 0) e a diferença é libertada para a vizinhança.",
+              "mascote_feedback_errado": "Na reação exotérmica, os produtos têm menor entalpia do que os reagentes (ΔH < 0) e a diferença é libertada para a vizinhança."
+            },
+            {
+              "pergunta": "A quebra de ligações químicas:",
+              "opcoes": [
+                "liberta sempre energia.",
+                "absorve sempre energia.",
+                "não envolve energia.",
+                "só ocorre em reações exotérmicas."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Para separar átomos ligados é sempre preciso fornecer energia. A formação de ligações é que liberta energia.",
+              "mascote_feedback_errado": "Para separar átomos ligados é sempre preciso fornecer energia. A formação de ligações é que liberta energia."
+            },
+            {
+              "pergunta": "Qual dos processos é endotérmico?",
+              "opcoes": [
+                "Queima de gás butano.",
+                "Respiração celular.",
+                "Evaporação da água.",
+                "Combustão da madeira."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Para evaporar, a água tem de absorver energia (para vencer as forças intermoleculares). As combustões e a respiração são exotérmicas.",
+              "mascote_feedback_errado": "Para evaporar, a água tem de absorver energia (para vencer as forças intermoleculares). As combustões e a respiração são exotérmicas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "entalpia-energias-ligacao",
+      "titulo": "Variação de entalpia e energias de ligação",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_foguetao_hidrogenio.png",
+          "imagem_legenda": "Lançamento de um foguetão com motores a hidrogénio.",
+          "texto": "Os motores principais de muitos foguetões queimam hidrogénio com oxigénio. O produto é só água, e a energia libertada é enorme. De onde vem essa energia? É possível calculá-la sem fazer a reação, somando e subtraindo as energias das ligações que se quebram e das que se formam.",
+          "mascote_texto": "Esta é uma das contas mais frequentes da Química do 10.º ano. O truque é contar bem as ligações: desenha as moléculas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "ΔH a partir das energias de ligação",
+          "imagem": "q10_balanco_ligacoes.png",
+          "imagem_legenda": "H₂ + Cl₂ → 2 HCl com energias absorvida e libertada.",
+          "texto_principal": "A variação de entalpia de uma reação (em fase gasosa) pode ser estimada a partir das energias de ligação: é a energia absorvida para quebrar as ligações dos reagentes menos a energia libertada na formação das ligações dos produtos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Passo 1",
+              "explicacao": "Escrever a equação acertada e desenhar as moléculas, para ver todas as ligações."
+            },
+            {
+              "id": "p2",
+              "label": "Passo 2",
+              "explicacao": "Somar as energias de todas as ligações quebradas nos reagentes (com os coeficientes)."
+            },
+            {
+              "id": "p3",
+              "label": "Passo 3",
+              "explicacao": "Somar as energias de todas as ligações formadas nos produtos."
+            },
+            {
+              "id": "p4",
+              "label": "Passo 4",
+              "explicacao": "ΔH = Σ E(quebradas) − Σ E(formadas)."
+            },
+            {
+              "id": "p5",
+              "label": "Sinal",
+              "explicacao": "Se se liberta mais energia na formação do que se gasta na quebra, ΔH < 0 (exotérmica)."
+            },
+            {
+              "id": "p6",
+              "label": "Valores médios",
+              "explicacao": "As energias de ligação tabeladas são valores médios, por isso o resultado é uma estimativa (pode diferir um pouco do valor medido)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "ΔH ≈ Σ E(ligações quebradas) − Σ E(ligações formadas)",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "H–H 436; Cl–Cl 243; H–Cl 432; O=O 498; O–H 463; C–H 414; C=O (no CO₂) 799; N≡N 945; N–H 391; C–C 347; C=C 614",
+              "significado": "Energias de ligação médias.",
+              "unidades": "kJ/mol"
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Estima o ΔH da reação H₂(g) + Cl₂(g) → 2 HCl(g).",
+          "opcoes": [
+            "+185 kJ/mol",
+            "−185 kJ/mol",
+            "−247 kJ/mol",
+            "+1111 kJ/mol"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Quebradas: 436 + 243 = 679 kJ. Formadas: 2 × 432 = 864 kJ. ΔH = 679 − 864 = −185 kJ/mol. Exotérmica.",
+          "mascote_feedback_errado": "Quebram-se 1 H–H e 1 Cl–Cl (679 kJ); formam-se 2 H–Cl (864 kJ). ΔH = quebradas − formadas = −185 kJ/mol."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Estima o ΔH de 2 H₂(g) + O₂(g) → 2 H₂O(g).",
+          "opcoes": [
+            "−482 kJ/mol",
+            "+482 kJ/mol",
+            "−25 kJ/mol",
+            "−1370 kJ/mol"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Muito bem. Quebradas: 2 × 436 + 498 = 1370 kJ. Formadas: 2 moléculas × 2 ligações O–H = 4 × 463 = 1852 kJ. ΔH = 1370 − 1852 = −482 kJ/mol.",
+          "mascote_feedback_errado": "Atenção às contagens: cada H₂O tem 2 ligações O–H, e há 2 moléculas, logo 4 ligações formadas (4 × 463 = 1852 kJ). Quebradas: 2 H–H e 1 O=O (1370 kJ). ΔH = −482 kJ/mol."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_energia_ligacao",
+          "titulo": "Parte e junta ligações",
+          "instrucao": "Escolhe uma reação. Vê as ligações que se quebram nos reagentes e as que se formam nos produtos, e o balanço de energia que dá o ΔH.",
+          "controlos": [
+            {
+              "id": "reacao",
+              "rotulo": "Reação",
+              "opcoes": [
+                {
+                  "valor": 1,
+                  "label": "H₂ + Cl₂ → 2 HCl"
+                },
+                {
+                  "valor": 2,
+                  "label": "2 H₂ + O₂ → 2 H₂O"
+                },
+                {
+                  "valor": 3,
+                  "label": "CH₄ + 2 O₂ → CO₂ + 2 H₂O"
+                },
+                {
+                  "valor": 4,
+                  "label": "N₂ + 3 H₂ → 2 NH₃"
+                },
+                {
+                  "valor": 5,
+                  "label": "C₂H₄ + H₂ → C₂H₆"
+                }
+              ]
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Ligações quebradas (reagentes)",
+              "formula": "dados.r[reacao].quebradas"
+            },
+            {
+              "rotulo": "Energia absorvida na quebra",
+              "formula": "dados.r[reacao].absorvida"
+            },
+            {
+              "rotulo": "Ligações formadas (produtos)",
+              "formula": "dados.r[reacao].formadas"
+            },
+            {
+              "rotulo": "Energia libertada na formação",
+              "formula": "dados.r[reacao].libertada"
+            },
+            {
+              "rotulo": "ΔH = absorvida − libertada",
+              "formula": "dados.r[reacao].dh"
+            },
+            {
+              "rotulo": "Classificação",
+              "formula": "dados.r[reacao].tipo"
+            }
+          ],
+          "pergunta_final": "Na combustão do metano, quantas ligações se quebram e quantas se formam? Resposta esperada: quebram-se 4 C–H e 2 O=O (6 ligações); formam-se 2 C=O e 4 O–H (6 ligações).",
+          "dados": {
+            "r": {
+              "1": {
+                "quebradas": "1 H–H + 1 Cl–Cl",
+                "absorvida": "1 × 436 + 1 × 243 = 679 kJ",
+                "formadas": "2 H–Cl",
+                "libertada": "2 × 432 = 864 kJ",
+                "dh": "679 − 864 = −185 kJ/mol",
+                "tipo": "Exotérmica (ΔH < 0): liberta-se mais energia a formar ligações do que se gasta a quebrá-las. No diagrama de entalpia, os produtos ficam abaixo dos reagentes."
+              },
+              "2": {
+                "quebradas": "2 H–H + 1 O=O",
+                "absorvida": "2 × 436 + 1 × 498 = 1370 kJ",
+                "formadas": "4 O–H",
+                "libertada": "4 × 463 = 1852 kJ",
+                "dh": "1370 − 1852 = −482 kJ/mol",
+                "tipo": "Exotérmica (ΔH < 0): liberta-se mais energia a formar ligações do que se gasta a quebrá-las. No diagrama de entalpia, os produtos ficam abaixo dos reagentes."
+              },
+              "3": {
+                "quebradas": "4 C–H + 2 O=O",
+                "absorvida": "4 × 414 + 2 × 498 = 2652 kJ",
+                "formadas": "2 C=O + 4 O–H",
+                "libertada": "2 × 799 + 4 × 463 = 3450 kJ",
+                "dh": "2652 − 3450 = −798 kJ/mol",
+                "tipo": "Exotérmica (ΔH < 0): liberta-se mais energia a formar ligações do que se gasta a quebrá-las. No diagrama de entalpia, os produtos ficam abaixo dos reagentes."
+              },
+              "4": {
+                "quebradas": "1 N≡N + 3 H–H",
+                "absorvida": "1 × 945 + 3 × 436 = 2253 kJ",
+                "formadas": "6 N–H",
+                "libertada": "6 × 391 = 2346 kJ",
+                "dh": "2253 − 2346 = −93 kJ/mol",
+                "tipo": "Exotérmica (ΔH < 0): liberta-se mais energia a formar ligações do que se gasta a quebrá-las. No diagrama de entalpia, os produtos ficam abaixo dos reagentes."
+              },
+              "5": {
+                "quebradas": "1 C=C + 4 C–H + 1 H–H",
+                "absorvida": "1 × 614 + 4 × 414 + 1 × 436 = 2706 kJ",
+                "formadas": "1 C–C + 6 C–H",
+                "libertada": "1 × 347 + 6 × 414 = 2831 kJ",
+                "dh": "2706 − 2831 = −125 kJ/mol",
+                "tipo": "Exotérmica (ΔH < 0): liberta-se mais energia a formar ligações do que se gasta a quebrá-las. No diagrama de entalpia, os produtos ficam abaixo dos reagentes."
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O orçamento de uma obra.** Remodelar uma casa tem custos (demolir as paredes antigas) e ganhos (a casa nova vale mais). Se o valor da casa nova for maior do que o custo das demolições, sobra dinheiro. Numa reação exotérmica, a energia \"ganha\" a formar as novas ligações é maior do que a \"gasta\" a demolir as antigas, e a diferença é libertada como calor."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O hidrogénio como combustível",
+          "texto": "**Porque é que o hidrogénio é um bom combustível**\n\nPor grama, a reação do hidrogénio com o oxigénio liberta cerca de três vezes mais energia do que a gasolina, e o único produto é água. O problema está em produzi-lo de forma limpa e em armazená-lo, porque é um gás muito leve e inflamável.\n\n**Estado físico conta**\n\nO ΔH depende do estado físico dos produtos. Para 2 H₂ + O₂ → 2 H₂O, o ΔH é cerca de −484 kJ/mol se a água ficar em vapor e cerca de −572 kJ/mol se ficar líquida: a condensação liberta energia adicional."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Estima o ΔH da síntese do amoníaco, N₂(g) + 3 H₂(g) → 2 NH₃(g).",
+              "opcoes": [
+                "+93 kJ/mol",
+                "−93 kJ/mol",
+                "−2253 kJ/mol",
+                "−391 kJ/mol"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Quebradas: 945 + 3 × 436 = 2253 kJ. Formadas: 2 × 3 N–H = 6 × 391 = 2346 kJ. ΔH = 2253 − 2346 = −93 kJ/mol.",
+              "mascote_feedback_errado": "Quebradas: 945 + 3 × 436 = 2253 kJ. Formadas: 2 × 3 N–H = 6 × 391 = 2346 kJ. ΔH = 2253 − 2346 = −93 kJ/mol."
+            },
+            {
+              "pergunta": "Estima o ΔH da combustão do metano, CH₄(g) + 2 O₂(g) → CO₂(g) + 2 H₂O(g).",
+              "opcoes": [
+                "−798 kJ/mol",
+                "+798 kJ/mol",
+                "−2652 kJ/mol",
+                "−3450 kJ/mol"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Quebradas: 4 × 414 + 2 × 498 = 2652 kJ. Formadas: 2 × 799 + 4 × 463 = 3450 kJ. ΔH = −798 kJ/mol.",
+              "mascote_feedback_errado": "Quebradas: 4 × 414 + 2 × 498 = 2652 kJ. Formadas: 2 × 799 + 4 × 463 = 3450 kJ. ΔH = −798 kJ/mol."
+            },
+            {
+              "pergunta": "Uma reação é endotérmica quando:",
+              "opcoes": [
+                "a energia das ligações formadas é maior do que a das quebradas.",
+                "a energia das ligações quebradas é maior do que a das formadas.",
+                "não se quebram ligações.",
+                "os produtos são gasosos."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Se se gasta mais energia a quebrar do que se liberta a formar, o saldo é positivo: ΔH > 0.",
+              "mascote_feedback_errado": "Se se gasta mais energia a quebrar do que se liberta a formar, o saldo é positivo: ΔH > 0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "reacoes-fotoquimicas-al-2-4",
+      "titulo": "Reações fotoquímicas; AL 2.4",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_fotografia_antiga.png",
+          "imagem_legenda": "Daguerreótipo antigo e placa de sais de prata.",
+          "texto": "As primeiras fotografias, no século XIX, eram feitas com placas cobertas de sais de prata. Onde a luz batia, os sais escureciam, e a imagem ficava gravada. Era química movida a luz. A mesma ideia explica porque é que os medicamentos vêm em frascos escuros, porque é que as cortinas desbotam ao sol e como se forma o ozono.",
+          "mascote_texto": "Nesta secção a energia para a reação não vem do calor: vem da luz. E a cor da luz conta."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Reações desencadeadas pela luz",
+          "imagem": "q10_fotoquimica.png",
+          "imagem_legenda": "Fotodissociação, fotoionização e fotossíntese.",
+          "texto_principal": "As reações fotoquímicas são reações desencadeadas pela absorção de luz (radiação eletromagnética). Os fotões absorvidos fornecem a energia necessária para quebrar ligações ou arrancar eletrões. Só ocorrem se a energia de cada fotão for suficiente.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Fotodissociação",
+              "explicacao": "A absorção de um fotão quebra uma ligação química. Ex.: Cl₂ + luz → 2 Cl·; O₂ + radiação UV → 2 O."
+            },
+            {
+              "id": "p2",
+              "label": "Fotoionização",
+              "explicacao": "A absorção de um fotão muito energético arranca um eletrão a uma molécula ou átomo. Ex.: N₂ + radiação UV de alta energia → N₂⁺ + e⁻ (na alta atmosfera)."
+            },
+            {
+              "id": "p3",
+              "label": "Radicais livres",
+              "explicacao": "Espécies com eletrões desemparelhados (como Cl· ou ·OH). São muito reativas."
+            },
+            {
+              "id": "p4",
+              "label": "Energia mínima",
+              "explicacao": "Para quebrar uma ligação, o fotão tem de ter pelo menos a energia dessa ligação, por molécula. Para O=O (498 kJ/mol): 498 × 10³ / 6,02 × 10²³ ≈ 8,27 × 10⁻¹⁹ J, o que corresponde a radiação com λ ≤ 240 nm (ultravioleta)."
+            },
+            {
+              "id": "p5",
+              "label": "Exemplos",
+              "explicacao": "Fotossíntese, formação e decomposição do ozono, escurecimento dos sais de prata, desbotamento de corantes, formação de smog fotoquímico."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Energia por molécula = energia por mole / N A",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "E fotão = h c / λ",
+              "significado": "Condição para a reação: E fotão ≥ energia de ligação (por molécula).",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A energia de ligação Cl–Cl é 243 kJ/mol. Qual é a energia mínima de um fotão capaz de quebrar uma ligação Cl–Cl numa molécula?",
+          "opcoes": [
+            "243 J",
+            "4,04 × 10⁻¹⁹ J",
+            "1,46 × 10²⁶ J",
+            "2,43 × 10⁻²¹ J"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. 243 × 10³ J/mol / 6,02 × 10²³ mol⁻¹ ≈ 4,04 × 10⁻¹⁹ J por molécula. Corresponde a luz com λ ≈ 490 nm: luz visível azul-esverdeada consegue quebrar o Cl₂.",
+          "mascote_feedback_errado": "Converte de kJ/mol para J por molécula: 243 000 / 6,02 × 10²³ ≈ 4,04 × 10⁻¹⁹ J."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A bola e o muro.** Imagina que tens de derrubar uma lata em cima de um muro atirando bolas. Bolas leves (luz vermelha, fotões pouco energéticos) batem na lata e não a derrubam, por muitas que atires. Uma bola pesada (luz azul ou ultravioleta, fotões energéticos) derruba-a à primeira. Nas reações fotoquímicas, o que conta não é a quantidade de luz, é a energia de cada fotão. Se nenhum fotão tiver energia suficiente, a reação não acontece."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.4",
+          "titulo": "Reação fotoquímica",
+          "objetivo": "Investigar o efeito da luz sobre o cloreto de prata, relacionando a extensão da reação com a energia da radiação (cor da luz) e com o tempo de exposição.",
+          "material": [
+            "Solução de nitrato de prata, AgNO₃ (aq), diluída (por exemplo, 0,1 mol/dm³)",
+            "Solução de cloreto de sódio, NaCl (aq) (por exemplo, 0,1 mol/dm³)",
+            "Tubos de ensaio ou placas de Petri (ou papel de filtro)",
+            "Filtros de luz de cores diferentes (papel celofane vermelho, verde, azul) ou lâmpadas coloridas",
+            "Folha de alumínio ou caixa escura (para o controlo)",
+            "Fonte de luz (luz solar direta ou lâmpada, idealmente com componente ultravioleta)",
+            "Cronómetro",
+            "Luvas e óculos de proteção (o nitrato de prata mancha a pele de negro)"
+          ],
+          "procedimento": [
+            "Preparar o cloreto de prata: misturar volumes iguais das soluções de AgNO₃ e NaCl. Forma-se um precipitado branco de AgCl: AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq).",
+            "Distribuir o precipitado por vários recipientes (ou impregnar tiras de papel de filtro).",
+            "Tapar um recipiente com folha de alumínio (controlo, sem luz).",
+            "Cobrir os outros com filtros de cores diferentes e deixar um sem filtro.",
+            "Expor todos à mesma fonte de luz, à mesma distância.",
+            "Observar e registar a cor de cada amostra a intervalos regulares (por exemplo, de 2 em 2 minutos)."
+          ],
+          "tratamento_de_dados": "O cloreto de prata escurece com a luz, porque se decompõe e se forma prata metálica finamente dividida (que parece negra ou violeta): 2 AgCl(s) → 2 Ag(s) + Cl₂(g).\n\nComparar a rapidez do escurecimento: a amostra no escuro não muda; a exposta a luz azul (ou sem filtro, com UV) escurece mais depressa; a exposta a luz vermelha escurece muito devagar ou nada.\n\nRelacionar com a energia dos fotões: E = h c / λ. Luz azul e ultravioleta têm fotões mais energéticos.\n\nRelacionar com o tempo: quanto maior a exposição, maior a quantidade de AgCl decomposto.",
+          "conclusao": "A decomposição do cloreto de prata é uma reação fotoquímica: só ocorre com luz, e é mais rápida com radiação de maior energia (menor comprimento de onda). Este processo foi a base da fotografia tradicional e explica porque é que algumas substâncias se guardam em frascos escuros.",
+          "erros_comuns": [
+            "Não usar um controlo no escuro: sem ele, não se pode afirmar que foi a luz a causar o escurecimento.",
+            "Expor as amostras a condições diferentes de distância, intensidade ou tempo (as variáveis têm de ser controladas).",
+            "Concluir que \"mais luz\" é sempre mais eficaz, independentemente da cor.",
+            "Deitar os resíduos de prata no lava-loiça: vão para o recipiente de resíduos de metais pesados."
+          ],
+          "seguranca": "O nitrato de prata é corrosivo e mancha a pele e a roupa. Usar luvas e óculos. Não olhar diretamente para fontes de luz ultravioleta."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Frascos escuros e lentes fotocromáticas",
+          "texto": "**Porque é que os medicamentos vêm em frascos escuros**\n\nMuitas substâncias sofrem reações fotoquímicas que as degradam. O vidro âmbar absorve a radiação ultravioleta e a luz de menor comprimento de onda, protegendo o conteúdo. O mesmo acontece com a água oxigenada, algumas vitaminas e alguns vinhos.\n\n**As lentes fotocromáticas**\n\nAlgumas lentes de óculos escurecem ao sol e clareiam à sombra. Contêm pequenas quantidades de cloreto de prata (ou compostos orgânicos) que reagem com a radiação ultravioleta de forma reversível."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Uma reação fotoquímica é:",
+              "opcoes": [
+                "uma reação que liberta luz.",
+                "uma reação desencadeada pela absorção de luz.",
+                "uma reação que só ocorre no escuro.",
+                "qualquer reação exotérmica."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Nas reações fotoquímicas, os fotões absorvidos fornecem a energia necessária para a reação ocorrer.",
+              "mascote_feedback_errado": "Nas reações fotoquímicas, os fotões absorvidos fornecem a energia necessária para a reação ocorrer."
+            },
+            {
+              "pergunta": "Na AL 2.4, o cloreto de prata escurece mais depressa com:",
+              "opcoes": [
+                "luz vermelha.",
+                "luz azul ou violeta.",
+                "no escuro.",
+                "luz infravermelha."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A luz azul e violeta têm fotões com mais energia do que a vermelha, e provocam a decomposição mais rapidamente.",
+              "mascote_feedback_errado": "A luz azul e violeta têm fotões com mais energia do que a vermelha, e provocam a decomposição mais rapidamente."
+            },
+            {
+              "pergunta": "O que é um radical livre?",
+              "opcoes": [
+                "Um ião positivo.",
+                "Uma espécie química com eletrão(ões) desemparelhado(s), muito reativa.",
+                "Um gás nobre.",
+                "Uma molécula com ligação tripla."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os radicais livres têm eletrões desemparelhados e reagem facilmente com outras espécies. Representam-se com um ponto (Cl·, ·OH).",
+              "mascote_feedback_errado": "Os radicais livres têm eletrões desemparelhados e reagem facilmente com outras espécies. Representam-se com um ponto (Cl·, ·OH)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "ozono-estratosfera-troposfera",
+      "titulo": "O ozono na estratosfera e na troposfera",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_buraco_ozono.png",
+          "imagem_legenda": "Mapa do buraco do ozono sobre a Antártida (redesenhado).",
+          "texto": "Em 1985, cientistas britânicos na Antártida descobriram que a camada de ozono por cima do continente estava a desaparecer todas as primaveras. A causa eram gases usados em frigoríficos e aerossóis: os CFCs. Dois anos depois, quase todos os países do mundo assinaram o Protocolo de Montreal, que os proibiu. É considerado o acordo ambiental internacional mais bem-sucedido da história, e a camada de ozono está a recuperar.",
+          "mascote_texto": "O ozono é \"bom lá em cima e mau cá em baixo\". No fim desta secção vais perceber exatamente porquê."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O ciclo do ozono na estratosfera",
+          "imagem": "q10_ciclo_ozono.png",
+          "imagem_legenda": "Formação e decomposição do ozono na estratosfera.",
+          "texto_principal": "Na estratosfera, o ozono (O₃) forma-se e decompõe-se continuamente por reações fotoquímicas. Neste ciclo, a radiação ultravioleta mais perigosa é absorvida e a sua energia é convertida em energia térmica. A concentração de ozono mantém-se aproximadamente constante (equilíbrio dinâmico), formando a camada de ozono que filtra a radiação UV.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Fotodissociação do O₂",
+              "explicacao": "O₂ + radiação UV (λ < 240 nm) → 2 O."
+            },
+            {
+              "id": "p2",
+              "label": "Formação do O₃",
+              "explicacao": "O + O₂ → O₃."
+            },
+            {
+              "id": "p3",
+              "label": "Decomposição do O₃",
+              "explicacao": "O₃ + radiação UV (λ < 320 nm) → O₂ + O."
+            },
+            {
+              "id": "p4",
+              "label": "Equilíbrio dinâmico",
+              "explicacao": "Formação e decomposição ocorrem ao mesmo ritmo. A radiação UV é absorvida nos dois processos."
+            },
+            {
+              "id": "p5",
+              "label": "Proteção",
+              "explicacao": "A camada de ozono absorve quase toda a UV-C e grande parte da UV-B, que causam queimaduras, cancro de pele, cataratas e danos no ADN."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "O₂ → 2 O",
+              "significado": "Com UV, λ < 240 nm.",
+              "unidades": ""
+            },
+            {
+              "expressao": "O + O₂ → O₃",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "O₃ → O₂ + O",
+              "significado": "Com UV, λ < 320 nm.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Destruição do ozono pelos CFCs",
+          "imagem": "q10_cfc_radicais.png",
+          "imagem_legenda": "Ciclo catalítico de destruição do ozono pelo radical Cl·.",
+          "texto_principal": "Os clorofluorocarbonetos (CFCs) são compostos muito estáveis, que chegam intactos à estratosfera. Lá, a radiação ultravioleta quebra-os e liberta radicais de cloro (Cl·), que destroem o ozono numa reação em cadeia. O cloro não se gasta: é regenerado no fim de cada ciclo.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Libertação do radical",
+              "explicacao": "CCl₂F₂ + UV → ·CClF₂ + Cl·"
+            },
+            {
+              "id": "p2",
+              "label": "Destruição do ozono",
+              "explicacao": "Cl· + O₃ → ClO· + O₂"
+            },
+            {
+              "id": "p3",
+              "label": "Regeneração do radical",
+              "explicacao": "ClO· + O → Cl· + O₂"
+            },
+            {
+              "id": "p4",
+              "label": "Balanço",
+              "explicacao": "O₃ + O → 2 O₂. O Cl· funciona como catalisador: acelera a destruição e não é consumido."
+            },
+            {
+              "id": "p5",
+              "label": "Buraco do ozono",
+              "explicacao": "Acentua-se todas as primaveras sobre a Antártida, por causa das nuvens estratosféricas polares, onde as reações que libertam cloro são mais eficientes."
+            },
+            {
+              "id": "p6",
+              "label": "Protocolo de Montreal (1987)",
+              "explicacao": "Proibiu progressivamente os CFCs. A camada de ozono está a recuperar, e prevê-se que volte aos níveis de 1980 por volta de meados deste século (sobre a Antártida, por volta de 2066)."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O ozono junto ao solo",
+          "imagem": "q10_smog_fotoquimico.png",
+          "imagem_legenda": "Cidade com smog e formação de ozono troposférico.",
+          "texto_principal": "Junto ao solo, na troposfera, o ozono é um poluente. Forma-se a partir de poluentes emitidos pelos veículos e pela indústria, em reações fotoquímicas que precisam de luz solar. É um componente do smog fotoquímico e irrita os olhos e as vias respiratórias.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Formação",
+              "explicacao": "NO₂ + luz solar → NO + O; depois O + O₂ → O₃."
+            },
+            {
+              "id": "p2",
+              "label": "Quando",
+              "explicacao": "Dias quentes e soalheiros, sem vento, em zonas com muito tráfego."
+            },
+            {
+              "id": "p3",
+              "label": "Efeitos",
+              "explicacao": "Irritação dos olhos e da garganta, agravamento da asma, danos nas plantas e nas culturas."
+            },
+            {
+              "id": "p4",
+              "label": "A mesma molécula, papéis opostos",
+              "explicacao": "Na estratosfera, o ozono protege-nos da radiação UV. Na troposfera, é tóxico para os seres vivos. E o ozono de baixo não sobe para \"reparar\" o buraco de cima."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "No ciclo de destruição do ozono pelos CFCs, porque é que um só átomo de cloro destrói tantas moléculas de ozono?",
+          "opcoes": [
+            "Porque o cloro é muito pesado.",
+            "Porque o radical Cl· é regenerado no fim de cada ciclo e volta a reagir.",
+            "Porque o cloro se transforma em ozono.",
+            "Porque o cloro absorve toda a radiação UV."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Cl· + O₃ → ClO· + O₂ e depois ClO· + O → Cl· + O₂. O Cl· sai como entrou e pode repetir o ciclo dezenas de milhares de vezes.",
+          "mascote_feedback_errado": "O radical Cl· atua como catalisador: consome-se na primeira reação, mas é regenerado na segunda. Por isso pode destruir muitas moléculas de O₃."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que o ozono é considerado um poluente na troposfera, mas benéfico na estratosfera?",
+          "opcoes": [
+            "Porque na troposfera é outra substância.",
+            "Porque na estratosfera absorve a radiação UV e protege-nos, mas junto ao solo é tóxico para os seres vivos.",
+            "Porque na troposfera não absorve luz.",
+            "Porque na estratosfera não existe oxigénio."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. É a mesma molécula, O₃. O que muda é o sítio: lá em cima filtra a radiação UV; cá em baixo respiramo-lo e irrita os tecidos.",
+          "mascote_feedback_errado": "O ozono é sempre O₃. Na estratosfera, a sua capacidade de absorver UV protege a vida. Junto ao solo, respiramo-lo, e é tóxico e irritante."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O porteiro que nunca se cansa.** Imagina uma discoteca (a camada de ozono) com um segurança mal-intencionado lá dentro (o radical de cloro). Ele expulsa um cliente (destrói uma molécula de ozono), volta à porta e expulsa outro, e outro, sem nunca se cansar nem sair do edifício. Um único segurança destes esvazia a discoteca. É por isso que bastaram quantidades pequenas de CFCs para abrir o buraco do ozono, e por isso foi tão importante deixar de os produzir."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "CFCs e o índice UV",
+          "texto": "**Porque é que os CFCs eram tão usados**\n\nOs CFCs não são tóxicos, não ardem e são muito estáveis. Eram perfeitos para frigoríficos, ar condicionado, aerossóis e espumas isolantes. A estabilidade, que parecia uma vantagem, é precisamente o que lhes permite chegar à estratosfera sem se decompor.\n\n**Os CFCs são haloalcanos**\n\nOs CFCs derivam de alcanos (como o metano) em que os hidrogénios foram substituídos por cloro e flúor. Ex.: diclorodifluorometano, CCl₂F₂. Hoje foram substituídos por outros compostos, sem cloro, que não destroem o ozono, embora alguns sejam gases de efeito de estufa potentes e estejam também a ser reduzidos.\n\n**O índice UV**\n\nO índice UV previsto pelo IPMA indica a intensidade da radiação ultravioleta que chega à superfície. Em Portugal, no verão, atinge frequentemente valores de 9 a 10 (muito alto). Depende da altura do Sol, das nuvens e da quantidade de ozono na estratosfera."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na estratosfera, o ozono forma-se pela reação:",
+              "opcoes": [
+                "O₂ + O₂ → O₃ + O",
+                "O + O₂ → O₃",
+                "O₃ + Cl → O₂",
+                "CO₂ + O → O₃ + C"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Primeiro o O₂ é fotodissociado em átomos O; depois um átomo O liga-se a uma molécula O₂ e forma O₃.",
+              "mascote_feedback_errado": "Primeiro o O₂ é fotodissociado em átomos O; depois um átomo O liga-se a uma molécula O₂ e forma O₃."
+            },
+            {
+              "pergunta": "Os CFCs destroem o ozono porque:",
+              "opcoes": [
+                "são tóxicos.",
+                "libertam radicais de cloro quando são decompostos pela radiação UV na estratosfera.",
+                "absorvem toda a luz visível.",
+                "reagem com o azoto."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A radiação UV quebra as ligações C–Cl dos CFCs e liberta Cl·, que destrói o ozono num ciclo catalítico.",
+              "mascote_feedback_errado": "A radiação UV quebra as ligações C–Cl dos CFCs e liberta Cl·, que destrói o ozono num ciclo catalítico."
+            },
+            {
+              "pergunta": "O Protocolo de Montreal (1987):",
+              "opcoes": [
+                "incentivou a produção de CFCs.",
+                "proibiu progressivamente os CFCs e outras substâncias que destroem o ozono.",
+                "tratou apenas do dióxido de carbono.",
+                "foi assinado só por países europeus."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O Protocolo de Montreal, ratificado por todos os países da ONU, eliminou progressivamente as substâncias que destroem a camada de ozono, que está agora a recuperar.",
+              "mascote_feedback_errado": "O Protocolo de Montreal, ratificado por todos os países da ONU, eliminou progressivamente as substâncias que destroem a camada de ozono, que está agora a recuperar."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 6 concluída, e com ela toda a Química do 10.º ano. Distingues reações exotérmicas de endotérmicas, calculas ΔH a partir de energias de ligação, explicas as reações fotoquímicas e a química do ozono, e fizeste as sete atividades laboratoriais do ano. No 11.º ano, a Química continua com reações em equilíbrio, ácidos e bases, oxidação-redução e solubilidade."
+}

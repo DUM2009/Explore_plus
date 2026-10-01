@@ -1,0 +1,919 @@
+{
+  "missao_id": "11-oxidacao-reducao",
+  "id_guiao": "qui11-m4",
+  "titulo": "Reações de oxidação-redução",
+  "disciplina": "quimica",
+  "ano": 11,
+  "imagem": "q11_ferrugem_ouro.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 2 3 14h7l-1 8 10-12h-7z\"/></svg>",
+    "nome": "Mestre Redox"
+  },
+  "secoes": [
+    {
+      "secao_id": "oxidacao-reducao-numeros-oxidacao",
+      "titulo": "Oxidação, redução e números de oxidação",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_ferrugem_ouro.png",
+          "imagem_legenda": "Âncora enferrujada ao lado de uma moeda de ouro brilhante.",
+          "texto": "Uma âncora de ferro abandonada no mar fica coberta de ferrugem em poucos anos. Uma moeda de ouro de um naufrágio de há 300 anos sai do fundo do mar a brilhar como nova. A respiração, a combustão, a ferrugem, as pilhas e a fotossíntese têm algo em comum: são reações em que há eletrões a passar de uma espécie para outra.",
+          "mascote_texto": "Truque para não te enganares: na oxidação, o número de oxidação sobe; na redução, desce. Redução reduz o número."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Transferência de eletrões",
+          "imagem": "q11_zinco_cobre.png",
+          "imagem_legenda": "Lâmina de zinco em sulfato de cobre e transferência de eletrões.",
+          "texto_principal": "As reações de oxidação-redução (redox) são reações de transferência de eletrões. A espécie que perde eletrões sofre oxidação; a que ganha eletrões sofre redução. As duas acontecem sempre ao mesmo tempo: os eletrões que uma perde, a outra ganha.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Oxidação",
+              "explicacao": "Perda de eletrões. Ex.: Zn → Zn²⁺ + 2 e⁻."
+            },
+            {
+              "id": "p2",
+              "label": "Redução",
+              "explicacao": "Ganho de eletrões. Ex.: Cu²⁺ + 2 e⁻ → Cu."
+            },
+            {
+              "id": "p3",
+              "label": "Espécie oxidada e espécie reduzida",
+              "explicacao": "Espécie oxidada: a que sofreu oxidação (Zn). Espécie reduzida: a que sofreu redução (Cu²⁺)."
+            },
+            {
+              "id": "p4",
+              "label": "Redutor",
+              "explicacao": "A espécie que cede eletrões e provoca a redução de outra. É a espécie que se oxida (Zn)."
+            },
+            {
+              "id": "p5",
+              "label": "Oxidante",
+              "explicacao": "A espécie que aceita eletrões e provoca a oxidação de outra. É a espécie que se reduz (Cu²⁺)."
+            },
+            {
+              "id": "p6",
+              "label": "Pares redox (oxidante/redutor conjugados)",
+              "explicacao": "Cu²⁺/Cu; Zn²⁺/Zn. Cada par tem uma forma oxidada e uma forma reduzida."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Números de oxidação",
+          "imagem": "q11_numeros_oxidacao.png",
+          "imagem_legenda": "Regras dos números de oxidação com exemplos.",
+          "texto_principal": "O número de oxidação (n.o.) é a carga que um átomo teria se todas as ligações fossem iónicas. Permite identificar oxidações e reduções mesmo quando não há iões evidentes: se o n.o. de um elemento aumenta, ele oxida-se; se diminui, reduz-se.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Substâncias elementares",
+              "explicacao": "n.o. = 0 (Zn, O₂, H₂, Cl₂)."
+            },
+            {
+              "id": "p2",
+              "label": "Iões monoatómicos",
+              "explicacao": "n.o. = carga do ião (Na⁺: +1; Cl⁻: −1; Fe³⁺: +3)."
+            },
+            {
+              "id": "p3",
+              "label": "Oxigénio",
+              "explicacao": "Em geral −2 (nos peróxidos, como H₂O₂, é −1)."
+            },
+            {
+              "id": "p4",
+              "label": "Hidrogénio",
+              "explicacao": "Em geral +1 (nos hidretos metálicos, como NaH, é −1)."
+            },
+            {
+              "id": "p5",
+              "label": "Metais alcalinos, alcalinoterrosos e flúor",
+              "explicacao": "Metais alcalinos: +1. Metais alcalinoterrosos: +2. Flúor: sempre −1."
+            },
+            {
+              "id": "p6",
+              "label": "Soma",
+              "explicacao": "Numa espécie neutra, a soma dos n.o. é 0; num ião poliatómico, é igual à carga do ião."
+            },
+            {
+              "id": "p7",
+              "label": "Exemplo",
+              "explicacao": "No ião MnO₄⁻: x + 4 × (−2) = −1, logo x = +7."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Oxidação: aumento do n.o.",
+              "significado": "Perda de eletrões.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Redução: diminuição do n.o.",
+              "significado": "Ganho de eletrões.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Σ n.o. = carga da espécie",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é o número de oxidação do crómio no ião dicromato, Cr₂O₇²⁻?",
+          "opcoes": [
+            "+3",
+            "+6",
+            "+7",
+            "+12"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. 2x + 7 × (−2) = −2, logo 2x = 12 e x = +6.",
+          "mascote_feedback_errado": "A soma dos n.o. é igual à carga do ião: 2x + 7 × (−2) = −2. 2x − 14 = −2, logo x = +6."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na reação Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), qual é o oxidante?",
+          "opcoes": [
+            "Zn",
+            "Cu²⁺",
+            "Zn²⁺",
+            "Cu"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O Cu²⁺ ganha eletrões (n.o. de +2 para 0): reduz-se, e por isso é o oxidante (provoca a oxidação do zinco).",
+          "mascote_feedback_errado": "O oxidante é a espécie que se reduz. O cobre passa de +2 (Cu²⁺) para 0 (Cu): ganhou eletrões. O Cu²⁺ é o oxidante; o Zn é o redutor."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O assaltante e a vítima.** Pensa no redutor como uma pessoa generosa que dá dinheiro (eletrões) e no oxidante como alguém que o recebe. Parece estranho, mas o nome vem do efeito que cada um tem no outro: quem dá o dinheiro \"reduz\" o outro (provoca a sua redução) e quem o recebe \"oxida\" o primeiro. E, como em qualquer troca de dinheiro, não pode haver alguém a receber sem alguém a dar: a oxidação e a redução acontecem sempre juntas."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Origem das palavras e um erro comum",
+          "texto": "**Origem das palavras**\n\n\"Oxidação\" vem de \"combinar com oxigénio\": o ferro que enferruja, o carvão que arde. Mais tarde percebeu-se que o essencial era a perda de eletrões, e o conceito alargou-se a reações sem oxigénio. \"Redução\" vem da metalurgia: ao extrair um metal do minério, a massa do sólido \"reduzia-se\".\n\n**Erro comum**\n\nDizer que o oxidante \"se oxida\". É ao contrário: o oxidante reduz-se (ganha eletrões) e o redutor oxida-se (perde eletrões)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Numa reação redox, o redutor é a espécie que:",
+              "opcoes": [
+                "ganha eletrões e se reduz.",
+                "perde eletrões e se oxida.",
+                "não muda de número de oxidação.",
+                "é sempre o oxigénio."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O redutor cede eletrões à outra espécie (reduzindo-a), e por isso oxida-se.",
+              "mascote_feedback_errado": "O redutor cede eletrões à outra espécie (reduzindo-a), e por isso oxida-se."
+            },
+            {
+              "pergunta": "Qual é o número de oxidação do azoto no ião amónio, NH₄⁺?",
+              "opcoes": [
+                "+3",
+                "−3",
+                "+5",
+                "+4"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "x + 4 × (+1) = +1, logo x = −3.",
+              "mascote_feedback_errado": "x + 4 × (+1) = +1, logo x = −3."
+            },
+            {
+              "pergunta": "Na reação 2 Mg + O₂ → 2 MgO, o que acontece ao magnésio?",
+              "opcoes": [
+                "Reduz-se: n.o. de 0 para −2.",
+                "Oxida-se: n.o. de 0 para +2.",
+                "Não sofre alteração.",
+                "É o oxidante."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "No MgO, o Mg tem n.o. +2 (o O tem −2). Passou de 0 para +2: perdeu eletrões, oxidou-se. O O₂ é o oxidante.",
+              "mascote_feedback_errado": "No MgO, o Mg tem n.o. +2 (o O tem −2). Passou de 0 para +2: perdeu eletrões, oxidou-se. O O₂ é o oxidante."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "semirreacoes-acido-metal",
+      "titulo": "Semirreações e reação ácido-metal",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_magnesio_acido.png",
+          "imagem_legenda": "Fita de magnésio a borbulhar em ácido ao lado de fio de cobre sem reação.",
+          "texto": "Deixa cair uma fita de magnésio em ácido clorídrico e a solução começa logo a borbulhar: liberta-se hidrogénio, e a fita desaparece em segundos. Faz o mesmo com um fio de cobre e não acontece nada. Os dois são metais, os dois estão no mesmo ácido. A diferença está na facilidade com que cada um cede eletrões.",
+          "mascote_texto": "Separar uma reação redox em duas semirreações é a melhor forma de a perceber (e de a acertar)."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Semirreações",
+          "imagem": "q11_semirreacoes.png",
+          "imagem_legenda": "Reação Mg + H₃O⁺ separada em semirreações.",
+          "texto_principal": "Uma reação redox pode ser escrita como a soma de duas semirreações: uma de oxidação (com os eletrões nos produtos) e outra de redução (com os eletrões nos reagentes). Para somar, o número de eletrões cedidos tem de ser igual ao número de eletrões recebidos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Semirreação de oxidação",
+              "explicacao": "Eletrões do lado dos produtos. Ex.: Mg → Mg²⁺ + 2 e⁻."
+            },
+            {
+              "id": "p2",
+              "label": "Semirreação de redução",
+              "explicacao": "Eletrões do lado dos reagentes. Ex.: 2 H₃O⁺ + 2 e⁻ → H₂ + 2 H₂O (ou, de forma simplificada, 2 H⁺ + 2 e⁻ → H₂)."
+            },
+            {
+              "id": "p3",
+              "label": "Acertar os eletrões",
+              "explicacao": "Multiplicar as semirreações por fatores que igualem os eletrões. Ex.: Al → Al³⁺ + 3 e⁻ (× 2) e 2 H⁺ + 2 e⁻ → H₂ (× 3)."
+            },
+            {
+              "id": "p4",
+              "label": "Reação ácido-metal",
+              "explicacao": "Metais com poder redutor maior do que o hidrogénio (Mg, Al, Zn, Fe) reduzem os iões H₃O⁺ do ácido e libertam H₂. Metais menos redutores do que o hidrogénio (Cu, Ag, Au) não reagem com ácidos como o HCl."
+            },
+            {
+              "id": "p5",
+              "label": "Na reação ácido-metal",
+              "explicacao": "O metal é o redutor (oxida-se) e o H₃O⁺ é o oxidante (reduz-se a H₂)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "M(s) + n H₃O⁺(aq) → Mⁿ⁺(aq) + (n/2) H₂(g) + n H₂O(l)",
+              "significado": "Reação ácido-metal (metal M com carga n+).",
+              "unidades": ""
+            },
+            {
+              "expressao": "Eletrões cedidos = eletrões recebidos",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a semirreação de oxidação na reação Fe(s) + 2 H₃O⁺(aq) → Fe²⁺(aq) + H₂(g) + 2 H₂O(l)?",
+          "opcoes": [
+            "2 H₃O⁺ + 2 e⁻ → H₂ + 2 H₂O",
+            "Fe → Fe²⁺ + 2 e⁻",
+            "Fe²⁺ + 2 e⁻ → Fe",
+            "H₂ → 2 H⁺ + 2 e⁻"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O ferro passa de 0 para +2: perde 2 eletrões. Na semirreação de oxidação, os eletrões aparecem nos produtos.",
+          "mascote_feedback_errado": "A oxidação é a perda de eletrões. O Fe passa a Fe²⁺: Fe → Fe²⁺ + 2 e⁻. A outra é a semirreação de redução."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual dos metais NÃO reage com ácido clorídrico diluído, libertando hidrogénio?",
+          "opcoes": [
+            "Magnésio",
+            "Zinco",
+            "Ferro",
+            "Cobre"
+          ],
+          "correta": 3,
+          "mascote_feedback_certo": "Exato. O cobre tem menor poder redutor do que o hidrogénio: não consegue reduzir o H₃O⁺. Por isso os canos de cobre resistem bem.",
+          "mascote_feedback_errado": "Só reagem com os ácidos os metais com maior poder redutor do que o hidrogénio. Mg, Zn e Fe reagem; o cobre não."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O empréstimo bancário.** Numa transferência bancária, o banco regista duas operações: o débito numa conta e o crédito noutra. Separadas, cada uma parece incompleta. Juntas, formam a transferência, e o dinheiro que sai de uma conta é exatamente o que entra na outra. As semirreações são estas duas linhas do extrato: a oxidação é o débito de eletrões, a redução é o crédito. Para a \"transferência\" estar certa, os valores têm de bater."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Corrosão do ferro e proteção",
+          "texto": "**Corrosão do ferro**\n\nA ferrugem forma-se quando o ferro se oxida na presença de água e oxigénio. De forma simplificada: o Fe oxida-se a Fe²⁺ e depois a Fe³⁺, e o O₂ reduz-se. A ferrugem é um óxido de ferro(III) hidratado, poroso, que se desprende e expõe mais ferro. A água salgada acelera muito o processo.\n\n**Proteção contra a corrosão**\n\nPintar ou revestir o metal (impede o contacto com água e O₂).\n\nGalvanização: revestir o ferro com zinco, que se oxida primeiro.\n\nÂnodo de sacrifício: nos cascos dos navios e nas tubagens enterradas, prendem-se blocos de magnésio ou zinco, que se oxidam em vez do ferro.\n\nAço inoxidável: liga com crómio, que forma uma camada protetora de óxido."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na reação 2 Al(s) + 6 H₃O⁺(aq) → 2 Al³⁺(aq) + 3 H₂(g) + 6 H₂O(l), quantos eletrões são transferidos no total?",
+              "opcoes": [
+                "2",
+                "3",
+                "6",
+                "12"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Cada Al perde 3 eletrões; 2 Al perdem 6. Os 6 H₃O⁺ ganham esses 6 eletrões e formam 3 H₂.",
+              "mascote_feedback_errado": "Cada Al perde 3 eletrões; 2 Al perdem 6. Os 6 H₃O⁺ ganham esses 6 eletrões e formam 3 H₂."
+            },
+            {
+              "pergunta": "Na reação ácido-metal, o ião H₃O⁺ atua como:",
+              "opcoes": [
+                "redutor.",
+                "oxidante.",
+                "base.",
+                "catalisador."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O H₃O⁺ ganha eletrões e é reduzido a H₂: é o oxidante.",
+              "mascote_feedback_errado": "O H₃O⁺ ganha eletrões e é reduzido a H₂: é o oxidante."
+            },
+            {
+              "pergunta": "A galvanização protege o ferro porque:",
+              "opcoes": [
+                "o zinco é menos redutor do que o ferro.",
+                "o zinco é mais redutor do que o ferro e oxida-se em vez dele.",
+                "o zinco é um ácido.",
+                "o zinco absorve a água."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O zinco tem maior poder redutor: é ele que se oxida, protegendo o ferro.",
+              "mascote_feedback_errado": "O zinco tem maior poder redutor: é ele que se oxida, protegendo o ferro."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "serie-eletroquimica-al-2-3",
+      "titulo": "Série eletroquímica; AL 2.3",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_arvore_prata.png",
+          "imagem_legenda": "Fio de cobre com cristais de prata numa solução azulada.",
+          "texto": "Mergulha um fio de cobre numa solução incolor de nitrato de prata e espera alguns minutos. No fio começam a crescer cristais brilhantes de prata, como uma pequena árvore de Natal, e a solução fica azul. O cobre \"empurrou\" a prata para fora da solução. Mas se puseres prata numa solução de cobre, não acontece nada. Existe uma ordem entre os metais, e é possível descobri-la no laboratório.",
+          "mascote_texto": "Com a série eletroquímica consegues prever se uma reação entre um metal e um ião metálico acontece, sem a fazer."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A série eletroquímica",
+          "imagem": "q11_serie_eletroquimica.png",
+          "imagem_legenda": "Série eletroquímica vertical com setas de poder redutor e oxidante.",
+          "texto_principal": "A série eletroquímica ordena os metais (e os seus catiões) de acordo com o seu poder redutor. Um metal com maior poder redutor reduz os catiões de um metal com menor poder redutor. Quanto mais forte é um redutor, mais fraco é o oxidante conjugado (o seu catião).",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ordem de poder redutor (do maior para o menor)",
+              "explicacao": "K > Na > Mg > Al > Zn > Fe > Pb > H₂ > Cu > Ag > Au."
+            },
+            {
+              "id": "p2",
+              "label": "Regra de previsão",
+              "explicacao": "Um metal reage com os catiões de qualquer metal que esteja abaixo dele na série."
+            },
+            {
+              "id": "p3",
+              "label": "Exemplo que ocorre",
+              "explicacao": "Zn + Cu²⁺ → Zn²⁺ + Cu (o zinco está acima do cobre)."
+            },
+            {
+              "id": "p4",
+              "label": "Exemplo que não ocorre",
+              "explicacao": "Cu + Zn²⁺ → não há reação (o cobre está abaixo do zinco)."
+            },
+            {
+              "id": "p5",
+              "label": "Pares conjugados",
+              "explicacao": "O K é o redutor mais forte e o K⁺ o oxidante mais fraco. O Au é o redutor mais fraco e o Au³⁺ um oxidante forte."
+            },
+            {
+              "id": "p6",
+              "label": "Metais nobres",
+              "explicacao": "Cu, Ag e Au têm pouco poder redutor: não reagem com os ácidos comuns nem se oxidam facilmente. Por isso se usam em joalharia e em contactos elétricos."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Metal A reage com o catião do metal B se A estiver acima de B na série eletroquímica.",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Redutor forte ↔ oxidante conjugado fraco",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destas reações ocorre espontaneamente?",
+          "opcoes": [
+            "Cu(s) + Fe²⁺(aq) → Cu²⁺(aq) + Fe(s)",
+            "Fe(s) + Cu²⁺(aq) → Fe²⁺(aq) + Cu(s)",
+            "2 Ag(s) + Zn²⁺(aq) → 2 Ag⁺(aq) + Zn(s)",
+            "Cu(s) + 2 H₃O⁺(aq) → Cu²⁺(aq) + H₂(g) + 2 H₂O(l)"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O ferro tem maior poder redutor do que o cobre e reduz os iões Cu²⁺. É por isso que um prego de ferro numa solução de sulfato de cobre fica revestido de cobre.",
+          "mascote_feedback_errado": "Verifica a série: Fe está acima de Cu. O ferro reduz o Cu²⁺, mas o cobre não reduz o Fe²⁺. A prata está abaixo do zinco e o cobre abaixo do hidrogénio: essas reações não ocorrem."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na \"árvore de prata\", Cu(s) + 2 Ag⁺(aq) → Cu²⁺(aq) + 2 Ag(s), porque é que a solução fica azul?",
+          "opcoes": [
+            "Porque a prata é azul.",
+            "Porque se formam iões Cu²⁺, que são azuis em solução.",
+            "Porque o nitrato é azul.",
+            "Porque a temperatura aumenta."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O cobre oxida-se a Cu²⁺, que dá cor azul à solução. A prata deposita-se no fio.",
+          "mascote_feedback_errado": "O cobre metálico oxida-se e passa para a solução como Cu²⁺, que tem cor azul em solução aquosa."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_serie_eletroquimica",
+          "titulo": "Metal na solução",
+          "instrucao": "Escolhe um metal e uma solução de um sal de outro metal. Faz a tua previsão (reage ou não reage) e depois confirma o resultado. Ordem usada (poder redutor): Mg > Zn > Fe > Pb > Cu > Ag.",
+          "controlos": [
+            {
+              "id": "metal",
+              "rotulo": "Metal mergulhado",
+              "opcoes": [
+                {
+                  "valor": "Mg",
+                  "label": "Mg"
+                },
+                {
+                  "valor": "Zn",
+                  "label": "Zn"
+                },
+                {
+                  "valor": "Fe",
+                  "label": "Fe"
+                },
+                {
+                  "valor": "Pb",
+                  "label": "Pb"
+                },
+                {
+                  "valor": "Cu",
+                  "label": "Cu"
+                },
+                {
+                  "valor": "Ag",
+                  "label": "Ag"
+                }
+              ]
+            },
+            {
+              "id": "solucao",
+              "rotulo": "Solução",
+              "opcoes": [
+                {
+                  "valor": "Mg",
+                  "label": "MgSO₄"
+                },
+                {
+                  "valor": "Zn",
+                  "label": "ZnSO₄"
+                },
+                {
+                  "valor": "Fe",
+                  "label": "FeSO₄"
+                },
+                {
+                  "valor": "Pb",
+                  "label": "Pb(NO₃)₂"
+                },
+                {
+                  "valor": "Cu",
+                  "label": "CuSO₄"
+                },
+                {
+                  "valor": "Ag",
+                  "label": "AgNO₃"
+                }
+              ],
+              "valor_inicial": "Cu"
+            },
+            {
+              "id": "previsao",
+              "rotulo": "A tua previsão",
+              "opcoes": [
+                {
+                  "valor": "nada",
+                  "label": "Ainda não previ"
+                },
+                {
+                  "valor": "sim",
+                  "label": "Vai reagir"
+                },
+                {
+                  "valor": "nao",
+                  "label": "Não vai reagir"
+                }
+              ]
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "A tua previsão",
+              "formula": "(function () { var r = dados.p[metal + '|' + solucao]; if (previsao === 'nada') return 'Escolhe primeiro a tua previsão.'; var certa = (previsao === 'sim') === r.reage; return certa ? 'Previsão certa.' : 'Previsão errada: ' + (r.reage ? 'há reação.' : 'não há reação.'); })()"
+            },
+            {
+              "rotulo": "Resultado",
+              "formula": "dados.p[metal + '|' + solucao].resultado"
+            },
+            {
+              "rotulo": "Equação iónica",
+              "formula": "dados.p[metal + '|' + solucao].equacao"
+            },
+            {
+              "rotulo": "Oxidante e redutor",
+              "formula": "dados.p[metal + '|' + solucao].papeis"
+            },
+            {
+              "rotulo": "Semirreações",
+              "formula": "dados.p[metal + '|' + solucao].semi"
+            },
+            {
+              "rotulo": "O que se observa",
+              "formula": "dados.p[metal + '|' + solucao].observacao"
+            }
+          ],
+          "pergunta_final": "Com estes seis metais, quantas combinações metal-solução dão reação? Resposta esperada: 15 (cada metal reage com as soluções dos metais abaixo dele: 5 + 4 + 3 + 2 + 1).",
+          "dados": {
+            "p": {
+              "Mg|Mg": {
+                "reage": false,
+                "resultado": "Não há reação: o Mg está mergulhado numa solução dos seus próprios iões (Mg²⁺).",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a solução continua incolor."
+              },
+              "Mg|Zn": {
+                "reage": true,
+                "resultado": "Há reação: o Mg está acima do Zn na série e reduz os iões Zn²⁺.",
+                "equacao": "Mg(s) + Zn²⁺(aq) → Mg²⁺(aq) + Zn(s)",
+                "papeis": "Redutor: Mg (oxida-se). Oxidante: Zn²⁺ (reduz-se).",
+                "semi": "Oxidação: Mg → Mg²⁺ + 2 e⁻. Redução: Zn²⁺ + 2 e⁻ → Zn.",
+                "observacao": "Forma-se um depósito cinzento-escuro de zinco sobre a lâmina de Mg."
+              },
+              "Mg|Fe": {
+                "reage": true,
+                "resultado": "Há reação: o Mg está acima do Fe na série e reduz os iões Fe²⁺.",
+                "equacao": "Mg(s) + Fe²⁺(aq) → Mg²⁺(aq) + Fe(s)",
+                "papeis": "Redutor: Mg (oxida-se). Oxidante: Fe²⁺ (reduz-se).",
+                "semi": "Oxidação: Mg → Mg²⁺ + 2 e⁻. Redução: Fe²⁺ + 2 e⁻ → Fe.",
+                "observacao": "Forma-se um depósito escuro de ferro sobre a lâmina de Mg. A cor verde muito clara da solução vai desaparecendo (sai Fe²⁺)."
+              },
+              "Mg|Pb": {
+                "reage": true,
+                "resultado": "Há reação: o Mg está acima do Pb na série e reduz os iões Pb²⁺.",
+                "equacao": "Mg(s) + Pb²⁺(aq) → Mg²⁺(aq) + Pb(s)",
+                "papeis": "Redutor: Mg (oxida-se). Oxidante: Pb²⁺ (reduz-se).",
+                "semi": "Oxidação: Mg → Mg²⁺ + 2 e⁻. Redução: Pb²⁺ + 2 e⁻ → Pb.",
+                "observacao": "Formam-se cristais cinzentos de chumbo sobre a lâmina de Mg."
+              },
+              "Mg|Cu": {
+                "reage": true,
+                "resultado": "Há reação: o Mg está acima do Cu na série e reduz os iões Cu²⁺.",
+                "equacao": "Mg(s) + Cu²⁺(aq) → Mg²⁺(aq) + Cu(s)",
+                "papeis": "Redutor: Mg (oxida-se). Oxidante: Cu²⁺ (reduz-se).",
+                "semi": "Oxidação: Mg → Mg²⁺ + 2 e⁻. Redução: Cu²⁺ + 2 e⁻ → Cu.",
+                "observacao": "Forma-se um depósito avermelhado de cobre sobre a lâmina de Mg. A cor azul da solução vai desaparecendo (sai Cu²⁺)."
+              },
+              "Mg|Ag": {
+                "reage": true,
+                "resultado": "Há reação: o Mg está acima do Ag na série e reduz os iões Ag⁺.",
+                "equacao": "Mg(s) + 2 Ag⁺(aq) → Mg²⁺(aq) + 2 Ag(s)",
+                "papeis": "Redutor: Mg (oxida-se). Oxidante: Ag⁺ (reduz-se).",
+                "semi": "Oxidação: Mg → Mg²⁺ + 2 e⁻. Redução: Ag⁺ + e⁻ → Ag (× 2).",
+                "observacao": "Formam-se cristais prateados de prata sobre a lâmina de Mg."
+              },
+              "Zn|Mg": {
+                "reage": false,
+                "resultado": "Não há reação: o Zn está abaixo do Mg na série e não consegue reduzir os iões Mg²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Zn|Zn": {
+                "reage": false,
+                "resultado": "Não há reação: o Zn está mergulhado numa solução dos seus próprios iões (Zn²⁺).",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a solução continua incolor."
+              },
+              "Zn|Fe": {
+                "reage": true,
+                "resultado": "Há reação: o Zn está acima do Fe na série e reduz os iões Fe²⁺.",
+                "equacao": "Zn(s) + Fe²⁺(aq) → Zn²⁺(aq) + Fe(s)",
+                "papeis": "Redutor: Zn (oxida-se). Oxidante: Fe²⁺ (reduz-se).",
+                "semi": "Oxidação: Zn → Zn²⁺ + 2 e⁻. Redução: Fe²⁺ + 2 e⁻ → Fe.",
+                "observacao": "Forma-se um depósito escuro de ferro sobre a lâmina de Zn. A cor verde muito clara da solução vai desaparecendo (sai Fe²⁺)."
+              },
+              "Zn|Pb": {
+                "reage": true,
+                "resultado": "Há reação: o Zn está acima do Pb na série e reduz os iões Pb²⁺.",
+                "equacao": "Zn(s) + Pb²⁺(aq) → Zn²⁺(aq) + Pb(s)",
+                "papeis": "Redutor: Zn (oxida-se). Oxidante: Pb²⁺ (reduz-se).",
+                "semi": "Oxidação: Zn → Zn²⁺ + 2 e⁻. Redução: Pb²⁺ + 2 e⁻ → Pb.",
+                "observacao": "Formam-se cristais cinzentos de chumbo sobre a lâmina de Zn."
+              },
+              "Zn|Cu": {
+                "reage": true,
+                "resultado": "Há reação: o Zn está acima do Cu na série e reduz os iões Cu²⁺.",
+                "equacao": "Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)",
+                "papeis": "Redutor: Zn (oxida-se). Oxidante: Cu²⁺ (reduz-se).",
+                "semi": "Oxidação: Zn → Zn²⁺ + 2 e⁻. Redução: Cu²⁺ + 2 e⁻ → Cu.",
+                "observacao": "Forma-se um depósito avermelhado de cobre sobre a lâmina de Zn. A cor azul da solução vai desaparecendo (sai Cu²⁺)."
+              },
+              "Zn|Ag": {
+                "reage": true,
+                "resultado": "Há reação: o Zn está acima do Ag na série e reduz os iões Ag⁺.",
+                "equacao": "Zn(s) + 2 Ag⁺(aq) → Zn²⁺(aq) + 2 Ag(s)",
+                "papeis": "Redutor: Zn (oxida-se). Oxidante: Ag⁺ (reduz-se).",
+                "semi": "Oxidação: Zn → Zn²⁺ + 2 e⁻. Redução: Ag⁺ + e⁻ → Ag (× 2).",
+                "observacao": "Formam-se cristais prateados de prata sobre a lâmina de Zn."
+              },
+              "Fe|Mg": {
+                "reage": false,
+                "resultado": "Não há reação: o Fe está abaixo do Mg na série e não consegue reduzir os iões Mg²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Fe|Zn": {
+                "reage": false,
+                "resultado": "Não há reação: o Fe está abaixo do Zn na série e não consegue reduzir os iões Zn²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Fe|Fe": {
+                "reage": false,
+                "resultado": "Não há reação: o Fe está mergulhado numa solução dos seus próprios iões (Fe²⁺).",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a solução continua verde muito clara."
+              },
+              "Fe|Pb": {
+                "reage": true,
+                "resultado": "Há reação: o Fe está acima do Pb na série e reduz os iões Pb²⁺.",
+                "equacao": "Fe(s) + Pb²⁺(aq) → Fe²⁺(aq) + Pb(s)",
+                "papeis": "Redutor: Fe (oxida-se). Oxidante: Pb²⁺ (reduz-se).",
+                "semi": "Oxidação: Fe → Fe²⁺ + 2 e⁻. Redução: Pb²⁺ + 2 e⁻ → Pb.",
+                "observacao": "Formam-se cristais cinzentos de chumbo sobre a lâmina de Fe. A solução fica verde muito clara (entra Fe²⁺)."
+              },
+              "Fe|Cu": {
+                "reage": true,
+                "resultado": "Há reação: o Fe está acima do Cu na série e reduz os iões Cu²⁺.",
+                "equacao": "Fe(s) + Cu²⁺(aq) → Fe²⁺(aq) + Cu(s)",
+                "papeis": "Redutor: Fe (oxida-se). Oxidante: Cu²⁺ (reduz-se).",
+                "semi": "Oxidação: Fe → Fe²⁺ + 2 e⁻. Redução: Cu²⁺ + 2 e⁻ → Cu.",
+                "observacao": "Forma-se um depósito avermelhado de cobre sobre a lâmina de Fe. A cor azul da solução vai desaparecendo (sai Cu²⁺). A solução fica verde muito clara (entra Fe²⁺)."
+              },
+              "Fe|Ag": {
+                "reage": true,
+                "resultado": "Há reação: o Fe está acima do Ag na série e reduz os iões Ag⁺.",
+                "equacao": "Fe(s) + 2 Ag⁺(aq) → Fe²⁺(aq) + 2 Ag(s)",
+                "papeis": "Redutor: Fe (oxida-se). Oxidante: Ag⁺ (reduz-se).",
+                "semi": "Oxidação: Fe → Fe²⁺ + 2 e⁻. Redução: Ag⁺ + e⁻ → Ag (× 2).",
+                "observacao": "Formam-se cristais prateados de prata sobre a lâmina de Fe. A solução fica verde muito clara (entra Fe²⁺)."
+              },
+              "Pb|Mg": {
+                "reage": false,
+                "resultado": "Não há reação: o Pb está abaixo do Mg na série e não consegue reduzir os iões Mg²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Pb|Zn": {
+                "reage": false,
+                "resultado": "Não há reação: o Pb está abaixo do Zn na série e não consegue reduzir os iões Zn²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Pb|Fe": {
+                "reage": false,
+                "resultado": "Não há reação: o Pb está abaixo do Fe na série e não consegue reduzir os iões Fe²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua verde muito clara."
+              },
+              "Pb|Pb": {
+                "reage": false,
+                "resultado": "Não há reação: o Pb está mergulhado numa solução dos seus próprios iões (Pb²⁺).",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a solução continua incolor."
+              },
+              "Pb|Cu": {
+                "reage": true,
+                "resultado": "Há reação: o Pb está acima do Cu na série e reduz os iões Cu²⁺.",
+                "equacao": "Pb(s) + Cu²⁺(aq) → Pb²⁺(aq) + Cu(s)",
+                "papeis": "Redutor: Pb (oxida-se). Oxidante: Cu²⁺ (reduz-se).",
+                "semi": "Oxidação: Pb → Pb²⁺ + 2 e⁻. Redução: Cu²⁺ + 2 e⁻ → Cu.",
+                "observacao": "Forma-se um depósito avermelhado de cobre sobre a lâmina de Pb. A cor azul da solução vai desaparecendo (sai Cu²⁺)."
+              },
+              "Pb|Ag": {
+                "reage": true,
+                "resultado": "Há reação: o Pb está acima do Ag na série e reduz os iões Ag⁺.",
+                "equacao": "Pb(s) + 2 Ag⁺(aq) → Pb²⁺(aq) + 2 Ag(s)",
+                "papeis": "Redutor: Pb (oxida-se). Oxidante: Ag⁺ (reduz-se).",
+                "semi": "Oxidação: Pb → Pb²⁺ + 2 e⁻. Redução: Ag⁺ + e⁻ → Ag (× 2).",
+                "observacao": "Formam-se cristais prateados de prata sobre a lâmina de Pb."
+              },
+              "Cu|Mg": {
+                "reage": false,
+                "resultado": "Não há reação: o Cu está abaixo do Mg na série e não consegue reduzir os iões Mg²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Cu|Zn": {
+                "reage": false,
+                "resultado": "Não há reação: o Cu está abaixo do Zn na série e não consegue reduzir os iões Zn²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Cu|Fe": {
+                "reage": false,
+                "resultado": "Não há reação: o Cu está abaixo do Fe na série e não consegue reduzir os iões Fe²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua verde muito clara."
+              },
+              "Cu|Pb": {
+                "reage": false,
+                "resultado": "Não há reação: o Cu está abaixo do Pb na série e não consegue reduzir os iões Pb²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Cu|Cu": {
+                "reage": false,
+                "resultado": "Não há reação: o Cu está mergulhado numa solução dos seus próprios iões (Cu²⁺).",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a solução continua azul."
+              },
+              "Cu|Ag": {
+                "reage": true,
+                "resultado": "Há reação: o Cu está acima do Ag na série e reduz os iões Ag⁺.",
+                "equacao": "Cu(s) + 2 Ag⁺(aq) → Cu²⁺(aq) + 2 Ag(s)",
+                "papeis": "Redutor: Cu (oxida-se). Oxidante: Ag⁺ (reduz-se).",
+                "semi": "Oxidação: Cu → Cu²⁺ + 2 e⁻. Redução: Ag⁺ + e⁻ → Ag (× 2).",
+                "observacao": "Formam-se cristais prateados de prata sobre a lâmina de Cu. A solução fica azul (entra Cu²⁺)."
+              },
+              "Ag|Mg": {
+                "reage": false,
+                "resultado": "Não há reação: o Ag está abaixo do Mg na série e não consegue reduzir os iões Mg²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Ag|Zn": {
+                "reage": false,
+                "resultado": "Não há reação: o Ag está abaixo do Zn na série e não consegue reduzir os iões Zn²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Ag|Fe": {
+                "reage": false,
+                "resultado": "Não há reação: o Ag está abaixo do Fe na série e não consegue reduzir os iões Fe²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua verde muito clara."
+              },
+              "Ag|Pb": {
+                "reage": false,
+                "resultado": "Não há reação: o Ag está abaixo do Pb na série e não consegue reduzir os iões Pb²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua incolor."
+              },
+              "Ag|Cu": {
+                "reage": false,
+                "resultado": "Não há reação: o Ag está abaixo do Cu na série e não consegue reduzir os iões Cu²⁺.",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a lâmina não se altera e a solução continua azul."
+              },
+              "Ag|Ag": {
+                "reage": false,
+                "resultado": "Não há reação: o Ag está mergulhado numa solução dos seus próprios iões (Ag⁺).",
+                "equacao": "—",
+                "papeis": "—",
+                "semi": "—",
+                "observacao": "Nada muda: a solução continua incolor."
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A hierarquia do recreio.** Imagina uma fila de alunos ordenados pela \"força\" com que conseguem tirar a bola a outro. O primeiro da fila tira a bola a qualquer um que esteja atrás dele. O último não tira a bola a ninguém. Na série eletroquímica, a \"bola\" são os eletrões: o magnésio consegue \"dar\" eletrões a quase todos os catiões que estão abaixo dele; a prata e o ouro quase nunca conseguem. E quem é muito bom a dar (redutor forte) é muito mau a receber de volta (oxidante fraco)."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.3",
+          "titulo": "Série eletroquímica",
+          "objetivo": "Organizar uma série eletroquímica a partir de reações entre metais e soluções aquosas de sais com catiões de outros metais, e relacioná-la com a força relativa de oxidantes e redutores.",
+          "material": [
+            "Pequenas lâminas ou fios de metais limpos: magnésio, zinco, ferro, chumbo, cobre (e prata, se disponível)",
+            "Soluções aquosas (por exemplo, 0,1 mol/dm³) de sais dos mesmos metais: MgSO₄, ZnSO₄, FeSO₄, Pb(NO₃)₂, CuSO₄, AgNO₃",
+            "Placa de microescala (placa de poços) ou tubos de ensaio",
+            "Lixa fina para limpar os metais",
+            "Conta-gotas; pinça; óculos e luvas"
+          ],
+          "procedimento": [
+            "Lixar os metais para remover os óxidos superficiais.",
+            "Prever, numa tabela de dupla entrada (metais × soluções), quais as combinações que darão reação.",
+            "Em cada poço da placa, colocar algumas gotas de uma solução e um pequeno pedaço de um metal diferente.",
+            "Controlar as variáveis: dimensões semelhantes das amostras de metal, mesmo volume e concentração das soluções, mesma temperatura, mesmo tempo de observação.",
+            "Observar durante alguns minutos e registar evidências de reação: depósito de metal na superfície, mudança de cor da solução, mudança de cor ou brilho do metal."
+          ],
+          "tratamento_de_dados": "Para cada reação observada, escrever a equação iónica e as semirreações; identificar o oxidante e o redutor.\n\nContar quantas soluções cada metal conseguiu reduzir: o metal que reage com mais soluções é o redutor mais forte.\n\nOrdenar os metais por ordem decrescente de poder redutor. Resultado esperado: Mg > Zn > Fe > Pb > Cu > Ag.\n\nComparar com a série eletroquímica tabelada.",
+          "conclusao": "Um metal reage com os catiões de metais com menor poder redutor. A ordenação obtida experimentalmente coincide com a série eletroquímica. O redutor mais forte (Mg) tem o oxidante conjugado mais fraco (Mg²⁺), e o redutor mais fraco (Ag) tem o oxidante conjugado mais forte (Ag⁺).",
+          "erros_comuns": [
+            "Não lixar os metais: a camada de óxido impede ou atrasa a reação e leva a falsos \"não reage\".",
+            "Usar o mesmo pedaço de metal em várias soluções (contaminação).",
+            "Observar durante pouco tempo: algumas reações (por exemplo, com o chumbo) são lentas.",
+            "Confundir o metal depositado com sujidade, sem comparar com um controlo."
+          ],
+          "seguranca": "Os sais de chumbo são tóxicos e o nitrato de prata mancha a pele. Usar luvas e óculos. Os resíduos com metais pesados vão para o recipiente próprio."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na série eletroquímica, o metal com maior poder redutor:",
+              "opcoes": [
+                "é o oxidante mais forte.",
+                "tem o catião com menor poder oxidante.",
+                "não reage com nenhuma solução.",
+                "é sempre o ouro."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Quanto mais forte é um redutor, mais fraco é o seu oxidante conjugado.",
+              "mascote_feedback_errado": "Quanto mais forte é um redutor, mais fraco é o seu oxidante conjugado."
+            },
+            {
+              "pergunta": "Mergulhando uma lâmina de chumbo numa solução de sulfato de cobre(II):",
+              "opcoes": [
+                "não há reação.",
+                "o chumbo oxida-se e deposita-se cobre.",
+                "o cobre oxida-se.",
+                "liberta-se hidrogénio."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O chumbo está acima do cobre na série: reduz o Cu²⁺ a Cu e passa a Pb²⁺.",
+              "mascote_feedback_errado": "O chumbo está acima do cobre na série: reduz o Cu²⁺ a Cu e passa a Pb²⁺."
+            },
+            {
+              "pergunta": "Na AL 2.3, o zinco reagiu com as soluções de Fe²⁺, Pb²⁺, Cu²⁺ e Ag⁺, mas não com a de Mg²⁺. O que se conclui?",
+              "opcoes": [
+                "O zinco é o redutor mais forte de todos.",
+                "O zinco tem maior poder redutor do que Fe, Pb, Cu e Ag, e menor do que Mg.",
+                "O magnésio é mais fraco do que o zinco.",
+                "O zinco não é um metal."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Um metal reduz os catiões dos metais menos redutores. O zinco reduziu todos exceto o Mg²⁺: o magnésio é mais redutor do que ele.",
+              "mascote_feedback_errado": "Um metal reduz os catiões dos metais menos redutores. O zinco reduziu todos exceto o Mg²⁺: o magnésio é mais redutor do que ele."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 4 concluída. Identificas oxidações e reduções, atribuis números de oxidação, escreves semirreações, explicas a reação dos metais com os ácidos e a corrosão, e construíste uma série eletroquímica. Última missão: dissolução, solubilidade e a dureza da água."
+}

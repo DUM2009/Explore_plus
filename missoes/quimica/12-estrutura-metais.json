@@ -1,0 +1,482 @@
+{
+  "missao_id": "12-estrutura-metais",
+  "id_guiao": "qui12-m1",
+  "titulo": "Estrutura e propriedades dos metais",
+  "disciplina": "quimica",
+  "ano": 12,
+  "imagem": "q12_telemovel_metais.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"8\" width=\"18\" height=\"8\" rx=\"1\"/><path d=\"M7 8V6h10v2\"/><path d=\"M7 16v2h10v-2\"/></svg>",
+    "nome": "Mestre dos Metais"
+  },
+  "secoes": [
+    {
+      "secao_id": "metais-ionizacao-transicao",
+      "titulo": "Os metais, a energia de ionização e os elementos de transição",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_telemovel_metais.png",
+          "imagem_legenda": "Telemóvel em vista \"explodida\", com os metais de cada componente (cobre, ouro, lítio, cobalto, alumínio, terras raras).",
+          "texto": "Um telemóvel tem mais de 60 elementos químicos diferentes, a maioria metais: cobre nos circuitos, ouro nos contactos, lítio e cobalto na bateria, índio no ecrã tátil, terras raras nos altifalantes e na vibração. A história da humanidade divide-se pelos metais que soubemos usar (Idade do Cobre, do Bronze, do Ferro), e a tecnologia de hoje continua a depender deles. Nesta missão vais perceber o que faz de um elemento um metal.",
+          "mascote_texto": "Muito do que vais ver nesta secção é revisão do 10.º ano, mas com mais profundidade. Repara sobretudo no bloco d."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Metais, não metais e o bloco d",
+          "imagem": "q12_ei_ae_tabela.png",
+          "imagem_legenda": "Tabela Periódica com a variação da energia de ionização; metais à esquerda, não metais à direita.",
+          "texto_principal": "Os elementos metálicos caracterizam-se por terem energias de ionização baixas: perdem eletrões com facilidade e formam catiões. Os não metais têm, em geral, afinidade eletrónica elevada: libertam muita energia quando captam um eletrão e formam aniões. No centro da tabela, o bloco d tem os elementos de transição, todos metais.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Energia de ionização",
+              "explicacao": "Energia mínima para remover um eletrão de um átomo no estado gasoso: X(g) → X⁺(g) + e⁻. Baixa nos metais."
+            },
+            {
+              "id": "p2",
+              "label": "Afinidade eletrónica",
+              "explicacao": "Energia libertada quando um átomo no estado gasoso capta um eletrão e forma um ião negativo: X(g) + e⁻ → X⁻(g). Elevada nos halogéneos."
+            },
+            {
+              "id": "p3",
+              "label": "Caráter metálico",
+              "explicacao": "Aumenta para a esquerda e para baixo na tabela periódica."
+            },
+            {
+              "id": "p4",
+              "label": "Elementos de transição (bloco d)",
+              "explicacao": "O último eletrão (pelo Princípio da Construção) vai para uma orbital d. Ex.: Fe (Z = 26): [Ar] 4s² 3d⁶."
+            },
+            {
+              "id": "p5",
+              "label": "Vários estados de oxidação",
+              "explicacao": "A maioria dos metais de transição pode perder um número variável de eletrões (dos subníveis 4s e 3d). Ex.: Fe²⁺ e Fe³⁺; Cu⁺ e Cu²⁺; o manganês vai de +2 a +7."
+            },
+            {
+              "id": "p6",
+              "label": "Formação de catiões",
+              "explicacao": "Ao formar catiões, os metais de transição perdem primeiro os eletrões 4s: Fe²⁺ é [Ar] 3d⁶ e não [Ar] 4s² 3d⁴."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "X(g) → X⁺(g) + e⁻",
+              "significado": "Energia de ionização.",
+              "unidades": ""
+            },
+            {
+              "expressao": "X(g) + e⁻ → X⁻(g)",
+              "significado": "Afinidade eletrónica.",
+              "unidades": ""
+            },
+            {
+              "expressao": "[Ar] 4s² 3dⁿ",
+              "significado": "Configuração dos metais de transição do 4.º período (com exceções no Cr e no Cu).",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a configuração eletrónica do ião Fe³⁺ (Z = 26)?",
+          "opcoes": [
+            "[Ar] 4s² 3d³",
+            "[Ar] 3d⁵",
+            "[Ar] 4s² 3d⁶",
+            "[Ar] 4s¹ 3d⁴"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O Fe é [Ar] 4s² 3d⁶. Ao formar Fe³⁺, perde primeiro os 2 eletrões 4s e depois 1 eletrão 3d: [Ar] 3d⁵. Esta configuração, com o subnível d meio preenchido, é particularmente estável.",
+          "mascote_feedback_errado": "Os metais de transição perdem primeiro os eletrões 4s. Fe: [Ar] 4s² 3d⁶ → Fe³⁺: retiram-se 2 eletrões 4s e 1 eletrão 3d → [Ar] 3d⁵."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que o cloro tende a formar o ião Cl⁻ e o sódio o ião Na⁺?",
+          "opcoes": [
+            "O cloro tem energia de ionização baixa.",
+            "O sódio tem energia de ionização baixa e o cloro tem afinidade eletrónica elevada.",
+            "Os dois têm afinidade eletrónica elevada.",
+            "O sódio tem afinidade eletrónica elevada."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O sódio perde facilmente o seu eletrão 3s (energia de ionização baixa). O cloro liberta bastante energia ao captar um eletrão (afinidade eletrónica elevada).",
+          "mascote_feedback_errado": "Os metais caracterizam-se pela facilidade em perder eletrões (energia de ionização baixa); os não metais, pela tendência a captar eletrões (afinidade eletrónica elevada)."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Dar e receber.** Imagina pessoas numa feira de trocas. Algumas largam facilmente o que têm: são os metais (energia de ionização baixa). Outras ficam muito contentes quando recebem alguma coisa e não a largam: são os não metais (afinidade eletrónica elevada). Os metais de transição são como vendedores com muitos artigos: podem dar um, dois, três ou mais, conforme o cliente. É por isso que o ferro tanto aparece como Fe²⁺ como Fe³⁺."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Exceções do Cr e do Cu e metais críticos",
+          "texto": "**As exceções do crómio e do cobre**\n\nO crómio (Z = 24) é [Ar] 4s¹ 3d⁵ e não [Ar] 4s² 3d⁴. O cobre (Z = 29) é [Ar] 4s¹ 3d¹⁰ e não [Ar] 4s² 3d⁹. Subníveis d semipreenchidos ou completos são especialmente estáveis.\n\n**Metais críticos**\n\nA União Europeia classifica como \"matérias-primas críticas\" metais como o lítio, o cobalto, as terras raras e o tungsténio: são essenciais para a tecnologia e a transição energética, mas a sua produção está concentrada em poucos países. Portugal tem algumas das maiores reservas de lítio da Europa e uma das maiores minas de tungsténio do mundo (Panasqueira)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Os elementos de transição situam-se:",
+              "opcoes": [
+                "no bloco s.",
+                "no bloco p.",
+                "no bloco d.",
+                "no grupo 18."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Os elementos de transição ocupam os grupos 3 a 12, correspondentes ao preenchimento de orbitais d.",
+              "mascote_feedback_errado": "Os elementos de transição ocupam os grupos 3 a 12, correspondentes ao preenchimento de orbitais d."
+            },
+            {
+              "pergunta": "A afinidade eletrónica de um átomo é:",
+              "opcoes": [
+                "a energia necessária para remover um eletrão.",
+                "a energia libertada quando um átomo gasoso capta um eletrão.",
+                "o número de eletrões de valência.",
+                "a carga do núcleo."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "É a energia associada a X(g) + e⁻ → X⁻(g). É elevada nos não metais, como os halogéneos.",
+              "mascote_feedback_errado": "É a energia associada a X(g) + e⁻ → X⁻(g). É elevada nos não metais, como os halogéneos."
+            },
+            {
+              "pergunta": "Qual destes elementos apresenta, em geral, vários estados de oxidação?",
+              "opcoes": [
+                "Sódio",
+                "Magnésio",
+                "Manganês",
+                "Árgon"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "O manganês é um metal de transição e apresenta estados de oxidação de +2 a +7. Os metais alcalinos e alcalinoterrosos têm, em geral, um único (+1 e +2).",
+              "mascote_feedback_errado": "O manganês é um metal de transição e apresenta estados de oxidação de +2 a +7. Os metais alcalinos e alcalinoterrosos têm, em geral, um único (+1 e +2)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "ligacao-metalica-solidos",
+      "titulo": "Ligação metálica e tipos de sólidos",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_grafite_diamante_grafeno.png",
+          "imagem_legenda": "Três estruturas do carbono lado a lado: diamante, grafite e grafeno.",
+          "texto": "O diamante e a grafite do lápis são feitos exatamente do mesmo elemento: carbono. Um é o material natural mais duro que se conhece; o outro risca papel e conduz a eletricidade. E o grafeno, uma única camada de grafite com um átomo de espessura, é mais resistente do que o aço. As propriedades de um sólido não dependem só dos átomos: dependem de como estão ligados e arrumados.",
+          "mascote_texto": "Nesta secção vais aprender a classificar sólidos em quatro tipos. Com isso consegues prever se um material conduz, se é duro ou se funde facilmente."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A ligação metálica",
+          "imagem": "q12_ligacao_metalica.png",
+          "imagem_legenda": "Modelo do \"mar de eletrões\": catiões metálicos em rede com eletrões de valência deslocalizados.",
+          "texto_principal": "Na ligação metálica, os eletrões de valência não pertencem a nenhum átomo: estão deslocalizados por todo o cristal, partilhados por todos os cernes atómicos (os núcleos com os eletrões interiores). A estabilidade resulta da atração entre os eletrões deslocalizados e os cernes positivos. Os elementos que formam ligação metálica têm energia de ionização baixa, várias orbitais de valência vazias e menos eletrões de valência do que orbitais disponíveis.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Cernes atómicos",
+              "explicacao": "Núcleo mais eletrões interiores. Formam uma rede tridimensional regular."
+            },
+            {
+              "id": "p2",
+              "label": "Eletrões deslocalizados",
+              "explicacao": "Movem-se livremente por todo o metal."
+            },
+            {
+              "id": "p3",
+              "label": "Condutividade elétrica e térmica",
+              "explicacao": "Os eletrões livres transportam carga e energia."
+            },
+            {
+              "id": "p4",
+              "label": "Brilho",
+              "explicacao": "Os eletrões deslocalizados absorvem e reemitem a luz de quase todas as frequências."
+            },
+            {
+              "id": "p5",
+              "label": "Maleabilidade e ductilidade",
+              "explicacao": "As camadas de cernes podem deslizar umas sobre as outras sem quebrar a ligação, porque os eletrões se reajustam."
+            },
+            {
+              "id": "p6",
+              "label": "Cristal",
+              "explicacao": "Material cujas unidades estruturais estão organizadas de forma regular e repetida nas três dimensões."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Quatro tipos de sólidos",
+          "imagem": "q12_tipos_solidos.png",
+          "imagem_legenda": "Quatro tipos de sólidos: metálico (Cu), iónico (NaCl), covalente (diamante) e molecular (gelo).",
+          "texto_principal": "Os sólidos cristalinos classificam-se pelo tipo de ligação entre as suas unidades estruturais. As propriedades físicas de cada tipo explicam-se pela intensidade dessas ligações.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Sólidos metálicos",
+              "explicacao": "Cernes e eletrões deslocalizados. Conduzem, são brilhantes, maleáveis; pontos de fusão muito variados (de −39 °C no mercúrio a 3422 °C no tungsténio)."
+            },
+            {
+              "id": "p2",
+              "label": "Sólidos iónicos",
+              "explicacao": "Catiões e aniões ligados por atrações elétricas. Duros mas quebradiços (deslocar uma camada põe iões do mesmo sinal frente a frente e o cristal parte); pontos de fusão elevados; só conduzem fundidos ou em solução."
+            },
+            {
+              "id": "p3",
+              "label": "Sólidos covalentes",
+              "explicacao": "Átomos ligados por ligações covalentes numa rede contínua. Muito duros e com pontos de fusão muito elevados. Ex.: diamante, sílica (quartzo, SiO₂). A grafite, o grafeno e os nanotubos de carbono também são cristais covalentes."
+            },
+            {
+              "id": "p4",
+              "label": "Grafite",
+              "explicacao": "Camadas de carbono com eletrões deslocalizados dentro de cada camada (conduz) e camadas unidas por forças fracas (deslizam e riscam o papel)."
+            },
+            {
+              "id": "p5",
+              "label": "Sólidos moleculares",
+              "explicacao": "Moléculas organizadas regularmente e mantidas por ligações intermoleculares (fracas). Macios e com pontos de fusão baixos. Ex.: gelo, iodo, açúcar, gelo seco (CO₂ sólido)."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um sólido é muito duro, tem ponto de fusão superior a 1500 °C e não conduz a corrente elétrica nem fundido. Que tipo de sólido é, provavelmente?",
+          "opcoes": [
+            "Metálico",
+            "Iónico",
+            "Covalente",
+            "Molecular"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. Dureza e ponto de fusão muito elevados, sem condução mesmo fundido, são típicos de uma rede covalente, como o quartzo ou o diamante.",
+          "mascote_feedback_errado": "Os metálicos conduzem sempre; os iónicos conduzem fundidos; os moleculares têm pontos de fusão baixos. Só os sólidos covalentes (redes de ligações covalentes) têm este conjunto de propriedades."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que um cristal de sal parte quando se lhe bate com um martelo e uma peça de cobre apenas se deforma?",
+          "opcoes": [
+            "Porque o cobre é mais pesado.",
+            "Porque no sal, ao deslocar uma camada, ficam iões do mesmo sinal frente a frente e repelem-se; no cobre, os eletrões deslocalizados reajustam-se e mantêm a ligação.",
+            "Porque o sal é um sólido molecular.",
+            "Porque o cobre não tem ligações."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. A deslocação de camadas num cristal iónico gera repulsões e o cristal fratura. No metal, a \"nuvem\" de eletrões continua a unir os cernes, e o metal deforma-se sem partir.",
+          "mascote_feedback_errado": "No sólido iónico, deslizar uma camada põe catiões frente a catiões e aniões frente a aniões: repelem-se e o cristal parte. No metal, os eletrões deslocalizados acompanham os cernes e a ligação mantém-se."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Uma piscina de bolas.** Imagina berlindes (os cernes) mergulhados numa piscina de bolas pequeninas (os eletrões). Podes empurrar os berlindes e mudá-los de sítio, e as bolas pequenas fecham logo os espaços, mantendo tudo junto: é a maleabilidade. Se encostares um fio elétrico à piscina, as bolas pequenas fluem facilmente de um lado para o outro: é a condução. Num cristal iónico, pelo contrário, não há bolas soltas: cada peça está presa às vizinhas de carga oposta, e um empurrão desfaz a arrumação."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Ligas metálicas, grafeno e nanotubos",
+          "texto": "**Ligas metálicas**\n\nUma liga é uma mistura de um metal com outros elementos (metais ou não metais). O aço é ferro com uma pequena percentagem de carbono; o aço inoxidável tem crómio e níquel; o bronze é cobre com estanho; o latão é cobre com zinco; o ouro de joalharia de 19,2 quilates (o \"ouro português\") tem 80 % de ouro. As ligas têm propriedades diferentes dos metais puros, em geral mais duras e resistentes.\n\n**Grafeno e nanotubos**\n\nO grafeno é uma camada única de átomos de carbono num padrão hexagonal. Os nanotubos de carbono são folhas de grafeno enroladas em tubos. Ambos são extremamente resistentes, leves e bons condutores, e estão a ser estudados para baterias, ecrãs flexíveis e materiais compósitos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A ligação metálica resulta:",
+              "opcoes": [
+                "da partilha de um par de eletrões entre dois átomos.",
+                "da atração entre cernes atómicos e eletrões de valência deslocalizados por todo o cristal.",
+                "da atração entre iões de carga oposta.",
+                "de forças intermoleculares."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "No metal, os eletrões de valência estão deslocalizados e são partilhados por todos os cernes.",
+              "mascote_feedback_errado": "No metal, os eletrões de valência estão deslocalizados e são partilhados por todos os cernes."
+            },
+            {
+              "pergunta": "O iodo sólido sublima facilmente e é macio. É um exemplo de sólido:",
+              "opcoes": [
+                "metálico.",
+                "iónico.",
+                "covalente.",
+                "molecular."
+              ],
+              "correta": 3,
+              "mascote_feedback_certo": "As moléculas de I₂ estão ligadas por forças intermoleculares fracas (de London), que se vencem com pouca energia.",
+              "mascote_feedback_errado": "As moléculas de I₂ estão ligadas por forças intermoleculares fracas (de London), que se vencem com pouca energia."
+            },
+            {
+              "pergunta": "Porque é que a grafite conduz a corrente elétrica e o diamante não?",
+              "opcoes": [
+                "Porque a grafite tem metais.",
+                "Porque na grafite há eletrões deslocalizados em cada camada; no diamante, todos os eletrões de valência estão em ligações covalentes localizadas.",
+                "Porque o diamante é molecular.",
+                "Porque a grafite é iónica."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Na grafite, cada carbono liga-se a três vizinhos e o quarto eletrão de valência fica deslocalizado na camada. No diamante, os quatro estão em ligações localizadas.",
+              "mascote_feedback_errado": "Na grafite, cada carbono liga-se a três vizinhos e o quarto eletrão de valência fica deslocalizado na camada. No diamante, os quatro estão em ligações localizadas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "reciclagem-metais-al-1-2",
+      "titulo": "Reciclagem de metais; AL 1.2",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_reciclagem_metais.png",
+          "imagem_legenda": "Ciclo de vida de uma lata de alumínio e comparação da energia gasta na produção e na reciclagem.",
+          "texto": "Uma lata de alumínio pode ser reciclada e voltar à prateleira, transformada noutra lata, em cerca de dois meses. E pode repetir este ciclo indefinidamente, sem perder qualidade. Reciclar alumínio gasta cerca de 5 % da energia necessária para o produzir a partir do minério. Os metais podem ser reciclados vezes sem conta, e no laboratório vais seguir o \"ciclo de vida\" de uma amostra de cobre.",
+          "mascote_texto": "Esta AL tem cinco reações seguidas. Se perceberes o tipo de cada uma, a atividade inteira fica simples."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O ciclo do cobre",
+          "imagem": "q12_ciclo_cobre.png",
+          "imagem_legenda": "Sequência de cinco gobelés com as transformações do ciclo do cobre.",
+          "texto_principal": "Os metais podem ser reciclados repetidamente porque a sua estrutura não se degrada: os átomos do metal mantêm-se, só mudam de forma química. Reciclar metais poupa recursos naturais limitados, reduz resíduos e gasta muito menos energia do que extraí-los dos minérios. No ciclo do cobre, o metal passa por uma sequência de compostos e é recuperado no fim.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Etapa 1 (oxidação-redução)",
+              "explicacao": "Cu(s) + 4 HNO₃(aq) → Cu(NO₃)₂(aq) + 2 NO₂(g) + 2 H₂O(l). O cobre oxida-se; liberta-se NO₂, um gás castanho e tóxico."
+            },
+            {
+              "id": "p2",
+              "label": "Etapa 2 (precipitação)",
+              "explicacao": "Cu(NO₃)₂(aq) + 2 NaOH(aq) → Cu(OH)₂(s) + 2 NaNO₃(aq)."
+            },
+            {
+              "id": "p3",
+              "label": "Etapa 3 (decomposição térmica)",
+              "explicacao": "Cu(OH)₂(s) → CuO(s) + H₂O(l), por aquecimento."
+            },
+            {
+              "id": "p4",
+              "label": "Etapa 4 (ácido-base)",
+              "explicacao": "CuO(s) + H₂SO₄(aq) → CuSO₄(aq) + H₂O(l)."
+            },
+            {
+              "id": "p5",
+              "label": "Etapa 5 (oxidação-redução)",
+              "explicacao": "CuSO₄(aq) + Zn(s) → ZnSO₄(aq) + Cu(s). O zinco, mais redutor, reduz o Cu²⁺ a cobre metálico."
+            },
+            {
+              "id": "p6",
+              "label": "Rendimento do ciclo",
+              "explicacao": "Massa de cobre recuperada / massa de cobre inicial × 100."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na etapa CuSO₄(aq) + Zn(s) → ZnSO₄(aq) + Cu(s), que tipo de reação ocorre e qual é o redutor?",
+          "opcoes": [
+            "Ácido-base; o Cu²⁺.",
+            "Precipitação; o SO₄²⁻.",
+            "Oxidação-redução; o Zn.",
+            "Oxidação-redução; o Cu²⁺."
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. O zinco passa de 0 para +2 (oxida-se, é o redutor) e o cobre de +2 para 0 (reduz-se, é o oxidante).",
+          "mascote_feedback_errado": "Há variação de números de oxidação: é redox. O Zn cede eletrões (oxida-se): é o redutor. O Cu²⁺ é o oxidante."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 1.2",
+          "titulo": "Um ciclo do cobre",
+          "objetivo": "Compreender como se pode reciclar um metal através de processos químicos, realizando uma sequência de reações a partir de cobre metálico e regenerando-o no fim.",
+          "material": [
+            "Fio de cobre (cerca de 0,500 g, medido com rigor)",
+            "Ácido nítrico concentrado (na hotte), hidróxido de sódio (aq), ácido sulfúrico diluído, zinco em pó",
+            "Gobelés, vareta, placa de aquecimento, funil e papel de filtro (ou filtração por vácuo)",
+            "Balança (resolução 0,001 g), vidro de relógio, estufa",
+            "Água destilada, acetona (opcional, para secar o cobre final)",
+            "Óculos, luvas, bata; hotte"
+          ],
+          "procedimento": [
+            "Medir a massa do fio de cobre.",
+            "Na hotte, dissolver o cobre num pequeno volume de ácido nítrico concentrado. Observar o gás castanho (NO₂) e a solução azul.",
+            "Diluir com água e adicionar hidróxido de sódio, agitando, até precipitar todo o Cu(OH)₂ (azul claro).",
+            "Aquecer suavemente a suspensão até o precipitado ficar negro (CuO).",
+            "Deixar depositar, decantar a solução, lavar o sólido com água quente.",
+            "Adicionar ácido sulfúrico diluído até dissolver o CuO (solução azul de CuSO₄).",
+            "Adicionar zinco em pó, em pequenas porções, até a solução ficar incolor. Forma-se cobre metálico.",
+            "Adicionar um pouco de ácido sulfúrico para dissolver o excesso de zinco.",
+            "Filtrar, lavar o cobre com água (e acetona), secar e medir a massa."
+          ],
+          "tratamento_de_dados": "Escrever as equações das cinco etapas e classificar cada reação (redox, precipitação, decomposição, ácido-base).\n\nRendimento do ciclo = m(Cu final) / m(Cu inicial) × 100.\n\nExemplo: 0,500 g iniciais e 0,440 g recuperados: rendimento = 88,0 %.\n\nDiscutir as causas das perdas (transferências, filtração, cobre que fica dissolvido) e de eventuais rendimentos superiores a 100 % (cobre húmido ou com zinco por reagir).",
+          "conclusao": "É possível recuperar o cobre metálico através de uma sequência de reações químicas, o que mostra que os metais não se perdem: mudam de forma e podem ser regenerados. O rendimento é inferior a 100 % devido a perdas em cada etapa. O processo produz resíduos poluentes (NO₂, soluções com metais), que exigem tratamento.",
+          "erros_comuns": [
+            "Fazer a etapa do ácido nítrico fora da hotte (o NO₂ é tóxico).",
+            "Aquecer o Cu(OH)₂ com demasiada intensidade, causando projeções.",
+            "Não remover o excesso de zinco no fim (a massa final fica maior do que a real).",
+            "Pesar o cobre ainda húmido."
+          ],
+          "seguranca": "Ácido nítrico e ácido sulfúrico concentrados são muito corrosivos; o NO₂ é tóxico. Trabalhar na hotte, com óculos e luvas. As soluções com sais de cobre e de zinco vão para o recipiente de resíduos de metais.",
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Uma moeda que muda de carteira.** Imagina uma moeda que passa de carteira em carteira: primeiro está numa bolsa azul, depois numa caixa, depois num envelope preto, depois noutra bolsa azul, e no fim volta para o teu bolso. A moeda nunca deixou de existir, só mudou de \"embalagem\". Os átomos de cobre no ciclo são assim: passam por nitrato, hidróxido, óxido e sulfato, mas no fim voltam a ser cobre metálico. Algumas moedas caem pelo caminho (as perdas do rendimento)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Reciclar metais e minas urbanas",
+          "texto": "**Porque é que reciclar metais é tão importante**\n\nOs minérios são recursos limitados e a sua extração causa grandes impactos ambientais (minas, resíduos, água contaminada).\n\nA reciclagem gasta muito menos energia: cerca de 95 % menos no alumínio, 85 % menos no cobre e 60 a 75 % menos no aço.\n\nDiminui a quantidade de resíduos enviados para aterro.\n\nOs metais não se degradam com a reciclagem: podem ser reciclados indefinidamente.\n\n**Minas urbanas**\n\nUma tonelada de telemóveis velhos contém muito mais ouro do que uma tonelada de minério de uma mina de ouro. A recuperação de metais a partir de resíduos eletrónicos chama-se \"mineração urbana\"."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Porque é que os metais podem ser reciclados indefinidamente?",
+              "opcoes": [
+                "Porque são muito baratos.",
+                "Porque a sua estrutura não se degrada: os átomos do metal mantêm-se ao longo dos processos.",
+                "Porque não reagem com nada.",
+                "Porque são todos líquidos a alta temperatura."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os átomos metálicos conservam-se nas reações e na fusão; podem voltar sempre a formar o metal com as mesmas propriedades.",
+              "mascote_feedback_errado": "Os átomos metálicos conservam-se nas reações e na fusão; podem voltar sempre a formar o metal com as mesmas propriedades."
+            },
+            {
+              "pergunta": "No ciclo do cobre, a passagem de Cu(OH)₂ a CuO ocorre por:",
+              "opcoes": [
+                "adição de ácido.",
+                "adição de zinco.",
+                "aquecimento (decomposição térmica).",
+                "adição de água."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Ao aquecer, o hidróxido de cobre(II) decompõe-se em óxido de cobre(II) (negro) e água.",
+              "mascote_feedback_errado": "Ao aquecer, o hidróxido de cobre(II) decompõe-se em óxido de cobre(II) (negro) e água."
+            },
+            {
+              "pergunta": "Numa AL 1.2, partiu-se de 0,600 g de cobre e recuperaram-se 0,522 g. Qual é o rendimento do ciclo?",
+              "opcoes": [
+                "52,2 %",
+                "87,0 %",
+                "115 %",
+                "13,0 %"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Rendimento = 0,522 / 0,600 × 100 = 87,0 %.",
+              "mascote_feedback_errado": "Rendimento = 0,522 / 0,600 × 100 = 87,0 %."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 1 concluída. Relacionas o caráter metálico com a energia de ionização, escreves configurações de metais de transição e dos seus iões, explicas as propriedades dos metais pela ligação metálica, classificas sólidos e reciclaste cobre. A seguir: o que destrói os metais, e como transformar essa destruição em eletricidade."
+}

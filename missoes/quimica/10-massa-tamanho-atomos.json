@@ -1,0 +1,531 @@
+{
+  "missao_id": "10-massa-tamanho-atomos",
+  "id_guiao": "qui10-m1",
+  "titulo": "Massa e tamanho dos átomos",
+  "disciplina": "quimica",
+  "ano": 10,
+  "imagem": "q10_escala_zoom.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"2\"/><ellipse cx=\"12\" cy=\"12\" rx=\"10\" ry=\"4\"/><ellipse cx=\"12\" cy=\"12\" rx=\"10\" ry=\"4\" transform=\"rotate(60 12 12)\"/><ellipse cx=\"12\" cy=\"12\" rx=\"10\" ry=\"4\" transform=\"rotate(120 12 12)\"/></svg>",
+    "nome": "Mestre dos Átomos"
+  },
+  "secoes": [
+    {
+      "secao_id": "escala-atomica",
+      "titulo": "A escala atómica",
+      "xp": 25,
+      "tempo_estimado_min": 9,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_escala_zoom.png",
+          "imagem_legenda": "Sequência de ampliações: maçã, célula, molécula, átomo.",
+          "texto": "Se ampliasses uma maçã até ter o tamanho da Terra, cada átomo da maçã ficaria do tamanho de uma cereja. Os átomos são tão pequenos que num único grão de sal há mais átomos do que estrelas em toda a Via Láctea. E mesmo assim, hoje conseguimos vê-los, mexer-lhes um a um e escrever com eles.",
+          "mascote_texto": "Bem-vindo à Química. Tudo o que vais aprender começa aqui: perceber o tamanho das coisas que não se veem."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Do metro ao núcleo atómico",
+          "imagem": "q10_escala_tamanhos.png",
+          "imagem_legenda": "Régua logarítmica de 1 m a 10⁻¹⁵ m com exemplos.",
+          "texto_principal": "Para comparar tamanhos muito diferentes, usa-se a notação científica e as ordens de grandeza. Os átomos têm dimensões da ordem de 10⁻¹⁰ m, ou seja, um décimo de nanómetro. O núcleo é ainda cerca de 100 000 vezes menor do que o átomo: quase todo o átomo é espaço vazio.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ordem de grandeza",
+              "explicacao": "A potência de 10 mais próxima do valor. Ex.: o raio de um átomo de hidrogénio (cerca de 5,3 × 10⁻¹¹ m) tem ordem de grandeza 10⁻¹⁰ m."
+            },
+            {
+              "id": "p2",
+              "label": "Nanómetro (nm)",
+              "explicacao": "1 nm = 10⁻⁹ m. Um nanómetro corresponde a cerca de 10 átomos lado a lado."
+            },
+            {
+              "id": "p3",
+              "label": "Picómetro (pm)",
+              "explicacao": "1 pm = 10⁻¹² m. Os raios atómicos costumam indicar-se em picómetros."
+            },
+            {
+              "id": "p4",
+              "label": "Átomo vs núcleo",
+              "explicacao": "Se o átomo fosse um estádio de futebol, o núcleo seria um berlinde no centro do relvado. Mas quase toda a massa está nesse berlinde."
+            },
+            {
+              "id": "p5",
+              "label": "Nanotecnologia",
+              "explicacao": "Manipulação da matéria à escala de 1 a 100 nm. Aplicações: medicamentos que atuam em células específicas, protetores solares com nanopartículas, chips de computador com transístores de poucos nanómetros."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "1 nm = 10⁻⁹ m; 1 pm = 10⁻¹² m",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Diâmetro de um átomo: cerca de 10⁻¹⁰ m (0,1 nm)",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Diâmetro de um núcleo: cerca de 10⁻¹⁵ a 10⁻¹⁴ m",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quantas vezes é um átomo (10⁻¹⁰ m) maior do que o seu núcleo (10⁻¹⁵ m)?",
+          "opcoes": [
+            "5 vezes",
+            "1000 vezes",
+            "100 000 vezes",
+            "10²⁵ vezes"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. 10⁻¹⁰ / 10⁻¹⁵ = 10⁵ = 100 000. Quase todo o átomo é espaço vazio.",
+          "mascote_feedback_errado": "Divide as duas potências: 10⁻¹⁰ / 10⁻¹⁵ = 10⁻¹⁰⁺¹⁵ = 10⁵ = 100 000 vezes."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um vírus tem 120 nm de diâmetro. Qual é a ordem de grandeza desse diâmetro, em metros?",
+          "opcoes": [
+            "10⁻⁹ m",
+            "10⁻⁷ m",
+            "10⁻⁶ m",
+            "10² m"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Muito bem. 120 nm = 1,2 × 10⁻⁷ m, e a ordem de grandeza é 10⁻⁷ m.",
+          "mascote_feedback_errado": "Converte: 120 nm = 120 × 10⁻⁹ m = 1,2 × 10⁻⁷ m. Como 1,2 está mais perto de 1 do que de 10, a ordem de grandeza é 10⁻⁷ m."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**As letras de um livro.** Pensa num livro. Olhas para a capa e vês o livro inteiro (o objeto do dia a dia). Aproximas-te e vês as páginas (as células). Mais perto, as linhas de texto (as moléculas grandes). Depois, cada letra (os átomos). Não precisas de ver cada letra para ler o livro, mas é das letras e da forma como se combinam que depende tudo o que o livro diz. Na Química, os átomos são as letras e as substâncias são as palavras e as frases."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Como se veem os átomos e nanotecnologia",
+          "texto": "**Como se \"veem\" os átomos**\n\nOs microscópios óticos não conseguem ver átomos, porque a luz visível tem comprimentos de onda (400 a 700 nm) muito maiores do que os átomos. O microscópio de efeito de túnel (STM), inventado em 1981, usa uma ponta metálica finíssima que percorre a superfície e deteta uma pequena corrente elétrica. Com ele obtêm-se imagens de átomos individuais e até se podem arrastar átomos um a um. Em 1989, cientistas da IBM escreveram o nome da empresa com 35 átomos de xénon.\n\n**Nanotecnologia no dia a dia**\n\nAs nanopartículas de óxido de titânio e de óxido de zinco dos protetores solares refletem e absorvem radiação ultravioleta sem deixar a pele branca. As nanopartículas de prata têm propriedades antibacterianas e são usadas em pensos e tecidos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é a ordem de grandeza do diâmetro de um átomo?",
+              "opcoes": [
+                "10⁻³ m",
+                "10⁻⁶ m",
+                "10⁻¹⁰ m",
+                "10⁻¹⁵ m"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Os átomos têm diâmetros da ordem de 10⁻¹⁰ m (0,1 nm). 10⁻¹⁵ m é a ordem de grandeza de um núcleo.",
+              "mascote_feedback_errado": "Os átomos têm diâmetros da ordem de 10⁻¹⁰ m (0,1 nm). 10⁻¹⁵ m é a ordem de grandeza de um núcleo."
+            },
+            {
+              "pergunta": "Quantos picómetros há num nanómetro?",
+              "opcoes": [
+                "10",
+                "100",
+                "1000",
+                "10⁶"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "1 nm = 10⁻⁹ m e 1 pm = 10⁻¹² m. 10⁻⁹ / 10⁻¹² = 10³ = 1000.",
+              "mascote_feedback_errado": "1 nm = 10⁻⁹ m e 1 pm = 10⁻¹² m. 10⁻⁹ / 10⁻¹² = 10³ = 1000."
+            },
+            {
+              "pergunta": "Onde está concentrada quase toda a massa de um átomo?",
+              "opcoes": [
+                "Nos eletrões.",
+                "No núcleo.",
+                "Distribuída uniformemente pelo átomo.",
+                "No espaço entre o núcleo e os eletrões."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O núcleo, com protões e neutrões, contém mais de 99,9 % da massa do átomo, embora ocupe uma fração minúscula do volume.",
+              "mascote_feedback_errado": "O núcleo, com protões e neutrões, contém mais de 99,9 % da massa do átomo, embora ocupe uma fração minúscula do volume."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "constituicao-atomo-isotopos",
+      "titulo": "Constituição do átomo, isótopos e massa atómica relativa",
+      "xp": 25,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_cloro_isotopos.png",
+          "imagem_legenda": "Frasco de cloro gasoso e dois núcleos de Cl-35 e Cl-37.",
+          "texto": "Na tabela periódica, a massa atómica relativa do cloro é 35,45. Mas não existe nenhum átomo de cloro com massa 35,45. Há átomos com massa cerca de 35 e átomos com massa cerca de 37. O valor da tabela é uma média. Para perceber porquê, é preciso olhar para dentro do núcleo.",
+          "mascote_texto": "Nesta secção há duas letras que vais usar para sempre: Z e A. Garante que nunca as trocas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Constituição do átomo",
+          "imagem": "q10_constituicao_atomo.png",
+          "imagem_legenda": "Núcleo, nuvem de eletrões e símbolo ³⁵₁₇Cl com A e Z.",
+          "texto_principal": "Um átomo é formado por um núcleo, com protões (carga positiva) e neutrões (sem carga), e por eletrões (carga negativa) à volta do núcleo. Num átomo neutro, o número de eletrões é igual ao número de protões. O elemento químico é definido pelo número de protões.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Número atómico (Z)",
+              "explicacao": "Número de protões do núcleo. Define o elemento químico. Todos os átomos de cloro têm Z = 17."
+            },
+            {
+              "id": "p2",
+              "label": "Número de massa (A)",
+              "explicacao": "Número de protões mais número de neutrões (nucleões)."
+            },
+            {
+              "id": "p3",
+              "label": "Número de neutrões",
+              "explicacao": "N = A − Z."
+            },
+            {
+              "id": "p4",
+              "label": "Representação",
+              "explicacao": "ᴬ_Z X. Ex.: ³⁵₁₇Cl tem 17 protões, 18 neutrões e (se neutro) 17 eletrões."
+            },
+            {
+              "id": "p5",
+              "label": "Isótopos",
+              "explicacao": "Átomos do mesmo elemento (mesmo Z) com número de neutrões diferente (A diferente). Ex.: ³⁵₁₇Cl e ³⁷₁₇Cl. Têm as mesmas propriedades químicas, porque têm o mesmo número de eletrões."
+            },
+            {
+              "id": "p6",
+              "label": "Iões",
+              "explicacao": "Átomos (ou grupos de átomos) com carga, por terem ganho ou perdido eletrões. Ex.: Na⁺ (perdeu 1 eletrão), Cl⁻ (ganhou 1 eletrão)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "N neutrões = A − Z",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Átomo neutro: n.º de eletrões = Z",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Ião com carga q: n.º de eletrões = Z − q",
+              "significado": "Ex.: Cl⁻: 17 − (−1) = 18 eletrões.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Massa atómica relativa",
+          "imagem": "q10_media_ponderada.png",
+          "imagem_legenda": "Balança com isótopos do cloro e definição de u.",
+          "texto_principal": "As massas dos átomos são minúsculas e usa-se uma unidade própria: a unidade de massa atómica (u), igual a 1/12 da massa de um átomo de carbono-12. A massa atómica relativa (A r) de um elemento é a média das massas dos seus isótopos, pesada pela abundância de cada um na natureza, em relação a 1/12 da massa do carbono-12. Não tem unidades.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Unidade de massa atómica",
+              "explicacao": "1 u = 1/12 da massa de um átomo de ¹²C ≈ 1,66 × 10⁻²⁷ kg."
+            },
+            {
+              "id": "p2",
+              "label": "Abundância relativa",
+              "explicacao": "Percentagem de cada isótopo numa amostra natural do elemento."
+            },
+            {
+              "id": "p3",
+              "label": "Média ponderada",
+              "explicacao": "A r = Σ (massa isotópica × abundância) / 100."
+            },
+            {
+              "id": "p4",
+              "label": "Exemplo do cloro",
+              "explicacao": "³⁵Cl (34,97; 75,78 %) e ³⁷Cl (36,97; 24,22 %): A r = 34,97 × 0,7578 + 36,97 × 0,2422 ≈ 35,45."
+            },
+            {
+              "id": "p5",
+              "label": "A r está mais perto do isótopo mais abundante",
+              "explicacao": "35,45 está muito mais perto de 35 do que de 37."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "A r (X) = [m(isótopo 1) × % 1 + m(isótopo 2) × % 2 + ...] / 100",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "1 u = 1,66 × 10⁻²⁷ kg",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quantos protões, neutrões e eletrões tem o ião ²³₁₁Na⁺?",
+          "opcoes": [
+            "11 protões, 12 neutrões, 11 eletrões",
+            "11 protões, 12 neutrões, 10 eletrões",
+            "12 protões, 11 neutrões, 11 eletrões",
+            "11 protões, 23 neutrões, 10 eletrões"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Z = 11 protões. Neutrões: 23 − 11 = 12. O ião tem carga +1: perdeu um eletrão, fica com 10.",
+          "mascote_feedback_errado": "Protões = Z = 11. Neutrões = A − Z = 12. A carga +1 indica que o átomo perdeu 1 eletrão: 11 − 1 = 10 eletrões."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O cobre tem dois isótopos: ⁶³Cu (62,93; 69,15 %) e ⁶⁵Cu (64,93; 30,85 %). Qual é a massa atómica relativa do cobre?",
+          "opcoes": [
+            "63,93",
+            "63,55",
+            "64,00",
+            "64,31"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. A r = 62,93 × 0,6915 + 64,93 × 0,3085 ≈ 43,52 + 20,03 = 63,55.",
+          "mascote_feedback_errado": "Faz a média ponderada, não a média simples: 62,93 × 0,6915 + 64,93 × 0,3085 ≈ 63,55. Fica mais perto de 63, o isótopo mais abundante."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A nota final de uma disciplina.** Imagina que a tua nota final é calculada com o teste a valer 70 % e o trabalho a valer 30 %. Se tiveres 15 no teste e 18 no trabalho, a tua média não é 16,5 (a média simples): é 15 × 0,70 + 18 × 0,30 = 15,9. A nota do teste \"pesa mais\". Com os isótopos é igual: o isótopo mais abundante pesa mais na massa atómica relativa. É por isso que o cloro tem 35,45 e não 36."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Isótopos: propriedades e usos",
+          "texto": "**Porque é que os isótopos têm as mesmas propriedades químicas**\n\nAs reações químicas envolvem os eletrões, sobretudo os mais exteriores. Os isótopos de um elemento têm o mesmo número de protões e, portanto, o mesmo número de eletrões (quando neutros). Diferem só nos neutrões, que ficam no núcleo e não participam nas reações. Por isso reagem da mesma forma.\n\n**Curiosidade: isótopos úteis**\n\nCarbono-14: usado para datar fósseis e objetos antigos.\n\nDeutério (²₁H): usado em investigação sobre fusão nuclear e na \"água pesada\" de alguns reatores.\n\nIodo-131: usado no diagnóstico e tratamento de doenças da tiroide."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Dois átomos são isótopos se tiverem:",
+              "opcoes": [
+                "o mesmo número de massa e números atómicos diferentes.",
+                "o mesmo número atómico e números de massa diferentes.",
+                "o mesmo número de neutrões.",
+                "a mesma massa."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isótopos são átomos do mesmo elemento (mesmo Z) com diferente número de neutrões e, por isso, diferente A.",
+              "mascote_feedback_errado": "Isótopos são átomos do mesmo elemento (mesmo Z) com diferente número de neutrões e, por isso, diferente A."
+            },
+            {
+              "pergunta": "Quantos eletrões tem o ião ³²₁₆S²⁻?",
+              "opcoes": [
+                "14",
+                "16",
+                "18",
+                "32"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Z = 16. A carga 2− indica que ganhou 2 eletrões: 16 + 2 = 18.",
+              "mascote_feedback_errado": "Z = 16. A carga 2− indica que ganhou 2 eletrões: 16 + 2 = 18."
+            },
+            {
+              "pergunta": "O néon tem três isótopos: ²⁰Ne (19,99; 90,48 %), ²¹Ne (20,99; 0,27 %) e ²²Ne (21,99; 9,25 %). Qual é a sua massa atómica relativa?",
+              "opcoes": [
+                "20,18",
+                "20,99",
+                "21,00",
+                "19,99"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "A r = 19,99 × 0,9048 + 20,99 × 0,0027 + 21,99 × 0,0925 ≈ 18,09 + 0,06 + 2,03 ≈ 20,18.",
+              "mascote_feedback_errado": "A r = 19,99 × 0,9048 + 20,99 × 0,0027 + 21,99 × 0,0925 ≈ 18,09 + 0,06 + 2,03 ≈ 20,18."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "mole-massa-molar-al-1-1",
+      "titulo": "Quantidade de matéria, mole e massa molar; AL 1.1",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_gota_agua.png",
+          "imagem_legenda": "Gota de água a cair de uma bureta, ampliada.",
+          "texto": "Uma gota de água tem cerca de 0,05 mL. Parece nada. Mas lá dentro há cerca de 1,7 × 10²¹ moléculas de água: um 17 seguido de 20 zeros. Se contasses uma molécula por segundo, demorarias 50 biliões de anos, mais do que 3000 vezes a idade do Universo. Para trabalhar com números destes, os químicos inventaram uma unidade de contagem: a mole.",
+          "mascote_texto": "A mole assusta muita gente, mas é só uma \"dúzia\" gigante. Nesta secção vais medir as moléculas de uma gota de água."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Massa, mole e número de entidades",
+          "imagem": "q10_mole_ponte.png",
+          "imagem_legenda": "Esquema massa ↔ mol ↔ número de entidades.",
+          "texto_principal": "A quantidade de matéria (n) é uma grandeza que mede o número de entidades (átomos, moléculas, iões) de uma amostra, em \"pacotes\" de 6,02 × 10²³. A sua unidade é a mole (mol). O número de entidades por mole é a constante de Avogadro. A massa de uma mole de uma substância é a massa molar.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Mole",
+              "explicacao": "Quantidade de matéria que contém 6,02 × 10²³ entidades."
+            },
+            {
+              "id": "p2",
+              "label": "Constante de Avogadro (N A)",
+              "explicacao": "6,02 × 10²³ mol⁻¹. Constante de proporcionalidade entre o número de entidades e a quantidade de matéria."
+            },
+            {
+              "id": "p3",
+              "label": "Massa molar (M)",
+              "explicacao": "Massa de uma mole de entidades, em g/mol. Numericamente igual à massa atómica ou molecular relativa."
+            },
+            {
+              "id": "p4",
+              "label": "Massa molecular relativa (M r)",
+              "explicacao": "Soma das massas atómicas relativas dos átomos da molécula. Ex.: M r(H₂O) = 2 × 1,01 + 16,00 = 18,02, logo M(H₂O) = 18,02 g/mol."
+            },
+            {
+              "id": "p5",
+              "label": "Das moléculas para os átomos",
+              "explicacao": "Numa mole de H₂O há 1 mol de átomos de O e 2 mol de átomos de H."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "N = n × N A",
+              "significado": "Número de entidades.",
+              "unidades": ""
+            },
+            {
+              "expressao": "n = m / M",
+              "significado": "Quantidade de matéria a partir da massa.",
+              "unidades": ""
+            },
+            {
+              "expressao": "N A = 6,02 × 10²³ mol⁻¹",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "x A = n A / n total; w A = m A / m total",
+              "significado": "Fração molar e fração mássica.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quantas moléculas de água há em 36,0 g de água? (M = 18,02 g/mol)",
+          "opcoes": [
+            "2,00 moléculas",
+            "6,02 × 10²³ moléculas",
+            "1,20 × 10²⁴ moléculas",
+            "2,17 × 10²⁵ moléculas"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. n = 36,0 / 18,02 ≈ 2,00 mol. N = 2,00 × 6,02 × 10²³ ≈ 1,20 × 10²⁴ moléculas. E há o dobro de átomos de hidrogénio: 2,41 × 10²⁴.",
+          "mascote_feedback_errado": "Primeiro a quantidade de matéria: n = m / M = 36,0 / 18,02 ≈ 2,00 mol. Depois o número de moléculas: N = n N A = 1,20 × 10²⁴."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a massa molar da glicose, C₆H₁₂O₆?",
+          "opcoes": [
+            "29,02 g/mol",
+            "180,18 g/mol",
+            "168,00 g/mol",
+            "24,00 g/mol"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. M = 6 × 12,01 + 12 × 1,01 + 6 × 16,00 = 72,06 + 12,12 + 96,00 = 180,18 g/mol.",
+          "mascote_feedback_errado": "Multiplica cada massa atómica pelo número de átomos: 6 × 12,01 + 12 × 1,01 + 6 × 16,00 = 180,18 g/mol."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A dúzia de ovos e a resma de papel.** Na mercearia, ninguém conta os ovos um a um: compra-se uma dúzia (12). Na papelaria, compra-se uma resma (500 folhas). A mole é a \"dúzia\" dos químicos, só que com 6,02 × 10²³ unidades. E a massa molar é como saber quanto pesa uma dúzia: uma dúzia de ovos de avestruz pesa muito mais do que uma dúzia de ovos de codorniz, embora ambas tenham 12 ovos. Uma mole de ouro pesa 197 g e uma mole de hidrogénio (H₂) pesa 2 g, mas ambas têm 6,02 × 10²³ entidades."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 1.1",
+          "titulo": "Volume e número de moléculas de uma gota de água",
+          "objetivo": "Medir o volume e a massa de uma gota de água e determinar o número de moléculas de água que ela contém, selecionando os instrumentos de medição adequados e apresentando os resultados com a incerteza e os algarismos significativos corretos.",
+          "material": [
+            "Bureta de 25 cm³ ou 50 cm³ (ou pipeta graduada / conta-gotas)",
+            "Suporte universal e garra",
+            "Gobelé pequeno ou pesa-filtros",
+            "Balança digital (resolução 0,001 g ou 0,01 g)",
+            "Água destilada"
+          ],
+          "procedimento": [
+            "Encher a bureta com água destilada e acertar o nível. Ler o volume inicial, com os olhos à altura da base do menisco.",
+            "Medir a massa do gobelé vazio (ou tarar a balança com o gobelé).",
+            "Deixar cair para o gobelé um número conhecido de gotas (por exemplo, 50 gotas), contando-as.",
+            "Ler o volume final na bureta.",
+            "Medir a massa do gobelé com as gotas.",
+            "Repetir o ensaio três vezes."
+          ],
+          "tratamento_de_dados": "Volume de uma gota: V gota = (V inicial − V final) / número de gotas. Nota: a bureta tem o zero em cima e os valores aumentam para baixo, por isso o volume escoado é V final − V inicial na leitura da escala.\n\nMassa de uma gota: m gota = m água / número de gotas.\n\nQuantidade de matéria numa gota: n = m gota / M(H₂O), com M = 18,02 g/mol.\n\nNúmero de moléculas: N = n × N A.\n\nExemplo: 50 gotas → 2,50 cm³ e 2,50 g. Uma gota: 0,050 cm³ e 0,050 g. n = 0,050 / 18,02 ≈ 2,8 × 10⁻³ mol. N ≈ 1,7 × 10²¹ moléculas.\n\nIncertezas: bureta de 50 cm³ graduada em 0,1 cm³ tem incerteza de leitura ± 0,05 cm³; balança digital com resolução 0,01 g tem incerteza ± 0,01 g.\n\nCalcular também a massa volúmica da água (m / V) e compará-la com 1,00 g/cm³.",
+          "conclusao": "Uma gota de água, com um volume da ordem de 0,05 cm³, contém um número de moléculas da ordem de 10²¹. Contar muitas gotas e dividir reduz a incerteza relativa associada a cada gota. O resultado mostra a enorme diferença de escala entre o mundo macroscópico e o mundo das moléculas.",
+          "erros_comuns": [
+            "Ler o volume pela parte de cima do menisco ou com os olhos fora do nível (erro de paralaxe).",
+            "Medir uma única gota: a incerteza relativa é enorme.",
+            "Esquecer que a bureta tem a escala invertida (o zero está em cima).",
+            "Apresentar o número de moléculas com mais algarismos significativos do que as medições permitem."
+          ],
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Material de laboratório e o número de Avogadro",
+          "texto": "**Material de laboratório para medir volumes**\n\nProveta: medição aproximada de volumes.\n\nPipeta graduada: mede volumes variáveis com boa precisão.\n\nPipeta volumétrica: mede um único volume com grande rigor (por exemplo, 10,00 cm³).\n\nBureta: mede volumes escoados com rigor; tem torneira.\n\nBalão volumétrico: prepara um volume exato de solução (por exemplo, 100,00 cm³).\n\nA leitura faz-se sempre pela base do menisco, com os olhos ao mesmo nível.\n\n**Curiosidade: Avogadro não conhecia o seu número**\n\nAmedeo Avogadro, em 1811, propôs que volumes iguais de gases diferentes, nas mesmas condições, têm o mesmo número de moléculas. Mas nunca soube quantas eram. O valor de 6,02 × 10²³ só foi determinado quase um século depois, por Jean Perrin, que lhe deu o nome em homenagem a Avogadro."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é a quantidade de matéria em 11,0 g de dióxido de carbono? (M(CO₂) = 44,01 g/mol)",
+              "opcoes": [
+                "0,250 mol",
+                "4,00 mol",
+                "484 mol",
+                "1,51 × 10²³ mol"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "n = m / M = 11,0 / 44,01 ≈ 0,250 mol.",
+              "mascote_feedback_errado": "n = m / M = 11,0 / 44,01 ≈ 0,250 mol."
+            },
+            {
+              "pergunta": "Numa mole de moléculas de amoníaco (NH₃), quantos átomos de hidrogénio há?",
+              "opcoes": [
+                "6,02 × 10²³",
+                "1,81 × 10²⁴",
+                "3",
+                "2,41 × 10²⁴"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Cada molécula tem 3 átomos de H. Numa mole de moléculas há 3 mol de átomos de H: 3 × 6,02 × 10²³ ≈ 1,81 × 10²⁴.",
+              "mascote_feedback_errado": "Cada molécula tem 3 átomos de H. Numa mole de moléculas há 3 mol de átomos de H: 3 × 6,02 × 10²³ ≈ 1,81 × 10²⁴."
+            },
+            {
+              "pergunta": "Na AL 1.1, porque se contam muitas gotas em vez de medir uma só?",
+              "opcoes": [
+                "Porque uma gota evapora.",
+                "Para diminuir a incerteza relativa do volume e da massa de cada gota.",
+                "Porque a balança não mede massas pequenas.",
+                "Para aumentar o número de moléculas."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A incerteza absoluta da medição é a mesma, mas dividida por muitas gotas: a incerteza relativa associada a cada gota fica muito menor.",
+              "mascote_feedback_errado": "A incerteza absoluta da medição é a mesma, mas dividida por muitas gotas: a incerteza relativa associada a cada gota fica muito menor."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 1 concluída. Já sabes comparar a escala dos átomos com a do dia a dia, distinguir Z de A, identificar isótopos e iões, calcular massas atómicas relativas e passar de gramas para moles e para número de moléculas. A seguir: o que fazem os eletrões dentro dos átomos, e porque é que o fogo de artifício tem cores."
+}

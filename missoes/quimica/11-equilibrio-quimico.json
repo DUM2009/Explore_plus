@@ -1,0 +1,773 @@
+{
+  "missao_id": "11-equilibrio-quimico",
+  "id_guiao": "qui11-m2",
+  "titulo": "Equilíbrio químico e extensão das reações",
+  "disciplina": "quimica",
+  "ano": 11,
+  "imagem": "q11_haber_bosch.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 9h13l-3-3\"/><path d=\"M20 15H7l3 3\"/></svg>",
+    "nome": "Mestre do Equilíbrio"
+  },
+  "secoes": [
+    {
+      "secao_id": "reacoes-incompletas-equilibrio",
+      "titulo": "Reações incompletas e equilíbrio químico",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_garrafa_gaseificada.png",
+          "imagem_legenda": "Garrafa fechada de água com gás com ampliação das moléculas de CO₂.",
+          "texto": "Uma garrafa de água com gás fechada parece parada: nada acontece. Mas lá dentro, a cada segundo, milhões de moléculas de CO₂ escapam do líquido para o gás e outros milhões voltam do gás para o líquido, exatamente ao mesmo ritmo. Por fora, tudo está quieto. Por dentro, há um movimento constante. Este é o segredo do equilíbrio químico: é dinâmico.",
+          "mascote_texto": "Até agora, as reações \"iam até ao fim\". A partir daqui, muitas param a meio, e é aí que a Química fica interessante."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O equilíbrio químico",
+          "imagem": "q11_equilibrio_grafico.png",
+          "imagem_legenda": "Concentrações e velocidades em função do tempo até ao equilíbrio.",
+          "texto_principal": "Muitas reações são incompletas: os reagentes não se esgotam, porque os produtos também reagem entre si e voltam a formar os reagentes (reação inversa). Num sistema fechado, a reação direta e a inversa acabam por ocorrer à mesma velocidade. A partir desse momento, as concentrações de todas as espécies mantêm-se constantes: o sistema atingiu o equilíbrio químico.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Reação completa",
+              "explicacao": "Pelo menos um reagente esgota-se. Escreve-se com →."
+            },
+            {
+              "id": "p2",
+              "label": "Reação incompleta (reversível)",
+              "explicacao": "Coexistem reagentes e produtos no fim. Escreve-se com ⇌."
+            },
+            {
+              "id": "p3",
+              "label": "Sistema fechado",
+              "explicacao": "Não troca matéria com o exterior. É condição para atingir o equilíbrio."
+            },
+            {
+              "id": "p4",
+              "label": "Equilíbrio dinâmico",
+              "explicacao": "As duas reações (direta e inversa) continuam a ocorrer, à mesma velocidade. Não \"pararam\"."
+            },
+            {
+              "id": "p5",
+              "label": "Concentrações constantes, não iguais",
+              "explicacao": "No equilíbrio, as concentrações deixam de variar, mas em geral não são iguais entre si."
+            },
+            {
+              "id": "p6",
+              "label": "Equilíbrio homogéneo",
+              "explicacao": "Todas as espécies na mesma fase (por exemplo, todas gasosas ou todas em solução aquosa)."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Num sistema em equilíbrio químico:",
+          "opcoes": [
+            "a reação parou.",
+            "as concentrações de reagentes e produtos são iguais.",
+            "as reações direta e inversa ocorrem à mesma velocidade e as concentrações mantêm-se constantes.",
+            "só existem produtos."
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. O equilíbrio é dinâmico: as duas reações continuam, à mesma velocidade, e por isso as concentrações não variam.",
+          "mascote_feedback_errado": "No equilíbrio, nada parou: as reações direta e inversa continuam, à mesma velocidade. As concentrações ficam constantes, mas não são necessariamente iguais."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Num gráfico concentração-tempo, como se reconhece que o sistema atingiu o equilíbrio?",
+          "opcoes": [
+            "Quando as curvas se cruzam.",
+            "Quando todas as concentrações passam a ser constantes (curvas horizontais).",
+            "Quando a concentração dos reagentes é zero.",
+            "Quando a concentração dos produtos é máxima e depois desce."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O equilíbrio corresponde ao instante a partir do qual todas as curvas ficam horizontais. O ponto em que se cruzam não tem significado especial.",
+          "mascote_feedback_errado": "O cruzamento das curvas não indica equilíbrio. O equilíbrio é atingido quando as concentrações deixam de variar: todas as curvas ficam horizontais."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Duas lojas e uma escada rolante.** Imagina dois andares de um centro comercial ligados por duas escadas rolantes, uma a subir e outra a descer. De manhã, toda a gente está em baixo, e sobe muita gente. Aos poucos, há mais gente em cima, e começa também a descer mais gente. A certa altura, por minuto, sobem tantas pessoas como as que descem. O número de pessoas em cada andar deixa de mudar, embora as escadas continuem cheias de gente. É o equilíbrio dinâmico. E repara: os dois andares não têm de ter o mesmo número de pessoas."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O equilíbrio pelos dois lados e no dia a dia",
+          "texto": "**Pode chegar-se ao equilíbrio pelos dois lados**\n\nSe começares só com H₂ e I₂, ou só com HI, à mesma temperatura, o sistema atinge o mesmo tipo de equilíbrio: as concentrações finais respeitam a mesma constante de equilíbrio. O equilíbrio não depende do \"caminho\".\n\n**Equilíbrios no dia a dia**\n\nO transporte de oxigénio pela hemoglobina, a formação de estalactites, a acidez do sangue, a dissolução de CO₂ nos oceanos e as bebidas gaseificadas envolvem equilíbrios químicos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é a condição necessária para que uma reação reversível atinja o equilíbrio?",
+              "opcoes": [
+                "Ocorrer a temperatura elevada.",
+                "Ocorrer num sistema fechado.",
+                "Ter um catalisador.",
+                "Ser exotérmica."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Num sistema aberto, os produtos (por exemplo, gases) podem escapar e a reação inversa não acontece da mesma forma. O equilíbrio exige um sistema fechado.",
+              "mascote_feedback_errado": "Num sistema aberto, os produtos (por exemplo, gases) podem escapar e a reação inversa não acontece da mesma forma. O equilíbrio exige um sistema fechado."
+            },
+            {
+              "pergunta": "A seta ⇌ numa equação química indica que:",
+              "opcoes": [
+                "a reação é muito rápida.",
+                "a reação é reversível e pode atingir um estado de equilíbrio.",
+                "a reação é exotérmica.",
+                "os reagentes se esgotam."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A dupla seta indica que a reação ocorre nos dois sentidos.",
+              "mascote_feedback_errado": "A dupla seta indica que a reação ocorre nos dois sentidos."
+            },
+            {
+              "pergunta": "No equilíbrio, a velocidade da reação direta é:",
+              "opcoes": [
+                "maior do que a da inversa.",
+                "menor do que a da inversa.",
+                "igual à da reação inversa.",
+                "nula."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "É precisamente a igualdade das velocidades que mantém as concentrações constantes.",
+              "mascote_feedback_errado": "É precisamente a igualdade das velocidades que mantém as concentrações constantes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "constante-equilibrio",
+      "titulo": "Constante de equilíbrio e extensão das reações",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_balanca_equilibrio.png",
+          "imagem_legenda": "Balança com reagentes e produtos em lados diferentes.",
+          "texto": "Algumas reações reversíveis ficam praticamente completas: no equilíbrio, quase só há produtos. Outras mal começam: no equilíbrio, quase só há reagentes. Há um número que resume tudo isto de uma vez, para cada reação e cada temperatura: a constante de equilíbrio.",
+          "mascote_texto": "K c grande, a reação vai \"longe\". K c pequeno, quase não acontece. Esta é a ideia que tens de levar desta secção."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A constante de equilíbrio K c",
+          "imagem": "q11_expressao_kc.png",
+          "imagem_legenda": "Expressão genérica de K c com legendas.",
+          "texto_principal": "Para uma reação em equilíbrio, a uma dada temperatura, o quociente entre o produto das concentrações dos produtos e o produto das concentrações dos reagentes, cada uma elevada ao seu coeficiente estequiométrico, é constante: é a constante de equilíbrio, K c. O seu valor indica a extensão da reação.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Expressão",
+              "explicacao": "Para a A + b B ⇌ c C + d D: K c = [C]^c [D]^d / ([A]^a [B]^b), com as concentrações no equilíbrio, em mol/dm³."
+            },
+            {
+              "id": "p2",
+              "label": "Só depende da temperatura",
+              "explicacao": "Mudar as concentrações iniciais não muda K c. Mudar a temperatura muda."
+            },
+            {
+              "id": "p3",
+              "label": "Sem unidades (por convenção)",
+              "explicacao": "Neste nível, K c apresenta-se sem unidades."
+            },
+            {
+              "id": "p4",
+              "label": "K c muito grande (por exemplo, > 10³)",
+              "explicacao": "No equilíbrio predominam os produtos. A reação é muito extensa (quase completa)."
+            },
+            {
+              "id": "p5",
+              "label": "K c muito pequeno (por exemplo, < 10⁻³)",
+              "explicacao": "Predominam os reagentes. A reação é pouco extensa."
+            },
+            {
+              "id": "p6",
+              "label": "Reação inversa",
+              "explicacao": "A constante da reação inversa é o inverso: K c (inversa) = 1 / K c (direta)."
+            },
+            {
+              "id": "p7",
+              "label": "Espécies na expressão",
+              "explicacao": "Nesta missão trabalha-se com equilíbrios homogéneos (todas as espécies gasosas ou todas em solução aquosa). A água, quando é o solvente, não entra na expressão. Os sólidos também não entram: vais usar isto na Missão 5, no equilíbrio de solubilidade."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "K c = [C]^c [D]^d / ([A]^a [B]^b)",
+              "significado": "Concentrações no equilíbrio.",
+              "unidades": ""
+            },
+            {
+              "expressao": "K c (reação inversa) = 1 / K c",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Para H₂(g) + I₂(g) ⇌ 2 HI(g), a 430 °C, no equilíbrio: [H₂] = [I₂] = 1,0 × 10⁻³ mol/dm³ e [HI] = 7,35 × 10⁻³ mol/dm³. Qual é o valor de K c?",
+          "opcoes": [
+            "7,35",
+            "54",
+            "3,7 × 10³",
+            "1,9 × 10⁻²"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. K c = [HI]² / ([H₂][I₂]) = (7,35 × 10⁻³)² / (1,0 × 10⁻³ × 1,0 × 10⁻³) = 5,40 × 10⁻⁵ / 1,0 × 10⁻⁶ ≈ 54.",
+          "mascote_feedback_errado": "Não te esqueças do expoente 2 do HI (coeficiente 2): K c = (7,35 × 10⁻³)² / (1,0 × 10⁻³)² ≈ 54."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A 25 °C, a reação N₂(g) + O₂(g) ⇌ 2 NO(g) tem K c ≈ 4,5 × 10⁻³¹. O que se conclui?",
+          "opcoes": [
+            "Forma-se muito NO à temperatura ambiente.",
+            "A reação é praticamente inexistente à temperatura ambiente: no equilíbrio, quase só há N₂ e O₂.",
+            "A reação é muito rápida.",
+            "A reação é completa."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. K c minúsculo significa reação muito pouco extensa. É por isso que o azoto e o oxigénio do ar coexistem sem reagir. Só a altas temperaturas (motores, relâmpagos) se forma NO em quantidade.",
+          "mascote_feedback_errado": "K c muito pequeno indica que, no equilíbrio, predominam os reagentes. A 25 °C o ar quase não forma NO."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A nota de um aluno que já foi corrigida.** K c é como a classificação final de uma reação numa escala que vai de \"quase nada\" a \"quase tudo\". Um K c de 10⁻³⁰ é como um aluno que nem abriu o teste. Um K c de 10³⁰ é um 20 em 20. Repara que a nota não diz nada sobre quanto tempo o aluno demorou a fazer o teste: da mesma forma, K c diz quanto a reação avança, mas não diz se é rápida ou lenta."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Quadro ICE e um erro comum",
+          "texto": "**Tabela de equilíbrio (quadro ICE)**\n\nPara calcular concentrações de equilíbrio, organiza-se um quadro com três linhas: concentrações iniciais, variação (com a estequiometria) e concentrações de equilíbrio. Ex.: se se formam 2x mol/dm³ de HI, consomem-se x mol/dm³ de H₂ e x mol/dm³ de I₂.\n\n**Erro comum**\n\nConfundir extensão com rapidez. K c indica até onde a reação vai, não a que velocidade. Uma reação com K c enorme pode ser lentíssima (por exemplo, a combustão da madeira à temperatura ambiente)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é a expressão de K c para 2 SO₂(g) + O₂(g) ⇌ 2 SO₃(g)?",
+              "opcoes": [
+                "[SO₃] / ([SO₂][O₂])",
+                "[SO₃]² / ([SO₂]² [O₂])",
+                "[SO₂]² [O₂] / [SO₃]²",
+                "2[SO₃] / (2[SO₂] + [O₂])"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Produtos no numerador, reagentes no denominador, cada concentração elevada ao respetivo coeficiente estequiométrico.",
+              "mascote_feedback_errado": "Produtos no numerador, reagentes no denominador, cada concentração elevada ao respetivo coeficiente estequiométrico."
+            },
+            {
+              "pergunta": "A constante de equilíbrio de uma reação:",
+              "opcoes": [
+                "muda quando se adiciona reagente.",
+                "só depende da temperatura.",
+                "muda quando se adiciona um catalisador.",
+                "é sempre maior do que 1."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "K c só se altera com a temperatura. Adicionar reagentes desloca o equilíbrio, mas o sistema reajusta-se para o mesmo K c.",
+              "mascote_feedback_errado": "K c só se altera com a temperatura. Adicionar reagentes desloca o equilíbrio, mas o sistema reajusta-se para o mesmo K c."
+            },
+            {
+              "pergunta": "Se K c = 54 para H₂ + I₂ ⇌ 2 HI, qual é K c para 2 HI ⇌ H₂ + I₂, à mesma temperatura?",
+              "opcoes": [
+                "54",
+                "−54",
+                "1,9 × 10⁻²",
+                "2,9 × 10³"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "A constante da reação inversa é o inverso: 1 / 54 ≈ 1,9 × 10⁻².",
+              "mascote_feedback_errado": "A constante da reação inversa é o inverso: 1 / 54 ≈ 1,9 × 10⁻²."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "quociente-reacao",
+      "titulo": "Quociente da reação",
+      "xp": 25,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_gps_equilibrio.png",
+          "imagem_legenda": "Ponteiro tipo bússola entre \"reagentes\" e \"produtos\".",
+          "texto": "Se misturares reagentes e produtos ao acaso, o sistema não sabe à partida se vai formar mais produtos ou mais reagentes. Mas tu consegues prever. Basta calcular um número com a mesma fórmula de K c, mas com as concentrações daquele instante, e compará-lo com K c. É como um GPS que te diz em que sentido o sistema vai andar.",
+          "mascote_texto": "Q e K têm a mesma fórmula. A diferença é só o momento em que medes as concentrações."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Q c comparado com K c",
+          "imagem": "q11_q_vs_k.png",
+          "imagem_legenda": "Eixo com Q < K, Q = K e Q > K e o sentido de evolução.",
+          "texto_principal": "O quociente da reação, Q c, tem a mesma expressão que K c, mas usa as concentrações num instante qualquer (não necessariamente no equilíbrio). Comparando Q c com K c, prevê-se em que sentido o sistema vai evoluir até atingir o equilíbrio.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Q c < K c",
+              "explicacao": "Há \"poucos\" produtos em relação ao equilíbrio. A reação direta é favorecida até Q c = K c."
+            },
+            {
+              "id": "p2",
+              "label": "Q c > K c",
+              "explicacao": "Há \"demasiados\" produtos. A reação inversa é favorecida."
+            },
+            {
+              "id": "p3",
+              "label": "Q c = K c",
+              "explicacao": "O sistema já está em equilíbrio."
+            },
+            {
+              "id": "p4",
+              "label": "No início, só com reagentes",
+              "explicacao": "Q c = 0, logo a reação avança no sentido direto."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Q c = [C]^c [D]^d / ([A]^a [B]^b)",
+              "significado": "Concentrações num instante qualquer.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Q c < K c → sentido direto; Q c > K c → sentido inverso; Q c = K c → equilíbrio",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Para H₂ + I₂ ⇌ 2 HI (K c = 54), num instante: [HI] = 0,010 mol/dm³ e [H₂] = [I₂] = 0,0020 mol/dm³. Em que sentido evolui o sistema?",
+          "opcoes": [
+            "Sentido inverso, porque Q c > K c.",
+            "Sentido direto, porque Q c = 25 < K c.",
+            "Já está em equilíbrio.",
+            "Não se pode prever."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Q c = 0,010² / (0,0020 × 0,0020) = 1,0 × 10⁻⁴ / 4,0 × 10⁻⁶ = 25. Como 25 < 54, forma-se mais HI.",
+          "mascote_feedback_errado": "Calcula Q c com as concentrações dadas: 0,010² / 0,0020² = 25. Q c < K c, logo a reação avança no sentido direto (forma HI)."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Num sistema, Q c = 120 e K c = 54. O que vai acontecer às concentrações de reagentes?",
+          "opcoes": [
+            "Diminuem.",
+            "Aumentam, porque a reação inversa é favorecida.",
+            "Mantêm-se.",
+            "Tornam-se nulas."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Q c > K c: há produtos a mais. A reação inversa consome produtos e forma reagentes, até Q c baixar para 54.",
+          "mascote_feedback_errado": "Com Q c > K c, o sistema evolui no sentido inverso: produtos transformam-se em reagentes, e a concentração de reagentes aumenta."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O termóstato.** Um termóstato está programado para 21 °C (o K c). Se a sala está a 18 °C (Q < K), liga o aquecimento. Se está a 24 °C (Q > K), liga o ar condicionado. Se está a 21 °C, não faz nada. O quociente da reação é a temperatura atual da sala: comparando-a com o valor programado, sabes para que lado o sistema vai \"corrigir\"."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Usar Q para prever precipitação",
+          "texto": "**Usar Q para prever precipitação**\n\nA mesma ideia vai ser usada na Missão 5: compara-se o quociente com a constante do produto de solubilidade para prever se se forma ou não um precipitado."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Q c e K c têm a mesma expressão matemática, mas:",
+              "opcoes": [
+                "Q c só se usa para gases.",
+                "Q c usa as concentrações num instante qualquer, e K c as concentrações no equilíbrio.",
+                "K c depende das concentrações iniciais.",
+                "Q c é sempre maior do que K c."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A diferença está no momento: K c usa concentrações de equilíbrio; Q c, concentrações num instante qualquer.",
+              "mascote_feedback_errado": "A diferença está no momento: K c usa concentrações de equilíbrio; Q c, concentrações num instante qualquer."
+            },
+            {
+              "pergunta": "Num recipiente só com reagentes, no instante inicial:",
+              "opcoes": [
+                "Q c = K c.",
+                "Q c = 0 e a reação avança no sentido direto.",
+                "Q c é infinito.",
+                "a reação avança no sentido inverso."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Sem produtos, o numerador é zero e Q c = 0 < K c. A reação avança no sentido direto.",
+              "mascote_feedback_errado": "Sem produtos, o numerador é zero e Q c = 0 < K c. A reação avança no sentido direto."
+            },
+            {
+              "pergunta": "Se Q c = K c, então:",
+              "opcoes": [
+                "o sistema está em equilíbrio.",
+                "a reação é completa.",
+                "a reação vai no sentido direto.",
+                "a temperatura mudou."
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Quando Q c = K c, as concentrações são as de equilíbrio e não há evolução global.",
+              "mascote_feedback_errado": "Quando Q c = K c, as concentrações são as de equilíbrio e não há evolução global."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "le-chatelier-al-1-2",
+      "titulo": "Princípio de Le Châtelier e otimização; AL 1.2",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_haber_bosch.png",
+          "imagem_legenda": "Instalação industrial de produção de amoníaco.",
+          "texto": "A síntese do amoníaco, N₂ + 3 H₂ ⇌ 2 NH₃, é exotérmica. A temperaturas baixas, o equilíbrio favorece muito o amoníaco. Mas as fábricas trabalham a cerca de 450 °C, onde o equilíbrio é menos favorável. Porquê? Porque a temperaturas baixas a reação é lentíssima. A indústria procura o melhor compromisso, e para isso usa uma regra que permite prever como um equilíbrio reage a perturbações: o Princípio de Le Châtelier.",
+          "mascote_texto": "Le Châtelier resume-se assim: o sistema \"contraria\" o que lhe fazes. Mas só a temperatura muda K c."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Princípio de Le Châtelier",
+          "imagem": "q11_le_chatelier.png",
+          "imagem_legenda": "Quatro perturbações e o sentido do deslocamento.",
+          "texto_principal": "Princípio de Le Châtelier: quando se altera uma das condições de um sistema em equilíbrio, o sistema evolui no sentido que tende a contrariar essa alteração, até atingir um novo estado de equilíbrio.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Aumentar a concentração de um reagente",
+              "explicacao": "O equilíbrio desloca-se no sentido direto (consome parte do reagente adicionado). K c não muda."
+            },
+            {
+              "id": "p2",
+              "label": "Retirar um produto",
+              "explicacao": "O equilíbrio desloca-se no sentido direto (repõe parte do produto). Muito usado na indústria."
+            },
+            {
+              "id": "p3",
+              "label": "Aumentar a pressão (diminuindo o volume), em equilíbrios gasosos",
+              "explicacao": "O equilíbrio desloca-se no sentido em que há menor número de moles de gás. Se o número de moles de gás for igual dos dois lados, não há deslocamento."
+            },
+            {
+              "id": "p4",
+              "label": "Aumentar a temperatura",
+              "explicacao": "O equilíbrio desloca-se no sentido endotérmico (que absorve energia). K c muda: aumenta se a reação direta for endotérmica, diminui se for exotérmica."
+            },
+            {
+              "id": "p5",
+              "label": "Diminuir a temperatura",
+              "explicacao": "Favorece o sentido exotérmico."
+            },
+            {
+              "id": "p6",
+              "label": "Catalisador",
+              "explicacao": "Não desloca o equilíbrio nem altera K c. Só faz o sistema chegar mais depressa ao equilíbrio."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Concentração e pressão: deslocam o equilíbrio, K c mantém-se.",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Temperatura: desloca o equilíbrio e altera K c.",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Catalisador: não desloca o equilíbrio.",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Para N₂(g) + 3 H₂(g) ⇌ 2 NH₃(g), ΔH < 0, o que favorece a formação de amoníaco?",
+          "opcoes": [
+            "Aumentar a temperatura e diminuir a pressão.",
+            "Diminuir a temperatura e aumentar a pressão.",
+            "Adicionar um catalisador.",
+            "Retirar N₂."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. A reação direta é exotérmica: baixar a temperatura favorece-a. Passa de 4 moles de gás para 2: aumentar a pressão favorece o lado com menos moles, os produtos.",
+          "mascote_feedback_errado": "Pela temperatura: diminuir favorece o sentido exotérmico (direto). Pela pressão: aumentar favorece o lado com menos moles de gás (2 mol de NH₃ contra 4 mol de reagentes)."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Para N₂O₄(g) (incolor) ⇌ 2 NO₂(g) (castanho), ΔH > 0. Ao mergulhar o recipiente em água quente, a cor:",
+          "opcoes": [
+            "fica mais clara.",
+            "fica mais escura, porque o equilíbrio se desloca no sentido endotérmico (formação de NO₂).",
+            "não muda.",
+            "fica verde."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Aquecer favorece o sentido endotérmico, que aqui é o direto: forma-se mais NO₂ castanho. K c aumenta.",
+          "mascote_feedback_errado": "A reação direta é endotérmica (ΔH > 0). Ao aquecer, o sistema \"contraria\" absorvendo energia: desloca-se no sentido direto e forma mais NO₂, castanho."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_le_chatelier",
+          "titulo": "Perturba o equilíbrio",
+          "instrucao": "Sistema: N₂(g) + 3 H₂(g) ⇌ 2 NH₃(g), ΔH = −92 kJ/mol, inicialmente em equilíbrio. Escolhe uma perturbação e vê Q c logo a seguir, o sentido em que o sistema evolui e as concentrações no novo equilíbrio (antes → logo após a perturbação → novo equilíbrio).",
+          "controlos": [
+            {
+              "id": "perturbacao",
+              "rotulo": "Perturbação",
+              "opcoes": [
+                {
+                  "valor": "nada",
+                  "label": "Sem perturbação (sistema em equilíbrio)"
+                },
+                {
+                  "valor": "addN2",
+                  "label": "Adicionar N₂ (+0,500 mol/dm³)"
+                },
+                {
+                  "valor": "addH2",
+                  "label": "Adicionar H₂ (+0,500 mol/dm³)"
+                },
+                {
+                  "valor": "retNH3",
+                  "label": "Retirar NH₃ (metade)"
+                },
+                {
+                  "valor": "pmais",
+                  "label": "Aumentar pressão (reduzir volume para metade)"
+                },
+                {
+                  "valor": "pmenos",
+                  "label": "Diminuir pressão (duplicar o volume)"
+                },
+                {
+                  "valor": "aquecer",
+                  "label": "Aquecer"
+                },
+                {
+                  "valor": "arrefecer",
+                  "label": "Arrefecer"
+                },
+                {
+                  "valor": "catalisador",
+                  "label": "Adicionar catalisador"
+                }
+              ]
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Q c logo após a perturbação",
+              "formula": "dados.p[perturbacao].q"
+            },
+            {
+              "rotulo": "K c",
+              "formula": "dados.p[perturbacao].k"
+            },
+            {
+              "rotulo": "Evolução",
+              "formula": "dados.p[perturbacao].sentido"
+            },
+            {
+              "rotulo": "[N₂]",
+              "formula": "dados.p[perturbacao].n2"
+            },
+            {
+              "rotulo": "[H₂]",
+              "formula": "dados.p[perturbacao].h2"
+            },
+            {
+              "rotulo": "[NH₃]",
+              "formula": "dados.p[perturbacao].nh3"
+            },
+            {
+              "rotulo": "Porquê",
+              "formula": "dados.p[perturbacao].explicacao"
+            }
+          ],
+          "pergunta_final": "Depois de adicionar catalisador, há mais amoníaco no equilíbrio? Resposta esperada: não; o catalisador só faz atingir o equilíbrio mais depressa.",
+          "dados": {
+            "p": {
+              "nada": {
+                "q": "0,148",
+                "k": "0,148 (mantém-se)",
+                "sentido": "Não há deslocamento (Q c = K c)",
+                "n2": "0,500 → 0,500 → 0,500 mol/dm³",
+                "h2": "1,50 → 1,50 → 1,50 mol/dm³",
+                "nh3": "0,500 → 0,500 → 0,500 mol/dm³",
+                "explicacao": "O sistema está em equilíbrio: Q c = K c e as concentrações não variam."
+              },
+              "addN2": {
+                "q": "0,0741",
+                "k": "0,148 (mantém-se)",
+                "sentido": "O equilíbrio desloca-se no sentido direto (forma NH₃), porque Q c < K c",
+                "n2": "0,500 → 1,00 → 0,953 mol/dm³",
+                "h2": "1,50 → 1,50 → 1,36 mol/dm³",
+                "nh3": "0,500 → 0,500 → 0,595 mol/dm³",
+                "explicacao": "Aumentou a concentração de um reagente: o sistema contraria consumindo parte do N₂ adicionado, no sentido direto."
+              },
+              "addH2": {
+                "q": "0,0625",
+                "k": "0,148 (mantém-se)",
+                "sentido": "O equilíbrio desloca-se no sentido direto (forma NH₃), porque Q c < K c",
+                "n2": "0,500 → 0,500 → 0,438 mol/dm³",
+                "h2": "1,50 → 2,00 → 1,82 mol/dm³",
+                "nh3": "0,500 → 0,500 → 0,623 mol/dm³",
+                "explicacao": "Aumentou a concentração de um reagente: o sistema consome parte do H₂ adicionado, no sentido direto."
+              },
+              "retNH3": {
+                "q": "0,0370",
+                "k": "0,148 (mantém-se)",
+                "sentido": "O equilíbrio desloca-se no sentido direto (forma NH₃), porque Q c < K c",
+                "n2": "0,500 → 0,500 → 0,435 mol/dm³",
+                "h2": "1,50 → 1,50 → 1,31 mol/dm³",
+                "nh3": "0,500 → 0,250 → 0,379 mol/dm³",
+                "explicacao": "Diminuiu a concentração de um produto: o sistema repõe parte do NH₃ retirado, no sentido direto."
+              },
+              "pmais": {
+                "q": "0,0370",
+                "k": "0,148 (mantém-se)",
+                "sentido": "O equilíbrio desloca-se no sentido direto (forma NH₃), porque Q c < K c",
+                "n2": "0,500 → 1,00 → 0,823 mol/dm³",
+                "h2": "1,50 → 3,00 → 2,47 mol/dm³",
+                "nh3": "0,500 → 1,00 → 1,35 mol/dm³",
+                "explicacao": "Ao reduzir o volume, a pressão aumenta: o sistema desloca-se para o lado com menos moles de gás (2 mol de NH₃ contra 4 mol de reagentes), no sentido direto."
+              },
+              "pmenos": {
+                "q": "0,593",
+                "k": "0,148 (mantém-se)",
+                "sentido": "O equilíbrio desloca-se no sentido inverso (decompõe NH₃), porque Q c > K c",
+                "n2": "0,500 → 0,250 → 0,291 mol/dm³",
+                "h2": "1,50 → 0,750 → 0,872 mol/dm³",
+                "nh3": "0,500 → 0,250 → 0,169 mol/dm³",
+                "explicacao": "Ao aumentar o volume, a pressão diminui: o sistema desloca-se para o lado com mais moles de gás (os reagentes), no sentido inverso."
+              },
+              "aquecer": {
+                "q": "0,148",
+                "k": "0,0370 (diminuiu para um quarto)",
+                "sentido": "O equilíbrio desloca-se no sentido inverso (decompõe NH₃), porque Q c > K c",
+                "n2": "0,500 → 0,500 → 0,581 mol/dm³",
+                "h2": "1,50 → 1,50 → 1,74 mol/dm³",
+                "nh3": "0,500 → 0,500 → 0,338 mol/dm³",
+                "explicacao": "A reação direta é exotérmica (ΔH = −92 kJ/mol). Aquecer favorece o sentido endotérmico, o inverso, e K c diminui."
+              },
+              "arrefecer": {
+                "q": "0,148",
+                "k": "0,593 (aumentou quatro vezes)",
+                "sentido": "O equilíbrio desloca-se no sentido direto (forma NH₃), porque Q c < K c",
+                "n2": "0,500 → 0,500 → 0,411 mol/dm³",
+                "h2": "1,50 → 1,50 → 1,23 mol/dm³",
+                "nh3": "0,500 → 0,500 → 0,677 mol/dm³",
+                "explicacao": "Arrefecer favorece o sentido exotérmico, o direto, e K c aumenta."
+              },
+              "catalisador": {
+                "q": "0,148",
+                "k": "0,148 (mantém-se)",
+                "sentido": "Não há deslocamento (Q c = K c)",
+                "n2": "0,500 → 0,500 → 0,500 mol/dm³",
+                "h2": "1,50 → 1,50 → 1,50 mol/dm³",
+                "nh3": "0,500 → 0,500 → 0,500 mol/dm³",
+                "explicacao": "O catalisador não desloca o equilíbrio nem altera K c: só faz o sistema chegar mais depressa ao equilíbrio. Como já estava em equilíbrio, nada muda."
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A pessoa teimosa.** Um sistema em equilíbrio é como uma pessoa teimosa: faz sempre o contrário do que lhe impões. Se lhe deres mais trabalho (adicionas reagente), ela despacha parte dele (forma produto). Se lhe tirares o resultado do trabalho (retiras produto), ela produz mais. Se a apertares num espaço pequeno (aumentas a pressão), ela \"encolhe-se\" para o lado que ocupa menos espaço (menos moles de gás). Se a aqueceres, ela faz aquilo que absorve calor. Mas nunca consegue anular completamente a mudança: só a atenua."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 1.2",
+          "titulo": "Efeito da concentração no equilíbrio químico",
+          "objetivo": "Investigar alterações de equilíbrios químicos em sistemas aquosos por variação da concentração de reagentes e de produtos, e interpretá-las com o Princípio de Le Châtelier.",
+          "material": [
+            "Solução de cloreto de ferro(III), FeCl₃ (aq), diluída",
+            "Solução de tiocianato de potássio, KSCN (aq), diluída",
+            "Soluções para perturbar o equilíbrio: FeCl₃ mais concentrada, KSCN mais concentrada, hidróxido de sódio, NaOH (aq) (remove Fe³⁺ por precipitação)",
+            "Tubos de ensaio e suporte, conta-gotas, gobelé, água destilada",
+            "Folha branca (fundo para comparar cores)",
+            "(Alternativa: sistema cromato/dicromato: 2 CrO₄²⁻ (amarelo) + 2 H₃O⁺ ⇌ Cr₂O₇²⁻ (laranja) + 3 H₂O, perturbado com ácido e base)"
+          ],
+          "procedimento": [
+            "Preparar o sistema em equilíbrio: misturar, num gobelé, algumas gotas de FeCl₃ e de KSCN com água destilada até obter uma cor vermelho-alaranjada clara. Equilíbrio: Fe³⁺(aq) + SCN⁻(aq) ⇌ [FeSCN]²⁺(aq) (vermelho-sangue).",
+            "Distribuir a solução por quatro tubos de ensaio, com volumes iguais.",
+            "Tubo 1: controlo (branco). Não se altera.",
+            "Tubo 2: adicionar algumas gotas de FeCl₃.",
+            "Tubo 3: adicionar algumas gotas de KSCN.",
+            "Tubo 4: adicionar algumas gotas de NaOH (forma-se Fe(OH)₃, que retira Fe³⁺ da solução).",
+            "Antes de cada adição, prever a alteração de cor. Depois, comparar a cor de cada tubo com o controlo, sobre fundo branco."
+          ],
+          "tratamento_de_dados": "Tubo 2 (mais Fe³⁺): a cor vermelha intensifica-se. O equilíbrio desloca-se no sentido direto, consumindo parte do Fe³⁺ adicionado.\n\nTubo 3 (mais SCN⁻): a cor vermelha intensifica-se. Mesmo raciocínio.\n\nTubo 4 (retira Fe³⁺): a cor vermelha diminui (e pode formar-se um precipitado castanho-alaranjado de Fe(OH)₃). O equilíbrio desloca-se no sentido inverso, para repor Fe³⁺.\n\nVariável independente: concentração de uma espécie. Variável dependente: cor (concentração de [FeSCN]²⁺). Variáveis de contexto: temperatura, volumes, concentrações iniciais.",
+          "conclusao": "Aumentar a concentração de um reagente desloca o equilíbrio no sentido direto; diminuir a concentração de um reagente desloca-o no sentido inverso. As observações confirmam o Princípio de Le Châtelier. O tubo de controlo é essencial para comparar as cores.",
+          "erros_comuns": [
+            "Não usar tubo de controlo: as alterações de cor ficam sem referência.",
+            "Usar soluções demasiado concentradas: a cor fica tão escura que não se notam diferenças.",
+            "Dizer que a adição de reagente altera K c (não altera: só a temperatura).",
+            "Adicionar volumes muito diferentes nos vários tubos (a diluição também altera a cor)."
+          ],
+          "seguranca": "O hidróxido de sódio é corrosivo; usar óculos e luvas. Os resíduos com ferro vão para o recipiente indicado."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Haber-Bosch e o equilíbrio no sangue",
+          "texto": "**O compromisso na síntese do amoníaco (processo de Haber-Bosch)**\n\nTemperatura: cerca de 400 a 450 °C. Mais baixa daria mais amoníaco no equilíbrio, mas a reação seria demasiado lenta.\n\nPressão: cerca de 150 a 250 atm. Mais pressão favorece o amoníaco, mas encarece os equipamentos e a energia.\n\nCatalisador de ferro: acelera a reação, sem alterar o equilíbrio.\n\nO amoníaco é retirado continuamente (liquefazendo-o) e os reagentes que não reagiram são reciclados.\n\n**Equilíbrio no sangue**\n\nO oxigénio liga-se à hemoglobina (Hb) num equilíbrio: Hb + O₂ ⇌ HbO₂. Nos pulmões, onde há muito O₂, o equilíbrio desloca-se para a direita. Nos tecidos, onde há pouco O₂, desloca-se para a esquerda e o oxigénio é libertado."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Num equilíbrio gasoso com o mesmo número de moles de gás nos dois lados (por exemplo, H₂ + I₂ ⇌ 2 HI), aumentar a pressão:",
+              "opcoes": [
+                "desloca o equilíbrio no sentido direto.",
+                "desloca o equilíbrio no sentido inverso.",
+                "não desloca o equilíbrio.",
+                "aumenta K c."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Com 2 mol de gás de cada lado, a alteração de pressão não favorece nenhum dos sentidos.",
+              "mascote_feedback_errado": "Com 2 mol de gás de cada lado, a alteração de pressão não favorece nenhum dos sentidos."
+            },
+            {
+              "pergunta": "Qual das alterações modifica o valor de K c?",
+              "opcoes": [
+                "Adicionar um reagente.",
+                "Aumentar a pressão.",
+                "Alterar a temperatura.",
+                "Adicionar um catalisador."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Só a temperatura altera a constante de equilíbrio.",
+              "mascote_feedback_errado": "Só a temperatura altera a constante de equilíbrio."
+            },
+            {
+              "pergunta": "Na AL 1.2, ao adicionar NaOH ao equilíbrio Fe³⁺ + SCN⁻ ⇌ [FeSCN]²⁺, a cor vermelha diminui porque:",
+              "opcoes": [
+                "o NaOH reage com o [FeSCN]²⁺ e torna-o incolor.",
+                "o NaOH retira Fe³⁺ (forma Fe(OH)₃) e o equilíbrio desloca-se no sentido inverso.",
+                "a temperatura aumenta.",
+                "o NaOH é um catalisador."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A precipitação de Fe(OH)₃ diminui a concentração de Fe³⁺. O sistema contraria essa diminuição deslocando-se no sentido inverso, e o [FeSCN]²⁺ (vermelho) diminui.",
+              "mascote_feedback_errado": "A precipitação de Fe(OH)₃ diminui a concentração de Fe³⁺. O sistema contraria essa diminuição deslocando-se no sentido inverso, e o [FeSCN]²⁺ (vermelho) diminui."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 2 concluída. Reconheces reações incompletas e equilíbrios dinâmicos, escreves e interpretas K c, usas o quociente da reação para prever a evolução de um sistema e aplicas o Princípio de Le Châtelier, incluindo na otimização industrial. A seguir: ácidos, bases e pH."
+}

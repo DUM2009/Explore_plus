@@ -2009,3 +2009,103 @@ html.dark-mode .me-simulacao-saidas {
 html.dark-mode .me-simulacao-saida-valor {
     color: #e6ede9;
 }
+
+/* Espaço reservado para imagens de ecrã ainda por produzir (ver
+   imagemEcraHtml / meImagemEmFalta em missao-engine.js). */
+.me-imagem-reservada {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    margin: 0 0 16px;
+    padding: 20px 24px;
+    border: 2px dashed #cfd6cf;
+    border-radius: 14px;
+    background: #f6f8f5;
+    color: #6b7770;
+    font-size: .85rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+html.dark-mode .me-imagem-reservada {
+    border-color: #3a3f3b;
+    background: rgba(255, 255, 255, .04);
+    color: #a9b6ae;
+}
+
+/* Tabela periódica clicável (controlo "tabela_periodica" das simulações). */
+.me-tp-grelha {
+    display: grid;
+    grid-template-columns: repeat(18, minmax(0, 1fr));
+    gap: 3px;
+    overflow-x: auto;
+}
+
+.me-tp-celula {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    aspect-ratio: 1;
+    padding: 2px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    box-shadow: none;
+    color: #20294b;
+    font-family: inherit;
+    line-height: 1.05;
+    cursor: pointer;
+    transition: transform .12s ease, border-color .12s ease;
+}
+
+.me-tp-celula:hover {
+    transform: translateY(-1px);
+    box-shadow: none;
+}
+
+.me-tp-celula.is-active {
+    border-color: #20294b;
+    outline: 2px solid #20294b;
+    outline-offset: 1px;
+}
+
+.me-tp-z {
+    font-size: .55rem;
+    opacity: .75;
+}
+
+.me-tp-simbolo {
+    font-size: .85rem;
+    font-weight: 800;
+}
+
+.me-tp-massa {
+    font-size: .5rem;
+    opacity: .75;
+}
+
+.me-tp-bloco-s { background: #fde2c8; }
+.me-tp-bloco-p { background: #d4efdf; }
+.me-tp-bloco-d { background: #d6e4f7; }
+.me-tp-bloco-f { background: #eadcf5; }
+
+.me-tp-legenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+    font-size: .72rem;
+    color: #3d4640;
+}
+
+.me-tp-legenda span {
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+@media (max-width: 560px) {
+    .me-tp-celula { min-width: 24px; }
+    .me-tp-massa { display: none; }
+}

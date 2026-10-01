@@ -1,0 +1,800 @@
+{
+  "missao_id": "10-gases-dispersoes",
+  "id_guiao": "qui10-m5",
+  "titulo": "Gases e dispersões",
+  "disciplina": "quimica",
+  "ano": 10,
+  "imagem": "q10_baloes_helio_ar.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 3h6\"/><path d=\"M10 3v6L5 19a1 1 0 0 0 .9 1.5h12.2A1 1 0 0 0 19 19l-5-10V3\"/><path d=\"M7.5 15h9\"/></svg>",
+    "nome": "Mestre das Soluções"
+  },
+  "secoes": [
+    {
+      "secao_id": "avogadro-volume-molar",
+      "titulo": "Lei de Avogadro, volume molar e massa volúmica de gases",
+      "xp": 25,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_baloes_helio_ar.png",
+          "imagem_legenda": "Dois balões iguais: um a subir (hélio), outro no chão (ar).",
+          "texto": "Enches dois balões iguais, um com hélio e outro com ar, até terem exatamente o mesmo tamanho. Dentro de cada um há praticamente o mesmo número de partículas. Mas o de hélio sobe e o de ar cai. A razão está numa ideia proposta em 1811 por Amedeo Avogadro e numa diferença de massas molares.",
+          "mascote_texto": "Nos gases, o que importa para o volume é o número de partículas, não o tipo de gás. Parece estranho, mas vais ver que faz sentido."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Lei de Avogadro e volume molar",
+          "imagem": "q10_lei_avogadro.png",
+          "imagem_legenda": "Três recipientes iguais com o mesmo número de moléculas de gases diferentes.",
+          "texto_principal": "A lei de Avogadro diz que volumes iguais de gases diferentes, nas mesmas condições de pressão e temperatura, contêm o mesmo número de partículas. Consequência: uma mole de qualquer gás (ideal) ocupa sempre o mesmo volume, nas mesmas condições. É o volume molar.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Porque é que o tipo de gás não importa",
+              "explicacao": "Nos gases, as partículas estão muito afastadas umas das outras. O volume ocupado é quase todo espaço vazio, e o tamanho das moléculas é desprezável."
+            },
+            {
+              "id": "p2",
+              "label": "Volume molar (V m)",
+              "explicacao": "Volume ocupado por uma mole de gás. Depende da pressão e da temperatura, mas não do gás."
+            },
+            {
+              "id": "p3",
+              "label": "Condições PTN",
+              "explicacao": "0 °C e 1 atm. V m = 22,4 dm³/mol."
+            },
+            {
+              "id": "p4",
+              "label": "Outras condições",
+              "explicacao": "A 25 °C e 1 atm, V m ≈ 24,5 dm³/mol. Quando a temperatura aumenta, o volume molar aumenta; quando a pressão aumenta, diminui."
+            },
+            {
+              "id": "p5",
+              "label": "Gás ideal",
+              "explicacao": "Modelo em que se desprezam o volume das partículas e as interações entre elas. Os gases reais comportam-se quase como ideais a pressões baixas e temperaturas não muito baixas."
+            },
+            {
+              "id": "p6",
+              "label": "Massa volúmica de um gás",
+              "explicacao": "Uma mole tem massa M e ocupa V m, logo ρ = M / V m. Um gás com maior massa molar é mais denso."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "V = n × V m",
+              "significado": "Volume de um gás.",
+              "unidades": ""
+            },
+            {
+              "expressao": "V m (PTN) = 22,4 dm³ mol⁻¹",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "ρ = M / V m",
+              "significado": "Massa volúmica de um gás.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Que volume ocupam 88,0 g de dióxido de carbono em condições PTN? (M(CO₂) = 44,01 g/mol)",
+          "opcoes": [
+            "22,4 dm³",
+            "44,8 dm³",
+            "88,0 dm³",
+            "1970 dm³"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. n = 88,0 / 44,01 ≈ 2,00 mol. V = 2,00 × 22,4 = 44,8 dm³.",
+          "mascote_feedback_errado": "Calcula primeiro a quantidade de matéria: n = m / M ≈ 2,00 mol. Depois V = n V m = 2,00 × 22,4 = 44,8 dm³."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que um balão cheio de hélio sobe no ar? (M(He) = 4,00 g/mol; massa molar média do ar ≈ 28,96 g/mol)",
+          "opcoes": [
+            "Porque o hélio tem mais moléculas.",
+            "Porque, nas mesmas condições, o hélio é cerca de 7 vezes menos denso do que o ar.",
+            "Porque o hélio é um gás nobre e não reage.",
+            "Porque o hélio está mais quente."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. ρ(He) = 4,00 / 22,4 ≈ 0,179 g/dm³; ρ(ar) = 28,96 / 22,4 ≈ 1,29 g/dm³ (PTN). O balão de hélio é mais leve do que o ar que desloca: a impulsão fá-lo subir.",
+          "mascote_feedback_errado": "Com o mesmo volume, os dois balões têm o mesmo número de partículas. Mas uma mole de hélio pesa 4 g e uma mole de ar cerca de 29 g: o hélio é muito menos denso e o balão sobe."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Estádio com adeptos pequenos e grandes.** Imagina um estádio enorme com 100 adeptos espalhados pelas bancadas. Se forem crianças ou adultos, o estádio \"parece\" igualmente vazio: o espaço é todo entre as pessoas, não as pessoas em si. O volume de um gás é assim: é quase todo espaço vazio entre partículas, e o tamanho de cada partícula não conta. Mas se pesares o estádio, faz diferença se são crianças ou adultos. É por isso que o volume depende só do número de partículas, mas a massa volúmica depende do tipo de gás."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Gases mais densos do que o ar",
+          "texto": "**Gases mais densos do que o ar**\n\nO dióxido de carbono (ρ ≈ 1,96 g/dm³ em PTN) é mais denso do que o ar e acumula-se em zonas baixas: caves, poços, adegas durante a fermentação do vinho. Pode causar asfixia, porque desloca o oxigénio. Por isso, nas adegas, se usa uma vela acesa perto do chão: se se apagar, há demasiado CO₂.\n\n**Porque é que as botijas de gás de cozinha são perigosas em caves**\n\nO propano (M = 44,1 g/mol) e o butano (M = 58,1 g/mol) são mais densos do que o ar. Uma fuga acumula-se junto ao chão. O gás natural (sobretudo metano, M = 16,0 g/mol) é menos denso e sobe."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O volume molar de um gás depende:",
+              "opcoes": [
+                "da massa molar do gás.",
+                "da pressão e da temperatura.",
+                "do tamanho das moléculas.",
+                "da cor do gás."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Pela lei de Avogadro, nas mesmas condições de pressão e temperatura, uma mole de qualquer gás ideal ocupa o mesmo volume.",
+              "mascote_feedback_errado": "Pela lei de Avogadro, nas mesmas condições de pressão e temperatura, uma mole de qualquer gás ideal ocupa o mesmo volume."
+            },
+            {
+              "pergunta": "Qual é a massa de 5,00 dm³ de dioxigénio (O₂) em condições PTN?",
+              "opcoes": [
+                "0,223 g",
+                "7,14 g",
+                "160 g",
+                "32,0 g"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "n = 5,00 / 22,4 ≈ 0,223 mol. m = 0,223 × 32,00 ≈ 7,14 g.",
+              "mascote_feedback_errado": "n = 5,00 / 22,4 ≈ 0,223 mol. m = 0,223 × 32,00 ≈ 7,14 g."
+            },
+            {
+              "pergunta": "Qual dos gases tem maior massa volúmica, nas mesmas condições?",
+              "opcoes": [
+                "H₂ (M = 2,02 g/mol)",
+                "N₂ (M = 28,02 g/mol)",
+                "CO₂ (M = 44,01 g/mol)",
+                "He (M = 4,00 g/mol)"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "ρ = M / V m. Com o mesmo V m, o gás com maior massa molar é o mais denso.",
+              "mascote_feedback_errado": "ρ = M / V m. Com o mesmo V m, o gás com maior massa molar é o mais denso."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "atmosfera-poluentes",
+      "titulo": "A atmosfera: composição, poluentes e gases de efeito de estufa",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_curva_keeling.png",
+          "imagem_legenda": "Gráfico da concentração de CO₂ desde 1958 (curva de Keeling, redesenhada).",
+          "texto": "Desde 1958, no alto de um vulcão no Havai, mede-se todos os dias a concentração de dióxido de carbono no ar. Em 1958 era cerca de 315 ppm. Hoje ultrapassa 420 ppm. Parece pouco, é menos de 0,05 % do ar. Mas é suficiente para mudar o clima do planeta. Para perceber estes números, precisas de saber medir quantidades muito pequenas numa mistura de gases.",
+          "mascote_texto": "Nesta secção vais usar percentagens, frações molares e ppm. São formas diferentes de dizer \"quanto de uma coisa há no total\"."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Composição do ar",
+          "imagem": "q10_composicao_ar.png",
+          "imagem_legenda": "Composição do ar seco e camadas da atmosfera.",
+          "texto_principal": "A troposfera é a camada da atmosfera mais próxima da superfície, onde vivemos e onde ocorrem os fenómenos meteorológicos. O ar seco é uma mistura de gases, sobretudo azoto e oxigénio. Os componentes minoritários exprimem-se muitas vezes em partes por milhão (ppm).",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Azoto (N₂)",
+              "explicacao": "78,08 % em volume."
+            },
+            {
+              "id": "p2",
+              "label": "Oxigénio (O₂)",
+              "explicacao": "20,95 %."
+            },
+            {
+              "id": "p3",
+              "label": "Árgon (Ar)",
+              "explicacao": "0,93 %."
+            },
+            {
+              "id": "p4",
+              "label": "Dióxido de carbono (CO₂)",
+              "explicacao": "Cerca de 0,04 % (mais de 420 ppm), a aumentar cerca de 2 ppm por ano."
+            },
+            {
+              "id": "p5",
+              "label": "Vapor de água",
+              "explicacao": "Variável (0 a 4 %), não incluído no ar seco."
+            },
+            {
+              "id": "p6",
+              "label": "Percentagem em volume = fração molar × 100",
+              "explicacao": "Nos gases (lei de Avogadro), a percentagem em volume é igual à percentagem em quantidade de matéria."
+            },
+            {
+              "id": "p7",
+              "label": "ppm (partes por milhão)",
+              "explicacao": "Número de unidades do componente em cada 10⁶ unidades da mistura. 420 ppm de CO₂ significa 420 moléculas de CO₂ em cada milhão de moléculas de ar (fração molar 4,20 × 10⁻⁴)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "x A = n A / n total (Σ x = 1)",
+              "significado": "Fração molar.",
+              "unidades": ""
+            },
+            {
+              "expressao": "% (V/V) = V A / V total × 100",
+              "significado": "Percentagem em volume.",
+              "unidades": ""
+            },
+            {
+              "expressao": "ppm = (quantidade do componente / quantidade total) × 10⁶",
+              "significado": "Partes por milhão.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Poluentes e efeito de estufa",
+          "imagem": "q10_poluentes_estufa.png",
+          "imagem_legenda": "Fontes de poluição e esquema do efeito de estufa.",
+          "texto_principal": "Os poluentes atmosféricos são substâncias que, em certas concentrações, prejudicam a saúde ou o ambiente. Os gases de efeito de estufa absorvem a radiação infravermelha emitida pela Terra e reemitem parte dela para a superfície. O efeito de estufa natural é essencial à vida; o aumento destes gases pelas atividades humanas intensifica-o e provoca o aquecimento global.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Monóxido de carbono (CO)",
+              "explicacao": "Combustões incompletas (escapes, lareiras e esquentadores mal ventilados). Muito tóxico."
+            },
+            {
+              "id": "p2",
+              "label": "Óxidos de azoto (NO e NO₂, NOx)",
+              "explicacao": "Motores de combustão, a altas temperaturas. Causam chuvas ácidas e smog."
+            },
+            {
+              "id": "p3",
+              "label": "Dióxido de enxofre (SO₂)",
+              "explicacao": "Queima de combustíveis com enxofre, vulcões. Causa chuvas ácidas."
+            },
+            {
+              "id": "p4",
+              "label": "Ozono troposférico",
+              "explicacao": "Forma-se a partir de NOx e compostos orgânicos voláteis com luz solar. Irrita as vias respiratórias."
+            },
+            {
+              "id": "p5",
+              "label": "Partículas em suspensão (PM10, PM2,5)",
+              "explicacao": "Tráfego, indústria, incêndios. Penetram nos pulmões."
+            },
+            {
+              "id": "p6",
+              "label": "Gases de efeito de estufa",
+              "explicacao": "Vapor de água, dióxido de carbono (combustíveis fósseis, desflorestação), metano (pecuária, arrozais, aterros), óxido de dinitrogénio N₂O (fertilizantes), CFCs."
+            },
+            {
+              "id": "p7",
+              "label": "Alternativas",
+              "explicacao": "Energias renováveis, transportes públicos e elétricos, eficiência energética, catalisadores nos escapes, redução do desperdício e do consumo de carne, reflorestação."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Num local, a concentração de CO₂ no ar é 420 ppm. Qual é a fração molar do CO₂?",
+          "opcoes": [
+            "0,420",
+            "4,20 × 10⁻²",
+            "4,20 × 10⁻⁴",
+            "420"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. 420 ppm = 420 / 10⁶ = 4,20 × 10⁻⁴. Corresponde a 0,042 %.",
+          "mascote_feedback_errado": "ppm significa \"por milhão\": x = 420 / 1 000 000 = 4,20 × 10⁻⁴."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é o gás de efeito de estufa emitido sobretudo pela queima de combustíveis fósseis?",
+          "opcoes": [
+            "Árgon",
+            "Dióxido de carbono",
+            "Azoto",
+            "Oxigénio"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. A queima de carvão, petróleo e gás natural liberta CO₂, o principal responsável pelo aumento do efeito de estufa causado pela atividade humana.",
+          "mascote_feedback_errado": "A combustão de combustíveis fósseis (compostos de carbono) produz CO₂, que é um gás de efeito de estufa. Azoto, oxigénio e árgon não absorvem a radiação infravermelha de forma significativa."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O cobertor da Terra.** Os gases de efeito de estufa são como um cobertor à volta da Terra. Sem nenhum cobertor, a temperatura média do planeta seria cerca de −18 °C, e a vida como a conhecemos não existiria. Com o cobertor natural, é cerca de 15 °C. O problema é que estamos a acrescentar camadas ao cobertor, e a Terra está a ficar demasiado quente. E, tal como com um cobertor, não é preciso muito: uma camada fina a mais faz diferença."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Efeito de estufa e qualidade do ar",
+          "texto": "**Porque é que o N₂ e o O₂ não são gases de efeito de estufa**\n\nPara absorver radiação infravermelha, uma molécula tem de ter vibrações que alterem a distribuição das suas cargas. As moléculas diatómicas de um só elemento (N₂, O₂), apolares e simétricas, não o conseguem. O CO₂, o CH₄ e a H₂O conseguem.\n\n**Qualidade do ar em Portugal**\n\nA Agência Portuguesa do Ambiente mantém uma rede de estações que medem continuamente poluentes como partículas, dióxido de azoto e ozono, e publica um índice de qualidade do ar. Os valores mais altos de NO₂ registam-se, em geral, nas zonas de tráfego intenso de Lisboa e do Porto."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é o componente maioritário do ar?",
+              "opcoes": [
+                "Oxigénio",
+                "Azoto",
+                "Dióxido de carbono",
+                "Árgon"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O azoto (N₂) representa cerca de 78 % do ar seco em volume.",
+              "mascote_feedback_errado": "O azoto (N₂) representa cerca de 78 % do ar seco em volume."
+            },
+            {
+              "pergunta": "Numa mistura de gases com 2,0 mol de N₂ e 0,50 mol de O₂, qual é a fração molar do O₂?",
+              "opcoes": [
+                "0,25",
+                "0,20",
+                "0,50",
+                "0,80"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "x(O₂) = 0,50 / (2,0 + 0,50) = 0,50 / 2,5 = 0,20.",
+              "mascote_feedback_errado": "x(O₂) = 0,50 / (2,0 + 0,50) = 0,50 / 2,5 = 0,20."
+            },
+            {
+              "pergunta": "O monóxido de carbono forma-se principalmente em:",
+              "opcoes": [
+                "combustões completas.",
+                "combustões incompletas, com pouco oxigénio.",
+                "na fotossíntese.",
+                "na respiração celular."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Quando há pouco oxigénio, a combustão é incompleta e forma-se CO, um gás tóxico e sem cheiro. É o perigo das lareiras e esquentadores mal ventilados.",
+              "mascote_feedback_errado": "Quando há pouco oxigénio, a combustão é incompleta e forma-se CO, um gás tóxico e sem cheiro. É o perigo das lareiras e esquentadores mal ventilados."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "dispersoes-solucoes-al-2-2",
+      "titulo": "Dispersões e composição quantitativa de soluções; AL 2.2",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_soro_fisiologico.png",
+          "imagem_legenda": "Frasco de soro fisiológico com \"NaCl 0,9 %\".",
+          "texto": "O soro fisiológico que se usa para lavar o nariz ou para injetar num doente é uma solução de cloreto de sódio a 0,9 %. Se tivesse 9 % seria perigoso. Se tivesse água pura, também. A composição de uma solução não é um pormenor: pode ser a diferença entre curar e fazer mal. Nesta secção aprendes as várias formas de a exprimir e preparas uma solução com rigor.",
+          "mascote_texto": "As unidades são a parte mais traiçoeira desta secção. Escreve sempre as unidades em cada passo das contas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Soluções, coloides e suspensões",
+          "imagem": "q10_dispersoes.png",
+          "imagem_legenda": "Solução, coloide (efeito Tyndall) e suspensão.",
+          "texto_principal": "Uma dispersão é uma mistura em que uma substância (disperso) está distribuída noutra (dispersante). Classifica-se pelo tamanho das partículas dispersas. As soluções são as dispersões com as partículas mais pequenas e são misturas homogéneas.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Solução",
+              "explicacao": "Partículas menores do que 1 nm. Homogénea, transparente, não sedimenta. Ex.: água com açúcar, ar, bronze."
+            },
+            {
+              "id": "p2",
+              "label": "Coloide",
+              "explicacao": "Partículas entre 1 nm e 1000 nm. Parece homogéneo a olho nu, mas dispersa a luz (efeito Tyndall). Ex.: leite, nevoeiro, gelatina, maionese."
+            },
+            {
+              "id": "p3",
+              "label": "Suspensão",
+              "explicacao": "Partículas maiores do que 1000 nm. Heterogénea, sedimenta com o tempo. Ex.: água com areia, sumo natural com polpa."
+            },
+            {
+              "id": "p4",
+              "label": "Soluto e solvente",
+              "explicacao": "Numa solução, o solvente é o componente em maior quantidade (ou o que mantém o estado físico); os outros são solutos. Nas soluções aquosas, o solvente é a água."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "c = n soluto / V solução",
+              "significado": "Concentração (em quantidade de matéria).",
+              "unidades": "mol/dm³"
+            },
+            {
+              "expressao": "c m = m soluto / V solução",
+              "significado": "Concentração mássica.",
+              "unidades": "g/dm³"
+            },
+            {
+              "expressao": "% (m/m) = m soluto / m solução × 100",
+              "significado": "Percentagem em massa.",
+              "unidades": ""
+            },
+            {
+              "expressao": "% (V/V) = V soluto / V solução × 100",
+              "significado": "Percentagem em volume.",
+              "unidades": ""
+            },
+            {
+              "expressao": "ppm = m soluto / m solução × 10⁶",
+              "significado": "Partes por milhão (em massa).",
+              "unidades": ""
+            },
+            {
+              "expressao": "x A = n A / n total",
+              "significado": "Fração molar.",
+              "unidades": ""
+            },
+            {
+              "expressao": "c m = c × M",
+              "significado": "Relação útil.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Dissolvem-se 5,85 g de cloreto de sódio (M = 58,44 g/mol) em água até perfazer 250 cm³ de solução. Qual é a concentração?",
+          "opcoes": [
+            "0,100 mol/dm³",
+            "0,400 mol/dm³",
+            "23,4 mol/dm³",
+            "0,0234 mol/dm³"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. n = 5,85 / 58,44 ≈ 0,100 mol. V = 0,250 dm³. c = 0,100 / 0,250 = 0,400 mol/dm³. A concentração mássica é 5,85 / 0,250 = 23,4 g/dm³.",
+          "mascote_feedback_errado": "Converte o volume: 250 cm³ = 0,250 dm³. n = 5,85 / 58,44 ≈ 0,100 mol. c = n / V = 0,400 mol/dm³."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Dissolvem-se 20 g de açúcar em 180 g de água. Qual é a percentagem em massa de açúcar?",
+          "opcoes": [
+            "11 %",
+            "10 %",
+            "20 %",
+            "18 %"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. m solução = 20 + 180 = 200 g. % (m/m) = 20 / 200 × 100 = 10 %.",
+          "mascote_feedback_errado": "A percentagem é em relação à massa da solução, não à do solvente: 20 / (20 + 180) × 100 = 10 %."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A limonada.** Imagina que fazes limonada. \"Quanto açúcar tem?\" pode responder-se de várias formas: \"2 colheres por jarro\" (concentração mássica), \"5 % do peso\" (percentagem em massa) ou \"uma molécula de açúcar para cada 200 de água\" (fração molar). São formas diferentes de dizer a mesma coisa, e cada área usa a mais prática. Os químicos gostam da concentração em mol/dm³ porque conta partículas, e as reações acontecem entre partículas."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.2",
+          "titulo": "Soluções a partir de solutos sólidos",
+          "objetivo": "Preparar uma solução aquosa com uma dada concentração a partir de um soluto sólido, selecionando o material adequado e avaliando o rigor da preparação.",
+          "material": [
+            "Sulfato de cobre(II) penta-hidratado, CuSO₄·5H₂O (M = 249,69 g/mol)",
+            "Balão volumétrico de 100,00 cm³ (com tampa)",
+            "Balança digital (resolução 0,01 g ou 0,001 g)",
+            "Gobelé pequeno, vareta de vidro, funil, esguicho com água destilada",
+            "Espátula, vidro de relógio",
+            "Conta-gotas (pipeta de Pasteur)"
+          ],
+          "procedimento": [
+            "Calcular a massa de soluto necessária para preparar 100,00 cm³ de solução 0,100 mol/dm³: n = c × V = 0,100 × 0,10000 = 0,0100 mol; m = n × M = 0,0100 × 249,69 ≈ 2,50 g.",
+            "Medir 2,50 g de CuSO₄·5H₂O num vidro de relógio (ou diretamente no gobelé, tarado).",
+            "Dissolver o sólido num gobelé com um pouco de água destilada, agitando com a vareta.",
+            "Transferir a solução para o balão volumétrico com o auxílio do funil.",
+            "Lavar o gobelé, a vareta e o funil com pequenas porções de água destilada, transferindo sempre as águas de lavagem para o balão.",
+            "Completar com água destilada até perto do traço de referência e acertar com o conta-gotas até a base do menisco coincidir com o traço (olhos ao nível do traço).",
+            "Tapar e homogeneizar, invertendo o balão várias vezes.",
+            "Rotular a solução (nome, concentração, data)."
+          ],
+          "tratamento_de_dados": "Com a massa realmente medida, recalcular a concentração: c = (m / M) / V.\n\nExemplo: m = 2,52 g → n = 2,52 / 249,69 ≈ 1,01 × 10⁻² mol → c ≈ 0,101 mol/dm³.\n\nEstimar a incerteza associada à balança e ao balão volumétrico.\n\nCalcular o erro relativo em relação ao valor pretendido.",
+          "conclusao": "A preparação rigorosa de uma solução exige a medição exata da massa de soluto (balança) e do volume final da solução (balão volumétrico). A concentração obtida depende do rigor de cada passo: pesagem, transferência completa do soluto e acerto do volume.",
+          "erros_comuns": [
+            "Dissolver o soluto diretamente no balão com muita água (difícil de dissolver e pode ultrapassar o traço).",
+            "Não transferir as águas de lavagem: parte do soluto perde-se e a concentração fica menor.",
+            "Ultrapassar o traço de referência (a solução tem de ser refeita).",
+            "Usar a massa molar do sulfato de cobre anidro (159,61 g/mol) em vez da do penta-hidratado.",
+            "Acertar o volume com a solução ainda quente (o volume varia com a temperatura)."
+          ],
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Balão volumétrico e ppm na vida real",
+          "texto": "**Porque é que se usa o balão volumétrico e não uma proveta**\n\nO balão volumétrico está calibrado para conter um volume exato, com incerteza muito pequena (por exemplo, 100,00 ± 0,10 cm³). Uma proveta de 100 cm³ tem incerteza de cerca de ± 0,5 cm³ ou mais. Para soluções de concentração rigorosa, usa-se sempre o balão volumétrico.\n\n**ppm na vida real**\n\nA água da torneira pode ter até 1,5 mg de fluoreto por litro (1,5 ppm, aproximadamente, porque 1 L de água tem cerca de 1 kg). Os limites de poluentes na água e no ar exprimem-se muitas vezes em ppm ou em partes por milhar de milhão (ppb)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O leite é um exemplo de:",
+              "opcoes": [
+                "solução.",
+                "coloide.",
+                "suspensão.",
+                "substância pura."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O leite tem gotículas de gordura e proteínas com dimensões entre 1 e 1000 nm: é um coloide, e mostra o efeito Tyndall.",
+              "mascote_feedback_errado": "O leite tem gotículas de gordura e proteínas com dimensões entre 1 e 1000 nm: é um coloide, e mostra o efeito Tyndall."
+            },
+            {
+              "pergunta": "Qual é a concentração de uma solução com 18,0 g de glicose (M = 180,18 g/mol) em 500 cm³ de solução?",
+              "opcoes": [
+                "0,0999 mol/dm³",
+                "0,200 mol/dm³",
+                "36,0 mol/dm³",
+                "0,100 mol/dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "n = 18,0 / 180,18 ≈ 0,0999 mol. c = 0,0999 / 0,500 ≈ 0,200 mol/dm³.",
+              "mascote_feedback_errado": "n = 18,0 / 180,18 ≈ 0,0999 mol. c = 0,0999 / 0,500 ≈ 0,200 mol/dm³."
+            },
+            {
+              "pergunta": "Para preparar 250,00 cm³ de uma solução 0,200 mol/dm³ de NaCl (M = 58,44 g/mol), que massa de soluto é preciso medir?",
+              "opcoes": [
+                "2,92 g",
+                "11,7 g",
+                "0,0500 g",
+                "58,4 g"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "n = c V = 0,200 × 0,25000 = 0,0500 mol. m = n M = 0,0500 × 58,44 ≈ 2,92 g.",
+              "mascote_feedback_errado": "n = c V = 0,200 × 0,25000 = 0,0500 mol. m = n M = 0,0500 × 58,44 ≈ 2,92 g."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "diluicao-al-2-3",
+      "titulo": "Diluição de soluções; AL 2.3",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_diluir_sumo.png",
+          "imagem_legenda": "Xarope concentrado a ser diluído num jarro de água.",
+          "texto": "Quando fazes sumo a partir de um xarope concentrado, juntas água: a quantidade de açúcar no copo é a mesma, mas fica distribuída por um volume maior, e o sumo fica menos doce. Os laboratórios, os hospitais e as fábricas fazem o mesmo, mas com contas rigorosas: partem de uma solução concentrada (a solução-mãe) e preparam soluções mais diluídas.",
+          "mascote_texto": "A regra de ouro da diluição: a quantidade de soluto não muda. Só muda o volume."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Diluir uma solução",
+          "imagem": "q10_diluicao.png",
+          "imagem_legenda": "Pipeta, balão volumétrico e solução a clarear.",
+          "texto_principal": "Diluir uma solução é acrescentar-lhe solvente. A quantidade de soluto mantém-se, o volume da solução aumenta e, por isso, a concentração diminui. O fator de diluição indica quantas vezes a concentração diminuiu.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Conservação do soluto",
+              "explicacao": "n soluto (antes) = n soluto (depois), logo c i V i = c f V f."
+            },
+            {
+              "id": "p2",
+              "label": "Fator de diluição (f)",
+              "explicacao": "f = c i / c f = V f / V i. Uma diluição de fator 5 significa que a solução final é 5 vezes menos concentrada."
+            },
+            {
+              "id": "p3",
+              "label": "Material",
+              "explicacao": "O volume da solução concentrada mede-se com uma pipeta volumétrica (ou graduada); o volume final acerta-se num balão volumétrico."
+            },
+            {
+              "id": "p4",
+              "label": "Diluições sucessivas",
+              "explicacao": "Para diluições muito grandes, faz-se em várias etapas. Duas diluições de fator 10 dão um fator total de 100."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "c i V i = c f V f",
+              "significado": "Conservação da quantidade de soluto.",
+              "unidades": ""
+            },
+            {
+              "expressao": "f = c i / c f = V f / V i",
+              "significado": "Fator de diluição.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Que volume de uma solução 0,500 mol/dm³ é preciso para preparar 50,00 cm³ de solução 0,100 mol/dm³?",
+          "opcoes": [
+            "2,50 cm³",
+            "10,00 cm³",
+            "25,00 cm³",
+            "250 cm³"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. V i = c f V f / c i = 0,100 × 50,00 / 0,500 = 10,00 cm³. O fator de diluição é 5.",
+          "mascote_feedback_errado": "Usa c i V i = c f V f: V i = (0,100 × 50,00) / 0,500 = 10,00 cm³. As unidades de volume podem ficar em cm³, desde que sejam as mesmas dos dois lados."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma solução 1,0 mol/dm³ é diluída duas vezes seguidas, cada vez com fator 10. Qual é a concentração final?",
+          "opcoes": [
+            "0,50 mol/dm³",
+            "0,10 mol/dm³",
+            "0,010 mol/dm³",
+            "0,050 mol/dm³"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. Fator total = 10 × 10 = 100. c f = 1,0 / 100 = 0,010 mol/dm³.",
+          "mascote_feedback_errado": "Os fatores de diluição sucessivos multiplicam-se: 10 × 10 = 100. c f = 1,0 / 100 = 0,010 mol/dm³."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_diluicao",
+          "titulo": "Dilui a solução",
+          "instrucao": "Escolhe a concentração da solução-mãe, o volume a pipetar e o volume do balão. Vê a concentração final, o fator de diluição e a cor da solução.",
+          "controlos": [
+            {
+              "id": "ci",
+              "rotulo": "Concentração inicial",
+              "min": 0.1,
+              "max": 2.0,
+              "passo": 0.1,
+              "valor_inicial": 0.5,
+              "unidade": "mol/dm³"
+            },
+            {
+              "id": "Vi",
+              "rotulo": "Volume pipetado (pipeta volumétrica)",
+              "opcoes": [
+                {
+                  "valor": 1,
+                  "label": "1,00 cm³"
+                },
+                {
+                  "valor": 2,
+                  "label": "2,00 cm³"
+                },
+                {
+                  "valor": 5,
+                  "label": "5,00 cm³"
+                },
+                {
+                  "valor": 10,
+                  "label": "10,00 cm³"
+                },
+                {
+                  "valor": 20,
+                  "label": "20,00 cm³"
+                },
+                {
+                  "valor": 25,
+                  "label": "25,00 cm³"
+                }
+              ],
+              "valor_inicial": 10
+            },
+            {
+              "id": "Vf",
+              "rotulo": "Volume do balão volumétrico",
+              "opcoes": [
+                {
+                  "valor": 50,
+                  "label": "50,00 cm³"
+                },
+                {
+                  "valor": 100,
+                  "label": "100,00 cm³"
+                },
+                {
+                  "valor": 250,
+                  "label": "250,00 cm³"
+                }
+              ],
+              "valor_inicial": 100
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Quantidade de soluto (igual antes e depois)",
+              "formula": "(ci * Vi / 1000).toPrecision(3).replace('.', ',')",
+              "unidade": "mol"
+            },
+            {
+              "rotulo": "Concentração final",
+              "formula": "(ci * Vi / Vf).toPrecision(3).replace('.', ',')",
+              "unidade": "mol/dm³"
+            },
+            {
+              "rotulo": "Fator de diluição",
+              "formula": "String(Number((Vf / Vi).toPrecision(3))).replace('.', ',')"
+            },
+            {
+              "rotulo": "Cor da solução (sulfato de cobre)",
+              "formula": "(function () { var c = ci * Vi / Vf; return c >= 0.5 ? 'Azul intenso' : c >= 0.1 ? 'Azul médio' : c >= 0.02 ? 'Azul claro' : 'Azul muito claro, quase incolor'; })()"
+            }
+          ],
+          "pergunta_final": "Como preparas 100,00 cm³ de solução 0,050 mol/dm³ a partir de uma 0,50 mol/dm³? Resposta esperada: pipetar 10,00 cm³ da solução-mãe para um balão de 100,00 cm³ e completar com água (fator 10)."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Os mesmos amigos numa sala maior.** Imagina 20 amigos numa sala pequena: a sala está \"concentrada\". Se mudarem todos para um salão com o quíntuplo do tamanho, continuam a ser 20, mas agora há muito mais espaço entre eles: a \"concentração\" de pessoas é 5 vezes menor. A diluição é isto: o número de partículas de soluto não muda, só muda o espaço onde estão distribuídas."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.3",
+          "titulo": "Diluição de soluções",
+          "objetivo": "Preparar soluções aquosas por diluição de uma solução de concentração conhecida, selecionando o material volumétrico adequado ao fator de diluição pretendido.",
+          "material": [
+            "Solução-mãe de sulfato de cobre(II) 0,100 mol/dm³ (a preparada na AL 2.2)",
+            "Pipetas volumétricas (por exemplo, 5,00 cm³, 10,00 cm³, 20,00 cm³) com pompete",
+            "Balões volumétricos (por exemplo, 50,00 cm³ e 100,00 cm³)",
+            "Gobelé, esguicho com água destilada, conta-gotas"
+          ],
+          "procedimento": [
+            "Calcular o volume de solução-mãe necessário para preparar a solução pretendida. Exemplo: 50,00 cm³ de solução 0,0200 mol/dm³ (fator 5): V i = 0,0200 × 50,00 / 0,100 = 10,00 cm³.",
+            "Colocar um pouco da solução-mãe num gobelé (nunca pipetar diretamente do frasco).",
+            "Lavar a pipeta com um pouco da solução-mãe (ambientar).",
+            "Pipetar 10,00 cm³ com a pompete, acertando o menisco no traço.",
+            "Transferir para o balão volumétrico de 50,00 cm³.",
+            "Completar com água destilada até ao traço, acertando com o conta-gotas.",
+            "Tapar e homogeneizar.",
+            "Preparar, se possível, outras soluções com fatores diferentes (por exemplo, 2, 5 e 10) e comparar as cores."
+          ],
+          "tratamento_de_dados": "Calcular a concentração de cada solução preparada: c f = c i V i / V f.\n\nRelacionar o fator de diluição com a intensidade da cor: quanto maior o fator, mais clara a solução.\n\nDiscutir as incertezas associadas à pipeta e ao balão.",
+          "conclusao": "Na diluição, a quantidade de soluto conserva-se, e a concentração diminui na mesma proporção em que o volume aumenta. A escolha da pipeta e do balão volumétrico depende do fator de diluição pretendido.",
+          "erros_comuns": [
+            "Pipetar diretamente do frasco da solução-mãe (contaminação).",
+            "Não ambientar a pipeta (a água que fica lá dentro dilui a solução pipetada).",
+            "Soprar a última gota da pipeta volumétrica: estas pipetas estão calibradas para deixar essa gota.",
+            "Confundir o fator de diluição com o volume de água a adicionar (para um fator 5 com um balão de 50 cm³, não se juntam 40 cm³ de água à solução; completa-se até ao traço)."
+          ],
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Numa diluição, o que se mantém constante?",
+              "opcoes": [
+                "A concentração.",
+                "O volume da solução.",
+                "A quantidade de soluto.",
+                "A massa de solvente."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Só se junta solvente. A quantidade (e a massa) de soluto é a mesma antes e depois.",
+              "mascote_feedback_errado": "Só se junta solvente. A quantidade (e a massa) de soluto é a mesma antes e depois."
+            },
+            {
+              "pergunta": "25,00 cm³ de uma solução 0,400 mol/dm³ são diluídos até 100,00 cm³. Qual é a concentração final?",
+              "opcoes": [
+                "1,60 mol/dm³",
+                "0,100 mol/dm³",
+                "0,0400 mol/dm³",
+                "0,250 mol/dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "c f = 0,400 × 25,00 / 100,00 = 0,100 mol/dm³ (fator 4).",
+              "mascote_feedback_errado": "c f = 0,400 × 25,00 / 100,00 = 0,100 mol/dm³ (fator 4)."
+            },
+            {
+              "pergunta": "Na AL 2.3, porque se ambienta a pipeta com a solução-mãe antes de pipetar?",
+              "opcoes": [
+                "Para a aquecer.",
+                "Para que restos de água na pipeta não diluam a solução pipetada.",
+                "Para medir mais volume.",
+                "Para limpar a pipeta com sabão."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Se a pipeta tiver água destilada no interior, a solução pipetada fica ligeiramente diluída e a concentração final fica errada.",
+              "mascote_feedback_errado": "Se a pipeta tiver água destilada no interior, a solução pipetada fica ligeiramente diluída e a concentração final fica errada."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 5 concluída. Usas o volume molar para gases, calculas massas volúmicas, interpretas a composição da atmosfera em percentagens e ppm, conheces os principais poluentes e gases de efeito de estufa, e preparaste soluções a partir de sólidos e por diluição. Última missão: o que acontece à energia nas reações químicas, e o ozono."
+}

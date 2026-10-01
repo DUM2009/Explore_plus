@@ -182,6 +182,50 @@ def pagina_perfil(request):
             'categoria': 'Física Moderna',
             'descricao': 'Radiação térmica, fotões, efeito fotoelétrico, núcleos e radioatividade.',
         },
+        '10-massa-tamanho-atomos': {
+            'categoria': 'Massa e Tamanho dos Átomos',
+            'descricao': 'Escala atómica, isótopos, massa atómica relativa, mole e massa molar.',
+        },
+        '10-energia-eletroes': {
+            'categoria': 'Energia dos Eletrões nos Átomos',
+            'descricao': 'Espetros, modelo de Bohr, orbitais e configurações eletrónicas.',
+        },
+        '10-tabela-periodica': {
+            'categoria': 'Tabela Periódica',
+            'descricao': 'Organização da tabela periódica, raio atómico, energia de ionização e densidade de metais.',
+        },
+        '10-ligacao-quimica': {
+            'categoria': 'Ligação Química',
+            'descricao': 'Ligações covalentes, iónicas e metálicas, Lewis, geometria molecular, compostos de carbono e forças intermoleculares.',
+        },
+        '10-gases-dispersoes': {
+            'categoria': 'Gases e Dispersões',
+            'descricao': 'Volume molar, composição da atmosfera, poluentes, soluções e diluições.',
+        },
+        '10-transformacoes-quimicas': {
+            'categoria': 'Transformações Químicas',
+            'descricao': 'Reações exotérmicas e endotérmicas, entalpia, energias de ligação, reações fotoquímicas e a camada de ozono.',
+        },
+        '11-aspetos-quantitativos': {
+            'categoria': 'Aspetos Quantitativos das Reações',
+            'descricao': 'Estequiometria, reagente limitante, pureza, rendimento e química verde.',
+        },
+        '11-equilibrio-quimico': {
+            'categoria': 'Equilíbrio Químico',
+            'descricao': 'Reações incompletas, constante de equilíbrio, quociente da reação e Princípio de Le Châtelier.',
+        },
+        '11-acido-base': {
+            'categoria': 'Reações Ácido-Base',
+            'descricao': 'Teoria de Brönsted-Lowry, pH, constantes de acidez, titulações e chuva ácida.',
+        },
+        '11-oxidacao-reducao': {
+            'categoria': 'Oxidação-Redução',
+            'descricao': 'Oxidação, redução, números de oxidação, reação ácido-metal e série eletroquímica.',
+        },
+        '11-solubilidade': {
+            'categoria': 'Soluções e Solubilidade',
+            'descricao': 'Dissolução, solubilidade, produto de solubilidade, ião comum e dureza da água.',
+        },
     }
 
     missoes_lancadas_perfil = set()
@@ -200,14 +244,19 @@ def pagina_perfil(request):
     # as outras entradas de lancamento.json ainda aparecem como "Em breve"
     # em /missions/, não têm progresso real para mostrar aqui.
     missoes = []
+    pasta_missoes = settings.BASE_DIR.parent / 'missoes'
     for missao_id, metadados in METADADOS_MISSOES.items():
         if missao_id not in missoes_lancadas_perfil:
             continue
-        caminho_json = settings.BASE_DIR.parent / 'missoes' / f'{missao_id}.json'
-        try:
-            with open(caminho_json, encoding='utf-8') as ficheiro:
-                missao_json = json.load(ficheiro)
-        except (FileNotFoundError, json.JSONDecodeError):
+        missao_json = None
+        for caminho_json in [pasta_missoes / f'{missao_id}.json', *pasta_missoes.glob(f'*/{missao_id}.json')]:
+            try:
+                with open(caminho_json, encoding='utf-8') as ficheiro:
+                    missao_json = json.load(ficheiro)
+                break
+            except (FileNotFoundError, json.JSONDecodeError):
+                continue
+        if missao_json is None:
             continue
         missoes.append({
             'id': missao_id,
@@ -1005,12 +1054,12 @@ CATEGORIA_TESTES_IMAGENS = {
     'Ecologia': 'images/ecossistema.jpg',
     'Corpo Humano': 'images/Wallpaper corpo humano.png',
     'Botânica': 'images/Relva.jpeg',
-    'Energia e Movimentos': 'images/f10_montanha_russa.png',
+    'Energia e Movimentos': 'images/Energia e movimentos.png',
     'Energia e Fenómenos Elétricos': 'images/f10_circuito_simples.png',
-    'Energia, Fenómenos Térmicos e Radiação': 'images/f10_sol_paineis.png',
-    'Movimento e Interações': 'images/f11_terra_lua.png',
+    'Energia, Fenómenos Térmicos e Radiação': 'images/Fenómenos térmicos e radiação.png',
+    'Movimento e Interações': 'images/Movimentos e interações.png',
     'Forças e Movimentos': 'images/f11_pena_martelo_lua.png',
-    'Sinais, Ondas e Som': 'images/f11_diapasao.png',
+    'Sinais, Ondas e Som': 'images/Sinais e ondas.png',
     'Eletromagnetismo': 'images/f11_eolica_barragem.png',
     'Ondas Eletromagnéticas': 'images/f11_espetro_dia_a_dia.png',
 }

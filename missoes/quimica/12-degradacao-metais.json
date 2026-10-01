@@ -1,0 +1,882 @@
+{
+  "missao_id": "12-degradacao-metais",
+  "id_guiao": "qui12-m2",
+  "titulo": "Degradação dos metais: corrosão, pilhas e proteção",
+  "disciplina": "quimica",
+  "ano": 12,
+  "imagem": "q12_pilha_daniell.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"6\" y=\"5\" width=\"12\" height=\"16\" rx=\"2\"/><path d=\"M10 2h4v3h-4z\"/><path d=\"M12 9v6\"/><path d=\"M9 12h6\"/></svg>",
+    "nome": "Mestre das Pilhas"
+  },
+  "secoes": [
+    {
+      "secao_id": "corrosao",
+      "titulo": "Corrosão: uma oxidação indesejada",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_ponte_ferrugem.png",
+          "imagem_legenda": "Ponte metálica com zonas de ferrugem nas partes em contacto com água e ar.",
+          "texto": "A corrosão destrói todos os anos o equivalente a vários por cento do PIB dos países industrializados: pontes, navios, tubagens, carros, estruturas de betão armado. Em Portugal, com uma longa costa e ar salgado, o problema é ainda mais sério. A ferrugem não é sujidade à superfície: é o próprio ferro a transformar-se noutra substância, numa reação de oxidação-redução.",
+          "mascote_texto": "Lembra-te do 11.º ano: oxidação é perda de eletrões. Na corrosão, quem perde os eletrões é o metal."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Como se forma a ferrugem",
+          "imagem": "q12_formacao_ferrugem.png",
+          "imagem_legenda": "Gota de água sobre ferro: zona anódica no centro, zona catódica na periferia e ferrugem no anel entre elas.",
+          "texto_principal": "A corrosão é a degradação de um metal por reações de oxidação-redução com o meio. O metal oxida-se e o meio (oxigénio, água, ácidos) atua como oxidante. A corrosão atmosférica é favorecida pela presença de água, que permite a deslocação dos iões.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Oxidação do ferro",
+              "explicacao": "Fe(s) → Fe²⁺(aq) + 2 e⁻."
+            },
+            {
+              "id": "p2",
+              "label": "Redução do oxigénio",
+              "explicacao": "O₂(g) + 2 H₂O(l) + 4 e⁻ → 4 OH⁻(aq)."
+            },
+            {
+              "id": "p3",
+              "label": "Formação da ferrugem",
+              "explicacao": "Fe²⁺ + 2 OH⁻ → Fe(OH)₂, que continua a oxidar-se a óxido de ferro(III) hidratado, Fe₂O₃·xH₂O (ferrugem)."
+            },
+            {
+              "id": "p4",
+              "label": "Corrosão contínua",
+              "explicacao": "A ferrugem é porosa e permeável e desprende-se, expondo ferro novo. Por isso o ferro pode corroer-se até ao fim."
+            },
+            {
+              "id": "p5",
+              "label": "Outros produtos de corrosão",
+              "explicacao": "Verdete no cobre (carbonatos e hidróxidos de cobre, verdes); pátina no bronze; escurecimento da prata (sulfureto de prata, Ag₂S)."
+            },
+            {
+              "id": "p6",
+              "label": "O que acelera a corrosão",
+              "explicacao": "Água; oxigénio; iões cloreto (água do mar, sal nas estradas); meio ácido (pH baixo); poluentes como o SO₂."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Fe → Fe²⁺ + 2 e⁻",
+              "significado": "Oxidação.",
+              "unidades": ""
+            },
+            {
+              "expressao": "O₂ + 2 H₂O + 4 e⁻ → 4 OH⁻",
+              "significado": "Redução.",
+              "unidades": ""
+            },
+            {
+              "expressao": "2 Fe + O₂ + 2 H₂O → 2 Fe(OH)₂",
+              "significado": "Global (primeira fase).",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que os carros corroem mais depressa em zonas costeiras ou em países onde se põe sal nas estradas?",
+          "opcoes": [
+            "Porque o sal é um oxidante forte.",
+            "Porque os iões cloreto, dissolvidos na água, aumentam a condutividade e aceleram a corrosão.",
+            "Porque o sal tapa o metal.",
+            "Porque o sal aumenta a temperatura."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. A água salgada é um bom condutor iónico, o que facilita a deslocação dos iões entre as zonas de oxidação e de redução. Os iões Cl⁻ também destroem camadas protetoras de óxido.",
+          "mascote_feedback_errado": "O cloreto não é o oxidante (o oxidante é o O₂). Mas a água com sal conduz muito melhor os iões, e a corrosão acelera."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que o alumínio, sendo mais redutor do que o ferro, não se \"desfaz\" com a corrosão como o ferro?",
+          "opcoes": [
+            "Porque o alumínio não se oxida.",
+            "Porque forma uma camada fina, compacta e impermeável de óxido de alumínio que protege o metal por baixo.",
+            "Porque o alumínio é um não metal.",
+            "Porque o alumínio tem um potencial de redução positivo."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O Al₂O₃ adere à superfície e impede o contacto do metal com o O₂ e a água. A ferrugem, pelo contrário, é porosa e desprende-se.",
+          "mascote_feedback_errado": "O alumínio oxida-se facilmente, mas o óxido que forma é compacto e protetor. É a diferença em relação à ferrugem, que é permeável."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A crosta de um bolo e um pão a esfarelar.** Imagina dois bolos deixados ao ar. Um forma uma crosta dura e lisa que protege o miolo: é o alumínio com o seu óxido. O outro forma uma crosta que esfarela e cai, deixando o miolo exposto, que volta a secar e a esfarelar, até o bolo desaparecer: é o ferro com a ferrugem."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O efeito do pH e a Estátua da Liberdade",
+          "texto": "**O efeito do pH**\n\nEm meio ácido, a corrosão é mais rápida, porque além do O₂ há também iões H₃O⁺ a atuar como oxidantes (formando H₂). Em meio fortemente básico, alguns metais (como o alumínio e o zinco) também se dissolvem. O betão armado protege o ferro porque o seu interior é muito básico (pH cerca de 12 a 13), o que torna o ferro passivo; quando o CO₂ do ar baixa esse pH, o ferro começa a corroer-se.\n\n**A Estátua da Liberdade**\n\nÉ feita de cobre. Quando foi inaugurada, em 1886, tinha cor de cobre novo. Em cerca de 30 anos, a corrosão cobriu-a com uma camada verde de verdete (sobretudo carbonatos e sulfatos de cobre), que hoje a protege."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na corrosão do ferro, o agente oxidante é principalmente:",
+              "opcoes": [
+                "o ferro.",
+                "o oxigénio dissolvido na água.",
+                "o hidrogénio.",
+                "o azoto do ar."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O O₂ é reduzido (a OH⁻) e provoca a oxidação do ferro.",
+              "mascote_feedback_errado": "O O₂ é reduzido (a OH⁻) e provoca a oxidação do ferro."
+            },
+            {
+              "pergunta": "A ferrugem é:",
+              "opcoes": [
+                "ferro metálico com sujidade.",
+                "óxido de ferro(III) hidratado, poroso e permeável.",
+                "uma camada protetora impermeável.",
+                "óxido de ferro(II) anidro."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A ferrugem, Fe₂O₃·xH₂O, é porosa e desprende-se, permitindo que a corrosão continue.",
+              "mascote_feedback_errado": "A ferrugem, Fe₂O₃·xH₂O, é porosa e desprende-se, permitindo que a corrosão continue."
+            },
+            {
+              "pergunta": "Qual destas condições acelera a corrosão do ferro?",
+              "opcoes": [
+                "Ar seco.",
+                "Meio ácido e presença de iões cloreto.",
+                "Ausência de oxigénio.",
+                "Revestimento com tinta."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Ácidos e cloretos aceleram a corrosão; a ausência de água, de oxigénio ou a presença de revestimentos atrasam-na.",
+              "mascote_feedback_errado": "Ácidos e cloretos aceleram a corrosão; a ausência de água, de oxigénio ou a presença de revestimentos atrasam-na."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "acerto-redox",
+      "titulo": "Acerto de equações de oxidação-redução em meio ácido",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_permanganato.png",
+          "imagem_legenda": "Solução violeta de permanganato a perder a cor ao reagir com Fe²⁺ em meio ácido.",
+          "texto": "Uma solução violeta de permanganato de potássio, ao ser adicionada a uma solução ácida com iões ferro(II), perde a cor instantaneamente. É uma reação usada para determinar a quantidade de ferro em amostras (por exemplo, em suplementos de ferro). Mas para fazer contas, é preciso a equação acertada. E esta não se acerta \"a olho\": há átomos, eletrões, protões e água para equilibrar ao mesmo tempo.",
+          "mascote_texto": "Este método tem passos fixos. Faz sempre pela mesma ordem e nunca falha."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O método das semirreações",
+          "imagem": "q12_acerto_redox.png",
+          "imagem_legenda": "Esquema passo a passo do acerto de uma equação redox em meio ácido pelo método das semirreações.",
+          "texto_principal": "Para acertar uma equação redox em meio ácido, separa-se a reação em duas semirreações, acerta-se cada uma (átomos e carga) e depois combinam-se de modo que o número de eletrões cedidos seja igual ao de eletrões recebidos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Passo 1",
+              "explicacao": "Identificar as espécies que se oxidam e se reduzem (pelos números de oxidação) e escrever as duas semirreações."
+            },
+            {
+              "id": "p2",
+              "label": "Passo 2",
+              "explicacao": "Acertar os átomos que não são O nem H."
+            },
+            {
+              "id": "p3",
+              "label": "Passo 3",
+              "explicacao": "Acertar os átomos de O juntando H₂O ao lado que tem menos oxigénio."
+            },
+            {
+              "id": "p4",
+              "label": "Passo 4",
+              "explicacao": "Acertar os átomos de H juntando H⁺ (ou H₃O⁺) ao lado que tem menos hidrogénio."
+            },
+            {
+              "id": "p5",
+              "label": "Passo 5",
+              "explicacao": "Acertar a carga juntando eletrões ao lado com mais carga positiva."
+            },
+            {
+              "id": "p6",
+              "label": "Passo 6",
+              "explicacao": "Multiplicar as semirreações para igualar o número de eletrões, somar e simplificar."
+            },
+            {
+              "id": "p7",
+              "label": "Exemplo",
+              "explicacao": "Redução: MnO₄⁻ + 8 H⁺ + 5 e⁻ → Mn²⁺ + 4 H₂O. Oxidação: Fe²⁺ → Fe³⁺ + e⁻ (× 5). Global: MnO₄⁻ + 5 Fe²⁺ + 8 H⁺ → Mn²⁺ + 5 Fe³⁺ + 4 H₂O."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "O → acerta-se com H₂O",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "H → acerta-se com H⁺",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Carga → acerta-se com e⁻",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Eletrões cedidos = eletrões recebidos",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a semirreação acertada da redução do ião dicromato a Cr³⁺ em meio ácido?",
+          "opcoes": [
+            "Cr₂O₇²⁻ + 14 H⁺ + 6 e⁻ → 2 Cr³⁺ + 7 H₂O",
+            "Cr₂O₇²⁻ + 7 H⁺ + 3 e⁻ → Cr³⁺ + 7 H₂O",
+            "Cr₂O₇²⁻ → 2 Cr³⁺ + 7 O²⁻",
+            "Cr₂O₇²⁻ + 14 H⁺ → 2 Cr³⁺ + 7 H₂O + 6 e⁻"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Certo. 2 Cr de cada lado; 7 O acertados com 7 H₂O; 14 H acertados com 14 H⁺; carga à esquerda +12 (−2 + 14), à direita +6: juntam-se 6 e⁻ à esquerda.",
+          "mascote_feedback_errado": "Segue os passos: 2 Cr³⁺ no produto; 7 H₂O para os O; 14 H⁺ para os H; a carga (−2 + 14 = +12 à esquerda, +6 à direita) acerta-se com 6 e⁻ à esquerda. Numa redução, os eletrões ficam nos reagentes."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na reação do cobre com o ácido nítrico, Cu + NO₃⁻ → Cu²⁺ + NO₂ (meio ácido), qual é a equação acertada?",
+          "opcoes": [
+            "Cu + NO₃⁻ + 2 H⁺ → Cu²⁺ + NO₂ + H₂O",
+            "Cu + 2 NO₃⁻ + 4 H⁺ → Cu²⁺ + 2 NO₂ + 2 H₂O",
+            "Cu + 2 NO₃⁻ → Cu²⁺ + 2 NO₂ + O₂",
+            "2 Cu + NO₃⁻ + 4 H⁺ → 2 Cu²⁺ + NO₂ + 2 H₂O"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Muito bem. Oxidação: Cu → Cu²⁺ + 2 e⁻. Redução: NO₃⁻ + 2 H⁺ + e⁻ → NO₂ + H₂O (× 2). Somando: Cu + 2 NO₃⁻ + 4 H⁺ → Cu²⁺ + 2 NO₂ + 2 H₂O.",
+          "mascote_feedback_errado": "O cobre cede 2 eletrões e cada NO₃⁻ só recebe 1 (de +5 para +4). São precisos 2 NO₃⁻ por cada Cu. Acertando O e H: Cu + 2 NO₃⁻ + 4 H⁺ → Cu²⁺ + 2 NO₂ + 2 H₂O."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Acertar contas num grupo de amigos.** Depois de um jantar de grupo, acertar as contas segue sempre a mesma ordem: primeiro vês quem pagou o quê, depois quem deve a quem, e no fim ajustas para que o total pago seja igual ao total devido. No acerto redox é igual: primeiro os átomos \"principais\", depois os oxigénios (com água), depois os hidrogénios (com H⁺), depois as cargas (com eletrões) e, no fim, o que uma semirreação \"paga\" em eletrões tem de ser igual ao que a outra \"recebe\"."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Verificação final e titulações redox",
+          "texto": "**Verificação final**\n\nDepois de somar as semirreações, confirma sempre duas coisas: o número de átomos de cada elemento é igual dos dois lados, e a carga total é igual dos dois lados. No exemplo do permanganato: carga à esquerda −1 + 10 + 8 = +17; à direita +2 + 15 = +17.\n\n**Titulações redox**\n\nO permanganato serve de titulante e de indicador ao mesmo tempo: enquanto houver Fe²⁺, a cor violeta desaparece; quando todo o Fe²⁺ reagiu, a primeira gota em excesso dá à solução uma cor rosada que persiste. A proporção 1 : 5 da equação acertada permite calcular a quantidade de ferro."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Ao acertar uma semirreação em meio ácido, os átomos de oxigénio acertam-se com:",
+              "opcoes": [
+                "O₂",
+                "H₂O",
+                "OH⁻",
+                "H⁺"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Em meio ácido, junta-se H₂O ao lado com menos oxigénio; depois acertam-se os H com H⁺.",
+              "mascote_feedback_errado": "Em meio ácido, junta-se H₂O ao lado com menos oxigénio; depois acertam-se os H com H⁺."
+            },
+            {
+              "pergunta": "Na semirreação MnO₄⁻ → Mn²⁺ (meio ácido), quantos eletrões são recebidos?",
+              "opcoes": [
+                "2",
+                "3",
+                "5",
+                "7"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "O Mn passa de +7 para +2: recebe 5 eletrões. MnO₄⁻ + 8 H⁺ + 5 e⁻ → Mn²⁺ + 4 H₂O.",
+              "mascote_feedback_errado": "O Mn passa de +7 para +2: recebe 5 eletrões. MnO₄⁻ + 8 H⁺ + 5 e⁻ → Mn²⁺ + 4 H₂O."
+            },
+            {
+              "pergunta": "Na equação MnO₄⁻ + 5 Fe²⁺ + 8 H⁺ → Mn²⁺ + 5 Fe³⁺ + 4 H₂O, quantas moles de Fe²⁺ reagem com 0,0020 mol de MnO₄⁻?",
+              "opcoes": [
+                "0,0020 mol",
+                "0,0040 mol",
+                "0,010 mol",
+                "0,016 mol"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Proporção 1 : 5. 0,0020 × 5 = 0,010 mol de Fe²⁺.",
+              "mascote_feedback_errado": "Proporção 1 : 5. 0,0020 × 5 = 0,010 mol de Fe²⁺."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "pilhas-potenciais",
+      "titulo": "Pilhas e potenciais-padrão de redução",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_pilha_daniell.png",
+          "imagem_legenda": "Pilha de Daniell: Zn em ZnSO₄, Cu em CuSO₄, ponte salina e voltímetro a marcar 1,10 V.",
+          "texto": "Se mergulhares uma lâmina de zinco numa solução de sulfato de cobre, os eletrões passam diretamente do zinco para os iões cobre, e a energia perde-se como calor. Em 1836, John Daniell teve uma ideia: separar as duas reações em dois recipientes e obrigar os eletrões a passar por um fio. A reação passou a produzir corrente elétrica. Tinha inventado uma pilha prática.",
+          "mascote_texto": "Mnemónica para não falhares: no ânodo há oxidação (duas vogais), no cátodo há redução (duas consoantes)."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A célula galvânica",
+          "imagem": "q12_celula_galvanica.png",
+          "imagem_legenda": "Esquema geral de uma célula galvânica, com ânodo, cátodo e a notação Zn(s) | Zn²⁺(aq) || Cu²⁺(aq) | Cu(s).",
+          "texto_principal": "Uma pilha (célula galvânica) é um dispositivo que produz corrente elétrica a partir de uma reação de oxidação-redução espontânea. As semirreações de oxidação e de redução ocorrem em compartimentos separados (semicélulas), e os eletrões passam pelo circuito exterior. Numa célula eletrolítica, pelo contrário, usa-se energia elétrica para provocar uma reação não espontânea.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ânodo",
+              "explicacao": "Elétrodo onde ocorre a oxidação. Numa pilha, é o polo negativo. Na pilha de Daniell: Zn(s) → Zn²⁺(aq) + 2 e⁻."
+            },
+            {
+              "id": "p2",
+              "label": "Cátodo",
+              "explicacao": "Elétrodo onde ocorre a redução. Numa pilha, é o polo positivo. Na pilha de Daniell: Cu²⁺(aq) + 2 e⁻ → Cu(s)."
+            },
+            {
+              "id": "p3",
+              "label": "Circuito exterior",
+              "explicacao": "Os eletrões vão do ânodo para o cátodo pelo fio."
+            },
+            {
+              "id": "p4",
+              "label": "Ponte salina",
+              "explicacao": "Tubo com um eletrólito (KNO₃ ou KCl) que fecha o circuito e mantém as soluções eletricamente neutras: os aniões migram para o ânodo, os catiões para o cátodo."
+            },
+            {
+              "id": "p5",
+              "label": "Elétrodo inerte",
+              "explicacao": "Elétrodo que não participa na reação (por exemplo, platina ou grafite), usado quando o par redox não tem um metal sólido (por exemplo, Fe³⁺/Fe²⁺)."
+            },
+            {
+              "id": "p6",
+              "label": "Diagrama de célula",
+              "explicacao": "Ânodo à esquerda, cátodo à direita: Zn(s) | Zn²⁺(aq) || Cu²⁺(aq) | Cu(s). Uma barra vertical separa fases; a dupla barra representa a ponte salina."
+            },
+            {
+              "id": "p7",
+              "label": "Força eletromotriz (tensão da célula)",
+              "explicacao": "Diferença de potencial entre os elétrodos, medida com um voltímetro. Depende da natureza dos elétrodos, das concentrações e da temperatura."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Potenciais-padrão de redução",
+          "imagem": "q12_potenciais_padrao.png",
+          "imagem_legenda": "Escala vertical de potenciais-padrão de redução, do Li⁺/Li (−3,04 V) ao MnO₄⁻/Mn²⁺ (+1,51 V).",
+          "texto_principal": "O potencial-padrão de redução (E°) de um par redox mede a tendência da forma oxidada para se reduzir, em condições-padrão (concentrações 1 mol/dm³, pressão de gases 1,01 × 10⁵ Pa, normalmente 25 °C). Mede-se em relação ao elétrodo-padrão de hidrogénio, ao qual se atribui E° = 0,00 V. A tabela de potenciais-padrão é a série eletroquímica quantitativa.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "E° mais positivo",
+              "explicacao": "A forma oxidada é um oxidante forte (tende a reduzir-se). Ex.: Ag⁺/Ag (+0,80 V), MnO₄⁻/Mn²⁺ (+1,51 V)."
+            },
+            {
+              "id": "p2",
+              "label": "E° mais negativo",
+              "explicacao": "A forma reduzida é um redutor forte (tende a oxidar-se). Ex.: Zn²⁺/Zn (−0,76 V), Mg²⁺/Mg (−2,37 V)."
+            },
+            {
+              "id": "p3",
+              "label": "Numa pilha",
+              "explicacao": "O par com E° maior funciona como cátodo (redução); o par com E° menor, como ânodo (oxidação)."
+            },
+            {
+              "id": "p4",
+              "label": "Força eletromotriz padrão",
+              "explicacao": "E° célula = E° cátodo − E° ânodo. É sempre positiva para uma pilha (reação espontânea)."
+            },
+            {
+              "id": "p5",
+              "label": "Previsão da extensão",
+              "explicacao": "Quanto maior E° célula, mais extensa é a reação. Se o cálculo der E° célula < 0, a reação no sentido escrito não é espontânea."
+            },
+            {
+              "id": "p6",
+              "label": "Pilha de Daniell",
+              "explicacao": "E° = 0,34 − (−0,76) = 1,10 V."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "E° célula = E° cátodo − E° ânodo",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "E°(H⁺/H₂) = 0,00 V",
+              "significado": "Referência.",
+              "unidades": ""
+            },
+            {
+              "expressao": "E° célula > 0 → reação espontânea (pilha)",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Constrói-se uma pilha com os pares Zn²⁺/Zn (E° = −0,76 V) e Ag⁺/Ag (E° = +0,80 V). Qual é a força eletromotriz padrão e qual é o ânodo?",
+          "opcoes": [
+            "0,04 V; prata",
+            "1,56 V; zinco",
+            "1,56 V; prata",
+            "−1,56 V; zinco"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O par com E° maior (Ag⁺/Ag) é o cátodo; o zinco oxida-se no ânodo. E° = 0,80 − (−0,76) = 1,56 V.",
+          "mascote_feedback_errado": "O cátodo é o par com maior E° (prata, +0,80 V). O ânodo é o zinco. E° = E° cátodo − E° ânodo = 0,80 − (−0,76) = 1,56 V."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na pilha de Daniell, em que sentido se movem os iões NO₃⁻ da ponte salina?",
+          "opcoes": [
+            "Para a semicélula do cobre.",
+            "Para a semicélula do zinco (ânodo).",
+            "Não se movem.",
+            "Saem da ponte para o fio."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. No ânodo formam-se iões Zn²⁺, que tornariam a solução positiva. Os aniões da ponte migram para lá e mantêm a neutralidade.",
+          "mascote_feedback_errado": "No ânodo, a oxidação liberta Zn²⁺ na solução. Para compensar a carga positiva, os aniões (NO₃⁻) da ponte salina deslocam-se para a semicélula do zinco."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_pilha",
+          "titulo": "Constrói a tua pilha",
+          "instrucao": "Escolhe os dois pares redox (os metais e as soluções). Vê qual é o ânodo, qual é o cátodo, o sentido dos eletrões e a força eletromotriz. Em modo avançado, muda as concentrações das soluções (cursores logarítmicos) e vê o efeito pela equação de Nernst.",
+          "controlos": [
+            {
+              "id": "par1",
+              "rotulo": "Par 1",
+              "opcoes": [
+                {
+                  "valor": "Mg",
+                  "label": "Mg²⁺/Mg"
+                },
+                {
+                  "valor": "Al",
+                  "label": "Al³⁺/Al"
+                },
+                {
+                  "valor": "Zn",
+                  "label": "Zn²⁺/Zn"
+                },
+                {
+                  "valor": "Fe",
+                  "label": "Fe²⁺/Fe"
+                },
+                {
+                  "valor": "Ni",
+                  "label": "Ni²⁺/Ni"
+                },
+                {
+                  "valor": "Pb",
+                  "label": "Pb²⁺/Pb"
+                },
+                {
+                  "valor": "Cu",
+                  "label": "Cu²⁺/Cu"
+                },
+                {
+                  "valor": "Ag",
+                  "label": "Ag⁺/Ag"
+                }
+              ],
+              "valor_inicial": "Zn"
+            },
+            {
+              "id": "par2",
+              "rotulo": "Par 2",
+              "opcoes": [
+                {
+                  "valor": "Mg",
+                  "label": "Mg²⁺/Mg"
+                },
+                {
+                  "valor": "Al",
+                  "label": "Al³⁺/Al"
+                },
+                {
+                  "valor": "Zn",
+                  "label": "Zn²⁺/Zn"
+                },
+                {
+                  "valor": "Fe",
+                  "label": "Fe²⁺/Fe"
+                },
+                {
+                  "valor": "Ni",
+                  "label": "Ni²⁺/Ni"
+                },
+                {
+                  "valor": "Pb",
+                  "label": "Pb²⁺/Pb"
+                },
+                {
+                  "valor": "Cu",
+                  "label": "Cu²⁺/Cu"
+                },
+                {
+                  "valor": "Ag",
+                  "label": "Ag⁺/Ag"
+                }
+              ],
+              "valor_inicial": "Cu"
+            },
+            {
+              "id": "e1",
+              "rotulo": "(Avançado) Concentração do ião do par 1: 10^",
+              "min": -3,
+              "max": 0,
+              "passo": 0.1,
+              "valor_inicial": 0,
+              "unidade": "mol/dm³"
+            },
+            {
+              "id": "e2",
+              "rotulo": "(Avançado) Concentração do ião do par 2: 10^",
+              "min": -3,
+              "max": 0,
+              "passo": 0.1,
+              "valor_inicial": 0,
+              "unidade": "mol/dm³"
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Cátodo (redução, polo +)",
+              "formula": "(function () { var a1 = dados.p[par1], a2 = dados.p[par2]; if (par1 === par2) return 'Escolhe dois pares diferentes.'; var c1 = Math.pow(10, e1), c2 = Math.pow(10, e2); var cat = a1.E >= a2.E ? a1 : a2, an = cat === a1 ? a2 : a1; var ccat = cat === a1 ? c1 : c2, can = cat === a1 ? c2 : c1; function gcd(x, y) { return y ? gcd(y, x % y) : x; } var g = gcd(an.q, cat.q), a = cat.q / g, b = an.q / g, n = an.q * cat.q / g; function k(m, s) { return m === 1 ? s : m + ' ' + s; } function el(m) { return m === 1 ? 'e⁻' : m + ' e⁻'; } function v(x, d) { return x.toFixed(d || 2).replace('.', ',').replace('-', '−'); } var E0 = cat.E - an.E; return cat.par + ' (E° = ' + v(cat.E) + ' V)'; })()"
+            },
+            {
+              "rotulo": "Ânodo (oxidação, polo −)",
+              "formula": "(function () { var a1 = dados.p[par1], a2 = dados.p[par2]; if (par1 === par2) return 'Escolhe dois pares diferentes.'; var c1 = Math.pow(10, e1), c2 = Math.pow(10, e2); var cat = a1.E >= a2.E ? a1 : a2, an = cat === a1 ? a2 : a1; var ccat = cat === a1 ? c1 : c2, can = cat === a1 ? c2 : c1; function gcd(x, y) { return y ? gcd(y, x % y) : x; } var g = gcd(an.q, cat.q), a = cat.q / g, b = an.q / g, n = an.q * cat.q / g; function k(m, s) { return m === 1 ? s : m + ' ' + s; } function el(m) { return m === 1 ? 'e⁻' : m + ' e⁻'; } function v(x, d) { return x.toFixed(d || 2).replace('.', ',').replace('-', '−'); } var E0 = cat.E - an.E; return an.par + ' (E° = ' + v(an.E) + ' V)'; })()"
+            },
+            {
+              "rotulo": "Sentido dos eletrões",
+              "formula": "(function () { var a1 = dados.p[par1], a2 = dados.p[par2]; if (par1 === par2) return 'Escolhe dois pares diferentes.'; var c1 = Math.pow(10, e1), c2 = Math.pow(10, e2); var cat = a1.E >= a2.E ? a1 : a2, an = cat === a1 ? a2 : a1; var ccat = cat === a1 ? c1 : c2, can = cat === a1 ? c2 : c1; function gcd(x, y) { return y ? gcd(y, x % y) : x; } var g = gcd(an.q, cat.q), a = cat.q / g, b = an.q / g, n = an.q * cat.q / g; function k(m, s) { return m === 1 ? s : m + ' ' + s; } function el(m) { return m === 1 ? 'e⁻' : m + ' e⁻'; } function v(x, d) { return x.toFixed(d || 2).replace('.', ',').replace('-', '−'); } var E0 = cat.E - an.E; return 'Pelo fio exterior, do ' + an.m + ' (ânodo) para o ' + cat.m + ' (cátodo). Na ponte salina, os aniões vão para o lado do ' + an.m + ' e os catiões para o lado do ' + cat.m + '.'; })()"
+            },
+            {
+              "rotulo": "Força eletromotriz padrão",
+              "formula": "(function () { var a1 = dados.p[par1], a2 = dados.p[par2]; if (par1 === par2) return 'Escolhe dois pares diferentes.'; var c1 = Math.pow(10, e1), c2 = Math.pow(10, e2); var cat = a1.E >= a2.E ? a1 : a2, an = cat === a1 ? a2 : a1; var ccat = cat === a1 ? c1 : c2, can = cat === a1 ? c2 : c1; function gcd(x, y) { return y ? gcd(y, x % y) : x; } var g = gcd(an.q, cat.q), a = cat.q / g, b = an.q / g, n = an.q * cat.q / g; function k(m, s) { return m === 1 ? s : m + ' ' + s; } function el(m) { return m === 1 ? 'e⁻' : m + ' e⁻'; } function v(x, d) { return x.toFixed(d || 2).replace('.', ',').replace('-', '−'); } var E0 = cat.E - an.E; return 'E° = ' + v(cat.E) + ' − (' + v(an.E) + ') = ' + v(E0) + ' V'; })()"
+            },
+            {
+              "rotulo": "Semirreações",
+              "formula": "(function () { var a1 = dados.p[par1], a2 = dados.p[par2]; if (par1 === par2) return 'Escolhe dois pares diferentes.'; var c1 = Math.pow(10, e1), c2 = Math.pow(10, e2); var cat = a1.E >= a2.E ? a1 : a2, an = cat === a1 ? a2 : a1; var ccat = cat === a1 ? c1 : c2, can = cat === a1 ? c2 : c1; function gcd(x, y) { return y ? gcd(y, x % y) : x; } var g = gcd(an.q, cat.q), a = cat.q / g, b = an.q / g, n = an.q * cat.q / g; function k(m, s) { return m === 1 ? s : m + ' ' + s; } function el(m) { return m === 1 ? 'e⁻' : m + ' e⁻'; } function v(x, d) { return x.toFixed(d || 2).replace('.', ',').replace('-', '−'); } var E0 = cat.E - an.E; return 'Ânodo: ' + an.m + ' → ' + an.ion + ' + ' + el(an.q) + (a > 1 ? ' (× ' + a + ')' : '') + '. Cátodo: ' + cat.ion + ' + ' + el(cat.q) + ' → ' + cat.m + (b > 1 ? ' (× ' + b + ')' : '') + '.'; })()"
+            },
+            {
+              "rotulo": "Equação global",
+              "formula": "(function () { var a1 = dados.p[par1], a2 = dados.p[par2]; if (par1 === par2) return 'Escolhe dois pares diferentes.'; var c1 = Math.pow(10, e1), c2 = Math.pow(10, e2); var cat = a1.E >= a2.E ? a1 : a2, an = cat === a1 ? a2 : a1; var ccat = cat === a1 ? c1 : c2, can = cat === a1 ? c2 : c1; function gcd(x, y) { return y ? gcd(y, x % y) : x; } var g = gcd(an.q, cat.q), a = cat.q / g, b = an.q / g, n = an.q * cat.q / g; function k(m, s) { return m === 1 ? s : m + ' ' + s; } function el(m) { return m === 1 ? 'e⁻' : m + ' e⁻'; } function v(x, d) { return x.toFixed(d || 2).replace('.', ',').replace('-', '−'); } var E0 = cat.E - an.E; return k(a, an.m + '(s)') + ' + ' + k(b, cat.ion + '(aq)') + ' → ' + k(a, an.ion + '(aq)') + ' + ' + k(b, cat.m + '(s)'); })()"
+            },
+            {
+              "rotulo": "Diagrama de célula",
+              "formula": "(function () { var a1 = dados.p[par1], a2 = dados.p[par2]; if (par1 === par2) return 'Escolhe dois pares diferentes.'; var c1 = Math.pow(10, e1), c2 = Math.pow(10, e2); var cat = a1.E >= a2.E ? a1 : a2, an = cat === a1 ? a2 : a1; var ccat = cat === a1 ? c1 : c2, can = cat === a1 ? c2 : c1; function gcd(x, y) { return y ? gcd(y, x % y) : x; } var g = gcd(an.q, cat.q), a = cat.q / g, b = an.q / g, n = an.q * cat.q / g; function k(m, s) { return m === 1 ? s : m + ' ' + s; } function el(m) { return m === 1 ? 'e⁻' : m + ' e⁻'; } function v(x, d) { return x.toFixed(d || 2).replace('.', ',').replace('-', '−'); } var E0 = cat.E - an.E; return an.m + '(s) | ' + an.ion + '(aq) || ' + cat.ion + '(aq) | ' + cat.m + '(s)'; })()"
+            },
+            {
+              "rotulo": "(Avançado) E pela equação de Nernst, 25 °C",
+              "formula": "(function () { var a1 = dados.p[par1], a2 = dados.p[par2]; if (par1 === par2) return 'Escolhe dois pares diferentes.'; var c1 = Math.pow(10, e1), c2 = Math.pow(10, e2); var cat = a1.E >= a2.E ? a1 : a2, an = cat === a1 ? a2 : a1; var ccat = cat === a1 ? c1 : c2, can = cat === a1 ? c2 : c1; function gcd(x, y) { return y ? gcd(y, x % y) : x; } var g = gcd(an.q, cat.q), a = cat.q / g, b = an.q / g, n = an.q * cat.q / g; function k(m, s) { return m === 1 ? s : m + ' ' + s; } function el(m) { return m === 1 ? 'e⁻' : m + ' e⁻'; } function v(x, d) { return x.toFixed(d || 2).replace('.', ',').replace('-', '−'); } var E0 = cat.E - an.E; var Q = Math.pow(can, a) / Math.pow(ccat, b); var E = E0 - 0.0592 / n * Math.log10(Q); return 'n = ' + n + '; Q = ' + num(Q, 2) + '; E = ' + v(E0) + ' − (0,0592 / ' + n + ') × log Q = ' + v(E, 3) + ' V'; })()"
+            }
+          ],
+          "pergunta_final": "Que combinação destes pares dá a maior força eletromotriz? Resposta esperada: Mg e Ag, com E° = 0,80 − (−2,37) = 3,17 V.",
+          "dados": {
+            "p": {
+              "Mg": {
+                "par": "Mg²⁺/Mg",
+                "m": "Mg",
+                "ion": "Mg²⁺",
+                "q": 2,
+                "E": -2.37
+              },
+              "Al": {
+                "par": "Al³⁺/Al",
+                "m": "Al",
+                "ion": "Al³⁺",
+                "q": 3,
+                "E": -1.66
+              },
+              "Zn": {
+                "par": "Zn²⁺/Zn",
+                "m": "Zn",
+                "ion": "Zn²⁺",
+                "q": 2,
+                "E": -0.76
+              },
+              "Fe": {
+                "par": "Fe²⁺/Fe",
+                "m": "Fe",
+                "ion": "Fe²⁺",
+                "q": 2,
+                "E": -0.44
+              },
+              "Ni": {
+                "par": "Ni²⁺/Ni",
+                "m": "Ni",
+                "ion": "Ni²⁺",
+                "q": 2,
+                "E": -0.25
+              },
+              "Pb": {
+                "par": "Pb²⁺/Pb",
+                "m": "Pb",
+                "ion": "Pb²⁺",
+                "q": 2,
+                "E": -0.13
+              },
+              "Cu": {
+                "par": "Cu²⁺/Cu",
+                "m": "Cu",
+                "ion": "Cu²⁺",
+                "q": 2,
+                "E": 0.34
+              },
+              "Ag": {
+                "par": "Ag⁺/Ag",
+                "m": "Ag",
+                "ion": "Ag⁺",
+                "q": 1,
+                "E": 0.8
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A cascata e a roda de moinho.** Uma pilha é como uma cascata com uma roda de moinho. A água (os eletrões) cai espontaneamente de cima (o redutor forte, com E° baixo) para baixo (o oxidante forte, com E° alto). Se a água cair diretamente, a energia perde-se em salpicos (calor). Se a obrigarmos a passar pela roda (o fio, com uma lâmpada), aproveitamos a energia. A altura da cascata é a força eletromotriz: quanto maior a diferença entre os dois E°, mais energia por eletrão."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Células galvânicas e eletrolíticas, pilhas do dia a dia",
+          "texto": "**Célula galvânica vs célula eletrolítica**\n\nGalvânica (pilha): reação espontânea produz energia elétrica. Ânodo negativo, cátodo positivo.\n\nEletrolítica: energia elétrica força uma reação não espontânea (eletrólise). Ânodo positivo, cátodo negativo. Ex.: eletrólise da água, carregamento de uma bateria, galvanoplastia.\n\nEm ambas, a oxidação ocorre no ânodo e a redução no cátodo.\n\n**Pilhas e baterias do dia a dia**\n\nPilha alcalina (zinco e óxido de manganês): 1,5 V.\n\nBateria de chumbo dos carros: 2,0 V por célula, 6 células em série (12 V). É recarregável.\n\nBateria de iões de lítio (telemóveis, carros elétricos): cerca de 3,7 V por célula. O lítio tem o potencial-padrão mais negativo de todos e é muito leve.\n\n**Porque é que uma pilha se gasta**\n\nÀ medida que a pilha funciona, os reagentes são consumidos e os produtos acumulam-se. A reação aproxima-se do equilíbrio e a força eletromotriz diminui. Quando o sistema atinge o equilíbrio, a tensão é zero: a pilha está \"gasta\"."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Numa pilha, o ânodo é:",
+              "opcoes": [
+                "o polo positivo, onde ocorre a redução.",
+                "o polo negativo, onde ocorre a oxidação.",
+                "o polo positivo, onde ocorre a oxidação.",
+                "a ponte salina."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Na célula galvânica, a oxidação ocorre no ânodo, que é o polo negativo (fonte de eletrões para o circuito exterior).",
+              "mascote_feedback_errado": "Na célula galvânica, a oxidação ocorre no ânodo, que é o polo negativo (fonte de eletrões para o circuito exterior)."
+            },
+            {
+              "pergunta": "Qual é a força eletromotriz padrão de uma pilha Fe | Fe²⁺ || Cu²⁺ | Cu?",
+              "opcoes": [
+                "0,10 V",
+                "0,78 V",
+                "−0,78 V",
+                "1,10 V"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "E° = E°(Cu²⁺/Cu) − E°(Fe²⁺/Fe) = 0,34 − (−0,44) = 0,78 V.",
+              "mascote_feedback_errado": "E° = E°(Cu²⁺/Cu) − E°(Fe²⁺/Fe) = 0,34 − (−0,44) = 0,78 V."
+            },
+            {
+              "pergunta": "Com base nos potenciais-padrão, o cobre (E°(Cu²⁺/Cu) = +0,34 V) reage com ácido clorídrico 1 mol/dm³, libertando H₂?",
+              "opcoes": [
+                "Sim, E° = 0,34 V.",
+                "Não, porque E° da célula seria 0,00 − 0,34 = −0,34 V (não espontânea).",
+                "Sim, porque o cobre é um metal.",
+                "Só a quente."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Para o cobre se oxidar e o H⁺ se reduzir, E° = E°(H⁺/H₂) − E°(Cu²⁺/Cu) = −0,34 V < 0: não espontânea. Confirma o que viste no 11.º ano.",
+              "mascote_feedback_errado": "Para o cobre se oxidar e o H⁺ se reduzir, E° = E°(H⁺/H₂) − E°(Cu²⁺/Cu) = −0,34 V < 0: não espontânea. Confirma o que viste no 11.º ano."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "protecao-metais-apl-1",
+      "titulo": "Proteção de metais; APL 1",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_navio_anodo.png",
+          "imagem_legenda": "Casco de um navio com blocos de zinco (ânodos de sacrifício) abaixo da linha de água.",
+          "texto": "Os cascos de aço dos navios estão permanentemente em água salgada, o ambiente mais corrosivo que há. Mesmo assim, aguentam décadas. Se olhares com atenção para o casco de um navio em doca seca, vês blocos de metal presos ao aço, perto do leme e das hélices. Esses blocos são de zinco ou de magnésio, e existem para ser destruídos no lugar do navio.",
+          "mascote_texto": "Nesta secção vais perceber três estratégias diferentes: sacrificar outro metal, revestir com outro metal e engrossar a camada de óxido."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Como proteger os metais",
+          "imagem": "q12_protecao_metais.png",
+          "imagem_legenda": "Métodos de proteção: pintura, galvanização, ânodo de sacrifício, galvanoplastia e anodização.",
+          "texto_principal": "Há várias formas de proteger os metais da corrosão: escolher metais e ligas resistentes, isolá-los do meio (tintas, revestimentos), ou usar processos eletroquímicos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Metais e ligas resistentes à corrosão",
+              "explicacao": "Ouro, platina, titânio, aço inoxidável (ferro com crómio e níquel, que forma uma camada de óxido protetora), alumínio, bronze."
+            },
+            {
+              "id": "p2",
+              "label": "Proteção catódica com ânodo de sacrifício",
+              "explicacao": "Liga-se ao ferro um metal mais redutor (E° menor), como Mg ou Zn. É esse metal que se oxida, e o ferro funciona como cátodo, protegido. Usa-se em navios, oleodutos, tubagens enterradas e termoacumuladores (os esquentadores elétricos têm um ânodo de magnésio no interior)."
+            },
+            {
+              "id": "p3",
+              "label": "Galvanização",
+              "explicacao": "Revestir o ferro com zinco. Mesmo que o revestimento se risque, o zinco (mais redutor) continua a oxidar-se primeiro."
+            },
+            {
+              "id": "p4",
+              "label": "Galvanoplastia",
+              "explicacao": "Técnica eletrolítica para revestir uma peça com uma camada fina de outro metal (crómio, níquel, prata, ouro). A peça é o cátodo; os iões do metal de revestimento reduzem-se à sua superfície."
+            },
+            {
+              "id": "p5",
+              "label": "Anodização do alumínio",
+              "explicacao": "O alumínio é usado como ânodo numa eletrólise, em meio ácido, para engrossar a camada natural de Al₂O₃. A camada fica mais resistente e pode ser colorida (caixilharias, smartphones, utensílios)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "E°(metal de sacrifício) < E°(metal protegido)",
+              "significado": "Ânodo de sacrifício.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Ni²⁺(aq) + 2 e⁻ → Ni(s)",
+              "significado": "Galvanoplastia (ex.: niquelagem), no cátodo.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destes metais pode servir de ânodo de sacrifício para proteger uma tubagem de ferro (E°(Fe²⁺/Fe) = −0,44 V)?",
+          "opcoes": [
+            "Cobre (+0,34 V)",
+            "Chumbo (−0,13 V)",
+            "Magnésio (−2,37 V)",
+            "Prata (+0,80 V)"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. O magnésio tem E° muito menor do que o ferro: oxida-se preferencialmente e protege-o.",
+          "mascote_feedback_errado": "O ânodo de sacrifício tem de ser mais redutor do que o metal protegido, isto é, ter E° menor. Só o magnésio (−2,37 V) cumpre a condição."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Numa galvanoplastia para cromar uma peça de aço, a peça deve ser ligada:",
+          "opcoes": [
+            "ao polo positivo, como ânodo.",
+            "ao polo negativo, como cátodo, onde os iões de crómio se reduzem.",
+            "a nenhum polo.",
+            "à ponte salina."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Na eletrólise, a redução ocorre no cátodo (polo negativo). Os iões do metal de revestimento recebem eletrões e depositam-se como metal na peça.",
+          "mascote_feedback_errado": "Para depositar metal, os seus iões têm de se reduzir. A redução acontece no cátodo, que numa célula eletrolítica está ligado ao polo negativo da fonte."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O guarda-costas.** O ânodo de sacrifício é como um guarda-costas: põe-se à frente do ferro e \"leva os golpes\" (a oxidação) no lugar dele. Enquanto o guarda-costas existir, o ferro está seguro. Quando ele se gasta, tem de ser substituído, e é por isso que os blocos de zinco dos navios e o ânodo de magnésio dos esquentadores são trocados periodicamente."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "APL 1",
+          "titulo": "Construção de uma pilha com determinada diferença de potencial elétrico (atividade de projeto laboratorial)",
+          "objetivo": "Conceber, fundamentar e executar um percurso investigativo para responder à questão: \"Como construir uma pilha com uma determinada diferença de potencial elétrico?\" (por exemplo, 1,00 V).",
+          "material": [
+            "Material a selecionar pelo grupo:",
+            "Lâminas metálicas: Zn, Cu, Fe, Pb, Mg, Ag (ou Ni)",
+            "Soluções dos respetivos sais, com várias concentrações (preparadas por diluição)",
+            "Gobelés pequenos, ponte salina (tubo em U com KNO₃ em gel, ou tira de papel de filtro embebida em KNO₃)",
+            "Voltímetro (multímetro) e fios com crocodilos",
+            "Lixa, termómetro"
+          ],
+          "procedimento": [
+            "Consultar a tabela de potenciais-padrão e escolher um par de metais cuja força eletromotriz padrão seja próxima do valor pretendido (por exemplo, Fe e Cu: 0,78 V; Zn e Cu: 1,10 V).",
+            "Usar a equação de Nernst para prever como ajustar as concentrações das soluções para obter exatamente o valor pretendido.",
+            "Preparar as soluções com as concentrações calculadas.",
+            "Montar a pilha (lixar os elétrodos, ligar a ponte salina) e medir a diferença de potencial com o voltímetro.",
+            "Comparar o valor medido com o previsto, discutir as diferenças e repetir com ajustes.",
+            "Apresentar e discutir o percurso aos outros grupos."
+          ],
+          "tratamento_de_dados": "Equação de Nernst (25 °C): E = E° − (0,0592 / n) × log Q.\n\nExemplo para a pilha de Daniell (n = 2, Q = [Zn²⁺] / [Cu²⁺]): com [Zn²⁺] = 1,0 mol/dm³ e [Cu²⁺] = 0,010 mol/dm³, E = 1,10 − 0,0296 × log(100) = 1,10 − 0,059 ≈ 1,04 V.\n\nDiminuir a concentração do ião no cátodo (ou aumentar a do ião no ânodo) diminui a tensão; o contrário aumenta-a.\n\nCalcular o erro percentual entre o valor medido e o previsto.",
+          "conclusao": "A diferença de potencial de uma pilha depende da natureza dos pares redox (E°) e das concentrações das soluções, de acordo com a equação de Nernst. Com o par adequado e as concentrações certas, é possível obter uma tensão pré-definida. À medida que a pilha funciona, o sistema aproxima-se do equilíbrio e a tensão diminui, até a pilha se esgotar.",
+          "erros_comuns": [
+            "Não lixar os elétrodos (a camada de óxido altera o potencial).",
+            "Ponte salina seca ou com bolhas: o circuito não fecha.",
+            "Trocar o ânodo e o cátodo no voltímetro (aparece um valor negativo).",
+            "Ligar uma lâmpada ou motor durante a medição da força eletromotriz (a tensão nos terminais baixa por causa da resistência interna)."
+          ],
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Termoacumuladores e folha de flandres",
+          "texto": "**Os esquentadores e termoacumuladores**\n\nO interior dos termoacumuladores é de aço e está sempre em contacto com água quente, o que acelera a corrosão. Têm um ânodo de magnésio que se gasta ao longo dos anos. Os técnicos recomendam verificá-lo e substituí-lo periodicamente; quando se esgota, o depósito começa a corroer-se.\n\n**Folha de flandres**\n\nAs latas de conserva são de aço revestido com estanho (folha de flandres). O estanho é menos redutor do que o ferro: protege enquanto o revestimento está intacto, mas, se se riscar, o ferro passa a ser o ânodo e corrói-se mais depressa. É o contrário da galvanização com zinco."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O aço galvanizado é:",
+              "opcoes": [
+                "aço pintado.",
+                "aço revestido de zinco.",
+                "aço revestido de estanho.",
+                "aço com crómio na liga."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A galvanização é o revestimento com zinco, que é mais redutor do que o ferro e o protege mesmo que o revestimento se risque.",
+              "mascote_feedback_errado": "A galvanização é o revestimento com zinco, que é mais redutor do que o ferro e o protege mesmo que o revestimento se risque."
+            },
+            {
+              "pergunta": "A anodização do alumínio consiste em:",
+              "opcoes": [
+                "revestir o alumínio com outro metal.",
+                "engrossar, por eletrólise, a camada protetora de óxido de alumínio.",
+                "remover o óxido de alumínio.",
+                "ligar o alumínio a um ânodo de sacrifício."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O alumínio é o ânodo de uma eletrólise e a sua superfície oxida-se de forma controlada, formando uma camada espessa e resistente de Al₂O₃.",
+              "mascote_feedback_errado": "O alumínio é o ânodo de uma eletrólise e a sua superfície oxida-se de forma controlada, formando uma camada espessa e resistente de Al₂O₃."
+            },
+            {
+              "pergunta": "Pela equação de Nernst, numa pilha de Daniell, se se diminuir a concentração de Cu²⁺ (cátodo), a força eletromotriz:",
+              "opcoes": [
+                "aumenta.",
+                "diminui.",
+                "mantém-se.",
+                "passa a negativa imediatamente."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Q = [Zn²⁺] / [Cu²⁺] aumenta, log Q aumenta e E = E° − (0,0592 / 2) log Q diminui.",
+              "mascote_feedback_errado": "Q = [Zn²⁺] / [Cu²⁺] aumenta, log Q aumenta e E = E° − (0,0592 / 2) log Q diminui."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 2 concluída. Explicas a corrosão como reação redox, acertas equações redox em meio ácido, analisas pilhas com potenciais-padrão, distingues células galvânicas de eletrolíticas e conheces as principais formas de proteger os metais. A seguir: os metais nos seres vivos, os complexos e os tampões."
+}

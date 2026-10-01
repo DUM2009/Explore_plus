@@ -1,0 +1,588 @@
+{
+  "missao_id": "11-aspetos-quantitativos",
+  "id_guiao": "qui11-m1",
+  "titulo": "Aspetos quantitativos das reações químicas",
+  "disciplina": "quimica",
+  "ano": 11,
+  "imagem": "q11_aspirina.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 3h18\"/><path d=\"M12 3v18\"/><path d=\"M5 7l-3 7a4 4 0 0 0 6 0z\"/><path d=\"M19 7l-3 7a4 4 0 0 0 6 0z\"/><path d=\"M8 21h8\"/></svg>",
+    "nome": "Mestre da Estequiometria"
+  },
+  "secoes": [
+    {
+      "secao_id": "relacoes-estequiometricas",
+      "titulo": "Equações químicas e relações estequiométricas",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_receita_bolo.png",
+          "imagem_legenda": "Receita de bolo ao lado de uma equação química acertada.",
+          "texto": "Uma receita diz: \"2 ovos, 1 chávena de açúcar, 2 chávenas de farinha: dá 1 bolo\". Se quiseres fazer 3 bolos, multiplicas tudo por 3. Uma equação química acertada é exatamente isto: uma receita que diz em que proporções os reagentes se combinam e quanto produto se obtém. A diferença é que, em vez de ovos e chávenas, a receita está escrita em moles.",
+          "mascote_texto": "Na Química do 11.º ano quase tudo começa com uma equação bem acertada. Se a equação estiver errada, todas as contas a seguir também ficam."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Relações estequiométricas",
+          "imagem": "q11_estequiometria.png",
+          "imagem_legenda": "Síntese do amoníaco com moléculas, moles e massas.",
+          "texto_principal": "Uma equação química acertada respeita a conservação dos átomos (lei de Lavoisier). Os coeficientes estequiométricos indicam a proporção em que as entidades (e, portanto, as quantidades de matéria) reagem e se formam. A partir deles, calcula-se qualquer quantidade de reagente ou de produto.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Lei de Lavoisier",
+              "explicacao": "Numa reação química, a massa total conserva-se, porque o número de átomos de cada elemento se mantém."
+            },
+            {
+              "id": "p2",
+              "label": "Coeficientes estequiométricos",
+              "explicacao": "Os números antes das fórmulas. Indicam proporções em moles (não em gramas)."
+            },
+            {
+              "id": "p3",
+              "label": "Relação em moles",
+              "explicacao": "Na síntese do amoníaco, 1 mol de N₂ reage com 3 mol de H₂ e forma 2 mol de NH₃."
+            },
+            {
+              "id": "p4",
+              "label": "Massas não estão na mesma proporção",
+              "explicacao": "28,02 g de N₂ reagem com 6,06 g de H₂, não com \"3 vezes mais massa\"."
+            },
+            {
+              "id": "p5",
+              "label": "Gases",
+              "explicacao": "Nas mesmas condições de P e T, a proporção em volume é igual à proporção em moles (lei de Avogadro). 1 volume de N₂ reage com 3 volumes de H₂."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "massa (g) → n (mol) → proporção estequiométrica → n do produto → massa ou volume do produto",
+              "significado": "Estratégia, com n = m / M.",
+              "unidades": ""
+            },
+            {
+              "expressao": "n A / coeficiente A = n B / coeficiente B",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "V = n × 22,4 dm³/mol",
+              "significado": "Gases em PTN.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Que massa de amoníaco se forma a partir de 14,0 g de N₂, com H₂ em excesso? (M(N₂) = 28,02 g/mol; M(NH₃) = 17,04 g/mol)",
+          "opcoes": [
+            "8,52 g",
+            "14,0 g",
+            "17,0 g",
+            "34,1 g"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. n(N₂) = 14,0 / 28,02 ≈ 0,500 mol. Pela proporção 1 : 2, n(NH₃) = 1,00 mol. m = 1,00 × 17,04 ≈ 17,0 g.",
+          "mascote_feedback_errado": "Passa sempre para moles: n(N₂) ≈ 0,500 mol. Cada mole de N₂ dá 2 mol de NH₃: 1,00 mol de NH₃, ou seja, 17,0 g."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na combustão do metano, CH₄ + 2 O₂ → CO₂ + 2 H₂O, que volume de O₂ (PTN) é necessário para queimar 0,50 mol de CH₄?",
+          "opcoes": [
+            "11,2 dm³",
+            "22,4 dm³",
+            "44,8 dm³",
+            "1,0 dm³"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. n(O₂) = 2 × 0,50 = 1,0 mol. V = 1,0 × 22,4 = 22,4 dm³.",
+          "mascote_feedback_errado": "A proporção CH₄ : O₂ é 1 : 2. Para 0,50 mol de CH₄ são precisas 1,0 mol de O₂, que ocupam 22,4 dm³ em PTN."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Montar bicicletas.** Para montar uma bicicleta precisas de 1 quadro e 2 rodas. A \"equação\" é: 1 quadro + 2 rodas → 1 bicicleta. Se tiveres 10 quadros, precisas de 20 rodas e fazes 10 bicicletas. Não interessa quanto pesa uma roda ou um quadro: a receita é em número de peças. A estequiometria funciona da mesma forma, em número de entidades (moles). As massas só entram no início (para saber quantas \"peças\" tens) e no fim (para saber quanto pesa o que fizeste)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Acertar equações e um erro comum",
+          "texto": "**Como acertar uma equação química**\n\n1. Escrever as fórmulas corretas dos reagentes e dos produtos (nunca alterar os índices das fórmulas).\n\n2. Acertar primeiro os elementos que aparecem em menos substâncias, deixando o hidrogénio e o oxigénio para o fim.\n\n3. Verificar que há o mesmo número de átomos de cada elemento dos dois lados.\n\n4. Usar os menores coeficientes inteiros possíveis.\n\n**Erro comum**\n\nUsar a proporção dos coeficientes diretamente com massas. A proporção 1 : 3 : 2 é em moles. 1 g de N₂ não reage com 3 g de H₂."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na reação 2 H₂ + O₂ → 2 H₂O, quantas moles de água se formam a partir de 3,0 mol de O₂ (com H₂ em excesso)?",
+              "opcoes": [
+                "1,5 mol",
+                "3,0 mol",
+                "6,0 mol",
+                "9,0 mol"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "A proporção O₂ : H₂O é 1 : 2. Com 3,0 mol de O₂ formam-se 6,0 mol de H₂O.",
+              "mascote_feedback_errado": "A proporção O₂ : H₂O é 1 : 2. Com 3,0 mol de O₂ formam-se 6,0 mol de H₂O."
+            },
+            {
+              "pergunta": "Qual dos princípios garante que uma equação química tem de estar acertada?",
+              "opcoes": [
+                "O Princípio de Le Châtelier.",
+                "A lei da conservação da massa (Lavoisier).",
+                "A lei de Avogadro.",
+                "O Princípio de Pauli."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Numa reação, os átomos reorganizam-se mas não se criam nem se destroem. A massa total conserva-se.",
+              "mascote_feedback_errado": "Numa reação, os átomos reorganizam-se mas não se criam nem se destroem. A massa total conserva-se."
+            },
+            {
+              "pergunta": "Que massa de CO₂ se forma na combustão completa de 16,0 g de metano? (M(CH₄) = 16,05 g/mol; M(CO₂) = 44,01 g/mol)",
+              "opcoes": [
+                "16,0 g",
+                "22,0 g",
+                "43,9 g",
+                "88,0 g"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "n(CH₄) = 16,0 / 16,05 ≈ 0,997 mol. Proporção 1 : 1, logo n(CO₂) ≈ 0,997 mol. m ≈ 0,997 × 44,01 ≈ 43,9 g.",
+              "mascote_feedback_errado": "n(CH₄) = 16,0 / 16,05 ≈ 0,997 mol. Proporção 1 : 1, logo n(CO₂) ≈ 0,997 mol. m ≈ 0,997 × 44,01 ≈ 43,9 g."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "limitante-pureza-rendimento-al-1-1",
+      "titulo": "Reagente limitante, pureza e rendimento; AL 1.1",
+      "xp": 25,
+      "tempo_estimado_min": 16,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_aspirina.png",
+          "imagem_legenda": "Comprimidos de aspirina e cristais de ácido acetilsalicílico.",
+          "texto": "A aspirina é um dos medicamentos mais usados no mundo: produzem-se dezenas de milhares de toneladas por ano. Nas fábricas, nunca se obtém 100 % do produto que a equação prevê: há reagentes impuros, reações que não vão até ao fim, perdas na filtração. Saber calcular o rendimento é o que separa uma fábrica rentável de uma que dá prejuízo. Nesta secção vais sintetizar aspirina e calcular o teu rendimento.",
+          "mascote_texto": "Esta secção tem três conceitos que saem quase sempre juntos no exame: limitante, pureza e rendimento. Treina os três."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Limitante, excesso, pureza e rendimento",
+          "imagem": "q11_reagente_limitante.png",
+          "imagem_legenda": "2 H₂ + O₂ com H₂ a sobrar: limitante e excesso.",
+          "texto_principal": "Quando os reagentes não estão na proporção estequiométrica, um deles esgota-se primeiro: é o reagente limitante. É ele que determina a quantidade máxima de produto. Os outros ficam em excesso. Na prática, a quantidade de produto obtida também é afetada pela pureza dos reagentes e pelo rendimento da reação.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Reagente limitante",
+              "explicacao": "O que se esgota primeiro. Para o identificar, compara-se a quantidade de cada reagente com a proporção estequiométrica."
+            },
+            {
+              "id": "p2",
+              "label": "Reagente em excesso",
+              "explicacao": "O que sobra no fim. Usa-se muitas vezes um reagente em excesso (o mais barato) para garantir que o mais caro reage todo."
+            },
+            {
+              "id": "p3",
+              "label": "Grau de pureza",
+              "explicacao": "Percentagem, em massa, da substância de interesse numa amostra. Ex.: um calcário com 80 % de CaCO₃."
+            },
+            {
+              "id": "p4",
+              "label": "Rendimento",
+              "explicacao": "Razão entre a quantidade de produto realmente obtida e a quantidade prevista pela estequiometria (teórica), em percentagem. É sempre inferior a 100 % na prática."
+            },
+            {
+              "id": "p5",
+              "label": "Causas de rendimento inferior a 100 %",
+              "explicacao": "Reações incompletas, reações secundárias, perdas na separação e purificação do produto."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Grau de pureza (%) = m substância pura / m amostra × 100",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Rendimento (%) = quantidade (ou massa) obtida / quantidade (ou massa) teórica × 100",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "A quantidade teórica calcula-se sempre a partir do reagente limitante.",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Fazem-se reagir 4,0 g de H₂ (M = 2,02 g/mol) com 16,0 g de O₂ (M = 32,00 g/mol): 2 H₂ + O₂ → 2 H₂O. Qual é o reagente limitante e que massa de água se forma?",
+          "opcoes": [
+            "H₂; 36,0 g",
+            "O₂; 18,0 g",
+            "O₂; 36,0 g",
+            "H₂; 18,0 g"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. n(H₂) ≈ 1,98 mol; n(O₂) = 0,500 mol. Para 0,500 mol de O₂ bastam 1,00 mol de H₂: o H₂ está em excesso e o O₂ é limitante. Formam-se 2 × 0,500 = 1,00 mol de H₂O, ou seja, cerca de 18,0 g.",
+          "mascote_feedback_errado": "Compara com a proporção 2 : 1. O O₂ (0,500 mol) precisaria de 1,00 mol de H₂, e há 1,98 mol: o O₂ esgota-se primeiro. Formam-se 1,00 mol de H₂O, cerca de 18,0 g."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "50,0 g de um calcário com 80,0 % de CaCO₃ (M = 100,09 g/mol) reagem completamente com ácido: CaCO₃ + 2 HCl → CaCl₂ + H₂O + CO₂. Que volume de CO₂ (PTN) se liberta?",
+          "opcoes": [
+            "11,2 dm³",
+            "8,95 dm³",
+            "22,4 dm³",
+            "4,48 dm³"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Muito bem. Massa de CaCO₃ = 0,800 × 50,0 = 40,0 g. n = 40,0 / 100,09 ≈ 0,400 mol. Proporção 1 : 1: n(CO₂) ≈ 0,400 mol. V ≈ 0,400 × 22,4 ≈ 8,95 dm³.",
+          "mascote_feedback_errado": "Só 80 % da amostra é CaCO₃: 40,0 g, ou cerca de 0,400 mol. Forma-se a mesma quantidade de CO₂, que em PTN ocupa cerca de 8,95 dm³."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_reagente_limitante",
+          "titulo": "Quem acaba primeiro?",
+          "instrucao": "Escolhe a reação e as massas dos reagentes. Vê qual se esgota, quanto sobra e quanto produto se forma. Depois ajusta o rendimento.",
+          "controlos": [
+            {
+              "id": "reacao",
+              "rotulo": "Reação",
+              "opcoes": [
+                {
+                  "valor": "1",
+                  "label": "2 H₂ + O₂ → 2 H₂O"
+                },
+                {
+                  "valor": "2",
+                  "label": "N₂ + 3 H₂ → 2 NH₃"
+                },
+                {
+                  "valor": "3",
+                  "label": "CH₄ + 2 O₂ → CO₂ + 2 H₂O"
+                }
+              ]
+            },
+            {
+              "id": "mA",
+              "rotulo": "Massa do reagente A (o primeiro da equação)",
+              "min": 0.5,
+              "max": 100,
+              "passo": 0.5,
+              "valor_inicial": 4.0,
+              "unidade": "g"
+            },
+            {
+              "id": "mB",
+              "rotulo": "Massa do reagente B (o segundo da equação)",
+              "min": 0.5,
+              "max": 100,
+              "passo": 0.5,
+              "valor_inicial": 16.0,
+              "unidade": "g"
+            },
+            {
+              "id": "rendimento",
+              "rotulo": "Rendimento",
+              "min": 10,
+              "max": 100,
+              "passo": 1,
+              "valor_inicial": 100,
+              "unidade": "%"
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Quantidade do reagente A",
+              "formula": "(function () { var r = dados.r[reacao]; var nA = mA / r.MA, nB = mB / r.MB; var xA = nA / r.cA, xB = nB / r.cB; var lim = Math.abs(xA - xB) / Math.max(xA, xB) < 0.005 ? 'ambos' : (xA < xB ? 'A' : 'B'); var x = Math.min(xA, xB); return r.A + ': ' + num(nA) + ' mol'; })()"
+            },
+            {
+              "rotulo": "Quantidade do reagente B",
+              "formula": "(function () { var r = dados.r[reacao]; var nA = mA / r.MA, nB = mB / r.MB; var xA = nA / r.cA, xB = nB / r.cB; var lim = Math.abs(xA - xB) / Math.max(xA, xB) < 0.005 ? 'ambos' : (xA < xB ? 'A' : 'B'); var x = Math.min(xA, xB); return r.B + ': ' + num(nB) + ' mol'; })()"
+            },
+            {
+              "rotulo": "n / coeficiente",
+              "formula": "(function () { var r = dados.r[reacao]; var nA = mA / r.MA, nB = mB / r.MB; var xA = nA / r.cA, xB = nB / r.cB; var lim = Math.abs(xA - xB) / Math.max(xA, xB) < 0.005 ? 'ambos' : (xA < xB ? 'A' : 'B'); var x = Math.min(xA, xB); return r.A + ': ' + num(xA) + '; ' + r.B + ': ' + num(xB) + ' (o menor indica o limitante)'; })()"
+            },
+            {
+              "rotulo": "Reagente limitante",
+              "formula": "(function () { var r = dados.r[reacao]; var nA = mA / r.MA, nB = mB / r.MB; var xA = nA / r.cA, xB = nB / r.cB; var lim = Math.abs(xA - xB) / Math.max(xA, xB) < 0.005 ? 'ambos' : (xA < xB ? 'A' : 'B'); var x = Math.min(xA, xB); return lim === 'ambos' ? 'Nenhum: estão na proporção estequiométrica' : (lim === 'A' ? r.A : r.B) + ' (esgota-se primeiro)'; })()"
+            },
+            {
+              "rotulo": "Produto teórico",
+              "formula": "(function () { var r = dados.r[reacao]; var nA = mA / r.MA, nB = mB / r.MB; var xA = nA / r.cA, xB = nB / r.cB; var lim = Math.abs(xA - xB) / Math.max(xA, xB) < 0.005 ? 'ambos' : (xA < xB ? 'A' : 'B'); var x = Math.min(xA, xB); return r.P + ': ' + num(x * r.cP) + ' mol, ou seja, ' + num(x * r.cP * r.MP) + ' g'; })()"
+            },
+            {
+              "rotulo": "Massa obtida (com o rendimento)",
+              "formula": "(function () { var r = dados.r[reacao]; var nA = mA / r.MA, nB = mB / r.MB; var xA = nA / r.cA, xB = nB / r.cB; var lim = Math.abs(xA - xB) / Math.max(xA, xB) < 0.005 ? 'ambos' : (xA < xB ? 'A' : 'B'); var x = Math.min(xA, xB); return num(x * r.cP * r.MP * rendimento / 100) + ' g de ' + r.P; })()"
+            },
+            {
+              "rotulo": "Reagente em excesso que sobra",
+              "formula": "(function () { var r = dados.r[reacao]; var nA = mA / r.MA, nB = mB / r.MB; var xA = nA / r.cA, xB = nB / r.cB; var lim = Math.abs(xA - xB) / Math.max(xA, xB) < 0.005 ? 'ambos' : (xA < xB ? 'A' : 'B'); var x = Math.min(xA, xB); return lim === 'ambos' ? 'Não sobra nada' : (lim === 'A' ? r.B + ': ' + num((nB - x * r.cB) * r.MB) + ' g' : r.A + ': ' + num((nA - x * r.cA) * r.MA) + ' g'); })()"
+            }
+          ],
+          "pergunta_final": "Com 4,0 g de H₂ e 16,0 g de O₂, que massa de H₂ sobra? Resposta esperada: cerca de 2,0 g (sobram cerca de 0,98 mol × 2,02 g/mol).",
+          "dados": {
+            "r": {
+              "1": {
+                "eq": "2 H₂ + O₂ → 2 H₂O",
+                "A": "H₂",
+                "MA": 2.02,
+                "cA": 2,
+                "B": "O₂",
+                "MB": 32.0,
+                "cB": 1,
+                "P": "H₂O",
+                "MP": 18.02,
+                "cP": 2
+              },
+              "2": {
+                "eq": "N₂ + 3 H₂ → 2 NH₃",
+                "A": "N₂",
+                "MA": 28.02,
+                "cA": 1,
+                "B": "H₂",
+                "MB": 2.02,
+                "cB": 3,
+                "P": "NH₃",
+                "MP": 17.04,
+                "cP": 2
+              },
+              "3": {
+                "eq": "CH₄ + 2 O₂ → CO₂ + 2 H₂O",
+                "A": "CH₄",
+                "MA": 16.05,
+                "cA": 1,
+                "B": "O₂",
+                "MB": 32.0,
+                "cB": 2,
+                "P": "CO₂",
+                "MP": 44.01,
+                "cP": 1
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Hambúrgueres numa festa.** Tens 30 pães e 20 hambúrgueres. Cada hambúrguer completo leva 1 pão e 1 hambúrguer. Só consegues fazer 20: os hambúrgueres são o \"reagente limitante\" e sobram 10 pães (reagente em excesso). Agora imagina que 2 hambúrgueres caem ao chão e 3 se queimam: só serves 15. O rendimento foi 15 / 20 = 75 %. E se metade dos pães fossem de outro tipo que ninguém quer, terias de contar só os bons: é a pureza."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 1.1",
+          "titulo": "Síntese do ácido acetilsalicílico",
+          "objetivo": "Realizar a síntese do ácido acetilsalicílico (componente ativo da aspirina) e determinar o rendimento da reação.",
+          "material": [
+            "Ácido salicílico, C₇H₆O₃ (M = 138,12 g/mol)",
+            "Anidrido acético, C₄H₆O₃ (M = 102,09 g/mol), em excesso",
+            "Ácido sulfúrico concentrado (algumas gotas, catalisador)",
+            "Erlenmeyer, banho de água quente (cerca de 80 °C), termómetro",
+            "Banho de gelo e água destilada fria",
+            "Montagem de filtração por vácuo (funil de Büchner, kitasato, trompa de água ou bomba)",
+            "Papel de filtro, vidro de relógio, balança",
+            "Óculos, luvas e bata; hotte"
+          ],
+          "procedimento": [
+            "Medir cerca de 2,00 g de ácido salicílico e colocá-lo no erlenmeyer.",
+            "Na hotte, adicionar o anidrido acético (por exemplo, 5 cm³) e 5 gotas de ácido sulfúrico concentrado.",
+            "Aquecer em banho de água a cerca de 80 °C durante 15 minutos, agitando.",
+            "Retirar do banho e adicionar, com cuidado, água destilada fria para decompor o anidrido acético que não reagiu.",
+            "Arrefecer em banho de gelo até cristalizar o produto.",
+            "Filtrar por vácuo e lavar os cristais com pequenas porções de água destilada gelada.",
+            "Secar os cristais (ao ar ou na estufa a baixa temperatura) e medir a sua massa."
+          ],
+          "tratamento_de_dados": "Equação: C₇H₆O₃ + C₄H₆O₃ → C₉H₈O₄ + CH₃COOH (ácido acetilsalicílico, M = 180,16 g/mol).\n\nO reagente limitante é o ácido salicílico (o anidrido acético está em excesso).\n\nn(ácido salicílico) = 2,00 / 138,12 ≈ 1,45 × 10⁻² mol.\n\nMassa teórica de AAS = 1,45 × 10⁻² × 180,16 ≈ 2,61 g.\n\nExemplo: massa obtida = 2,05 g. Rendimento = 2,05 / 2,61 × 100 ≈ 78,6 %.\n\nApresentar o resultado com o número correto de algarismos significativos e discutir as causas do rendimento inferior a 100 %.",
+          "conclusao": "A síntese do ácido acetilsalicílico tem rendimento inferior a 100 %, devido a perdas na filtração e na transferência, a reação incompleta ou a produto que fica dissolvido na água de lavagem. Um rendimento superior a 100 % indicaria um produto mal seco ou impuro.",
+          "erros_comuns": [
+            "Usar o anidrido acético para calcular a massa teórica (é o reagente em excesso).",
+            "Pesar o produto ainda húmido: a massa e o rendimento ficam artificialmente altos.",
+            "Lavar os cristais com água à temperatura ambiente (parte do produto dissolve-se).",
+            "Confundir rendimento com grau de pureza."
+          ],
+          "seguranca": "O ácido sulfúrico concentrado e o anidrido acético são corrosivos; o anidrido tem vapores irritantes. Trabalhar na hotte, com óculos e luvas. Ler os pictogramas de perigo dos rótulos antes de começar.",
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O reagente limitante é:",
+              "opcoes": [
+                "o reagente que está em maior quantidade.",
+                "o reagente que se esgota primeiro e determina a quantidade máxima de produto.",
+                "o reagente mais caro.",
+                "o reagente com maior massa molar."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O reagente limitante é consumido totalmente e limita a quantidade de produto que se pode formar.",
+              "mascote_feedback_errado": "O reagente limitante é consumido totalmente e limita a quantidade de produto que se pode formar."
+            },
+            {
+              "pergunta": "Numa síntese, previam-se 25,0 g de produto e obtiveram-se 20,0 g. Qual é o rendimento?",
+              "opcoes": [
+                "20 %",
+                "80,0 %",
+                "125 %",
+                "5,0 %"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Rendimento = 20,0 / 25,0 × 100 = 80,0 %.",
+              "mascote_feedback_errado": "Rendimento = 20,0 / 25,0 × 100 = 80,0 %."
+            },
+            {
+              "pergunta": "Na AL 1.1, obteve-se um rendimento de 105 %. Qual é a explicação mais provável?",
+              "opcoes": [
+                "A reação foi perfeita.",
+                "O produto não estava completamente seco (ou continha impurezas).",
+                "O reagente limitante era o anidrido acético.",
+                "Formou-se mais produto do que os reagentes permitiam."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Não é possível obter mais produto do que o teoricamente previsto. Um valor acima de 100 % indica água ou impurezas misturadas com o produto.",
+              "mascote_feedback_errado": "Não é possível obter mais produto do que o teoricamente previsto. Um valor acima de 100 % indica água ou impurezas misturadas com o produto."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "economia-atomica-quimica-verde",
+      "titulo": "Economia atómica e química verde",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_quimica_verde.png",
+          "imagem_legenda": "Folha verde estilizada sobre material de laboratório.",
+          "texto": "Durante décadas, a síntese do ibuprofeno era feita em seis passos e quase 60 % da massa dos reagentes acabava em resíduos. Nos anos 90, uma empresa desenvolveu um processo com apenas três passos, em que quase toda a massa dos reagentes acaba no produto ou é reaproveitada. Menos resíduos, menos custos, menos poluição. É um exemplo de química verde.",
+          "mascote_texto": "O rendimento diz quanto produto obtiveste. A economia atómica diz quanto da matéria-prima acabou no produto que querias. São coisas diferentes."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Economia atómica",
+          "imagem": "q11_economia_atomica.png",
+          "imagem_legenda": "Balança: reagentes vs produto desejado e subproduto.",
+          "texto_principal": "A economia atómica (percentual) mede a fração dos átomos dos reagentes que fica no produto desejado. Uma reação com economia atómica de 100 % não produz subprodutos: todos os átomos dos reagentes acabam no produto. A química verde é um conjunto de princípios para tornar os processos químicos mais seguros e menos poluentes.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Economia atómica",
+              "explicacao": "EA = M(produto desejado) × coeficiente / Σ [M(reagentes) × coeficientes] × 100."
+            },
+            {
+              "id": "p2",
+              "label": "Calcula-se com a equação acertada",
+              "explicacao": "Não depende do rendimento obtido no laboratório."
+            },
+            {
+              "id": "p3",
+              "label": "Reações de adição",
+              "explicacao": "Têm economia atómica de 100 %. Ex.: C₂H₄ + H₂ → C₂H₆."
+            },
+            {
+              "id": "p4",
+              "label": "Rendimento vs economia atómica",
+              "explicacao": "Uma reação pode ter rendimento de 100 % e mesmo assim gerar muitos resíduos (baixa economia atómica)."
+            },
+            {
+              "id": "p5",
+              "label": "Princípios da química verde (alguns)",
+              "explicacao": "Prevenir resíduos; maximizar a economia atómica; usar reagentes e solventes menos perigosos; usar catalisadores; usar matérias-primas renováveis; gastar menos energia; produzir substâncias biodegradáveis."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "EA (%) = Σ [coef × M(produto desejado)] / Σ [coef × M(reagentes)] × 100",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a economia atómica da síntese do AAS: C₇H₆O₃ (138,12) + C₄H₆O₃ (102,09) → C₉H₈O₄ (180,16) + CH₃COOH (60,05)?",
+          "opcoes": [
+            "25,0 %",
+            "75,0 %",
+            "78,6 %",
+            "100 %"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. EA = 180,16 / (138,12 + 102,09) × 100 = 180,16 / 240,21 × 100 ≈ 75,0 %. Os outros 25 % acabam no ácido acético, o subproduto.",
+          "mascote_feedback_errado": "Divide a massa molar do produto desejado pela soma das massas molares dos reagentes: 180,16 / 240,21 ≈ 0,750, ou seja, 75,0 %. Não confundas com o rendimento (78,6 % no exemplo da AL)."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destas reações tem economia atómica de 100 %?",
+          "opcoes": [
+            "CaCO₃ → CaO + CO₂",
+            "C₂H₄ + H₂O → C₂H₅OH",
+            "2 NaCl + H₂SO₄ → Na₂SO₄ + 2 HCl",
+            "Zn + 2 HCl → ZnCl₂ + H₂ (sendo o H₂ o produto desejado)"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Na hidratação do eteno, todos os átomos dos reagentes acabam no único produto, o etanol: EA = 100 %.",
+          "mascote_feedback_errado": "Só tem economia atómica de 100 % a reação em que não há subprodutos. Na hidratação do eteno forma-se apenas etanol."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Cortar bolachas na massa.** Fazes bolachas com um cortador. Mesmo que nenhuma se parta no forno (rendimento de 100 %), sobram sempre recortes de massa entre as bolachas: essa é a \"economia atómica\" que perdeste. Se usasses uma forma que aproveitasse toda a massa, por exemplo bolachas quadradas encostadas umas às outras, não sobrava nada. A química verde procura \"cortadores\" que não deixem recortes."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Fator E e catalisadores",
+          "texto": "**Fator E (fator ambiental)**\n\nNa indústria usa-se também o fator E: massa de resíduos produzida por cada kg de produto. Na indústria petroquímica é menor do que 0,1; na indústria farmacêutica pode ser maior do que 25, porque as moléculas dos medicamentos exigem muitos passos de síntese.\n\n**Catalisadores e química verde**\n\nUm catalisador acelera a reação sem ser consumido. Permite trabalhar a temperaturas mais baixas (menos energia), evita reagentes em grande excesso e pode ser reutilizado. Na AL 1.1, o ácido sulfúrico atua como catalisador."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A economia atómica de uma reação:",
+              "opcoes": [
+                "depende das massas obtidas no laboratório.",
+                "calcula-se a partir da equação química acertada e das massas molares.",
+                "é sempre igual ao rendimento.",
+                "só se aplica a reações de combustão."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A economia atómica é uma característica da reação (da equação), não do resultado experimental.",
+              "mascote_feedback_errado": "A economia atómica é uma característica da reação (da equação), não do resultado experimental."
+            },
+            {
+              "pergunta": "Qual das práticas está de acordo com a química verde?",
+              "opcoes": [
+                "Usar solventes tóxicos em grande quantidade.",
+                "Escolher processos com maior economia atómica e menos resíduos.",
+                "Usar sempre reagentes em grande excesso.",
+                "Trabalhar a temperaturas muito altas sem necessidade."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A química verde procura prevenir resíduos, aumentar a economia atómica, reduzir a perigosidade e o consumo de energia.",
+              "mascote_feedback_errado": "A química verde procura prevenir resíduos, aumentar a economia atómica, reduzir a perigosidade e o consumo de energia."
+            },
+            {
+              "pergunta": "Uma reação tem rendimento de 95 % e economia atómica de 40 %. Isso significa que:",
+              "opcoes": [
+                "quase todo o produto previsto foi obtido, mas a maior parte da massa dos reagentes acaba em subprodutos.",
+                "quase não se obteve produto.",
+                "não há subprodutos.",
+                "a reação é verde."
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "O rendimento é alto (obteve-se quase todo o produto possível), mas a economia atómica é baixa: 60 % da massa dos reagentes vai para subprodutos.",
+              "mascote_feedback_errado": "O rendimento é alto (obteve-se quase todo o produto possível), mas a economia atómica é baixa: 60 % da massa dos reagentes vai para subprodutos."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 1 concluída. Usas relações estequiométricas, identificas o reagente limitante, tens em conta a pureza dos reagentes, calculas rendimentos e economias atómicas, e sintetizaste aspirina. A seguir: as reações que não vão até ao fim, e o equilíbrio químico."
+}

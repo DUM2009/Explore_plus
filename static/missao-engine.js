@@ -74,6 +74,51 @@ Erros sistemáticos: afetam sempre no mesmo sentido (balança mal calibrada, zer
 
 O resultado final não pode ter mais algarismos significativos do que os dados permitem. A incerteza escreve-se normalmente com um algarismo significativo, e o valor medido acaba na mesma casa decimal da incerteza.`;
 
+    // Números mostrados nas simulações usam vírgula como separador decimal.
+    function comVirgula(value) {
+        return String(value).replace('.', ',');
+    }
+
+    // Disponível nas fórmulas das simulações como num(x, algarismos):
+    // algarismos significativos, vírgula decimal e, para valores muito
+    // pequenos ou grandes, notação científica "2,50 × 10⁻⁴".
+    const SUPERSCRITOS = { '-': '⁻', 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹' };
+    function formatarNumero(x, algarismos = 3) {
+        if (typeof x !== 'number' || !Number.isFinite(x)) return '—';
+        if (x === 0) return '0';
+        const abs = Math.abs(x);
+        if (abs >= 1e-3 && abs < 1e5) {
+            const simples = x.toPrecision(algarismos);
+            if (!simples.includes('e')) return simples.replace('.', ',').replace('-', '−');
+        }
+        const [mantissa, expoente] = x.toExponential(algarismos - 1).split('e');
+        const sup = String(Number(expoente)).split('').map((c) => SUPERSCRITOS[c]).join('');
+        return `${mantissa.replace('.', ',').replace('-', '−')} × 10${sup}`;
+    }
+
+    function escapeAttr(value) {
+        return escapeHtml(value).replace(/"/g, '&quot;');
+    }
+
+    // <img> de um ecrã. Se o ficheiro ainda não existir e o ecrã tiver
+    // imagem_legenda, fica um espaço reservado com essa legenda (ver
+    // meImagemEmFalta) em vez de a imagem simplesmente desaparecer.
+    function imagemEcraHtml(nome, classe, alt, legenda) {
+        if (!nome) return '';
+        const src = `/static/images/${encodeURIComponent(nome)}`;
+        if (!legenda) {
+            return `<img class="${classe}" src="${src}" alt="${escapeAttr(alt)}" onerror="this.style.display='none'">`;
+        }
+        return `<img class="${classe}" src="${src}" alt="${escapeAttr(alt)}" data-legenda="${escapeAttr(legenda)}" onerror="meImagemEmFalta(this)">`;
+    }
+
+    window.meImagemEmFalta = function (img) {
+        const reservado = document.createElement('div');
+        reservado.className = 'me-imagem-reservada';
+        reservado.textContent = img.dataset.legenda || '';
+        img.replaceWith(reservado);
+    };
+
     class MissaoEngine {
         constructor(missao, options = {}) {
             this.missao = missao;
@@ -1066,7 +1111,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (screen.imagem) {
                 return `
                     <div class="mascot-overlay-card me-mascot-inline me-gancho-card">
-                        <img class="me-gancho-hero-image" src="/static/images/${encodeURIComponent(screen.imagem)}" alt="${escapeHtml(screen.titulo || '')}" onerror="this.style.display='none'">
+                        ${imagemEcraHtml(screen.imagem, 'me-gancho-hero-image', screen.titulo || '', screen.imagem_legenda)}
                         <h3 class="screen-title-lg">${escapeHtml(screen.texto)}</h3>
                     </div>
                 `;
@@ -1796,7 +1841,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 ${(isEscada || isArvore || isMapa) ? '' : (screen.video
                     ? `<video class="me-video-chroma-source" data-chroma-key="white" src="/static/${encodeURIComponent(screen.video)}" autoplay loop muted playsinline style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></video>
                        <canvas class="card-visual me-video-chroma-canvas"></canvas>`
-                    : `<img class="card-visual" src="/static/images/${encodeURIComponent(screen.imagem)}" alt="${escapeHtml(screen.titulo || '')}" onerror="this.style.display='none'">`)}
+                    : imagemEcraHtml(screen.imagem, 'card-visual', screen.titulo || '', screen.imagem_legenda))}
                 ${isTimeline ? '' : instrucaoHtml}
                 ${pontosHtml}
                 ${isTimeline ? instrucaoHtml : ''}
@@ -1945,9 +1990,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 // degraus da escada) — aqui a imagem é um diagrama com
                 // texto (ex: a teia alimentar), que precisa de mais espaço
                 // para se conseguir ler.
-                const imagemHtml = screen.imagem
-                    ? `<img class="me-gancho-hero-image" src="/static/images/${encodeURIComponent(screen.imagem)}" alt="" onerror="this.style.display='none'">`
-                    : '';
+                const imagemHtml = imagemEcraHtml(screen.imagem, 'me-gancho-hero-image', '', screen.imagem_legenda);
                 // Também leva a classe me-gancho-card só para herdar a
                 // largura total (e o "escape" da coluna estreita de
                 // leitura, ver .screen-card:has(.me-gancho-card) no CSS) —
@@ -2021,6 +2064,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     ${blocoHtml('Tratamento de dados', screen.tratamento_de_dados ? textToHtml(screen.tratamento_de_dados) : '')}
                     ${blocoHtml('Conclusão', screen.conclusao ? textToHtml(screen.conclusao) : '')}
                     ${blocoHtml('Erros comuns', screen.erros_comuns ? listaHtml(screen.erros_comuns) : '')}
+                    ${blocoHtml('Segurança', screen.seguranca ? textToHtml(screen.seguranca) : '')}
                     ${screen.rever_medicao_incertezas ? blocoHtml('Rever: medição e incertezas', textToHtml(MEDICAO_INCERTEZAS_TEXTO)) : ''}
                 </div>
             `;
@@ -2038,12 +2082,15 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 if (controlo.tipo === 'botao') {
                     return `<button type="button" class="me-simulacao-botao" data-simulacao-botao="${escapeHtml(controlo.id)}">${escapeHtml(controlo.rotulo || controlo.id)}</button>`;
                 }
+                if (controlo.tipo === 'tabela_periodica') {
+                    return this.tabelaPeriodicaHtml(controlo);
+                }
                 if (Array.isArray(controlo.opcoes)) {
                     return `
                         <div class="me-simulacao-controlo">
                             <label class="me-simulacao-rotulo" for="sim-${escapeHtml(controlo.id)}">${escapeHtml(controlo.rotulo || controlo.id)}</label>
                             <select class="me-simulacao-select" id="sim-${escapeHtml(controlo.id)}" data-simulacao-controlo="${escapeHtml(controlo.id)}" data-tipo="opcao">
-                                ${controlo.opcoes.map((opcao) => `<option value="${escapeHtml(String(opcao.valor))}">${escapeHtml(opcao.label)}</option>`).join('')}
+                                ${controlo.opcoes.map((opcao) => `<option value="${escapeHtml(String(opcao.valor))}"${controlo.valor_inicial != null && String(opcao.valor) === String(controlo.valor_inicial) ? ' selected' : ''}>${escapeHtml(opcao.label)}</option>`).join('')}
                             </select>
                         </div>
                     `;
@@ -2086,6 +2133,39 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             `;
         }
 
+        /** Tabela periódica clicável, reutilizável como controlo de uma
+         *  simulação (controlo.tipo === 'tabela_periodica'). Cada elemento
+         *  de controlo.elementos traz z, simbolo, nome, massa, periodo,
+         *  grupo e bloco; a posição na grelha vem do período e do grupo e
+         *  a cor do bloco. O elemento escolhido fica num <input hidden>
+         *  com o id do controlo, lido como qualquer outro controlo. */
+        tabelaPeriodicaHtml(controlo) {
+            const elementos = controlo.elementos || [];
+            const inicial = controlo.valor_inicial ?? (elementos[0] && elementos[0].z);
+            const celulasHtml = elementos.map((el) => `
+                <button type="button" class="me-tp-celula me-tp-bloco-${escapeAttr(el.bloco)}${el.z === inicial ? ' is-active' : ''}"
+                    style="grid-row:${Number(el.periodo)};grid-column:${Number(el.grupo)}"
+                    data-tp-z="${Number(el.z)}" title="${escapeAttr(`${el.nome} (Z = ${el.z})`)}" aria-label="${escapeAttr(el.nome)}">
+                    <span class="me-tp-z">${Number(el.z)}</span>
+                    <span class="me-tp-simbolo">${escapeHtml(el.simbolo)}</span>
+                    <span class="me-tp-massa">${escapeHtml(el.massa)}</span>
+                </button>
+            `).join('');
+            return `
+                <div class="me-simulacao-controlo me-tp">
+                    <span class="me-simulacao-rotulo">${escapeHtml(controlo.rotulo || 'Tabela periódica')}</span>
+                    <input type="hidden" data-simulacao-controlo="${escapeAttr(controlo.id)}" data-tipo="tabela_periodica" value="${escapeAttr(inicial)}">
+                    <div class="me-tp-grelha">${celulasHtml}</div>
+                    <div class="me-tp-legenda">
+                        <span class="me-tp-bloco-s">bloco s</span>
+                        <span class="me-tp-bloco-p">bloco p</span>
+                        <span class="me-tp-bloco-d">bloco d</span>
+                        <span class="me-tp-bloco-f">bloco f</span>
+                    </div>
+                </div>
+            `;
+        }
+
         /** Liga os sliders/selects/botões de uma simulação (ver
          *  renderSimulacao) a um recálculo em tempo real das saídas. Cada
          *  fórmula é avaliada com os ids dos controlos como variáveis
@@ -2115,19 +2195,23 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 const valores = lerValores();
                 ids.forEach((id) => {
                     const span = container.querySelector(`[data-simulacao-valor-de="${id}"]`);
-                    if (span) span.textContent = valores[id];
+                    if (span) span.textContent = comVirgula(valores[id]);
                 });
+                // screen.dados: tabela fixa da própria simulação (ex: dados
+                // por elemento químico), disponível nas fórmulas como `dados`
+                // em vez de repetida dentro de cada fórmula.
+                const escopo = { ...valores, dados: screen.dados || {}, num: formatarNumero };
                 saidas.forEach((saida, i) => {
                     const span = container.querySelector(`[data-simulacao-saida="${i}"]`);
                     if (!span) return;
                     let resultado;
                     try {
-                        resultado = new Function(...Object.keys(valores), `return (${saida.formula});`)(...Object.values(valores));
+                        resultado = new Function(...Object.keys(escopo), `return (${saida.formula});`)(...Object.values(escopo));
                     } catch (erro) {
                         resultado = null;
                     }
                     if (typeof resultado === 'number' && Number.isFinite(resultado)) {
-                        span.textContent = saida.casas_decimais != null ? resultado.toFixed(saida.casas_decimais) : String(resultado);
+                        span.textContent = comVirgula(saida.casas_decimais != null ? resultado.toFixed(saida.casas_decimais) : resultado);
                     } else if (typeof resultado === 'string') {
                         span.textContent = resultado;
                     } else {
@@ -2144,6 +2228,16 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 btn.addEventListener('click', () => {
                     estadoBotoes[btn.dataset.simulacaoBotao] = true;
                     recalcular();
+                });
+            });
+            container.querySelectorAll('.me-tp').forEach((tabela) => {
+                const input = tabela.querySelector('input[data-tipo="tabela_periodica"]');
+                tabela.querySelectorAll('[data-tp-z]').forEach((celula) => {
+                    celula.addEventListener('click', () => {
+                        tabela.querySelectorAll('[data-tp-z]').forEach((c) => c.classList.toggle('is-active', c === celula));
+                        input.value = celula.dataset.tpZ;
+                        recalcular();
+                    });
                 });
             });
 

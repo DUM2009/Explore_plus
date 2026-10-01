@@ -1,14 +1,11 @@
 {
   "_comentario": "Controla que missões aparecem em /missions/. true = visível, false = oculta (não aparece de todo, nem como 'Em breve'). Para lançar uma missão basta mudar o valor para true aqui, sem tocar em código.",
-
   "diversidade-organizacao-biologica": true,
   "biomoleculas": true,
   "celulas-organelos": true,
-
   "codigo-da-vida": true,
   "sintese-proteica": true,
   "ciclo-celular": true,
-
   "fotossintese": false,
   "obtencao-materia-heterotroficos": false,
   "xilema-floema": false,
@@ -24,22 +21,30 @@
   "ecossistemas": true,
   "sistema-nervoso": true,
   "fisiologia-vegetal": true,
-
   "energia-e-movimentos": true,
   "energia-e-fenomenos-eletricos": true,
   "energia-fenomenos-termicos-radiacao": true,
-
   "11-movimento-e-interacoes": true,
   "11-forcas-e-movimentos": true,
   "11-sinais-ondas-som": true,
   "11-eletromagnetismo": true,
   "11-ondas-eletromagneticas": true,
-
   "12-cinematica-dinamica-2d": true,
   "12-centro-massa-momento-linear": true,
   "12-fluidos": true,
   "12-campo-gravitico": true,
   "12-campo-eletrico": true,
   "12-campo-magnetico": true,
-  "12-fisica-moderna": true
+  "12-fisica-moderna": true,
+  "10-massa-tamanho-atomos": true,
+  "10-energia-eletroes": true,
+  "10-tabela-periodica": true,
+  "10-ligacao-quimica": true,
+  "10-gases-dispersoes": true,
+  "10-transformacoes-quimicas": true,
+  "11-aspetos-quantitativos": true,
+  "11-equilibrio-quimico": true,
+  "11-acido-base": true,
+  "11-oxidacao-reducao": true,
+  "11-solubilidade": true
 }

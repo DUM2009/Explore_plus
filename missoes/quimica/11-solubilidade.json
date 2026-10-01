@@ -1,0 +1,758 @@
+{
+  "missao_id": "11-solubilidade",
+  "id_guiao": "qui11-m5",
+  "titulo": "Soluções e equilíbrio de solubilidade",
+  "disciplina": "quimica",
+  "ano": 11,
+  "imagem": "q11_estalactites_chaleira.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2.7c3 4 6 7.3 6 11.3a6 6 0 0 1-12 0c0-4 3-7.3 6-11.3z\"/></svg>",
+    "nome": "Mestre da Solubilidade"
+  },
+  "secoes": [
+    {
+      "secao_id": "mineralizacao-dissolucao",
+      "titulo": "Mineralização das águas e processo de dissolução",
+      "xp": 25,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_rotulo_agua_mineral.png",
+          "imagem_legenda": "Rótulo genérico de água mineral (sem marca real) com composição.",
+          "texto": "Pega numa garrafa de água mineral e lê o rótulo: cálcio, magnésio, sódio, bicarbonato, sílica, \"resíduo seco a 180 °C\". A água que bebes nunca é só H₂O. Ao atravessar as rochas, dissolve sais e gases, e cada nascente tem uma composição diferente. O mar é o caso extremo: cada litro tem cerca de 35 gramas de sais dissolvidos.",
+          "mascote_texto": "Nesta missão vais perceber como os sais se dissolvem, até quanto se dissolvem, e como se faz para os tirar da água."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Como um sal se dissolve",
+          "imagem": "q11_dissolucao_nacl.png",
+          "imagem_legenda": "Moléculas de água a hidratar iões Na⁺ e Cl⁻.",
+          "texto_principal": "As águas naturais têm sais e gases dissolvidos, resultantes do contacto com as rochas, o solo e a atmosfera. Esta composição chama-se mineralização. A dissolução de um sal iónico em água resulta das interações entre os iões do sal e as moléculas polares da água, que os rodeiam e os separam da rede cristalina.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Água do mar",
+              "explicacao": "Cerca de 35 g de sais por kg. Iões principais: Cl⁻, Na⁺, SO₄²⁻, Mg²⁺, Ca²⁺, K⁺."
+            },
+            {
+              "id": "p2",
+              "label": "Interação ião-dipolo",
+              "explicacao": "As moléculas de água orientam-se: o oxigénio (δ−) para os catiões e os hidrogénios (δ+) para os aniões."
+            },
+            {
+              "id": "p3",
+              "label": "Iões hidratados",
+              "explicacao": "Iões rodeados de moléculas de água. Representam-se com (aq)."
+            },
+            {
+              "id": "p4",
+              "label": "Gases dissolvidos",
+              "explicacao": "O₂ (essencial para a vida aquática) e CO₂. A solubilidade dos gases diminui com o aumento da temperatura e aumenta com a pressão. A 20 °C, cerca de 9 mg/L de O₂; a 30 °C, cerca de 7,6 mg/L."
+            },
+            {
+              "id": "p5",
+              "label": "Fatores que afetam o tempo de dissolução (não a quantidade máxima)",
+              "explicacao": "Temperatura, agitação e estado de divisão do soluto (pó dissolve-se mais depressa do que um cristal grande)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "NaCl(s) → Na⁺(aq) + Cl⁻(aq)",
+              "significado": "Dissolução de um sal.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Rapidez de dissolução: aumenta com a temperatura, com a agitação e com a área de superfície do soluto.",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que os peixes podem morrer num rio quando a água aquece muito no verão?",
+          "opcoes": [
+            "Porque a água quente tem mais sais.",
+            "Porque a solubilidade do oxigénio diminui com o aumento da temperatura.",
+            "Porque o oxigénio se transforma em ozono.",
+            "Porque a água quente é ácida."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Ao contrário da maioria dos sólidos, os gases são menos solúveis em água quente. Com menos O₂ dissolvido, os peixes podem asfixiar.",
+          "mascote_feedback_errado": "A solubilidade dos gases na água diminui quando a temperatura aumenta. A água quente retém menos O₂, o que é um problema para os seres aquáticos."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Para dissolver açúcar mais depressa no café, qual destas ações NÃO ajuda?",
+          "opcoes": [
+            "Mexer.",
+            "Usar açúcar em pó em vez de cubos.",
+            "Usar café mais quente.",
+            "Usar uma chávena maior com o mesmo café."
+          ],
+          "correta": 3,
+          "mascote_feedback_certo": "Exato. Agitação, maior área de superfície e temperatura mais alta aceleram a dissolução. O tamanho da chávena não muda nada.",
+          "mascote_feedback_errado": "Mexer, usar o soluto em pó e aquecer aumentam a rapidez de dissolução. Mudar de chávena, com o mesmo líquido, não tem efeito."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Separar uma fila de pessoas de mãos dadas.** Imagina uma fila enorme de pessoas de mãos dadas (a rede cristalina do sal). Chega uma multidão de \"seguranças\" (as moléculas de água), cada um com um íman de um lado. Vão-se colocando à volta das pessoas das pontas da fila, puxando-as até elas largarem as mãos. Cada pessoa solta fica rodeada de seguranças (ião hidratado). Quanto mais se agitar a multidão, ou se houver mais pontas soltas (soluto em pó), mais depressa a fila se desfaz."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O sal do mar e os rótulos de água",
+          "texto": "**Porque é que o mar é salgado e os rios não**\n\nOs rios transportam pequenas quantidades de sais dissolvidos das rochas. No mar, a água evapora, mas os sais ficam. Ao longo de milhões de anos, os sais foram-se acumulando. O sal das salinas de Aveiro, de Rio Maior ou do Algarve resulta de evaporar essa água.\n\n**Ler um rótulo de água**\n\nO \"resíduo seco\" é a massa de sais que fica depois de evaporar 1 L de água a 180 °C. Abaixo de 50 mg/L, a água diz-se hipossalina; acima de 1500 mg/L, fortemente mineralizada. As águas gaseificadas naturais contêm CO₂ dissolvido sob pressão."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na dissolução do NaCl em água, as moléculas de água orientam-se de modo que:",
+              "opcoes": [
+                "os hidrogénios fiquem virados para os Na⁺.",
+                "o oxigénio fique virado para os Na⁺ e os hidrogénios para os Cl⁻.",
+                "não haja orientação.",
+                "o oxigénio fique virado para os Cl⁻."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O oxigénio tem carga parcial negativa e é atraído pelos catiões; os hidrogénios, com carga parcial positiva, são atraídos pelos aniões.",
+              "mascote_feedback_errado": "O oxigénio tem carga parcial negativa e é atraído pelos catiões; os hidrogénios, com carga parcial positiva, são atraídos pelos aniões."
+            },
+            {
+              "pergunta": "A solubilidade do CO₂ numa bebida gaseificada é maior:",
+              "opcoes": [
+                "com a garrafa aberta e quente.",
+                "com a garrafa fechada (pressão maior) e fria.",
+                "com a garrafa aberta e fria.",
+                "não depende da pressão nem da temperatura."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A solubilidade dos gases aumenta com a pressão e diminui com a temperatura. Por isso uma bebida quente e aberta perde o gás depressa.",
+              "mascote_feedback_errado": "A solubilidade dos gases aumenta com a pressão e diminui com a temperatura. Por isso uma bebida quente e aberta perde o gás depressa."
+            },
+            {
+              "pergunta": "Moer um sal em pó antes de o dissolver:",
+              "opcoes": [
+                "aumenta a quantidade máxima que se dissolve.",
+                "aumenta a rapidez de dissolução, sem alterar a quantidade máxima.",
+                "diminui a solubilidade.",
+                "não tem qualquer efeito."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O estado de divisão afeta o tempo de dissolução (mais superfície em contacto com a água), não a solubilidade.",
+              "mascote_feedback_errado": "O estado de divisão afeta o tempo de dissolução (mais superfície em contacto com a água), não a solubilidade."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "solubilidade-temperatura-al-2-4",
+      "titulo": "Solubilidade e efeito da temperatura; AL 2.4",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_cristais_mel.png",
+          "imagem_legenda": "Frasco de mel cristalizado e compressa de acetato de sódio.",
+          "texto": "O mel, com o tempo, cristaliza. Os rebuçados são feitos a partir de uma solução de açúcar tão concentrada que, ao arrefecer, fica com mais açúcar dissolvido do que devia. E uma das compressas quentes reutilizáveis contém uma solução que, com um simples clique, cristaliza toda de uma vez e aquece. Tudo isto depende da solubilidade e de como ela varia com a temperatura.",
+          "mascote_texto": "Não confundas \"dissolver mais depressa\" com \"dissolver mais\". Esta secção é sobre \"dissolver mais\"."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Curvas de solubilidade",
+          "imagem": "q11_curvas_solubilidade.png",
+          "imagem_legenda": "Curvas de solubilidade de KNO₃, NaCl e Ce₂(SO₄)₃ com pontos A, B e C.",
+          "texto_principal": "A solubilidade de uma substância é a quantidade máxima que se dissolve numa dada quantidade de solvente, a uma dada temperatura. Exprime-se, por exemplo, em gramas de soluto por 100 g de água, ou em mol/dm³. Para a maioria dos sólidos, aumenta com a temperatura.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Solução não saturada",
+              "explicacao": "Contém menos soluto do que a solubilidade. Ainda dissolve mais (abaixo da curva)."
+            },
+            {
+              "id": "p2",
+              "label": "Solução saturada",
+              "explicacao": "Contém a quantidade máxima de soluto dissolvido àquela temperatura (sobre a curva). Se houver excesso de soluto, fica sólido no fundo, em equilíbrio com a solução."
+            },
+            {
+              "id": "p3",
+              "label": "Solução sobressaturada",
+              "explicacao": "Contém mais soluto do que a solubilidade (acima da curva). É instável: um pequeno cristal ou uma perturbação provoca a cristalização do excesso."
+            },
+            {
+              "id": "p4",
+              "label": "Curvas de solubilidade",
+              "explicacao": "O KNO₃ tem uma solubilidade que aumenta muito com a temperatura (31,6 g a 20 °C e 110 g a 60 °C, por 100 g de água). O NaCl quase não varia (cerca de 36 g). Alguns sais (como o Ce₂(SO₄)₃) são menos solúveis a quente."
+            },
+            {
+              "id": "p5",
+              "label": "Cristalização por arrefecimento",
+              "explicacao": "Arrefecendo uma solução saturada de KNO₃, a solubilidade diminui e o excesso cristaliza. É usada para purificar sólidos."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Massa que cristaliza = solubilidade (T inicial) − solubilidade (T final)",
+              "significado": "Ao arrefecer uma solução saturada, para a mesma massa de água.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma solução saturada com 100 g de água e KNO₃ a 60 °C (110 g) é arrefecida a 20 °C (solubilidade 31,6 g/100 g de água). Que massa de KNO₃ cristaliza?",
+          "opcoes": [
+            "31,6 g",
+            "78,4 g",
+            "110 g",
+            "141,6 g"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. A 20 °C só podem ficar dissolvidos 31,6 g. Cristalizam 110 − 31,6 = 78,4 g.",
+          "mascote_feedback_errado": "A massa que cristaliza é a diferença entre o que estava dissolvido (110 g) e o que pode ficar dissolvido a 20 °C (31,6 g): 78,4 g."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Juntando um pequeno cristal de soluto a uma solução, ele dissolve-se. A solução era:",
+          "opcoes": [
+            "saturada.",
+            "não saturada.",
+            "sobressaturada.",
+            "impossível de classificar."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Se ainda dissolve mais soluto, a solução não estava saturada. Numa saturada, o cristal ficaria igual; numa sobressaturada, provocaria cristalização.",
+          "mascote_feedback_errado": "O cristal dissolveu-se, logo a solução ainda tinha \"espaço\" para mais soluto: não estava saturada."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Lugares numa sala de cinema.** Uma sala de cinema tem um número máximo de lugares sentados: é a solubilidade. Com lugares livres, é uma solução não saturada. Com todos os lugares ocupados, saturada. Se por algum motivo houver pessoas a mais (sobressaturada), basta um pequeno empurrão para que as que estão a mais tenham de sair. E se a sala for \"aquecida\" (alargada), cabem mais pessoas: na maioria dos sólidos, a solubilidade aumenta com a temperatura."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.4",
+          "titulo": "Temperatura e solubilidade de um soluto sólido em água",
+          "objetivo": "Investigar o efeito da temperatura na solubilidade de um soluto sólido em água (por exemplo, nitrato de potássio) e construir a respetiva curva de solubilidade.",
+          "material": [
+            "Nitrato de potássio, KNO₃",
+            "Tubos de ensaio largos e suporte",
+            "Balança (resolução 0,01 g)",
+            "Pipeta graduada ou bureta (para medir a água)",
+            "Termómetro (ou sensor de temperatura)",
+            "Banho de água quente (gobelé com água numa placa de aquecimento)",
+            "Vareta de vidro ou agitador"
+          ],
+          "procedimento": [
+            "Medir massas diferentes de KNO₃ (por exemplo, 2,0 g; 4,0 g; 5,0 g; 6,0 g; 8,0 g) para tubos de ensaio diferentes.",
+            "Adicionar a cada tubo o mesmo volume de água destilada (por exemplo, 10,0 cm³, ou seja, 10,0 g).",
+            "Aquecer cada tubo em banho de água, agitando, até todo o sólido se dissolver.",
+            "Retirar do banho e deixar arrefecer lentamente, agitando com o termómetro.",
+            "Registar a temperatura a que aparecem os primeiros cristais (temperatura de saturação).",
+            "Repetir o aquecimento e o arrefecimento para cada tubo pelo menos mais uma vez e fazer a média.",
+            "Controlar as variáveis: mesma massa de água, mesma pureza do sal, agitação semelhante."
+          ],
+          "tratamento_de_dados": "Solubilidade em g/100 g de água = massa de KNO₃ × 10 (para 10,0 g de água).\n\nValores esperados (aproximados): 20 g/100 g a cerca de 10 °C; 40 g/100 g a cerca de 26 °C; 50 g/100 g a cerca de 32 °C; 60 g/100 g a cerca de 38 °C; 80 g/100 g a cerca de 48 °C.\n\nConstruir o gráfico da solubilidade em função da temperatura (curva de solubilidade).\n\nUsar a curva para prever a solubilidade a temperaturas não medidas (interpolação).\n\nCalcular a incerteza absoluta e relativa das temperaturas medidas (a partir das repetições).",
+          "conclusao": "A solubilidade do nitrato de potássio em água aumenta acentuadamente com a temperatura. A temperatura a que aparecem os primeiros cristais corresponde ao ponto em que a solução fica saturada. A curva de solubilidade permite prever se uma solução, a uma dada temperatura, é saturada ou não.",
+          "erros_comuns": [
+            "Arrefecer demasiado depressa (pode formar-se uma solução sobressaturada e os cristais aparecem a temperatura mais baixa do que devia).",
+            "Deixar evaporar água durante o aquecimento (a concentração muda).",
+            "Ler a temperatura com o termómetro encostado ao vidro em vez de mergulhado na solução.",
+            "Confundir a temperatura de dissolução completa (no aquecimento) com a de saturação (no arrefecimento): a mais fiável é a dos primeiros cristais."
+          ],
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Compressas de acetato de sódio e solubilidade em mol/dm³",
+          "texto": "**As compressas quentes de acetato de sódio**\n\nContêm uma solução sobressaturada de acetato de sódio. Ao dobrar uma pequena placa metálica, formam-se núcleos de cristalização e todo o excesso cristaliza de uma vez. A cristalização liberta energia e a compressa aquece. Para a reutilizar, aquece-se em água a ferver, até tudo se dissolver de novo.\n\n**Solubilidade em mol/dm³**\n\nPara comparar com o produto de solubilidade (secção seguinte), exprime-se a solubilidade em mol de soluto por dm³ de solução saturada. Para sais pouco solúveis, a solução é tão diluída que se pode considerar o volume da solução igual ao da água."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A solubilidade de uma substância é:",
+              "opcoes": [
+                "a rapidez com que se dissolve.",
+                "a quantidade máxima que se dissolve numa dada quantidade de solvente, a uma dada temperatura.",
+                "a massa de solvente.",
+                "sempre independente da temperatura."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A solubilidade é uma quantidade máxima, e depende da temperatura.",
+              "mascote_feedback_errado": "A solubilidade é uma quantidade máxima, e depende da temperatura."
+            },
+            {
+              "pergunta": "Uma solução sobressaturada:",
+              "opcoes": [
+                "é estável.",
+                "contém mais soluto do que a solubilidade a essa temperatura e é instável.",
+                "contém menos soluto do que a solubilidade.",
+                "só existe para gases."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Tem soluto dissolvido acima do limite e cristaliza facilmente com uma perturbação.",
+              "mascote_feedback_errado": "Tem soluto dissolvido acima do limite e cristaliza facilmente com uma perturbação."
+            },
+            {
+              "pergunta": "Na AL 2.4, os primeiros cristais de uma solução com 6,0 g de KNO₃ em 10,0 g de água surgiram a 38 °C. Qual é a solubilidade a 38 °C?",
+              "opcoes": [
+                "6,0 g/100 g de água",
+                "60 g/100 g de água",
+                "0,60 g/100 g de água",
+                "38 g/100 g de água"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "6,0 g em 10,0 g de água correspondem a 60 g em 100 g de água. É a solubilidade à temperatura de saturação.",
+              "mascote_feedback_errado": "6,0 g em 10,0 g de água correspondem a 60 g em 100 g de água. É a solubilidade à temperatura de saturação."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "produto-solubilidade",
+      "titulo": "Equilíbrio de solubilidade e produto de solubilidade",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_radiografia_bario.png",
+          "imagem_legenda": "Radiografia contrastada do estômago (estilizada).",
+          "texto": "Os iões bário são tóxicos. Mesmo assim, antes de uma radiografia ao estômago, os doentes bebem uma \"papa\" de sulfato de bário, que torna o tubo digestivo visível nos raios X. Não há perigo, porque o sulfato de bário é tão pouco solúvel que quase nenhum ião bário passa para a solução. Para saber \"quão pouco\", usa-se uma constante de equilíbrio própria: o produto de solubilidade.",
+          "mascote_texto": "O K s é só um K c para um sal pouco solúvel. Tudo o que aprendeste na Missão 2 aplica-se aqui."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Equilíbrio de solubilidade",
+          "imagem": "q11_equilibrio_solubilidade.png",
+          "imagem_legenda": "Equilíbrio entre AgCl sólido e iões em solução.",
+          "texto_principal": "Numa solução saturada de um sal pouco solúvel com excesso de sólido, estabelece-se um equilíbrio heterogéneo entre o sólido e os iões em solução: o sal continua a dissolver-se e a precipitar à mesma velocidade. A constante deste equilíbrio é o produto de solubilidade, K s. O sólido não entra na expressão.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Equilíbrio de solubilidade",
+              "explicacao": "Ex.: AgCl(s) ⇌ Ag⁺(aq) + Cl⁻(aq); CaF₂(s) ⇌ Ca²⁺(aq) + 2 F⁻(aq)."
+            },
+            {
+              "id": "p2",
+              "label": "Produto de solubilidade",
+              "explicacao": "K s = [Ag⁺][Cl⁻]; K s = [Ca²⁺][F⁻]². Concentrações na solução saturada, cada uma elevada ao seu coeficiente."
+            },
+            {
+              "id": "p3",
+              "label": "Só depende da temperatura",
+              "explicacao": "Como qualquer constante de equilíbrio."
+            },
+            {
+              "id": "p4",
+              "label": "Relação com a solubilidade s (mol/dm³)",
+              "explicacao": "Para sais do tipo AB: K s = s², logo s = √K s. Para sais do tipo AB₂ (ou A₂B): K s = s × (2s)² = 4s³, logo s = ∛(K s / 4)."
+            },
+            {
+              "id": "p5",
+              "label": "Comparar solubilidades",
+              "explicacao": "Só se pode comparar diretamente os K s de sais com a mesma proporção de iões (por exemplo, AgCl e BaSO₄). Para tipos diferentes, calcula-se s."
+            },
+            {
+              "id": "p6",
+              "label": "Prever precipitação",
+              "explicacao": "Calcula-se o quociente da reação, Q (com as concentrações dos iões depois de misturar). Q < K s: não há precipitado (solução não saturada). Q = K s: saturada. Q > K s: forma-se precipitado até Q = K s."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Sal AB: K s = [A⁺][B⁻] = s²",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Sal AB₂: K s = [A²⁺][B⁻]² = 4 s³",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Q < K s: não precipita; Q > K s: precipita",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a solubilidade do cloreto de prata em água, a 25 °C? (K s = 1,8 × 10⁻¹⁰)",
+          "opcoes": [
+            "1,8 × 10⁻¹⁰ mol/dm³",
+            "1,3 × 10⁻⁵ mol/dm³",
+            "9,0 × 10⁻¹¹ mol/dm³",
+            "3,6 × 10⁻⁴ mol/dm³"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. AgCl é do tipo AB: s = √(1,8 × 10⁻¹⁰) ≈ 1,3 × 10⁻⁵ mol/dm³. Em massa, cerca de 1,9 mg por litro: muito pouco solúvel.",
+          "mascote_feedback_errado": "Para AB, K s = s × s = s², logo s = √K s = √(1,8 × 10⁻¹⁰) ≈ 1,3 × 10⁻⁵ mol/dm³."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Misturam-se volumes iguais de AgNO₃ 2,0 × 10⁻⁴ mol/dm³ e NaCl 2,0 × 10⁻⁴ mol/dm³. Forma-se precipitado de AgCl (K s = 1,8 × 10⁻¹⁰)?",
+          "opcoes": [
+            "Não, porque as concentrações são muito baixas.",
+            "Sim, porque Q = 1,0 × 10⁻⁸ > K s.",
+            "Não, porque Q = K s.",
+            "Sim, porque Q = 4,0 × 10⁻⁸ < K s."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Ao misturar volumes iguais, cada concentração fica a metade: [Ag⁺] = [Cl⁻] = 1,0 × 10⁻⁴ mol/dm³. Q = 1,0 × 10⁻⁸, muito maior do que K s: precipita AgCl.",
+          "mascote_feedback_errado": "Não te esqueças da diluição ao misturar: cada concentração passa para 1,0 × 10⁻⁴. Q = (1,0 × 10⁻⁴)² = 1,0 × 10⁻⁸ > 1,8 × 10⁻¹⁰: há precipitação."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_precipitacao",
+          "titulo": "Precipita ou não?",
+          "instrucao": "Escolhe o sal pouco solúvel e as concentrações das duas soluções que vais misturar (volumes iguais). Os cursores são logarítmicos: o valor é o expoente de 10. Calcula Q e vê se se forma precipitado.",
+          "controlos": [
+            {
+              "id": "sal",
+              "rotulo": "Sal pouco solúvel",
+              "opcoes": [
+                {
+                  "valor": "AgCl",
+                  "label": "AgCl (K s = 1,8 × 10⁻¹⁰, tipo AB)"
+                },
+                {
+                  "valor": "BaSO4",
+                  "label": "BaSO₄ (K s = 1,1 × 10⁻¹⁰, tipo AB)"
+                },
+                {
+                  "valor": "CaCO3",
+                  "label": "CaCO₃ (K s = 3,4 × 10⁻⁹, tipo AB)"
+                },
+                {
+                  "valor": "CaF2",
+                  "label": "CaF₂ (K s = 3,9 × 10⁻¹¹, tipo AB₂)"
+                },
+                {
+                  "valor": "PbI2",
+                  "label": "PbI₂ (K s = 9,8 × 10⁻⁹, tipo AB₂)"
+                }
+              ]
+            },
+            {
+              "id": "e1",
+              "rotulo": "Catião na solução 1, antes de misturar: 10^",
+              "min": -7,
+              "max": -1,
+              "passo": 0.1,
+              "valor_inicial": -4,
+              "unidade": "mol/dm³"
+            },
+            {
+              "id": "e2",
+              "rotulo": "Anião na solução 2, antes de misturar: 10^",
+              "min": -7,
+              "max": -1,
+              "passo": 0.1,
+              "valor_inicial": -4,
+              "unidade": "mol/dm³"
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Concentrações antes de misturar",
+              "formula": "(function () { var s = dados.s[sal]; var c1 = Math.pow(10, e1) / 2, c2 = Math.pow(10, e2) / 2; var Q = s.tipo === 'AB' ? c1 * c2 : c1 * c2 * c2; return s.cat + ': ' + num(2 * c1, 2) + '; ' + s.an + ': ' + num(2 * c2, 2) + ' mol/dm³'; })()"
+            },
+            {
+              "rotulo": "Depois de misturar volumes iguais",
+              "formula": "(function () { var s = dados.s[sal]; var c1 = Math.pow(10, e1) / 2, c2 = Math.pow(10, e2) / 2; var Q = s.tipo === 'AB' ? c1 * c2 : c1 * c2 * c2; return '[' + s.cat + '] = ' + num(c1, 2) + '; [' + s.an + '] = ' + num(c2, 2) + ' mol/dm³'; })()"
+            },
+            {
+              "rotulo": "Quociente Q",
+              "formula": "(function () { var s = dados.s[sal]; var c1 = Math.pow(10, e1) / 2, c2 = Math.pow(10, e2) / 2; var Q = s.tipo === 'AB' ? c1 * c2 : c1 * c2 * c2; return (s.tipo === 'AB' ? 'Q = [' + s.cat + '][' + s.an + '] = ' : 'Q = [' + s.cat + '][' + s.an + ']² = ') + num(Q, 2); })()"
+            },
+            {
+              "rotulo": "K s",
+              "formula": "(function () { var s = dados.s[sal]; var c1 = Math.pow(10, e1) / 2, c2 = Math.pow(10, e2) / 2; var Q = s.tipo === 'AB' ? c1 * c2 : c1 * c2 * c2; return num(s.Ks, 2); })()"
+            },
+            {
+              "rotulo": "Resultado",
+              "formula": "(function () { var s = dados.s[sal]; var c1 = Math.pow(10, e1) / 2, c2 = Math.pow(10, e2) / 2; var Q = s.tipo === 'AB' ? c1 * c2 : c1 * c2 * c2; if (Q > s.Ks * 1.02) return 'Forma-se precipitado ' + s.cor + ' de ' + s.nome + ' (Q > K s).'; if (Q < s.Ks * 0.98) return 'Não precipita: Q < K s (solução não saturada).'; return 'Solução saturada: Q ≈ K s.'; })()"
+            },
+            {
+              "rotulo": "Solubilidade em água pura",
+              "formula": "(function () { var s = dados.s[sal]; var c1 = Math.pow(10, e1) / 2, c2 = Math.pow(10, e2) / 2; var Q = s.tipo === 'AB' ? c1 * c2 : c1 * c2 * c2; return (s.tipo === 'AB' ? 's = √K s = ' + num(Math.sqrt(s.Ks), 2) : 's = ∛(K s / 4) = ' + num(Math.cbrt(s.Ks / 4), 2)) + ' mol/dm³'; })()"
+            }
+          ],
+          "pergunta_final": "Qual destes sais é mais solúvel em água pura: CaF₂ ou CaCO₃? Resposta esperada: CaF₂ (s ≈ 2,1 × 10⁻⁴ mol/dm³) contra CaCO₃ (s ≈ 5,8 × 10⁻⁵ mol/dm³), embora o K s do CaF₂ seja menor; por isso não se compara K s de sais de tipos diferentes.",
+          "dados": {
+            "s": {
+              "AgCl": {
+                "nome": "AgCl",
+                "Ks": 1.8e-10,
+                "tipo": "AB",
+                "cat": "Ag⁺",
+                "an": "Cl⁻",
+                "cor": "branco"
+              },
+              "BaSO4": {
+                "nome": "BaSO₄",
+                "Ks": 1.1e-10,
+                "tipo": "AB",
+                "cat": "Ba²⁺",
+                "an": "SO₄²⁻",
+                "cor": "branco"
+              },
+              "CaCO3": {
+                "nome": "CaCO₃",
+                "Ks": 3.4e-09,
+                "tipo": "AB",
+                "cat": "Ca²⁺",
+                "an": "CO₃²⁻",
+                "cor": "branco"
+              },
+              "CaF2": {
+                "nome": "CaF₂",
+                "Ks": 3.9e-11,
+                "tipo": "AB2",
+                "cat": "Ca²⁺",
+                "an": "F⁻",
+                "cor": "branco"
+              },
+              "PbI2": {
+                "nome": "PbI₂",
+                "Ks": 9.8e-09,
+                "tipo": "AB2",
+                "cat": "Pb²⁺",
+                "an": "I⁻",
+                "cor": "amarelo"
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O limite de lotação de uma discoteca.** O K s é como a lotação máxima de uma discoteca, calculada não pelo número de pessoas mas por uma fórmula que multiplica o número de \"catiões\" pelo de \"aniões\" que estão lá dentro. Se o produto ficar abaixo do limite (Q < K s), ainda entra mais gente. Se passar do limite (Q > K s), os seguranças põem gente na rua até voltar ao máximo: essas pessoas que saem são o precipitado."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O sólido na expressão de K s e as pedras nos rins",
+          "texto": "**Porque é que o sólido não entra na expressão de K s**\n\nA \"concentração\" de um sólido puro é constante (depende só da sua massa volúmica). Por isso fica incluída na constante. O mesmo acontece com a água quando é solvente.\n\n**Pedras nos rins**\n\nA maioria dos cálculos renais é de oxalato de cálcio, um sal pouco solúvel. Quando a concentração de Ca²⁺ e de oxalato na urina faz com que Q ultrapasse K s, formam-se cristais. Beber muita água dilui a urina e baixa Q."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é a expressão do produto de solubilidade do PbI₂?",
+              "opcoes": [
+                "K s = [Pb²⁺][I⁻]",
+                "K s = [Pb²⁺][I⁻]²",
+                "K s = [Pb²⁺]² [I⁻]",
+                "K s = [PbI₂] / ([Pb²⁺][I⁻]²)"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "PbI₂(s) ⇌ Pb²⁺(aq) + 2 I⁻(aq). O sólido não entra e o iodeto fica ao quadrado.",
+              "mascote_feedback_errado": "PbI₂(s) ⇌ Pb²⁺(aq) + 2 I⁻(aq). O sólido não entra e o iodeto fica ao quadrado."
+            },
+            {
+              "pergunta": "Qual é a solubilidade do fluoreto de cálcio, CaF₂ (K s = 3,9 × 10⁻¹¹)?",
+              "opcoes": [
+                "6,2 × 10⁻⁶ mol/dm³",
+                "2,1 × 10⁻⁴ mol/dm³",
+                "3,9 × 10⁻¹¹ mol/dm³",
+                "9,8 × 10⁻¹² mol/dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "K s = s × (2s)² = 4s³. s = ∛(3,9 × 10⁻¹¹ / 4) = ∛(9,75 × 10⁻¹²) ≈ 2,1 × 10⁻⁴ mol/dm³.",
+              "mascote_feedback_errado": "K s = s × (2s)² = 4s³. s = ∛(3,9 × 10⁻¹¹ / 4) = ∛(9,75 × 10⁻¹²) ≈ 2,1 × 10⁻⁴ mol/dm³."
+            },
+            {
+              "pergunta": "Numa solução, Q é menor do que K s para um certo sal. Isso significa que:",
+              "opcoes": [
+                "se forma precipitado.",
+                "a solução não está saturada e pode dissolver mais sal.",
+                "a solução está saturada.",
+                "o sal é muito solúvel."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Q < K s indica que o produto das concentrações dos iões está abaixo do valor de saturação: não precipita e ainda dissolve mais.",
+              "mascote_feedback_errado": "Q < K s indica que o produto das concentrações dos iões está abaixo do valor de saturação: não precipita e ainda dissolve mais."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "solubilidade-dureza-poluentes",
+      "titulo": "Alteração da solubilidade, dureza da água e remoção de poluentes",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_estalactites_chaleira.png",
+          "imagem_legenda": "Gruta com estalactites ao lado de uma chaleira com calcário.",
+          "texto": "As grutas calcárias, como as de Mira de Aire, formaram-se durante milhões de anos porque a água da chuva, ligeiramente ácida, dissolve o calcário. As estalactites crescem quando essa água pinga do teto e perde CO₂. Na tua chaleira acontece o processo inverso, em versão rápida: ao aquecer a água \"dura\", o calcário volta a precipitar e forma a crosta branca no fundo.",
+          "mascote_texto": "Nesta secção vais usar Le Châtelier outra vez, agora para explicar como se aumenta ou diminui a solubilidade de um sal."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Alterar a solubilidade de um sal",
+          "imagem": "q11_alterar_solubilidade.png",
+          "imagem_legenda": "Ião comum, efeito de ácido e formação de ião complexo.",
+          "texto_principal": "A solubilidade de um sal pouco solúvel pode ser alterada adicionando outras substâncias que mudam as concentrações dos iões no equilíbrio de solubilidade. As previsões fazem-se com o Princípio de Le Châtelier.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Efeito do ião comum",
+              "explicacao": "Adicionar um ião que já faz parte do equilíbrio desloca-o no sentido da precipitação. A solubilidade diminui. Ex.: AgCl é muito menos solúvel numa solução de NaCl do que em água pura."
+            },
+            {
+              "id": "p2",
+              "label": "Efeito dos ácidos",
+              "explicacao": "Sais cujo anião é uma base (carbonatos, hidróxidos) dissolvem-se mais em meio ácido, porque o H₃O⁺ consome o anião. Ex.: CaCO₃(s) + 2 H₃O⁺(aq) → Ca²⁺(aq) + CO₂(g) + 3 H₂O(l)."
+            },
+            {
+              "id": "p3",
+              "label": "Formação de iões complexos",
+              "explicacao": "Um ião metálico pode ligar-se a moléculas ou iões e formar um ião complexo. Isso retira o ião metálico do equilíbrio, e o sal dissolve-se mais. Ex.: AgCl(s) + 2 NH₃(aq) → [Ag(NH₃)₂]⁺(aq) + Cl⁻(aq)."
+            },
+            {
+              "id": "p4",
+              "label": "Grutas e estalactites",
+              "explicacao": "CaCO₃(s) + CO₂(aq) + H₂O(l) ⇌ Ca²⁺(aq) + 2 HCO₃⁻(aq). Com mais CO₂ dissolvido, o calcário dissolve-se; quando o CO₂ escapa, o calcário precipita."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Ião comum: solubilidade diminui",
+              "significado": "Ex.: AgCl em NaCl 0,10 mol/dm³: s = K s / [Cl⁻] = 1,8 × 10⁻¹⁰ / 0,10 = 1,8 × 10⁻⁹ mol/dm³.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Ácido (anião básico) ou complexante: solubilidade aumenta.",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Dureza da água e remoção de poluentes",
+          "imagem": "q11_dureza_agua.png",
+          "imagem_legenda": "Mapa de dureza da água em Portugal e resina de troca iónica.",
+          "texto_principal": "A dureza de uma água deve-se sobretudo aos iões cálcio (Ca²⁺) e magnésio (Mg²⁺) dissolvidos. Uma água dura forma calcário quando aquecida e dificulta a formação de espuma com o sabão. A dureza pode ser corrigida por processos de precipitação ou de troca iónica. Processos semelhantes de precipitação removem poluentes da água.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Água macia e água dura",
+              "explicacao": "Em zonas graníticas (norte e centro de Portugal), a água é macia. Em zonas calcárias, é dura."
+            },
+            {
+              "id": "p2",
+              "label": "Problemas",
+              "explicacao": "Depósitos de calcário em chaleiras, máquinas de lavar e canalizações; mais gasto de detergente."
+            },
+            {
+              "id": "p3",
+              "label": "Correção por precipitação",
+              "explicacao": "Adicionar carbonato de sódio, que precipita os iões cálcio: Ca²⁺(aq) + CO₃²⁻(aq) → CaCO₃(s). (É o princípio dos produtos \"anticalcário\" das máquinas de lavar.)"
+            },
+            {
+              "id": "p4",
+              "label": "Resinas de troca iónica",
+              "explicacao": "Retêm os iões Ca²⁺ e Mg²⁺ e libertam iões Na⁺ (que não formam calcário). Usadas nos descalcificadores domésticos e nas máquinas de lavar loiça (que precisam de sal para regenerar a resina)."
+            },
+            {
+              "id": "p5",
+              "label": "Remoção de poluentes",
+              "explicacao": "Muitos iões de metais pesados (Pb²⁺, Cd²⁺, Hg²⁺) e os fosfatos removem-se das águas residuais por precipitação, formando sais muito pouco solúveis (hidróxidos, sulfuretos, fosfatos), que depois se separam por decantação e filtração."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O que acontece à solubilidade do AgCl se for adicionado cloreto de sódio à solução?",
+          "opcoes": [
+            "Aumenta, porque há mais iões.",
+            "Diminui, por efeito do ião comum (Cl⁻).",
+            "Não se altera.",
+            "O AgCl transforma-se em NaCl."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Aumentar [Cl⁻] desloca AgCl(s) ⇌ Ag⁺ + Cl⁻ no sentido da precipitação. Em NaCl 0,10 mol/dm³, a solubilidade baixa de 1,3 × 10⁻⁵ para 1,8 × 10⁻⁹ mol/dm³.",
+          "mascote_feedback_errado": "O Cl⁻ é um ião comum ao equilíbrio. Pelo Princípio de Le Châtelier, o equilíbrio desloca-se no sentido do sólido: a solubilidade diminui."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que o vinagre remove o calcário de uma chaleira?",
+          "opcoes": [
+            "Porque dissolve a água.",
+            "Porque o ácido reage com o carbonato de cálcio e forma iões solúveis e CO₂.",
+            "Porque o vinagre é uma base.",
+            "Porque arrefece a chaleira."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O ácido acético reage com o CaCO₃: o anião carbonato é consumido, o equilíbrio de solubilidade desloca-se e o calcário dissolve-se, libertando bolhas de CO₂.",
+          "mascote_feedback_errado": "O carbonato é uma base. O ácido do vinagre consome-o, e o CaCO₃ dissolve-se (com libertação de CO₂). É o efeito dos ácidos na solubilidade."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O ião comum é como um convidado repetido.** Imagina que a solução saturada é uma festa com lotação máxima, onde só pode haver um certo produto de \"rapazes × raparigas\" (K s). Se chegar um autocarro cheio de raparigas (ião comum), para o produto não passar do limite, têm de sair rapazes: e a festa acaba com muito menos rapazes lá dentro. Se, pelo contrário, alguém levar uma parte das raparigas para outra sala (ácido ou complexante), entram mais rapazes. A solubilidade é o número de \"pares\" que cabem na festa."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Medir a dureza, saúde e antiácidos",
+          "texto": "**Como se mede a dureza**\n\nA dureza exprime-se, em geral, em miligramas de CaCO₃ por litro. Classificação habitual: macia (menos de 60 mg/L), moderadamente dura (60 a 120 mg/L), dura (120 a 180 mg/L) e muito dura (mais de 180 mg/L). Uma água com 80 mg/L de Ca²⁺ corresponde a cerca de 200 mg/L de CaCO₃: muito dura.\n\n**A água dura faz mal?**\n\nNão. O cálcio e o magnésio da água são até benéficos para a saúde. O problema da água dura é sobretudo técnico: calcário nos equipamentos e mais gasto de detergentes.\n\n**Antiácidos**\n\nO hidróxido de magnésio (leite de magnésia) é pouco solúvel em água, mas dissolve-se no ácido do estômago, neutralizando-o: Mg(OH)₂(s) + 2 H₃O⁺(aq) → Mg²⁺(aq) + 4 H₂O(l)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A adição de um ácido aumenta a solubilidade de qual destes sais?",
+              "opcoes": [
+                "NaCl",
+                "AgCl",
+                "CaCO₃",
+                "KNO₃"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "O carbonato é uma base que reage com o H₃O⁺. Os aniões Cl⁻ e NO₃⁻ são bases conjugadas de ácidos fortes e não reagem.",
+              "mascote_feedback_errado": "O carbonato é uma base que reage com o H₃O⁺. Os aniões Cl⁻ e NO₃⁻ são bases conjugadas de ácidos fortes e não reagem."
+            },
+            {
+              "pergunta": "A dureza da água deve-se principalmente aos iões:",
+              "opcoes": [
+                "Na⁺ e K⁺",
+                "Ca²⁺ e Mg²⁺",
+                "Cl⁻ e SO₄²⁻",
+                "H₃O⁺ e OH⁻"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os iões cálcio e magnésio formam sais pouco solúveis (como o CaCO₃) e são os responsáveis pela dureza.",
+              "mascote_feedback_errado": "Os iões cálcio e magnésio formam sais pouco solúveis (como o CaCO₃) e são os responsáveis pela dureza."
+            },
+            {
+              "pergunta": "O cloreto de prata dissolve-se numa solução de amoníaco porque:",
+              "opcoes": [
+                "o amoníaco é um ácido forte.",
+                "se forma o ião complexo [Ag(NH₃)₂]⁺, que retira Ag⁺ do equilíbrio.",
+                "a temperatura aumenta.",
+                "o amoníaco precipita o cloreto."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A formação do ião complexo diminui [Ag⁺] e o equilíbrio de solubilidade desloca-se no sentido da dissolução.",
+              "mascote_feedback_errado": "A formação do ião complexo diminui [Ag⁺] e o equilíbrio de solubilidade desloca-se no sentido da dissolução."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 5 concluída, e com ela toda a Química do 11.º ano. Fazes cálculos estequiométricos com limitante, pureza e rendimento, aplicas o equilíbrio químico e Le Châtelier, calculas pH e constantes de acidez, titulaste um ácido, trabalhas com reações redox e com o produto de solubilidade, e fizeste as seis atividades laboratoriais. Com a Química do 10.º e do 11.º ano, tens toda a Química do exame nacional de Física e Química A."
+}

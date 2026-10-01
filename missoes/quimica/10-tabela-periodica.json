@@ -1,0 +1,919 @@
+{
+  "missao_id": "10-tabela-periodica",
+  "id_guiao": "qui10-m3",
+  "titulo": "Tabela Periódica",
+  "disciplina": "quimica",
+  "ano": 10,
+  "imagem": "q10_mendeleev_cartas.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/></svg>",
+    "nome": "Mestre da Tabela Periódica"
+  },
+  "secoes": [
+    {
+      "secao_id": "historia-organizacao-tabela",
+      "titulo": "História e organização da Tabela Periódica",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_mendeleev_cartas.png",
+          "imagem_legenda": "Cartões com elementos espalhados numa mesa, estilo século XIX.",
+          "texto": "Em 1869, o químico russo Dmitri Mendeleev escreveu os 63 elementos então conhecidos em cartões e passou dias a organizá-los como num jogo de paciência. Percebeu que, ordenando-os pela massa, as propriedades se repetiam. E fez algo ousado: deixou espaços vazios, dizendo que correspondiam a elementos ainda por descobrir, e previu as suas propriedades. Anos depois, descobriram-se o gálio e o germânio, exatamente como ele tinha previsto.",
+          "mascote_texto": "A tabela periódica não é para decorar. Se souberes a configuração eletrónica, sabes onde está o elemento. E vice-versa."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Períodos, grupos e blocos",
+          "imagem": "q10_tabela_blocos.png",
+          "imagem_legenda": "Tabela periódica com blocos s, p, d, f e linha metais/não metais.",
+          "texto_principal": "Na Tabela Periódica atual, os elementos estão ordenados por ordem crescente de número atómico. Os elementos com propriedades químicas semelhantes ficam na mesma coluna. A organização reflete as configurações eletrónicas: o período indica o nível de valência e o grupo está relacionado com o número de eletrões de valência.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Períodos (linhas, 1 a 7)",
+              "explicacao": "O número do período é o número do nível de energia mais externo ocupado (nível de valência). Ex.: Na, 1s² 2s² 2p⁶ 3s¹, está no 3.º período."
+            },
+            {
+              "id": "p2",
+              "label": "Grupos (colunas, 1 a 18)",
+              "explicacao": "Elementos do mesmo grupo têm o mesmo número de eletrões de valência e configurações de valência semelhantes, e por isso propriedades químicas semelhantes."
+            },
+            {
+              "id": "p3",
+              "label": "Eletrões de valência",
+              "explicacao": "Grupos 1 e 2: 1 e 2 eletrões de valência. Grupos 13 a 18: número do grupo menos 10 (ex.: grupo 17 tem 7 eletrões de valência). O hélio é exceção (2)."
+            },
+            {
+              "id": "p4",
+              "label": "Blocos",
+              "explicacao": "s (último eletrão numa orbital s), p (numa orbital p), d (numa orbital d), f (numa orbital f)."
+            },
+            {
+              "id": "p5",
+              "label": "Famílias",
+              "explicacao": "Metais alcalinos (grupo 1, exceto o H), metais alcalinoterrosos (grupo 2), halogéneos (grupo 17), gases nobres (grupo 18). Elementos de transição: bloco d."
+            },
+            {
+              "id": "p6",
+              "label": "Metais, não metais e semimetais",
+              "explicacao": "Os metais ficam à esquerda e ao centro (a maioria dos elementos); os não metais à direita, em cima; os semimetais (como o silício e o germânio) junto à linha em escada."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um elemento tem a configuração 1s² 2s² 2p⁶ 3s² 3p⁵. Em que período e grupo se encontra?",
+          "opcoes": [
+            "Período 2, grupo 15",
+            "Período 3, grupo 17",
+            "Período 3, grupo 7",
+            "Período 5, grupo 17"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Nível de valência n = 3: 3.º período. 7 eletrões de valência (3s² 3p⁵) no bloco p: grupo 17. É o cloro.",
+          "mascote_feedback_errado": "O período é o nível de valência (n = 3). Os eletrões de valência são 3s² 3p⁵ = 7; no bloco p, grupo = 7 + 10 = 17."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O magnésio (grupo 2) e o cálcio (grupo 2) têm propriedades químicas semelhantes porque:",
+          "opcoes": [
+            "têm o mesmo número de protões.",
+            "estão no mesmo período.",
+            "têm o mesmo número de eletrões de valência (2) com configuração de valência semelhante (ns²).",
+            "têm a mesma massa atómica."
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. Mg: 3s²; Ca: 4s². Configurações de valência do mesmo tipo levam a comportamentos químicos semelhantes.",
+          "mascote_feedback_errado": "As propriedades químicas dependem dos eletrões de valência. Elementos do mesmo grupo têm o mesmo número e o mesmo tipo de configuração de valência (aqui, ns²)."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O calendário.** A tabela periódica é como um calendário. Os dias estão numerados por ordem (o número atómico), mas arrumados em linhas de semanas (os períodos) de forma que todas as segundas-feiras fiquem na mesma coluna (os grupos). As segundas-feiras \"comportam-se\" de forma parecida, tal como os elementos do mesmo grupo. E tal como sabes que dia da semana é o dia 15 se souberes em que dia calhou o dia 1, sabes onde fica um elemento se souberes a sua configuração eletrónica."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Os cientistas por trás da tabela",
+          "texto": "**Os cientistas por trás da tabela**\n\nDöbereiner (1829): agrupou elementos em tríades com propriedades semelhantes (por exemplo, cloro, bromo e iodo).\n\nNewlands (1864): lei das oitavas: ordenando pela massa, as propriedades repetiam-se de oito em oito elementos.\n\nMendeleev (1869) e Meyer: tabela ordenada pela massa atómica, com espaços para elementos por descobrir e previsão das suas propriedades.\n\nMoseley (1913): mostrou que a ordem correta é pelo número atómico (carga do núcleo), o que resolveu as inversões da tabela de Mendeleev (como o telúrio e o iodo).\n\nSeaborg (década de 1940): reorganizou os actinídeos, dando à tabela a forma atual.\n\n**Elemento e substância elementar**\n\nO elemento químico é o tipo de átomo (definido por Z). A substância elementar é a substância formada só por átomos de um elemento. O elemento oxigénio forma duas substâncias elementares: o dioxigénio (O₂) e o ozono (O₃)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na Tabela Periódica atual, os elementos estão ordenados por ordem crescente de:",
+              "opcoes": [
+                "massa atómica relativa.",
+                "número de neutrões.",
+                "número atómico.",
+                "número de massa."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "A ordenação atual é pelo número atómico, como mostrou Moseley em 1913.",
+              "mascote_feedback_errado": "A ordenação atual é pelo número atómico, como mostrou Moseley em 1913."
+            },
+            {
+              "pergunta": "O potássio (Z = 19) pertence ao:",
+              "opcoes": [
+                "4.º período, grupo 1, bloco s.",
+                "3.º período, grupo 1, bloco s.",
+                "4.º período, grupo 19, bloco d.",
+                "1.º período, grupo 4."
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "K: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹. Nível de valência 4, um eletrão de valência numa orbital s: 4.º período, grupo 1, bloco s.",
+              "mascote_feedback_errado": "K: 1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹. Nível de valência 4, um eletrão de valência numa orbital s: 4.º período, grupo 1, bloco s."
+            },
+            {
+              "pergunta": "Os halogéneos pertencem ao grupo:",
+              "opcoes": [
+                "1",
+                "2",
+                "17",
+                "18"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Os halogéneos (flúor, cloro, bromo, iodo) estão no grupo 17 e têm 7 eletrões de valência.",
+              "mascote_feedback_errado": "Os halogéneos (flúor, cloro, bromo, iodo) estão no grupo 17 e têm 7 eletrões de valência."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "propriedades-periodicas",
+      "titulo": "Propriedades periódicas: raio atómico, energia de ionização e formação de iões",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_sodio_agua.png",
+          "imagem_legenda": "Pedaço de sódio a reagir com água numa tina.",
+          "texto": "Um pedaço de sódio atirado para a água corre à superfície, liberta gás e pode até explodir. O potássio é ainda mais violento. Já o hélio não reage com praticamente nada. Porquê tanta diferença entre elementos? Tudo depende da facilidade com que os átomos perdem ou ganham eletrões, e isso varia de forma regular na tabela periódica.",
+          "mascote_texto": "As tendências desta secção explicam-se todas com duas ideias: mais níveis de energia e mais carga nuclear."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Raio atómico e energia de ionização",
+          "imagem": "q10_tendencias_periodicas.png",
+          "imagem_legenda": "Setas das tendências do raio atómico e da energia de ionização.",
+          "texto_principal": "O raio atómico e a energia de ionização são propriedades periódicas: variam de forma regular ao longo dos grupos e dos períodos, porque dependem da configuração eletrónica. As duas variam em sentidos opostos: quanto maior o átomo, mais fácil é tirar-lhe um eletrão.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Raio atómico ao longo de um grupo (de cima para baixo)",
+              "explicacao": "Aumenta. Os eletrões de valência estão num nível de energia cada vez mais afastado do núcleo."
+            },
+            {
+              "id": "p2",
+              "label": "Raio atómico ao longo de um período (da esquerda para a direita)",
+              "explicacao": "Diminui. Os eletrões de valência estão no mesmo nível, mas a carga nuclear aumenta e atrai-os com mais força."
+            },
+            {
+              "id": "p3",
+              "label": "Energia de ionização (primeira)",
+              "explicacao": "Energia mínima para remover um eletrão de um átomo no estado fundamental, em fase gasosa."
+            },
+            {
+              "id": "p4",
+              "label": "Energia de ionização ao longo de um grupo",
+              "explicacao": "Diminui. O eletrão de valência está mais longe do núcleo e é mais fácil de remover."
+            },
+            {
+              "id": "p5",
+              "label": "Energia de ionização ao longo de um período",
+              "explicacao": "Aumenta (em geral). A carga nuclear aumenta e os eletrões estão mais presos."
+            },
+            {
+              "id": "p6",
+              "label": "Gases nobres",
+              "explicacao": "Têm as energias de ionização mais elevadas de cada período, porque têm a camada de valência completa (ns² np⁶). Por isso são pouco reativos."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "X(g) → X⁺(g) + e⁻",
+              "significado": "Energia de ionização.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Li 520; Na 496; K 419; Mg 738; Al 578; Cl 1251; Ar 1521; He 2372",
+              "significado": "Valores de referência.",
+              "unidades": "kJ/mol"
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Tendência para formar iões",
+          "imagem": "q10_formacao_ioes.png",
+          "imagem_legenda": "Na → Na⁺ (mais pequeno) e Cl → Cl⁻ (maior).",
+          "texto_principal": "Os elementos têm tendência a formar iões com a configuração eletrónica do gás nobre mais próximo, que é particularmente estável. Os metais, com energia de ionização baixa, perdem eletrões e formam catiões. Os não metais tendem a ganhar eletrões e formar aniões.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Metais alcalinos (grupo 1)",
+              "explicacao": "Perdem 1 eletrão: Na → Na⁺. Energia de ionização muito baixa: são muito reativos. A reatividade aumenta ao descer no grupo (Li < Na < K)."
+            },
+            {
+              "id": "p2",
+              "label": "Metais alcalinoterrosos (grupo 2)",
+              "explicacao": "Perdem 2 eletrões: Mg → Mg²⁺."
+            },
+            {
+              "id": "p3",
+              "label": "Halogéneos (grupo 17)",
+              "explicacao": "Ganham 1 eletrão: Cl → Cl⁻. A reatividade diminui ao descer no grupo (F > Cl > Br > I)."
+            },
+            {
+              "id": "p4",
+              "label": "Grupo 16",
+              "explicacao": "Ganham 2 eletrões: O → O²⁻."
+            },
+            {
+              "id": "p5",
+              "label": "Raio iónico",
+              "explicacao": "Os catiões são menores do que os átomos que lhes deram origem (perdem eletrões, às vezes um nível inteiro). Os aniões são maiores (mais repulsão entre eletrões)."
+            },
+            {
+              "id": "p6",
+              "label": "Iões isoeletrónicos",
+              "explicacao": "Na⁺, Mg²⁺, F⁻ e O²⁻ têm todos 10 eletrões, como o néon."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual dos átomos tem maior raio atómico: sódio (Z = 11) ou cloro (Z = 17)?",
+          "opcoes": [
+            "Cloro, porque tem mais eletrões.",
+            "Sódio, porque tem menor carga nuclear e os eletrões de valência no mesmo nível são menos atraídos.",
+            "São iguais, porque estão no mesmo período.",
+            "Cloro, porque é um não metal."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Estão no mesmo período (nível de valência 3). O cloro tem mais 6 protões, que atraem mais os eletrões e contraem o átomo.",
+          "mascote_feedback_errado": "No mesmo período, o raio diminui da esquerda para a direita. O cloro tem maior carga nuclear e atrai mais os eletrões de valência: é mais pequeno do que o sódio."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que o potássio é mais reativo do que o sódio?",
+          "opcoes": [
+            "Porque tem mais eletrões de valência.",
+            "Porque tem menor energia de ionização: o seu eletrão de valência está num nível mais afastado e é mais facilmente removido.",
+            "Porque tem maior massa.",
+            "Porque é um gás nobre."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O eletrão 4s do potássio está mais longe do núcleo do que o 3s do sódio. É mais fácil de remover, e o potássio reage mais facilmente.",
+          "mascote_feedback_errado": "A reatividade dos metais alcalinos depende da facilidade em perder o eletrão de valência. No potássio, esse eletrão está no nível 4, mais afastado: energia de ionização menor, maior reatividade."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_propriedades_periodicas",
+          "titulo": "Explora as tendências",
+          "instrucao": "Clica em elementos da tabela periódica (Z = 1 a 20) e compara o raio atómico e a energia de ionização ao longo de um grupo e ao longo de um período.",
+          "controlos": [
+            {
+              "id": "Z",
+              "tipo": "tabela_periodica",
+              "rotulo": "Tabela periódica (Z = 1 a 20)",
+              "valor_inicial": 11,
+              "elementos": [
+                {
+                  "z": 1,
+                  "simbolo": "H",
+                  "nome": "hidrogénio",
+                  "massa": "1,01",
+                  "periodo": 1,
+                  "grupo": 1,
+                  "bloco": "s"
+                },
+                {
+                  "z": 2,
+                  "simbolo": "He",
+                  "nome": "hélio",
+                  "massa": "4,00",
+                  "periodo": 1,
+                  "grupo": 18,
+                  "bloco": "s"
+                },
+                {
+                  "z": 3,
+                  "simbolo": "Li",
+                  "nome": "lítio",
+                  "massa": "6,94",
+                  "periodo": 2,
+                  "grupo": 1,
+                  "bloco": "s"
+                },
+                {
+                  "z": 4,
+                  "simbolo": "Be",
+                  "nome": "berílio",
+                  "massa": "9,01",
+                  "periodo": 2,
+                  "grupo": 2,
+                  "bloco": "s"
+                },
+                {
+                  "z": 5,
+                  "simbolo": "B",
+                  "nome": "boro",
+                  "massa": "10,81",
+                  "periodo": 2,
+                  "grupo": 13,
+                  "bloco": "p"
+                },
+                {
+                  "z": 6,
+                  "simbolo": "C",
+                  "nome": "carbono",
+                  "massa": "12,01",
+                  "periodo": 2,
+                  "grupo": 14,
+                  "bloco": "p"
+                },
+                {
+                  "z": 7,
+                  "simbolo": "N",
+                  "nome": "azoto",
+                  "massa": "14,01",
+                  "periodo": 2,
+                  "grupo": 15,
+                  "bloco": "p"
+                },
+                {
+                  "z": 8,
+                  "simbolo": "O",
+                  "nome": "oxigénio",
+                  "massa": "16,00",
+                  "periodo": 2,
+                  "grupo": 16,
+                  "bloco": "p"
+                },
+                {
+                  "z": 9,
+                  "simbolo": "F",
+                  "nome": "flúor",
+                  "massa": "19,00",
+                  "periodo": 2,
+                  "grupo": 17,
+                  "bloco": "p"
+                },
+                {
+                  "z": 10,
+                  "simbolo": "Ne",
+                  "nome": "néon",
+                  "massa": "20,18",
+                  "periodo": 2,
+                  "grupo": 18,
+                  "bloco": "p"
+                },
+                {
+                  "z": 11,
+                  "simbolo": "Na",
+                  "nome": "sódio",
+                  "massa": "22,99",
+                  "periodo": 3,
+                  "grupo": 1,
+                  "bloco": "s"
+                },
+                {
+                  "z": 12,
+                  "simbolo": "Mg",
+                  "nome": "magnésio",
+                  "massa": "24,31",
+                  "periodo": 3,
+                  "grupo": 2,
+                  "bloco": "s"
+                },
+                {
+                  "z": 13,
+                  "simbolo": "Al",
+                  "nome": "alumínio",
+                  "massa": "26,98",
+                  "periodo": 3,
+                  "grupo": 13,
+                  "bloco": "p"
+                },
+                {
+                  "z": 14,
+                  "simbolo": "Si",
+                  "nome": "silício",
+                  "massa": "28,09",
+                  "periodo": 3,
+                  "grupo": 14,
+                  "bloco": "p"
+                },
+                {
+                  "z": 15,
+                  "simbolo": "P",
+                  "nome": "fósforo",
+                  "massa": "30,97",
+                  "periodo": 3,
+                  "grupo": 15,
+                  "bloco": "p"
+                },
+                {
+                  "z": 16,
+                  "simbolo": "S",
+                  "nome": "enxofre",
+                  "massa": "32,06",
+                  "periodo": 3,
+                  "grupo": 16,
+                  "bloco": "p"
+                },
+                {
+                  "z": 17,
+                  "simbolo": "Cl",
+                  "nome": "cloro",
+                  "massa": "35,45",
+                  "periodo": 3,
+                  "grupo": 17,
+                  "bloco": "p"
+                },
+                {
+                  "z": 18,
+                  "simbolo": "Ar",
+                  "nome": "árgon",
+                  "massa": "39,95",
+                  "periodo": 3,
+                  "grupo": 18,
+                  "bloco": "p"
+                },
+                {
+                  "z": 19,
+                  "simbolo": "K",
+                  "nome": "potássio",
+                  "massa": "39,10",
+                  "periodo": 4,
+                  "grupo": 1,
+                  "bloco": "s"
+                },
+                {
+                  "z": 20,
+                  "simbolo": "Ca",
+                  "nome": "cálcio",
+                  "massa": "40,08",
+                  "periodo": 4,
+                  "grupo": 2,
+                  "bloco": "s"
+                }
+              ]
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Elemento",
+              "formula": "dados.e[Z - 1].elemento"
+            },
+            {
+              "rotulo": "Configuração eletrónica",
+              "formula": "dados.e[Z - 1].config"
+            },
+            {
+              "rotulo": "Posição na tabela",
+              "formula": "dados.e[Z - 1].posicao"
+            },
+            {
+              "rotulo": "Raio atómico",
+              "formula": "dados.e[Z - 1].raio"
+            },
+            {
+              "rotulo": "1.ª energia de ionização",
+              "formula": "dados.e[Z - 1].ei"
+            },
+            {
+              "rotulo": "Ião mais provável",
+              "formula": "dados.e[Z - 1].iao"
+            },
+            {
+              "rotulo": "Comparar ao longo do grupo",
+              "formula": "dados.e[Z - 1].grupo"
+            },
+            {
+              "rotulo": "Comparar ao longo do período",
+              "formula": "dados.e[Z - 1].periodo"
+            }
+          ],
+          "pergunta_final": "No gráfico da energia de ionização em função de Z, onde ficam os picos e os mínimos? Resposta esperada: picos nos gases nobres (He, Ne, Ar) e mínimos nos metais alcalinos (Li, Na, K).",
+          "dados": {
+            "e": [
+              {
+                "elemento": "H: hidrogénio (Z = 1, A r = 1,01)",
+                "config": "1s¹",
+                "posicao": "1.º período, grupo 1, bloco s",
+                "raio": "53 pm  ███",
+                "ei": "1312 kJ/mol  ████████",
+                "iao": "H⁺: perde o seu único eletrão.",
+                "grupo": "Grupo 1: energia de ionização H 1312 · Li 520 · Na 496 · K 419 kJ/mol; raio H 53 · Li 152 · Na 186 · K 227 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "1.º período: energia de ionização H 1312 · He 2372 kJ/mol; raio H 53 · He 31 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "He: hélio (Z = 2, A r = 4,00)",
+                "config": "1s²",
+                "posicao": "1.º período, grupo 18, bloco s",
+                "raio": "31 pm  ██",
+                "ei": "2372 kJ/mol  ██████████████",
+                "iao": "Não forma iões: gás nobre, com a camada de valência completa.",
+                "grupo": "Grupo 18: energia de ionização He 2372 · Ne 2081 · Ar 1521 kJ/mol; raio He 31 · Ne 69 · Ar 97 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "1.º período: energia de ionização H 1312 · He 2372 kJ/mol; raio H 53 · He 31 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "Li: lítio (Z = 3, A r = 6,94)",
+                "config": "1s² 2s¹",
+                "posicao": "2.º período, grupo 1, bloco s",
+                "raio": "152 pm  █████████",
+                "ei": "520 kJ/mol  ███",
+                "iao": "Li⁺: perde 1 eletrão e fica com a configuração do hélio.",
+                "grupo": "Grupo 1: energia de ionização H 1312 · Li 520 · Na 496 · K 419 kJ/mol; raio H 53 · Li 152 · Na 186 · K 227 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "2.º período: energia de ionização Li 520 · Be 900 · B 801 · C 1086 · N 1402 · O 1314 · F 1681 · Ne 2081 kJ/mol; raio Li 152 · Be 112 · B 85 · C 77 · N 75 · O 73 · F 71 · Ne 69 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "Be: berílio (Z = 4, A r = 9,01)",
+                "config": "1s² 2s²",
+                "posicao": "2.º período, grupo 2, bloco s",
+                "raio": "112 pm  ███████",
+                "ei": "900 kJ/mol  █████",
+                "iao": "Be²⁺: perde 2 eletrões e fica com a configuração do hélio.",
+                "grupo": "Grupo 2: energia de ionização Be 900 · Mg 738 · Ca 590 kJ/mol; raio Be 112 · Mg 160 · Ca 197 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "2.º período: energia de ionização Li 520 · Be 900 · B 801 · C 1086 · N 1402 · O 1314 · F 1681 · Ne 2081 kJ/mol; raio Li 152 · Be 112 · B 85 · C 77 · N 75 · O 73 · F 71 · Ne 69 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "B: boro (Z = 5, A r = 10,81)",
+                "config": "1s² 2s² 2p¹",
+                "posicao": "2.º período, grupo 13, bloco p",
+                "raio": "85 pm  █████",
+                "ei": "801 kJ/mol  █████",
+                "iao": "Grupos 13 a 15: nesta simulação só se preveem iões para os grupos 1, 2, 16 e 17.",
+                "grupo": "Grupo 13: energia de ionização B 801 · Al 578 kJ/mol; raio B 85 · Al 143 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "2.º período: energia de ionização Li 520 · Be 900 · B 801 · C 1086 · N 1402 · O 1314 · F 1681 · Ne 2081 kJ/mol; raio Li 152 · Be 112 · B 85 · C 77 · N 75 · O 73 · F 71 · Ne 69 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "C: carbono (Z = 6, A r = 12,01)",
+                "config": "1s² 2s² 2p²",
+                "posicao": "2.º período, grupo 14, bloco p",
+                "raio": "77 pm  █████",
+                "ei": "1086 kJ/mol  ██████",
+                "iao": "Grupos 13 a 15: nesta simulação só se preveem iões para os grupos 1, 2, 16 e 17.",
+                "grupo": "Grupo 14: energia de ionização C 1086 · Si 787 kJ/mol; raio C 77 · Si 118 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "2.º período: energia de ionização Li 520 · Be 900 · B 801 · C 1086 · N 1402 · O 1314 · F 1681 · Ne 2081 kJ/mol; raio Li 152 · Be 112 · B 85 · C 77 · N 75 · O 73 · F 71 · Ne 69 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "N: azoto (Z = 7, A r = 14,01)",
+                "config": "1s² 2s² 2p³",
+                "posicao": "2.º período, grupo 15, bloco p",
+                "raio": "75 pm  █████",
+                "ei": "1402 kJ/mol  ████████",
+                "iao": "Grupos 13 a 15: nesta simulação só se preveem iões para os grupos 1, 2, 16 e 17.",
+                "grupo": "Grupo 15: energia de ionização N 1402 · P 1012 kJ/mol; raio N 75 · P 110 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "2.º período: energia de ionização Li 520 · Be 900 · B 801 · C 1086 · N 1402 · O 1314 · F 1681 · Ne 2081 kJ/mol; raio Li 152 · Be 112 · B 85 · C 77 · N 75 · O 73 · F 71 · Ne 69 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "O: oxigénio (Z = 8, A r = 16,00)",
+                "config": "1s² 2s² 2p⁴",
+                "posicao": "2.º período, grupo 16, bloco p",
+                "raio": "73 pm  █████",
+                "ei": "1314 kJ/mol  ████████",
+                "iao": "O²⁻: ganha 2 eletrões e fica com a configuração do néon.",
+                "grupo": "Grupo 16: energia de ionização O 1314 · S 1000 kJ/mol; raio O 73 · S 103 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "2.º período: energia de ionização Li 520 · Be 900 · B 801 · C 1086 · N 1402 · O 1314 · F 1681 · Ne 2081 kJ/mol; raio Li 152 · Be 112 · B 85 · C 77 · N 75 · O 73 · F 71 · Ne 69 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "F: flúor (Z = 9, A r = 19,00)",
+                "config": "1s² 2s² 2p⁵",
+                "posicao": "2.º período, grupo 17, bloco p",
+                "raio": "71 pm  ████",
+                "ei": "1681 kJ/mol  ██████████",
+                "iao": "F⁻: ganha 1 eletrão e fica com a configuração do néon.",
+                "grupo": "Grupo 17: energia de ionização F 1681 · Cl 1251 kJ/mol; raio F 71 · Cl 99 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "2.º período: energia de ionização Li 520 · Be 900 · B 801 · C 1086 · N 1402 · O 1314 · F 1681 · Ne 2081 kJ/mol; raio Li 152 · Be 112 · B 85 · C 77 · N 75 · O 73 · F 71 · Ne 69 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "Ne: néon (Z = 10, A r = 20,18)",
+                "config": "1s² 2s² 2p⁶",
+                "posicao": "2.º período, grupo 18, bloco p",
+                "raio": "69 pm  ████",
+                "ei": "2081 kJ/mol  ████████████",
+                "iao": "Não forma iões: gás nobre, com a camada de valência completa.",
+                "grupo": "Grupo 18: energia de ionização He 2372 · Ne 2081 · Ar 1521 kJ/mol; raio He 31 · Ne 69 · Ar 97 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "2.º período: energia de ionização Li 520 · Be 900 · B 801 · C 1086 · N 1402 · O 1314 · F 1681 · Ne 2081 kJ/mol; raio Li 152 · Be 112 · B 85 · C 77 · N 75 · O 73 · F 71 · Ne 69 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "Na: sódio (Z = 11, A r = 22,99)",
+                "config": "1s² 2s² 2p⁶ 3s¹",
+                "posicao": "3.º período, grupo 1, bloco s",
+                "raio": "186 pm  ███████████",
+                "ei": "496 kJ/mol  ███",
+                "iao": "Na⁺: perde 1 eletrão e fica com a configuração do néon.",
+                "grupo": "Grupo 1: energia de ionização H 1312 · Li 520 · Na 496 · K 419 kJ/mol; raio H 53 · Li 152 · Na 186 · K 227 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "3.º período: energia de ionização Na 496 · Mg 738 · Al 578 · Si 787 · P 1012 · S 1000 · Cl 1251 · Ar 1521 kJ/mol; raio Na 186 · Mg 160 · Al 143 · Si 118 · P 110 · S 103 · Cl 99 · Ar 97 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "Mg: magnésio (Z = 12, A r = 24,31)",
+                "config": "1s² 2s² 2p⁶ 3s²",
+                "posicao": "3.º período, grupo 2, bloco s",
+                "raio": "160 pm  ██████████",
+                "ei": "738 kJ/mol  ████",
+                "iao": "Mg²⁺: perde 2 eletrões e fica com a configuração do néon.",
+                "grupo": "Grupo 2: energia de ionização Be 900 · Mg 738 · Ca 590 kJ/mol; raio Be 112 · Mg 160 · Ca 197 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "3.º período: energia de ionização Na 496 · Mg 738 · Al 578 · Si 787 · P 1012 · S 1000 · Cl 1251 · Ar 1521 kJ/mol; raio Na 186 · Mg 160 · Al 143 · Si 118 · P 110 · S 103 · Cl 99 · Ar 97 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "Al: alumínio (Z = 13, A r = 26,98)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p¹",
+                "posicao": "3.º período, grupo 13, bloco p",
+                "raio": "143 pm  █████████",
+                "ei": "578 kJ/mol  ███",
+                "iao": "Grupos 13 a 15: nesta simulação só se preveem iões para os grupos 1, 2, 16 e 17.",
+                "grupo": "Grupo 13: energia de ionização B 801 · Al 578 kJ/mol; raio B 85 · Al 143 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "3.º período: energia de ionização Na 496 · Mg 738 · Al 578 · Si 787 · P 1012 · S 1000 · Cl 1251 · Ar 1521 kJ/mol; raio Na 186 · Mg 160 · Al 143 · Si 118 · P 110 · S 103 · Cl 99 · Ar 97 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "Si: silício (Z = 14, A r = 28,09)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p²",
+                "posicao": "3.º período, grupo 14, bloco p",
+                "raio": "118 pm  ███████",
+                "ei": "787 kJ/mol  █████",
+                "iao": "Grupos 13 a 15: nesta simulação só se preveem iões para os grupos 1, 2, 16 e 17.",
+                "grupo": "Grupo 14: energia de ionização C 1086 · Si 787 kJ/mol; raio C 77 · Si 118 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "3.º período: energia de ionização Na 496 · Mg 738 · Al 578 · Si 787 · P 1012 · S 1000 · Cl 1251 · Ar 1521 kJ/mol; raio Na 186 · Mg 160 · Al 143 · Si 118 · P 110 · S 103 · Cl 99 · Ar 97 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "P: fósforo (Z = 15, A r = 30,97)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p³",
+                "posicao": "3.º período, grupo 15, bloco p",
+                "raio": "110 pm  ███████",
+                "ei": "1012 kJ/mol  ██████",
+                "iao": "Grupos 13 a 15: nesta simulação só se preveem iões para os grupos 1, 2, 16 e 17.",
+                "grupo": "Grupo 15: energia de ionização N 1402 · P 1012 kJ/mol; raio N 75 · P 110 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "3.º período: energia de ionização Na 496 · Mg 738 · Al 578 · Si 787 · P 1012 · S 1000 · Cl 1251 · Ar 1521 kJ/mol; raio Na 186 · Mg 160 · Al 143 · Si 118 · P 110 · S 103 · Cl 99 · Ar 97 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "S: enxofre (Z = 16, A r = 32,06)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁴",
+                "posicao": "3.º período, grupo 16, bloco p",
+                "raio": "103 pm  ██████",
+                "ei": "1000 kJ/mol  ██████",
+                "iao": "S²⁻: ganha 2 eletrões e fica com a configuração do árgon.",
+                "grupo": "Grupo 16: energia de ionização O 1314 · S 1000 kJ/mol; raio O 73 · S 103 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "3.º período: energia de ionização Na 496 · Mg 738 · Al 578 · Si 787 · P 1012 · S 1000 · Cl 1251 · Ar 1521 kJ/mol; raio Na 186 · Mg 160 · Al 143 · Si 118 · P 110 · S 103 · Cl 99 · Ar 97 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "Cl: cloro (Z = 17, A r = 35,45)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁵",
+                "posicao": "3.º período, grupo 17, bloco p",
+                "raio": "99 pm  ██████",
+                "ei": "1251 kJ/mol  ███████",
+                "iao": "Cl⁻: ganha 1 eletrão e fica com a configuração do árgon.",
+                "grupo": "Grupo 17: energia de ionização F 1681 · Cl 1251 kJ/mol; raio F 71 · Cl 99 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "3.º período: energia de ionização Na 496 · Mg 738 · Al 578 · Si 787 · P 1012 · S 1000 · Cl 1251 · Ar 1521 kJ/mol; raio Na 186 · Mg 160 · Al 143 · Si 118 · P 110 · S 103 · Cl 99 · Ar 97 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "Ar: árgon (Z = 18, A r = 39,95)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁶",
+                "posicao": "3.º período, grupo 18, bloco p",
+                "raio": "97 pm  ██████",
+                "ei": "1521 kJ/mol  █████████",
+                "iao": "Não forma iões: gás nobre, com a camada de valência completa.",
+                "grupo": "Grupo 18: energia de ionização He 2372 · Ne 2081 · Ar 1521 kJ/mol; raio He 31 · Ne 69 · Ar 97 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "3.º período: energia de ionização Na 496 · Mg 738 · Al 578 · Si 787 · P 1012 · S 1000 · Cl 1251 · Ar 1521 kJ/mol; raio Na 186 · Mg 160 · Al 143 · Si 118 · P 110 · S 103 · Cl 99 · Ar 97 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre."
+              },
+              {
+                "elemento": "K: potássio (Z = 19, A r = 39,10)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹",
+                "posicao": "4.º período, grupo 1, bloco s",
+                "raio": "227 pm  ██████████████",
+                "ei": "419 kJ/mol  ██",
+                "iao": "K⁺: perde 1 eletrão e fica com a configuração do árgon.",
+                "grupo": "Grupo 1: energia de ionização H 1312 · Li 520 · Na 496 · K 419 kJ/mol; raio H 53 · Li 152 · Na 186 · K 227 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "4.º período: energia de ionização K 419 · Ca 590 kJ/mol; raio K 227 · Ca 197 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre. (Nesta tabela só aparecem o K e o Ca do 4.º período.)"
+              },
+              {
+                "elemento": "Ca: cálcio (Z = 20, A r = 40,08)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s²",
+                "posicao": "4.º período, grupo 2, bloco s",
+                "raio": "197 pm  ████████████",
+                "ei": "590 kJ/mol  ███",
+                "iao": "Ca²⁺: perde 2 eletrões e fica com a configuração do árgon.",
+                "grupo": "Grupo 2: energia de ionização Be 900 · Mg 738 · Ca 590 kJ/mol; raio Be 112 · Mg 160 · Ca 197 pm. Ao descer no grupo, o raio aumenta e a energia de ionização diminui.",
+                "periodo": "4.º período: energia de ionização K 419 · Ca 590 kJ/mol; raio K 227 · Ca 197 pm. Ao longo do período, o raio diminui e a energia de ionização aumenta (em geral), com o máximo no gás nobre. (Nesta tabela só aparecem o K e o Ca do 4.º período.)"
+              }
+            ]
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O íman e os clipes.** Imagina um íman (o núcleo) com clipes (os eletrões) à volta. Os clipes que estão colados ao íman são difíceis de tirar; os que estão pendurados numa corrente comprida, longe do íman, saem com um toque. Descer num grupo é como pendurar o clipe de valência cada vez mais longe: sai com mais facilidade (energia de ionização menor). Andar ao longo de um período é como usar ímanes cada vez mais fortes, com os clipes à mesma distância: ficam mais presos e mais \"encolhidos\" junto ao íman (raio menor, energia de ionização maior)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Exceções e gases nobres",
+          "texto": "**Exceções à tendência da energia de ionização**\n\nAo longo de um período há pequenas irregularidades: por exemplo, o boro tem energia de ionização menor do que o berílio, e o oxigénio menor do que o azoto. Explicam-se pela configuração eletrónica (o eletrão removido do boro está numa orbital 2p, de maior energia do que a 2s; no oxigénio, o eletrão removido está numa orbital com dois eletrões, que se repelem). A tendência geral é a que importa.\n\n**Porque é que os gases nobres quase não reagem**\n\nCom a camada de valência completa, os gases nobres têm energias de ionização muito elevadas e não têm tendência a ganhar eletrões. Por isso são usados onde é preciso uma atmosfera que não reaja: árgon nas lâmpadas e na soldadura, hélio nos balões (e não o hidrogénio, que é inflamável)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Ao longo de um grupo, de cima para baixo, a energia de ionização:",
+              "opcoes": [
+                "aumenta.",
+                "diminui.",
+                "mantém-se.",
+                "varia aleatoriamente."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O eletrão de valência está em níveis cada vez mais afastados do núcleo, e é mais fácil removê-lo.",
+              "mascote_feedback_errado": "O eletrão de valência está em níveis cada vez mais afastados do núcleo, e é mais fácil removê-lo."
+            },
+            {
+              "pergunta": "Qual dos iões tem maior raio: Na⁺ ou Cl⁻?",
+              "opcoes": [
+                "Na⁺",
+                "Cl⁻",
+                "Têm o mesmo raio.",
+                "Não se pode comparar."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Na⁺ perdeu o nível 3 e tem 2 níveis ocupados; Cl⁻ tem 3 níveis e ganhou um eletrão. Cl⁻ é bastante maior.",
+              "mascote_feedback_errado": "Na⁺ perdeu o nível 3 e tem 2 níveis ocupados; Cl⁻ tem 3 níveis e ganhou um eletrão. Cl⁻ é bastante maior."
+            },
+            {
+              "pergunta": "Qual das configurações corresponde ao elemento com maior energia de ionização?",
+              "opcoes": [
+                "1s² 2s¹",
+                "1s² 2s² 2p⁵",
+                "1s² 2s² 2p⁶",
+                "1s² 2s² 2p⁶ 3s¹"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "1s² 2s² 2p⁶ é o néon, um gás nobre com camada de valência completa: tem a energia de ionização mais alta das opções.",
+              "mascote_feedback_errado": "1s² 2s² 2p⁶ é o néon, um gás nobre com camada de valência completa: tem a energia de ionização mais alta das opções."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "densidade-metais-al-1-3",
+      "titulo": "Propriedades das substâncias elementares e densidade de metais; AL 1.3",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_coroa_arquimedes.png",
+          "imagem_legenda": "Coroa de ouro mergulhada num recipiente com água.",
+          "texto": "Conta a lenda que o rei Hierão de Siracusa desconfiou que o ourives tinha misturado prata no ouro da sua coroa. Arquimedes descobriu a fraude medindo quanto a coroa pesava e quanta água deslocava, e comparando com um bloco de ouro puro. É a mesma ideia que vais usar no laboratório para identificar metais: a densidade.",
+          "mascote_texto": "Esta AL tem uma sequência de pesagens que confunde muita gente. Lê o procedimento duas vezes."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Metais, não metais e densidade",
+          "imagem": "q10_metais_nao_metais.png",
+          "imagem_legenda": "Amostras de metais e de não metais com ícones de propriedades.",
+          "texto_principal": "As substâncias elementares dos metais e dos não metais têm propriedades físicas muito diferentes, que resultam do tipo de ligação e da estrutura. A densidade é uma propriedade característica que permite identificar substâncias.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Metais",
+              "explicacao": "Brilho metálico, bons condutores de calor e de eletricidade, maleáveis (podem ser laminados) e dúcteis (podem ser estirados em fios). Quase todos são sólidos à temperatura ambiente (o mercúrio é líquido)."
+            },
+            {
+              "id": "p2",
+              "label": "Não metais",
+              "explicacao": "Sem brilho metálico (exceto alguns, como o iodo), maus condutores (exceto a grafite), sólidos quebradiços, líquidos (bromo) ou gases (oxigénio, azoto, cloro, gases nobres)."
+            },
+            {
+              "id": "p3",
+              "label": "Semimetais",
+              "explicacao": "Propriedades intermédias. O silício é semicondutor e é a base dos chips eletrónicos."
+            },
+            {
+              "id": "p4",
+              "label": "Densidade relativa (d)",
+              "explicacao": "Razão entre a massa volúmica de uma substância e a massa volúmica da água (a 4 °C, 1,00 g/cm³). Não tem unidades. Ex.: d(cobre) = 8,96; d(alumínio) = 2,70; d(ferro) = 7,87; d(ouro) = 19,3."
+            },
+            {
+              "id": "p5",
+              "label": "Propriedade característica",
+              "explicacao": "A densidade não depende da quantidade de amostra, só da substância (e da temperatura). Serve para identificar metais."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "ρ = m / V",
+              "significado": "Massa volúmica.",
+              "unidades": ""
+            },
+            {
+              "expressao": "d = ρ substância / ρ água = m substância / m (de igual volume de água)",
+              "significado": "Densidade relativa.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um bloco metálico tem 54,0 g e ocupa 20,0 cm³. De que metal se trata, provavelmente?",
+          "opcoes": [
+            "Ferro (d = 7,87)",
+            "Alumínio (d = 2,70)",
+            "Cobre (d = 8,96)",
+            "Ouro (d = 19,3)"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. ρ = 54,0 / 20,0 = 2,70 g/cm³. d = 2,70 / 1,00 = 2,70: alumínio.",
+          "mascote_feedback_errado": "Calcula a massa volúmica: 54,0 / 20,0 = 2,70 g/cm³. Dividindo pela da água (1,00 g/cm³), d = 2,70, que é a do alumínio."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A mala de viagem.** Duas malas iguais, do mesmo tamanho: uma cheia de livros, outra cheia de almofadas. Pesam de forma muito diferente, embora ocupem o mesmo espaço. A densidade diz-te quanto \"pesa\" cada centímetro cúbico de uma substância. O ouro é como a mala dos livros: um cubo de ouro com 10 cm de lado pesa 19,3 kg. O mesmo cubo de alumínio pesa 2,7 kg."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 1.3",
+          "titulo": "Densidade relativa de metais",
+          "objetivo": "Determinar a densidade relativa de metais por picnometria e usar o resultado para identificar o metal.",
+          "material": [
+            "Picnómetro de sólidos (frasco de vidro com tampa esmerilada atravessada por um tubo capilar)",
+            "Balança digital (resolução 0,001 g ou 0,01 g)",
+            "Amostras de metais em pequenos pedaços (granalha, aparas ou esferas): cobre, alumínio, ferro, chumbo ou zinco",
+            "Água destilada",
+            "Papel absorvente",
+            "Termómetro"
+          ],
+          "procedimento": [
+            "Medir a massa da amostra de metal: m₁.",
+            "Encher completamente o picnómetro com água destilada, colocar a tampa (a água sobe pelo capilar e o excesso sai), secar bem o exterior e medir a massa do picnómetro cheio de água, colocando a amostra de metal ao lado, no prato da balança: m₂.",
+            "Retirar a tampa, introduzir a amostra de metal dentro do picnómetro (parte da água transborda), voltar a colocar a tampa, secar bem o exterior e medir a massa: m₃.",
+            "Registar a temperatura da água.",
+            "Repetir o procedimento para outros metais."
+          ],
+          "tratamento_de_dados": "Massa de água deslocada pelo metal (com o mesmo volume do metal): m água = m₂ − m₃.\n\nDensidade relativa: d = m₁ / (m₂ − m₃).\n\nExemplo: m₁ = 10,00 g; m₂ − m₃ = 1,12 g; d = 10,00 / 1,12 ≈ 8,93. Valor tabelado do cobre: 8,96. Erro percentual: |8,93 − 8,96| / 8,96 × 100 ≈ 0,3 %.\n\nIdentificar o metal comparando com a tabela de densidades.",
+          "conclusao": "A densidade relativa é uma propriedade característica das substâncias e permite identificar um metal. A picnometria mede o volume do sólido indiretamente, através da massa de água que ele desloca.",
+          "erros_comuns": [
+            "Não secar o exterior do picnómetro antes de cada pesagem (a água à superfície aumenta a massa medida).",
+            "Deixar bolhas de ar agarradas ao metal dentro do picnómetro (o metal desloca menos água do que devia e d fica errado).",
+            "Trocar m₂ e m₃ ou esquecer de colocar o metal ao lado na pesagem m₂.",
+            "Usar amostras muito pequenas: a incerteza relativa da massa de água deslocada fica muito grande."
+          ],
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Densidade, temperatura e segurança alimentar",
+          "texto": "**Porque é que a densidade depende da temperatura**\n\nQuando a temperatura aumenta, a maior parte das substâncias dilata: a mesma massa ocupa mais volume, e a massa volúmica diminui. Por isso se regista a temperatura. A água tem massa volúmica máxima a cerca de 4 °C.\n\n**Densidade e segurança alimentar**\n\nA densidade é usada para controlar a qualidade de líquidos: a densidade do leite indica se foi adicionada água; a do mosto das uvas permite estimar o teor de açúcar e o grau alcoólico do vinho."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A densidade relativa de uma substância:",
+              "opcoes": [
+                "tem unidades de g/cm³.",
+                "não tem unidades.",
+                "depende da massa da amostra.",
+                "é sempre maior do que 1."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "É uma razão entre duas massas volúmicas (ou duas massas), por isso não tem unidades. Pode ser menor do que 1 (substâncias menos densas do que a água).",
+              "mascote_feedback_errado": "É uma razão entre duas massas volúmicas (ou duas massas), por isso não tem unidades. Pode ser menor do que 1 (substâncias menos densas do que a água)."
+            },
+            {
+              "pergunta": "Na picnometria, a diferença m₂ − m₃ corresponde a:",
+              "opcoes": [
+                "à massa do metal.",
+                "à massa de água com o mesmo volume do metal.",
+                "à massa do picnómetro vazio.",
+                "ao volume do picnómetro."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Ao introduzir o metal, sai um volume de água igual ao volume do metal. A diferença de massas é a massa dessa água.",
+              "mascote_feedback_errado": "Ao introduzir o metal, sai um volume de água igual ao volume do metal. A diferença de massas é a massa dessa água."
+            },
+            {
+              "pergunta": "Qual das propriedades é típica dos metais?",
+              "opcoes": [
+                "Serem quebradiços.",
+                "Serem maus condutores elétricos.",
+                "Serem maleáveis e dúcteis.",
+                "Serem gasosos à temperatura ambiente."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Os metais podem ser laminados (maleáveis) e estirados em fios (dúcteis), graças à ligação metálica.",
+              "mascote_feedback_errado": "Os metais podem ser laminados (maleáveis) e estirados em fios (dúcteis), graças à ligação metálica."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 3 concluída. Localizas um elemento na tabela a partir da configuração eletrónica, explicas as tendências do raio atómico e da energia de ionização, prevês que iões os elementos formam e determinaste densidades de metais. A seguir: como é que os átomos se ligam uns aos outros."
+}

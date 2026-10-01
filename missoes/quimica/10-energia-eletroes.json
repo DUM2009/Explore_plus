@@ -1,0 +1,1309 @@
+{
+  "missao_id": "10-energia-eletroes",
+  "id_guiao": "qui10-m2",
+  "titulo": "Energia dos eletrões nos átomos",
+  "disciplina": "quimica",
+  "ano": 10,
+  "imagem": "q10_fogo_artificio.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v4\"/><path d=\"M12 18v4\"/><path d=\"m4.93 4.93 2.83 2.83\"/><path d=\"m16.24 16.24 2.83 2.83\"/><path d=\"M2 12h4\"/><path d=\"M18 12h4\"/><path d=\"m4.93 19.07 2.83-2.83\"/><path d=\"m16.24 7.76 2.83-2.83\"/></svg>",
+    "nome": "Mestre dos Eletrões"
+  },
+  "secoes": [
+    {
+      "secao_id": "radiacao-fotoes-espetros",
+      "titulo": "Radiação, fotões e espetros",
+      "xp": 25,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_fogo_artificio.png",
+          "imagem_legenda": "Fogo de artifício com várias cores.",
+          "texto": "O vermelho do fogo de artifício vem do estrôncio, o verde do bário, o amarelo do sódio, o azul do cobre. Cada elemento, quando aquecido, emite luz com cores muito próprias, como uma impressão digital. É assim que os astrónomos sabem de que é feito o Sol sem nunca lá terem ido. O hélio, aliás, foi descoberto primeiro no Sol e só depois na Terra.",
+          "mascote_texto": "Esta missão liga a Química à luz. Se já fizeste a Física do 11.º ano, o espetro eletromagnético vai soar-te familiar."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Radiação e fotões",
+          "imagem": "q10_espetro_em_quimica.png",
+          "imagem_legenda": "Espetro eletromagnético com o visível ampliado.",
+          "texto_principal": "A luz e as outras radiações eletromagnéticas podem ser descritas como um fluxo de partículas de energia, os fotões. A energia de cada fotão é proporcional à frequência da radiação. Quanto maior a frequência (e menor o comprimento de onda), maior a energia do fotão.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Fotão",
+              "explicacao": "\"Pacote\" de energia da radiação eletromagnética."
+            },
+            {
+              "id": "p2",
+              "label": "Energia do fotão",
+              "explicacao": "E = h f. h é a constante de Planck."
+            },
+            {
+              "id": "p3",
+              "label": "Ordem crescente de energia",
+              "explicacao": "Rádio, micro-ondas, infravermelho, visível (do vermelho ao violeta), ultravioleta, raios X, raios gama."
+            },
+            {
+              "id": "p4",
+              "label": "Radiação ionizante",
+              "explicacao": "Ultravioleta de maior energia, raios X e raios gama têm energia suficiente para arrancar eletrões aos átomos. Por isso são perigosos para os seres vivos."
+            },
+            {
+              "id": "p5",
+              "label": "No visível",
+              "explicacao": "O violeta tem fotões com mais energia do que o vermelho."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "E fotão = h f",
+              "significado": "Energia de um fotão.",
+              "unidades": "h = 6,63 × 10⁻³⁴ J s"
+            },
+            {
+              "expressao": "c = λ f",
+              "significado": "Relação entre comprimento de onda e frequência.",
+              "unidades": "c = 3,00 × 10⁸ m/s"
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Espetros contínuos e de riscas",
+          "imagem": "q10_tipos_espetros.png",
+          "imagem_legenda": "Espetro contínuo, de emissão e de absorção do hidrogénio.",
+          "texto_principal": "Um espetro é a decomposição da radiação nas suas componentes. Os sólidos e líquidos incandescentes dão espetros contínuos. Os átomos isolados (gases a baixa pressão, chamas) dão espetros descontínuos, de riscas, que são característicos de cada elemento.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Espetro contínuo",
+              "explicacao": "Todas as cores (comprimentos de onda) sem interrupção. Ex.: luz solar, lâmpada de incandescência."
+            },
+            {
+              "id": "p2",
+              "label": "Espetro de emissão de riscas",
+              "explicacao": "Riscas coloridas sobre fundo escuro. Obtém-se quando átomos excitados (por calor ou descarga elétrica) emitem radiação."
+            },
+            {
+              "id": "p3",
+              "label": "Espetro de absorção de riscas",
+              "explicacao": "Riscas escuras sobre um espetro contínuo. Obtém-se quando luz branca atravessa um gás que absorve certos comprimentos de onda."
+            },
+            {
+              "id": "p4",
+              "label": "Mesmas posições",
+              "explicacao": "Para o mesmo elemento, as riscas de absorção aparecem exatamente nas mesmas posições que as riscas de emissão."
+            },
+            {
+              "id": "p5",
+              "label": "Impressão digital",
+              "explicacao": "Cada elemento tem um espetro de riscas único. Por isso se usa para identificar elementos (espetroscopia atómica)."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual dos fotões tem maior energia?",
+          "opcoes": [
+            "Um fotão de luz vermelha.",
+            "Um fotão de infravermelho.",
+            "Um fotão de luz violeta.",
+            "Um fotão de micro-ondas."
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. Entre estas radiações, a luz violeta tem a maior frequência e, por isso, fotões com maior energia (E = h f).",
+          "mascote_feedback_errado": "A energia do fotão aumenta com a frequência: micro-ondas, infravermelho, vermelho, violeta. O violeta é o mais energético destes."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "As riscas escuras do espetro da luz solar coincidem com as riscas de emissão do sódio. O que se conclui?",
+          "opcoes": [
+            "O Sol não tem sódio.",
+            "A atmosfera do Sol contém sódio, que absorve esses comprimentos de onda.",
+            "A luz solar é um espetro de emissão de riscas.",
+            "O sódio só existe na Terra."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. As riscas de absorção de um elemento aparecem nas mesmas posições que as de emissão. Se estão lá, é porque há átomos desse elemento a absorver a luz.",
+          "mascote_feedback_errado": "As riscas escuras são de absorção. Coincidirem com as de emissão do sódio indica que há sódio na atmosfera solar a absorver essas radiações."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O código de barras.** Cada produto do supermercado tem um código de barras único: um padrão de riscas pretas e brancas que a caixa lê e identifica. Os espetros de riscas são os códigos de barras dos elementos químicos. O espetroscópio é o leitor: basta ver o padrão de riscas para saber que elemento está presente, mesmo numa estrela a milhares de anos-luz."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Espetroscopia atómica e a descoberta do hélio",
+          "texto": "**Aplicações da espetroscopia atómica**\n\nAstronomia: composição química das estrelas e das nebulosas.\n\nQuímica forense: deteção de quantidades vestigiais de elementos (por exemplo, resíduos de disparo ou venenos metálicos).\n\nControlo de qualidade: análise de metais em águas, alimentos e medicamentos.\n\nAnálise de solos e minérios.\n\n**Curiosidade: o hélio foi descoberto no Sol**\n\nEm 1868, durante um eclipse, astrónomos observaram no espetro do Sol uma risca amarela que não correspondia a nenhum elemento conhecido. Chamaram-lhe hélio, do grego \"helios\" (Sol). Só em 1895 o hélio foi encontrado na Terra."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O espetro de emissão de um elemento é:",
+              "opcoes": [
+                "contínuo e igual para todos os elementos.",
+                "descontínuo (de riscas) e característico do elemento.",
+                "formado por riscas escuras sobre um fundo colorido.",
+                "igual ao espetro solar."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os átomos excitados emitem apenas certas radiações, dando riscas coloridas sobre fundo escuro, com um padrão único para cada elemento.",
+              "mascote_feedback_errado": "Os átomos excitados emitem apenas certas radiações, dando riscas coloridas sobre fundo escuro, com um padrão único para cada elemento."
+            },
+            {
+              "pergunta": "Qual é a energia de um fotão com frequência 5,00 × 10¹⁴ Hz?",
+              "opcoes": [
+                "3,32 × 10⁻¹⁹ J",
+                "1,33 × 10⁻⁴⁸ J",
+                "7,54 × 10⁴⁷ J",
+                "6,63 × 10⁻³⁴ J"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "E = h f = 6,63 × 10⁻³⁴ × 5,00 × 10¹⁴ ≈ 3,32 × 10⁻¹⁹ J.",
+              "mascote_feedback_errado": "E = h f = 6,63 × 10⁻³⁴ × 5,00 × 10¹⁴ ≈ 3,32 × 10⁻¹⁹ J."
+            },
+            {
+              "pergunta": "Um espetro de absorção de riscas obtém-se quando:",
+              "opcoes": [
+                "um sólido é aquecido até ficar incandescente.",
+                "luz branca atravessa um gás, que absorve certas radiações.",
+                "átomos excitados emitem luz.",
+                "a luz é refletida num espelho."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O gás absorve as radiações correspondentes às suas transições eletrónicas, e essas faltam no espetro contínuo, surgindo como riscas escuras.",
+              "mascote_feedback_errado": "O gás absorve as radiações correspondentes às suas transições eletrónicas, e essas faltam no espetro contínuo, surgindo como riscas escuras."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "atomo-hidrogenio-al-1-2",
+      "titulo": "O átomo de hidrogénio e o teste de chama; AL 1.2",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_bohr_escada.png",
+          "imagem_legenda": "Átomo de Bohr com níveis como degraus de uma escada.",
+          "texto": "O espetro de emissão do hidrogénio na zona do visível tem apenas quatro riscas: vermelha, azul-esverdeada, azul e violeta. Porque só quatro, e porque exatamente nessas posições? Em 1913, Niels Bohr propôs uma resposta revolucionária: o eletrão só pode ter certos valores de energia, como se estivesse numa escada e não numa rampa.",
+          "mascote_texto": "A ideia chave: energia quantizada. Os eletrões não podem ter \"qualquer\" energia, só alguns valores."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Níveis de energia do hidrogénio",
+          "imagem": "q10_niveis_hidrogenio.png",
+          "imagem_legenda": "Níveis de energia do H com as séries de Lyman, Balmer e Paschen.",
+          "texto_principal": "No átomo de hidrogénio, a energia do eletrão está quantizada: só pode ter certos valores, correspondentes a níveis de energia (n = 1, 2, 3, ...). No estado fundamental, o eletrão está no nível de menor energia (n = 1). Se absorver a energia certa, passa para um nível superior (estado excitado). Ao voltar para um nível inferior, emite um fotão com energia igual à diferença entre os níveis.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Estado fundamental",
+              "explicacao": "n = 1. Energia mais baixa e mais estável."
+            },
+            {
+              "id": "p2",
+              "label": "Estados excitados",
+              "explicacao": "n ≥ 2. O eletrão só lá chega se absorver exatamente a energia da diferença entre níveis."
+            },
+            {
+              "id": "p3",
+              "label": "Energias negativas",
+              "explicacao": "A energia de referência (zero) corresponde ao eletrão separado do núcleo (n = ∞). Os níveis ligados têm energia negativa."
+            },
+            {
+              "id": "p4",
+              "label": "Série de Lyman",
+              "explicacao": "Transições para n = 1. Emissão no ultravioleta."
+            },
+            {
+              "id": "p5",
+              "label": "Série de Balmer",
+              "explicacao": "Transições para n = 2. Emissão no visível (as quatro riscas) e algumas no ultravioleta próximo."
+            },
+            {
+              "id": "p6",
+              "label": "Série de Paschen",
+              "explicacao": "Transições para n = 3. Emissão no infravermelho."
+            },
+            {
+              "id": "p7",
+              "label": "Ionização",
+              "explicacao": "Retirar o eletrão do átomo (passar de n = 1 para n = ∞) exige 2,18 × 10⁻¹⁸ J por átomo: é a energia de ionização do hidrogénio."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "E n = −2,18 × 10⁻¹⁸ / n² J",
+              "significado": "Energia do nível n do átomo de hidrogénio (dado).",
+              "unidades": ""
+            },
+            {
+              "expressao": "E fotão = |E final − E inicial|",
+              "significado": "Emissão: nível mais alto → mais baixo; absorção: o contrário.",
+              "unidades": ""
+            },
+            {
+              "expressao": "λ = h c / E fotão",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na transição do eletrão do hidrogénio de n = 3 para n = 2, qual é o comprimento de onda da luz emitida?",
+          "opcoes": [
+            "122 nm (ultravioleta)",
+            "486 nm (azul)",
+            "657 nm (vermelho)",
+            "1877 nm (infravermelho)"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. ΔE = 2,18 × 10⁻¹⁸ × (1/4 − 1/9) ≈ 3,03 × 10⁻¹⁹ J. λ = h c / ΔE = 6,63 × 10⁻³⁴ × 3,00 × 10⁸ / 3,03 × 10⁻¹⁹ ≈ 6,57 × 10⁻⁷ m. É a risca vermelha do hidrogénio.",
+          "mascote_feedback_errado": "E₃ = −2,18 × 10⁻¹⁸ / 9 e E₂ = −2,18 × 10⁻¹⁸ / 4. A diferença é 3,03 × 10⁻¹⁹ J. λ = h c / E ≈ 657 nm, no vermelho (série de Balmer)."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um eletrão de hidrogénio no estado fundamental pode absorver um fotão de 1,00 × 10⁻¹⁸ J?",
+          "opcoes": [
+            "Sim, e passa para n = 2.",
+            "Não, porque essa energia não corresponde a nenhuma diferença entre níveis.",
+            "Sim, e fica entre n = 1 e n = 2.",
+            "Sim, e é ionizado."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. De n = 1 para n = 2 são precisos 1,64 × 10⁻¹⁸ J. Qualquer valor que não corresponda exatamente a uma diferença entre níveis não é absorvido (e é demasiado pequeno para ionizar).",
+          "mascote_feedback_errado": "A energia está quantizada: o eletrão só absorve fotões com energia exatamente igual a uma diferença entre níveis. 1,00 × 10⁻¹⁸ J não corresponde a nenhuma (n = 1 → 2 exige 1,64 × 10⁻¹⁸ J)."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_espetro_hidrogenio",
+          "titulo": "Faz saltar o eletrão",
+          "instrucao": "Escolhe o nível inicial e o nível final do eletrão do hidrogénio. Vê a energia e o comprimento de onda do fotão e a risca que aparece no espetro.",
+          "controlos": [
+            {
+              "id": "ni",
+              "rotulo": "Nível inicial (n)",
+              "min": 1,
+              "max": 6,
+              "passo": 1,
+              "valor_inicial": 3
+            },
+            {
+              "id": "nf",
+              "rotulo": "Nível final (n)",
+              "min": 1,
+              "max": 6,
+              "passo": 1,
+              "valor_inicial": 2
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Modo",
+              "formula": "dados.t[ni + '-' + nf][0]"
+            },
+            {
+              "rotulo": "Energia do nível inicial",
+              "formula": "dados.t[ni + '-' + nf][1]"
+            },
+            {
+              "rotulo": "Energia do nível final",
+              "formula": "dados.t[ni + '-' + nf][2]"
+            },
+            {
+              "rotulo": "Energia do fotão (ΔE)",
+              "formula": "dados.t[ni + '-' + nf][3]"
+            },
+            {
+              "rotulo": "Comprimento de onda (λ)",
+              "formula": "dados.t[ni + '-' + nf][4]"
+            },
+            {
+              "rotulo": "Série",
+              "formula": "dados.t[ni + '-' + nf][5]"
+            },
+            {
+              "rotulo": "Zona do espetro",
+              "formula": "dados.t[ni + '-' + nf][6]"
+            }
+          ],
+          "pergunta_final": "Quantas transições de emissão dão riscas visíveis entre os níveis 1 a 6? Resposta esperada: quatro, todas para n = 2 (a partir de n = 3, 4, 5 e 6).",
+          "dados": {
+            "t": {
+              "1-1": [
+                "Escolhe dois níveis diferentes",
+                "−2,18 × 10⁻¹⁸ J",
+                "−2,18 × 10⁻¹⁸ J",
+                "—",
+                "—",
+                "—",
+                "—"
+              ],
+              "1-2": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−2,18 × 10⁻¹⁸ J",
+                "−5,45 × 10⁻¹⁹ J",
+                "1,63 × 10⁻¹⁸ J",
+                "122 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "1-3": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−2,18 × 10⁻¹⁸ J",
+                "−2,42 × 10⁻¹⁹ J",
+                "1,94 × 10⁻¹⁸ J",
+                "103 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "1-4": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−2,18 × 10⁻¹⁸ J",
+                "−1,36 × 10⁻¹⁹ J",
+                "2,04 × 10⁻¹⁸ J",
+                "97,3 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "1-5": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−2,18 × 10⁻¹⁸ J",
+                "−8,72 × 10⁻²⁰ J",
+                "2,09 × 10⁻¹⁸ J",
+                "95 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "1-6": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−2,18 × 10⁻¹⁸ J",
+                "−6,06 × 10⁻²⁰ J",
+                "2,12 × 10⁻¹⁸ J",
+                "93,8 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "2-1": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−5,45 × 10⁻¹⁹ J",
+                "−2,18 × 10⁻¹⁸ J",
+                "1,63 × 10⁻¹⁸ J",
+                "122 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "2-2": [
+                "Escolhe dois níveis diferentes",
+                "−5,45 × 10⁻¹⁹ J",
+                "−5,45 × 10⁻¹⁹ J",
+                "—",
+                "—",
+                "—",
+                "—"
+              ],
+              "2-3": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−5,45 × 10⁻¹⁹ J",
+                "−2,42 × 10⁻¹⁹ J",
+                "3,03 × 10⁻¹⁹ J",
+                "657 nm",
+                "Balmer",
+                "Visível: risca vermelha"
+              ],
+              "2-4": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−5,45 × 10⁻¹⁹ J",
+                "−1,36 × 10⁻¹⁹ J",
+                "4,09 × 10⁻¹⁹ J",
+                "487 nm",
+                "Balmer",
+                "Visível: risca azul-esverdeada"
+              ],
+              "2-5": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−5,45 × 10⁻¹⁹ J",
+                "−8,72 × 10⁻²⁰ J",
+                "4,58 × 10⁻¹⁹ J",
+                "434 nm",
+                "Balmer",
+                "Visível: risca azul"
+              ],
+              "2-6": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−5,45 × 10⁻¹⁹ J",
+                "−6,06 × 10⁻²⁰ J",
+                "4,84 × 10⁻¹⁹ J",
+                "411 nm",
+                "Balmer",
+                "Visível: risca violeta"
+              ],
+              "3-1": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−2,42 × 10⁻¹⁹ J",
+                "−2,18 × 10⁻¹⁸ J",
+                "1,94 × 10⁻¹⁸ J",
+                "103 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "3-2": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−2,42 × 10⁻¹⁹ J",
+                "−5,45 × 10⁻¹⁹ J",
+                "3,03 × 10⁻¹⁹ J",
+                "657 nm",
+                "Balmer",
+                "Visível: risca vermelha"
+              ],
+              "3-3": [
+                "Escolhe dois níveis diferentes",
+                "−2,42 × 10⁻¹⁹ J",
+                "−2,42 × 10⁻¹⁹ J",
+                "—",
+                "—",
+                "—",
+                "—"
+              ],
+              "3-4": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−2,42 × 10⁻¹⁹ J",
+                "−1,36 × 10⁻¹⁹ J",
+                "1,06 × 10⁻¹⁹ J",
+                "1880 nm",
+                "Paschen",
+                "Infravermelho (risca invisível)"
+              ],
+              "3-5": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−2,42 × 10⁻¹⁹ J",
+                "−8,72 × 10⁻²⁰ J",
+                "1,55 × 10⁻¹⁹ J",
+                "1280 nm",
+                "Paschen",
+                "Infravermelho (risca invisível)"
+              ],
+              "3-6": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−2,42 × 10⁻¹⁹ J",
+                "−6,06 × 10⁻²⁰ J",
+                "1,82 × 10⁻¹⁹ J",
+                "1090 nm",
+                "Paschen",
+                "Infravermelho (risca invisível)"
+              ],
+              "4-1": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−1,36 × 10⁻¹⁹ J",
+                "−2,18 × 10⁻¹⁸ J",
+                "2,04 × 10⁻¹⁸ J",
+                "97,3 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "4-2": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−1,36 × 10⁻¹⁹ J",
+                "−5,45 × 10⁻¹⁹ J",
+                "4,09 × 10⁻¹⁹ J",
+                "487 nm",
+                "Balmer",
+                "Visível: risca azul-esverdeada"
+              ],
+              "4-3": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−1,36 × 10⁻¹⁹ J",
+                "−2,42 × 10⁻¹⁹ J",
+                "1,06 × 10⁻¹⁹ J",
+                "1880 nm",
+                "Paschen",
+                "Infravermelho (risca invisível)"
+              ],
+              "4-4": [
+                "Escolhe dois níveis diferentes",
+                "−1,36 × 10⁻¹⁹ J",
+                "−1,36 × 10⁻¹⁹ J",
+                "—",
+                "—",
+                "—",
+                "—"
+              ],
+              "4-5": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−1,36 × 10⁻¹⁹ J",
+                "−8,72 × 10⁻²⁰ J",
+                "4,91 × 10⁻²⁰ J",
+                "4060 nm",
+                "Outra série (infravermelho)",
+                "Infravermelho (risca invisível)"
+              ],
+              "4-6": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−1,36 × 10⁻¹⁹ J",
+                "−6,06 × 10⁻²⁰ J",
+                "7,57 × 10⁻²⁰ J",
+                "2630 nm",
+                "Outra série (infravermelho)",
+                "Infravermelho (risca invisível)"
+              ],
+              "5-1": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−8,72 × 10⁻²⁰ J",
+                "−2,18 × 10⁻¹⁸ J",
+                "2,09 × 10⁻¹⁸ J",
+                "95 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "5-2": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−8,72 × 10⁻²⁰ J",
+                "−5,45 × 10⁻¹⁹ J",
+                "4,58 × 10⁻¹⁹ J",
+                "434 nm",
+                "Balmer",
+                "Visível: risca azul"
+              ],
+              "5-3": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−8,72 × 10⁻²⁰ J",
+                "−2,42 × 10⁻¹⁹ J",
+                "1,55 × 10⁻¹⁹ J",
+                "1280 nm",
+                "Paschen",
+                "Infravermelho (risca invisível)"
+              ],
+              "5-4": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−8,72 × 10⁻²⁰ J",
+                "−1,36 × 10⁻¹⁹ J",
+                "4,91 × 10⁻²⁰ J",
+                "4060 nm",
+                "Outra série (infravermelho)",
+                "Infravermelho (risca invisível)"
+              ],
+              "5-5": [
+                "Escolhe dois níveis diferentes",
+                "−8,72 × 10⁻²⁰ J",
+                "−8,72 × 10⁻²⁰ J",
+                "—",
+                "—",
+                "—",
+                "—"
+              ],
+              "5-6": [
+                "Absorção (o eletrão sobe e absorve um fotão)",
+                "−8,72 × 10⁻²⁰ J",
+                "−6,06 × 10⁻²⁰ J",
+                "2,66 × 10⁻²⁰ J",
+                "7460 nm",
+                "Outra série (infravermelho)",
+                "Infravermelho (risca invisível)"
+              ],
+              "6-1": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−6,06 × 10⁻²⁰ J",
+                "−2,18 × 10⁻¹⁸ J",
+                "2,12 × 10⁻¹⁸ J",
+                "93,8 nm",
+                "Lyman",
+                "Ultravioleta (risca invisível)"
+              ],
+              "6-2": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−6,06 × 10⁻²⁰ J",
+                "−5,45 × 10⁻¹⁹ J",
+                "4,84 × 10⁻¹⁹ J",
+                "411 nm",
+                "Balmer",
+                "Visível: risca violeta"
+              ],
+              "6-3": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−6,06 × 10⁻²⁰ J",
+                "−2,42 × 10⁻¹⁹ J",
+                "1,82 × 10⁻¹⁹ J",
+                "1090 nm",
+                "Paschen",
+                "Infravermelho (risca invisível)"
+              ],
+              "6-4": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−6,06 × 10⁻²⁰ J",
+                "−1,36 × 10⁻¹⁹ J",
+                "7,57 × 10⁻²⁰ J",
+                "2630 nm",
+                "Outra série (infravermelho)",
+                "Infravermelho (risca invisível)"
+              ],
+              "6-5": [
+                "Emissão (o eletrão desce e emite um fotão)",
+                "−6,06 × 10⁻²⁰ J",
+                "−8,72 × 10⁻²⁰ J",
+                "2,66 × 10⁻²⁰ J",
+                "7460 nm",
+                "Outra série (infravermelho)",
+                "Infravermelho (risca invisível)"
+              ],
+              "6-6": [
+                "Escolhe dois níveis diferentes",
+                "−6,06 × 10⁻²⁰ J",
+                "−6,06 × 10⁻²⁰ J",
+                "—",
+                "—",
+                "—",
+                "—"
+              ]
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A escada e a rampa.** Numa rampa podes parar a qualquer altura. Numa escada, só podes estar num degrau: nunca a meio caminho entre dois. O eletrão do hidrogénio vive numa escada. Para subir, precisa de receber exatamente a energia que falta até outro degrau. Quando desce, liberta exatamente a energia da diferença entre os degraus, sob a forma de um fotão. Como os degraus são sempre os mesmos, as cores emitidas são sempre as mesmas: as riscas do espetro."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 1.2",
+          "titulo": "Teste de chama",
+          "objetivo": "Identificar elementos químicos em amostras desconhecidas de sais, usando testes de chama, e relacionar a cor da chama com a emissão de radiação por átomos excitados.",
+          "material": [
+            "Bico de Bunsen (ou lamparina) com chama azul, não luminosa",
+            "Ansa de platina ou de níquel-crómio (ou palitos de madeira humedecidos, ou pulverizador)",
+            "Ácido clorídrico diluído, para limpar a ansa",
+            "Vidros de relógio com amostras de sais: cloreto de lítio, de sódio, de potássio, de cálcio, de estrôncio, de bário e de cobre(II)",
+            "Amostras desconhecidas",
+            "Vidro de cobalto (azul), opcional",
+            "Espetroscópio de bolso, opcional",
+            "Óculos de proteção e luvas"
+          ],
+          "procedimento": [
+            "Limpar a ansa mergulhando-a em ácido clorídrico diluído e levando-a à chama até esta deixar de ter cor.",
+            "Humedecer a ansa, tocar numa pequena quantidade do sal e levá-la à zona mais quente da chama.",
+            "Observar e registar a cor da chama.",
+            "Limpar a ansa antes de cada nova amostra.",
+            "Repetir com as amostras desconhecidas e identificar o elemento por comparação.",
+            "Se houver espetroscópio de bolso, observar as riscas de emissão de alguns sais."
+          ],
+          "tratamento_de_dados": "Cores características (elemento metálico responsável):\n\nLítio: vermelho carmim.\n\nSódio: amarelo-alaranjado intenso.\n\nPotássio: violeta pálido (lilás).\n\nCálcio: vermelho-alaranjado (tijolo).\n\nEstrôncio: vermelho intenso.\n\nBário: verde-amarelado.\n\nCobre: verde-azulado.\n\nComparar as cores das amostras desconhecidas com as das conhecidas.",
+          "conclusao": "Na chama, os eletrões dos átomos metálicos absorvem energia e passam a estados excitados. Ao regressarem a níveis de menor energia, emitem radiação com energias bem definidas, que dão uma cor característica. O teste de chama permite identificar alguns elementos, mas tem limitações: algumas cores são parecidas e a cor intensa do sódio pode esconder a de outros elementos.",
+          "erros_comuns": [
+            "Não limpar a ansa entre amostras (contaminação, sobretudo por sódio).",
+            "Usar chama luminosa (amarela), que dificulta a observação.",
+            "Pensar que é o ião cloreto que dá a cor: a cor deve-se ao elemento metálico.",
+            "Confundir o vermelho do lítio, do estrôncio e do cálcio sem comparar com padrões."
+          ],
+          "seguranca": "Óculos de proteção, cabelo apanhado, afastar materiais inflamáveis. Os sais de bário e de estrôncio são tóxicos: não tocar com as mãos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na série de Balmer do hidrogénio, as transições terminam no nível:",
+              "opcoes": [
+                "n = 1",
+                "n = 2",
+                "n = 3",
+                "n = ∞"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A série de Balmer corresponde a transições de níveis superiores para n = 2, e inclui as riscas visíveis.",
+              "mascote_feedback_errado": "A série de Balmer corresponde a transições de níveis superiores para n = 2, e inclui as riscas visíveis."
+            },
+            {
+              "pergunta": "A cor característica da chama de um sal de sódio é:",
+              "opcoes": [
+                "verde.",
+                "violeta.",
+                "amarela intensa.",
+                "vermelha."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "O sódio dá uma chama amarelo-alaranjada muito intensa. É a cor dos antigos candeeiros de rua de sódio.",
+              "mascote_feedback_errado": "O sódio dá uma chama amarelo-alaranjada muito intensa. É a cor dos antigos candeeiros de rua de sódio."
+            },
+            {
+              "pergunta": "No teste de chama, a cor observada deve-se:",
+              "opcoes": [
+                "à combustão do sal.",
+                "à emissão de radiação quando eletrões excitados regressam a níveis de menor energia.",
+                "à absorção de luz pelo bico de Bunsen.",
+                "ao ião cloreto presente em todos os sais."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A energia da chama excita os eletrões. Ao regressarem a níveis inferiores, emitem fotões com energias características, que vemos como cor.",
+              "mascote_feedback_errado": "A energia da chama excita os eletrões. Ao regressarem a níveis inferiores, emitem fotões com energias características, que vemos como cor."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "modelo-quantico-orbitais",
+      "titulo": "Modelo quântico: nuvem eletrónica, orbitais e energia de remoção",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_nuvem_eletronica.png",
+          "imagem_legenda": "Nuvem eletrónica difusa à volta de um núcleo.",
+          "texto": "O modelo de Bohr, com eletrões em órbitas circulares como planetas, explicava bem o hidrogénio. Mas falhava em todos os outros átomos. A partir de 1925, a mecânica quântica mostrou que não faz sentido perguntar \"onde está o eletrão\" com exatidão. Só se pode saber onde é mais provável encontrá-lo. O eletrão deixou de ter órbita e passou a ter uma nuvem.",
+          "mascote_texto": "As orbitais parecem estranhas, mas a ideia base é simples: são zonas onde é muito provável encontrar o eletrão."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Orbitais s, p e d",
+          "imagem": "q10_orbitais_spd.png",
+          "imagem_legenda": "Formas das orbitais s, p (três) e d.",
+          "texto_principal": "No modelo atual (modelo da nuvem eletrónica), os eletrões são descritos por orbitais: funções que indicam a probabilidade de encontrar o eletrão em cada zona à volta do núcleo. As orbitais agrupam-se em níveis (n = 1, 2, 3...) e subníveis (s, p, d, f).",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Nuvem eletrónica",
+              "explicacao": "Representação da probabilidade de encontrar o eletrão. Onde a nuvem é mais densa, é mais provável encontrá-lo."
+            },
+            {
+              "id": "p2",
+              "label": "Orbital s",
+              "explicacao": "Forma esférica. Uma por nível (1s, 2s, 3s...). A 2s é maior do que a 1s."
+            },
+            {
+              "id": "p3",
+              "label": "Orbitais p",
+              "explicacao": "Forma de haltere, orientadas segundo os eixos x, y e z. Três por nível, a partir de n = 2."
+            },
+            {
+              "id": "p4",
+              "label": "Orbitais d",
+              "explicacao": "Cinco por nível, a partir de n = 3, com formas mais complexas."
+            },
+            {
+              "id": "p5",
+              "label": "Orbitais degeneradas",
+              "explicacao": "Orbitais do mesmo subnível (por exemplo, as três 2p) têm a mesma energia."
+            },
+            {
+              "id": "p6",
+              "label": "Capacidade",
+              "explicacao": "Cada orbital comporta no máximo 2 eletrões. Subnível s: 2 eletrões; p: 6; d: 10."
+            },
+            {
+              "id": "p7",
+              "label": "Átomos polieletrónicos",
+              "explicacao": "Os eletrões são atraídos pelo núcleo e repelidos pelos outros eletrões. Por isso, nos átomos com mais de um eletrão, a energia depende do nível e do subnível: 2s tem menor energia do que 2p."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Orbitais por subnível: s = 1; p = 3; d = 5",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Eletrões máximos por subnível: s = 2; p = 6; d = 10",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Energia de remoção eletrónica",
+          "imagem": "q10_espetro_fotoeletronico.png",
+          "imagem_legenda": "Espetro fotoeletrónico do néon com três picos.",
+          "texto_principal": "A energia de remoção eletrónica é a energia mínima necessária para retirar um eletrão de um átomo (em fase gasosa). Pode medir-se por espetroscopia fotoeletrónica: incide-se radiação no átomo e mede-se a energia dos eletrões arrancados. Os resultados mostram grupos de eletrões com energias diferentes, que confirmam a existência de níveis e subníveis.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Um pico por subnível",
+              "explicacao": "Cada pico corresponde aos eletrões de um subnível."
+            },
+            {
+              "id": "p2",
+              "label": "Posição do pico",
+              "explicacao": "Energia de remoção. Eletrões mais próximos do núcleo (1s) são mais difíceis de remover: maior energia de remoção."
+            },
+            {
+              "id": "p3",
+              "label": "Altura do pico",
+              "explicacao": "Proporcional ao número de eletrões desse subnível. No néon, o pico 2p é três vezes maior do que o 2s (6 eletrões contra 2)."
+            },
+            {
+              "id": "p4",
+              "label": "Eletrões de valência",
+              "explicacao": "Os de menor energia de remoção, mais afastados do núcleo. São os que participam nas ligações químicas."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quantos eletrões pode conter, no máximo, o subnível 3d?",
+          "opcoes": [
+            "2",
+            "6",
+            "10",
+            "18"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. O subnível d tem 5 orbitais, cada uma com até 2 eletrões: 10 eletrões.",
+          "mascote_feedback_errado": "O subnível d tem 5 orbitais. Com 2 eletrões por orbital, cabem 10 eletrões."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "No espetro fotoeletrónico do oxigénio, qual é o subnível com eletrões de maior energia de remoção?",
+          "opcoes": [
+            "2p",
+            "2s",
+            "1s",
+            "Todos iguais"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. Os eletrões 1s estão mais perto do núcleo e são mais fortemente atraídos: é preciso mais energia para os remover.",
+          "mascote_feedback_errado": "Quanto mais perto do núcleo, mais atraído está o eletrão e maior a energia de remoção. No oxigénio, são os eletrões 1s."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A fotografia de longa exposição de uma abelha.** Imagina que tiras uma fotografia com uma exposição de um minuto a uma abelha que voa à volta de uma flor. Na foto, não vês a abelha numa posição: vês uma mancha difusa, mais densa onde a abelha passou mais vezes. Essa mancha é como a orbital: não diz onde o eletrão está num instante, mas mostra onde é mais provável encontrá-lo. E, tal como a abelha, o eletrão pode aparecer longe da flor, só que com menos probabilidade."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Do modelo de Bohr ao modelo quântico",
+          "texto": "**Porque é que o modelo de Bohr foi substituído**\n\nO modelo de Bohr previa com rigor o espetro do hidrogénio, mas não conseguia prever os espetros de átomos com mais eletrões nem explicar a forma das moléculas. O modelo quântico explica tudo isto e é o modelo atual.\n\n**Orbitais são distribuições de probabilidade**\n\nUma orbital não é um \"caminho\" nem uma \"caixa\". As representações das orbitais (esferas, halteres) mostram a região onde há, por exemplo, 90 % de probabilidade de encontrar o eletrão.\n\n**O que não precisas de saber no 10.º ano**\n\nOs números quânticos (n, l, m l, m s) não fazem parte das Aprendizagens Essenciais do 10.º ano. Basta trabalhar com níveis, subníveis e orbitais."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "As três orbitais 2p de um átomo:",
+              "opcoes": [
+                "têm energias diferentes.",
+                "são degeneradas (têm a mesma energia).",
+                "têm forma esférica.",
+                "podem conter até 2 eletrões no total."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "As orbitais do mesmo subnível têm a mesma energia (são degeneradas). As três orbitais 2p podem conter até 6 eletrões.",
+              "mascote_feedback_errado": "As orbitais do mesmo subnível têm a mesma energia (são degeneradas). As três orbitais 2p podem conter até 6 eletrões."
+            },
+            {
+              "pergunta": "No modelo da nuvem eletrónica, uma orbital representa:",
+              "opcoes": [
+                "a trajetória exata do eletrão.",
+                "uma zona onde é elevada a probabilidade de encontrar o eletrão.",
+                "o núcleo do átomo.",
+                "a energia de ionização."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "As orbitais descrevem a probabilidade de encontrar o eletrão, não trajetórias definidas.",
+              "mascote_feedback_errado": "As orbitais descrevem a probabilidade de encontrar o eletrão, não trajetórias definidas."
+            },
+            {
+              "pergunta": "Num espetro fotoeletrónico, a altura de cada pico indica:",
+              "opcoes": [
+                "a energia de remoção.",
+                "o número relativo de eletrões nesse subnível.",
+                "o número atómico.",
+                "a carga do núcleo."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A posição do pico dá a energia de remoção; a altura é proporcional ao número de eletrões do subnível.",
+              "mascote_feedback_errado": "A posição do pico dá a energia de remoção; a altura é proporcional ao número de eletrões do subnível."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "configuracoes-eletronicas",
+      "titulo": "Configurações eletrónicas",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q10_hotel_eletroes.png",
+          "imagem_legenda": "Hotel estilizado com andares (níveis) e quartos (orbitais).",
+          "texto": "Os eletrões de um átomo não se espalham ao acaso. Ocupam as orbitais segundo três regras, como hóspedes de um hotel com regras rígidas: primeiro os quartos mais baratos, no máximo duas pessoas por quarto e, entre quartos iguais, cada um prefere ficar sozinho. Com estas três regras escreves a configuração eletrónica de qualquer átomo até ao vanádio.",
+          "mascote_texto": "Aprende de cor a ordem de preenchimento até 4s e 3d. É tudo o que precisas no 10.º ano."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "As três regras de preenchimento",
+          "imagem": "q10_ordem_preenchimento.png",
+          "imagem_legenda": "Diagrama de energias das orbitais até 3d e regra das diagonais.",
+          "texto_principal": "A configuração eletrónica de um átomo indica como os seus eletrões estão distribuídos pelas orbitais, no estado fundamental. Obtém-se seguindo três regras.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Princípio da Construção (Aufbau)",
+              "explicacao": "Os eletrões ocupam primeiro as orbitais de menor energia. Ordem até Z = 23: 1s 2s 2p 3s 3p 4s 3d."
+            },
+            {
+              "id": "p2",
+              "label": "Princípio de Exclusão de Pauli",
+              "explicacao": "Cada orbital tem no máximo 2 eletrões, e com spins opostos (representados por setas em sentidos opostos)."
+            },
+            {
+              "id": "p3",
+              "label": "Maximização do número de eletrões desemparelhados (regra de Hund)",
+              "explicacao": "Em orbitais degeneradas, os eletrões distribuem-se primeiro um por orbital, com o mesmo spin, e só depois emparelham."
+            },
+            {
+              "id": "p4",
+              "label": "Notação spd",
+              "explicacao": "1s² 2s² 2p⁶... O número em expoente é o número de eletrões no subnível."
+            },
+            {
+              "id": "p5",
+              "label": "Atenção ao 4s e ao 3d",
+              "explicacao": "A orbital 4s preenche-se antes das 3d."
+            },
+            {
+              "id": "p6",
+              "label": "Eletrões de valência",
+              "explicacao": "Eletrões do nível mais externo (e, nos elementos do bloco d, também os d). Determinam o comportamento químico."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "1s → 2s → 2p → 3s → 3p → 4s → 3d",
+              "significado": "Ordem de preenchimento (até Z = 23).",
+              "unidades": ""
+            },
+            {
+              "expressao": "C (Z = 6): 1s² 2s² 2p²; Na (Z = 11): 1s² 2s² 2p⁶ 3s¹",
+              "significado": "Exemplos.",
+              "unidades": ""
+            },
+            {
+              "expressao": "K (Z = 19): 1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹; V (Z = 23): 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d³",
+              "significado": "Exemplos.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a configuração eletrónica do enxofre (Z = 16) no estado fundamental?",
+          "opcoes": [
+            "1s² 2s² 2p⁶ 3s² 3p⁴",
+            "1s² 2s² 2p⁶ 3s² 3p⁶",
+            "1s² 2s² 2p⁸ 3s² 3p²",
+            "1s² 2s² 2p⁶ 3p⁶"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Certo. 2 + 2 + 6 + 2 + 4 = 16. Os 4 eletrões 3p distribuem-se: dois emparelhados numa orbital e dois desemparelhados nas outras duas.",
+          "mascote_feedback_errado": "Preenche pela ordem 1s, 2s, 2p, 3s, 3p, respeitando os máximos (s: 2; p: 6). 1s² 2s² 2p⁶ 3s² e sobram 4 eletrões para 3p: 3p⁴."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quantos eletrões desemparelhados tem o átomo de azoto (Z = 7) no estado fundamental?",
+          "opcoes": [
+            "0",
+            "1",
+            "3",
+            "5"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Muito bem. 1s² 2s² 2p³. Pela regra de Hund, os 3 eletrões 2p ocupam cada um a sua orbital, todos desemparelhados.",
+          "mascote_feedback_errado": "A configuração é 1s² 2s² 2p³. Nas três orbitais 2p degeneradas, os três eletrões ficam um em cada orbital (maximização de eletrões desemparelhados): 3 desemparelhados."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_configuracao",
+          "titulo": "Preenche as orbitais",
+          "instrucao": "Escolhe um elemento de Z = 1 a Z = 23 com o cursor (cada passo acrescenta ou retira um eletrão) e vê as orbitais a serem preenchidas.",
+          "controlos": [
+            {
+              "id": "Z",
+              "rotulo": "Número atómico (Z)",
+              "min": 1,
+              "max": 23,
+              "passo": 1,
+              "valor_inicial": 6
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Elemento",
+              "formula": "dados.c[Z - 1].elemento"
+            },
+            {
+              "rotulo": "Configuração eletrónica",
+              "formula": "dados.c[Z - 1].config"
+            },
+            {
+              "rotulo": "Diagrama de caixas",
+              "formula": "dados.c[Z - 1].caixas"
+            },
+            {
+              "rotulo": "Eletrões desemparelhados",
+              "formula": "dados.c[Z - 1].desemparelhados"
+            },
+            {
+              "rotulo": "Eletrões de valência",
+              "formula": "dados.c[Z - 1].valencia"
+            },
+            {
+              "rotulo": "Regra usada no último eletrão",
+              "formula": "dados.c[Z - 1].regra"
+            }
+          ],
+          "pergunta_final": "No potássio (Z = 19), o 19.º eletrão vai para 3d ou para 4s? Resposta esperada: para 4s, porque tem menor energia do que 3d.",
+          "dados": {
+            "c": [
+              {
+                "elemento": "H: hidrogénio (Z = 1)",
+                "config": "1s¹",
+                "caixas": "1s [↑ ]",
+                "desemparelhados": "1",
+                "valencia": "1 (nível de valência n = 1)",
+                "regra": "Princípio da Construção: o eletrão entra no subnível de menor energia ainda disponível, o 1s."
+              },
+              {
+                "elemento": "He: hélio (Z = 2)",
+                "config": "1s²",
+                "caixas": "1s [↑↓]",
+                "desemparelhados": "0",
+                "valencia": "2 (nível de valência n = 1)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 1s que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "Li: lítio (Z = 3)",
+                "config": "1s² 2s¹",
+                "caixas": "1s [↑↓]  2s [↑ ]",
+                "desemparelhados": "1",
+                "valencia": "1 (nível de valência n = 2)",
+                "regra": "Princípio da Construção: o eletrão entra no subnível de menor energia ainda disponível, o 2s."
+              },
+              {
+                "elemento": "Be: berílio (Z = 4)",
+                "config": "1s² 2s²",
+                "caixas": "1s [↑↓]  2s [↑↓]",
+                "desemparelhados": "0",
+                "valencia": "2 (nível de valência n = 2)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 2s que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "B: boro (Z = 5)",
+                "config": "1s² 2s² 2p¹",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑ ][   ][   ]",
+                "desemparelhados": "1",
+                "valencia": "3 (nível de valência n = 2)",
+                "regra": "Princípio da Construção: o eletrão entra no subnível de menor energia ainda disponível, o 2p."
+              },
+              {
+                "elemento": "C: carbono (Z = 6)",
+                "config": "1s² 2s² 2p²",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑ ][↑ ][   ]",
+                "desemparelhados": "2",
+                "valencia": "4 (nível de valência n = 2)",
+                "regra": "Maximização de eletrões desemparelhados (regra de Hund): nas orbitais 2p degeneradas, o eletrão ocupa uma orbital ainda vazia, com o mesmo spin."
+              },
+              {
+                "elemento": "N: azoto (Z = 7)",
+                "config": "1s² 2s² 2p³",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑ ][↑ ][↑ ]",
+                "desemparelhados": "3",
+                "valencia": "5 (nível de valência n = 2)",
+                "regra": "Maximização de eletrões desemparelhados (regra de Hund): nas orbitais 2p degeneradas, o eletrão ocupa uma orbital ainda vazia, com o mesmo spin."
+              },
+              {
+                "elemento": "O: oxigénio (Z = 8)",
+                "config": "1s² 2s² 2p⁴",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑ ][↑ ]",
+                "desemparelhados": "2",
+                "valencia": "6 (nível de valência n = 2)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 2p que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "F: flúor (Z = 9)",
+                "config": "1s² 2s² 2p⁵",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑ ]",
+                "desemparelhados": "1",
+                "valencia": "7 (nível de valência n = 2)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 2p que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "Ne: néon (Z = 10)",
+                "config": "1s² 2s² 2p⁶",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]",
+                "desemparelhados": "0",
+                "valencia": "8 (nível de valência n = 2)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 2p que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "Na: sódio (Z = 11)",
+                "config": "1s² 2s² 2p⁶ 3s¹",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑ ]",
+                "desemparelhados": "1",
+                "valencia": "1 (nível de valência n = 3)",
+                "regra": "Princípio da Construção: o eletrão entra no subnível de menor energia ainda disponível, o 3s."
+              },
+              {
+                "elemento": "Mg: magnésio (Z = 12)",
+                "config": "1s² 2s² 2p⁶ 3s²",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]",
+                "desemparelhados": "0",
+                "valencia": "2 (nível de valência n = 3)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 3s que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "Al: alumínio (Z = 13)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p¹",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑ ][   ][   ]",
+                "desemparelhados": "1",
+                "valencia": "3 (nível de valência n = 3)",
+                "regra": "Princípio da Construção: o eletrão entra no subnível de menor energia ainda disponível, o 3p."
+              },
+              {
+                "elemento": "Si: silício (Z = 14)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p²",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑ ][↑ ][   ]",
+                "desemparelhados": "2",
+                "valencia": "4 (nível de valência n = 3)",
+                "regra": "Maximização de eletrões desemparelhados (regra de Hund): nas orbitais 3p degeneradas, o eletrão ocupa uma orbital ainda vazia, com o mesmo spin."
+              },
+              {
+                "elemento": "P: fósforo (Z = 15)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p³",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑ ][↑ ][↑ ]",
+                "desemparelhados": "3",
+                "valencia": "5 (nível de valência n = 3)",
+                "regra": "Maximização de eletrões desemparelhados (regra de Hund): nas orbitais 3p degeneradas, o eletrão ocupa uma orbital ainda vazia, com o mesmo spin."
+              },
+              {
+                "elemento": "S: enxofre (Z = 16)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁴",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑↓][↑ ][↑ ]",
+                "desemparelhados": "2",
+                "valencia": "6 (nível de valência n = 3)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 3p que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "Cl: cloro (Z = 17)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁵",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑↓][↑↓][↑ ]",
+                "desemparelhados": "1",
+                "valencia": "7 (nível de valência n = 3)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 3p que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "Ar: árgon (Z = 18)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁶",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑↓][↑↓][↑↓]",
+                "desemparelhados": "0",
+                "valencia": "8 (nível de valência n = 3)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 3p que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "K: potássio (Z = 19)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s¹",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑↓][↑↓][↑↓]  4s [↑ ]",
+                "desemparelhados": "1",
+                "valencia": "1 (nível de valência n = 4)",
+                "regra": "Princípio da Construção: o eletrão entra no subnível de menor energia ainda disponível, o 4s. A 4s tem menor energia do que a 3d, por isso preenche-se primeiro."
+              },
+              {
+                "elemento": "Ca: cálcio (Z = 20)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s²",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑↓][↑↓][↑↓]  4s [↑↓]",
+                "desemparelhados": "0",
+                "valencia": "2 (nível de valência n = 4)",
+                "regra": "Princípio de Exclusão de Pauli: o eletrão emparelha numa orbital 4s que já tinha um eletrão, com spin oposto (máximo 2 por orbital)."
+              },
+              {
+                "elemento": "Sc: escândio (Z = 21)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑↓][↑↓][↑↓]  4s [↑↓]  3d [↑ ][   ][   ][   ][   ]",
+                "desemparelhados": "1",
+                "valencia": "3 (nível de valência n = 4)",
+                "regra": "Princípio da Construção: o eletrão entra no subnível de menor energia ainda disponível, o 3d."
+              },
+              {
+                "elemento": "Ti: titânio (Z = 22)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d²",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑↓][↑↓][↑↓]  4s [↑↓]  3d [↑ ][↑ ][   ][   ][   ]",
+                "desemparelhados": "2",
+                "valencia": "4 (nível de valência n = 4)",
+                "regra": "Maximização de eletrões desemparelhados (regra de Hund): nas orbitais 3d degeneradas, o eletrão ocupa uma orbital ainda vazia, com o mesmo spin."
+              },
+              {
+                "elemento": "V: vanádio (Z = 23)",
+                "config": "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d³",
+                "caixas": "1s [↑↓]  2s [↑↓]  2p [↑↓][↑↓][↑↓]  3s [↑↓]  3p [↑↓][↑↓][↑↓]  4s [↑↓]  3d [↑ ][↑ ][↑ ][   ][   ]",
+                "desemparelhados": "3",
+                "valencia": "5 (nível de valência n = 4)",
+                "regra": "Maximização de eletrões desemparelhados (regra de Hund): nas orbitais 3d degeneradas, o eletrão ocupa uma orbital ainda vazia, com o mesmo spin."
+              }
+            ]
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Os lugares no autocarro.** Quando as pessoas entram num autocarro vazio, sentam-se primeiro nos bancos mais perto da porta (menor energia: Aufbau). Cada banco tem dois lugares (Pauli). E ninguém se senta ao lado de um desconhecido enquanto houver bancos completamente livres na mesma fila (Hund): só quando todos os bancos da fila têm uma pessoa é que começam a sentar-se aos pares."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Iões, configuração abreviada e o limite Z = 23",
+          "texto": "**Configurações de iões**\n\nPara escrever a configuração de um ião, parte-se do átomo neutro e retiram-se ou acrescentam-se eletrões. Ex.: Na⁺ (Z = 11, 10 eletrões): 1s² 2s² 2p⁶, igual à do néon. Cl⁻ (Z = 17, 18 eletrões): 1s² 2s² 2p⁶ 3s² 3p⁶, igual à do árgon.\n\n**Configuração abreviada**\n\nPode usar-se o gás nobre anterior: Na: [Ne] 3s¹; K: [Ar] 4s¹. Útil, mas nos exames é preferível escrever a configuração completa se for pedida.\n\n**Porque é que o limite é Z = 23**\n\nA partir do crómio (Z = 24) e do cobre (Z = 29), há exceções à regra de preenchimento. Por isso, no 10.º ano, as configurações são pedidas só até ao vanádio (Z = 23)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é a configuração eletrónica do cálcio (Z = 20)?",
+              "opcoes": [
+                "1s² 2s² 2p⁶ 3s² 3p⁶ 3d²",
+                "1s² 2s² 2p⁶ 3s² 3p⁶ 4s²",
+                "1s² 2s² 2p⁶ 3s² 3p⁸",
+                "1s² 2s² 2p⁶ 3s² 3p⁴ 4s² 3d²"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Depois de 3p⁶ (18 eletrões), os 2 seguintes vão para 4s, que tem menor energia do que 3d.",
+              "mascote_feedback_errado": "Depois de 3p⁶ (18 eletrões), os 2 seguintes vão para 4s, que tem menor energia do que 3d."
+            },
+            {
+              "pergunta": "Qual das configurações viola o Princípio de Exclusão de Pauli?",
+              "opcoes": [
+                "1s² 2s¹",
+                "1s² 2s³",
+                "1s² 2s² 2p¹",
+                "1s¹"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A orbital 2s só pode ter 2 eletrões. 2s³ é impossível.",
+              "mascote_feedback_errado": "A orbital 2s só pode ter 2 eletrões. 2s³ é impossível."
+            },
+            {
+              "pergunta": "A configuração 1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d³ corresponde ao elemento com Z igual a:",
+              "opcoes": [
+                "21",
+                "23",
+                "25",
+                "18"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Soma dos eletrões: 2 + 2 + 6 + 2 + 6 + 2 + 3 = 23. É o vanádio.",
+              "mascote_feedback_errado": "Soma dos eletrões: 2 + 2 + 6 + 2 + 6 + 2 + 3 = 23. É o vanádio."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 2 concluída. Relacionas a energia dos fotões com a frequência, interpretas espetros de emissão e de absorção, explicas o espetro do hidrogénio com níveis de energia, fizeste o teste de chama e escreves configurações eletrónicas até Z = 23. A seguir: a tabela periódica, e porque é que ela tem a forma que tem."
+}

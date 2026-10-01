@@ -1,0 +1,1117 @@
+{
+  "missao_id": "11-acido-base",
+  "id_guiao": "qui11-m3",
+  "titulo": "Reações ácido-base",
+  "disciplina": "quimica",
+  "ano": 11,
+  "imagem": "q11_titulacao.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 2v6l-5 10a2 2 0 0 0 1.8 3h12.4a2 2 0 0 0 1.8-3L15 8V2\"/><path d=\"M8 2h8\"/><path d=\"M6.5 15h11\"/></svg>",
+    "nome": "Mestre do pH"
+  },
+  "secoes": [
+    {
+      "secao_id": "bronsted-lowry",
+      "titulo": "Ácidos e bases segundo Brönsted-Lowry",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_acidos_bases_casa.png",
+          "imagem_legenda": "Vinagre, limão, refrigerante, bicarbonato, detergente e lixívia.",
+          "texto": "Na tua cozinha há ácidos (vinagre, sumo de limão, refrigerantes de cola) e bases (bicarbonato de sódio, detergentes da loiça, lixívia). Durante séculos, os químicos classificavam-nos pelo sabor e pelo efeito em corantes de plantas. Só no século XX se percebeu o que têm realmente em comum: tudo se resume a uma partícula minúscula que passa de uma espécie para outra, o protão.",
+          "mascote_texto": "Na teoria de Brönsted-Lowry, ácido é quem dá o protão e base é quem o recebe. Tudo o resto vem daqui."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Transferência de protões",
+          "imagem": "q11_bronsted_lowry.png",
+          "imagem_legenda": "Transferência do protão em HCl + H₂O e NH₃ + H₂O, com pares conjugados.",
+          "texto_principal": "Segundo Brönsted e Lowry (1923), um ácido é uma espécie que cede protões (H⁺) e uma base é uma espécie que aceita protões. Numa reação ácido-base há sempre transferência de um protão de um ácido para uma base. Quando um ácido cede um protão, transforma-se na sua base conjugada; quando uma base aceita um protão, transforma-se no seu ácido conjugado.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ácido de Brönsted-Lowry",
+              "explicacao": "Dador de protões. Ex.: HCl, CH₃COOH, NH₄⁺."
+            },
+            {
+              "id": "p2",
+              "label": "Base de Brönsted-Lowry",
+              "explicacao": "Aceitador de protões. Ex.: NH₃, OH⁻, CH₃COO⁻."
+            },
+            {
+              "id": "p3",
+              "label": "Par conjugado ácido-base",
+              "explicacao": "Duas espécies que diferem num protão. Ex.: HCl / Cl⁻; NH₄⁺ / NH₃; H₃O⁺ / H₂O; H₂O / OH⁻; CH₃COOH / CH₃COO⁻."
+            },
+            {
+              "id": "p4",
+              "label": "Ião oxónio (H₃O⁺)",
+              "explicacao": "Em água, o protão não fica livre: liga-se a uma molécula de água e forma H₃O⁺."
+            },
+            {
+              "id": "p5",
+              "label": "Espécie anfotérica",
+              "explicacao": "Pode comportar-se como ácido ou como base, conforme a espécie com que reage. Ex.: H₂O, HCO₃⁻, HSO₄⁻."
+            },
+            {
+              "id": "p6",
+              "label": "Ionização e dissociação",
+              "explicacao": "Os ácidos moleculares ionizam-se em água (formam iões ao reagir com a água: HCl + H₂O → H₃O⁺ + Cl⁻). Os hidróxidos iónicos dissociam-se (os iões já existiam no sólido e separam-se: NaOH(s) → Na⁺(aq) + OH⁻(aq))."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "HA + H₂O ⇌ A⁻ + H₃O⁺",
+              "significado": "Ácido.",
+              "unidades": ""
+            },
+            {
+              "expressao": "B + H₂O ⇌ BH⁺ + OH⁻",
+              "significado": "Base.",
+              "unidades": ""
+            },
+            {
+              "expressao": "HA / A⁻ e BH⁺ / B",
+              "significado": "Pares conjugados.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na reação NH₃ + H₂O ⇌ NH₄⁺ + OH⁻, qual é o papel da água?",
+          "opcoes": [
+            "Base, porque aceita um protão.",
+            "Ácido, porque cede um protão ao amoníaco.",
+            "Não participa na reação.",
+            "Oxidante."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. A água cede um protão ao NH₃ e transforma-se em OH⁻ (a sua base conjugada). Com o HCl, pelo contrário, a água aceita um protão. Por isso é anfotérica.",
+          "mascote_feedback_errado": "Segue o protão: passa da água para o amoníaco. Quem cede o protão é o ácido. Aqui a água é o ácido; o par conjugado é H₂O / OH⁻."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a base conjugada do ácido acético, CH₃COOH?",
+          "opcoes": [
+            "CH₃COOH₂⁺",
+            "CH₃COO⁻",
+            "OH⁻",
+            "H₃O⁺"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Retirando um protão ao CH₃COOH, obtém-se o ião acetato, CH₃COO⁻.",
+          "mascote_feedback_errado": "A base conjugada de um ácido obtém-se retirando-lhe um H⁺: CH₃COOH − H⁺ = CH₃COO⁻."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Passar a bola.** Imagina um jogo em que só existe uma bola: o protão. Quem tem a bola e a passa é o ácido. Quem a apanha é a base. Depois do passe, quem a deu ficou sem ela (base conjugada, porque agora pode voltar a apanhar uma) e quem a recebeu ficou com ela (ácido conjugado, porque agora pode passá-la). A água é como um jogador que tanto pode passar como receber, conforme quem estiver à frente: é anfotérica."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "História dos ácidos e bases e ácidos polipróticos",
+          "texto": "**Evolução histórica dos conceitos de ácido e base**\n\nAntiguidade e Idade Média: ácidos azedos, bases (álcalis) escorregadias e amargas.\n\nLavoisier (final do século XVIII): pensava que todos os ácidos tinham oxigénio (o nome \"oxigénio\" significa \"gerador de ácidos\"). Estava errado: o HCl não tem oxigénio.\n\nArrhenius (1887): ácido produz H⁺ em água; base produz OH⁻ em água. Não explicava, por exemplo, a basicidade do amoníaco.\n\nBrönsted e Lowry (1923): ácido dá protões, base aceita protões. Mais geral, e é a teoria usada no secundário.\n\n**Ácidos polipróticos**\n\nAlguns ácidos podem ceder mais do que um protão: o ácido sulfúrico (H₂SO₄) cede dois, o ácido fosfórico (H₃PO₄) três. Cedem-nos um de cada vez, em etapas."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Segundo Brönsted-Lowry, uma base é uma espécie que:",
+              "opcoes": [
+                "cede protões.",
+                "aceita protões.",
+                "cede eletrões.",
+                "produz H₂ em água."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Na teoria protónica, a base é o aceitador de protões.",
+              "mascote_feedback_errado": "Na teoria protónica, a base é o aceitador de protões."
+            },
+            {
+              "pergunta": "Qual dos pares não é um par conjugado ácido-base?",
+              "opcoes": [
+                "HCl / Cl⁻",
+                "NH₄⁺ / NH₃",
+                "H₃O⁺ / OH⁻",
+                "H₂O / OH⁻"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "H₃O⁺ e OH⁻ diferem em dois protões. Os pares conjugados diferem num único protão.",
+              "mascote_feedback_errado": "H₃O⁺ e OH⁻ diferem em dois protões. Os pares conjugados diferem num único protão."
+            },
+            {
+              "pergunta": "O ião hidrogenocarbonato (HCO₃⁻) é anfotérico porque:",
+              "opcoes": [
+                "tem carga negativa.",
+                "pode ceder um protão (formando CO₃²⁻) ou aceitar um protão (formando H₂CO₃).",
+                "é um ácido forte.",
+                "não reage com a água."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Uma espécie anfotérica pode atuar como ácido ou como base. O HCO₃⁻ faz as duas coisas, consoante a espécie com que reage.",
+              "mascote_feedback_errado": "Uma espécie anfotérica pode atuar como ácido ou como base. O HCO₃⁻ faz as duas coisas, consoante a espécie com que reage."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "ph-autoionizacao",
+      "titulo": "pH, autoionização da água e produto iónico",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_escala_ph.png",
+          "imagem_legenda": "Régua de pH colorida.",
+          "texto": "O sumo gástrico do estômago tem pH perto de 1,5. O sangue mantém-se entre 7,35 e 7,45: se sair desta janela, corremos risco de vida. A lixívia tem pH perto de 12. Um número entre 0 e 14 diz-nos tanto sobre uma solução. Mas como é que a água pura, que é neutra, pode ter iões H₃O⁺ e OH⁻? A resposta está numa reação que a água faz consigo própria.",
+          "mascote_texto": "O pH é uma escala logarítmica: um pH que baixa uma unidade corresponde a uma solução dez vezes mais ácida. Não te esqueças disto."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A escala de pH",
+          "imagem": "q11_ph_exemplos.png",
+          "imagem_legenda": "Escala de pH com exemplos do dia a dia.",
+          "texto_principal": "A acidez de uma solução mede-se pela concentração de iões oxónio, [H₃O⁺]. Como estas concentrações variam muito, usa-se a escala de pH (Sørensen, 1909), logarítmica: pH = −log[H₃O⁺].",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Definição",
+              "explicacao": "pH = −log[H₃O⁺], com [H₃O⁺] em mol/dm³."
+            },
+            {
+              "id": "p2",
+              "label": "Inverso",
+              "explicacao": "[H₃O⁺] = 10^(−pH)."
+            },
+            {
+              "id": "p3",
+              "label": "Escala logarítmica",
+              "explicacao": "Cada unidade de pH corresponde a um fator de 10 em [H₃O⁺]. Uma solução de pH 3 tem 10 vezes mais H₃O⁺ do que uma de pH 4, e 100 vezes mais do que uma de pH 5."
+            },
+            {
+              "id": "p4",
+              "label": "A 25 °C",
+              "explicacao": "Solução ácida: pH < 7; neutra: pH = 7; básica: pH > 7."
+            },
+            {
+              "id": "p5",
+              "label": "Algarismos significativos",
+              "explicacao": "O número de casas decimais do pH é igual ao número de algarismos significativos de [H₃O⁺]. Ex.: [H₃O⁺] = 2,5 × 10⁻⁴ mol/dm³ → pH = 3,60."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "pH = −log[H₃O⁺]",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "[H₃O⁺] = 10^(−pH)",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "pOH = −log[OH⁻]",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Autoionização da água",
+          "imagem": "q11_autoionizacao.png",
+          "imagem_legenda": "Autoionização da água e tabela de K w com a temperatura.",
+          "texto_principal": "A água pura tem uma pequeníssima quantidade de iões, porque as suas moléculas reagem entre si: uma cede um protão a outra. É a autoionização da água. A constante deste equilíbrio chama-se produto iónico da água, K w. Na água pura e em qualquer solução aquosa, [H₃O⁺] × [OH⁻] = K w.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Autoionização",
+              "explicacao": "2 H₂O(l) ⇌ H₃O⁺(aq) + OH⁻(aq)."
+            },
+            {
+              "id": "p2",
+              "label": "Produto iónico",
+              "explicacao": "K w = [H₃O⁺][OH⁻]. A 25 °C, K w = 1,00 × 10⁻¹⁴."
+            },
+            {
+              "id": "p3",
+              "label": "Água pura a 25 °C",
+              "explicacao": "[H₃O⁺] = [OH⁻] = 1,00 × 10⁻⁷ mol/dm³ e pH = 7,00."
+            },
+            {
+              "id": "p4",
+              "label": "Soluções ácidas e básicas",
+              "explicacao": "Soluções ácidas: [H₃O⁺] > [OH⁻]. Soluções básicas: [OH⁻] > [H₃O⁺]. Neutras: iguais."
+            },
+            {
+              "id": "p5",
+              "label": "Efeito da temperatura",
+              "explicacao": "A autoionização é endotérmica, por isso K w aumenta com a temperatura. A 60 °C, K w ≈ 9,6 × 10⁻¹⁴ e o pH da água pura é cerca de 6,51. Mas a água continua neutra, porque [H₃O⁺] = [OH⁻]."
+            },
+            {
+              "id": "p6",
+              "label": "Atenção",
+              "explicacao": "\"pH 7 = neutro\" só é verdade a 25 °C."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "K w = [H₃O⁺] × [OH⁻] = 1,00 × 10⁻¹⁴",
+              "significado": "A 25 °C.",
+              "unidades": ""
+            },
+            {
+              "expressao": "pH + pOH = 14,00",
+              "significado": "A 25 °C.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é o pH de uma solução de hidróxido de sódio 0,010 mol/dm³, a 25 °C? (o NaOH dissocia-se completamente)",
+          "opcoes": [
+            "2,00",
+            "7,00",
+            "12,00",
+            "0,010"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. [OH⁻] = 0,010 mol/dm³, pOH = 2,00 e pH = 14,00 − 2,00 = 12,00.",
+          "mascote_feedback_errado": "O NaOH dá [OH⁻] = 1,0 × 10⁻² mol/dm³. [H₃O⁺] = K w / [OH⁻] = 1,0 × 10⁻¹². pH = 12,00."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O pH de uma chuva passou de 5,6 para 4,6. A concentração de H₃O⁺:",
+          "opcoes": [
+            "aumentou 1 vez.",
+            "aumentou 10 vezes.",
+            "diminuiu 10 vezes.",
+            "aumentou 1,2 vezes."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Descer uma unidade de pH corresponde a multiplicar [H₃O⁺] por 10.",
+          "mascote_feedback_errado": "A escala é logarítmica: 10^(−4,6) / 10^(−5,6) = 10¹ = 10. A chuva ficou dez vezes mais ácida."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_escala_ph",
+          "titulo": "Mede o pH",
+          "instrucao": "Escolhe uma solução, ou escolhe \"Usar o cursor\" e mexe no valor de [H₃O⁺]. Vê o pH, o pOH, [OH⁻] e a cor de um indicador universal. Depois muda a temperatura da água pura.",
+          "controlos": [
+            {
+              "id": "solucao",
+              "rotulo": "Solução",
+              "opcoes": [
+                {
+                  "valor": "cursor",
+                  "label": "Usar o cursor de [H₃O⁺]"
+                },
+                {
+                  "valor": "gastrico",
+                  "label": "Suco gástrico"
+                },
+                {
+                  "valor": "limao",
+                  "label": "Sumo de limão"
+                },
+                {
+                  "valor": "vinagre",
+                  "label": "Vinagre"
+                },
+                {
+                  "valor": "cafe",
+                  "label": "Café"
+                },
+                {
+                  "valor": "agua",
+                  "label": "Água pura"
+                },
+                {
+                  "valor": "sangue",
+                  "label": "Sangue"
+                },
+                {
+                  "valor": "mar",
+                  "label": "Água do mar"
+                },
+                {
+                  "valor": "bicarbonato",
+                  "label": "Bicarbonato de sódio"
+                },
+                {
+                  "valor": "detergente",
+                  "label": "Detergente amoniacal"
+                },
+                {
+                  "valor": "lixivia",
+                  "label": "Lixívia"
+                }
+              ],
+              "valor_inicial": "vinagre"
+            },
+            {
+              "id": "expoente",
+              "rotulo": "Expoente de [H₃O⁺] = 10^expoente (com \"Usar o cursor\")",
+              "min": -14,
+              "max": 0,
+              "passo": 0.1,
+              "valor_inicial": -3
+            },
+            {
+              "id": "temperatura",
+              "rotulo": "Temperatura da água pura",
+              "opcoes": [
+                {
+                  "valor": 0,
+                  "label": "0 °C"
+                },
+                {
+                  "valor": 25,
+                  "label": "25 °C"
+                },
+                {
+                  "valor": 50,
+                  "label": "50 °C"
+                },
+                {
+                  "valor": 60,
+                  "label": "60 °C"
+                }
+              ],
+              "valor_inicial": 25
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "[H₃O⁺]",
+              "formula": "(function () { var h = solucao === 'cursor' ? Math.pow(10, expoente) : Math.pow(10, -dados.ph[solucao]); var pH = -Math.log10(h); return num(h, 2); })()",
+              "unidade": "mol/dm³"
+            },
+            {
+              "rotulo": "pH",
+              "formula": "(function () { var h = solucao === 'cursor' ? Math.pow(10, expoente) : Math.pow(10, -dados.ph[solucao]); var pH = -Math.log10(h); return pH.toFixed(2).replace('.', ','); })()"
+            },
+            {
+              "rotulo": "pOH (25 °C)",
+              "formula": "(function () { var h = solucao === 'cursor' ? Math.pow(10, expoente) : Math.pow(10, -dados.ph[solucao]); var pH = -Math.log10(h); return (14 - pH).toFixed(2).replace('.', ','); })()"
+            },
+            {
+              "rotulo": "[OH⁻] (25 °C)",
+              "formula": "(function () { var h = solucao === 'cursor' ? Math.pow(10, expoente) : Math.pow(10, -dados.ph[solucao]); var pH = -Math.log10(h); return num(1e-14 / h, 2); })()",
+              "unidade": "mol/dm³"
+            },
+            {
+              "rotulo": "Classificação (25 °C)",
+              "formula": "(function () { var h = solucao === 'cursor' ? Math.pow(10, expoente) : Math.pow(10, -dados.ph[solucao]); var pH = -Math.log10(h); return pH < 6.995 ? 'Ácida' : pH > 7.005 ? 'Básica' : 'Neutra'; })()"
+            },
+            {
+              "rotulo": "Cor do indicador universal",
+              "formula": "(function () { var h = solucao === 'cursor' ? Math.pow(10, expoente) : Math.pow(10, -dados.ph[solucao]); var pH = -Math.log10(h); var cor = pH < 3 ? 'vermelho' : pH < 5 ? 'laranja' : pH < 6.5 ? 'amarelo' : pH < 7.5 ? 'verde' : pH < 9.5 ? 'azul' : pH < 11 ? 'anil' : 'roxo'; return cor.charAt(0).toUpperCase() + cor.slice(1); })()"
+            },
+            {
+              "rotulo": "Água pura à temperatura escolhida",
+              "formula": "(function () { var kw = dados.kw[temperatura]; var p = -Math.log10(Math.sqrt(kw)); return 'A ' + temperatura + ' °C: K w = ' + num(kw, 2) + ' e o pH da água pura é ' + p.toFixed(2).replace('.', ',') + '. A água continua neutra porque [H₃O⁺] = [OH⁻].'; })()"
+            }
+          ],
+          "pergunta_final": "A 60 °C, a água pura tem pH cerca de 6,5. É ácida? Resposta esperada: não; continua neutra, porque [H₃O⁺] = [OH⁻]. O pH de neutralidade depende da temperatura.",
+          "dados": {
+            "ph": {
+              "gastrico": 1.5,
+              "limao": 2.4,
+              "vinagre": 2.9,
+              "cafe": 5.0,
+              "agua": 7.0,
+              "sangue": 7.4,
+              "mar": 8.1,
+              "bicarbonato": 8.3,
+              "detergente": 11.0,
+              "lixivia": 12.5
+            },
+            "kw": {
+              "0": 1.1e-15,
+              "25": 1e-14,
+              "50": 5.5e-14,
+              "60": 9.6e-14
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A escala de Richter.** Na escala de Richter dos sismos, um sismo de magnitude 6 não é \"um pouco\" maior do que um de magnitude 5: é cerca de dez vezes maior em amplitude. A escala de pH funciona da mesma maneira: é logarítmica. Uma diferença de 2 unidades de pH é uma diferença de 100 vezes na concentração de H₃O⁺. Um pequeno número na escala esconde uma grande diferença na realidade."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "pH e temperatura; medir o pH",
+          "texto": "**Porque é que a água pura não tem pH exatamente 7 a qualquer temperatura**\n\nA autoionização absorve energia (é endotérmica). Pelo Princípio de Le Châtelier, ao aquecer, o equilíbrio desloca-se no sentido direto: formam-se mais H₃O⁺ e OH⁻ (em quantidades iguais). [H₃O⁺] aumenta, o pH baixa, mas a água continua neutra.\n\n**Medir o pH**\n\nIndicador universal: mistura de indicadores que muda de cor ao longo de toda a escala. Dá valores aproximados.\n\nMedidor de pH (potenciómetro): mede com precisão de 0,01. Tem de ser calibrado com soluções-padrão (tampão) antes de usar."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é o pH de uma solução com [H₃O⁺] = 1,0 × 10⁻³ mol/dm³?",
+              "opcoes": [
+                "1,0",
+                "3,00",
+                "10,00",
+                "11,00"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "pH = −log(1,0 × 10⁻³) = 3,00 (duas casas decimais, porque a concentração tem dois algarismos significativos).",
+              "mascote_feedback_errado": "pH = −log(1,0 × 10⁻³) = 3,00 (duas casas decimais, porque a concentração tem dois algarismos significativos)."
+            },
+            {
+              "pergunta": "Numa solução a 25 °C, [OH⁻] = 1,0 × 10⁻⁴ mol/dm³. A solução é:",
+              "opcoes": [
+                "ácida, pH 4,00.",
+                "neutra, pH 7,00.",
+                "básica, pH 10,00.",
+                "básica, pH 4,00."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "pOH = 4,00, pH = 14,00 − 4,00 = 10,00. pH > 7 a 25 °C: básica.",
+              "mascote_feedback_errado": "pOH = 4,00, pH = 14,00 − 4,00 = 10,00. pH > 7 a 25 °C: básica."
+            },
+            {
+              "pergunta": "Ao aumentar a temperatura da água pura, K w:",
+              "opcoes": [
+                "diminui e o pH aumenta.",
+                "aumenta e o pH diminui, mas a água continua neutra.",
+                "mantém-se.",
+                "aumenta e a água fica ácida."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A autoionização é endotérmica. K w aumenta, [H₃O⁺] e [OH⁻] aumentam igualmente: o pH baixa, mas [H₃O⁺] = [OH⁻].",
+              "mascote_feedback_errado": "A autoionização é endotérmica. K w aumenta, [H₃O⁺] e [OH⁻] aumentam igualmente: o pH baixa, mas [H₃O⁺] = [OH⁻]."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "ka-kb-forca-al-2-1",
+      "titulo": "Constantes de acidez e de basicidade; força relativa; AL 2.1",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_vinagre_acido_cloridrico.png",
+          "imagem_legenda": "Frasco de vinagre e frasco de ácido clorídrico com o mesmo rótulo de concentração.",
+          "texto": "O vinagre tem ácido acético e o ácido do estômago é ácido clorídrico. Uma solução de ácido clorídrico com a mesma concentração que o ácido acético do vinagre tem um pH muito mais baixo e corrói metais com muito mais facilidade. Não é uma questão de quantidade: é de força. Uns ácidos cedem os protões todos; outros cedem só uma pequena parte.",
+          "mascote_texto": "Forte ou fraco é diferente de concentrado ou diluído. Esta é das confusões mais frequentes nos exames."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Ácidos fortes e ácidos fracos",
+          "imagem": "q11_forte_fraco.png",
+          "imagem_legenda": "Ionização completa (HCl) vs parcial (CH₃COOH).",
+          "texto_principal": "Um ácido forte ioniza-se completamente em água; um ácido fraco ioniza-se apenas parcialmente, estabelecendo um equilíbrio. A extensão da ionização mede-se pela constante de acidez, K a. Do mesmo modo, a força de uma base mede-se pela constante de basicidade, K b.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ácidos fortes",
+              "explicacao": "HCl, HNO₃, H₂SO₄ (primeira ionização). Ionização completa: [H₃O⁺] = concentração do ácido."
+            },
+            {
+              "id": "p2",
+              "label": "Ácidos fracos",
+              "explicacao": "CH₃COOH (acético), HF, H₂CO₃, NH₄⁺. Ionização parcial, em equilíbrio."
+            },
+            {
+              "id": "p3",
+              "label": "Constante de acidez",
+              "explicacao": "Para HA + H₂O ⇌ A⁻ + H₃O⁺: K a = [A⁻][H₃O⁺] / [HA]. Quanto maior K a, mais forte o ácido."
+            },
+            {
+              "id": "p4",
+              "label": "Constante de basicidade",
+              "explicacao": "Para B + H₂O ⇌ BH⁺ + OH⁻: K b = [BH⁺][OH⁻] / [B]. Quanto maior K b, mais forte a base."
+            },
+            {
+              "id": "p5",
+              "label": "Pares conjugados",
+              "explicacao": "K a × K b = K w. Quanto mais forte o ácido, mais fraca a sua base conjugada. O Cl⁻ (base conjugada de um ácido forte) praticamente não tem propriedades básicas."
+            },
+            {
+              "id": "p6",
+              "label": "Força vs concentração",
+              "explicacao": "Uma solução diluída de um ácido forte pode ter pH mais alto do que uma solução concentrada de um ácido fraco. Força é a tendência para ceder protões; concentração é a quantidade de ácido por volume."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "K a = [A⁻][H₃O⁺] / [HA]",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "K b = [BH⁺][OH⁻] / [B]",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "K a × K b = K w",
+              "significado": "Par conjugado.",
+              "unidades": ""
+            },
+            {
+              "expressao": "[H₃O⁺] ≈ √(K a × c)",
+              "significado": "Ácido fraco de concentração c (aproximação, se a ionização for pequena).",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é o pH de uma solução 0,10 mol/dm³ de ácido acético (K a = 1,8 × 10⁻⁵)?",
+          "opcoes": [
+            "1,00",
+            "2,87",
+            "4,74",
+            "5,74"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. [H₃O⁺] ≈ √(1,8 × 10⁻⁵ × 0,10) = √(1,8 × 10⁻⁶) ≈ 1,34 × 10⁻³ mol/dm³. pH ≈ 2,87. Só cerca de 1,3 % das moléculas estão ionizadas.",
+          "mascote_feedback_errado": "O ácido acético é fraco: [H₃O⁺] não é 0,10. No equilíbrio, K a = x² / (0,10 − x) ≈ x² / 0,10. x ≈ 1,34 × 10⁻³ e pH ≈ 2,87. (pH 1,00 seria o de um ácido forte com a mesma concentração.)"
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O amoníaco tem K b = 1,8 × 10⁻⁵. Qual é a constante de acidez do ião amónio, NH₄⁺, a 25 °C?",
+          "opcoes": [
+            "1,8 × 10⁻⁵",
+            "5,6 × 10⁻¹⁰",
+            "1,8 × 10⁹",
+            "1,0 × 10⁻¹⁴"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. K a = K w / K b = 1,00 × 10⁻¹⁴ / 1,8 × 10⁻⁵ ≈ 5,6 × 10⁻¹⁰. O NH₄⁺ é um ácido muito fraco.",
+          "mascote_feedback_errado": "Para um par conjugado, K a × K b = K w. K a(NH₄⁺) = 1,00 × 10⁻¹⁴ / 1,8 × 10⁻⁵ ≈ 5,6 × 10⁻¹⁰."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Quem empresta o carregador.** Imagina uma turma em que cada aluno tem um carregador de telemóvel. Os alunos \"ácido forte\" emprestam sempre o carregador, sem hesitar: no fim, todos os carregadores estão emprestados. Os alunos \"ácido fraco\" emprestam de vez em quando e pedem-no logo de volta: no fim, a maioria dos carregadores está com os donos. A constante de acidez mede essa vontade de emprestar. E uma turma pequena de \"fortes\" (diluído) pode ter menos carregadores emprestados do que uma turma enorme de \"fracos\" (concentrado): força e quantidade são coisas diferentes."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.1",
+          "titulo": "Constante de acidez",
+          "objetivo": "Determinar a constante de acidez de um ácido fraco monoprótico (por exemplo, o ácido acético) por medição do pH de soluções aquosas de concentração conhecida.",
+          "material": [
+            "Solução-mãe de ácido acético de concentração conhecida (por exemplo, 0,100 mol/dm³)",
+            "Pipetas volumétricas, balões volumétricos (para preparar soluções mais diluídas, por exemplo 0,0500 e 0,0100 mol/dm³)",
+            "Medidor de pH com elétrodo, calibrado com soluções-padrão (pH 4,00 e 7,00)",
+            "Gobelés pequenos, esguicho com água destilada, papel absorvente",
+            "Termómetro"
+          ],
+          "procedimento": [
+            "Calibrar o medidor de pH com as soluções-padrão.",
+            "Preparar, por diluição, soluções de ácido acético de concentrações diferentes (por exemplo, 0,100, 0,0500 e 0,0100 mol/dm³).",
+            "Medir o pH de cada solução, da mais diluída para a mais concentrada, lavando e secando o elétrodo entre medições.",
+            "Repetir cada medição (pelo menos três vezes) e registar a temperatura."
+          ],
+          "tratamento_de_dados": "[H₃O⁺] = 10^(−pH).\n\nPela estequiometria da ionização, [CH₃COO⁻] = [H₃O⁺] e [CH₃COOH] = c − [H₃O⁺].\n\nK a = [H₃O⁺]² / (c − [H₃O⁺]).\n\nExemplo: c = 0,100 mol/dm³, pH = 2,90. [H₃O⁺] = 1,26 × 10⁻³ mol/dm³. K a = (1,26 × 10⁻³)² / (0,100 − 0,00126) ≈ 1,6 × 10⁻⁵.\n\nCalcular K a para cada solução e fazer a média.\n\nComparar com o valor tabelado (1,8 × 10⁻⁵ a 25 °C): erro percentual cerca de 11 % neste exemplo.",
+          "conclusao": "A constante de acidez do ácido acético é da ordem de 10⁻⁵, o que confirma que é um ácido fraco. O valor de K a é aproximadamente o mesmo para as várias concentrações, como esperado para uma constante de equilíbrio a temperatura constante.",
+          "erros_comuns": [
+            "Não calibrar o medidor de pH, ou não lavar o elétrodo entre medições (contaminação).",
+            "Considerar [H₃O⁺] = c (como se o ácido fosse forte).",
+            "Medir as soluções a temperaturas diferentes (K a depende da temperatura).",
+            "Apresentar K a com mais algarismos significativos do que as medições de pH permitem."
+          ],
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Grau de ionização e valores de K a",
+          "texto": "**Grau de ionização**\n\nÉ a fração de moléculas do ácido que se ionizaram: α = [A⁻] / c. Para o ácido acético 0,10 mol/dm³, α ≈ 1,3 %. Diluir um ácido fraco aumenta o grau de ionização (Le Châtelier), embora o pH também aumente.\n\n**Valores de K a de alguns ácidos (25 °C)**\n\nÁcido fluorídrico (HF): 6,8 × 10⁻⁴\n\nÁcido acético: 1,8 × 10⁻⁵\n\nÁcido carbónico (1.ª ionização): 4,5 × 10⁻⁷\n\nIão amónio: 5,6 × 10⁻¹⁰\n\nOrdem de força: HF > CH₃COOH > H₂CO₃ > NH₄⁺."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um ácido forte em água:",
+              "opcoes": [
+                "ioniza-se parcialmente.",
+                "ioniza-se completamente.",
+                "não se ioniza.",
+                "tem sempre pH 0."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os ácidos fortes ionizam-se completamente. O pH depende também da concentração.",
+              "mascote_feedback_errado": "Os ácidos fortes ionizam-se completamente. O pH depende também da concentração."
+            },
+            {
+              "pergunta": "De dois ácidos, A (K a = 1 × 10⁻⁴) e B (K a = 1 × 10⁻⁸), qual tem a base conjugada mais forte?",
+              "opcoes": [
+                "A",
+                "B",
+                "São iguais.",
+                "Não se pode saber."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "K a × K b = K w. O ácido mais fraco (B) tem a base conjugada mais forte.",
+              "mascote_feedback_errado": "K a × K b = K w. O ácido mais fraco (B) tem a base conjugada mais forte."
+            },
+            {
+              "pergunta": "Na AL 2.1, uma solução 0,0100 mol/dm³ de ácido acético tem pH 3,38. Qual é o valor aproximado de K a?",
+              "opcoes": [
+                "1,8 × 10⁻⁵",
+                "4,2 × 10⁻⁴",
+                "1,0 × 10⁻²",
+                "3,4 × 10⁻³"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "[H₃O⁺] = 10^(−3,38) ≈ 4,17 × 10⁻⁴. K a = (4,17 × 10⁻⁴)² / (0,0100 − 0,000417) ≈ 1,74 × 10⁻⁷ / 9,58 × 10⁻³ ≈ 1,8 × 10⁻⁵, de acordo com o valor tabelado.",
+              "mascote_feedback_errado": "[H₃O⁺] = 10^(−3,38) ≈ 4,17 × 10⁻⁴. K a = (4,17 × 10⁻⁴)² / (0,0100 − 0,000417) ≈ 1,74 × 10⁻⁷ / 9,58 × 10⁻³ ≈ 1,8 × 10⁻⁵, de acordo com o valor tabelado."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "titulacao-sais-al-2-2",
+      "titulo": "Neutralização, titulação ácido-base e pH de soluções de sais; AL 2.2",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_titulacao.png",
+          "imagem_legenda": "Montagem de titulação com bureta e erlenmeyer rosa.",
+          "texto": "Como é que se sabe quanto ácido acético tem um vinagre, ou se um sumo tem a acidez certa? Junta-se, gota a gota, uma base de concentração conhecida até o ácido estar exatamente todo neutralizado. Uma gota de indicador muda de cor no momento certo. A partir do volume gasto, calcula-se a concentração. Chama-se titulação e é uma das técnicas mais usadas nos laboratórios de controlo de qualidade.",
+          "mascote_texto": "Numa titulação, o que importa é a estequiometria. O indicador só te diz quando parar."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Titulação e ponto de equivalência",
+          "imagem": "q11_curva_titulacao.png",
+          "imagem_legenda": "Curva de titulação ácido forte-base forte com zonas de viragem.",
+          "texto_principal": "Numa reação de neutralização entre um ácido e uma base, formam-se água e um sal. Numa titulação, mede-se o volume de uma solução de concentração conhecida (titulante) necessário para reagir completamente com uma solução de concentração desconhecida (titulado). O ponto de equivalência é o ponto em que o ácido e a base estão em proporções estequiométricas.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Neutralização (ácido forte + base forte)",
+              "explicacao": "H₃O⁺(aq) + OH⁻(aq) → 2 H₂O(l). Ex.: HCl + NaOH → NaCl + H₂O."
+            },
+            {
+              "id": "p2",
+              "label": "Ponto de equivalência",
+              "explicacao": "n(H₃O⁺) adicionado = n(OH⁻) adicionado (para ácidos e bases monopróticos). É um ponto teórico."
+            },
+            {
+              "id": "p3",
+              "label": "Ponto final",
+              "explicacao": "Ponto em que o indicador muda de cor. Deve ficar o mais próximo possível do ponto de equivalência."
+            },
+            {
+              "id": "p4",
+              "label": "Curva de titulação",
+              "explicacao": "Gráfico do pH em função do volume de titulante. Perto do ponto de equivalência, o pH varia bruscamente com uma única gota."
+            },
+            {
+              "id": "p5",
+              "label": "pH no ponto de equivalência (25 °C)",
+              "explicacao": "Ácido forte + base forte: pH = 7. Ácido fraco + base forte: pH > 7. Base fraca + ácido forte: pH < 7."
+            },
+            {
+              "id": "p6",
+              "label": "Indicadores ácido-base",
+              "explicacao": "Ácidos ou bases fracos que mudam de cor numa certa gama de pH (zona de viragem). Escolhe-se um indicador cuja zona de viragem inclua o pH do ponto de equivalência (ou fique dentro do salto de pH)."
+            },
+            {
+              "id": "p7",
+              "label": "Indicadores comuns",
+              "explicacao": "Fenolftaleína (8,2 a 10,0; incolor → carmim); azul de bromotimol (6,0 a 7,6; amarelo → azul); alaranjado de metilo (3,1 a 4,4; vermelho → amarelo)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "c ácido × V ácido = c base × V base",
+              "significado": "No ponto de equivalência (ácido e base monopróticos).",
+              "unidades": ""
+            },
+            {
+              "expressao": "n ácido / coeficiente ácido = n base / coeficiente base",
+              "significado": "Em geral.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "pH de soluções de sais",
+          "imagem": "q11_sais_ph.png",
+          "imagem_legenda": "Soluções de NaCl, CH₃COONa e NH₄Cl com indicador universal.",
+          "texto_principal": "Uma solução de um sal pode ser ácida, básica ou neutra, conforme os iões que contém reajam ou não com a água. Iões que são bases conjugadas de ácidos fracos tornam a solução básica; iões que são ácidos conjugados de bases fracas tornam-na ácida.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "NaCl",
+              "explicacao": "Na⁺ e Cl⁻ não reagem com a água (Cl⁻ é a base conjugada de um ácido forte, sem força como base). Solução neutra."
+            },
+            {
+              "id": "p2",
+              "label": "CH₃COONa",
+              "explicacao": "O ião acetato é base conjugada de um ácido fraco: CH₃COO⁻ + H₂O ⇌ CH₃COOH + OH⁻. Solução básica."
+            },
+            {
+              "id": "p3",
+              "label": "NH₄Cl",
+              "explicacao": "O ião amónio é ácido conjugado de uma base fraca: NH₄⁺ + H₂O ⇌ NH₃ + H₃O⁺. Solução ácida."
+            },
+            {
+              "id": "p4",
+              "label": "Na₂CO₃ e NaHCO₃",
+              "explicacao": "O ião carbonato é uma base: soluções básicas. O bicarbonato de sódio é usado como antiácido."
+            },
+            {
+              "id": "p5",
+              "label": "Relação com a titulação",
+              "explicacao": "É por isso que, no ponto de equivalência de um ácido fraco com uma base forte, o pH é maior do que 7: a solução contém o sal, com o anião básico."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na titulação de 25,00 cm³ de HCl com NaOH 0,100 mol/dm³, gastaram-se 20,00 cm³ de NaOH até ao ponto de equivalência. Qual é a concentração do HCl?",
+          "opcoes": [
+            "0,125 mol/dm³",
+            "0,0800 mol/dm³",
+            "0,100 mol/dm³",
+            "0,0500 mol/dm³"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. n(NaOH) = 0,100 × 0,02000 = 2,00 × 10⁻³ mol = n(HCl). c(HCl) = 2,00 × 10⁻³ / 0,02500 = 0,0800 mol/dm³.",
+          "mascote_feedback_errado": "No ponto de equivalência, c ácido V ácido = c base V base: c = 0,100 × 20,00 / 25,00 = 0,0800 mol/dm³."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na titulação de ácido acético com NaOH, o pH no ponto de equivalência é cerca de 8,7. Qual é o indicador mais adequado?",
+          "opcoes": [
+            "Alaranjado de metilo (3,1 a 4,4)",
+            "Azul de bromotimol (6,0 a 7,6)",
+            "Fenolftaleína (8,2 a 10,0)",
+            "Qualquer um serve."
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. A zona de viragem da fenolftaleína inclui o pH do ponto de equivalência. O alaranjado de metilo mudaria de cor muito antes.",
+          "mascote_feedback_errado": "O indicador deve mudar de cor perto do pH do ponto de equivalência (8,7). Só a fenolftaleína tem a zona de viragem à volta desse valor."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_titulacao",
+          "titulo": "Titula o ácido",
+          "instrucao": "Escolhe o ácido (25,00 cm³), as concentrações e o indicador. Adiciona a base com o cursor do volume de NaOH (cada passo é uma gota, 0,05 cm³) e vê o pH e a cor da solução mudarem.",
+          "controlos": [
+            {
+              "id": "acido",
+              "rotulo": "Ácido titulado",
+              "opcoes": [
+                {
+                  "valor": "forte",
+                  "label": "HCl (forte)"
+                },
+                {
+                  "valor": "fraco",
+                  "label": "CH₃COOH (fraco, K a = 1,8 × 10⁻⁵)"
+                }
+              ]
+            },
+            {
+              "id": "ca",
+              "rotulo": "Concentração do ácido",
+              "min": 0.01,
+              "max": 0.2,
+              "passo": 0.01,
+              "valor_inicial": 0.1,
+              "unidade": "mol/dm³"
+            },
+            {
+              "id": "cb",
+              "rotulo": "Concentração do NaOH",
+              "min": 0.01,
+              "max": 0.2,
+              "passo": 0.01,
+              "valor_inicial": 0.1,
+              "unidade": "mol/dm³"
+            },
+            {
+              "id": "Vb",
+              "rotulo": "Volume de NaOH adicionado",
+              "min": 0,
+              "max": 50,
+              "passo": 0.05,
+              "valor_inicial": 0,
+              "unidade": "cm³"
+            },
+            {
+              "id": "indicador",
+              "rotulo": "Indicador",
+              "opcoes": [
+                {
+                  "valor": "fenolftaleina",
+                  "label": "Fenolftaleína (8,2 a 10,0)"
+                },
+                {
+                  "valor": "bromotimol",
+                  "label": "Azul de bromotimol (6,0 a 7,6)"
+                },
+                {
+                  "valor": "metilo",
+                  "label": "Alaranjado de metilo (3,1 a 4,4)"
+                }
+              ]
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Volume de equivalência",
+              "formula": "(function () { var Va = 25.00, Ka = 1.8e-5, Kw = 1.00e-14; var na = ca * Va / 1000, nb = cb * Vb / 1000, Vt = (Va + Vb) / 1000; var eq = Math.abs(nb - na) <= 1e-9 * na; var pH; if (acido === 'forte') { if (eq) pH = 7; else if (nb < na) pH = -Math.log10((na - nb) / Vt); else pH = 14 + Math.log10((nb - na) / Vt); } else { if (nb === 0) pH = -Math.log10(Math.sqrt(Ka * ca)); else if (eq) pH = 14 + Math.log10(Math.sqrt((Kw / Ka) * na / Vt)); else if (nb < na) pH = -Math.log10(Ka * (na - nb) / nb); else pH = 14 + Math.log10((nb - na) / Vt); } var Veq = ca * Va / cb; var pHeq = acido === 'forte' ? 7 : 14 + Math.log10(Math.sqrt((Kw / Ka) * na / ((Va + Veq) / 1000))); function d2(x) { return x.toFixed(2).replace('.', ','); } return num(Veq, 4) + ' cm³' + (Veq > 50 ? ' (acima do máximo da bureta: aumenta a concentração do NaOH)' : ''); })()"
+            },
+            {
+              "rotulo": "pH da solução",
+              "formula": "(function () { var Va = 25.00, Ka = 1.8e-5, Kw = 1.00e-14; var na = ca * Va / 1000, nb = cb * Vb / 1000, Vt = (Va + Vb) / 1000; var eq = Math.abs(nb - na) <= 1e-9 * na; var pH; if (acido === 'forte') { if (eq) pH = 7; else if (nb < na) pH = -Math.log10((na - nb) / Vt); else pH = 14 + Math.log10((nb - na) / Vt); } else { if (nb === 0) pH = -Math.log10(Math.sqrt(Ka * ca)); else if (eq) pH = 14 + Math.log10(Math.sqrt((Kw / Ka) * na / Vt)); else if (nb < na) pH = -Math.log10(Ka * (na - nb) / nb); else pH = 14 + Math.log10((nb - na) / Vt); } var Veq = ca * Va / cb; var pHeq = acido === 'forte' ? 7 : 14 + Math.log10(Math.sqrt((Kw / Ka) * na / ((Va + Veq) / 1000))); function d2(x) { return x.toFixed(2).replace('.', ','); } return d2(pH); })()"
+            },
+            {
+              "rotulo": "Situação",
+              "formula": "(function () { var Va = 25.00, Ka = 1.8e-5, Kw = 1.00e-14; var na = ca * Va / 1000, nb = cb * Vb / 1000, Vt = (Va + Vb) / 1000; var eq = Math.abs(nb - na) <= 1e-9 * na; var pH; if (acido === 'forte') { if (eq) pH = 7; else if (nb < na) pH = -Math.log10((na - nb) / Vt); else pH = 14 + Math.log10((nb - na) / Vt); } else { if (nb === 0) pH = -Math.log10(Math.sqrt(Ka * ca)); else if (eq) pH = 14 + Math.log10(Math.sqrt((Kw / Ka) * na / Vt)); else if (nb < na) pH = -Math.log10(Ka * (na - nb) / nb); else pH = 14 + Math.log10((nb - na) / Vt); } var Veq = ca * Va / cb; var pHeq = acido === 'forte' ? 7 : 14 + Math.log10(Math.sqrt((Kw / Ka) * na / ((Va + Veq) / 1000))); function d2(x) { return x.toFixed(2).replace('.', ','); } if (eq) return 'Ponto de equivalência'; if (nb === 0) return 'Ainda não se adicionou base'; if (nb < na) return 'Antes do ponto de equivalência: ácido em excesso' + (acido === 'fraco' && Math.abs(nb - na / 2) / (na / 2) < 0.01 ? ' (metade do volume de equivalência: pH = −log K a)' : ''); return 'Depois do ponto de equivalência: base em excesso'; })()"
+            },
+            {
+              "rotulo": "Cor do indicador",
+              "formula": "(function () { var Va = 25.00, Ka = 1.8e-5, Kw = 1.00e-14; var na = ca * Va / 1000, nb = cb * Vb / 1000, Vt = (Va + Vb) / 1000; var eq = Math.abs(nb - na) <= 1e-9 * na; var pH; if (acido === 'forte') { if (eq) pH = 7; else if (nb < na) pH = -Math.log10((na - nb) / Vt); else pH = 14 + Math.log10((nb - na) / Vt); } else { if (nb === 0) pH = -Math.log10(Math.sqrt(Ka * ca)); else if (eq) pH = 14 + Math.log10(Math.sqrt((Kw / Ka) * na / Vt)); else if (nb < na) pH = -Math.log10(Ka * (na - nb) / nb); else pH = 14 + Math.log10((nb - na) / Vt); } var Veq = ca * Va / cb; var pHeq = acido === 'forte' ? 7 : 14 + Math.log10(Math.sqrt((Kw / Ka) * na / ((Va + Veq) / 1000))); function d2(x) { return x.toFixed(2).replace('.', ','); } if (indicador === 'fenolftaleina') return pH < 8.2 ? 'Incolor' : pH <= 10 ? 'Rosa (zona de viragem, 8,2 a 10,0)' : 'Carmim'; if (indicador === 'bromotimol') return pH < 6.0 ? 'Amarelo' : pH <= 7.6 ? 'Verde (zona de viragem, 6,0 a 7,6)' : 'Azul'; return pH < 3.1 ? 'Vermelho' : pH <= 4.4 ? 'Laranja (zona de viragem, 3,1 a 4,4)' : 'Amarelo'; })()"
+            },
+            {
+              "rotulo": "O indicador é adequado?",
+              "formula": "(function () { var Va = 25.00, Ka = 1.8e-5, Kw = 1.00e-14; var na = ca * Va / 1000, nb = cb * Vb / 1000, Vt = (Va + Vb) / 1000; var eq = Math.abs(nb - na) <= 1e-9 * na; var pH; if (acido === 'forte') { if (eq) pH = 7; else if (nb < na) pH = -Math.log10((na - nb) / Vt); else pH = 14 + Math.log10((nb - na) / Vt); } else { if (nb === 0) pH = -Math.log10(Math.sqrt(Ka * ca)); else if (eq) pH = 14 + Math.log10(Math.sqrt((Kw / Ka) * na / Vt)); else if (nb < na) pH = -Math.log10(Ka * (na - nb) / nb); else pH = 14 + Math.log10((nb - na) / Vt); } var Veq = ca * Va / cb; var pHeq = acido === 'forte' ? 7 : 14 + Math.log10(Math.sqrt((Kw / Ka) * na / ((Va + Veq) / 1000))); function d2(x) { return x.toFixed(2).replace('.', ','); } var zonas = { fenolftaleina: [8.2, 10.0], bromotimol: [6.0, 7.6], metilo: [3.1, 4.4] }; var z = zonas[indicador]; if (pHeq >= z[0] - 0.3 && pHeq <= z[1]) return 'Adequado: a zona de viragem inclui o pH do ponto de equivalência (' + d2(pHeq) + ').'; if (acido === 'forte' && z[1] > 3) return 'Serve: a zona de viragem fica dentro do salto de pH (de cerca de 3 a 11), embora o pH no ponto de equivalência seja ' + d2(pHeq) + '.'; return 'Não adequado: muda de cor longe do pH do ponto de equivalência (' + d2(pHeq) + ').'; })()"
+            }
+          ],
+          "pergunta_final": "Na titulação do ácido fraco, qual é o pH quando se adicionou metade do volume de equivalência? Resposta esperada: pH = −log K a ≈ 4,74, porque nesse ponto [CH₃COOH] = [CH₃COO⁻]."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A balança de dois pratos.** Uma titulação é como equilibrar uma balança de dois pratos: num prato está o ácido (cuja quantidade não conheces), no outro vais pondo pequenas massas (a base) até a balança ficar exatamente equilibrada. Se souberes quanto puseste no segundo prato, sabes quanto estava no primeiro. O indicador é o ponteiro da balança: mexe-se de repente quando chegas ao equilíbrio. Se o ponteiro estiver mal calibrado (indicador errado), paras antes ou depois do ponto certo."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.2",
+          "titulo": "Titulação ácido-base",
+          "objetivo": "Realizar uma titulação de uma solução de um ácido forte com uma solução de uma base forte para determinar a concentração do ácido, e traçar a curva de titulação.",
+          "material": [
+            "Solução de ácido clorídrico, HCl (aq), de concentração desconhecida (titulado)",
+            "Solução-padrão de hidróxido de sódio, NaOH (aq), por exemplo 0,100 mol/dm³ (titulante)",
+            "Bureta de 50 cm³ com suporte e garra",
+            "Pipeta volumétrica de 25,00 cm³ com pompete",
+            "Erlenmeyer de 250 cm³ (ou gobelé, se se usar o medidor de pH)",
+            "Indicador (fenolftaleína ou azul de bromotimol)",
+            "Medidor de pH calibrado e agitador magnético (para a curva de titulação)",
+            "Esguicho com água destilada, folha branca"
+          ],
+          "procedimento": [
+            "Lavar a bureta com água destilada e depois com um pouco da solução de NaOH (ambientar). Encher e acertar o zero, sem bolhas de ar abaixo da torneira.",
+            "Pipetar 25,00 cm³ da solução de HCl para o erlenmeyer e juntar 2 a 3 gotas de indicador.",
+            "Fazer uma titulação rápida para ter uma ideia aproximada do volume de equivalência.",
+            "Repetir, adicionando o titulante rapidamente até cerca de 2 cm³ antes do volume aproximado e depois gota a gota, agitando sempre, até a cor mudar e persistir durante 30 segundos.",
+            "Ler o volume na bureta (pela base do menisco).",
+            "Fazer pelo menos três titulações rigorosas, concordantes (diferenças inferiores a 0,10 cm³).",
+            "Para a curva de titulação: usar o medidor de pH no gobelé com agitador e registar o pH após cada adição (adições pequenas perto do ponto de equivalência)."
+          ],
+          "tratamento_de_dados": "Volume médio de NaOH no ponto final (ex.: 20,10; 20,00; 20,05 cm³ → média 20,05 cm³).\n\nn(NaOH) = 0,100 × 0,02005 = 2,005 × 10⁻³ mol = n(HCl).\n\nc(HCl) = 2,005 × 10⁻³ / 0,02500 ≈ 0,0802 mol/dm³.\n\nIncerteza: a partir da dispersão dos volumes e das incertezas da bureta e da pipeta.\n\nNa curva de titulação: identificar o ponto de equivalência no meio do salto de pH (cerca de pH 7) e verificar que a zona de viragem do indicador está dentro do salto.",
+          "conclusao": "A titulação permite determinar a concentração de uma solução ácida a partir da estequiometria da neutralização. Na titulação de um ácido forte com uma base forte, o ponto de equivalência tem pH 7 (a 25 °C) e situa-se a meio de um salto brusco de pH, o que permite usar vários indicadores.",
+          "erros_comuns": [
+            "Não ambientar a bureta e a pipeta com as respetivas soluções.",
+            "Deixar bolhas de ar na ponta da bureta (o volume lido fica errado).",
+            "Passar do ponto final por adicionar titulante demasiado depressa.",
+            "Usar demasiado indicador (que é ele próprio um ácido fraco).",
+            "Confundir ponto final (mudança de cor) com ponto de equivalência (estequiométrico)."
+          ],
+          "seguranca": "O hidróxido de sódio e o ácido clorídrico são corrosivos. Usar óculos e luvas. Encher a bureta abaixo do nível dos olhos.",
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O ponto de equivalência de uma titulação corresponde:",
+              "opcoes": [
+                "ao momento em que o indicador muda de cor.",
+                "ao momento em que as quantidades de ácido e base estão nas proporções estequiométricas.",
+                "sempre a pH 7.",
+                "ao fim da bureta."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O ponto de equivalência é definido pela estequiometria. O ponto final é a mudança de cor do indicador, que deve estar o mais próximo possível.",
+              "mascote_feedback_errado": "O ponto de equivalência é definido pela estequiometria. O ponto final é a mudança de cor do indicador, que deve estar o mais próximo possível."
+            },
+            {
+              "pergunta": "Uma solução aquosa de acetato de sódio (CH₃COONa) é:",
+              "opcoes": [
+                "ácida.",
+                "neutra.",
+                "básica.",
+                "impossível de prever."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "O ião acetato é a base conjugada de um ácido fraco e reage com a água formando OH⁻.",
+              "mascote_feedback_errado": "O ião acetato é a base conjugada de um ácido fraco e reage com a água formando OH⁻."
+            },
+            {
+              "pergunta": "20,00 cm³ de uma solução de ácido acético foram titulados com NaOH 0,100 mol/dm³, gastando-se 16,00 cm³. Qual é a concentração do ácido?",
+              "opcoes": [
+                "0,0800 mol/dm³",
+                "0,125 mol/dm³",
+                "0,0160 mol/dm³",
+                "0,100 mol/dm³"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "n(NaOH) = 0,100 × 0,01600 = 1,60 × 10⁻³ mol = n(CH₃COOH). c = 1,60 × 10⁻³ / 0,02000 = 0,0800 mol/dm³. A força do ácido não altera a estequiometria.",
+              "mascote_feedback_errado": "n(NaOH) = 0,100 × 0,01600 = 1,60 × 10⁻³ mol = n(CH₃COOH). c = 1,60 × 10⁻³ / 0,02000 = 0,0800 mol/dm³. A força do ácido não altera a estequiometria."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "chuva-acida",
+      "titulo": "Chuva ácida e aspetos ambientais",
+      "xp": 25,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q11_estatua_corroida.png",
+          "imagem_legenda": "Estátua de mármore com pormenores corroídos.",
+          "texto": "Muitas estátuas e fachadas de mármore e calcário na Europa estão a perder os pormenores: narizes, dedos, inscrições que resistiram séculos e agora se desfazem. Em zonas da Escandinávia e da Europa Central, milhares de lagos ficaram sem peixes nos anos 70 e 80. A culpa é de uma chuva diferente da normal: a chuva ácida.",
+          "mascote_texto": "Atenção à pergunta clássica: toda a chuva é ligeiramente ácida. A chuva ácida é a que tem pH abaixo de 5,6."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Chuva normal e chuva ácida",
+          "imagem": "q11_chuva_acida.png",
+          "imagem_legenda": "Emissões de SO₂ e NOx, formação de ácidos e efeitos.",
+          "texto_principal": "A água da chuva é naturalmente ácida, com pH cerca de 5,6, porque dissolve dióxido de carbono do ar. A chuva ácida tem pH inferior a 5,6 e deve-se sobretudo a óxidos de enxofre e de azoto emitidos pela atividade humana, que formam ácidos fortes na atmosfera.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Chuva \"normal\"",
+              "explicacao": "CO₂(g) + 2 H₂O(l) ⇌ HCO₃⁻(aq) + H₃O⁺(aq). O ácido carbónico é fraco e o pH fica cerca de 5,6."
+            },
+            {
+              "id": "p2",
+              "label": "Óxidos de enxofre",
+              "explicacao": "Queima de carvão e combustíveis com enxofre, vulcões. SO₂ oxida-se a SO₃: 2 SO₂ + O₂ → 2 SO₃; depois SO₃ + H₂O → H₂SO₄ (ácido forte)."
+            },
+            {
+              "id": "p3",
+              "label": "Óxidos de azoto",
+              "explicacao": "Motores e centrais térmicas, a altas temperaturas (N₂ e O₂ do ar reagem). O NO₂ forma ácido nítrico (HNO₃), forte."
+            },
+            {
+              "id": "p4",
+              "label": "Efeitos",
+              "explicacao": "Acidificação de lagos e rios (morte de peixes), danos nas florestas (os solos perdem nutrientes), corrosão de metais e degradação de monumentos de calcário e mármore."
+            },
+            {
+              "id": "p5",
+              "label": "Reação com o calcário",
+              "explicacao": "CaCO₃(s) + 2 H₃O⁺(aq) → Ca²⁺(aq) + CO₂(g) + 3 H₂O(l). O carbonato de cálcio dissolve-se."
+            },
+            {
+              "id": "p6",
+              "label": "Redução das emissões",
+              "explicacao": "Dessulfuração dos combustíveis e dos gases das chaminés, catalisadores nos escapes, energias renováveis, transportes públicos. Para corrigir lagos acidificados, junta-se calcário (calagem)."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que a água da chuva não poluída tem pH cerca de 5,6 e não 7?",
+          "opcoes": [
+            "Porque contém sal.",
+            "Porque dissolve o CO₂ do ar, que reage com a água e forma um ácido fraco.",
+            "Porque contém ácido sulfúrico.",
+            "Porque é destilada."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O CO₂ dissolvido forma H₂CO₃, que se ioniza parcialmente e liberta H₃O⁺. Daí o pH ligeiramente ácido.",
+          "mascote_feedback_errado": "Mesmo sem poluição, a chuva dissolve CO₂, que torna a água ligeiramente ácida (pH ≈ 5,6). A chuva ácida, com pH inferior, deve-se a óxidos de enxofre e de azoto."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual dos gases é o principal responsável pela chuva ácida originada pela queima de carvão?",
+          "opcoes": [
+            "CO₂",
+            "SO₂",
+            "CH₄",
+            "O₃"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O carvão contém enxofre, que ao arder forma SO₂. Este dá origem ao ácido sulfúrico, um ácido forte.",
+          "mascote_feedback_errado": "O CO₂ forma um ácido fraco e é responsável pela acidez natural da chuva. A chuva ácida vem sobretudo do SO₂ (e dos NOx), que formam ácidos fortes."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Um pouco de limão e uma colher de ácido.** Toda a chuva tem um \"toque de limão\" (o CO₂), e isso é normal: as rochas, os lagos e os seres vivos estão adaptados. A chuva ácida é como se alguém despejasse colheres de ácido de bateria na água. Não é uma pequena diferença de grau: o pH pode baixar para 4 ou menos, ou seja, mais de 30 vezes mais ácida do que o normal."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Uma história de sucesso e oceanos mais ácidos",
+          "texto": "**Uma história de sucesso**\n\nNa Europa e na América do Norte, as emissões de SO₂ diminuíram mais de 80 % desde 1980, graças a leis ambientais e à dessulfuração. O pH da chuva aumentou e muitos lagos recuperaram. A chuva ácida continua a ser um problema em regiões com muito carvão e pouca regulação.\n\n**Oceanos mais ácidos**\n\nO aumento do CO₂ na atmosfera faz com que os oceanos absorvam mais CO₂ e fiquem ligeiramente mais ácidos (o pH médio da superfície baixou de cerca de 8,2 para 8,1). Isto dificulta a formação das conchas de carbonato de cálcio de corais, moluscos e algum plâncton."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Considera-se chuva ácida a chuva com pH:",
+              "opcoes": [
+                "inferior a 7.",
+                "inferior a 5,6.",
+                "superior a 5,6.",
+                "igual a 7."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A chuva natural já tem pH cerca de 5,6. A chuva ácida tem pH abaixo desse valor.",
+              "mascote_feedback_errado": "A chuva natural já tem pH cerca de 5,6. A chuva ácida tem pH abaixo desse valor."
+            },
+            {
+              "pergunta": "A degradação de monumentos de calcário pela chuva ácida deve-se à reação:",
+              "opcoes": [
+                "CaCO₃ + 2 H₃O⁺ → Ca²⁺ + CO₂ + 3 H₂O",
+                "CaCO₃ → CaO + CO₂",
+                "Ca²⁺ + CO₃²⁻ → CaCO₃",
+                "CaCO₃ + OH⁻ → Ca(OH)₂"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "O ácido reage com o carbonato de cálcio, que se dissolve e liberta CO₂.",
+              "mascote_feedback_errado": "O ácido reage com o carbonato de cálcio, que se dissolve e liberta CO₂."
+            },
+            {
+              "pergunta": "Qual das medidas reduz a chuva ácida?",
+              "opcoes": [
+                "Aumentar a queima de carvão.",
+                "Retirar o enxofre dos combustíveis e dos gases das chaminés.",
+                "Plantar mais árvores junto às fábricas.",
+                "Aumentar a velocidade dos carros."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A dessulfuração diminui as emissões de SO₂, a principal origem do ácido sulfúrico na chuva.",
+              "mascote_feedback_errado": "A dessulfuração diminui as emissões de SO₂, a principal origem do ácido sulfúrico na chuva."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 3 concluída. Identificas ácidos, bases e pares conjugados, calculas pH e pOH, usas K w, K a e K b, prevês o pH de soluções de sais, sabes escolher um indicador, titulaste um ácido e explicas a chuva ácida. A seguir: as reações em que o que se transfere não é o protão, mas o eletrão."
+}
