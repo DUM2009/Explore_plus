@@ -1,0 +1,196 @@
+{
+  "missao_id": "rochas-metamorficas",
+  "titulo": "Rochas Metamórficas",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "🔷", "nome": "Mestre do Metamorfismo" },
+  "secoes": [
+    {
+      "secao_id": "o-que-e-metamorfismo",
+      "titulo": "O que é o metamorfismo e os seus fatores",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Há uma palavra-chave para entender o metamorfismo: tudo acontece sem nunca derreter a rocha. 🔷",
+          "texto": "É o conjunto de transformações mineralógicas e texturais que ocorrem no estado sólido."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 📚",
+          "texto": "💡 Ao contrário do magmatismo, o metamorfismo reorganiza os minerais sem nunca os fundir — é como reorganizar os livros de uma estante de forma diferente, sem nunca os destruir ou reescrever."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Os fatores do metamorfismo",
+          "instrucao": "Clica em cada fator.",
+          "pontos": [
+            { "id": "temperatura_met", "label": "Temperatura", "explicacao": "O principal fator; provém do gradiente geotérmico (profundidade) ou de intrusões magmáticas. Favorece a recristalização e as reações químicas." },
+            { "id": "pressao_litostatica", "label": "Pressão litostática", "explicacao": "Exercida igualmente em todas as direções, pelo peso das rochas sobrejacentes. Torna a rocha mais compacta e densa." },
+            { "id": "pressao_dirigida", "label": "Pressão dirigida", "explicacao": "Maior numa direção, resultado de movimentos tectónicos. Orienta os minerais perpendicularmente à tensão máxima — origina a foliação." },
+            { "id": "fluidos_met", "label": "Fluidos e tempo", "explicacao": "Os fluidos (sobretudo água com iões dissolvidos) aceleram as reações e podem alterar a composição química (metassomatismo). As reações metamórficas são sempre muito lentas." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A orientação dos minerais perpendicularmente à tensão máxima, originando a foliação, é causada pela:",
+          "opcoes": ["Pressão dirigida (não litostática)", "Pressão litostática"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! A pressão dirigida, por ser maior numa direção, é que orienta os minerais.",
+          "mascote_feedback_errado": "É a pressão dirigida — a litostática atua igualmente em todas as direções, sem orientar os minerais."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O metamorfismo é definido como transformações que ocorrem:",
+              "opcoes": ["No estado sólido", "Por fusão completa da rocha"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A fusão completa já seria magmatismo, não metamorfismo.",
+              "mascote_feedback_errado": "Ocorre no estado sólido — se a rocha fundisse completamente, já seria magmatismo."
+            }
+          ],
+          "mascote_conclusao": "Já sabes os fatores do metamorfismo. Mas nem todo o metamorfismo é igual — há duas grandes variantes. 🔥"
+        }
+      ]
+    },
+    {
+      "secao_id": "contacto-vs-regional",
+      "titulo": "Metamorfismo de contacto vs. regional",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Um geólogo distingue dois tipos de metamorfismo pela sua escala e pelo fator que os domina. 🔥",
+          "texto": "Um é localizado e aquecido; o outro é imenso, e tem a pressão como coprotagonista."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Contacto vs. regional",
+          "instrucao": "Clica em cada tipo de metamorfismo.",
+          "pontos": [
+            { "id": "contacto_met", "label": "Metamorfismo de contacto (térmico)", "explicacao": "Fator dominante: a temperatura. Ocorre à volta de intrusões magmáticas, numa auréola de metamorfismo (cuja intensidade diminui com a distância ao magma). Rochas geralmente não foliadas: corneana, mármore, quartzito." },
+            { "id": "regional_met", "label": "Metamorfismo regional", "explicacao": "Fatores dominantes: temperatura e pressão (incluindo a dirigida). Ocorre em grandes áreas, em zonas de colisão de placas e de formação de montanhas. Rochas geralmente foliadas: ardósia, filito, micaxisto, gnaisse." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O metamorfismo que ocorre numa auréola à volta de uma intrusão magmática é o de:",
+          "opcoes": ["Contacto", "Regional"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É localizado, dominado pela temperatura da intrusão.",
+          "mascote_feedback_errado": "É o de contacto — o regional afeta grandes áreas, não só a zona à volta de uma intrusão."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🍞",
+          "texto": "💡 O metamorfismo de contacto é como aproximar uma torradeira de um pão — localizado, só o que está perto aquece; o metamorfismo regional é como uma prensa gigante a esmagar uma área inteira — afeta regiões enormes, em zonas de colisão de placas."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Rochas tipicamente foliadas, como a ardósia e o gnaisse, resultam de metamorfismo:",
+              "opcoes": ["Regional", "De contacto"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A pressão dirigida, presente no regional, é que cria a foliação.",
+              "mascote_feedback_errado": "São do regional — o de contacto produz tipicamente rochas não foliadas."
+            },
+            {
+              "pergunta": "O mármore e o quartzito são rochas tipicamente associadas a metamorfismo:",
+              "opcoes": ["De contacto", "Regional"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! São não foliadas, próprias do metamorfismo de contacto (embora também possam ocorrer em regional).",
+              "mascote_feedback_errado": "São típicas de metamorfismo de contacto, não foliadas."
+            }
+          ],
+          "mascote_conclusao": "Já sabes distinguir os dois tipos de metamorfismo. Mas como é que medimos a sua intensidade? 📏"
+        }
+      ]
+    },
+    {
+      "secao_id": "grau-texturas-ciclo",
+      "titulo": "Grau de metamorfismo, texturas, e o ciclo completo",
+      "xp": 30,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Certos minerais só se formam em condições muito específicas de pressão e temperatura — por isso funcionam como \"termómetros\" do metamorfismo. 🌡️",
+          "texto": "Chamam-se minerais-índice."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A sequência dos minerais-índice",
+          "texto": "De baixo para alto grau de metamorfismo: clorite → moscovite → biotite → granada → estaurolite → distena (cianite) → silimanite. Curiosamente, a andaluzite, a distena e a silimanite são todas polimorfos da mesma fórmula química (Al₂SiO₅): a andaluzite indica baixa pressão, a distena alta pressão, e a silimanite alta temperatura."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A série argilosa de metamorfismo regional crescente",
+          "layout": "timeline",
+          "instrucao": "Clica em cada degrau da série, de baixo para alto grau.",
+          "pontos": [
+            { "id": "argilito_serie", "label": "Argilito (rocha de origem)", "explicacao": "A rocha sedimentar de partida, antes de qualquer metamorfismo." },
+            { "id": "ardosia_serie", "label": "Ardósia (baixo grau)", "explicacao": "Grão muito fino; divide-se em placas finas (clivagem ardosiana)." },
+            { "id": "filito_serie", "label": "Filito", "explicacao": "Brilho acetinado, devido a micas finas já visíveis." },
+            { "id": "micaxisto_serie", "label": "Micaxisto (grau médio)", "explicacao": "Xistosidade bem marcada; micas já claramente visíveis." },
+            { "id": "gnaisse_serie", "label": "Gnaisse (alto grau)", "explicacao": "Bandado: alternância de bandas claras (quartzo, feldspato) e escuras (biotite)." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na série argilito → ardósia → filito → micaxisto → gnaisse, o grau de metamorfismo:",
+          "opcoes": ["Aumenta ao longo da série", "Mantém-se sempre igual"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É uma sequência de grau crescente, do argilito (sem metamorfismo) ao gnaisse (alto grau).",
+          "mascote_feedback_errado": "Aumenta ao longo da série — não se mantém constante."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Quando o metamorfismo encontra o magmatismo",
+          "texto": "Com temperaturas ainda mais altas do que as do gnaisse, inicia-se a fusão parcial (anatexia), formando migmatitos — rochas com partes metamórficas e partes já magmáticas, e eventualmente magma. É assim que o metamorfismo se liga ao magmatismo, fechando o ciclo litológico: os sedimentos acumulam-se em bacias, são deformados e metamorfizados em zonas de colisão, podem fundir parcialmente em profundidade originando magmas, e as rochas resultantes são levantadas e expostas à superfície — onde o ciclo recomeça."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Texturas foliada vs. não foliada",
+          "instrucao": "Clica em cada tipo de textura e os seus exemplos em Portugal.",
+          "pontos": [
+            { "id": "foliada_tex", "label": "Foliada", "explicacao": "Ardósia, filito, micaxisto, gnaisse — minerais orientados paralelamente. Exemplo português: ardósias de Valongo." },
+            { "id": "nao_foliada_tex", "label": "Não foliada (granoblástica)", "explicacao": "Mármore (de calcário, efervesce com HCl), quartzito (de arenito quártzico, muito duro, risca o vidro), corneana (metamorfismo de contacto). Exemplo português: mármores de Estremoz, Borba e Vila Viçosa." }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A andaluzite, a distena e a silimanite são:",
+              "opcoes": ["Polimorfos de Al₂SiO₅, indicando diferentes condições de pressão/temperatura", "Minerais sem qualquer relação entre si"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A mesma composição, mas estruturas diferentes conforme as condições.",
+              "mascote_feedback_errado": "São polimorfos do mesmo composto (Al₂SiO₅) — estão, por isso, muito relacionados."
+            },
+            {
+              "pergunta": "A fusão parcial de uma rocha em metamorfismo de grau muito elevado pode originar:",
+              "opcoes": ["Migmatitos", "Diáclases"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Os migmatitos têm partes metamórficas e partes já magmáticas.",
+              "mascote_feedback_errado": "Pode originar migmatitos — as diáclases são fraturas sem deslocamento, sem relação com fusão."
+            },
+            {
+              "pergunta": "O mármore, que efervesce com ácido clorídrico, resulta do metamorfismo de:",
+              "opcoes": ["Um calcário", "Um granito"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! O mármore vem de um calcário metamorfizado.",
+              "mascote_feedback_errado": "Resulta de um calcário — do granito resulta, por exemplo, o gnaisse."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já sabes os fatores e tipos de metamorfismo, como ler o grau através dos minerais-índice, e como o ciclo das rochas se fecha quando o metamorfismo encontra o magmatismo. 🔷🪨"
+        }
+      ]
+    }
+  ]
+}

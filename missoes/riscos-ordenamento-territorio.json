@@ -1,0 +1,205 @@
+{
+  "missao_id": "riscos-ordenamento-territorio",
+  "titulo": "Riscos Geológicos e Ordenamento do Território",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "🏞️", "nome": "Guardião do Território" },
+  "secoes": [
+    {
+      "secao_id": "bacias-hidrograficas",
+      "titulo": "Bacias hidrográficas: cheias e inundações",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Uma bacia hidrográfica é a área drenada por um rio principal e pelos seus afluentes, limitada por linhas de cumeada. 🏞️",
+          "texto": "Mas há uma zona dessa bacia que é especialmente tentadora — e especialmente perigosa — para quem quer construir."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Leito menor e leito maior",
+          "instrucao": "Clica em cada tipo de leito.",
+          "pontos": [
+            { "id": "leito_menor", "label": "Leito menor", "explicacao": "A zona onde a água do rio corre normalmente, fora de situações de cheia." },
+            { "id": "leito_maior", "label": "Leito maior (leito de cheia)", "explicacao": "Área ocupada pelo rio durante as cheias; tem solos férteis (aluviões), o que atrai a ocupação humana — apesar do risco." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O leito de cheia é fértil e atrai ocupação humana, mas construir lá:",
+          "opcoes": ["Agrava o risco de inundação", "Elimina qualquer risco"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É precisamente a área que o rio ocupa durante as cheias.",
+          "mascote_feedback_errado": "Agrava o risco — o leito de cheia é exatamente onde o rio precisa de espaço quando cresce."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🛣️",
+          "texto": "💡 O leito maior é como a faixa de rodagem de emergência de uma autoestrada: na maior parte do tempo está vazio e parece \"terreno livre\", mas existe precisamente para o rio o usar quando precisa de mais espaço — construir lá é como estacionar nessa faixa."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O que agrava as cheias?",
+          "texto": "A construção em leitos de cheia, a impermeabilização dos solos pela urbanização (que aumenta o escoamento superficial em vez de deixar a água infiltrar-se), a desflorestação e o estreitamento ou canalização dos leitos agravam as cheias e inundações. As barragens regularizam caudais e produzem energia, mas retêm sedimentos que deixam de chegar ao litoral — contribuindo, mais à frente, para a erosão costeira."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A impermeabilização dos solos pela urbanização tende a:",
+              "opcoes": ["Aumentar o escoamento superficial e agravar cheias", "Reduzir sempre o risco de cheias"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Menos infiltração significa mais água a escoar à superfície, de uma só vez.",
+              "mascote_feedback_errado": "Aumenta o escoamento superficial, agravando o risco de cheias — não o reduz."
+            },
+            {
+              "pergunta": "As barragens, ao reterem sedimentos, contribuem indiretamente para:",
+              "opcoes": ["A erosão costeira", "O aumento das praias"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Menos sedimento a chegar ao litoral significa menos areia a alimentar praias e dunas.",
+              "mascote_feedback_errado": "Contribuem para a erosão costeira — menos sedimento chega ao litoral para alimentar praias."
+            }
+          ],
+          "mascote_conclusao": "Já conheces os rios. Vamos agora até à costa, onde o mar também traz os seus próprios riscos. 🌊"
+        }
+      ]
+    },
+    {
+      "secao_id": "zonas-costeiras",
+      "titulo": "Zonas costeiras: arribas e praias",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "O litoral está em constante transformação, moldado pela ação do mar, dos rios e do vento. 🌊",
+          "texto": "Mas arribas e praias reagem a essa ação de formas muito diferentes."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Costas de arriba vs. costas baixas",
+          "instrucao": "Clica em cada tipo de costa.",
+          "pontos": [
+            { "id": "arriba", "label": "Costas de arriba", "explicacao": "Escarpas talhadas em rocha. O mar escava a base (sapa), formando uma cavidade; a parte superior fica sem apoio e desmorona-se, fazendo a arriba recuar. A erosão é maior em rochas brandas ou muito fraturadas." },
+            { "id": "costa_baixa", "label": "Costas baixas", "explicacao": "Praias e sistemas dunares. As dunas funcionam como reserva de areia e barreira natural contra o avanço do mar." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma arriba recua porque o mar:",
+          "opcoes": ["Escava a base, provocando desmoronamentos", "Deposita areia no topo"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! A sapa na base retira apoio à parte superior, que acaba por desmoronar.",
+          "mascote_feedback_errado": "Recua por o mar escavar a base (sapa) — não por deposição no topo."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A deriva litoral",
+          "texto": "A deriva litoral é o transporte de areia ao longo da costa pelas correntes — em Portugal, predominantemente de norte para sul. É esta corrente de areia que alimenta praias e dunas, e qualquer coisa que a interrompa (uma barragem a montante, um esporão) afeta todo o litoral a jusante."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Estruturas de proteção costeira",
+          "instrucao": "Clica em cada estrutura para veres a sua desvantagem.",
+          "pontos": [
+            { "id": "esporoes", "label": "Esporões", "explicacao": "Perpendiculares à costa; retêm a areia transportada pela deriva litoral — mas agravam a erosão a jusante (a sul, em Portugal)." },
+            { "id": "paredoes", "label": "Paredões e enrocamentos", "explicacao": "Paralelos à costa; protegem a zona construída, mas refletem a energia das ondas, que arrastam a areia da praia." },
+            { "id": "quebra_mares", "label": "Quebra-mares", "explicacao": "Reduzem a energia das ondas antes de chegarem à costa, mas alteram a dinâmica sedimentar." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... ⛰️",
+          "texto": "💡 Os esporões resolvem o problema de um lado da praia à custa de o empurrar para o vizinho do lado de baixo — como tirar areia de um monte para a pôr noutro: o primeiro fica satisfeito, mas o de baixo fica com ainda menos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um esporão retém areia a montante, mas tende a:",
+              "opcoes": ["Agravar a erosão a jusante", "Eliminar a erosão em toda a costa"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A areia que fica retida deixa de alimentar a costa a jusante.",
+              "mascote_feedback_errado": "Agrava a erosão a jusante — não elimina a erosão em toda a costa."
+            },
+            {
+              "pergunta": "Um paredão paralelo à costa, ao refletir a energia das ondas, tende a:",
+              "opcoes": ["Arrastar a areia da praia", "Aumentar permanentemente a praia"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! A reflexão da energia das ondas acaba por arrastar a areia, em vez de a proteger.",
+              "mascote_feedback_errado": "Tende a arrastar a areia da praia — não a aumentá-la de forma permanente."
+            }
+          ],
+          "mascote_conclusao": "Já conheces os riscos do litoral. Agora vamos subir às vertentes — onde a gravidade é a grande protagonista. ⛰️"
+        }
+      ]
+    },
+    {
+      "secao_id": "vertentes-e-ordenamento",
+      "titulo": "Zonas de vertente e ordenamento do território",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Movimentos em massa",
+          "instrucao": "Clica em cada tipo de movimento em massa.",
+          "pontos": [
+            { "id": "desabamento", "label": "Desabamentos (quedas)", "explicacao": "Queda livre de blocos em vertentes muito inclinadas." },
+            { "id": "deslizamento", "label": "Deslizamentos", "explicacao": "O material desloca-se ao longo de uma superfície de rutura bem definida." },
+            { "id": "fluxo", "label": "Fluxos (escoadas de lama/detritos)", "explicacao": "Material saturado de água comporta-se como um fluido." },
+            { "id": "reptacao", "label": "Reptação", "explicacao": "Movimento muito lento do solo — visível, por exemplo, em árvores e postes inclinados." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A água aumenta o risco de movimentos em massa porque:",
+          "opcoes": ["Aumenta o peso do solo e reduz o atrito entre partículas", "Torna a rocha mais dura"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Mais peso e menos atrito tornam a vertente instável.",
+          "mascote_feedback_errado": "Aumenta o peso e reduz o atrito — não torna a rocha mais dura."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🧼",
+          "texto": "💡 A água é o grande \"traidor\" das vertentes: chuva intensa aumenta o peso do solo e reduz o atrito entre partículas — como tentar manter-te de pé numa rampa seca (fácil) versus numa rampa encharcada de sabão (impossível)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Ordenamento do território",
+          "texto": "O ordenamento do território organiza a ocupação do espaço de forma a compatibilizar as atividades humanas com os riscos e os recursos naturais. Em Portugal, os principais instrumentos são os Planos Diretores Municipais (PDM), a Reserva Ecológica Nacional (REN) e a Reserva Agrícola Nacional (RAN). Em todos os riscos estudados nesta missão há um padrão comum: prevenir pelo ordenamento é sempre mais eficaz e mais barato do que remediar depois com obras — seja em leitos de cheia, em arribas, em dunas ou em vertentes instáveis."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um movimento muito lento do solo, visível em postes inclinados, é:",
+              "opcoes": ["Reptação", "Desabamento"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A reptação é tão lenta que só é percetível pelos seus efeitos ao longo do tempo.",
+              "mascote_feedback_errado": "É a reptação — o desabamento é uma queda livre e rápida de blocos."
+            },
+            {
+              "pergunta": "Em Portugal, os Planos Diretores Municipais e a REN/RAN são instrumentos de:",
+              "opcoes": ["Ordenamento do território", "Datação radiométrica"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Organizam a ocupação do espaço face aos riscos e recursos naturais.",
+              "mascote_feedback_errado": "São instrumentos de ordenamento do território, sem qualquer relação com datação."
+            },
+            {
+              "pergunta": "De um modo geral, prevenir riscos geológicos pelo ordenamento é, em comparação com remediar com obras:",
+              "opcoes": ["Mais eficaz e mais barato", "Sempre mais caro e menos eficaz"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! É o princípio-chave para gerir riscos em bacias hidrográficas, litoral e vertentes.",
+              "mascote_feedback_errado": "É mais eficaz e mais barato — por isso o ordenamento é sempre a primeira linha de defesa."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já sabes ler os riscos de rios, costas e vertentes, e porque é que prevenir pelo ordenamento do território vale sempre mais do que remediar depois. 🏞️"
+        }
+      ]
+    }
+  ]
+}

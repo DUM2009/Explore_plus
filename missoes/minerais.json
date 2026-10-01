@@ -1,0 +1,189 @@
+{
+  "missao_id": "minerais",
+  "titulo": "Minerais",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "💎", "nome": "Caçador de Cristais" },
+  "secoes": [
+    {
+      "secao_id": "o-que-e-um-mineral",
+      "titulo": "O que é um mineral",
+      "xp": 15,
+      "tempo_estimado_min": 4,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Nem tudo o que parece uma pedra bonita é, tecnicamente, um mineral. 💎",
+          "texto": "Há uma condição muito específica que faz toda a diferença: a estrutura cristalina."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Mineral vs. mineraloide",
+          "instrucao": "Clica para veres a diferença.",
+          "pontos": [
+            { "id": "mineral_def", "label": "Mineral", "explicacao": "Sólido natural, geralmente inorgânico, com composição química definida (ou que varia dentro de limites restritos) e estrutura cristalina — átomos ou iões organizados num padrão ordenado e repetido." },
+            { "id": "mineraloide", "label": "Mineraloide", "explicacao": "Não tem estrutura cristalina — é amorfo (ex.: opala, vidro vulcânico/obsidiana)." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🧱",
+          "texto": "💡 A estrutura cristalina é como um padrão de azulejos repetido sem fim: nos minerais, os átomos repetem-se de forma geometricamente perfeita; num mineraloide (amorfo), é como ter os azulejos todos espalhados ao acaso, sem padrão."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A obsidiana (vidro vulcânico) é um mineraloide porque:",
+              "opcoes": ["Não tem estrutura cristalina (é amorfa)", "Não é natural"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Arrefece tão depressa que os átomos não têm tempo de se organizar num padrão.",
+              "mascote_feedback_errado": "É por não ter estrutura cristalina — a obsidiana é, de facto, natural."
+            }
+          ],
+          "mascote_conclusao": "Já sabes o que distingue um mineral. Mas dois minerais podem estar relacionados de formas surpreendentes. 🔬"
+        }
+      ]
+    },
+    {
+      "secao_id": "polimorfismo-isomorfismo",
+      "titulo": "Polimorfismo e isomorfismo",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "O diamante e a grafite são, quimicamente, exatamente a mesma coisa: carbono puro. 💎",
+          "texto": "Então porque é que um é a joia mais dura do mundo, e o outro escreve em folhas de papel?"
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Duas relações opostas entre minerais",
+          "instrucao": "Clica em cada conceito.",
+          "pontos": [
+            { "id": "polimorfismo_min", "label": "Polimorfismo", "explicacao": "Mesma composição química, estrutura cristalina diferente — formada em condições de pressão e temperatura diferentes (ex.: diamante e grafite; calcite e aragonite)." },
+            { "id": "isomorfismo_min", "label": "Isomorfismo", "explicacao": "Mesma estrutura cristalina, composição química variável, por substituição de iões de tamanho e carga semelhantes (ex.: olivina, plagioclases)." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O diamante e a grafite são um exemplo de:",
+          "opcoes": ["Polimorfismo", "Isomorfismo"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Mesma composição (carbono), estruturas cristalinas completamente diferentes.",
+          "mascote_feedback_errado": "É polimorfismo — o isomorfismo implica composição variável, não igual."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🎂",
+          "texto": "💡 Pensa em polimorfismo como a mesma receita (ingredientes) feita de duas formas diferentes (bolo fofo vs. bolo duro); e em isomorfismo como a mesma forma de bolo, mas com um ingrediente trocado por outro parecido (manteiga por margarina) — a estrutura mantém-se, só a composição varia."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Séries isomorfas",
+          "texto": "Os minerais isomorfos formam uma série isomorfa (solução sólida), em que os termos extremos são as composições \"puras\" — por exemplo, a olivina varia continuamente entre Mg₂SiO₄ (rica em magnésio) e Fe₂SiO₄ (rica em ferro). A substituição de iões depende da sua disponibilidade no magma e da temperatura de cristalização."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Numa série isomorfa, o que varia entre os termos extremos é:",
+              "opcoes": ["A composição química", "A estrutura cristalina"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A estrutura mantém-se; só a composição varia por substituição de iões.",
+              "mascote_feedback_errado": "Varia a composição química — a estrutura cristalina mantém-se igual."
+            },
+            {
+              "pergunta": "A calcite e a aragonite (ambas CaCO₃, com estruturas diferentes) são um exemplo de:",
+              "opcoes": ["Polimorfismo", "Isomorfismo"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Mesma composição química, estruturas cristalinas diferentes.",
+              "mascote_feedback_errado": "É polimorfismo — composição igual, estrutura diferente."
+            }
+          ],
+          "mascote_conclusao": "Já sabes relacionar minerais entre si. Agora vamos aprender a identificá-los, um a um. 🔍"
+        }
+      ]
+    },
+    {
+      "secao_id": "propriedades-e-silicatos",
+      "titulo": "Propriedades dos minerais e os silicatos",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Um geólogo no terreno não tem um laboratório à mão — por isso identifica minerais com testes simples e propriedades físicas. 🔍",
+          "texto": "Mas nem todas as propriedades são igualmente fiáveis."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Propriedades de identificação",
+          "instrucao": "Clica em cada propriedade.",
+          "pontos": [
+            { "id": "cor_risca", "label": "Cor e risca", "explicacao": "A cor é pouco fiável: muitos minerais são alocromáticos, com várias cores por impurezas (ex.: quartzo). A risca — a cor do pó do mineral, obtida riscando uma placa de porcelana — é muito mais constante." },
+            { "id": "brilho_min", "label": "Brilho", "explicacao": "Metálico (pirite, galena) ou não metálico (vítreo — quartzo; nacarado; sedoso; resinoso; terroso)." },
+            { "id": "dureza_min", "label": "Dureza (escala de Mohs)", "explicacao": "Resistência a ser riscado, de 1 (talco) a 10 (diamante). Um mineral risca sempre os de dureza inferior." },
+            { "id": "clivagem_min", "label": "Clivagem e fratura", "explicacao": "Clivagem: tendência para partir segundo planos de fraca ligação (micas em lâminas, halite em cubos). Fratura: rotura irregular, sem planos (quartzo, fratura concoide)." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Entre a cor e a risca, a propriedade mais fiável para identificar um mineral é:",
+          "opcoes": ["A risca", "A cor"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! A risca é muito mais constante do que a cor, que pode variar por impurezas.",
+          "mascote_feedback_errado": "É a risca — a cor varia facilmente devido a impurezas (minerais alocromáticos)."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🌈",
+          "texto": "💡 A cor engana, mas a risca não mente: dois quartzos podem ter cores completamente diferentes (roxo, rosa, transparente) por causa de impurezas, mas a sua risca é sempre branca — é por isso que os geólogos confiam mais na risca do que na cor para identificar um mineral."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A escala de Mohs",
+          "texto": "A escala de Mohs ordena dez minerais de referência por dureza crescente: talco (1), gesso (2), calcite (3), fluorite (4), apatite (5), ortóclase (6), quartzo (7), topázio (8), corindo (9), diamante (10). Na prática, a unha risca até ≈2,5; uma moeda de cobre ou um canivete riscam até ≈3; o canivete e o vidro riscam até ≈5,5; a partir de 6, o mineral risca o próprio vidro."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Os silicatos: a base da crosta",
+          "instrucao": "Clica para veres os principais minerais formadores de rochas.",
+          "pontos": [
+            { "id": "silicatos_def", "label": "Silicatos", "explicacao": "O grupo de minerais mais abundante da crosta, com base no tetraedro de sílica [SiO₄]⁴⁻. Inclui o quartzo, os feldspatos (ortóclase, plagioclases), as micas (moscovite, biotite), as anfíbolas, as piroxenas e a olivina." },
+            { "id": "nao_silicatos", "label": "Não silicatados frequentes", "explicacao": "Calcite, dolomite, gesso, halite, hematite e magnetite." }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um mineral que risca o vidro tem uma dureza (escala de Mohs) de pelo menos:",
+              "opcoes": ["6", "2"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A partir da dureza 6 (ortóclase), os minerais já riscam o vidro.",
+              "mascote_feedback_errado": "É a partir de 6 — com dureza 2 (gesso), o mineral é riscado até pela unha."
+            },
+            {
+              "pergunta": "O grupo de minerais mais abundante da crosta terrestre são os:",
+              "opcoes": ["Silicatos", "Carbonatos"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Os silicatos, com base no tetraedro de sílica, dominam a crosta.",
+              "mascote_feedback_errado": "São os silicatos — os carbonatos (como a calcite) são muito menos abundantes."
+            },
+            {
+              "pergunta": "A calcite identifica-se facilmente porque:",
+              "opcoes": ["Efervesce ao contacto com ácido clorídrico diluído", "É sempre magnética"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A efervescência (libertação de CO₂) é um teste clássico para identificar a calcite.",
+              "mascote_feedback_errado": "Efervesce com ácido clorídrico diluído — o magnetismo é próprio da magnetite, não da calcite."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já sabes o que é um mineral, como se relacionam por polimorfismo e isomorfismo, e como identificá-los pelas suas propriedades físicas. 💎🔍"
+        }
+      ]
+    }
+  ]
+}

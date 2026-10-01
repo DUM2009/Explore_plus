@@ -1,0 +1,225 @@
+{
+  "missao_id": "tectonica-de-placas",
+  "titulo": "Tectónica de Placas",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "🧭", "nome": "Explorador das Placas" },
+  "secoes": [
+    {
+      "secao_id": "do-fixismo-ao-mobilismo",
+      "titulo": "Do fixismo ao mobilismo",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Durante muito tempo, achou-se que os continentes e os oceanos ocupavam sempre as mesmas posições. Essa ideia chama-se fixismo. 🧭",
+          "texto": "Mas há mais de cem anos, um cientista começou a desconfiar que os continentes se moviam."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Três correntes de pensamento",
+          "instrucao": "Clica em cada corrente para veres a sua ideia central.",
+          "pontos": [
+            { "id": "catastrofismo", "label": "Catastrofismo", "explicacao": "A história da Terra foi marcada por catástrofes súbitas e violentas, que causaram extinções e mudanças bruscas (Georges Cuvier)." },
+            { "id": "uniformitarismo", "label": "Uniformitarismo (atualismo)", "explicacao": "As leis naturais são constantes no tempo e no espaço; os processos atuais, lentos e graduais, explicam o passado — \"o presente é a chave do passado\" (Hutton, Lyell)." },
+            { "id": "neocatastrofismo", "label": "Neocatastrofismo", "explicacao": "A visão atual: a Terra evoluiu sobretudo de forma gradual, mas também com acontecimentos catastróficos pontuais, como impactos de asteroides e grandes erupções." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O princípio do atualismo defende que:",
+          "opcoes": ["Os processos atuais explicam o passado", "Só as catástrofes explicam o passado"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! \"O presente é a chave do passado\" — os processos lentos e graduais de hoje explicam as rochas antigas.",
+          "mascote_feedback_errado": "Defende que os processos atuais explicam o passado — é essa a ideia-chave do atualismo."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Encontrar marcas de ondulação numa rocha antiga, comparando-as com as de uma praia atual, é um exemplo de:",
+              "opcoes": ["Atualismo", "Catastrofismo"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Comparar estruturas antigas com processos atuais é a essência do atualismo.",
+              "mascote_feedback_errado": "É atualismo — comparar o passado com processos que vemos acontecer hoje."
+            },
+            {
+              "pergunta": "A visão geológica atual sobre a história da Terra é a do:",
+              "opcoes": ["Neocatastrofismo (sobretudo gradual, com episódios pontuais catastróficos)", "Catastrofismo puro"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Combina gradualismo com acontecimentos pontuais, como impactos de asteroides.",
+              "mascote_feedback_errado": "É o neocatastrofismo — combina processos graduais com episódios catastróficos pontuais."
+            }
+          ],
+          "mascote_conclusao": "Com esta forma de pensar sobre o passado, estava tudo pronto para uma ideia revolucionária: os continentes movem-se. 🌎"
+        }
+      ]
+    },
+    {
+      "secao_id": "wegener-e-hess",
+      "titulo": "Wegener, Hess e o nascimento de uma teoria",
+      "xp": 30,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Em 1912, Alfred Wegener propôs que, há 250-200 Ma, todos os continentes estavam unidos num único supercontinente: a Pangeia. 🌎",
+          "texto": "Tinha quatro tipos de evidências fortíssimas. Só lhe faltava uma coisa."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "As evidências da deriva continental",
+          "instrucao": "Clica em cada evidência para veres do que se trata.",
+          "pontos": [
+            { "id": "morfologico", "label": "Argumento morfológico", "explicacao": "O encaixe das linhas de costa, como entre a América do Sul e a África — ainda melhor se considerarmos a plataforma continental." },
+            { "id": "paleontologico", "label": "Argumento paleontológico", "explicacao": "Fósseis dos mesmos seres vivos em continentes hoje separados por oceanos: Mesosaurus (réptil de água doce), Glossopteris (planta), Lystrosaurus e Cynognathus." },
+            { "id": "litologico", "label": "Argumento litológico", "explicacao": "Continuidade de cadeias montanhosas e de formações rochosas com a mesma idade e composição, dos dois lados do Atlântico." },
+            { "id": "paleoclimatico", "label": "Argumento paleoclimático", "explicacao": "Vestígios de glaciações antigas (tilitos, estrias) em regiões hoje tropicais, e depósitos de carvão (clima quente e húmido) na Antártida." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Encontrar o réptil fóssil Mesosaurus tanto na América do Sul como na África é um argumento:",
+          "opcoes": ["Paleontológico", "Litológico"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É um argumento paleontológico — fósseis do mesmo ser vivo em continentes hoje separados.",
+          "mascote_feedback_errado": "É paleontológico — o litológico refere-se à continuidade de cadeias montanhosas e rochas, não a fósseis."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque foi a teoria de Wegener rejeitada?",
+          "texto": "Apesar das evidências fortes, Wegener não conseguiu explicar o mecanismo que movia os continentes — chegou a sugerir que estes \"rasgavam\" a crosta oceânica, o que era fisicamente impossível com o conhecimento da época. Sem um mecanismo credível, a comunidade científica rejeitou a teoria da deriva continental durante décadas."
+        },
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Só nos anos 1960, com Harry Hess, é que a peça em falta apareceu. 🌊",
+          "texto": "O estudo dos fundos oceânicos, com sonar e sondagens, revelou algo surpreendente."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "A expansão dos fundos oceânicos",
+          "instrucao": "Clica em cada evidência para veres o que ela revelou.",
+          "pontos": [
+            { "id": "idade_rochas", "label": "Idade das rochas", "explicacao": "Aumenta simetricamente com a distância à dorsal; nenhuma rocha do fundo oceânico tem mais de ≈180-200 Ma." },
+            { "id": "sedimentos", "label": "Espessura dos sedimentos", "explicacao": "Aumenta com a distância ao eixo da dorsal — quanto mais afastado, mais tempo teve para acumular sedimentos." },
+            { "id": "anomalias", "label": "Anomalias magnéticas simétricas", "explicacao": "Bandas de polaridade normal e inversa, simétricas em relação ao eixo da dorsal." },
+            { "id": "fluxo", "label": "Fluxo térmico elevado", "explicacao": "No eixo das dorsais, onde o magma ascende e forma nova crosta oceânica." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🏭",
+          "texto": "💡 As dorsais e as fossas são como uma passadeira rolante gigante: a crosta nasce num ponto (a dorsal), \"anda\" ao longo do fundo oceânico, e é reciclada noutro ponto (a fossa, onde é destruída por subducção) — por isso nenhuma rocha do fundo oceânico tem mais de ≈200 Ma, muito menos do que os continentes."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A teoria de Wegener foi rejeitada na época sobretudo porque:",
+              "opcoes": ["Faltava um mecanismo físico credível para o movimento", "Não tinha nenhuma evidência"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Tinha evidências fortes, mas faltava explicar o \"motor\" do movimento.",
+              "mascote_feedback_errado": "Tinha várias evidências fortes — faltava-lhe apenas um mecanismo físico credível."
+            },
+            {
+              "pergunta": "Harry Hess contribuiu para a teoria mobilista ao descobrir:",
+              "opcoes": ["A expansão dos fundos oceânicos", "Os fósseis de Mesosaurus"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Foi essa descoberta que deu o mecanismo em falta à teoria de Wegener.",
+              "mascote_feedback_errado": "Foi a expansão dos fundos oceânicos — os fósseis foram evidência usada décadas antes por Wegener."
+            },
+            {
+              "pergunta": "A crosta oceânica é destruída, por subducção, nas:",
+              "opcoes": ["Fossas oceânicas", "Dorsais oceânicas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A crosta nasce nas dorsais e é destruída nas fossas — por isso a Terra não aumenta de tamanho.",
+              "mascote_feedback_errado": "É destruída nas fossas — é nas dorsais que nasce nova crosta oceânica."
+            }
+          ],
+          "mascote_conclusao": "Wegener viu o puzzle encaixar; Hess encontrou a máquina que o move. Estava tudo pronto para a teoria da tectónica de placas. 🧭"
+        }
+      ]
+    },
+    {
+      "secao_id": "limites-de-placas",
+      "titulo": "Os três tipos de limites de placas",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A litosfera está dividida em placas que deslizam sobre a astenosfera, mais plástica, a alguns centímetros por ano. 🧩",
+          "texto": "A quase totalidade dos sismos, vulcões e montanhas do mundo concentra-se nas fronteiras entre essas placas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Divergente, convergente e transformante",
+          "instrucao": "Clica em cada limite para veres o que lá acontece.",
+          "pontos": [
+            { "id": "divergente", "label": "Limite divergente (construtivo)", "explicacao": "As placas afastam-se; ascensão de magma basáltico forma nova litosfera oceânica; sismos pouco profundos; vulcanismo efusivo. Exemplos: Dorsal Médio-Atlântica, Rifte da África Oriental." },
+            { "id": "convergente", "label": "Limite convergente (destrutivo)", "explicacao": "As placas aproximam-se. Oceânica-continental: subducção da placa oceânica (mais densa), vulcanismo explosivo (ex.: Andes). Oceânica-oceânica: subducção e arco insular vulcânico (ex.: Japão). Continental-continental: colisão, sem subducção significativa, grandes cadeias montanhosas (ex.: Himalaias)." },
+            { "id": "transformante", "label": "Limite transformante (conservativo)", "explicacao": "As placas deslizam lateralmente; não há criação nem destruição de litosfera, mas há sismos frequentes (ex.: Falha de Santo André, na Califórnia)." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A colisão entre duas placas continentais, sem subducção significativa, origina sobretudo:",
+          "opcoes": ["Grandes cadeias montanhosas", "Dorsais oceânicas"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É assim que se formaram, por exemplo, os Himalaias.",
+          "mascote_feedback_errado": "Origina grandes cadeias montanhosas — as dorsais formam-se em limites divergentes."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🚶",
+          "texto": "💡 Pensa nos três limites como três formas de duas pessoas se cruzarem num corredor: afastam-se e abre-se espaço novo (divergente); chocam de frente e uma tem de ceder, indo por baixo ou colidindo (convergente); ou passam lado a lado, roçando-se uma na outra (transformante)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O que move as placas?",
+          "texto": "As correntes de convecção no manto (material quente e menos denso sobe; material frio e mais denso desce) são o principal motor, ajudadas por duas forças: a força de tração da placa (slab pull) — o peso da placa que mergulha na subducção puxa o resto da placa — e a força de impulso na dorsal (ridge push) — a litosfera desliza a partir da dorsal, que está mais elevada. Há ainda os pontos quentes (hotspots): zonas fixas de ascensão de material quente do manto que originam vulcanismo no interior das placas. Como a placa se move sobre um ponto quente fixo, formam-se alinhamentos de ilhas com idades crescentes — como no Havai. A Madeira está também associada a um ponto quente."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Portugal e a tectónica de placas",
+          "instrucao": "Clica para veres a posição de Portugal face às placas tectónicas.",
+          "pontos": [
+            { "id": "acores", "label": "Os Açores", "explicacao": "Situam-se na junção tripla entre as placas Norte-Americana, Euroasiática e Africana (Núbia), atravessados pela Dorsal Médio-Atlântica e pelo Rifte da Terceira — daí a forte atividade sísmica e vulcânica." },
+            { "id": "continente", "label": "Portugal continental", "explicacao": "Está próximo da fronteira Euroasiática-Africana (zona de fratura Açores-Gibraltar), o que explica a sua sismicidade." }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Nos limites divergentes, forma-se sobretudo magma:",
+              "opcoes": ["Basáltico", "Riolítico"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A ascensão do manto por descompressão origina magma basáltico.",
+              "mascote_feedback_errado": "Forma-se magma basáltico — o riolítico está associado à fusão da crosta continental."
+            },
+            {
+              "pergunta": "Um alinhamento de ilhas com idade crescente, como o Havai, forma-se por:",
+              "opcoes": ["Um ponto quente fixo, com a placa a mover-se por cima dele", "Um limite transformante"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! O ponto quente fica fixo; é a placa que se move sobre ele ao longo do tempo.",
+              "mascote_feedback_errado": "Forma-se por um ponto quente fixo — os limites transformantes não originam alinhamentos de idade crescente."
+            },
+            {
+              "pergunta": "Os Açores têm forte atividade sísmica e vulcânica porque se situam:",
+              "opcoes": ["Numa junção tripla de placas, atravessada pela Dorsal Médio-Atlântica", "No centro estável de uma única placa"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A junção tripla entre três placas explica a sua forte atividade geológica.",
+              "mascote_feedback_errado": "Situam-se numa junção tripla de placas — longe de ser o centro estável de uma única placa."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já percorreste o caminho desde o fixismo até à tectónica de placas — e já sabes porque é que os Açores tremem tanto. 🧭🌎"
+        }
+      ]
+    }
+  ]
+}

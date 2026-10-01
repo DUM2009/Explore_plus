@@ -150,7 +150,11 @@
 </div>
 
 <section class="missions-page biblioteca-unidade-page">
+    {% if unidade.disciplina == 'Geologia' %}
+    <a href="{% url 'biblioteca-geologia' %}" class="teste-voltar">&larr; Voltar à Biblioteca do Explorador</a>
+    {% else %}
     <a href="{% url 'biblioteca' %}" class="teste-voltar">&larr; Voltar à Biblioteca do Explorador</a>
+    {% endif %}
 
     <div class="biblioteca-unidade-header" style="--biblioteca-cor-a:{{ unidade.cor_a }};--biblioteca-cor-b:{{ unidade.cor_b }};">
         <div class="biblioteca-unidade-header-texto">

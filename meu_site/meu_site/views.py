@@ -35,6 +35,20 @@ TESTE_ID_PARA_UNIDADE = {
 MISSAO_ID_PARA_UNIDADE = {
     'celulas-organelos': 'citologia',
     'biomoleculas': 'bioquimica',
+    'terra-sistema-rochas': 'geologia',
+    'tempo-geologico': 'geologia',
+    'tectonica-de-placas': 'geologia',
+    'origem-terra-sistema-solar': 'geologia',
+    'interior-da-terra': 'geologia',
+    'vulcanologia': 'geologia',
+    'sismologia': 'geologia',
+    'riscos-ordenamento-territorio': 'geologia',
+    'minerais': 'geologia',
+    'rochas-sedimentares': 'geologia',
+    'rochas-magmaticas': 'geologia',
+    'deformacao-das-rochas': 'geologia',
+    'rochas-metamorficas': 'geologia',
+    'recursos-geologicos': 'geologia',
 }
 
 
@@ -635,6 +649,31 @@ def pagina_index_missions(request):
 
 
 @login_required(login_url='login')
+def pagina_index_missions_geologia(request):
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    missoes_lancadas = set()
+    try:
+        caminho_lancamento = settings.BASE_DIR.parent / 'missoes' / 'lancamento.json'
+        with open(caminho_lancamento, encoding='utf-8') as ficheiro:
+            configuracao_lancamento = json.load(ficheiro)
+        missoes_lancadas = {
+            chave for chave, visivel in configuracao_lancamento.items()
+            if visivel is True
+        }
+    except (FileNotFoundError, json.JSONDecodeError):
+        pass
+
+    return render(request, 'index-missions-geologia.html', {
+        'perfil': perfil,
+        'missoes_lancadas': missoes_lancadas,
+    })
+
+
+@login_required(login_url='login')
 def pagina_lesson(request):
     return render(request, 'lesson.html')
 
@@ -1193,12 +1232,13 @@ def carregar_vocabulario(missao_id):
 # de flashcards com o id da unidade). Uma unidade sem ficheiro ainda aparece
 # na estante, mas como "ainda por começar".
 UNIDADES_BIBLIOTECA = [
-    {'id': 'citologia', 'nome': 'Citologia', 'cor_a': '#2f7ea6', 'cor_b': '#1fa6c9', 'cor_soft': '#e3f3f7'},
-    {'id': 'bioquimica', 'nome': 'Bioquímica', 'cor_a': '#b0762f', 'cor_b': '#d19a3f', 'cor_soft': '#fbf1e2'},
-    {'id': 'genetica', 'nome': 'Genética', 'cor_a': '#6c4fb0', 'cor_b': '#8a6bd1', 'cor_soft': '#efe7fa'},
-    {'id': 'ecologia', 'nome': 'Ecologia', 'cor_a': '#5f7d33', 'cor_b': '#789b4a', 'cor_soft': '#eef3e0'},
-    {'id': 'corpo_humano', 'nome': 'Corpo Humano', 'cor_a': '#b03a3a', 'cor_b': '#dc3545', 'cor_soft': '#fdecee'},
-    {'id': 'botanica', 'nome': 'Botânica', 'cor_a': '#2f6b45', 'cor_b': '#1f8a5b', 'cor_soft': '#eaf3e9'},
+    {'id': 'citologia', 'nome': 'Citologia', 'cor_a': '#2f7ea6', 'cor_b': '#1fa6c9', 'cor_soft': '#e3f3f7', 'disciplina': 'Biologia'},
+    {'id': 'bioquimica', 'nome': 'Bioquímica', 'cor_a': '#b0762f', 'cor_b': '#d19a3f', 'cor_soft': '#fbf1e2', 'disciplina': 'Biologia'},
+    {'id': 'genetica', 'nome': 'Genética', 'cor_a': '#6c4fb0', 'cor_b': '#8a6bd1', 'cor_soft': '#efe7fa', 'disciplina': 'Biologia'},
+    {'id': 'ecologia', 'nome': 'Ecologia', 'cor_a': '#5f7d33', 'cor_b': '#789b4a', 'cor_soft': '#eef3e0', 'disciplina': 'Biologia'},
+    {'id': 'corpo_humano', 'nome': 'Corpo Humano', 'cor_a': '#b03a3a', 'cor_b': '#dc3545', 'cor_soft': '#fdecee', 'disciplina': 'Biologia'},
+    {'id': 'botanica', 'nome': 'Botânica', 'cor_a': '#2f6b45', 'cor_b': '#1f8a5b', 'cor_soft': '#eaf3e9', 'disciplina': 'Biologia'},
+    {'id': 'geologia-conceitos', 'nome': 'Geologia', 'cor_a': '#8a5a2b', 'cor_b': '#b97d3f', 'cor_soft': '#f6eee1', 'disciplina': 'Geologia'},
 ]
 
 
@@ -1228,9 +1268,9 @@ def aplicar_estado_vocabulario_aluno(perfil, unidade_id, termos):
     return termos
 
 
-def montar_biblioteca_estante(perfil):
+def montar_biblioteca_estante(perfil, unidades=None):
     estante = []
-    for unidade in UNIDADES_BIBLIOTECA:
+    for unidade in (unidades if unidades is not None else UNIDADES_BIBLIOTECA):
         termos = aplicar_estado_vocabulario_aluno(perfil, unidade['id'], carregar_termos_unidade(unidade['id']))
         novos = sum(1 for termo in termos if termo['estado'] == 'novo')
         estante.append({**unidade, 'total_termos': len(termos), 'novos': novos})
@@ -1243,9 +1283,25 @@ def pagina_biblioteca(request):
         perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
     except OperationalError:
         perfil = None
+    unidades = [u for u in UNIDADES_BIBLIOTECA if u['disciplina'] != 'Geologia']
     return render(request, 'biblioteca.html', {
         'perfil': perfil,
-        'estante': montar_biblioteca_estante(perfil),
+        'estante': montar_biblioteca_estante(perfil, unidades),
+        'subject': 'biology',
+    })
+
+
+@login_required(login_url='login')
+def pagina_biblioteca_geologia(request):
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    unidades = [u for u in UNIDADES_BIBLIOTECA if u['disciplina'] == 'Geologia']
+    return render(request, 'biblioteca.html', {
+        'perfil': perfil,
+        'estante': montar_biblioteca_estante(perfil, unidades),
+        'subject': 'geology',
     })
 
 
@@ -1362,6 +1418,132 @@ RESUMOS = [
         'cor_b': '#2a8fae',
         'cor_soft': '#e8f4f7',
         'descricao_curta': 'Dos átomos à biosfera, e da célula às moléculas da vida — os níveis de organização, os ecossistemas e a biodiversidade.',
+    },
+    {
+        'id': 'terra-sistema-rochas',
+        'nome': 'A Terra Como Sistema e as Rochas',
+        'disciplina': 'Geologia',
+        'cor_a': '#6b4a2f',
+        'cor_b': '#8f6b45',
+        'cor_soft': '#f1ece4',
+        'descricao_curta': 'Os quatro subsistemas terrestres, a Geologia como ciência, e os três grandes grupos de rochas que registam a história da Terra.',
+    },
+    {
+        'id': 'tempo-geologico',
+        'nome': 'O Tempo Geológico',
+        'disciplina': 'Geologia',
+        'cor_a': '#4a5568',
+        'cor_b': '#718096',
+        'cor_soft': '#edeff2',
+        'descricao_curta': 'Datação relativa e absoluta, a semivida dos isótopos, a escala do tempo geológico e a idade da Terra.',
+    },
+    {
+        'id': 'tectonica-de-placas',
+        'nome': 'Tectónica de Placas',
+        'disciplina': 'Geologia',
+        'cor_a': '#1d4e73',
+        'cor_b': '#2f7ea6',
+        'cor_soft': '#e6f0f5',
+        'descricao_curta': 'De Wegener a Hess — como a Terra passou de fixista a mobilista, e os três tipos de limites de placas.',
+    },
+    {
+        'id': 'origem-terra-sistema-solar',
+        'nome': 'Origem da Terra e do Sistema Solar',
+        'disciplina': 'Geologia',
+        'cor_a': '#3a3a6b',
+        'cor_b': '#5a5a9e',
+        'cor_soft': '#eaeaf5',
+        'descricao_curta': 'A hipótese nebular, a diferenciação da Terra em camadas, e o que os meteoritos revelam sobre o Sistema Solar.',
+    },
+    {
+        'id': 'interior-da-terra',
+        'nome': 'O Interior da Terra',
+        'disciplina': 'Geologia',
+        'cor_a': '#8a3a2b',
+        'cor_b': '#c75a3f',
+        'cor_soft': '#f7e9e4',
+        'descricao_curta': 'Métodos diretos e indiretos, descontinuidades sísmicas, e os modelos químico e físico da estrutura interna.',
+    },
+    {
+        'id': 'vulcanologia',
+        'nome': 'Vulcanologia',
+        'disciplina': 'Geologia',
+        'cor_a': '#a3341f',
+        'cor_b': '#d4572e',
+        'cor_soft': '#faeae3',
+        'descricao_curta': 'Magma, lava, tipos de vulcanismo, materiais vulcânicos, e os riscos e benefícios do vulcanismo em Portugal.',
+    },
+    {
+        'id': 'sismologia',
+        'nome': 'Sismologia',
+        'disciplina': 'Geologia',
+        'cor_a': '#a3791f',
+        'cor_b': '#d49a2e',
+        'cor_soft': '#f9f1e1',
+        'descricao_curta': 'Ondas sísmicas, intensidade e magnitude, tsunamis, e o risco sísmico em Portugal.',
+    },
+    {
+        'id': 'riscos-ordenamento-territorio',
+        'nome': 'Riscos Geológicos e Ordenamento do Território',
+        'disciplina': 'Geologia',
+        'cor_a': '#1d6b73',
+        'cor_b': '#2f9ea6',
+        'cor_soft': '#e5f3f4',
+        'descricao_curta': 'Bacias hidrográficas, zonas costeiras e de vertente — os riscos da ocupação humana e como preveni-los.',
+    },
+    {
+        'id': 'minerais',
+        'nome': 'Minerais',
+        'disciplina': 'Geologia',
+        'cor_a': '#6c4fb0',
+        'cor_b': '#8a6bd1',
+        'cor_soft': '#efe7fa',
+        'descricao_curta': 'O que é um mineral, polimorfismo e isomorfismo, e as propriedades físicas usadas para os identificar.',
+    },
+    {
+        'id': 'rochas-sedimentares',
+        'nome': 'Rochas Sedimentares',
+        'disciplina': 'Geologia',
+        'cor_a': '#b0762f',
+        'cor_b': '#d19a3f',
+        'cor_soft': '#fbf1e2',
+        'descricao_curta': 'Sedimentogénese, diagénese, classificação, fósseis e a formação dos combustíveis fósseis.',
+    },
+    {
+        'id': 'rochas-magmaticas',
+        'nome': 'Rochas Magmáticas',
+        'disciplina': 'Geologia',
+        'cor_a': '#7a2d1f',
+        'cor_b': '#b04a2f',
+        'cor_soft': '#f6e7e2',
+        'descricao_curta': 'Génese dos magmas, a série de reações de Bowen, diferenciação magmática, textura e classificação.',
+    },
+    {
+        'id': 'deformacao-das-rochas',
+        'nome': 'Deformação das Rochas',
+        'disciplina': 'Geologia',
+        'cor_a': '#3f5a6b',
+        'cor_b': '#5f87a6',
+        'cor_soft': '#e9eff2',
+        'descricao_curta': 'Tensões compressivas, distensivas e cisalhantes, e as dobras e falhas que daí resultam.',
+    },
+    {
+        'id': 'rochas-metamorficas',
+        'nome': 'Rochas Metamórficas',
+        'disciplina': 'Geologia',
+        'cor_a': '#5a5266',
+        'cor_b': '#857a99',
+        'cor_soft': '#efedf3',
+        'descricao_curta': 'Fatores e tipos de metamorfismo, minerais-índice, texturas, e a síntese do ciclo litológico completo.',
+    },
+    {
+        'id': 'recursos-geologicos',
+        'nome': 'Exploração Sustentada de Recursos Geológicos',
+        'disciplina': 'Geologia',
+        'cor_a': '#4f6f3a',
+        'cor_b': '#6f9450',
+        'cor_soft': '#edf3e6',
+        'descricao_curta': 'Recursos minerais, energéticos e hídricos, aquíferos, e como explorá-los de forma sustentável.',
     },
 ]
 
@@ -2010,6 +2192,1191 @@ RESUMOS_CONTEUDO = {
             'existe porque a anterior a sustenta."*'
         ),
     },
+    'terra-sistema-rochas': {
+        'seccoes': [
+            {
+                'titulo': 'Um Sistema com Quatro Subsistemas',
+                'texto': (
+                    'A Terra é, aproximadamente, um **sistema fechado**: troca energia com o exterior (recebe '
+                    'energia solar, liberta calor) mas quase não troca matéria. Dentro dela, quatro grandes '
+                    'subsistemas interagem permanentemente.'
+                ),
+                'definicoes': [
+                    {'termo': 'Geosfera', 'texto': 'A parte sólida (e o núcleo externo líquido): crosta, manto e núcleo.'},
+                    {'termo': 'Hidrosfera', 'texto': 'Toda a água do planeta: oceanos, rios, lagos, águas subterrâneas e gelo.'},
+                    {'termo': 'Atmosfera', 'texto': 'A camada gasosa que envolve a Terra (N₂, O₂, CO₂, vapor de água).'},
+                    {'termo': 'Biosfera', 'texto': 'O conjunto dos seres vivos e dos locais onde vivem.'},
+                ],
+                'dica': (
+                    'pensa nos quatro subsistemas como **quatro colegas de equipa que nunca param de trocar '
+                    'favores**: a água erode a rocha e evapora para o ar; o vento transporta partículas e '
+                    'alimenta os rios; as raízes fraturam as rochas; os vulcões libertam gases para a '
+                    'atmosfera. Ninguém trabalha sozinho.'
+                ),
+            },
+            {
+                'titulo': 'A Geologia Como Ciência',
+                'texto': (
+                    'A Geologia estuda a composição, estrutura, processos e história da Terra. Trabalha com '
+                    'escalas de tempo enormes (milhões de anos) e, como muitos processos não podem ser '
+                    'reproduzidos diretamente, recorre a **modelos** e à **atividade experimental**, sempre '
+                    'conscientes das suas limitações (a escala de tempo, as dimensões e os materiais nunca '
+                    'são iguais aos reais). Combina trabalho de campo, laboratorial e tecnologias — é uma '
+                    '**ciência histórica**, que interpreta o passado a partir dos vestígios deixados nas rochas.'
+                ),
+                'dica': (
+                    'um geólogo é como um **detetive de uma cena de crime muito, muito antiga**: não pode '
+                    'voltar atrás no tempo para ver o que aconteceu, por isso reconstrói a história a partir '
+                    'das "provas" deixadas nas rochas — e testa as suas hipóteses com modelos, sabendo sempre '
+                    'que um modelo nunca é o real.'
+                ),
+            },
+            {
+                'titulo': 'Os Três Grandes Grupos de Rochas',
+                'texto': 'Uma **rocha** é um agregado natural de um ou mais minerais. Consoante a forma como se formam, distinguem-se três grandes grupos.',
+                'definicoes': [
+                    {'termo': 'Rochas sedimentares', 'texto': 'Formam-se à superfície por meteorização, erosão, transporte e deposição de sedimentos, seguidos de diagénese (ex.: arenito, calcário). Registam paleoambientes, clima e fósseis.'},
+                    {'termo': 'Rochas magmáticas', 'texto': 'Formam-se por arrefecimento e solidificação do magma, em profundidade (plutónicas) ou à superfície (vulcânicas) (ex.: granito, basalto). Registam atividade magmática.'},
+                    {'termo': 'Rochas metamórficas', 'texto': 'Resultam da transformação, no estado sólido, de rochas pré-existentes por aumento de pressão e/ou temperatura (ex.: xisto, mármore). Registam colisões de placas.'},
+                ],
+                'dica': (
+                    'pensa nos três grupos como três formas diferentes de "cozinhar" o mesmo material: as '
+                    'sedimentares são **compactadas a frio**, como fazer um bloco de areia molhada; as '
+                    'magmáticas são **derretidas e voltadas a solidificar**, como derreter chocolate e deixá-lo '
+                    'endurecer num novo molde; as metamórficas são **cozinhadas sem derreter**, como assar '
+                    'barro até ficar mais duro, sem alguma vez ser líquido.'
+                ),
+            },
+            {
+                'titulo': 'O Ciclo das Rochas e os Fósseis',
+                'texto': (
+                    'Os materiais da Terra são reciclados continuamente: qualquer tipo de rocha pode '
+                    'transformar-se noutro, alimentado pela energia solar (processos externos) e pela energia '
+                    'interna da Terra (processos internos). Os **fósseis**, preservados sobretudo em rochas '
+                    'sedimentares, permitem reconstituir paleoambientes, datar e correlacionar camadas, e '
+                    'estudar a evolução da vida.'
+                ),
+                'passos': [
+                    {'titulo': 'Meteorização, erosão e deposição', 'texto': 'Rochas à superfície desgastam-se; os sedimentos são transportados e depositados.'},
+                    {'titulo': 'Diagénese', 'texto': 'Os sedimentos consolidam-se, formando rocha sedimentar.'},
+                    {'titulo': 'Metamorfismo', 'texto': 'O aumento de pressão e/ou temperatura transforma qualquer rocha em rocha metamórfica.'},
+                    {'titulo': 'Fusão e cristalização', 'texto': 'Se a temperatura for suficiente, forma-se magma; ao cristalizar, origina rocha magmática.'},
+                    {'titulo': 'Soerguimento', 'texto': 'Os movimentos tectónicos trazem rochas formadas em profundidade de volta à superfície, e o ciclo recomeça.'},
+                ],
+                'dica': (
+                    'o ciclo das rochas é uma **roda-gigante sem paragem final**: não há um ponto de "chegada" '
+                    '— uma rocha magmática pode ser erodida e virar sedimentar, uma sedimentar pode ser '
+                    'comprimida e virar metamórfica, e qualquer uma pode fundir e voltar a ser magmática. O '
+                    'único bilhete de saída temporária é ser trazida de volta à superfície pelo soerguimento.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'A Terra como sistema', 'valor': 'Sistema fechado · 4 subsistemas: geosfera, hidrosfera, atmosfera, biosfera'},
+            {'label': 'Geologia', 'valor': 'Ciência histórica · usa modelos e atividade experimental, com limitações'},
+            {'label': '3 grupos de rochas', 'valor': 'Sedimentares (superfície), magmáticas (arrefecimento de magma), metamórficas (estado sólido)'},
+            {'label': 'Ciclo litológico', 'valor': 'Qualquer rocha pode transformar-se noutra · alimentado pela energia solar e interna'},
+        ],
+        'sintese_dica': (
+            '*"A Terra recicla tudo — a única pergunta é por que caminho do ciclo cada rocha está a passar '
+            'agora."*'
+        ),
+    },
+    'tempo-geologico': {
+        'seccoes': [
+            {
+                'titulo': 'Datação Relativa: Pôr os Acontecimentos em Ordem',
+                'texto': (
+                    'A **datação relativa** ordena acontecimentos geológicos no tempo — o que é mais antigo e '
+                    'o que é mais recente — sem indicar a idade em anos. Baseia-se nos princípios da '
+                    'estratigrafia.'
+                ),
+                'definicoes': [
+                    {'termo': 'Sobreposição', 'texto': 'Numa sequência de estratos não deformada, um estrato é mais recente do que o que está por baixo.'},
+                    {'termo': 'Horizontalidade original', 'texto': 'Os sedimentos depositam-se em camadas horizontais; estratos inclinados foram deformados depois.'},
+                    {'termo': 'Interseção', 'texto': 'Uma estrutura (falha, filão) que corta outras é mais recente do que as estruturas que corta.'},
+                    {'termo': 'Inclusão', 'texto': 'Os fragmentos de rocha incluídos noutra rocha são mais antigos do que a rocha que os contém.'},
+                ],
+                'dica': (
+                    'pensa numa **sanduíche feita ao longo do tempo**: cada ingrediente novo é sempre '
+                    'colocado por cima dos anteriores (sobreposição) — nunca por baixo. Se encontrares um '
+                    'garfo espetado a direito através de todas as camadas (interseção), sabes que o garfo '
+                    'chegou depois da sanduíche estar feita.'
+                ),
+            },
+            {
+                'titulo': 'Discordâncias e Fósseis de Idade vs. Fácies',
+                'texto': (
+                    'Uma **discordância** é uma superfície de erosão ou de não deposição que separa dois '
+                    'conjuntos de estratos, representando uma lacuna no registo geológico. Os fósseis também '
+                    'ajudam a datar e a interpretar o passado, mas de duas formas diferentes.'
+                ),
+                'definicoes': [
+                    {'termo': 'Fóssil de idade (estratigráfico)', 'texto': 'Existiu durante pouco tempo mas com ampla distribuição geográfica — usado para datar e correlacionar estratos (ex.: trilobites, amonites).'},
+                    {'termo': 'Fóssil de fácies', 'texto': 'Existiu durante muito tempo mas viveu em ambientes muito específicos — usado para reconstituir paleoambientes (ex.: corais, que indicam mares quentes e pouco profundos).'},
+                ],
+                'dica': (
+                    'o fóssil de idade é como um **selo de correio com a data bem impressa**: não importa '
+                    'onde apareça, diz-te quando foi usado. O fóssil de fácies é como um **casaco de inverno**: '
+                    'não te diz o ano, mas diz-te logo que tipo de clima (ambiente) existia.'
+                ),
+            },
+            {
+                'titulo': 'Datação Absoluta: A Idade em Números',
+                'texto': (
+                    'A **datação absoluta** atribui uma idade numérica a uma rocha, com base no **decaimento '
+                    'radioativo**: um isótopo-pai instável transforma-se em isótopo-filho estável a um ritmo '
+                    'constante. A **semivida** é o tempo necessário para que metade dos átomos do isótopo-pai '
+                    'se transforme. Datam-se sobretudo rochas **magmáticas**, porque o "relógio" só começa a '
+                    'contar quando os minerais cristalizam.'
+                ),
+                'definicoes': [
+                    {'termo': 'Urânio-238 → Chumbo-206', 'texto': 'Semivida ≈ 4500 Ma — usado em rochas muito antigas.'},
+                    {'termo': 'Potássio-40 → Árgon-40', 'texto': 'Semivida ≈ 1300 Ma — usado em rochas vulcânicas.'},
+                    {'termo': 'Carbono-14 → Azoto-14', 'texto': 'Semivida ≈ 5730 anos — usado em restos orgânicos com menos de ≈50 000 anos.'},
+                ],
+                'dica': (
+                    'a semivida é como o **tempo que demora metade do gelo de um copo a derreter**: não '
+                    'interessa se o copo está ao sol ou à sombra (temperatura e pressão não afetam o '
+                    'decaimento) — o ritmo é sempre o mesmo. Depois de uma semivida, resta metade do pai; '
+                    'depois de duas, resta um quarto; depois de três, um oitavo — é sempre a metade do que '
+                    'restava, nunca a metade do total inicial.'
+                ),
+            },
+            {
+                'titulo': 'A Escala do Tempo Geológico e a Idade da Terra',
+                'texto': (
+                    'A história da Terra divide-se em **éons → eras → períodos → épocas**, cujos limites '
+                    'correspondem sobretudo a extinções em massa e ao aparecimento de novos grupos de seres '
+                    'vivos. A Terra tem cerca de **4600 Ma**, estimados pela datação de meteoritos e rochas '
+                    'lunares — as rochas terrestres mais antigas são mais "novas" porque a superfície primitiva '
+                    'foi destruída pela tectónica e pela erosão.'
+                ),
+                'definicoes': [
+                    {'termo': 'Paleozoico (541-252 Ma)', 'texto': 'Explosão da vida no Câmbrico, trilobites, formação da Pangeia; termina com a maior extinção em massa.'},
+                    {'termo': 'Mesozoico (252-66 Ma)', 'texto': 'Dinossauros e amonites; fragmentação da Pangeia; termina com a extinção K-Pg (impacto de asteroide).'},
+                    {'termo': 'Cenozoico (66 Ma-atualidade)', 'texto': 'Diversificação dos mamíferos; aparecimento do género Homo; glaciações quaternárias.'},
+                ],
+                'dica': (
+                    'pensa na escala do tempo geológico como os **capítulos de um livro muito, muito longo**: '
+                    'cada novo capítulo (era) começa quase sempre depois de um grande acontecimento dramático '
+                    '— uma extinção em massa que "fecha" o capítulo anterior e abre espaço para novos '
+                    'protagonistas na história da vida.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Datação relativa', 'valor': 'Ordena acontecimentos (sem anos) · princípios da estratigrafia'},
+            {'label': 'Datação absoluta', 'valor': 'Idade numérica · decaimento radioativo · semivida · datam-se sobretudo rochas magmáticas'},
+            {'label': 'Fóssil de idade vs. fácies', 'valor': 'Idade: curta duração, ampla distribuição → datar. Fácies: longa duração, ambiente específico → reconstituir paleoambiente'},
+            {'label': 'Idade da Terra', 'valor': '≈ 4600 Ma, estimada por datação de meteoritos e rochas lunares'},
+        ],
+        'sintese_dica': (
+            '*"A relativa diz quem chegou primeiro à festa; a absoluta diz a que horas exatas cada um chegou."*'
+        ),
+    },
+    'tectonica-de-placas': {
+        'seccoes': [
+            {
+                'titulo': 'Catastrofismo, Uniformitarismo e Atualismo',
+                'texto': 'Ao longo da história da Geologia, diferentes correntes tentaram explicar como a Terra mudou ao longo do tempo.',
+                'definicoes': [
+                    {'termo': 'Catastrofismo', 'texto': 'A história da Terra foi marcada por catástrofes súbitas e violentas (Georges Cuvier).'},
+                    {'termo': 'Uniformitarismo (atualismo)', 'texto': 'As leis naturais são constantes no tempo e no espaço; os processos atuais, lentos e graduais, explicam o passado — "o presente é a chave do passado" (Hutton, Lyell).'},
+                    {'termo': 'Neocatastrofismo', 'texto': 'Visão atual: a Terra evoluiu sobretudo de forma gradual, mas também com acontecimentos catastróficos pontuais (impactos, grandes erupções).'},
+                ],
+                'dica': (
+                    'o atualismo é como **aprender a história de uma casa olhando para como ela é usada hoje**: '
+                    'se hoje a maré deixa marcas de ondulação na areia da praia, e encontras essas mesmas '
+                    'marcas numa rocha antiga, podes concluir que essa rocha se formou também numa praia.'
+                ),
+            },
+            {
+                'titulo': 'A Deriva Continental de Wegener',
+                'texto': (
+                    'Alfred Wegener propôs, em 1912-15, que os continentes estiveram unidos num '
+                    'supercontinente, a **Pangeia**, rodeado por um oceano único, a Pantalassa, e que depois '
+                    'derivaram até às posições atuais.'
+                ),
+                'definicoes': [
+                    {'termo': 'Argumento morfológico', 'texto': 'O encaixe das linhas de costa, como entre a América do Sul e a África.'},
+                    {'termo': 'Argumento paleontológico', 'texto': 'Fósseis dos mesmos seres vivos (ex.: Mesosaurus, Glossopteris) em continentes hoje separados por oceanos.'},
+                    {'termo': 'Argumento litológico', 'texto': 'Continuidade de cadeias montanhosas e formações rochosas com a mesma idade dos dois lados do Atlântico.'},
+                    {'termo': 'Argumento paleoclimático', 'texto': 'Vestígios de glaciações antigas em regiões hoje tropicais.'},
+                ],
+                'dica': (
+                    'Wegener tinha **as provas mas faltava-lhe o motor**: é como encontrares um puzzle que '
+                    'encaixa perfeitamente e ter a certeza de que as peças pertencem juntas, mas não '
+                    'conseguires explicar que máquina as moveu até lá. Por isso a teoria foi rejeitada na '
+                    'altura — faltava um mecanismo fisicamente credível.'
+                ),
+            },
+            {
+                'titulo': 'Expansão dos Fundos Oceânicos',
+                'texto': (
+                    'Nas décadas seguintes, Harry Hess mostrou que nas **dorsais oceânicas** se forma nova '
+                    'crosta oceânica a partir de magma que ascende, afastando-se para ambos os lados. A crosta '
+                    'é depois destruída nas **fossas oceânicas** (subducção) — por isso a Terra não aumenta de '
+                    'tamanho. Esta descoberta finalmente deu um mecanismo ao mobilismo de Wegener.'
+                ),
+                'dica': (
+                    'as dorsais e as fossas são como uma **passadeira rolante gigante**: a crosta nasce num '
+                    'ponto (a dorsal), "anda" ao longo do fundo oceânico, e é reciclada noutro ponto (a '
+                    'fossa) — por isso nenhuma rocha do fundo oceânico tem mais de ≈200 Ma, muito menos do que '
+                    'os continentes.'
+                ),
+            },
+            {
+                'titulo': 'A Teoria da Tectónica de Placas',
+                'texto': (
+                    'A litosfera está dividida em placas que se deslocam sobre a astenosfera. A maior parte '
+                    'da atividade sísmica, vulcânica e de formação de montanhas concentra-se nos limites das '
+                    'placas.'
+                ),
+                'definicoes': [
+                    {'termo': 'Limite divergente (construtivo)', 'texto': 'Placas afastam-se; magma basáltico ascende; nova litosfera oceânica; sismos pouco profundos (dorsais, riftes).'},
+                    {'termo': 'Limite convergente (destrutivo)', 'texto': 'Placas aproximam-se; subducção (se houver crosta oceânica) ou colisão (crosta continental-continental); vulcanismo explosivo, sismos profundos, grandes cadeias montanhosas.'},
+                    {'termo': 'Limite transformante (conservativo)', 'texto': 'Placas deslizam lateralmente; não há criação nem destruição de litosfera; sismos frequentes (ex.: Falha de Santo André).'},
+                ],
+                'dica': (
+                    'pensa nos três limites como três formas de **duas pessoas se cruzarem num corredor**: '
+                    'afastam-se e abre-se espaço novo (divergente); chocam de frente e uma tem de ceder, indo '
+                    'por baixo ou a colidir (convergente); ou passam lado a lado, roçando-se (transformante).'
+                ),
+            },
+            {
+                'titulo': 'Portugal e a Tectónica de Placas',
+                'texto': (
+                    'O arquipélago dos **Açores** situa-se na junção tripla entre as placas Norte-Americana, '
+                    'Euroasiática e Africana, atravessado pela Dorsal Médio-Atlântica — daí a sua forte '
+                    'atividade sísmica e vulcânica. Portugal continental está próximo da fronteira '
+                    'Euroasiática-Africana (zona de fratura Açores-Gibraltar), o que explica a sua sismicidade.'
+                ),
+                'dica': (
+                    'os Açores estão literalmente **no meio do cruzamento de três estradas** — por isso é '
+                    'natural que lá aconteça mais "trânsito" geológico (sismos e vulcões) do que em qualquer '
+                    'outra zona de Portugal.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Wegener', 'valor': 'Deriva continental · 4 evidências · sem mecanismo credível → rejeitada'},
+            {'label': 'Hess', 'valor': 'Expansão dos fundos oceânicos · deu o mecanismo à deriva continental'},
+            {'label': '3 limites de placas', 'valor': 'Divergente (afasta), convergente (aproxima/subducção), transformante (desliza)'},
+            {'label': 'Portugal', 'valor': 'Açores: junção tripla de placas · Continente: perto da fronteira Euroasiática-Africana'},
+        ],
+        'sintese_dica': (
+            '*"Wegener viu o puzzle encaixar; Hess encontrou a máquina que o move."*'
+        ),
+    },
+    'origem-terra-sistema-solar': {
+        'seccoes': [
+            {
+                'titulo': 'A Hipótese Nebular',
+                'texto': (
+                    'Há cerca de 4600 Ma, uma **nébula solar** (nuvem de gás e poeira em rotação) contraiu-se '
+                    'por ação da gravidade, aqueceu e achatou-se num disco. No centro formou-se o Sol; no '
+                    'disco, as partículas chocaram e aglomeraram-se por **acreção**, originando planetesimais '
+                    'e depois protoplanetas.'
+                ),
+                'definicoes': [
+                    {'termo': 'Planetas telúricos', 'texto': 'Perto do Sol, só condensaram materiais com ponto de fusão elevado (silicatos, metais): Mercúrio, Vénus, Terra, Marte — pequenos, rochosos e densos.'},
+                    {'termo': 'Planetas gigantes', 'texto': 'Longe do Sol, condensaram também gelos e acumularam-se gases: Júpiter, Saturno, Úrano, Neptuno — grandes, pouco densos.'},
+                ],
+                'dica': (
+                    'pensa na nébula solar como uma **pizza giratória de massa e ingredientes**: ao girar e '
+                    'achatar, os ingredientes mais "pesados" (metais, silicatos) ficam mais perto do centro '
+                    'quente, e os mais "leves e voláteis" (gelos, gases) só sobrevivem nas bordas frias.'
+                ),
+            },
+            {
+                'titulo': 'Diferenciação da Terra',
+                'texto': (
+                    'A Terra primitiva aqueceu muito devido aos impactos, à compressão gravitacional e ao '
+                    'decaimento radioativo, ficando em grande parte fundida. Os materiais separaram-se por '
+                    'densidade: os mais densos (ferro, níquel) afundaram e formaram o **núcleo**; os menos '
+                    'densos (silicatos) formaram o **manto** e a **crosta**. A **Lua** ter-se-á formado por um '
+                    'impacto gigante de um corpo do tamanho de Marte com a Terra primitiva.'
+                ),
+                'dica': (
+                    'a diferenciação é como um **frasco de vinagrete que acabaste de agitar e deixas '
+                    'repousar**: o óleo (menos denso) sobe para cima, e o vinagre (mais denso) afunda — só que '
+                    'aqui falamos de ferro a afundar para o centro, e silicatos "flutuando" por cima.'
+                ),
+            },
+            {
+                'titulo': 'Atividade Geológica e Dimensão dos Planetas',
+                'texto': (
+                    'Quanto maior o planeta, mais calor interno conserva (menor razão superfície/volume) e '
+                    'mais tempo se mantém geologicamente ativo. A Terra mantém tectónica de placas e '
+                    'vulcanismo; a Lua e Mercúrio, pequenos, arrefeceram depressa e as suas superfícies estão '
+                    'cobertas de crateras de impacto antigas, sem erosão nem tectónica que as apague.'
+                ),
+                'dica': (
+                    'pensa numa **batata grande e numa batata pequena, ambas acabadas de sair do forno**: a '
+                    'pequena arrefece muito mais depressa do que a grande, porque tem mais superfície exposta '
+                    'em relação ao seu volume. É por isso que a Lua "arrefeceu" geologicamente muito antes da '
+                    'Terra.'
+                ),
+            },
+            {
+                'titulo': 'Meteoritos: Mensageiros do Sistema Solar',
+                'texto': 'Os meteoritos são fragmentos de asteroides que atingem a Terra, dando informação sobre a origem do Sistema Solar e sobre o interior do nosso planeta.',
+                'definicoes': [
+                    {'termo': 'Sideritos (férreos)', 'texto': 'Ferro e níquel — composição semelhante à do núcleo terrestre.'},
+                    {'termo': 'Aerólitos — condritos', 'texto': 'Silicatos com côndrulos, não diferenciados — material primitivo do Sistema Solar, usado para datar a idade da Terra.'},
+                    {'termo': 'Aerólitos — acondritos', 'texto': 'Silicatos sem côndrulos, diferenciados — composição semelhante à da crosta/manto.'},
+                ],
+                'dica': (
+                    'os meteoritos são como **amostras grátis de um planeta que nunca conseguimos visitar por '
+                    'inteiro**: como não podemos perfurar os 6370 km até ao centro da Terra, usamos os '
+                    'sideritos como a melhor pista possível sobre do que é feito o nosso próprio núcleo.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Hipótese nebular', 'valor': 'Nébula solar → Sol + acreção de planetesimais, há ≈4600 Ma'},
+            {'label': 'Telúricos vs. gigantes', 'valor': 'Perto do Sol: pequenos e densos. Longe do Sol: grandes e gasosos/gelados'},
+            {'label': 'Diferenciação', 'valor': 'Separação por densidade: núcleo (Fe, Ni) · manto e crosta (silicatos)'},
+            {'label': 'Meteoritos', 'valor': 'Sideritos ≈ núcleo · condritos = material primitivo, usados para datar a Terra'},
+        ],
+        'sintese_dica': (
+            '*"Quanto maior o planeta, mais tempo guarda o seu calor — e mais tempo continua geologicamente '
+            'vivo."*'
+        ),
+    },
+    'interior-da-terra': {
+        'seccoes': [
+            {
+                'titulo': 'Métodos Diretos e Indiretos',
+                'texto': (
+                    'Como ninguém consegue viajar ao centro da Terra, o conhecimento do seu interior vem de '
+                    'dois tipos de métodos.'
+                ),
+                'definicoes': [
+                    {'termo': 'Métodos diretos', 'texto': 'Observação de afloramentos, minas, sondagens (a mais profunda, em Kola, chegou a ≈12 km — menos de 0,2% do raio da Terra) e xenólitos. Só dão acesso a uma camada muito superficial.'},
+                    {'termo': 'Métodos indiretos', 'texto': 'Sismologia (o mais importante), gravimetria, geomagnetismo e geotermia — baseiam-se na interpretação de dados físicos e permitem inferir todo o interior do planeta.'},
+                ],
+                'dica': (
+                    'os métodos diretos são como **espreitar por um buraco de fechadura**: veem muito pouco, '
+                    'mas com total certeza do que veem. Os indiretos são como **ouvir o som que vem de dentro '
+                    'de uma caixa fechada**: dão-te uma ideia de todo o interior, mas sempre por interpretação, '
+                    'nunca por observação direta.'
+                ),
+            },
+            {
+                'titulo': 'Geotermia',
+                'texto': (
+                    'O calor interno provém do calor residual da formação da Terra e do decaimento de '
+                    'isótopos radioativos. O **gradiente geotérmico** (≈30°C por km na crosta) diminui em '
+                    'profundidade — caso contrário, o interior estaria totalmente fundido. O calor é '
+                    'transferido por condução (litosfera) e por convecção (manto e núcleo externo).'
+                ),
+                'dica': (
+                    'pensa no gradiente geotérmico como o **calor de um forno logo ao abrir a porta**: sentes '
+                    'muito calor perto da porta (crosta), mas esse aumento não é constante até ao fundo do '
+                    'forno — se fosse, nada lá dentro sobreviveria.'
+                ),
+            },
+            {
+                'titulo': 'Descontinuidades e o Modelo Químico',
+                'texto': (
+                    'Quando as ondas sísmicas mudam de velocidade bruscamente, essas superfícies chamam-se '
+                    '**descontinuidades** e marcam o limite entre camadas de composição química diferente.'
+                ),
+                'definicoes': [
+                    {'termo': 'Moho (Mohorovičić)', 'texto': 'Separa a crosta do manto. As ondas P e S aumentam de velocidade.'},
+                    {'termo': 'Gutenberg', 'texto': 'Separa o manto do núcleo (≈2900 km). As ondas S deixam de se propagar — revelou que o núcleo externo é líquido.'},
+                    {'termo': 'Lehmann', 'texto': 'Separa o núcleo externo do núcleo interno (≈5150 km). As ondas P voltam a aumentar de velocidade — núcleo interno sólido.'},
+                ],
+                'dica': (
+                    'a **zona de sombra sísmica**, entre 103° e 143° de distância angular ao epicentro, é o '
+                    'maior "prova de crime" da Geologia: a ausência de ondas S para lá dos 103° foi o que '
+                    'revelou que o núcleo externo tinha de ser líquido — porque as ondas S simplesmente não '
+                    'atravessam líquidos.'
+                ),
+            },
+            {
+                'titulo': 'O Modelo Físico: Litosfera, Astenosfera, Mesosfera',
+                'texto': 'Além do modelo químico (crosta-manto-núcleo), existe o **modelo físico**, baseado no comportamento mecânico dos materiais.',
+                'definicoes': [
+                    {'termo': 'Litosfera', 'texto': 'Rígida; crosta + manto superior; ≈100 km de espessura; dividida em placas.'},
+                    {'termo': 'Astenosfera', 'texto': 'Plástica, parcialmente fundida (1-10%); corresponde à zona de baixa velocidade sísmica (≈100-250 km).'},
+                    {'termo': 'Mesosfera', 'texto': 'Sólida e rígida, devido à elevada pressão, até ≈2900 km.'},
+                    {'termo': 'Núcleo externo e interno', 'texto': 'Externo: líquido (2900-5150 km). Interno: sólido apesar de ≈5000-6000°C, devido à pressão muito elevada.'},
+                ],
+                'dica': (
+                    'não confundas os dois modelos: o **químico** pergunta "do que é feito?" (crosta, manto, '
+                    'núcleo); o **físico** pergunta "como se comporta?" (rígido ou plástico). A astenosfera, '
+                    'por exemplo, é quimicamente manto, mas fisicamente comporta-se de forma diferente do '
+                    'resto do manto — daí ter um nome próprio só para o comportamento.'
+                ),
+            },
+            {
+                'titulo': 'Geomagnetismo, Paleomagnetismo e Isostasia',
+                'texto': (
+                    'O campo magnético da Terra é gerado pelos movimentos do ferro líquido no núcleo externo '
+                    '(efeito de dínamo) e sofre **inversões de polaridade** ao longo do tempo. O '
+                    '**paleomagnetismo** estuda esse registo fixado nas rochas basálticas, e foi uma das '
+                    'maiores provas da expansão dos fundos oceânicos. A **isostasia** é o equilíbrio entre a '
+                    'litosfera e a astenosfera, semelhante à flutuação de gelo na água: a erosão de uma '
+                    'montanha faz a litosfera subir lentamente; a acumulação de gelo ou sedimentos faz-a '
+                    'afundar.'
+                ),
+                'dica': (
+                    'a isostasia é como um **barco a perder carga**: tira peso (erosão) e o barco sobe um '
+                    'pouco na água; acrescenta peso (sedimentos, gelo) e o barco afunda um pouco. É por isso '
+                    'que a Escandinávia continua a subir lentamente desde que os glaciares da última '
+                    'glaciação derreteram.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Métodos', 'valor': 'Diretos (observação, só superfície) · Indiretos (interpretação, todo o interior — sismologia é o principal)'},
+            {'label': 'Descontinuidades', 'valor': 'Moho (crosta/manto) · Gutenberg (manto/núcleo, S desaparecem) · Lehmann (núcleo externo/interno)'},
+            {'label': 'Modelo químico', 'valor': 'Crosta → manto → núcleo'},
+            {'label': 'Modelo físico', 'valor': 'Litosfera (rígida) → astenosfera (plástica) → mesosfera (rígida) → núcleo externo (líquido) → núcleo interno (sólido)'},
+        ],
+        'sintese_dica': (
+            '*"O mesmo manto pode ser astenosfera num sítio e mesosfera noutro — o que muda não é a '
+            'composição, é o comportamento."*'
+        ),
+    },
+    'vulcanologia': {
+        'seccoes': [
+            {
+                'titulo': 'Magma, Lava e a Estrutura de um Vulcão',
+                'texto': (
+                    'O **magma** é uma mistura de material rochoso fundido, gases dissolvidos e cristais em '
+                    'suspensão; quando chega à superfície e perde gases, chama-se **lava**. Uma **caldeira** '
+                    'é uma depressão de grandes dimensões formada pelo colapso do topo de um vulcão após o '
+                    'esvaziamento da câmara magmática (ex.: Sete Cidades e Furnas, São Miguel).'
+                ),
+                'definicoes': [
+                    {'termo': 'Câmara magmática', 'texto': 'Reservatório de magma em profundidade.'},
+                    {'termo': 'Chaminé', 'texto': 'Conduta por onde o magma ascende.'},
+                    {'termo': 'Cratera', 'texto': 'Abertura no topo do vulcão.'},
+                    {'termo': 'Cone vulcânico', 'texto': 'Acumulação dos materiais emitidos.'},
+                ],
+                'dica': (
+                    'um vulcão é como uma **garrafa de refrigerante agitada**: a câmara magmática é a garrafa '
+                    'cheia de gás sob pressão, e a chaminé é o gargalo por onde tudo escapa quando a tampa '
+                    '(a resistência da rocha) finalmente cede.'
+                ),
+            },
+            {
+                'titulo': 'Tipos de Magma e de Atividade Vulcânica',
+                'texto': (
+                    'O comportamento de uma erupção depende sobretudo da **viscosidade** do magma, que '
+                    'aumenta com o teor de sílica e diminui com a temperatura. Magma mais viscoso retém mais '
+                    'gases, tornando a erupção mais explosiva.'
+                ),
+                'definicoes': [
+                    {'termo': 'Basáltico (45-52% sílica)', 'texto': 'Pouco viscoso; atividade efusiva — escoadas de lava fluida, vulcões em escudo.'},
+                    {'termo': 'Andesítico (52-65% sílica)', 'texto': 'Viscosidade intermédia; atividade mista — estratovulcões, alternância de escoadas e explosões.'},
+                    {'termo': 'Riolítico (>65% sílica)', 'texto': 'Muito viscoso; atividade explosiva — muitos piroclastos, nuvens ardentes (das manifestações mais perigosas).'},
+                ],
+                'dica': (
+                    'a viscosidade é como a diferença entre **mel quente e mel gelado**: quanto mais sílica '
+                    '(mais "frio e espesso"), mais os gases ficam presos lá dentro, como bolhas presas num '
+                    'mel grosso — até que a pressão se torna demasiada e tudo explode de uma vez.'
+                ),
+            },
+            {
+                'titulo': 'Materiais Vulcânicos',
+                'texto': 'Uma erupção pode libertar diferentes tipos de materiais.',
+                'definicoes': [
+                    {'termo': 'Lava encordoada (pahoehoe)', 'texto': 'Lava basáltica fluida, superfície lisa ou com aspeto de cordas.'},
+                    {'termo': 'Lava em almofada (pillow lava)', 'texto': 'Lava que solidifica rapidamente debaixo de água, típica das dorsais.'},
+                    {'termo': 'Piroclastos', 'texto': 'Fragmentos projetados, classificados por tamanho: cinzas (<2 mm), lapili (2-64 mm), bombas e blocos (>64 mm).'},
+                ],
+                'dica': (
+                    'imagina a diferença entre **chocolate derretido a escorrer de uma colher** (lava '
+                    'encordoada, fluida) e **pipocas a saltar de uma panela** (piroclastos, fragmentos sólidos '
+                    'projetados pelo ar).'
+                ),
+            },
+            {
+                'titulo': 'Vulcanismo Secundário e Vulcões em Portugal',
+                'texto': (
+                    'Mesmo sem erupção, o calor de um magma em arrefecimento produz manifestações como '
+                    '**fumarolas** (gases), **géiseres** (jatos intermitentes de água quente) e **nascentes '
+                    'termais**. Os **Açores** são a única região portuguesa com vulcanismo ativo — ex.: '
+                    'erupção dos Capelinhos (Faial, 1957-58) e da Serreta (Terceira, 1998-2001). No '
+                    'continente há apenas vestígios antigos, como o Complexo Vulcânico de Lisboa (≈70 Ma).'
+                ),
+                'dica': (
+                    'o vulcanismo secundário é o **rescaldo de uma fogueira que já não tem chamas mas ainda '
+                    'está quente**: já não há erupção, mas o calor ainda escapa por gases e água aquecida.'
+                ),
+            },
+            {
+                'titulo': 'Riscos e Benefícios do Vulcanismo',
+                'texto': 'O vulcanismo é simultaneamente risco e recurso, sobretudo nos Açores.',
+                'definicoes': [
+                    {'termo': 'Riscos', 'texto': 'Escoadas de lava, nuvens ardentes, piroclastos, lahars, gases tóxicos, sismos e tsunamis associados.'},
+                    {'termo': 'Benefícios', 'texto': 'Solos férteis, energia geotérmica (Ribeira Grande, São Miguel), águas termais, turismo, materiais de construção.'},
+                    {'termo': 'Minimização do risco', 'texto': 'Monitorização (sismógrafos, GPS, análise de gases), cartas de risco, ordenamento do território, planos de emergência.'},
+                ],
+                'dica': (
+                    'lembra-te da fórmula: **Risco = Perigosidade × Vulnerabilidade × Exposição**. Uma zona '
+                    'muito perigosa mas totalmente desabitada tem, na prática, baixo risco — porque não há '
+                    'pessoas nem bens expostos.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Regra de ouro', 'valor': 'Mais sílica → mais viscosidade → mais gases retidos → erupção mais explosiva'},
+            {'label': '3 tipos de magma', 'valor': 'Basáltico (efusivo) · Andesítico (misto) · Riolítico (explosivo)'},
+            {'label': 'Distribuição', 'valor': 'Dorsais/riftes (basáltico) · zonas de subducção (andesítico-riolítico) · pontos quentes (basáltico)'},
+            {'label': 'Portugal', 'valor': 'Açores: vulcanismo ativo. Continente: vestígios antigos (Lisboa, Monchique, Sintra)'},
+        ],
+        'sintese_dica': (
+            '*"A sílica é a receita — quanto mais espessa a massa, mais explosivo o resultado."*'
+        ),
+    },
+    'sismologia': {
+        'seccoes': [
+            {
+                'titulo': 'O Que é um Sismo',
+                'texto': (
+                    'Um **sismo** é um movimento vibratório brusco da superfície terrestre, resultante da '
+                    'libertação súbita de energia acumulada nas rochas quando estas fraturam. Pela '
+                    '**teoria do ressalto elástico**, as rochas deformam-se elasticamente e acumulam energia '
+                    'até a tensão ultrapassar a sua resistência — aí fraturam e regressam bruscamente à forma '
+                    'inicial, libertando a energia sob a forma de ondas sísmicas.'
+                ),
+                'definicoes': [
+                    {'termo': 'Hipocentro (foco)', 'texto': 'Local, em profundidade, onde se inicia a rutura.'},
+                    {'termo': 'Epicentro', 'texto': 'Ponto da superfície na vertical do hipocentro, onde a intensidade é geralmente maior.'},
+                ],
+                'dica': (
+                    'pensa numa **régua de plástico que vais dobrando cada vez mais**: ela armazena energia '
+                    'elástica até que, de repente, parte — e essa libertação súbita de energia, em forma de '
+                    'vibração, é exatamente o que acontece numa rocha durante um sismo.'
+                ),
+            },
+            {
+                'titulo': 'As Ondas Sísmicas',
+                'texto': 'A energia de um sismo propaga-se através de vários tipos de ondas, cada uma com características próprias.',
+                'definicoes': [
+                    {'termo': 'Ondas P (primárias)', 'texto': 'Longitudinais; propagam-se em sólidos, líquidos e gases; as mais rápidas — as primeiras a chegar.'},
+                    {'termo': 'Ondas S (secundárias)', 'texto': 'Transversais; só se propagam em sólidos; mais lentas do que as P.'},
+                    {'termo': 'Ondas L e R (superficiais)', 'texto': 'Formam-se quando as ondas de volume chegam à superfície; as mais lentas, mas de maior amplitude — as mais destrutivas.'},
+                ],
+                'dica': (
+                    'pensa numa corrida de estafetas: **P chega primeiro** (mais rápida, atravessa tudo), '
+                    '**S chega a seguir** (mais lenta, só em sólidos — não consegue "nadar" em líquidos), e '
+                    '**L e R chegam por último**, mas são as que fazem mais estragos, como os últimos '
+                    'corredores que, por serem mais pesados, abanam mais o chão todo por onde passam.'
+                ),
+            },
+            {
+                'titulo': 'Registo, Intensidade e Magnitude',
+                'texto': (
+                    'Os sismógrafos registam as vibrações num sismograma. O **intervalo de tempo entre a '
+                    'chegada das ondas P e S** aumenta com a distância ao epicentro, e com dados de pelo '
+                    'menos três estações é possível localizá-lo por triangulação.'
+                ),
+                'definicoes': [
+                    {'termo': 'Intensidade', 'texto': 'Mede os efeitos de um sismo num local (escala EMS-98); varia de local para local, diminuindo em geral com a distância ao epicentro.'},
+                    {'termo': 'Magnitude', 'texto': 'Mede a energia libertada no foco (escala de Richter); um único valor por sismo. Cada grau a mais representa ≈10× mais amplitude e ≈30× mais energia.'},
+                ],
+                'dica': (
+                    'não confundas: a **magnitude** é como o volume de uma coluna de som na origem (um único '
+                    'número); a **intensidade** é como esse som é realmente ouvido em diferentes salas da '
+                    'casa — mais alto perto da coluna, mais fraco longe dela.'
+                ),
+            },
+            {
+                'titulo': 'Tsunamis e o Risco Sísmico em Portugal',
+                'texto': (
+                    'Um **tsunami** é uma onda de grande comprimento de onda gerada por deslocamento súbito '
+                    'de grandes volumes de água, sobretudo por sismos com epicentro no mar. Em Portugal, o '
+                    'maior risco vem dos sismos interplacas associados à zona de fratura Açores-Gibraltar '
+                    '— como o **sismo de 1 de novembro de 1755**, que destruiu grande parte de Lisboa e gerou '
+                    'um tsunami. Os Açores são a região de maior atividade sísmica do país.'
+                ),
+                'dica': (
+                    'não é possível prever quando um sismo vai acontecer — mas é possível reduzir o risco: '
+                    'construção antissísmica, ordenamento do território, monitorização, e o lema de um plano '
+                    'de emergência bem treinado: **"Baixar, Proteger, Aguardar."**'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Origem', 'valor': 'Libertação súbita de energia · teoria do ressalto elástico'},
+            {'label': 'Ondas', 'valor': 'P (rápidas, todos os meios) → S (só sólidos) → L/R (superficiais, mais destrutivas)'},
+            {'label': 'Intensidade vs. magnitude', 'valor': 'Intensidade = efeitos locais (EMS-98) · Magnitude = energia no foco (Richter, valor único)'},
+            {'label': 'Portugal', 'valor': 'Sismo de 1755 (interplacas) · Açores: maior atividade sísmica do país'},
+        ],
+        'sintese_dica': (
+            '*"A onda S não atravessa líquidos — por isso a sua \'sombra\' no globo revelou o segredo do '
+            'núcleo externo."*'
+        ),
+    },
+    'riscos-ordenamento-territorio': {
+        'seccoes': [
+            {
+                'titulo': 'Bacias Hidrográficas: Cheias e Inundações',
+                'texto': (
+                    'Uma **bacia hidrográfica** é a área drenada por um rio principal e pelos seus afluentes, '
+                    'limitada por linhas de cumeada. O **leito maior (de cheia)**, ocupado pelo rio durante as '
+                    'cheias, tem solos férteis que atraem a ocupação humana — mas construir lá agrava o risco '
+                    'de inundação.'
+                ),
+                'definicoes': [
+                    {'termo': 'Causas agravantes', 'texto': 'Construção em leitos de cheia, impermeabilização dos solos (urbanização), desflorestação, canalização dos leitos.'},
+                    {'termo': 'Medidas', 'texto': 'Não construir em leitos de cheia, preservar a vegetação ribeirinha, criar bacias de retenção, sistemas de alerta.'},
+                ],
+                'dica': (
+                    'o leito maior é como a **faixa de rodagem de emergência de uma autoestrada**: na maior '
+                    'parte do tempo está vazio e parece "terreno livre", mas existe precisamente para o rio '
+                    'a usar quando precisa de mais espaço — construir lá é como estacionar nessa faixa.'
+                ),
+            },
+            {
+                'titulo': 'Zonas Costeiras: Arribas e Praias',
+                'texto': (
+                    'As **costas de arriba** recuam quando o mar escava a base (sapa), fazendo a parte '
+                    'superior desmoronar. As **costas baixas** (praias e dunas) dependem da **deriva litoral** '
+                    '— o transporte de areia ao longo da costa (em Portugal, predominantemente de norte para '
+                    'sul) — para se manterem abastecidas de sedimento.'
+                ),
+                'definicoes': [
+                    {'termo': 'Esporões', 'texto': 'Retêm areia a montante, mas agravam a erosão a jusante (a sul, em Portugal).'},
+                    {'termo': 'Paredões e enrocamentos', 'texto': 'Protegem a zona construída, mas refletem a energia das ondas, que arrastam a areia da praia.'},
+                    {'termo': 'Causas da erosão costeira', 'texto': 'Subida do nível do mar, menos sedimento vindo dos rios (barragens), destruição de dunas, obras mal planeadas.'},
+                ],
+                'dica': (
+                    'os esporões resolvem o problema de um lado da praia **à custa de o empurrar para o '
+                    'vizinho do lado de baixo** — como tirar areia de um monte para a pôr noutro: o primeiro '
+                    'fica satisfeito, mas o de baixo fica com ainda menos.'
+                ),
+            },
+            {
+                'titulo': 'Zonas de Vertente: Movimentos em Massa',
+                'texto': 'Os **movimentos em massa** são deslocações de solo ou rocha pelas vertentes, por ação da gravidade.',
+                'definicoes': [
+                    {'termo': 'Desabamentos', 'texto': 'Queda livre de blocos em vertentes muito inclinadas.'},
+                    {'termo': 'Deslizamentos', 'texto': 'O material desloca-se ao longo de uma superfície de rutura.'},
+                    {'termo': 'Fluxos', 'texto': 'Material saturado de água comporta-se como um fluido (escoadas de lama).'},
+                    {'termo': 'Reptação', 'texto': 'Movimento muito lento do solo (visível em árvores e postes inclinados).'},
+                ],
+                'dica': (
+                    'a água é o grande "traidor" das vertentes: chuva intensa **aumenta o peso do solo e '
+                    'reduz o atrito** entre partículas — como tentar manter-te de pé numa rampa seca (fácil) '
+                    'versus numa rampa encharcada de sabão (impossível).'
+                ),
+            },
+            {
+                'titulo': 'Ordenamento do Território',
+                'texto': (
+                    'O ordenamento do território organiza a ocupação do espaço de forma a compatibilizar as '
+                    'atividades humanas com os riscos e os recursos naturais, através de instrumentos como os '
+                    '**Planos Diretores Municipais (PDM)**, a **Reserva Ecológica Nacional (REN)** e a '
+                    '**Reserva Agrícola Nacional (RAN)**.'
+                ),
+                'dica': (
+                    'em todos os riscos geológicos deste capítulo há um padrão comum: **prevenir pelo '
+                    'ordenamento é sempre mais eficaz e mais barato do que remediar depois com obras** — seja '
+                    'em leitos de cheia, em arribas, em dunas ou em vertentes instáveis.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Bacias hidrográficas', 'valor': 'Leito maior (cheia) fértil mas de risco · urbanização agrava cheias'},
+            {'label': 'Zonas costeiras', 'valor': 'Arribas recuam por sapa · deriva litoral alimenta praias e dunas'},
+            {'label': 'Zonas de vertente', 'valor': 'Desabamentos, deslizamentos, fluxos, reptação · água é o principal fator agravante'},
+            {'label': 'Prevenção', 'valor': 'Ordenamento do território (PDM, REN, RAN) é mais eficaz do que obras de remediação'},
+        ],
+        'sintese_dica': (
+            '*"O risco geológico quase sempre mora onde o ser humano decidiu construir — não onde a '
+            'natureza decidiu agir."*'
+        ),
+    },
+    'minerais': {
+        'seccoes': [
+            {
+                'titulo': 'O Que é um Mineral',
+                'texto': (
+                    'Um **mineral** é um sólido natural, geralmente inorgânico, com composição química '
+                    'definida e **estrutura cristalina** — átomos ou iões organizados num padrão ordenado e '
+                    'repetido. Um **mineraloide** não tem estrutura cristalina, é amorfo (ex.: opala, '
+                    'obsidiana).'
+                ),
+                'dica': (
+                    'a estrutura cristalina é como um **padrão de azulejos repetido sem fim**: nos minerais, '
+                    'os átomos repetem-se de forma geometricamente perfeita; num mineraloide (amorfo), é como '
+                    'ter os azulejos todos espalhados ao acaso, sem padrão.'
+                ),
+            },
+            {
+                'titulo': 'Polimorfismo e Isomorfismo',
+                'texto': 'Dois minerais podem estar relacionados de duas formas opostas.',
+                'definicoes': [
+                    {'termo': 'Polimorfismo', 'texto': 'Mesma composição química, estrutura cristalina diferente (ex.: diamante e grafite, ambos carbono puro).'},
+                    {'termo': 'Isomorfismo', 'texto': 'Mesma estrutura cristalina, composição variável por substituição de iões de tamanho e carga semelhantes (ex.: olivina, plagioclases).'},
+                ],
+                'dica': (
+                    'pensa em **polimorfismo** como a mesma receita (ingredientes) feita de duas formas '
+                    'diferentes (bolo fofo vs. bolo duro); e em **isomorfismo** como a mesma forma de bolo, '
+                    'mas com um ingrediente trocado por outro parecido (manteiga por margarina) — a estrutura '
+                    'mantém-se, só a composição varia.'
+                ),
+            },
+            {
+                'titulo': 'Propriedades dos Minerais',
+                'texto': 'Os minerais identificam-se por um conjunto de propriedades físicas e químicas.',
+                'definicoes': [
+                    {'termo': 'Cor e risca', 'texto': 'A cor é pouco fiável (muitos minerais têm várias cores por impurezas); a risca — cor do pó, obtida numa placa de porcelana — é mais constante.'},
+                    {'termo': 'Dureza (escala de Mohs)', 'texto': 'Resistência a ser riscado, de 1 (talco) a 10 (diamante); um mineral risca os de dureza inferior.'},
+                    {'termo': 'Clivagem e fratura', 'texto': 'Clivagem: tendência para partir segundo planos (micas em lâminas). Fratura: rotura irregular (quartzo).'},
+                    {'termo': 'Outras', 'texto': 'Brilho (metálico ou não), densidade, magnetismo (magnetite), efervescência com HCl (calcite).'},
+                ],
+                'dica': (
+                    'a cor engana, mas a **risca não mente**: dois quartzos podem ter cores completamente '
+                    'diferentes (roxo, rosa, transparente) por causa de impurezas, mas a sua risca é sempre '
+                    'branca — é por isso que os geólogos confiam mais na risca do que na cor para identificar '
+                    'um mineral.'
+                ),
+            },
+            {
+                'titulo': 'Os Silicatos',
+                'texto': (
+                    'Os **silicatos** são os minerais mais abundantes da crosta, com base no tetraedro de '
+                    'sílica [SiO₄]⁴⁻. Incluem o quartzo, os feldspatos (ortóclase, plagioclases), as micas '
+                    '(moscovite, biotite), as anfíbolas, as piroxenas e a olivina. Minerais não silicatados '
+                    'frequentes incluem a calcite, a dolomite, o gesso, a halite, a hematite e a magnetite.'
+                ),
+                'dica': (
+                    'se um mineral de rocha-comum não for silicato, é quase sempre porque pertence a um '
+                    'pequeno grupo "famoso" de exceções — a calcite (efervesce com ácido), a halite (sabe a '
+                    'sal) ou a magnetite (atrai o íman). Fora desse grupo, aposta sempre nos silicatos.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Mineral', 'valor': 'Sólido natural, inorgânico, composição definida, estrutura cristalina'},
+            {'label': 'Polimorfismo', 'valor': 'Mesma composição, estrutura diferente (diamante/grafite)'},
+            {'label': 'Isomorfismo', 'valor': 'Mesma estrutura, composição variável (olivina, plagioclases)'},
+            {'label': 'Identificação', 'valor': 'Cor (pouco fiável), risca, brilho, dureza (Mohs), clivagem/fratura, densidade'},
+        ],
+        'sintese_dica': (
+            '*"A estrutura cristalina é a impressão digital geométrica de um mineral — repete-se sempre do '
+            'mesmo jeito."*'
+        ),
+    },
+    'rochas-sedimentares': {
+        'seccoes': [
+            {
+                'titulo': 'Sedimentogénese: Meteorização, Erosão, Transporte',
+                'texto': (
+                    'A **meteorização** é a alteração de rochas no local onde estão. Pode ser física '
+                    '(fragmentação sem alterar a composição) ou química (altera a composição mineralógica).'
+                ),
+                'definicoes': [
+                    {'termo': 'Meteorização física', 'texto': 'Crioclastia (gelo nas fissuras), termoclastia (variações de temperatura), haloclastia (cristalização de sais). Mais intensa em climas frios/áridos.'},
+                    {'termo': 'Meteorização química', 'texto': 'Dissolução (calcário → grutas), hidrólise (feldspatos → argila, "apodrece" o granito), oxidação. Mais intensa em climas quentes/húmidos.'},
+                    {'termo': 'Transporte e sedimentação', 'texto': 'Durante o transporte, os detritos ficam mais arredondados e calibrados. A sedimentação ocorre quando o agente de transporte perde energia — os detritos maiores depositam-se primeiro.'},
+                ],
+                'dica': (
+                    'a meteorização física é como **partir uma tablete de chocolate em pedaços** (muda a '
+                    'forma, não a composição); a química é como **deixar essa mesma tablete derreter ao sol '
+                    'e mudar de textura** (a própria substância transforma-se).'
+                ),
+            },
+            {
+                'titulo': 'Diagénese e a Classificação das Rochas Sedimentares',
+                'texto': (
+                    'A **diagénese** transforma sedimentos soltos em rocha consolidada, a baixa temperatura e '
+                    'pressão, por compactação (expulsa a água), cimentação (precipita substâncias que ligam '
+                    'as partículas) e recristalização.'
+                ),
+                'definicoes': [
+                    {'termo': 'Detríticas', 'texto': 'Formadas por clastos de outras rochas, classificadas pelo tamanho: conglomerado/brecha (>2mm), arenito (1/16-2mm), siltito, argilito (<1/256mm).'},
+                    {'termo': 'Quimiogénicas', 'texto': 'Por precipitação de substâncias dissolvidas: calcários de precipitação, evaporitos (gesso, sal-gema).'},
+                    {'termo': 'Biogénicas', 'texto': 'Com intervenção de seres vivos: calcários biogénicos, carvões, petróleo.'},
+                ],
+                'dica': (
+                    'a diagénese é como **comprimir neve fofa até virar gelo compacto**: a compactação '
+                    'espreme a água e aproxima as partículas, e a cimentação é como uma "cola invisível" '
+                    '(calcite, sílica) que se deposita entre elas, prendendo tudo no sítio.'
+                ),
+            },
+            {
+                'titulo': 'Estruturas Sedimentares e Paleoambientes',
+                'texto': (
+                    'Pelo princípio do atualismo, certas estruturas revelam o ambiente de formação: marcas de '
+                    'ondulação (praia, rio), estratificação entrecruzada (dunas, rios — indica o sentido da '
+                    'corrente), fendas de dessecação (exposição ao ar e secagem) e estratificação gradada '
+                    '(sedimentos que diminuem de tamanho da base para o topo, por perda de energia).'
+                ),
+                'dica': (
+                    'se vês uma rocha com fendas poligonais em forma de "teia de aranha" (fendas de '
+                    'dessecação), sabes logo que aquele sedimento esteve exposto ao ar e secou — era, muito '
+                    'provavelmente, a margem lamacenta de um rio ou lago.'
+                ),
+            },
+            {
+                'titulo': 'Fósseis e Fossilização',
+                'texto': (
+                    'A fossilização favorece-se com partes duras, soterramento rápido, ambiente pobre em '
+                    'oxigénio e ausência de metamorfismo posterior.'
+                ),
+                'definicoes': [
+                    {'termo': 'Mineralização (petrificação)', 'texto': 'A matéria orgânica é substituída, molécula a molécula, por minerais (troncos silicificados).'},
+                    {'termo': 'Moldagem', 'texto': 'O ser vivo deixa a sua forma impressa (molde externo/interno) ou o espaço é preenchido (contramolde).'},
+                    {'termo': 'Incarbonização', 'texto': 'Perda dos elementos voláteis, ficando uma película de carbono (folhas, fetos).'},
+                    {'termo': 'Icnofósseis', 'texto': 'Marcas de atividade: pegadas, pistas, ovos, coprólitos (ex.: pegadas de dinossauros no Cabo Espichel).'},
+                ],
+                'dica': (
+                    'pensa num icnofóssil como uma **pegada na areia molhada que endureceu**: não é o animal '
+                    'que ficou preservado, é só o vestígio da sua passagem — ainda assim conta uma história '
+                    'real sobre o seu comportamento.'
+                ),
+            },
+            {
+                'titulo': 'Combustíveis Fósseis',
+                'texto': (
+                    'O **carvão** forma-se a partir de restos de plantas em pântanos pobres em oxigénio, por '
+                    'incarbonização progressiva: turfa → lenhite → hulha → antracite. O **petróleo e gás '
+                    'natural** formam-se a partir de matéria orgânica (sobretudo plâncton) na rocha-mãe, '
+                    'migram para uma rocha-armazém porosa e permeável, e ficam retidos por uma rocha de '
+                    'cobertura impermeável — numa estrutura chamada armadilha petrolífera.'
+                ),
+                'dica': (
+                    'numa armadilha petrolífera, a ordem é sempre a mesma por densidade, como num frasco de '
+                    'vinagrete deixado em repouso: **gás em cima, petróleo no meio, água em baixo**.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Sedimentogénese', 'valor': 'Meteorização (física/química) → erosão → transporte → sedimentação'},
+            {'label': 'Diagénese', 'valor': 'Compactação + cimentação + recristalização → rocha consolidada'},
+            {'label': '3 tipos', 'valor': 'Detríticas (clastos), quimiogénicas (precipitação), biogénicas (seres vivos)'},
+            {'label': 'Petróleo', 'valor': 'Rocha-mãe → migração → rocha-armazém (porosa/permeável) sob rocha de cobertura impermeável'},
+        ],
+        'sintese_dica': (
+            '*"As rochas sedimentares são o arquivo mais completo da Terra: guardam clima, paleoambientes, '
+            'fósseis e até combustíveis."*'
+        ),
+    },
+    'rochas-magmaticas': {
+        'seccoes': [
+            {
+                'titulo': 'Génese dos Magmas',
+                'texto': (
+                    'A maior parte do manto é sólida. Os magmas formam-se por **fusão parcial** (só os '
+                    'minerais com ponto de fusão mais baixo fundem), em três contextos principais.'
+                ),
+                'definicoes': [
+                    {'termo': 'Descompressão', 'texto': 'O manto ascende e o seu ponto de fusão baixa — origina magma basáltico (dorsais, pontos quentes).'},
+                    {'termo': 'Adição de água', 'texto': 'A água baixa o ponto de fusão; ocorre em zonas de subducção — origina magma andesítico.'},
+                    {'termo': 'Aumento de temperatura', 'texto': 'Magma quente funde a crosta continental acima dele — origina magma riolítico.'},
+                ],
+                'dica': (
+                    'pensa nos três "gatilhos" da fusão como **três formas diferentes de derreter gelo**: '
+                    'tirar-lhe a pressão de cima, juntar-lhe sal (como a água faz ao ponto de fusão), ou '
+                    'simplesmente aquecê-lo mais.'
+                ),
+            },
+            {
+                'titulo': 'A Série de Reações de Bowen',
+                'texto': (
+                    'Ao arrefecer, um magma não solidifica todo ao mesmo tempo — os minerais cristalizam por '
+                    'ordem de temperatura. Na **série descontínua** (ferromagnesianos), cada mineral reage com '
+                    'o líquido e origina um mineral com estrutura diferente: olivina → piroxena → anfíbola → '
+                    'biotite. Na **série contínua** (plagioclases), a estrutura mantém-se mas a composição '
+                    'varia de cálcica para sódica. Os últimos minerais a cristalizar são o feldspato potássico, '
+                    'a moscovite e o quartzo — o líquido residual fica cada vez mais rico em sílica.'
+                ),
+                'dica': (
+                    'os primeiros minerais a cristalizar (olivina, plagioclase cálcica) são também os '
+                    '**primeiros a meteorizar-se** à superfície — são como os primeiros convidados a sair de '
+                    'uma festa; o quartzo, o último a cristalizar, é o mais resistente e o último "convidado" '
+                    'a sair, por isso domina as areias.'
+                ),
+            },
+            {
+                'titulo': 'Diferenciação Magmática',
+                'texto': 'Processos que fazem variar a composição de um magma, permitindo que de um magma original resultem rochas diferentes.',
+                'definicoes': [
+                    {'termo': 'Cristalização fracionada', 'texto': 'Os minerais formados são separados do líquido — ex.: diferenciação gravítica, com os cristais densos a afundar na câmara magmática.'},
+                    {'termo': 'Assimilação', 'texto': 'O magma incorpora e funde rochas encaixantes, alterando a sua composição.'},
+                    {'termo': 'Mistura de magmas', 'texto': 'Dois magmas diferentes misturam-se.'},
+                ],
+                'dica': (
+                    'a diferenciação magmática explica como um único magma "mãe" pode dar origem a uma '
+                    'família inteira de rochas diferentes — tal como uma única receita-base pode ser '
+                    'ajustada (mais farinha aqui, menos açúcar ali) para fazer bolos com sabores diferentes.'
+                ),
+            },
+            {
+                'titulo': 'Textura e Classificação das Rochas Magmáticas',
+                'texto': 'A textura e a composição química, combinadas, permitem classificar qualquer rocha magmática.',
+                'definicoes': [
+                    {'termo': 'Granular (plutónica)', 'texto': 'Arrefecimento lento, em profundidade; todos os minerais visíveis a olho nu.'},
+                    {'termo': 'Agranular/vítrea (vulcânica)', 'texto': 'Arrefecimento rápido, à superfície; cristais muito pequenos ou ausentes (obsidiana, pedra-pomes).'},
+                    {'termo': 'Granito e Riolito', 'texto': 'Composição ácida (>65% sílica), clara — granito (plutónica), riolito (vulcânica).'},
+                    {'termo': 'Gabro e Basalto', 'texto': 'Composição básica (45-52% sílica), escura — gabro (plutónica), basalto (vulcânica).'},
+                ],
+                'dica': (
+                    'a textura denuncia sempre a **velocidade do arrefecimento**: cristais grandes e visíveis '
+                    '= tempo para crescer (plutónica, profundidade); cristais minúsculos ou nenhuns = pressa '
+                    '(vulcânica, superfície) — é como a diferença entre deixar água congelar devagar no '
+                    'congelador (cristais de gelo grandes) ou muito depressa (gelo opaco, sem estrutura '
+                    'visível).'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Origem do magma', 'valor': 'Descompressão (basáltico) · água (andesítico) · temperatura (riolítico)'},
+            {'label': 'Bowen', 'valor': 'Cristaliza por ordem de temperatura · líquido residual enriquece em sílica'},
+            {'label': 'Textura', 'valor': 'Arrefecimento lento → granular · rápido → agranular/vítrea'},
+            {'label': 'Pares plutónica/vulcânica', 'valor': 'Granito/riolito (ácida) · diorito/andesito (intermédia) · gabro/basalto (básica)'},
+        ],
+        'sintese_dica': (
+            '*"A velocidade de arrefecimento escreve-se no tamanho dos cristais — lento é grande, rápido é '
+            'pequeno ou inexistente."*'
+        ),
+    },
+    'deformacao-das-rochas': {
+        'seccoes': [
+            {
+                'titulo': 'Tensões e Comportamento das Rochas',
+                'texto': 'O tipo de tensão aplicada a uma rocha determina o tipo de estrutura que se forma, e está sempre ligado à tectónica de placas.',
+                'definicoes': [
+                    {'termo': 'Tensão compressiva', 'texto': 'Encurta e espessa as camadas; origina dobras e falhas inversas. Típica de limites convergentes.'},
+                    {'termo': 'Tensão distensiva', 'texto': 'Estira e adelgaça; origina falhas normais. Típica de limites divergentes.'},
+                    {'termo': 'Tensão cisalhante', 'texto': 'Deslocamento lateral; origina falhas de desligamento. Típica de limites transformantes.'},
+                ],
+                'dica': (
+                    'uma rocha deforma-se de forma **dúctil** (dobra, como plasticina) quando há temperatura '
+                    'elevada, pressão confinante elevada e a tensão é aplicada lentamente; deforma-se de '
+                    'forma **frágil** (parte, como uma bolacha) à superfície, onde as condições são o '
+                    'oposto.'
+                ),
+            },
+            {
+                'titulo': 'Dobras',
+                'texto': 'São deformações dúcteis em que as camadas ficam encurvadas, sem fraturar.',
+                'definicoes': [
+                    {'termo': 'Anticlinal', 'texto': 'Convexidade voltada para cima (em "A"); as rochas no núcleo são as mais antigas.'},
+                    {'termo': 'Sinclinal', 'texto': 'Concavidade voltada para cima (em "U"); as rochas no núcleo são as mais recentes.'},
+                    {'termo': 'Elementos de uma dobra', 'texto': 'Charneira (zona de maior curvatura), flancos (lados), superfície axial, eixo.'},
+                ],
+                'dica': (
+                    'imagina as camadas de rocha como as **páginas de um livro fechado que dobras ao meio**: '
+                    'se o livro forma uma "montanha" (anticlinal), a página mais antiga fica no centro, mais '
+                    'exposta; se forma um "vale" (sinclinal), a página mais recente fica protegida no fundo.'
+                ),
+            },
+            {
+                'titulo': 'Falhas',
+                'texto': 'São fraturas com deslocamento relativo dos blocos (ao contrário das diáclases, sem deslocamento).',
+                'definicoes': [
+                    {'termo': 'Falha normal', 'texto': 'O teto desce em relação ao muro (há alongamento) — tensão distensiva.'},
+                    {'termo': 'Falha inversa', 'texto': 'O teto sobe em relação ao muro (há encurtamento) — tensão compressiva. Com pouca inclinação, chama-se cavalgamento.'},
+                    {'termo': 'Falha de desligamento', 'texto': 'Os blocos deslocam-se horizontalmente, paralelamente ao plano de falha — tensão cisalhante.'},
+                    {'termo': 'Horsts e grabens', 'texto': 'Associações de falhas normais originam blocos elevados (horsts) e blocos abatidos (grabens — ex.: riftes).'},
+                ],
+                'dica': (
+                    'para memorizar falha normal vs. inversa, pensa no **esforço necessário**: numa falha '
+                    'normal, o bloco simplesmente "cai" com a gravidade, puxado para baixo pela distensão '
+                    '— fácil, "normal". Numa falha inversa, o bloco é empurrado para cima contra a gravidade '
+                    'pela compressão — o "inverso" do que seria natural.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Compressão', 'valor': 'Dobras + falhas inversas · limites convergentes'},
+            {'label': 'Distensão', 'valor': 'Falhas normais · limites divergentes'},
+            {'label': 'Cisalhamento', 'valor': 'Falhas de desligamento · limites transformantes'},
+            {'label': 'Dobras', 'valor': 'Anticlinal: núcleo mais antigo · Sinclinal: núcleo mais recente'},
+        ],
+        'sintese_dica': (
+            '*"O tipo de tensão nunca mente sobre o tipo de limite de placas que a produziu."*'
+        ),
+    },
+    'rochas-metamorficas': {
+        'seccoes': [
+            {
+                'titulo': 'O Que é o Metamorfismo e os Seus Fatores',
+                'texto': (
+                    'O **metamorfismo** é o conjunto de transformações mineralógicas e texturais que ocorrem '
+                    '**no estado sólido**, em rochas pré-existentes sujeitas a novas condições de pressão '
+                    'e/ou temperatura.'
+                ),
+                'definicoes': [
+                    {'termo': 'Temperatura', 'texto': 'O principal fator; favorece a recristalização e as reações químicas.'},
+                    {'termo': 'Pressão litostática', 'texto': 'Exercida igualmente em todas as direções; torna a rocha mais compacta e densa.'},
+                    {'termo': 'Pressão não litostática (dirigida)', 'texto': 'Maior numa direção; orienta os minerais perpendicularmente à tensão máxima — origina a foliação.'},
+                    {'termo': 'Fluidos e tempo', 'texto': 'Os fluidos aceleram as reações; as reações metamórficas são muito lentas.'},
+                ],
+                'dica': (
+                    'a palavra-chave é **"sem derreter"**: ao contrário do magmatismo, o metamorfismo '
+                    'reorganiza os minerais sem nunca os fundir — é como reorganizar os livros de uma '
+                    'estante de forma diferente, sem nunca os destruir ou reescrever.'
+                ),
+            },
+            {
+                'titulo': 'Metamorfismo de Contacto vs. Regional',
+                'texto': 'Consoante o fator dominante e a escala, distinguem-se dois grandes tipos.',
+                'definicoes': [
+                    {'termo': 'Metamorfismo de contacto (térmico)', 'texto': 'Dominado pela temperatura; ocorre numa auréola à volta de intrusões magmáticas; rochas geralmente não foliadas (corneana, mármore, quartzito).'},
+                    {'termo': 'Metamorfismo regional', 'texto': 'Dominado por temperatura e pressão dirigida; ocorre em grandes áreas, em zonas de colisão; rochas geralmente foliadas (ardósia, filito, micaxisto, gnaisse).'},
+                ],
+                'dica': (
+                    'o metamorfismo de contacto é como **aproximar uma torradeira de um pão** — localizado, '
+                    'só o que está perto aquece; o metamorfismo regional é como **uma prensa gigante a '
+                    'esmagar uma área inteira** — afeta regiões enormes, em zonas de colisão de placas.'
+                ),
+            },
+            {
+                'titulo': 'Grau de Metamorfismo e Minerais-Índice',
+                'texto': (
+                    'Os **minerais-índice** só se formam em determinadas condições, permitindo deduzir o grau '
+                    'de metamorfismo: clorite → moscovite → biotite → granada → estaurolite → distena → '
+                    'silimanite (de baixo para alto grau). Em metamorfismo regional crescente, uma rocha '
+                    'argilosa evolui: argilito → ardósia → filito → micaxisto → gnaisse — e, com temperaturas '
+                    'ainda mais altas, inicia-se a fusão parcial (anatexia), formando migmatitos.'
+                ),
+                'dica': (
+                    'esta sequência — argilito → ardósia → filito → micaxisto → gnaisse — é uma das mais '
+                    'pedidas em exame. Memoriza-a como uma **escada de 5 degraus de grau crescente**: quanto '
+                    'mais subes, mais visíveis ficam os cristais e mais marcado o bandado.'
+                ),
+            },
+            {
+                'titulo': 'Texturas e Rochas Metamórficas',
+                'texto': 'A textura e os minerais de uma rocha metamórfica revelam as condições em que se formou.',
+                'definicoes': [
+                    {'termo': 'Foliada', 'texto': 'Ardósia (grão fino, clivagem ardosiana), filito (brilho acetinado), micaxisto (micas visíveis), gnaisse (bandado, alto grau).'},
+                    {'termo': 'Não foliada (granoblástica)', 'texto': 'Mármore (de calcário, efervesce com HCl), quartzito (de arenito quártzico, muito duro), corneana (metamorfismo de contacto).'},
+                ],
+                'dica': (
+                    'em Portugal: as **ardósias de Valongo**, os **mármores de Estremoz, Borba e Vila '
+                    'Viçosa**, e os xistos e quartzitos do Maciço Hespérico (Beiras, Trás-os-Montes) são '
+                    'exemplos clássicos de exame.'
+                ),
+            },
+            {
+                'titulo': 'Síntese: o Ciclo das Rochas Completo',
+                'texto': (
+                    'Com o estudo das rochas sedimentares, magmáticas e metamórficas, o ciclo litológico '
+                    'fecha-se: os sedimentos acumulam-se em bacias, são deformados e metamorfizados em zonas '
+                    'de colisão, podem fundir parcialmente em profundidade e originar magmas, e as rochas '
+                    'formadas são levantadas e expostas à superfície — onde o ciclo recomeça.'
+                ),
+                'dica': (
+                    'agora que já conheces os três grupos de rochas em detalhe, revê o ciclo litológico do '
+                    'início: cada seta do ciclo corresponde a um processo que já estudaste — meteorização, '
+                    'diagénese, metamorfismo, fusão, cristalização, soerguimento.'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Metamorfismo', 'valor': 'Transformação no estado sólido · fatores: temperatura, pressão (litostática e dirigida), fluidos, tempo'},
+            {'label': 'Contacto vs. regional', 'valor': 'Contacto: temperatura, auréola, não foliada. Regional: temperatura+pressão, grandes áreas, foliada'},
+            {'label': 'Minerais-índice', 'valor': 'Revelam o grau de metamorfismo (clorite → ... → silimanite)'},
+            {'label': 'Série argilosa', 'valor': 'Argilito → ardósia → filito → micaxisto → gnaisse (grau crescente)'},
+        ],
+        'sintese_dica': (
+            '*"O metamorfismo é o elo que fecha o ciclo das rochas: pega no que já existe e transforma-o '
+            'sem nunca o derreter."*'
+        ),
+    },
+    'recursos-geologicos': {
+        'seccoes': [
+            {
+                'titulo': 'Recursos e Reservas',
+                'texto': 'Nem todo o recurso identificado é, de facto, explorável.',
+                'definicoes': [
+                    {'termo': 'Recurso geológico', 'texto': 'Qualquer material ou fonte de energia da geosfera útil ao ser humano.'},
+                    {'termo': 'Reserva', 'texto': 'Parte do recurso já identificada e explorável com lucro, com a tecnologia e condições económicas atuais — varia com o preço, a tecnologia e novas descobertas.'},
+                    {'termo': 'Renováveis vs. não renováveis', 'texto': 'Renováveis repõem-se à escala humana (água, geotermia bem gerida). Não renováveis formam-se à escala geológica (minérios, combustíveis fósseis).'},
+                ],
+                'dica': (
+                    'uma reserva não é fixa: se o preço de um metal sobe, ou surge nova tecnologia de '
+                    'extração, uma parte do recurso que antes "não compensava" explorar passa a ser reserva '
+                    '— a reserva cresce sem que tenha sido descoberto nada de novo no terreno.'
+                ),
+            },
+            {
+                'titulo': 'Recursos Minerais',
+                'texto': (
+                    'Um **jazigo mineral** é uma concentração anómala de um mineral que torna a sua '
+                    'exploração rentável. O **minério** é a associação da qual se extrai, com vantagem '
+                    'económica, uma substância útil; a **ganga** é o resto, sem valor. Em Portugal: '
+                    'Neves-Corvo e Aljustrel (cobre, zinco), Panasqueira (volfrâmio), Barroso e Beiras '
+                    '(lítio), Anticlinal de Estremoz (mármores).'
+                ),
+                'dica': (
+                    'a exploração mineira tem sempre dois lados: tão importante como extrair é **recuperar a '
+                    'paisagem depois** — tratar efluentes, evitar a drenagem ácida (que acidifica águas e '
+                    'liberta metais pesados), e reflorestar as áreas já exploradas.'
+                ),
+            },
+            {
+                'titulo': 'Recursos Energéticos',
+                'texto': 'Além dos combustíveis fósseis, a geosfera fornece outras fontes de energia.',
+                'definicoes': [
+                    {'termo': 'Nuclear (urânio)', 'texto': 'Muita energia, sem CO₂ na produção, mas resíduos radioativos perigosos durante muito tempo. Em Portugal explorou-se urânio na Urgeiriça.'},
+                    {'termo': 'Geotérmica de alta entalpia', 'texto': 'Fluidos a >150°C, produção de eletricidade — Açores (Ribeira Grande, Pico Vermelho, São Miguel).'},
+                    {'termo': 'Geotérmica de baixa entalpia', 'texto': 'Aquecimento de edifícios, estufas e termalismo (ex.: Chaves, São Pedro do Sul).'},
+                ],
+                'dica': (
+                    'a geotermia divide-se pela "temperatura do recurso": alta entalpia é quente o suficiente '
+                    'para **gerar eletricidade** (como nos Açores); baixa entalpia só chega para **aquecer '
+                    'diretamente** — edifícios, estufas, termas.'
+                ),
+            },
+            {
+                'titulo': 'Recursos Hídricos: Aquíferos',
+                'texto': (
+                    'A água infiltra-se no solo, atravessando a zona de aeração até à zona de saturação — o '
+                    'limite entre as duas é o **nível freático**.'
+                ),
+                'definicoes': [
+                    {'termo': 'Porosidade vs. permeabilidade', 'texto': 'Porosidade: % de espaços vazios. Permeabilidade: capacidade de a água atravessar a rocha. A argila é porosa mas pouco permeável.'},
+                    {'termo': 'Aquífero livre', 'texto': 'Limitado só na base; à pressão atmosférica; recarregado em toda a área; água tem de ser bombeada; elevada vulnerabilidade à poluição.'},
+                    {'termo': 'Aquífero cativo', 'texto': 'Entre duas camadas impermeáveis; água sob pressão; recarga só onde a formação aflora; mais protegido da poluição.'},
+                    {'termo': 'Problemas', 'texto': 'Sobre-exploração (descida do nível freático, intrusão salina no litoral) e contaminação (nitratos, efluentes, drenagem ácida).'},
+                ],
+                'dica': (
+                    'o aquífero cativo é como uma **sanduíche**: a água está "entalada" entre duas fatias de '
+                    'pão impermeável, protegida da contaminação exterior e sob pressão — por isso, ao '
+                    'perfurares até lá, a água pode subir sozinha pelo furo (e, se chegar à superfície, '
+                    'chama-se furo artesiano repuxante).'
+                ),
+            },
+        ],
+        'sintese_titulo': 'Síntese Final para Memória Rápida',
+        'sintese_final': [
+            {'label': 'Recurso vs. reserva', 'valor': 'Recurso: útil. Reserva: explorável com lucro hoje — varia com preço e tecnologia'},
+            {'label': 'Minério vs. ganga', 'valor': 'Minério: tem valor económico. Ganga: o resto, sem valor'},
+            {'label': 'Porosidade ≠ permeabilidade', 'valor': 'Uma rocha pode ser muito porosa e pouco permeável (argila)'},
+            {'label': 'Aquífero livre vs. cativo', 'valor': 'Livre: pressão atmosférica, mais vulnerável. Cativo: sob pressão, mais protegido'},
+        ],
+        'sintese_dica': (
+            '*"Explorar de forma sustentável é usar os recursos de hoje sem comprometer os de amanhã — nem '
+            'o solo, nem a água, nem o ar."*'
+        ),
+    },
 }
 
 
@@ -2021,7 +3388,21 @@ def pagina_Resumos(request):
         perfil = None
     return render(request, 'Resumos.html', {
         'perfil': perfil,
-        'resumos': RESUMOS,
+        'resumos': [r for r in RESUMOS if r['disciplina'] != 'Geologia'],
+        'subject': 'biology',
+    })
+
+
+@login_required(login_url='login')
+def pagina_Resumos_geologia(request):
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    return render(request, 'Resumos.html', {
+        'perfil': perfil,
+        'resumos': [r for r in RESUMOS if r['disciplina'] == 'Geologia'],
+        'subject': 'geology',
     })
 
 

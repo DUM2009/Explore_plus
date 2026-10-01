@@ -23,5 +23,20 @@
   "ciclos-vida": false,
   "ecossistemas": true,
   "sistema-nervoso": true,
-  "fisiologia-vegetal": true
+  "fisiologia-vegetal": true,
+
+  "terra-sistema-rochas": true,
+  "tempo-geologico": true,
+  "tectonica-de-placas": true,
+  "origem-terra-sistema-solar": true,
+  "interior-da-terra": true,
+  "vulcanologia": true,
+  "sismologia": true,
+  "riscos-ordenamento-territorio": true,
+  "minerais": true,
+  "rochas-sedimentares": true,
+  "rochas-magmaticas": true,
+  "deformacao-das-rochas": true,
+  "rochas-metamorficas": true,
+  "recursos-geologicos": true
 }

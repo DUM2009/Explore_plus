@@ -1,0 +1,811 @@
+{
+  "unidade": "geologia-conceitos",
+  "titulo": "Geologia",
+  "termos": [
+    {
+      "id": "sistema_fechado",
+      "termo": "Sistema fechado",
+      "definicao": "Sistema que troca energia mas não matéria com o exterior. A Terra é, aproximadamente, um sistema fechado: recebe energia solar e liberta calor, mas quase não troca matéria.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "geosfera"
+      ]
+    },
+    {
+      "id": "geosfera",
+      "termo": "Geosfera",
+      "definicao": "O subsistema sólido da Terra (e o núcleo externo líquido): crosta, manto e núcleo. Interage com a hidrosfera, a atmosfera e a biosfera.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sistema_fechado",
+        "litosfera"
+      ]
+    },
+    {
+      "id": "rocha_sedimentar",
+      "termo": "Rocha sedimentar",
+      "definicao": "Rocha formada à superfície por meteorização, erosão, transporte e deposição de sedimentos, seguidos de diagénese. Regista paleoambientes, clima e fósseis.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "ciclo_litologico",
+        "diagenese"
+      ]
+    },
+    {
+      "id": "rocha_magmatica",
+      "termo": "Rocha magmática",
+      "definicao": "Rocha formada por arrefecimento e solidificação do magma — em profundidade (plutónica) ou à superfície (vulcânica). Regista atividade magmática e pode ser datada por métodos radiométricos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "ciclo_litologico",
+        "magma",
+        "textura_magmatica"
+      ]
+    },
+    {
+      "id": "rocha_metamorfica",
+      "termo": "Rocha metamórfica",
+      "definicao": "Rocha resultante da transformação, no estado sólido, de rochas pré-existentes por aumento de pressão e/ou temperatura. Regista colisões de placas e intrusões magmáticas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "ciclo_litologico",
+        "metamorfismo_regional"
+      ]
+    },
+    {
+      "id": "ciclo_litologico",
+      "termo": "Ciclo das rochas (ciclo litológico)",
+      "definicao": "Reciclagem contínua dos materiais da Terra: qualquer tipo de rocha pode transformar-se noutro, por meteorização/erosão/diagénese, metamorfismo, fusão/cristalização ou soerguimento.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "rocha_sedimentar",
+        "rocha_magmatica",
+        "rocha_metamorfica"
+      ]
+    },
+    {
+      "id": "datacao_relativa",
+      "termo": "Datação relativa",
+      "definicao": "Ordena acontecimentos geológicos no tempo (mais antigo/mais recente), sem indicar a idade em anos. Baseia-se nos princípios da estratigrafia (sobreposição, horizontalidade original, interseção, inclusão...).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "principio_sobreposicao",
+        "datacao_absoluta",
+        "discordancia"
+      ]
+    },
+    {
+      "id": "principio_sobreposicao",
+      "termo": "Princípio da sobreposição",
+      "definicao": "Numa sequência de estratos não deformada, um estrato é mais recente do que o que está por baixo e mais antigo do que o que está por cima.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "datacao_relativa"
+      ]
+    },
+    {
+      "id": "discordancia",
+      "termo": "Discordância",
+      "definicao": "Superfície de erosão ou de não deposição que separa dois conjuntos de estratos, representando uma lacuna no registo geológico.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "datacao_relativa"
+      ]
+    },
+    {
+      "id": "fossil_idade",
+      "termo": "Fóssil de idade (estratigráfico)",
+      "definicao": "Fóssil de um ser vivo que existiu durante pouco tempo mas com ampla distribuição geográfica — usado para datar e correlacionar estratos (ex.: trilobites, amonites).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "fossil_facies",
+        "datacao_relativa"
+      ]
+    },
+    {
+      "id": "fossil_facies",
+      "termo": "Fóssil de fácies",
+      "definicao": "Fóssil de um ser vivo que existiu durante muito tempo mas viveu em ambientes muito específicos — usado para reconstituir paleoambientes (ex.: corais).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "fossil_idade"
+      ]
+    },
+    {
+      "id": "datacao_absoluta",
+      "termo": "Datação absoluta (radiométrica)",
+      "definicao": "Atribui uma idade numérica a uma rocha ou mineral, com base no decaimento radioativo de um isótopo-pai num isótopo-filho, a um ritmo constante.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "semivida",
+        "datacao_relativa"
+      ]
+    },
+    {
+      "id": "semivida",
+      "termo": "Semivida",
+      "definicao": "Tempo necessário para que metade dos átomos de um isótopo-pai se transforme em isótopo-filho. É constante, independentemente da temperatura ou pressão.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "datacao_absoluta"
+      ]
+    },
+    {
+      "id": "escala_tempo_geologico",
+      "termo": "Escala do tempo geológico",
+      "definicao": "Divisão da história da Terra em éons, eras, períodos e épocas, cujos limites correspondem sobretudo a extinções em massa e ao aparecimento de novos grupos de seres vivos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "datacao_absoluta"
+      ]
+    },
+    {
+      "id": "atualismo",
+      "termo": "Atualismo (uniformitarismo)",
+      "definicao": "Princípio segundo o qual os processos geológicos atuais, lentos e graduais, explicam o passado — \"o presente é a chave do passado\" (Hutton, Lyell), em contraste com o catastrofismo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "deriva_continental"
+      ]
+    },
+    {
+      "id": "deriva_continental",
+      "termo": "Deriva continental",
+      "definicao": "Teoria de Wegener (1912-15): os continentes estiveram unidos num supercontinente, a Pangeia, e derivaram até às posições atuais. Tinha evidências fortes mas faltava-lhe um mecanismo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "expansao_fundos_oceanicos",
+        "tectonica_placas"
+      ]
+    },
+    {
+      "id": "expansao_fundos_oceanicos",
+      "termo": "Expansão dos fundos oceânicos",
+      "definicao": "Descoberta de Harry Hess: nas dorsais oceânicas forma-se nova crosta oceânica que se afasta para ambos os lados, sendo destruída nas fossas oceânicas (subducção).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "deriva_continental",
+        "tectonica_placas",
+        "paleomagnetismo"
+      ]
+    },
+    {
+      "id": "tectonica_placas",
+      "termo": "Tectónica de placas",
+      "definicao": "A litosfera está dividida em placas que se deslocam sobre a astenosfera. A atividade sísmica, vulcânica e orogénica concentra-se nos limites das placas (divergentes, convergentes, transformantes).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "limite_divergente",
+        "limite_convergente",
+        "limite_transformante",
+        "ponto_quente"
+      ]
+    },
+    {
+      "id": "limite_divergente",
+      "termo": "Limite divergente",
+      "definicao": "Placas afastam-se; ascensão de magma basáltico forma nova litosfera oceânica (dorsais) ou riftes continentais. Sismos superficiais, vulcanismo efusivo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tectonica_placas",
+        "limite_convergente"
+      ]
+    },
+    {
+      "id": "limite_convergente",
+      "termo": "Limite convergente",
+      "definicao": "Placas aproximam-se: subducção (oceânica-continental ou oceânica-oceânica) com fossa e vulcanismo explosivo, ou colisão continental com formação de grandes cadeias montanhosas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tectonica_placas",
+        "limite_divergente"
+      ]
+    },
+    {
+      "id": "limite_transformante",
+      "termo": "Limite transformante",
+      "definicao": "Placas deslizam lateralmente; não há criação nem destruição de litosfera, mas há sismos frequentes (ex.: Falha de Santo André).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tectonica_placas"
+      ]
+    },
+    {
+      "id": "ponto_quente",
+      "termo": "Ponto quente (hotspot)",
+      "definicao": "Zona de ascensão de material quente do manto (pluma), fixa, que origina vulcanismo no interior das placas. Como a placa se move sobre ele, formam-se alinhamentos de ilhas com idade crescente (ex.: Havai).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tectonica_placas"
+      ]
+    },
+    {
+      "id": "hipotese_nebular",
+      "termo": "Hipótese nebular",
+      "definicao": "O Sistema Solar formou-se há ≈4600 Ma a partir de uma nébula solar em rotação que colapsou e achatou num disco: o Sol formou-se no centro, e os planetas por acreção de planetesimais.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "diferenciacao_terra"
+      ]
+    },
+    {
+      "id": "diferenciacao_terra",
+      "termo": "Diferenciação da Terra",
+      "definicao": "Separação dos materiais da Terra primitiva fundida por densidade: ferro e níquel afundaram formando o núcleo; os silicatos, menos densos, formaram o manto e a crosta.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "hipotese_nebular",
+        "nucleo"
+      ]
+    },
+    {
+      "id": "meteorito",
+      "termo": "Meteorito",
+      "definicao": "Fragmento de asteroide que atinge a Terra. Os sideritos (ferro-níquel) e os condritos (silicatos primitivos) dão informação sobre a composição do núcleo e a idade do Sistema Solar.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "diferenciacao_terra"
+      ]
+    },
+    {
+      "id": "metodos_diretos",
+      "termo": "Métodos diretos",
+      "definicao": "Observação direta de materiais (afloramentos, minas, sondagens, xenólitos). Limitação: só dão acesso a uma camada muito superficial da Terra.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metodos_indiretos"
+      ]
+    },
+    {
+      "id": "metodos_indiretos",
+      "termo": "Métodos indiretos",
+      "definicao": "Interpretação de dados físicos (sismologia, gravimetria, geomagnetismo, geotermia) que permitem inferir as características de todo o interior da Terra. A sismologia é o mais importante.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metodos_diretos",
+        "descontinuidade_moho"
+      ]
+    },
+    {
+      "id": "magma",
+      "termo": "Magma",
+      "definicao": "Mistura de material rochoso fundido, gases dissolvidos e cristais em suspensão. Quando chega à superfície e perde gases, chama-se lava.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "viscosidade_magma",
+        "rocha_magmatica"
+      ]
+    },
+    {
+      "id": "viscosidade_magma",
+      "termo": "Viscosidade do magma",
+      "definicao": "Aumenta com o teor de sílica e diminui com a temperatura. Magmas mais viscosos retêm mais gases, o que torna a erupção mais explosiva.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "magma",
+        "vulcanismo_explosivo"
+      ]
+    },
+    {
+      "id": "vulcanismo_explosivo",
+      "termo": "Vulcanismo explosivo",
+      "definicao": "Associado a magma riolítico, muito viscoso: produz muitos piroclastos e nuvens ardentes. Contrasta com o vulcanismo efusivo (magma basáltico, escoadas de lava fluida).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "viscosidade_magma",
+        "piroclastos"
+      ]
+    },
+    {
+      "id": "piroclastos",
+      "termo": "Piroclastos",
+      "definicao": "Fragmentos projetados numa erupção, classificados pelo tamanho: cinzas (<2 mm), lapili/bagacina (2-64 mm), bombas e blocos (>64 mm).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "vulcanismo_explosivo"
+      ]
+    },
+    {
+      "id": "caldeira",
+      "termo": "Caldeira",
+      "definicao": "Depressão de grandes dimensões formada pelo colapso do topo de um vulcão após o esvaziamento da câmara magmática (ex.: Sete Cidades e Furnas, São Miguel).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "magma"
+      ]
+    },
+    {
+      "id": "vulcanismo_secundario",
+      "termo": "Vulcanismo secundário (residual)",
+      "definicao": "Manifestações em zonas vulcânicas sem erupção, devidas ao calor de magma em arrefecimento: fumarolas, géiseres, nascentes termais.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "caldeira"
+      ]
+    },
+    {
+      "id": "sismo",
+      "termo": "Sismo",
+      "definicao": "Movimento vibratório brusco da superfície terrestre, resultante da libertação súbita de energia acumulada nas rochas (teoria do ressalto elástico).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "hipocentro",
+        "ondas_sismicas"
+      ]
+    },
+    {
+      "id": "hipocentro",
+      "termo": "Hipocentro e epicentro",
+      "definicao": "Hipocentro (foco): local em profundidade onde se inicia a rutura. Epicentro: ponto da superfície na vertical do hipocentro, onde a intensidade é geralmente maior.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sismo"
+      ]
+    },
+    {
+      "id": "ondas_sismicas",
+      "termo": "Ondas sísmicas (P, S, L, R)",
+      "definicao": "Ondas P (longitudinais, mais rápidas, todos os meios), S (transversais, só sólidos), L e R (superficiais, mais lentas e destrutivas).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sismo",
+        "descontinuidade_moho"
+      ]
+    },
+    {
+      "id": "intensidade_magnitude",
+      "termo": "Intensidade e magnitude",
+      "definicao": "Intensidade: mede os efeitos de um sismo num local (escala EMS-98, varia com a distância). Magnitude: mede a energia libertada no foco (escala de Richter, um único valor por sismo).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sismo",
+        "isossista"
+      ]
+    },
+    {
+      "id": "isossista",
+      "termo": "Isossistas",
+      "definicao": "Linhas que unem pontos com a mesma intensidade sísmica, delimitando zonas de igual intensidade numa carta de isossistas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "intensidade_magnitude"
+      ]
+    },
+    {
+      "id": "tsunami",
+      "termo": "Tsunami",
+      "definicao": "Onda de grande comprimento de onda gerada por deslocamento súbito de grandes volumes de água, sobretudo por sismos com epicentro no mar.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sismo"
+      ]
+    },
+    {
+      "id": "descontinuidade_moho",
+      "termo": "Descontinuidade de Mohorovičić (Moho)",
+      "definicao": "Separa a crosta do manto; as ondas P e S aumentam de velocidade ao atravessá-la. A ≈5-10 km (oceanos) ou ≈30-70 km (continentes).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_gutenberg",
+        "litosfera"
+      ]
+    },
+    {
+      "id": "descontinuidade_gutenberg",
+      "termo": "Descontinuidade de Gutenberg",
+      "definicao": "Separa o manto do núcleo (≈2900 km). As ondas S deixam de se propagar (núcleo externo líquido); as ondas P diminuem bruscamente de velocidade.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_moho",
+        "zona_sombra_sismica",
+        "nucleo"
+      ]
+    },
+    {
+      "id": "zona_sombra_sismica",
+      "termo": "Zona de sombra sísmica",
+      "definicao": "Região entre ≈103° e 143° de distância angular ao epicentro onde não se registam ondas P nem S diretas — revelou a existência e o estado líquido do núcleo externo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_gutenberg"
+      ]
+    },
+    {
+      "id": "litosfera",
+      "termo": "Litosfera e astenosfera",
+      "definicao": "Litosfera: camada rígida (crosta + manto superior), dividida em placas. Astenosfera: camada plástica, parcialmente fundida, sobre a qual as placas deslizam.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_moho",
+        "tectonica_placas",
+        "isostasia"
+      ]
+    },
+    {
+      "id": "nucleo",
+      "termo": "Núcleo externo e interno",
+      "definicao": "Núcleo externo: líquido, ferro e níquel (2900-5150 km) — gera o campo magnético. Núcleo interno: sólido apesar da temperatura elevadíssima, devido à pressão (5150-6370 km).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_gutenberg",
+        "paleomagnetismo"
+      ]
+    },
+    {
+      "id": "paleomagnetismo",
+      "termo": "Paleomagnetismo",
+      "definicao": "Estudo do campo magnético do passado registado nas rochas: a lava, ao arrefecer, fixa a orientação do campo magnético da época, incluindo as suas inversões de polaridade.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "nucleo",
+        "expansao_fundos_oceanicos"
+      ]
+    },
+    {
+      "id": "isostasia",
+      "termo": "Isostasia",
+      "definicao": "Estado de equilíbrio entre a litosfera e a astenosfera, semelhante à flutuação de gelo na água. A erosão de uma montanha faz a litosfera subir; a acumulação de sedimentos ou gelo faz-a afundar.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "litosfera"
+      ]
+    },
+    {
+      "id": "bacia_hidrografica",
+      "termo": "Bacia hidrográfica",
+      "definicao": "Área drenada por um rio principal e pelos seus afluentes, limitada por linhas de cumeada. O leito de cheia, fértil mas sujeito a inundações, atrai ocupação humana.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "movimento_massa"
+      ]
+    },
+    {
+      "id": "deriva_litoral",
+      "termo": "Deriva litoral",
+      "definicao": "Transporte de areia ao longo da costa pelas correntes (em Portugal, predominantemente de norte para sul). Esporões retêm-na a montante mas agravam a erosão a jusante.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "bacia_hidrografica"
+      ]
+    },
+    {
+      "id": "movimento_massa",
+      "termo": "Movimentos em massa",
+      "definicao": "Deslocações de materiais pelas vertentes por ação da gravidade: desabamentos, deslizamentos, fluxos e reptação. Agravados por declive, água e desflorestação.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "bacia_hidrografica"
+      ]
+    },
+    {
+      "id": "mineral",
+      "termo": "Mineral",
+      "definicao": "Sólido natural, geralmente inorgânico, com composição química definida e estrutura cristalina. Sem estrutura cristalina, chama-se mineraloide (ex.: obsidiana).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "polimorfismo",
+        "dureza_mohs"
+      ]
+    },
+    {
+      "id": "polimorfismo",
+      "termo": "Polimorfismo e isomorfismo",
+      "definicao": "Polimorfismo: mesma composição química, estrutura cristalina diferente (ex.: diamante e grafite). Isomorfismo: mesma estrutura, composição variável por substituição de iões (ex.: olivina).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "mineral"
+      ]
+    },
+    {
+      "id": "dureza_mohs",
+      "termo": "Dureza (escala de Mohs)",
+      "definicao": "Resistência de um mineral a ser riscado, numa escala relativa de 1 (talco) a 10 (diamante); cada mineral risca os de dureza inferior.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "mineral",
+        "clivagem"
+      ]
+    },
+    {
+      "id": "clivagem",
+      "termo": "Clivagem e fratura",
+      "definicao": "Clivagem: tendência de um mineral para partir segundo superfícies planas (ex.: micas em lâminas). Fratura: rotura irregular, sem planos definidos (ex.: quartzo).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "dureza_mohs"
+      ]
+    },
+    {
+      "id": "silicatos",
+      "termo": "Silicatos",
+      "definicao": "Grupo de minerais mais abundante da crosta, com base no tetraedro de sílica [SiO4]4-. Inclui quartzo, feldspatos, micas, anfíbolas, piroxenas e olivina.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "mineral"
+      ]
+    },
+    {
+      "id": "meteorizacao_fisica",
+      "termo": "Meteorização física",
+      "definicao": "Fragmentação de rochas sem alteração da composição (crioclastia, termoclastia, haloclastia, descompressão). Mais intensa em climas frios ou áridos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "meteorizacao_quimica",
+        "sedimentogenese"
+      ]
+    },
+    {
+      "id": "meteorizacao_quimica",
+      "termo": "Meteorização química",
+      "definicao": "Alteração da composição mineralógica de uma rocha (dissolução, hidrólise, oxidação). Mais intensa em climas quentes e húmidos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "meteorizacao_fisica"
+      ]
+    },
+    {
+      "id": "sedimentogenese",
+      "termo": "Sedimentogénese",
+      "definicao": "Conjunto de processos que formam os sedimentos: meteorização, erosão, transporte e sedimentação.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "meteorizacao_fisica",
+        "diagenese"
+      ]
+    },
+    {
+      "id": "diagenese",
+      "termo": "Diagénese",
+      "definicao": "Transformação dos sedimentos soltos em rocha consolidada, a baixa temperatura e pressão: compactação, cimentação e recristalização.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sedimentogenese",
+        "rocha_sedimentar"
+      ]
+    },
+    {
+      "id": "rocha_detritica",
+      "termo": "Rocha detrítica",
+      "definicao": "Rocha sedimentar formada por fragmentos (clastos) de outras rochas, classificada pelo tamanho dos clastos (conglomerado/brecha, arenito, siltito, argilito).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "diagenese"
+      ]
+    },
+    {
+      "id": "fossilizacao",
+      "termo": "Fossilização",
+      "definicao": "Processos de preservação de restos de seres vivos: mineralização, moldagem, incarbonização, conservação e icnofósseis (marcas de atividade).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "fossil_idade",
+        "rocha_sedimentar"
+      ]
+    },
+    {
+      "id": "rocha_mae",
+      "termo": "Rocha-mãe e rocha-armazém",
+      "definicao": "Rocha-mãe: onde o petróleo se forma a partir de matéria orgânica. Migra para a rocha-armazém (porosa e permeável), retida por uma rocha de cobertura impermeável.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "rocha_detritica"
+      ]
+    },
+    {
+      "id": "fusao_parcial",
+      "termo": "Fusão parcial",
+      "definicao": "Formação de magma por fusão incompleta de uma rocha (só os minerais com ponto de fusão mais baixo fundem), por descompressão, adição de água ou aumento de temperatura.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "magma",
+        "serie_bowen"
+      ]
+    },
+    {
+      "id": "serie_bowen",
+      "termo": "Série de reações de Bowen",
+      "definicao": "Ordem pela qual os minerais cristalizam num magma em arrefecimento, da maior para a menor temperatura: olivina/plagioclase cálcica até quartzo. O líquido residual enriquece em sílica.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "fusao_parcial",
+        "diferenciacao_magmatica"
+      ]
+    },
+    {
+      "id": "diferenciacao_magmatica",
+      "termo": "Diferenciação magmática",
+      "definicao": "Processos (cristalização fracionada, assimilação, mistura de magmas) que fazem variar a composição de um magma, originando rochas diferentes a partir do mesmo magma inicial.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "serie_bowen"
+      ]
+    },
+    {
+      "id": "textura_magmatica",
+      "termo": "Textura das rochas magmáticas",
+      "definicao": "Depende da velocidade de arrefecimento: granular (lenta, plutónicas), agranular ou vítrea (rápida, vulcânicas), porfírica (duas fases — cristais grandes numa matriz fina).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "rocha_magmatica"
+      ]
+    },
+    {
+      "id": "tensao_rochas",
+      "termo": "Tensão compressiva, distensiva e cisalhante",
+      "definicao": "Compressiva (limites convergentes) origina dobras e falhas inversas. Distensiva (limites divergentes) origina falhas normais. Cisalhante (limites transformantes) origina falhas de desligamento.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "dobra",
+        "falha"
+      ]
+    },
+    {
+      "id": "dobra",
+      "termo": "Dobra (anticlinal e sinclinal)",
+      "definicao": "Deformação dúctil das camadas. Anticlinal: convexidade para cima, rochas mais antigas no núcleo. Sinclinal: concavidade para cima, rochas mais recentes no núcleo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tensao_rochas"
+      ]
+    },
+    {
+      "id": "falha",
+      "termo": "Falha (normal, inversa, desligamento)",
+      "definicao": "Fratura com deslocamento relativo dos blocos. Normal: o teto desce (distensão). Inversa: o teto sobe (compressão). Desligamento: movimento horizontal (cisalhamento).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tensao_rochas"
+      ]
+    },
+    {
+      "id": "metamorfismo_contacto",
+      "termo": "Metamorfismo de contacto",
+      "definicao": "Metamorfismo dominado pela temperatura, em redor de intrusões magmáticas (auréola de metamorfismo). Produz rochas geralmente não foliadas (corneana, mármore, quartzito).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metamorfismo_regional",
+        "rocha_metamorfica"
+      ]
+    },
+    {
+      "id": "metamorfismo_regional",
+      "termo": "Metamorfismo regional",
+      "definicao": "Metamorfismo dominado por temperatura e pressão dirigida, em grandes áreas de colisão de placas. Produz rochas foliadas: ardósia, filito, micaxisto, gnaisse.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metamorfismo_contacto",
+        "foliacao"
+      ]
+    },
+    {
+      "id": "foliacao",
+      "termo": "Foliação",
+      "definicao": "Orientação paralela dos minerais, perpendicular à direção da tensão máxima, causada pela pressão dirigida no metamorfismo regional.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metamorfismo_regional"
+      ]
+    },
+    {
+      "id": "minerais_indice",
+      "termo": "Minerais-índice",
+      "definicao": "Minerais que só se formam em determinadas condições de pressão e temperatura, permitindo deduzir o grau de metamorfismo de uma rocha (ex.: clorite, granada, silimanite).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metamorfismo_regional"
+      ]
+    },
+    {
+      "id": "recurso_reserva",
+      "termo": "Recurso e reserva geológica",
+      "definicao": "Recurso: material ou fonte de energia útil ao ser humano. Reserva: parte do recurso já identificada, explorável com lucro na tecnologia e condições atuais.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "jazigo_mineral"
+      ]
+    },
+    {
+      "id": "jazigo_mineral",
+      "termo": "Jazigo mineral e minério",
+      "definicao": "Jazigo: concentração anómala de um mineral explorável com vantagem económica. Minério: mineral do qual se extrai a substância útil; ganga: o resto, sem valor.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "recurso_reserva"
+      ]
+    },
+    {
+      "id": "aquifero",
+      "termo": "Aquífero livre e cativo",
+      "definicao": "Aquífero livre: limitado só na base, à pressão atmosférica, recarregado em toda a área. Aquífero cativo: entre duas camadas impermeáveis, sob pressão, mais protegido da poluição.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "porosidade_permeabilidade"
+      ]
+    },
+    {
+      "id": "porosidade_permeabilidade",
+      "termo": "Porosidade e permeabilidade",
+      "definicao": "Porosidade: percentagem de espaços vazios numa rocha. Permeabilidade: capacidade de a água a atravessar. Uma rocha pode ser muito porosa mas pouco permeável (ex.: argila).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "aquifero"
+      ]
+    }
+  ]
+}

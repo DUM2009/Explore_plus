@@ -1,0 +1,189 @@
+{
+  "missao_id": "origem-terra-sistema-solar",
+  "titulo": "Origem da Terra e do Sistema Solar",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "🪐", "nome": "Arquiteto de Mundos" },
+  "secoes": [
+    {
+      "secao_id": "hipotese-nebular",
+      "titulo": "De uma nuvem de gás a um Sistema Solar",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Há 4600 milhões de anos, não existia nenhum planeta — só uma imensa nuvem de gás e poeira em rotação. 🌌",
+          "texto": "A essa nuvem chama-se nébula solar. E foi a partir dela que nasceu tudo: o Sol, a Terra, e todos os outros planetas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Da nébula aos planetas",
+          "instrucao": "Clica em cada etapa da formação do Sistema Solar.",
+          "pontos": [
+            { "id": "contracao", "label": "Contração e achatamento", "explicacao": "A nébula contraiu-se por ação da gravidade, aqueceu e achatou-se num disco. No centro formou-se o Sol (proto-Sol)." },
+            { "id": "acrecao", "label": "Acreção", "explicacao": "No disco, as partículas chocaram e aglomeraram-se por acreção, originando primeiro planetesimais e depois protoplanetas." },
+            { "id": "teluricos", "label": "Planetas telúricos", "explicacao": "Perto do Sol, só condensaram materiais com ponto de fusão elevado (silicatos, metais): Mercúrio, Vénus, Terra, Marte — pequenos, rochosos e densos." },
+            { "id": "gigantes", "label": "Planetas gigantes", "explicacao": "Longe do Sol, condensaram também gelos e acumularam-se gases: Júpiter, Saturno, Úrano, Neptuno — grandes, pouco densos e gasosos/gelados." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Os planetas telúricos (como a Terra) formaram-se perto do Sol porque aí só condensaram materiais:",
+          "opcoes": ["Com ponto de fusão elevado (silicatos, metais)", "Gelados e gasosos"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Perto do Sol, o calor impedia a condensação de gelos — só sobreviveram os materiais mais resistentes.",
+          "mascote_feedback_errado": "Condensaram materiais com ponto de fusão elevado — os gelos só se mantêm longe do Sol, onde está mais frio."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🍕",
+          "texto": "💡 Pensa na nébula solar como uma pizza giratória de massa e ingredientes: ao girar e achatar, os ingredientes mais \"pesados\" (metais, silicatos) ficam mais perto do centro quente, e os mais \"leves e voláteis\" (gelos, gases) só sobrevivem nas bordas frias, longe do calor."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Entre Marte e Júpiter existe uma região com material que nunca formou um planeta — chama-se:",
+              "opcoes": ["Cintura de asteroides", "Nébula residual"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A cintura de asteroides é material que ficou por aglomerar num planeta.",
+              "mascote_feedback_errado": "Chama-se cintura de asteroides — fica precisamente entre Marte e Júpiter."
+            },
+            {
+              "pergunta": "O processo pelo qual partículas se chocam e aglomeram, formando planetesimais, chama-se:",
+              "opcoes": ["Acreção", "Diferenciação"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! A acreção é o processo de agregação de partículas em corpos cada vez maiores.",
+              "mascote_feedback_errado": "É a acreção — a diferenciação acontece depois, já dentro de um planeta em formação."
+            }
+          ],
+          "mascote_conclusao": "Já conheces o nascimento do Sistema Solar. Mas o que aconteceu à Terra depois de se formar? 🌍"
+        }
+      ]
+    },
+    {
+      "secao_id": "diferenciacao-e-atividade",
+      "titulo": "A Terra organiza-se em camadas",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A Terra primitiva aqueceu tanto, devido aos impactos, à compressão gravitacional e ao decaimento radioativo, que ficou em grande parte fundida. 🌋",
+          "texto": "E foi nesse estado \"líquido\" que ela se organizou em camadas — um processo chamado diferenciação."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A diferenciação da Terra",
+          "instrucao": "Clica em cada camada para veres como se formou.",
+          "pontos": [
+            { "id": "nucleo_dif", "label": "Núcleo", "explicacao": "Os materiais mais densos (ferro e níquel) afundaram para o centro da Terra em fusão." },
+            { "id": "manto_crosta", "label": "Manto e crosta", "explicacao": "Os materiais menos densos (silicatos) formaram as camadas exteriores — o manto e a crosta." },
+            { "id": "atmosfera_oceanos", "label": "Atmosfera e oceanos", "explicacao": "A libertação de gases (desgaseificação) originou a atmosfera primitiva; com o arrefecimento, o vapor de água condensou-se e formou os oceanos." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na diferenciação da Terra, os materiais mais densos (ferro, níquel):",
+          "opcoes": ["Afundaram, formando o núcleo", "Flutuaram à superfície"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Afundaram para o centro, por serem mais densos do que os silicatos.",
+          "mascote_feedback_errado": "Afundaram, formando o núcleo — os silicatos, menos densos, é que ficaram por cima."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🫙",
+          "texto": "💡 A diferenciação é como um frasco de vinagrete que acabaste de agitar e deixas repousar: o óleo (menos denso) sobe para cima, e o vinagre (mais denso) afunda — só que aqui falamos de ferro a afundar para o centro, e silicatos a \"flutuar\" por cima, formando o manto e a crosta."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A origem da Lua",
+          "texto": "A Lua ter-se-á formado por um impacto gigante de um corpo do tamanho de Marte com a Terra primitiva — os detritos lançados pelo impacto agregaram-se em órbita, dando origem ao nosso satélite natural."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Tamanho do planeta e atividade geológica",
+          "instrucao": "Clica em cada corpo para comparares a sua atividade geológica atual.",
+          "pontos": [
+            { "id": "terra_ativa", "label": "A Terra", "explicacao": "Grande o suficiente para manter calor interno durante milhares de milhões de anos — por isso ainda tem tectónica de placas e vulcanismo ativos." },
+            { "id": "lua_mercurio", "label": "A Lua e Mercúrio", "explicacao": "Pequenos, arrefeceram depressa. As suas superfícies estão cobertas de crateras de impacto antigas, sem erosão nem tectónica que as apague." },
+            { "id": "marte_pouco", "label": "Marte", "explicacao": "Teve vulcanismo no passado (o Olympus Mons é o maior vulcão do Sistema Solar), mas é hoje pouco ativo." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🥔",
+          "texto": "💡 Pensa numa batata grande e numa batata pequena, ambas acabadas de sair do forno: a pequena arrefece muito mais depressa do que a grande, porque tem mais superfície exposta em relação ao seu volume. É por isso que a Lua \"arrefeceu\" geologicamente muito antes da Terra."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A Lua e Mercúrio têm superfícies cobertas de crateras de impacto antigas porque:",
+              "opcoes": ["Arrefeceram depressa e não têm erosão nem tectónica ativa que as apague", "São feitos de materiais indestrutíveis"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Sem tectónica nem erosão significativa, as crateras ficam praticamente intactas durante milhares de milhões de anos.",
+              "mascote_feedback_errado": "É porque arrefeceram depressa e já não têm processos que apaguem as crateras — não é sobre a dureza do material."
+            },
+            {
+              "pergunta": "Quanto maior um planeta, geralmente:",
+              "opcoes": ["Mais tempo se mantém geologicamente ativo", "Mais depressa arrefece"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Quanto maior o planeta, menor a razão superfície/volume, e mais tempo conserva o calor interno.",
+              "mascote_feedback_errado": "Mantém-se ativo durante mais tempo — são os planetas pequenos que arrefecem mais depressa."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como a Terra se organizou em camadas. Mas há mensageiros do espaço que nos ajudam a confirmar tudo isto — os meteoritos. ☄️"
+        }
+      ]
+    },
+    {
+      "secao_id": "meteoritos",
+      "titulo": "Meteoritos: mensageiros do Sistema Solar",
+      "xp": 15,
+      "tempo_estimado_min": 4,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "O que nos dizem os diferentes meteoritos",
+          "instrucao": "Clica em cada tipo de meteorito para veres o que revela.",
+          "pontos": [
+            { "id": "sideritos", "label": "Sideritos (férreos)", "explicacao": "Ferro e níquel — composição semelhante à do núcleo terrestre." },
+            { "id": "siderolitos", "label": "Siderólitos (petroférreos)", "explicacao": "Metais e silicatos — dão pistas sobre a zona de transição manto-núcleo." },
+            { "id": "condritos", "label": "Aerólitos — condritos", "explicacao": "Silicatos com côndrulos, não diferenciados — material primitivo do Sistema Solar, usado para datar a idade da Terra." },
+            { "id": "acondritos", "label": "Aerólitos — acondritos", "explicacao": "Silicatos sem côndrulos, já diferenciados — composição semelhante à da crosta/manto." }
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque usamos meteoritos para datar a Terra?",
+          "texto": "Como não conseguimos perfurar os 6370 km até ao centro da Terra, os meteoritos são a melhor amostra disponível do material que formou o nosso planeta. Os condritos, em particular, são material primitivo e não diferenciado do Sistema Solar — formaram-se ao mesmo tempo que a Terra, por isso a sua datação radiométrica serve de base para estimar a idade do próprio planeta: ≈4600 Ma."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Os meteoritos que mais se assemelham à composição do núcleo terrestre são os:",
+              "opcoes": ["Sideritos", "Condritos"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! São ricos em ferro e níquel, como o núcleo da Terra.",
+              "mascote_feedback_errado": "São os sideritos — os condritos são silicatos, mais parecidos com a crosta ou o manto."
+            },
+            {
+              "pergunta": "Os condritos são especialmente úteis para:",
+              "opcoes": ["Datar a idade da Terra e do Sistema Solar", "Estudar a atmosfera atual"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Sendo material primitivo e não diferenciado, ajudam a datar a origem do Sistema Solar.",
+              "mascote_feedback_errado": "São úteis para datar a idade da Terra — não têm relação com o estudo da atmosfera atual."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já sabes como nasceu o Sistema Solar, como a Terra se organizou em camadas, e porque é que os meteoritos são verdadeiras cápsulas do tempo. 🪐🌍"
+        }
+      ]
+    }
+  ]
+}
