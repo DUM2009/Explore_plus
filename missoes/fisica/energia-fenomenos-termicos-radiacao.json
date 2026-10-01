@@ -1,0 +1,592 @@
+{
+  "missao_id": "energia-fenomenos-termicos-radiacao",
+  "titulo": "Energia, fenómenos térmicos e radiação",
+  "disciplina": "fisica",
+  "ano": 10,
+  "imagem": "f10_sol_paineis.png",
+  "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4l1.4-1.4M17 7l1.4-1.4\"/></svg>", "nome": "Mestre do Calor e da Radiação" },
+  "secoes": [
+    {
+      "secao_id": "sistemas-termodinamicos-temperatura-equilibrio",
+      "titulo": "Sistemas termodinâmicos, temperatura e equilíbrio térmico",
+      "xp": 24,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_banco_metal_madeira.png",
+          "texto": "Num dia frio, sentas-te num banco de jardim. A parte de metal parece gelada e a parte de madeira parece muito menos fria. Mas estão as duas ao ar livre há horas: estão exatamente à mesma temperatura. Então porque é que a sensação é tão diferente? A resposta obriga a separar duas palavras que no dia a dia usamos como sinónimos: temperatura e calor.",
+          "mascote_texto": "Na linguagem do dia a dia dizemos \"está calor\". Em Física isso está errado, e nesta missão vais perceber porquê."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Sistema termodinâmico e energia interna",
+          "imagem": "f10_particulas_temperatura.png",
+          "texto_principal": "Um sistema termodinâmico é um sistema em que interessa estudar a energia interna e as suas variações. A energia interna é a soma das energias cinéticas e potenciais de todas as partículas que o constituem. A temperatura está relacionada com a energia cinética média dessas partículas.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "energia-interna", "label": "Energia interna (U)", "explicacao": "Soma de todas as energias das partículas do sistema. Depende da temperatura, mas também da quantidade de matéria e do estado físico." },
+            { "id": "temperatura", "label": "Temperatura", "explicacao": "Grandeza que mede o grau de agitação das partículas. Quanto maior a energia cinética média das partículas, maior a temperatura." },
+            { "id": "calor", "label": "Calor (Q)", "explicacao": "Energia transferida entre dois sistemas a temperaturas diferentes, sempre do que está a temperatura mais alta para o que está a temperatura mais baixa. Não é algo que um corpo \"tem\": é energia em trânsito." },
+            { "id": "sistema-isolado", "label": "Sistema isolado", "explicacao": "Não troca energia nem matéria com a vizinhança." },
+            { "id": "sistema-fechado", "label": "Sistema fechado / aberto", "explicacao": "Sistema fechado: troca energia, mas não matéria. Sistema aberto: troca energia e matéria." }
+          ],
+          "caixa_formula": [
+            { "expressao": "T (K) = θ (°C) + 273,15", "significado": "Conversão entre escala Celsius e escala Kelvin (escala termodinâmica, a do SI).", "unidades": "" },
+            { "expressao": "Uma variação de 1 °C é igual a uma variação de 1 K", "significado": "", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Equilíbrio térmico",
+          "imagem": "f10_equilibrio_termico.png",
+          "texto_principal": "Quando dois corpos a temperaturas diferentes são postos em contacto, há transferência de energia como calor do mais quente para o mais frio, até que as temperaturas se igualem. Nesse momento atinge-se o equilíbrio térmico e a transferência líquida de energia cessa.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "inicio", "label": "Início", "explicacao": "Temperaturas diferentes. Há transferência de energia do corpo quente para o frio." },
+            { "id": "durante", "label": "Durante", "explicacao": "A temperatura do corpo quente desce e a do frio sobe." },
+            { "id": "equilibrio", "label": "Equilíbrio térmico", "explicacao": "Temperaturas iguais. Deixa de haver transferência líquida de energia como calor." },
+            { "id": "lei-zero", "label": "Lei zero da termodinâmica", "explicacao": "Se dois corpos estão ambos em equilíbrio térmico com um terceiro, estão em equilíbrio térmico entre si. É o que permite usar um termómetro: o termómetro atinge o equilíbrio com o corpo e mostra a temperatura de ambos." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é, em kelvin, a temperatura de 25 °C?",
+          "opcoes": ["248,15 K", "25 K", "273,15 K", "298,15 K"],
+          "correta": 3,
+          "mascote_feedback_certo": "Certo. T = 25 + 273,15 = 298,15 K. Nos exames é comum aparecer arredondado para 298 K.",
+          "mascote_feedback_errado": "Soma 273,15 à temperatura em graus Celsius: 25 + 273,15 = 298,15 K."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Voltando ao banco de jardim: porque é que o metal parece mais frio do que a madeira, se estão à mesma temperatura?",
+          "opcoes": ["Porque o metal está, na verdade, a uma temperatura mais baixa.", "Porque o metal transfere energia da tua mão muito mais depressa do que a madeira.", "Porque o metal transfere frio para a tua mão.", "Porque a madeira produz calor."],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O metal é melhor condutor térmico: retira energia à tua mão mais rapidamente. A pele sente a rapidez com que perde energia, não a temperatura do objeto.",
+          "mascote_feedback_errado": "O \"frio\" não se transfere: só energia, e sempre do mais quente para o mais frio. O metal conduz melhor e retira energia à tua mão mais depressa, por isso parece mais frio. Vais ver isto em detalhe mais à frente, na secção sobre condução e convecção."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Dois tanques ligados por um cano.** Imagina dois tanques de água ligados por um cano no fundo. Um tem o nível da água mais alto do que o outro. A água passa do tanque com nível mais alto para o de nível mais baixo, até os dois níveis ficarem iguais. O nível da água é a temperatura. A água que passa é a energia transferida como calor. Repara que o que decide o sentido é o nível, não a quantidade de água: um tanque enorme com nível baixo recebe água de um balde pequeno com nível alto. Da mesma forma, uma piscina a 25 °C tem muito mais energia interna do que uma chávena de chá a 80 °C, mas se juntares o chá à piscina, é o chá que cede energia."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O zero absoluto, a escala Kelvin e a diferença entre calor e temperatura",
+          "texto": "**O zero absoluto**\n\n0 K = −273,15 °C é a temperatura mais baixa possível. Corresponderia ao estado em que as partículas teriam a menor energia possível. Não é possível atingi-la, mas os laboratórios já chegaram a menos de uma milionésima de kelvin acima dela. Não existem temperaturas negativas na escala Kelvin.\n\n**Porque é que não se escreve \"graus kelvin\"**\n\nNa escala Kelvin não se usa a palavra \"grau\" nem o símbolo °. Escreve-se 300 K e lê-se \"trezentos kelvin\".\n\n**Calor não é temperatura**\n\nTemperatura: propriedade de um corpo num dado momento. Mede-se com um termómetro. Calor: energia transferida entre corpos a temperaturas diferentes. Só existe durante a transferência. Dizer \"este corpo tem muito calor\" está errado. Deve dizer-se \"este corpo está a uma temperatura elevada\" ou \"tem muita energia interna\"."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual das afirmações é correta?",
+              "opcoes": ["Um corpo quente tem mais calor do que um corpo frio.", "O calor é energia transferida devido a uma diferença de temperatura.", "A temperatura é a energia total das partículas de um corpo.", "Dois corpos em equilíbrio térmico têm a mesma energia interna."],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Calor é energia em trânsito entre corpos a temperaturas diferentes.",
+              "mascote_feedback_errado": "Calor é energia em trânsito entre corpos a temperaturas diferentes. Em equilíbrio térmico, os corpos têm a mesma temperatura, mas podem ter energias internas muito diferentes (depende da massa e do material)."
+            },
+            {
+              "pergunta": "Uma variação de temperatura de 30 °C corresponde a uma variação de:",
+              "opcoes": ["30 K", "303,15 K", "243,15 K", "86 K"],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. As duas escalas têm divisões do mesmo tamanho. Uma variação de 30 °C é igual a uma variação de 30 K.",
+              "mascote_feedback_errado": "As duas escalas têm divisões do mesmo tamanho. Uma variação de 30 °C é igual a uma variação de 30 K. Só as temperaturas (não as variações) diferem de 273,15."
+            },
+            {
+              "pergunta": "O funcionamento de um termómetro baseia-se:",
+              "opcoes": ["na primeira lei da termodinâmica.", "na lei zero da termodinâmica: o termómetro atinge o equilíbrio térmico com o corpo.", "na conservação da energia mecânica.", "no efeito Joule."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Quando o termómetro fica em equilíbrio térmico com o corpo, estão os dois à mesma temperatura.",
+              "mascote_feedback_errado": "Quando o termómetro fica em equilíbrio térmico com o corpo, estão os dois à mesma temperatura, e a leitura do termómetro é a temperatura do corpo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "radiacao-paineis-fotovoltaicos",
+      "titulo": "Radiação e painéis fotovoltaicos",
+      "xp": 24,
+      "tempo_estimado_min": 10,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_sol_paineis.png",
+          "texto": "Entre o Sol e a Terra há 150 milhões de quilómetros quase sem matéria nenhuma. Não há ar, não há nada para conduzir energia. E, no entanto, a energia do Sol chega-nos todos os dias e aquece-te a cara. Como? Por radiação, a única forma de transferir energia que funciona no vazio. E é essa energia que os painéis solares nos telhados transformam em eletricidade.",
+          "mascote_texto": "Nesta secção está a AL 3.1, com um resultado que costuma surpreender: um painel não dá a potência máxima com qualquer resistência."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Emissão e absorção de radiação",
+          "imagem": "f10_emissao_temperatura.png",
+          "texto_principal": "Todos os corpos emitem radiação eletromagnética, qualquer que seja a sua temperatura. Também absorvem radiação que incide neles. A radiação emitida depende da temperatura: quanto mais quente o corpo, maior a potência emitida e mais a radiação se desloca para comprimentos de onda menores.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "corpo-humano", "label": "Corpo humano (cerca de 37 °C)", "explicacao": "Emite sobretudo radiação infravermelha, invisível para nós. É o que as câmaras térmicas detetam." },
+            { "id": "resistencia-fogao", "label": "Resistência de fogão ao rubro", "explicacao": "A temperatura é suficiente para emitir também no vermelho do visível. Por isso a vemos brilhar." },
+            { "id": "sol", "label": "Sol (cerca de 5500 °C à superfície)", "explicacao": "Emite muita energia, grande parte na região do visível." },
+            { "id": "absorcao", "label": "Absorção, reflexão e transmissão", "explicacao": "A radiação que incide num corpo pode ser absorvida (aumenta a energia interna), refletida ou transmitida (atravessa-o). Superfícies escuras e baças absorvem mais; superfícies claras e polidas refletem mais." },
+            { "id": "equilibrio-radiacao", "label": "Equilíbrio", "explicacao": "Um corpo que absorve mais radiação do que emite aquece; se emite mais do que absorve, arrefece. Em equilíbrio, a potência absorvida é igual à emitida." }
+          ],
+          "caixa_formula": [
+            { "expressao": "Irradiância = P / A", "significado": "Potência da radiação que incide por unidade de área.", "unidades": "Unidade: W/m². À superfície da Terra, com Sol a pino e céu limpo, é cerca de 1000 W/m²." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Painel fotovoltaico vs. coletor solar térmico",
+          "imagem": "f10_fotovoltaico_termico.png",
+          "texto_principal": "A radiação solar pode ser aproveitada de duas formas diferentes em casa. Não confundas: produzem formas de energia diferentes.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "fotovoltaico", "label": "Painel fotovoltaico", "explicacao": "Transforma a energia da radiação diretamente em energia elétrica. É feito de materiais semicondutores (geralmente silício). Rendimento típico: cerca de 15 % a 22 %." },
+            { "id": "coletor-termico", "label": "Coletor solar térmico", "explicacao": "Usa a radiação para aquecer um fluido (normalmente água). Tem uma superfície escura para absorver o máximo e um vidro por cima para reduzir perdas. Serve para águas quentes sanitárias." },
+            { "id": "orientacao", "label": "Orientação", "explicacao": "Em Portugal, os painéis devem estar virados a sul e inclinados. A potência é máxima quando a radiação incide perpendicularmente à superfície do painel." }
+          ],
+          "caixa_formula": [
+            { "expressao": "η = P elétrica / P radiação incidente × 100", "significado": "Rendimento de um painel fotovoltaico.", "unidades": "" },
+            { "expressao": "P radiação incidente = Irradiância × Área", "significado": "", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um painel com 1,6 m² recebe uma irradiância de 1000 W/m² e fornece uma potência elétrica de 320 W. Qual é o seu rendimento?",
+          "opcoes": ["5,0 %", "20 %", "32 %", "50 %"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. P incidente = 1000 × 1,6 = 1600 W. η = 320 / 1600 × 100 = 20 %.",
+          "mascote_feedback_errado": "Calcula primeiro a potência da radiação que chega ao painel: 1000 W/m² × 1,6 m² = 1600 W. Depois η = 320 / 1600 × 100 = 20 %."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que a energia do Sol consegue chegar à Terra?",
+          "opcoes": ["Porque é transportada pelo ar.", "Porque a radiação eletromagnética não precisa de um meio material para se propagar.", "Por condução através do espaço.", "Por convecção das partículas do Sol."],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. A condução e a convecção precisam de matéria. A radiação propaga-se no vazio.",
+          "mascote_feedback_errado": "Entre o Sol e a Terra praticamente não há matéria, por isso não pode haver condução nem convecção. Só a radiação se propaga no vazio."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Todos os corpos brilham, só que nem sempre os vemos.** Imagina que todos os objetos à tua volta são lâmpadas com um regulador. Os que estão frios brilham numa \"cor\" que os teus olhos não conseguem ver: o infravermelho. À medida que aquecem, o regulador sobe, brilham mais e a cor vai mudando: primeiro vermelho escuro, depois laranja, depois amarelo e branco. É exatamente o que vês quando um ferreiro aquece um pedaço de ferro. O ferro sempre esteve a emitir radiação; tu é que só a começaste a ver quando ele ficou suficientemente quente."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 3.1",
+          "titulo": "Radiação e potência elétrica de um painel fotovoltaico",
+          "objetivo": "Investigar como a potência elétrica fornecida por um painel fotovoltaico depende da resistência do circuito exterior e das condições de iluminação, e determinar o seu rendimento.",
+          "material": [
+            "Painel fotovoltaico (pequeno, de laboratório)",
+            "Fonte de luz (lâmpada de incandescência potente ou luz solar)",
+            "Reóstato ou caixa de resistências",
+            "Voltímetro e amperímetro (ou dois multímetros)",
+            "Fios de ligação",
+            "Transferidor, para medir o ângulo de incidência",
+            "Régua ou fita métrica, para medir a distância à lâmpada"
+          ],
+          "procedimento": [
+            "Montar o circuito: painel, reóstato e amperímetro em série; voltímetro em paralelo com o painel.",
+            "Colocar a lâmpada a uma distância fixa e com a luz a incidir perpendicularmente no painel.",
+            "Variar a resistência do reóstato e registar vários pares de valores (U, I), incluindo resistências muito baixas e muito altas.",
+            "Calcular a potência para cada caso: P = U I. Calcular também R = U / I.",
+            "Numa segunda parte, fixar a resistência no valor que deu maior potência e variar o ângulo de incidência (ou a distância à lâmpada), registando a potência."
+          ],
+          "tratamento_de_dados": "Construir o gráfico da potência elétrica (eixo vertical) em função da resistência exterior (eixo horizontal). O gráfico cresce, atinge um máximo e depois decresce. Identificar a resistência para a qual a potência é máxima.\n\nNa segunda parte, verificar que a potência diminui quando o ângulo de incidência se afasta da perpendicular (ou quando a lâmpada se afasta).\n\nSe for conhecida a irradiância e a área do painel, calcular o rendimento: η = P elétrica / (irradiância × área) × 100.",
+          "conclusao": "A potência fornecida por um painel fotovoltaico depende da resistência exterior e é máxima para um valor específico dessa resistência. Para a mesma resistência, a potência é maior quando a radiação incide perpendicularmente e quando a irradiância é maior.",
+          "erros_comuns": [
+            "Achar que quanto menor a resistência, maior a potência. Com resistência muito baixa, a corrente é alta mas a tensão é quase zero; com resistência muito alta, a tensão é alta mas a corrente é quase zero. Nos dois extremos, P = U I é pequena.",
+            "Mudar a distância ou a posição da lâmpada durante a primeira parte da experiência.",
+            "Não esperar que a lâmpada estabilize, ou deixar o painel aquecer muito (o rendimento de um painel diminui com a temperatura).",
+            "Confundir painel fotovoltaico com coletor solar térmico."
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Garrafas térmicas, câmaras térmicas e a energia solar em Portugal",
+          "texto": "**Porque é que o espaço entre os vidros de uma garrafa térmica é espelhado**\n\nAs superfícies espelhadas refletem a radiação. Numa garrafa térmica, isso reduz a transferência de energia por radiação: o café quente não perde tanta energia e a bebida fria não recebe tanta.\n\n**Câmaras térmicas**\n\nUma câmara térmica deteta a radiação infravermelha que os corpos emitem. Como a potência emitida depende da temperatura, a câmara consegue construir uma imagem em que cada cor corresponde a uma temperatura. É usada para detetar perdas de energia em casas, pessoas com febre e animais durante a noite.\n\n**Curiosidade: a energia solar em Portugal**\n\nPortugal tem das maiores exposições solares da Europa, com mais de 2500 horas de sol por ano na maior parte do território. A energia solar fotovoltaica é uma das fontes renováveis que mais tem crescido no país."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual das afirmações sobre a emissão de radiação é correta?",
+              "opcoes": ["Só os corpos quentes emitem radiação.", "Todos os corpos emitem radiação; a potência emitida aumenta com a temperatura.", "Os corpos frios emitem radiação de comprimento de onda menor.", "Um corpo em equilíbrio térmico deixa de emitir radiação."],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Todos os corpos emitem radiação. Quanto maior a temperatura, maior a potência emitida.",
+              "mascote_feedback_errado": "Todos os corpos emitem radiação. Quanto maior a temperatura, maior a potência emitida e menores os comprimentos de onda predominantes. Em equilíbrio, o corpo continua a emitir, mas absorve na mesma proporção."
+            },
+            {
+              "pergunta": "Na AL 3.1, o gráfico da potência em função da resistência exterior:",
+              "opcoes": ["é uma reta crescente.", "é uma reta decrescente.", "apresenta um máximo para um determinado valor de resistência.", "é uma linha horizontal, porque a luz é constante."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Entre os dois extremos há um valor de resistência que dá a potência máxima.",
+              "mascote_feedback_errado": "A potência é pequena com resistências muito baixas (tensão quase nula) e muito altas (corrente quase nula). Entre os dois extremos há um valor de resistência que dá a potência máxima."
+            },
+            {
+              "pergunta": "Qual é a função de um coletor solar térmico?",
+              "opcoes": ["Produzir energia elétrica a partir da radiação.", "Aquecer um fluido, normalmente água, através da absorção de radiação.", "Refletir a radiação solar para arrefecer a casa.", "Armazenar energia elétrica em baterias."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O coletor solar térmico transforma a energia da radiação em energia interna de um fluido.",
+              "mascote_feedback_errado": "O coletor solar térmico transforma a energia da radiação em energia interna de um fluido. Quem produz energia elétrica é o painel fotovoltaico."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "conducao-conveccao",
+      "titulo": "Condução e convecção",
+      "xp": 24,
+      "tempo_estimado_min": 9,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_panela_cabo.png",
+          "texto": "Uma panela ao lume: o fundo e as paredes de metal ficam a escaldar, mas o cabo de plástico ou de madeira podes agarrar sem te queimares. E a água dentro da panela aquece por inteiro, embora o lume só toque no fundo. Estão aqui dois mecanismos de transferência de energia como calor: a condução e a convecção.",
+          "mascote_texto": "Esta secção tem uma fórmula que muita gente salta. Não saltes: já saiu em exame."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Condução",
+          "imagem": "f10_conducao_barra.png",
+          "texto_principal": "Na condução, a energia é transferida através de um material, de partícula em partícula, sem que haja deslocamento de matéria. As partículas mais agitadas da zona quente transferem energia às vizinhas por colisões. Ocorre sobretudo em sólidos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "zona-quente", "label": "Zona quente", "explicacao": "Partículas muito agitadas." },
+            { "id": "transferencia-conducao", "label": "Transferência", "explicacao": "A agitação passa de partícula em partícula ao longo do material. Nos metais, os eletrões livres também transportam energia, e é por isso que são tão bons condutores." },
+            { "id": "condutividade", "label": "Condutividade térmica (k)", "explicacao": "Propriedade do material que indica a facilidade com que conduz energia como calor. Metais: k elevada (bons condutores). Madeira, plástico, lã, ar parado: k baixa (isoladores térmicos)." },
+            { "id": "fatores-conducao", "label": "Fatores", "explicacao": "A energia transferida por unidade de tempo é maior quando a área é maior, a espessura é menor, a diferença de temperatura é maior e a condutividade é maior." }
+          ],
+          "caixa_formula": [
+            { "expressao": "Q / Δt = k A ΔT / l", "significado": "Rapidez de transferência de energia por condução através de uma placa ou barra.", "unidades": "Q / Δt em watt (W), k em W m⁻¹ K⁻¹, A em m², ΔT em K (ou °C), l (espessura) em m." },
+            { "expressao": "Valores de referência de k", "significado": "cobre cerca de 400; alumínio cerca de 240; vidro cerca de 0,8; madeira cerca de 0,1 a 0,2; ar parado cerca de 0,025 (todos em W m⁻¹ K⁻¹).", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Convecção",
+          "imagem": "f10_conveccao_panela.png",
+          "texto_principal": "Na convecção, a energia é transferida por movimento de matéria dentro de um fluido (líquido ou gás). O fluido aquecido fica menos denso e sobe; o fluido mais frio, mais denso, desce para ocupar o seu lugar. Formam-se correntes de convecção.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "fluido-quente", "label": "Fluido quente", "explicacao": "Dilata, fica menos denso e sobe." },
+            { "id": "fluido-frio", "label": "Fluido frio", "explicacao": "Mais denso, desce e vai ser aquecido no fundo." },
+            { "id": "correntes-conveccao", "label": "Correntes de convecção", "explicacao": "O ciclo repete-se e todo o fluido acaba por aquecer." },
+            { "id": "aplicacoes-conveccao", "label": "Aplicações", "explicacao": "É por isso que os aquecedores se colocam junto ao chão e os aparelhos de ar condicionado perto do teto. As brisas marítimas e muitos fenómenos meteorológicos são correntes de convecção." },
+            { "id": "so-fluidos", "label": "Só em fluidos", "explicacao": "Nos sólidos as partículas não se deslocam, por isso não há convecção." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma janela de vidro simples tem 2,0 m² de área e 4,0 mm de espessura. A temperatura é de 20 °C dentro de casa e 5 °C lá fora. Qual é a rapidez de transferência de energia por condução através do vidro? (k vidro = 0,80 W m⁻¹ K⁻¹)",
+          "opcoes": ["6,0 W", "60 W", "6,0 × 10³ W", "6,0 × 10⁴ W"],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. Q / Δt = 0,80 × 2,0 × 15 / 0,0040 = 6000 W. É por isso que os vidros simples deixam fugir tanta energia.",
+          "mascote_feedback_errado": "Não te esqueças de converter a espessura para metros: 4,0 mm = 0,0040 m. Q / Δt = k A ΔT / l = 0,80 × 2,0 × 15 / 0,0040 = 6,0 × 10³ W."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que num frigorífico o congelador costuma estar na parte de cima (nos modelos antigos)?",
+          "opcoes": ["Porque o ar frio sobe.", "Porque o ar arrefecido junto ao congelador fica mais denso e desce, arrefecendo o resto do frigorífico por convecção.", "Porque o frio se propaga melhor para baixo por condução.", "Porque a parte de cima recebe menos radiação."],
+          "correta": 1,
+          "mascote_feedback_certo": "Muito bem. O ar frio é mais denso e desce, criando correntes de convecção que arrefecem todo o interior.",
+          "mascote_feedback_errado": "O ar frio é mais denso e desce. Com o congelador em cima, esse ar desce e circula pelo frigorífico todo, por convecção."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A fila de dominós e a multidão num concerto.** A condução é como uma fila de dominós: cada peça fica no seu lugar e só empurra a seguinte. A energia viaja, mas as peças não saem do sítio. A convecção é como uma multidão num concerto: as pessoas que estão mais \"agitadas\" à frente do palco acabam por ser empurradas para trás e as de trás avançam para a frente. A energia é transportada pelas próprias pessoas a mudarem de lugar. Por isso a convecção só acontece em fluidos: num sólido, ninguém pode sair do lugar."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Isoladores térmicos, a garrafa térmica e o banco de jardim",
+          "texto": "**Porque é que o ar parado é um bom isolador**\n\nO ar tem uma condutividade térmica muito baixa. O problema é que, se estiver livre, move-se e transfere energia por convecção. Os bons isoladores (lã, esferovite, penas, casacos acolchoados, lã de rocha nas paredes) funcionam porque prendem o ar em pequenos compartimentos onde não consegue circular. Os vidros duplos seguem a mesma ideia: uma camada fina de ar (ou outro gás) entre dois vidros.\n\n**A garrafa térmica (vaso de Dewar): três mecanismos travados**\n\nCondução: entre as duas paredes de vidro há vácuo (quase sem matéria). Convecção: sem matéria entre as paredes, não há correntes de convecção; a tampa impede a convecção por cima. Radiação: as paredes são espelhadas, refletindo a radiação.\n\n**Voltando ao banco de jardim**\n\nO metal tem condutividade térmica muito maior do que a madeira. Pela fórmula, com a mesma diferença de temperatura, retira energia à tua mão muito mais depressa. O que a pele deteta é a rapidez com que perde energia, e por isso o metal parece mais frio."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual das alterações diminui a energia perdida por condução através de uma parede?",
+              "opcoes": ["Diminuir a espessura da parede.", "Usar um material com maior condutividade térmica.", "Aumentar a espessura da parede.", "Aumentar a área da parede."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. A rapidez de transferência é inversamente proporcional à espessura l. Aumentar a espessura diminui as perdas.",
+              "mascote_feedback_errado": "Pela expressão Q / Δt = k A ΔT / l, a rapidez de transferência é inversamente proporcional à espessura l. Aumentar a espessura diminui as perdas."
+            },
+            {
+              "pergunta": "Em qual das situações a transferência de energia se faz principalmente por convecção?",
+              "opcoes": ["Uma colher metálica que aquece numa chávena de chá.", "A água de uma panela que aquece por inteiro enquanto está ao lume.", "A energia do Sol que chega à Terra.", "O cabo de uma frigideira que aquece."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Na água da panela, formam-se correntes de convecção.",
+              "mascote_feedback_errado": "Na água da panela, formam-se correntes de convecção. A colher e o cabo aquecem por condução, e a energia do Sol chega por radiação."
+            },
+            {
+              "pergunta": "Se a diferença de temperatura entre as duas faces de uma placa duplicar, a rapidez de transferência de energia por condução:",
+              "opcoes": ["fica igual.", "duplica.", "fica quatro vezes maior.", "reduz-se a metade."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Q / Δt é diretamente proporcional a ΔT.",
+              "mascote_feedback_errado": "Q / Δt é diretamente proporcional a ΔT. Se ΔT duplica, a rapidez também duplica."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "capacidade-termica-massica-entalpia",
+      "titulo": "Capacidade térmica mássica e variação de entalpia",
+      "xp": 24,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_praia_areia_agua.png",
+          "texto": "Numa tarde de agosto, a areia da praia queima-te os pés, mas a água do mar continua fresca. À noite acontece o contrário: a areia arrefece depressa e a água mantém-se morna. Receberam a mesma radiação do Sol durante o dia. A diferença está numa propriedade de cada material: a capacidade térmica mássica. E a água é campeã.",
+          "mascote_texto": "Esta secção é das mais calculadas em exame e tem a AL 3.2. Vai com calma nos gráficos."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Capacidade térmica mássica",
+          "imagem": "f10_capacidade_termica.png",
+          "texto_principal": "A capacidade térmica mássica de um material é a energia que é preciso fornecer a 1 kg desse material para que a sua temperatura aumente 1 °C (ou 1 K). Quanto maior, mais energia é precisa para aquecer, e mais devagar o material aquece e arrefece.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "agua-c", "label": "Água", "explicacao": "c = 4,18 × 10³ J kg⁻¹ °C⁻¹. É um valor muito alto. Por isso a água aquece e arrefece devagar e regula o clima das zonas costeiras." },
+            { "id": "oleo-c", "label": "Óleo", "explicacao": "c cerca de 2,0 × 10³ J kg⁻¹ °C⁻¹. Com a mesma energia, aquece cerca do dobro." },
+            { "id": "metais-c", "label": "Metais", "explicacao": "Valores baixos. Alumínio cerca de 900; cobre cerca de 390 J kg⁻¹ °C⁻¹. Aquecem muito depressa." },
+            { "id": "areia-c", "label": "Areia", "explicacao": "Cerca de 800 J kg⁻¹ °C⁻¹. Por isso aquece e arrefece muito mais depressa do que a água." }
+          ],
+          "caixa_formula": [
+            { "expressao": "E = m c ΔT", "significado": "Energia necessária para variar a temperatura de uma massa m sem mudança de estado.", "unidades": "E em J, m em kg, c em J kg⁻¹ °C⁻¹ (ou J kg⁻¹ K⁻¹), ΔT em °C (ou K)." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Mudanças de estado",
+          "imagem": "f10_curva_aquecimento_agua.png",
+          "texto_principal": "Durante uma mudança de estado físico de uma substância pura, a temperatura mantém-se constante, embora se continue a fornecer energia. Essa energia não serve para aumentar a agitação das partículas: serve para quebrar ligações entre elas. A energia necessária por quilograma chama-se variação de entalpia mássica.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "gelo-aquecer", "label": "Gelo a aquecer", "explicacao": "A temperatura sobe de −20 °C até 0 °C." },
+            { "id": "patamar-fusao", "label": "Patamar de fusão (0 °C)", "explicacao": "O gelo funde. A temperatura mantém-se em 0 °C até todo o gelo derreter." },
+            { "id": "agua-aquecer", "label": "Água líquida a aquecer", "explicacao": "A temperatura sobe de 0 °C até 100 °C." },
+            { "id": "patamar-ebulicao", "label": "Patamar de ebulição (100 °C)", "explicacao": "À pressão atmosférica normal, a água vaporiza. Temperatura constante até toda a água passar a vapor. Este patamar é muito mais longo do que o de fusão." },
+            { "id": "vapor-aquecer", "label": "Vapor a aquecer", "explicacao": "A temperatura volta a subir." }
+          ],
+          "caixa_formula": [
+            { "expressao": "E = m ΔH", "significado": "Energia necessária para mudar o estado físico de uma massa m, à temperatura de mudança de estado.", "unidades": "ΔH (variação de entalpia mássica) em J/kg." },
+            { "expressao": "Água: ΔH fusão = 3,34 × 10⁵ J/kg; ΔH vaporização = 2,26 × 10⁶ J/kg", "significado": "", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Que energia é necessária para aquecer 2,0 kg de água de 20 °C até 70 °C? (c = 4,18 × 10³ J kg⁻¹ °C⁻¹)",
+          "opcoes": ["4,18 × 10⁴ J", "2,09 × 10⁵ J", "4,18 × 10⁵ J", "5,85 × 10⁵ J"],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. E = m c ΔT = 2,0 × 4,18 × 10³ × 50 = 4,18 × 10⁵ J.",
+          "mascote_feedback_errado": "ΔT = 70 − 20 = 50 °C. E = m c ΔT = 2,0 × 4,18 × 10³ × 50 = 4,18 × 10⁵ J."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Que energia é necessária para fundir completamente 0,50 kg de gelo a 0 °C? (ΔH fusão = 3,34 × 10⁵ J/kg)",
+          "opcoes": ["1,67 × 10⁵ J", "3,34 × 10⁵ J", "6,68 × 10⁵ J", "2,09 × 10³ J"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato. E = m ΔH = 0,50 × 3,34 × 10⁵ = 1,67 × 10⁵ J. E durante todo este processo a temperatura manteve-se em 0 °C.",
+          "mascote_feedback_errado": "Numa mudança de estado usa-se E = m ΔH, não m c ΔT (a temperatura não varia). E = 0,50 × 3,34 × 10⁵ = 1,67 × 10⁵ J."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Encher copos de tamanhos diferentes.** Imagina que a temperatura é a altura da água num copo e a energia é a água que deitas. A capacidade térmica mássica é a largura do copo. Num copo largo (água), precisas de deitar muita água para o nível subir um centímetro. Num copo estreito (metal), com pouca água o nível sobe logo. E a mudança de estado? É como se o copo tivesse um buraco lateral a uma certa altura: enquanto a água não encher um reservatório escondido, o nível não passa dali. Estás a deitar água, mas o nível fica parado. Esse reservatório escondido é a energia gasta a quebrar as ligações entre as partículas."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 3.2",
+          "titulo": "Capacidade térmica mássica",
+          "objetivo": "Determinar a capacidade térmica mássica de um material (por exemplo, alumínio ou cobre) a partir da energia fornecida e da variação de temperatura.",
+          "material": [
+            "Bloco metálico calorimétrico com dois orifícios (um para a resistência de aquecimento, outro para o termómetro)",
+            "Resistência de aquecimento",
+            "Fonte de alimentação",
+            "Voltímetro e amperímetro (ou joulímetro)",
+            "Termómetro ou sensor de temperatura",
+            "Cronómetro",
+            "Balança",
+            "Material isolador (por exemplo, esferovite ou cortiça) para envolver o bloco",
+            "Glicerina ou óleo, para melhorar o contacto térmico nos orifícios"
+          ],
+          "procedimento": [
+            "Medir a massa do bloco.",
+            "Introduzir a resistência e o termómetro nos orifícios, com um pouco de glicerina para garantir bom contacto térmico.",
+            "Envolver o bloco com o material isolador.",
+            "Montar o circuito: fonte, resistência e amperímetro em série; voltímetro em paralelo com a resistência.",
+            "Registar a temperatura inicial do bloco.",
+            "Ligar a fonte e iniciar o cronómetro ao mesmo tempo. Registar U e I (devem manter-se constantes).",
+            "Registar a temperatura a intervalos regulares (por exemplo, de 30 em 30 segundos) durante vários minutos."
+          ],
+          "tratamento_de_dados": "Energia fornecida até cada instante: E = U I Δt.\n\nConstruir o gráfico da temperatura (eixo vertical) em função da energia fornecida (eixo horizontal). A partir de E = m c ΔT, obtém-se ΔT = (1 / (m c)) × E. O gráfico é uma reta cujo declive é 1 / (m c).\n\nLogo, c = 1 / (m × declive). Comparar com o valor tabelado e calcular o erro percentual.",
+          "conclusao": "A variação de temperatura do bloco é diretamente proporcional à energia fornecida. A partir do declive da reta, determina-se a capacidade térmica mássica do material.",
+          "erros_comuns": [
+            "Esquecer que o declive é 1 / (m c), e não c.",
+            "Usar a potência em vez da energia no eixo horizontal (se o eixo for o tempo, o declive é P / (m c)).",
+            "Não isolar o bloco. Parte da energia fornecida é transferida para a vizinhança, por isso o bloco aquece menos do que devia. Como c = E / (m ΔT), um ΔT menor dá um valor de c experimental maior do que o verdadeiro.",
+            "Não esperar que a temperatura comece a subir de forma regular (há um pequeno atraso no início, enquanto a resistência aquece)."
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Zonas costeiras, queimaduras de vapor e problemas com várias etapas",
+          "texto": "**Porque é que as zonas costeiras têm temperaturas mais amenas**\n\nA água do mar tem capacidade térmica mássica muito elevada e grande massa. Absorve muita energia durante o dia e no verão, sem aquecer muito, e liberta-a lentamente à noite e no inverno. Por isso Lisboa ou o Porto têm invernos mais suaves e verões menos extremos do que cidades do interior como Bragança ou Évora.\n\n**Porque é que uma queimadura com vapor é pior do que com água a ferver**\n\nO vapor a 100 °C, ao condensar na pele, liberta 2,26 × 10⁶ J por cada quilograma, antes sequer de começar a arrefecer. A água a 100 °C só liberta a energia do arrefecimento. Um grama de vapor transfere para a pele muito mais energia do que um grama de água à mesma temperatura.\n\n**Problemas com várias etapas**\n\nPara levar gelo a −10 °C até água a 20 °C, somam-se três parcelas: aquecer o gelo de −10 °C a 0 °C (E1 = m c gelo ΔT, c gelo cerca de 2,1 × 10³ J kg⁻¹ °C⁻¹); fundir o gelo a 0 °C (E2 = m ΔH fusão); aquecer a água líquida de 0 °C a 20 °C (E3 = m c água ΔT). Energia total = E1 + E2 + E3. Nunca uses m c ΔT atravessando uma mudança de estado."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Fornece-se a mesma energia a 1 kg de água e a 1 kg de alumínio, ambos a 20 °C. Qual aquece mais?",
+              "opcoes": ["A água, porque tem maior capacidade térmica mássica.", "O alumínio, porque tem menor capacidade térmica mássica.", "Aquecem o mesmo, porque têm a mesma massa.", "Depende da temperatura inicial."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. ΔT = E / (m c). Com E e m iguais, quem tem menor c sofre maior variação de temperatura.",
+              "mascote_feedback_errado": "ΔT = E / (m c). Com E e m iguais, quem tem menor c sofre maior variação de temperatura. O alumínio (c cerca de 900) aquece cerca de 4,6 vezes mais do que a água (c = 4180)."
+            },
+            {
+              "pergunta": "Na AL 3.2, com um bloco de 1,00 kg, obteve-se um gráfico de ΔT em função de E com declive 1,20 × 10⁻³ °C/J. Qual é a capacidade térmica mássica do material?",
+              "opcoes": ["1,20 × 10⁻³ J kg⁻¹ °C⁻¹", "833 J kg⁻¹ °C⁻¹", "1200 J kg⁻¹ °C⁻¹", "4180 J kg⁻¹ °C⁻¹"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. c = 1 / (m × declive) = 1 / (1,00 × 1,20 × 10⁻³) = 833 J kg⁻¹ °C⁻¹.",
+              "mascote_feedback_errado": "c = 1 / (m × declive) = 1 / (1,00 × 1,20 × 10⁻³) = 833 J kg⁻¹ °C⁻¹."
+            },
+            {
+              "pergunta": "Durante a ebulição da água pura, à pressão normal, com o fornecimento contínuo de energia:",
+              "opcoes": ["a temperatura sobe regularmente.", "a temperatura mantém-se constante, porque a energia é usada para mudar o estado.", "a temperatura desce, porque a água evapora.", "a energia fornecida é destruída."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Durante uma mudança de estado de uma substância pura, a temperatura mantém-se constante.",
+              "mascote_feedback_errado": "Durante uma mudança de estado de uma substância pura, a temperatura mantém-se constante. A energia fornecida serve para vencer as ligações entre as moléculas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "primeira-segunda-leis-termodinamica",
+      "titulo": "Primeira e segunda leis da termodinâmica",
+      "xp": 24,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "f10_bomba_bicicleta.png",
+          "texto": "Quando enches o pneu de uma bicicleta com uma bomba manual, a bomba fica quente. Ninguém a pôs ao lume. Estiveste só a empurrar o êmbolo. E quando pões uma bebida ao sol, também aquece, mas sem ninguém tocar nela. Há três maneiras de mudar a energia interna de um sistema, e a primeira lei da termodinâmica junta-as numa única equação.",
+          "mascote_texto": "Última secção de Física do 10.º ano. Tem uma lei, um princípio e a AL 3.3. Depois disto, fechas o ano."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Primeira lei da termodinâmica",
+          "imagem": "f10_primeira_lei.png",
+          "texto_principal": "A primeira lei da termodinâmica é a lei da conservação da energia aplicada a sistemas termodinâmicos. A variação da energia interna de um sistema é igual à soma das energias transferidas como trabalho, calor e radiação.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "trabalho-w", "label": "W (trabalho)", "explicacao": "Positivo quando a vizinhança realiza trabalho sobre o sistema (por exemplo, comprimir um gás). Negativo quando é o sistema a realizar trabalho sobre a vizinhança (um gás a expandir-se e a empurrar um êmbolo)." },
+            { "id": "calor-q", "label": "Q (calor)", "explicacao": "Positivo quando o sistema recebe energia como calor. Negativo quando cede." },
+            { "id": "radiacao-r", "label": "R (radiação)", "explicacao": "Positiva quando o sistema absorve mais radiação do que emite. Negativa no caso contrário." },
+            { "id": "regra-sinais", "label": "Regra dos sinais", "explicacao": "Tudo o que entra no sistema é positivo. Tudo o que sai é negativo." },
+            { "id": "sistema-isolado-du0", "label": "Sistema isolado", "explicacao": "Não há trocas com a vizinhança: W = 0, Q = 0, R = 0, logo ΔU = 0. A energia interna mantém-se constante." }
+          ],
+          "caixa_formula": [
+            { "expressao": "ΔU = W + Q + R", "significado": "Primeira lei da termodinâmica.", "unidades": "Todas as grandezas em joule (J)." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Segunda lei e degradação da energia",
+          "imagem": "f10_degradacao_energia.png",
+          "texto_principal": "A energia total conserva-se sempre, mas nem todas as formas de energia são igualmente úteis. Em todos os processos reais, parte da energia acaba como energia interna da vizinhança, a uma temperatura pouco acima da ambiente, e já não pode ser facilmente aproveitada. É a degradação da energia, e é uma consequência da segunda lei da termodinâmica.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            { "id": "energia-combustivel", "label": "Energia do combustível", "explicacao": "Energia útil, concentrada, fácil de aproveitar." },
+            { "id": "trabalho-util", "label": "Trabalho útil", "explicacao": "A parte aproveitada para mover o carro." },
+            { "id": "energia-dissipada-motor", "label": "Energia dissipada", "explicacao": "Aquecimento do motor, gases de escape, ar. Continua a existir, mas está espalhada e já não é útil." },
+            { "id": "segunda-lei", "label": "Segunda lei (linguagem do 10.º ano)", "explicacao": "Os processos que ocorrem espontaneamente na natureza dão-se no sentido da diminuição da energia útil. Nenhuma máquina consegue transformar integralmente a energia fornecida em trabalho: o rendimento é sempre inferior a 100 %." },
+            { "id": "sentido-espontaneo", "label": "Sentido espontâneo", "explicacao": "A energia é transferida espontaneamente como calor do corpo mais quente para o mais frio, nunca ao contrário. Um frigorífico consegue retirar energia do interior frio para o exterior quente, mas só porque se lhe fornece energia elétrica." }
+          ],
+          "caixa_formula": [
+            { "expressao": "η = E útil / E fornecida × 100 < 100 %", "significado": "Consequência da segunda lei para qualquer máquina real.", "unidades": "" }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um gás recebe 500 J de energia como calor e, ao expandir-se, realiza 200 J de trabalho sobre a vizinhança. Não há trocas por radiação. Qual é a variação da sua energia interna?",
+          "opcoes": ["700 J", "300 J", "−300 J", "−700 J"],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Q = +500 J (entra), W = −200 J (o sistema realiza trabalho, a energia sai). ΔU = −200 + 500 + 0 = 300 J.",
+          "mascote_feedback_errado": "Atenção aos sinais. O calor entra: Q = +500 J. O gás realiza trabalho sobre a vizinhança, portanto a energia sai: W = −200 J. ΔU = W + Q + R = −200 + 500 + 0 = 300 J."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na bomba de bicicleta que aquece, qual é a principal transferência de energia que aumenta a energia interna do ar dentro da bomba?",
+          "opcoes": ["Calor, vindo da mão.", "Radiação, vinda da luz ambiente.", "Trabalho, realizado ao comprimir o ar.", "Nenhuma: a energia interna não varia."],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. Ao empurrar o êmbolo, realizas trabalho sobre o ar (W > 0). A energia interna do ar aumenta e a temperatura sobe.",
+          "mascote_feedback_errado": "Estás a empurrar o êmbolo e a comprimir o ar: isso é trabalho realizado sobre o sistema (W > 0). É esse trabalho que aumenta a energia interna do ar e aquece a bomba."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A tinta na água.** Deita uma gota de tinta num copo de água. Ao início está concentrada num ponto, mas em pouco tempo espalha-se por todo o copo. A quantidade de tinta é a mesma, mas nunca mais a vais ver voltar sozinha a formar uma gota. A energia útil é a gota concentrada. A energia dissipada é a tinta espalhada: continua lá toda (primeira lei), mas já não serve para nada e nunca se volta a juntar espontaneamente (segunda lei). É por isso que se fala em \"poupar energia\", mesmo sabendo que a energia se conserva: o que se poupa é a energia útil."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 3.3",
+          "titulo": "Balanço energético num sistema termicamente isolado",
+          "objetivo": "Determinar a variação de entalpia mássica de fusão do gelo, através de um balanço energético num sistema termicamente isolado (calorímetro), e prever a temperatura final de uma mistura.",
+          "material": [
+            "Calorímetro (ou copo de esferovite com tampa)",
+            "Termómetro ou sensor de temperatura",
+            "Balança",
+            "Gelo fundente (a 0 °C), seco com papel antes de ser usado",
+            "Água aquecida (por exemplo, entre 35 °C e 45 °C)",
+            "Agitador"
+          ],
+          "procedimento": [
+            "Medir a massa de água a colocar no calorímetro.",
+            "Colocar a água no calorímetro e registar a sua temperatura inicial, depois de estabilizar.",
+            "Secar cubos de gelo fundente com papel absorvente e juntá-los rapidamente à água. Fechar o calorímetro.",
+            "Agitar suavemente e registar a temperatura até se atingir o valor mínimo, que corresponde ao equilíbrio (todo o gelo fundido).",
+            "Medir de novo a massa total para determinar a massa de gelo adicionada (massa final − massa da água)."
+          ],
+          "tratamento_de_dados": "Num sistema isolado, a energia cedida pela água quente é igual à energia recebida pelo gelo.\n\nEnergia cedida pela água: E1 = m água × c × (θ inicial − θ final). Energia recebida pelo gelo: E2 = m gelo × ΔH fusão + m gelo × c × (θ final − 0).\n\nIgualando E1 = E2, calcula-se o ΔH fusão experimental: ΔH fusão = [m água × c × (θ inicial − θ final) − m gelo × c × θ final] / m gelo.\n\nComparar com o valor tabelado (3,34 × 10⁵ J/kg) e calcular o erro percentual.\n\nExemplo para verificação: 200 g de água a 40,0 °C com 30 g de gelo a 0 °C. Prevê-se θ final ≈ 24,4 °C.",
+          "conclusao": "Num sistema termicamente isolado, a energia cedida por uma parte do sistema é igual à recebida pela outra, e a energia interna total mantém-se (ΔU = 0). O balanço permite determinar grandezas como a variação de entalpia de fusão.",
+          "erros_comuns": [
+            "Não secar o gelo: a água que o acompanha não precisa de fundir, e o ΔH fusão calculado fica errado.",
+            "Esquecer que, depois de fundir, o gelo (agora água a 0 °C) ainda aquece até à temperatura final. É a segunda parcela de E2.",
+            "Usar gelo abaixo de 0 °C sem ter em conta a energia para o aquecer até 0 °C.",
+            "Deixar o calorímetro aberto: o sistema deixa de estar isolado e há trocas com a vizinhança."
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Rendimento dos motores, sistema isolado e o limite do programa",
+          "texto": "**Porque é que o motor de um carro tem rendimento tão baixo**\n\nNum motor a gasolina, só cerca de 25 % a 30 % da energia do combustível se transforma em trabalho útil. O resto sai pelo escape e pelo sistema de arrefecimento. Os motores elétricos chegam a rendimentos acima de 90 %, porque não dependem da transferência de energia como calor para produzir trabalho.\n\n**Porque é que um sistema isolado tem ΔU = 0**\n\nSe não entra nem sai nada (W = 0, Q = 0, R = 0), a primeira lei dá ΔU = 0. Dentro do sistema pode haver transferências entre as partes (a água quente cede energia ao gelo), mas o total não muda. É exatamente o que se usa na AL 3.3.\n\n**O que NÃO precisas de saber no 10.º ano**\n\nO conceito de entropia não faz parte do programa do 10.º ano. A segunda lei é estudada através da ideia de degradação da energia e do rendimento sempre inferior a 100 %. Se aparecer a palavra entropia noutros sítios, é conteúdo do ensino superior."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Num sistema termicamente isolado em que não há trocas de energia com a vizinhança:",
+              "opcoes": ["a energia interna aumenta.", "a energia interna diminui.", "a energia interna mantém-se constante.", "a temperatura de todas as partes é sempre igual."],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Se W = Q = R = 0, então ΔU = 0.",
+              "mascote_feedback_errado": "Se W = Q = R = 0, então ΔU = 0. Dentro do sistema pode haver transferências entre partes a temperaturas diferentes, mas o total mantém-se."
+            },
+            {
+              "pergunta": "Um sistema cede 150 J como calor, recebe 50 J como trabalho e não troca radiação. Qual é a variação da sua energia interna?",
+              "opcoes": ["200 J", "100 J", "−100 J", "−200 J"],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Q = −150 J (sai), W = +50 J (entra), R = 0. ΔU = 50 − 150 + 0 = −100 J.",
+              "mascote_feedback_errado": "Q = −150 J (sai), W = +50 J (entra), R = 0. ΔU = 50 − 150 + 0 = −100 J. A energia interna diminui."
+            },
+            {
+              "pergunta": "Qual das afirmações traduz a segunda lei da termodinâmica, no contexto do 10.º ano?",
+              "opcoes": ["A energia total de um sistema isolado conserva-se.", "Em qualquer processo real há degradação de energia e nenhuma máquina tem rendimento de 100 %.", "A energia pode ser criada a partir do calor.", "Dois corpos em equilíbrio térmico com um terceiro estão em equilíbrio entre si."],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A primeira opção é a primeira lei (conservação), a última é a lei zero.",
+              "mascote_feedback_errado": "A primeira opção é a primeira lei (conservação), a última é a lei zero. A segunda lei trata do sentido dos processos e da degradação da energia."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 3 concluída, e com ela toda a Física do 10.º ano. Sabes distinguir calor de temperatura, calculas energias com m c ΔT e m ΔH, conheces a condução, a convecção e a radiação, aplicas a primeira lei e sabes porque é que nenhuma máquina tem rendimento de 100 %. E fizeste as seis atividades laboratoriais. Para o 11.º ano, a Física passa para a mecânica: forças, movimentos e ondas."
+}

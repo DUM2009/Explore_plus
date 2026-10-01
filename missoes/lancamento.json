@@ -38,5 +38,23 @@
   "rochas-magmaticas": true,
   "deformacao-das-rochas": true,
   "rochas-metamorficas": true,
-  "recursos-geologicos": true
+  "recursos-geologicos": true,
+
+  "energia-e-movimentos": true,
+  "energia-e-fenomenos-eletricos": true,
+  "energia-fenomenos-termicos-radiacao": true,
+
+  "11-movimento-e-interacoes": true,
+  "11-forcas-e-movimentos": true,
+  "11-sinais-ondas-som": true,
+  "11-eletromagnetismo": true,
+  "11-ondas-eletromagneticas": true,
+
+  "12-cinematica-dinamica-2d": true,
+  "12-centro-massa-momento-linear": true,
+  "12-fluidos": true,
+  "12-campo-gravitico": true,
+  "12-campo-eletrico": true,
+  "12-campo-magnetico": true,
+  "12-fisica-moderna": true
 }

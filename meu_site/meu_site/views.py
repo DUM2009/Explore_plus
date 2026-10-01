@@ -34,7 +34,9 @@ TESTE_ID_PARA_UNIDADE = {
 }
 MISSAO_ID_PARA_UNIDADE = {
     'celulas-organelos': 'citologia',
+    'ciclo-celular': 'citologia',
     'biomoleculas': 'bioquimica',
+    'codigo-da-vida': 'genetica',
     'terra-sistema-rochas': 'geologia',
     'tempo-geologico': 'geologia',
     'tectonica-de-placas': 'geologia',
@@ -50,6 +52,13 @@ MISSAO_ID_PARA_UNIDADE = {
     'rochas-metamorficas': 'geologia',
     'recursos-geologicos': 'geologia',
 }
+
+# Inverso do mapa acima — que missões (uma ou mais) pertencem a cada unidade
+# da Biblioteca do Explorador. Usado pelo filtro "Todos / <missão>" da
+# página de flashcards (ver pagina_flashcards).
+UNIDADE_PARA_MISSOES = defaultdict(list)
+for _missao_id, _unidade_id in MISSAO_ID_PARA_UNIDADE.items():
+    UNIDADE_PARA_MISSOES[_unidade_id].append(_missao_id)
 
 
 def registar_atividade(user, minutos=0):
@@ -126,6 +135,66 @@ def pagina_perfil(request):
         'celulas-organelos': {
             'categoria': 'Citologia',
             'descricao': 'Explora a unidade fundamental da vida e o "emprego" de cada organelo.',
+        },
+        'energia-e-movimentos': {
+            'categoria': 'Energia e Movimentos',
+            'descricao': 'Energia cinética, potencial e mecânica, trabalho, potência e rendimento.',
+        },
+        'energia-e-fenomenos-eletricos': {
+            'categoria': 'Energia e Fenómenos Elétricos',
+            'descricao': 'Corrente, tensão, resistência, circuitos em série e em paralelo, e pilhas.',
+        },
+        'energia-fenomenos-termicos-radiacao': {
+            'categoria': 'Energia, Fenómenos Térmicos e Radiação',
+            'descricao': 'Temperatura, calor, condução, convecção, radiação e as leis da termodinâmica.',
+        },
+        '11-movimento-e-interacoes': {
+            'categoria': 'Movimento e Interações',
+            'descricao': 'Referenciais, posição, velocidade, as quatro interações fundamentais e as leis de Newton.',
+        },
+        '11-forcas-e-movimentos': {
+            'categoria': 'Forças e Movimentos',
+            'descricao': 'Gráficos v-t, queda livre, planos inclinados, velocidade terminal e satélites.',
+        },
+        '11-sinais-ondas-som': {
+            'categoria': 'Sinais, Ondas e Som',
+            'descricao': 'Sinais, ondas, período, frequência, comprimento de onda e as características do som.',
+        },
+        '11-eletromagnetismo': {
+            'categoria': 'Eletromagnetismo',
+            'descricao': 'Carga, campo elétrico, campo magnético, indução eletromagnética e transformadores.',
+        },
+        '11-ondas-eletromagneticas': {
+            'categoria': 'Ondas Eletromagnéticas',
+            'descricao': 'Espetro eletromagnético, reflexão, refração, fibras óticas, difração, efeito Doppler e Big Bang.',
+        },
+        '12-cinematica-dinamica-2d': {
+            'categoria': 'Cinemática e Dinâmica 2D',
+            'descricao': 'Movimentos a duas dimensões, projéteis, atrito e curvas.',
+        },
+        '12-centro-massa-momento-linear': {
+            'categoria': 'Centro de Massa e Momento Linear',
+            'descricao': 'Centro de massa, momento linear, conservação e colisões.',
+        },
+        '12-fluidos': {
+            'categoria': 'Fluidos',
+            'descricao': 'Pressão, hidrostática, impulsão e viscosidade.',
+        },
+        '12-campo-gravitico': {
+            'categoria': 'Campo Gravítico',
+            'descricao': 'Leis de Kepler, campo gravítico, energia potencial gravítica e velocidade de escape.',
+        },
+        '12-campo-eletrico': {
+            'categoria': 'Campo Elétrico',
+            'descricao': 'Lei de Coulomb, potencial elétrico, condutores, cargas em movimento e condensadores.',
+        },
+        '12-campo-magnetico': {
+            'categoria': 'Campo Magnético',
+            'descricao': 'Força magnética, movimento circular de cargas e espectrómetro de massa.',
+        },
+        '12-fisica-moderna': {
+            'categoria': 'Física Moderna',
+            'descricao': 'Radiação térmica, fotões, efeito fotoelétrico, núcleos e radioatividade.',
         },
     }
 
@@ -210,6 +279,35 @@ def pagina_perfil(request):
         'niveis_para_kim_nivel10': max(0, 10 - perfil.nivel),
         **dados_estatisticas,
     })
+
+
+def _evolucao_notas(user, tipo):
+    """Gráfico "Evolução das notas" — um ponto por teste ou exame
+    corrigido (consoante `tipo`), na ordem em que aconteceram. Devolve os
+    pontos e já as coordenadas do <polyline> (viewBox 0 0 300 100), para o
+    template só desenhar, sem fazer contas — ver stats-evolucao.js para a
+    troca entre "Testes" e "Exames"."""
+    resultados = list(
+        ResultadoAvaliacao.objects.filter(user=user, tipo=tipo).order_by('criado_em')
+    )
+    pontos = [
+        {
+            'label': resultado.criado_em.strftime('%d/%m'),
+            'nota': round(resultado.nota_percentagem / 100 * 20, 1),
+        }
+        for resultado in resultados
+    ]
+    coords = ''
+    if len(pontos) == 1:
+        y = 100 - (pontos[0]['nota'] / 20 * 100)
+        coords = f'150,{y:.1f}'
+    elif len(pontos) > 1:
+        passo = 300 / (len(pontos) - 1)
+        coords = ' '.join(
+            f'{i * passo:.1f},{100 - (ponto["nota"] / 20 * 100):.1f}'
+            for i, ponto in enumerate(pontos)
+        )
+    return {'pontos': pontos, 'coords': coords}
 
 
 def _formatar_minutos(minutos):
@@ -371,28 +469,23 @@ def _quizzes_por_unidade(user):
 
 def _quizzes_por_missao(user):
     """Modo "Quizz por missão" — mesma ideia de _quizzes_por_unidade, mas
-    quebrada por missão dentro de cada capítulo (só quizzes de secção de
-    missão, ver tipo='missao_seccao' em salvar_progresso_missao), para o
-    aluno escolher um capítulo e ver o desempenho missão a missão.
-    Devolve {unidade_id: [pontos]}, só com capítulos que já têm dados —
-    o frontend mostra "ainda sem dados" para os restantes."""
+    quebrada por missão em vez de por capítulo (só quizzes de secção de
+    missão, ver tipo='missao_seccao' em salvar_progresso_missao): uma
+    barra por missão já tentada, todas juntas no mesmo gráfico."""
     resultados = ResultadoAvaliacao.objects.filter(user=user, tipo='missao_seccao')
     notas_por_missao = defaultdict(list)
     for resultado in resultados:
         missao_id = resultado.identificador.split(':', 1)[0]
         notas_por_missao[missao_id].append(resultado.nota_percentagem)
 
-    por_unidade = defaultdict(list)
+    pontos = []
     for missao_id, notas in notas_por_missao.items():
-        unidade_id = MISSAO_ID_PARA_UNIDADE.get(missao_id)
-        if not unidade_id:
-            continue
         media = round(sum(notas) / len(notas))
-        por_unidade[unidade_id].append({
+        pontos.append({
             'id': missao_id, 'label': _titulo_missao(missao_id),
             'percent': media, 'cor': _cor_desempenho(media), 'sem_dados': False, 'valor_label': f'{media}%',
         })
-    return por_unidade
+    return pontos
 
 
 def calcular_dados_estatisticas(request, perfil):
@@ -400,32 +493,15 @@ def calcular_dados_estatisticas(request, perfil):
     (sem rankings nem percentis aqui, ver Templates/estatisticas.html).
     Reaproveitado por pagina_estatisticas e pelo separador "Estatísticas"
     de pagina_perfil, para não duplicar esta lógica nos dois sítios."""
-    # (a) Gráfico de evolução — um ponto por teste/exame corrigido, na
-    # ordem em que aconteceram (mais simples de implementar com os dados
-    # que já temos do que agrupar por semana, e igualmente claro com o
-    # número de testes que um aluno costuma fazer).
-    resultados_testes = list(
-        ResultadoAvaliacao.objects.filter(user=request.user, tipo__in=('teste', 'exame')).order_by('criado_em')
-    )
-    evolucao = [
-        {
-            'label': resultado.criado_em.strftime('%d/%m'),
-            'nota': round(resultado.nota_percentagem / 100 * 20, 1),
-        }
-        for resultado in resultados_testes
-    ]
-    # Coordenadas do gráfico já calculadas aqui (viewBox 0 0 300 100) — o
-    # template só desenha o <polyline>, sem fazer contas.
-    evolucao_pontos = ''
-    if len(evolucao) == 1:
-        y = 100 - (evolucao[0]['nota'] / 20 * 100)
-        evolucao_pontos = f'150,{y:.1f}'
-    elif len(evolucao) > 1:
-        passo = 300 / (len(evolucao) - 1)
-        evolucao_pontos = ' '.join(
-            f'{i * passo:.1f},{100 - (ponto["nota"] / 20 * 100):.1f}'
-            for i, ponto in enumerate(evolucao)
-        )
+    # (a) Gráfico de evolução — um ponto por teste ou exame corrigido, na
+    # ordem em que aconteceram, trocável entre "Testes" e "Exames" no
+    # dropdown do cartão (ver stats-evolucao.js).
+    evolucao_periodos = {
+        'teste': _evolucao_notas(request.user, 'teste'),
+        'exame': _evolucao_notas(request.user, 'exame'),
+    }
+    evolucao = evolucao_periodos['teste']['pontos']
+    evolucao_pontos = evolucao_periodos['teste']['coords']
 
     # (b) Desempenho por unidade — três formas de ver o mesmo capítulo,
     # trocáveis no dropdown do cartão (ver stats-desempenho.js):
@@ -476,9 +552,9 @@ def calcular_dados_estatisticas(request, perfil):
     return {
         'evolucao': evolucao,
         'evolucao_pontos': evolucao_pontos,
+        'evolucao_periodos': evolucao_periodos,
         'desempenho_periodos': desempenho_periodos,
         'desempenho_quizzes_capitulo': desempenho_periodos['quizzes_capitulo'],
-        'desempenho_capitulos': [{'id': u['id'], 'label': u['nome']} for u in UNIDADES_BIBLIOTECA],
         'tempo_semana_min': tempo_semana,
         'tempo_estudo_dias': tempo_estudo_dias,
         'tempo_estudo_periodos': tempo_estudo_periodos,
@@ -649,31 +725,6 @@ def pagina_index_missions(request):
 
 
 @login_required(login_url='login')
-def pagina_index_missions_geologia(request):
-    try:
-        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
-    except OperationalError:
-        perfil = None
-
-    missoes_lancadas = set()
-    try:
-        caminho_lancamento = settings.BASE_DIR.parent / 'missoes' / 'lancamento.json'
-        with open(caminho_lancamento, encoding='utf-8') as ficheiro:
-            configuracao_lancamento = json.load(ficheiro)
-        missoes_lancadas = {
-            chave for chave, visivel in configuracao_lancamento.items()
-            if visivel is True
-        }
-    except (FileNotFoundError, json.JSONDecodeError):
-        pass
-
-    return render(request, 'index-missions-geologia.html', {
-        'perfil': perfil,
-        'missoes_lancadas': missoes_lancadas,
-    })
-
-
-@login_required(login_url='login')
 def pagina_lesson(request):
     return render(request, 'lesson.html')
 
@@ -697,14 +748,21 @@ def pagina_mission_photosynthesis_goldtest(request):
 def pagina_missao(request, missao_id):
     """
     Serve qualquer missão do motor genérico (ver static/missao-engine.js):
-    basta existir um missoes/<missao_id>.json neste formato para a missão
-    ficar disponível aqui, sem código novo por missão.
+    basta existir um missoes/<missao_id>.json (ou missoes/<disciplina>/<missao_id>.json,
+    ex: missoes/fisica/, para organizar missões de uma disciplina nova) neste
+    formato para a missão ficar disponível aqui, sem código novo por missão.
     """
-    caminho_json = settings.BASE_DIR.parent / 'missoes' / f'{missao_id}.json'
-    try:
-        with open(caminho_json, 'r', encoding='utf-8') as f:
-            missao = json.load(f)
-    except FileNotFoundError:
+    pasta_missoes = settings.BASE_DIR.parent / 'missoes'
+    candidatos = [pasta_missoes / f'{missao_id}.json', *pasta_missoes.glob(f'*/{missao_id}.json')]
+    missao = None
+    for caminho_json in candidatos:
+        try:
+            with open(caminho_json, 'r', encoding='utf-8') as f:
+                missao = json.load(f)
+            break
+        except FileNotFoundError:
+            continue
+    if missao is None:
         raise Http404('Missão não encontrada.')
 
     try:
@@ -945,32 +1003,67 @@ def mascote_chat(request):
     return JsonResponse({'reply': reply})
 
 
-# Imagem do painel quadrado de cada categoria na página de Testes — mesma
-# lógica visual da página de Missões. Categoria sem entrada aqui cai no
-# genérico 'images/Biology image.jpg'.
+# Imagem do painel quadrado de cada categoria na página de Testes — as
+# mesmas imagens usadas para a mesma categoria em index-missions.html.
+# Categoria sem entrada aqui cai no genérico 'images/Biology image.jpg'.
 CATEGORIA_TESTES_IMAGENS = {
-    'Biodiversidade': 'images/Relva.jpeg',
+    'Biodiversidade': 'images/Wallpaper biodiversidade.png',
+    'Bioquímica': 'images/Wallpaper bioquimica.png',
+    'Obtenção de Matéria': 'images/Folha.png',
+    'Distribuição de Matéria': 'images/Coração.png',
+    'Transformação e Utilização de Energia': 'images/Mitocôndira.png',
+    'Evolução Biológica': 'images/especie.jpg',
+    'Sistemática dos Seres Vivos': 'images/organismo.jpg',
+    'Genética': 'images/Wallpaper DNA.png',
     'Citologia': 'images/Célula.png',
-    'Botânica': 'images/Planta.png',
+    'Ecologia': 'images/ecossistema.jpg',
+    'Corpo Humano': 'images/Wallpaper corpo humano.png',
+    'Botânica': 'images/Relva.jpeg',
+    'Energia e Movimentos': 'images/f10_montanha_russa.png',
+    'Energia e Fenómenos Elétricos': 'images/f10_circuito_simples.png',
+    'Energia, Fenómenos Térmicos e Radiação': 'images/f10_sol_paineis.png',
+    'Movimento e Interações': 'images/f11_terra_lua.png',
+    'Forças e Movimentos': 'images/f11_pena_martelo_lua.png',
+    'Sinais, Ondas e Som': 'images/f11_diapasao.png',
+    'Eletromagnetismo': 'images/f11_eolica_barragem.png',
+    'Ondas Eletromagnéticas': 'images/f11_espetro_dia_a_dia.png',
+}
+
+# Categorias cuja imagem usa background-size:contain em vez de cover (ver
+# .missions-category-panel-image--contain), tal como em index-missions.html
+# — evita cortar ícones/desenhos que não preenchem todo o retângulo.
+CATEGORIA_TESTES_IMAGENS_CONTAIN = {'Citologia'}
+
+# Disciplina de cada categoria (ver data-subject em .missions-category,
+# tal como em index-missions.html) — usado pelo subject-switcher.js para
+# mostrar só as categorias da disciplina escolhida. Categoria sem entrada
+# aqui é Biologia, a disciplina por omissão da página.
+CATEGORIA_TESTES_DISCIPLINA = {
+    'Energia e Movimentos': 'physics',
+    'Energia e Fenómenos Elétricos': 'physics',
+    'Energia, Fenómenos Térmicos e Radiação': 'physics',
+    'Movimento e Interações': 'physics',
+    'Forças e Movimentos': 'physics',
+    'Sinais, Ondas e Som': 'physics',
+    'Eletromagnetismo': 'physics',
+    'Ondas Eletromagnéticas': 'physics',
 }
 
 # Cada missão tem 3 testes: o primeiro incluído no plano Free, os outros
 # dois exclusivos do SuperExplore (Pro). 'teste_id' fica a None enquanto o
 # teste ainda não tiver conteúdo — a página mostra-o como "Em breve".
 MISSOES_TESTES = [
-    # Fotossíntese temporariamente ocultada da lista de testes a pedido da
-    # Daniela — voltar a incluir este bloco quando ela pedir para reativar.
-    # {
-    #     'categoria': 'Botânica',
-    #     'titulo': 'Fotossíntese',
-    #     'meta': ['Grupos I, II e III', '14-16 perguntas', '45 minutos'],
-    #     'correcao': 'Correção automática e por IA.',
-    #     'testes': [
-    #         {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fotossintese'},
-    #         {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fotossintese-c4-milho'},
-    #         {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fotossintese-cam-opuntia'},
-    #     ],
-    # },
+    {
+        'categoria': 'Botânica',
+        'titulo': 'Fotossíntese',
+        'meta': ['Grupos I, II e III', '14-16 perguntas', '45 minutos'],
+        'correcao': 'Correção automática e por IA.',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fotossintese'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fotossintese-c4-milho'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fotossintese-cam-opuntia'},
+        ],
+    },
     {
         'categoria': 'Biodiversidade',
         'titulo': 'Diversidade e Organização Biológica',
@@ -994,6 +1087,52 @@ MISSOES_TESTES = [
         ],
     },
 ]
+
+# Capítulos que ainda não têm testes escritos — aparecem na página de
+# Testes com o mesmo painel e título das outras missões, mas com os 3
+# testes a "Em breve" (teste_id a None), em vez de ficarem de fora da
+# página só porque ainda não há conteúdo. Categoria e título espelham
+# exatamente os usados em index-missions.html.
+_TESTES_EM_BREVE = [
+    ('Bioquímica', 'Biomoléculas'),
+    ('Obtenção de Matéria', 'Obtenção de Matéria pelos Seres Heterotróficos'),
+    ('Distribuição de Matéria', 'Xilema e Floema'),
+    ('Distribuição de Matéria', 'Transporte nos Animais'),
+    ('Transformação e Utilização de Energia', 'Respiração Aeróbia e Fermentação'),
+    ('Transformação e Utilização de Energia', 'Trocas Gasosas'),
+    ('Evolução Biológica', 'Lamarckismo e Darwinismo'),
+    ('Sistemática dos Seres Vivos', 'Taxonomia e Sistemática'),
+    ('Genética', 'O Código da Vida'),
+    ('Genética', 'Síntese Proteica'),
+    ('Genética', 'Mitose'),
+    ('Genética', 'Meiose e Reprodução Sexuada'),
+    ('Genética', 'Reprodução Assexuada'),
+    ('Genética', 'Ciclos de Vida'),
+    ('Citologia', 'Ciclo Celular'),
+    ('Ecologia', 'Ecossistemas'),
+    ('Corpo Humano', 'Sistema Nervoso'),
+    ('Botânica', 'Fisiologia Vegetal'),
+    ('Energia e Movimentos', 'Energia e Movimentos'),
+    ('Energia e Fenómenos Elétricos', 'Energia e Fenómenos Elétricos'),
+    ('Energia, Fenómenos Térmicos e Radiação', 'Energia, Fenómenos Térmicos e Radiação'),
+    ('Movimento e Interações', 'Movimento e Interações'),
+    ('Forças e Movimentos', 'Forças e Movimentos'),
+    ('Sinais, Ondas e Som', 'Sinais, Ondas e Som'),
+    ('Eletromagnetismo', 'Eletromagnetismo'),
+    ('Ondas Eletromagnéticas', 'Ondas Eletromagnéticas'),
+]
+for _categoria, _titulo in _TESTES_EM_BREVE:
+    MISSOES_TESTES.append({
+        'categoria': _categoria,
+        'titulo': _titulo,
+        'meta': [],
+        'correcao': '',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': None},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': None},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': None},
+        ],
+    })
 
 
 def encontrar_config_teste(teste_id):
@@ -1023,6 +1162,8 @@ def montar_categorias_testes(plano_aluno):
             'nome': nome,
             'missoes': missoes,
             'imagem': CATEGORIA_TESTES_IMAGENS.get(nome, 'images/Biology image.jpg'),
+            'imagem_contain': nome in CATEGORIA_TESTES_IMAGENS_CONTAIN,
+            'disciplina': CATEGORIA_TESTES_DISCIPLINA.get(nome, 'biology'),
         }
         for nome, missoes in categorias.items()
     ]
@@ -1226,6 +1367,15 @@ def carregar_vocabulario(missao_id):
         return json.load(f)
 
 
+def carregar_titulo_missao(missao_id):
+    caminho_json = settings.BASE_DIR.parent / 'missoes' / f'{missao_id}.json'
+    try:
+        with open(caminho_json, 'r', encoding='utf-8') as f:
+            return json.load(f).get('titulo', missao_id)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return missao_id
+
+
 # Biblioteca do Explorador: um "livro" de vocabulário por unidade, cada um
 # associado ao ficheiro vocabulario/<id>.json (mesmo formato usado pelos
 # flashcards — daí "Praticar com flashcards" reutilizar diretamente a rota
@@ -1329,12 +1479,18 @@ def pagina_biblioteca_unidade(request, unidade_id):
         if estado in contagens:
             contagens[estado] += 1
 
+    missoes_capitulo = [
+        {'id': id_missao_capitulo, 'titulo': carregar_titulo_missao(id_missao_capitulo)}
+        for id_missao_capitulo in UNIDADE_PARA_MISSOES.get(unidade_id, [])
+    ]
+
     return render(request, 'biblioteca-unidade.html', {
         'perfil': perfil,
         'unidade': unidade,
         'termos': termos,
         'total_termos': len(termos),
         'contagens': contagens,
+        'missoes_capitulo': missoes_capitulo,
     })
 
 
@@ -1352,10 +1508,16 @@ def pagina_flashcards(request, missao_id):
 
     vocabulario['termos'] = aplicar_estado_vocabulario_aluno(perfil, missao_id, vocabulario['termos'])
 
+    missoes_capitulo = [
+        {'id': id_missao_capitulo, 'titulo': carregar_titulo_missao(id_missao_capitulo)}
+        for id_missao_capitulo in UNIDADE_PARA_MISSOES.get(missao_id, [])
+    ]
+
     return render(request, 'flashcards.html', {
         'perfil': perfil,
         'vocabulario': vocabulario,
         'missao_id': missao_id,
+        'missoes_capitulo': missoes_capitulo,
     })
 
 
@@ -1405,6 +1567,8 @@ RESUMOS = [
         'id': 'fotossintese',
         'nome': 'Fotossíntese',
         'disciplina': 'Biologia',
+        'categoria': 'Botânica',
+        'imagem': 'images/Planta.png',
         'cor_a': '#2f6b45',
         'cor_b': '#1f8a5b',
         'cor_soft': '#eaf3e9',
@@ -1414,6 +1578,8 @@ RESUMOS = [
         'id': 'diversidade-organizacao-biologica',
         'nome': 'Diversidade e Organização Biológica',
         'disciplina': 'Biologia',
+        'categoria': 'Biodiversidade',
+        'imagem': 'images/Relva.jpeg',
         'cor_a': '#1d5f73',
         'cor_b': '#2a8fae',
         'cor_soft': '#e8f4f7',

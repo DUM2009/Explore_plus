@@ -1884,6 +1884,15 @@ body.shadcn-profile .missions-page{
     margin-left:auto;
 }
 
+/* On desktop the missions sidebar stays permanently open (mirrors the
+   perfil page above), so the hamburger only needs to exist for the
+   off-canvas drawer on mobile. */
+@media (min-width: 981px) {
+    .missions-topbar .nav-drawer-toggle{
+        display:none;
+    }
+}
+
 /* Perfil page has no hamburger (its sidebar stays permanently open, so
    there's nothing to toggle) — the notifications bell takes the same
    right-aligned spot instead. */
@@ -2213,6 +2222,13 @@ gap:20px;
     margin-bottom:20px;
 }
 
+/* Panels should stay the size they were with the sidebar OPEN — not
+   grow into the extra width freed up once it's collapsed. Two attempts
+   at computing that open-state width from CSS custom properties/calc()
+   didn't hold up, so index-missions.html measures it directly in JS
+   (the real rendered width, not a guess) and pins it as max-width via
+   an inline style whenever the sidebar is collapsed. */
+
 .missions-category-panel{
     position:relative;
     display:flex;
@@ -2231,24 +2247,34 @@ gap:20px;
 
 /* Fixed pixel height (not a % of the card) so the image never eats
    into the space the name/tagline/arrow below it need — that's what
-   was clipping the arrow off on categories with more text. */
+   was clipping the arrow off on categories with more text. Bigger than
+   it used to be (140px): the body below was tightened up to match, so
+   the panel's total height doesn't grow. */
 .missions-category-panel-image{
-    flex:0 0 140px;
+    flex:0 0 195px;
     background-color:var(--sp-border, #e2e3db);
     background-size:cover;
     background-position:center;
 }
 
+/* Citologia's cell illustration reads as a whole diagram (organelle
+   labels etc.), not a photo — cropping it with cover, like the other
+   panels, cuts pieces off it. Shown in full instead, letterboxed. */
+.missions-category-panel-image--contain{
+    background-size:contain;
+    background-repeat:no-repeat;
+}
+
 .missions-category-panel-body{
     display:flex;
     flex-direction:column;
-    padding:14px 16px 16px;
+    padding:6px 16px 10px;
 }
 
 .missions-category-panel-name{
     flex-shrink:0;
-    margin:0 0 8px;
-    padding-bottom:10px;
+    margin:0 0 6px;
+    padding-bottom:8px;
     border-bottom:1px solid var(--sp-border, #d8d9d2);
     color:var(--sp-fg, #1c1c1c);
     font-size:1.05rem;
@@ -2284,18 +2310,20 @@ gap:20px;
     align-self:center;
 }
 
-/* Reserves a fixed height for up to 3 lines regardless of how many
+/* Reserves a fixed height for up to 2 lines regardless of how many
    lines the text actually wraps to, so every card ends up the same
-   height and the arrow below always sits in the same place. */
+   height and the arrow below always sits in the same place. Trimmed
+   from 3 lines to 2 to make room for the taller image above without
+   growing the panel overall. */
 .missions-category-panel-tagline{
     flex-shrink:0;
     display:-webkit-box;
-    -webkit-line-clamp:3;
-    line-clamp:3;
+    -webkit-line-clamp:2;
+    line-clamp:2;
     -webkit-box-orient:vertical;
     overflow:hidden;
-    min-height:calc(1.5em * 3);
-    margin:0 0 14px;
+    min-height:calc(1.5em * 2);
+    margin:0 0 8px;
     color:var(--sp-muted-fg, #68718b);
     font-size:.85rem;
     line-height:1.5;
@@ -2310,7 +2338,7 @@ gap:20px;
 button.missions-category-panel-toggle{
     flex-shrink:0;
     align-self:flex-end;
-    margin-top:8px;
+    margin-top:4px;
     width:28px;
     height:28px;
     padding:0;
@@ -2483,7 +2511,7 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
    other panels which follow the --sp-card theme variable. Centered on
    the page instead of stretching edge to edge. */
 .teste-container{
-    max-width:900px;
+    max-width:1100px;
     margin:0 auto;
     background:#ffffff;
     border:1px solid rgba(0,0,0,.15);
@@ -3318,16 +3346,11 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
    .mascote-chat-panel, but self-contained here so this page doesn't need
    to load mission-styles.css.
 
-   The waving .webm has no alpha channel — some frames of its own loop
-   render a solid backdrop instead of a soft vignette, and that backdrop
-   is close enough to the mascot's own green to make a canvas chroma-key
-   unreliable. So instead of fighting it: the box behind the video is
-   painted the same cream as the page (matching .profile-content's actual
-   rendered background), the video is shown a little smaller than its box
-   so that color shows as a soft margin around it, and there's no
-   hover transform — any zoom would exaggerate exactly the backdrop
-   frames we're trying to stay quiet about. The intent is for this to
-   read as an ambient animation, not an interactive card. */
+   No background box in either theme (requested) — the button itself is
+   fully transparent, so only the video's own pixels show, and there's no
+   hover transform — any zoom would exaggerate any backdrop baked into the
+   .webm's own frames. The intent is for this to read as an ambient
+   animation, not an interactive card. */
 .teste-mascote-fab,
 .teste-mascote-fab:hover{
     position:fixed;
@@ -3339,7 +3362,7 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
     padding:0;
     border:none;
     border-radius:16px;
-    background:#faf9f5;
+    background:none;
     box-shadow:none;
     cursor:pointer;
     display:grid;
@@ -3348,19 +3371,10 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
 }
 
 .teste-mascote-fab-img{
-    width:62%;
-    height:62%;
+    width:100%;
+    height:100%;
     object-fit:contain;
     display:block;
-    filter:drop-shadow(0 6px 12px rgba(31,138,91,.35));
-}
-
-/* The cream box above only hides the video's baked-in light backdrop on
-   the light page background it matches — in dark mode it just reads as
-   a stray white square, which is worse than the backdrop it was hiding. */
-html.dark-mode .teste-mascote-fab,
-html.dark-mode .teste-mascote-fab:hover{
-    background:none;
 }
 
 .teste-mascote-fab-tooltip{
@@ -3546,9 +3560,131 @@ html.dark-mode .teste-mascote-fab:hover{
 
 /* ===================== Flashcards (Livro do explorador) ===================== */
 
+.flashcards-page{
+    --fc-accent:#1f8a5b;
+    --fc-accent-soft:#e8f6ee;
+    --fc-accent-2:#3fb87f;
+    --fc-danger:#e5484d;
+    --fc-danger-soft:#fdecee;
+    --fc-ink:#161c19;
+    --fc-muted:#6b7770;
+    --fc-card:#ffffff;
+    --fc-border:#e7e9e2;
+}
+
+.flashcards-container{
+    max-width:1100px;
+    margin:0 auto;
+    background:#ffffff;
+    border:1px solid rgba(0,0,0,.15);
+    border-radius:16px;
+    padding:32px;
+}
+
 .flashcards-page p{
-    color:#66756e;
+    color:var(--fc-muted);
+}
+
+.flashcards-topline{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
     margin-bottom:28px;
+}
+
+.flashcards-topline p{
+    margin:0;
+    flex:1 1 auto;
+}
+
+.flashcards-filter{
+    position:relative;
+    flex:none;
+}
+
+.flashcards-filter-trigger{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--fc-card);
+    color:var(--fc-ink);
+    border:1px solid var(--fc-border);
+    border-radius:999px;
+    padding:9px 16px;
+    font-size:.86rem;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 1px 2px rgba(20,40,30,.04);
+    transition:border-color .15s ease, box-shadow .15s ease;
+}
+
+.flashcards-filter-trigger:hover{
+    border-color:var(--fc-accent);
+}
+
+.flashcards-filter-trigger svg{
+    flex:none;
+    transition:transform .15s ease;
+}
+
+.flashcards-filter.is-open .flashcards-filter-trigger svg{
+    transform:rotate(180deg);
+}
+
+.flashcards-filter-menu{
+    position:absolute;
+    top:calc(100% + 8px);
+    right:0;
+    z-index:5;
+    min-width:200px;
+    max-height:280px;
+    overflow-y:auto;
+    background:var(--fc-card);
+    border:1px solid var(--fc-border);
+    border-radius:14px;
+    padding:6px;
+    box-shadow:0 12px 28px rgba(20,40,30,.14);
+}
+
+.flashcards-filter-menu[hidden]{
+    display:none;
+}
+
+.flashcards-filter-option{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    border-radius:9px;
+    padding:9px 12px;
+    font-size:.88rem;
+    font-weight:600;
+    color:var(--fc-ink);
+    cursor:pointer;
+    transition:background-color .12s ease, color .12s ease;
+}
+
+.flashcards-filter-option:hover{
+    background:var(--fc-accent-soft);
+}
+
+.flashcards-filter-option.is-active{
+    background:var(--fc-accent-soft);
+    color:var(--fc-accent);
+}
+
+@media (max-width:560px){
+    .flashcards-topline{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .flashcards-filter-menu{
+        left:0;
+        right:0;
+    }
 }
 
 .flashcards-progress{
@@ -3556,46 +3692,50 @@ html.dark-mode .teste-mascote-fab:hover{
     align-items:center;
     gap:14px;
     max-width:420px;
-    margin:0 auto 32px;
+    margin:0 auto 36px;
 }
 
 .flashcards-progress-track{
     flex:1 1 auto;
-    height:8px;
+    height:10px;
     border-radius:999px;
-    background:#e2e3db;
+    background:var(--fc-border);
     overflow:hidden;
+    box-shadow:inset 0 1px 2px rgba(0,0,0,.06);
 }
 
 .flashcards-progress-fill{
     height:100%;
     width:0%;
-    background:#1f8a5b;
+    background:linear-gradient(90deg,var(--fc-accent),var(--fc-accent-2));
     border-radius:999px;
-    transition:width .25s ease;
+    transition:width .3s cubic-bezier(.4,0,.2,1);
 }
 
 .flashcards-progress-label{
     flex:none;
-    font-weight:700;
-    font-size:.86rem;
-    color:#66756e;
+    font-weight:800;
+    font-size:.82rem;
+    color:var(--fc-accent);
+    background:var(--fc-accent-soft);
+    padding:5px 12px;
+    border-radius:999px;
     min-width:44px;
-    text-align:right;
+    text-align:center;
 }
 
 .flashcards-stage{
     display:flex;
     justify-content:center;
-    padding:8px 0 28px;
-    perspective:1400px;
+    padding:8px 0 32px;
+    perspective:1600px;
 }
 
 .flashcard{
     position:relative;
     width:100%;
-    max-width:420px;
-    height:280px;
+    max-width:440px;
+    height:300px;
     cursor:grab;
     touch-action:pan-y;
     user-select:none;
@@ -3609,7 +3749,7 @@ html.dark-mode .teste-mascote-fab:hover{
     position:relative;
     width:100%;
     height:100%;
-    transition:transform .4s cubic-bezier(.2,.8,.3,1.1);
+    transition:transform .5s cubic-bezier(.22,.9,.32,1.1);
     transform-style:preserve-3d;
 }
 
@@ -3624,47 +3764,65 @@ html.dark-mode .teste-mascote-fab:hover{
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:14px;
-    padding:32px;
+    gap:16px;
+    padding:36px;
     text-align:center;
-    background:#fff;
-    border:1px solid #e2e3db;
-    border-radius:20px;
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    background:var(--fc-card);
+    border:1px solid var(--fc-border);
+    border-radius:24px;
+    box-shadow:0 4px 10px rgba(20,40,30,.04), 0 20px 45px rgba(20,40,30,.1);
     backface-visibility:hidden;
+}
+
+.flashcard-front{
+    background:linear-gradient(155deg,#ffffff 0%,#f7f9f5 100%);
+}
+
+.flashcard-front::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:24px;
+    padding:1px;
+    background:linear-gradient(155deg,rgba(31,138,91,.25),rgba(31,138,91,0) 45%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    pointer-events:none;
 }
 
 .flashcard-back{
     transform:rotateY(180deg);
-    background:#f4fbf7;
-    border-color:#cde7d9;
+    background:linear-gradient(155deg,#f2fbf6 0%,#e6f6ec 100%);
+    border-color:#c9ecd9;
 }
 
 .flashcard-hint{
-    font-size:.78rem;
+    font-size:.74rem;
     font-weight:700;
-    letter-spacing:.04em;
+    letter-spacing:.08em;
     text-transform:uppercase;
-    color:#8a938c;
+    color:#9aa39c;
 }
 
 .flashcard-term{
-    font-size:1.7rem;
+    font-size:1.85rem;
     font-weight:800;
-    color:#1c1c1c;
+    letter-spacing:-.01em;
+    color:var(--fc-ink);
 }
 
 .flashcard-definition{
-    font-size:1.05rem;
-    line-height:1.55;
-    color:#244a37;
+    font-size:1.08rem;
+    line-height:1.6;
+    color:#1f4432;
 }
 
 .flashcard-stamp{
     position:absolute;
-    top:24px;
+    top:26px;
     z-index:2;
-    padding:6px 16px;
+    padding:7px 18px;
     border-radius:10px;
     border:3px solid;
     font-weight:800;
@@ -3673,27 +3831,32 @@ html.dark-mode .teste-mascote-fab:hover{
     letter-spacing:.04em;
     opacity:0;
     pointer-events:none;
+    backdrop-filter:blur(2px);
     transition:opacity .1s ease;
 }
 
 .flashcard-stamp--know{
-    left:20px;
-    color:#1f8a5b;
-    border-color:#1f8a5b;
+    left:22px;
+    color:var(--fc-accent);
+    border-color:var(--fc-accent);
+    background:rgba(31,138,91,.06);
     transform:rotate(-14deg);
 }
 
 .flashcard-stamp--dontknow{
-    right:20px;
-    color:#dc3545;
-    border-color:#dc3545;
+    right:22px;
+    color:var(--fc-danger);
+    border-color:var(--fc-danger);
+    background:rgba(229,72,77,.06);
     transform:rotate(14deg);
 }
 
 .flashcards-actions{
     display:flex;
     justify-content:center;
-    gap:28px;
+    align-items:center;
+    gap:32px;
+    margin-top:6px;
 }
 
 .flashcards-actions[hidden]{
@@ -3703,209 +3866,252 @@ html.dark-mode .teste-mascote-fab:hover{
 .flashcards-btn{
     width:64px;
     height:64px;
+    flex:none;
+    padding:0;
     border-radius:50%;
-    border:2px solid;
-    background:#fff;
+    border:none;
+    background:var(--fc-card);
     display:grid;
     place-items:center;
     cursor:pointer;
-    box-shadow:0 8px 20px rgba(0,0,0,.1);
-    transition:transform .15s ease, background .15s ease;
+    box-shadow:0 2px 6px rgba(20,40,30,.05), 0 10px 24px rgba(20,40,30,.1);
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, background .18s ease, color .18s ease;
+}
+
+.flashcards-btn svg{
+    width:26px;
+    height:26px;
+    max-width:none;
+    display:block;
 }
 
 .flashcards-btn:hover{
-    transform:translateY(-2px) scale(1.05);
+    transform:translateY(-3px) scale(1.08);
+    box-shadow:0 6px 16px rgba(20,40,30,.14);
+}
+
+.flashcards-btn:active{
+    transform:translateY(0) scale(.96);
 }
 
 .flashcards-btn--no{
-    color:#dc3545;
-    border-color:#f3c6cb;
+    color:var(--fc-danger);
 }
 
 .flashcards-btn--no:hover{
-    background:#fdf1f2;
+    background:var(--fc-danger);
+    color:#fff;
 }
 
 .flashcards-btn--yes{
-    color:#1f8a5b;
-    border-color:#cde7d9;
+    color:var(--fc-accent);
 }
 
 .flashcards-btn--yes:hover{
-    background:#f4fbf7;
+    background:var(--fc-accent);
+    color:#fff;
 }
 
 .flashcards-summary{
-    max-width:420px;
+    max-width:440px;
     margin:20px auto 0;
     text-align:center;
-    background:#fff;
-    border:1px solid #e2e3db;
-    border-radius:20px;
-    padding:36px 32px;
+    background:var(--fc-card);
+    border:1px solid var(--fc-border);
+    border-radius:24px;
+    padding:40px 34px;
+    box-shadow:0 4px 10px rgba(20,40,30,.04), 0 20px 45px rgba(20,40,30,.08);
 }
 
 .flashcards-summary h2{
     margin:0 0 22px;
-    font-size:1.3rem;
-    color:#1c1c1c;
+    font-size:1.35rem;
+    font-weight:800;
+    color:var(--fc-ink);
 }
 
 .flashcards-summary-stats{
     display:flex;
     justify-content:center;
-    gap:36px;
-    margin-bottom:20px;
+    gap:20px;
+    margin-bottom:24px;
 }
 
 .flashcards-summary-stat{
+    flex:1;
     display:flex;
     flex-direction:column;
     align-items:center;
     gap:4px;
+    padding:16px 10px;
+    border-radius:16px;
+    background:#f6f7f3;
 }
 
 .flashcards-summary-stat-value{
-    font-size:2.2rem;
+    font-size:2.1rem;
     font-weight:800;
+    line-height:1;
+}
+
+.flashcards-summary-stat--yes{
+    background:var(--fc-accent-soft);
 }
 
 .flashcards-summary-stat--yes .flashcards-summary-stat-value{
-    color:#1f8a5b;
+    color:var(--fc-accent);
+}
+
+.flashcards-summary-stat--no{
+    background:var(--fc-danger-soft);
 }
 
 .flashcards-summary-stat--no .flashcards-summary-stat-value{
-    color:#dc3545;
+    color:var(--fc-danger);
 }
 
 .flashcards-summary-stat-label{
-    font-size:.8rem;
+    font-size:.78rem;
     font-weight:700;
-    color:#66756e;
+    color:var(--fc-muted);
     text-transform:uppercase;
     letter-spacing:.04em;
 }
 
 .flashcards-summary-note{
-    color:#66756e;
+    color:var(--fc-muted);
     font-size:.88rem;
     margin:0 0 22px;
 }
 
 .flashcards-restart-btn{
-    background:#90a668;
+    background:linear-gradient(135deg,var(--fc-accent),var(--fc-accent-2));
     color:#fff;
     border:none;
     border-radius:999px;
-    padding:12px 28px;
+    padding:13px 30px;
     font-weight:700;
     cursor:pointer;
-    box-shadow:0 10px 24px rgba(144,166,104,.25);
+    box-shadow:0 10px 24px rgba(31,138,91,.28);
+    transition:transform .15s ease, box-shadow .15s ease;
 }
 
 .flashcards-restart-btn:hover{
-    background:#7c9457;
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(31,138,91,.34);
 }
 
 /* Ecrã 2 (resumo intermédio) e Ecrã 4 (resultado final) — mascote +
    mensagem, reaproveitando .flashcards-summary. */
 .flashcards-summary-mascote{
-    width:96px;
-    height:96px;
+    width:100px;
+    height:100px;
     object-fit:contain;
-    margin:0 auto 16px;
+    margin:0 auto 18px;
     display:block;
+    filter:drop-shadow(0 8px 16px rgba(31,138,91,.18));
 }
 
 .flashcards-summary-message{
     color:#3d4640;
-    font-size:1rem;
-    line-height:1.5;
-    margin:0 0 22px;
+    font-size:1.05rem;
+    line-height:1.55;
+    margin:0 0 24px;
 }
 
 .flashcards-summary-actions{
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:10px;
+    gap:12px;
 }
 
 .flashcards-primary-btn{
     display:inline-block;
-    background:#90a668;
+    background:linear-gradient(135deg,var(--fc-accent),var(--fc-accent-2));
     color:#fff;
     border:none;
     border-radius:999px;
-    padding:12px 28px;
+    padding:13px 30px;
     font-weight:700;
-    font-size:.94rem;
+    font-size:.95rem;
     cursor:pointer;
     text-decoration:none;
-    box-shadow:0 10px 24px rgba(144,166,104,.25);
+    box-shadow:0 10px 24px rgba(31,138,91,.28);
+    transition:transform .15s ease, box-shadow .15s ease;
 }
 
 .flashcards-primary-btn:hover{
-    background:#7c9457;
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(31,138,91,.34);
 }
 
 .flashcards-secondary-btn{
     background:none;
     border:none;
     box-shadow:none;
-    color:#66756e;
+    color:var(--fc-muted);
     font-size:.86rem;
     font-weight:600;
     text-decoration:underline;
+    text-underline-offset:3px;
     cursor:pointer;
     padding:6px 10px;
+    transition:color .15s ease;
 }
 
 .flashcards-secondary-btn:hover{
-    color:#3d4640;
+    color:var(--fc-ink);
 }
 
 /* Ecrã 3 — associação */
 .flashcards-screen-title{
     text-align:center;
-    font-size:1.3rem;
-    color:#1c1c1c;
+    font-size:1.35rem;
+    font-weight:800;
+    color:var(--fc-ink);
     margin:0 0 6px;
 }
 
 .flashcards-screen-subtitle{
     text-align:center;
-    color:#66756e;
+    color:var(--fc-muted);
     font-size:.9rem;
-    margin:0 0 28px;
+    margin:0 0 30px;
 }
 
 .associacao-board{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:24px;
-    max-width:760px;
+    gap:28px;
+    max-width:780px;
     margin:0 auto;
 }
 
 .associacao-coluna{
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:12px;
 }
 
 .associacao-item{
     width:100%;
     text-align:left;
-    background:#fff;
-    border:2px solid #e2e3db;
-    border-radius:12px;
-    padding:12px 16px;
+    background:var(--fc-card);
+    border:2px solid var(--fc-border);
+    border-radius:14px;
+    padding:14px 18px;
     font-size:.9rem;
     line-height:1.4;
     color:#333;
     cursor:pointer;
-    transition:border-color .15s ease, background-color .15s ease, opacity .15s ease;
+    box-shadow:0 1px 2px rgba(20,40,30,.04);
+    transition:border-color .15s ease, background-color .15s ease, opacity .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+
+.associacao-item:hover{
+    transform:translateY(-1px);
+    box-shadow:0 6px 14px rgba(20,40,30,.08);
 }
 
 .associacao-item--termo{
@@ -3913,26 +4119,26 @@ html.dark-mode .teste-mascote-fab:hover{
 }
 
 .associacao-item.is-selected{
-    border-color:#1f8a5b;
-    background:#f4fbf7;
+    border-color:var(--fc-accent);
+    background:var(--fc-accent-soft);
 }
 
 .associacao-item.is-correct{
-    border-color:#1f8a5b;
+    border-color:var(--fc-accent);
     background:#d9f8e5;
     color:#14844c;
     cursor:default;
 }
 
 .associacao-item.is-wrong{
-    border-color:#dc3545;
-    background:#fdecee;
+    border-color:var(--fc-danger);
+    background:var(--fc-danger-soft);
     color:#b42318;
 }
 
 .associacao-item.is-wrong-resolved{
-    border-color:#dc3545;
-    background:#fdecee;
+    border-color:var(--fc-danger);
+    background:var(--fc-danger-soft);
     color:#b42318;
     cursor:default;
 }
@@ -3940,6 +4146,7 @@ html.dark-mode .teste-mascote-fab:hover{
 .associacao-item.is-resolved{
     opacity:.85;
     pointer-events:none;
+    transform:none;
 }
 
 .associacao-resultado-btn{
@@ -3959,15 +4166,23 @@ html.dark-mode .teste-mascote-fab:hover{
 
 @media (max-width:520px){
     .flashcard{
-        height:240px;
+        height:250px;
+    }
+
+    .flashcard-face{
+        padding:28px;
     }
 
     .flashcard-term{
-        font-size:1.4rem;
+        font-size:1.45rem;
     }
 
     .flashcard-definition{
-        font-size:.94rem;
+        font-size:.96rem;
+    }
+
+    .flashcards-summary{
+        padding:32px 24px;
     }
 }
 
@@ -5532,12 +5747,18 @@ background:#27ae60;
 }
 
 /* Pages with no sidebar at all (e.g. taking a test) shouldn't keep the
-   300px gutter the rule above reserves for it on desktop — this needs
-   its own class rather than relying on the .has-sidebar opt-in, since
-   the base .profile-layout rule at 981px applies unconditionally. */
+   gutter reserved for it on desktop. This overrides the real active
+   rule (body.shadcn-profile .profile-layout further down, using
+   --sp-sidebar-w) rather than the older 300px-based one above — that
+   one no longer wins the cascade but is left in place since other
+   pages still rely on it. */
 @media (min-width: 981px) {
-    .profile-layout.profile-layout--no-sidebar {
-        padding-left: 4%;
+    body.shadcn-profile .profile-layout.profile-layout--no-sidebar {
+        padding: 0 4%;
+    }
+
+    body.shadcn-profile .profile-layout.profile-layout--no-sidebar .profile-main-shell {
+        padding: 14px 0 32px;
     }
 }
 
@@ -5639,6 +5860,56 @@ background:#27ae60;
   height: auto;
   max-width: 100%;
   max-height: min(70vh, 560px);
+}
+
+/* Same green blob backdrop + floating stat cards as the homepage hero
+   (.hifive-scene / .hifive-blob / .hero-float-card, reused as-is) —
+   just a fresh, non-absolute wrapper sized for the login card's own
+   layout instead of the marketing hero's. No explicit width: as a flex
+   item it shrink-wraps to the image's own size, so the blob (sized off
+   the wrapper box) matches the figure instead of the wider flex slot —
+   without this it stretched to fill that slot, ballooning the blob
+   into a huge oval taller/wider than the figure itself. */
+.login-hifive {
+  position: relative;
+  z-index: 1;
+}
+
+.login-hifive img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(70vh, 560px);
+}
+
+/* Smaller and closer-in than the homepage version — that one has a
+   wide hero to spread out in, this one sits in a narrow card column. */
+.login-hifive .hifive-blob--a {
+  left: -8%;
+  top: 8%;
+  width: 116%;
+  height: 84%;
+}
+
+.login-hifive .hifive-blob--b {
+  left: 4%;
+  top: 20%;
+  width: 88%;
+  height: 62%;
+}
+
+.login-hifive .hero-float-card--top-left     { left: -8%; top: 12%; }
+.login-hifive .hero-float-card--top-right    { right: -10%; top: 6%; }
+.login-hifive .hero-float-card--bottom-left  { left: -10%; bottom: 20%; }
+.login-hifive .hero-float-card--bottom-right { right: -8%; bottom: 12%; }
+
+@media (max-width: 640px) {
+  .login-hifive .hero-float-card {
+    display: none;
+  }
 }
 
 .light-login-shell {
@@ -6413,6 +6684,52 @@ html.dark-mode .profile-subject-bar{
 html.dark-mode .achievement-card{
     background:linear-gradient(180deg,#243027,#1c2620);
     border-color:rgba(255,255,255,.08);
+}
+
+html.dark-mode .flashcards-container{
+    background:#1a201c;
+    border-color:rgba(255,255,255,.12);
+}
+
+html.dark-mode .flashcards-page{
+    --fc-accent-soft:rgba(63,184,127,.14);
+    --fc-danger-soft:rgba(229,72,77,.14);
+    --fc-ink:#e7ede8;
+    --fc-muted:#a9b6ae;
+    --fc-card:#1f2b23;
+    --fc-border:rgba(255,255,255,.08);
+}
+
+html.dark-mode .flashcard-front{
+    background:linear-gradient(155deg,#1f2b23 0%,#1a241d 100%);
+}
+
+html.dark-mode .flashcard-back{
+    background:linear-gradient(155deg,#1c2c22 0%,#17251c 100%);
+    border-color:rgba(63,184,127,.25);
+}
+
+html.dark-mode .flashcard-definition{
+    color:#bfe6cf;
+}
+
+html.dark-mode .flashcards-progress-track{
+    background:rgba(255,255,255,.1);
+}
+
+html.dark-mode .flashcards-btn{
+    background:#1f2b23;
+    box-shadow:0 2px 6px rgba(0,0,0,.3), 0 10px 24px rgba(0,0,0,.35);
+}
+
+html.dark-mode .flashcards-summary-stat{
+    background:rgba(255,255,255,.05);
+}
+
+html.dark-mode .associacao-item{
+    background:#1f2b23;
+    color:#e7ede8;
+    border-color:rgba(255,255,255,.1);
 }
 
 
@@ -8009,6 +8326,39 @@ html.dark-mode .account-actions #logoutBtn {
 .subject-switcher-option:disabled {
     color: var(--sp-muted-fg, #a7ada9);
     cursor: default;
+}
+
+/* Separador "10º ano" / "11º ano" (ver anoSwitcher em subject-switcher.js)
+   — mesmo par de cores do .subject-switcher-trigger/-option, só que os
+   dois estados ficam lado a lado em vez de escondidos num dropdown,
+   porque só há duas opções. */
+.ano-switcher {
+    display: flex;
+    gap: 4px;
+    padding: 4px;
+    background: var(--sp-accent-soft, #F1F4EE);
+    border-radius: 10px;
+}
+
+.ano-switcher[hidden] {
+    display: none;
+}
+
+.ano-switcher-option {
+    background: none;
+    color: var(--sp-fg, #20294b);
+    border: none;
+    box-shadow: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: .82rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ano-switcher-option.is-active {
+    color: #ffffff;
+    background: var(--sp-primary, #315C45);
 }
 
 .subject-soon {
@@ -10870,6 +11220,16 @@ body.shadcn-profile .profile-tab.is-disabled em {
     letter-spacing: .04em;
 }
 
+/* Belt-and-braces: this codebase has already hit cases where an author
+   rule's own `display` unintentionally beats the browser's [hidden]
+   default (see .missions-grid[hidden] in the Missões accordion), so the
+   Perfil/Conquistas/Estatísticas tab panels get the same explicit
+   guarantee — a hidden tab must never render alongside the active one. */
+body.shadcn-profile .profile-tab-panel[hidden],
+body.shadcn-profile .profile-grid-aside[hidden] {
+    display: none !important;
+}
+
 /* ---- Two-column grid ---- */
 
 body.shadcn-profile .profile-grid {
@@ -11256,6 +11616,71 @@ body.shadcn-profile .profile-quickstat-row small {
     font-size: .78rem;
 }
 
+body.shadcn-profile .profile-vocacional-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 20px;
+    padding: 18px 20px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-vocacional-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+body.shadcn-profile .profile-vocacional-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--sp-card);
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-vocacional-copy h3 {
+    margin: 0 0 2px;
+    font-family: var(--sp-font-serif);
+    font-size: .98rem;
+    font-weight: 600;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-vocacional-copy p {
+    margin: 0;
+    font-size: .8rem;
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-vocacional-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 999px;
+    background: var(--sp-card);
+    color: var(--sp-muted-fg);
+    font-family: inherit;
+    font-size: .85rem;
+    font-weight: 700;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+body.shadcn-profile .profile-vocacional-btn:hover {
+    background: var(--sp-card);
+    transform: none;
+    box-shadow: none;
+}
+
 @media (max-width: 720px) {
     body.shadcn-profile .profile-hero {
         flex-direction: column;
@@ -11529,11 +11954,19 @@ body.shadcn-profile .profile-hero-rank {
     filter: brightness(.96);
 }
 
+.biblioteca-chips-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 26px;
+}
+
 .biblioteca-chips {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 26px;
 }
 
 .biblioteca-chip {
@@ -11546,6 +11979,7 @@ body.shadcn-profile .profile-hero-rank {
     font-weight: 700;
     font-family: inherit;
     cursor: pointer;
+    box-shadow: none;
     transition: background-color .2s, color .2s;
 }
 
@@ -11557,6 +11991,98 @@ body.shadcn-profile .profile-hero-rank {
     border-color: transparent;
     background: #1f8a5b;
     color: #ffffff;
+}
+
+.biblioteca-filter {
+    position: relative;
+    flex: none;
+}
+
+.biblioteca-filter-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    color: #20294b;
+    border: 1px solid #e2e3db;
+    border-radius: 999px;
+    padding: 9px 16px;
+    font-size: .85rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: none;
+    transition: border-color .15s ease;
+}
+
+.biblioteca-filter-trigger:hover {
+    border-color: #1f8a5b;
+}
+
+.biblioteca-filter-trigger svg {
+    flex: none;
+    transition: transform .15s ease;
+}
+
+.biblioteca-filter.is-open .biblioteca-filter-trigger svg {
+    transform: rotate(180deg);
+}
+
+.biblioteca-filter-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 5;
+    min-width: 200px;
+    max-height: 280px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #e2e3db;
+    border-radius: 14px;
+    padding: 6px;
+    box-shadow: 0 12px 28px rgba(20,40,30,.14);
+}
+
+.biblioteca-filter-menu[hidden] {
+    display: none;
+}
+
+.biblioteca-filter-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 9px;
+    padding: 9px 12px;
+    font-size: .85rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #20294b;
+    cursor: pointer;
+    transition: background-color .12s ease, color .12s ease;
+}
+
+.biblioteca-filter-option:hover {
+    background: #f4f6f1;
+}
+
+.biblioteca-filter-option.is-active {
+    background: #e8f6ee;
+    color: #1f8a5b;
+}
+
+@media (max-width: 560px) {
+    .biblioteca-chips-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .biblioteca-filter-menu {
+        left: 0;
+        right: 0;
+    }
 }
 
 .biblioteca-termo-relacionados {
@@ -11738,6 +12264,15 @@ body.shadcn-profile .profile-hero-rank {
     gap: 16px;
 }
 
+/* Aninhado dentro do cartão "Tempo de estudo", por baixo do gráfico —
+   separador a marcar que passou de resumo semanal para o gráfico de
+   barras/linha em cima. */
+.stats-habitos-grid--aninhado {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--sp-border, #e5e7eb);
+}
+
 .stats-habito {
     display: flex;
     flex-direction: column;
@@ -11853,32 +12388,6 @@ body.shadcn-profile .profile-hero-rank {
 
 .stats-linha-labels {
     margin: 8px 0 0;
-}
-
-/* b) Desempenho por unidade — modo "Quizz por missão": chips para
-   escolher o capítulo antes de ver as missões desse capítulo no gráfico. */
-.stats-desempenho-capitulos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 18px;
-}
-
-.stats-desempenho-chip {
-    border: 1px solid var(--sp-border, #e5e7eb);
-    background: var(--sp-bg, #f5f9f7);
-    color: var(--sp-muted-fg, #767c70);
-    border-radius: 999px;
-    padding: 6px 14px;
-    font-size: .8rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.stats-desempenho-chip.is-active {
-    background: rgba(31, 138, 91, .12);
-    border-color: transparent;
-    color: #1f8a5b;
 }
 
 /* d) Resumo de vocabulário */
@@ -12106,6 +12615,21 @@ body.shadcn-profile .profile-hero-rank {
     font-size: 1rem;
     line-height: 1.65;
     color: #3d5a48;
+}
+
+/* Header shows the chapter's own image as background (see resumo.imagem
+   in views.py) with a dark gradient baked into the same background-image
+   (inline style) for contrast, instead of the plain colour gradient. */
+.resumo-header--has-image {
+    background-color: #1f2b23;
+    background-size: cover;
+    background-position: center;
+    border-color: rgba(255, 255, 255, .18);
+}
+
+.resumo-header--has-image h1,
+.resumo-header--has-image p {
+    color: #ffffff;
 }
 
 .resumo-modos {

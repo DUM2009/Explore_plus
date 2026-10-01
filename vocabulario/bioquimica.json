@@ -8,7 +8,11 @@
       "definicao": "A molécula mais abundante nas células; a sua polaridade dá-lhe grande poder solvente, permite o transporte de substâncias, a termorregulação, e participa em reações como a hidrólise.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["hidrolise", "sais_minerais"]
+      "relacionados": [
+        "hidrolise",
+        "sais_minerais"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "sais_minerais",
@@ -16,7 +20,10 @@
       "definicao": "Compostos inorgânicos essenciais ao funcionamento celular, envolvidos em funções reguladoras e estruturais.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["agua"]
+      "relacionados": [
+        "agua"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "hidrolise",
@@ -24,7 +31,11 @@
       "definicao": "Reação que quebra uma macromolécula nas suas unidades mais simples (monómeros), com consumo de água.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["condensacao", "agua"]
+      "relacionados": [
+        "condensacao",
+        "agua"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "condensacao",
@@ -32,7 +43,10 @@
       "definicao": "Reação que une monómeros entre si para formar uma macromolécula, com libertação de água — o processo inverso da hidrólise.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["hidrolise"]
+      "relacionados": [
+        "hidrolise"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "glicidos",
@@ -40,7 +54,11 @@
       "definicao": "Compostos ternários (C, H, O, na proporção 1:2:1) com função energética e estrutural; classificam-se em monossacarídeos, oligossacarídeos e polissacarídeos, consoante o número de unidades.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["monossacarideo", "polissacarideo"]
+      "relacionados": [
+        "monossacarideo",
+        "polissacarideo"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "monossacarideo",
@@ -48,7 +66,11 @@
       "definicao": "Unidade mais simples de um glícido — uma só \"ose\", como a glicose; é a forma que a célula usa diretamente para obter energia rápida.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["glicidos", "polissacarideo"]
+      "relacionados": [
+        "glicidos",
+        "polissacarideo"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "polissacarideo",
@@ -56,7 +78,11 @@
       "definicao": "Cadeia com mais de 10 unidades de monossacarídeo; exemplos: glicogénio (reserva animal), amido (reserva vegetal) e celulose (estrutural, parede celular).",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["glicidos", "monossacarideo"]
+      "relacionados": [
+        "glicidos",
+        "monossacarideo"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "lipidos",
@@ -64,7 +90,10 @@
       "definicao": "Grupo heterogéneo de moléculas, pouco solúveis em água mas solúveis em solventes orgânicos; não formam polímeros regulares. Classificam-se em lípidos de reserva, estruturais e reguladores.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["fosfolipido"]
+      "relacionados": [
+        "fosfolipido"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "fosfolipido",
@@ -72,7 +101,10 @@
       "definicao": "Lípido anfipático (com uma \"cabeça\" hidrofílica e \"caudas\" hidrofóbicas) — o principal constituinte das membranas celulares, onde se organiza em bicamada.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["lipidos"]
+      "relacionados": [
+        "lipidos"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "proteinas",
@@ -80,7 +112,10 @@
       "definicao": "Biomoléculas com a maior diversidade de funções (estrutural, enzimática, defesa, transporte, hormonal); os seus monómeros são os aminoácidos, unidos por ligações peptídicas.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["enzima"]
+      "relacionados": [
+        "enzima"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "enzima",
@@ -88,7 +123,10 @@
       "definicao": "Proteína que funciona como catalisador biológico, acelerando as reações químicas necessárias ao metabolismo da célula.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["proteinas"]
+      "relacionados": [
+        "proteinas"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "acidos_nucleicos",
@@ -96,7 +134,12 @@
       "definicao": "Polímeros de nucleótidos que armazenam (DNA) e transmitem (RNA) a informação genética de um ser vivo.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["nucleotido", "dna", "rna"]
+      "relacionados": [
+        "nucleotido",
+        "dna",
+        "rna"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "nucleotido",
@@ -104,7 +147,10 @@
       "definicao": "Monómero dos ácidos nucleicos, constituído por uma base azotada, uma pentose (açúcar de 5 carbonos) e um grupo fosfato.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["acidos_nucleicos"]
+      "relacionados": [
+        "acidos_nucleicos"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "dna",
@@ -112,7 +158,11 @@
       "definicao": "Ácido nucleico com pentose desoxirribose e bases A, C, G, T; forma tipicamente uma cadeia dupla (dupla hélice); armazena e transmite a informação genética.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["rna", "nucleotido"]
+      "relacionados": [
+        "rna",
+        "nucleotido"
+      ],
+      "missao": "biomoleculas"
     },
     {
       "id": "rna",
@@ -120,7 +170,11 @@
       "definicao": "Ácido nucleico com pentose ribose e bases A, C, G, U; geralmente uma cadeia simples; intervém na síntese de proteínas, traduzindo a informação do DNA.",
       "estado": "novo",
       "ultima_revisao": null,
-      "relacionados": ["dna", "nucleotido"]
+      "relacionados": [
+        "dna",
+        "nucleotido"
+      ],
+      "missao": "biomoleculas"
     }
   ]
 }

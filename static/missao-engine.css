@@ -201,6 +201,39 @@ html[data-theme="dark"] .me-gancho-card {
     margin: 0 auto 24px;
 }
 
+/* Imagem à esquerda, texto (frase-isco + frase-ponte) à direita, quando
+   um ecrã de diagrama tem os dois (ver introHtml em renderDiagrama,
+   missao-engine.js) — só um dos dois, continua sozinho e centrado. */
+.me-intro-columns {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.me-intro-columns .me-gancho-hero-image {
+    flex: 1 1 45%;
+    min-width: 0;
+    height: auto;
+    align-self: stretch;
+    margin: 0;
+}
+
+.me-intro-columns .me-intro-texto-col {
+    flex: 1 1 55%;
+    min-width: 0;
+}
+
+.me-gancho-card .me-intro-columns .me-diagrama-intro-bloco {
+    margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+    .me-intro-columns {
+        flex-direction: column;
+    }
+}
+
 /* Introdução opcional de um ecrã de diagrama (ver renderDiagrama) — liga a
    frase-isco (ex: um exemplo concreto) à frase-ponte que introduz o
    diagrama, evitando um ecrã à parte só para o isco. */
@@ -223,6 +256,80 @@ html[data-theme="dark"] .me-gancho-card {
 
 html.dark-mode .me-gancho-card .me-diagrama-ponte-texto {
     color: #b9c7bd;
+}
+
+/* Corpo principal de um ecrã de diagrama (Física, ver screen.texto_principal
+   em renderDiagrama) — parágrafo(s) corridos, alinhados à esquerda (ao
+   contrário da frase-ponte, curta e centrada) e com mais espaço até ao
+   diagrama a seguir. */
+.me-gancho-card .me-diagrama-texto-principal {
+    margin: 0 0 24px;
+    color: #3d4640;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.me-gancho-card .me-diagrama-texto-principal p + p {
+    margin-top: 12px;
+}
+
+html.dark-mode .me-gancho-card .me-diagrama-texto-principal {
+    color: #cddad2;
+}
+
+/* Caixa de fórmulas (Física, ver screen.caixa_formula) — fundo ligeiramente
+   colorido para se destacar do resto do painel, uma entrada por fórmula. */
+.me-caixa-formula {
+    margin-top: 20px;
+    padding: 18px 20px;
+    border: 1px solid rgba(31, 138, 91, .25);
+    border-radius: 14px;
+    background: rgba(31, 138, 91, .07);
+}
+
+.me-caixa-formula-item + .me-caixa-formula-item {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(31, 138, 91, .25);
+}
+
+.me-caixa-formula-expressao {
+    margin: 0 0 4px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1c2a22;
+}
+
+.me-caixa-formula-significado {
+    margin: 0;
+    color: #4b5a52;
+}
+
+.me-caixa-formula-unidades {
+    margin: 4px 0 0;
+    color: #6b7a72;
+    font-size: .82rem;
+}
+
+html.dark-mode .me-caixa-formula {
+    border-color: rgba(127, 214, 168, .3);
+    background: rgba(127, 214, 168, .08);
+}
+
+html.dark-mode .me-caixa-formula-item + .me-caixa-formula-item {
+    border-top-color: rgba(127, 214, 168, .25);
+}
+
+html.dark-mode .me-caixa-formula-expressao {
+    color: #e6ede9;
+}
+
+html.dark-mode .me-caixa-formula-significado {
+    color: #b9c7bd;
+}
+
+html.dark-mode .me-caixa-formula-unidades {
+    color: #8fa199;
 }
 
 /* Caixa à volta da frase-isco + frase-ponte, para se lerem como um bloco
@@ -671,9 +778,9 @@ html.dark-mode .me-escada-track::-webkit-scrollbar-thumb {
 }
 
 .me-escada-step.is-active .me-escada-step-num {
-    background: rgba(255, 255, 255, .25);
+    background: #ffffff;
     border-color: transparent;
-    color: #fff;
+    color: #1f8a5b;
 }
 
 .me-escada-step.is-active .me-escada-step-label {
@@ -708,46 +815,358 @@ html.dark-mode .me-escada-step-label {
     background: #fbf7ee;
 }
 
-/* Botão "➕" de curiosidade (ver ponto.curiosidade em curiosidadeHtml),
-   ancorado no canto superior direito do cartão em vez de competir por
-   espaço com o título/explicação. */
-.me-ponto-curiosidade summary {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    list-style: none;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+/* Imagem à esquerda, linha divisória subtil ao meio, texto à direita —
+   ver .me-escada-detail-columns em pontoDetailInnerHtml (missao-engine.js).
+   Sem imagem, este wrapper nem existe (o texto ocupa a largura toda,
+   centrado como antes). Empilha em ecrãs estreitos, com a divisória a
+   passar a horizontal entre a imagem e o texto. */
+.me-escada-detail-columns {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background: #f4f6f1;
-    font-size: .95rem;
-    line-height: 1;
-}
-
-.me-ponto-curiosidade summary:hover {
-    filter: brightness(.96);
-}
-
-.me-ponto-curiosidade summary::-webkit-details-marker {
-    display: none;
-}
-
-.me-ponto-curiosidade p {
-    margin: 14px 0 0;
-    color: #4b5a52;
+    gap: 24px;
     text-align: left;
 }
 
-html.dark-mode .me-ponto-curiosidade summary {
+.me-escada-detail-media {
+    flex: 1 1 40%;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.me-escada-detail-media .me-escada-detail-image {
+    margin: 0;
+}
+
+.me-escada-detail-divider {
+    align-self: stretch;
+    width: 1px;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, .12);
+}
+
+.me-escada-detail-content {
+    flex: 1 1 60%;
+    min-width: 0;
+}
+
+@media (max-width: 640px) {
+    .me-escada-detail-columns {
+        flex-direction: column;
+    }
+
+    .me-escada-detail-divider {
+        width: 100%;
+        height: 1px;
+    }
+}
+
+html.dark-mode .me-escada-detail-divider {
+    background: rgba(255, 255, 255, .12);
+}
+
+/* Painel com uma pergunta de opinião (ver ponto.inquerito/inqueritoHtml
+   em missao-engine.js), dentro da coluna de texto, por baixo do resto do
+   conteúdo do ponto. */
+.me-ponto-inquerito {
+    width: 100%;
+    max-width: 480px;
+    margin: 14px 0 0 auto;
+    padding: 18px 20px;
+    border: 1px solid rgba(0, 0, 0, .12);
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+    text-align: left;
+}
+
+.me-inquerito-pergunta {
+    margin: 0 0 12px;
+    font-weight: 700;
+    font-size: .9rem;
+    color: #1f2d22;
+}
+
+.me-inquerito-opcoes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+button.me-inquerito-opcao {
+    padding: 8px 12px;
+    border: 1px solid #e2e3db;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #3d4640;
+    font-size: .82rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-inquerito-opcao:hover,
+button.me-inquerito-opcao:focus-visible {
+    background: #f4f6f1;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-inquerito-opcao.is-selected {
+    background: #1f8a5b;
+    border-color: #1f8a5b;
+    color: #ffffff;
+}
+
+.me-inquerito-resultado {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed #e2e3db;
+    color: #4b5a52;
+    font-size: .82rem;
+    line-height: 1.5;
+}
+
+html.dark-mode .me-ponto-inquerito {
+    background: #24201a;
+    border-color: rgba(255, 255, 255, .15);
+}
+
+html.dark-mode .me-inquerito-pergunta {
+    color: #f2e9dd;
+}
+
+html.dark-mode button.me-inquerito-opcao {
+    background: #2c2620;
+    border-color: #3a2f24;
+    color: #ddccb8;
+}
+
+html.dark-mode button.me-inquerito-opcao:hover {
+    background: #362c22;
+}
+
+html.dark-mode .me-inquerito-resultado {
+    color: #b9c7bd;
+    border-top-color: #3a2f24;
+}
+
+/* Botão "Outro" (ver inquerito.outro no JSON) + campo de texto que revela
+   ao clicar, para o aluno escrever um sistema fora da lista — mesma ideia
+   de curiosidade "à medida" do que escreveu, ver bindInquerito. */
+button.me-inquerito-opcao--outro {
+    border-style: dashed;
+}
+
+.me-inquerito-outro-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.me-inquerito-outro-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 8px 12px;
+    border: 1px solid #e2e3db;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #3d4640;
+    font-size: .82rem;
+    font-family: inherit;
+}
+
+.me-inquerito-outro-input:focus-visible {
+    outline: 2px solid #1f8a5b;
+    outline-offset: 1px;
+}
+
+button.me-inquerito-outro-submit {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 999px;
+    background: #1f8a5b;
+    color: #ffffff;
+    font-size: .78rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-inquerito-outro-submit:hover,
+button.me-inquerito-outro-submit:focus-visible {
+    filter: brightness(1.05);
+    box-shadow: none;
+    transform: none;
+}
+
+html.dark-mode .me-inquerito-outro-input {
+    background: #2c2620;
+    border-color: #3a2f24;
+    color: #ddccb8;
+}
+
+/* Botão "💡" de curiosidade (ver ponto.curiosidade), alinhado na mesma
+   linha do texto da explicação — não um <details>/<summary> nativo,
+   porque esse esconderia a explicação (sempre visível) junto com a
+   curiosidade (só visível depois de clicar); ver curiosidadeToggleHtml/
+   curiosidadeRevealHtml/bindCuriosidadeToggle em missao-engine.js. */
+.me-escada-detail-text-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+}
+
+.me-escada-detail-text-row .me-escada-detail-text {
+    flex: 1 1 auto;
+    margin: 0;
+    text-align: left;
+}
+
+button.me-ponto-curiosidade-toggle {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #f4f6f1;
+    font-size: .95rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-ponto-curiosidade-toggle:hover,
+button.me-ponto-curiosidade-toggle:focus-visible {
+    filter: brightness(.96);
+    box-shadow: none;
+    transform: none;
+}
+
+.me-ponto-curiosidade-reveal {
+    margin-top: 12px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+
+.me-ponto-curiosidade-titulo {
+    margin: 0 0 8px;
+    font-weight: 700;
+    color: #1c2a22;
+}
+
+.me-ponto-curiosidade-reveal p {
+    margin: 0;
+    color: #4b5a52;
+}
+
+.me-ponto-curiosidade-reveal p + p {
+    margin-top: 10px;
+}
+
+.me-ponto-curiosidade-reveal strong {
+    color: #1c2a22;
+}
+
+html.dark-mode button.me-ponto-curiosidade-toggle {
     background: rgba(31, 138, 91, .18);
 }
 
-html.dark-mode .me-ponto-curiosidade p {
+/* Botão "⚠️" de aviso (ver ponto.atencao) — mesmo mecanismo do 💡 de
+   curiosidade, cor âmbar em vez de neutra/verde para se ler como um
+   alerta ("cuidado com esta confusão comum"), não só um extra. */
+button.me-ponto-atencao-toggle {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: #fdf1d9;
+    font-size: .95rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-ponto-atencao-toggle:hover,
+button.me-ponto-atencao-toggle:focus-visible {
+    filter: brightness(.97);
+    box-shadow: none;
+    transform: none;
+}
+
+.me-ponto-atencao-reveal {
+    margin-top: 12px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    background: #fdf6e8;
+    border: 1px solid rgba(217, 155, 24, .35);
+    text-align: left;
+}
+
+.me-ponto-atencao-reveal p {
+    margin: 0;
+    color: #6b5211;
+}
+
+.me-ponto-atencao-reveal p + p {
+    margin-top: 10px;
+}
+
+.me-ponto-atencao-reveal strong {
+    color: #4a3808;
+}
+
+html.dark-mode button.me-ponto-atencao-toggle {
+    background: rgba(217, 155, 24, .18);
+}
+
+html.dark-mode .me-ponto-atencao-reveal {
+    background: #302a1c;
+    border-color: rgba(217, 155, 24, .3);
+}
+
+html.dark-mode .me-ponto-atencao-reveal p {
+    color: #e3d3a6;
+}
+
+html.dark-mode .me-ponto-atencao-reveal strong {
+    color: #f2e6c8;
+}
+
+html.dark-mode .me-ponto-curiosidade-reveal {
+    background: #23302a;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+html.dark-mode .me-ponto-curiosidade-titulo {
+    color: #e6ede9;
+}
+
+html.dark-mode .me-ponto-curiosidade-reveal p {
     color: #b9c7bd;
+}
+
+html.dark-mode .me-ponto-curiosidade-reveal strong {
+    color: #e6ede9;
 }
 
 .me-escada-detail-image {
@@ -868,6 +1287,103 @@ html.dark-mode .me-ponto-dica-estudo summary {
 
 html.dark-mode .me-ponto-dica-estudo p {
     color: #b9c7bd;
+}
+
+/* Seta para baixo (sem texto) com ponto.proxima_missao_texto — um teaser
+   de missão futura, centrado por baixo da explicação em vez de uma
+   pílula com rótulo (ver proximaMissaoHtml em missao-engine.js). */
+.me-ponto-proxima-missao {
+    margin: 14px 0 0;
+    text-align: center;
+}
+
+.me-ponto-proxima-missao summary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #f4f6f1;
+    color: #4b5a52;
+    cursor: pointer;
+    list-style: none;
+}
+
+.me-ponto-proxima-missao summary:hover {
+    filter: brightness(.96);
+}
+
+.me-ponto-proxima-missao summary::-webkit-details-marker {
+    display: none;
+}
+
+.me-ponto-proxima-missao summary svg {
+    transition: transform .2s ease;
+}
+
+.me-ponto-proxima-missao[open] summary svg {
+    transform: rotate(180deg);
+}
+
+/* Painel próprio à volta do texto revelado — continua dentro do cartão
+   do ponto (.me-escada-detail), só ganha o seu próprio contorno para se
+   destacar como um bloco à parte, com a seta para ir direto à missão
+   (ponto.proxima_missao_id) encostada ao fim do texto. */
+.me-proxima-missao-card {
+    position: relative;
+    margin: 12px auto 0;
+    max-width: 480px;
+    padding: 14px 54px 14px 18px;
+    border: 1px solid rgba(0, 0, 0, .12);
+    border-radius: 14px;
+    background: #ffffff;
+    text-align: left;
+}
+
+.me-proxima-missao-card p {
+    margin: 0;
+    color: #4b5a52;
+}
+
+.me-proxima-missao-link {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #f4f6f1;
+    color: #1f8a5b;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.me-proxima-missao-link:hover {
+    background: #e7efe4;
+    transform: translateX(2px);
+}
+
+html.dark-mode .me-ponto-proxima-missao summary {
+    background: rgba(255, 255, 255, .08);
+    color: #cddad2;
+}
+
+html.dark-mode .me-proxima-missao-card {
+    background: #24201a;
+    border-color: rgba(255, 255, 255, .15);
+}
+
+html.dark-mode .me-proxima-missao-card p {
+    color: #b9c7bd;
+}
+
+html.dark-mode .me-proxima-missao-link {
+    background: rgba(31, 138, 91, .18);
+    color: #7fd6a8;
 }
 
 /* ---- Diagrama interativo em formato "árvore" (screen.layout === "arvore",
@@ -1337,4 +1853,159 @@ html.dark-mode .me-quiz-resultado-circle--red {
     background: #3a2226;
     border-color: #dc3545;
     color: #ff8a97;
+}
+
+/* ===== Atividade laboratorial (Física) — ver renderAtividadeLaboratorial.
+   Reaproveita .did-you-know/.did-you-know-body para cada bloco, só
+   ganhando espaçamento próprio entre blocos consecutivos. */
+.me-laboratorio-codigo {
+    margin: 0 0 4px;
+    font-weight: 700;
+    font-size: .8rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #1f8a5b;
+}
+
+.me-laboratorio-bloco + .me-laboratorio-bloco {
+    margin-top: 10px;
+}
+
+.me-laboratorio-lista {
+    margin: 0;
+    padding-left: 20px;
+    color: #4b5a52;
+    line-height: 1.6;
+}
+
+.me-laboratorio-lista--numerada li + li,
+.me-laboratorio-lista:not(.me-laboratorio-lista--numerada) li + li {
+    margin-top: 6px;
+}
+
+html.dark-mode .me-laboratorio-codigo {
+    color: #7fd6a8;
+}
+
+html.dark-mode .me-laboratorio-lista {
+    color: #b9c7bd;
+}
+
+/* ===== Simulação (Física) — ver renderSimulacao/bindSimulacao. Sliders e
+   saídas calculadas em tempo real no browser. */
+.me-simulacao-controlos {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.me-simulacao-controlo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.me-simulacao-rotulo {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-weight: 600;
+    font-size: .88rem;
+    color: #1f2d22;
+}
+
+.me-simulacao-valor {
+    font-weight: 700;
+    color: #1f8a5b;
+}
+
+.me-simulacao-unidade {
+    color: #6b7a72;
+    font-size: .8rem;
+}
+
+.me-simulacao-slider {
+    width: 100%;
+    accent-color: #1f8a5b;
+}
+
+.me-simulacao-select {
+    padding: 8px 12px;
+    border: 1px solid #e2e3db;
+    border-radius: 10px;
+    background: #ffffff;
+    font-size: .85rem;
+    color: #3d4640;
+}
+
+.me-simulacao-botao {
+    align-self: flex-start;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 999px;
+    background: #1f8a5b;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: .85rem;
+    cursor: pointer;
+}
+
+.me-simulacao-botao:hover {
+    filter: brightness(.95);
+}
+
+.me-simulacao-saidas {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 18px;
+    border: 1px solid rgba(31, 138, 91, .25);
+    border-radius: 14px;
+    background: rgba(31, 138, 91, .07);
+}
+
+.me-simulacao-saida {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.me-simulacao-saida-rotulo {
+    color: #4b5a52;
+    font-size: .85rem;
+}
+
+.me-simulacao-saida-valor {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #1c2a22;
+}
+
+html.dark-mode .me-simulacao-rotulo {
+    color: #e6ede9;
+}
+
+html.dark-mode .me-simulacao-valor {
+    color: #7fd6a8;
+}
+
+html.dark-mode .me-simulacao-unidade,
+html.dark-mode .me-simulacao-saida-rotulo {
+    color: #b9c7bd;
+}
+
+html.dark-mode .me-simulacao-select {
+    background: #24201a;
+    border-color: #3a2f24;
+    color: #ddccb8;
+}
+
+html.dark-mode .me-simulacao-saidas {
+    border-color: rgba(127, 214, 168, .3);
+    background: rgba(127, 214, 168, .08);
+}
+
+html.dark-mode .me-simulacao-saida-valor {
+    color: #e6ede9;
 }

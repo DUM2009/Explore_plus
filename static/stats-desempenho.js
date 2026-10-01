@@ -2,7 +2,6 @@
     const modoBtn = document.getElementById('statsDesempenhoModoBtn');
     const modoMenu = document.getElementById('statsDesempenhoModoMenu');
     const modoLabel = document.getElementById('statsDesempenhoModoLabel');
-    const capitulos = document.getElementById('statsDesempenhoCapitulos');
     const chart = document.getElementById('statsDesempenhoChart');
     const dadosEl = document.getElementById('statsDesempenhoDados');
     if (!modoBtn || !modoMenu || !chart || !dadosEl) return;
@@ -13,8 +12,6 @@
     } catch (erro) {
         return;
     }
-
-    let capituloAtivo = null;
 
     function renderizarVazio(mensagem) {
         chart.innerHTML = `<p class="stats-empty">${mensagem}</p>`;
@@ -34,40 +31,7 @@
         });
     }
 
-    function escolherCapituloPorDefeito() {
-        const dados = periodos.quizzes_missao || {};
-        const comDados = Object.keys(dados).find((id) => (dados[id] || []).length > 0);
-        if (comDados) return comDados;
-        const primeiroChip = capitulos?.querySelector('[data-capitulo]');
-        return primeiroChip ? primeiroChip.dataset.capitulo : null;
-    }
-
-    function renderizarQuizzesPorMissao(capituloId) {
-        capituloAtivo = capituloId;
-        capitulos?.querySelectorAll('[data-capitulo]').forEach((chip) => {
-            chip.classList.toggle('is-active', chip.dataset.capitulo === capituloId);
-        });
-        const pontos = (periodos.quizzes_missao || {})[capituloId] || [];
-        if (pontos.length === 0) {
-            renderizarVazio('Ainda não há quizzes de missão registados neste capítulo.');
-            return;
-        }
-        renderizarBarras(pontos);
-    }
-
     function renderizar(modo) {
-        if (modo === 'quizzes_missao') {
-            capitulos.hidden = false;
-            const capituloId = capituloAtivo || escolherCapituloPorDefeito();
-            if (!capituloId) {
-                renderizarVazio('Ainda não há capítulos disponíveis.');
-                return;
-            }
-            renderizarQuizzesPorMissao(capituloId);
-            return;
-        }
-
-        capitulos.hidden = true;
         const pontos = periodos[modo] || [];
         if (pontos.length === 0) {
             renderizarVazio('Ainda não há dados para mostrar.');
@@ -101,11 +65,5 @@
         modoBtn.setAttribute('aria-expanded', 'false');
 
         renderizar(opcao.dataset.modo);
-    });
-
-    capitulos?.addEventListener('click', (event) => {
-        const chip = event.target.closest('[data-capitulo]');
-        if (!chip) return;
-        renderizarQuizzesPorMissao(chip.dataset.capitulo);
     });
 })();

@@ -34,7 +34,6 @@ urlpatterns = [
     path('estatisticas/', views.pagina_estatisticas, name='estatisticas'),
     path('onboarding/', views.pagina_onboarding, name='onboarding'),
     path('missions/', views.pagina_index_missions, name='index-missions'),
-    path('missions/geologia/', views.pagina_index_missions_geologia, name='index-missions-geologia'),
     path('dashboard/', views.pagina_dashboard, name='dashboard'),
     path('lesson/', views.pagina_lesson, name='lesson'),
     path('Testes/', views.pagina_Testes, name='Testes'),

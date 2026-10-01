@@ -20,16 +20,59 @@
             .replace(/>/g, '&gt;');
     }
 
+    // **negrito** — mesma sintaxe do filtro md_inline usado nos Resumos
+    // (ver meu_site/templatetags/resumo_extras.py), aplicado depois de
+    // escapeHtml porque o conteúdo vem de missoes/*.json, não de input
+    // de utilizadores.
+    function boldMarkdown(escapedValue) {
+        return escapedValue.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+
     // Plain text with line breaks (\n\n) turned into paragraphs — content
     // comes from our own missoes/*.json, not user input, so this only ever
     // needs to handle that trusted authoring format.
     function textToHtml(value) {
         const paragraphs = String(value ?? '').split(/\n\s*\n/).filter(Boolean);
         if (paragraphs.length <= 1) {
-            return `<p>${escapeHtml(value)}</p>`;
+            return `<p>${boldMarkdown(escapeHtml(value))}</p>`;
         }
-        return paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('');
+        return paragraphs.map((p) => `<p>${boldMarkdown(escapeHtml(p))}</p>`).join('');
     }
+
+    // Bloco "Medição e incertezas" partilhado por todas as atividades
+    // laboratoriais de Física (10.º e 11.º ano) — ver renderAtividadeLaboratorial
+    // e screen.rever_medicao_incertezas. Escrito uma única vez aqui em vez de
+    // duplicado em cada missões/fisica/*.json, para o botão "Rever" abrir
+    // sempre o mesmo texto, esteja em que missão estiver.
+    const MEDICAO_INCERTEZAS_TEXTO = `Medir é comparar uma grandeza com uma unidade. Nenhuma medição é perfeita: há sempre uma incerteza associada.
+
+**1. Incerteza de leitura**
+
+Instrumento analógico (régua, termómetro de mercúrio, proveta): metade da menor divisão da escala. Régua graduada em milímetros: incerteza de leitura = 0,5 mm. Instrumento digital (cronómetro digital, multímetro, balança digital): uma unidade do último dígito. Balança que mostra 12,34 g: incerteza = 0,01 g. O resultado escreve-se com a incerteza: comprimento = (12,5 ± 0,5) mm.
+
+**2. Medições repetidas**
+
+Quando se repete uma medição várias vezes, o valor mais provável é a média dos valores obtidos. A incerteza absoluta pode ser estimada pelo maior desvio em módulo em relação à média. Exemplo: tempos 1,52 s; 1,48 s; 1,55 s. Média = 1,52 s. Desvios: 0,00; 0,04; 0,03. Maior desvio = 0,04 s. Resultado: t = (1,52 ± 0,04) s.
+
+**3. Incerteza relativa**
+
+Incerteza relativa = incerteza absoluta / valor medido, normalmente em percentagem. No exemplo anterior: 0,04 / 1,52 × 100 = 2,6 %. Quanto menor a incerteza relativa, mais precisa é a medição.
+
+**4. Erro percentual (quando se conhece o valor de referência)**
+
+Erro percentual = |valor experimental − valor de referência| / valor de referência × 100. Mede a exatidão do resultado.
+
+**5. Precisão e exatidão**
+
+Precisão: os valores medidos estão próximos uns dos outros (pouca dispersão). Exatidão: o valor medido está próximo do valor verdadeiro. Uma medição pode ser precisa e pouco exata (todos os tiros agrupados, mas longe do centro do alvo).
+
+**6. Erros sistemáticos e aleatórios**
+
+Erros sistemáticos: afetam sempre no mesmo sentido (balança mal calibrada, zero da escala deslocado, paralaxe feita sempre do mesmo lado). Não se eliminam repetindo a medição. Afetam a exatidão. Erros aleatórios: variam de medição para medição, em sentido imprevisível (tempo de reação a acionar o cronómetro, pequenas vibrações). Reduzem-se repetindo a medição e calculando a média. Afetam a precisão.
+
+**7. Algarismos significativos**
+
+O resultado final não pode ter mais algarismos significativos do que os dados permitem. A incerteza escreve-se normalmente com um algarismo significativo, e o valor medido acaba na mesma casa decimal da incerteza.`;
 
     class MissaoEngine {
         constructor(missao, options = {}) {
@@ -43,6 +86,7 @@
             this.mascoteChatUrl = options.mascoteChatUrl || window.exploreMascoteChatUrl || '';
             this.mascotWaveVideoUrl = options.mascotWaveVideoUrl || window.exploreMascotWaveVideoUrl || '';
             this.mascotDoubtsImageUrl = options.mascotDoubtsImageUrl || window.exploreMascotDoubtsImageUrl || '';
+            this.mascotExplainingImageUrl = options.mascotExplainingImageUrl || window.exploreMascotExplainingImageUrl || '';
 
             // Estado do painel de chat — não persiste em localStorage (tal
             // como na Fotossíntese, o chat começa sempre fechado e sem
@@ -428,14 +472,14 @@
                             <span>${escapeHtml(this.missao.titulo)}</span>
                         </nav>
 
-                        <section class="mo-hero">
+                        <section class="mo-hero${this.missao.imagem ? ' mo-hero--has-image' : ''}"${this.missao.imagem ? ` style="background-image:linear-gradient(120deg, rgba(10,20,14,.65), rgba(10,20,14,.3)), url('/static/images/${encodeURIComponent(this.missao.imagem)}')"` : ''}>
                             <div class="mo-hero-info">
                                 <h1>${escapeHtml(this.missao.titulo)}</h1>
                                 ${this.missao.descricao ? `<p>${escapeHtml(this.missao.descricao)}</p>` : ''}
                                 <div class="mo-hero-meta">
                                     <span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg> ${totalCount} secções</span>
                                     <span>${xpStarIconSvg} +${totalXP} XP</span>
-                                    ${this.missao.badge ? `<span>${this.missao.badge.icone || '🏆'} ${escapeHtml(this.missao.badge.nome || '')}</span>` : ''}
+                                    ${this.missao.badge ? `<span class="mo-hero-badge">${this.missao.badge.icone || '🏆'} ${escapeHtml(this.missao.badge.nome || '')}</span>` : ''}
                                 </div>
                             </div>
                         </section>
@@ -969,6 +1013,8 @@
                 case 'analogia': return this.renderAnalogia(screen);
                 case 'aprofundar': return this.renderAprofundar(screen);
                 case 'quiz_seccao': return this.renderQuizSeccao(section, screen);
+                case 'atividade_laboratorial': return this.renderAtividadeLaboratorial(screen);
+                case 'simulacao': return this.renderSimulacao(screen);
                 default: return '';
             }
         }
@@ -1038,6 +1084,9 @@
          * própria, ou no quiz de fim de secção (ver showEntryPopupIfNeeded).
          */
         mascotOverlayFigureHtml() {
+            if (this.mascotExplainingImageUrl) {
+                return `<img class="mascot-overlay-figure" src="${this.mascotExplainingImageUrl}" alt="Mascote a explicar">`;
+            }
             if (this.mascotDoubtsImageUrl) {
                 return `<img class="mascot-overlay-figure" src="${this.mascotDoubtsImageUrl}" alt="Mascote com dúvidas">`;
             }
@@ -1059,7 +1108,7 @@
                     <div class="mascot-overlay-split-figure">${this.mascotOverlayFigureHtml()}</div>
                     <div class="mascot-overlay-split-body">
                         <p class="mascot-overlay-text">${escapeHtml(texto).replace(/\n/g, '<br>')}</p>
-                        <button type="button" class="mascot-overlay-btn">Bora!</button>
+                        <button type="button" class="mascot-overlay-btn">Bora explorar!</button>
                     </div>
                 </div>
             `;
@@ -1212,6 +1261,7 @@
                     const correct = selected === screen.correta;
                     this.state.answers[answerKey] = { selected, correct };
                     this.saveState();
+                    if (correct) this.celebrateCorrectAnswer();
 
                     overlay.querySelectorAll('[data-option-index]').forEach((optionBtn) => {
                         const optionIndex = Number(optionBtn.dataset.optionIndex);
@@ -1270,6 +1320,21 @@
             `;
         }
 
+        /** Caixa destacada com as fórmulas de um ecrã de diagrama (Física,
+         *  ver screen.caixa_formula) — lista de { expressao, significado,
+         *  unidades }, cada uma num bloco próprio dentro da mesma caixa. */
+        caixaFormulaHtml(caixaFormula) {
+            if (!Array.isArray(caixaFormula) || caixaFormula.length === 0) return '';
+            const itensHtml = caixaFormula.map((formula) => `
+                <div class="me-caixa-formula-item">
+                    <p class="me-caixa-formula-expressao">${escapeHtml(formula.expressao || '')}</p>
+                    ${formula.significado ? `<p class="me-caixa-formula-significado">${escapeHtml(formula.significado)}</p>` : ''}
+                    ${formula.unidades ? `<p class="me-caixa-formula-unidades">${escapeHtml(formula.unidades)}</p>` : ''}
+                </div>
+            `).join('');
+            return `<div class="me-caixa-formula">${itensHtml}</div>`;
+        }
+
         /** Botão colapsável "Saber mais" com ponto.saber_mais, se existir —
          *  usado tanto no cartão "Nível X de N" (pontoDetailInnerHtml) como
          *  no painel "did-you-know" genérico (ver bindDiagramaChips), para
@@ -1297,37 +1362,247 @@
             `;
         }
 
-        /** Botão "➕" no canto superior direito do cartão com ponto.curiosidade,
-         *  se existir — ao contrário de saberMaisHtml/dicaEstudoHtml (pílulas
-         *  no fim do texto), este fica ancorado no canto (ver position:relative
-         *  em .me-escada-detail) para não competir por espaço com o resto do
-         *  cartão; o texto revelado aparece por baixo, como os outros. */
-        curiosidadeHtml(ponto) {
+        /** Botão "💡" alinhado horizontalmente com o texto da explicação
+         *  (ver .me-escada-detail-text-row no CSS), com ponto.curiosidade
+         *  revelado numa faixa por baixo, a toda a largura — não usa
+         *  <details>/<summary> como saberMaisHtml/dicaEstudoHtml porque o
+         *  texto da explicação (sempre visível) e o da curiosidade
+         *  (escondido até se clicar) têm de poder ficar lado a lado sem
+         *  partilhar o mesmo elemento de disclosure nativo, que esconderia
+         *  os dois juntos. Ver bindCuriosidadeToggle para a interação. */
+        curiosidadeToggleHtml(ponto) {
             if (!ponto.curiosidade) return '';
+            return `<button type="button" class="me-ponto-curiosidade-toggle" aria-expanded="false" aria-label="Ver curiosidade">💡</button>`;
+        }
+
+        curiosidadeRevealHtml(ponto) {
+            if (!ponto.curiosidade) return '';
+            return `<div class="me-ponto-curiosidade-reveal" hidden><p class="me-ponto-curiosidade-titulo">Sabias que...</p>${textToHtml(ponto.curiosidade)}</div>`;
+        }
+
+        /** Liga o clique no 💡 (ver curiosidadeToggleHtml) a mostrar/esconder
+         *  curiosidadeRevealHtml — chamado nos mesmos dois sítios que os
+         *  outros binds do ponto (ver bindDiagramaChips), pelo mesmo
+         *  motivo: o conteúdo do cartão é recriado de raiz a cada clique
+         *  num ponto diferente, por isso precisa de se ligar de novo de
+         *  cada vez. */
+        bindCuriosidadeToggle(container) {
+            const toggle = container.querySelector('.me-ponto-curiosidade-toggle');
+            const reveal = container.querySelector('.me-ponto-curiosidade-reveal');
+            if (!toggle || !reveal || toggle.dataset.bound === 'true') return;
+            toggle.dataset.bound = 'true';
+            toggle.addEventListener('click', () => {
+                const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!isOpen));
+                reveal.hidden = isOpen;
+            });
+        }
+
+        /** Mesmo mecanismo de curiosidadeToggleHtml/curiosidadeRevealHtml,
+         *  mas com ícone de aviso (⚠️) e ponto.atencao — para avisar de um
+         *  erro comum ou confusão frequente (ex: Espécie → "não confundas
+         *  com raça"), com estilo próprio (âmbar) em vez do da curiosidade
+         *  (verde), para se distinguir como um alerta, não só um extra. */
+        atencaoToggleHtml(ponto) {
+            if (!ponto.atencao) return '';
+            return `<button type="button" class="me-ponto-atencao-toggle" aria-expanded="false" aria-label="Ver aviso">⚠️</button>`;
+        }
+
+        atencaoRevealHtml(ponto) {
+            if (!ponto.atencao) return '';
+            return `<div class="me-ponto-atencao-reveal" hidden>${textToHtml(ponto.atencao)}</div>`;
+        }
+
+        bindAtencaoToggle(container) {
+            const toggle = container.querySelector('.me-ponto-atencao-toggle');
+            const reveal = container.querySelector('.me-ponto-atencao-reveal');
+            if (!toggle || !reveal || toggle.dataset.bound === 'true') return;
+            toggle.dataset.bound = 'true';
+            toggle.addEventListener('click', () => {
+                const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', String(!isOpen));
+                reveal.hidden = isOpen;
+            });
+        }
+
+        /** Seta para baixo, sem texto, com ponto.proxima_missao_texto — usada
+         *  para dar um "teaser" de uma missão futura relacionada com este
+         *  ponto (ex: Biomolécula → teaser de Células e Organelos), sem
+         *  competir com o rótulo "Saber mais"/"💡 Dica de estudo". Mesmo
+         *  mecanismo <details> dos outros, só muda o conteúdo do summary.
+         *  O texto revelado fica dentro do seu próprio painel (ainda
+         *  aninhado no cartão do ponto, não um ecrã à parte), com uma seta
+         *  que já leva direto à missão em si (ponto.proxima_missao_id) se
+         *  vier preenchido. */
+        proximaMissaoHtml(ponto) {
+            if (!ponto.proxima_missao_texto) return '';
+            const linkHtml = ponto.proxima_missao_id
+                ? `
+                    <a class="me-proxima-missao-link" href="/missao/${encodeURIComponent(ponto.proxima_missao_id)}/" aria-label="Ir para a missão">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                `
+                : '';
             return `
-                <details class="me-ponto-curiosidade">
-                    <summary aria-label="Ver curiosidade">➕</summary>
-                    <p>${escapeHtml(ponto.curiosidade)}</p>
+                <details class="me-ponto-proxima-missao">
+                    <summary aria-label="Ver mais">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </summary>
+                    <div class="me-proxima-missao-card">
+                        <p>${boldMarkdown(escapeHtml(ponto.proxima_missao_texto))}</p>
+                        ${linkHtml}
+                    </div>
                 </details>
             `;
         }
 
+        /** Minúsculas e sem acentos, para comparar o que o aluno escreve no
+         *  "Outro" do inquérito (ver bindInquerito) sem depender de
+         *  maiúsculas/acentos exatos — ex: "Esquelético" e "esqueletico"
+         *  têm de dar o mesmo resultado. */
+        normalizarTexto(valor) {
+            return String(valor ?? '')
+                .normalize('NFD')
+                .replace(/[̀-ͯ]/g, '')
+                .toLowerCase()
+                .trim();
+        }
+
+        /**
+         * Painel branco com uma pergunta de opinião (ponto.inquerito),
+         * dentro da coluna de texto do ponto — ao escolher uma opção,
+         * mostra uma curiosidade específica dessa escolha. Inclui sempre um
+         * botão final "Outro" com um campo de texto: o aluno escreve um
+         * sistema que não esteja na lista e recebe uma curiosidade
+         * correspondente (ponto.inquerito.outro.opcoes_extra) ou, sem
+         * correspondência, uma curiosidade genérica — nunca fica sem
+         * resposta. Ver bindInquerito para a lógica de comparação.
+         */
+        inqueritoHtml(ponto) {
+            const inquerito = ponto.inquerito;
+            if (!inquerito || !Array.isArray(inquerito.opcoes) || inquerito.opcoes.length === 0) return '';
+            const opcoesHtml = inquerito.opcoes.map((opcao, i) => `
+                <button type="button" class="me-inquerito-opcao" data-opcao-index="${i}">${escapeHtml(opcao.label)}</button>
+            `).join('');
+            const outroHtml = inquerito.outro ? `
+                <button type="button" class="me-inquerito-opcao me-inquerito-opcao--outro" data-outro-trigger="true">Outro</button>
+                <div class="me-inquerito-outro-form" hidden>
+                    <input type="text" class="me-inquerito-outro-input" placeholder="${escapeHtml(inquerito.outro.placeholder || 'Escreve outro sistema...')}" maxlength="60">
+                    <button type="button" class="me-inquerito-outro-submit">Ver curiosidade</button>
+                </div>
+            ` : '';
+            return `
+                <div class="me-ponto-inquerito" aria-hidden="false">
+                    <p class="me-inquerito-pergunta">${escapeHtml(inquerito.pergunta || '')}</p>
+                    <div class="me-inquerito-opcoes">${opcoesHtml}${outroHtml}</div>
+                    <div class="me-inquerito-resultado" hidden></div>
+                </div>
+            `;
+        }
+
+        /** Liga o clique numa opção do inquérito (ver inqueritoHtml) a
+         *  mostrar a curiosidade dessa opção específica e destacá-la entre
+         *  as restantes, e liga o botão/campo "Outro" à mesma lógica —
+         *  chamado a par dos outros binds do ponto. */
+        bindInquerito(container, ponto) {
+            const painel = container.querySelector('.me-ponto-inquerito');
+            const inquerito = ponto?.inquerito;
+            if (!painel || !inquerito || painel.dataset.bound === 'true') return;
+            painel.dataset.bound = 'true';
+
+            const resultado = painel.querySelector('.me-inquerito-resultado');
+            const marcarSelecionado = (botaoAtivo) => {
+                painel.querySelectorAll('.me-inquerito-opcao').forEach((btn) => btn.classList.remove('is-selected'));
+                botaoAtivo?.classList.add('is-selected');
+            };
+            const mostrarResultado = (texto) => {
+                if (!resultado) return;
+                resultado.hidden = false;
+                resultado.textContent = texto;
+            };
+
+            painel.querySelectorAll('.me-inquerito-opcao[data-opcao-index]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const opcao = inquerito.opcoes[Number(btn.dataset.opcaoIndex)];
+                    if (!opcao) return;
+                    marcarSelecionado(btn);
+                    mostrarResultado(opcao.curiosidade || '');
+                });
+            });
+
+            const outroTrigger = painel.querySelector('[data-outro-trigger]');
+            const outroForm = painel.querySelector('.me-inquerito-outro-form');
+            const outroInput = painel.querySelector('.me-inquerito-outro-input');
+            const outroSubmit = painel.querySelector('.me-inquerito-outro-submit');
+            if (!outroTrigger || !outroForm || !outroInput || !outroSubmit || !inquerito.outro) return;
+
+            outroTrigger.addEventListener('click', () => {
+                marcarSelecionado(outroTrigger);
+                outroForm.hidden = !outroForm.hidden;
+                if (!outroForm.hidden) outroInput.focus();
+            });
+
+            const responderOutro = () => {
+                const escrito = this.normalizarTexto(outroInput.value);
+                if (!escrito) return;
+
+                // Procura primeiro entre as opções já com botão próprio (ex:
+                // o aluno escreve "digestivo" em vez de clicar no botão),
+                // depois nas extra só disponíveis por aqui (ver JSON).
+                const todasAsFontes = [
+                    ...inquerito.opcoes.map((opcao) => ({ chave: opcao.label, curiosidade: opcao.curiosidade })),
+                    ...Object.entries(inquerito.outro.opcoes_extra || {}).map(([chave, curiosidade]) => ({ chave, curiosidade })),
+                ];
+                const encontrada = todasAsFontes.find(({ chave }) => {
+                    const chaveNormalizada = this.normalizarTexto(chave);
+                    return chaveNormalizada && (escrito.includes(chaveNormalizada) || chaveNormalizada.includes(escrito));
+                });
+
+                mostrarResultado(encontrada ? encontrada.curiosidade : (inquerito.outro.generica || ''));
+            };
+
+            outroSubmit.addEventListener('click', responderOutro);
+            outroInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    responderOutro();
+                }
+            });
+        }
+
         /**
          * Conteúdo do cartão "Nível X de N" (ver .me-escada-detail no CSS) —
-         * imagem opcional, título, explicação e o botão "Saber mais" (ver
-         * saberMaisHtml). Reaproveitado tanto no primeiro render (escada/
+         * imagem à esquerda, linha divisória subtil ao meio, texto (título,
+         * explicação e extras) à direita — ver .me-escada-detail-columns no
+         * CSS. Sem imagem, o texto ocupa a largura toda (sem coluna nem
+         * divisória). Reaproveitado tanto no primeiro render (escada/
          * árvore/cartao_estilo, sempre com um ponto pré-selecionado) como
          * no clique num ponto (ver bindDiagramaChips), para não duplicar
          * este bocado de HTML nos dois sítios.
          */
         pontoDetailInnerHtml(ponto) {
-            return `
-                ${this.curiosidadeHtml(ponto)}
-                ${ponto.imagem ? `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(ponto.imagem)}" alt="${escapeHtml(ponto.label || '')}" onerror="this.style.display='none'">` : ''}
+            const imagemHtml = ponto.imagem ? `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(ponto.imagem)}" alt="${escapeHtml(ponto.label || '')}" onerror="this.style.display='none'">` : '';
+            const conteudoHtml = `
                 <h4 class="me-escada-detail-title">${escapeHtml(ponto.label || '')}</h4>
-                <p class="me-escada-detail-text">${escapeHtml(ponto.explicacao || '')}</p>
+                <div class="me-escada-detail-text-row">
+                    <p class="me-escada-detail-text">${escapeHtml(ponto.explicacao || '')}</p>
+                    ${this.curiosidadeToggleHtml(ponto)}
+                    ${this.atencaoToggleHtml(ponto)}
+                </div>
+                ${this.curiosidadeRevealHtml(ponto)}
+                ${this.atencaoRevealHtml(ponto)}
+                ${this.proximaMissaoHtml(ponto)}
                 ${this.dicaEstudoHtml(ponto)}
                 ${this.saberMaisHtml(ponto)}
+                ${this.inqueritoHtml(ponto)}
+            `;
+            if (!imagemHtml) return conteudoHtml;
+            return `
+                <div class="me-escada-detail-columns">
+                    <div class="me-escada-detail-media">${imagemHtml}</div>
+                    <div class="me-escada-detail-divider" aria-hidden="true"></div>
+                    <div class="me-escada-detail-content">${conteudoHtml}</div>
+                </div>
             `;
         }
 
@@ -1444,33 +1719,37 @@
                     `).join('')}</div>`;
 
             // Introdução opcional (gancho fundido neste ecrã, ver
-            // showMascotPopupIfNeeded): imagem + frase-isco + frase-ponte a
-            // ligar esse isco ao diagrama que se segue. A imagem é opcional
-            // — a frase-ponte, sozinha, já chega para fundir o gancho neste
-            // ecrã (ver hasIntro abaixo). Na timeline, o título e a
-            // frase-ponte saem daqui — passam a aparecer juntos por cima da
-            // própria linha temporal (ver tituloPonteHtml).
-            const hasIntro = Boolean(screen.intro_imagem || screen.intro_texto || (!isTimeline && screen.ponte_texto));
-            const hasIntroTexto = Boolean(screen.intro_texto || (!isTimeline && screen.ponte_texto));
-            // Isco + ponte partilham uma caixa com traço fino (ver
-            // .me-diagrama-intro-bloco no CSS) para se lerem como um bloco
-            // único, separado da imagem por cima e do diagrama por baixo —
-            // screen.intro_sem_caixa salta essa caixa (só texto solto),
-            // para quando o guião pede o texto sem painel à volta.
+            // showMascotPopupIfNeeded): imagem + frase-isco. A frase-ponte
+            // já não vive aqui — passou para logo a seguir ao título (ver
+            // mais abaixo), para se ler como "título, depois a ponte para
+            // o diagrama", em vez de aparecer antes do título ainda a
+            // falar do gancho anterior. Na timeline, o título e a
+            // frase-ponte saem sempre juntos por cima da própria linha
+            // temporal (ver tituloPonteHtml).
+            const hasIntro = Boolean(screen.intro_imagem || screen.intro_texto);
+            const hasIntroTexto = Boolean(screen.intro_texto);
+            // Isco sozinho ainda partilha a caixa com traço fino (ver
+            // .me-diagrama-intro-bloco no CSS) — screen.intro_sem_caixa
+            // salta essa caixa (só texto solto), para quando o guião pede
+            // o texto sem painel à volta.
             const introParagrafosHtml = `
                 ${screen.intro_texto ? `<p class="me-diagrama-intro-texto">${escapeHtml(screen.intro_texto)}</p>` : ''}
-                ${(!isTimeline && screen.ponte_texto) ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.ponte_texto)}</p>` : ''}
             `;
             const introTextoHtml = hasIntroTexto
-                ? (screen.intro_sem_caixa
+                ? `<div class="me-intro-texto-col">${screen.intro_sem_caixa
                     ? introParagrafosHtml
-                    : `<div class="me-diagrama-intro-bloco">${introParagrafosHtml}</div>`)
+                    : `<div class="me-diagrama-intro-bloco">${introParagrafosHtml}</div>`}</div>`
                 : '';
+            const introImagemHtml = screen.intro_imagem
+                ? `<img class="me-gancho-hero-image" src="/static/images/${encodeURIComponent(screen.intro_imagem)}" alt="" onerror="this.style.display='none'">`
+                : '';
+            // Com imagem E texto, ficam lado a lado (imagem à esquerda, texto
+            // à direita, ver .me-intro-columns no CSS) — só um dos dois,
+            // continua sozinho e centrado como antes.
             const introHtml = hasIntro
-                ? `
-                    ${screen.intro_imagem ? `<img class="me-gancho-hero-image" src="/static/images/${encodeURIComponent(screen.intro_imagem)}" alt="" onerror="this.style.display='none'">` : ''}
-                    ${introTextoHtml}
-                `
+                ? (introImagemHtml && introTextoHtml
+                    ? `<div class="me-intro-columns">${introImagemHtml}${introTextoHtml}</div>`
+                    : `${introImagemHtml}${introTextoHtml}`)
                 : '';
 
             // A escada, a árvore e o mapa já são a própria visualização —
@@ -1500,8 +1779,20 @@
             // em vez de por cima como nos outros formatos de diagrama.
             const instrucaoHtml = `<p class="plant-diagram-hint">${escapeHtml(screen.instrucao || 'Clica num ponto para veres a explicação.')}</p>`;
 
+            // texto_principal (Física) — explicação corrida que acompanha o
+            // diagrama, distinta da frase-ponte (uma frase curta) e do
+            // intro_texto (isco antes do título): aqui é o corpo principal
+            // do ecrã, por isso vem depois da ponte e antes da imagem.
+            const textoPrincipalHtml = screen.texto_principal
+                ? `<div class="me-diagrama-texto-principal">${textToHtml(screen.texto_principal)}</div>`
+                : '';
+
             const diagramaHtml = `
-                ${isTimeline ? tituloPonteHtml : (screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : '')}
+                ${isTimeline ? tituloPonteHtml : `
+                    ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
+                    ${screen.ponte_texto ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.ponte_texto)}</p>` : ''}
+                `}
+                ${textoPrincipalHtml}
                 ${(isEscada || isArvore || isMapa) ? '' : (screen.video
                     ? `<video class="me-video-chroma-source" data-chroma-key="white" src="/static/${encodeURIComponent(screen.video)}" autoplay loop muted playsinline style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></video>
                        <canvas class="card-visual me-video-chroma-canvas"></canvas>`
@@ -1510,6 +1801,7 @@
                 ${pontosHtml}
                 ${isTimeline ? instrucaoHtml : ''}
                 ${explicacaoHtml}
+                ${this.caixaFormulaHtml(screen.caixa_formula)}
             `;
 
             // "Queres saber mais?" opcional, dentro do mesmo painel branco
@@ -1527,7 +1819,7 @@
             // nomes em diagonal sem scroll horizontal (ver
             // .me-gancho-card--timeline, que quebra a coluna de leitura
             // estreita de .section-body tal como .plant-diagram-card).
-            if (hasIntro || screen.aprofundar || screen.cartao_estilo) {
+            if (hasIntro || screen.aprofundar || screen.cartao_estilo || screen.texto_principal || screen.caixa_formula) {
                 const cardModifier = screen.layout === 'timeline' ? ' me-gancho-card--timeline' : '';
                 return `
                     <div class="mascot-overlay-card me-mascot-inline me-gancho-card${cardModifier}">
@@ -1595,6 +1887,45 @@
             `;
         }
 
+        /**
+         * Explosão de confetti a cobrir o ecrã inteiro quando o aluno
+         * acerta numa pergunta (ver os 3 sítios que chamam isto: popup de
+         * micro-verificação, micro-verificação inline, e quiz de secção).
+         * Feito como um overlay solto anexado a document.body — não ao
+         * ecrã da pergunta em si — porque logo a seguir a resposta o ecrã
+         * costuma voltar a renderizar-se (this.render()), o que substituiria
+         * qualquer coisa que estivesse dentro dele antes da animação acabar.
+         * Autolimpa-se sozinho, e respeita prefers-reduced-motion.
+         */
+        celebrateCorrectAnswer() {
+            if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
+
+            const colors = ['#3f7d3a', '#ffb020', '#2a8fae', '#e6362a', '#8a4fd1', '#1f8a5b'];
+            const burst = document.createElement('div');
+            burst.className = 'me-confetti-burst';
+            burst.setAttribute('aria-hidden', 'true');
+
+            const pieceCount = 32;
+            for (let i = 0; i < pieceCount; i++) {
+                const piece = document.createElement('span');
+                piece.className = 'me-confetti-piece';
+                const drift = Math.round(Math.random() * 240 - 120);
+                const spin = Math.round(Math.random() * 720 - 360);
+                const delay = (Math.random() * 0.2).toFixed(2);
+                const duration = (0.9 + Math.random() * 0.5).toFixed(2);
+                piece.style.left = `${Math.random() * 100}%`;
+                piece.style.background = colors[i % colors.length];
+                piece.style.setProperty('--drift', `${drift}px`);
+                piece.style.setProperty('--spin', `${spin}deg`);
+                piece.style.animationDelay = `${delay}s`;
+                piece.style.animationDuration = `${duration}s`;
+                burst.appendChild(piece);
+            }
+
+            document.body.appendChild(burst);
+            setTimeout(() => burst.remove(), 1700);
+        }
+
         renderAnalogia(screen) {
             // O ícone do callout já assume o papel do 💡 — o guião escreve-o
             // também no início do texto, então tira-se aqui para não sair
@@ -1608,7 +1939,7 @@
             // com a imagem e o texto na mesma cor, sem os separar.
             if (screen.cartao_estilo) {
                 const paragrafosHtml = texto.split(/\n\s*\n/).filter(Boolean)
-                    .map((p) => `<p class="me-escada-detail-text">${escapeHtml(p)}</p>`).join('');
+                    .map((p) => `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(p))}</p>`).join('');
                 // .me-gancho-hero-image (maior, ver renderGancho) em vez de
                 // .me-escada-detail-image (pensada para ícones pequenos nos
                 // degraus da escada) — aqui a imagem é um diagrama com
@@ -1663,6 +1994,160 @@
 
         renderAprofundar(screen) {
             return this.aprofundarHtml(screen);
+        }
+
+        /** Ecrã "atividade_laboratorial" (Física) — cada campo da AL é o seu
+         *  próprio bloco colapsável, reaproveitando o visual .did-you-know
+         *  do "aprofundar" (ver aprofundarHtml) em vez de inventar um
+         *  componente novo. Ao contrário do "aprofundar", os campos são
+         *  fixos (objetivo, material, procedimento, tratamento de dados,
+         *  conclusão, erros comuns), não uma lista livre de "blocos". */
+        renderAtividadeLaboratorial(screen) {
+            const listaHtml = (itens) => `<ul class="me-laboratorio-lista">${(itens || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+            const blocoHtml = (rotulo, corpoHtml, aberto) => corpoHtml ? `
+                <details class="did-you-know me-laboratorio-bloco"${aberto ? ' open' : ''}>
+                    <summary>${escapeHtml(rotulo)}</summary>
+                    <div class="did-you-know-body">${corpoHtml}</div>
+                </details>
+            ` : '';
+
+            return `
+                <div class="me-laboratorio-cartao mascot-overlay-card me-mascot-inline me-gancho-card">
+                    <p class="me-laboratorio-codigo">${escapeHtml(screen.codigo || '')}</p>
+                    <h3>${escapeHtml(screen.titulo || '')}</h3>
+                    ${blocoHtml('Objetivo', screen.objetivo ? textToHtml(screen.objetivo) : '', true)}
+                    ${blocoHtml('Material', screen.material ? listaHtml(screen.material) : '')}
+                    ${blocoHtml('Procedimento', screen.procedimento ? `<ol class="me-laboratorio-lista me-laboratorio-lista--numerada">${screen.procedimento.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ol>` : '')}
+                    ${blocoHtml('Tratamento de dados', screen.tratamento_de_dados ? textToHtml(screen.tratamento_de_dados) : '')}
+                    ${blocoHtml('Conclusão', screen.conclusao ? textToHtml(screen.conclusao) : '')}
+                    ${blocoHtml('Erros comuns', screen.erros_comuns ? listaHtml(screen.erros_comuns) : '')}
+                    ${screen.rever_medicao_incertezas ? blocoHtml('Rever: medição e incertezas', textToHtml(MEDICAO_INCERTEZAS_TEXTO)) : ''}
+                </div>
+            `;
+        }
+
+        /** Ecrã "simulacao" (Física) — sliders/controlos que recalculam
+         *  saídas em tempo real, sem chamadas ao servidor. As fórmulas em
+         *  screen.saidas/controlos.formula são expressões JS em texto
+         *  (ver guião), avaliadas com Function() num âmbito isolado onde só
+         *  os ids dos controlos existem como variáveis — nunca com dados
+         *  vindos do aluno, só do JSON da própria missão. */
+        renderSimulacao(screen) {
+            const controlos = screen.controlos || [];
+            const controlosHtml = controlos.map((controlo) => {
+                if (controlo.tipo === 'botao') {
+                    return `<button type="button" class="me-simulacao-botao" data-simulacao-botao="${escapeHtml(controlo.id)}">${escapeHtml(controlo.rotulo || controlo.id)}</button>`;
+                }
+                if (Array.isArray(controlo.opcoes)) {
+                    return `
+                        <div class="me-simulacao-controlo">
+                            <label class="me-simulacao-rotulo" for="sim-${escapeHtml(controlo.id)}">${escapeHtml(controlo.rotulo || controlo.id)}</label>
+                            <select class="me-simulacao-select" id="sim-${escapeHtml(controlo.id)}" data-simulacao-controlo="${escapeHtml(controlo.id)}" data-tipo="opcao">
+                                ${controlo.opcoes.map((opcao) => `<option value="${escapeHtml(String(opcao.valor))}">${escapeHtml(opcao.label)}</option>`).join('')}
+                            </select>
+                        </div>
+                    `;
+                }
+                return `
+                    <div class="me-simulacao-controlo">
+                        <label class="me-simulacao-rotulo" for="sim-${escapeHtml(controlo.id)}">
+                            ${escapeHtml(controlo.rotulo || controlo.id)}
+                            <span class="me-simulacao-valor" data-simulacao-valor-de="${escapeHtml(controlo.id)}">${controlo.valor_inicial}</span>
+                            ${controlo.unidade ? `<span class="me-simulacao-unidade">${escapeHtml(controlo.unidade)}</span>` : ''}
+                        </label>
+                        <input type="range" class="me-simulacao-slider" id="sim-${escapeHtml(controlo.id)}"
+                            data-simulacao-controlo="${escapeHtml(controlo.id)}" data-tipo="slider"
+                            min="${controlo.min}" max="${controlo.max}" step="${controlo.passo || 1}" value="${controlo.valor_inicial}">
+                    </div>
+                `;
+            }).join('');
+
+            const saidasHtml = (screen.saidas || []).map((saida, i) => `
+                <div class="me-simulacao-saida">
+                    <span class="me-simulacao-saida-rotulo">${escapeHtml(saida.rotulo)}</span>
+                    <span class="me-simulacao-saida-valor" data-simulacao-saida="${i}">—</span>
+                    ${saida.unidade ? `<span class="me-simulacao-unidade">${escapeHtml(saida.unidade)}</span>` : ''}
+                </div>
+            `).join('');
+
+            return `
+                <div class="me-simulacao-cartao mascot-overlay-card me-mascot-inline me-gancho-card" id="meSimulacao-${escapeHtml(screen.id || '')}" data-simulacao-id="${escapeHtml(screen.id || '')}">
+                    ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
+                    ${screen.instrucao ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.instrucao)}</p>` : ''}
+                    <div class="me-simulacao-controlos">${controlosHtml}</div>
+                    <div class="me-simulacao-saidas">${saidasHtml}</div>
+                    ${screen.pergunta_final ? `
+                        <details class="did-you-know me-laboratorio-bloco">
+                            <summary>Pergunta final</summary>
+                            <div class="did-you-know-body"><p>${escapeHtml(screen.pergunta_final)}</p></div>
+                        </details>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        /** Liga os sliders/selects/botões de uma simulação (ver
+         *  renderSimulacao) a um recálculo em tempo real das saídas. Cada
+         *  fórmula é avaliada com os ids dos controlos como variáveis
+         *  soltas no âmbito — new Function(...ids, 'return (' + formula +
+         *  ')') em vez de eval(), para não herdar o âmbito local daqui. */
+        bindSimulacao(screen) {
+            const container = this.root.querySelector(`[data-simulacao-id="${screen.id || ''}"]`);
+            if (!container || container.dataset.bound === 'true') return;
+            container.dataset.bound = 'true';
+
+            const controlos = screen.controlos || [];
+            const saidas = screen.saidas || [];
+            const ids = controlos.filter((c) => c.tipo !== 'botao').map((c) => c.id);
+            const estadoBotoes = {};
+
+            const lerValores = () => {
+                const valores = {};
+                ids.forEach((id) => {
+                    const el = container.querySelector(`[data-simulacao-controlo="${id}"]`);
+                    valores[id] = el ? Number(el.value) || el.value : 0;
+                });
+                Object.assign(valores, estadoBotoes);
+                return valores;
+            };
+
+            const recalcular = () => {
+                const valores = lerValores();
+                ids.forEach((id) => {
+                    const span = container.querySelector(`[data-simulacao-valor-de="${id}"]`);
+                    if (span) span.textContent = valores[id];
+                });
+                saidas.forEach((saida, i) => {
+                    const span = container.querySelector(`[data-simulacao-saida="${i}"]`);
+                    if (!span) return;
+                    let resultado;
+                    try {
+                        resultado = new Function(...Object.keys(valores), `return (${saida.formula});`)(...Object.values(valores));
+                    } catch (erro) {
+                        resultado = null;
+                    }
+                    if (typeof resultado === 'number' && Number.isFinite(resultado)) {
+                        span.textContent = saida.casas_decimais != null ? resultado.toFixed(saida.casas_decimais) : String(resultado);
+                    } else if (typeof resultado === 'string') {
+                        span.textContent = resultado;
+                    } else {
+                        span.textContent = '—';
+                    }
+                });
+            };
+
+            container.querySelectorAll('[data-simulacao-controlo]').forEach((el) => {
+                el.addEventListener('input', recalcular);
+                el.addEventListener('change', recalcular);
+            });
+            container.querySelectorAll('[data-simulacao-botao]').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    estadoBotoes[btn.dataset.simulacaoBotao] = true;
+                    recalcular();
+                });
+            });
+
+            recalcular();
         }
 
         getQuizState(section) {
@@ -1840,6 +2325,15 @@
             const useCardDetail = isEscada || isArvore || isMapa || diagramScreen.cartao_estilo === true;
             const explicacaoEl = this.root.querySelector('#meDiagramaExplicacao');
             const activeSelector = isEscada ? '.me-escada-step' : (isArvore ? '.me-arvore-node' : (isMapa ? '.me-mapa-marker' : '.me-diagrama-chip'));
+            // O ponto pré-selecionado (primeiroPonto) já pode ter vindo com
+            // uma curiosidade ou um inquérito no HTML inicial — sem isto,
+            // só ganhavam a interação depois de se clicar noutro degrau e
+            // voltar a este.
+            if (explicacaoEl) {
+                this.bindCuriosidadeToggle(explicacaoEl);
+                this.bindAtencaoToggle(explicacaoEl);
+                this.bindInquerito(explicacaoEl, diagramScreen.pontos[0]);
+            }
             this.root.querySelectorAll('[data-ponto-index]').forEach((chip) => {
                 chip.addEventListener('click', () => {
                     const ponto = diagramScreen.pontos[Number(chip.dataset.pontoIndex)];
@@ -1849,6 +2343,9 @@
                         if (explicacaoEl) {
                             explicacaoEl.hidden = false;
                             explicacaoEl.innerHTML = this.pontoDetailInnerHtml(ponto);
+                            this.bindCuriosidadeToggle(explicacaoEl);
+                            this.bindAtencaoToggle(explicacaoEl);
+                            this.bindInquerito(explicacaoEl, ponto);
                         }
                         return;
                     }
@@ -1941,6 +2438,10 @@
                 this.bindDiagramaChips(screen);
             }
 
+            if (screen.tipo === 'simulacao') {
+                this.bindSimulacao(screen);
+            }
+
             // Quando o ecrã de baixo é uma micro-verificação com pano de
             // fundo (o último diagrama/gancho, ver renderMicroVerificacao e
             // findBackdropScreen), os degraus/chips aparecem também por lá
@@ -1957,8 +2458,10 @@
                     this.root.querySelectorAll('[data-option-index]').forEach((btn) => {
                         btn.addEventListener('click', () => {
                             const selected = Number(btn.dataset.optionIndex);
-                            this.state.answers[answerKey] = { selected, correct: selected === screen.correta };
+                            const correct = selected === screen.correta;
+                            this.state.answers[answerKey] = { selected, correct };
                             this.saveState();
+                            if (correct) this.celebrateCorrectAnswer();
                             this.render();
                         });
                     });
@@ -1977,8 +2480,10 @@
                         this.root.querySelectorAll('[data-quiz-option-index]').forEach((btn) => {
                             btn.addEventListener('click', () => {
                                 const selected = Number(btn.dataset.quizOptionIndex);
-                                quizState.answers[quizState.current] = { selected, correct: selected === question.correta };
+                                const correct = selected === question.correta;
+                                quizState.answers[quizState.current] = { selected, correct };
                                 this.saveState();
+                                if (correct) this.celebrateCorrectAnswer();
                                 this.render();
                             });
                         });
