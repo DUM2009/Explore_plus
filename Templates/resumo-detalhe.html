@@ -31,7 +31,11 @@
 </div>
 
 <section class="missions-page resumo-detalhe-page">
+    {% if resumo.disciplina == 'Geologia' %}
+    <a href="{% url 'Resumos-geologia' %}" class="teste-voltar">&larr; Voltar aos Resumos</a>
+    {% else %}
     <a href="{% url 'Resumos' %}" class="teste-voltar">&larr; Voltar aos Resumos</a>
+    {% endif %}
 
     <div class="teste-container">
 

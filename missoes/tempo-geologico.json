@@ -1,0 +1,257 @@
+{
+  "missao_id": "tempo-geologico",
+  "titulo": "O Tempo Geológico",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "⏳", "nome": "Mestre do Tempo Profundo" },
+  "secoes": [
+    {
+      "secao_id": "datacao-relativa",
+      "titulo": "Pôr os acontecimentos em ordem",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Antes de sabermos a idade exata de uma rocha, conseguimos sempre dizer qual é mais antiga e qual é mais recente. 🕰️",
+          "texto": "Chama-se a isto datação relativa — e baseia-se em alguns princípios muito simples da estratigrafia."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Os princípios da estratigrafia",
+          "instrucao": "Clica em cada princípio para veres o que significa.",
+          "pontos": [
+            { "id": "sobreposicao", "label": "Sobreposição", "explicacao": "Numa sequência de estratos não deformada, um estrato é mais recente do que o que está por baixo, e mais antigo do que o que está por cima." },
+            { "id": "horizontalidade", "label": "Horizontalidade original", "explicacao": "Os sedimentos depositam-se em camadas horizontais. Estratos inclinados ou dobrados foram deformados depois da deposição." },
+            { "id": "interseccao", "label": "Interseção", "explicacao": "Uma estrutura (falha, filão, intrusão) que corta outras é mais recente do que as estruturas que corta." },
+            { "id": "inclusao", "label": "Inclusão", "explicacao": "Os fragmentos de rocha incluídos noutra rocha são mais antigos do que a rocha que os contém." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Numa sequência de estratos não deformada, o estrato mais antigo está:",
+          "opcoes": ["Por baixo", "Por cima"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Pelo princípio da sobreposição, o mais antigo está sempre por baixo.",
+          "mascote_feedback_errado": "Está por baixo — cada novo estrato deposita-se por cima dos anteriores."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🥪",
+          "texto": "💡 Pensa numa sanduíche feita ao longo do tempo: cada ingrediente novo é sempre colocado por cima dos anteriores (sobreposição) — nunca por baixo. Se encontrares um garfo espetado a direito através de todas as camadas (interseção), sabes que o garfo chegou depois da sanduíche estar feita."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Discordâncias: as páginas em falta",
+          "texto": "Uma discordância é uma superfície de erosão ou de não deposição que separa dois conjuntos de estratos, representando uma lacuna no registo geológico. Na discordância angular, os estratos inferiores estão inclinados em relação aos superiores — houve deposição, depois deformação, depois erosão, e só depois nova deposição. É como se faltassem páginas inteiras no livro da história da Terra, naquele local."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Uma estrutura (como um filão) que corta vários estratos é, em relação a eles:",
+              "opcoes": ["Mais recente", "Mais antiga"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Pelo princípio da interseção, quem corta é mais recente do que quem é cortado.",
+              "mascote_feedback_errado": "É mais recente — quem corta uma estrutura é sempre posterior a ela."
+            },
+            {
+              "pergunta": "Uma discordância representa, no registo geológico, uma:",
+              "opcoes": ["Lacuna (período sem deposição ou com erosão)", "Camada extra muito espessa"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! É uma lacuna — informação que se perdeu ou nunca se depositou.",
+              "mascote_feedback_errado": "Representa uma lacuna, não uma camada extra — é informação em falta, não a mais."
+            }
+          ],
+          "mascote_conclusao": "Já sabes ordenar acontecimentos no tempo. Mas os fósseis também ajudam — de duas formas bem diferentes. 🦴"
+        }
+      ]
+    },
+    {
+      "secao_id": "fosseis-idade-facies",
+      "titulo": "Fósseis de idade vs. fósseis de fácies",
+      "xp": 15,
+      "tempo_estimado_min": 4,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Dois tipos de fósseis, dois usos diferentes",
+          "instrucao": "Clica em cada tipo de fóssil para veres para que serve.",
+          "pontos": [
+            { "id": "idade", "label": "Fóssil de idade (estratigráfico)", "explicacao": "Existiu durante pouco tempo mas com ampla distribuição geográfica. Usa-se para datar e correlacionar estratos (ex.: trilobites no Paleozoico, amonites no Mesozoico)." },
+            { "id": "facies", "label": "Fóssil de fácies", "explicacao": "Existiu durante muito tempo mas viveu em ambientes muito específicos. Usa-se para reconstituir paleoambientes (ex.: corais, que indicam mares quentes, pouco profundos e de águas límpidas)." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🦴",
+          "texto": "💡 O fóssil de idade é como um selo de correio com a data bem impressa: não importa onde apareça, diz-te quando foi usado. O fóssil de fácies é como um casaco de inverno: não te diz o ano, mas diz-te logo que tipo de clima (ambiente) existia."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Para datar e correlacionar estratos de locais distantes, usa-se preferencialmente um fóssil:",
+              "opcoes": ["De idade", "De fácies"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! O fóssil de idade, de curta duração e ampla distribuição, é ideal para datar.",
+              "mascote_feedback_errado": "Usa-se o fóssil de idade — o de fácies é mais útil para reconstituir o ambiente, não para datar."
+            },
+            {
+              "pergunta": "Encontrar fósseis de coral numa rocha sugere que o ambiente de formação era:",
+              "opcoes": ["Um mar quente, pouco profundo e de águas límpidas", "Um deserto gelado"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Os corais são fósseis de fácies típicos deste tipo de ambiente marinho.",
+              "mascote_feedback_errado": "Sugere um mar quente, pouco profundo e de águas límpidas — é esse o habitat dos corais."
+            }
+          ],
+          "mascote_conclusao": "Já sabes ordenar o tempo relativo. Mas e se quiseres saber a idade exata, em anos? Aí entra a datação absoluta. ⏳"
+        }
+      ]
+    },
+    {
+      "secao_id": "datacao-absoluta",
+      "titulo": "Datação absoluta: a idade em números",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Certos átomos são verdadeiros relógios naturais — decaem a um ritmo tão constante que nem a temperatura nem a pressão os conseguem acelerar ou atrasar. ⏳",
+          "texto": "É nesse ritmo constante que se baseia a datação absoluta."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Isótopo-pai, isótopo-filho e semivida",
+          "texto": "A datação absoluta atribui uma idade numérica a uma rocha, com base no decaimento radioativo: um isótopo instável (isótopo-pai) transforma-se espontaneamente num isótopo estável (isótopo-filho), a um ritmo constante. A semivida é o tempo necessário para que metade dos átomos do isótopo-pai se transforme em isótopo-filho. Depois de uma semivida, resta metade do pai; depois de duas semividas, resta um quarto; depois de três, um oitavo — é sempre metade do que restava, nunca metade do total inicial."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Pares pai → filho usados em datação",
+          "instrucao": "Clica em cada par para veres a sua aplicação.",
+          "pontos": [
+            { "id": "uranio", "label": "Urânio-238 → Chumbo-206", "explicacao": "Semivida ≈ 4500 Ma — usado para datar rochas muito antigas." },
+            { "id": "potassio", "label": "Potássio-40 → Árgon-40", "explicacao": "Semivida ≈ 1300 Ma — usado sobretudo em rochas vulcânicas." },
+            { "id": "carbono", "label": "Carbono-14 → Azoto-14", "explicacao": "Semivida ≈ 5730 anos — usado em restos orgânicos com menos de ≈50 000 anos." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Depois de passarem duas semividas, a percentagem de isótopo-pai que resta é:",
+          "opcoes": ["25%", "50%"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Após 1 semivida restam 50%; após 2 semividas, metade disso: 25%.",
+          "mascote_feedback_errado": "Restam 25% — a cada semivida, o que resta reduz-se sempre a metade do valor anterior, não do total inicial."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... ⏳",
+          "texto": "💡 A semivida é como o tempo que demora metade do gelo de um copo a derreter: não interessa se o copo está ao sol ou à sombra (a temperatura e a pressão não afetam o decaimento radioativo) — o ritmo é sempre o mesmo, constante e previsível."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque se datam sobretudo rochas magmáticas?",
+          "texto": "O \"relógio\" radiométrico só começa a contar quando os minerais cristalizam e o sistema fica fechado — por isso datam-se sobretudo rochas magmáticas. As rochas sedimentares são formadas por fragmentos de rochas mais antigas, pelo que a datação radiométrica daria a idade desses fragmentos, não da rocha em si. Nas rochas metamórficas, o próprio metamorfismo pode \"reiniciar\" o relógio. Mesmo assim, uma rocha sedimentar pode ser datada indiretamente: se um estrato é cortado por um filão já datado, sabe-se que o estrato é mais antigo do que o filão."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A semivida de um isótopo radioativo é afetada pela temperatura e pela pressão?",
+              "opcoes": ["Não, é constante", "Sim, varia muito"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A semivida é constante, independentemente das condições físicas.",
+              "mascote_feedback_errado": "Não é afetada — é precisamente por ser constante que serve como \"relógio\" fiável."
+            },
+            {
+              "pergunta": "A datação radiométrica aplica-se sobretudo a rochas:",
+              "opcoes": ["Magmáticas", "Sedimentares"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! O relógio começa a contar na cristalização do magma.",
+              "mascote_feedback_errado": "Aplica-se sobretudo a magmáticas — as sedimentares são feitas de fragmentos já antigos."
+            },
+            {
+              "pergunta": "O carbono-14 é mais indicado para datar:",
+              "opcoes": ["Restos orgânicos com menos de ≈50 000 anos", "Rochas com milhares de milhões de anos"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A sua semivida curta (5730 anos) torna-o útil só para idades relativamente recentes.",
+              "mascote_feedback_errado": "É indicado para restos recentes — para rochas muito antigas usa-se urânio-238 ou rubídio-87."
+            }
+          ],
+          "mascote_conclusao": "Já sabes ler o relógio das rochas. Falta só juntar tudo numa grande linha do tempo. ⏳"
+        }
+      ]
+    },
+    {
+      "secao_id": "escala-tempo-geologico",
+      "titulo": "A escala do tempo geológico e a idade da Terra",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A história da Terra tem 4600 milhões de anos — tempo de sobra para se dividir em capítulos bem definidos. 📖",
+          "texto": "E, como em qualquer bom livro, cada capítulo novo começa quase sempre depois de um acontecimento dramático."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "As eras do éon Fanerozoico",
+          "layout": "timeline",
+          "instrucao": "Clica em cada era para veres os seus acontecimentos marcantes.",
+          "pontos": [
+            { "id": "paleozoico", "label": "Paleozoico (541-252 Ma)", "explicacao": "\"Explosão\" da vida no Câmbrico, trilobites, colonização do meio terrestre, formação da Pangeia. Termina com a maior extinção em massa da história (Pérmico-Triásico)." },
+            { "id": "mesozoico", "label": "Mesozoico (252-66 Ma)", "explicacao": "Dinossauros, amonites, primeiras aves, fragmentação da Pangeia. Termina com a extinção K-Pg, causada por um impacto de asteroide." },
+            { "id": "cenozoico", "label": "Cenozoico (66 Ma-atualidade)", "explicacao": "Diversificação dos mamíferos e das plantas com flor, aparecimento do género Homo, glaciações quaternárias." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A era que termina com a extinção dos dinossauros (impacto de asteroide) é o:",
+          "opcoes": ["Mesozoico", "Paleozoico"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! O Mesozoico termina com a extinção K-Pg.",
+          "mascote_feedback_errado": "É o Mesozoico — o Paleozoico termina com a maior extinção em massa de sempre, a do Pérmico-Triásico."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A idade da Terra: 4600 Ma",
+          "texto": "A Terra tem cerca de 4600 Ma (4,6 mil milhões de anos). As rochas terrestres mais antigas conhecidas são mais \"novas\" do que isso (até ≈4000 Ma, com alguns cristais de zircão a atingir ≈4400 Ma), porque a superfície primitiva da Terra foi destruída pela tectónica e pela erosão ao longo do tempo. A idade da Terra é por isso estimada pela datação de meteoritos e de rochas lunares, formados ao mesmo tempo que todo o Sistema Solar."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 📖",
+          "texto": "💡 Pensa na escala do tempo geológico como os capítulos de um livro muito, muito longo: cada novo capítulo (era) começa quase sempre depois de um grande acontecimento dramático — uma extinção em massa que \"fecha\" o capítulo anterior e abre espaço para novos protagonistas na história da vida."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A idade estimada da Terra é de aproximadamente:",
+              "opcoes": ["4600 Ma", "200 Ma"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Cerca de 4,6 mil milhões de anos.",
+              "mascote_feedback_errado": "São cerca de 4600 Ma — 200 Ma é, por exemplo, a idade máxima da crosta oceânica mais antiga, não da Terra toda."
+            },
+            {
+              "pergunta": "A idade da Terra é estimada sobretudo pela datação de:",
+              "opcoes": ["Meteoritos e rochas lunares", "Rochas sedimentares atuais"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Formaram-se ao mesmo tempo que o Sistema Solar, ao contrário das rochas terrestres mais antigas.",
+              "mascote_feedback_errado": "É pela datação de meteoritos e rochas lunares — as rochas terrestres mais antigas são mais \"novas\" do que a própria Terra."
+            },
+            {
+              "pergunta": "Os limites entre éons, eras e períodos correspondem sobretudo a:",
+              "opcoes": ["Extinções em massa e aparecimento de novos grupos de seres vivos", "Alterações na posição da Lua"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! São esses os marcos registados nos fósseis que definem a escala do tempo geológico.",
+              "mascote_feedback_errado": "Correspondem a extinções em massa e ao aparecimento de novos grupos de seres vivos, registados nos fósseis."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já sabes ordenar o tempo relativo, ler o relógio radiométrico, e situar a Terra na escala do tempo geológico. 4600 milhões de anos de história — e já consegues contar a mais importante. ⏳🌍"
+        }
+      ]
+    }
+  ]
+}

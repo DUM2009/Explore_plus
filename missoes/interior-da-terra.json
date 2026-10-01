@@ -1,0 +1,207 @@
+{
+  "missao_id": "interior-da-terra",
+  "titulo": "O Interior da Terra",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "🔥", "nome": "Explorador do Núcleo" },
+  "secoes": [
+    {
+      "secao_id": "metodos-de-estudo",
+      "titulo": "Como se estuda o que não se vê?",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A sondagem mais profunda do mundo (em Kola, na Rússia) chegou a ≈12 km. Parece muito, mas é menos de 0,2% do raio da Terra. 🕳️",
+          "texto": "Então como é que sabemos o que existe lá no fundo, a 6370 km de profundidade?"
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Métodos diretos vs. indiretos",
+          "instrucao": "Clica em cada tipo de método para veres as suas vantagens e limites.",
+          "pontos": [
+            { "id": "diretos", "label": "Métodos diretos", "explicacao": "Observação de afloramentos, minas, sondagens e xenólitos (fragmentos de rocha trazidos à superfície pelo magma, vindos do manto). Limitação comum: só dão acesso a uma camada muito superficial da Terra." },
+            { "id": "indiretos", "label": "Métodos indiretos", "explicacao": "Sismologia (o mais importante), gravimetria, geomagnetismo e geotermia. Baseiam-se na interpretação de dados físicos, mas permitem inferir características de todo o interior do planeta." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O método indireto considerado o mais importante para estudar o interior da Terra é a:",
+          "opcoes": ["Sismologia", "Geotermia"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! O estudo das ondas sísmicas é o método mais revelador sobre o interior da Terra.",
+          "mascote_feedback_errado": "É a sismologia — a geotermia também ajuda, mas a sismologia é o método indireto mais importante."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🔑",
+          "texto": "💡 Os métodos diretos são como espreitar por um buraco de fechadura: veem muito pouco, mas com total certeza do que veem. Os indiretos são como ouvir o som que vem de dentro de uma caixa fechada: dão-te uma ideia de todo o interior, mas sempre por interpretação, nunca por observação direta."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A pista da densidade",
+          "texto": "A densidade média da Terra (≈5,5 g/cm³) é muito superior à densidade das rochas superficiais (2,7-3,0 g/cm³). Esta diferença só se explica se o interior for formado por materiais muito mais densos — como um núcleo de ferro e níquel. Foi um dos primeiros indícios indiretos de que a Terra tem uma estrutura em camadas, bem diferente da sua superfície."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Os xenólitos, trazidos à superfície pelo magma, são exemplos de um método:",
+              "opcoes": ["Direto", "Indireto"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! São observados e estudados diretamente, apesar de virem de grande profundidade.",
+              "mascote_feedback_errado": "É um método direto — observa-se e estuda-se diretamente o material."
+            },
+            {
+              "pergunta": "A diferença entre a densidade média da Terra e a densidade das rochas superficiais sugere que:",
+              "opcoes": ["O interior é formado por materiais muito mais densos", "A Terra é oca"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Essa diferença aponta para um núcleo metálico, muito mais denso.",
+              "mascote_feedback_errado": "Sugere materiais muito mais densos no interior — não uma Terra oca."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como se estuda o interior da Terra. Vamos agora usar esses métodos para descobrir as suas camadas. 🌍"
+        }
+      ]
+    },
+    {
+      "secao_id": "descontinuidades",
+      "titulo": "Descontinuidades: os limites entre camadas",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Quando as ondas sísmicas mudam de velocidade bruscamente, isso significa uma coisa: atravessaram uma fronteira entre camadas diferentes. 〰️",
+          "texto": "A essas fronteiras chamam-se descontinuidades."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "As três grandes descontinuidades",
+          "layout": "escada",
+          "instrucao": "Sobe os degraus, da mais superficial para a mais profunda.",
+          "pontos": [
+            { "id": "moho", "label": "Moho (Mohorovičić)", "explicacao": "Separa a crosta do manto (≈5-10 km nos oceanos; ≈30-70 km nos continentes). As ondas P e S aumentam de velocidade." },
+            { "id": "gutenberg", "label": "Gutenberg", "explicacao": "Separa o manto do núcleo, a ≈2900 km. As ondas S deixam de se propagar — revelou que o núcleo externo é líquido. As ondas P diminuem bruscamente de velocidade." },
+            { "id": "lehmann", "label": "Lehmann", "explicacao": "Separa o núcleo externo do interno, a ≈5150 km. As ondas P voltam a aumentar de velocidade — revelou que o núcleo interno é sólido." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A descontinuidade onde as ondas S deixam de se propagar é a de:",
+          "opcoes": ["Gutenberg", "Moho"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! As ondas S não atravessam líquidos — é por isso que \"desaparecem\" na descontinuidade de Gutenberg, entrando no núcleo externo líquido.",
+          "mascote_feedback_errado": "É a de Gutenberg — a do Moho só separa a crosta do manto, ambos sólidos, não há mudança deste tipo."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A zona de sombra sísmica",
+          "texto": "Entre ≈103° e 143° de distância angular ao epicentro, não se registam ondas P nem S diretas — chama-se a esta região a zona de sombra sísmica. Foi exatamente esta ausência de ondas S para lá dos 103° que revelou, pela primeira vez, que o núcleo externo tinha de ser líquido — porque as ondas S simplesmente não atravessam líquidos. Foi uma das maiores \"provas de crime\" da história da Geologia."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A descontinuidade de Moho separa:",
+              "opcoes": ["A crosta do manto", "O manto do núcleo"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! O Moho é a fronteira entre crosta e manto.",
+              "mascote_feedback_errado": "Separa a crosta do manto — a fronteira manto/núcleo é a descontinuidade de Gutenberg."
+            },
+            {
+              "pergunta": "A zona de sombra sísmica permitiu descobrir que:",
+              "opcoes": ["O núcleo externo é líquido", "A crosta tem duas camadas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A ausência de ondas S para lá dos 103° foi a chave desta descoberta.",
+              "mascote_feedback_errado": "Permitiu descobrir que o núcleo externo é líquido — não tem relação direta com a crosta."
+            }
+          ],
+          "mascote_conclusao": "Já conheces as três descontinuidades principais. Agora vamos ver as duas formas de organizar tudo isto em modelos. 🧩"
+        }
+      ]
+    },
+    {
+      "secao_id": "modelos-quimico-fisico",
+      "titulo": "Dois modelos, uma só Terra",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Existem duas formas diferentes — e complementares — de descrever as camadas da Terra. 🧩",
+          "texto": "Uma pergunta \"do que é feito?\" (modelo químico). A outra pergunta \"como se comporta?\" (modelo físico)."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "O modelo químico: crosta, manto, núcleo",
+          "instrucao": "Clica em cada camada do modelo químico.",
+          "pontos": [
+            { "id": "crosta_quim", "label": "Crosta", "explicacao": "Continental: rochas graníticas e metamórficas, menos densa (≈2,7 g/cm³), 30-70 km. Oceânica: basaltos e gabros (≈3,0 g/cm³), 5-10 km, até ≈200 Ma." },
+            { "id": "manto_quim", "label": "Manto", "explicacao": "Rochas ultrabásicas (peridotito), ricas em ferro e magnésio, até ≈2900 km." },
+            { "id": "nucleo_quim", "label": "Núcleo", "explicacao": "Ferro e níquel, com elementos leves; densidade ≈10-13 g/cm³." }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O modelo físico: litosfera, astenosfera, mesosfera...",
+          "instrucao": "Clica em cada camada do modelo físico.",
+          "pontos": [
+            { "id": "litosfera_fis", "label": "Litosfera", "explicacao": "Rígida; crosta + manto superior; ≈100 km de espessura (menos nas dorsais). Dividida em placas." },
+            { "id": "astenosfera_fis", "label": "Astenosfera", "explicacao": "Plástica, parcialmente fundida (1-10%); corresponde à zona de baixa velocidade sísmica (≈100-250 km)." },
+            { "id": "mesosfera_fis", "label": "Mesosfera", "explicacao": "Sólida e rígida, devido à elevada pressão, até ≈2900 km." },
+            { "id": "nucleos_fis", "label": "Núcleo externo e interno", "explicacao": "Externo: líquido (2900-5150 km). Interno: sólido apesar de ≈5000-6000°C, devido à pressão muito elevada." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A astenosfera é quimicamente parte do manto, mas no modelo físico é tratada à parte porque:",
+          "opcoes": ["Tem comportamento plástico, diferente do resto do manto", "É feita de um material totalmente diferente"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! O modelo físico separa por comportamento mecânico, não por composição.",
+          "mascote_feedback_errado": "É por ter comportamento plástico diferente — a composição química é semelhante à do resto do manto."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🧩",
+          "texto": "💡 Não confundas os dois modelos: o químico pergunta \"do que é feito?\" (crosta, manto, núcleo); o físico pergunta \"como se comporta?\" (rígido ou plástico). A astenosfera, por exemplo, é quimicamente manto, mas fisicamente comporta-se de forma diferente do resto do manto — daí ter um nome próprio só para o comportamento."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Geomagnetismo, paleomagnetismo e isostasia",
+          "texto": "O campo magnético da Terra é gerado pelos movimentos do ferro líquido no núcleo externo (efeito de dínamo) e sofre inversões de polaridade ao longo do tempo. O paleomagnetismo — o estudo desse registo fixado nas rochas basálticas — foi uma das maiores provas da expansão dos fundos oceânicos. Já a isostasia é o equilíbrio entre a litosfera e a astenosfera, semelhante à flutuação de gelo na água: a erosão de uma montanha faz a litosfera subir lentamente; a acumulação de gelo ou sedimentos faz-a afundar. É por isso que a Escandinávia continua a subir lentamente desde que os glaciares da última glaciação derreteram."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O modelo que divide a Terra em crosta, manto e núcleo é o modelo:",
+              "opcoes": ["Químico", "Físico"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! O modelo químico classifica pela composição.",
+              "mascote_feedback_errado": "É o modelo químico — o físico divide em litosfera, astenosfera, mesosfera, etc."
+            },
+            {
+              "pergunta": "O campo magnético terrestre é gerado:",
+              "opcoes": ["Pelos movimentos do ferro líquido no núcleo externo", "Pela rotação da crosta"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! É o chamado efeito de dínamo, no núcleo externo líquido.",
+              "mascote_feedback_errado": "É gerado pelos movimentos do ferro líquido no núcleo externo, não pela crosta."
+            },
+            {
+              "pergunta": "Pela isostasia, a acumulação de gelo ou de sedimentos numa região faz essa região:",
+              "opcoes": ["Afundar lentamente", "Subir lentamente"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! O peso extra afunda a litosfera na astenosfera, como um barco com mais carga.",
+              "mascote_feedback_errado": "Faz afundar — é a erosão (remover massa) que faz a litosfera subir."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já conheces as descontinuidades, o modelo químico e o modelo físico da Terra, e como o geomagnetismo e a isostasia moldam o planeta por dentro e por fora. 🔥🌍"
+        }
+      ]
+    }
+  ]
+}

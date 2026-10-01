@@ -38,7 +38,11 @@
         window.exploreActivityHeartbeatUrl = "{% url 'registar-atividade' %}";
         window.exploreCsrfToken = "{{ csrf_token }}";
         window.exploreMissionsIndexUrl = "{% url 'index-missions' %}";
+        {% if missao.area == 'geologia' %}
+        window.exploreMascotImageUrl = "{% static 'images/Mascote Explore+ Geology.png' %}";
+        {% else %}
         window.exploreMascotImageUrl = "{% static 'images/Mascote Explore+ Biology.png' %}";
+        {% endif %}
         window.exploreMascoteChatUrl = "{% url 'mascote-chat' %}";
         window.exploreMascotWaveVideoUrl = "{% static 'Mascote a acenar.webm' %}";
         window.exploreMascotDoubtsImageUrl = "{% static 'images/Mascote com dúvidas.png' %}";

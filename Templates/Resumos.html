@@ -160,14 +160,14 @@
         <p>Revisões diretas ao ponto, prontas para reveres antes de um teste.</p>
         <div class="subject-switcher">
             <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
-                <span>Explore Biology</span>
+                <span>{% if subject == 'geology' %}Explore Geology{% else %}Explore Biology{% endif %}</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
             </button>
             <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
-                <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
+                <li><a href="{% url 'Resumos' %}" class="subject-switcher-option{% if subject != 'geology' %} is-active{% endif %}" data-subject="biology">Explore Biology</a></li>
                 <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
                 <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
-                <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
+                <li><a href="{% url 'Resumos-geologia' %}" class="subject-switcher-option{% if subject == 'geology' %} is-active{% endif %}" data-subject="geology">Explore Geology</a></li>
             </ul>
         </div>
     </div>

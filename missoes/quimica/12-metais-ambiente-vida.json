@@ -1,0 +1,826 @@
+{
+  "missao_id": "12-metais-ambiente-vida",
+  "id_guiao": "qui12-m3",
+  "titulo": "Metais, ambiente e vida",
+  "disciplina": "quimica",
+  "ano": 12,
+  "imagem": "q12_hemoglobina.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><circle cx=\"12\" cy=\"4\" r=\"2\"/><circle cx=\"12\" cy=\"20\" r=\"2\"/><circle cx=\"4\" cy=\"12\" r=\"2\"/><circle cx=\"20\" cy=\"12\" r=\"2\"/><path d=\"M12 6v3M12 15v3M6 12h3M15 12h3\"/></svg>",
+    "nome": "Mestre dos Complexos"
+  },
+  "secoes": [
+    {
+      "secao_id": "complexos-cor-al-1-5",
+      "titulo": "Complexos e cor; AL 1.5",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_cores_complexos.png",
+          "imagem_legenda": "Tubos de ensaio com soluções coloridas de complexos (Cu²⁺ aquoso, [Cu(NH₃)₄]²⁺, tiocianato de ferro, níquel).",
+          "texto": "Uma solução de sulfato de cobre é azul-clara. Junta-lhe amoníaco e fica de um azul-escuro intenso, quase violeta. O cobre é o mesmo, a concentração é a mesma. O que mudou foram as moléculas que rodeiam o ião cobre. Os iões dos metais de transição formam estruturas chamadas complexos, e são eles que dão cor aos vitrais, às pedras preciosas e ao próprio sangue.",
+          "mascote_texto": "Um complexo é como um ião metálico \"abraçado\" por várias moléculas ou iões. A cor depende de quem o abraça."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Estrutura de um complexo",
+          "imagem": "q12_estrutura_complexo.png",
+          "imagem_legenda": "Complexo [Cu(NH₃)₄]²⁺: ião central, quatro ligandos e número de coordenação.",
+          "texto_principal": "Um complexo (ou composto de coordenação) é formado por um ião metálico central rodeado de aniões ou moléculas neutras, chamados ligandos. Todos os ligandos têm pelo menos um par de eletrões não ligante, que partilham com o metal: o átomo que cede esse par é o átomo dador.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ião metálico central",
+              "explicacao": "Em geral, um catião de um metal de transição (Cu²⁺, Fe²⁺, Fe³⁺, Co²⁺, Pt²⁺)."
+            },
+            {
+              "id": "p2",
+              "label": "Ligandos",
+              "explicacao": "Moléculas ou iões com pares não ligantes. Ex.: H₂O, NH₃, Cl⁻, CN⁻, OH⁻."
+            },
+            {
+              "id": "p3",
+              "label": "Ligação metal-ligando",
+              "explicacao": "O ligando cede um par de eletrões, que é partilhado entre o átomo dador e o metal."
+            },
+            {
+              "id": "p4",
+              "label": "Número de coordenação",
+              "explicacao": "Número de átomos dadores ligados ao metal. [Ag(NH₃)₂]⁺: 2; [Cu(NH₃)₄]²⁺: 4; [Fe(H₂O)₆]³⁺: 6."
+            },
+            {
+              "id": "p5",
+              "label": "Ligandos polidentados (quelantes)",
+              "explicacao": "Ligam-se ao metal por mais de um átomo dador, como uma pinça. O EDTA tem 6 átomos dadores e \"agarra\" os iões metálicos com muita força."
+            },
+            {
+              "id": "p6",
+              "label": "Aplicações do EDTA",
+              "explicacao": "Retira iões metálicos que estragam alimentos (conservante), torna os detergentes mais eficazes em águas duras e é usado no tratamento de envenenamentos por chumbo."
+            },
+            {
+              "id": "p7",
+              "label": "Cor",
+              "explicacao": "A cor dos complexos resulta de transições eletrónicas que envolvem os eletrões das orbitais d do metal. A solução absorve certas cores da luz branca e vemos a cor complementar."
+            },
+            {
+              "id": "p8",
+              "label": "Outras aplicações",
+              "explicacao": "Cisplatina (complexo de platina) em quimioterapia; complexos de gadolínio como contrastes em ressonância magnética; complexos de gálio em imagiologia médica; complexos de európio em sistemas luminescentes (notas de euro, ecrãs)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "A = ε × l × c",
+              "significado": "Lei de Lambert-Beer.",
+              "unidades": ""
+            },
+            {
+              "expressao": "A: absorvância (sem unidades); ε: coeficiente de absortividade molar (dm³ mol⁻¹ cm⁻¹); l: percurso ótico (cm); c: concentração (mol/dm³)",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é o número de coordenação do ferro no ião [Fe(CN)₆]⁴⁻?",
+          "opcoes": [
+            "1",
+            "4",
+            "6",
+            "10"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. Seis ligandos CN⁻, cada um ligado ao ferro por um átomo dador (o carbono): número de coordenação 6.",
+          "mascote_feedback_errado": "O número de coordenação é o número de átomos dadores ligados ao metal. Há 6 ligandos CN⁻ monodentados: 6."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma solução absorve sobretudo luz laranja e vermelha. De que cor a vemos?",
+          "opcoes": [
+            "Laranja",
+            "Vermelha",
+            "Azul",
+            "Incolor"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. Vemos a luz que não é absorvida: a cor complementar do laranja-vermelho, ou seja, azul. É o caso das soluções de Cu²⁺.",
+          "mascote_feedback_errado": "A cor que vemos é a da luz transmitida, ou seja, a complementar da absorvida. Absorvendo laranja e vermelho, a solução parece azul."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 1.5",
+          "titulo": "A cor e a composição quantitativa de soluções com iões metálicos",
+          "objetivo": "Determinar a concentração de uma solução corada a partir da intensidade da sua cor, usando um espetrofotómetro (ou colorímetro) e a lei de Lambert-Beer.",
+          "material": [
+            "Espetrofotómetro ou colorímetro (com cuvetes de 1,00 cm)",
+            "Solução-mãe de um ião metálico corado (por exemplo, sulfato de cobre(II) em meio amoniacal, ou permanganato de potássio)",
+            "Pipetas volumétricas e balões volumétricos (para preparar soluções-padrão)",
+            "Solução-problema de concentração desconhecida",
+            "Água destilada (branco)"
+          ],
+          "procedimento": [
+            "Preparar, por diluição da solução-mãe, uma série de pelo menos cinco soluções-padrão de concentrações conhecidas.",
+            "Registar o espetro de absorção de uma das soluções e escolher o comprimento de onda de absorção máxima.",
+            "Acertar o zero do aparelho com uma cuvete com água destilada (branco).",
+            "Medir a absorvância de cada solução-padrão, da menos para a mais concentrada.",
+            "Medir a absorvância da solução-problema.",
+            "Preparar e medir também uma solução muito concentrada, para verificar desvios à lei."
+          ],
+          "tratamento_de_dados": "Construir a curva de calibração: absorvância (eixo vertical) em função da concentração (eixo horizontal). Para soluções diluídas, é uma reta que passa pela origem, com declive ε × l.\n\nDeterminar a concentração da solução-problema a partir da curva (ou da equação da reta).\n\nExemplo: declive = 12,0 dm³/mol (com l = 1,00 cm); absorvância da solução-problema = 0,300. c = 0,300 / 12,0 = 0,0250 mol/dm³.\n\nVerificar que, para concentrações elevadas, os pontos se afastam da reta (desvio à lei de Lambert-Beer).",
+          "conclusao": "A absorvância de uma solução corada é diretamente proporcional à concentração do ião metálico (para soluções diluídas), o que permite determinar concentrações desconhecidas a partir de uma curva de calibração. Para soluções concentradas, a proporcionalidade deixa de se verificar.",
+          "erros_comuns": [
+            "Não fazer o branco antes das medições.",
+            "Usar cuvetes com dedadas, riscos ou bolhas de ar (aumentam a absorvância).",
+            "Medir a um comprimento de onda diferente do de absorção máxima (o método perde sensibilidade).",
+            "Usar a curva fora da gama de concentrações das soluções-padrão (extrapolação)."
+          ],
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_lambert_beer",
+          "titulo": "Mede a cor",
+          "instrucao": "Escolhe uma solução-padrão e mede a sua absorvância (cada leitura tem um pequeno erro aleatório). Compara com a reta de calibração e descobre a concentração da solução mistério, que é sorteada de cada vez que abres a página.",
+          "controlos": [
+            {
+              "id": "c",
+              "rotulo": "Concentração da solução-padrão",
+              "opcoes": [
+                {
+                  "valor": 0.005,
+                  "label": "0,005 mol/dm³"
+                },
+                {
+                  "valor": 0.01,
+                  "label": "0,010 mol/dm³"
+                },
+                {
+                  "valor": 0.015,
+                  "label": "0,015 mol/dm³"
+                },
+                {
+                  "valor": 0.02,
+                  "label": "0,020 mol/dm³"
+                },
+                {
+                  "valor": 0.03,
+                  "label": "0,030 mol/dm³"
+                },
+                {
+                  "valor": 0.04,
+                  "label": "0,040 mol/dm³"
+                },
+                {
+                  "valor": 0.08,
+                  "label": "0,080 mol/dm³"
+                }
+              ],
+              "valor_inicial": 0.01
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Absorvância medida",
+              "formula": "(function () { var A = c <= 0.040 ? 12.0 * c : 12.0 * c * (1 - 2 * (c - 0.040)); function d(x, k) { return x.toFixed(k).replace('.', ','); } return d(A + (Math.random() * 0.010 - 0.005), 3); })()"
+            },
+            {
+              "rotulo": "Valor da reta (A = 12,0 × c)",
+              "formula": "(function () { var A = c <= 0.040 ? 12.0 * c : 12.0 * c * (1 - 2 * (c - 0.040)); function d(x, k) { return x.toFixed(k).replace('.', ','); } return d(12.0 * c, 3); })()"
+            },
+            {
+              "rotulo": "Este ponto",
+              "formula": "(function () { var A = c <= 0.040 ? 12.0 * c : 12.0 * c * (1 - 2 * (c - 0.040)); function d(x, k) { return x.toFixed(k).replace('.', ','); } return c > 0.040 ? 'Fica abaixo da reta: desvio à lei de Lambert-Beer (solução demasiado concentrada). Não entra na reta de ajuste.' : 'Fica sobre a reta (dentro do erro de leitura).'; })()"
+            },
+            {
+              "rotulo": "Curva de calibração (padrões até 0,040 mol/dm³)",
+              "formula": "'0,005 → 0,060; 0,010 → 0,120; 0,015 → 0,180; 0,020 → 0,240; 0,030 → 0,360; 0,040 → 0,480. Reta de ajuste: A = 12,0 × c.'"
+            },
+            {
+              "rotulo": "Solução mistério",
+              "formula": "(function () { var A = c <= 0.040 ? 12.0 * c : 12.0 * c * (1 - 2 * (c - 0.040)); function d(x, k) { return x.toFixed(k).replace('.', ','); } var m = window.meMisterioLambertBeer || (window.meMisterioLambertBeer = 0.010 + Math.random() * 0.025); var Am = Math.round(12.0 * m * 1000) / 1000; return 'A = ' + d(Am, 3) + ' → c = A / 12,0 = ' + d(Am / 12.0, 4) + ' mol/dm³'; })()"
+            },
+            {
+              "rotulo": "Cor da cuvete",
+              "formula": "(function () { var A = c <= 0.040 ? 12.0 * c : 12.0 * c * (1 - 2 * (c - 0.040)); function d(x, k) { return x.toFixed(k).replace('.', ','); } return A < 0.15 ? 'Azul muito claro' : A < 0.30 ? 'Azul claro' : A < 0.50 ? 'Azul' : 'Azul intenso'; })()"
+            }
+          ],
+          "pergunta_final": "Porque é que o ponto de 0,080 mol/dm³ fica abaixo da reta? Resposta esperada: a lei de Lambert-Beer só se verifica para soluções diluídas; para soluções concentradas há desvios à proporcionalidade."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Óculos de sol de várias tonalidades.** Quanto mais escuras as lentes dos óculos de sol, menos luz passa. Se sobrepuseres duas lentes iguais, passa ainda menos. A absorvância de uma solução funciona assim: duplicar a concentração (mais \"partículas escuras\" no caminho da luz) duplica a absorvância. E tal como óculos com lentes verdes deixam passar o verde e bloqueiam o resto, uma solução azul absorve as outras cores e deixa passar o azul."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Num complexo, os ligandos têm em comum:",
+              "opcoes": [
+                "terem carga positiva.",
+                "terem pelo menos um par de eletrões não ligante.",
+                "serem sempre aniões.",
+                "serem metais."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os ligandos cedem um par de eletrões não ligante ao metal. Podem ser moléculas neutras (H₂O, NH₃) ou aniões (Cl⁻, CN⁻).",
+              "mascote_feedback_errado": "Os ligandos cedem um par de eletrões não ligante ao metal. Podem ser moléculas neutras (H₂O, NH₃) ou aniões (Cl⁻, CN⁻)."
+            },
+            {
+              "pergunta": "O EDTA é usado no tratamento de envenenamento por chumbo porque:",
+              "opcoes": [
+                "oxida o chumbo.",
+                "é um ligando polidentado que forma complexos muito estáveis com o Pb²⁺, que são depois eliminados.",
+                "neutraliza o chumbo.",
+                "precipita o chumbo no estômago."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O EDTA \"agarra\" os iões metálicos por seis átomos dadores. O complexo formado é estável e solúvel e é excretado pelos rins.",
+              "mascote_feedback_errado": "O EDTA \"agarra\" os iões metálicos por seis átomos dadores. O complexo formado é estável e solúvel e é excretado pelos rins."
+            },
+            {
+              "pergunta": "Pela lei de Lambert-Beer, se a concentração de uma solução diluída duplicar, a absorvância:",
+              "opcoes": [
+                "mantém-se.",
+                "duplica.",
+                "fica reduzida a metade.",
+                "quadruplica."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A = ε l c: a absorvância é diretamente proporcional à concentração.",
+              "mascote_feedback_errado": "A = ε l c: a absorvância é diretamente proporcional à concentração."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "metais-organismo",
+      "titulo": "Os metais no organismo humano",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_hemoglobina.png",
+          "imagem_legenda": "Molécula de hemoglobina com quatro grupos hemo; detalhe de um hemo com o Fe²⁺ ligado a O₂.",
+          "texto": "O sangue é vermelho por causa do ferro. Em cada glóbulo vermelho há cerca de 270 milhões de moléculas de hemoglobina, e cada uma tem quatro átomos de ferro no centro de complexos chamados grupos hemo. O monóxido de carbono mata porque se liga a esses átomos de ferro com uma força cerca de 200 vezes maior do que o oxigénio, e não larga.",
+          "mascote_texto": "Esta secção mostra que a química dos complexos não é só laboratório: está no teu sangue agora mesmo."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Metais essenciais e metais tóxicos",
+          "imagem": "q12_metais_corpo.png",
+          "imagem_legenda": "Silhueta humana com os metais essenciais e a sua função, e os metais tóxicos.",
+          "texto_principal": "Alguns metais são essenciais à vida, em quantidades certas; outros são tóxicos, mesmo em quantidades pequenas. Muitos metais atuam no organismo sob a forma de complexos, ligados a proteínas.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ferro (Fe)",
+              "explicacao": "Transporte de oxigénio (hemoglobina) e armazenamento de oxigénio nos músculos (mioglobina). A falta causa anemia."
+            },
+            {
+              "id": "p2",
+              "label": "Cálcio (Ca)",
+              "explicacao": "Estrutura dos ossos e dentes; contração muscular; coagulação do sangue."
+            },
+            {
+              "id": "p3",
+              "label": "Magnésio (Mg)",
+              "explicacao": "Componente de centenas de enzimas; ossos; na clorofila das plantas, é o ião central."
+            },
+            {
+              "id": "p4",
+              "label": "Sódio (Na) e potássio (K)",
+              "explicacao": "Equilíbrio de água nas células e transmissão dos impulsos nervosos."
+            },
+            {
+              "id": "p5",
+              "label": "Chumbo (Pb)",
+              "explicacao": "Tóxico para o sistema nervoso (sobretudo em crianças), rins e sangue. Fontes antigas: tintas, gasolina com chumbo, canalizações."
+            },
+            {
+              "id": "p6",
+              "label": "Mercúrio (Hg)",
+              "explicacao": "Tóxico para o sistema nervoso. Acumula-se nas cadeias alimentares (peixes predadores grandes, como o espadarte e o atum)."
+            },
+            {
+              "id": "p7",
+              "label": "Crómio (Cr)",
+              "explicacao": "O Cr(III) é essencial em vestígios; o Cr(VI) é tóxico e cancerígeno (usado em algumas indústrias, como os curtumes e a cromagem)."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A hemoglobina",
+          "imagem": "q12_hemo_cooperativa.png",
+          "imagem_legenda": "Curva sigmoide de saturação da hemoglobina em função da pressão de O₂.",
+          "texto_principal": "A hemoglobina é uma proteína com quatro subunidades, cada uma com um grupo hemo: um complexo de ferro(II) que se liga a uma molécula de O₂. A ligação do oxigénio é cooperativa e depende do pH, o que permite à hemoglobina carregar O₂ nos pulmões e libertá-lo nos tecidos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Quatro grupos hemo",
+              "explicacao": "Cada molécula de hemoglobina transporta até 4 moléculas de O₂."
+            },
+            {
+              "id": "p2",
+              "label": "Ligação cooperativa",
+              "explicacao": "Quanto mais O₂ já está ligado, mais fácil é ligar o seguinte. Inversamente, quando há pouco O₂, a hemoglobina liberta-o mais depressa. Por isso a curva tem forma de S."
+            },
+            {
+              "id": "p3",
+              "label": "Efeito do pH",
+              "explicacao": "Nos tecidos ativos, há mais CO₂ e o pH baixa ligeiramente. A pH mais baixo, a hemoglobina tem menor afinidade para o O₂ e liberta-o onde é mais preciso."
+            },
+            {
+              "id": "p4",
+              "label": "Monóxido de carbono",
+              "explicacao": "Liga-se ao ferro do grupo hemo, substituindo o O₂, e forma um complexo muito mais estável (cerca de 200 vezes mais). A hemoglobina deixa de transportar oxigénio. É por isso que o CO é tão perigoso nas lareiras e esquentadores mal ventilados."
+            },
+            {
+              "id": "p5",
+              "label": "Tratamento da intoxicação por CO",
+              "explicacao": "Oxigénio puro (por vezes em câmara hiperbárica), para deslocar o equilíbrio e retirar o CO da hemoglobina."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Hb + 4 O₂ ⇌ Hb(O₂)₄",
+              "significado": "Nos pulmões, para a direita; nos tecidos, para a esquerda.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Hb(O₂) + CO ⇌ Hb(CO) + O₂",
+              "significado": "Fortemente deslocado para a direita.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que a intoxicação por monóxido de carbono é tão grave?",
+          "opcoes": [
+            "Porque o CO é um ácido forte.",
+            "Porque o CO forma com o ferro da hemoglobina um complexo muito mais estável do que o O₂, impedindo o transporte de oxigénio.",
+            "Porque o CO destrói os glóbulos vermelhos.",
+            "Porque o CO se transforma em CO₂ no sangue."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O CO ocupa o lugar do O₂ no ferro do grupo hemo e quase não sai. Os tecidos ficam sem oxigénio, mesmo que se respire normalmente.",
+          "mascote_feedback_errado": "O CO é um ligando que se liga ao ferro da hemoglobina com muito mais força do que o oxigénio. A hemoglobina fica \"ocupada\" e deixa de transportar O₂."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Durante o exercício físico intenso, os músculos produzem mais CO₂ e o pH local baixa. Que efeito tem isto na hemoglobina?",
+          "opcoes": [
+            "Aumenta a afinidade para o O₂, que fica retido.",
+            "Diminui a afinidade para o O₂, que é libertado mais facilmente para os músculos.",
+            "Não tem efeito.",
+            "Transforma a hemoglobina em CO₂."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Este é o efeito do pH na fixação do oxigénio: os tecidos que mais trabalham recebem mais oxigénio.",
+          "mascote_feedback_errado": "A pH mais baixo, a hemoglobina liga-se menos ao O₂ e liberta-o. É precisamente nos músculos ativos (com mais CO₂ e pH mais baixo) que isso acontece."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O autocarro que enche e esvazia.** A hemoglobina é como um autocarro com quatro lugares que faz a viagem pulmões-tecidos. Nos pulmões, onde há imensos passageiros (O₂), entra um e logo os outros entram com mais facilidade (cooperatividade). Nos tecidos, quando um sai, os outros saem mais depressa. O CO é um passageiro que se senta e nunca mais se levanta: ocupa o lugar e o autocarro deixa de transportar oxigénio."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Mercúrio no peixe e a clorofila",
+          "texto": "**Mercúrio e peixe**\n\nO mercúrio libertado pela indústria e pela queima de carvão transforma-se, nos sedimentos, em metilmercúrio, que se acumula nos seres vivos e aumenta de concentração ao longo da cadeia alimentar. Por isso as recomendações de saúde aconselham grávidas e crianças a limitar o consumo de peixes predadores grandes.\n\n**A clorofila**\n\nA clorofila é um complexo de magnésio com uma estrutura muito parecida com a do grupo hemo. Absorve luz vermelha e azul, e por isso as folhas são verdes."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual destes metais é essencial ao transporte de oxigénio no sangue?",
+              "opcoes": [
+                "Cálcio",
+                "Ferro",
+                "Chumbo",
+                "Mercúrio"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O ferro, no grupo hemo da hemoglobina, liga-se ao O₂ e transporta-o.",
+              "mascote_feedback_errado": "O ferro, no grupo hemo da hemoglobina, liga-se ao O₂ e transporta-o."
+            },
+            {
+              "pergunta": "A ligação do O₂ à hemoglobina é cooperativa. Isto significa que:",
+              "opcoes": [
+                "cada molécula de hemoglobina transporta um só O₂.",
+                "a ligação de uma molécula de O₂ facilita a ligação das seguintes.",
+                "o O₂ e o CO se ligam ao mesmo tempo.",
+                "a hemoglobina não depende do pH."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Na ligação cooperativa, cada O₂ ligado aumenta a afinidade dos restantes grupos hemo para o O₂.",
+              "mascote_feedback_errado": "Na ligação cooperativa, cada O₂ ligado aumenta a afinidade dos restantes grupos hemo para o O₂."
+            },
+            {
+              "pergunta": "Qual destes metais é tóxico para o sistema nervoso, sobretudo em crianças, e foi usado em tintas e na gasolina?",
+              "opcoes": [
+                "Sódio",
+                "Magnésio",
+                "Chumbo",
+                "Potássio"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "O chumbo afeta o sistema nervoso, os rins e o sangue. A gasolina com chumbo foi proibida na União Europeia no ano 2000.",
+              "mascote_feedback_errado": "O chumbo afeta o sistema nervoso, os rins e o sangue. A gasolina com chumbo foi proibida na União Europeia no ano 2000."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "tampoes-al-1-6",
+      "titulo": "Grau de ionização, hidrólise e soluções-tampão; AL 1.6",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_sangue_ph.png",
+          "imagem_legenda": "Gota de sangue com a escala de pH ampliada entre 7,35 e 7,45 e o par H₂CO₃ / HCO₃⁻.",
+          "texto": "O pH do teu sangue está entre 7,35 e 7,45. Se descer para 7,0 ou subir para 7,8, a vida corre perigo. E no entanto, o teu corpo produz ácidos a toda a hora (o CO₂ da respiração, o ácido lático do exercício). O pH mantém-se graças a um sistema químico que \"absorve\" os ácidos e as bases: uma solução-tampão.",
+          "mascote_texto": "Um tampão é sempre um par ácido fraco/base conjugada (ou base fraca/ácido conjugado) em quantidades parecidas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Soluções-tampão",
+          "imagem": "q12_tampao.png",
+          "imagem_legenda": "Tampão ácido acético / acetato: adição de ácido e de base com o pH quase inalterado, comparado com água pura.",
+          "texto_principal": "Uma solução-tampão mantém o pH aproximadamente constante quando se lhe adicionam pequenas quantidades de ácido forte ou de base forte, ou quando é diluída. É formada por um ácido fraco e a sua base conjugada (ou uma base fraca e o seu ácido conjugado), em concentrações semelhantes.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Composição",
+              "explicacao": "Ex.: CH₃COOH / CH₃COO⁻; NH₄⁺ / NH₃; H₂CO₃ (CO₂) / HCO₃⁻."
+            },
+            {
+              "id": "p2",
+              "label": "Se se junta ácido",
+              "explicacao": "A base do par consome o H₃O⁺: CH₃COO⁻ + H₃O⁺ → CH₃COOH + H₂O."
+            },
+            {
+              "id": "p3",
+              "label": "Se se junta base",
+              "explicacao": "O ácido do par consome o OH⁻: CH₃COOH + OH⁻ → CH₃COO⁻ + H₂O."
+            },
+            {
+              "id": "p4",
+              "label": "pH do tampão",
+              "explicacao": "Depende do K a do ácido e da razão entre as concentrações do par. Quando [ácido] = [base conjugada], pH = pK a."
+            },
+            {
+              "id": "p5",
+              "label": "Capacidade tampão",
+              "explicacao": "É máxima quando as concentrações do par são iguais e é maior para concentrações maiores. Se se adicionar ácido ou base em grande quantidade, o tampão \"esgota-se\"."
+            },
+            {
+              "id": "p6",
+              "label": "Tampão do sangue",
+              "explicacao": "Par H₂CO₃ / HCO₃⁻ (o H₂CO₃ está em equilíbrio com o CO₂ dissolvido): CO₂ + 2 H₂O ⇌ HCO₃⁻ + H₃O⁺. A respiração regula o CO₂ e os rins regulam o HCO₃⁻."
+            },
+            {
+              "id": "p7",
+              "label": "Grau de ionização (α)",
+              "explicacao": "Fração de moléculas de um ácido (ou base) fraco que se ionizam: α = [A⁻] / c. Relaciona-se com K a: K a = c α² / (1 − α). Diluir um ácido fraco aumenta α."
+            },
+            {
+              "id": "p8",
+              "label": "Hidrólise de iões",
+              "explicacao": "Iões que reagem com a água tornam as soluções de sais ácidas (NH₄⁺, Fe³⁺) ou básicas (CH₃COO⁻, CO₃²⁻)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "pK a = −log K a",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "pH = pK a + log([base conjugada] / [ácido])",
+              "significado": "pH de um tampão.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Quando [base conjugada] = [ácido]: pH = pK a",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "α = [A⁻] / c; K a = c α² / (1 − α)",
+              "significado": "Grau de ionização.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A 1,0 dm³ de um tampão com 0,10 mol de CH₃COOH e 0,10 mol de CH₃COO⁻ (pK a = 4,74) junta-se 0,010 mol de HCl. Qual é o novo pH?",
+          "opcoes": [
+            "2,00",
+            "4,65",
+            "4,74",
+            "7,00"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O H₃O⁺ adicionado reage com o acetato: ficam 0,11 mol de ácido e 0,09 mol de base. pH = 4,74 + log(0,09 / 0,11) ≈ 4,74 − 0,09 = 4,65. Em água pura, a mesma adição baixaria o pH de 7,00 para 2,00.",
+          "mascote_feedback_errado": "O HCl reage com a base do tampão: CH₃COO⁻ passa a 0,09 mol e CH₃COOH a 0,11 mol. pH = pK a + log(0,09 / 0,11) ≈ 4,65. O pH quase não muda."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual dos pares pode formar uma solução-tampão?",
+          "opcoes": [
+            "HCl / NaCl",
+            "NH₃ / NH₄Cl",
+            "NaOH / NaCl",
+            "HNO₃ / KNO₃"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. NH₃ é uma base fraca e NH₄⁺ o seu ácido conjugado. Os outros pares incluem ácidos ou bases fortes, cujas espécies conjugadas não têm propriedades ácido-base significativas.",
+          "mascote_feedback_errado": "Um tampão precisa de um par conjugado fraco. HCl, NaOH e HNO₃ são fortes. Só NH₃ / NH₄⁺ é um par base fraca / ácido conjugado."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_tampao",
+          "titulo": "Titulação ácido forte-base fraca e zona tampão",
+          "instrucao": "Titula 25,00 cm³ de amoníaco 0,100 mol/dm³ com ácido clorídrico 0,100 mol/dm³. Mexe no volume de HCl (passos de 0,10 cm³) e observa o pH, a zona tampão e o ponto de equivalência.",
+          "controlos": [
+            {
+              "id": "Vb",
+              "rotulo": "Volume de HCl adicionado",
+              "min": 0,
+              "max": 40,
+              "passo": 0.1,
+              "valor_inicial": 0,
+              "unidade": "cm³"
+            },
+            {
+              "id": "comparar",
+              "rotulo": "Mostrar comparação com água pura",
+              "opcoes": [
+                {
+                  "valor": "nao",
+                  "label": "Não"
+                },
+                {
+                  "valor": "sim",
+                  "label": "Sim (o mesmo HCl em 25 cm³ de água)"
+                }
+              ]
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "pH da solução",
+              "formula": "(function () { var nB = 2.50e-3, nH = 0.100 * Vb / 1000, Vt = (25.00 + Vb) / 1000, Kb = 1.8e-5, Ka = 5.6e-10; var eq = Math.abs(nH - nB) <= 1e-9 * nB, pH; if (nH === 0) pH = 14 + Math.log10(Math.sqrt(Kb * 0.100)); else if (eq) pH = -Math.log10(Math.sqrt(Ka * nB / Vt)); else if (nH < nB) pH = 9.25 + Math.log10((nB - nH) / nH); else pH = -Math.log10((nH - nB) / Vt); function d2(x) { return x.toFixed(2).replace('.', ','); } return d2(pH); })()"
+            },
+            {
+              "rotulo": "Zona da titulação",
+              "formula": "(function () { var nB = 2.50e-3, nH = 0.100 * Vb / 1000, Vt = (25.00 + Vb) / 1000, Kb = 1.8e-5, Ka = 5.6e-10; var eq = Math.abs(nH - nB) <= 1e-9 * nB, pH; if (nH === 0) pH = 14 + Math.log10(Math.sqrt(Kb * 0.100)); else if (eq) pH = -Math.log10(Math.sqrt(Ka * nB / Vt)); else if (nH < nB) pH = 9.25 + Math.log10((nB - nH) / nH); else pH = -Math.log10((nH - nB) / Vt); function d2(x) { return x.toFixed(2).replace('.', ','); } if (nH === 0) return 'Início: só amoníaco (base fraca)'; if (eq) return 'Ponto de equivalência (25,00 cm³): pH ácido porque a solução contém NH₄⁺'; if (Math.abs(Vb - 12.5) < 0.05) return 'Ponto de semiequivalência (12,50 cm³): [NH₃] = [NH₄⁺] e pH = pK a(NH₄⁺) = 9,25'; if (nH < nB) return (Vb >= 2.5 && Vb <= 22.5) ? 'Zona tampão (cerca de 2,5 a 22,5 cm³): o pH varia pouco' : 'Antes do ponto de equivalência, fora da zona tampão central'; return 'Depois do ponto de equivalência: HCl em excesso'; })()"
+            },
+            {
+              "rotulo": "Espécies predominantes",
+              "formula": "(function () { var nB = 2.50e-3, nH = 0.100 * Vb / 1000, Vt = (25.00 + Vb) / 1000, Kb = 1.8e-5, Ka = 5.6e-10; var eq = Math.abs(nH - nB) <= 1e-9 * nB, pH; if (nH === 0) pH = 14 + Math.log10(Math.sqrt(Kb * 0.100)); else if (eq) pH = -Math.log10(Math.sqrt(Ka * nB / Vt)); else if (nH < nB) pH = 9.25 + Math.log10((nB - nH) / nH); else pH = -Math.log10((nH - nB) / Vt); function d2(x) { return x.toFixed(2).replace('.', ','); } if (nH === 0) return 'NH₃ (e um pouco de NH₄⁺ e OH⁻)'; if (eq) return 'NH₄⁺ e Cl⁻'; if (nH < nB) return 'NH₃ e NH₄⁺ (par tampão), com Cl⁻'; return 'NH₄⁺, Cl⁻ e H₃O⁺ em excesso'; })()"
+            },
+            {
+              "rotulo": "Comparação com água pura",
+              "formula": "(function () { var nB = 2.50e-3, nH = 0.100 * Vb / 1000, Vt = (25.00 + Vb) / 1000, Kb = 1.8e-5, Ka = 5.6e-10; var eq = Math.abs(nH - nB) <= 1e-9 * nB, pH; if (nH === 0) pH = 14 + Math.log10(Math.sqrt(Kb * 0.100)); else if (eq) pH = -Math.log10(Math.sqrt(Ka * nB / Vt)); else if (nH < nB) pH = 9.25 + Math.log10((nB - nH) / nH); else pH = -Math.log10((nH - nB) / Vt); function d2(x) { return x.toFixed(2).replace('.', ','); } if (comparar !== 'sim') return 'Escolhe \"Sim\" para comparar'; var pHw = nH === 0 ? 7 : -Math.log10(nH / Vt); return 'O mesmo volume de HCl em 25 cm³ de água daria pH ' + d2(pHw) + '.'; })()"
+            }
+          ],
+          "pergunta_final": "Porque é que, na zona tampão, o pH varia tão pouco com a adição de HCl? Resposta esperada: porque o NH₃ presente consome o H₃O⁺ adicionado, formando NH₄⁺; o par NH₃/NH₄⁺ funciona como tampão."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A esponja e o pano.** Um tampão é como uma esponja que tem tanto capacidade de absorver água como de a largar. Se derramares um pouco de água (ácido), a esponja absorve-a e a mesa quase não fica molhada. Se a mesa estiver demasiado seca (base), a esponja larga um pouco de água. A água pura é como uma mesa sem esponja: qualquer gota faz uma poça. Mas se derramares um balde, a esponja satura: o tampão tem uma capacidade limitada."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 1.6",
+          "titulo": "Funcionamento de um sistema tampão",
+          "objetivo": "Determinar experimentalmente o efeito de um sistema tampão, através da titulação potenciométrica de uma base fraca com um ácido forte, identificando as zonas tampão e o ponto de equivalência.",
+          "material": [
+            "Solução de amoníaco, NH₃ (aq), de concentração conhecida (por exemplo, 0,100 mol/dm³) (em alternativa, carbonato de sódio)",
+            "Solução-padrão de ácido clorídrico, HCl (aq), 0,100 mol/dm³",
+            "Medidor de pH calibrado, agitador magnético",
+            "Bureta de 50 cm³, pipeta volumétrica de 25,00 cm³, gobelé de 150 cm³",
+            "Esguicho com água destilada"
+          ],
+          "procedimento": [
+            "Calibrar o medidor de pH.",
+            "Pipetar 25,00 cm³ da solução de amoníaco para o gobelé e mergulhar o elétrodo, com agitação suave.",
+            "Encher a bureta com HCl e acertar o zero.",
+            "Adicionar o ácido em porções de 1,00 cm³, registando o pH após cada adição. Perto do ponto de equivalência (cerca de 20 a 30 cm³), adicionar porções de 0,20 cm³.",
+            "Continuar até cerca de 10 cm³ depois do ponto de equivalência."
+          ],
+          "tratamento_de_dados": "Traçar a curva de titulação: pH em função do volume de HCl.\n\nIdentificar a zona tampão: zona em que o pH varia pouco (centrada no ponto de semiequivalência, por volta de 12,5 cm³, pH ≈ 9,25).\n\nIdentificar o par responsável pelo efeito tampão: NH₃ / NH₄⁺.\n\nIdentificar o ponto de equivalência: no meio do salto de pH (cerca de 25 cm³, pH ≈ 5,3). O pH é ácido porque a solução contém NH₄⁺.\n\nNo ponto de semiequivalência, [NH₃] = [NH₄⁺], logo pH = pK a(NH₄⁺): obter K a experimental e comparar com 5,6 × 10⁻¹⁰.\n\nSe se titular carbonato de sódio, obtêm-se dois pontos de equivalência (cerca de pH 8,3 e pH 3,8) e duas zonas tampão (CO₃²⁻ / HCO₃⁻ e HCO₃⁻ / H₂CO₃).",
+          "conclusao": "Na titulação de uma base fraca com um ácido forte há uma zona em que o pH varia pouco, correspondente ao tampão formado pela base fraca e pelo seu ácido conjugado. O ponto de equivalência tem pH inferior a 7. O pH no ponto de semiequivalência é igual ao pK a do ácido conjugado.",
+          "erros_comuns": [
+            "Adicionar porções grandes de ácido perto do ponto de equivalência (perde-se a forma do salto).",
+            "Não calibrar o medidor de pH.",
+            "Confundir a zona tampão (pH quase constante) com o ponto de equivalência (variação brusca).",
+            "Pensar que o ponto de equivalência tem sempre pH 7."
+          ],
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Uma solução-tampão é formada por:",
+              "opcoes": [
+                "um ácido forte e uma base forte.",
+                "um ácido fraco e a sua base conjugada (ou uma base fraca e o seu ácido conjugado).",
+                "água pura.",
+                "um sal neutro."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "É o par conjugado fraco que permite consumir tanto ácidos como bases adicionados.",
+              "mascote_feedback_errado": "É o par conjugado fraco que permite consumir tanto ácidos como bases adicionados."
+            },
+            {
+              "pergunta": "Num tampão com concentrações iguais de ácido e base conjugada, o pH é igual a:",
+              "opcoes": [
+                "7",
+                "pK a do ácido",
+                "pK b da base",
+                "14 − pK a"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "pH = pK a + log(1) = pK a.",
+              "mascote_feedback_errado": "pH = pK a + log(1) = pK a."
+            },
+            {
+              "pergunta": "Uma solução de ácido acético 0,0010 mol/dm³ tem grau de ionização cerca de 12,5 %, e uma de 0,10 mol/dm³ cerca de 1,3 %. O que se conclui?",
+              "opcoes": [
+                "Diluir um ácido fraco diminui o grau de ionização.",
+                "Diluir um ácido fraco aumenta o grau de ionização.",
+                "O grau de ionização não depende da concentração.",
+                "O ácido acético é forte."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Pelo Princípio de Le Châtelier, a diluição favorece a ionização (o lado com mais partículas em solução). α aumenta, embora [H₃O⁺] diminua.",
+              "mascote_feedback_errado": "Pelo Princípio de Le Châtelier, a diluição favorece a ionização (o lado com mais partículas em solução). α aumenta, embora [H₃O⁺] diminua."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "catalisadores",
+      "titulo": "Os metais como catalisadores",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_conversor_catalitico.png",
+          "imagem_legenda": "Corte de um conversor catalítico: favo de mel com platina, paládio e ródio; gases de entrada e de saída.",
+          "texto": "Debaixo de cada carro a gasolina há uma pequena caixa com uns gramas de platina, paládio e ródio espalhados numa estrutura em favo de mel. Transforma os gases mais tóxicos do escape (monóxido de carbono, óxidos de azoto) em gases inofensivos, em milésimos de segundo, sem se gastar. É um catalisador, e quase todos os catalisadores industriais têm metais de transição.",
+          "mascote_texto": "Um catalisador muda a rapidez, não o destino. Esta é a frase-chave da secção."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Como atua um catalisador",
+          "imagem": "q12_catalisador_energia.png",
+          "imagem_legenda": "Diagrama de energia com e sem catalisador: mesma ΔH, energia de ativação menor com catalisador.",
+          "texto_principal": "Um catalisador é uma substância que aumenta a velocidade de uma reação sem ser consumida. Proporciona um caminho alternativo, com menor energia de ativação. Não altera a extensão da reação: o equilíbrio é o mesmo, só se atinge mais depressa. Permite fazer reações a temperaturas e concentrações mais baixas, o que poupa energia e reagentes.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Não é consumido",
+              "explicacao": "No fim da reação, o catalisador está igual. Pode ser recuperado e reutilizado."
+            },
+            {
+              "id": "p2",
+              "label": "Não altera a extensão",
+              "explicacao": "Não muda K c nem ΔH. Acelera tanto a reação direta como a inversa."
+            },
+            {
+              "id": "p3",
+              "label": "Catálise homogénea",
+              "explicacao": "Catalisador e reagentes na mesma fase (por exemplo, todos em solução). Ex.: o ácido sulfúrico na síntese da aspirina."
+            },
+            {
+              "id": "p4",
+              "label": "Catálise heterogénea",
+              "explicacao": "Catalisador numa fase diferente, em geral um sólido, com os reagentes gasosos ou líquidos a reagir à sua superfície. Ex.: conversores catalíticos, síntese do amoníaco."
+            },
+            {
+              "id": "p5",
+              "label": "Enzimas",
+              "explicacao": "Catalisadores bioquímicos (proteínas). Sem enzimas, as reações do metabolismo seriam demasiado lentas para a vida. Muitas enzimas têm um ião metálico no centro ativo."
+            },
+            {
+              "id": "p6",
+              "label": "Metais de transição nos catalisadores",
+              "explicacao": "Ferro (síntese do amoníaco), óxido de vanádio(V) (produção de ácido sulfúrico), níquel (hidrogenação de óleos vegetais), platina, paládio e ródio (conversores catalíticos). Os vários estados de oxidação e as orbitais d disponíveis facilitam a ligação temporária aos reagentes."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "2 CO + O₂ → 2 CO₂; 2 NO + 2 CO → N₂ + 2 CO₂",
+              "significado": "Conversor catalítico.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Catalisador: altera a velocidade, não altera ΔH nem K",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Num conversor catalítico, os gases do escape passam por uma superfície sólida com platina. Que tipo de catálise é?",
+          "opcoes": [
+            "Homogénea",
+            "Heterogénea",
+            "Enzimática",
+            "Não é catálise"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O catalisador é sólido e os reagentes são gasosos: fases diferentes, catálise heterogénea.",
+          "mascote_feedback_errado": "Na catálise heterogénea, o catalisador está numa fase diferente dos reagentes. Aqui, o metal é sólido e os gases reagem à sua superfície."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Adicionar um catalisador a uma reação em equilíbrio:",
+          "opcoes": [
+            "aumenta a quantidade de produtos no equilíbrio.",
+            "não altera as quantidades no equilíbrio, mas o equilíbrio é atingido mais depressa.",
+            "torna a reação exotérmica.",
+            "diminui K c."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O catalisador acelera igualmente a reação direta e a inversa. O equilíbrio é o mesmo.",
+          "mascote_feedback_errado": "O catalisador altera apenas a velocidade, não a extensão. As concentrações de equilíbrio e K c mantêm-se."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O túnel na montanha.** Para ir de uma aldeia à outra, tens de atravessar uma montanha. O caminho normal sobe até ao topo: é demorado e cansativo (energia de ativação alta). Um catalisador é como um túnel: chegas à mesma aldeia, à mesma altitude, mas muito mais depressa e com menos esforço. O túnel não muda onde começas nem onde acabas (ΔH igual), e pode ser usado nos dois sentidos (acelera a reação direta e a inversa)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Enzimas no dia a dia e química verde",
+          "texto": "**Enzimas no dia a dia**\n\nA catalase, presente no fígado e nas batatas, decompõe o peróxido de hidrogénio em água e oxigénio: é por isso que a água oxigenada faz espuma numa ferida.\n\nA anidrase carbónica, que tem zinco no centro ativo, acelera a reação CO₂ + H₂O ⇌ H₂CO₃ milhões de vezes, essencial para retirar o CO₂ dos tecidos.\n\nOs detergentes \"biológicos\" contêm enzimas que decompõem manchas de proteínas e gorduras a temperaturas baixas.\n\n**Catalisadores e química verde**\n\nOs catalisadores permitem processos com menos energia, menos reagentes em excesso e menos resíduos. A investigação em catalisadores é uma das áreas mais importantes da química industrial atual."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um catalisador:",
+              "opcoes": [
+                "é consumido na reação.",
+                "aumenta a velocidade da reação sem ser consumido e sem alterar a sua extensão.",
+                "aumenta o rendimento no equilíbrio.",
+                "só funciona em reações exotérmicas."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O catalisador abre um caminho com menor energia de ativação, acelerando a reação, e regenera-se no fim.",
+              "mascote_feedback_errado": "O catalisador abre um caminho com menor energia de ativação, acelerando a reação, e regenera-se no fim."
+            },
+            {
+              "pergunta": "As enzimas são:",
+              "opcoes": [
+                "metais puros.",
+                "catalisadores bioquímicos (proteínas).",
+                "produtos da combustão.",
+                "ácidos fortes."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "As enzimas são proteínas que catalisam as reações dos seres vivos.",
+              "mascote_feedback_errado": "As enzimas são proteínas que catalisam as reações dos seres vivos."
+            },
+            {
+              "pergunta": "Que metal é usado como catalisador na síntese industrial do amoníaco?",
+              "opcoes": [
+                "Ouro",
+                "Ferro",
+                "Sódio",
+                "Chumbo"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O processo de Haber-Bosch usa um catalisador à base de ferro.",
+              "mascote_feedback_errado": "O processo de Haber-Bosch usa um catalisador à base de ferro."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 3 concluída, e com ela todo o domínio dos metais. Caracterizas complexos, usas a lei de Lambert-Beer, explicas o papel dos metais no organismo e o funcionamento da hemoglobina, compreendes os tampões e o grau de ionização, e conheces os catalisadores. A seguir: combustíveis, do petróleo ao biodiesel."
+}

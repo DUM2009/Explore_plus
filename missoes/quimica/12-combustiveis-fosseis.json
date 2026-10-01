@@ -1,0 +1,1216 @@
+{
+  "missao_id": "12-combustiveis-fosseis",
+  "id_guiao": "qui12-m4",
+  "titulo": "Combustíveis fósseis",
+  "disciplina": "quimica",
+  "ano": 12,
+  "imagem": "q12_refinaria_sines.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 22V8l5-4 5 4v14\"/><path d=\"M13 22V12h6l2 3v7\"/><path d=\"M7 12h2M7 16h2\"/></svg>",
+    "nome": "Mestre dos Combustíveis"
+  },
+  "secoes": [
+    {
+      "secao_id": "crude-destilacao-al-2-1",
+      "titulo": "Carvão, crude e gás natural; destilação fracionada; AL 2.1",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_refinaria_sines.png",
+          "imagem_legenda": "Vista de uma refinaria com colunas de destilação e tanques de armazenamento.",
+          "texto": "Na refinaria de Sines chegam navios-tanque com petróleo bruto, um líquido escuro e espesso que, sozinho, não serve para quase nada. Dele saem o gás das botijas, a gasolina, o querosene dos aviões, o gasóleo, os óleos lubrificantes e o asfalto das estradas. Tudo isso já lá estava dentro. O truque é separá-lo, e a separação faz-se aproveitando uma propriedade simples: cada componente ferve a uma temperatura diferente.",
+          "mascote_texto": "Nesta secção entras na química orgânica a sério. Os combustíveis são misturas de hidrocarbonetos, e vais aprender a separá-los e a dar-lhes nome."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A coluna de fracionamento",
+          "imagem": "q12_coluna_fracionamento.png",
+          "imagem_legenda": "Coluna de destilação fracionada do petróleo, com as frações e as temperaturas aproximadas.",
+          "texto_principal": "Os combustíveis fósseis (carvão, crude e gás natural) formaram-se ao longo de milhões de anos a partir de restos de seres vivos, sujeitos a altas pressões e temperaturas. O crude é uma mistura complexa de hidrocarbonetos, que se separa em frações por destilação fracionada: cada fração tem moléculas de tamanho semelhante e, por isso, pontos de ebulição próximos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Carvão",
+              "explicacao": "Formado sobretudo a partir de plantas. Extrai-se de minas. É o combustível fóssil que mais CO₂ emite por unidade de energia."
+            },
+            {
+              "id": "p2",
+              "label": "Crude (petróleo bruto)",
+              "explicacao": "Formado sobretudo a partir de plâncton marinho. Extrai-se de poços em terra ou no mar."
+            },
+            {
+              "id": "p3",
+              "label": "Gás natural",
+              "explicacao": "Principalmente metano (CH₄). Encontra-se associado ao petróleo ou em jazidas próprias. Transporta-se por gasodutos ou liquefeito em navios (GNL, a cerca de −162 °C)."
+            },
+            {
+              "id": "p4",
+              "label": "GPL (gás de petróleo liquefeito)",
+              "explicacao": "Mistura de propano e butano, obtida na destilação do crude e no processamento do gás natural. Guarda-se líquido em botijas, sob pressão."
+            },
+            {
+              "id": "p5",
+              "label": "Destilação fracionada",
+              "explicacao": "O crude é aquecido e os vapores sobem pela coluna, que é mais fria em cima. Cada fração condensa à altura em que a temperatura é igual ao seu ponto de ebulição."
+            },
+            {
+              "id": "p6",
+              "label": "Frações",
+              "explicacao": "Quanto maior a cadeia carbonada, maior o ponto de ebulição e mais em baixo é recolhida a fração."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Gases (C1–C4): menos de 20 °C",
+              "significado": "GPL, combustível doméstico.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Gasolina e nafta (C5–C10): cerca de 20 a 180 °C",
+              "significado": "Combustível de automóveis; matéria-prima para plásticos.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Querosene (C10–C16): cerca de 150 a 250 °C",
+              "significado": "Combustível de aviões.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Gasóleo (C14–C20): cerca de 250 a 350 °C",
+              "significado": "Combustível de veículos pesados e aquecimento.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Fuelóleo e lubrificantes (C20–C40): cerca de 350 a 400 °C",
+              "significado": "Navios, centrais, óleos.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Resíduo (C40 ou mais)",
+              "significado": "Betume para estradas e coberturas.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Numa coluna de fracionamento, onde é recolhida a fração com moléculas maiores?",
+          "opcoes": [
+            "No topo, onde a temperatura é mais baixa.",
+            "Na base, onde a temperatura é mais alta.",
+            "A meio da coluna.",
+            "Não é recolhida."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Moléculas maiores têm forças intermoleculares mais intensas e pontos de ebulição mais altos: condensam logo em baixo.",
+          "mascote_feedback_errado": "Quanto maior a molécula, mais alto o ponto de ebulição. As moléculas grandes condensam cedo, na zona quente da base. As pequenas sobem até ao topo."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.1",
+          "titulo": "Destilação fracionada de uma mistura de três componentes",
+          "objetivo": "Compreender porque é possível obter do petróleo frações distintas, realizando a destilação fracionada de uma mistura de três líquidos e identificando os componentes pelos pontos de ebulição.",
+          "material": [
+            "Balão de destilação de fundo redondo com reguladores de ebulição (esferas de vidro ou pedra-pomes)",
+            "Coluna de fracionamento (por exemplo, de Vigreux)",
+            "Termómetro com o bolbo à altura da saída lateral para o condensador",
+            "Condensador de Liebig com circulação de água fria",
+            "Manta de aquecimento",
+            "Provetas pequenas para recolher frações",
+            "Mistura de três líquidos miscíveis com pontos de ebulição diferentes (por exemplo, propanona, 56 °C; etanol, 78 °C; água, 100 °C)"
+          ],
+          "procedimento": [
+            "Montar o equipamento, com a água a entrar no condensador por baixo e a sair por cima.",
+            "Colocar a mistura (por exemplo, 60 cm³) e os reguladores de ebulição no balão.",
+            "Aquecer lentamente.",
+            "Registar a temperatura no topo da coluna a cada 2 cm³ de destilado recolhido.",
+            "Mudar de proveta sempre que a temperatura começar a subir de forma acentuada (mudança de fração).",
+            "Parar antes de o balão ficar seco."
+          ],
+          "tratamento_de_dados": "Construir o gráfico da temperatura (eixo vertical) em função do volume de destilado (eixo horizontal).\n\nO gráfico apresenta patamares (zonas de temperatura aproximadamente constante) separados por subidas.\n\nCada patamar corresponde a um componente: comparar a temperatura de cada patamar com uma tabela de pontos de ebulição e identificar o líquido.\n\nEstimar o volume de cada componente na mistura a partir da extensão de cada patamar.",
+          "conclusao": "A destilação fracionada separa os componentes de uma mistura de líquidos miscíveis com base nas diferenças dos seus pontos de ebulição. Na refinaria, o mesmo princípio separa o crude em frações com cadeias carbonadas de tamanhos semelhantes.",
+          "erros_comuns": [
+            "Colocar o bolbo do termómetro dentro do líquido ou acima da saída lateral (lê-se a temperatura errada).",
+            "Aquecer depressa demais: os patamares desaparecem e as frações misturam-se.",
+            "Esquecer os reguladores de ebulição (ebulição tumultuosa).",
+            "Esperar uma separação perfeita do etanol e da água: formam uma mistura (azeotropo) que destila a cerca de 78 °C com cerca de 96 % de etanol."
+          ],
+          "seguranca": "A propanona e o etanol são inflamáveis. Usar manta de aquecimento, nunca chama direta. Verificar que o sistema não está fechado (risco de explosão).",
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_destilacao",
+          "titulo": "Destila a mistura",
+          "instrucao": "Escolhe os três componentes da mistura e os seus volumes. Escolhe a velocidade de aquecimento e vê os patamares do gráfico da temperatura em função do volume destilado.",
+          "controlos": [
+            {
+              "id": "comp1",
+              "rotulo": "Componente 1",
+              "opcoes": [
+                {
+                  "valor": "propanona",
+                  "label": "propanona (56 °C)"
+                },
+                {
+                  "valor": "metanol",
+                  "label": "metanol (65 °C)"
+                },
+                {
+                  "valor": "hexano",
+                  "label": "hexano (69 °C)"
+                },
+                {
+                  "valor": "etanol",
+                  "label": "etanol (78 °C)"
+                },
+                {
+                  "valor": "agua",
+                  "label": "água (100 °C)"
+                },
+                {
+                  "valor": "octano",
+                  "label": "octano (126 °C)"
+                }
+              ],
+              "valor_inicial": "propanona"
+            },
+            {
+              "id": "comp2",
+              "rotulo": "Componente 2",
+              "opcoes": [
+                {
+                  "valor": "propanona",
+                  "label": "propanona (56 °C)"
+                },
+                {
+                  "valor": "metanol",
+                  "label": "metanol (65 °C)"
+                },
+                {
+                  "valor": "hexano",
+                  "label": "hexano (69 °C)"
+                },
+                {
+                  "valor": "etanol",
+                  "label": "etanol (78 °C)"
+                },
+                {
+                  "valor": "agua",
+                  "label": "água (100 °C)"
+                },
+                {
+                  "valor": "octano",
+                  "label": "octano (126 °C)"
+                }
+              ],
+              "valor_inicial": "etanol"
+            },
+            {
+              "id": "comp3",
+              "rotulo": "Componente 3",
+              "opcoes": [
+                {
+                  "valor": "propanona",
+                  "label": "propanona (56 °C)"
+                },
+                {
+                  "valor": "metanol",
+                  "label": "metanol (65 °C)"
+                },
+                {
+                  "valor": "hexano",
+                  "label": "hexano (69 °C)"
+                },
+                {
+                  "valor": "etanol",
+                  "label": "etanol (78 °C)"
+                },
+                {
+                  "valor": "agua",
+                  "label": "água (100 °C)"
+                },
+                {
+                  "valor": "octano",
+                  "label": "octano (126 °C)"
+                }
+              ],
+              "valor_inicial": "agua"
+            },
+            {
+              "id": "v1",
+              "rotulo": "Volume do componente 1",
+              "min": 10,
+              "max": 40,
+              "passo": 5,
+              "valor_inicial": 20,
+              "unidade": "cm³"
+            },
+            {
+              "id": "v2",
+              "rotulo": "Volume do componente 2",
+              "min": 10,
+              "max": 40,
+              "passo": 5,
+              "valor_inicial": 20,
+              "unidade": "cm³"
+            },
+            {
+              "id": "v3",
+              "rotulo": "Volume do componente 3",
+              "min": 10,
+              "max": 40,
+              "passo": 5,
+              "valor_inicial": 20,
+              "unidade": "cm³"
+            },
+            {
+              "id": "velocidade",
+              "rotulo": "Aquecimento",
+              "opcoes": [
+                {
+                  "valor": "lenta",
+                  "label": "Lento"
+                },
+                {
+                  "valor": "rapida",
+                  "label": "Rápido"
+                }
+              ]
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Gráfico (temperatura vs volume destilado)",
+              "formula": "(function () { var ks = [comp1, comp2, comp3], vs = [v1, v2, v3]; var dup = comp1 === comp2 || comp1 === comp3 || comp2 === comp3; var cs = ks.map(function (k, i) { return { k: k, n: dados.c[k].nome, pe: dados.c[k].pe, v: vs[i] }; }).sort(function (x, y) { return x.pe - y.pe; }); if (dup) return 'Escolhe três componentes diferentes.'; var ini = 0; return cs.map(function (c, i) { var a = ini, b = ini + c.v; ini = b; if (velocidade === 'lenta') return 'Patamar ' + (i + 1) + ': ' + c.pe + ' °C, de ' + a + ' a ' + b + ' cm³'; var prox = i < 2 ? cs[i + 1].pe : c.pe + 5; return 'Zona ' + (i + 1) + ': sobe de ' + c.pe + ' para cerca de ' + Math.round(c.pe + (prox - c.pe) / 2) + ' °C, de ' + a + ' a ' + b + ' cm³'; }).join('; ') + '.'; })()"
+            },
+            {
+              "rotulo": "Identificação dos patamares",
+              "formula": "(function () { var ks = [comp1, comp2, comp3], vs = [v1, v2, v3]; var dup = comp1 === comp2 || comp1 === comp3 || comp2 === comp3; var cs = ks.map(function (k, i) { return { k: k, n: dados.c[k].nome, pe: dados.c[k].pe, v: vs[i] }; }).sort(function (x, y) { return x.pe - y.pe; }); if (dup) return 'Escolhe três componentes diferentes.'; return cs.map(function (c) { return c.pe + ' °C → ' + c.n; }).join('; '); })()"
+            },
+            {
+              "rotulo": "Volume estimado de cada componente",
+              "formula": "(function () { var ks = [comp1, comp2, comp3], vs = [v1, v2, v3]; var dup = comp1 === comp2 || comp1 === comp3 || comp2 === comp3; var cs = ks.map(function (k, i) { return { k: k, n: dados.c[k].nome, pe: dados.c[k].pe, v: vs[i] }; }).sort(function (x, y) { return x.pe - y.pe; }); if (dup) return 'Escolhe três componentes diferentes.'; if (velocidade === 'rapida') return 'Pouco fiável: com aquecimento rápido, as frações saem misturadas e os patamares ficam curtos e inclinados.'; return cs.map(function (c) { return c.n + ': cerca de ' + c.v + ' cm³'; }).join('; '); })()"
+            },
+            {
+              "rotulo": "Observações",
+              "formula": "(function () { var ks = [comp1, comp2, comp3], vs = [v1, v2, v3]; var dup = comp1 === comp2 || comp1 === comp3 || comp2 === comp3; var cs = ks.map(function (k, i) { return { k: k, n: dados.c[k].nome, pe: dados.c[k].pe, v: vs[i] }; }).sort(function (x, y) { return x.pe - y.pe; }); if (dup) return 'Escolhe três componentes diferentes.'; var notas = []; for (var i = 0; i < 2; i++) if (cs[i + 1].pe - cs[i].pe < 10) notas.push(cs[i].n + ' e ' + cs[i + 1].n + ' têm pontos de ebulição muito próximos: difícil separar'); if (ks.indexOf('etanol') >= 0 && ks.indexOf('agua') >= 0) notas.push('etanol e água formam um azeotropo (destila a cerca de 78 °C com cerca de 96 % de etanol)'); return notas.length ? notas.join('; ') + '.' : 'Pontos de ebulição bem separados: boa separação com aquecimento lento.'; })()"
+            }
+          ],
+          "pergunta_final": "Porque é que com aquecimento rápido a separação piora? Resposta esperada: os vapores sobem depressa demais e não há tempo para se estabelecerem as sucessivas condensações e evaporações na coluna; os componentes saem misturados.",
+          "dados": {
+            "c": {
+              "propanona": {
+                "nome": "propanona",
+                "pe": 56
+              },
+              "metanol": {
+                "nome": "metanol",
+                "pe": 65
+              },
+              "hexano": {
+                "nome": "hexano",
+                "pe": 69
+              },
+              "etanol": {
+                "nome": "etanol",
+                "pe": 78
+              },
+              "agua": {
+                "nome": "água",
+                "pe": 100
+              },
+              "octano": {
+                "nome": "octano",
+                "pe": 126
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O prédio de vários andares.** A coluna de fracionamento é como um prédio onde cada andar tem uma temperatura diferente: quente no rés-do-chão, frio no último andar. Os vapores entram em baixo e sobem as escadas. Cada molécula \"sai\" no andar onde a temperatura já é baixa demais para continuar gasosa: as grandes e pesadas ficam nos primeiros andares; as pequenas e leves chegam ao telhado."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A refinaria de Sines e a destilação a vácuo",
+          "texto": "**A refinaria de Sines**\n\nA refinaria de Sines é uma das maiores da Península Ibérica e processa crude importado de vários países. Além da destilação, inclui unidades de cracking, de reformação e de dessulfuração, para obter combustíveis com as especificações europeias (por exemplo, com muito pouco enxofre).\n\n**Destilação atmosférica e a vácuo**\n\nAs frações mais pesadas decompunham-se antes de ferver à pressão atmosférica. Por isso, o resíduo da primeira destilação é destilado de novo a pressão reduzida (destilação a vácuo), onde os pontos de ebulição são mais baixos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A destilação fracionada do petróleo separa os componentes com base:",
+              "opcoes": [
+                "na sua cor.",
+                "nos seus pontos de ebulição.",
+                "na sua solubilidade em água.",
+                "nas suas massas volúmicas."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Componentes com cadeias de tamanhos diferentes têm pontos de ebulição diferentes e condensam a alturas diferentes da coluna.",
+              "mascote_feedback_errado": "Componentes com cadeias de tamanhos diferentes têm pontos de ebulição diferentes e condensam a alturas diferentes da coluna."
+            },
+            {
+              "pergunta": "O GPL é constituído principalmente por:",
+              "opcoes": [
+                "metano.",
+                "propano e butano.",
+                "octano.",
+                "etanol."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O gás de petróleo liquefeito é uma mistura de propano e butano, guardada líquida sob pressão.",
+              "mascote_feedback_errado": "O gás de petróleo liquefeito é uma mistura de propano e butano, guardada líquida sob pressão."
+            },
+            {
+              "pergunta": "No gráfico de uma destilação fracionada de três componentes, observam-se patamares a 56 °C, 78 °C e 100 °C. O que representam?",
+              "opcoes": [
+                "Três impurezas.",
+                "A ebulição de cada um dos três componentes (propanona, etanol e água).",
+                "Erros de leitura.",
+                "Três reações químicas."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Cada patamar corresponde à destilação de um componente à sua temperatura de ebulição.",
+              "mascote_feedback_errado": "Cada patamar corresponde à destilação de um componente à sua temperatura de ebulição."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "cracking-nomenclatura-isomeria",
+      "titulo": "Cracking, isomerização, nomenclatura e isomeria",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_cracking.png",
+          "imagem_legenda": "Molécula longa de alcano a partir-se em moléculas menores (um alcano e um alceno).",
+          "texto": "O petróleo tem muito mais moléculas grandes do que aquilo que o mercado quer: há procura de gasolina e de gases, não de fuelóleo pesado. A solução é partir as moléculas grandes em pequenas: o cracking. E há outro problema: as cadeias lineares queimam mal nos motores (\"batem\"). A solução é reorganizá-las em cadeias ramificadas. Para perceber isto, é preciso saber ler e escrever o nome das moléculas.",
+          "mascote_texto": "A nomenclatura tem regras fixas. Com cinco regras dás nome a quase todas as moléculas desta missão."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Cracking e isomerização",
+          "imagem": "q12_cracking_isomerizacao.png",
+          "imagem_legenda": "Comparação entre cracking e isomerização, com um exemplo de cada.",
+          "texto_principal": "O cracking catalítico transforma moléculas grandes de hidrocarbonetos em moléculas mais pequenas, por aquecimento e com catalisadores. Forma alcanos mais pequenos e alcenos (úteis para fazer plásticos). A isomerização transforma hidrocarbonetos lineares em ramificados, que funcionam melhor como combustíveis.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Cracking",
+              "explicacao": "Ex.: C₁₆H₃₄ → C₈H₁₈ + C₈H₁₆. Formam-se um alcano e um alceno."
+            },
+            {
+              "id": "p2",
+              "label": "Porque é preciso",
+              "explicacao": "Aproveitar as frações pesadas (menos procuradas) para obter gasolina, gases e alcenos para a indústria dos plásticos."
+            },
+            {
+              "id": "p3",
+              "label": "Isomerização",
+              "explicacao": "Hidrocarboneto linear → ramificado, com a mesma fórmula molecular."
+            },
+            {
+              "id": "p4",
+              "label": "Índice de octano",
+              "explicacao": "Mede a resistência de uma gasolina à detonação (\"bater\" do motor). O 2,2,4-trimetilpentano (isooctano, ramificado) tem índice 100; o heptano (linear) tem 0."
+            },
+            {
+              "id": "p5",
+              "label": "Hidrocarbonetos aromáticos",
+              "explicacao": "Contêm anéis benzénicos (por exemplo, benzeno, C₆H₆; metilbenzeno ou tolueno). Também aumentam o índice de octano, mas alguns são tóxicos (o benzeno é cancerígeno)."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Nomenclatura e isomeria",
+          "imagem": "q12_nomenclatura_isomeros.png",
+          "imagem_legenda": "Isómeros do C₅H₁₂ (pentano, 2-metilbutano, 2,2-dimetilpropano) com fórmulas de estrutura e nomes IUPAC.",
+          "texto_principal": "A nomenclatura IUPAC permite dar um nome único a cada composto orgânico. Isómeros são compostos com a mesma fórmula molecular mas fórmulas de estrutura diferentes, e por isso com propriedades físicas e químicas diferentes.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Cadeia principal",
+              "explicacao": "A cadeia mais longa (que contém a ligação múltipla ou o grupo funcional, quando existem). Dá o nome base (met, et, prop, but, pent, hex, hept, oct...)."
+            },
+            {
+              "id": "p2",
+              "label": "Numeração",
+              "explicacao": "Dar os números mais baixos possíveis ao grupo funcional, depois às ligações múltiplas, depois às ramificações."
+            },
+            {
+              "id": "p3",
+              "label": "Ramificações",
+              "explicacao": "Nome do grupo alquilo (metil, etil, propil) com a posição, por ordem alfabética; prefixos di-, tri-, tetra- para grupos iguais. Ex.: 2,2-dimetilpropano; 3-etil-2-metilpentano."
+            },
+            {
+              "id": "p4",
+              "label": "Cicloalcanos",
+              "explicacao": "Cadeias fechadas; prefixo ciclo-. Ex.: ciclo-hexano, C₆H₁₂."
+            },
+            {
+              "id": "p5",
+              "label": "Alcenos e alcinos",
+              "explicacao": "Terminações -eno e -ino, com a posição da ligação múltipla. Ex.: but-2-eno; propino."
+            },
+            {
+              "id": "p6",
+              "label": "Álcoois",
+              "explicacao": "Terminação -ol, com a posição do OH. Ex.: propan-2-ol (álcool isopropílico)."
+            },
+            {
+              "id": "p7",
+              "label": "Éteres",
+              "explicacao": "Grupo R–O–R'. Nomeiam-se como alcoxialcanos: o grupo menor é o alcoxi. Ex.: CH₃–O–CH₂–CH₃ é o metoxietano; CH₃CH₂–O–CH₂CH₃ é o etoxietano (o \"éter\" dos antigos anestésicos)."
+            },
+            {
+              "id": "p8",
+              "label": "Isomeria de cadeia",
+              "explicacao": "Cadeias diferentes (linear vs ramificada). Ex.: butano e 2-metilpropano."
+            },
+            {
+              "id": "p9",
+              "label": "Isomeria de posição",
+              "explicacao": "O grupo funcional ou a ligação múltipla em posições diferentes. Ex.: butan-1-ol e butan-2-ol; but-1-eno e but-2-eno."
+            },
+            {
+              "id": "p10",
+              "label": "Isomeria de grupo funcional",
+              "explicacao": "Grupos funcionais diferentes. Ex.: etanol (C₂H₅OH) e metoximetano (CH₃OCH₃), ambos C₂H₆O."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é o nome IUPAC de CH₃–CH(CH₃)–CH₂–CH₃?",
+          "opcoes": [
+            "3-metilbutano",
+            "2-metilbutano",
+            "pentano",
+            "2-etilpropano"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Cadeia principal de 4 carbonos (butano), com um metil no carbono 2 (numerando pela ponta mais próxima da ramificação). É isómero de cadeia do pentano.",
+          "mascote_feedback_errado": "A cadeia mais longa tem 4 carbonos. Numera-se a partir da ponta mais perto da ramificação: o metil fica no carbono 2. Nome: 2-metilbutano."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O etanol (CH₃CH₂OH) e o metoximetano (CH₃OCH₃) são:",
+          "opcoes": [
+            "o mesmo composto.",
+            "isómeros de cadeia.",
+            "isómeros de grupo funcional.",
+            "isómeros de posição."
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. Ambos são C₂H₆O, mas um é um álcool e o outro um éter. Têm propriedades muito diferentes: o etanol ferve a 78 °C e o metoximetano a −24 °C.",
+          "mascote_feedback_errado": "Têm a mesma fórmula molecular (C₂H₆O) mas grupos funcionais diferentes (álcool e éter): isomeria de grupo funcional."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**As mesmas peças de Lego.** Isómeros são como construções diferentes feitas com exatamente as mesmas peças de Lego. Com as mesmas peças podes fazer um carro comprido (cadeia linear) ou um carro mais compacto (ramificado); podes pôr a antena na frente ou atrás (posição); ou até fazer um avião em vez de um carro (grupo funcional diferente). As peças são as mesmas (fórmula molecular), mas o objeto e o que ele faz são diferentes."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Dar nome a alcanos ramificados e o benzeno",
+          "texto": "**Passos para dar nome a um alcano ramificado**\n\n1. Encontrar a cadeia mais longa (pode não estar desenhada em linha reta).\n\n2. Numerar de modo que as ramificações tenham os números mais baixos.\n\n3. Identificar as ramificações (metil, etil...) e as suas posições.\n\n4. Escrever: posições-nome das ramificações (por ordem alfabética, ignorando di-, tri-) + nome da cadeia principal.\n\nEx.: CH₃–CH(CH₃)–CH(C₂H₅)–CH₂–CH₃ → 3-etil-2-metilpentano.\n\n**Porque é que o benzeno é especial**\n\nO benzeno, C₆H₆, é um anel de seis carbonos. Parece ter ligações simples e duplas alternadas, mas na realidade todas as ligações C–C são iguais. Vais ver porquê na próxima secção (ressonância)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O cracking catalítico tem como objetivo:",
+              "opcoes": [
+                "juntar moléculas pequenas.",
+                "partir moléculas grandes de hidrocarbonetos em moléculas mais pequenas.",
+                "remover o enxofre.",
+                "separar frações por ponto de ebulição."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O cracking transforma frações pesadas, pouco procuradas, em moléculas menores, como gasolina, gases e alcenos.",
+              "mascote_feedback_errado": "O cracking transforma frações pesadas, pouco procuradas, em moléculas menores, como gasolina, gases e alcenos."
+            },
+            {
+              "pergunta": "Qual é o nome de CH₃–CH₂–O–CH₃?",
+              "opcoes": [
+                "propan-1-ol",
+                "metoxietano",
+                "etoximetano",
+                "propanona"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "É um éter. O grupo menor (metil) dá o prefixo alcoxi (metoxi) e o maior (etil) dá o nome base (etano): metoxietano.",
+              "mascote_feedback_errado": "É um éter. O grupo menor (metil) dá o prefixo alcoxi (metoxi) e o maior (etil) dá o nome base (etano): metoxietano."
+            },
+            {
+              "pergunta": "O but-1-eno e o but-2-eno são isómeros:",
+              "opcoes": [
+                "de cadeia.",
+                "de posição.",
+                "de grupo funcional.",
+                "não são isómeros."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Têm a mesma fórmula (C₄H₈) e a mesma cadeia, mas a ligação dupla está em posições diferentes.",
+              "mascote_feedback_errado": "Têm a mesma fórmula (C₄H₈) e a mesma cadeia, mas a ligação dupla está em posições diferentes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "ressonancia-propriedades-hidrocarbonetos",
+      "titulo": "Ressonância, polaridade e propriedades físicas dos hidrocarbonetos",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_benzeno_kekule.png",
+          "imagem_legenda": "Duas estruturas de Kekulé do benzeno e a representação com o círculo no hexágono.",
+          "texto": "Diz-se que, em 1865, o químico August Kekulé adormeceu em frente à lareira e sonhou com uma serpente a morder a própria cauda. Acordou com a ideia de que o benzeno era um anel. Mas o anel com ligações simples e duplas alternadas que propôs tinha um problema: as experiências mostravam que todas as ligações eram exatamente iguais. A solução chama-se ressonância.",
+          "mascote_texto": "Na ressonância, a molécula real não \"salta\" entre estruturas: é uma mistura delas ao mesmo tempo."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Ressonância",
+          "imagem": "q12_ressonancia.png",
+          "imagem_legenda": "Estruturas de ressonância (benzeno, SO₂, O₃) e o híbrido de ressonância.",
+          "texto_principal": "Algumas moléculas podem ser representadas por várias estruturas de Lewis válidas, que só diferem na posição dos eletrões. A molécula real é um híbrido de ressonância: uma média dessas estruturas, com eletrões deslocalizados. Isto explica que certas ligações tenham comprimentos iguais e intermédios entre simples e duplas.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Benzeno",
+              "explicacao": "Duas estruturas de Kekulé. Na realidade, as seis ligações C–C têm o mesmo comprimento (139 pm), entre o da ligação simples (154 pm) e o da dupla (134 pm). Seis eletrões estão deslocalizados por todo o anel."
+            },
+            {
+              "id": "p2",
+              "label": "Dióxido de enxofre (SO₂)",
+              "explicacao": "Duas estruturas de Lewis; as duas ligações S–O são iguais."
+            },
+            {
+              "id": "p3",
+              "label": "Ozono (O₃)",
+              "explicacao": "Duas estruturas de Lewis; as duas ligações O–O são iguais."
+            },
+            {
+              "id": "p4",
+              "label": "Deslocalização eletrónica",
+              "explicacao": "Os eletrões não pertencem a uma só ligação. Torna as moléculas mais estáveis."
+            },
+            {
+              "id": "p5",
+              "label": "Polaridade das moléculas orgânicas",
+              "explicacao": "Alcanos, alcenos, cicloalcanos e benzeno são praticamente apolares (ligações C–H pouco polares, geometrias simétricas). Álcoois e éteres são polares (ligação C–O e, nos álcoois, O–H)."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Pontos de ebulição dos hidrocarbonetos",
+          "imagem": "q12_pe_alcanos.png",
+          "imagem_legenda": "Ponto de ebulição dos alcanos lineares em função do número de carbonos, com os isómeros do pentano.",
+          "texto_principal": "Os pontos de fusão e de ebulição dos hidrocarbonetos dependem da intensidade das forças intermoleculares (forças de London, porque são apolares). Estas aumentam com o tamanho da molécula e com a área de contacto entre moléculas.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Tamanho",
+              "explicacao": "Mais carbonos, mais eletrões, forças de London mais intensas, maior ponto de ebulição. Metano −162 °C; butano −0,5 °C; octano 126 °C."
+            },
+            {
+              "id": "p2",
+              "label": "Estado físico à temperatura ambiente",
+              "explicacao": "C1–C4 gasosos; C5–C17 líquidos; C18 ou mais sólidos (parafinas)."
+            },
+            {
+              "id": "p3",
+              "label": "Forma (ramificação)",
+              "explicacao": "Para a mesma fórmula, moléculas mais ramificadas são mais compactas, têm menor área de contacto e menor ponto de ebulição."
+            },
+            {
+              "id": "p4",
+              "label": "Álcoois vs hidrocarbonetos",
+              "explicacao": "Os álcoois, com ligações de hidrogénio, têm pontos de ebulição muito mais altos do que hidrocarbonetos de massa semelhante (etanol 78 °C; propano −42 °C)."
+            },
+            {
+              "id": "p5",
+              "label": "Consequências práticas",
+              "explicacao": "O estado físico, o ponto de ebulição e a massa volúmica decidem como um combustível é transportado e armazenado (gasodutos, botijas sob pressão, depósitos) e as medidas de segurança."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual dos isómeros de C₅H₁₂ tem o ponto de ebulição mais baixo?",
+          "opcoes": [
+            "Pentano",
+            "2-metilbutano",
+            "2,2-dimetilpropano",
+            "Todos iguais"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. O 2,2-dimetilpropano é o mais ramificado e compacto (quase esférico): menor área de contacto, forças de London mais fracas, ponto de ebulição de 9,5 °C.",
+          "mascote_feedback_errado": "Com a mesma massa molar, quanto mais ramificada a molécula, menor a área de contacto e mais fracas as forças de London. O 2,2-dimetilpropano é o mais ramificado."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "No benzeno, as ligações carbono-carbono têm:",
+          "opcoes": [
+            "três comprimentos de 154 pm e três de 134 pm.",
+            "todas o mesmo comprimento, intermédio entre simples e dupla.",
+            "todas o comprimento de uma ligação dupla.",
+            "todas o comprimento de uma ligação tripla."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. A ressonância distribui os eletrões por todo o anel: as seis ligações são iguais, com cerca de 139 pm.",
+          "mascote_feedback_errado": "As estruturas de Kekulé sugerem ligações alternadas, mas a molécula real é o híbrido de ressonância: seis ligações iguais (cerca de 139 pm)."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A mula, o cavalo e o burro.** Uma mula é cruzamento de cavalo e burra. Não passa metade do tempo como cavalo e metade como burro: é sempre uma mula, um animal com características de ambos. O benzeno real é como a mula: não alterna entre as duas estruturas de Kekulé, é permanentemente uma mistura das duas. As estruturas de ressonância são só as nossas formas de o desenhar com o modelo de Lewis."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque é que o butano das botijas é líquido",
+          "texto": "**Porque é que o butano das botijas é líquido**\n\nO butano ferve a −0,5 °C à pressão atmosférica. Numa botija, está sob pressão e mantém-se líquido à temperatura ambiente. Ao abrir a válvula, a pressão baixa e o butano vaporiza. No inverno muito frio, as botijas de butano funcionam mal; por isso, em zonas frias, usa-se propano (ferve a −42 °C)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A ressonância explica:",
+              "opcoes": [
+                "porque é que o benzeno é muito reativo.",
+                "a igualdade dos comprimentos de ligação em moléculas como o benzeno, o SO₂ e o O₃.",
+                "a formação de iões.",
+                "os pontos de ebulição dos alcanos."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O híbrido de ressonância tem eletrões deslocalizados, o que torna iguais as ligações que, numa única estrutura de Lewis, pareceriam diferentes.",
+              "mascote_feedback_errado": "O híbrido de ressonância tem eletrões deslocalizados, o que torna iguais as ligações que, numa única estrutura de Lewis, pareceriam diferentes."
+            },
+            {
+              "pergunta": "Qual destes compostos é polar?",
+              "opcoes": [
+                "Hexano",
+                "Ciclo-hexano",
+                "Etanol",
+                "Benzeno"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "O etanol tem o grupo O–H (e a ligação C–O), polares. Os hidrocarbonetos são praticamente apolares.",
+              "mascote_feedback_errado": "O etanol tem o grupo O–H (e a ligação C–O), polares. Os hidrocarbonetos são praticamente apolares."
+            },
+            {
+              "pergunta": "Qual dos alcanos é líquido à temperatura ambiente?",
+              "opcoes": [
+                "Metano",
+                "Propano",
+                "Octano",
+                "Butano"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Alcanos de 5 a 17 carbonos são líquidos à temperatura ambiente. O octano (126 °C) é um componente da gasolina.",
+              "mascote_feedback_errado": "Alcanos de 5 a 17 carbonos são líquidos à temperatura ambiente. O octano (126 °C) é um componente da gasolina."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "gases-ideais",
+      "titulo": "Equação dos gases ideais",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_botija_gas.png",
+          "imagem_legenda": "Botija de gás propano/butano com a pressão interna e o gás liquefeito no interior.",
+          "texto": "Uma botija de gás está cheia num dia frio e deixa-se ao sol num dia quente. O que acontece à pressão lá dentro? E porque é que as botijas têm limites de enchimento? No 10.º ano usaste o volume molar de 22,4 dm³/mol, que só vale a 0 °C e 1 atm. Agora vais usar uma equação que funciona a qualquer pressão e temperatura (para gases ideais).",
+          "mascote_texto": "O mais difícil desta secção são as unidades. Usa sempre a temperatura em kelvin."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "pV = nRT",
+          "imagem": "q12_gases_ideais.png",
+          "imagem_legenda": "Recipientes que ilustram as relações entre p, V, T e n de um gás ideal, com a equação pV = nRT.",
+          "texto_principal": "Um gás ideal é um modelo em que as partículas não têm volume e não interagem entre si. O seu comportamento é descrito pela equação de estado dos gases ideais, que relaciona pressão, volume, quantidade de matéria e temperatura. Os gases reais aproximam-se do ideal a pressões baixas e temperaturas altas; afastam-se quando a pressão aumenta ou a temperatura diminui.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Equação de estado",
+              "explicacao": "p V = n R T."
+            },
+            {
+              "id": "p2",
+              "label": "Constante dos gases",
+              "explicacao": "R = 8,314 J mol⁻¹ K⁻¹ (com p em Pa e V em m³) ou R = 0,0821 atm dm³ mol⁻¹ K⁻¹ (com p em atm e V em dm³)."
+            },
+            {
+              "id": "p3",
+              "label": "Temperatura sempre em kelvin",
+              "explicacao": "T = θ + 273,15."
+            },
+            {
+              "id": "p4",
+              "label": "Unidades de pressão",
+              "explicacao": "Pa (SI); 1 atm = 1,01 × 10⁵ Pa = 760 Torr (mmHg); 1 bar = 10⁵ Pa."
+            },
+            {
+              "id": "p5",
+              "label": "Volume molar",
+              "explicacao": "V m = R T / p. Em PTN (273,15 K e 1 atm), 22,4 dm³/mol. A 25 °C e 1 atm, cerca de 24,5 dm³/mol."
+            },
+            {
+              "id": "p6",
+              "label": "Massa volúmica de um gás",
+              "explicacao": "ρ = p M / (R T). Aumenta com a pressão e diminui com a temperatura."
+            },
+            {
+              "id": "p7",
+              "label": "Estados condensados",
+              "explicacao": "Nos líquidos e sólidos, o tamanho das partículas e as interações entre elas não se podem desprezar, e a equação não se aplica."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "p V = n R T",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "ρ = p M / (R T)",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "R = 8,314 J mol⁻¹ K⁻¹ = 0,0821 atm dm³ mol⁻¹ K⁻¹",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Que pressão exercem 2,00 mol de um gás num recipiente de 10,0 dm³ a 300 K?",
+          "opcoes": [
+            "4,99 × 10³ Pa",
+            "4,99 × 10⁵ Pa",
+            "4,99 × 10⁸ Pa",
+            "499 Pa"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. V = 10,0 dm³ = 1,00 × 10⁻² m³. p = n R T / V = 2,00 × 8,314 × 300 / 1,00 × 10⁻² ≈ 4,99 × 10⁵ Pa (cerca de 4,9 atm).",
+          "mascote_feedback_errado": "Com R = 8,314, o volume tem de estar em m³: 10,0 dm³ = 0,0100 m³. p = 2,00 × 8,314 × 300 / 0,0100 ≈ 4,99 × 10⁵ Pa."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual é a massa volúmica do propano (M = 44,1 g/mol) a 25 °C e 1,00 atm?",
+          "opcoes": [
+            "0,55 g/dm³",
+            "1,80 g/dm³",
+            "1,97 g/dm³",
+            "44,1 g/dm³"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. ρ = p M / (R T) = 1,00 × 44,1 / (0,0821 × 298,15) ≈ 1,80 g/dm³. É mais denso do que o ar (cerca de 1,18 g/dm³ a 25 °C): uma fuga acumula-se junto ao chão.",
+          "mascote_feedback_errado": "Usa ρ = p M / (R T) com T = 298,15 K e R = 0,0821 atm dm³ mol⁻¹ K⁻¹: 44,1 / 24,5 ≈ 1,80 g/dm³."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_gases_ideais",
+          "titulo": "O gás no cilindro",
+          "instrucao": "Escolhe o modo: \"calcular p\" (fixas n, T e V) ou \"calcular V\" (fixas n, T e p). Muda as variáveis e vê como a pressão, o volume e a temperatura se relacionam. Escolhe também o gás para ver a sua massa volúmica.",
+          "controlos": [
+            {
+              "id": "modo",
+              "rotulo": "Modo",
+              "opcoes": [
+                {
+                  "valor": "p",
+                  "label": "Calcular p (fixar n, T, V)"
+                },
+                {
+                  "valor": "V",
+                  "label": "Calcular V (fixar n, T, p)"
+                }
+              ]
+            },
+            {
+              "id": "n",
+              "rotulo": "Quantidade de matéria (n)",
+              "min": 0.1,
+              "max": 5.0,
+              "passo": 0.1,
+              "valor_inicial": 1.0,
+              "unidade": "mol"
+            },
+            {
+              "id": "T",
+              "rotulo": "Temperatura (T)",
+              "min": 100,
+              "max": 1000,
+              "passo": 10,
+              "valor_inicial": 298,
+              "unidade": "K"
+            },
+            {
+              "id": "V",
+              "rotulo": "Volume (V), no modo \"calcular p\"",
+              "min": 1.0,
+              "max": 50.0,
+              "passo": 0.5,
+              "valor_inicial": 24.5,
+              "unidade": "dm³"
+            },
+            {
+              "id": "p",
+              "rotulo": "Pressão (p), no modo \"calcular V\"",
+              "min": 0.1,
+              "max": 10.0,
+              "passo": 0.05,
+              "valor_inicial": 1.0,
+              "unidade": "atm"
+            },
+            {
+              "id": "gas",
+              "rotulo": "Gás",
+              "opcoes": [
+                {
+                  "valor": "H2",
+                  "label": "H₂"
+                },
+                {
+                  "valor": "He",
+                  "label": "He"
+                },
+                {
+                  "valor": "N2",
+                  "label": "N₂"
+                },
+                {
+                  "valor": "O2",
+                  "label": "O₂"
+                },
+                {
+                  "valor": "CO2",
+                  "label": "CO₂"
+                },
+                {
+                  "valor": "CH4",
+                  "label": "CH₄"
+                },
+                {
+                  "valor": "C3H8",
+                  "label": "C₃H₈"
+                },
+                {
+                  "valor": "C4H10",
+                  "label": "C₄H₁₀"
+                }
+              ],
+              "valor_inicial": "C3H8"
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Temperatura em °C",
+              "formula": "(function () { var R = 0.0821; var P = modo === 'p' ? n * R * T / V : p; var VV = modo === 'V' ? n * R * T / p : V; var g = dados.g[gas]; var rho = P * g.M / (R * T), rhoAr = P * 28.96 / (R * T); return (T - 273.15).toFixed(2).replace('.', ',').replace('-', '−') + ' °C'; })()"
+            },
+            {
+              "rotulo": "Pressão",
+              "formula": "(function () { var R = 0.0821; var P = modo === 'p' ? n * R * T / V : p; var VV = modo === 'V' ? n * R * T / p : V; var g = dados.g[gas]; var rho = P * g.M / (R * T), rhoAr = P * 28.96 / (R * T); return (modo === 'p' ? 'p = n R T / V = ' : 'Fixada: ') + num(P) + ' atm = ' + num(P * 1.01e5) + ' Pa'; })()"
+            },
+            {
+              "rotulo": "Volume",
+              "formula": "(function () { var R = 0.0821; var P = modo === 'p' ? n * R * T / V : p; var VV = modo === 'V' ? n * R * T / p : V; var g = dados.g[gas]; var rho = P * g.M / (R * T), rhoAr = P * 28.96 / (R * T); return (modo === 'V' ? 'V = n R T / p = ' : 'Fixado: ') + num(VV) + ' dm³'; })()"
+            },
+            {
+              "rotulo": "Massa volúmica do gás",
+              "formula": "(function () { var R = 0.0821; var P = modo === 'p' ? n * R * T / V : p; var VV = modo === 'V' ? n * R * T / p : V; var g = dados.g[gas]; var rho = P * g.M / (R * T), rhoAr = P * 28.96 / (R * T); return 'ρ = p M / (R T) = ' + num(rho) + ' g/dm³'; })()"
+            },
+            {
+              "rotulo": "Comparação com o ar",
+              "formula": "(function () { var R = 0.0821; var P = modo === 'p' ? n * R * T / V : p; var VV = modo === 'V' ? n * R * T / p : V; var g = dados.g[gas]; var rho = P * g.M / (R * T), rhoAr = P * 28.96 / (R * T); return (g.M > 28.96 ? 'Mais denso' : 'Menos denso') + ' do que o ar, que nestas condições tem ' + num(rhoAr) + ' g/dm³'; })()"
+            }
+          ],
+          "pergunta_final": "A volume constante, se a temperatura absoluta duplicar, o que acontece à pressão? Resposta esperada: duplica (p é diretamente proporcional a T).",
+          "dados": {
+            "g": {
+              "H2": {
+                "nome": "H₂",
+                "M": 2.02
+              },
+              "He": {
+                "nome": "He",
+                "M": 4.0
+              },
+              "N2": {
+                "nome": "N₂",
+                "M": 28.02
+              },
+              "O2": {
+                "nome": "O₂",
+                "M": 32.0
+              },
+              "CO2": {
+                "nome": "CO₂",
+                "M": 44.01
+              },
+              "CH4": {
+                "nome": "CH₄",
+                "M": 16.05
+              },
+              "C3H8": {
+                "nome": "C₃H₈",
+                "M": 44.11
+              },
+              "C4H10": {
+                "nome": "C₄H₁₀",
+                "M": 58.14
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Pipocas numa panela com tampa.** Imagina pipocas a saltar dentro de uma panela tapada. As pancadas na tampa são a pressão. Se aqueceres mais (T), saltam com mais força e a tampa é mais empurrada. Se puseres mais grãos (n), há mais pancadas. Se usares uma panela maior (V), as pipocas batem menos vezes na tampa. A equação p V = n R T junta estas três ideias numa só."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Botijas e gases reais",
+          "texto": "**Porque é que as botijas não se enchem até ao topo**\n\nO GPL na botija está líquido em equilíbrio com o vapor. Se a botija fosse cheia de líquido até ao topo e aquecesse, o líquido dilataria sem espaço livre e a pressão subiria perigosamente. Por isso as botijas têm um limite de enchimento (cerca de 80 % de líquido) e não devem ficar expostas ao sol ou a fontes de calor.\n\n**Gases reais**\n\nA pressões muito altas, as partículas ficam tão próximas que o seu volume próprio deixa de ser desprezável; a temperaturas baixas, as atrações entre partículas tornam-se importantes. Nestas condições, os gases afastam-se do comportamento ideal e podem até liquefazer-se."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é o volume ocupado por 1,00 mol de gás ideal a 25 °C e 1,00 atm?",
+              "opcoes": [
+                "22,4 dm³",
+                "24,5 dm³",
+                "2,05 dm³",
+                "8,31 dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "V = n R T / p = 1,00 × 0,0821 × 298,15 / 1,00 ≈ 24,5 dm³.",
+              "mascote_feedback_errado": "V = n R T / p = 1,00 × 0,0821 × 298,15 / 1,00 ≈ 24,5 dm³."
+            },
+            {
+              "pergunta": "Um gás real aproxima-se mais do comportamento ideal:",
+              "opcoes": [
+                "a pressões altas e temperaturas baixas.",
+                "a pressões baixas e temperaturas altas.",
+                "só no estado líquido.",
+                "nunca."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A pressões baixas as partículas estão afastadas (volume desprezável) e a temperaturas altas as atrações tornam-se pouco importantes.",
+              "mascote_feedback_errado": "A pressões baixas as partículas estão afastadas (volume desprezável) e a temperaturas altas as atrações tornam-se pouco importantes."
+            },
+            {
+              "pergunta": "Quantos pascal correspondem a 2,00 atm?",
+              "opcoes": [
+                "2,00 × 10³ Pa",
+                "2,02 × 10⁵ Pa",
+                "1520 Pa",
+                "2,00 Pa"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "1 atm = 1,01 × 10⁵ Pa; 2,00 atm = 2,02 × 10⁵ Pa (1520 é o valor em Torr).",
+              "mascote_feedback_errado": "1 atm = 1,01 × 10⁵ Pa; 2,00 atm = 2,02 × 10⁵ Pa (1520 é o valor em Torr)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "combustiveis-alternativas-apl-2",
+      "titulo": "Combustíveis, ambiente e alternativas; APL 2",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_oleo_biodiesel.png",
+          "imagem_legenda": "Óleo alimentar usado a ser recolhido e transformado em biodiesel.",
+          "texto": "Em Portugal produzem-se dezenas de milhares de toneladas de óleo alimentar usado por ano, em casas, restaurantes e fábricas. Despejado no lava-loiça, entope canos e polui rios: um litro de óleo pode contaminar milhares de litros de água. Recolhido no oleão, pode transformar-se em biodiesel e voltar a mover camiões e autocarros.",
+          "mascote_texto": "Esta secção junta química, ambiente e o futuro da energia. E tem a segunda atividade de projeto do ano."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Combustíveis e ambiente",
+          "imagem": "q12_combustiveis_ambiente.png",
+          "imagem_legenda": "Efeitos ambientais da combustão: efeito de estufa, chuva ácida, smog e partículas; alternativas.",
+          "texto_principal": "A queima de combustíveis fósseis é a principal fonte de emissões de CO₂ de origem humana e a principal causa das alterações climáticas. Também liberta poluentes que afetam a saúde. A investigação em Química procura combustíveis alternativos, mais limpos e renováveis, e formas de produzir e usar energia com menos impacto.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Alterações climáticas",
+              "explicacao": "O CO₂ libertado pela queima de carvão, petróleo e gás natural aumenta o efeito de estufa. A indústria petrolífera também liberta metano em fugas."
+            },
+            {
+              "id": "p2",
+              "label": "Outros poluentes",
+              "explicacao": "NOx, SO₂, CO, partículas e hidrocarbonetos por queimar. Causam chuva ácida, smog e doenças respiratórias."
+            },
+            {
+              "id": "p3",
+              "label": "Biocombustíveis",
+              "explicacao": "Produzidos a partir de biomassa (plantas, óleos, resíduos). O CO₂ libertado na combustão foi absorvido pelas plantas durante o crescimento."
+            },
+            {
+              "id": "p4",
+              "label": "Biodiesel",
+              "explicacao": "Obtido por transesterificação de óleos vegetais (novos ou usados) com metanol, com um catalisador básico. Forma ésteres metílicos (o biodiesel) e glicerol."
+            },
+            {
+              "id": "p5",
+              "label": "Bioetanol",
+              "explicacao": "Obtido por fermentação de açúcares (cana-de-açúcar, milho, beterraba)."
+            },
+            {
+              "id": "p6",
+              "label": "Hidrogénio",
+              "explicacao": "A sua combustão só forma água. É \"verde\" quando produzido por eletrólise da água com eletricidade renovável."
+            },
+            {
+              "id": "p7",
+              "label": "Limitações",
+              "explicacao": "Os biocombustíveis de primeira geração competem com a produção de alimentos e pelo uso do solo. O biodiesel de óleos usados evita esse problema e valoriza um resíduo."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "triglicerídeo + 3 metanol → 3 ésteres metílicos (biodiesel) + glicerol",
+              "significado": "Transesterificação (simplificada); catalisador: NaOH ou KOH.",
+              "unidades": ""
+            },
+            {
+              "expressao": "2 H₂ + O₂ → 2 H₂O",
+              "significado": "Combustão do hidrogénio.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que o biodiesel de óleos alimentares usados é considerado uma boa alternativa?",
+          "opcoes": [
+            "Porque não emite CO₂ na combustão.",
+            "Porque reaproveita um resíduo poluente e o carbono que emite foi captado recentemente pelas plantas.",
+            "Porque é mais barato do que a água.",
+            "Porque não precisa de nenhuma reação química."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O biodiesel ainda emite CO₂, mas esse carbono veio da atmosfera há pouco tempo (através das plantas). E evita que o óleo usado polua águas e esgotos.",
+          "mascote_feedback_errado": "O biodiesel também emite CO₂ quando arde. A vantagem é que esse carbono foi captado recentemente pelas plantas, e que se reaproveita um resíduo que, de outra forma, poluiria."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A conta-poupança e a conta-corrente.** Os combustíveis fósseis são como uma poupança de carbono feita durante milhões de anos e guardada no subsolo. Quando os queimamos, estamos a gastar essa poupança toda de uma vez e a pôr o carbono na atmosfera. Os biocombustíveis são como uma conta-corrente: o carbono que as plantas tiraram do ar este ano é o que volta ao ar quando o combustível arde. A conta fica mais equilibrada."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "APL 2",
+          "titulo": "Produção de um biodiesel a partir de óleos alimentares queimados (atividade de projeto laboratorial)",
+          "objetivo": "Conceber, fundamentar e executar um percurso investigativo para responder à questão: \"Como produzir um biodiesel a partir de óleos alimentares queimados?\"",
+          "material": [
+            "Material a selecionar pelo grupo:",
+            "Óleo alimentar usado, filtrado",
+            "Metanol",
+            "Hidróxido de sódio ou de potássio (catalisador)",
+            "Placa de aquecimento com agitador, termómetro, gobelés, erlenmeyer",
+            "Ampola de decantação",
+            "Balança, provetas",
+            "Água destilada (para lavagem)",
+            "Óculos, luvas, bata; hotte"
+          ],
+          "procedimento": [
+            "Pesquisar e justificar a necessidade de combustíveis alternativos e a valorização dos óleos usados.",
+            "Elaborar um diagrama sequencial das operações.",
+            "Pré-tratar o óleo: filtrar resíduos sólidos e aquecer para retirar água.",
+            "Na hotte, dissolver o catalisador no metanol (forma-se metóxido).",
+            "Juntar a mistura ao óleo aquecido (cerca de 50 a 55 °C) e agitar durante cerca de 1 hora.",
+            "Deixar repousar na ampola de decantação: forma-se uma fase inferior de glicerol (mais densa e escura) e uma superior de biodiesel.",
+            "Separar as fases e lavar o biodiesel com água morna para remover restos de catalisador, metanol e sabões.",
+            "Secar o biodiesel e avaliar: aspeto, massa volúmica, combustão de uma pequena amostra.",
+            "Apresentar e discutir os resultados."
+          ],
+          "tratamento_de_dados": "Identificar as principais reações envolvidas: transesterificação (óleo + metanol → ésteres metílicos + glicerol) e, como reação secundária indesejada, a saponificação (formação de sabões), favorecida pela presença de água e ácidos gordos livres.\n\nCalcular o rendimento em massa (massa de biodiesel / massa de óleo × 100).\n\nComparar a massa volúmica obtida com a de referência (cerca de 0,88 g/cm³).",
+          "conclusao": "É possível produzir biodiesel a partir de óleos alimentares usados por transesterificação com metanol e um catalisador básico, valorizando um resíduo e obtendo um combustível alternativo. A qualidade do produto depende do pré-tratamento do óleo e da lavagem.",
+          "erros_comuns": [
+            "Não retirar a água do óleo (favorece a saponificação e baixa o rendimento).",
+            "Usar quantidades erradas de catalisador (a mais forma sabões; a menos, a reação fica incompleta).",
+            "Não lavar o biodiesel (fica com catalisador, que danifica os motores).",
+            "Trabalhar com metanol fora da hotte (é tóxico e inflamável)."
+          ],
+          "seguranca": "O metanol é tóxico (por inalação, ingestão e contacto) e inflamável; o hidróxido de sódio é corrosivo. Hotte, luvas e óculos obrigatórios. Sem chamas.",
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Combustíveis do futuro e o oleão",
+          "texto": "**Combustíveis do futuro**\n\nHidrogénio verde: Portugal tem projetos de produção em Sines, aproveitando a energia solar e eólica.\n\nCombustíveis sintéticos (e-fuels): produzidos a partir de CO₂ capturado e hidrogénio verde.\n\nBiocombustíveis avançados: a partir de algas, resíduos agrícolas e florestais, sem competir com alimentos.\n\nEletrificação: carros e transportes elétricos com eletricidade de fontes renováveis.\n\n**O oleão**\n\nO óleo alimentar usado deve ser guardado numa garrafa de plástico fechada e depositado nos oleões. Nunca deve ir para o lava-loiça nem para a sanita."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na produção de biodiesel, a reação principal é:",
+              "opcoes": [
+                "uma combustão.",
+                "uma transesterificação do óleo com metanol.",
+                "uma destilação.",
+                "um cracking."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os triglicerídeos do óleo reagem com metanol e formam ésteres metílicos (biodiesel) e glicerol.",
+              "mascote_feedback_errado": "Os triglicerídeos do óleo reagem com metanol e formam ésteres metílicos (biodiesel) e glicerol."
+            },
+            {
+              "pergunta": "O hidrogénio é considerado um combustível \"limpo\" porque:",
+              "opcoes": [
+                "não liberta energia.",
+                "a sua combustão só produz água.",
+                "é um gás nobre.",
+                "não precisa de oxigénio."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "2 H₂ + O₂ → 2 H₂O. Mas só é verdadeiramente limpo se for produzido com energia renovável.",
+              "mascote_feedback_errado": "2 H₂ + O₂ → 2 H₂O. Mas só é verdadeiramente limpo se for produzido com energia renovável."
+            },
+            {
+              "pergunta": "Qual é uma limitação dos biocombustíveis de primeira geração?",
+              "opcoes": [
+                "Não ardem.",
+                "Podem competir com a produção de alimentos pelo uso do solo.",
+                "Emitem mais SO₂ do que o carvão.",
+                "Só funcionam em aviões."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Culturas como o milho ou a cana-de-açúcar usadas para combustível ocupam solo que poderia produzir alimentos.",
+              "mascote_feedback_errado": "Culturas como o milho ou a cana-de-açúcar usadas para combustível ocupam solo que poderia produzir alimentos."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 4 concluída. Explicas a destilação fracionada e o cracking, dás nome a hidrocarbonetos, álcoois e éteres, identificas isómeros, interpretas a ressonância e os pontos de ebulição, usas a equação dos gases ideais e discutes combustíveis alternativos. A seguir: de onde vem, exatamente, a energia dos combustíveis."
+}

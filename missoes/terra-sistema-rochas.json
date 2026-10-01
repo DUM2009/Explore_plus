@@ -1,0 +1,200 @@
+{
+  "missao_id": "terra-sistema-rochas",
+  "titulo": "A Terra Como Sistema e as Rochas",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "🌍", "nome": "Guardião do Sistema Terra" },
+  "secoes": [
+    {
+      "secao_id": "quatro-subsistemas",
+      "titulo": "Um planeta, quatro subsistemas",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A Terra troca energia com o espaço, mas quase nunca troca matéria — é por isso que se diz que é, aproximadamente, um sistema fechado. 🌍",
+          "texto": "Dentro dela, quatro grandes subsistemas trabalham em conjunto, 24 horas por dia, há milhares de milhões de anos."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Os quatro subsistemas terrestres",
+          "instrucao": "Clica em cada subsistema para veres do que é feito e como interage com os outros.",
+          "pontos": [
+            { "id": "geosfera", "label": "Geosfera", "explicacao": "A parte sólida da Terra (e o núcleo externo líquido): crosta, manto e núcleo. Os vulcões libertam gases para a atmosfera; as rochas fornecem nutrientes aos seres vivos." },
+            { "id": "hidrosfera", "label": "Hidrosfera", "explicacao": "Toda a água: oceanos, rios, lagos, águas subterrâneas e gelo (criosfera). A água erode e transporta rochas, e evapora para a atmosfera." },
+            { "id": "atmosfera", "label": "Atmosfera", "explicacao": "A camada gasosa que envolve a Terra (N₂ ≈ 78%, O₂ ≈ 21%, CO₂, vapor de água). O vento erode e transporta partículas; a chuva alimenta rios e aquíferos.", "curiosidade": "A composição da atmosfera não foi sempre esta — a fotossíntese dos primeiros seres vivos é que, ao longo de milhares de milhões de anos, foi enriquecendo o ar em oxigénio." },
+            { "id": "biosfera", "label": "Biosfera", "explicacao": "O conjunto dos seres vivos e dos locais onde vivem. As raízes fraturam rochas; a fotossíntese alterou a composição da atmosfera." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A Terra é, aproximadamente, um sistema:",
+          "opcoes": ["Aberto (troca matéria e energia)", "Fechado (troca energia, quase não troca matéria)"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! Recebe energia solar e liberta calor, mas quase não troca matéria com o exterior.",
+          "mascote_feedback_errado": "É um sistema fechado — troca energia, mas as trocas de matéria (meteoritos, gases que escapam) são desprezáveis."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🌍",
+          "texto": "💡 Pensa nos quatro subsistemas como quatro colegas de equipa que nunca param de trocar favores: a água (hidrosfera) erode a rocha (geosfera) e evapora para o ar (atmosfera); o vento transporta partículas e alimenta os rios; as raízes (biosfera) fraturam as rochas. Ninguém trabalha sozinho — e é essa troca constante que move toda a dinâmica da Terra."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A geosfera inclui:",
+              "opcoes": ["Crosta, manto e núcleo", "Apenas a crosta"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A geosfera é toda a parte sólida, incluindo o núcleo externo líquido.",
+              "mascote_feedback_errado": "Inclui crosta, manto e núcleo — não é só a camada mais à superfície."
+            },
+            {
+              "pergunta": "A fotossíntese dos primeiros seres vivos alterou, ao longo do tempo, a composição de qual subsistema?",
+              "opcoes": ["A atmosfera", "O núcleo"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Foi a fotossíntese que, ao longo de milhares de milhões de anos, enriqueceu a atmosfera em oxigénio.",
+              "mascote_feedback_errado": "Foi a atmosfera — o núcleo não é afetado diretamente pela biosfera."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: a Terra troca grandes quantidades de matéria com o espaço.",
+              "opcoes": ["Verdadeiro", "Falso"],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! É falso — as trocas de matéria (meteoritos, gases) são desprezáveis; a Terra é aproximadamente um sistema fechado.",
+              "mascote_feedback_errado": "Na verdade é falso — a Terra troca sobretudo energia, não matéria, com o exterior."
+            }
+          ],
+          "mascote_conclusao": "Já conheces os quatro subsistemas. Mas como é que um geólogo consegue estudar um planeta tão grande e tão antigo? 🌍"
+        }
+      ]
+    },
+    {
+      "secao_id": "geologia-ciencia",
+      "titulo": "A Geologia como ciência histórica",
+      "xp": 15,
+      "tempo_estimado_min": 4,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Como se estuda um planeta inteiro?",
+          "instrucao": "Clica em cada método para veres como os geólogos trabalham.",
+          "pontos": [
+            { "id": "campo", "label": "Trabalho de campo", "explicacao": "Observação, cartografia e recolha de amostras diretamente no terreno." },
+            { "id": "laboratorio", "label": "Trabalho laboratorial", "explicacao": "Análise de amostras e atividade experimental, com controlo de variáveis: identifica-se a variável independente (a que se manipula), a dependente (a que se mede) e as variáveis controladas." },
+            { "id": "modelos", "label": "Modelos", "explicacao": "Análogos ou matemáticos, usados quando um processo não pode ser reproduzido diretamente — mas têm sempre limitações: a escala de tempo, as dimensões e os materiais nunca são iguais aos reais." },
+            { "id": "tecnologia", "label": "Tecnologias", "explicacao": "Satélites, GPS e sismógrafos permitem observar e medir processos à escala de todo o planeta." }
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Uma ciência histórica",
+          "texto": "A Geologia interpreta o passado a partir dos vestígios deixados nas rochas — por isso se diz que é uma ciência histórica. Trabalha com escalas de tempo enormes (milhões de anos, ou \"Ma\") e escalas espaciais que vão do mineral ao planeta inteiro. Como muitos processos geológicos demoram demasiado tempo para serem observados diretamente, os geólogos recorrem a modelos e a atividade experimental — sempre conscientes de que um modelo nunca reproduz exatamente a realidade."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Num modelo geológico, uma limitação típica é:",
+              "opcoes": ["A escala de tempo, as dimensões e os materiais não serem iguais aos reais", "Ser sempre mais caro do que o trabalho de campo"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Todo o modelo tem limitações relacionadas com escala, dimensão e materiais.",
+              "mascote_feedback_errado": "A limitação principal está na escala de tempo, dimensões e materiais — não no custo."
+            },
+            {
+              "pergunta": "Numa atividade experimental, a variável que se mede chama-se:",
+              "opcoes": ["Variável dependente", "Variável independente"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! A variável dependente é a que se mede; a independente é a que se manipula.",
+              "mascote_feedback_errado": "É a variável dependente — a independente é a que o investigador manipula."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como a Geologia estuda a Terra. Agora vamos ver do que ela é feita — as rochas. 🪨"
+        }
+      ]
+    },
+    {
+      "secao_id": "tres-grupos-rochas",
+      "titulo": "Os três grandes grupos de rochas",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Uma rocha é um agregado natural de um ou mais minerais. Mas nem todas as rochas se formam da mesma maneira. 🪨",
+          "texto": "Vamos conhecer os três grandes grupos — e o que cada um regista sobre a história da Terra."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Sedimentares, magmáticas e metamórficas",
+          "instrucao": "Clica em cada tipo de rocha para veres como se forma.",
+          "pontos": [
+            { "id": "sedimentares", "label": "Rochas sedimentares", "explicacao": "Formam-se à superfície por meteorização, erosão, transporte e deposição de sedimentos, seguidos de diagénese (ex.: arenito, argilito, calcário). Registam paleoambientes, clima e fósseis." },
+            { "id": "magmaticas", "label": "Rochas magmáticas", "explicacao": "Formam-se por arrefecimento e solidificação do magma — em profundidade (plutónicas) ou à superfície (vulcânicas) (ex.: granito, basalto). Registam atividade vulcânica e magmática." },
+            { "id": "metamorficas", "label": "Rochas metamórficas", "explicacao": "Resultam da transformação, no estado sólido, de rochas pré-existentes por aumento de pressão e/ou temperatura (ex.: xisto, mármore, gnaisse). Registam colisões de placas e intrusões magmáticas." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Uma rocha que se forma por arrefecimento e solidificação do magma é:",
+          "opcoes": ["Sedimentar", "Magmática"],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! Magmática — pode ser plutónica (profundidade) ou vulcânica (superfície).",
+          "mascote_feedback_errado": "É magmática — a sedimentar forma-se à superfície, por acumulação de sedimentos."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🪨",
+          "texto": "💡 Pensa nos três grupos como três formas diferentes de \"cozinhar\" o mesmo material: as sedimentares são compactadas a frio, como fazer um bloco de areia molhada; as magmáticas são derretidas e voltam a solidificar, como derreter chocolate e deixá-lo endurecer num novo molde; as metamórficas são cozinhadas sem nunca derreter, como assar barro até ficar mais duro, sem alguma vez ser líquido."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "mascote_texto": "E porque é que as rochas não ficam sempre iguais? Porque estão todas em ciclo contínuo. 🔄",
+          "titulo": "O ciclo das rochas",
+          "layout": "escada",
+          "instrucao": "Sobe os degraus do ciclo litológico.",
+          "pontos": [
+            { "id": "meteorizacao", "label": "Meteorização, erosão e deposição", "explicacao": "Rochas à superfície desgastam-se; os sedimentos são transportados e depositados noutro local." },
+            { "id": "diagenese_ciclo", "label": "Diagénese", "explicacao": "Os sedimentos consolidam-se e formam rocha sedimentar." },
+            { "id": "metamorfismo_ciclo", "label": "Metamorfismo", "explicacao": "O aumento de pressão e/ou temperatura transforma qualquer rocha em rocha metamórfica, sem a fundir." },
+            { "id": "fusao_ciclo", "label": "Fusão e cristalização", "explicacao": "Se a temperatura for suficiente, forma-se magma; ao cristalizar, origina rocha magmática." },
+            { "id": "soerguimento", "label": "Soerguimento", "explicacao": "Os movimentos tectónicos trazem de volta à superfície rochas formadas em profundidade — e o ciclo recomeça." }
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Os fósseis como arquivos",
+          "texto": "Os fósseis — restos ou vestígios de seres vivos preservados sobretudo em rochas sedimentares — permitem reconstituir paleoambientes, datar relativamente as rochas, correlacionar camadas de locais diferentes, e estudar a evolução da vida ao longo do tempo geológico."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Uma rocha formada a partir de outra, no estado sólido, por aumento de pressão e temperatura, é:",
+              "opcoes": ["Metamórfica", "Sedimentar"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! É o metamorfismo — transformação no estado sólido, sem fusão.",
+              "mascote_feedback_errado": "É metamórfica — a sedimentar forma-se à superfície, não por transformação no estado sólido de outra rocha."
+            },
+            {
+              "pergunta": "O que traz rochas formadas em profundidade de volta à superfície, fazendo o ciclo litológico recomeçar?",
+              "opcoes": ["O soerguimento (movimentos tectónicos)", "A fotossíntese"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! É o soerguimento, ligado aos movimentos tectónicos.",
+              "mascote_feedback_errado": "É o soerguimento — a fotossíntese não tem relação direta com o ciclo das rochas."
+            },
+            {
+              "pergunta": "Os fósseis, preservados sobretudo em rochas sedimentares, permitem:",
+              "opcoes": ["Reconstituir paleoambientes e datar relativamente as rochas", "Apenas decorar as rochas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! São verdadeiros arquivos da história da Terra e da vida.",
+              "mascote_feedback_errado": "Permitem reconstituir paleoambientes, datar e correlacionar rochas, e estudar a evolução da vida."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já conheces os quatro subsistemas da Terra, como a Geologia estuda o planeta, e os três grupos de rochas ligados pelo ciclo litológico. A aventura geológica está só a começar. 🌍🪨"
+        }
+      ]
+    }
+  ]
+}

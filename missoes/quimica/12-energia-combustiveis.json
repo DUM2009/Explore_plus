@@ -1,0 +1,611 @@
+{
+  "missao_id": "12-energia-combustiveis",
+  "id_guiao": "qui12-m5",
+  "titulo": "De onde vem a energia dos combustíveis",
+  "disciplina": "quimica",
+  "ano": 12,
+  "imagem": "q12_chama_fogao.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2c1 3 4 5 4 9a4 4 0 0 1-8 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 0-8z\"/><path d=\"M5 22h14\"/></svg>",
+    "nome": "Mestre da Entalpia"
+  },
+  "secoes": [
+    {
+      "secao_id": "entalpias-padrao-al-2-3",
+      "titulo": "Entalpia-padrão de reação, de formação e de combustão; AL 2.3",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_chama_fogao.png",
+          "imagem_legenda": "Chama azul de um fogão a gás com uma panela por cima.",
+          "texto": "Quando acendes o fogão, a chama azul do gás aquece a panela. Cada mole de metano que arde liberta 890 kJ. Mas como se mede isso? E como se sabe quanta energia libertaria um combustível que ainda nem foi inventado? A Química tem tabelas com as \"entalpias de formação\" de milhares de substâncias, e com elas calcula-se a energia de quase qualquer reação, sem a fazer.",
+          "mascote_texto": "Do 10.º ano já sabes que ΔH < 0 é exotérmico. Agora vais calcular ΔH com precisão, a partir de tabelas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Entalpias-padrão",
+          "imagem": "q12_entalpia_formacao.png",
+          "imagem_legenda": "Diagrama de entalpia da combustão do metano: substâncias elementares no zero, CH₄ (−74,8), CO₂ + 2 H₂O em baixo.",
+          "texto_principal": "A entalpia é uma grandeza característica de cada estado de um sistema (uma função de estado): a sua variação só depende dos estados inicial e final, e não do caminho. A entalpia-padrão de reação (ΔrH°) é a variação de entalpia de uma reação em condições-padrão. Para certas reações, usam-se nomes específicos.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Energia, calor e entalpia",
+              "explicacao": "Energia é a capacidade de um sistema produzir alterações; calor é energia transferida devido a uma diferença de temperatura; a variação de entalpia é o calor trocado por uma reação a pressão constante."
+            },
+            {
+              "id": "p2",
+              "label": "Condições-padrão",
+              "explicacao": "Pressão-padrão (1 bar, praticamente igual a 1 atm), substâncias no seu estado mais estável, concentrações 1 mol/dm³ para soluções; a temperatura indica-se (em geral 25 °C)."
+            },
+            {
+              "id": "p3",
+              "label": "Entalpia-padrão de formação (ΔfH°)",
+              "explicacao": "Variação de entalpia da formação de 1 mol de uma substância a partir das suas substâncias elementares, nas formas mais estáveis, em condições-padrão. Para as substâncias elementares na forma mais estável (O₂, H₂, N₂, C grafite), ΔfH° = 0."
+            },
+            {
+              "id": "p4",
+              "label": "Entalpia-padrão de combustão (ΔcH°)",
+              "explicacao": "Variação de entalpia da combustão completa de 1 mol de uma substância em oxigénio, em condições-padrão."
+            },
+            {
+              "id": "p5",
+              "label": "Entalpia-padrão de dissolução",
+              "explicacao": "Variação de entalpia quando 1 mol de soluto se dissolve num solvente."
+            },
+            {
+              "id": "p6",
+              "label": "Cálculo a partir das entalpias de formação",
+              "explicacao": "Soma das ΔfH° dos produtos (multiplicadas pelos coeficientes) menos soma das ΔfH° dos reagentes."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "ΔrH° = Σ n ΔfH°(produtos) − Σ m ΔfH°(reagentes)",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "ΔfH°(substância elementar na forma mais estável) = 0",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "ΔcH°(CH₄) = [−393,5 + 2 × (−285,8)] − [−74,8 + 0] = −890,3 kJ/mol",
+              "significado": "Ex.: CH₄(g) + 2 O₂(g) → CO₂(g) + 2 H₂O(l).",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Calcula a entalpia-padrão de combustão do etanol, C₂H₅OH(l) + 3 O₂(g) → 2 CO₂(g) + 3 H₂O(l). (ΔfH°: C₂H₅OH(l) −277,7; CO₂(g) −393,5; H₂O(l) −285,8 kJ/mol)",
+          "opcoes": [
+            "−1367 kJ/mol",
+            "−401,6 kJ/mol",
+            "−1922 kJ/mol",
+            "+1367 kJ/mol"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Certo. Produtos: 2 × (−393,5) + 3 × (−285,8) = −787,0 − 857,4 = −1644,4 kJ. Reagentes: −277,7 kJ (o O₂ conta 0). ΔcH° = −1644,4 − (−277,7) ≈ −1367 kJ/mol.",
+          "mascote_feedback_errado": "Usa produtos menos reagentes, com os coeficientes: [2 × (−393,5) + 3 × (−285,8)] − [−277,7] ≈ −1367 kJ/mol. O O₂ é uma substância elementar: ΔfH° = 0."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destas equações representa a entalpia-padrão de formação da água líquida?",
+          "opcoes": [
+            "2 H₂(g) + O₂(g) → 2 H₂O(l)",
+            "H₂(g) + ½ O₂(g) → H₂O(l)",
+            "H₂O(l) → H₂(g) + ½ O₂(g)",
+            "2 H(g) + O(g) → H₂O(l)"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Forma-se 1 mol de H₂O a partir das substâncias elementares nas formas mais estáveis (H₂ e O₂ gasosos). Por isso aparece o coeficiente ½.",
+          "mascote_feedback_errado": "A definição exige a formação de 1 mol do composto a partir das substâncias elementares na forma mais estável. Só H₂(g) + ½ O₂(g) → H₂O(l) cumpre as duas condições."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_entalpia_formacao",
+          "titulo": "Calcula ΔH com a tabela",
+          "instrucao": "Escolhe uma reação. Vê as entalpias de formação dos produtos e dos reagentes (multiplicadas pelos coeficientes) e o ΔrH° calculado. As substâncias elementares contam 0.",
+          "controlos": [
+            {
+              "id": "reacao",
+              "rotulo": "Reação",
+              "opcoes": [
+                {
+                  "valor": "1",
+                  "label": "CH₄(g) + 2 O₂(g) → CO₂(g) + 2 H₂O(l)"
+                },
+                {
+                  "valor": "2",
+                  "label": "C₃H₈(g) + 5 O₂(g) → 3 CO₂(g) + 4 H₂O(l)"
+                },
+                {
+                  "valor": "3",
+                  "label": "C₂H₅OH(l) + 3 O₂(g) → 2 CO₂(g) + 3 H₂O(l)"
+                },
+                {
+                  "valor": "4",
+                  "label": "C₈H₁₈(l) + 25/2 O₂(g) → 8 CO₂(g) + 9 H₂O(l)"
+                },
+                {
+                  "valor": "5",
+                  "label": "2 CO(g) + O₂(g) → 2 CO₂(g)"
+                },
+                {
+                  "valor": "6",
+                  "label": "N₂(g) + 3 H₂(g) → 2 NH₃(g)"
+                }
+              ]
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Σ produtos",
+              "formula": "dados.r[reacao].prod"
+            },
+            {
+              "rotulo": "Σ reagentes",
+              "formula": "dados.r[reacao].reag"
+            },
+            {
+              "rotulo": "ΔrH° = Σ produtos − Σ reagentes",
+              "formula": "dados.r[reacao].dh"
+            },
+            {
+              "rotulo": "Classificação",
+              "formula": "dados.r[reacao].tipo"
+            },
+            {
+              "rotulo": "Energia libertada por grama de combustível",
+              "formula": "dados.r[reacao].energia"
+            }
+          ],
+          "pergunta_final": "Porque é que o O₂ não \"conta\" nos cálculos? Resposta esperada: porque é uma substância elementar na forma mais estável e a sua entalpia-padrão de formação é zero.",
+          "dados": {
+            "r": {
+              "1": {
+                "prod": "(−393,5) + 2 × (−285,8) = −965,1 kJ",
+                "reag": "(−74,8) + 2 × (0,0) = −74,8 kJ",
+                "dh": "−965,1 − (−74,8) = −890,3 kJ/mol",
+                "tipo": "Exotérmica (ΔrH° < 0): os produtos ficam abaixo dos reagentes no diagrama de entalpia.",
+                "energia": "|ΔrH°| / (1 × M) = 890,3 / (1 × 16,05) ≈ 55,5 kJ por grama de CH₄"
+              },
+              "2": {
+                "prod": "3 × (−393,5) + 4 × (−285,8) = −2323,7 kJ",
+                "reag": "(−103,8) + 5 × (0,0) = −103,8 kJ",
+                "dh": "−2323,7 − (−103,8) = −2219,9 kJ/mol",
+                "tipo": "Exotérmica (ΔrH° < 0): os produtos ficam abaixo dos reagentes no diagrama de entalpia.",
+                "energia": "|ΔrH°| / (1 × M) = 2219,9 / (1 × 44,11) ≈ 50,3 kJ por grama de C₃H₈"
+              },
+              "3": {
+                "prod": "2 × (−393,5) + 3 × (−285,8) = −1644,4 kJ",
+                "reag": "(−277,7) + 3 × (0,0) = −277,7 kJ",
+                "dh": "−1644,4 − (−277,7) = −1366,7 kJ/mol",
+                "tipo": "Exotérmica (ΔrH° < 0): os produtos ficam abaixo dos reagentes no diagrama de entalpia.",
+                "energia": "|ΔrH°| / (1 × M) = 1366,7 / (1 × 46,08) ≈ 29,7 kJ por grama de C₂H₅OH"
+              },
+              "4": {
+                "prod": "8 × (−393,5) + 9 × (−285,8) = −5720,2 kJ",
+                "reag": "(−249,9) + 25/2 × (0,0) = −249,9 kJ",
+                "dh": "−5720,2 − (−249,9) = −5470,3 kJ/mol",
+                "tipo": "Exotérmica (ΔrH° < 0): os produtos ficam abaixo dos reagentes no diagrama de entalpia.",
+                "energia": "|ΔrH°| / (1 × M) = 5470,3 / (1 × 114,26) ≈ 47,9 kJ por grama de C₈H₁₈"
+              },
+              "5": {
+                "prod": "2 × (−393,5) = −787,0 kJ",
+                "reag": "2 × (−110,5) + (0,0) = −221,0 kJ",
+                "dh": "−787,0 − (−221,0) = −566,0 kJ/mol",
+                "tipo": "Exotérmica (ΔrH° < 0): os produtos ficam abaixo dos reagentes no diagrama de entalpia.",
+                "energia": "|ΔrH°| / (2 × M) = 566,0 / (2 × 28,01) ≈ 10,1 kJ por grama de CO"
+              },
+              "6": {
+                "prod": "2 × (−46,1) = −92,2 kJ",
+                "reag": "(0,0) + 3 × (0,0) = 0,0 kJ",
+                "dh": "−92,2 − (0,0) = −92,2 kJ/mol",
+                "tipo": "Exotérmica (ΔrH° < 0): os produtos ficam abaixo dos reagentes no diagrama de entalpia.",
+                "energia": "Não se aplica: não é uma combustão."
+              }
+            }
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A altitude das cidades.** As entalpias de formação são como as altitudes das cidades em relação ao nível do mar. O nível do mar (zero) são as substâncias elementares. Para saberes quanto desces ao ir de uma cidade para outra, não precisas de conhecer a estrada: basta subtrair as altitudes. Para saberes o ΔH de uma reação, subtrais as \"altitudes\" (entalpias de formação) dos produtos e dos reagentes."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.3",
+          "titulo": "Determinação da entalpia de neutralização da reação NaOH(aq) + HCl(aq)",
+          "objetivo": "Determinar a variação de entalpia da reação de neutralização entre soluções aquosas de hidróxido de sódio e de ácido clorídrico, através de uma titulação termométrica.",
+          "material": [
+            "Solução de HCl 1,00 mol/dm³ e solução de NaOH 1,00 mol/dm³",
+            "Calorímetro (ou copo de esferovite com tampa)",
+            "Termómetro digital (resolução 0,1 °C) ou sensor de temperatura",
+            "Bureta de 50 cm³, pipeta volumétrica de 50,00 cm³",
+            "Agitador"
+          ],
+          "procedimento": [
+            "Medir a temperatura inicial das duas soluções (devem estar à mesma temperatura).",
+            "Colocar 50,00 cm³ de HCl no calorímetro.",
+            "Adicionar a solução de NaOH a partir da bureta, em porções (por exemplo, de 5,00 cm³), agitando e registando a temperatura após cada adição.",
+            "Continuar até cerca de 80 cm³ de NaOH adicionado."
+          ],
+          "tratamento_de_dados": "Traçar o gráfico da temperatura em função do volume de NaOH adicionado. A temperatura sobe até ao ponto de equivalência e depois desce ligeiramente (a solução adicionada, mais fria, já não reage).\n\nO ponto de equivalência corresponde à temperatura mais elevada (por volta de 50 cm³ de NaOH).\n\nCalor libertado: Q = m × c × ΔT, com a massa total das soluções no ponto de equivalência (cerca de 100 g, considerando a densidade igual à da água) e c = 4,18 J g⁻¹ °C⁻¹.\n\nExemplo: ΔT = 6,7 °C. Q = 100 × 4,18 × 6,7 ≈ 2,80 × 10³ J. n(H₂O formada) = 0,0500 mol. ΔH = −2,80 / 0,0500 ≈ −56,0 kJ/mol.\n\nErro percentual em relação ao valor de referência (cerca de −57,1 kJ/mol): cerca de 1,9 %.",
+          "conclusao": "A neutralização de um ácido forte com uma base forte é exotérmica, com ΔH de cerca de −57 kJ por mole de água formada. A titulação termométrica permite identificar o ponto de equivalência pela temperatura máxima.",
+          "erros_comuns": [
+            "Esquecer o sinal negativo de ΔH (o sistema liberta energia).",
+            "Usar no cálculo de Q só a massa de uma das soluções.",
+            "Calorímetro mal isolado: perde-se energia e o |ΔH| obtido fica menor do que o real.",
+            "Soluções a temperaturas iniciais diferentes."
+          ],
+          "seguranca": "HCl e NaOH a 1 mol/dm³ são corrosivos. Óculos e luvas.",
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A entalpia-padrão de formação do O₂(g) é:",
+              "opcoes": [
+                "−249 kJ/mol",
+                "0 kJ/mol",
+                "+498 kJ/mol",
+                "depende da temperatura de referência apenas."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O₂(g) é a forma mais estável do elemento oxigénio. Por definição, ΔfH° = 0.",
+              "mascote_feedback_errado": "O₂(g) é a forma mais estável do elemento oxigénio. Por definição, ΔfH° = 0."
+            },
+            {
+              "pergunta": "Calcula ΔrH° de 2 CO(g) + O₂(g) → 2 CO₂(g). (ΔfH°: CO −110,5; CO₂ −393,5 kJ/mol)",
+              "opcoes": [
+                "−283,0 kJ/mol",
+                "−566,0 kJ/mol",
+                "−504,0 kJ/mol",
+                "+566,0 kJ/mol"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "[2 × (−393,5)] − [2 × (−110,5) + 0] = −787,0 + 221,0 = −566,0 kJ/mol.",
+              "mascote_feedback_errado": "[2 × (−393,5)] − [2 × (−110,5) + 0] = −787,0 + 221,0 = −566,0 kJ/mol."
+            },
+            {
+              "pergunta": "Na AL 2.3, porque é que a temperatura desce ligeiramente depois do ponto de equivalência?",
+              "opcoes": [
+                "Porque a reação se torna endotérmica.",
+                "Porque já não há ácido para reagir e a solução de NaOH adicionada, mais fria, arrefece a mistura.",
+                "Porque o termómetro avaria.",
+                "Porque se forma gelo."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Depois da equivalência, a adição de NaOH não liberta energia e só aumenta a massa da solução a uma temperatura inferior.",
+              "mascote_feedback_errado": "Depois da equivalência, a adição de NaOH não liberta energia e só aumenta a massa da solução a uma temperatura inferior."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "lei-hess",
+      "titulo": "Lei de Hess",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_carbono_co.png",
+          "imagem_legenda": "Carvão a arder com pouco oxigénio, com libertação de monóxido de carbono assinalada.",
+          "texto": "Quando o carvão arde com pouco oxigénio, forma-se monóxido de carbono, um gás tóxico. A entalpia desta reação é difícil de medir diretamente, porque é impossível garantir que se forma só CO e nenhum CO₂. Mas é fácil medir a combustão completa do carbono e a combustão do CO. Em 1840, Germain Hess mostrou que basta combinar estas duas para obter a primeira.",
+          "mascote_texto": "A Lei de Hess é como montar um puzzle com equações: viras, multiplicas e somas até sair a reação que queres."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A Lei de Hess",
+          "imagem": "q12_lei_hess.png",
+          "imagem_legenda": "Diagrama de entalpia com C + O₂ (0), CO + ½ O₂ (−110,5) e CO₂ (−393,5), e os dois caminhos.",
+          "texto_principal": "Lei de Hess: a variação de entalpia de uma reação é a mesma, quer a reação ocorra num só passo, quer em vários passos. Isto acontece porque a entalpia é uma função de estado. Por isso, é possível calcular o ΔH de uma reação somando as equações (e os ΔH) de outras reações conhecidas.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Função de estado",
+              "explicacao": "ΔH depende só dos estados inicial e final."
+            },
+            {
+              "id": "p2",
+              "label": "Inverter uma equação",
+              "explicacao": "O ΔH muda de sinal."
+            },
+            {
+              "id": "p3",
+              "label": "Multiplicar uma equação por um fator",
+              "explicacao": "O ΔH é multiplicado pelo mesmo fator."
+            },
+            {
+              "id": "p4",
+              "label": "Somar equações",
+              "explicacao": "Somam-se os ΔH. As espécies que aparecem dos dois lados cancelam-se."
+            },
+            {
+              "id": "p5",
+              "label": "Estratégia",
+              "explicacao": "Olhar para a equação-alvo; escolher, em cada equação dada, a espécie que só aparece nessa equação; inverter ou multiplicar para que fique do lado certo e com o coeficiente certo; somar."
+            },
+            {
+              "id": "p6",
+              "label": "Exemplo",
+              "explicacao": "C(s) + O₂(g) → CO₂(g), ΔH₁ = −393,5 kJ. CO(g) + ½ O₂(g) → CO₂(g), ΔH₂ = −283,0 kJ. Para obter C + ½ O₂ → CO: usar a primeira tal como está e inverter a segunda. ΔH = −393,5 + 283,0 = −110,5 kJ."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "ΔH (reação-alvo) = Σ ΔH (passos)",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Inverter: ΔH → −ΔH",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Multiplicar por k: ΔH → k × ΔH",
+              "significado": "",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Sabendo que ΔcH°(C, grafite) = −393,5, ΔcH°(H₂) = −285,8 e ΔcH°(CH₄) = −890,3 kJ/mol, qual é a entalpia-padrão de formação do metano, C(s) + 2 H₂(g) → CH₄(g)?",
+          "opcoes": [
+            "−74,8 kJ/mol",
+            "−965,1 kJ/mol",
+            "+74,8 kJ/mol",
+            "−211,0 kJ/mol"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Certo. Usa a combustão do C (× 1), a do H₂ (× 2) e a do CH₄ invertida: −393,5 + 2 × (−285,8) + 890,3 = −74,8 kJ/mol.",
+          "mascote_feedback_errado": "Precisas de C e H₂ nos reagentes e CH₄ nos produtos. Combustão do C tal como está; combustão do H₂ multiplicada por 2; combustão do CH₄ invertida (sinal trocado). Soma: −393,5 − 571,6 + 890,3 = −74,8 kJ/mol."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Se N₂(g) + 3 H₂(g) → 2 NH₃(g) tem ΔH = −92,2 kJ, qual é o ΔH de NH₃(g) → ½ N₂(g) + 3/2 H₂(g)?",
+          "opcoes": [
+            "−92,2 kJ",
+            "+92,2 kJ",
+            "+46,1 kJ",
+            "−46,1 kJ"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. Invertendo, o sinal muda (+92,2 kJ); dividindo por 2, o valor fica a metade: +46,1 kJ.",
+          "mascote_feedback_errado": "A equação pedida é a inversa (troca o sinal) e com metade dos coeficientes (divide por 2): +92,2 / 2 = +46,1 kJ."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Subir a montanha por dois caminhos.** Para ir da aldeia ao cume de uma montanha, podes subir por um trilho direto e íngreme ou por um caminho com várias etapas, incluindo uma descida a meio. A diferença de altitude entre a aldeia e o cume é sempre a mesma. A Lei de Hess diz isto para a entalpia: não importa por que \"etapas\" passa a reação, a variação total é a mesma. É isso que permite calcular reações difíceis de medir a partir de outras fáceis."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Porque funciona e ligação ao 10.º ano",
+          "texto": "**Porque é que a Lei de Hess funciona**\n\nFunciona porque a entalpia é uma função de estado, como a altitude. É uma aplicação da conservação da energia: se dois caminhos entre os mesmos estados dessem energias diferentes, poderíamos \"criar\" energia indo por um e voltando pelo outro.\n\n**Ligação ao 10.º ano**\n\nNo 10.º ano estimaste ΔH a partir de energias de ligação. É também uma aplicação da Lei de Hess: imaginas a reação em dois passos (quebrar todas as ligações dos reagentes e formar todas as ligações dos produtos). O método das entalpias de formação dá valores mais exatos, porque as energias de ligação tabeladas são médias."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A Lei de Hess baseia-se no facto de:",
+              "opcoes": [
+                "todas as reações serem exotérmicas.",
+                "a entalpia ser uma função de estado.",
+                "as reações ocorrerem sempre num só passo.",
+                "os catalisadores alterarem o ΔH."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Como a entalpia só depende do estado, a variação total é a mesma por qualquer caminho.",
+              "mascote_feedback_errado": "Como a entalpia só depende do estado, a variação total é a mesma por qualquer caminho."
+            },
+            {
+              "pergunta": "Se uma equação for multiplicada por 3, o seu ΔH:",
+              "opcoes": [
+                "mantém-se.",
+                "é multiplicado por 3.",
+                "é dividido por 3.",
+                "troca de sinal."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O ΔH é proporcional às quantidades que reagem.",
+              "mascote_feedback_errado": "O ΔH é proporcional às quantidades que reagem."
+            },
+            {
+              "pergunta": "Dadas A → B (ΔH = −50 kJ) e B → C (ΔH = +20 kJ), qual é o ΔH de A → C?",
+              "opcoes": [
+                "−70 kJ",
+                "−30 kJ",
+                "+30 kJ",
+                "+70 kJ"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Somando as duas equações, B cancela: ΔH = −50 + 20 = −30 kJ.",
+              "mascote_feedback_errado": "Somando as duas equações, B cancela: ΔH = −50 + 20 = −30 kJ."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "poder-energetico-al-2-5",
+      "titulo": "Poder energético dos combustíveis; AL 2.5",
+      "xp": 25,
+      "tempo_estimado_min": 15,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_comparacao_combustiveis.png",
+          "imagem_legenda": "Bomba de combustível com indicação de gasolina e de etanol (E85), e um carro.",
+          "texto": "O etanol é misturado na gasolina em muitos países e pode ser produzido a partir de plantas. Mas um carro a etanol puro gasta mais litros aos 100 km do que um carro a gasolina. Porquê? Porque o etanol tem oxigénio na molécula: já está \"meio queimado\". O poder energético de um combustível depende da sua composição e estrutura, e é isso que vais medir no laboratório com uma série de álcoois.",
+          "mascote_texto": "Atenção à pergunta \"qual tem mais energia\": por mole ou por grama? As respostas podem ser diferentes."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Energia por mole e por grama",
+          "imagem": "q12_poder_energetico.png",
+          "imagem_legenda": "Energia por grama de vários combustíveis e |ΔcH°| dos álcoois lineares em função do número de carbonos.",
+          "texto_principal": "O poder energético de um combustível relaciona-se com a sua entalpia de combustão: quanto mais negativa, mais energia liberta. Para comparar combustíveis, usa-se muitas vezes a energia libertada por unidade de massa (kJ/g ou MJ/kg), porque é a massa ou o volume que se transporta e armazena.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Energia por mole",
+              "explicacao": "Aumenta com o tamanho da molécula. Numa série de álcoois lineares, cada CH₂ a mais acrescenta cerca de 650 kJ/mol."
+            },
+            {
+              "id": "p2",
+              "label": "Energia por grama",
+              "explicacao": "Hidrogénio cerca de 142 kJ/g; metano cerca de 55 kJ/g; octano cerca de 48 kJ/g; etanol cerca de 30 kJ/g; metanol cerca de 23 kJ/g."
+            },
+            {
+              "id": "p3",
+              "label": "Combustíveis oxigenados",
+              "explicacao": "Álcoois e éteres têm menor poder energético do que hidrocarbonetos de tamanho semelhante, porque já têm átomos de oxigénio ligados ao carbono: estão parcialmente oxidados."
+            },
+            {
+              "id": "p4",
+              "label": "Posição do grupo OH",
+              "explicacao": "Isómeros de posição têm entalpias de combustão muito próximas. Ex.: propan-1-ol −2021 kJ/mol e propan-2-ol −2006 kJ/mol."
+            },
+            {
+              "id": "p5",
+              "label": "Outros critérios na escolha de um combustível",
+              "explicacao": "Estado físico, facilidade de armazenamento e transporte, segurança, custo, emissões de CO₂ e de poluentes."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Energia por grama = |ΔcH°| / M",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Metanol −726; etanol −1367; propan-1-ol −2021; propan-2-ol −2006; butan-1-ol −2676; metano −890; octano −5470; hidrogénio −286",
+              "significado": "ΔcH°.",
+              "unidades": "kJ/mol"
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destes combustíveis liberta mais energia por grama?",
+          "opcoes": [
+            "Octano (ΔcH° = −5470 kJ/mol; M = 114,2 g/mol)",
+            "Metano (ΔcH° = −890 kJ/mol; M = 16,04 g/mol)",
+            "Etanol (ΔcH° = −1367 kJ/mol; M = 46,07 g/mol)",
+            "Metanol (ΔcH° = −726 kJ/mol; M = 32,04 g/mol)"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. Metano: 890 / 16,04 ≈ 55,5 kJ/g; octano: 5470 / 114,2 ≈ 47,9 kJ/g; etanol: 29,7 kJ/g; metanol: 22,7 kJ/g. Por mole, o octano liberta mais; por grama, o metano ganha.",
+          "mascote_feedback_errado": "Divide |ΔcH°| pela massa molar: metano 55,5; octano 47,9; etanol 29,7; metanol 22,7 kJ/g. O octano liberta mais por mole, mas não por grama."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que o etanol (C₂H₆O) liberta menos energia por grama do que o etano (C₂H₆)?",
+          "opcoes": [
+            "Porque tem menos carbonos.",
+            "Porque já contém oxigénio ligado ao carbono: está parcialmente oxidado e \"aproveita\" menos a combustão.",
+            "Porque é líquido.",
+            "Porque tem ligações de hidrogénio que libertam energia."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Parte da energia que o etanol poderia libertar \"já foi gasta\" ao ligar o oxigénio na molécula. E o oxigénio aumenta a massa sem contribuir com energia.",
+          "mascote_feedback_errado": "Os combustíveis oxigenados estão parcialmente oxidados: têm menos ligações C–H e C–C para transformar em C=O e O–H, e o oxigénio pesa sem dar energia."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A pilha meio gasta.** Um combustível oxigenado é como uma pilha que já foi usada durante algum tempo: ainda funciona, mas dá menos energia do que uma nova do mesmo tamanho. O hidrocarboneto é a pilha nova: todos os seus átomos de carbono e hidrogénio estão à espera de reagir com o oxigénio. No álcool, uma parte desse \"trabalho\" já está feita."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 2.5",
+          "titulo": "Determinação da entalpia de combustão de diferentes álcoois",
+          "objetivo": "Investigar a influência do comprimento da cadeia carbonada e da posição do grupo OH dos álcoois na energia libertada durante a combustão.",
+          "material": [
+            "Lamparinas com álcoois diferentes: metanol, etanol, propan-1-ol, propan-2-ol, butan-1-ol",
+            "Lata metálica (ou gobelé) com 100,0 g de água, suspensa por cima da chama, com um anteparo para reduzir perdas",
+            "Termómetro (resolução 0,1 °C)",
+            "Balança (resolução 0,01 g ou 0,001 g)",
+            "Suporte, garras"
+          ],
+          "procedimento": [
+            "Medir a massa da lamparina com o álcool, com a tampa.",
+            "Colocar 100,0 g de água na lata e medir a temperatura inicial.",
+            "Acender a lamparina por baixo da lata, a uma distância fixa, e agitar a água.",
+            "Quando a temperatura tiver subido cerca de 20 °C, apagar a chama (tapando a lamparina) e registar a temperatura máxima.",
+            "Medir de novo a massa da lamparina, com a tampa.",
+            "Repetir com os outros álcoois, mantendo as mesmas condições (mesma massa de água, mesma distância, mesma variação de temperatura)."
+          ],
+          "tratamento_de_dados": "Energia recebida pela água: Q = m água × c × ΔT.\n\nQuantidade de álcool queimada: n = Δm / M.\n\nΔcH = −Q / n (em kJ/mol).\n\nExemplo (etanol): 100,0 g de água, ΔT = 20,0 °C; Q = 100,0 × 4,18 × 20,0 = 8360 J. Δm = 0,500 g; n = 0,500 / 46,07 ≈ 1,09 × 10⁻² mol. ΔcH ≈ −8,36 / 0,0109 ≈ −770 kJ/mol. Valor tabelado: −1367 kJ/mol. Erro percentual cerca de 44 %.\n\nTraçar o gráfico de |ΔcH| em função do número de átomos de carbono dos álcoois lineares: deve dar uma reta crescente.\n\nComparar propan-1-ol e propan-2-ol.",
+          "conclusao": "A entalpia de combustão dos álcoois torna-se mais negativa à medida que aumenta a cadeia carbonada (cerca de 650 kJ/mol por cada grupo CH₂). A posição do grupo OH tem pouca influência. Os valores experimentais são muito menos negativos do que os tabelados, porque grande parte da energia se perde para o ar e para a lata, e porque a combustão pode ser incompleta (fuligem).",
+          "erros_comuns": [
+            "Não tapar a lamparina antes de pesar (o álcool evapora e a massa queimada parece maior).",
+            "Chama longe da lata ou sem anteparo: perdas de energia enormes.",
+            "Combustão incompleta (chama amarela, fuligem na lata).",
+            "Esquecer o sinal negativo de ΔcH."
+          ],
+          "seguranca": "Os álcoois são inflamáveis e o metanol é tóxico. Não reabastecer as lamparinas acesas. Afastar materiais inflamáveis.",
+          "rever_medicao_incertezas": true
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Valores experimentais baixos e o hidrogénio",
+          "texto": "**Porque é que os valores experimentais são tão baixos**\n\nNuma lamparina aberta, a maior parte da energia da chama vai para o ar à volta, para aquecer a lata e para os gases de combustão. Só uma fração aquece a água. Nos laboratórios profissionais, usa-se uma bomba calorimétrica: o combustível arde num recipiente fechado mergulhado em água, e quase nenhuma energia se perde.\n\n**Hidrogénio: muita energia por grama, pouca por litro**\n\nO hidrogénio liberta cerca de 142 kJ/g, três vezes mais do que a gasolina. Mas como é um gás muito leve, um litro de hidrogénio tem muito pouca massa: para o armazenar é preciso comprimi-lo a pressões muito altas ou liquefazê-lo a −253 °C. É um dos grandes desafios da economia do hidrogénio."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na AL 2.5, a energia recebida pela água foi 6270 J e queimaram-se 0,300 g de metanol (M = 32,04 g/mol). Qual é o ΔcH experimental?",
+              "opcoes": [
+                "−669 kJ/mol",
+                "−20,9 kJ/mol",
+                "−726 kJ/mol",
+                "+669 kJ/mol"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "n = 0,300 / 32,04 ≈ 9,36 × 10⁻³ mol. ΔcH = −6,27 kJ / 9,36 × 10⁻³ mol ≈ −669 kJ/mol.",
+              "mascote_feedback_errado": "n = 0,300 / 32,04 ≈ 9,36 × 10⁻³ mol. ΔcH = −6,27 kJ / 9,36 × 10⁻³ mol ≈ −669 kJ/mol."
+            },
+            {
+              "pergunta": "Numa série de álcoois lineares, ao aumentar o número de carbonos, a entalpia de combustão:",
+              "opcoes": [
+                "torna-se mais negativa.",
+                "torna-se menos negativa.",
+                "mantém-se.",
+                "passa a positiva."
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Moléculas maiores têm mais ligações C–H e C–C para \"queimar\", e libertam mais energia por mole.",
+              "mascote_feedback_errado": "Moléculas maiores têm mais ligações C–H e C–C para \"queimar\", e libertam mais energia por mole."
+            },
+            {
+              "pergunta": "Os combustíveis oxigenados (álcoois e éteres) têm menor poder energético do que os hidrocarbonetos porque:",
+              "opcoes": [
+                "são líquidos.",
+                "já estão parcialmente oxidados.",
+                "não ardem.",
+                "têm mais hidrogénio."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os átomos de oxigénio já ligados ao carbono significam que parte da oxidação \"já aconteceu\", e há menos energia para libertar.",
+              "mascote_feedback_errado": "Os átomos de oxigénio já ligados ao carbono significam que parte da oxidação \"já aconteceu\", e há menos energia para libertar."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 5 concluída. Distingues energia, calor e entalpia, usas entalpias-padrão de formação e de combustão, aplicas a Lei de Hess, comparas o poder energético de combustíveis e mediste entalpias de neutralização e de combustão. Última missão: os plásticos e os novos materiais."
+}

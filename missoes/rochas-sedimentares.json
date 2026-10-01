@@ -1,0 +1,217 @@
+{
+  "missao_id": "rochas-sedimentares",
+  "titulo": "Rochas Sedimentares",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "🏜️", "nome": "Guardião dos Sedimentos" },
+  "secoes": [
+    {
+      "secao_id": "sedimentogenese",
+      "titulo": "Sedimentogénese: meteorização, erosão, transporte",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Antes de existir uma rocha sedimentar, uma rocha mais antiga teve de se desfazer em pedaços mais pequenos. 🏜️",
+          "texto": "Esse desgaste no próprio local chama-se meteorização — e existe de duas formas bem diferentes."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Meteorização física vs. química",
+          "instrucao": "Clica em cada tipo de meteorização.",
+          "pontos": [
+            { "id": "met_fisica", "label": "Meteorização física", "explicacao": "Fragmentação sem alterar a composição: crioclastia (água congela nas fissuras), termoclastia (variações de temperatura), haloclastia (cristalização de sais), descompressão. Mais intensa em climas frios ou áridos." },
+            { "id": "met_quimica", "label": "Meteorização química", "explicacao": "Altera a composição mineralógica: dissolução (calcário → grutas, relevo cársico), hidrólise (feldspatos → argila, \"apodrece\" o granito), oxidação. Mais intensa em climas quentes e húmidos." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A hidrólise, que transforma feldspatos em minerais de argila, é um tipo de meteorização:",
+          "opcoes": ["Química", "Física"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Altera a composição mineralógica — é meteorização química.",
+          "mascote_feedback_errado": "É química — a física só fragmenta a rocha, sem alterar a sua composição."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🍫",
+          "texto": "💡 A meteorização física é como partir uma tablete de chocolate em pedaços (muda a forma, não a composição); a química é como deixar essa mesma tablete derreter ao sol e mudar de textura (a própria substância transforma-se)."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Erosão, transporte e sedimentação",
+          "texto": "A erosão remove os materiais já meteorizados. Durante o transporte (em solução, em suspensão, por saltação ou por arrastamento), os detritos ficam mais arredondados e calibrados — a água e o vento selecionam bem por tamanho, mas o gelo não seleciona. A sedimentação ocorre quando o agente de transporte perde energia: os detritos maiores depositam-se primeiro, em bacias de sedimentação (oceanos, lagos, deltas, planícies aluviais)."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O quartzo é o principal constituinte das areias porque é:",
+              "opcoes": ["Muito resistente à meteorização", "O mineral mais raro da crosta"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Resiste onde outros minerais já se alteraram, acumulando-se nas areias.",
+              "mascote_feedback_errado": "É por ser muito resistente à meteorização — não por ser raro (é muito abundante)."
+            },
+            {
+              "pergunta": "Qual agente de transporte NÃO seleciona bem os sedimentos por tamanho?",
+              "opcoes": ["O gelo", "O vento"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! O gelo transporta e deposita misturado, sem selecionar por tamanho.",
+              "mascote_feedback_errado": "É o gelo — a água e o vento selecionam bem os sedimentos por tamanho."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como os sedimentos se formam e viajam. Mas como é que um monte de areia solta vira rocha dura? 🪨"
+        }
+      ]
+    },
+    {
+      "secao_id": "diagenese-classificacao",
+      "titulo": "Diagénese e a classificação das rochas sedimentares",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A diagénese é o processo que transforma sedimentos soltos em rocha consolidada, a baixa temperatura e pressão. 🪨",
+          "texto": "E consoante a sua origem, as rochas sedimentares dividem-se em três grandes famílias."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Os três passos da diagénese",
+          "instrucao": "Clica em cada processo.",
+          "pontos": [
+            { "id": "compactacao", "label": "Compactação", "explicacao": "O peso dos sedimentos sobrejacentes aproxima as partículas, diminui a porosidade e expulsa a água." },
+            { "id": "cimentacao", "label": "Cimentação", "explicacao": "Precipitação de substâncias (calcite, sílica, óxidos de ferro) nos espaços entre as partículas, que as ligam (cimento)." },
+            { "id": "recristalizacao", "label": "Recristalização", "explicacao": "Alteração da forma ou da estrutura dos minerais já existentes." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... ❄️",
+          "texto": "💡 A diagénese é como comprimir neve fofa até virar gelo compacto: a compactação espreme a água e aproxima as partículas, e a cimentação é como uma \"cola invisível\" (calcite, sílica) que se deposita entre elas, prendendo tudo no sítio."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Detríticas, quimiogénicas e biogénicas",
+          "instrucao": "Clica em cada grande grupo.",
+          "pontos": [
+            { "id": "detriticas", "label": "Detríticas", "explicacao": "Formadas por clastos (fragmentos) de outras rochas, classificadas pelo tamanho: conglomerado/brecha (>2mm), arenito (1/16-2mm), siltito, argilito (<1/256mm)." },
+            { "id": "quimiogenicas", "label": "Quimiogénicas", "explicacao": "Formadas por precipitação de substâncias dissolvidas: calcários de precipitação, travertino, e evaporitos como o gesso e o sal-gema (halite), formados por evaporação em bacias fechadas (ex.: Loulé, Rio Maior)." },
+            { "id": "biogenicas", "label": "Biogénicas", "explicacao": "Com intervenção de seres vivos: calcários biogénicos (conquíferos, recifais), carvões e petróleo (a partir de matéria orgânica), diatomitos." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um conglomerado (clastos >2mm, arredondados) classifica-se como rocha:",
+          "opcoes": ["Detrítica", "Quimiogénica"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É formada por fragmentos (clastos) de outras rochas.",
+          "mascote_feedback_errado": "É detrítica — as quimiogénicas formam-se por precipitação, não por clastos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "O gesso e o sal-gema formam-se por:",
+              "opcoes": ["Evaporação em bacias fechadas (evaporitos)", "Acumulação de conchas"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! São rochas quimiogénicas, do tipo evaporito.",
+              "mascote_feedback_errado": "Formam-se por evaporação — a acumulação de conchas origina calcários biogénicos."
+            },
+            {
+              "pergunta": "A cimentação consiste em:",
+              "opcoes": ["Precipitar substâncias que ligam as partículas entre si", "Comprimir os sedimentos, expulsando água"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! A compactação é que expulsa água; a cimentação precipita o \"cimento\" que liga tudo.",
+              "mascote_feedback_errado": "A cimentação precipita substâncias ligantes — comprimir e expulsar água é a compactação."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como as rochas sedimentares se formam e classificam. Agora vamos ler as pistas que elas escondem. 🔎"
+        }
+      ]
+    },
+    {
+      "secao_id": "estruturas-fosseis",
+      "titulo": "Estruturas sedimentares, fósseis e combustíveis fósseis",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Uma rocha sedimentar não é só o que ela é feita — é também um registo detalhado do ambiente onde se formou. 🔎",
+          "texto": "E, pelo princípio do atualismo, sabemos ler essas estruturas comparando-as com o que acontece hoje."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Estruturas sedimentares e paleoambientes",
+          "instrucao": "Clica em cada estrutura para veres o que revela.",
+          "pontos": [
+            { "id": "marcas_ondulacao", "label": "Marcas de ondulação", "explicacao": "Indicam um fundo com ondulação ou corrente — como numa praia ou num rio." },
+            { "id": "estrat_entrecruzada", "label": "Estratificação entrecruzada", "explicacao": "Típica de dunas e rios; indica o sentido da corrente ou do vento." },
+            { "id": "fendas_dessecacao", "label": "Fendas de dessecação", "explicacao": "Formam-se pela exposição ao ar e secagem de sedimentos argilosos." },
+            { "id": "estrat_gradada", "label": "Estratificação gradada", "explicacao": "Sedimentos que diminuem de tamanho da base para o topo, por perda progressiva de energia do agente de transporte." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Fendas poligonais, do tipo \"teia de aranha\", numa rocha argilosa, indicam:",
+          "opcoes": ["Exposição ao ar e secagem (fendas de dessecação)", "Um ambiente sempre submerso"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! São fendas de dessecação, próprias de margens lamacentas que secaram ao ar.",
+          "mascote_feedback_errado": "Indicam exposição ao ar e secagem — um ambiente sempre submerso nunca as formaria."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Como se fossiliza um ser vivo",
+          "instrucao": "Clica em cada processo de fossilização.",
+          "pontos": [
+            { "id": "mineralizacao", "label": "Mineralização (petrificação)", "explicacao": "A matéria orgânica é substituída, molécula a molécula, por minerais (ex.: troncos silicificados, ossos)." },
+            { "id": "moldagem", "label": "Moldagem", "explicacao": "O ser vivo deixa a sua forma impressa no sedimento (molde externo/interno); o contramolde forma-se quando esse espaço é preenchido." },
+            { "id": "incarbonizacao_foss", "label": "Incarbonização", "explicacao": "Perda dos elementos voláteis, ficando uma película de carbono (folhas, fetos)." },
+            { "id": "icnofosseis", "label": "Icnofósseis", "explicacao": "Marcas de atividade: pegadas, pistas, ovos, coprólitos (ex.: pegadas de dinossauros no Cabo Espichel)." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 👣",
+          "texto": "💡 Pensa num icnofóssil como uma pegada na areia molhada que endureceu: não é o animal que ficou preservado, é só o vestígio da sua passagem — ainda assim conta uma história real sobre o seu comportamento."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Combustíveis fósseis",
+          "texto": "O carvão forma-se a partir de restos de plantas em pântanos pobres em oxigénio, por incarbonização progressiva: turfa → lenhite → hulha → antracite (aumentando o teor em carbono e o poder calorífico). O petróleo e o gás natural formam-se a partir de matéria orgânica (sobretudo plâncton) na rocha-mãe; por serem menos densos, migram através de rochas porosas e permeáveis até se acumularem numa rocha-armazém, sob uma rocha de cobertura impermeável — numa estrutura chamada armadilha petrolífera, onde a distribuição por densidade é sempre a mesma: gás em cima, petróleo no meio, água em baixo."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Condições favoráveis à fossilização incluem:",
+              "opcoes": ["Soterramento rápido e ambiente pobre em oxigénio", "Exposição prolongada ao ar livre"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Isso evita a decomposição e preserva os vestígios.",
+              "mascote_feedback_errado": "Soterramento rápido e pouco oxigénio favorecem a fossilização — a exposição prolongada favorece a destruição."
+            },
+            {
+              "pergunta": "Numa armadilha petrolífera, a ordem (de cima para baixo) é:",
+              "opcoes": ["Gás, petróleo, água", "Água, petróleo, gás"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Distribuem-se por densidade, do menos denso (gás) ao mais denso (água).",
+              "mascote_feedback_errado": "É gás, petróleo, água — do menos denso para o mais denso, de cima para baixo."
+            },
+            {
+              "pergunta": "Na incarbonização do carvão, a ordem de formação é:",
+              "opcoes": ["Turfa → lenhite → hulha → antracite", "Antracite → hulha → lenhite → turfa"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! O teor em carbono e o poder calorífico aumentam nesta ordem.",
+              "mascote_feedback_errado": "É turfa → lenhite → hulha → antracite — aumentando sempre o teor em carbono."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já sabes como se formam e classificam as rochas sedimentares, como ler os seus registos, e como nascem os combustíveis fósseis. 🏜️🔎"
+        }
+      ]
+    }
+  ]
+}

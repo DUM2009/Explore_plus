@@ -1,0 +1,818 @@
+{
+  "missao_id": "12-plasticos-novos-materiais",
+  "id_guiao": "qui12-m6",
+  "titulo": "Plásticos, vidros e novos materiais",
+  "disciplina": "quimica",
+  "ano": 12,
+  "imagem": "q12_polimeros_dia.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"5\" cy=\"12\" r=\"2\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/><circle cx=\"19\" cy=\"12\" r=\"2\"/><path d=\"M7 12h3M14 12h3\"/><path d=\"M2 12h1M21 12h1\"/></svg>",
+    "nome": "Mestre dos Materiais"
+  },
+  "secoes": [
+    {
+      "secao_id": "polimeros-estrutura",
+      "titulo": "Polímeros: macromoléculas, monómeros e estrutura",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_polimeros_dia.png",
+          "imagem_legenda": "Objetos do dia a dia feitos de polímeros: garrafa, saco, camisola de lã, papel, pneu, ADN.",
+          "texto": "Desde os anos 50, a humanidade produziu mais de 8 mil milhões de toneladas de plástico. Mas os polímeros não foram inventados nas fábricas: a madeira (celulose), a lã e a seda (proteínas), a borracha natural e o próprio ADN são polímeros. Todos são feitos da mesma maneira: pequenas moléculas repetidas milhares de vezes, como contas num colar.",
+          "mascote_texto": "A palavra \"polímero\" vem do grego: \"poli\" (muitos) e \"meros\" (partes). É exatamente isso."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Monómeros e polímeros",
+          "imagem": "q12_monomero_polimero.png",
+          "imagem_legenda": "Moléculas de eteno a formar a cadeia de polietileno; cadeias linear, ramificada e reticulada.",
+          "texto_principal": "Um polímero é um material formado por macromoléculas: moléculas muito grandes, constituídas pela repetição de muitas unidades pequenas (os monómeros), unidas por ligações covalentes. A unidade que se repete na cadeia chama-se unidade estrutural (motivo).",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Monómero",
+              "explicacao": "Molécula pequena que, ao ligar-se a muitas outras, forma o polímero. Ex.: eteno, cloroeteno, glicose, aminoácidos."
+            },
+            {
+              "id": "p2",
+              "label": "Motivo (unidade estrutural)",
+              "explicacao": "A parte que se repete. Representa-se entre parênteses retos com o índice n: –[CH₂–CH₂]n–."
+            },
+            {
+              "id": "p3",
+              "label": "Grau de polimerização (n)",
+              "explicacao": "Número de vezes que o motivo se repete. n = M(polímero) / M(motivo)."
+            },
+            {
+              "id": "p4",
+              "label": "Polímeros naturais",
+              "explicacao": "Existem na natureza. Ex.: celulose, amido, proteínas, borracha natural, ADN."
+            },
+            {
+              "id": "p5",
+              "label": "Polímeros artificiais",
+              "explicacao": "Obtidos por modificação química de polímeros naturais. Ex.: acetato de celulose, viscose."
+            },
+            {
+              "id": "p6",
+              "label": "Polímeros sintéticos",
+              "explicacao": "Produzidos inteiramente a partir de monómeros sintéticos (em geral derivados do petróleo). Ex.: polietileno, PVC, nylon, PET."
+            },
+            {
+              "id": "p7",
+              "label": "Homopolímeros e copolímeros",
+              "explicacao": "Homopolímero: um só tipo de monómero. Copolímero: dois ou mais tipos de monómeros."
+            },
+            {
+              "id": "p8",
+              "label": "Estrutura e propriedades",
+              "explicacao": "Cadeias lineares arrumam-se bem (materiais mais densos e rígidos); ramificadas arrumam-se pior (mais flexíveis, menos densos); reticuladas (ligadas entre si) formam materiais rígidos que não fundem."
+            },
+            {
+              "id": "p9",
+              "label": "Termoplásticos, termofixos e elastómeros",
+              "explicacao": "Termoplásticos (lineares ou ramificados) amolecem com o calor e podem ser moldados de novo. Termofixos (reticulados) não amolecem: decompõem-se. Elastómeros (pouco reticulados) esticam e voltam à forma."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "n = M(polímero) / M(motivo)",
+              "significado": "Grau de polimerização.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Polietileno com M = 280 000 g/mol; motivo C₂H₄ (28,05 g/mol): n ≈ 1,0 × 10⁴",
+              "significado": "Exemplo.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destes é um polímero natural?",
+          "opcoes": [
+            "Polietileno",
+            "PVC",
+            "Celulose",
+            "Nylon"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. A celulose é produzida pelas plantas, a partir de glicose. Os outros são sintéticos.",
+          "mascote_feedback_errado": "Polietileno, PVC e nylon são fabricados pela indústria. A celulose existe na natureza: é o principal componente da madeira e do algodão."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um poliestireno tem massa molar média de 2,08 × 10⁵ g/mol. O motivo C₈H₈ tem 104 g/mol. Qual é o grau de polimerização?",
+          "opcoes": [
+            "104",
+            "2000",
+            "2,08 × 10⁵",
+            "2,16 × 10⁷"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. n = 2,08 × 10⁵ / 104 = 2000.",
+          "mascote_feedback_errado": "O grau de polimerização é a massa molar do polímero a dividir pela do motivo: 208 000 / 104 = 2000."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Colares de contas.** Um polímero é como um colar feito de contas. Cada conta é um monómero; o colar é a macromolécula. Um colar só com contas iguais é um homopolímero; com contas de duas cores alternadas, um copolímero. O número de contas é o grau de polimerização. Um monte de colares soltos (cadeias lineares) pode ser derretido e moldado de novo; se os colares estiverem todos atados uns aos outros por fios (reticulação), formam uma rede que já não se desfaz."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "PEAD, PEBD e vulcanização",
+          "texto": "**Polietileno de alta e de baixa densidade**\n\nO PEAD (polietileno de alta densidade) tem cadeias lineares, bem arrumadas: é rígido (garrafões, tampas, tubos). O PEBD (polietileno de baixa densidade) tem muitas ramificações, que impedem a arrumação: é flexível (sacos, películas). É o mesmo monómero, com estruturas diferentes.\n\n**A vulcanização da borracha**\n\nA borracha natural é pegajosa no calor e quebradiça no frio. Em 1839, Charles Goodyear descobriu que aquecê-la com enxofre criava pontes entre as cadeias (reticulação). A borracha vulcanizada é elástica e resistente: é a dos pneus."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Uma macromolécula de um polímero é formada por:",
+              "opcoes": [
+                "uma única molécula pequena.",
+                "muitas unidades pequenas (monómeros) ligadas por ligações covalentes.",
+                "iões ligados por ligações iónicas.",
+                "átomos de metal."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "As macromoléculas resultam da repetição de muitas unidades, unidas por ligações covalentes.",
+              "mascote_feedback_errado": "As macromoléculas resultam da repetição de muitas unidades, unidas por ligações covalentes."
+            },
+            {
+              "pergunta": "Um polímero obtido a partir de dois monómeros diferentes chama-se:",
+              "opcoes": [
+                "homopolímero.",
+                "copolímero.",
+                "monómero.",
+                "elastómero."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Os copolímeros têm dois ou mais tipos de monómeros na cadeia.",
+              "mascote_feedback_errado": "Os copolímeros têm dois ou mais tipos de monómeros na cadeia."
+            },
+            {
+              "pergunta": "Os plásticos termofixos não podem ser fundidos e moldados de novo porque:",
+              "opcoes": [
+                "são lineares.",
+                "têm as cadeias ligadas entre si numa rede tridimensional (reticulados).",
+                "são naturais.",
+                "são solúveis em água."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A reticulação impede as cadeias de deslizarem umas sobre as outras. Com o calor, o material decompõe-se em vez de amolecer.",
+              "mascote_feedback_errado": "A reticulação impede as cadeias de deslizarem umas sobre as outras. Com o calor, o material decompõe-se em vez de amolecer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "adicao-condensacao",
+      "titulo": "Polimerização de adição e de condensação; famílias de polímeros",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_garrafa_pet_meia_nylon.png",
+          "imagem_legenda": "Garrafa de água de PET, meia de nylon e saco de polietileno lado a lado.",
+          "texto": "Uma garrafa de água (PET) e uma meia de nylon parecem não ter nada em comum com um saco de plástico. Mas há uma diferença fundamental no modo como são fabricados: o saco forma-se juntando moléculas que simplesmente se \"abrem\" e se ligam; a garrafa e a meia formam-se juntando moléculas que, ao ligarem-se, libertam uma pequena molécula, em geral água.",
+          "mascote_texto": "Para distinguir os dois tipos, olha para os monómeros: têm uma ligação dupla C=C, ou dois grupos funcionais?"
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Adição e condensação",
+          "imagem": "q12_adicao_condensacao.png",
+          "imagem_legenda": "Polimerização de adição do cloroeteno (PVC) e de condensação do nylon-6,6, com a saída de água destacada.",
+          "texto_principal": "As reações de polimerização são reações em cadeia entre moléculas de monómeros. Há dois grandes tipos, que se distinguem pela estrutura dos monómeros e pelos produtos que se formam.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Polimerização de adição",
+              "explicacao": "Os monómeros têm uma ligação dupla C=C, que se \"abre\" e liga cada monómero ao seguinte. O polímero é o único produto. Ex.: polietileno (PE), polipropileno (PP), PVC, poliestireno (PS), Teflon (PTFE)."
+            },
+            {
+              "id": "p2",
+              "label": "Polimerização de condensação",
+              "explicacao": "Os monómeros têm dois grupos funcionais que reagem entre si. Em cada ligação, liberta-se uma pequena molécula (em geral H₂O, ou HCl). Ex.: poliésteres (PET) e poliamidas (nylon)."
+            },
+            {
+              "id": "p3",
+              "label": "Poliolefinas",
+              "explicacao": "Polímeros de adição de alcenos (olefinas). Ex.: PE, PP."
+            },
+            {
+              "id": "p4",
+              "label": "Poliacrílicos",
+              "explicacao": "Polímeros de adição de derivados do ácido acrílico. Ex.: polimetacrilato de metilo (PMMA, o \"acrílico\" transparente)."
+            },
+            {
+              "id": "p5",
+              "label": "Poliésteres",
+              "explicacao": "Formados por condensação de um ácido dicarboxílico com um diol. Ligação éster (–COO–). Ex.: PET (garrafas, fibras de poliéster)."
+            },
+            {
+              "id": "p6",
+              "label": "Poliamidas",
+              "explicacao": "Formadas por condensação de um ácido dicarboxílico (ou cloreto de ácido) com uma diamina. Ligação amida (–CO–NH–). Ex.: nylon, kevlar. As proteínas são poliamidas naturais."
+            },
+            {
+              "id": "p7",
+              "label": "Poliuretanos",
+              "explicacao": "Contêm o grupo uretano (–NH–CO–O–), formado a partir de diisocianatos e dióis. Ex.: espumas de colchões e estofos, isolamentos."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Ácido carboxílico –COOH; cloreto de ácido –COCl; amina –NH₂; amida –CO–NH–; éster –COO–; éter –O–; aldeído –CHO; cetona –CO– (entre carbonos)",
+              "significado": "Grupos funcionais.",
+              "unidades": ""
+            },
+            {
+              "expressao": "n CH₂=CHX → –[CH₂–CHX]n–",
+              "significado": "Adição.",
+              "unidades": ""
+            },
+            {
+              "expressao": "n HOOC–R–COOH + n H₂N–R'–NH₂ → –[CO–R–CO–NH–R'–NH]n– + 2n H₂O (aproximadamente)",
+              "significado": "Condensação (poliamida).",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Qual destes monómeros pode originar um polímero de adição?",
+          "opcoes": [
+            "Etano-1,2-diol (HO–CH₂–CH₂–OH)",
+            "Cloroeteno (CH₂=CHCl)",
+            "Ácido hexanodioico",
+            "Hexano-1,6-diamina"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O cloroeteno tem uma ligação dupla C=C que se pode abrir: polimeriza por adição e dá o PVC.",
+          "mascote_feedback_errado": "A polimerização de adição exige uma ligação dupla C=C no monómero. Dos apresentados, só o cloroeteno a tem. Os outros têm dois grupos funcionais e servem para condensação."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O PET forma-se a partir de um ácido dicarboxílico e de um diol, com libertação de água. A que família pertence e que tipo de polimerização é?",
+          "opcoes": [
+            "Poliolefina; adição.",
+            "Poliamida; condensação.",
+            "Poliéster; condensação.",
+            "Poliacrílico; adição."
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Exato. Ácido + álcool forma ésteres, com saída de água: é um poliéster obtido por condensação. PET significa poli(tereftalato de etileno).",
+          "mascote_feedback_errado": "A reação de um ácido carboxílico com um álcool forma um éster e liberta água. Com monómeros bifuncionais, forma-se um poliéster, por condensação."
+        },
+        {
+          "tipo": "simulacao",
+          "id": "sim_polimerizacao",
+          "titulo": "Monta o polímero",
+          "instrucao": "Escolhe um ou dois monómeros. Se for possível, a simulação junta-os e mostra o polímero, o motivo, um troço de cadeia com n unidades, o tipo de polimerização, a família e os subprodutos.",
+          "controlos": [
+            {
+              "id": "monomero1",
+              "rotulo": "Monómero 1",
+              "opcoes": [
+                {
+                  "valor": "eteno",
+                  "label": "Eteno (CH₂=CH₂)"
+                },
+                {
+                  "valor": "propeno",
+                  "label": "Propeno (CH₂=CH–CH₃)"
+                },
+                {
+                  "valor": "cloroeteno",
+                  "label": "Cloroeteno (CH₂=CHCl)"
+                },
+                {
+                  "valor": "estireno",
+                  "label": "Estireno (fenileteno)"
+                },
+                {
+                  "valor": "tfe",
+                  "label": "Tetrafluoroeteno (CF₂=CF₂)"
+                },
+                {
+                  "valor": "mma",
+                  "label": "Metacrilato de metilo"
+                },
+                {
+                  "valor": "tereftalico",
+                  "label": "Ácido tereftálico"
+                },
+                {
+                  "valor": "hexanodioico",
+                  "label": "Ácido hexanodioico"
+                },
+                {
+                  "valor": "cloreto",
+                  "label": "Cloreto de hexanodioílo"
+                }
+              ]
+            },
+            {
+              "id": "monomero2",
+              "rotulo": "Monómero 2 (opcional)",
+              "opcoes": [
+                {
+                  "valor": "nenhum",
+                  "label": "Nenhum"
+                },
+                {
+                  "valor": "diol",
+                  "label": "Etano-1,2-diol"
+                },
+                {
+                  "valor": "diamina",
+                  "label": "Hexano-1,6-diamina"
+                }
+              ]
+            },
+            {
+              "id": "n",
+              "rotulo": "Número de unidades a mostrar",
+              "min": 3,
+              "max": 8,
+              "passo": 1,
+              "valor_inicial": 4
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Polímero",
+              "formula": "(function () { var r = dados.r[monomero1 + '|' + monomero2]; if (!r) { if (dados.adicao.indexOf(monomero1) >= 0) return 'Este monómero polimeriza sozinho, por adição; o segundo monómero não reage com ele. Escolhe \"Nenhum\" no monómero 2.'; if (monomero2 === 'nenhum') return 'Sozinho, este monómero não polimeriza: não tem ligação dupla C=C e precisa de um segundo monómero com o qual reagir (condensação).'; return 'Estes monómeros não formam um polímero por este processo.'; } return r.nome; })()"
+            },
+            {
+              "rotulo": "Motivo",
+              "formula": "(function () { var r = dados.r[monomero1 + '|' + monomero2]; if (!r) { if (dados.adicao.indexOf(monomero1) >= 0) return 'Este monómero polimeriza sozinho, por adição; o segundo monómero não reage com ele. Escolhe \"Nenhum\" no monómero 2.'; if (monomero2 === 'nenhum') return 'Sozinho, este monómero não polimeriza: não tem ligação dupla C=C e precisa de um segundo monómero com o qual reagir (condensação).'; return 'Estes monómeros não formam um polímero por este processo.'; } return r.motivo; })()"
+            },
+            {
+              "rotulo": "Troço da cadeia",
+              "formula": "(function () { var r = dados.r[monomero1 + '|' + monomero2]; if (!r) { if (dados.adicao.indexOf(monomero1) >= 0) return 'Este monómero polimeriza sozinho, por adição; o segundo monómero não reage com ele. Escolhe \"Nenhum\" no monómero 2.'; if (monomero2 === 'nenhum') return 'Sozinho, este monómero não polimeriza: não tem ligação dupla C=C e precisa de um segundo monómero com o qual reagir (condensação).'; return 'Estes monómeros não formam um polímero por este processo.'; } var u = []; for (var i = 0; i < n; i++) u.push(r.u); return '…–' + u.join('–') + '–…'; })()"
+            },
+            {
+              "rotulo": "Tipo de polimerização",
+              "formula": "(function () { var r = dados.r[monomero1 + '|' + monomero2]; if (!r) { if (dados.adicao.indexOf(monomero1) >= 0) return 'Este monómero polimeriza sozinho, por adição; o segundo monómero não reage com ele. Escolhe \"Nenhum\" no monómero 2.'; if (monomero2 === 'nenhum') return 'Sozinho, este monómero não polimeriza: não tem ligação dupla C=C e precisa de um segundo monómero com o qual reagir (condensação).'; return 'Estes monómeros não formam um polímero por este processo.'; } return r.tipo; })()"
+            },
+            {
+              "rotulo": "Família",
+              "formula": "(function () { var r = dados.r[monomero1 + '|' + monomero2]; if (!r) { if (dados.adicao.indexOf(monomero1) >= 0) return 'Este monómero polimeriza sozinho, por adição; o segundo monómero não reage com ele. Escolhe \"Nenhum\" no monómero 2.'; if (monomero2 === 'nenhum') return 'Sozinho, este monómero não polimeriza: não tem ligação dupla C=C e precisa de um segundo monómero com o qual reagir (condensação).'; return 'Estes monómeros não formam um polímero por este processo.'; } return r.fam; })()"
+            },
+            {
+              "rotulo": "Subproduto",
+              "formula": "(function () { var r = dados.r[monomero1 + '|' + monomero2]; if (!r) { if (dados.adicao.indexOf(monomero1) >= 0) return 'Este monómero polimeriza sozinho, por adição; o segundo monómero não reage com ele. Escolhe \"Nenhum\" no monómero 2.'; if (monomero2 === 'nenhum') return 'Sozinho, este monómero não polimeriza: não tem ligação dupla C=C e precisa de um segundo monómero com o qual reagir (condensação).'; return 'Estes monómeros não formam um polímero por este processo.'; } return r.sub; })()"
+            },
+            {
+              "rotulo": "Exemplos de utilização",
+              "formula": "(function () { var r = dados.r[monomero1 + '|' + monomero2]; if (!r) { if (dados.adicao.indexOf(monomero1) >= 0) return 'Este monómero polimeriza sozinho, por adição; o segundo monómero não reage com ele. Escolhe \"Nenhum\" no monómero 2.'; if (monomero2 === 'nenhum') return 'Sozinho, este monómero não polimeriza: não tem ligação dupla C=C e precisa de um segundo monómero com o qual reagir (condensação).'; return 'Estes monómeros não formam um polímero por este processo.'; } return r.usos; })()"
+            }
+          ],
+          "pergunta_final": "Porque é que o etano-1,2-diol sozinho não forma um polímero? Resposta esperada: tem dois grupos OH, mas não há nenhum grupo com que reajam para formar uma ligação de condensação (precisa de um ácido dicarboxílico); e não tem ligação dupla C=C para adição.",
+          "dados": {
+            "r": {
+              "eteno|nenhum": {
+                "nome": "Polietileno (PE)",
+                "motivo": "–[CH₂–CH₂]n–",
+                "u": "CH₂–CH₂",
+                "tipo": "Adição: a ligação C=C abre-se e liga cada monómero ao seguinte",
+                "fam": "Poliolefina",
+                "sub": "Nenhum: o polímero é o único produto",
+                "usos": "Sacos, películas, garrafões, tubos"
+              },
+              "propeno|nenhum": {
+                "nome": "Polipropileno (PP)",
+                "motivo": "–[CH₂–CH(CH₃)]n–",
+                "u": "CH₂–CH(CH₃)",
+                "tipo": "Adição",
+                "fam": "Poliolefina",
+                "sub": "Nenhum: o polímero é o único produto",
+                "usos": "Tampas, recipientes de alimentos, para-choques"
+              },
+              "cloroeteno|nenhum": {
+                "nome": "Poli(cloreto de vinilo) (PVC)",
+                "motivo": "–[CH₂–CHCl]n–",
+                "u": "CH₂–CHCl",
+                "tipo": "Adição",
+                "fam": "Polímero de adição (vinílico)",
+                "sub": "Nenhum: o polímero é o único produto",
+                "usos": "Tubos, caixilharias, isolamento de cabos"
+              },
+              "estireno|nenhum": {
+                "nome": "Poliestireno (PS)",
+                "motivo": "–[CH₂–CH(C₆H₅)]n–",
+                "u": "CH₂–CH(C₆H₅)",
+                "tipo": "Adição",
+                "fam": "Polímero de adição (vinílico)",
+                "sub": "Nenhum: o polímero é o único produto",
+                "usos": "Copos descartáveis, esferovite, embalagens"
+              },
+              "tfe|nenhum": {
+                "nome": "Politetrafluoroetileno (PTFE, Teflon)",
+                "motivo": "–[CF₂–CF₂]n–",
+                "u": "CF₂–CF₂",
+                "tipo": "Adição",
+                "fam": "Polímero de adição (fluorado)",
+                "sub": "Nenhum: o polímero é o único produto",
+                "usos": "Revestimento antiaderente de frigideiras, fita de canalizador"
+              },
+              "mma|nenhum": {
+                "nome": "Polimetacrilato de metilo (PMMA, \"acrílico\")",
+                "motivo": "–[CH₂–C(CH₃)(COOCH₃)]n–",
+                "u": "CH₂–C(CH₃)(COOCH₃)",
+                "tipo": "Adição",
+                "fam": "Poliacrílico",
+                "sub": "Nenhum: o polímero é o único produto",
+                "usos": "Painéis transparentes (\"vidro acrílico\"), lentes, montras"
+              },
+              "tereftalico|diol": {
+                "nome": "Poli(tereftalato de etileno) (PET)",
+                "motivo": "–[CO–C₆H₄–CO–O–CH₂–CH₂–O]n–",
+                "u": "CO–C₆H₄–CO–O–CH₂–CH₂–O",
+                "tipo": "Condensação: o grupo –COOH reage com o –OH e forma a ligação éster",
+                "fam": "Poliéster",
+                "sub": "H₂O (uma molécula por cada ligação éster)",
+                "usos": "Garrafas de água e refrigerantes, fibras de poliéster"
+              },
+              "hexanodioico|diamina": {
+                "nome": "Nylon-6,6",
+                "motivo": "–[CO–(CH₂)₄–CO–NH–(CH₂)₆–NH]n–",
+                "u": "CO–(CH₂)₄–CO–NH–(CH₂)₆–NH",
+                "tipo": "Condensação: o grupo –COOH reage com o –NH₂ e forma a ligação amida",
+                "fam": "Poliamida",
+                "sub": "H₂O (uma molécula por cada ligação amida)",
+                "usos": "Meias, cordas, tecidos, peças técnicas"
+              },
+              "cloreto|diamina": {
+                "nome": "Nylon-6,6",
+                "motivo": "–[CO–(CH₂)₄–CO–NH–(CH₂)₆–NH]n–",
+                "u": "CO–(CH₂)₄–CO–NH–(CH₂)₆–NH",
+                "tipo": "Condensação: o grupo –COCl reage com o –NH₂ e forma a ligação amida",
+                "fam": "Poliamida",
+                "sub": "HCl (uma molécula por cada ligação amida)",
+                "usos": "Meias, cordas, tecidos (é a síntese da AL 3.6)"
+              }
+            },
+            "adicao": [
+              "eteno",
+              "propeno",
+              "cloroeteno",
+              "estireno",
+              "tfe",
+              "mma"
+            ]
+          }
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**Comboios com e sem bagagem.** Na polimerização de adição, os monómeros são como vagões com engates prontos: basta encostá-los e engatam, sem deixar nada para trás. Na condensação, cada vagão tem de \"pagar\" para engatar: a cada ligação, fica uma pequena \"mala\" no cais (uma molécula de água ou de HCl). No fim, o comboio é o polímero, e no cais ficam as malas todas: os subprodutos."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Códigos dos plásticos e kevlar",
+          "texto": "**Códigos de identificação dos plásticos**\n\n1 PET (garrafas de água e refrigerantes); 2 PEAD (garrafões, embalagens de detergente); 3 PVC (tubos, caixilharias); 4 PEBD (sacos, películas); 5 PP (tampas, recipientes de alimentos); 6 PS (copos descartáveis, esferovite); 7 outros (policarbonato, misturas).\n\n**Kevlar**\n\nO kevlar é uma poliamida aromática com cadeias rígidas e muito alinhadas, ligadas por ligações de hidrogénio. É cinco vezes mais resistente do que o aço com o mesmo peso e é usado em coletes à prova de bala, capacetes e cabos."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na polimerização de condensação:",
+              "opcoes": [
+                "o único produto é o polímero.",
+                "forma-se o polímero e uma pequena molécula (por exemplo, água) em cada ligação.",
+                "os monómeros têm sempre ligações duplas C=C.",
+                "não há quebra de ligações."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Na condensação, os grupos funcionais reagem e libertam uma pequena molécula (H₂O, HCl).",
+              "mascote_feedback_errado": "Na condensação, os grupos funcionais reagem e libertam uma pequena molécula (H₂O, HCl)."
+            },
+            {
+              "pergunta": "O polipropileno pertence à família das:",
+              "opcoes": [
+                "poliamidas.",
+                "poliolefinas.",
+                "poliésteres.",
+                "poliuretanos."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O polipropileno forma-se por adição do propeno, um alceno (olefina).",
+              "mascote_feedback_errado": "O polipropileno forma-se por adição do propeno, um alceno (olefina)."
+            },
+            {
+              "pergunta": "A ligação característica das poliamidas é:",
+              "opcoes": [
+                "–COO–",
+                "–CO–NH–",
+                "–O–",
+                "–C=C–"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "As poliamidas têm a ligação amida, formada entre um ácido carboxílico (ou cloreto de ácido) e uma amina.",
+              "mascote_feedback_errado": "As poliamidas têm a ligação amida, formada entre um ácido carboxílico (ou cloreto de ácido) e uma amina."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "sintese-polimero-reciclagem-al-3-6",
+      "titulo": "Síntese de um polímero e reciclagem de plásticos; AL 3.6",
+      "xp": 25,
+      "tempo_estimado_min": 13,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_corda_nylon.png",
+          "imagem_legenda": "Gobelé com duas camadas de líquidos e um fio de nylon a ser puxado da interface e enrolado numa vareta.",
+          "texto": "Num gobelé, deita-se com cuidado uma solução aquosa por baixo de uma solução orgânica. Os dois líquidos não se misturam. Na fronteira entre eles forma-se uma película fina. Com uma pinça, puxa-se a película para cima e sai um fio contínuo de nylon, que se pode enrolar numa vareta durante metros. É uma das experiências mais espetaculares da química, e é a atividade laboratorial desta secção.",
+          "mascote_texto": "Esta AL é rápida, mas usa reagentes perigosos. A segurança é tão importante como o resultado."
+        },
+        {
+          "tipo": "atividade_laboratorial",
+          "codigo": "AL 3.6",
+          "titulo": "Síntese de um polímero",
+          "objetivo": "Sintetizar um polímero de condensação (nylon), identificando os monómeros, o motivo e o subproduto, e avaliar a biodegradabilidade do polímero.",
+          "material": [
+            "Solução aquosa de hexano-1,6-diamina (com um pouco de hidróxido de sódio, para neutralizar o HCl formado)",
+            "Solução de cloreto de hexanodioílo (ou de decanodioílo) num solvente orgânico (por exemplo, ciclo-hexano)",
+            "Gobelé pequeno, pinça, vareta de vidro",
+            "Água para lavar o fio",
+            "Luvas, óculos, bata; hotte"
+          ],
+          "procedimento": [
+            "Na hotte, colocar a solução aquosa de diamina no gobelé.",
+            "Adicionar lentamente, pela parede do gobelé, a solução orgânica do cloreto de ácido, de modo a formar uma camada por cima, sem misturar.",
+            "Observar a película que se forma na interface.",
+            "Com a pinça, agarrar a película no centro e puxá-la lentamente para cima, enrolando o fio numa vareta.",
+            "Lavar bem o fio com água antes de lhe tocar (mesmo com luvas).",
+            "Secar e observar as propriedades (flexibilidade, resistência)."
+          ],
+          "tratamento_de_dados": "Monómeros: hexano-1,6-diamina (H₂N–(CH₂)₆–NH₂) e cloreto de hexanodioílo (ClOC–(CH₂)₄–COCl).\n\nEquação (simplificada): n ClOC–(CH₂)₄–COCl + n H₂N–(CH₂)₆–NH₂ → –[CO–(CH₂)₄–CO–NH–(CH₂)₆–NH]n– + 2n HCl.\n\nMotivo: –CO–(CH₂)₄–CO–NH–(CH₂)₆–NH–. Polímero: nylon-6,6 (6 carbonos em cada monómero). Ligação: amida.\n\nSubproduto: HCl (neutralizado pelo NaOH da fase aquosa).\n\nBiodegradabilidade: o nylon é muito pouco biodegradável; decompõe-se muito lentamente no ambiente.",
+          "conclusao": "O nylon é uma poliamida obtida por polimerização de condensação entre uma diamina e um cloreto de ácido dicarboxílico, com libertação de HCl. A reação ocorre na interface entre os dois líquidos imiscíveis, porque é aí que os dois monómeros se encontram.",
+          "erros_comuns": [
+            "Misturar as duas soluções (forma-se uma massa irregular em vez de um fio).",
+            "Puxar o fio depressa demais (parte).",
+            "Tocar no fio sem o lavar (tem restos de reagentes corrosivos).",
+            "Dizer que o subproduto é água: com cloreto de ácido, é HCl."
+          ],
+          "seguranca": "O cloreto de hexanodioílo é corrosivo e reage com a humidade; a diamina é irritante; o solvente orgânico é inflamável. Trabalhar na hotte, com luvas e óculos, sem chamas. Os resíduos vão para o recipiente de solventes orgânicos."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Reciclagem de plásticos",
+          "imagem": "q12_reciclagem_plasticos.png",
+          "imagem_legenda": "Três vias de reciclagem de plásticos (mecânica, química, energética), ecoponto amarelo e microplásticos no oceano.",
+          "texto_principal": "Os plásticos são leves, baratos, duráveis e versáteis. Mas essa durabilidade torna-os um problema ambiental: a maioria não se degrada durante centenas de anos e acumula-se em aterros e nos oceanos. A reciclagem reduz o problema, mas tem limitações.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Reciclagem mecânica",
+              "explicacao": "Triturar, lavar e fundir os termoplásticos para fazer novos objetos. A qualidade diminui a cada ciclo (as cadeias partem-se)."
+            },
+            {
+              "id": "p2",
+              "label": "Reciclagem química",
+              "explicacao": "Decompor o polímero nos monómeros (ou noutras substâncias úteis) para voltar a sintetizar plástico novo. Mais cara, mas sem perda de qualidade."
+            },
+            {
+              "id": "p3",
+              "label": "Valorização energética",
+              "explicacao": "Queimar os plásticos para produzir energia. Evita aterros, mas emite CO₂ e exige controlo de poluentes."
+            },
+            {
+              "id": "p4",
+              "label": "Limitações",
+              "explicacao": "Mistura de vários tipos de plástico, sujidade e aditivos dificultam a reciclagem; os termofixos não podem ser fundidos; a reciclagem consome energia e água."
+            },
+            {
+              "id": "p5",
+              "label": "Microplásticos",
+              "explicacao": "Fragmentos com menos de 5 mm, resultantes da degradação de plásticos maiores e da lavagem de tecidos sintéticos. Estão nos oceanos, nos alimentos e na água."
+            },
+            {
+              "id": "p6",
+              "label": "Reduzir, reutilizar, reciclar",
+              "explicacao": "A prioridade é reduzir o uso de plásticos descartáveis; depois reutilizar; e só então reciclar."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Na síntese do nylon a partir de cloreto de hexanodioílo e hexano-1,6-diamina, qual é a pequena molécula libertada?",
+          "opcoes": [
+            "H₂O",
+            "HCl",
+            "NH₃",
+            "CO₂"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. O cloro do cloreto de ácido e um hidrogénio da amina saem juntos como HCl, formando a ligação amida.",
+          "mascote_feedback_errado": "Na reação de um cloreto de ácido (–COCl) com uma amina (–NH₂), forma-se a ligação amida e liberta-se HCl. Com o ácido carboxílico seria água."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que a reciclagem mecânica de um plástico não pode ser repetida indefinidamente com a mesma qualidade?",
+          "opcoes": [
+            "Porque o plástico se transforma em metal.",
+            "Porque, a cada fusão e processamento, as cadeias poliméricas partem-se e as propriedades degradam-se.",
+            "Porque os plásticos não fundem.",
+            "Porque a lei o proíbe."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. Ao contrário dos metais, as macromoléculas degradam-se a cada ciclo. Por isso o plástico reciclado é muitas vezes usado em produtos menos exigentes.",
+          "mascote_feedback_errado": "O aquecimento e o processamento partem as cadeias do polímero. A cada ciclo, o material fica com propriedades piores. É uma diferença importante em relação aos metais."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**A camisola de lã reaproveitada.** Uma camisola velha pode ser desmanchada e a lã usada para tricotar outra. Mas a lã sai mais curta e fraca de cada vez, e ao fim de algumas vezes já só serve para enchimento. A reciclagem mecânica dos plásticos é assim. A reciclagem química é como desfazer a lã até à fibra original e fiá-la de novo: dá mais trabalho, mas o fio fica como novo."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Na AL 3.6, porque é que o nylon se forma apenas na interface entre os dois líquidos?",
+              "opcoes": [
+                "Porque é aí que está mais quente.",
+                "Porque os dois monómeros estão em líquidos imiscíveis e só se encontram na fronteira entre eles.",
+                "Porque o nylon é mais denso.",
+                "Porque a luz só chega à interface."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A diamina está na fase aquosa e o cloreto de ácido na fase orgânica. Só na interface se encontram e reagem.",
+              "mascote_feedback_errado": "A diamina está na fase aquosa e o cloreto de ácido na fase orgânica. Só na interface se encontram e reagem."
+            },
+            {
+              "pergunta": "Os termofixos são difíceis de reciclar mecanicamente porque:",
+              "opcoes": [
+                "são muito leves.",
+                "não fundem: decompõem-se com o calor.",
+                "são biodegradáveis.",
+                "são naturais."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A estrutura reticulada impede que amoleçam e sejam moldados de novo.",
+              "mascote_feedback_errado": "A estrutura reticulada impede que amoleçam e sejam moldados de novo."
+            },
+            {
+              "pergunta": "O que são microplásticos?",
+              "opcoes": [
+                "Plásticos produzidos em laboratório.",
+                "Fragmentos de plástico com menos de 5 mm, presentes no ambiente.",
+                "Plásticos biodegradáveis.",
+                "Monómeros."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Resultam da fragmentação de plásticos maiores e de fibras sintéticas, e espalham-se pelos oceanos, solos e cadeias alimentares.",
+              "mascote_feedback_errado": "Resultam da fragmentação de plásticos maiores e de fibras sintéticas, e espalham-se pelos oceanos, solos e cadeias alimentares."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "vidros-biomateriais-sustentaveis",
+      "titulo": "Vidros, biomateriais e materiais de base sustentável",
+      "xp": 25,
+      "tempo_estimado_min": 11,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "imagem": "q12_protese_cortica.png",
+          "imagem_legenda": "Prótese de anca ao lado de um sobreiro descortiçado e de rolhas de cortiça.",
+          "texto": "Hoje há pessoas a viver com ancas de titânio, válvulas cardíacas artificiais, lentes dentro dos olhos e pontos cirúrgicos que se dissolvem sozinhos. E Portugal, o maior produtor mundial de cortiça, exporta um material natural, renovável e reciclável que é usado desde rolhas a isolamentos de naves espaciais. A química dos materiais está a mudar a medicina e a forma como produzimos as coisas.",
+          "mascote_texto": "Esta secção é mais de pesquisa do que de cálculo. É ótima para um trabalho ou uma apresentação."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Biomateriais e materiais sustentáveis",
+          "imagem": "q12_biomateriais.png",
+          "imagem_legenda": "Silhueta humana com biomateriais: lente intraocular, stent, prótese de anca, implante dentário, suturas, cápsula, lentes de contacto.",
+          "texto_principal": "Um biomaterial é um material usado em aplicações médicas, em contacto com estruturas biológicas, com elevada compatibilidade com o organismo (biocompatibilidade). Os materiais de base sustentável são economicamente viáveis e conjugam três características: são renováveis, recicláveis e biodegradáveis.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Cardiologia",
+              "explicacao": "Stents metálicos (que mantêm as artérias abertas), válvulas cardíacas artificiais, pacemakers."
+            },
+            {
+              "id": "p2",
+              "label": "Ortopedia",
+              "explicacao": "Próteses de anca e de joelho (titânio, ligas de cobalto-crómio, cerâmicas, polietileno de ultra-alta massa molar), parafusos e placas."
+            },
+            {
+              "id": "p3",
+              "label": "Oftalmologia",
+              "explicacao": "Lentes de contacto de hidrogéis (polímeros que absorvem água), lentes intraoculares (usadas na cirurgia das cataratas)."
+            },
+            {
+              "id": "p4",
+              "label": "Libertação controlada de fármacos",
+              "explicacao": "Cápsulas e implantes de polímeros que libertam o medicamento aos poucos."
+            },
+            {
+              "id": "p5",
+              "label": "Biomateriais biodegradáveis",
+              "explicacao": "O ácido polilático (PLA) é usado em suturas e parafusos que o corpo absorve, sem necessidade de nova cirurgia."
+            },
+            {
+              "id": "p6",
+              "label": "Materiais de base sustentável",
+              "explicacao": "Cortiça, bioplásticos de amido ou de PLA (obtido de milho ou cana-de-açúcar), fibras naturais, madeira certificada."
+            },
+            {
+              "id": "p7",
+              "label": "Vidros",
+              "explicacao": "O vidro comum é um sólido amorfo (sem a organização regular de um cristal), feito sobretudo de sílica (SiO₂) com óxidos de sódio e de cálcio. É 100 % reciclável indefinidamente, sem perda de qualidade. O vidro borossilicatado (Pyrex) resiste a variações bruscas de temperatura."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O que caracteriza um material de base sustentável?",
+          "opcoes": [
+            "Ser barato.",
+            "Ser economicamente viável e, ao mesmo tempo, renovável, reciclável e biodegradável.",
+            "Ser sintético.",
+            "Ser feito de metal."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Certo. As três características em conjunto, mais a viabilidade económica, definem um material de base sustentável. A cortiça é um bom exemplo.",
+          "mascote_feedback_errado": "Um material de base sustentável é renovável (fonte que se regenera), reciclável e biodegradável, e tem de ser economicamente viável."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Porque é que se usam suturas de ácido polilático (PLA) em certas cirurgias?",
+          "opcoes": [
+            "Porque são mais baratas do que o metal.",
+            "Porque são biocompatíveis e biodegradáveis: o corpo absorve-as e não é preciso retirá-las.",
+            "Porque são condutoras.",
+            "Porque não se degradam nunca."
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato. O PLA é decomposto lentamente pelo organismo em ácido lático, uma substância que o corpo elimina naturalmente.",
+          "mascote_feedback_errado": "A vantagem é a biodegradabilidade com biocompatibilidade: as suturas desaparecem sozinhas, sem segunda intervenção."
+        },
+        {
+          "tipo": "analogia",
+          "texto": "**O convidado bem-educado.** Um biomaterial é como um convidado numa casa muito exigente (o corpo humano): tem de se comportar bem, não provocar reações, cumprir a sua função e, nalguns casos, saber ir-se embora sozinho na hora certa (biodegradável). Um material sustentável é como um convidado que traz o que consome, arruma o que usa e não deixa lixo para trás."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Cortiça, bioplásticos e investigação atual",
+          "texto": "**A cortiça**\n\nA cortiça é a casca do sobreiro, retirada de 9 em 9 anos sem abater a árvore. É leve, impermeável, isolante térmica e acústica, elástica e resistente ao fogo, graças à estrutura de milhões de pequenas células cheias de ar. É renovável, reciclável e biodegradável. Portugal produz cerca de metade da cortiça mundial. É usada em rolhas, pavimentos, isolamentos, calçado e até na indústria aeroespacial.\n\n**Bioplásticos: nem todos são iguais**\n\n\"Bioplástico\" pode significar plástico de origem biológica (feito de plantas) ou plástico biodegradável. Nem todos os plásticos de origem biológica são biodegradáveis, e muitos plásticos \"biodegradáveis\" só se degradam em compostagem industrial, não no mar ou no campo.\n\n**Investigação atual**\n\nMateriais autorreparáveis, polímeros condutores, aerogéis (sólidos quase só de ar), grafeno, materiais com memória de forma e \"pele eletrónica\" são alguns dos novos materiais em investigação."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um biomaterial deve ser, antes de tudo:",
+              "opcoes": [
+                "barato.",
+                "biocompatível.",
+                "metálico.",
+                "transparente."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Tem de ser compatível com os tecidos do organismo, sem provocar reações adversas.",
+              "mascote_feedback_errado": "Tem de ser compatível com os tecidos do organismo, sem provocar reações adversas."
+            },
+            {
+              "pergunta": "O vidro comum é:",
+              "opcoes": [
+                "um cristal covalente.",
+                "um sólido amorfo, sobretudo de sílica.",
+                "um metal.",
+                "um polímero orgânico."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "O vidro não tem a organização regular a longo alcance de um cristal: é amorfo. O principal componente é a sílica (SiO₂).",
+              "mascote_feedback_errado": "O vidro não tem a organização regular a longo alcance de um cristal: é amorfo. O principal componente é a sílica (SiO₂)."
+            },
+            {
+              "pergunta": "Qual destes é um exemplo de material de base sustentável produzido em grande quantidade em Portugal?",
+              "opcoes": [
+                "Poliestireno",
+                "Cortiça",
+                "PVC",
+                "Kevlar"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "A cortiça é renovável, reciclável e biodegradável, e Portugal é o maior produtor mundial.",
+              "mascote_feedback_errado": "A cortiça é renovável, reciclável e biodegradável, e Portugal é o maior produtor mundial."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão 6 concluída, e com ela toda a Química do 12.º ano. Caracterizas polímeros, distingues polimerização de adição e de condensação, identificas famílias de polímeros e grupos funcionais, sintetizaste nylon, discutes a reciclagem de plásticos e conheces biomateriais e materiais sustentáveis. Com o 10.º, o 11.º e o 12.º ano, tens toda a Química do secundário."
+}

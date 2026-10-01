@@ -1,0 +1,211 @@
+{
+  "missao_id": "vulcanologia",
+  "titulo": "Vulcanologia",
+  "disciplina": "geologia",
+  "area": "geologia",
+  "badge": { "icone": "🌋", "nome": "Domador de Vulcões" },
+  "secoes": [
+    {
+      "secao_id": "magma-e-estrutura",
+      "titulo": "Magma, lava e a anatomia de um vulcão",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "O magma é uma mistura de material rochoso fundido, gases dissolvidos e cristais em suspensão. Quando chega à superfície e perde gases, passa a chamar-se lava. 🌋",
+          "texto": "Mas antes de sair, o magma percorre uma estrutura bem definida dentro do vulcão."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A estrutura de um vulcão central",
+          "instrucao": "Clica em cada parte do vulcão para veres a sua função.",
+          "pontos": [
+            { "id": "camara", "label": "Câmara magmática", "explicacao": "Reservatório de magma em profundidade." },
+            { "id": "chamine", "label": "Chaminé", "explicacao": "Conduta por onde o magma ascende até à superfície." },
+            { "id": "cratera", "label": "Cratera", "explicacao": "Abertura no topo do vulcão." },
+            { "id": "cone", "label": "Cone vulcânico", "explicacao": "Acumulação dos materiais emitidos ao longo das erupções." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O reservatório de magma em profundidade chama-se:",
+          "opcoes": ["Câmara magmática", "Cratera"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É a câmara magmática — a cratera é só a abertura no topo.",
+          "mascote_feedback_errado": "É a câmara magmática — a cratera é a abertura visível no topo do vulcão."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Caldeiras: quando o topo colapsa",
+          "texto": "Uma caldeira é uma depressão de grandes dimensões formada pelo colapso do topo de um vulcão, depois de a câmara magmática se esvaziar numa grande erupção. Em Portugal, as Sete Cidades e as Furnas, em São Miguel (Açores), são exemplos clássicos de caldeiras."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A lava é, essencialmente:",
+              "opcoes": ["Magma que já chegou à superfície e perdeu parte dos gases", "A mesma coisa que o magma, sem qualquer diferença"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! A lava é o magma depois de perder gases, já à superfície.",
+              "mascote_feedback_errado": "A lava é o magma à superfície, que já perdeu parte dos gases — não são exatamente a mesma coisa."
+            },
+            {
+              "pergunta": "Uma caldeira forma-se por:",
+              "opcoes": ["Colapso do topo do vulcão, após o esvaziamento da câmara magmática", "Acumulação lenta de cinzas ao longo de séculos"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! É um colapso, não uma acumulação gradual.",
+              "mascote_feedback_errado": "Forma-se por colapso do topo, depois de a câmara magmática se esvaziar."
+            }
+          ],
+          "mascote_conclusao": "Já conheces a anatomia de um vulcão. Mas nem todos os vulcões se comportam da mesma forma — tudo depende do magma. 🔥"
+        }
+      ]
+    },
+    {
+      "secao_id": "tipos-de-magma",
+      "titulo": "Tipos de magma e de atividade vulcânica",
+      "xp": 30,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Porque é que uns vulcões apenas \"escorrem\" lava tranquilamente, e outros explodem de forma violenta? A resposta está na viscosidade do magma. 🌋",
+          "texto": "E a viscosidade depende sobretudo de uma coisa: a quantidade de sílica."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Basáltico, andesítico e riolítico",
+          "instrucao": "Clica em cada tipo de magma para veres o tipo de erupção que origina.",
+          "pontos": [
+            { "id": "basaltico", "label": "Basáltico (45-52% sílica)", "explicacao": "Pouco viscoso; os gases libertam-se facilmente. Atividade efusiva: escoadas de lava fluida, vulcões em escudo (pouca inclinação)." },
+            { "id": "andesitico", "label": "Andesítico (52-65% sílica)", "explicacao": "Viscosidade intermédia. Atividade mista: alternância de escoadas e explosões, formando estratovulcões (camadas alternadas)." },
+            { "id": "riolitico", "label": "Riolítico (>65% sílica)", "explicacao": "Muito viscoso; muitos gases ficam retidos. Atividade explosiva: muitos piroclastos, nuvens ardentes — das manifestações vulcânicas mais perigosas." }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Quanto maior o teor de sílica de um magma, a sua viscosidade é:",
+          "opcoes": ["Maior", "Menor"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! Mais sílica significa um magma mais viscoso e mais propenso a reter gases.",
+          "mascote_feedback_errado": "É maior — mais sílica torna o magma mais espesso e viscoso."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🍯",
+          "texto": "💡 A viscosidade é como a diferença entre mel quente e mel gelado: quanto mais sílica (mais \"frio e espesso\"), mais os gases ficam presos lá dentro, como bolhas presas num mel grosso — até que a pressão se torna demasiada e tudo explode de uma vez."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Materiais vulcânicos",
+          "instrucao": "Clica em cada tipo de material.",
+          "pontos": [
+            { "id": "lava_encordoada", "label": "Lava encordoada (pahoehoe)", "explicacao": "Lava basáltica fluida, de superfície lisa ou com aspeto de cordas." },
+            { "id": "lava_almofada", "label": "Lava em almofada (pillow lava)", "explicacao": "Lava que solidifica rapidamente debaixo de água, típica das dorsais oceânicas." },
+            { "id": "piroclastos_tam", "label": "Piroclastos", "explicacao": "Fragmentos projetados, classificados por tamanho: cinzas (<2 mm), lapili/bagacina (2-64 mm), bombas e blocos (>64 mm — as bombas solidificam já no ar, por isso têm forma aerodinâmica)." }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um vulcão em escudo, de pouca inclinação, está associado a magma:",
+              "opcoes": ["Basáltico", "Riolítico"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! O magma basáltico, pouco viscoso, forma escoadas fluidas e cones pouco inclinados.",
+              "mascote_feedback_errado": "É o basáltico — o riolítico está associado a erupções explosivas, não a escoadas fluidas."
+            },
+            {
+              "pergunta": "As nuvens ardentes estão associadas sobretudo a magma:",
+              "opcoes": ["Riolítico", "Basáltico"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! São próprias da atividade explosiva, típica de magmas muito viscosos.",
+              "mascote_feedback_errado": "É o riolítico — o basáltico está associado a atividade efusiva, não a nuvens ardentes."
+            },
+            {
+              "pergunta": "A lava em almofada forma-se tipicamente:",
+              "opcoes": ["Debaixo de água", "No ar"],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Solidifica rapidamente em contacto com a água, nas dorsais oceânicas.",
+              "mascote_feedback_errado": "Forma-se debaixo de água — as bombas vulcânicas é que solidificam no ar."
+            }
+          ],
+          "mascote_conclusao": "Já sabes ler um vulcão pela sua viscosidade. Mas há vulcanismo mesmo sem erupção — vamos explorá-lo. 💨"
+        }
+      ]
+    },
+    {
+      "secao_id": "vulcanismo-portugal-riscos",
+      "titulo": "Vulcanismo secundário, Portugal, e riscos e benefícios",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Mesmo sem erupção, uma zona vulcânica continua \"viva\" — o calor do magma em arrefecimento ainda escapa de muitas formas. 💨",
+          "texto": "É isto que se chama vulcanismo secundário ou residual."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Vulcanismo secundário",
+          "instrucao": "Clica em cada manifestação secundária.",
+          "pontos": [
+            { "id": "fumarolas", "label": "Fumarolas", "explicacao": "Emissão de gases e vapor de água. Sulfataras quando ricas em compostos de enxofre; mofetas quando ricas em CO₂." },
+            { "id": "geiseres", "label": "Géiseres", "explicacao": "Jatos intermitentes de água quente e vapor." },
+            { "id": "nascentes", "label": "Nascentes termais", "explicacao": "Água aquecida em profundidade (ex.: Furnas, em São Miguel)." }
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Vulcanismo em Portugal",
+          "texto": "Os Açores são a única região portuguesa com vulcanismo ativo. Exemplos recentes: a erupção dos Capelinhos (Faial, 1957-58), que aumentou a área da ilha; e a erupção submarina da Serreta (Terceira, 1998-2001). No continente, há apenas vestígios de vulcanismo muito antigo, como o Complexo Vulcânico de Lisboa (basaltos com ≈70 Ma) e os maciços de Monchique e de Sintra."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A única região portuguesa com vulcanismo ativo atualmente são:",
+          "opcoes": ["Os Açores", "O continente"],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! No continente há apenas vestígios de vulcanismo muito antigo.",
+          "mascote_feedback_errado": "São os Açores — o continente só tem vestígios de vulcanismo antigo, já extinto."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Riscos e benefícios do vulcanismo",
+          "instrucao": "Clica para explorares os dois lados do vulcanismo.",
+          "pontos": [
+            { "id": "riscos_vulc", "label": "Riscos", "explicacao": "Escoadas de lava, nuvens ardentes, piroclastos, lahars (escoadas de lama), gases tóxicos, sismos e tsunamis associados, alterações climáticas temporárias." },
+            { "id": "beneficios_vulc", "label": "Benefícios", "explicacao": "Solos férteis, energia geotérmica (ex.: central da Ribeira Grande, São Miguel), águas termais, turismo, materiais de construção (basalto, bagacina, pedra-pomes)." }
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A fórmula do risco",
+          "texto": "Risco = Perigosidade × Vulnerabilidade × Exposição. Uma zona muito perigosa mas totalmente desabitada tem, na prática, baixo risco — porque não há pessoas nem bens expostos. É por isso que a minimização do risco passa tanto por monitorização (sismógrafos, GPS, análise de gases) como por ordenamento do território — evitar construir em zonas de maior perigo."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Uma zona com perigosidade muito elevada mas sem qualquer população tem, segundo a fórmula do risco:",
+              "opcoes": ["Baixo risco", "Risco sempre máximo"],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Sem exposição (pessoas e bens), o risco mantém-se baixo, mesmo com alta perigosidade.",
+              "mascote_feedback_errado": "Tem baixo risco — a exposição é um fator multiplicativo essencial na fórmula."
+            },
+            {
+              "pergunta": "A energia geotérmica em Portugal é aproveitada sobretudo:",
+              "opcoes": ["Nos Açores", "No Algarve"],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Como na central geotérmica da Ribeira Grande, em São Miguel.",
+              "mascote_feedback_errado": "É aproveitada sobretudo nos Açores, a única região com atividade vulcânica ativa."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Já sabes ler a viscosidade de um magma, conheces o vulcanismo secundário e o vulcanismo em Portugal, e sabes pesar os riscos e benefícios de viver perto de um vulcão. 🌋🔥"
+        }
+      ]
+    }
+  ]
+}
