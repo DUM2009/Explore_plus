@@ -324,6 +324,267 @@ html.dark-mode .me-caixa-formula-expressao {
     color: #e6ede9;
 }
 
+/* Explicação de um ponto com várias linhas (ex: uma lista de exemplos,
+   separados por \n no JSON) — cada linha na sua. */
+.me-diagrama-explicacao .did-you-know-text > p {
+    white-space: pre-line;
+}
+
+/* Tabelas de dados de um diagrama (ver tabelasHtml) — cada uma com scroll
+   horizontal próprio, para se lerem no telemóvel. */
+.me-tabelas {
+    display: grid;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.me-tabelas--lado-a-lado {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.me-tabela {
+    margin: 0;
+    min-width: 0;
+}
+
+.me-tabela-titulo {
+    margin: 0 0 8px;
+    font-weight: 700;
+    color: #1c2a22;
+    text-align: left;
+}
+
+.me-tabela-scroll {
+    overflow-x: auto;
+    border: 1px solid #d5ddd8;
+    border-radius: 12px;
+}
+
+.me-tabela table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .92rem;
+}
+
+.me-tabela th,
+.me-tabela td {
+    padding: 9px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e6ece8;
+    color: #2c3a32;
+}
+
+.me-tabela th {
+    background: rgba(31, 138, 91, .08);
+    font-weight: 700;
+    font-size: .82rem;
+    line-height: 1.3;
+}
+
+.me-tabela tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.me-tabela-nota {
+    margin: 8px 0 0;
+    font-size: .85rem;
+    color: #5b6a62;
+    text-align: left;
+}
+
+html.dark-mode .me-tabela-titulo,
+html.dark-mode .me-tabela th,
+html.dark-mode .me-tabela td {
+    color: #e6e1da;
+}
+
+html.dark-mode .me-tabela-scroll {
+    border-color: rgba(255, 255, 255, .18);
+}
+
+html.dark-mode .me-tabela th {
+    background: rgba(127, 214, 168, .1);
+}
+
+html.dark-mode .me-tabela th,
+html.dark-mode .me-tabela td {
+    border-bottom-color: rgba(255, 255, 255, .1);
+}
+
+html.dark-mode .me-tabela-nota {
+    color: #b8b2aa;
+}
+
+/* Escada de conversão de unidades (ver escadaConversaoHtml). */
+.me-escada-conv {
+    margin-top: 20px;
+    padding: 16px 18px;
+    border: 1px solid #d5ddd8;
+    border-radius: 14px;
+    text-align: left;
+}
+
+.me-escada-conv-titulo {
+    margin: 0 0 12px;
+    font-weight: 700;
+    color: #1c2a22;
+}
+
+.me-escada-conv-scroll {
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+/* Os degraus partem para a linha seguinte quando não cabem (telemóvel),
+   em vez de obrigar a fazer scroll para os lados. */
+.me-escada-conv-degraus {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+}
+
+.me-gancho-card .me-escada-conv .me-escada-conv-degrau,
+.me-escada-conv .me-escada-conv-degrau {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 42px;
+    margin: 0;
+    padding: 8px 6px;
+    border: 1px solid #c4d3ca;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: none;
+    color: #1c2a22;
+    font: inherit;
+    font-weight: 700;
+    font-size: .92rem;
+    cursor: pointer;
+}
+
+.me-gancho-card .me-escada-conv .me-escada-conv-degrau.is-active,
+.me-escada-conv .me-escada-conv-degrau.is-active {
+    border-color: #1f8a5b;
+    background: #1f8a5b;
+    color: #fff;
+}
+
+.me-escada-conv-seta {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 4px;
+    font-size: .74rem;
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+.me-escada-conv-seta i {
+    font-style: normal;
+    font-size: .95rem;
+    margin: 0 1px;
+}
+
+.me-escada-conv-seta-dir {
+    color: #1f8a5b;
+}
+
+.me-escada-conv-seta-esq {
+    color: #b0632b;
+}
+
+.me-escada-conv-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.me-escada-conv-form label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #3d4640;
+}
+
+.me-escada-conv-form input,
+.me-escada-conv-form select {
+    padding: 7px 10px;
+    border: 1px solid #c4d3ca;
+    border-radius: 8px;
+    background: #fff;
+    font: inherit;
+    color: #1c2a22;
+}
+
+.me-escada-conv-form input {
+    width: 120px;
+}
+
+.me-escada-conv-resultados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    gap: 8px;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.me-escada-conv-resultados li {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    background: #f3f6f4;
+    font-size: .86rem;
+}
+
+.me-escada-conv-resultados li.is-active {
+    background: rgba(31, 138, 91, .14);
+    font-weight: 700;
+}
+
+.me-escada-conv-res-unidade {
+    color: #5b6a62;
+    font-weight: 700;
+}
+
+.me-escada-conv-resultados .me-escada-conv-aviso {
+    grid-column: 1 / -1;
+    background: none;
+    color: #b0632b;
+}
+
+html.dark-mode .me-escada-conv {
+    border-color: rgba(255, 255, 255, .18);
+}
+
+html.dark-mode .me-escada-conv-titulo,
+html.dark-mode .me-escada-conv-form label,
+html.dark-mode .me-escada-conv-resultados li {
+    color: #e6e1da;
+}
+
+html.dark-mode .me-escada-conv-degrau:not(.is-active),
+html.dark-mode .me-escada-conv-form input,
+html.dark-mode .me-escada-conv-form select {
+    background: #2a2622;
+    border-color: rgba(255, 255, 255, .25);
+    color: #e6e1da;
+}
+
+html.dark-mode .me-escada-conv-resultados li {
+    background: rgba(255, 255, 255, .06);
+}
+
+html.dark-mode .me-escada-conv-res-unidade {
+    color: #b8b2aa;
+}
+
 html.dark-mode .me-caixa-formula-significado {
     color: #b9c7bd;
 }
@@ -427,6 +688,36 @@ html.dark-mode .me-quiz-seccao--pergunta {
 
 html.dark-mode .me-gancho-card .did-you-know {
     border-top-color: #4a3d30;
+}
+
+/* Todos os "Queres saber mais?" (ver aprofundarHtml) ficam num painel
+   próprio — borda preta fina, cantos arredondados e fundo cinzento claro —
+   sem mexer nas margens, para continuarem no mesmo sítio. */
+.did-you-know.me-saber-mais,
+.me-gancho-card .did-you-know.me-saber-mais {
+    border: 1px solid #2b2b2b;
+    border-radius: 14px;
+    background: #f1f2ef;
+    padding: 4px 20px 6px;
+}
+
+html.dark-mode .did-you-know.me-saber-mais,
+html.dark-mode .me-gancho-card .did-you-know.me-saber-mais {
+    border-color: rgba(255, 255, 255, .45);
+    background: #2a2622;
+}
+/* No telemóvel, a margem negativa do .did-you-know base (que o alarga para
+   lá do padding da secção) empurrava a página para os lados. */
+@media (max-width: 640px) {
+    .did-you-know.me-saber-mais {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 4px 14px 6px;
+    }
+}
+html.dark-mode .did-you-know.me-saber-mais .did-you-know-text,
+html.dark-mode .did-you-know.me-saber-mais .did-you-know-text * {
+    color: #e6e1da;
 }
 
 /* Na timeline o cartão é bem mais largo (.me-gancho-card--timeline, até

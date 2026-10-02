@@ -823,30 +823,6 @@
     </div>
     {% endif %}
 
-    {% if 'terra-sistema-rochas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="geology" hidden>
-        <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/ciclo_celular_visao_geral.png' %}')" aria-hidden="true"></span>
-            <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">A Terra Como Sistema</h3>
-                <p class="missions-category-panel-tagline">Os subsistemas terrestres e as rochas que arquivam a história do planeta.</p>
-                <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>A Terra Como Sistema e as Rochas (10º ano)</h2>
-                            <p>Descobre os quatro subsistemas da Terra e os três grandes grupos de rochas.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='terra-sistema-rochas' %}"><button type="button">Começar</button></a>
-                    </div>
-                </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de A Terra Como Sistema" data-missions-toggle>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
     {% if '10-energia-eletroes' in missoes_lancadas %}
     <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>
         <div class="missions-category-panel">
@@ -864,41 +840,6 @@
                     </div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Energia dos Eletrões" data-missions-toggle>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
-    {% if 'tempo-geologico' in missoes_lancadas or 'tectonica-de-placas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="geology" hidden>
-        <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/especie.jpg' %}')" aria-hidden="true"></span>
-            <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">O Tempo e a Terra em Mudança</h3>
-                <p class="missions-category-panel-tagline">Como se mede o tempo geológico e como os continentes se moveram até hoje.</p>
-                <div class="missions-grid" hidden>
-                    {% if 'tempo-geologico' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>O Tempo Geológico (10º ano)</h2>
-                            <p>Datação relativa e absoluta, e a escala do tempo geológico.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='tempo-geologico' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                    {% if 'tectonica-de-placas' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Tectónica de Placas (10º ano)</h2>
-                            <p>Da deriva continental à teoria da tectónica de placas.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='tectonica-de-placas' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de O Tempo e a Terra em Mudança" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -930,41 +871,6 @@
     </div>
     {% endif %}
 
-    {% if 'origem-terra-sistema-solar' in missoes_lancadas or 'interior-da-terra' in missoes_lancadas %}
-    <div class="missions-category" data-subject="geology" hidden>
-        <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/organismo.jpg' %}')" aria-hidden="true"></span>
-            <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Astronomia e o Interior da Terra</h3>
-                <p class="missions-category-panel-tagline">Da nébula solar ao núcleo de ferro — como a Terra se formou e organizou em camadas.</p>
-                <div class="missions-grid" hidden>
-                    {% if 'origem-terra-sistema-solar' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Origem da Terra e do Sistema Solar (10º ano)</h2>
-                            <p>A hipótese nebular e a diferenciação da Terra em camadas.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='origem-terra-sistema-solar' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                    {% if 'interior-da-terra' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>O Interior da Terra (10º ano)</h2>
-                            <p>Métodos de estudo do interior da geosfera e a sua estrutura em camadas.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='interior-da-terra' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Astronomia e o Interior da Terra" data-missions-toggle>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
     {% if '10-ligacao-quimica' in missoes_lancadas %}
     <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>
         <div class="missions-category-panel">
@@ -982,41 +888,6 @@
                     </div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Ligação Química" data-missions-toggle>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
-    {% if 'vulcanologia' in missoes_lancadas or 'sismologia' in missoes_lancadas %}
-    <div class="missions-category" data-subject="geology" hidden>
-        <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Mitocôndira.png' %}')" aria-hidden="true"></span>
-            <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Vulcões e Sismos</h3>
-                <p class="missions-category-panel-tagline">A energia interna da Terra em ação — vulcões, magmas, sismos e ondas sísmicas.</p>
-                <div class="missions-grid" hidden>
-                    {% if 'vulcanologia' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Vulcanologia (10º ano)</h2>
-                            <p>Tipos de magma, materiais vulcânicos, e o vulcanismo em Portugal.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='vulcanologia' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                    {% if 'sismologia' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Sismologia (10º ano)</h2>
-                            <p>Ondas sísmicas, intensidade e magnitude, e o risco sísmico em Portugal.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='sismologia' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Vulcões e Sismos" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -1048,30 +919,6 @@
     </div>
     {% endif %}
 
-    {% if 'riscos-ordenamento-territorio' in missoes_lancadas %}
-    <div class="missions-category" data-subject="geology" hidden>
-        <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Relva.jpeg' %}')" aria-hidden="true"></span>
-            <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Riscos e Ordenamento</h3>
-                <p class="missions-category-panel-tagline">Bacias hidrográficas, zonas costeiras e de vertente — como ocupar o território com segurança.</p>
-                <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Riscos Geológicos e Ordenamento do Território (11º ano)</h2>
-                            <p>Cheias, erosão costeira e movimentos em massa — e como preveni-los.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='riscos-ordenamento-territorio' %}"><button type="button">Começar</button></a>
-                    </div>
-                </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Riscos e Ordenamento" data-missions-toggle>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
     {% if '10-transformacoes-quimicas' in missoes_lancadas %}
     <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>
         <div class="missions-category-panel">
@@ -1089,59 +936,6 @@
                     </div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Transformações Químicas" data-missions-toggle>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
-    {% if 'minerais' in missoes_lancadas or 'rochas-sedimentares' in missoes_lancadas or 'rochas-magmaticas' in missoes_lancadas or 'rochas-metamorficas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="geology" hidden>
-        <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Biomolécula.png' %}')" aria-hidden="true"></span>
-            <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Minerais e Rochas</h3>
-                <p class="missions-category-panel-tagline">De minerais a rochas sedimentares, magmáticas e metamórficas — os materiais da Terra.</p>
-                <div class="missions-grid" hidden>
-                    {% if 'minerais' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Minerais (11º ano)</h2>
-                            <p>O que é um mineral, polimorfismo, isomorfismo e as suas propriedades.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='minerais' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                    {% if 'rochas-sedimentares' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Rochas Sedimentares (11º ano)</h2>
-                            <p>Sedimentogénese, diagénese, fósseis e combustíveis fósseis.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='rochas-sedimentares' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                    {% if 'rochas-magmaticas' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Rochas Magmáticas (11º ano)</h2>
-                            <p>Génese dos magmas, série de Bowen, textura e classificação.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='rochas-magmaticas' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                    {% if 'rochas-metamorficas' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Rochas Metamórficas (11º ano)</h2>
-                            <p>Fatores e tipos de metamorfismo, e o ciclo litológico completo.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='rochas-metamorficas' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Minerais e Rochas" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -1200,7 +994,7 @@
     {% if '11-acido-base' in missoes_lancadas %}
     <div class="missions-category" data-subject="chemistry" data-ano="11" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Reações ácido-base.png' %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image missions-category-panel-image--contain" style="background-color:#eeeeee;background-image:url('{% static 'images/Reações ácido-base.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Reações Ácido-Base</h3>
                 <p class="missions-category-panel-tagline">Porque é que o vinagre e o limão são ácidos e o sabão é básico? Teoria de Brönsted-Lowry, pH, constantes de acidez, titulações e chuva ácida.</p>
@@ -1413,15 +1207,222 @@
     </div>
     {% endif %}
 
-    {% if 'deformacao-das-rochas' in missoes_lancadas or 'recursos-geologicos' in missoes_lancadas %}
-    <div class="missions-category" data-subject="geology" hidden>
+    {% if 'terra-sistema-rochas' in missoes_lancadas or 'tempo-geologico' in missoes_lancadas or 'tectonica-de-placas' in missoes_lancadas or '10-metodos-raciocinio-geologico' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="10" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Coração.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Deformação e Recursos</h3>
-                <p class="missions-category-panel-tagline">Dobras, falhas, e como explorar os recursos geológicos de forma sustentável.</p>
+                <h3 class="missions-category-panel-name">Geologia e Métodos</h3>
+                <p class="missions-category-panel-tagline">Os subsistemas terrestres, o ciclo litológico, a medida do tempo geológico e o mobilismo da Terra.</p>
                 <div class="missions-grid" hidden>
-                    {% if 'deformacao-das-rochas' in missoes_lancadas %}
+                    {% if 'terra-sistema-rochas' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>A Terra Como Sistema e as Rochas (10º ano)</h2>
+                            <p>Descobre os quatro subsistemas da Terra e os três grandes grupos de rochas.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='terra-sistema-rochas' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% endif %}
+                    {% if '10-metodos-raciocinio-geologico' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Métodos e Raciocínio Geológico (10º ano)</h2><p>Atualismo, catastrofismo e uniformitarismo — como o geólogo lê a história da Terra.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if 'tempo-geologico' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>O Tempo Geológico (10º ano)</h2>
+                            <p>Datação relativa e absoluta, e a escala do tempo geológico.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='tempo-geologico' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% endif %}
+                    {% if 'tectonica-de-placas' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Tectónica de Placas (10º ano)</h2>
+                            <p>Da deriva continental à teoria da tectónica de placas.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='tectonica-de-placas' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% endif %}
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Geologia e Métodos" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'origem-terra-sistema-solar' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="10" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">A Terra, um Planeta Único</h3>
+                <p class="missions-category-panel-tagline">Da nébula solar ao planeta diferenciado em camadas — porque é que a Terra é como é.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Origem da Terra e do Sistema Solar (10º ano)</h2>
+                            <p>A hipótese nebular e a diferenciação da Terra em camadas.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='origem-terra-sistema-solar' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de A Terra, um Planeta Único" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'vulcanologia' in missoes_lancadas or 'sismologia' in missoes_lancadas or 'interior-da-terra' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="10" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Estrutura e Dinâmica da Geosfera</h3>
+                <p class="missions-category-panel-tagline">A energia interna da Terra em ação — vulcões, magmas, sismos, ondas sísmicas e as camadas do interior.</p>
+                <div class="missions-grid" hidden>
+                    {% if 'vulcanologia' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Vulcanologia (10º ano)</h2>
+                            <p>Tipos de magma, materiais vulcânicos, e o vulcanismo em Portugal.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='vulcanologia' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% endif %}
+                    {% if 'sismologia' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Sismologia (10º ano)</h2>
+                            <p>Ondas sísmicas, intensidade e magnitude, e o risco sísmico em Portugal.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='sismologia' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% endif %}
+                    {% if 'interior-da-terra' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>O Interior da Terra (10º ano)</h2>
+                            <p>Métodos de estudo do interior da geosfera e a sua estrutura em camadas.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='interior-da-terra' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% endif %}
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Estrutura e Dinâmica da Geosfera" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'riscos-ordenamento-territorio' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Ocupação Antrópica e Ordenamento do Território</h3>
+                <p class="missions-category-panel-tagline">Bacias hidrográficas, zonas costeiras e de vertente — como ocupar o território com segurança.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Riscos Geológicos e Ordenamento do Território (11º ano)</h2>
+                            <p>Cheias, erosão costeira e movimentos em massa — e como preveni-los.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='riscos-ordenamento-territorio' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Ocupação Antrópica e Ordenamento do Território" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'minerais' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Minerais</h3>
+                <p class="missions-category-panel-tagline">Os tijolos de todas as rochas — estrutura cristalina, propriedades e identificação.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Minerais (11º ano)</h2>
+                            <p>O que é um mineral, polimorfismo, isomorfismo e as suas propriedades.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='minerais' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Minerais" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'rochas-sedimentares' in missoes_lancadas or '11-ambientes-sedimentares-fosseis' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Sedimentação e Rochas Sedimentares</h3>
+                <p class="missions-category-panel-tagline">Da erosão à rocha — sedimentogénese, diagénese, ambientes de deposição e os fósseis que lá ficam.</p>
+                <div class="missions-grid" hidden>
+                    {% if 'rochas-sedimentares' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Rochas Sedimentares (11º ano)</h2>
+                            <p>Sedimentogénese, diagénese, fósseis e combustíveis fósseis.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='rochas-sedimentares' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% endif %}
+                    {% if '11-ambientes-sedimentares-fosseis' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Ambientes Sedimentares e Fósseis (11º ano)</h2><p>Ambientes de deposição, fósseis de idade e de fácies, e os princípios estratigráficos.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Sedimentação e Rochas Sedimentares" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'rochas-magmaticas' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Magmatismo e Rochas Magmáticas</h3>
+                <p class="missions-category-panel-tagline">Como o magma arrefece e dá granito ou basalto — textura, composição e ambientes de consolidação.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Rochas Magmáticas (11º ano)</h2>
+                            <p>Génese dos magmas, série de Bowen, textura e classificação.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='rochas-magmaticas' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Magmatismo e Rochas Magmáticas" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'deformacao-das-rochas' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Deformação de Rochas</h3>
+                <p class="missions-category-panel-tagline">Dobras e falhas — o que acontece à rocha quando a litosfera a aperta.</p>
+                <div class="missions-grid" hidden>
                     <div class="mission-card">
                         <div class="mission-card-info">
                             <h2>Deformação das Rochas (11º ano)</h2>
@@ -1429,8 +1430,45 @@
                         </div>
                         <a href="{% url 'missao' missao_id='deformacao-das-rochas' %}"><button type="button">Começar</button></a>
                     </div>
-                    {% endif %}
-                    {% if 'recursos-geologicos' in missoes_lancadas %}
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Deformação de Rochas" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'rochas-metamorficas' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Metamorfismo e Rochas Metamórficas</h3>
+                <p class="missions-category-panel-tagline">Rochas transformadas no estado sólido — foliação, tipos de metamorfismo e o ciclo litológico fechado.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Rochas Metamórficas (11º ano)</h2>
+                            <p>Fatores e tipos de metamorfismo, e o ciclo litológico completo.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='rochas-metamorficas' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Metamorfismo e Rochas Metamórficas" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'recursos-geologicos' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Exploração Sustentada de Recursos Geológicos</h3>
+                <p class="missions-category-panel-tagline">Recurso, reserva e jazigo — e como explorar minerais, energia e água sem hipotecar o futuro.</p>
+                <div class="missions-grid" hidden>
                     <div class="mission-card">
                         <div class="mission-card-info">
                             <h2>Exploração Sustentada de Recursos Geológicos (11º ano)</h2>
@@ -1438,9 +1476,89 @@
                         </div>
                         <a href="{% url 'missao' missao_id='recursos-geologicos' %}"><button type="button">Começar</button></a>
                     </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Exploração Sustentada de Recursos Geológicos" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-deriva-expansao-fundos' in missoes_lancadas or '12-dinamica-litosfera-isostasia' in missoes_lancadas or '12-orogenias-paisagens' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Da Deriva dos Continentes à Tectónica de Placas</h3>
+                <p class="missions-category-panel-tagline">Como uma ideia rejeitada se tornou a teoria que explica o planeta — e o que ela faz à litosfera.</p>
+                <div class="missions-grid" hidden>
+                    {% if '12-deriva-expansao-fundos' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Deriva Continental e Expansão dos Fundos Oceânicos (12º ano)</h2><p>De Wegener a Hess — as provas, a rejeição e o paleomagnetismo que mudou tudo.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-dinamica-litosfera-isostasia' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Dinâmica da Litosfera e Isostasia (12º ano)</h2><p>Correntes de convecção, subducção e os movimentos verticais da crosta.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-orogenias-paisagens' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Orogenias, Riftes e Modelação das Paisagens (12º ano)</h2><p>Como nascem cadeias montanhosas e riftes, e como a tectónica desenha o relevo.</p></div><button disabled>Em breve</button></div>
                     {% endif %}
                 </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Deformação e Recursos" data-missions-toggle>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Da Deriva dos Continentes à Tectónica de Placas" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-tempo-cronostratigrafia' in missoes_lancadas or '12-historia-da-vida' in missoes_lancadas or '12-paleogeografia' in missoes_lancadas or '12-cartografia-geologica' in missoes_lancadas or '12-geologia-de-portugal' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">A História da Terra e da Vida</h3>
+                <p class="missions-category-panel-tagline">4600 milhões de anos lidos numa carta geológica — do Pré-Câmbrico ao Cenozoico, até ao chão da tua escola.</p>
+                <div class="missions-grid" hidden>
+                    {% if '12-tempo-cronostratigrafia' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Tempo Geológico e Cronostratigrafia (12º ano)</h2><p>Unidades cronostratigráficas e geocronológicas, e como se constrói a tabela do tempo.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-historia-da-vida' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>A História da Vida: do Pré-Câmbrico ao Cenozoico (12º ano)</h2><p>O aparecimento da vida, as grandes radiações e as cinco extinções em massa.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-paleogeografia' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Evolução Paleogeográfica (12º ano)</h2><p>Como os continentes se juntaram e separaram — da Rodínia à Pangeia e até hoje.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-cartografia-geologica' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Cartografia Geológica (12º ano)</h2><p>Ler cartas geológicas e construir perfis topográficos, cortes e blocos-diagrama.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-geologia-de-portugal' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Geologia de Portugal (12º ano)</h2><p>Maciço Ibérico, orlas Ocidental e Meridional, bacias do Tejo e Sado e os arquipélagos.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de A História da Terra e da Vida" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if '12-paleoclimas' in missoes_lancadas or '12-mudancas-climaticas' in missoes_lancadas or '12-recursos-geoambientais' in missoes_lancadas %}
+    <div class="missions-category" data-subject="geology" data-ano="12" hidden>
+        <div class="missions-category-panel">
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">A Terra Ontem, Hoje e Amanhã</h3>
+                <p class="missions-category-panel-tagline">Paleoclimas, mudanças ambientais e o que a Geologia tem a dizer sobre o século XXI.</p>
+                <div class="missions-grid" hidden>
+                    {% if '12-paleoclimas' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Paleoclimas e Mudanças Ambientais (12º ano)</h2><p>Arquivos do clima do passado — gelo, sedimentos, isótopos e anéis de crescimento.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-mudancas-climaticas' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Mudanças Climáticas e Cenários para o Século XXI (12º ano)</h2><p>Causas naturais e antropogénicas do aquecimento global, e os cenários possíveis.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-recursos-geoambientais' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Recursos Geoambientais e Contaminação (12º ano)</h2><p>Conciliar o desenvolvimento de uma região com a preservação dos seus recursos.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de A Terra Ontem, Hoje e Amanhã" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>

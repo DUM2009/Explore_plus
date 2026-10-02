@@ -12,142 +12,358 @@
   "secoes": [
     {
       "secao_id": "escala-atomica",
-      "titulo": "A escala atómica",
+      "titulo": "Ordens de grandeza e escalas de comprimento",
       "xp": 25,
-      "tempo_estimado_min": 9,
+      "tempo_estimado_min": 12,
       "ecrãs": [
         {
           "tipo": "gancho",
           "imagem": "q10_escala_zoom.png",
-          "imagem_legenda": "Sequência de ampliações: maçã, célula, molécula, átomo.",
-          "texto": "Se ampliasses uma maçã até ter o tamanho da Terra, cada átomo da maçã ficaria do tamanho de uma cereja. Os átomos são tão pequenos que num único grão de sal há mais átomos do que estrelas em toda a Via Láctea. E mesmo assim, hoje conseguimos vê-los, mexer-lhes um a um e escrever com eles.",
-          "mascote_texto": "Bem-vindo à Química. Tudo o que vais aprender começa aqui: perceber o tamanho das coisas que não se veem."
+          "imagem_legenda": "Sequência de escalas do grande para o pequeno: Sol e Terra (1,5 × 10¹¹ m), pessoa (1 m), cabelo (10⁻⁴ m), átomo (10⁻¹⁰ m), núcleo (10⁻¹⁵ m).",
+          "texto": "A distância da Terra ao Sol é de cerca de 150 000 000 000 m. O diâmetro de um átomo de hidrogénio é de cerca de 0,000 000 000 1 m. Com tantos zeros, é fácil enganarmo-nos. Por isso, em Química usamos a notação científica, os múltiplos e submúltiplos do Sistema Internacional e outras unidades, como o angström. Com isto, números gigantes e números minúsculos ficam fáceis de escrever e de comparar.",
+          "mascote_texto": "Antes de entrar nos átomos, precisas de saber escrever números muito grandes e muito pequenos. É a ferramenta que vais usar no ano inteiro."
         },
         {
           "tipo": "diagrama_interativo",
-          "titulo": "Do metro ao núcleo atómico",
+          "titulo": "Notação científica e ordem de grandeza",
           "imagem": "q10_escala_tamanhos.png",
-          "imagem_legenda": "Régua logarítmica de 1 m a 10⁻¹⁵ m com exemplos.",
-          "texto_principal": "Para comparar tamanhos muito diferentes, usa-se a notação científica e as ordens de grandeza. Os átomos têm dimensões da ordem de 10⁻¹⁰ m, ou seja, um décimo de nanómetro. O núcleo é ainda cerca de 100 000 vezes menor do que o átomo: quase todo o átomo é espaço vazio.",
+          "imagem_legenda": "Tabela \"Valor em notação científica / Potência de base 10 mais próxima / Ordem de grandeza\", com 1,5 × 10¹¹ m, 2,5 × 10⁻⁵ m e 6,3 × 10⁵ m, e por baixo a regra: N < 5 → 10ⁿ; N ≥ 5 → 10ⁿ⁺¹.",
+          "texto_principal": "Para facilitar a escrita dos números usados em Química, recorre-se à notação científica, aos múltiplos e submúltiplos do SI e a outras unidades de medida. A notação científica escreve um número com potências de base 10, na forma N × 10ⁿ. A ordem de grandeza é, de forma simplificada, a potência de base 10 mais próxima do número considerado.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             {
               "id": "p1",
-              "label": "Ordem de grandeza",
-              "explicacao": "A potência de 10 mais próxima do valor. Ex.: o raio de um átomo de hidrogénio (cerca de 5,3 × 10⁻¹¹ m) tem ordem de grandeza 10⁻¹⁰ m."
+              "label": "Notação científica",
+              "explicacao": "N × 10ⁿ, em que 1 ≤ N < 10 e n é um número inteiro, positivo ou negativo. Ex.: 150 000 000 000 m = 1,5 × 10¹¹ m; 0,000 025 m = 2,5 × 10⁻⁵ m."
             },
             {
               "id": "p2",
-              "label": "Nanómetro (nm)",
-              "explicacao": "1 nm = 10⁻⁹ m. Um nanómetro corresponde a cerca de 10 átomos lado a lado."
+              "label": "Ordem de grandeza",
+              "explicacao": "Escreve-se o número em notação científica, N × 10ⁿ. Se N ≥ 5, a ordem de grandeza é 10ⁿ⁺¹. Se N < 5, a ordem de grandeza é 10ⁿ."
             },
             {
               "id": "p3",
-              "label": "Picómetro (pm)",
-              "explicacao": "1 pm = 10⁻¹² m. Os raios atómicos costumam indicar-se em picómetros."
+              "label": "Exemplos",
+              "explicacao": "1,5 × 10¹¹ m: ordem de grandeza 10¹¹ m (N = 1,5 < 5).\n2,5 × 10⁻⁵ m: ordem de grandeza 10⁻⁵ m (N = 2,5 < 5).\n6,3 × 10⁵ m: ordem de grandeza 10⁶ m (N = 6,3 ≥ 5)."
             },
             {
               "id": "p4",
-              "label": "Átomo vs núcleo",
-              "explicacao": "Se o átomo fosse um estádio de futebol, o núcleo seria um berlinde no centro do relvado. Mas quase toda a massa está nesse berlinde."
+              "label": "Comparar valores",
+              "explicacao": "A ordem de grandeza serve para comparações aproximadas. Se dois valores diferem em duas ordens de grandeza, um é aproximadamente 100 vezes maior do que o outro. Em três ordens, 1000 vezes. E assim por diante."
             },
             {
               "id": "p5",
-              "label": "Nanotecnologia",
-              "explicacao": "Manipulação da matéria à escala de 1 a 100 nm. Aplicações: medicamentos que atuam em células específicas, protetores solares com nanopartículas, chips de computador com transístores de poucos nanómetros."
+              "label": "Mesma escala",
+              "explicacao": "Quando dois valores têm a mesma ordem de grandeza, pertencem à mesma escala de comprimento."
             }
           ],
           "caixa_formula": [
             {
-              "expressao": "1 nm = 10⁻⁹ m; 1 pm = 10⁻¹² m",
-              "significado": "",
+              "expressao": "N × 10ⁿ, com 1 ≤ N < 10 e n inteiro",
+              "significado": "Notação científica.",
               "unidades": ""
             },
             {
-              "expressao": "Diâmetro de um átomo: cerca de 10⁻¹⁰ m (0,1 nm)",
-              "significado": "",
+              "expressao": "N < 5 → 10ⁿ; N ≥ 5 → 10ⁿ⁺¹",
+              "significado": "Ordem de grandeza.",
               "unidades": ""
             },
             {
-              "expressao": "Diâmetro de um núcleo: cerca de 10⁻¹⁵ a 10⁻¹⁴ m",
-              "significado": "",
+              "expressao": "Diferença de k ordens de grandeza → fator de cerca de 10ᵏ",
+              "significado": "Comparação de valores.",
               "unidades": ""
+            }
+          ],
+          "tabelas": [
+            {
+              "colunas": [
+                "Valor em notação científica",
+                "Potência de base 10 mais próxima",
+                "Ordem de grandeza"
+              ],
+              "linhas": [
+                [
+                  "1,5 × 10¹¹ m",
+                  "10¹¹",
+                  "10¹¹"
+                ],
+                [
+                  "2,5 × 10⁻⁵ m",
+                  "10⁻⁵",
+                  "10⁻⁵"
+                ],
+                [
+                  "6,3 × 10⁵ m",
+                  "10⁵",
+                  "10⁶ (porque N ≥ 5)"
+                ]
+              ],
+              "nota": "Regra: se N < 5, a ordem de grandeza é 10ⁿ; se N ≥ 5, a ordem de grandeza é 10ⁿ⁺¹."
             }
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Quantas vezes é um átomo (10⁻¹⁰ m) maior do que o seu núcleo (10⁻¹⁵ m)?",
-          "opcoes": [
-            "5 vezes",
-            "1000 vezes",
-            "100 000 vezes",
-            "10²⁵ vezes"
+          "tipo": "diagrama_interativo",
+          "titulo": "Múltiplos e submúltiplos do SI",
+          "imagem": "q10_prefixos_si.png",
+          "imagem_legenda": "Tabela dos prefixos do SI, de peta a femto, com nome, símbolo e fator multiplicador, e a linha \"1 Å = 1,0 × 10⁻¹⁰ m\".",
+          "texto_principal": "Como as ordens de grandeza podem ser muito diferentes e variadas, recorre-se frequentemente aos múltiplos e submúltiplos das unidades do SI. Cada prefixo corresponde a um fator multiplicador.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Múltiplos",
+              "explicacao": "peta (P) 10¹⁵; tera (T) 10¹²; giga (G) 10⁹; mega (M) 10⁶; quilo (k) 10³; hecto (h) 10²; deca (da) 10¹."
+            },
+            {
+              "id": "p2",
+              "label": "Submúltiplos",
+              "explicacao": "deci (d) 10⁻¹; centi (c) 10⁻²; mili (m) 10⁻³; micro (µ) 10⁻⁶; nano (n) 10⁻⁹; pico (p) 10⁻¹²; femto (f) 10⁻¹⁵."
+            },
+            {
+              "id": "p3",
+              "label": "Outra unidade usual",
+              "explicacao": "1 angström = 1 Å = 1,0 × 10⁻¹⁰ m. É muito usada para tamanhos de átomos e comprimentos de ligação."
+            },
+            {
+              "id": "p4",
+              "label": "Escada de conversão",
+              "explicacao": "Tm, Gm, Mm, km, m, mm, µm, nm, pm. Para passar para a unidade seguinte (mais pequena) multiplica-se por 10³; para passar para a anterior (maior) multiplica-se por 10⁻³."
+            },
+            {
+              "id": "p5",
+              "label": "Exemplo",
+              "explicacao": "0,154 nm = 0,154 × 10³ pm = 154 pm = 1,54 Å."
+            }
           ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. 10⁻¹⁰ / 10⁻¹⁵ = 10⁵ = 100 000. Quase todo o átomo é espaço vazio.",
-          "mascote_feedback_errado": "Divide as duas potências: 10⁻¹⁰ / 10⁻¹⁵ = 10⁻¹⁰⁺¹⁵ = 10⁵ = 100 000 vezes."
+          "caixa_formula": [
+            {
+              "expressao": "1 km = 10³ m; 1 mm = 10⁻³ m; 1 µm = 10⁻⁶ m; 1 nm = 10⁻⁹ m; 1 pm = 10⁻¹² m",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "1 Å = 1,0 × 10⁻¹⁰ m = 0,1 nm = 100 pm",
+              "significado": "",
+              "unidades": ""
+            },
+            {
+              "expressao": "Unidade seguinte na escada (mais pequena): × 10³. Unidade anterior (maior): × 10⁻³",
+              "significado": "",
+              "unidades": ""
+            }
+          ],
+          "tabelas": [
+            {
+              "titulo": "Múltiplos",
+              "colunas": [
+                "Nome do prefixo",
+                "Símbolo do prefixo",
+                "Fator multiplicador"
+              ],
+              "linhas": [
+                [
+                  "peta",
+                  "P",
+                  "10¹⁵"
+                ],
+                [
+                  "tera",
+                  "T",
+                  "10¹²"
+                ],
+                [
+                  "giga",
+                  "G",
+                  "10⁹"
+                ],
+                [
+                  "mega",
+                  "M",
+                  "10⁶"
+                ],
+                [
+                  "quilo",
+                  "k",
+                  "10³"
+                ],
+                [
+                  "hecto",
+                  "h",
+                  "10²"
+                ],
+                [
+                  "deca",
+                  "da",
+                  "10¹"
+                ]
+              ]
+            },
+            {
+              "titulo": "Submúltiplos",
+              "colunas": [
+                "Nome do prefixo",
+                "Símbolo do prefixo",
+                "Fator multiplicador"
+              ],
+              "linhas": [
+                [
+                  "deci",
+                  "d",
+                  "10⁻¹"
+                ],
+                [
+                  "centi",
+                  "c",
+                  "10⁻²"
+                ],
+                [
+                  "mili",
+                  "m",
+                  "10⁻³"
+                ],
+                [
+                  "micro",
+                  "µ",
+                  "10⁻⁶"
+                ],
+                [
+                  "nano",
+                  "n",
+                  "10⁻⁹"
+                ],
+                [
+                  "pico",
+                  "p",
+                  "10⁻¹²"
+                ],
+                [
+                  "femto",
+                  "f",
+                  "10⁻¹⁵"
+                ]
+              ],
+              "nota": "Outra unidade usual: 1 angström = 1 Å = 1,0 × 10⁻¹⁰ m."
+            }
+          ],
+          "escada_conversao": {
+            "titulo": "Escada de conversão: escreve um valor, escolhe a unidade e vê-o nas outras unidades.",
+            "passo": 3,
+            "unidades": [
+              {
+                "simbolo": "Tm",
+                "expoente": 12
+              },
+              {
+                "simbolo": "Gm",
+                "expoente": 9
+              },
+              {
+                "simbolo": "Mm",
+                "expoente": 6
+              },
+              {
+                "simbolo": "km",
+                "expoente": 3
+              },
+              {
+                "simbolo": "m",
+                "expoente": 0
+              },
+              {
+                "simbolo": "mm",
+                "expoente": -3
+              },
+              {
+                "simbolo": "µm",
+                "expoente": -6
+              },
+              {
+                "simbolo": "nm",
+                "expoente": -9
+              },
+              {
+                "simbolo": "pm",
+                "expoente": -12
+              }
+            ],
+            "valor_inicial": "0,154",
+            "unidade_inicial": "nm"
+          }
         },
         {
           "tipo": "micro_verificacao",
-          "pergunta": "Um vírus tem 120 nm de diâmetro. Qual é a ordem de grandeza desse diâmetro, em metros?",
+          "pergunta": "Qual é a ordem de grandeza de 0,000 72 m?",
           "opcoes": [
-            "10⁻⁹ m",
-            "10⁻⁷ m",
-            "10⁻⁶ m",
-            "10² m"
+            "10⁻⁴ m",
+            "10⁻³ m",
+            "7,2 × 10⁻⁴ m",
+            "10⁻⁵ m"
           ],
           "correta": 1,
-          "mascote_feedback_certo": "Muito bem. 120 nm = 1,2 × 10⁻⁷ m, e a ordem de grandeza é 10⁻⁷ m.",
-          "mascote_feedback_errado": "Converte: 120 nm = 120 × 10⁻⁹ m = 1,2 × 10⁻⁷ m. Como 1,2 está mais perto de 1 do que de 10, a ordem de grandeza é 10⁻⁷ m."
+          "mascote_feedback_certo": "Certo. 0,000 72 m = 7,2 × 10⁻⁴ m. Como N = 7,2 ≥ 5, a ordem de grandeza é 10⁻⁴⁺¹ = 10⁻³ m.",
+          "mascote_feedback_errado": "Escreve primeiro em notação científica: 7,2 × 10⁻⁴ m. Como N = 7,2 é maior ou igual a 5, a ordem de grandeza é 10ⁿ⁺¹ = 10⁻³ m. 7,2 × 10⁻⁴ m é o valor em notação científica, não a ordem de grandeza."
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O comprimento da ligação C–C no diamante é 0,154 nm. Quanto é em picómetros?",
+          "opcoes": [
+            "1,54 pm",
+            "15,4 pm",
+            "154 pm",
+            "1,54 × 10⁵ pm"
+          ],
+          "correta": 2,
+          "mascote_feedback_certo": "Certo. De nm para pm desce-se um degrau na escada: multiplica-se por 10³. 0,154 × 10³ = 154 pm (= 1,54 Å).",
+          "mascote_feedback_errado": "nm e pm estão seguidos na escada de conversão. Para passar para a unidade mais pequena multiplica-se por 10³: 0,154 nm × 10³ = 154 pm."
         },
         {
           "tipo": "analogia",
-          "texto": "**As letras de um livro.** Pensa num livro. Olhas para a capa e vês o livro inteiro (o objeto do dia a dia). Aproximas-te e vês as páginas (as células). Mais perto, as linhas de texto (as moléculas grandes). Depois, cada letra (os átomos). Não precisas de ver cada letra para ler o livro, mas é das letras e da forma como se combinam que depende tudo o que o livro diz. Na Química, os átomos são as letras e as substâncias são as palavras e as frases."
+          "texto": "**Os andares de um prédio.** Imagina a escada de conversão como um prédio em que cada andar é mil vezes maior do que o de baixo: pm no rés-do-chão, depois nm, µm, mm, m, km, Mm, Gm e Tm no último andar. Para descer um andar, o número fica mil vezes maior (× 10³), porque a unidade é mil vezes mais pequena. Para subir, o número fica mil vezes menor (× 10⁻³). A ordem de grandeza diz-te em que andar está o valor. Dois valores no mesmo andar estão na mesma escala de comprimento."
         },
         {
           "tipo": "aprofundar",
-          "titulo": "Como se veem os átomos e nanotecnologia",
-          "texto": "**Como se \"veem\" os átomos**\n\nOs microscópios óticos não conseguem ver átomos, porque a luz visível tem comprimentos de onda (400 a 700 nm) muito maiores do que os átomos. O microscópio de efeito de túnel (STM), inventado em 1981, usa uma ponta metálica finíssima que percorre a superfície e deteta uma pequena corrente elétrica. Com ele obtêm-se imagens de átomos individuais e até se podem arrastar átomos um a um. Em 1989, cientistas da IBM escreveram o nome da empresa com 35 átomos de xénon.\n\n**Nanotecnologia no dia a dia**\n\nAs nanopartículas de óxido de titânio e de óxido de zinco dos protetores solares refletem e absorvem radiação ultravioleta sem deixar a pele branca. As nanopartículas de prata têm propriedades antibacterianas e são usadas em pensos e tecidos."
+          "titulo": "Ordens de grandeza, do Universo ao átomo",
+          "texto": "**Porque é que a regra usa 5 e não \"mais perto de 1 ou de 10\"**\n\nNa prática escolar portuguesa, a ordem de grandeza decide-se comparando N com 5. Exemplo: 4,9 × 10³ tem ordem de grandeza 10³, e 5,0 × 10³ tem ordem de grandeza 10⁴. Usa sempre esta regra nos testes e no exame.\n\n**Da escala do Universo à escala do átomo**\n\nDistância da Terra ao Sol: cerca de 1,5 × 10¹¹ m (ordem de grandeza 10¹¹ m). Um ser humano: cerca de 1,7 m (10⁰ m). Um cabelo: cerca de 7,0 × 10⁻⁵ m de diâmetro (10⁻⁴ m). Um átomo: cerca de 10⁻¹⁰ m (1 Å). Um núcleo atómico: cerca de 10⁻¹⁵ m (1 fm). Do Sol ao núcleo são 26 ordens de grandeza."
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
             {
-              "pergunta": "Qual é a ordem de grandeza do diâmetro de um átomo?",
+              "pergunta": "Qual é a ordem de grandeza da constante de Avogadro, 6,02 × 10²³ mol⁻¹?",
               "opcoes": [
-                "10⁻³ m",
-                "10⁻⁶ m",
-                "10⁻¹⁰ m",
-                "10⁻¹⁵ m"
-              ],
-              "correta": 2,
-              "mascote_feedback_certo": "Os átomos têm diâmetros da ordem de 10⁻¹⁰ m (0,1 nm). 10⁻¹⁵ m é a ordem de grandeza de um núcleo.",
-              "mascote_feedback_errado": "Os átomos têm diâmetros da ordem de 10⁻¹⁰ m (0,1 nm). 10⁻¹⁵ m é a ordem de grandeza de um núcleo."
-            },
-            {
-              "pergunta": "Quantos picómetros há num nanómetro?",
-              "opcoes": [
-                "10",
-                "100",
-                "1000",
-                "10⁶"
-              ],
-              "correta": 2,
-              "mascote_feedback_certo": "1 nm = 10⁻⁹ m e 1 pm = 10⁻¹² m. 10⁻⁹ / 10⁻¹² = 10³ = 1000.",
-              "mascote_feedback_errado": "1 nm = 10⁻⁹ m e 1 pm = 10⁻¹² m. 10⁻⁹ / 10⁻¹² = 10³ = 1000."
-            },
-            {
-              "pergunta": "Onde está concentrada quase toda a massa de um átomo?",
-              "opcoes": [
-                "Nos eletrões.",
-                "No núcleo.",
-                "Distribuída uniformemente pelo átomo.",
-                "No espaço entre o núcleo e os eletrões."
+                "10²³",
+                "10²⁴",
+                "6 × 10²³",
+                "10²²"
               ],
               "correta": 1,
-              "mascote_feedback_certo": "O núcleo, com protões e neutrões, contém mais de 99,9 % da massa do átomo, embora ocupe uma fração minúscula do volume.",
-              "mascote_feedback_errado": "O núcleo, com protões e neutrões, contém mais de 99,9 % da massa do átomo, embora ocupe uma fração minúscula do volume."
+              "mascote_feedback_certo": "N = 6,02 ≥ 5, por isso a ordem de grandeza é 10²³⁺¹ = 10²⁴.",
+              "mascote_feedback_errado": "N = 6,02 ≥ 5, por isso a ordem de grandeza é 10²³⁺¹ = 10²⁴."
+            },
+            {
+              "pergunta": "A quantos nanómetros corresponde 1 Å?",
+              "opcoes": [
+                "10 nm",
+                "1 nm",
+                "0,1 nm",
+                "100 nm"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "1 Å = 1,0 × 10⁻¹⁰ m e 1 nm = 10⁻⁹ m. Logo, 1 Å = 10⁻¹⁰ / 10⁻⁹ nm = 0,1 nm.",
+              "mascote_feedback_errado": "1 Å = 1,0 × 10⁻¹⁰ m e 1 nm = 10⁻⁹ m. Logo, 1 Å = 10⁻¹⁰ / 10⁻⁹ nm = 0,1 nm."
+            },
+            {
+              "pergunta": "O diâmetro de um cabelo é 7,0 × 10⁻⁵ m e o de um átomo de ouro é 2,9 × 10⁻¹⁰ m. Comparando as ordens de grandeza, o cabelo é cerca de quantas vezes maior?",
+              "opcoes": [
+                "10⁵ vezes",
+                "10⁶ vezes",
+                "10⁴ vezes",
+                "2,4 vezes"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Cabelo: N = 7,0 ≥ 5, logo a ordem de grandeza é 10⁻⁴ m. Átomo: N = 2,9 < 5, logo é 10⁻¹⁰ m. Diferem em 6 ordens de grandeza, ou seja, um fator de cerca de 10⁶.",
+              "mascote_feedback_errado": "Cabelo: N = 7,0 ≥ 5, logo a ordem de grandeza é 10⁻⁴ m. Átomo: N = 2,9 < 5, logo é 10⁻¹⁰ m. Diferem em 6 ordens de grandeza, ou seja, um fator de cerca de 10⁶."
             }
           ]
         }

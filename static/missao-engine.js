@@ -1380,6 +1380,103 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             return `<div class="me-caixa-formula">${itensHtml}</div>`;
         }
 
+        /** Tabelas de dados de um ecrã de diagrama (ver screen.tabelas) —
+         *  lista de { titulo, colunas, linhas }, lado a lado quando há
+         *  espaço. Cada tabela tem scroll horizontal próprio para se ler
+         *  no telemóvel sem empurrar a página para os lados. */
+        tabelasHtml(tabelas) {
+            if (!Array.isArray(tabelas) || tabelas.length === 0) return '';
+            const tabelaHtml = (tabela) => `
+                <figure class="me-tabela">
+                    ${tabela.titulo ? `<figcaption class="me-tabela-titulo">${escapeHtml(tabela.titulo)}</figcaption>` : ''}
+                    <div class="me-tabela-scroll">
+                        <table>
+                            <thead><tr>${(tabela.colunas || []).map((c) => `<th scope="col">${escapeHtml(c)}</th>`).join('')}</tr></thead>
+                            <tbody>${(tabela.linhas || []).map((linha) => `<tr>${linha.map((c) => `<td>${escapeHtml(c)}</td>`).join('')}</tr>`).join('')}</tbody>
+                        </table>
+                    </div>
+                    ${tabela.nota ? `<p class="me-tabela-nota">${escapeHtml(tabela.nota)}</p>` : ''}
+                </figure>
+            `;
+            return `<div class="me-tabelas${tabelas.length > 1 ? ' me-tabelas--lado-a-lado' : ''}">${tabelas.map(tabelaHtml).join('')}</div>`;
+        }
+
+        /** Escada de conversão de unidades (ver screen.escada_conversao):
+         *  { titulo, unidades: [{ simbolo, expoente }], passo } — os degraus
+         *  vão da unidade maior para a mais pequena, com "× 10^passo" por
+         *  cima (para a direita) e "× 10^-passo" por baixo (para a
+         *  esquerda). Por baixo, um conversor: o aluno escreve um valor,
+         *  escolhe a unidade (no menu ou clicando num degrau) e vê o mesmo
+         *  valor em todas as unidades da escada (ver bindEscadaConversao). */
+        escadaConversaoHtml(escada) {
+            if (!escada || !Array.isArray(escada.unidades) || escada.unidades.length === 0) return '';
+            const unidades = escada.unidades;
+            const sup = (n) => String(n).split('').map((c) => SUPERSCRITOS[c] || c).join('');
+            const passo = escada.passo || 3;
+            const inicial = escada.unidade_inicial || unidades[0].simbolo;
+            const degrausHtml = unidades.map((u, i) => `
+                ${i > 0 ? `
+                    <span class="me-escada-conv-seta" aria-hidden="true">
+                        <span class="me-escada-conv-seta-dir">× 10${sup(passo)}<i>→</i></span>
+                        <span class="me-escada-conv-seta-esq"><i>←</i>× 10${sup(-passo)}</span>
+                    </span>` : ''}
+                <button type="button" class="me-escada-conv-degrau${u.simbolo === inicial ? ' is-active' : ''}" data-escada-unidade="${escapeAttr(u.simbolo)}">${escapeHtml(u.simbolo)}</button>
+            `).join('');
+            const opcoesHtml = unidades.map((u) => `<option value="${escapeAttr(u.simbolo)}"${u.simbolo === inicial ? ' selected' : ''}>${escapeHtml(u.simbolo)}</option>`).join('');
+            return `
+                <div class="me-escada-conv" data-escada-conv='${escapeAttr(JSON.stringify(unidades))}'>
+                    ${escada.titulo ? `<p class="me-escada-conv-titulo">${escapeHtml(escada.titulo)}</p>` : ''}
+                    <div class="me-escada-conv-scroll"><div class="me-escada-conv-degraus">${degrausHtml}</div></div>
+                    <div class="me-escada-conv-form">
+                        <label>Valor <input type="text" inputmode="decimal" class="me-escada-conv-valor" value="${escapeAttr(escada.valor_inicial || '1')}"></label>
+                        <label>Unidade <select class="me-escada-conv-unidade">${opcoesHtml}</select></label>
+                    </div>
+                    <ul class="me-escada-conv-resultados" aria-live="polite"></ul>
+                </div>
+            `;
+        }
+
+        bindEscadaConversao() {
+            this.root.querySelectorAll('.me-escada-conv').forEach((escada) => {
+                if (escada.dataset.bound === 'true') return;
+                escada.dataset.bound = 'true';
+                let unidades;
+                try { unidades = JSON.parse(escada.dataset.escadaConv); } catch (e) { return; }
+                const input = escada.querySelector('.me-escada-conv-valor');
+                const select = escada.querySelector('.me-escada-conv-unidade');
+                const lista = escada.querySelector('.me-escada-conv-resultados');
+                // Até 4 algarismos significativos, sem zeros à direita
+                // (154 em vez de 154,0).
+                const formatar = (x) => formatarNumero(x, 4).split(' × ')
+                    .map((parte, i) => (i === 0 ? parte.replace(/(,\d*?)0+$/, '$1').replace(/,$/, '') : parte))
+                    .join(' × ');
+                const atualizar = () => {
+                    const valor = Number(String(input.value).trim().replace(/\s/g, '').replace(',', '.'));
+                    const origem = unidades.find((u) => u.simbolo === select.value);
+                    escada.querySelectorAll('[data-escada-unidade]').forEach((b) => b.classList.toggle('is-active', b.dataset.escadaUnidade === select.value));
+                    if (!origem || input.value.trim() === '' || !Number.isFinite(valor)) {
+                        lista.innerHTML = '<li class="me-escada-conv-aviso">Escreve um número (podes usar vírgula).</li>';
+                        return;
+                    }
+                    lista.innerHTML = unidades.map((u) => `
+                        <li class="${u.simbolo === origem.simbolo ? 'is-active' : ''}">
+                            <span class="me-escada-conv-res-valor">${escapeHtml(formatar(valor * Math.pow(10, origem.expoente - u.expoente)))}</span>
+                            <span class="me-escada-conv-res-unidade">${escapeHtml(u.simbolo)}</span>
+                        </li>
+                    `).join('');
+                };
+                input.addEventListener('input', atualizar);
+                select.addEventListener('change', atualizar);
+                escada.querySelectorAll('[data-escada-unidade]').forEach((botao) => {
+                    botao.addEventListener('click', () => {
+                        select.value = botao.dataset.escadaUnidade;
+                        atualizar();
+                    });
+                });
+                atualizar();
+            });
+        }
+
         /** Botão colapsável "Saber mais" com ponto.saber_mais, se existir —
          *  usado tanto no cartão "Nível X de N" (pontoDetailInnerHtml) como
          *  no painel "did-you-know" genérico (ver bindDiagramaChips), para
@@ -1846,6 +1943,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 ${pontosHtml}
                 ${isTimeline ? instrucaoHtml : ''}
                 ${explicacaoHtml}
+                ${this.tabelasHtml(screen.tabelas)}
+                ${this.escadaConversaoHtml(screen.escada_conversao)}
                 ${this.caixaFormulaHtml(screen.caixa_formula)}
             `;
 
@@ -2026,7 +2125,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // próprio nome — sem precisar de um screen.titulo à parte.
             const rotulo = aprofundar.rotulo ? escapeHtml(aprofundar.rotulo) : `Queres saber mais? — ${escapeHtml(aprofundar.titulo)}`;
             return `
-                <details class="did-you-know">
+                <details class="did-you-know me-saber-mais">
                     <summary>${rotulo}</summary>
                     <div class="did-you-know-body">
                         <div class="did-you-know-text">${textToHtml(aprofundar.texto)}</div>
@@ -2535,6 +2634,9 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (screen.tipo === 'simulacao') {
                 this.bindSimulacao(screen);
             }
+
+            // Também no pano de fundo de uma micro-verificação (ver abaixo).
+            this.bindEscadaConversao();
 
             // Quando o ecrã de baixo é uma micro-verificação com pano de
             // fundo (o último diagrama/gancho, ver renderMicroVerificacao e
