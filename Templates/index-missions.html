@@ -177,7 +177,7 @@
     <div class="missions-categories-board">
 
     {% if 'diversidade-organizacao-biologica' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper biodiversidade.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -201,7 +201,7 @@
     {% endif %}
 
     {% if 'biomoleculas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper bioquimica.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -225,7 +225,7 @@
     {% endif %}
 
     {% if 'fotossintese' in missoes_lancadas or 'obtencao-materia-heterotroficos' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Folha.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -254,7 +254,7 @@
     {% endif %}
 
     {% if 'xilema-floema' in missoes_lancadas or 'transporte-animais' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Coração.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -277,7 +277,7 @@
     {% endif %}
 
     {% if 'respiracao-aerobia-fermentacao' in missoes_lancadas or 'trocas-gasosas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Mitocôndira.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -300,7 +300,7 @@
     {% endif %}
 
     {% if 'lamarckismo-darwinismo' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/especie.jpg' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -318,7 +318,7 @@
     {% endif %}
 
     {% if 'taxonomia-sistematica' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/organismo.jpg' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -335,8 +335,32 @@
     </div>
     {% endif %}
 
+    {% if 'codigo-da-vida' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="10">
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper DNA.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Genética</h3>
+                <p class="missions-category-panel-tagline">Vem descobrir como a molécula de ADN te diferencia das outras pessoas.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>O Código da Vida (10º e 11º ano)</h2>
+                            <p>Descobre porque o ADN é considerado o código da vida.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='codigo-da-vida' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Genética" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     {% if 'codigo-da-vida' in missoes_lancadas or 'sintese-proteica' in missoes_lancadas or 'mitose' in missoes_lancadas or 'meiose-reproducao-sexuada' in missoes_lancadas or 'reproducao-assexuada' in missoes_lancadas or 'ciclos-vida' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper DNA.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -376,15 +400,14 @@
     </div>
     {% endif %}
 
-    {% if 'celulas-organelos' in missoes_lancadas or 'ciclo-celular' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    {% if 'celulas-organelos' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image missions-category-panel-image--contain" style="background-image:url('{% static 'images/Célula.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Citologia</h3>
                 <p class="missions-category-panel-tagline">Entra na célula, a unidade básica que constrói todos os seres vivos.</p>
                 <div class="missions-grid" hidden>
-                    {% if 'celulas-organelos' in missoes_lancadas %}
                     <div class="mission-card">
                         <div class="mission-card-info">
                             <h2>Células e Organelos (10º ano)</h2>
@@ -392,8 +415,23 @@
                         </div>
                         <a href="{% url 'missao' missao_id='celulas-organelos' %}"><button type="button">Começar</button></a>
                     </div>
-                    {% endif %}
-                    {% if 'ciclo-celular' in missoes_lancadas %}
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Citologia" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'ciclo-celular' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image missions-category-panel-image--contain" style="background-image:url('{% static 'images/Célula.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Citologia</h3>
+                <p class="missions-category-panel-tagline">Entra na célula, a unidade básica que constrói todos os seres vivos.</p>
+                <div class="missions-grid" hidden>
                     <div class="mission-card">
                         <div class="mission-card-info">
                             <h2>Ciclo Celular (11º ano)</h2>
@@ -401,7 +439,6 @@
                         </div>
                         <a href="{% url 'missao' missao_id='ciclo-celular' %}"><button type="button">Começar</button></a>
                     </div>
-                    {% endif %}
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Citologia" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -412,7 +449,7 @@
     {% endif %}
 
     {% if 'ecossistemas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="12" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/ecossistema.jpg' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -430,14 +467,20 @@
     {% endif %}
 
     {% if 'sistema-nervoso' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper corpo humano.png' %}');background-position:center top;" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Corpo Humano</h3>
                 <p class="missions-category-panel-tagline">Viaja pelo cérebro e pelo sistema nervoso que controla tudo o que fazes.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Sistema Nervoso (11º ano)</h2><p>Viaja pelo cérebro e pelos neurónios.</p></div><button disabled>Em breve</button></div>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Sistema Nervoso e Hormonal (10º ano)</h2>
+                            <p>Do neurónio à sinapse, do hipotálamo às hormonas vegetais — como o corpo se regula.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='sistema-nervoso' %}"><button type="button">Começar</button></a>
+                    </div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Corpo Humano" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -448,7 +491,7 @@
     {% endif %}
 
     {% if 'fisiologia-vegetal' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Relva.jpeg' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">

@@ -1,0 +1,1208 @@
+{
+  "missao_id": "sistema-nervoso",
+  "titulo": "Sistema Nervoso e Hormonal",
+  "disciplina": "corpo_humano",
+  "badge": {
+    "icone": "🧠",
+    "nome": "Mestre da Regulação"
+  },
+  "secoes": [
+    {
+      "secao_id": "homeostasia-retroalimentacao",
+      "titulo": "Homeostasia: o equilíbrio que nunca para",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Agora mesmo, o teu corpo está a lutar para manter tudo estável — temperatura, açúcar no sangue, água — mesmo sem lhe pedires nada. 🧠",
+          "texto": "A essa capacidade chama-se homeostasia, e é assegurada pela ação conjunta do sistema nervoso e do sistema hormonal."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Um equilíbrio sempre dinâmico",
+          "texto": "Os seres vivos são sistemas abertos: trocam matéria e energia com o meio. Por isso, o meio interno (sangue, linfa, líquido intersticial) está sempre a ser perturbado e tem de ser continuamente corrigido. A homeostasia não é um valor fixo e imutável — é um equilíbrio dinâmico, em que os valores oscilam à volta de um valor de referência, dentro de limites estreitos."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "O circuito de regulação, passo a passo",
+          "layout": "timeline",
+          "instrucao": "Clica em cada elemento do circuito, pela ordem em que atuam.",
+          "pontos": [
+            {
+              "id": "estimulo",
+              "label": "1. Estímulo",
+              "explicacao": "Alteração de uma variável do meio interno (ex.: subida da temperatura corporal)."
+            },
+            {
+              "id": "recetor",
+              "label": "2. Recetor",
+              "explicacao": "Deteta a alteração (ex.: termorrecetores da pele)."
+            },
+            {
+              "id": "centro_integrador",
+              "label": "3. Centro integrador",
+              "explicacao": "Compara com o valor de referência e decide a resposta (ex.: hipotálamo)."
+            },
+            {
+              "id": "efetor",
+              "label": "4. Efetor",
+              "explicacao": "Músculo ou glândula que executa a resposta (ex.: glândulas sudoríparas)."
+            },
+            {
+              "id": "resposta",
+              "label": "5. Resposta",
+              "explicacao": "Altera a variável, corrigindo o desvio (ex.: sudorese, que arrefece o corpo)."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Num circuito de regulação, o elemento que compara o valor atual com o de referência e decide a resposta é o:",
+          "opcoes": [
+            "Efetor",
+            "Centro integrador"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! O centro integrador (ex.: o hipotálamo) é quem \"decide\" a resposta.",
+          "mascote_feedback_errado": "É o centro integrador — o efetor só executa a resposta já decidida."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Retroalimentação negativa vs. positiva",
+          "instrucao": "Clica em cada tipo de retroalimentação.",
+          "pontos": [
+            {
+              "id": "feedback_negativo",
+              "label": "Retroalimentação negativa",
+              "explicacao": "A resposta contraria o estímulo inicial, devolvendo a variável ao valor de referência. É a base da homeostasia (ex.: regulação da temperatura, da glicemia, da pressão osmótica)."
+            },
+            {
+              "id": "feedback_positivo",
+              "label": "Retroalimentação positiva",
+              "explicacao": "A resposta reforça o estímulo inicial, afastando a variável do valor inicial até um acontecimento terminar o ciclo (ex.: contrações do parto por oxitocina, coagulação do sangue, potencial de ação)."
+            }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🌡️",
+          "texto": "💡 A retroalimentação negativa é como o termóstato de uma casa: quando a temperatura sobe demais, ele liga o ar condicionado para a baixar de volta ao valor definido — contraria sempre o desvio. A retroalimentação positiva é como um boneco de neve a rolar morro abaixo: cada volta torna-o maior, e o processo só pára quando chega ao fundo (um acontecimento externo termina o ciclo), nunca sozinho."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Quando os mecanismos de regulação falham ou são ultrapassados, o resultado é:",
+              "opcoes": [
+                "Nenhum efeito percetível",
+                "Perda de homeostasia e doença"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Ex.: diabetes, hipotermia, desidratação.",
+              "mascote_feedback_errado": "O resultado é perda de homeostasia, que pode causar doença — nunca é \"sem efeito\"."
+            },
+            {
+              "pergunta": "As contrações do parto, reforçadas pela oxitocina até ao nascimento, são um exemplo de:",
+              "opcoes": [
+                "Retroalimentação positiva",
+                "Retroalimentação negativa"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! O estímulo é reforçado, não contrariado, até o parto terminar o ciclo.",
+              "mascote_feedback_errado": "É retroalimentação positiva — o estímulo é reforçado, não contrariado."
+            },
+            {
+              "pergunta": "A homeostasia é melhor descrita como:",
+              "opcoes": [
+                "Um equilíbrio dinâmico, com valores a oscilar num intervalo estreito",
+                "Um valor absolutamente fixo e invariável"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Os seres vivos são sistemas abertos, sempre perturbados e sempre a corrigir-se.",
+              "mascote_feedback_errado": "É um equilíbrio dinâmico — os valores oscilam sempre dentro de limites estreitos."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como funciona o circuito de regulação. Hora de conhecer a célula que torna tudo isto possível em milissegundos: o neurónio. 🧠"
+        }
+      ]
+    },
+    {
+      "secao_id": "o-neuronio",
+      "titulo": "O neurónio: a célula do impulso",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "O neurónio é a unidade estrutural e funcional do sistema nervoso — uma célula especializada em receber, conduzir e transmitir o impulso nervoso. 🧠",
+          "texto": "Tem uma forma muito particular, feita para a informação viajar sempre no mesmo sentido."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "sn_estrutura_neuronio.png",
+          "titulo": "A estrutura do neurónio",
+          "instrucao": "Clica em cada parte, pela ordem por onde a informação passa.",
+          "pontos": [
+            {
+              "id": "dendrites",
+              "label": "Dendrites",
+              "explicacao": "Prolongamentos curtos e ramificados. Recebem os estímulos e conduzem-nos para o corpo celular."
+            },
+            {
+              "id": "corpo_celular",
+              "label": "Corpo celular",
+              "explicacao": "Contém o núcleo e a maior parte dos organelos. É o centro metabólico; integra os sinais recebidos."
+            },
+            {
+              "id": "axonio",
+              "label": "Axónio",
+              "explicacao": "Prolongamento geralmente longo e único. Conduz o impulso para longe do corpo celular."
+            },
+            {
+              "id": "terminacoes",
+              "label": "Terminações do axónio",
+              "explicacao": "Ramificações com botões sinápticos, que libertam neurotransmissores na sinapse."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O sentido de propagação do impulso num neurónio é sempre:",
+          "opcoes": [
+            "Axónio → corpo celular → dendrites",
+            "Dendrites → corpo celular → axónio → terminações"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! É sempre nesta ordem — nunca ao contrário.",
+          "mascote_feedback_errado": "É dendrites → corpo celular → axónio → terminações, sempre neste sentido."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Três tipos de neurónios, pela função",
+          "instrucao": "Clica em cada tipo de neurónio.",
+          "pontos": [
+            {
+              "id": "sensitivos",
+              "label": "Sensitivos (aferentes)",
+              "explicacao": "Levam a informação dos recetores para o Sistema Nervoso Central (SNC)."
+            },
+            {
+              "id": "motores",
+              "label": "Motores (eferentes)",
+              "explicacao": "Levam a resposta do SNC para os efetores (músculos, glândulas)."
+            },
+            {
+              "id": "interneuronios",
+              "label": "Interneurónios (de associação)",
+              "explicacao": "No SNC, ligam neurónios entre si e integram a informação."
+            }
+          ]
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A bainha de mielina",
+          "texto": "Muitos axónios de vertebrados estão envolvidos pela bainha de mielina, formada por membranas de células de suporte (células de Schwann, no sistema nervoso periférico), ricas em lípidos e, por isso, isolantes. A bainha é interrompida a intervalos regulares nos nódulos de Ranvier, onde a membrana do axónio fica exposta. Os neurónios podem ser mielinizados ou não mielinizados; um nervo é um conjunto de axónios envolvidos por tecido conjuntivo — não é, ele próprio, um neurónio."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Os neurónios que levam a resposta do SNC até aos músculos chamam-se:",
+              "opcoes": [
+                "Motores (eferentes)",
+                "Sensitivos (aferentes)"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Os motores levam a resposta para os efetores.",
+              "mascote_feedback_errado": "São os motores (eferentes) — os sensitivos levam informação dos recetores para o SNC."
+            },
+            {
+              "pergunta": "A bainha de mielina é formada, no sistema nervoso periférico, por:",
+              "opcoes": [
+                "O próprio axónio, dobrado sobre si",
+                "Células de Schwann"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! São membranas de células de Schwann, ricas em lípidos isolantes.",
+              "mascote_feedback_errado": "São células de Schwann — a mielina não é formada pelo próprio axónio."
+            },
+            {
+              "pergunta": "Um nervo é:",
+              "opcoes": [
+                "Um único neurónio muito grande",
+                "Um conjunto de axónios envolvidos por tecido conjuntivo"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! É um feixe de muitos axónios, não um único neurónio.",
+              "mascote_feedback_errado": "É um conjunto de axónios envolvidos por tecido conjuntivo — nunca um único neurónio."
+            }
+          ],
+          "mascote_conclusao": "Já conheces a anatomia do neurónio. Agora vem a parte mais elétrica de toda a missão: como nasce o impulso nervoso. ⚡"
+        }
+      ]
+    },
+    {
+      "secao_id": "potencial-repouso-acao",
+      "titulo": "O impulso nervoso: uma onda elétrica",
+      "xp": 30,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Mesmo quando não está a conduzir nada, a membrana de um neurónio já guarda uma pequena \"carga\" elétrica, pronta a disparar. ⚡",
+          "texto": "Chama-se potencial de repouso — e é o ponto de partida de todo o impulso nervoso."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Porque existe o potencial de repouso (≈ −70 mV)",
+          "instrucao": "Clica em cada fator que mantém a membrana polarizada.",
+          "pontos": [
+            {
+              "id": "bomba_napk",
+              "label": "Bomba de sódio-potássio (Na⁺/K⁺)",
+              "explicacao": "Transporte ativo, com gasto de ATP, que expulsa 3 Na⁺ por cada 2 K⁺ que introduz. Fica mais Na⁺ fora e mais K⁺ dentro da célula."
+            },
+            {
+              "id": "permeabilidade_k",
+              "label": "Maior permeabilidade ao K⁺",
+              "explicacao": "Alguns K⁺ saem por difusão através de canais sempre abertos, deixando o interior ainda mais negativo."
+            },
+            {
+              "id": "anions",
+              "label": "Proteínas e outros aniões",
+              "explicacao": "Ficam no citoplasma, sem atravessar a membrana, contribuindo para a negatividade interna."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A bomba de sódio-potássio, em cada ciclo, expulsa e introduz, respetivamente:",
+          "opcoes": [
+            "3 Na⁺ para fora, 2 K⁺ para dentro",
+            "2 Na⁺ para fora, 3 K⁺ para dentro"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! 3 Na⁺ para fora, 2 K⁺ para dentro — por isso fica mais Na⁺ fora da célula.",
+          "mascote_feedback_errado": "É 3 Na⁺ para fora e 2 K⁺ para dentro, com gasto de ATP."
+        },
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Quando um estímulo atinge o limiar de excitação (≈ −55 mV), tudo muda num instante. ⚡",
+          "texto": "Dispara-se um potencial de ação — uma inversão rápida e momentânea da polaridade da membrana, em quatro fases."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "imagem": "sn_potencial_de_acao.png",
+          "titulo": "As quatro fases do potencial de ação",
+          "layout": "timeline",
+          "instrucao": "Clica em cada fase, pela ordem em que acontece.",
+          "pontos": [
+            {
+              "id": "despolarizacao",
+              "label": "1. Despolarização",
+              "explicacao": "Abrem-se canais de Na⁺ dependentes da voltagem; o Na⁺ entra rapidamente por difusão e o interior fica positivo (≈ +35 mV)."
+            },
+            {
+              "id": "repolarizacao",
+              "label": "2. Repolarização",
+              "explicacao": "Os canais de Na⁺ fecham e abrem-se canais de K⁺; o K⁺ sai e o interior volta a ficar negativo."
+            },
+            {
+              "id": "hiperpolarizacao",
+              "label": "3. Hiperpolarização",
+              "explicacao": "Sai K⁺ em excesso e o potencial fica momentaneamente abaixo de −70 mV."
+            },
+            {
+              "id": "restabelecimento",
+              "label": "4. Restabelecimento",
+              "explicacao": "A bomba Na⁺/K⁺ repõe as concentrações iniciais dos iões, e o neurónio volta ao potencial de repouso."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A entrada rápida de Na⁺, que torna o interior da membrana positivo, corresponde à fase de:",
+          "opcoes": [
+            "Despolarização",
+            "Repolarização"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É a despolarização — a repolarização é já a saída de K⁺, a seguir.",
+          "mascote_feedback_errado": "É a despolarização — a repolarização é a fase seguinte, com saída de K⁺."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🚪",
+          "texto": "💡 Pensa na membrana como uma porta giratória num edifício: em repouso, está fechada mas pronta (polarizada). Ao atingir o limiar, abre-se de repente e deixa entrar uma multidão de Na⁺ (despolarização); logo depois, fecha-se e abre-se outra porta para o K⁺ sair (repolarização); por vezes sai gente a mais e o salão fica \"vazio demais\" por instantes (hiperpolarização); e por fim os seguranças (a bomba Na⁺/K⁺) repõem tudo no lugar, prontos para a próxima entrada."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Período refratário e a lei do tudo ou nada",
+          "texto": "Durante o potencial de ação e logo a seguir existe um período refratário, em que a zona da membrana não responde a um novo estímulo — é por isso que o impulso se propaga sempre num só sentido, nunca para trás. O potencial de ação obedece ainda à lei do tudo ou nada: abaixo do limiar de excitação não há impulso nenhum; acima dele, o impulso tem sempre a mesma amplitude, por mais forte que seja o estímulo. A intensidade real do estímulo não se perde — é codificada pela frequência dos impulsos e pelo número de neurónios estimulados, nunca pela amplitude de cada impulso."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um estímulo mais forte do que outro gera, no mesmo neurónio, um impulso:",
+              "opcoes": [
+                "De amplitude maior",
+                "Com a mesma amplitude, mas com maior frequência"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! A lei do tudo ou nada garante amplitude constante; a intensidade codifica-se na frequência.",
+              "mascote_feedback_errado": "Tem a mesma amplitude — a intensidade do estímulo é codificada pela frequência dos impulsos, não pela amplitude."
+            },
+            {
+              "pergunta": "O período refratário é a razão pela qual o impulso nervoso:",
+              "opcoes": [
+                "Precisa sempre de mielina",
+                "Se propaga sempre num só sentido"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! Enquanto uma zona está em período refratário, o impulso só pode avançar, nunca recuar.",
+              "mascote_feedback_errado": "É a razão da propagação num só sentido — não tem relação direta com a necessidade de mielina."
+            },
+            {
+              "pergunta": "A bomba de sódio-potássio provoca diretamente a despolarização da membrana?",
+              "opcoes": [
+                "Não — a despolarização é a entrada de Na⁺ por difusão através de canais",
+                "Sim, é a própria bomba que despolariza"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! A bomba atua no repouso e na recuperação, não na despolarização em si — um erro muito comum.",
+              "mascote_feedback_errado": "Não provoca diretamente — a despolarização vem da entrada de Na⁺ por canais, não da bomba."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como nasce o impulso. Mas um impulso parado numa única zona da membrana não serve de nada — precisa de viajar. 🏃"
+        }
+      ]
+    },
+    {
+      "secao_id": "propagacao-do-impulso",
+      "titulo": "A corrida do impulso: mielinizado vs. não mielinizado",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A despolarização de uma zona da membrana provoca correntes locais que despolarizam a zona vizinha, e assim sucessivamente — é assim que o impulso viaja. 🏃",
+          "texto": "Mas a velocidade dessa viagem depende muito de uma coisa: ter ou não mielina."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "sn_propagacao_impulso.png",
+          "titulo": "Condução contínua vs. condução saltatória",
+          "instrucao": "Clica em cada tipo de axónio para comparares.",
+          "pontos": [
+            {
+              "id": "nao_mielinizado",
+              "label": "Axónio não mielinizado",
+              "explicacao": "Condução contínua: a despolarização ocorre ponto a ponto ao longo de toda a membrana. É mais lenta e gasta mais energia (mais iões a repor pela bomba). Predomina nos invertebrados."
+            },
+            {
+              "id": "mielinizado",
+              "label": "Axónio mielinizado",
+              "explicacao": "Condução saltatória: a despolarização só ocorre nos nódulos de Ranvier, e o impulso \"salta\" de nódulo em nódulo. É muito mais rápida e gasta menos energia. Predomina nos vertebrados."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A condução saltatória, de nódulo em nódulo, é característica de axónios:",
+          "opcoes": [
+            "Não mielinizados",
+            "Mielinizados"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! A mielina isola a membrana, forçando a despolarização a \"saltar\" entre os nódulos de Ranvier.",
+          "mascote_feedback_errado": "É característica de axónios mielinizados — os não mielinizados têm condução contínua, ponto a ponto."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Estratégias diferentes: vertebrados e invertebrados",
+          "texto": "Nos invertebrados, os axónios são em geral não mielinizados; a velocidade de condução aumenta com o diâmetro do axónio — é por isso que a lula tem axónios gigantes, usados precisamente em respostas de fuga rápidas. Já nos vertebrados, a mielina permite velocidades elevadas mesmo com axónios finos, o que possibilita ter muitos axónios num espaço reduzido (como dentro de um nervo). De forma geral, a velocidade de condução aumenta com a mielinização, com o diâmetro do axónio, e também com a temperatura."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Nos invertebrados, a velocidade de condução do impulso aumenta sobretudo com:",
+              "opcoes": [
+                "O diâmetro do axónio",
+                "A quantidade de mielina"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Como não têm mielina, dependem do diâmetro — daí os axónios gigantes da lula.",
+              "mascote_feedback_errado": "Aumenta com o diâmetro do axónio — a mielina é a estratégia típica dos vertebrados, não dos invertebrados."
+            },
+            {
+              "pergunta": "Em termos energéticos, a condução saltatória, face à condução contínua, é:",
+              "opcoes": [
+                "Mais dispendiosa",
+                "Mais económica (gasta menos energia)"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! Há menos iões a repor pela bomba Na⁺/K⁺, porque menos zonas da membrana despolarizam.",
+              "mascote_feedback_errado": "É mais económica — a condução contínua é que gasta mais energia, com mais iões a repor."
+            }
+          ],
+          "mascote_conclusao": "O impulso já chegou ao fim do axónio. Mas aí há um obstáculo: como passa a informação para a célula seguinte? 🔌"
+        }
+      ]
+    },
+    {
+      "secao_id": "sinapse-neurotransmissores",
+      "titulo": "A sinapse: a ponte química entre células",
+      "xp": 30,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Na maioria das sinapses, as duas células nem sequer se tocam — há um pequeno espaço entre elas, a fenda sináptica. 🔌",
+          "texto": "E, surpreendentemente, é aí que o sinal elétrico se transforma em sinal químico, e depois volta a ser elétrico."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "sn_sinapse_quimica.png",
+          "titulo": "As três partes de uma sinapse",
+          "instrucao": "Clica em cada parte da sinapse.",
+          "pontos": [
+            {
+              "id": "pre_sinaptico",
+              "label": "Neurónio pré-sináptico",
+              "explicacao": "O que transmite; os seus botões terminais contêm vesículas sinápticas com neurotransmissores."
+            },
+            {
+              "id": "fenda",
+              "label": "Fenda sináptica",
+              "explicacao": "O espaço entre as duas células, onde o neurotransmissor se difunde."
+            },
+            {
+              "id": "pos_sinaptico",
+              "label": "Célula pós-sináptica",
+              "explicacao": "A que recebe; a sua membrana tem recetores específicos para o neurotransmissor."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Como funciona a transmissão sináptica",
+          "layout": "escada",
+          "instrucao": "Sobe os degraus da transmissão, um a um.",
+          "pontos": [
+            {
+              "id": "chegada_impulso",
+              "label": "1. O impulso chega ao botão terminal",
+              "explicacao": "A despolarização propagou-se até ao fim do axónio do neurónio pré-sináptico."
+            },
+            {
+              "id": "entrada_calcio",
+              "label": "2. Entra cálcio (Ca²⁺)",
+              "explicacao": "A despolarização abre canais de cálcio, e o Ca²⁺ entra no botão terminal."
+            },
+            {
+              "id": "exocitose",
+              "label": "3. Exocitose das vesículas",
+              "explicacao": "As vesículas sinápticas fundem-se com a membrana e libertam o neurotransmissor na fenda."
+            },
+            {
+              "id": "ligacao_recetores",
+              "label": "4. Ligação aos recetores",
+              "explicacao": "O neurotransmissor difunde-se na fenda e liga-se aos recetores da membrana pós-sináptica."
+            },
+            {
+              "id": "efeito_pos",
+              "label": "5. Efeito na célula pós-sináptica",
+              "explicacao": "Abrem-se canais iónicos: se entrar Na⁺, há despolarização (efeito excitatório); se a membrana ficar mais negativa, o efeito é inibitório."
+            },
+            {
+              "id": "remocao",
+              "label": "6. Remoção do neurotransmissor",
+              "explicacao": "É degradado por enzimas (ex.: a acetilcolinesterase degrada a acetilcolina) ou recapturado pelo neurónio pré-sináptico — assim o sinal termina e a sinapse fica pronta para nova transmissão."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Se a ligação do neurotransmissor abrir canais que deixam entrar Na⁺ na célula pós-sináptica, o efeito é:",
+          "opcoes": [
+            "Excitatório",
+            "Sempre inibitório"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! A entrada de Na⁺ despolariza a célula — é um efeito excitatório.",
+          "mascote_feedback_errado": "É excitatório — o efeito inibitório vem de a membrana ficar mais negativa, não de entrar Na⁺."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... ✉️",
+          "texto": "💡 A sinapse química é como enviar uma carta em vez de gritar através de um fosso: o impulso elétrico (o grito) não consegue atravessar a fenda sináptica (o fosso) sozinho, por isso é \"traduzido\" numa carta química (o neurotransmissor), atravessada à mão (difusão), e só depois \"lida\" (recetores) do outro lado, onde volta a virar um sinal elétrico."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Sentido único, atraso sináptico, e fármacos",
+          "texto": "Como só o neurónio pré-sináptico liberta neurotransmissores, e só a célula pós-sináptica tem recetores para eles, a sinapse química garante que a condução segue sempre num único sentido. A transmissão sináptica provoca também um pequeno atraso sináptico, porque envolve processos químicos (difusão, ligação a recetores), mais lentos do que a simples propagação elétrica. Entre os neurotransmissores mais conhecidos estão a acetilcolina (sinapses neuromusculares, contração muscular), a noradrenalina, a dopamina e a serotonina. Muitos fármacos e drogas atuam precisamente nas sinapses — imitando, bloqueando ou impedindo a remoção dos neurotransmissores."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A acetilcolinesterase tem a função de:",
+              "opcoes": [
+                "Degradar a acetilcolina, terminando o sinal",
+                "Produzir mais acetilcolina"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! É uma enzima que remove o neurotransmissor da fenda, terminando o sinal.",
+              "mascote_feedback_errado": "Degrada a acetilcolina — não a produz."
+            },
+            {
+              "pergunta": "A sinapse química garante condução num único sentido porque:",
+              "opcoes": [
+                "As vesículas sinápticas só existem de um lado por acaso",
+                "Só o neurónio pré-sináptico liberta neurotransmissor, e só o pós-sináptico tem recetores"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! É uma assimetria estrutural: libertação de um lado, receção do outro.",
+              "mascote_feedback_errado": "É porque só um lado liberta e só o outro recebe — não é por acaso, é estrutural."
+            },
+            {
+              "pergunta": "Em comparação com a propagação elétrica ao longo do axónio, a transmissão sináptica é:",
+              "opcoes": [
+                "Instantânea e sem qualquer atraso",
+                "Mais lenta, devido ao atraso sináptico"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! Os processos químicos da sinapse introduzem sempre um pequeno atraso.",
+              "mascote_feedback_errado": "É mais lenta — há sempre um pequeno atraso sináptico, por envolver processos químicos."
+            }
+          ],
+          "mascote_conclusao": "Já percorreste todo o caminho do impulso nervoso. Mas há uma resposta tão rápida que nem espera pelo encéfalo — o reflexo. 🦵"
+        }
+      ]
+    },
+    {
+      "secao_id": "arco-reflexo",
+      "titulo": "O arco reflexo: mais rápido do que a consciência",
+      "xp": 15,
+      "tempo_estimado_min": 4,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Retiras a mão de um objeto quente antes mesmo de \"pensares\" nisso. Isso não é acaso — é um ato reflexo. 🦵",
+          "texto": "E o segredo está em quem realmente comanda a resposta: não é o encéfalo."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "imagem": "sn_arco_reflexo.png",
+          "titulo": "O arco reflexo, passo a passo",
+          "layout": "timeline",
+          "instrucao": "Clica em cada etapa do arco reflexo.",
+          "pontos": [
+            {
+              "id": "recetor_reflexo",
+              "label": "1. Recetor",
+              "explicacao": "Deteta o estímulo (ex.: recetores da dor na pele)."
+            },
+            {
+              "id": "sensitivo_reflexo",
+              "label": "2. Neurónio sensitivo",
+              "explicacao": "Leva o impulso até à medula espinal."
+            },
+            {
+              "id": "centro_reflexo",
+              "label": "3. Centro nervoso (medula espinal)",
+              "explicacao": "Processa a informação, muitas vezes com a ajuda de um interneurónio."
+            },
+            {
+              "id": "motor_reflexo",
+              "label": "4. Neurónio motor",
+              "explicacao": "Leva a resposta até ao efetor."
+            },
+            {
+              "id": "efetor_reflexo",
+              "label": "5. Efetor",
+              "explicacao": "Executa a resposta (ex.: músculo que retira a mão)."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Num ato reflexo, o centro integrador que decide a resposta é:",
+          "opcoes": [
+            "A medula espinal",
+            "O encéfalo"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! É por isso que a resposta ocorre antes de o encéfalo tomar consciência do estímulo.",
+          "mascote_feedback_errado": "É a medula espinal — não o encéfalo, que só toma consciência depois."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um ato reflexo caracteriza-se por ser:",
+              "opcoes": [
+                "Rápido, involuntário e automático",
+                "Lento e totalmente consciente"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! É precisamente essa rapidez e automatismo que o torna útil para proteger o corpo.",
+              "mascote_feedback_errado": "É rápido, involuntário e automático — nunca lento e consciente."
+            },
+            {
+              "pergunta": "No arco reflexo, a ordem correta dos elementos é:",
+              "opcoes": [
+                "Efetor → motor → centro nervoso → sensitivo → recetor",
+                "Recetor → sensitivo → centro nervoso → motor → efetor"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! É sempre esta sequência, do estímulo até à resposta.",
+              "mascote_feedback_errado": "É recetor → sensitivo → centro nervoso → motor → efetor, nesta ordem."
+            }
+          ],
+          "mascote_conclusao": "Já conheces todo o sistema nervoso, do neurónio ao reflexo. Mas ele não trabalha sozinho — tem um parceiro mais lento, mas igualmente poderoso: o sistema hormonal. 🧪"
+        }
+      ]
+    },
+    {
+      "secao_id": "sistema-hormonal",
+      "titulo": "O sistema hormonal: mensageiros no sangue",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Enquanto o sistema nervoso \"grita\" através de impulsos elétricos, o sistema hormonal \"sussurra\" através do sangue. 🧪",
+          "texto": "As hormonas são mensageiros químicos que atuam em pequenas quantidades, e só nas células que têm recetores específicos para elas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "As principais glândulas endócrinas",
+          "instrucao": "Clica em cada glândula para veres as suas hormonas e efeitos.",
+          "pontos": [
+            {
+              "id": "hipotalamo",
+              "label": "Hipotálamo",
+              "explicacao": "Produz hormonas libertadoras, além da ADH e da oxitocina. Controla a hipófise e liga o sistema nervoso ao hormonal."
+            },
+            {
+              "id": "hipofise",
+              "label": "Hipófise",
+              "explicacao": "Liberta TSH, ACTH, FSH, LH, hormona do crescimento, e a ADH (produzida no hipotálamo). Regula outras glândulas e o crescimento."
+            },
+            {
+              "id": "tiroide",
+              "label": "Tiroide",
+              "explicacao": "Liberta tiroxina, que aumenta o metabolismo e a produção de calor."
+            },
+            {
+              "id": "pancreas",
+              "label": "Pâncreas (ilhéus de Langerhans)",
+              "explicacao": "Liberta insulina (baixa a glicemia) e glucagina (sobe a glicemia)."
+            },
+            {
+              "id": "suprarrenais",
+              "label": "Suprarrenais",
+              "explicacao": "Libertam adrenalina (resposta ao stress), aldosterona e cortisol (reabsorção de Na⁺ no rim)."
+            },
+            {
+              "id": "gonadas",
+              "label": "Gónadas",
+              "explicacao": "Libertam testosterona, estrogénios e progesterona — caracteres sexuais e reprodução."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A hormona que baixa a glicemia (açúcar no sangue) é a:",
+          "opcoes": [
+            "Insulina",
+            "Glucagina"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! A insulina baixa a glicemia; a glucagina faz o oposto, sobe a glicemia.",
+          "mascote_feedback_errado": "É a insulina — a glucagina tem o efeito contrário, sobe a glicemia."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "O eixo hipotálamo–hipófise",
+          "texto": "O hipotálamo (parte do encéfalo) controla a hipófise, que por sua vez controla várias outras glândulas. Por exemplo: o hipotálamo liberta TRH → a hipófise liberta TSH → a tiroide liberta tiroxina. Quando a tiroxina aumenta no sangue, inibe o próprio hipotálamo e a hipófise — uma retroalimentação negativa que mantém os níveis estáveis. Este eixo é o principal ponto de integração neuro-hormonal: o sistema nervoso controla glândulas endócrinas, e várias hormonas atuam de volta sobre o sistema nervoso."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Sistema nervoso vs. sistema hormonal",
+          "instrucao": "Clica em cada sistema para comparares velocidade e alcance.",
+          "pontos": [
+            {
+              "id": "nervoso_comp",
+              "label": "Sistema nervoso",
+              "explicacao": "Mensageiro: impulso nervoso e neurotransmissores. Via: neurónios. Velocidade: muito rápida (milissegundos). Duração: curta. Alcance: localizado e preciso."
+            },
+            {
+              "id": "hormonal_comp",
+              "label": "Sistema hormonal",
+              "explicacao": "Mensageiro: hormonas. Via: sangue. Velocidade: mais lenta (segundos a horas). Duração: prolongada. Alcance: difuso (todas as células-alvo do corpo)."
+            }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Quando a tiroxina sobe no sangue, o seu efeito sobre o hipotálamo e a hipófise é:",
+              "opcoes": [
+                "Inibi-los, por retroalimentação negativa",
+                "Estimulá-los ainda mais"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! É retroalimentação negativa, que mantém os níveis de tiroxina estáveis.",
+              "mascote_feedback_errado": "Inibe-os — é retroalimentação negativa, não um reforço do estímulo."
+            },
+            {
+              "pergunta": "Em comparação com o sistema nervoso, o sistema hormonal tem respostas:",
+              "opcoes": [
+                "Mais rápidas e de efeito mais curto",
+                "Mais lentas, mas de efeito mais prolongado"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! É mais lento (segundos a horas) mas o efeito dura muito mais tempo.",
+              "mascote_feedback_errado": "São mais lentas mas prolongadas — o sistema nervoso é que é rápido e de efeito curto."
+            },
+            {
+              "pergunta": "Uma hormona só atua:",
+              "opcoes": [
+                "Nas células-alvo, que têm recetores específicos para ela",
+                "Em todas as células do corpo, sem exceção"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Mesmo circulando por todo o corpo no sangue, só age onde há recetores específicos.",
+              "mascote_feedback_errado": "Só atua nas células-alvo com recetores específicos — nunca em todas as células do corpo."
+            }
+          ],
+          "mascote_conclusao": "Já conheces os dois grandes sistemas de regulação. Vamos agora vê-los em ação, a resolver um problema muito concreto: manter a temperatura do corpo. 🌡️"
+        }
+      ]
+    },
+    {
+      "secao_id": "termorregulacao",
+      "titulo": "Termorregulação: a guerra contra o calor e o frio",
+      "xp": 25,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "A temperatura afeta diretamente a atividade das enzimas — e, por isso, todo o metabolismo. Não admira que o corpo lute tanto para a manter estável. 🌡️",
+          "texto": "Mas nem todos os animais lutam da mesma forma."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "De onde vem o calor, e quão estável ele é",
+          "instrucao": "Clica em cada classificação.",
+          "pontos": [
+            {
+              "id": "endotermicos",
+              "label": "Endotérmicos (aves, mamíferos)",
+              "explicacao": "O calor que aquece o corpo é produzido pelo próprio metabolismo. Costumam também ser homeotérmicos: temperatura corporal praticamente constante. A endotermia permite atividade em ambientes frios, mas exige muito alimento."
+            },
+            {
+              "id": "ectotermicos",
+              "label": "Ectotérmicos (peixes, anfíbios, répteis, maioria dos invertebrados)",
+              "explicacao": "Dependem do calor do ambiente. Costumam também ser poiquilotérmicos: a temperatura corporal varia com a do meio."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Um animal cuja temperatura corporal é praticamente constante diz-se:",
+          "opcoes": [
+            "Ectotérmico",
+            "Homeotérmico"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! Homeotérmico refere-se à estabilidade da temperatura — não confundir com endotérmico, que se refere à origem do calor.",
+          "mascote_feedback_errado": "É homeotérmico — ectotérmico refere-se à origem do calor (do ambiente), um critério diferente."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "sn_termorregulacao.png",
+          "titulo": "Como o corpo humano reage ao calor e ao frio",
+          "instrucao": "Clica em cada situação para veres as respostas do corpo.",
+          "pontos": [
+            {
+              "id": "temp_sobe",
+              "label": "Temperatura sobe (calor)",
+              "explicacao": "Nervosas: vasodilatação periférica (mais sangue à pele, mais perda de calor) e sudorese. Hormonais: diminuição da tiroxina (menos metabolismo). Comportamentais: procurar sombra, menos roupa, menos atividade."
+            },
+            {
+              "id": "temp_desce",
+              "label": "Temperatura desce (frio)",
+              "explicacao": "Nervosas: vasoconstrição periférica (menos perda de calor), arrepios (contrações musculares que produzem calor), ereção dos pelos. Hormonais: aumento da tiroxina e da adrenalina (mais metabolismo e produção de calor). Comportamentais: abrigar-se, vestir mais roupa."
+            }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🏠",
+          "texto": "💡 O hipotálamo gere a temperatura do corpo como alguém a gerir o aquecimento de uma casa: se está calor, abre as janelas (vasodilatação) e liga a ventoinha (sudorese); se está frio, fecha as janelas (vasoconstrição) e liga o aquecedor (tremores musculares, mais tiroxina) — sempre a tentar voltar ao valor de referência, ≈ 37 °C."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Trocas de calor, estratégias comportamentais e febre",
+          "texto": "O corpo ganha ou perde calor por radiação, condução, convecção e evaporação (transpiração ou ofegar). Os ectotérmicos usam sobretudo estratégias comportamentais: expor-se ao sol para aquecer (como os lagartos), procurar sombra ou tocas para arrefecer, mudar a orientação do corpo em relação ao sol. Os endotérmicos têm ainda adaptações como isolamento por pelos, penas e gordura, troca de calor em contracorrente nas extremidades, ofegar (nos cães), e hibernação ou torpor. Na febre, o hipotálamo eleva o próprio valor de referência, por ação de substâncias libertadas durante infeções — o corpo passa então a produzir e a conservar calor até atingir esse novo valor, mais elevado."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Com calor, a resposta nervosa que aumenta a perda de calor pela pele é a:",
+              "opcoes": [
+                "Vasoconstrição periférica",
+                "Vasodilatação periférica"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Mais sangue à pele significa mais calor a escapar para o exterior.",
+              "mascote_feedback_errado": "É a vasodilatação — a vasoconstrição acontece com frio, para reduzir a perda de calor."
+            },
+            {
+              "pergunta": "Na febre, o hipotálamo:",
+              "opcoes": [
+                "Eleva o próprio valor de referência da temperatura",
+                "Deixa de funcionar completamente"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! Passa a \"perseguir\" um valor de referência mais alto, daí sentires frio mesmo com febre.",
+              "mascote_feedback_errado": "Eleva o valor de referência — continua a funcionar, só que com um alvo mais alto."
+            },
+            {
+              "pergunta": "Um lagarto que se expõe ao sol para aquecer está a usar uma estratégia:",
+              "opcoes": [
+                "Comportamental",
+                "Hormonal"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Os ectotérmicos dependem sobretudo de estratégias comportamentais, não de produzir o seu próprio calor.",
+              "mascote_feedback_errado": "É comportamental — os ectotérmicos não geram calor metabólico suficiente para regular por via hormonal, como os endotérmicos."
+            }
+          ],
+          "mascote_conclusao": "Já sabes como o corpo gere o calor. Falta um último desafio de regulação, talvez o mais subtil de todos: a água e os sais do corpo. 💧"
+        }
+      ]
+    },
+    {
+      "secao_id": "osmorregulacao",
+      "titulo": "Osmorregulação: o equilíbrio da água e dos sais",
+      "xp": 35,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "Beber água do mar não mata pela sede — mata porque obriga o corpo a gastar mais água a eliminar o sal do que a própria água que bebeste continha. 💧",
+          "texto": "É aqui que entra a osmorregulação: o controlo da água e dos sais do meio interno."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "Osmoconformantes vs. osmorreguladores",
+          "instrucao": "Clica em cada estratégia.",
+          "pontos": [
+            {
+              "id": "osmoconformantes",
+              "label": "Osmoconformantes",
+              "explicacao": "O meio interno tem a mesma concentração do meio externo (isotónico); não gastam energia a regular (ex.: maioria dos invertebrados marinhos)."
+            },
+            {
+              "id": "osmorreguladores",
+              "label": "Osmorreguladores",
+              "explicacao": "Mantêm a concentração interna diferente da externa, com gasto de energia (ex.: peixes ósseos, animais terrestres)."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "sn_osmorregulacao_peixes.png",
+          "titulo": "Peixe de água doce vs. peixe de água salgada",
+          "instrucao": "Clica em cada tipo de peixe para veres o seu problema e a sua solução.",
+          "pontos": [
+            {
+              "id": "peixe_doce",
+              "label": "Peixe de água doce",
+              "explicacao": "Meio interno hipertónico face ao exterior: entra água por osmose e perde sais por difusão. Quase não bebe; as brânquias absorvem sais ativamente; produz urina muito abundante e diluída (hipotónica), com grande taxa de filtração renal."
+            },
+            {
+              "id": "peixe_salgada",
+              "label": "Peixe de água salgada",
+              "explicacao": "Meio interno hipotónico face ao exterior: perde água por osmose e ganha sais. Bebe muita água salgada; as brânquias excretam sais ativamente; produz urina pouco abundante e concentrada (isotónica), com pequena taxa de filtração renal."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "O peixe que bebe muita água do mar, para compensar a que perde por osmose, é o de:",
+          "opcoes": [
+            "Água doce",
+            "Água salgada"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! O peixe de água salgada perde água por osmose, por isso precisa de beber muita água do mar.",
+          "mascote_feedback_errado": "É o de água salgada — o de água doce quase não bebe, porque já ganha água em excesso por osmose."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "sn_nefronio.png",
+          "titulo": "O rim humano e o nefrónio",
+          "instrucao": "Clica em cada etapa da formação da urina.",
+          "pontos": [
+            {
+              "id": "filtracao",
+              "label": "1. Filtração",
+              "explicacao": "No glomérulo, dentro da cápsula de Bowman, passam do sangue para o nefrónio água, sais, glicose, ureia e outras moléculas pequenas (o filtrado) — células e proteínas ficam no sangue, por serem grandes demais."
+            },
+            {
+              "id": "reabsorcao",
+              "label": "2. Reabsorção",
+              "explicacao": "Ao longo do túbulo contornado proximal, da ansa de Henle, do túbulo contornado distal e do tubo coletor, voltam ao sangue a maior parte da água, a glicose, os aminoácidos e muitos sais."
+            },
+            {
+              "id": "secrecao",
+              "label": "3. Secreção",
+              "explicacao": "Passam do sangue para o túbulo substâncias a eliminar (ex.: H⁺, K⁺, alguns fármacos). O que resta no final é a urina, conduzida ao ureter e à bexiga."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A passagem de água, sais e glicose do sangue para o nefrónio, no glomérulo, é a etapa de:",
+          "opcoes": [
+            "Reabsorção",
+            "Filtração"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! A filtração é a primeira etapa, dentro da cápsula de Bowman.",
+          "mascote_feedback_errado": "É a filtração — a reabsorção devolve a maior parte dessa água e glicose de volta ao sangue, mais à frente no percurso."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "A regulação pela ADH (hormona antidiurética)",
+          "layout": "timeline",
+          "instrucao": "Clica em cada etapa da regulação pela ADH.",
+          "pontos": [
+            {
+              "id": "desidratacao",
+              "label": "1. Desidratação",
+              "explicacao": "Pouca água ou muita transpiração aumentam a pressão osmótica do sangue."
+            },
+            {
+              "id": "osmorrecetores",
+              "label": "2. Osmorrecetores do hipotálamo",
+              "explicacao": "Detetam a alteração; o hipotálamo desencadeia também a sensação de sede."
+            },
+            {
+              "id": "libertacao_adh",
+              "label": "3. A hipófise liberta mais ADH",
+              "explicacao": "A ADH é libertada para o sangue em maior quantidade."
+            },
+            {
+              "id": "tubulo_permeavel",
+              "label": "4. O túbulo distal e o tubo coletor ficam mais permeáveis",
+              "explicacao": "A ADH torna estas estruturas mais permeáveis à água, permitindo reabsorver mais água de volta ao sangue."
+            },
+            {
+              "id": "urina_concentrada",
+              "label": "5. Forma-se pouca urina, concentrada",
+              "explicacao": "A pressão osmótica do sangue volta ao normal — uma retroalimentação negativa completa."
+            }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 🚰",
+          "texto": "💡 A ADH é como uma torneira que controla quanta água volta para o sangue: quando estás desidratado, o corpo \"aperta a torneira\" da urina (mais ADH, mais reabsorção, urina concentrada); quando bebes água a mais, \"abre a torneira\" (menos ADH, urina abundante e diluída). O álcool inibe a libertação de ADH — é por isso que bebidas alcoólicas aumentam tanto a produção de urina, mesmo contendo água."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Com desidratação, a libertação de ADH:",
+              "opcoes": [
+                "Aumenta, reduzindo a quantidade de urina produzida",
+                "Diminui, aumentando a urina"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Mais ADH significa mais reabsorção de água e menos urina, mais concentrada.",
+              "mascote_feedback_errado": "Aumenta — mais ADH leva a menos urina, não mais."
+            },
+            {
+              "pergunta": "No nefrónio, a etapa em que água, sais e glicose passam do sangue para o filtrado é a:",
+              "opcoes": [
+                "Secreção",
+                "Filtração"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! Ocorre no glomérulo, dentro da cápsula de Bowman.",
+              "mascote_feedback_errado": "É a filtração — a secreção é a passagem de substâncias a eliminar do sangue para o túbulo, mais tarde no processo."
+            },
+            {
+              "pergunta": "A aldosterona, produzida nas suprarrenais, completa a regulação ao:",
+              "opcoes": [
+                "Bloquear totalmente a formação de urina",
+                "Aumentar a reabsorção de Na⁺"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! Trabalha em conjunto com a ADH, regulando sobretudo os sais.",
+              "mascote_feedback_errado": "Aumenta a reabsorção de Na⁺ — não bloqueia a formação de urina."
+            }
+          ],
+          "mascote_conclusao": "Já dominas a regulação em animais. Mas e as plantas, que nem sequer têm sistema nervoso — como se regulam elas? 🌱"
+        }
+      ]
+    },
+    {
+      "secao_id": "hormonas-vegetais",
+      "titulo": "Hormonas vegetais: a regulação sem nervos",
+      "xp": 30,
+      "tempo_estimado_min": 6,
+      "ecrãs": [
+        {
+          "tipo": "gancho",
+          "mascote_texto": "As plantas não têm sistema nervoso — mas conseguem virar-se para a luz, decidir quando florescer, e até \"avisar\" os frutos vizinhos para amadurecerem. 🌱",
+          "texto": "Tudo isto graças às hormonas vegetais (fito-hormonas), produzidas em vários tecidos, não em glândulas, e que atuam em concentrações muito baixas."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "titulo": "As cinco grandes fito-hormonas",
+          "instrucao": "Clica em cada hormona vegetal para veres os seus efeitos.",
+          "pontos": [
+            {
+              "id": "auxinas",
+              "label": "Auxinas",
+              "explicacao": "Produzidas nos meristemas apicais e folhas jovens. Causam alongamento celular, fototropismo, geotropismo, dominância apical, formação de raízes. Aplicações: enraizamento de estacas, frutos sem sementes, herbicidas seletivos (em doses altas)."
+            },
+            {
+              "id": "giberelinas",
+              "label": "Giberelinas",
+              "explicacao": "Produzidas em sementes, meristemas e folhas jovens. Causam alongamento do caule, germinação das sementes, floração, crescimento dos frutos. Aplicações: uvas maiores, germinação da cevada na cerveja."
+            },
+            {
+              "id": "citocininas",
+              "label": "Citocininas",
+              "explicacao": "Produzidas nas raízes. Promovem a divisão celular, retardam o envelhecimento das folhas, e contrariam a dominância apical. Aplicações: conservação de vegetais cortados, cultura de tecidos."
+            },
+            {
+              "id": "acido_abscisico",
+              "label": "Ácido abscísico",
+              "explicacao": "Produzido nas folhas e sementes. Fecha os estomas em falta de água, mantém a dormência de sementes e gomos, inibe o crescimento."
+            },
+            {
+              "id": "etileno",
+              "label": "Etileno (gás)",
+              "explicacao": "Produzido em frutos em maturação e tecidos envelhecidos. Causa o amadurecimento dos frutos e a queda de folhas e frutos (abscissão). Aplicação: amadurecimento controlado de frutos, como bananas."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "A hormona vegetal responsável pelo amadurecimento dos frutos é:",
+          "opcoes": [
+            "O etileno",
+            "O ácido abscísico"
+          ],
+          "correta": 0,
+          "mascote_feedback_certo": "Exato! O etileno é um gás que amadurece frutos e provoca a queda de folhas.",
+          "mascote_feedback_errado": "É o etileno — o ácido abscísico está mais ligado ao fecho dos estomas e à dormência."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "imagem": "sn_fototropismo.png",
+          "titulo": "Fototropismo: o caule que persegue a luz",
+          "instrucao": "Clica em cada cenário de iluminação.",
+          "pontos": [
+            {
+              "id": "luz_uniforme",
+              "label": "Luz uniforme (de cima)",
+              "explicacao": "As auxinas distribuem-se igualmente pelos dois lados do caule — todas as células alongam ao mesmo ritmo, e o caule cresce a direito."
+            },
+            {
+              "id": "luz_lateral",
+              "label": "Luz lateral",
+              "explicacao": "As auxinas migram para o lado sombreado. Esse lado tem mais auxinas e as células alongam mais; o lado iluminado tem menos auxinas e alonga menos. O resultado: o caule curva-se em direção à luz."
+            }
+          ]
+        },
+        {
+          "tipo": "micro_verificacao",
+          "pergunta": "Com luz lateral, as auxinas acumulam-se sobretudo no lado:",
+          "opcoes": [
+            "Iluminado do caule",
+            "Sombreado do caule"
+          ],
+          "correta": 1,
+          "mascote_feedback_certo": "Exato! É essa acumulação no lado sombreado que faz essas células alongarem mais.",
+          "mascote_feedback_errado": "Acumulam-se no lado sombreado — é esse lado que alonga mais, curvando o caule para a luz."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Dominância apical e hormonas sintéticas",
+          "texto": "A dominância apical acontece porque as auxinas produzidas no gomo terminal inibem o desenvolvimento dos gomos laterais — ao cortar o ápice da planta (poda), essa inibição desaparece, os ramos laterais desenvolvem-se, e a planta fica mais ramificada. A utilização de hormonas vegetais sintéticas na agricultura aumenta a produção, mas levanta questões ambientais e de saúde, como resíduos de herbicidas nos alimentos."
+        },
+        {
+          "tipo": "analogia",
+          "mascote_texto": "Pensa nisto como... 👑",
+          "texto": "💡 A dominância apical é como um gestor autoritário no topo de uma empresa: enquanto ele lá está (o gomo terminal, com as suas auxinas), trava as iniciativas dos departamentos mais abaixo (os gomos laterais). Remove esse gestor (poda o ápice), e de repente todos os departamentos ganham liberdade para crescer sozinhos — a planta fica mais ramificada."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "No fototropismo, o caule curva-se para a luz porque as auxinas se acumulam no lado:",
+              "opcoes": [
+                "Sombreado, fazendo essas células alongarem mais",
+                "Iluminado, fazendo essas células alongarem mais"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! O lado sombreado cresce mais, por isso o caule se curva em direção à luz.",
+              "mascote_feedback_errado": "Acumulam-se no lado sombreado — é esse lado que alonga mais, curvando o caule para a luz."
+            },
+            {
+              "pergunta": "Podar o ápice de uma planta torna-a mais ramificada porque:",
+              "opcoes": [
+                "Mata a planta parcialmente, forçando-a a crescer de qualquer forma",
+                "Remove a fonte de auxinas que inibia os gomos laterais"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! Sem a inibição das auxinas do ápice, os gomos laterais desenvolvem-se livremente.",
+              "mascote_feedback_errado": "É por remover a inibição das auxinas do ápice — não por \"matar\" nada na planta."
+            },
+            {
+              "pergunta": "As citocininas, produzidas nas raízes, têm um efeito sobre a dominância apical que é:",
+              "opcoes": [
+                "Contrário ao das auxinas — contrariam-na",
+                "Igual ao das auxinas — reforçam-na"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! As citocininas contrariam a dominância apical, ao contrário das auxinas.",
+              "mascote_feedback_errado": "É contrário — as citocininas contrariam a dominância apical, as auxinas é que a causam."
+            }
+          ],
+          "mascote_conclusao": "Parabéns, explorador! Completaste a missão da Regulação nos Seres Vivos. Já sabes como a homeostasia mantém tudo estável, como o neurónio dispara e propaga um impulso, como a sinapse liga uma célula à outra, como as hormonas regulam à distância, e como até as plantas se regulam sem nervo nenhum. 🧠🧪🌱"
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,10 @@
   "titulo": "Exploração Sustentada de Recursos Geológicos",
   "disciplina": "geologia",
   "area": "geologia",
-  "badge": { "icone": "⛏️", "nome": "Gestor de Recursos" },
+  "badge": {
+    "icone": "⛏️",
+    "nome": "Gestor de Recursos"
+  },
   "secoes": [
     {
       "secao_id": "recursos-e-reservas",
@@ -22,15 +25,30 @@
           "titulo": "Recurso vs. reserva",
           "instrucao": "Clica em cada conceito.",
           "pontos": [
-            { "id": "recurso_def", "label": "Recurso geológico", "explicacao": "Qualquer material ou fonte de energia da geosfera útil ao ser humano." },
-            { "id": "reserva_def", "label": "Reserva", "explicacao": "Parte do recurso já identificada e que pode ser explorada com lucro, com a tecnologia e as condições económicas atuais. As reservas variam com o preço, a tecnologia e novas descobertas." },
-            { "id": "renovaveis", "label": "Renováveis vs. não renováveis", "explicacao": "Renováveis repõem-se a uma escala de tempo humana (água, geotermia bem gerida). Não renováveis formam-se a uma escala de tempo geológica (minérios, combustíveis fósseis)." }
+            {
+              "id": "recurso_def",
+              "label": "Recurso geológico",
+              "explicacao": "Qualquer material ou fonte de energia da geosfera útil ao ser humano."
+            },
+            {
+              "id": "reserva_def",
+              "label": "Reserva",
+              "explicacao": "Parte do recurso já identificada e que pode ser explorada com lucro, com a tecnologia e as condições económicas atuais. As reservas variam com o preço, a tecnologia e novas descobertas."
+            },
+            {
+              "id": "renovaveis",
+              "label": "Renováveis vs. não renováveis",
+              "explicacao": "Renováveis repõem-se a uma escala de tempo humana (água, geotermia bem gerida). Não renováveis formam-se a uma escala de tempo geológica (minérios, combustíveis fósseis)."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Se o preço de um metal sobe muito, a sua reserva conhecida tende a:",
-          "opcoes": ["Aumentar, mesmo sem novas descobertas no terreno", "Manter-se sempre igual"],
+          "opcoes": [
+            "Aumentar, mesmo sem novas descobertas no terreno",
+            "Manter-se sempre igual"
+          ],
           "correta": 0,
           "mascote_feedback_certo": "Exato! Parte do recurso que antes \"não compensava\" explorar passa a ser reserva, com o preço mais alto.",
           "mascote_feedback_errado": "Tende a aumentar — a reserva depende do preço, não só da quantidade física no terreno."
@@ -40,7 +58,10 @@
           "perguntas": [
             {
               "pergunta": "Os combustíveis fósseis são recursos:",
-              "opcoes": ["Não renováveis", "Renováveis"],
+              "opcoes": [
+                "Não renováveis",
+                "Renováveis"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Isso mesmo! Formam-se à escala de tempo geológica, muito além do tempo humano.",
               "mascote_feedback_errado": "São não renováveis — formam-se à escala geológica, não humana."
@@ -61,16 +82,31 @@
           "titulo": "Jazigo, minério e ganga",
           "instrucao": "Clica em cada conceito.",
           "pontos": [
-            { "id": "jazigo", "label": "Jazigo mineral", "explicacao": "Concentração anómala de um mineral que torna a sua exploração rentável." },
-            { "id": "minerio", "label": "Minério", "explicacao": "Mineral ou associação de minerais dos quais se extrai, com vantagem económica, uma substância útil (ex.: calcopirite → cobre)." },
-            { "id": "ganga", "label": "Ganga", "explicacao": "Os minerais sem valor económico que acompanham o minério." }
+            {
+              "id": "jazigo",
+              "label": "Jazigo mineral",
+              "explicacao": "Concentração anómala de um mineral que torna a sua exploração rentável."
+            },
+            {
+              "id": "minerio",
+              "label": "Minério",
+              "explicacao": "Mineral ou associação de minerais dos quais se extrai, com vantagem económica, uma substância útil (ex.: calcopirite → cobre)."
+            },
+            {
+              "id": "ganga",
+              "label": "Ganga",
+              "explicacao": "Os minerais sem valor económico que acompanham o minério."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Os minerais sem valor económico que acompanham um minério chamam-se:",
-          "opcoes": ["Ganga", "Teor"],
-          "correta": 0,
+          "opcoes": [
+            "Teor",
+            "Ganga"
+          ],
+          "correta": 1,
           "mascote_feedback_certo": "Exato! A ganga é o \"resto\" sem valor que vem junto com o minério.",
           "mascote_feedback_errado": "É a ganga — o teor é a percentagem de substância útil, não o nome do material sem valor."
         },
@@ -85,9 +121,21 @@
           "titulo": "Recursos energéticos",
           "instrucao": "Clica em cada tipo de recurso energético.",
           "pontos": [
-            { "id": "nuclear", "label": "Nuclear (urânio)", "explicacao": "Energia pela fissão de núcleos de urânio. Muita energia, sem CO₂ na produção — mas resíduos radioativos perigosos durante muito tempo. Em Portugal explorou-se urânio na Urgeiriça." },
-            { "id": "geo_alta", "label": "Geotérmica de alta entalpia", "explicacao": "Fluidos a temperaturas elevadas (>150°C): produção de eletricidade. Em Portugal, nos Açores (centrais da Ribeira Grande e Pico Vermelho, São Miguel)." },
-            { "id": "geo_baixa", "label": "Geotérmica de baixa entalpia", "explicacao": "Aquecimento de edifícios e estufas, termalismo (ex.: Chaves, São Pedro do Sul)." }
+            {
+              "id": "nuclear",
+              "label": "Nuclear (urânio)",
+              "explicacao": "Energia pela fissão de núcleos de urânio. Muita energia, sem CO₂ na produção — mas resíduos radioativos perigosos durante muito tempo. Em Portugal explorou-se urânio na Urgeiriça."
+            },
+            {
+              "id": "geo_alta",
+              "label": "Geotérmica de alta entalpia",
+              "explicacao": "Fluidos a temperaturas elevadas (>150°C): produção de eletricidade. Em Portugal, nos Açores (centrais da Ribeira Grande e Pico Vermelho, São Miguel)."
+            },
+            {
+              "id": "geo_baixa",
+              "label": "Geotérmica de baixa entalpia",
+              "explicacao": "Aquecimento de edifícios e estufas, termalismo (ex.: Chaves, São Pedro do Sul)."
+            }
           ]
         },
         {
@@ -100,14 +148,20 @@
           "perguntas": [
             {
               "pergunta": "A drenagem ácida de minas resulta da:",
-              "opcoes": ["Oxidação de sulfuretos, que acidifica águas e liberta metais pesados", "Evaporação natural da água da chuva"],
-              "correta": 0,
+              "opcoes": [
+                "Evaporação natural da água da chuva",
+                "Oxidação de sulfuretos, que acidifica águas e liberta metais pesados"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! É um dos impactes ambientais mais graves da exploração mineira.",
               "mascote_feedback_errado": "Resulta da oxidação de sulfuretos — não da evaporação da água."
             },
             {
               "pergunta": "A geotermia de alta entalpia é usada em Portugal sobretudo para:",
-              "opcoes": ["Produzir eletricidade, nos Açores", "Aquecer estufas no continente"],
+              "opcoes": [
+                "Produzir eletricidade, nos Açores",
+                "Aquecer estufas no continente"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Correto! Nos Açores, há centrais de produção de eletricidade geotérmica.",
               "mascote_feedback_errado": "É usada para produzir eletricidade nos Açores — aquecer estufas é um uso de baixa entalpia."
@@ -133,14 +187,25 @@
           "titulo": "Porosidade e permeabilidade",
           "instrucao": "Clica em cada conceito.",
           "pontos": [
-            { "id": "porosidade", "label": "Porosidade", "explicacao": "Percentagem do volume da rocha ocupada por espaços vazios (poros)." },
-            { "id": "permeabilidade", "label": "Permeabilidade", "explicacao": "Capacidade de a rocha se deixar atravessar pela água; depende de os poros estarem ligados entre si e do seu tamanho, ou de existirem fraturas. A argila é muito porosa mas pouco permeável — os poros são tão pequenos que a água fica retida." }
+            {
+              "id": "porosidade",
+              "label": "Porosidade",
+              "explicacao": "Percentagem do volume da rocha ocupada por espaços vazios (poros)."
+            },
+            {
+              "id": "permeabilidade",
+              "label": "Permeabilidade",
+              "explicacao": "Capacidade de a rocha se deixar atravessar pela água; depende de os poros estarem ligados entre si e do seu tamanho, ou de existirem fraturas. A argila é muito porosa mas pouco permeável — os poros são tão pequenos que a água fica retida."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Uma rocha pode ser muito porosa mas pouco permeável quando:",
-          "opcoes": ["Os poros são muito pequenos e retêm a água (ex.: argila)", "Isso nunca acontece"],
+          "opcoes": [
+            "Os poros são muito pequenos e retêm a água (ex.: argila)",
+            "Isso nunca acontece"
+          ],
           "correta": 0,
           "mascote_feedback_certo": "Exato! É exatamente o caso da argila — muitos poros, mas água presa, sem circular.",
           "mascote_feedback_errado": "Pode acontecer, sim — é o caso clássico da argila."
@@ -151,8 +216,16 @@
           "titulo": "Aquífero livre vs. aquífero cativo",
           "instrucao": "Clica em cada tipo de aquífero.",
           "pontos": [
-            { "id": "aquifero_livre", "label": "Aquífero livre", "explicacao": "Limitado só na base, por uma camada impermeável; o topo é o nível freático. À pressão atmosférica. Recarregado em toda a área à superfície. A água tem de ser bombeada. Elevada vulnerabilidade à poluição." },
-            { "id": "aquifero_cativo", "label": "Aquífero cativo (confinado)", "explicacao": "Entre duas camadas impermeáveis. Água sob pressão, superior à atmosférica. Recarga só onde a formação aflora. A água sobe sozinha no furo — se atingir a superfície, é um furo artesiano repuxante. Menor vulnerabilidade à poluição." }
+            {
+              "id": "aquifero_livre",
+              "label": "Aquífero livre",
+              "explicacao": "Limitado só na base, por uma camada impermeável; o topo é o nível freático. À pressão atmosférica. Recarregado em toda a área à superfície. A água tem de ser bombeada. Elevada vulnerabilidade à poluição."
+            },
+            {
+              "id": "aquifero_cativo",
+              "label": "Aquífero cativo (confinado)",
+              "explicacao": "Entre duas camadas impermeáveis. Água sob pressão, superior à atmosférica. Recarga só onde a formação aflora. A água sobe sozinha no furo — se atingir a superfície, é um furo artesiano repuxante. Menor vulnerabilidade à poluição."
+            }
           ]
         },
         {
@@ -163,8 +236,11 @@
         {
           "tipo": "micro_verificacao",
           "pergunta": "Um aquífero mais vulnerável à poluição, por estar exposto à superfície numa área extensa, é o:",
-          "opcoes": ["Aquífero livre", "Aquífero cativo"],
-          "correta": 0,
+          "opcoes": [
+            "Aquífero cativo",
+            "Aquífero livre"
+          ],
+          "correta": 1,
           "mascote_feedback_certo": "Exato! O livre recarrega-se por toda a área à superfície, ficando mais exposto a contaminantes.",
           "mascote_feedback_errado": "É o aquífero livre — o cativo está protegido por camadas impermeáveis."
         },
@@ -178,22 +254,31 @@
           "perguntas": [
             {
               "pergunta": "A intrusão salina num aquífero costeiro é causada sobretudo por:",
-              "opcoes": ["Sobre-exploração do aquífero", "Chuvas muito intensas"],
-              "correta": 0,
+              "opcoes": [
+                "Chuvas muito intensas",
+                "Sobre-exploração do aquífero"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! Extrair mais água do que a recarga permite que a água do mar avance para o aquífero.",
               "mascote_feedback_errado": "É causada pela sobre-exploração — chuvas intensas, pelo contrário, ajudam a recarregar o aquífero."
             },
             {
               "pergunta": "Num aquífero cativo, se a água atingir a superfície pelo próprio furo, este chama-se:",
-              "opcoes": ["Furo artesiano repuxante", "Furo livre"],
+              "opcoes": [
+                "Furo artesiano repuxante",
+                "Furo livre"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Correto! A pressão do aquífero cativo pode fazer a água jorrar à superfície sem bombagem.",
               "mascote_feedback_errado": "Chama-se furo artesiano repuxante — só acontece em aquíferos cativos, nunca em livres."
             },
             {
               "pergunta": "Explorar recursos geológicos de forma sustentável significa:",
-              "opcoes": ["Usá-los sem comprometer a sua disponibilidade no futuro", "Explorá-los ao ritmo máximo possível, sempre"],
-              "correta": 0,
+              "opcoes": [
+                "Explorá-los ao ritmo máximo possível, sempre",
+                "Usá-los sem comprometer a sua disponibilidade no futuro"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Exato! É esse o princípio-chave da exploração sustentável de qualquer recurso geológico.",
               "mascote_feedback_errado": "Significa usá-los sem comprometer o futuro — não explorá-los ao máximo possível."
             }

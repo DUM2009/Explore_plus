@@ -3,7 +3,10 @@
   "titulo": "Origem da Terra e do Sistema Solar",
   "disciplina": "geologia",
   "area": "geologia",
-  "badge": { "icone": "🪐", "nome": "Arquiteto de Mundos" },
+  "badge": {
+    "icone": "🪐",
+    "nome": "Arquiteto de Mundos"
+  },
   "secoes": [
     {
       "secao_id": "hipotese-nebular",
@@ -22,17 +25,36 @@
           "titulo": "Da nébula aos planetas",
           "instrucao": "Clica em cada etapa da formação do Sistema Solar.",
           "pontos": [
-            { "id": "contracao", "label": "Contração e achatamento", "explicacao": "A nébula contraiu-se por ação da gravidade, aqueceu e achatou-se num disco. No centro formou-se o Sol (proto-Sol)." },
-            { "id": "acrecao", "label": "Acreção", "explicacao": "No disco, as partículas chocaram e aglomeraram-se por acreção, originando primeiro planetesimais e depois protoplanetas." },
-            { "id": "teluricos", "label": "Planetas telúricos", "explicacao": "Perto do Sol, só condensaram materiais com ponto de fusão elevado (silicatos, metais): Mercúrio, Vénus, Terra, Marte — pequenos, rochosos e densos." },
-            { "id": "gigantes", "label": "Planetas gigantes", "explicacao": "Longe do Sol, condensaram também gelos e acumularam-se gases: Júpiter, Saturno, Úrano, Neptuno — grandes, pouco densos e gasosos/gelados." }
+            {
+              "id": "contracao",
+              "label": "Contração e achatamento",
+              "explicacao": "A nébula contraiu-se por ação da gravidade, aqueceu e achatou-se num disco. No centro formou-se o Sol (proto-Sol)."
+            },
+            {
+              "id": "acrecao",
+              "label": "Acreção",
+              "explicacao": "No disco, as partículas chocaram e aglomeraram-se por acreção, originando primeiro planetesimais e depois protoplanetas."
+            },
+            {
+              "id": "teluricos",
+              "label": "Planetas telúricos",
+              "explicacao": "Perto do Sol, só condensaram materiais com ponto de fusão elevado (silicatos, metais): Mercúrio, Vénus, Terra, Marte — pequenos, rochosos e densos."
+            },
+            {
+              "id": "gigantes",
+              "label": "Planetas gigantes",
+              "explicacao": "Longe do Sol, condensaram também gelos e acumularam-se gases: Júpiter, Saturno, Úrano, Neptuno — grandes, pouco densos e gasosos/gelados."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Os planetas telúricos (como a Terra) formaram-se perto do Sol porque aí só condensaram materiais:",
-          "opcoes": ["Com ponto de fusão elevado (silicatos, metais)", "Gelados e gasosos"],
-          "correta": 0,
+          "opcoes": [
+            "Gelados e gasosos",
+            "Com ponto de fusão elevado (silicatos, metais)"
+          ],
+          "correta": 1,
           "mascote_feedback_certo": "Exato! Perto do Sol, o calor impedia a condensação de gelos — só sobreviveram os materiais mais resistentes.",
           "mascote_feedback_errado": "Condensaram materiais com ponto de fusão elevado — os gelos só se mantêm longe do Sol, onde está mais frio."
         },
@@ -46,14 +68,20 @@
           "perguntas": [
             {
               "pergunta": "Entre Marte e Júpiter existe uma região com material que nunca formou um planeta — chama-se:",
-              "opcoes": ["Cintura de asteroides", "Nébula residual"],
-              "correta": 0,
+              "opcoes": [
+                "Nébula residual",
+                "Cintura de asteroides"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! A cintura de asteroides é material que ficou por aglomerar num planeta.",
               "mascote_feedback_errado": "Chama-se cintura de asteroides — fica precisamente entre Marte e Júpiter."
             },
             {
               "pergunta": "O processo pelo qual partículas se chocam e aglomeram, formando planetesimais, chama-se:",
-              "opcoes": ["Acreção", "Diferenciação"],
+              "opcoes": [
+                "Acreção",
+                "Diferenciação"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Correto! A acreção é o processo de agregação de partículas em corpos cada vez maiores.",
               "mascote_feedback_errado": "É a acreção — a diferenciação acontece depois, já dentro de um planeta em formação."
@@ -79,16 +107,31 @@
           "titulo": "A diferenciação da Terra",
           "instrucao": "Clica em cada camada para veres como se formou.",
           "pontos": [
-            { "id": "nucleo_dif", "label": "Núcleo", "explicacao": "Os materiais mais densos (ferro e níquel) afundaram para o centro da Terra em fusão." },
-            { "id": "manto_crosta", "label": "Manto e crosta", "explicacao": "Os materiais menos densos (silicatos) formaram as camadas exteriores — o manto e a crosta." },
-            { "id": "atmosfera_oceanos", "label": "Atmosfera e oceanos", "explicacao": "A libertação de gases (desgaseificação) originou a atmosfera primitiva; com o arrefecimento, o vapor de água condensou-se e formou os oceanos." }
+            {
+              "id": "nucleo_dif",
+              "label": "Núcleo",
+              "explicacao": "Os materiais mais densos (ferro e níquel) afundaram para o centro da Terra em fusão."
+            },
+            {
+              "id": "manto_crosta",
+              "label": "Manto e crosta",
+              "explicacao": "Os materiais menos densos (silicatos) formaram as camadas exteriores — o manto e a crosta."
+            },
+            {
+              "id": "atmosfera_oceanos",
+              "label": "Atmosfera e oceanos",
+              "explicacao": "A libertação de gases (desgaseificação) originou a atmosfera primitiva; com o arrefecimento, o vapor de água condensou-se e formou os oceanos."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Na diferenciação da Terra, os materiais mais densos (ferro, níquel):",
-          "opcoes": ["Afundaram, formando o núcleo", "Flutuaram à superfície"],
-          "correta": 0,
+          "opcoes": [
+            "Flutuaram à superfície",
+            "Afundaram, formando o núcleo"
+          ],
+          "correta": 1,
           "mascote_feedback_certo": "Exato! Afundaram para o centro, por serem mais densos do que os silicatos.",
           "mascote_feedback_errado": "Afundaram, formando o núcleo — os silicatos, menos densos, é que ficaram por cima."
         },
@@ -108,9 +151,21 @@
           "titulo": "Tamanho do planeta e atividade geológica",
           "instrucao": "Clica em cada corpo para comparares a sua atividade geológica atual.",
           "pontos": [
-            { "id": "terra_ativa", "label": "A Terra", "explicacao": "Grande o suficiente para manter calor interno durante milhares de milhões de anos — por isso ainda tem tectónica de placas e vulcanismo ativos." },
-            { "id": "lua_mercurio", "label": "A Lua e Mercúrio", "explicacao": "Pequenos, arrefeceram depressa. As suas superfícies estão cobertas de crateras de impacto antigas, sem erosão nem tectónica que as apague." },
-            { "id": "marte_pouco", "label": "Marte", "explicacao": "Teve vulcanismo no passado (o Olympus Mons é o maior vulcão do Sistema Solar), mas é hoje pouco ativo." }
+            {
+              "id": "terra_ativa",
+              "label": "A Terra",
+              "explicacao": "Grande o suficiente para manter calor interno durante milhares de milhões de anos — por isso ainda tem tectónica de placas e vulcanismo ativos."
+            },
+            {
+              "id": "lua_mercurio",
+              "label": "A Lua e Mercúrio",
+              "explicacao": "Pequenos, arrefeceram depressa. As suas superfícies estão cobertas de crateras de impacto antigas, sem erosão nem tectónica que as apague."
+            },
+            {
+              "id": "marte_pouco",
+              "label": "Marte",
+              "explicacao": "Teve vulcanismo no passado (o Olympus Mons é o maior vulcão do Sistema Solar), mas é hoje pouco ativo."
+            }
           ]
         },
         {
@@ -123,15 +178,21 @@
           "perguntas": [
             {
               "pergunta": "A Lua e Mercúrio têm superfícies cobertas de crateras de impacto antigas porque:",
-              "opcoes": ["Arrefeceram depressa e não têm erosão nem tectónica ativa que as apague", "São feitos de materiais indestrutíveis"],
+              "opcoes": [
+                "Arrefeceram depressa e não têm erosão nem tectónica ativa que as apague",
+                "São feitos de materiais indestrutíveis"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Isso mesmo! Sem tectónica nem erosão significativa, as crateras ficam praticamente intactas durante milhares de milhões de anos.",
               "mascote_feedback_errado": "É porque arrefeceram depressa e já não têm processos que apaguem as crateras — não é sobre a dureza do material."
             },
             {
               "pergunta": "Quanto maior um planeta, geralmente:",
-              "opcoes": ["Mais tempo se mantém geologicamente ativo", "Mais depressa arrefece"],
-              "correta": 0,
+              "opcoes": [
+                "Mais depressa arrefece",
+                "Mais tempo se mantém geologicamente ativo"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Correto! Quanto maior o planeta, menor a razão superfície/volume, e mais tempo conserva o calor interno.",
               "mascote_feedback_errado": "Mantém-se ativo durante mais tempo — são os planetas pequenos que arrefecem mais depressa."
             }
@@ -152,10 +213,26 @@
           "titulo": "O que nos dizem os diferentes meteoritos",
           "instrucao": "Clica em cada tipo de meteorito para veres o que revela.",
           "pontos": [
-            { "id": "sideritos", "label": "Sideritos (férreos)", "explicacao": "Ferro e níquel — composição semelhante à do núcleo terrestre." },
-            { "id": "siderolitos", "label": "Siderólitos (petroférreos)", "explicacao": "Metais e silicatos — dão pistas sobre a zona de transição manto-núcleo." },
-            { "id": "condritos", "label": "Aerólitos — condritos", "explicacao": "Silicatos com côndrulos, não diferenciados — material primitivo do Sistema Solar, usado para datar a idade da Terra." },
-            { "id": "acondritos", "label": "Aerólitos — acondritos", "explicacao": "Silicatos sem côndrulos, já diferenciados — composição semelhante à da crosta/manto." }
+            {
+              "id": "sideritos",
+              "label": "Sideritos (férreos)",
+              "explicacao": "Ferro e níquel — composição semelhante à do núcleo terrestre."
+            },
+            {
+              "id": "siderolitos",
+              "label": "Siderólitos (petroférreos)",
+              "explicacao": "Metais e silicatos — dão pistas sobre a zona de transição manto-núcleo."
+            },
+            {
+              "id": "condritos",
+              "label": "Aerólitos — condritos",
+              "explicacao": "Silicatos com côndrulos, não diferenciados — material primitivo do Sistema Solar, usado para datar a idade da Terra."
+            },
+            {
+              "id": "acondritos",
+              "label": "Aerólitos — acondritos",
+              "explicacao": "Silicatos sem côndrulos, já diferenciados — composição semelhante à da crosta/manto."
+            }
           ]
         },
         {
@@ -168,14 +245,20 @@
           "perguntas": [
             {
               "pergunta": "Os meteoritos que mais se assemelham à composição do núcleo terrestre são os:",
-              "opcoes": ["Sideritos", "Condritos"],
+              "opcoes": [
+                "Sideritos",
+                "Condritos"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Exato! São ricos em ferro e níquel, como o núcleo da Terra.",
               "mascote_feedback_errado": "São os sideritos — os condritos são silicatos, mais parecidos com a crosta ou o manto."
             },
             {
               "pergunta": "Os condritos são especialmente úteis para:",
-              "opcoes": ["Datar a idade da Terra e do Sistema Solar", "Estudar a atmosfera atual"],
+              "opcoes": [
+                "Datar a idade da Terra e do Sistema Solar",
+                "Estudar a atmosfera atual"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Correto! Sendo material primitivo e não diferenciado, ajudam a datar a origem do Sistema Solar.",
               "mascote_feedback_errado": "São úteis para datar a idade da Terra — não têm relação com o estudo da atmosfera atual."
