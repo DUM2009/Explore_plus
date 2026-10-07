@@ -4,7 +4,7 @@
   "titulo": "Eletromagnetismo",
   "disciplina": "fisica",
   "ano": 11,
-  "imagem": "f11_eolica_barragem.png",
+  "imagem": "Eletromagnetismo.png",
   "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 14a8 8 0 0 1 16 0\"/><path d=\"M4 14v6h16v-6\"/><path d=\"M12 6V2\"/></svg>", "nome": "Mestre do Eletromagnetismo" },
   "secoes": [
     {
@@ -261,7 +261,7 @@
           "mascote_feedback_errado": "A variação de fluxo total é N × ΔΦ = 100 × 0,010 = 1,0 Wb. |ε| = 1,0 / 0,10 = 10 V."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_faraday",
           "titulo": "Íman e bobina",
           "instrucao": "Escolhe a velocidade do íman (positiva a entrar, negativa a sair) e o número de espiras. Observa a força eletromotriz induzida.",
@@ -274,7 +274,20 @@
             { "rotulo": "Força eletromotriz induzida", "formula": "N * 0.10 * 1.0e-3 * Math.abs(velocidade) / 0.01 * 1000", "unidade": "mV", "casas_decimais": 1 },
             { "rotulo": "Sentido da deflexão", "formula": "velocidade > 0 ? 'entrar' : (velocidade < 0 ? 'sair' : 'parado, sem deflexão')" }
           ],
-          "pergunta_final": "Com o íman parado dentro da bobina, o ponteiro mexe-se? Resposta esperada: não, porque o fluxo não está a variar."
+          "desafio": {
+            "enunciado": "Com o íman parado dentro da bobina, o ponteiro mexe-se?",
+            "campos": [
+              {
+                "rotulo": "Resposta",
+                "aceites": [
+                  "nao"
+                ]
+              }
+            ],
+            "resolucao": [
+              "Não, porque o fluxo não está a variar."
+            ]
+          }
         },
         {
           "tipo": "analogia",

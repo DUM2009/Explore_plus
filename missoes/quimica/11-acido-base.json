@@ -4,7 +4,7 @@
   "titulo": "Reações ácido-base",
   "disciplina": "quimica",
   "ano": 11,
-  "imagem": "q11_titulacao.png",
+  "imagem": "Reações ácido-base.png",
   "badge": {
     "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 2v6l-5 10a2 2 0 0 0 1.8 3h12.4a2 2 0 0 0 1.8-3L15 8V2\"/><path d=\"M8 2h8\"/><path d=\"M6.5 15h11\"/></svg>",
     "nome": "Mestre do pH"

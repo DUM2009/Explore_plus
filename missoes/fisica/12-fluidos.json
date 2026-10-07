@@ -243,7 +243,7 @@
           "mascote_feedback_errado": "Num corpo que flutua, a fração imersa é ρ corpo / ρ fluido = 917 / 1025 ≈ 0,89, ou seja, 89 %."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_impulsao",
           "titulo": "Flutua ou afunda?",
           "instrucao": "Escolhe o material do bloco e o líquido. Vê que parte do bloco fica submersa.",
@@ -270,7 +270,20 @@
             { "rotulo": "Situação", "formula": "rho_material < rho_liquido ? 'Flutua' : (rho_material === rho_liquido ? 'Equilíbrio' : 'Afunda')" },
             { "rotulo": "Percentagem submersa (se flutua)", "formula": "rho_material < rho_liquido ? (rho_material / rho_liquido * 100) : 100", "unidade": "%", "casas_decimais": 1 }
           ],
-          "pergunta_final": "O gelo flutua no óleo (920 kg m⁻³)? Resposta esperada: sim, mas por pouco: fica cerca de 99,7 % submerso."
+          "desafio": {
+            "enunciado": "O gelo flutua no óleo (920 kg m⁻³)?",
+            "campos": [
+              {
+                "rotulo": "Resposta",
+                "aceites": [
+                  "sim"
+                ]
+              }
+            ],
+            "resolucao": [
+              "Sim, mas por pouco: fica cerca de 99,7 % submerso."
+            ]
+          }
         },
         {
           "tipo": "analogia",

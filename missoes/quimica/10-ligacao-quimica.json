@@ -4,7 +4,7 @@
   "titulo": "Ligação química",
   "disciplina": "quimica",
   "ano": 10,
-  "imagem": "q10_sal_diamante_cobre.png",
+  "imagem": "Ligação química.png",
   "badge": {
     "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"12\" r=\"3\"/><path d=\"M9 11h6\"/><path d=\"M9 13h6\"/></svg>",
     "nome": "Mestre das Ligações"

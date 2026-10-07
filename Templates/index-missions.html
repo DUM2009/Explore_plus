@@ -177,7 +177,7 @@
     <div class="missions-categories-board">
 
     {% if 'diversidade-organizacao-biologica' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper biodiversidade.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -200,8 +200,50 @@
     </div>
     {% endif %}
 
+    {% if 'ecossistemas' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="10">
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/ecossistema.jpg' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Ecologia</h3>
+                <p class="missions-category-panel-tagline">Descobre como todos os seres vivos e o ambiente estão ligados entre si.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Ecossistemas (10º ano)</h2><p>Compreende como os ecossistemas funcionam.</p></div><button disabled>Em breve</button></div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Ecologia" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'celulas-organelos' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="10">
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image missions-category-panel-image--contain" style="background-image:url('{% static 'images/Célula.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Citologia</h3>
+                <p class="missions-category-panel-tagline">Entra na célula, a unidade básica que constrói todos os seres vivos.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Células e Organelos (10º ano)</h2>
+                            <p>Explora a unidade fundamental da vida e o "emprego" de cada organelo.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='celulas-organelos' %}"><button type="button">Começar</button></a>
+                    </div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Citologia" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     {% if 'biomoleculas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper bioquimica.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -224,14 +266,17 @@
     </div>
     {% endif %}
 
-    {% if 'fotossintese' in missoes_lancadas or 'obtencao-materia-heterotroficos' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    {% if 'fotossintese' in missoes_lancadas or 'obtencao-materia-heterotroficos' in missoes_lancadas or '10-membrana-transporte' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Folha.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Obtenção de Matéria</h3>
                 <p class="missions-category-panel-tagline">Da luz do sol ao açúcar nas tuas células — percebe como a vida se alimenta.</p>
                 <div class="missions-grid" hidden>
+                    {% if '10-membrana-transporte' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Membrana Celular e Transporte Transmembranar (10º ano)</h2><p>Mosaico fluido, difusão e osmose, transporte ativo, endocitose e exocitose.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
                     {% if 'fotossintese' in missoes_lancadas %}
                     <div class="mission-card">
                         <div class="mission-card-info">
@@ -253,8 +298,26 @@
     </div>
     {% endif %}
 
+    {% if 'sistema-nervoso' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="10">
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper corpo humano.png' %}');background-position:center top;" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Corpo Humano</h3>
+                <p class="missions-category-panel-tagline">Viaja pelo cérebro e pelo sistema nervoso que controla tudo o que fazes.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Sistema Nervoso (10º ano)</h2><p>Viaja pelo cérebro e pelos neurónios.</p></div><button disabled>Em breve</button></div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Corpo Humano" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     {% if 'xilema-floema' in missoes_lancadas or 'transporte-animais' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Coração.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -276,8 +339,26 @@
     </div>
     {% endif %}
 
+    {% if 'fisiologia-vegetal' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="10">
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Relva.jpeg' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Botânica</h3>
+                <p class="missions-category-panel-tagline">Descobre como as plantas se alimentam, crescem e respondem ao mundo à sua volta.</p>
+                <div class="missions-grid" hidden>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Fisiologia Vegetal (10º ano)</h2><p>Descobre como as plantas se nutrem, crescem e respondem ao ambiente.</p></div><button disabled>Em breve</button></div>
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Botânica" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     {% if 'respiracao-aerobia-fermentacao' in missoes_lancadas or 'trocas-gasosas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Mitocôndira.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -299,17 +380,89 @@
     </div>
     {% endif %}
 
-    {% if 'lamarckismo-darwinismo' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    {% if 'codigo-da-vida' in missoes_lancadas or 'sintese-proteica' in missoes_lancadas or 'ciclo-celular' in missoes_lancadas or 'mitose' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper DNA.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Crescimento, Renovação e Diferenciação Celular</h3>
+                <p class="missions-category-panel-tagline">Do ADN à proteína e da célula-mãe às células-filhas — como o corpo cresce e se renova.</p>
+                <div class="missions-grid" hidden>
+                    {% if 'codigo-da-vida' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>O Código da Vida (10º e 11º ano)</h2>
+                            <p>Descobre porque o ADN é considerado o código da vida.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='codigo-da-vida' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% endif %}
+                    {% if 'sintese-proteica' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Síntese Proteica (11º ano)</h2><p>Descobre como o ADN se transforma em proteínas.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if 'ciclo-celular' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Ciclo Celular (11º ano)</h2>
+                            <p>Descobre as fases que uma célula percorre antes de se dividir.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='ciclo-celular' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% endif %}
+                    {% if 'mitose' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Mitose (11º ano)</h2><p>Aprende como as células se dividem.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Crescimento, Renovação e Diferenciação Celular" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'meiose-reproducao-sexuada' in missoes_lancadas or 'reproducao-assexuada' in missoes_lancadas or 'ciclos-vida' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="11" hidden>
+        <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Diversidade genética.png' %}')" aria-hidden="true"></span>
+            <div class="missions-category-panel-body">
+                <h3 class="missions-category-panel-name">Reprodução</h3>
+                <p class="missions-category-panel-tagline">Meiose, fecundação e ciclos de vida — como a vida se multiplica e gera variabilidade.</p>
+                <div class="missions-grid" hidden>
+                    {% if 'meiose-reproducao-sexuada' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Meiose e Reprodução Sexuada (11º ano)</h2><p>Descobre como surgem os gâmetas.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if 'reproducao-assexuada' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Reprodução Assexuada (11º ano)</h2><p>Descobre como alguns seres vivos se reproduzem sem gâmetas.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if 'ciclos-vida' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Ciclos de Vida (11º ano)</h2><p>Explora as diferentes fases de vida dos seres vivos.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                </div>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Reprodução" data-missions-toggle>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if 'lamarckismo-darwinismo' in missoes_lancadas or '11-origem-celula-eucariotica' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/especie.jpg' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Evolução Biológica</h3>
+                <h3 class="missions-category-panel-name">Evolução</h3>
                 <p class="missions-category-panel-tagline">As teorias que tentaram explicar como as espécies mudam ao longo do tempo.</p>
                 <div class="missions-grid" hidden>
+                    {% if '11-origem-celula-eucariotica' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>A Origem da Célula Eucariótica (11º ano)</h2><p>Os modelos autogénico e endossimbiótico, e as provas que os sustentam.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if 'lamarckismo-darwinismo' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Lamarckismo e Darwinismo (11º ano)</h2><p>Descobre as duas grandes teorias que tentaram explicar a evolução das espécies.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
                 </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Evolução Biológica" data-missions-toggle>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Evolução" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -318,7 +471,7 @@
     {% endif %}
 
     {% if 'taxonomia-sistematica' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    <div class="missions-category" data-subject="biology" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/organismo.jpg' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
@@ -335,40 +488,21 @@
     </div>
     {% endif %}
 
-    {% if 'codigo-da-vida' in missoes_lancadas or 'sintese-proteica' in missoes_lancadas or 'mitose' in missoes_lancadas or 'meiose-reproducao-sexuada' in missoes_lancadas or 'reproducao-assexuada' in missoes_lancadas or 'ciclos-vida' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    {% if '12-gametogenese-fecundacao' in missoes_lancadas or '12-manipulacao-fertilidade' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="12" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper DNA.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Genética</h3>
-                <p class="missions-category-panel-tagline">Vem descobrir como a molécula de ADN te diferencia das outras pessoas.</p>
+                <h3 class="missions-category-panel-name">Reprodução e Manipulação da Fertilidade</h3>
+                <p class="missions-category-panel-tagline">Gametogénese, fecundação e as técnicas que ajudam — ou travam — a fertilidade humana.</p>
                 <div class="missions-grid" hidden>
-                    {% if 'codigo-da-vida' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>O Código da Vida (10º e 11º ano)</h2>
-                            <p>Descobre porque o ADN é considerado o código da vida.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='codigo-da-vida' %}"><button type="button">Começar</button></a>
-                    </div>
+                    {% if '12-gametogenese-fecundacao' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Gametogénese e Fecundação (12º ano)</h2><p>Formação dos gâmetas, regulação hormonal e os primeiros dias do desenvolvimento.</p></div><button disabled>Em breve</button></div>
                     {% endif %}
-                    {% if 'sintese-proteica' in missoes_lancadas %}
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Síntese Proteica (11º ano)</h2><p>Descobre como o ADN se transforma em proteínas.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if 'mitose' in missoes_lancadas %}
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Mitose (11º ano)</h2><p>Aprende como as células se dividem.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if 'meiose-reproducao-sexuada' in missoes_lancadas %}
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Meiose e Reprodução Sexuada (11º ano)</h2><p>Descobre como surgem os gâmetas.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if 'reproducao-assexuada' in missoes_lancadas %}
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Reprodução Assexuada (11º ano)</h2><p>Descobre como alguns seres vivos se reproduzem sem gâmetas.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if 'ciclos-vida' in missoes_lancadas %}
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Ciclos de Vida (11º ano)</h2><p>Explora as diferentes fases de vida dos seres vivos.</p></div><button disabled>Em breve</button></div>
+                    {% if '12-manipulacao-fertilidade' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Manipulação da Fertilidade (12º ano)</h2><p>Contraceção, diagnóstico de infertilidade, procriação assistida e as questões bioéticas.</p></div><button disabled>Em breve</button></div>
                     {% endif %}
                 </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Genética" data-missions-toggle>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Reprodução e Manipulação da Fertilidade" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -376,34 +510,21 @@
     </div>
     {% endif %}
 
-    {% if 'celulas-organelos' in missoes_lancadas or 'ciclo-celular' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    {% if '12-mendel-hereditariedade' in missoes_lancadas or '12-engenharia-genetica' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="12" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image missions-category-panel-image--contain" style="background-image:url('{% static 'images/Célula.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Citologia</h3>
-                <p class="missions-category-panel-tagline">Entra na célula, a unidade básica que constrói todos os seres vivos.</p>
+                <h3 class="missions-category-panel-name">Património Genético</h3>
+                <p class="missions-category-panel-tagline">De Mendel à engenharia genética — como a informação passa de geração em geração, e como a manipulamos.</p>
                 <div class="missions-grid" hidden>
-                    {% if 'celulas-organelos' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Células e Organelos (10º ano)</h2>
-                            <p>Explora a unidade fundamental da vida e o "emprego" de cada organelo.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='celulas-organelos' %}"><button type="button">Começar</button></a>
-                    </div>
+                    {% if '12-mendel-hereditariedade' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Mendel e a Hereditariedade (12º ano)</h2><p>Mono e diibridismo, os trabalhos de Morgan e a hereditariedade ligada ao sexo.</p></div><button disabled>Em breve</button></div>
                     {% endif %}
-                    {% if 'ciclo-celular' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Ciclo Celular (11º ano)</h2>
-                            <p>Descobre as fases que uma célula percorre antes de se dividir.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='ciclo-celular' %}"><button type="button">Começar</button></a>
-                    </div>
+                    {% if '12-engenharia-genetica' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Engenharia Genética (12º ano)</h2><p>ADN recombinante, clonagem, diagnóstico genético e as questões bioéticas que levantam.</p></div><button disabled>Em breve</button></div>
                     {% endif %}
                 </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Citologia" data-missions-toggle>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Património Genético" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -411,17 +532,21 @@
     </div>
     {% endif %}
 
-    {% if 'ecossistemas' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    {% if '12-sistema-imunitario' in missoes_lancadas or '12-desequilibrios-imunitarios' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="12" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/ecossistema.jpg' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Ecologia</h3>
-                <p class="missions-category-panel-tagline">Descobre como todos os seres vivos e o ambiente estão ligados entre si.</p>
+                <h3 class="missions-category-panel-name">Imunidade e Controlo de Doenças</h3>
+                <p class="missions-category-panel-tagline">Como o corpo se defende, o que acontece quando a defesa falha, e o que a biotecnologia faz por ela.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Ecossistemas (12º ano)</h2><p>Compreende como os ecossistemas funcionam.</p></div><button disabled>Em breve</button></div>
+                    {% if '12-sistema-imunitario' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>O Sistema Imunitário (12º ano)</h2><p>Defesas específicas e não específicas, imunidade humoral e celular, ativa e passiva.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-desequilibrios-imunitarios' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Desequilíbrios Imunitários e Biotecnologia (12º ano)</h2><p>Alergias, doenças autoimunes, imunodeficiências, vacinas e anticorpos monoclonais.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
                 </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Ecologia" data-missions-toggle>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Imunidade e Controlo de Doenças" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -429,35 +554,21 @@
     </div>
     {% endif %}
 
-    {% if 'sistema-nervoso' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
+    {% if '12-microrganismos-alimentos' in missoes_lancadas or '12-conservacao-ogm-pragas' in missoes_lancadas %}
+    <div class="missions-category" data-subject="biology" data-ano="12" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper corpo humano.png' %}');background-position:center top;" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Corpo Humano</h3>
-                <p class="missions-category-panel-tagline">Viaja pelo cérebro e pelo sistema nervoso que controla tudo o que fazes.</p>
+                <h3 class="missions-category-panel-name">Produção de Alimentos e Sustentabilidade</h3>
+                <p class="missions-category-panel-tagline">Fermentações, conservação, OGM e controlo de pragas — alimentar o mundo sem o esgotar.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Sistema Nervoso (11º ano)</h2><p>Viaja pelo cérebro e pelos neurónios.</p></div><button disabled>Em breve</button></div>
+                    {% if '12-microrganismos-alimentos' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Microrganismos e Produção de Alimentos (12º ano)</h2><p>Fermentações na indústria alimentar e o papel dos microrganismos.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
+                    {% if '12-conservacao-ogm-pragas' in missoes_lancadas %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Conservação, OGM e Controlo de Pragas (12º ano)</h2><p>Métodos de conservação, organismos geneticamente modificados e controlo biológico.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
                 </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Corpo Humano" data-missions-toggle>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-                </button>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-
-    {% if 'fisiologia-vegetal' in missoes_lancadas %}
-    <div class="missions-category" data-subject="biology">
-        <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Relva.jpeg' %}')" aria-hidden="true"></span>
-            <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Botânica</h3>
-                <p class="missions-category-panel-tagline">Descobre como as plantas se alimentam, crescem e respondem ao mundo à sua volta.</p>
-                <div class="missions-grid" hidden>
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Fisiologia Vegetal (10º ano)</h2><p>Descobre como as plantas se nutrem, crescem e respondem ao ambiente.</p></div><button disabled>Em breve</button></div>
-                </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Botânica" data-missions-toggle>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Produção de Alimentos e Sustentabilidade" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>
@@ -492,7 +603,7 @@
     {% if 'energia-e-fenomenos-eletricos' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="10" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f10_circuito_simples.png' %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Energia e fenómenos elétricos.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Energia e Fenómenos Elétricos</h3>
                 <p class="missions-category-panel-tagline">O que acontece quando carregas no interruptor? Corrente, tensão, resistência, circuitos e pilhas.</p>
@@ -599,7 +710,7 @@
     {% if '11-eletromagnetismo' in missoes_lancadas or '11-ondas-eletromagneticas' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="11" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/f11_eolica_barragem.png' %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Eletromagnetismo.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Eletromagnetismo</h3>
                 <p class="missions-category-panel-tagline">Como é que uma barragem ou uma eólica produz eletricidade? Carga, campo elétrico, campo magnético, indução eletromagnética e transformadores.</p>

@@ -103,7 +103,7 @@ body.mission-header-hidden .mission-container {
 }
 
 html[data-theme="dark"] .mission-path-screen {
-    background: #1c1712;
+    background: #0a0a0b;
 }
 
 .mission-path-screen[hidden] {
@@ -117,7 +117,7 @@ html[data-theme="dark"] .mission-path-screen {
 }
 
 html[data-theme="dark"] .mission-path-screen--intro {
-    background: #1c1712;
+    background: #0a0a0b;
 }
 
 .mission-path-intro-stage {
@@ -153,7 +153,7 @@ html[data-theme="dark"] .mission-path-screen--intro {
 }
 
 html[data-theme="dark"] .mission-path-intro-text {
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 html[data-theme="dark"] .mission-intro-skip {
@@ -165,8 +165,8 @@ html[data-theme="dark"] .mission-intro-skip:hover {
 }
 
 html[data-theme="dark"] .mission-intro-back {
-    color: #f2e9dd;
-    border-color: #4a3d30;
+    color: #f4f4f5;
+    border-color: #3a3a3f;
 }
 
 html[data-theme="dark"] .mission-intro-back:hover {
@@ -811,7 +811,7 @@ html.dark-mode .mo-hero-badge {
 }
 
 html[data-theme="dark"] .mo-topbar .nav-drawer-toggle {
-    color: #ddccb8;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .mo-topbar .nav-drawer-toggle:hover {
@@ -824,14 +824,14 @@ html[data-theme="dark"] .mo-breadcrumb a {
 }
 
 html[data-theme="dark"] .mo-breadcrumb span:last-child {
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 html[data-theme="dark"] .mo-hero,
 html[data-theme="dark"] .mo-index-row,
 html[data-theme="dark"] .mo-card {
-    background: #26201a;
-    border-color: #3a2f24;
+    background: #17171a;
+    border-color: #27272a;
     box-shadow: 0 1px 2px rgba(0, 0, 0, .35);
 }
 
@@ -843,7 +843,7 @@ html[data-theme="dark"] .mo-hero-info h1,
 html[data-theme="dark"] .mo-index h2,
 html[data-theme="dark"] .mo-index-copy strong,
 html[data-theme="dark"] .mo-card h3 {
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 html[data-theme="dark"] .mo-hero-info p,
@@ -856,25 +856,25 @@ html[data-theme="dark"] .mo-next-card p {
 }
 
 html[data-theme="dark"] .mo-index-row.is-active {
-    background: #2f2619;
+    background: #202024;
 }
 
 html[data-theme="dark"] .mo-index-status--locked {
-    background: #332a20;
+    background: #202024;
     color: #b8a58e;
 }
 
 html[data-theme="dark"] .mo-progress-ring span {
-    background: #26201a;
+    background: #17171a;
 }
 
 html[data-theme="dark"] .mo-progress-bar {
-    background: #3a2f24;
+    background: #27272a;
 }
 
 html[data-theme="dark"] .mo-reward-btn {
     background: rgba(58, 47, 36, .6);
-    border-color: #4a3d30;
+    border-color: #3a3a3f;
     color: #c9dcae;
 }
 
@@ -1374,20 +1374,20 @@ canvas.me-video-chroma-canvas {
 }
 
 html[data-theme="dark"] .intro-summary-card {
-    background: #201a14;
-    border-color: #3a2f24;
+    background: #131315;
+    border-color: #27272a;
 }
 
 html[data-theme="dark"] .intro-summary-icon {
-    background: #2a2219;
+    background: #1c1c1f;
 }
 
 html[data-theme="dark"] .intro-summary-body h4 {
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 html[data-theme="dark"] .intro-equation {
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 .guide-options {
@@ -4615,8 +4615,8 @@ html[data-theme="dark"] .mascot-overlay-close {
 
 html[data-theme="dark"] .mascot-overlay-close:hover,
 html[data-theme="dark"] .mascot-overlay-close:focus-visible {
-    background: #362c22;
-    color: #f2e9dd;
+    background: #27272a;
+    color: #f4f4f5;
 }
 
 .mascot-overlay-text {
@@ -5169,31 +5169,31 @@ html[data-theme="dark"] .mascot-overlay-close:focus-visible {
    regardless of theme.
    ========================================================================== */
 html[data-theme="dark"] .mission-container {
-    background: #1c1712;
-    color: #f2e9dd;
+    background: #0a0a0b;
+    color: #f4f4f5;
 }
 
 html[data-theme="dark"] .mission-content {
-    background-color: #1c1712;
+    background-color: #0a0a0b;
 }
 
 html[data-theme="dark"] .mission-main {
-    background-color: #1c1712;
+    background-color: #0a0a0b;
 }
 
 html[data-theme="dark"] .lesson-topbar,
 html.dark-mode .lesson-topbar {
-    background: #1c1712;
+    background: #0a0a0b;
     border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
 html[data-theme="dark"] .mission-sidebar {
-    background: #17130f;
-    border-right-color: #362c22;
+    background: #111113;
+    border-right-color: #27272a;
 }
 
 html[data-theme="dark"] .lesson-topbar-title {
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 html[data-theme="dark"] .lesson-progress-percent {
@@ -5206,11 +5206,11 @@ html[data-theme="dark"] .lesson-topbar-close {
 
 html[data-theme="dark"] .lesson-topbar-close:hover {
     background: rgba(255, 255, 255, .06);
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 html[data-theme="dark"] .lesson-progress-track {
-    background: #3a2f24;
+    background: #27272a;
 }
 
 html[data-theme="dark"] .lesson-stat,
@@ -5231,19 +5231,19 @@ html[data-theme="dark"] .lesson-help-fab-img {
 }
 
 html[data-theme="dark"] .lesson-help-fab-tooltip {
-    background: #26201a;
-    border-color: #4a3d30;
-    color: #ddccb8;
+    background: #17171a;
+    border-color: #3a3a3f;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .lesson-help-fab-tooltip::after {
-    border-top-color: #26201a;
+    border-top-color: #17171a;
 }
 
 html[data-theme="dark"] .lesson-ambient-tip {
-    background: #26201a;
-    border-color: #4a3d30;
-    color: #ddccb8;
+    background: #17171a;
+    border-color: #3a3a3f;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .screen-card h3 {
@@ -5251,7 +5251,7 @@ html[data-theme="dark"] .screen-card h3 {
 }
 
 html[data-theme="dark"] .screen-card p {
-    color: #ddccb8;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .key-term {
@@ -5264,37 +5264,37 @@ html[data-theme="dark"] .quiz-progress-label {
 }
 
 html[data-theme="dark"] .plant-hotspot-explanation {
-    background: #26201a;
-    border-color: #4a3d30;
-    color: #ddccb8;
+    background: #17171a;
+    border-color: #3a3a3f;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .diagram-zone-caption {
-    background: #26201a;
-    border-color: #4a3d30;
-    color: #ddccb8;
+    background: #17171a;
+    border-color: #3a3a3f;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .did-you-know {
-    background: #26201a;
-    border-color: #4a3d30;
+    background: #17171a;
+    border-color: #3a3a3f;
 }
 
 html[data-theme="dark"] .did-you-know p {
-    color: #ddccb8;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .mascot-overlay-card {
-    background: #26201a;
-    border-color: #4a3d30;
+    background: #17171a;
+    border-color: #3a3a3f;
 }
 
 html[data-theme="dark"] .mascot-overlay-text {
-    color: #ddccb8;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .mascot-overlay-choice-btn {
-    background: #201a14;
+    background: #131315;
     border-color: #4ade80;
     color: #4ade80;
 }
@@ -5302,26 +5302,26 @@ html[data-theme="dark"] .mascot-overlay-choice-btn {
 html[data-theme="dark"] .mission-summary-box,
 html[data-theme="dark"] .mission-intro-callout,
 html[data-theme="dark"] .quiz-alt-explanation {
-    background: #26201a;
-    border-color: #4a3d30;
-    color: #ddccb8;
+    background: #17171a;
+    border-color: #3a3a3f;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .mission-intro-callout-text {
-    color: #ddccb8;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .mission-summary-step-icon {
-    background: #1c1712;
-    border-color: #4a3d30;
+    background: #0a0a0b;
+    border-color: #3a3a3f;
 }
 
 html[data-theme="dark"] .mission-summary-step-label {
-    color: #ddccb8;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .formula-slot {
-    background: #201a14;
+    background: #131315;
     border-color: #3a5a49;
 }
 
@@ -5336,8 +5336,8 @@ html[data-theme="dark"] .formula-slot.is-wrong {
 }
 
 html[data-theme="dark"] .formula-pool {
-    background: #1c1712;
-    border-color: #4a3d30;
+    background: #0a0a0b;
+    border-color: #3a3a3f;
 }
 
 html[data-theme="dark"] .formula-piece {
@@ -5351,30 +5351,30 @@ html[data-theme="dark"] .formula-piece:hover {
 }
 
 html[data-theme="dark"] .formula-piece-icon {
-    background: #1c1712;
+    background: #0a0a0b;
     box-shadow: inset 0 0 0 1px #2f5142;
 }
 
 html[data-theme="dark"] .formula-builder-reset-btn {
-    background: #26201a;
-    border-color: #4a3d30;
+    background: #17171a;
+    border-color: #3a3a3f;
     color: #4ade80;
 }
 
 html[data-theme="dark"] .screen-nav-btn {
-    background: #26201a;
+    background: #17171a;
     color: #4ade80;
-    border-color: #4a3d30;
+    border-color: #3a3a3f;
 }
 
 html[data-theme="dark"] .quiz-nav-btn--prev {
-    background: #26201a;
+    background: #17171a;
     color: #4ade80;
-    border-color: #4a3d30;
+    border-color: #3a3a3f;
 }
 
 html[data-theme="dark"] .quiz-nav-btn--prev:hover {
-    background: #2f2720;
+    background: #202024;
 }
 
 html[data-theme="dark"] .screen-nav-btn[data-nav-action="next"] {
@@ -5382,9 +5382,9 @@ html[data-theme="dark"] .screen-nav-btn[data-nav-action="next"] {
 }
 
 html[data-theme="dark"] .screen-nav-page {
-    background: #26201a;
+    background: #17171a;
     color: #b8a58e;
-    border-color: #4a3d30;
+    border-color: #3a3a3f;
 }
 
 html[data-theme="dark"] .screen-nav-page.active {
@@ -5394,9 +5394,9 @@ html[data-theme="dark"] .screen-nav-page.active {
 }
 
 html[data-theme="dark"] .quiz-option {
-    background: #26201a;
-    border-color: #4a3d30;
-    color: #f2e9dd;
+    background: #17171a;
+    border-color: #3a3a3f;
+    color: #f4f4f5;
 }
 
 html[data-theme="dark"] .quiz-option:hover:not(:disabled) {
@@ -5422,8 +5422,8 @@ html[data-theme="dark"] .quiz-option.incorrect {
 }
 
 html[data-theme="dark"] .option-letter {
-    background: #4a3d30;
-    color: #ddccb8;
+    background: #3a3a3f;
+    color: #d4d4d8;
 }
 
 html[data-theme="dark"] .feedback-correct {

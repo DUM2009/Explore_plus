@@ -232,7 +232,7 @@
           "mascote_feedback_errado": "Usa A = v₀² sen(2θ) / g. Com θ = 45°, sen 90° = 1: A = 400 / 9,8 ≈ 41 m."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_projetil",
           "titulo": "Lança o projétil",
           "instrucao": "Escolhe a velocidade inicial, o ângulo e a altura de lançamento.",
@@ -246,7 +246,27 @@
             { "rotulo": "Altura máxima", "formula": "h0 + Math.pow(v0 * Math.sin(theta * Math.PI / 180), 2) / 19.6", "unidade": "m", "casas_decimais": 2 },
             { "rotulo": "Velocidade horizontal", "formula": "v0 * Math.cos(theta * Math.PI / 180)", "unidade": "m/s", "casas_decimais": 2 }
           ],
-          "pergunta_final": "Com h0 = 0, que ângulo dá o maior alcance? E que dois ângulos dão o mesmo alcance que 30°? Resposta esperada: 45°; 30° e 60° dão o mesmo alcance (ângulos complementares)."
+          "desafio": {
+            "enunciado": "Com h0 = 0, que ângulo dá o maior alcance? E que dois ângulos dão o mesmo alcance que 30°?",
+            "campos": [
+              {
+                "rotulo": "Maior alcance",
+                "unidade": "°",
+                "correta": 45,
+                "sem_potencia": true
+              },
+              {
+                "rotulo": "Mesmo alcance que 30°",
+                "unidade": "°",
+                "correta": 60,
+                "sem_potencia": true
+              }
+            ],
+            "resolucao": [
+              "O alcance é máximo para 45°.",
+              "Ângulos complementares (a soma dá 90°) têm o mesmo alcance: 30° e 60° dão o mesmo alcance."
+            ]
+          }
         },
         {
           "tipo": "analogia",

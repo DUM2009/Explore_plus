@@ -4,7 +4,7 @@
   "titulo": "Sinais, ondas e som",
   "disciplina": "fisica",
   "ano": 11,
-  "imagem": "f11_diapasao.png",
+  "imagem": "Sinais e ondas.png",
   "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 12c2-4 4-4 6 0s4 4 6 0 4-4 6 0\"/></svg>", "nome": "Mestre das Ondas" },
   "secoes": [
     {
@@ -150,7 +150,7 @@
           "mascote_feedback_errado": "O número dentro do seno, a multiplicar por t, é ω = 2π f. Aqui ω = 200π, logo f = 200π / 2π = 100 Hz."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_onda",
           "titulo": "Constrói uma onda",
           "instrucao": "Muda a amplitude, a frequência e o meio. Repara no que acontece ao comprimento de onda.",
@@ -164,7 +164,22 @@
             { "rotulo": "Comprimento de onda", "formula": "v / f", "unidade": "m", "casas_decimais": 3 },
             { "rotulo": "Frequência angular", "formula": "2 * Math.PI * f", "unidade": "rad/s", "casas_decimais": 0 }
           ],
-          "pergunta_final": "Se mudares do ar para a água mantendo a frequência, o que acontece ao comprimento de onda? Resposta esperada: aumenta (cerca de 4,4 vezes), porque a velocidade aumenta e a frequência se mantém."
+          "desafio": {
+            "enunciado": "Se mudares do ar para a água mantendo a frequência, o que acontece ao comprimento de onda?",
+            "campos": [
+              {
+                "rotulo": "Resposta",
+                "aceites": [
+                  "aumenta",
+                  "maior",
+                  "cresce"
+                ]
+              }
+            ],
+            "resolucao": [
+              "Aumenta (cerca de 4,4 vezes), porque a velocidade aumenta e a frequência se mantém."
+            ]
+          }
         },
         {
           "tipo": "analogia",

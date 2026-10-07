@@ -4,7 +4,7 @@
   "titulo": "Transformações químicas",
   "disciplina": "quimica",
   "ano": 10,
-  "imagem": "q10_compressas_quentes_frias.png",
+  "imagem": "Transformações químicas.png",
   "badge": {
     "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2c1 3 4 5 4 9a4 4 0 0 1-8 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 0-8z\"/><path d=\"M8 21h8\"/></svg>",
     "nome": "Mestre das Reações"

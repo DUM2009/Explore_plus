@@ -100,9 +100,70 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         return escapeHtml(value).replace(/"/g, '&quot;');
     }
 
-    // <img> de um ecrã. Se o ficheiro ainda não existir e o ecrã tiver
-    // imagem_legenda, fica um espaço reservado com essa legenda (ver
-    // meImagemEmFalta) em vez de a imagem simplesmente desaparecer.
+    // ---- Correção das respostas dos exercícios (ver exercicioPontoHtml) ----
+
+    // "1,35 × 10⁵", "1.35e5", "135 000", "135000 J"... → lista de valores
+    // possíveis. Mais de um porque "1.350" tanto pode ser 1,35 (ponto
+    // decimal) como 1350 (ponto de milhar): a resposta é aceite se
+    // qualquer das leituras bater certo.
+    function parseNumerosPt(texto) {
+        const SUP = { '⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', '⁻': '-' };
+        const s = String(texto || '').toLowerCase()
+            .replace(/[\s\u00a0\u202f]/g, '')
+            .replace(/[°º]+$/, '')
+            .replace(/[−–]/g, '-')
+            .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, (m) => '^' + m.split('').map((c) => SUP[c]).join(''))
+            .replace(/[a-zµ]+$/, (m) => (m === 'e' ? m : ''));
+        const sci = s.match(/^([+-]?[\d.,]+)(?:[x×*]10\^?\(?([+-]?\d+)\)?|e([+-]?\d+))$/);
+        const simples = s.match(/^([+-]?[\d.,]+)$/);
+        const mantissa = sci ? sci[1] : (simples ? simples[1] : null);
+        if (mantissa === null) return [];
+        const expoente = sci ? Number(sci[2] !== undefined ? sci[2] : sci[3]) : 0;
+        const sinal = mantissa.startsWith('-') ? -1 : 1;
+        const corpo = mantissa.replace(/^[+-]/, '');
+        const leituras = new Set();
+        if (corpo.includes(',') && corpo.includes('.')) {
+            leituras.add(corpo.replace(/\./g, '').replace(',', '.'));
+        } else if (corpo.includes(',')) {
+            leituras.add(corpo.replace(',', '.'));
+            if (/^\d{1,3}(,\d{3})+$/.test(corpo)) leituras.add(corpo.replace(/,/g, ''));
+        } else {
+            leituras.add(corpo);
+            if (/^\d{1,3}(\.\d{3})+$/.test(corpo)) leituras.add(corpo.replace(/\./g, ''));
+        }
+        return Array.from(leituras)
+            .map((v) => sinal * Number(v) * Math.pow(10, expoente))
+            .filter((v) => Number.isFinite(v));
+    }
+
+    function normalizarTexto(texto) {
+        return String(texto || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim();
+    }
+
+    // Avalia uma resposta: "certo", "quase" ou "errado".
+    // campo.correta (número): certo até campo.tolerancia relativa (0,05% por
+    // omissão — só deixa passar erros de vírgula flutuante ou um algarismo
+    // a mais, nunca um valor arredondado de outra forma: 3,70 × 10⁵ não é
+    // 3,75 × 10⁵); "quase" até campo.proximidade relativa (15% por
+    // omissão), para quem está perto mas falhou qualquer coisinha; senão
+    // errado.
+    // campo.aceites (lista de palavras/expressões): certo se o texto
+    // contiver uma delas, senão errado — não há "quase" em texto.
+    function avaliarResposta(campo, valor) {
+        if (campo.correta !== undefined && campo.correta !== null) {
+            const tol = campo.tolerancia !== undefined ? campo.tolerancia : 0.0005;
+            const perto = campo.proximidade !== undefined ? campo.proximidade : 0.15;
+            // Resposta 0: erro absoluto (não dá para dividir por zero).
+            const erros = parseNumerosPt(valor).map((v) => Math.abs(v - campo.correta) / (campo.correta === 0 ? 1 : Math.abs(campo.correta)));
+            if (!erros.length) return 'errado';
+            const menor = Math.min(...erros);
+            if (menor <= tol) return 'certo';
+            return menor <= perto ? 'quase' : 'errado';
+        }
+        const dado = normalizarTexto(valor);
+        return dado !== '' && (campo.aceites || []).some((a) => dado.includes(normalizarTexto(a))) ? 'certo' : 'errado';
+    }
+
     function imagemEcraHtml(nome, classe, alt, legenda) {
         if (!nome) return '';
         const src = `/static/images/${encodeURIComponent(nome)}`;
@@ -138,6 +199,9 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // histórico a cada visita/recarregamento da página).
             this.chatOpen = false;
             this.chatHistory = [];
+            // Respostas dos exercícios por ponto (ver exercicioPontoHtml) —
+            // só em memória, como o chat.
+            this.exercicioEstado = {};
             this.chatLimitReached = false;
             this._lastGanchoPopupKey = null;
             // Flutuante (padrão) vs. fixo na barra lateral — mesma chave e
@@ -866,14 +930,32 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const nextBtnHtml = showNextBtn
                 ? `
                     <button type="button"
-                        class="screen-nav-btn ${nextLabel ? '' : 'screen-nav-btn--icon'}"
+                        class="screen-nav-btn ${nextLabel ? '' : 'screen-nav-btn--sinal'}"
                         id="meNextBtn"
                         data-nav-action="next"
                         aria-label="${nextLabel || 'Continuar'}"
                         ${canContinue ? '' : 'disabled'}>
-                        ${nextLabel || '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>'}
+                        ${nextLabel || '<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>'}
                     </button>
                 `
+                : '';
+
+            // Bolinhas numeradas entre as setas, uma por página da secção,
+            // para saltar diretamente para qualquer página. Só se pode ir
+            // até à primeira micro-verificação ainda por responder (tal
+            // como o > fica desativado nela) — para trás, sempre.
+            let ultimaAlcancavel = screens.length - 1;
+            for (let j = 0; j < screens.length - 1; j++) {
+                if (screens[j].tipo === 'micro_verificacao' && !this.state.answers[`${section.secao_id}::${j}`]) {
+                    ultimaAlcancavel = j;
+                    break;
+                }
+            }
+            const paginasHtml = screens.length > 1
+                ? `<div class="screen-nav-pages me-nav-paginas" role="group" aria-label="Páginas da secção">${screens.map((_, i) => `
+                    <button type="button" class="screen-nav-page${i === screenIndex ? ' active' : ''}" data-ir-para-pagina="${i}"
+                        aria-label="Página ${i + 1}"${i === screenIndex ? ' aria-current="step"' : ''}${i > ultimaAlcancavel ? ' disabled' : ''}>${i + 1}</button>`).join('')}
+                   </div>`
                 : '';
 
             let xpStat = '';
@@ -936,7 +1018,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                                 </div>
                                 <div class="me-gancho-nav-wrap">
                                     <div class="screen-nav">
-                                        <button type="button" class="screen-nav-btn" id="mePrevBtn" ${screenIndex === 0 ? 'disabled' : ''}>Anterior</button>
+                                        <button type="button" class="screen-nav-btn screen-nav-btn--sinal" id="mePrevBtn" aria-label="Anterior" ${screenIndex === 0 ? 'disabled' : ''}><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+                                        ${paginasHtml}
                                         ${nextBtnHtml}
                                     </div>
                                 </div>
@@ -948,6 +1031,20 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     ${this.mascotFabFigureHtml()}
                 </button>
             `;
+
+            // Ecrãs com painel principal (.me-gancho-card): a navegação passa
+            // para dentro dele, nos cantos de baixo (< à esquerda, > à
+            // direita). Ecrãs sem painel mantêm-na por baixo do conteúdo.
+            // O resumo do quiz (.me-quiz-resultado) também é um painel
+            // branco: a navegação (incluindo "Concluir secção") fica no
+            // canto de baixo dele.
+            const painelPrincipal = this.root.querySelector('.screen-card .me-gancho-card')
+                || this.root.querySelector('.screen-card .me-quiz-resultado');
+            const navegacao = this.root.querySelector('.me-gancho-nav-wrap');
+            if (painelPrincipal && navegacao) {
+                painelPrincipal.appendChild(navegacao);
+                navegacao.classList.add('me-nav-no-painel');
+            }
 
             this.bindScreenInteractions(section, screen, screenIndex);
 
@@ -968,6 +1065,21 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
 
             this.root.querySelector('#meNextBtn')?.addEventListener('click', () => {
                 this.advance(section, sectionIndex, screenIndex, screens);
+            });
+
+            this.root.querySelectorAll('[data-ir-para-pagina]').forEach((botao) => {
+                botao.addEventListener('click', () => {
+                    const destino = Number(botao.dataset.irParaPagina);
+                    if (destino === screenIndex) return;
+                    // Saltar para a frente conta como ter passado pelas
+                    // páginas do meio (o mesmo XP que dariam com o >).
+                    for (let j = screenIndex; j < destino; j++) {
+                        this.awardPageXP(section, j, screens[j]);
+                    }
+                    this.setScreenIndex(section, destino);
+                    if (destino > screenIndex) this.syncProgressWithDjango();
+                    this.render();
+                });
             });
 
             this.bindThemeToggle(this.root.querySelector('#meThemeToggle'));
@@ -1054,6 +1166,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             switch (screen.tipo) {
                 case 'gancho': return this.renderGancho(screen);
                 case 'diagrama_interativo': return this.renderDiagrama(screen);
+                case 'formula_interativa': return this.renderFormulaInterativa(screen);
+                case 'acordeao': return this.renderAcordeao(screen);
                 case 'micro_verificacao': return this.renderMicroVerificacao(section, screen, screenIndex);
                 case 'analogia': return this.renderAnalogia(screen);
                 case 'aprofundar': return this.renderAprofundar(screen);
@@ -1128,7 +1242,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
          * vez por cada vez que se entra num ecrã de gancho com imagem
          * própria, ou no quiz de fim de secção (ver showEntryPopupIfNeeded).
          */
-        mascotOverlayFigureHtml() {
+        mascotOverlayFigureHtml(pose) {
+            // pose "pensar": mascote a pensar (a mesma imagem "com dúvidas"),
+            // usada nos popups de perguntas — ver showMicroVerificacaoPopup.
+            if (pose === 'pensar' && this.mascotDoubtsImageUrl) {
+                return `<img class="mascot-overlay-figure" src="${this.mascotDoubtsImageUrl}" alt="Mascote a pensar">`;
+            }
             if (this.mascotExplainingImageUrl) {
                 return `<img class="mascot-overlay-figure" src="${this.mascotExplainingImageUrl}" alt="Mascote a explicar">`;
             }
@@ -1262,7 +1381,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             overlay.innerHTML = `
                 <div class="mascot-overlay-card mascot-overlay-card--split" role="dialog" aria-modal="true" aria-label="Pergunta">
                     <button type="button" class="mascot-overlay-close" aria-label="Fechar">✕</button>
-                    <div class="mascot-overlay-split-figure">${this.mascotOverlayFigureHtml()}</div>
+                    <div class="mascot-overlay-split-figure">${this.mascotOverlayFigureHtml('pensar')}</div>
                     <div class="mascot-overlay-split-body">
                         <p class="mascot-overlay-text quiz-question">${escapeHtml(screen.pergunta)}</p>
                         <div class="quiz-options" data-answer-key="${answerKey}">${optionsHtml}</div>
@@ -1373,8 +1492,10 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const itensHtml = caixaFormula.map((formula) => `
                 <div class="me-caixa-formula-item">
                     <p class="me-caixa-formula-expressao">${escapeHtml(formula.expressao || '')}</p>
-                    ${formula.significado ? `<p class="me-caixa-formula-significado">${escapeHtml(formula.significado)}</p>` : ''}
-                    ${formula.unidades ? `<p class="me-caixa-formula-unidades">${escapeHtml(formula.unidades)}</p>` : ''}
+                    ${formula.significado ? `<p class="me-caixa-formula-significado">${boldMarkdown(escapeHtml(formula.significado))}</p>` : ''}
+                    ${Array.isArray(formula.unidades)
+                        ? `<ul class="me-caixa-formula-unidades me-caixa-formula-unidades-lista">${formula.unidades.map((u) => `<li>${boldMarkdown(escapeHtml(u))}</li>`).join('')}</ul>`
+                        : (formula.unidades ? `<p class="me-caixa-formula-unidades">${escapeHtml(formula.unidades)}</p>` : '')}
                 </div>
             `).join('');
             return `<div class="me-caixa-formula">${itensHtml}</div>`;
@@ -1491,6 +1612,162 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             `;
         }
 
+        /**
+         * Caixa do exercício do ponto selecionado (ver ponto.exercicio:
+         * { enunciado, campos: [{ rotulo, unidade, correta | aceites,
+         * tolerancia }], resolucao, resposta }). Fica por baixo do cartão e
+         * muda a cada chip — só aparece o exercício do ponto que o aluno
+         * está a estudar (ver bindDiagramaChips). O aluno escreve a
+         * resposta e carrega em "Verificar": certo → "Certo!"; errado →
+         * "Tenta outra vez". "Ver resolução" só aparece depois da primeira
+         * tentativa. As respostas ficam guardadas só enquanto a página
+         * está aberta (this.exercicioEstado).
+         */
+        exercicioChave(screen, ponto) {
+            return `${screen.titulo || ''}::${ponto.id || ponto.label}`;
+        }
+
+        exercicioPontoHtml(screen, ponto) {
+            const ex = ponto && ponto.exercicio;
+            if (!ex || !ex.enunciado) return '';
+            const campos = Array.isArray(ex.campos) ? ex.campos : [];
+            const estado = this.exercicioEstado[this.exercicioChave(screen, ponto)] || {};
+            const camposHtml = campos.map((campo, i) => {
+                const numerico = campo.correta !== undefined && campo.correta !== null;
+                const classe = estado.campos ? ` is-${estado.campos[i]}` : '';
+                return `
+                    <label class="me-ex-campo${classe}">
+                        ${campo.rotulo ? `<span class="me-ex-rotulo">${escapeHtml(campo.rotulo)} =</span>` : ''}
+                        <input type="text" class="me-ex-input" data-ex-campo="${i}" inputmode="${numerico ? 'decimal' : 'text'}" autocomplete="off" placeholder="${numerico ? 'A tua resposta' : 'Escreve a tua resposta'}" value="${escapeAttr((estado.valores || [])[i] || '')}">
+                        ${numerico && !campo.sem_potencia ? '<button type="button" class="me-ex-potencia" data-ex-potencia aria-label="Inserir × 10 elevado a" title="Inserir × 10^">×10<sup>n</sup></button>' : ''}
+                        ${campo.unidade ? `<span class="me-ex-unidade">${escapeHtml(campo.unidade)}</span>` : ''}
+                    </label>
+                `;
+            }).join('');
+            // Botão redondo de enviar, ao lado da última resposta (substitui o
+            // antigo botão "Verificar"; o data-ex-verificar é o que o liga).
+            const enviarHtml = `<button type="button" class="me-ex-enviar" data-ex-verificar aria-label="Enviar resposta" title="Enviar resposta"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg></button>`;
+            const passosHtml = (Array.isArray(ex.resolucao) ? ex.resolucao : []).map((p) => `<p>${boldMarkdown(escapeHtml(p))}</p>`).join('');
+            const respostaHtml = ex.resposta ? `<p><strong>Resposta:</strong> ${boldMarkdown(escapeHtml(ex.resposta))}</p>` : '';
+            // Painel de resultado depois de verificar: vermelho "Resposta
+            // Incorreta" ou verde "Resposta Correta", com o botão "Ver
+            // explicação" (a resolução só abre ao clicar).
+            const ICONES = {
+                certo: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+                quase: '<circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>',
+                errado: '<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>',
+            };
+            const TITULOS = {
+                certo: 'Resposta Correta',
+                quase: 'Estás quase, mas falta qualquer coisinha...',
+                errado: 'Tenta outra vez',
+            };
+            const iconeResultado = ICONES[estado.resultado];
+            const svgIcone = (caminhos, tamanho) => `<svg xmlns="http://www.w3.org/2000/svg" width="${tamanho}" height="${tamanho}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${caminhos}</svg>`;
+            const semCampos = !campos.length;
+            const explicacaoHtml = (passosHtml || respostaHtml)
+                ? `
+                    <button type="button" class="me-ex-explicacao-btn" data-ex-resolucao aria-expanded="${estado.resolucaoAberta ? 'true' : 'false'}">
+                        ${svgIcone('<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>', 16)}
+                        <span>${estado.resolucaoAberta ? (semCampos ? 'Esconder resposta' : 'Esconder explicação') : (semCampos ? 'Ver resposta' : 'Ver explicação')}</span>
+                    </button>
+                    <div class="me-ex-resolucao"${estado.resolucaoAberta ? '' : ' hidden'}>${passosHtml}${respostaHtml}</div>
+                `
+                : '';
+            const painelHtml = estado.resultado
+                ? `
+                    <div class="me-ex-painel is-${estado.resultado}" role="status">
+                        <p class="me-ex-painel-titulo">${svgIcone(iconeResultado, 20)}<span>${TITULOS[estado.resultado]}</span></p>
+                        ${explicacaoHtml}
+                    </div>
+                `
+                : '';
+            return `
+                <div class="me-caixa-exercicio">
+                    <div class="me-caixa-formula">
+                        <div class="me-caixa-formula-item">
+                            <p class="me-caixa-formula-expressao"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ex.icone === 'alvo' ? '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>' : '<path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/>'}</svg><span>${escapeHtml(ex.titulo || 'Exercício')}</span></p>
+                            <p class="me-caixa-formula-significado">${boldMarkdown(escapeHtml(ex.enunciado))}</p>
+                            ${camposHtml ? `<div class="me-ex-campos">${camposHtml}${enviarHtml}</div>` : ''}
+                            ${painelHtml}
+                            ${semCampos ? `<div class="me-ex-sem-campos">${explicacaoHtml}</div>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        /** Liga (uma só vez por caixa) os cliques de "Verificar" e "Ver
+         *  resolução" e o Enter nas respostas — por delegação, para
+         *  continuar a funcionar quando a caixa é redesenhada ao mudar de
+         *  chip. O ponto e o ecrã atuais ficam em container._exPonto/_exScreen. */
+        bindExercicio(container, screen, ponto) {
+            container._exScreen = screen;
+            container._exPonto = ponto;
+            if (container.dataset.exDelegado) return;
+            container.dataset.exDelegado = '1';
+            const redesenhar = (focoIndex) => {
+                container.innerHTML = this.exercicioPontoHtml(container._exScreen, container._exPonto);
+                if (focoIndex !== undefined) container.querySelector(`[data-ex-campo="${focoIndex}"]`)?.focus();
+            };
+            const verificar = () => {
+                const ex = container._exPonto.exercicio;
+                const campos = ex.campos || [];
+                const valores = Array.from(container.querySelectorAll('[data-ex-campo]')).map((el) => el.value);
+                const avaliacoes = campos.map((campo, i) => avaliarResposta(campo, valores[i]));
+                const chave = this.exercicioChave(container._exScreen, container._exPonto);
+                const anterior = this.exercicioEstado[chave] || {};
+                // Tudo certo → certo; tudo certo ou quase → "estás quase";
+                // senão errado.
+                const resultado = avaliacoes.every((a) => a === 'certo')
+                    ? 'certo'
+                    : (avaliacoes.every((a) => a !== 'errado') ? 'quase' : 'errado');
+                this.exercicioEstado[chave] = {
+                    valores,
+                    campos: avaliacoes,
+                    resultado,
+                    resolucaoAberta: anterior.resolucaoAberta || false,
+                };
+                const primeiroErrado = avaliacoes.findIndex((a) => a !== 'certo');
+                redesenhar(primeiroErrado === -1 ? undefined : primeiroErrado);
+            };
+            container.addEventListener('click', (event) => {
+                const botaoPotencia = event.target.closest('[data-ex-potencia]');
+                if (botaoPotencia) {
+                    // Escreve "×10^" no sítio do cursor, para o aluno só ter de
+                    // pôr o expoente (o teclado não tem o 10⁵ com o 5 em cima).
+                    const input = botaoPotencia.closest('.me-ex-campo')?.querySelector('[data-ex-campo]');
+                    if (input) {
+                        const inicio = input.selectionStart ?? input.value.length;
+                        const fim = input.selectionEnd ?? inicio;
+                        const texto = '×10^';
+                        input.value = input.value.slice(0, inicio) + texto + input.value.slice(fim);
+                        const cursor = inicio + texto.length;
+                        input.focus();
+                        input.setSelectionRange(cursor, cursor);
+                    }
+                    return;
+                }
+                if (event.target.closest('[data-ex-verificar]')) {
+                    verificar();
+                    return;
+                }
+                if (event.target.closest('[data-ex-resolucao]')) {
+                    const chave = this.exercicioChave(container._exScreen, container._exPonto);
+                    // Sem campos de resposta (só "Ver resposta") ainda não há estado.
+                    const estado = this.exercicioEstado[chave] || (this.exercicioEstado[chave] = {});
+                    estado.resolucaoAberta = !estado.resolucaoAberta;
+                    redesenhar();
+                }
+            });
+            container.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' && event.target.matches('[data-ex-campo]')) {
+                    event.preventDefault();
+                    verificar();
+                }
+            });
+        }
+
         /** Botão colapsável "💡 Dica de estudo" com ponto.dica_estudo, se
          *  existir — mesmo mecanismo de saberMaisHtml, mas com rótulo e
          *  ícone próprios para uma dica de estudo (ex: uma analogia). */
@@ -1504,7 +1781,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             `;
         }
 
-        /** Botão "💡" alinhado horizontalmente com o texto da explicação
+        /** Botão com o ícone da lâmpada (SVG, não o emoji) alinhado horizontalmente com o texto da explicação
          *  (ver .me-escada-detail-text-row no CSS), com ponto.curiosidade
          *  revelado numa faixa por baixo, a toda a largura — não usa
          *  <details>/<summary> como saberMaisHtml/dicaEstudoHtml porque o
@@ -1514,12 +1791,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
          *  os dois juntos. Ver bindCuriosidadeToggle para a interação. */
         curiosidadeToggleHtml(ponto) {
             if (!ponto.curiosidade) return '';
-            return `<button type="button" class="me-ponto-curiosidade-toggle" aria-expanded="false" aria-label="Ver curiosidade">💡</button>`;
+            return `<button type="button" class="me-ponto-curiosidade-toggle" aria-expanded="false" aria-label="Ver curiosidade"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg></button>`;
         }
 
         curiosidadeRevealHtml(ponto) {
             if (!ponto.curiosidade) return '';
-            return `<div class="me-ponto-curiosidade-reveal" hidden><p class="me-ponto-curiosidade-titulo">Sabias que...</p>${textToHtml(ponto.curiosidade)}</div>`;
+            return `<div class="me-ponto-curiosidade-reveal" hidden>${ponto.curiosidade_sem_titulo ? '' : '<p class="me-ponto-curiosidade-titulo">Sabias que...</p>'}${textToHtml(ponto.curiosidade)}</div>`;
         }
 
         /** Liga o clique no 💡 (ver curiosidadeToggleHtml) a mostrar/esconder
@@ -1731,6 +2008,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     ${this.curiosidadeToggleHtml(ponto)}
                     ${this.atencaoToggleHtml(ponto)}
                 </div>
+                ${this.caixaFormulaHtml(ponto.caixa_formula)}
                 ${this.curiosidadeRevealHtml(ponto)}
                 ${this.atencaoRevealHtml(ponto)}
                 ${this.proximaMissaoHtml(ponto)}
@@ -1836,6 +2114,156 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             `;
         }
 
+        /**
+         * Ecrã "acordeao": um texto de introdução e, por baixo, uma lista de
+         * linhas empilhadas, pela ordem do ficheiro; ao clicar numa linha, o
+         * texto dela abre logo por baixo (e volta a fechar ao clicar de novo).
+         * Podem estar várias abertas ao mesmo tempo, para se compararem.
+         *
+         *   titulo    — título do ecrã
+         *   texto     — introdução (parágrafos separados por linha em branco)
+         *   instrucao — frase antes da lista (ex: "Explora cada um deles:")
+         *   itens     — lista de { rotulo, explicacao, imagem? }; com imagem, o
+         *               texto abre no formato de cartão (imagem à esquerda)
+         */
+        renderAcordeao(screen) {
+            const chevron = '<svg class="me-acordeao-seta" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+            const itensHtml = (screen.itens || []).map((item, i) => {
+                const paragrafos = String(item.explicacao || '').split(/\n\s*\n/).filter(Boolean)
+                    .map((par) => `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(par))}</p>`).join('');
+                // item.curiosidade: 💡 por baixo do texto, que só mostra a
+                // curiosidade depois de clicar (ver bindAcordeao).
+                const curiosidade = item.curiosidade
+                    ? `<div class="me-curiosidade-baixo">${this.curiosidadeToggleHtml(item)}</div>${this.curiosidadeRevealHtml(item)}`
+                    : '';
+                const texto = `<div class="me-escada-detail-content">${paragrafos}${curiosidade}</div>`;
+                const conteudo = item.imagem
+                    ? `<div class="me-escada-detail-columns">
+                           <div class="me-escada-detail-media">${imagemEcraHtml(item.imagem, 'me-escada-detail-image', item.rotulo || '', item.imagem_legenda)}</div>
+                           <div class="me-escada-detail-divider" aria-hidden="true"></div>
+                           ${texto}
+                       </div>`
+                    : texto;
+                return `
+                    <div class="me-acordeao-item">
+                        <button type="button" class="me-acordeao-cabeca" aria-expanded="false" aria-controls="meAcordeaoPainel${i}" data-ac-botao>
+                            <span class="me-acordeao-num">${i + 1}</span>
+                            <span class="me-acordeao-rotulo">${escapeHtml(item.rotulo || '')}</span>
+                            ${chevron}
+                        </button>
+                        <div class="me-acordeao-painel me-escada-detail" id="meAcordeaoPainel${i}" hidden>${conteudo}</div>
+                    </div>
+                `;
+            }).join('');
+            return `
+                <div class="mascot-overlay-card me-mascot-inline me-gancho-card">
+                    ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
+                    ${screen.texto ? `<div class="me-diagrama-texto-principal">${textToHtml(screen.texto)}</div>` : ''}
+                    ${screen.instrucao ? `<p class="me-acordeao-instrucao">${escapeHtml(screen.instrucao)}</p>` : ''}
+                    <div class="me-acordeao">${itensHtml}</div>
+                </div>
+            `;
+        }
+
+        bindAcordeao() {
+            this.root.querySelectorAll('[data-ac-botao]').forEach((botao) => {
+                botao.addEventListener('click', () => {
+                    const painel = this.root.querySelector(`#${botao.getAttribute('aria-controls')}`);
+                    if (!painel) return;
+                    const abrir = painel.hidden;
+                    painel.hidden = !abrir;
+                    botao.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+                    botao.classList.toggle('is-open', abrir);
+                });
+            });
+            this.root.querySelectorAll('.me-acordeao-painel').forEach((painel) => this.bindCuriosidadeToggle(painel));
+        }
+
+        /**
+         * Ecrã "formula_interativa": o cartão de um ponto de diagrama (imagem
+         * à esquerda, linha, texto à direita) em que, por baixo do texto, a
+         * caixa verde de fórmulas mostra a fórmula bem grande com uma bolinha
+         * clicável por baixo de cada letra; ao clicar, a explicação da letra
+         * aparece dentro da própria caixa, por baixo da fórmula. Por baixo do
+         * cartão, o exercício (mesma caixa dos diagramas, ver
+         * exercicioPontoHtml).
+         *
+         *   rotulo     — título do cartão (como o label de um ponto)
+         *   imagem     — imagem do lado esquerdo (opcional; sem ficheiro fica em branco)
+         *   texto      — explicação por cima da fórmula (parágrafos separados por linha em branco)
+         *   formula    — lista de { t: "símbolo", id?: "chave" }; os que têm id
+         *                ganham bolinha, os outros (ex: "=") ficam só como texto
+         *   variaveis  — { chave: { rotulo, explicacao } }
+         *   instrucao  — dica mostrada na caixa antes de se clicar numa bolinha
+         *   exercicio  — como em ponto.exercicio
+         */
+        renderFormulaInterativa(screen) {
+            const tokensHtml = (screen.formula || []).map((tk) => {
+                if (!tk.id) {
+                    return `<span class="me-fi-token me-fi-token--fixo"><span class="me-fi-simbolo">${escapeHtml(tk.t)}</span><span class="me-fi-bolinha me-fi-bolinha--vazia" aria-hidden="true"></span></span>`;
+                }
+                const rotulo = (screen.variaveis && screen.variaveis[tk.id] && screen.variaveis[tk.id].rotulo) || tk.t;
+                return `
+                    <span class="me-fi-token">
+                        <span class="me-fi-simbolo">${escapeHtml(tk.t)}</span>
+                        <button type="button" class="me-fi-bolinha" data-fi-id="${escapeAttr(tk.id)}" aria-pressed="false" aria-label="${escapeAttr(rotulo)}" title="${escapeAttr(rotulo)}"></button>
+                    </span>
+                `;
+            }).join('');
+            const paragrafosHtml = String(screen.texto || '').split(/\n\s*\n/).filter(Boolean)
+                .map((par) => `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(par))}</p>`).join('');
+            const imagemHtml = screen.imagem
+                ? `<div class="me-escada-detail-media">${imagemEcraHtml(screen.imagem, 'me-escada-detail-image', screen.rotulo || screen.titulo || '', screen.imagem_legenda)}</div>`
+                : '<div class="me-escada-detail-media"></div>';
+            const pseudoPonto = { id: 'formula', exercicio: screen.exercicio };
+            return `
+                <div class="mascot-overlay-card me-mascot-inline me-gancho-card">
+                    ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
+                    <div class="me-escada-detail me-fi-cartao">
+                        <div class="me-escada-detail-columns">
+                            ${imagemHtml}
+                            <div class="me-escada-detail-divider" aria-hidden="true"></div>
+                            <div class="me-escada-detail-content">
+                                ${screen.rotulo ? `<h4 class="me-escada-detail-title">${escapeHtml(screen.rotulo)}</h4>` : ''}
+                                ${paragrafosHtml}
+                                <div class="me-caixa-formula me-fi-caixa">
+                                    <div class="me-fi-formula" role="group" aria-label="Fórmula">${tokensHtml}</div>
+                                    <div class="me-fi-explicacao" id="meFormulaExplicacao" aria-live="polite">
+                                        <p class="me-fi-dica">${escapeHtml(screen.instrucao || 'Clica numa bolinha para veres o que significa.')}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="meDiagramaExercicio">${this.exercicioPontoHtml(screen, pseudoPonto)}</div>
+                </div>
+            `;
+        }
+
+        bindFormulaInterativa(screen) {
+            const explicacaoEl = this.root.querySelector('#meFormulaExplicacao');
+            const bolinhas = this.root.querySelectorAll('[data-fi-id]');
+            bolinhas.forEach((bolinha) => {
+                bolinha.addEventListener('click', () => {
+                    const variavel = (screen.variaveis || {})[bolinha.dataset.fiId];
+                    if (!variavel || !explicacaoEl) return;
+                    bolinhas.forEach((b) => {
+                        const ativa = b === bolinha;
+                        b.classList.toggle('is-active', ativa);
+                        b.setAttribute('aria-pressed', ativa ? 'true' : 'false');
+                    });
+                    const paragrafos = String(variavel.explicacao || '').split(/\n\s*\n/).filter(Boolean)
+                        .map((par) => `<p class="me-caixa-formula-significado">${boldMarkdown(escapeHtml(par))}</p>`).join('');
+                    explicacaoEl.innerHTML = `
+                        <p class="me-caixa-formula-expressao">${escapeHtml(variavel.rotulo || '')}</p>
+                        ${paragrafos}
+                    `;
+                });
+            });
+            const exercicioEl = this.root.querySelector('#meDiagramaExercicio');
+            if (exercicioEl) this.bindExercicio(exercicioEl, screen, { id: 'formula', exercicio: screen.exercicio });
+        }
+
         renderDiagrama(screen) {
             const pontos = screen.pontos || [];
             const isEscada = screen.layout === 'escada';
@@ -1854,8 +2282,9 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                         : isMapa
                             ? this.renderDiagramaMapa(screen, pontos)
                             : `<div class="me-diagrama-chips">${pontos.map((ponto, i) => `
+                        ${(screen.chips_setas && i > 0) ? '<span class="me-diagrama-seta" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>' : ''}
                         <button type="button" class="me-diagrama-chip ${(screen.cartao_estilo && i === 0) ? 'is-active' : ''}" data-ponto-index="${i}">
-                            <span class="me-diagrama-chip-num">${i + 1}</span>
+                            ${screen.chips_setas ? '' : `<span class="me-diagrama-chip-num">${i + 1}</span>`}
                             <span>${escapeHtml(ponto.label)}</span>
                         </button>
                     `).join('')}</div>`;
@@ -1919,6 +2348,9 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // Na timeline, a dica "Clica em cada marco..." passa a aparecer
             // por baixo da linha temporal (junto ao início da explicação),
             // em vez de por cima como nos outros formatos de diagrama.
+            // screen.sem_chips: ecrã com um só ponto, sem fila de chips nem a
+            // dica "Clica num ponto" — o cartão do ponto aparece logo aberto
+            // (precisa de screen.cartao_estilo).
             const instrucaoHtml = `<p class="plant-diagram-hint">${escapeHtml(screen.instrucao || 'Clica num ponto para veres a explicação.')}</p>`;
 
             // texto_principal (Física) — explicação corrida que acompanha o
@@ -1939,13 +2371,16 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     ? `<video class="me-video-chroma-source" data-chroma-key="white" src="/static/${encodeURIComponent(screen.video)}" autoplay loop muted playsinline style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></video>
                        <canvas class="card-visual me-video-chroma-canvas"></canvas>`
                     : imagemEcraHtml(screen.imagem, 'card-visual', screen.titulo || '', screen.imagem_legenda))}
-                ${isTimeline ? '' : instrucaoHtml}
-                ${pontosHtml}
+                ${(isTimeline || screen.sem_chips) ? '' : instrucaoHtml}
+                ${screen.sem_chips ? '' : pontosHtml}
                 ${isTimeline ? instrucaoHtml : ''}
                 ${explicacaoHtml}
                 ${this.tabelasHtml(screen.tabelas)}
                 ${this.escadaConversaoHtml(screen.escada_conversao)}
                 ${this.caixaFormulaHtml(screen.caixa_formula)}
+                ${pontos.some((ponto) => ponto.exercicio)
+                    ? `<div id="meDiagramaExercicio">${screen.cartao_estilo ? this.exercicioPontoHtml(screen, primeiroPonto) : ''}</div>`
+                    : ''}
             `;
 
             // "Queres saber mais?" opcional, dentro do mesmo painel branco
@@ -2081,6 +2516,32 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // reaproveitar tal e qual .me-escada-detail (o painel creme dos
             // pontos de um diagrama, ver renderDiagrama), que aqui ficaria
             // com a imagem e o texto na mesma cor, sem os separar.
+            // screen.curiosidade troca o cartão por o mesmo formato do
+            // painel de um ponto de diagrama (ver pontoDetailInnerHtml):
+            // imagem à esquerda, texto à direita e, por baixo do texto, um
+            // 💡 que só mostra a curiosidade depois de se clicar.
+            if (screen.cartao_estilo && screen.curiosidade) {
+                const paragrafosHtml = texto.split(/\n\s*\n/).filter(Boolean)
+                    .map((p) => `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(p))}</p>`).join('');
+                const imagemHtml = imagemEcraHtml(screen.imagem, 'me-escada-detail-image', screen.titulo || '', screen.imagem_legenda);
+                const conteudoHtml = `
+                    ${screen.titulo ? `<h4 class="me-escada-detail-title">${escapeHtml(screen.titulo)}</h4>` : ''}
+                    ${paragrafosHtml}
+                    <div class="me-curiosidade-baixo">${this.curiosidadeToggleHtml(screen)}</div>
+                    ${this.curiosidadeRevealHtml(screen)}
+                `;
+                return `
+                    <div class="me-escada-detail me-analogia-detalhe me-gancho-card">
+                        ${imagemHtml
+                            ? `<div class="me-escada-detail-columns">
+                                   <div class="me-escada-detail-media">${imagemHtml}</div>
+                                   <div class="me-escada-detail-divider" aria-hidden="true"></div>
+                                   <div class="me-escada-detail-content">${conteudoHtml}</div>
+                               </div>`
+                            : conteudoHtml}
+                    </div>
+                `;
+            }
             if (screen.cartao_estilo) {
                 const paragrafosHtml = texto.split(/\n\s*\n/).filter(Boolean)
                     .map((p) => `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(p))}</p>`).join('');
@@ -2097,6 +2558,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 // bloco continuam a ganhar por virem depois no CSS.
                 return `
                     <div class="me-analogia-cartao me-gancho-card">
+                        ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
                         ${imagemHtml}
                         <div class="me-analogia-texto-bloco">${paragrafosHtml}</div>
                         ${this.aprofundarHtml(screen.aprofundar)}
@@ -2124,9 +2586,14 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // mas antes algo como uma analogia/resumo que merece o seu
             // próprio nome — sem precisar de um screen.titulo à parte.
             const rotulo = aprofundar.rotulo ? escapeHtml(aprofundar.rotulo) : `Queres saber mais? — ${escapeHtml(aprofundar.titulo)}`;
+            // aprofundar.icone: lâmpada à frente do rótulo em vez da setinha ▸
+            // (ver .me-saber-mais--icone no CSS).
+            const iconeHtml = aprofundar.icone
+                ? '<svg class="me-saber-mais-icone" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>'
+                : '';
             return `
-                <details class="did-you-know me-saber-mais">
-                    <summary>${rotulo}</summary>
+                <details class="did-you-know me-saber-mais${aprofundar.icone ? ' me-saber-mais--icone' : ''}">
+                    <summary>${iconeHtml}${rotulo}</summary>
                     <div class="did-you-know-body">
                         <div class="did-you-know-text">${textToHtml(aprofundar.texto)}</div>
                     </div>
@@ -2220,9 +2687,23 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 <div class="me-simulacao-cartao mascot-overlay-card me-mascot-inline me-gancho-card" id="meSimulacao-${escapeHtml(screen.id || '')}" data-simulacao-id="${escapeHtml(screen.id || '')}">
                     ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
                     ${screen.instrucao ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.instrucao)}</p>` : ''}
-                    <div class="me-simulacao-controlos">${controlosHtml}</div>
-                    <div class="me-simulacao-saidas">${saidasHtml}</div>
-                    ${screen.pergunta_final ? `
+                    ${this.visualSimulacaoHtml(screen)}
+                    ${screen.painel_colunas ? `
+                        <div class="me-escada-detail me-sim-painel">
+                            <div class="me-escada-detail-columns">
+                                <div class="me-sim-painel-controlos"><div class="me-simulacao-controlos">${controlosHtml}</div></div>
+                                <div class="me-escada-detail-divider" aria-hidden="true"></div>
+                                <div class="me-sim-painel-saidas"><div class="me-simulacao-saidas">${saidasHtml}</div></div>
+                            </div>
+                            ${screen.curiosidade ? `<div class="me-sim-lampada">${this.curiosidadeToggleHtml(screen)}</div>` : ''}
+                        </div>
+                        ${screen.curiosidade ? this.curiosidadeRevealHtml(screen) : ''}
+                    ` : `
+                        <div class="me-simulacao-controlos">${controlosHtml}</div>
+                        <div class="me-simulacao-saidas">${saidasHtml}</div>
+                    `}
+                    ${screen.desafio ? `<div class="me-simulacao-desafio" id="meDesafio-${escapeHtml(screen.id || '')}">${this.exercicioPontoHtml(screen, { id: 'desafio', exercicio: { ...screen.desafio, titulo: screen.desafio.titulo || 'Desafio', icone: 'alvo' } })}</div>` : ''}
+                    ${!screen.desafio && screen.pergunta_final ? `
                         <details class="did-you-know me-laboratorio-bloco">
                             <summary>Pergunta final</summary>
                             <div class="did-you-know-body"><p>${escapeHtml(screen.pergunta_final)}</p></div>
@@ -2230,6 +2711,130 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     ` : ''}
                 </div>
             `;
+        }
+
+        /** Desenho que acompanha uma simulação e se redesenha a cada
+         *  alteração dos controlos (screen.visual). Por agora só existe
+         *  'trabalho_caixa': uma caixa num plano horizontal com o peso (P),
+         *  a reação normal (N), uma força F inclinada de α em relação ao
+         *  deslocamento d, usando os controlos F (N), d (m) e alfa (graus).
+         *  O SVG é criado aqui vazio e preenchido por
+         *  atualizarVisualSimulacao. */
+        visualSimulacaoHtml(screen) {
+            if (screen.visual !== 'trabalho_caixa') return '';
+            const seta = (id, cor) => `<marker id="meTc-${id}" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="15" markerHeight="15" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="${cor}"/></marker>`;
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-tc" viewBox="0 40 640 300" role="img" aria-label="Caixa num plano horizontal com o peso, a reação normal, a força F e o deslocamento d">
+                        <defs>
+                            ${seta('F', '#e8590c')}${seta('N', '#2f9e44')}${seta('P', '#c92a2a')}${seta('d', 'currentColor')}
+                        </defs>
+                        <text class="me-tc-w" x="320" y="66" text-anchor="middle"></text>
+                        <line class="me-tc-chao" x1="0" y1="250" x2="640" y2="250"/>
+                        <g class="me-tc-hachura"></g>
+                        <rect class="me-tc-fantasma" x="110" y="180" width="100" height="70" rx="6"/>
+                        <rect class="me-tc-caixa" x="110" y="180" width="100" height="70" rx="6"/>
+                        <g class="me-tc-N"><line stroke="#2f9e44" stroke-width="3.5" marker-end="url(#meTc-N)"/><text fill="#2f9e44">N</text></g>
+                        <g class="me-tc-P"><line stroke="#c92a2a" stroke-width="3.5" marker-end="url(#meTc-P)"/><text fill="#c92a2a">P</text></g>
+                        <circle class="me-tc-cm" r="4.5" fill="currentColor"/>
+                        <g class="me-tc-F">
+                            <line class="me-tc-fy" stroke-width="1.5" stroke-dasharray="4 4"/>
+                            <line class="me-tc-fx" stroke-width="5" stroke-dasharray="1 0" opacity=".55"/>
+                            <path class="me-tc-arco" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <text class="me-tc-alfa" fill="currentColor">α</text>
+                            <line class="me-tc-fseta" stroke="#e8590c" stroke-width="3.5" marker-end="url(#meTc-F)"/>
+                            <text class="me-tc-flabel" fill="#e8590c">F</text>
+                        </g>
+                        <g class="me-tc-d">
+                            <line class="me-tc-dlinha" stroke="currentColor" stroke-width="2.5" marker-end="url(#meTc-d)"/>
+                            <text class="me-tc-dlabel" fill="currentColor" text-anchor="middle"></text>
+                        </g>
+                    </svg>
+                    <figcaption class="me-sim-visual-legenda">
+                        <span class="me-tc-chave me-tc-chave--F">F</span> força aplicada
+                        <span class="me-tc-chave me-tc-chave--fx">F cos α</span> componente que realiza trabalho
+                        <span class="me-tc-chave me-tc-chave--N">N</span> e <span class="me-tc-chave me-tc-chave--P">P</span> são perpendiculares a d: trabalho nulo
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        atualizarVisualSimulacao(screen, container, valores) {
+            if (screen.visual !== 'trabalho_caixa') return;
+            const svg = container.querySelector('.me-tc');
+            if (!svg) return;
+            const set = (el, attrs) => { if (el) Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v)); };
+            const q = (sel) => svg.querySelector(sel);
+            const F = Number(valores.F) || 0;
+            const d = Number(valores.d) || 0;
+            const alfa = Number(valores.alfa) || 0;
+            const rad = alfa * Math.PI / 180;
+            const cosA = Math.cos(rad);
+            const sinA = Math.sin(rad);
+            const x0 = 110; // aresta esquerda da caixa no início
+            const xe = x0 + d * 14;
+            const cx = xe + 50;
+            const cy = 215;
+            const L = F * 1.3;
+            const r1 = (n) => Math.round(n * 10) / 10;
+
+            set(q('.me-tc-caixa'), { x: r1(xe) });
+
+            // Fundo hachurado do chão (só uma vez)
+            const hach = q('.me-tc-hachura');
+            if (hach && !hach.childNodes.length) {
+                let traços = '';
+                for (let x = 0; x <= 630; x += 16) traços += `<line x1="${x + 10}" y1="250" x2="${x}" y2="262"/>`;
+                hach.innerHTML = traços;
+            }
+
+            // N (para cima) e P (para baixo) partem do centro de massa da
+            // caixa (o centro do retângulo, onde também está a bolinha).
+            const gN = q('.me-tc-N');
+            set(gN.querySelector('line'), { x1: r1(cx), y1: cy, x2: r1(cx), y2: cy - 62 });
+            set(gN.querySelector('text'), { x: r1(cx - 24), y: cy - 62 });
+            const gP = q('.me-tc-P');
+            set(gP.querySelector('line'), { x1: r1(cx), y1: cy, x2: r1(cx), y2: cy + 56 });
+            set(gP.querySelector('text'), { x: r1(cx + 12), y: cy + 74 });
+            set(q('.me-tc-cm'), { cx: r1(cx), cy });
+
+            // F e as suas componentes
+            const gF = q('.me-tc-F');
+            gF.style.display = F < 1 ? 'none' : '';
+            const ex = cx + L * cosA;
+            const ey = cy - L * sinA;
+            const corW = Math.abs(cosA * F * d) < 0.05 || Math.abs(cosA) < 0.005 ? '#868e96' : (cosA > 0 ? '#1f8a5b' : '#c92a2a');
+            set(q('.me-tc-fseta'), { x1: r1(cx), y1: cy, x2: r1(ex), y2: r1(ey) });
+            set(q('.me-tc-fx'), { x1: r1(cx), y1: cy, x2: r1(ex), y2: cy, stroke: corW });
+            set(q('.me-tc-fy'), { x1: r1(ex), y1: cy, x2: r1(ex), y2: r1(ey), stroke: '#868e96' });
+            set(q('.me-tc-flabel'), { x: r1(ex + 12 * cosA + (cosA >= 0 ? 4 : -14)), y: r1(ey - 8 * sinA - 4) });
+            // Raio do arco: até 90° tem de ficar dentro do triângulo formado por F,
+            // F cos α e F sen α (não pode passar da linha tracejada vertical);
+            // depois de 90° o triângulo passa para o outro lado e basta
+            // caber ao longo de F.
+            const rArco = alfa < 90
+                ? Math.max(8, Math.min(38, L * 0.4, L * cosA * 0.85))
+                : Math.min(38, Math.max(14, L * 0.5));
+            set(q('.me-tc-arco'), {
+                d: `M ${r1(cx + rArco)} ${cy} A ${r1(rArco)} ${r1(rArco)} 0 0 0 ${r1(cx + rArco * cosA)} ${r1(cy - rArco * sinA)}`,
+                display: alfa < 3 || Math.abs(alfa - 90) < 0.5 ? 'none' : ''
+            });
+            const meio = rad / 2;
+            set(q('.me-tc-alfa'), { x: r1(cx + (rArco + 12) * Math.cos(meio) - 4), y: r1(cy - (rArco + 12) * Math.sin(meio) + 4), display: alfa < 8 || Math.abs(alfa - 90) < 0.5 || F < 1 ? 'none' : '' });
+
+            // Deslocamento: seta por baixo do chão, do centro inicial ao final
+            const gd = q('.me-tc-d');
+            gd.style.display = d < 0.25 ? 'none' : '';
+            set(q('.me-tc-dlinha'), { x1: x0 + 50, y1: 305, x2: r1(cx), y2: 305 });
+            const dl = q('.me-tc-dlabel');
+            set(dl, { x: r1((x0 + 50 + cx) / 2), y: 324 });
+            dl.textContent = `d = ${comVirgula(d)} m`;
+
+            // Trabalho no canto de cima
+            const W = F * d * cosA;
+            const w = q('.me-tc-w');
+            w.textContent = `W = F d cos α = ${comVirgula(W.toFixed(1))} J`;
+            w.setAttribute('fill', corW);
         }
 
         /** Tabela periódica clicável, reutilizável como controlo de uma
@@ -2300,6 +2905,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 // por elemento químico), disponível nas fórmulas como `dados`
                 // em vez de repetida dentro de cada fórmula.
                 const escopo = { ...valores, dados: screen.dados || {}, num: formatarNumero };
+                this.atualizarVisualSimulacao(screen, container, valores);
                 saidas.forEach((saida, i) => {
                     const span = container.querySelector(`[data-simulacao-saida="${i}"]`);
                     if (!span) return;
@@ -2527,11 +3133,20 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 this.bindAtencaoToggle(explicacaoEl);
                 this.bindInquerito(explicacaoEl, diagramScreen.pontos[0]);
             }
+            const exercicioInicialEl = this.root.querySelector('#meDiagramaExercicio');
+            if (exercicioInicialEl) {
+                this.bindExercicio(exercicioInicialEl, diagramScreen, diagramScreen.pontos[0]);
+            }
             this.root.querySelectorAll('[data-ponto-index]').forEach((chip) => {
                 chip.addEventListener('click', () => {
                     const ponto = diagramScreen.pontos[Number(chip.dataset.pontoIndex)];
                     this.root.querySelectorAll(activeSelector).forEach((c) => c.classList.remove('is-active'));
                     chip.classList.add('is-active');
+                    const exercicioEl = this.root.querySelector('#meDiagramaExercicio');
+                    if (exercicioEl) {
+                        this.bindExercicio(exercicioEl, diagramScreen, ponto);
+                        exercicioEl.innerHTML = this.exercicioPontoHtml(diagramScreen, ponto);
+                    }
                     if (useCardDetail) {
                         if (explicacaoEl) {
                             explicacaoEl.hidden = false;
@@ -2631,12 +3246,29 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 this.bindDiagramaChips(screen);
             }
 
+            if (screen.tipo === 'formula_interativa') {
+                this.bindFormulaInterativa(screen);
+            }
+
+            if (screen.tipo === 'acordeao') {
+                this.bindAcordeao();
+            }
+
             if (screen.tipo === 'simulacao') {
                 this.bindSimulacao(screen);
+                if (screen.curiosidade) this.bindCuriosidadeToggle(this.root.querySelector('.me-simulacao-cartao') || this.root);
+                const desafioEl = screen.desafio && this.root.querySelector(`#meDesafio-${screen.id || ''}`);
+                if (desafioEl) {
+                    this.bindExercicio(desafioEl, screen, { id: 'desafio', exercicio: { ...screen.desafio, titulo: screen.desafio.titulo || 'Desafio', icone: 'alvo' } });
+                }
             }
 
             // Também no pano de fundo de uma micro-verificação (ver abaixo).
             this.bindEscadaConversao();
+
+            if (screen.tipo === 'analogia' && screen.curiosidade) {
+                this.bindCuriosidadeToggle(this.root);
+            }
 
             // Quando o ecrã de baixo é uma micro-verificação com pano de
             // fundo (o último diagrama/gancho, ver renderMicroVerificacao e

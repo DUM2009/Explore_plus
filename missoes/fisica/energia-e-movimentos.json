@@ -3,7 +3,7 @@
   "titulo": "Energia e movimentos",
   "disciplina": "fisica",
   "ano": 10,
-  "imagem": "f10_montanha_russa.png",
+  "imagem": "Energia e movimentos.png",
   "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M13 2 3 14h7l-1 8 10-12h-7z\"/></svg>", "nome": "Mestre da Energia" },
   "secoes": [
     {
@@ -22,19 +22,68 @@
           "tipo": "diagrama_interativo",
           "titulo": "Sistema, fronteira e vizinhança",
           "imagem": "f10_sistema_fronteira.png",
-          "texto_principal": "Um sistema é o corpo ou conjunto de corpos que escolhemos estudar. Tudo o resto é a vizinhança. A fronteira separa os dois, e pode ser real ou imaginária. A energia de um sistema pode mudar de forma dentro dele ou ser transferida entre o sistema e a vizinhança.",
+          "cartao_estilo": true,
+          "chips_setas": true,
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "sistema", "label": "Sistema", "explicacao": "O que escolhemos estudar. Aqui, o carrinho com os passageiros." },
-            { "id": "fronteira", "label": "Fronteira", "explicacao": "A linha que separa o sistema do resto. Neste caso é imaginária: contorna o carrinho." },
-            { "id": "vizinhanca", "label": "Vizinhança", "explicacao": "Tudo o que está fora da fronteira e pode interagir com o sistema: a Terra, os carris, o ar." },
-            { "id": "centro-massa", "label": "Centro de massa", "explicacao": "Ponto que representa a posição média da massa do sistema. Quando o sistema só se desloca (sem rodar nem deformar-se), podemos estudá-lo como se toda a massa estivesse concentrada nesse ponto. É o modelo da partícula material." },
-            { "id": "sistema-mecanico", "label": "Sistema mecânico", "explicacao": "Sistema em que só interessa a energia associada ao movimento e à posição. As alterações internas (temperatura, deformações) são ignoradas." }
-          ],
-          "caixa_formula": [
-            { "expressao": "Ec = ½ m v²", "significado": "Energia cinética: energia associada ao movimento.", "unidades": "Ec em joule (J), m em quilograma (kg), v em metro por segundo (m s⁻¹)." },
-            { "expressao": "Em = Ec + Ep", "significado": "Energia mecânica: soma da energia cinética com a energia potencial.", "unidades": "Unidade: J." },
-            { "expressao": "E = Em + Ei", "significado": "A energia total de um sistema inclui a energia mecânica (escala macroscópica) e a energia interna (escala microscópica, associada ao movimento e às interações das partículas que o constituem).", "unidades": "" }
+            { "id": "sistema", "label": "Sistema", "imagem": "f10_sistema.png", "explicacao": "O que escolhemos estudar. Aqui, o carrinho com os passageiros.", "curiosidade_sem_titulo": true, "curiosidade": "**Quando podemos usar o modelo da partícula material**\n\nSó quando o corpo se desloca sem rodar e sem se deformar, ou quando essas alterações não interessam para o problema. Um carro numa estrada reta pode ser uma partícula. Uma bola a rodar sobre si própria, se quisermos estudar a rotação, não pode." },
+            { "id": "fronteira", "label": "Fronteira", "imagem": "f10_fronteira.png", "explicacao": "A linha que separa o sistema do resto. Poser ser real ou imaginária. Neste caso é imaginária: contorna o carrinho." },
+            { "id": "vizinhanca", "label": "Vizinhança", "imagem": "f10_vizinhanca.png", "explicacao": "Tudo o que está fora da fronteira e pode interagir com o sistema: a estrada, as árvores, o ar, a Terra, etc." }
+          ]
+        },
+        {
+          "tipo": "analogia",
+          "titulo": "Mas afinal o que é a energia?",
+          "cartao_estilo": true,
+          "texto": "**A energia é como dinheiro numa conta.** Pensa na energia de um sistema como o saldo de uma conta bancária. O dinheiro pode estar em várias formas dentro da conta (à ordem, a prazo), tal como a energia pode estar em forma cinética ou potencial dentro do sistema.",
+          "imagem": "f10_energia_conta.png",
+          "imagem_legenda": "Ilustração de uma conta bancária com o saldo dividido em duas formas, à ordem e a prazo, a representar a energia cinética e potencial de um sistema.",
+          "curiosidade_sem_titulo": true,
+          "curiosidade": "E tal como o dinheiro pode entrar ou sair da conta de três maneiras: por transferência, por depósito ou por levantamento.\n\nNa Física, as três maneiras de transferir energia entre o sistema e a vizinhança são o **trabalho (W)**, o **calor (Q)** e a **radiação (R)**.\n\nO dinheiro não aparece nem desaparece do nada: se o saldo mudou, houve uma transferência. Com a energia é igual.\n\nMas veremos isso na próxima secção..."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Tipos de energia",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "pontos": [
+            { "id": "energia-cinetica", "label": "Energia cinética", "imagem": "f10_energia_cinetica.png", "curiosidade_sem_titulo": true, "curiosidade": "**Curiosidade: o joule e James Prescott Joule**\n\nA unidade de energia tem o nome do físico inglês James Prescott Joule (1818–1889). Numa experiência famosa, deixou cair massas que faziam rodar pás dentro de um recipiente com água. Mostrou que o trabalho realizado sobre a água a aquecia, sempre na mesma proporção. Foi uma das provas de que calor e trabalho são duas formas de transferir a mesma coisa: energia.", "explicacao": "Energia associada ao movimento de um corpo. Depende da massa e do quadrado da velocidade: se a velocidade duplicar, a energia cinética fica quatro vezes maior. Aqui, o carrinho a descer em grande velocidade tem muita energia cinética.", "caixa_formula": [{ "expressao": "Ec = ½ m v²", "unidades": ["**Ec** em joule (**J**)", "**m** em quilograma (**kg**)", "**v** em metro por segundo (**m s⁻¹**)"] }], "exercicio": {"enunciado": "O carro tem massa **1 200 000 g** e desloca-se com uma velocidade de **25 m s⁻¹**. Calcula a sua energia cinética.", "campos": [{"rotulo": "Ec", "unidade": "J", "correta": 375000}], "resolucao": ["A energia cinética calcula-se com a massa em quilogramas, por isso converte primeiro: 1 kg = 1000 g, logo m = 1 200 000 g ÷ 1000 = 1200 kg.", "Ec = ½ m v²", "Ec = ½ × 1200 × 25²", "Ec = 600 × 625 = 375 000 J"], "resposta": "Ec = 3,75 × 10⁵ J"} }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Tipos de energia",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "pontos": [
+            { "id": "energia-potencial", "label": "Energia potencial", "imagem": "f10_energia_potencial.png", "explicacao": "Energia associada à posição relativa de corpos que interagem. No 10.º ano, a mais importante é a energia potencial gravítica (sistema corpo + Terra): quanto mais alto está o carrinho, maior é a sua energia potencial. Também existe energia potencial elástica e elétrica.", "caixa_formula": [{ "expressao": "Ep = m g h", "unidades": ["**Ep** em joule (**J**)", "**m** em quilograma (**kg**)", "**g** em metro por segundo ao quadrado (**m s⁻²**)", "**h** em metro (**m**)"] }], "exercicio": {"enunciado": "Um carrinho de montanha-russa, de massa **500 kg**, está parado no ponto mais alto, a **40 m** do solo. Calcula a sua energia potencial gravítica em relação ao solo. Considera g = 10 m s⁻².", "campos": [{"rotulo": "Ep", "unidade": "J", "correta": 200000}], "resolucao": ["Ep = m g h", "Ep = 500 × 10 × 40 = 200 000 J"], "resposta": "Ep = 2,0 × 10⁵ J"} }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Tipos de energia",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "pontos": [
+            { "id": "energia-mecanica", "label": "Energia mecânica", "imagem": "f10_energia_mecanica.png", "explicacao": "Soma da energia cinética com a energia potencial: Em = Ec + Ep. É a energia que depende do movimento e da posição do sistema como um todo, à escala macroscópica.", "caixa_formula": [{ "expressao": "Em = Ec + Ep", "unidades": ["**Em** em joule (**J**)", "**Ec** em joule (**J**)", "**Ep** em joule (**J**)"] }], "exercicio": {"enunciado": "Num certo instante, o carrinho de **500 kg** está a **20 m** do solo e move-se com uma velocidade de **10 m s⁻¹**. Calcula a sua energia mecânica em relação ao solo. Considera g = 10 m s⁻².", "campos": [{"rotulo": "Em", "unidade": "J", "correta": 125000}], "resolucao": ["Energia cinética: Ec = ½ × 500 × 10² = 25 000 J", "Energia potencial: Ep = 500 × 10 × 20 = 100 000 J", "Em = Ec + Ep = 25 000 + 100 000 = 125 000 J"], "resposta": "Em = 1,25 × 10⁵ J"} }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Tipos de energia",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "pontos": [
+            { "id": "energia-interna", "label": "Energia interna", "imagem": "f10_energia_interna.png", "explicacao": "Soma das energias cinéticas e potenciais de todas as partículas (átomos, moléculas) que constituem o sistema. Não se vê a olho nu, mas manifesta-se, por exemplo, na temperatura. Quando um carro trava, a energia cinética não desaparece: transforma-se em energia interna dos travões, que aquecem.", "caixa_formula": [{ "expressao": "Ei = ΣEc + ΣEp", "unidades": ["**Ei** em joule (**J**)", "**ΣEc** (soma das energias cinéticas das partículas) em joule (**J**)", "**ΣEp** (soma das energias potenciais das partículas) em joule (**J**)"] }], "exercicio": {"enunciado": "Uma panela com água é aquecida no fogão. A água fica mais quente, mas não se desloca nem muda de altura. Que energia do sistema (a água) aumentou? Justifica.", "campos": [{"rotulo": "Aumentou a", "aceites": ["interna"]}], "resolucao": ["A energia mecânica não mudou: a água não ganhou velocidade nem altura, por isso a energia cinética e a energia potencial da água, como um todo, ficaram iguais.", "O que aumentou foi a energia interna: ao aquecer, as partículas da água passam a agitar-se mais, e a soma das suas energias cinéticas e potenciais aumenta. Manifesta-se no aumento da temperatura."], "resposta": "aumentou a energia interna da água."} }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "titulo": "Tipos de energia",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "pontos": [
+            { "id": "energia-total", "label": "Energia total", "imagem": "f10_energia_total.png", "explicacao": "A energia total de um sistema inclui a energia mecânica (escala macroscópica) e a energia interna (escala microscópica): E = Em + Ei.", "caixa_formula": [{ "expressao": "E = Em + Ei", "unidades": ["**E** em joule (**J**)", "**Em** em joule (**J**)", "**Ei** em joule (**J**)"] }], "exercicio": {"enunciado": "Um sistema tem energia mecânica de **800 J** e energia interna de **300 J**. Calcula a sua energia total. Depois, supõe que não há trocas de energia com a vizinhança e que, por causa do atrito, a energia mecânica desce para **500 J**: qual passa a ser a energia interna?", "campos": [{"rotulo": "Energia total", "unidade": "J", "correta": 1100}, {"rotulo": "Energia interna depois", "unidade": "J", "correta": 600}], "resolucao": ["E = Em + Ei = 800 + 300 = 1100 J", "Sem trocas com a vizinhança, a energia total mantém-se: 1100 J.", "Ei = E − Em = 1100 − 500 = 600 J"], "resposta": "E = 1100 J (1,1 × 10³ J); a energia interna passa a 600 J."} }
           ]
         },
         {
@@ -54,15 +103,6 @@
           "mascote_feedback_errado": "A energia cinética é proporcional ao quadrado da velocidade. Se v passa para 2v, Ec passa para (2)² = 4 vezes o valor inicial."
         },
         {
-          "tipo": "analogia",
-          "texto": "**A energia é como dinheiro numa conta.** Pensa na energia de um sistema como o saldo de uma conta bancária. O dinheiro pode estar em várias formas dentro da conta (à ordem, a prazo), tal como a energia pode estar em forma cinética ou potencial dentro do sistema. E pode entrar ou sair da conta de três maneiras: por transferência, por depósito ou por levantamento. Na Física, as três maneiras de transferir energia entre o sistema e a vizinhança são o trabalho (W), o calor (Q) e a radiação (R). O dinheiro não aparece nem desaparece do nada: se o saldo mudou, houve uma transferência. Com a energia é igual."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Energia potencial, energia interna e transferências de energia",
-          "texto": "**Energia potencial**\n\nEnergia potencial é a energia associada à posição relativa de corpos que interagem. O exemplo mais importante no 10.º ano é a energia potencial gravítica (sistema corpo + Terra), que vais estudar na secção seguinte. Também existe energia potencial elástica (numa mola comprimida) e elétrica.\n\n**Energia interna**\n\nA energia interna é a soma das energias cinéticas e potenciais de todas as partículas (átomos, moléculas) de um sistema. Não se vê a olho nu, mas manifesta-se, por exemplo, na temperatura. Quando um carro trava, a energia cinética não desaparece: transforma-se em energia interna dos travões, que aquecem.\n\n**Quando podemos usar o modelo da partícula material**\n\nSó quando o corpo se desloca sem rodar e sem se deformar, ou quando essas alterações não interessam para o problema. Um carro numa estrada reta pode ser uma partícula. Uma bola a rodar sobre si própria, se quisermos estudar a rotação, não pode.\n\n**Três formas de transferir energia**\n\nTrabalho (W): transferência associada à ação de forças, com deslocamento. Calor (Q): transferência entre sistemas a temperaturas diferentes, por contacto. Radiação (R): transferência por ondas eletromagnéticas; pode acontecer no vazio."
-        },
-        {
           "tipo": "quiz_seccao",
           "perguntas": [
             {
@@ -71,6 +111,20 @@
               "correta": 1,
               "mascote_feedback_certo": "Exato. A vizinhança é tudo o que fica fora da fronteira.",
               "mascote_feedback_errado": "A vizinhança é tudo o que fica fora da fronteira. A fronteira é a linha de separação e o ponto onde se considera concentrada a massa é o centro de massa."
+            },
+            {
+              "pergunta": "Um carro com 1000 kg desloca-se a 20 m/s. Qual é a sua energia cinética?",
+              "opcoes": ["1,0 × 10⁴ J", "2,0 × 10⁴ J", "2,0 × 10⁵ J", "4,0 × 10⁵ J"],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Ec = ½ × 1000 × 20² = ½ × 1000 × 400 = 2,0 × 10⁵ J.",
+              "mascote_feedback_errado": "Não te esqueças de elevar a velocidade ao quadrado: Ec = ½ × 1000 × 20² = 500 × 400 = 2,0 × 10⁵ J."
+            },
+            {
+              "pergunta": "Se a velocidade de um corpo duplicar, a sua energia cinética...",
+              "opcoes": ["também duplica.", "fica quatro vezes maior.", "fica reduzida a metade.", "mantém-se, porque a massa não mudou."],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo. Como a velocidade está ao quadrado, 2² = 4. É por isso que um choque a 100 km/h é muito mais grave do que a 50 km/h: tem quatro vezes mais energia cinética.",
+              "mascote_feedback_errado": "A energia cinética é proporcional ao quadrado da velocidade. Se v passa para 2v, Ec passa para (2)² = 4 vezes o valor inicial."
             },
             {
               "pergunta": "Uma bola de 0,5 kg tem energia cinética de 16 J. Qual é o módulo da sua velocidade?",
@@ -103,36 +157,108 @@
           "mascote_texto": "Atenção: em Física, segurar um saco pesado parado não é trabalho. Cansa, mas não há deslocamento."
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "formula_interativa",
           "titulo": "Trabalho de uma força constante",
-          "imagem": "f10_trabalho_angulo.png",
-          "texto_principal": "O trabalho de uma força constante mede a energia transferida por essa força quando o ponto de aplicação se desloca. Só a componente da força na direção do deslocamento realiza trabalho. A componente perpendicular ao deslocamento não realiza trabalho.",
-          "instrucao": "Clica em cada ponto para veres a explicação.",
-          "pontos": [
-            { "id": "forca", "label": "Força F", "explicacao": "A força aplicada, com intensidade F." },
-            { "id": "deslocamento", "label": "Deslocamento d", "explicacao": "O vetor que une a posição inicial à posição final. No 10.º ano, trabalho só com deslocamentos retilíneos." },
-            { "id": "angulo", "label": "Ângulo α", "explicacao": "O ângulo entre a força e o deslocamento. É ele que decide quanta força é aproveitada." },
-            { "id": "componente-eficaz", "label": "Componente eficaz (F cos α)", "explicacao": "A componente da força paralela ao deslocamento. É a única que transfere energia." },
-            { "id": "componente-perpendicular", "label": "Componente perpendicular (F sen α)", "explicacao": "Não realiza trabalho. No caso da mala, só alivia o peso sobre as rodas." }
+          "rotulo": "Trabalho (W)",
+          "imagem": "f10_trabalho_forca_constante.png",
+          "texto": "Uma força é uma interação entre dois corpos, capaz de alterar o movimento de um corpo ou de o deformar. É uma grandeza vetorial: tem intensidade (que se mede em newton, N), direção e sentido.\n\nQuando uma força atua sobre um corpo que se desloca, pode transferir-lhe energia. Se o ponto de aplicação não se desloca, não há trabalho: segurar um saco pesado parado cansa, mas não é trabalho.\n\nO trabalho de uma força constante mede a energia transferida por essa força quando o ponto de aplicação se desloca. Só a componente da força na direção do deslocamento realiza trabalho. A componente perpendicular ao deslocamento não realiza trabalho.",
+          "instrucao": "Clica numa bolinha por baixo da fórmula para veres o que significa cada letra.",
+          "formula": [
+            {
+              "t": "W",
+              "id": "W"
+            },
+            {
+              "t": "="
+            },
+            {
+              "t": "F",
+              "id": "F"
+            },
+            {
+              "t": "d",
+              "id": "d"
+            },
+            {
+              "t": "cos",
+              "id": "cos"
+            },
+            {
+              "t": "α",
+              "id": "alfa"
+            }
           ],
-          "caixa_formula": [
-            { "expressao": "W = F d cos α", "significado": "Trabalho de uma força constante.", "unidades": "W em joule (J), F em newton (N), d em metro (m)." },
-            { "expressao": "1 J = 1 N × 1 m", "significado": "Um joule é o trabalho realizado por uma força de 1 N que desloca o seu ponto de aplicação 1 m na sua direção e sentido.", "unidades": "" }
+          "variaveis": {
+            "W": {
+              "rotulo": "W — Trabalho",
+              "explicacao": "A energia transferida pela força. Mede-se em joule (J).\n\n**1 J = 1 N × 1 m.** Um joule é o trabalho realizado por uma força de 1 N que desloca o seu ponto de aplicação 1 m na sua direção e sentido."
+            },
+            "F": {
+              "rotulo": "F — Força",
+              "explicacao": "A força aplicada, com intensidade F. Mede-se em newton (N)."
+            },
+            "d": {
+              "rotulo": "d — Deslocamento",
+              "explicacao": "O vetor que une a posição inicial à posição final. No 10.º ano, trabalho só com deslocamentos retilíneos. Mede-se em metro (m)."
+            },
+            "cos": {
+              "rotulo": "cos α — Componente eficaz",
+              "explicacao": "**Componente eficaz (F cos α).** A componente da força paralela ao deslocamento. É a única que transfere energia.\n\n**Componente perpendicular (F sen α).** Não realiza trabalho. No caso da mala, só alivia o peso sobre as rodas."
+            },
+            "alfa": {
+              "rotulo": "α — Ângulo",
+              "explicacao": "O ângulo entre a força e o deslocamento. É ele que decide quanta força é aproveitada.\n\n**Erro comum nos exames**\n\nUsar o ângulo com a vertical em vez do ângulo com o deslocamento. O α da fórmula é sempre o ângulo entre a força e o deslocamento. Se o enunciado der o ângulo da força com a vertical e o deslocamento for horizontal, tens de usar 90° menos esse ângulo."
+            }
+          },
+          "exercicio": {
+            "enunciado": "Puxas um carrinho de compras com uma força de **30 N** que faz um ângulo de **60°** com a horizontal. O carrinho desloca-se **4 m** na horizontal. Calcula o trabalho realizado por essa força. (cos 60° = 0,50)",
+            "campos": [
+              {
+                "rotulo": "W",
+                "unidade": "J",
+                "correta": 60
+              }
+            ],
+            "resolucao": [
+              "W = F d cos α",
+              "W = 30 × 4 × cos 60°",
+              "W = 120 × 0,50 = 60 J"
+            ],
+            "resposta": "W = 60 J"
+          }
+        },
+        {
+          "tipo": "acordeao",
+          "titulo": "Tipos de trabalho",
+          "texto": "Há 3 tipos de trabalho. O sinal do trabalho diz-nos se a força está a fornecer ou a retirar energia ao sistema.",
+          "instrucao": "Explora cada um deles:",
+          "itens": [
+            {
+              "rotulo": "Trabalho potente (W > 0)",
+              "imagem": "f10_trabalho_potente.png",
+              "explicacao": "0° ≤ α < 90°. A força favorece o movimento e transfere energia para o sistema. Exemplo: empurrar um carrinho de compras para a frente."
+            },
+            {
+              "rotulo": "Trabalho nulo (W = 0)",
+              "imagem": "f10_trabalho_nulo.png",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Remar em diagonal**\n\nImagina que estás a empurrar um barco com uma vara, mas em vez de empurrares para trás empurras de lado, na diagonal. Parte do teu esforço faz o barco avançar; o resto só o empurra contra a margem. Quanto mais de lado empurrares, menos o barco avança com o mesmo esforço. Se empurrares completamente de lado (90°), o barco não avança nada, por muito que te canses. O cos α é exatamente a fração do esforço que faz o barco andar.",
+              "explicacao": "α = 90°. A força é perpendicular ao deslocamento e não transfere energia. Exemplo: o peso de um carro que anda numa estrada horizontal; a reação normal do chão."
+            },
+            {
+              "rotulo": "Trabalho resistente (W < 0)",
+              "imagem": "f10_trabalho_resistente.png",
+              "explicacao": "90° < α ≤ 180°. A força opõe-se ao movimento e retira energia ao sistema. Exemplo: o atrito sobre um bloco que desliza."
+            }
           ]
         },
         {
           "tipo": "diagrama_interativo",
-          "titulo": "Tipos de trabalho",
-          "imagem": "f10_tipos_trabalho.png",
-          "texto_principal": "O sinal do trabalho diz-nos se a força está a fornecer ou a retirar energia ao sistema.",
-          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "titulo": "Trabalho total",
+          "cartao_estilo": true,
+          "sem_chips": true,
           "pontos": [
-            { "id": "potente", "label": "Trabalho potente (W > 0)", "explicacao": "0° ≤ α < 90°. A força favorece o movimento e transfere energia para o sistema. Exemplo: empurrar um carrinho de compras para a frente." },
-            { "id": "nulo", "label": "Trabalho nulo (W = 0)", "explicacao": "α = 90°. A força é perpendicular ao deslocamento e não transfere energia. Exemplo: o peso de um carro que anda numa estrada horizontal; a reação normal do chão." },
-            { "id": "resistente", "label": "Trabalho resistente (W < 0)", "explicacao": "90° < α ≤ 180°. A força opõe-se ao movimento e retira energia ao sistema. Exemplo: o atrito sobre um bloco que desliza." }
-          ],
-          "caixa_formula": [
-            { "expressao": "W total = W(F1) + W(F2) + ... = W(F resultante)", "significado": "O trabalho total realizado sobre um sistema é a soma dos trabalhos de todas as forças, e é igual ao trabalho da força resultante.", "unidades": "" }
+            { "id": "trabalho-total", "label": "Soma dos trabalhos", "imagem": "f10_trabalho_total.png", "explicacao": "O trabalho total realizado sobre um sistema é a soma dos trabalhos de todas as forças, e é igual ao trabalho da força resultante.", "caixa_formula": [{"expressao": "W total = W(F1) + W(F2) + ... = W(F resultante)"}], "exercicio": {"enunciado": "Sobre um bloco atuam três forças, que realizam trabalhos de **+60 J**, **−25 J** e **0 J**. Calcula o trabalho total realizado sobre o bloco.", "campos": [{"rotulo": "W total", "unidade": "J", "correta": 35}], "resolucao": ["W total = W(F1) + W(F2) + W(F3)", "W total = 60 + (−25) + 0 = 35 J"], "resposta": "W total = 35 J"} }
           ]
         },
         {
@@ -152,10 +278,13 @@
           "mascote_feedback_errado": "Olha para o ângulo: a força aponta para o centro e o movimento é tangente à órbita, portanto α = 90° e cos 90° = 0. O trabalho é nulo."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_trabalho",
+          "visual": "trabalho_caixa",
+          "curiosidade_sem_titulo": true,
+          "curiosidade": "**Porque é que a componente eficaz é diferente de F?**\n\nA força aponta na diagonal, mas a caixa só se desloca na horizontal. Por isso só uma parte da força, a componente na direção do deslocamento (F cos α), ajuda a caixa a avançar. A outra parte (F sen α) puxa a caixa para cima e não a faz andar.\n\nSó quando α = 0° é que a força toda tem a direção do deslocamento e a componente eficaz é igual a F. Quanto maior é o ângulo, mais pequena é a componente eficaz; a 90° é nula, e acima de 90° fica negativa, porque passa a apontar contra o deslocamento.",
           "titulo": "Quanto trabalho estás a fazer?",
-          "instrucao": "Muda a intensidade da força, o deslocamento e o ângulo. Repara no que acontece ao trabalho quando o ângulo passa de 90°.",
+          "instrucao": "Muda a intensidade da força, o deslocamento e o ângulo.",
           "controlos": [
             { "id": "F", "rotulo": "Força", "min": 0, "max": 100, "passo": 1, "valor_inicial": 20, "unidade": "N" },
             { "id": "d", "rotulo": "Deslocamento", "min": 0, "max": 20, "passo": 0.5, "valor_inicial": 5, "unidade": "m" },
@@ -166,20 +295,30 @@
             { "rotulo": "Trabalho", "formula": "F * d * Math.cos(alfa * Math.PI / 180)", "unidade": "J", "casas_decimais": 1 },
             { "rotulo": "Tipo de trabalho", "formula": "(function(){ var w = F * d * Math.cos(alfa * Math.PI / 180); return w > 0.05 ? 'potente' : (w < -0.05 ? 'resistente' : 'nulo'); })()" }
           ],
-          "pergunta_final": "Para que ângulo o trabalho é máximo? Resposta esperada: 0°, porque cos 0° = 1 e toda a força é aproveitada."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Remar em diagonal.** Imagina que estás a empurrar um barco com uma vara, mas em vez de empurrares para trás empurras de lado, na diagonal. Parte do teu esforço faz o barco avançar; o resto só o empurra contra a margem. Quanto mais de lado empurrares, menos o barco avança com o mesmo esforço. Se empurrares completamente de lado (90°), o barco não avança nada, por muito que te canses. O cos α é exatamente a fração do esforço que faz o barco andar."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Trabalho: grandeza escalar, o joule e um erro comum",
-          "texto": "**Porque é que o trabalho é uma grandeza escalar**\n\nForça e deslocamento são vetores, mas o trabalho não tem direção nem sentido: é só um número (positivo, negativo ou nulo) que diz quanta energia foi transferida. O sinal não indica direção, indica se a energia entrou ou saiu do sistema.\n\n**Curiosidade: o joule e James Prescott Joule**\n\nA unidade de energia tem o nome do físico inglês James Prescott Joule (1818–1889). Numa experiência famosa, deixou cair massas que faziam rodar pás dentro de um recipiente com água. Mostrou que o trabalho realizado sobre a água a aquecia, sempre na mesma proporção. Foi uma das provas de que calor e trabalho são duas formas de transferir a mesma coisa: energia.\n\n**Erro comum nos exames**\n\nUsar o ângulo com a vertical em vez do ângulo com o deslocamento. O α da fórmula é sempre o ângulo entre a força e o deslocamento. Se o enunciado der o ângulo da força com a vertical e o deslocamento for horizontal, tens de usar 90° menos esse ângulo."
+          "desafio": {
+            "enunciado": "Para que ângulo o trabalho é máximo?",
+            "campos": [{ "rotulo": "α", "unidade": "°", "correta": 0, "sem_potencia": true }],
+            "resolucao": ["O trabalho é máximo para 0°, porque cos 0° = 1 e toda a força é aproveitada."],
+            "resposta": "α = 0°"
+          }
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Puxas uma caixa com uma força de 20 N que faz um ângulo de 60° com a horizontal. A caixa desloca-se 5 m na horizontal. Qual é o trabalho realizado por essa força? (cos 60° = 0,50)",
+              "opcoes": ["100 J", "87 J", "50 J", "10 J"],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. W = 20 × 5 × cos 60° = 100 × 0,50 = 50 J. Só metade da força foi aproveitada.",
+              "mascote_feedback_errado": "Não te esqueças do cos α. W = F d cos α = 20 × 5 × 0,50 = 50 J."
+            },
+            {
+              "pergunta": "Um satélite descreve uma órbita circular em torno da Terra. A força gravítica aponta sempre para o centro da órbita. Qual é o trabalho dessa força?",
+              "opcoes": ["Positivo, porque o satélite se move.", "Negativo, porque puxa o satélite para dentro.", "Nulo, porque em cada instante a força é perpendicular ao movimento.", "Impossível de saber sem a massa do satélite."],
+              "correta": 2,
+              "mascote_feedback_certo": "Muito bem. Se a força é sempre perpendicular ao movimento, não transfere energia. Por isso a rapidez do satélite se mantém constante.",
+              "mascote_feedback_errado": "Olha para o ângulo: a força aponta para o centro e o movimento é tangente à órbita, portanto α = 90° e cos 90° = 0. O trabalho é nulo."
+            },
             {
               "pergunta": "Sobre um bloco que desliza numa superfície horizontal atuam o peso, a reação normal, uma força de tração horizontal e o atrito. Quais destas forças realizam trabalho nulo?",
               "opcoes": ["A tração e o atrito.", "O peso e a reação normal.", "Só o peso.", "Nenhuma: todas realizam trabalho."],
@@ -367,7 +506,7 @@
           "mascote_feedback_errado": "Calcula Em no início e no fim. No topo: Em = m g h = 60 × 9,8 × 20 = 11 760 J. No fundo: Em = ½ m v² = ½ × 60 × 225 = 6750 J. W(Fnc) = ΔEm = 6750 − 11 760 = −5010 J ≈ −5,0 × 10³ J."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_conservacao_energia",
           "titulo": "A rampa do skater",
           "instrucao": "Escolhe a altura de partida, a massa e o atrito. Os valores mostram a primeira descida a partir do repouso.",
@@ -382,7 +521,20 @@
             { "rotulo": "Energia dissipada nessa passagem", "formula": "m * 9.8 * h * (atrito / 100)", "unidade": "J", "casas_decimais": 1 },
             { "rotulo": "Altura da subida seguinte", "formula": "h * (1 - atrito / 100)", "unidade": "m", "casas_decimais": 2 }
           ],
-          "pergunta_final": "Se duplicares a massa, a velocidade no fundo muda? Resposta esperada: não, porque v = √(2 g h) não depende da massa."
+          "desafio": {
+            "enunciado": "Se duplicares a massa, a velocidade no fundo muda?",
+            "campos": [
+              {
+                "rotulo": "Resposta",
+                "aceites": [
+                  "nao"
+                ]
+              }
+            ],
+            "resolucao": [
+              "Não, porque v = √(2 g h) não depende da massa."
+            ]
+          }
         },
         {
           "tipo": "analogia",

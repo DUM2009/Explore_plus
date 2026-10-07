@@ -245,7 +245,7 @@
           "mascote_feedback_errado": "Ec antes = 2,0 × 10⁵ J. Ec depois = 8,0 × 10⁴ J. A diferença, 1,2 × 10⁵ J, é 60 % da energia inicial."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_colisao",
           "titulo": "Choque de carrinhos",
           "instrucao": "Escolhe as massas, as velocidades iniciais e o coeficiente de restituição.",
@@ -263,7 +263,12 @@
             { "rotulo": "Ec total antes", "formula": "0.5 * m1 * v1 * v1 + 0.5 * m2 * v2 * v2", "unidade": "J", "casas_decimais": 2 },
             { "rotulo": "Ec total depois", "formula": "(function(){ var v1f = (m1*v1 + m2*v2 + m2*e*(v2-v1)) / (m1+m2); var v2f = (m1*v1 + m2*v2 + m1*e*(v1-v2)) / (m1+m2); return 0.5*m1*v1f*v1f + 0.5*m2*v2f*v2f; })()", "unidade": "J", "casas_decimais": 2 }
           ],
-          "pergunta_final": "Com m1 = m2, v2 = 0 e e = 1, o que acontece? Resposta esperada: o carrinho 1 pára e o carrinho 2 sai com a velocidade que o 1 tinha."
+          "desafio": {
+            "enunciado": "Com m1 = m2, v2 = 0 e e = 1, o que acontece?",
+            "resolucao": [
+              "O carrinho 1 pára e o carrinho 2 sai com a velocidade que o 1 tinha."
+            ]
+          }
         },
         {
           "tipo": "analogia",

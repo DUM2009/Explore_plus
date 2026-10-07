@@ -55,7 +55,7 @@
           "mascote_feedback_errado": "Pela lei de Stefan-Boltzmann, P é proporcional a T⁴. Com o dobro da temperatura absoluta: 2⁴ = 16 vezes mais potência."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_corpo_negro",
           "titulo": "A cor de um corpo quente",
           "instrucao": "Muda a temperatura do corpo negro e observa o comprimento de onda do máximo e a potência emitida.",
@@ -67,7 +67,12 @@
             { "rotulo": "Potência emitida por m²", "formula": "5.67e-8 * Math.pow(T, 4)", "unidade": "W/m²", "casas_decimais": 0 },
             { "rotulo": "Aparência", "formula": "(function(){ if (T < 1000) return 'vermelho escuro'; if (T < 3500) return 'laranja'; if (T < 6000) return 'branco'; return 'branco-azulado'; })()" }
           ],
-          "pergunta_final": "Porque é que o corpo humano não brilha no escuro? Resposta esperada: a 310 K, o máximo de emissão está em cerca de 9,4 µm, no infravermelho, invisível para nós."
+          "desafio": {
+            "enunciado": "Porque é que o corpo humano não brilha no escuro?",
+            "resolucao": [
+              "A 310 K, o máximo de emissão está em cerca de 9,4 µm, no infravermelho, invisível para nós."
+            ]
+          }
         },
         {
           "tipo": "analogia",
@@ -155,7 +160,7 @@
           "mascote_feedback_errado": "Calcula a energia do fotão: 6,63 × 10⁻¹⁹ J. Subtrai a energia de remoção: Ec máx ≈ 3,0 × 10⁻¹⁹ J."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_fotoeletrico",
           "titulo": "Arranca eletrões com luz",
           "instrucao": "Escolhe o metal, o comprimento de onda e a intensidade da luz.",
@@ -174,7 +179,20 @@
             { "rotulo": "Há emissão?", "formula": "(6.63e-34 * 3.00e8 / (lambda * 1e-9)) / 1.60e-19 > W_eV ? 'Sim' : 'Não'" },
             { "rotulo": "Energia cinética máxima (se houver emissão)", "formula": "(function(){ var Ef = (6.63e-34 * 3.00e8 / (lambda * 1e-9)) / 1.60e-19; return Ef > W_eV ? (Ef - W_eV) : 0; })()", "unidade": "eV", "casas_decimais": 2 }
           ],
-          "pergunta_final": "Com o sódio e luz vermelha (700 nm), aumentar a intensidade para 100 % faz sair eletrões? Resposta esperada: não. A energia de cada fotão (cerca de 1,8 eV) é menor do que a energia de remoção (2,28 eV)."
+          "desafio": {
+            "enunciado": "Com o sódio e luz vermelha (700 nm), aumentar a intensidade para 100 % faz sair eletrões?",
+            "campos": [
+              {
+                "rotulo": "Resposta",
+                "aceites": [
+                  "nao"
+                ]
+              }
+            ],
+            "resolucao": [
+              "Não. A energia de cada fotão (cerca de 1,8 eV) é menor do que a energia de remoção (2,28 eV)."
+            ]
+          }
         },
         {
           "tipo": "analogia",
@@ -434,7 +452,7 @@
           "mascote_feedback_errado": "25 % corresponde a um quarto, ou seja, duas vezes metade. Passaram 2 meias-vidas: 11 460 anos."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_decaimento",
           "titulo": "Relógio radioativo",
           "instrucao": "Escolhe o isótopo, o número inicial de núcleos e o instante de tempo.",
@@ -452,7 +470,12 @@
             { "rotulo": "Núcleos restantes N(t)", "formula": "N0 * Math.exp(-(Math.log(2) / T_meia) * t)", "unidade": "", "casas_decimais": 1 },
             { "rotulo": "Número de meias-vidas decorridas", "formula": "t / T_meia", "unidade": "", "casas_decimais": 2 }
           ],
-          "pergunta_final": "Com N0 = 100, a curva simulada acompanha bem a teórica? E com N0 = 2500? Resposta esperada: com poucos núcleos há muitas flutuações; com muitos, a curva simulada aproxima-se da teórica, porque o decaimento é um processo estatístico."
+          "desafio": {
+            "enunciado": "Com N0 = 100, a curva simulada acompanha bem a teórica? E com N0 = 2500?",
+            "resolucao": [
+              "Com poucos núcleos há muitas flutuações; com muitos, a curva simulada aproxima-se da teórica, porque o decaimento é um processo estatístico."
+            ]
+          }
         },
         {
           "tipo": "analogia",

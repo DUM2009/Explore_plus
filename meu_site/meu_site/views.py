@@ -1093,12 +1093,12 @@ CATEGORIA_TESTES_IMAGENS = {
     'Corpo Humano': 'images/Wallpaper corpo humano.png',
     'Botânica': 'images/Relva.jpeg',
     'Energia e Movimentos': 'images/Energia e movimentos.png',
-    'Energia e Fenómenos Elétricos': 'images/f10_circuito_simples.png',
+    'Energia e Fenómenos Elétricos': 'images/Energia e fenómenos elétricos.png',
     'Energia, Fenómenos Térmicos e Radiação': 'images/Fenómenos térmicos e radiação.png',
     'Movimento e Interações': 'images/Movimentos e interações.png',
     'Forças e Movimentos': 'images/f11_pena_martelo_lua.png',
     'Sinais, Ondas e Som': 'images/Sinais e ondas.png',
-    'Eletromagnetismo': 'images/f11_eolica_barragem.png',
+    'Eletromagnetismo': 'images/Eletromagnetismo.png',
     'Ondas Eletromagnéticas': 'images/f11_espetro_dia_a_dia.png',
 }
 
