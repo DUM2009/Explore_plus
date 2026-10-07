@@ -3109,6 +3109,9 @@ RESUMOS_CONTEUDO = {
             {
                 'titulo': 'Ordenamento do Território',
                 'texto': 'O ordenamento do território organiza a ocupação do espaço de forma a compatibilizar as atividades humanas com os riscos e os recursos naturais, através de instrumentos como os **Planos Diretores Municipais (PDM)**, a **Reserva Ecológica Nacional (REN)** e a **Reserva Agrícola Nacional (RAN)**.',
+                'imagem': 'images/geo_riscos_ordenamento_territorio.png',
+                'imagem_alt': 'Esquema comparativo de riscos geológicos e ordenamento do território: rios e cheias (leito menor vs. leito de cheia), zonas costeiras (sapa e desmoronamento de arribas, deriva litoral e esporões) e vertentes (massa deslizada ao longo de uma superfície de rutura), com exemplos de boas e más práticas de ocupação e os instrumentos PDM, REN, RAN e POC.',
+                'imagem_max_width': '760px',
                 'dica': 'em todos os riscos geológicos deste capítulo há um padrão comum: **prevenir pelo ordenamento é sempre mais eficaz e mais barato do que remediar depois com obras** — seja em leitos de cheia, em arribas, em dunas ou em vertentes instáveis.',
             },
         ],
@@ -3158,6 +3161,9 @@ RESUMOS_CONTEUDO = {
             {
                 'titulo': 'Propriedades dos Minerais',
                 'texto': 'Os minerais identificam-se por um conjunto de propriedades físicas e químicas.',
+                'imagem': 'images/geo_escala_mohs.png',
+                'imagem_alt': 'Escala de dureza de Mohs, do talco (1) ao diamante (10), com referências práticas: a unha risca até à calcite (≈2,5), a moeda de cobre até à fluorite (≈3,5) e o vidro/canivete até à apatite (≈5,5).',
+                'imagem_max_width': '680px',
                 'definicoes': [
                     {
                         'termo': 'Cor e risca',
@@ -3214,6 +3220,9 @@ RESUMOS_CONTEUDO = {
             {
                 'titulo': 'Sedimentogénese: Meteorização, Erosão, Transporte',
                 'texto': 'A **meteorização** é a alteração de rochas no local onde estão. Pode ser física (fragmentação sem alterar a composição) ou química (altera a composição mineralógica).',
+                'imagem': 'images/geo_formacao_rochas_sedimentares.png',
+                'imagem_alt': 'Esquema da formação das rochas sedimentares: meteorização da montanha, erosão e transporte dos detritos por água, vento, gelo e gravidade, sedimentação em camadas numa bacia e, por fim, diagénese — compactação e cimentação dos sedimentos até formarem uma rocha consolidada como o arenito.',
+                'imagem_max_width': '720px',
                 'definicoes': [
                     {
                         'termo': 'Meteorização física',
