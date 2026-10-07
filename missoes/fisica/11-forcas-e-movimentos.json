@@ -4,7 +4,7 @@
   "titulo": "Forças e movimentos",
   "disciplina": "fisica",
   "ano": 11,
-  "imagem": "f11_pena_martelo_lua.png",
+  "imagem": "Movimentos e interações.png",
   "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 20 12 4l8 16\"/><path d=\"M8 12h8\"/></svg>", "nome": "Mestre das Forças" },
   "secoes": [
     {
@@ -55,7 +55,7 @@
           "mascote_feedback_errado": "O deslocamento é a área sob o gráfico v-t. Aqui é um triângulo com base 10 s e altura 20 m/s: área = ½ × 10 × 20 = 100 m."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_graficos_movimento",
           "titulo": "Desenha o movimento",
           "instrucao": "Escolhe a velocidade inicial e a aceleração e vê os gráficos x-t e v-t ao fim de 6 s.",
@@ -69,7 +69,21 @@
             { "rotulo": "Velocidade v(t)", "formula": "v0 + a * t", "unidade": "m/s", "casas_decimais": 1 },
             { "rotulo": "Estado do movimento", "formula": "(function(){ var v = v0 + a * t; if (v === 0) return 'repouso'; if (a === 0) return 'uniforme'; return (v * a > 0) ? 'acelerado' : 'retardado'; })()" }
           ],
-          "pergunta_final": "Com v0 = 8 m/s e a = −4 m s⁻², em que instante o carro inverte o sentido? Resposta esperada: t = 2 s, quando v = 8 − 4 × 2 = 0."
+          "desafio": {
+            "enunciado": "Com v0 = 8 m/s e a = −4 m s⁻², em que instante o carro inverte o sentido?",
+            "campos": [
+              {
+                "rotulo": "t",
+                "unidade": "s",
+                "correta": 2,
+                "sem_potencia": true
+              }
+            ],
+            "resolucao": [
+              "O carro inverte o sentido quando a velocidade se anula: v = v₀ + a t = 0.",
+              "8 − 4 t = 0, logo t = 2 s."
+            ]
+          }
         },
         {
           "tipo": "analogia",
@@ -168,7 +182,7 @@
           "mascote_feedback_errado": "A aceleração de queda livre é g para todos os corpos: a = m g / m = g. A massa cancela. Chegam ao mesmo tempo."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_lancamento_vertical",
           "titulo": "Lança a bola",
           "instrucao": "Escolhe a velocidade inicial (positiva para cima, negativa para baixo, zero para largar) e a altura inicial, com eixo para cima e g = 9,8.",
@@ -182,7 +196,20 @@
             { "rotulo": "Velocidade v(t)", "formula": "v0 - 9.8 * t", "unidade": "m/s", "casas_decimais": 2 },
             { "rotulo": "Altura máxima (se v0 > 0)", "formula": "v0 > 0 ? (y0 + v0 * v0 / (2 * 9.8)) : y0", "unidade": "m", "casas_decimais": 2 }
           ],
-          "pergunta_final": "No ponto mais alto, quanto vale a aceleração? Resposta esperada: 9,8 m s⁻², para baixo. Só a velocidade é nula."
+          "desafio": {
+            "enunciado": "No ponto mais alto, quanto vale a aceleração? (em módulo)",
+            "campos": [
+              {
+                "rotulo": "a",
+                "unidade": "m s⁻²",
+                "correta": 9.8,
+                "sem_potencia": true
+              }
+            ],
+            "resolucao": [
+              "No ponto mais alto só a velocidade é nula. A aceleração continua a ser a da gravidade: 9,8 m s⁻², para baixo."
+            ]
+          }
         },
         {
           "tipo": "analogia",
@@ -540,7 +567,7 @@
           "mascote_feedback_errado": "De G M m / r² = m v² / r, a massa m do satélite cancela: v = √(G M / r). Na mesma órbita, a velocidade é a mesma para qualquer satélite."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_satelite",
           "titulo": "Põe um satélite em órbita",
           "instrucao": "Escolhe a altitude do satélite e vê a velocidade e o período da sua órbita.",
@@ -552,7 +579,22 @@
             { "rotulo": "Velocidade orbital", "formula": "Math.sqrt(6.67e-11 * 5.97e24 / (6.37e6 + h * 1000)) / 1000", "unidade": "km/s", "casas_decimais": 2 },
             { "rotulo": "Período", "formula": "(2 * Math.PI * (6.37e6 + h * 1000) / Math.sqrt(6.67e-11 * 5.97e24 / (6.37e6 + h * 1000))) / 3600", "unidade": "horas", "casas_decimais": 2 }
           ],
-          "pergunta_final": "A que altitude o período é de 24 h? Resposta esperada: cerca de 36 000 km: a órbita geoestacionária."
+          "desafio": {
+            "enunciado": "A que altitude o período é de 24 h?",
+            "campos": [
+              {
+                "rotulo": "h",
+                "unidade": "km",
+                "correta": 36000,
+                "sem_potencia": true,
+                "tolerancia": 0.05,
+                "proximidade": 0.25
+              }
+            ],
+            "resolucao": [
+              "A altitude é de cerca de 36 000 km: é a órbita geoestacionária, em que o satélite demora 24 h a dar uma volta."
+            ]
+          }
         },
         {
           "tipo": "analogia",

@@ -4,7 +4,7 @@
   "titulo": "Ondas eletromagnéticas",
   "disciplina": "fisica",
   "ano": 11,
-  "imagem": "f11_espetro_dia_a_dia.png",
+  "imagem": "Eletromagnetismo.png",
   "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 3v18h18\"/><path d=\"M7 15l3-5 3 3 5-8\"/></svg>", "nome": "Mestre das Ondas Eletromagnéticas" },
   "secoes": [
     {
@@ -155,7 +155,7 @@
           "mascote_feedback_errado": "Aplica Snell-Descartes: 1,00 × sen 45° = 1,33 × sen α₂. sen α₂ = 0,707 / 1,33 = 0,532, logo α₂ ≈ 32°."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_snell",
           "titulo": "Desvia o raio de luz",
           "instrucao": "Escolhe os dois meios e o ângulo de incidência. Vê o ângulo de refração ou se há reflexão total.",
@@ -171,7 +171,23 @@
             { "rotulo": "Velocidade no meio 1", "formula": "3.00e8 / n1", "unidade": "m/s", "casas_decimais": 0 },
             { "rotulo": "Velocidade no meio 2", "formula": "3.00e8 / n2", "unidade": "m/s", "casas_decimais": 0 }
           ],
-          "pergunta_final": "Da água para o ar, a partir de que ângulo desaparece o raio refratado? Resposta esperada: cerca de 48,8°, o ângulo crítico."
+          "desafio": {
+            "enunciado": "Da água para o ar, a partir de que ângulo desaparece o raio refratado? (ângulo crítico)",
+            "campos": [
+              {
+                "rotulo": "Ângulo crítico",
+                "unidade": "°",
+                "correta": 48.8,
+                "sem_potencia": true,
+                "tolerancia": 0.01,
+                "proximidade": 0.1
+              }
+            ],
+            "resolucao": [
+              "O raio refratado desaparece a partir do ângulo crítico: sen θc = n₂ / n₁ = 1,00 / 1,33.",
+              "θc ≈ 48,8°."
+            ]
+          }
         },
         {
           "tipo": "analogia",

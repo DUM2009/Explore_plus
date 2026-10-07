@@ -19,8 +19,8 @@
 }
 
 html.dark-mode .me-root {
-    background: #1c1712;
-    color: #f2e9dd;
+    background: #0a0a0b;
+    color: #f4f4f5;
 }
 
 .me-shell {
@@ -191,6 +191,198 @@ html[data-theme="dark"] .me-gancho-card {
     margin-right: 0;
 }
 
+/* Navegação só com os sinais < e > (sem fundo nem contorno). O site tem
+   uma regra geral para todos os botões (style.css: fundo, sombra, subida
+   ao passar o rato) que aqui é anulada em todos os estados. */
+.screen-nav button.screen-nav-btn.screen-nav-btn--sinal,
+.screen-nav button.screen-nav-btn.screen-nav-btn--sinal:hover,
+.screen-nav button.screen-nav-btn.screen-nav-btn--sinal:focus,
+.screen-nav button.screen-nav-btn.screen-nav-btn--sinal:active {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    min-width: 0;
+    width: auto;
+    height: auto;
+    padding: 4px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    color: #1c2a22;
+}
+
+.screen-nav button.screen-nav-btn.screen-nav-btn--sinal:hover {
+    color: #1f8a5b;
+}
+
+.screen-nav button.screen-nav-btn.screen-nav-btn--sinal:disabled {
+    opacity: .3;
+    color: #1c2a22;
+}
+
+html.dark-mode .screen-nav button.screen-nav-btn.screen-nav-btn--sinal,
+html.dark-mode .screen-nav button.screen-nav-btn.screen-nav-btn--sinal:hover,
+html.dark-mode .screen-nav button.screen-nav-btn.screen-nav-btn--sinal:disabled {
+    color: #f4f4f5;
+}
+
+html.dark-mode .screen-nav button.screen-nav-btn.screen-nav-btn--sinal:hover {
+    color: #7fd6a8;
+}
+
+/* Bolinhas numeradas entre < e > (ver paginasHtml em renderSeccao), uma
+   por página da secção. A regra geral dos botões do site (fundo, sombra,
+   padding grande) é anulada aqui. */
+.screen-nav .me-nav-paginas {
+    flex: 0 1 auto;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    min-width: 0;
+}
+
+.screen-nav .me-nav-paginas + .screen-nav-btn[data-nav-action="next"] {
+    margin-left: 0;
+}
+
+.screen-nav .me-nav-paginas button.screen-nav-page {
+    width: 34px;
+    height: 34px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #c4d3ca;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: none;
+    color: #4b5a52;
+    font: inherit;
+    font-size: .88rem;
+    font-weight: 700;
+    line-height: 1;
+    transform: none;
+}
+
+.screen-nav .me-nav-paginas button.screen-nav-page:hover:not(:disabled) {
+    border-color: #1f8a5b;
+    color: #1f8a5b;
+    background: #fff;
+    box-shadow: none;
+    transform: none;
+}
+
+.screen-nav .me-nav-paginas button.screen-nav-page.active,
+.screen-nav .me-nav-paginas button.screen-nav-page.active:hover {
+    border-color: #1f8a5b;
+    background: #1f8a5b;
+    color: #fff;
+}
+
+.screen-nav .me-nav-paginas button.screen-nav-page:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+html.dark-mode .screen-nav .me-nav-paginas button.screen-nav-page {
+    border-color: rgba(255, 255, 255, .25);
+    background: #2a2622;
+    color: #e6e1da;
+}
+
+html.dark-mode .screen-nav .me-nav-paginas button.screen-nav-page:hover:not(:disabled) {
+    border-color: #7fd6a8;
+    background: #2a2622;
+    color: #7fd6a8;
+}
+
+html.dark-mode .screen-nav .me-nav-paginas button.screen-nav-page.active,
+html.dark-mode .screen-nav .me-nav-paginas button.screen-nav-page.active:hover {
+    border-color: #1f8a5b;
+    background: #1f8a5b;
+    color: #fff;
+}
+
+/* < e > ficam sempre na mesma linha das bolinhas; se houver páginas a
+   mais para a largura, são as bolinhas que partem em duas linhas. */
+.screen-nav:has(.me-nav-paginas) {
+    flex-wrap: nowrap;
+}
+
+/* "Concluir secção"/"Concluir missão" (botão com texto) nunca encolhe nem
+   parte o texto; são as bolinhas que cedem espaço. */
+.screen-nav .me-nav-paginas + .screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal) {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    /* Com o botão de texto não cabe tudo numa linha: < e "Concluir" ficam
+       em cima, as bolinhas por baixo, a toda a largura. */
+    .screen-nav:has(.me-nav-paginas):has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal)) {
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .screen-nav:has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal)) .me-nav-paginas {
+        order: 3;
+        flex: 1 0 100%;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+
+    .screen-nav:has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal)) .screen-nav-btn[data-nav-action="next"] {
+        order: 2;
+        flex: 0 0 auto;
+        width: auto;
+        min-width: 0;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .screen-nav .me-nav-paginas {
+        gap: 4px;
+    }
+
+    .screen-nav .me-nav-paginas button.screen-nav-page {
+        width: 26px;
+        height: 26px;
+        font-size: .76rem;
+    }
+
+    .screen-nav:has(.me-nav-paginas) button.screen-nav-btn.screen-nav-btn--sinal {
+        padding: 4px 2px;
+    }
+}
+
+/* A navegação dentro do painel principal: ocupa a largura do painel, no
+   fundo dele. */
+.section-body .me-quiz-resultado > .me-gancho-nav-wrap.me-nav-no-painel,
+.section-body .me-gancho-card > .me-gancho-nav-wrap.me-nav-no-painel {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.section-body .me-quiz-resultado > .me-gancho-nav-wrap.me-nav-no-painel .screen-nav,
+.section-body .me-gancho-card > .me-gancho-nav-wrap.me-nav-no-painel .screen-nav {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+/* < 1 2 3 … > ficam juntos, ao centro: os sinais encostados às bolinhas
+   numeradas e não nos cantos (onde chocavam com a mascote). */
+.me-gancho-nav-wrap .screen-nav {
+    justify-content: center;
+    gap: 10px;
+}
+
 .me-gancho-hero-image {
     width: 100%;
     max-width: 700px;
@@ -311,6 +503,597 @@ html.dark-mode .me-gancho-card .me-diagrama-texto-principal {
     font-size: .82rem;
 }
 
+/* Acordeão (ecrã acordeao): linhas empilhadas; o texto de cada uma abre logo
+   por baixo ao clicar. As regras gerais dos botões do site (fundo, sombra,
+   padding, largura) são anuladas aqui em todos os estados. */
+.me-acordeao-instrucao {
+    margin: 22px 0 12px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.me-acordeao {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+}
+
+button.me-acordeao-cabeca,
+button.me-acordeao-cabeca:hover,
+button.me-acordeao-cabeca:focus,
+button.me-acordeao-cabeca:active {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 12px 18px;
+    border: 1px solid #cde7d9;
+    border-radius: 14px;
+    background: #eef7f3;
+    box-shadow: none;
+    transform: none;
+    color: #1f5c33;
+    font: inherit;
+    font-weight: 700;
+    font-size: .95rem;
+    text-align: left;
+    cursor: pointer;
+}
+
+button.me-acordeao-cabeca:hover {
+    border-color: #1f8a5b;
+}
+
+/* Aberto, o cabeçalho mantém a mesma cor do fechado (só a seta roda). */
+button.me-acordeao-cabeca.is-open,
+button.me-acordeao-cabeca.is-open:hover {
+    border-color: #cde7d9;
+    background: #eef7f3;
+}
+
+button.me-acordeao-cabeca:focus-visible {
+    outline: 3px solid rgba(31, 138, 91, .35);
+    outline-offset: 2px;
+}
+
+.me-acordeao-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, .08);
+    font-size: .8rem;
+}
+
+.me-acordeao-rotulo {
+    flex: 1 1 auto;
+}
+
+.me-acordeao-seta {
+    flex-shrink: 0;
+    transition: transform .2s ease;
+}
+
+.me-acordeao-cabeca.is-open .me-acordeao-seta {
+    transform: rotate(180deg);
+}
+
+.me-acordeao-painel {
+    margin-top: 8px;
+}
+
+html.dark-mode button.me-acordeao-cabeca,
+html.dark-mode button.me-acordeao-cabeca:hover,
+html.dark-mode button.me-acordeao-cabeca:focus,
+html.dark-mode button.me-acordeao-cabeca:active {
+    border-color: #27272a;
+    background: #17171a;
+    color: #e6ede9;
+}
+
+html.dark-mode button.me-acordeao-cabeca:hover {
+    border-color: #7fd6a8;
+}
+
+html.dark-mode button.me-acordeao-cabeca.is-open,
+html.dark-mode button.me-acordeao-cabeca.is-open:hover {
+    border-color: #27272a;
+    background: #17171a;
+    color: #e6ede9;
+}
+
+/* Fórmula interativa (ecrã formula_interativa): a fórmula bem grande, uma
+   bolinha por baixo de cada letra e a explicação do lado direito. */
+.me-fi-formula {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6px clamp(10px, 2vw, 22px);
+    padding: 8px 0;
+}
+
+.me-fi-token {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.me-fi-simbolo {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: #1c2a22;
+}
+
+.me-fi-token--fixo .me-fi-simbolo {
+    font-weight: 600;
+    color: #4b5a52;
+}
+
+button.me-fi-bolinha,
+button.me-fi-bolinha:hover,
+button.me-fi-bolinha:focus,
+button.me-fi-bolinha:active {
+    box-sizing: border-box;
+    width: 22px;
+    height: 22px;
+    min-width: 0;
+    padding: 0;
+    border: 2px solid #1f8a5b;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: none;
+    transform: none;
+    cursor: pointer;
+}
+
+button.me-fi-bolinha:hover {
+    background: rgba(31, 138, 91, .18);
+}
+
+button.me-fi-bolinha.is-active,
+button.me-fi-bolinha.is-active:hover {
+    background: #1f8a5b;
+}
+
+button.me-fi-bolinha:focus-visible {
+    outline: 3px solid rgba(31, 138, 91, .35);
+    outline-offset: 2px;
+}
+
+.me-fi-bolinha--vazia {
+    display: block;
+    width: 22px;
+    height: 22px;
+    visibility: hidden;
+}
+
+.me-fi-caixa .me-fi-formula {
+    padding: 4px 0 2px;
+}
+
+/* A explicação aparece dentro da caixa verde, por baixo da fórmula, com o
+   mesmo traço tracejado que separa os itens de uma caixa de fórmulas. */
+.me-fi-caixa .me-fi-explicacao {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(31, 138, 91, .25);
+    text-align: left;
+}
+
+.me-fi-explicacao .me-fi-dica {
+    margin: 0;
+    color: #6b7a72;
+    font-style: italic;
+}
+
+html.dark-mode .me-fi-simbolo {
+    color: #f4f4f5;
+}
+
+html.dark-mode .me-fi-token--fixo .me-fi-simbolo {
+    color: #b9c7bd;
+}
+
+html.dark-mode button.me-fi-bolinha,
+html.dark-mode button.me-fi-bolinha:hover,
+html.dark-mode button.me-fi-bolinha:focus,
+html.dark-mode button.me-fi-bolinha:active {
+    border-color: #7fd6a8;
+    background: #0a0a0b;
+}
+
+html.dark-mode button.me-fi-bolinha:hover {
+    background: rgba(127, 214, 168, .2);
+}
+
+html.dark-mode button.me-fi-bolinha.is-active,
+html.dark-mode button.me-fi-bolinha.is-active:hover {
+    background: #7fd6a8;
+}
+
+html.dark-mode .me-fi-explicacao .me-fi-dica {
+    color: #a1a1aa;
+}
+
+/* Caixa do exercício (ver exercicioPontoHtml): mesma cor e traço do cartão
+   do ponto (.me-escada-detail), em vez do verde da caixa de fórmulas. */
+.me-caixa-exercicio .me-caixa-formula {
+    margin-top: 0;
+    padding: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    background: #fbf7ee;
+}
+
+html.dark-mode .me-caixa-exercicio .me-caixa-formula {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: #17171a;
+}
+
+/* Exercício colado ao cartão do ponto, num só painel: o cartão perde a
+   borda e os cantos de baixo, o exercício perde os de cima, e o traço de
+   cima do exercício é a linha horizontal suave que os separa. Só quando o
+   ponto tem exercício (senão o cartão ficava de cantos cortados). */
+.me-escada-detail:has(+ #meDiagramaExercicio > .me-caixa-exercicio) {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.me-escada-detail + #meDiagramaExercicio > .me-caixa-exercicio .me-caixa-formula {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* Exercício com resposta do aluno (ver exercicioPontoHtml): campo(s) de
+   resposta, "Verificar", feedback e "Ver resolução" (só depois da 1.ª
+   tentativa). */
+.me-caixa-exercicio {
+    text-align: left;
+}
+
+/* Título "Exercício" como uma pílula branca, do mesmo feitio do botão
+   "Verificar". */
+.me-caixa-exercicio .me-caixa-formula-expressao {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 12px;
+    padding: 9px 20px;
+    border: 1px solid rgba(0, 0, 0, .08);
+    border-radius: 999px;
+    background: #fff;
+    color: #1c2a22;
+    font-weight: 700;
+    font-size: .88rem;
+    line-height: 1.2;
+}
+
+html.dark-mode .me-caixa-exercicio .me-caixa-formula-expressao {
+    border-color: rgba(255, 255, 255, .15);
+    background: #0a0a0b;
+    color: #f4f4f5;
+}
+
+.me-ex-campos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    margin-top: 12px;
+}
+
+@media (max-width: 480px) {
+    /* Em ecrãs estreitos o campo encolhe para caber ao lado do rótulo, do
+       ×10ⁿ e da unidade (senão empurrava-os para fora do ecrã). */
+    .me-ex-campo {
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+    .me-ex-input {
+        flex: 1 1 90px;
+        width: auto;
+    }
+}
+
+/* Botão "×10ⁿ": escreve ×10^ no campo, para não ser preciso procurar o
+   expoente no teclado. */
+.me-ex-potencia {
+    flex-shrink: 0;
+    width: auto;
+    padding: 6px 12px;
+    border: 1.5px solid rgba(0, 0, 0, .18);
+    border-radius: 999px;
+    background: #fff;
+    color: #1c2a22;
+    font: inherit;
+    font-weight: 700;
+    font-size: .8rem;
+    line-height: 1.2;
+    cursor: pointer;
+}
+
+.me-ex-potencia:hover {
+    border-color: #1f8a5b;
+    color: #1f8a5b;
+}
+
+html.dark-mode .me-ex-potencia {
+    border-color: rgba(255, 255, 255, .2);
+    background: #0a0a0b;
+    color: #f4f4f5;
+}
+
+/* Botão redondo de enviar, ao lado da resposta. */
+.me-ex-enviar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #1f8a5b;
+    cursor: pointer;
+}
+
+html.dark-mode .me-ex-enviar {
+    color: #7fd6a8;
+}
+
+/* O site tem uma regra geral para todos os botões (style.css: button e
+   button:hover — fundo verde-azeitona, contorno, sombra verde e subida ao
+   passar o rato). Estes botões do exercício têm de a anular em todos os
+   estados, com element+classe, que ganha às regras gerais. */
+button.me-ex-enviar,
+button.me-ex-enviar:hover,
+button.me-ex-enviar:focus,
+button.me-ex-enviar:active {
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-ex-enviar:hover {
+    color: #14633f;
+}
+
+html.dark-mode button.me-ex-enviar:hover {
+    color: #a4e8c4;
+}
+
+button.me-ex-potencia,
+button.me-ex-potencia:hover,
+button.me-ex-potencia:focus,
+button.me-ex-potencia:active {
+    background: #fff;
+    box-shadow: none;
+    transform: none;
+}
+
+html.dark-mode button.me-ex-potencia,
+html.dark-mode button.me-ex-potencia:hover,
+html.dark-mode button.me-ex-potencia:focus,
+html.dark-mode button.me-ex-potencia:active {
+    background: #0a0a0b;
+}
+
+button.me-ex-explicacao-btn,
+button.me-ex-explicacao-btn:hover,
+button.me-ex-explicacao-btn:focus,
+button.me-ex-explicacao-btn:active {
+    background: #f1f7ff;
+    box-shadow: none;
+    transform: none;
+}
+
+html.dark-mode button.me-ex-explicacao-btn,
+html.dark-mode button.me-ex-explicacao-btn:hover,
+html.dark-mode button.me-ex-explicacao-btn:focus,
+html.dark-mode button.me-ex-explicacao-btn:active {
+    background: rgba(120, 170, 240, .12);
+}
+
+.me-ex-enviar:focus-visible {
+    outline: 3px solid rgba(31, 138, 91, .35);
+    outline-offset: 2px;
+}
+
+.me-ex-campo {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    max-width: 100%;
+}
+
+.me-ex-rotulo {
+    white-space: nowrap;
+}
+
+.me-ex-rotulo,
+.me-ex-unidade {
+    font-weight: 700;
+    color: #1c2a22;
+}
+
+.me-ex-input {
+    width: 190px;
+    max-width: 100%;
+    min-width: 0;
+    padding: 9px 12px;
+    border: 1.5px solid rgba(0, 0, 0, .18);
+    border-radius: 10px;
+    background: #fff;
+    color: #1f2a24;
+    font: inherit;
+}
+
+.me-ex-input:focus {
+    outline: none;
+    border-color: #1f8a5b;
+    box-shadow: 0 0 0 3px rgba(31, 138, 91, .18);
+}
+
+.me-ex-campo.is-certo .me-ex-input {
+    border-color: #1f8a5b;
+    background: rgba(31, 138, 91, .08);
+}
+
+.me-ex-campo.is-quase .me-ex-input {
+    border-color: #e0a526;
+    background: rgba(224, 165, 38, .1);
+}
+
+.me-ex-campo.is-errado .me-ex-input {
+    border-color: #dc3545;
+    background: rgba(220, 53, 69, .06);
+}
+
+/* Painel de resultado do exercício: vermelho (errado) ou verde (certo), com
+   o botão "Ver explicação". */
+.me-ex-painel {
+    margin-top: 16px;
+    padding: 16px 18px 18px;
+    border: 2px solid;
+    border-radius: 14px;
+}
+
+.me-ex-painel.is-errado {
+    border-color: #f4a3a3;
+    background: #fff0f0;
+    color: #d62f2f;
+}
+
+.me-ex-painel.is-quase {
+    border-color: #f1d28a;
+    background: #fff8e6;
+    color: #a86a0a;
+}
+
+.me-ex-painel.is-certo {
+    border-color: #9bd9b0;
+    background: #eefaf1;
+    color: #1f8a3c;
+}
+
+.me-ex-painel-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-weight: 700;
+    font-size: .95rem;
+}
+
+.me-ex-explicacao-btn {
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px auto 0;
+    padding: 10px 24px;
+    border: 2px solid #111;
+    border-radius: 12px;
+    background: #f1f7ff;
+    color: #111;
+    font: inherit;
+    font-weight: 700;
+    font-size: .92rem;
+    cursor: pointer;
+}
+
+.me-ex-explicacao-btn:hover {
+    filter: brightness(.97);
+}
+
+html.dark-mode .me-ex-painel.is-errado {
+    border-color: rgba(255, 107, 107, .5);
+    background: rgba(255, 107, 107, .1);
+    color: #ff8a97;
+}
+
+html.dark-mode .me-ex-painel.is-quase {
+    border-color: rgba(240, 190, 80, .5);
+    background: rgba(240, 190, 80, .1);
+    color: #f0c25a;
+}
+
+html.dark-mode .me-ex-painel.is-certo {
+    border-color: rgba(127, 214, 168, .5);
+    background: rgba(127, 214, 168, .1);
+    color: #7fd6a8;
+}
+
+html.dark-mode .me-ex-explicacao-btn {
+    border-color: #f4f4f5;
+    background: rgba(120, 170, 240, .12);
+    color: #f4f4f5;
+}
+
+.me-ex-resolucao {
+    margin-top: 12px;
+    text-align: left;
+    color: #4b5a52;
+}
+
+.me-ex-resolucao p {
+    margin: 8px 0 0;
+    color: #4b5a52;
+}
+
+.me-ex-resolucao strong {
+    color: #1c2a22;
+}
+
+html.dark-mode .me-ex-rotulo,
+html.dark-mode .me-ex-unidade,
+html.dark-mode .me-ex-resolucao strong {
+    color: #e6ede9;
+}
+
+html.dark-mode .me-ex-input {
+    border-color: rgba(255, 255, 255, .2);
+    background: #0a0a0b;
+    color: #f4f4f5;
+}
+
+html.dark-mode .me-ex-resolucao p {
+    color: #b9c7bd;
+}
+
+/* Unidades em tópicos (formula.unidades como lista, com **negrito**). */
+.me-caixa-formula-unidades-lista {
+    margin: 8px 0 0;
+    padding-left: 20px;
+}
+
+.me-caixa-formula-unidades-lista li + li {
+    margin-top: 4px;
+}
+
+.me-caixa-formula-unidades-lista strong {
+    color: #1c2a22;
+}
+
+html.dark-mode .me-caixa-formula-unidades-lista strong {
+    color: #e6ede9;
+}
+
 html.dark-mode .me-caixa-formula {
     border-color: rgba(127, 214, 168, .3);
     background: rgba(127, 214, 168, .08);
@@ -395,7 +1178,7 @@ html.dark-mode .me-caixa-formula-expressao {
 html.dark-mode .me-tabela-titulo,
 html.dark-mode .me-tabela th,
 html.dark-mode .me-tabela td {
-    color: #e6e1da;
+    color: #e7e7ea;
 }
 
 html.dark-mode .me-tabela-scroll {
@@ -412,7 +1195,7 @@ html.dark-mode .me-tabela td {
 }
 
 html.dark-mode .me-tabela-nota {
-    color: #b8b2aa;
+    color: #a1a1aa;
 }
 
 /* Escada de conversão de unidades (ver escadaConversaoHtml). */
@@ -566,15 +1349,15 @@ html.dark-mode .me-escada-conv {
 html.dark-mode .me-escada-conv-titulo,
 html.dark-mode .me-escada-conv-form label,
 html.dark-mode .me-escada-conv-resultados li {
-    color: #e6e1da;
+    color: #e7e7ea;
 }
 
 html.dark-mode .me-escada-conv-degrau:not(.is-active),
 html.dark-mode .me-escada-conv-form input,
 html.dark-mode .me-escada-conv-form select {
-    background: #2a2622;
+    background: #17171a;
     border-color: rgba(255, 255, 255, .25);
-    color: #e6e1da;
+    color: #e7e7ea;
 }
 
 html.dark-mode .me-escada-conv-resultados li {
@@ -582,7 +1365,7 @@ html.dark-mode .me-escada-conv-resultados li {
 }
 
 html.dark-mode .me-escada-conv-res-unidade {
-    color: #b8b2aa;
+    color: #a1a1aa;
 }
 
 html.dark-mode .me-caixa-formula-significado {
@@ -612,8 +1395,8 @@ html.dark-mode .me-caixa-formula-unidades {
 }
 
 html.dark-mode .me-gancho-card .me-diagrama-intro-bloco {
-    background: #24201a;
-    border-color: #3a3128;
+    background: #17171a;
+    border-color: #27272a;
 }
 
 /* Painel de cada pergunta do quiz de fim de secção (ver renderQuizSeccao)
@@ -687,7 +1470,7 @@ html.dark-mode .me-quiz-seccao--pergunta {
 }
 
 html.dark-mode .me-gancho-card .did-you-know {
-    border-top-color: #4a3d30;
+    border-top-color: #3a3a3f;
 }
 
 /* Todos os "Queres saber mais?" (ver aprofundarHtml) ficam num painel
@@ -704,8 +1487,18 @@ html.dark-mode .me-gancho-card .did-you-know {
 html.dark-mode .did-you-know.me-saber-mais,
 html.dark-mode .me-gancho-card .did-you-know.me-saber-mais {
     border-color: rgba(255, 255, 255, .45);
-    background: #2a2622;
+    background: #17171a;
 }
+/* "Saber mais" com ícone (aprofundar.icone): a lâmpada substitui a setinha
+   ▸ à frente do rótulo. */
+.me-saber-mais--icone summary::before {
+    content: none;
+}
+
+.me-saber-mais--icone .me-saber-mais-icone {
+    flex-shrink: 0;
+}
+
 /* No telemóvel, a margem negativa do .did-you-know base (que o alarga para
    lá do padding da secção) empurrava a página para os lados. */
 @media (max-width: 640px) {
@@ -717,7 +1510,7 @@ html.dark-mode .me-gancho-card .did-you-know.me-saber-mais {
 }
 html.dark-mode .did-you-know.me-saber-mais .did-you-know-text,
 html.dark-mode .did-you-know.me-saber-mais .did-you-know-text * {
-    color: #e6e1da;
+    color: #e7e7ea;
 }
 
 /* Na timeline o cartão é bem mais largo (.me-gancho-card--timeline, até
@@ -787,6 +1580,15 @@ html.dark-mode .did-you-know.me-saber-mais .did-you-know-text * {
     border-color: #1f8a5b;
 }
 
+/* screen.chips_setas — setas entre os chips (Sistema → Fronteira →
+   Vizinhança) em vez dos números, para ecrãs em que os pontos são uma
+   sequência e não uma lista. */
+.me-diagrama-seta {
+    display: inline-flex;
+    align-items: center;
+    color: #1f8a5b;
+}
+
 .me-diagrama-chip.is-active {
     border-color: #1f8a5b;
     background: #1f8a5b;
@@ -835,8 +1637,8 @@ html.dark-mode .did-you-know.me-saber-mais .did-you-know-text * {
 
 html.dark-mode .me-diagrama-explicacao.did-you-know,
 html.dark-mode .me-gancho-card .me-diagrama-explicacao.did-you-know {
-    background: #24201a;
-    border-color: #3a3128;
+    background: #17171a;
+    border-color: #27272a;
 }
 
 /* Frase de abertura opcional dentro da explicação de um ponto (ver
@@ -854,8 +1656,8 @@ html.dark-mode .me-diagrama-explicacao-intro {
 }
 
 html.dark-mode .me-diagrama-chip {
-    background: #24201a;
-    border-color: #3a3128;
+    background: #17171a;
+    border-color: #27272a;
     color: #d7ddd3;
 }
 
@@ -905,7 +1707,7 @@ html.dark-mode .me-diagrama-chip {
 }
 
 html.dark-mode .me-timeline-rail {
-    background: #3a3128;
+    background: #27272a;
 }
 
 .me-timeline-dots {
@@ -936,8 +1738,8 @@ html.dark-mode .me-timeline-rail {
 }
 
 html.dark-mode .me-diagrama-chip.me-timeline-dot {
-    border-color: #24201a;
-    box-shadow: 0 0 0 1px #3a3128;
+    border-color: #17171a;
+    box-shadow: 0 0 0 1px #27272a;
 }
 
 .me-diagrama-chip.me-timeline-dot:hover {
@@ -1014,7 +1816,7 @@ html.dark-mode .me-timeline-caption {
 }
 
 html.dark-mode .me-escada-track::-webkit-scrollbar-thumb {
-    background: #4a3d30;
+    background: #3a3a3f;
 }
 
 .me-escada-step {
@@ -1079,17 +1881,17 @@ html.dark-mode .me-escada-track::-webkit-scrollbar-thumb {
 }
 
 html.dark-mode .me-escada-track {
-    border-bottom-color: #3a3128;
+    border-bottom-color: #27272a;
 }
 
 html.dark-mode .me-escada-step {
-    background: #24201a;
-    border-color: #3a3128;
+    background: #17171a;
+    border-color: #27272a;
 }
 
 html.dark-mode .me-escada-step-num {
-    background: #1c1712;
-    border-color: #3a3128;
+    background: #0a0a0b;
+    border-color: #27272a;
     color: #d7ddd3;
 }
 
@@ -1221,27 +2023,27 @@ button.me-inquerito-opcao.is-selected {
 }
 
 html.dark-mode .me-ponto-inquerito {
-    background: #24201a;
+    background: #17171a;
     border-color: rgba(255, 255, 255, .15);
 }
 
 html.dark-mode .me-inquerito-pergunta {
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 html.dark-mode button.me-inquerito-opcao {
-    background: #2c2620;
-    border-color: #3a2f24;
-    color: #ddccb8;
+    background: #1c1c1f;
+    border-color: #27272a;
+    color: #d4d4d8;
 }
 
 html.dark-mode button.me-inquerito-opcao:hover {
-    background: #362c22;
+    background: #27272a;
 }
 
 html.dark-mode .me-inquerito-resultado {
     color: #b9c7bd;
-    border-top-color: #3a2f24;
+    border-top-color: #27272a;
 }
 
 /* Botão "Outro" (ver inquerito.outro no JSON) + campo de texto que revela
@@ -1296,9 +2098,9 @@ button.me-inquerito-outro-submit:focus-visible {
 }
 
 html.dark-mode .me-inquerito-outro-input {
-    background: #2c2620;
-    border-color: #3a2f24;
-    color: #ddccb8;
+    background: #1c1c1f;
+    border-color: #27272a;
+    color: #d4d4d8;
 }
 
 /* Botão "💡" de curiosidade (ver ponto.curiosidade), alinhado na mesma
@@ -1327,6 +2129,7 @@ button.me-ponto-curiosidade-toggle {
     border: none;
     border-radius: 50%;
     background: #f4f6f1;
+    color: #1f8a5b;
     font-size: .95rem;
     line-height: 1;
     display: flex;
@@ -1342,6 +2145,14 @@ button.me-ponto-curiosidade-toggle:focus-visible {
     filter: brightness(.96);
     box-shadow: none;
     transform: none;
+}
+
+/* Analogia em formato de painel (screen.curiosidade): o 💡 fica por baixo
+   do texto, à esquerda, em vez de ao lado dele. */
+.me-curiosidade-baixo {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 12px;
 }
 
 .me-ponto-curiosidade-reveal {
@@ -1374,6 +2185,7 @@ button.me-ponto-curiosidade-toggle:focus-visible {
 
 html.dark-mode button.me-ponto-curiosidade-toggle {
     background: rgba(31, 138, 91, .18);
+    color: #7fd6a8;
 }
 
 /* Botão "⚠️" de aviso (ver ponto.atencao) — mesmo mecanismo do 💡 de
@@ -1486,7 +2298,7 @@ html.dark-mode .me-ponto-curiosidade-reveal strong {
 }
 
 html.dark-mode .me-escada-detail {
-    background: #24201a;
+    background: #17171a;
     border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -1664,7 +2476,7 @@ html.dark-mode .me-ponto-proxima-missao summary {
 }
 
 html.dark-mode .me-proxima-missao-card {
-    background: #24201a;
+    background: #17171a;
     border-color: rgba(255, 255, 255, .15);
 }
 
@@ -1804,12 +2616,12 @@ html.dark-mode .me-arvore-tree li::before,
 html.dark-mode .me-arvore-tree li::after,
 html.dark-mode .me-arvore-tree li:last-child::before,
 html.dark-mode .me-arvore-tree ul::before {
-    border-color: #3a3128;
+    border-color: #27272a;
 }
 
 html.dark-mode .me-arvore-node {
-    background: #24201a;
-    border-color: #3a3128;
+    background: #17171a;
+    border-color: #27272a;
     color: #d7ddd3;
 }
 
@@ -1879,7 +2691,7 @@ html.dark-mode .me-arvore-node.is-active {
 }
 
 html.dark-mode .me-mapa-marker {
-    border-color: #1c1712;
+    border-color: #0a0a0b;
 }
 
 /* Cartão de uma analogia com imagem (ver renderAnalogia, screen.cartao_estilo)
@@ -1906,12 +2718,12 @@ html.dark-mode .me-mapa-marker {
 }
 
 html.dark-mode .me-analogia-cartao {
-    background: #26201a;
+    background: #17171a;
     border-color: rgba(255, 255, 255, 0.15);
 }
 
 html.dark-mode .me-analogia-texto-bloco {
-    background: #3a2a24;
+    background: #27272a;
     border-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -1997,8 +2809,8 @@ html.dark-mode .me-analogia-texto-bloco {
 }
 
 html.dark-mode .me-celebracao-card {
-    background: #26201a;
-    color: #f2e9dd;
+    background: #17171a;
+    color: #f4f4f5;
 }
 
 /* Painel de resultado do quiz de secção (ver renderQuizSeccao) — o
@@ -2110,8 +2922,8 @@ html.dark-mode .me-celebracao-card {
 }
 
 html.dark-mode .me-quiz-resultado {
-    background: #26201a;
-    border-color: #4a3d30;
+    background: #17171a;
+    border-color: #3a3a3f;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
@@ -2120,12 +2932,12 @@ html.dark-mode .me-quiz-resultado-item {
 }
 
 html.dark-mode .me-quiz-resultado-pergunta {
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 html.dark-mode .me-quiz-resultado-title,
 html.dark-mode .me-quiz-resultado-conclusao {
-    color: #f2e9dd;
+    color: #f4f4f5;
 }
 
 html.dark-mode .me-quiz-resultado-circle--green {
@@ -2287,9 +3099,9 @@ html.dark-mode .me-simulacao-saida-rotulo {
 }
 
 html.dark-mode .me-simulacao-select {
-    background: #24201a;
-    border-color: #3a2f24;
-    color: #ddccb8;
+    background: #17171a;
+    border-color: #27272a;
+    color: #d4d4d8;
 }
 
 html.dark-mode .me-simulacao-saidas {
@@ -2399,4 +3211,258 @@ html.dark-mode .me-imagem-reservada {
 @media (max-width: 560px) {
     .me-tp-celula { min-width: 24px; }
     .me-tp-massa { display: none; }
+}
+
+/* Botão dos popups da mascote ("Bora explorar!", "Continuar"...): o verde
+   azeitona e a forma de pílula com sombra do mission-styles.css não
+   combinavam com o resto das missões (verde #1f8a5b, cantos de 12-14px,
+   sem sombras). Aqui fica igual aos botões ativos da navegação. */
+.me-mascot-popup button.mascot-overlay-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 0;
+    padding: 10px 22px;
+    border: 1px solid #1f8a5b;
+    border-radius: 12px;
+    background: #1f8a5b;
+    box-shadow: none;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    font-size: .95rem;
+    transform: none;
+}
+
+.me-mascot-popup button.mascot-overlay-btn:hover:not(:disabled) {
+    border-color: #17724a;
+    background: #17724a;
+    box-shadow: none;
+    transform: none;
+}
+
+.me-mascot-popup button.mascot-overlay-btn:disabled,
+.me-mascot-popup button.mascot-overlay-btn:disabled:hover {
+    border-color: #c4d3ca;
+    background: #c4d3ca;
+    box-shadow: none;
+    transform: none;
+}
+
+html.dark-mode .me-mascot-popup button.mascot-overlay-btn:not(:disabled) {
+    border-color: #1f8a5b;
+    background: #1f8a5b;
+    color: #ffffff;
+}
+
+/* "Concluir secção"/"Concluir missão" na mesma cor e forma. */
+.screen-nav button.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal) {
+    border: 1px solid #1f8a5b;
+    border-radius: 12px;
+    background: #1f8a5b;
+    box-shadow: none;
+    color: #ffffff;
+}
+
+.screen-nav button.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal):hover:not(:disabled) {
+    border-color: #17724a;
+    background: #17724a;
+    box-shadow: none;
+}
+
+.screen-nav button.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal):disabled {
+    border-color: #c4d3ca;
+    background: #c4d3ca;
+}
+
+/* Desenho de uma simulação (ver visualSimulacaoHtml): caixa num plano
+   horizontal com N, P, F e d, redesenhada a cada alteração dos sliders. */
+.me-sim-visual {
+    margin: 4px 0 18px;
+    color: #2b2b2b;
+}
+
+.me-tc {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.me-tc-w {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.me-tc-chao {
+    stroke: currentColor;
+    stroke-width: 2.5;
+}
+
+.me-tc-hachura line {
+    stroke: currentColor;
+    stroke-width: 1.2;
+    opacity: .35;
+}
+
+.me-tc-caixa {
+    fill: #f3d9a4;
+    stroke: currentColor;
+    stroke-width: 2.5;
+}
+
+.me-tc-fantasma {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-dasharray: 5 5;
+    opacity: .4;
+}
+
+.me-tc text {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.me-tc-dlabel {
+    font-size: 15px;
+}
+
+.me-sim-visual-legenda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 14px;
+    margin-top: 8px;
+    font-size: .85rem;
+    color: #4b5a52;
+    text-align: center;
+}
+
+.me-tc-chave {
+    font-weight: 700;
+}
+
+.me-tc-chave--F { color: #e8590c; }
+.me-tc-chave--fx { color: #1f8a5b; }
+.me-tc-chave--N { color: #2f9e44; }
+.me-tc-chave--P { color: #c92a2a; }
+
+html.dark-mode .me-sim-visual {
+    color: #e6e1da;
+}
+
+html.dark-mode .me-tc-caixa {
+    fill: #6b5530;
+}
+
+html.dark-mode .me-sim-visual-legenda {
+    color: #b8b2aa;
+}
+
+@media (max-width: 640px) {
+    .me-tc text { font-size: 30px; }
+    .me-tc-w { font-size: 30px; }
+    .me-tc-dlabel { font-size: 28px; }
+}
+
+/* Painel "Desafio" no fim de uma simulação (screen.desafio): usa o mesmo
+   painel dos exercícios (ver exercicioPontoHtml), só com outro título. */
+.me-simulacao-desafio {
+    margin-top: 20px;
+}
+
+/* Simulação em painel de duas colunas (screen.painel_colunas): os
+   controlos à esquerda, uma linha vertical suave e os resultados à direita
+   — o mesmo formato dos painéis de ponto de diagrama. */
+.me-sim-painel {
+    margin: 20px 0 0;
+}
+
+.me-sim-painel .me-escada-detail-columns {
+    align-items: stretch;
+    gap: 28px;
+}
+
+.me-sim-painel-controlos {
+    flex: 1 1 55%;
+    min-width: 0;
+}
+
+.me-sim-painel-saidas {
+    flex: 1 1 45%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+}
+
+.me-sim-painel .me-simulacao-controlos {
+    margin: 0;
+}
+
+.me-sim-painel .me-simulacao-saidas {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    gap: 14px;
+}
+
+.me-sim-painel .me-simulacao-saida-valor {
+    font-size: 1.25rem;
+}
+
+.me-sim-painel .me-simulacao-saida-rotulo {
+    font-size: .95rem;
+}
+
+/* 💡 no canto de baixo à direita do painel de uma simulação
+   (screen.curiosidade): o texto abre por baixo do painel. */
+.me-sim-painel {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.me-sim-lampada {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+}
+
+.me-sim-painel + .me-ponto-curiosidade-reveal {
+    margin-top: 12px;
+}
+
+/* Resultados de uma simulação sem caixa esverdeada: cada um é uma linha de
+   lista, com uma bolinha de tópico (em vez do painel com fundo verde). */
+.me-simulacao-saidas,
+html.dark-mode .me-simulacao-saidas {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.me-simulacao-saida {
+    position: relative;
+    padding-left: 20px;
+}
+
+.me-simulacao-saida::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #1f8a5b;
+    transform: translateY(-50%);
+}
+
+html.dark-mode .me-simulacao-saida::before {
+    background: #7fd6a8;
 }

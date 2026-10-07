@@ -440,7 +440,7 @@
           "mascote_feedback_errado": "Calcula primeiro a constante de tempo: R C = 1,0 s. t ½ = R C ln 2 = 0,69 s."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_rc",
           "titulo": "Descarga de um condensador",
           "instrucao": "Escolhe a capacidade, a resistência e a tensão inicial.",
@@ -455,7 +455,23 @@
             { "rotulo": "Tensão U(t)", "formula": "U0 * Math.exp(-t / (R * 1000 * C * 1e-6))", "unidade": "V", "casas_decimais": 2 },
             { "rotulo": "Tempo de meia-descarga", "formula": "R * 1000 * C * 1e-6 * Math.log(2)", "unidade": "s", "casas_decimais": 3 }
           ],
-          "pergunta_final": "Se duplicares a resistência, o que acontece ao tempo de meia-descarga? Resposta esperada: duplica, porque t ½ = R C ln 2."
+          "desafio": {
+            "enunciado": "Se duplicares a resistência, o que acontece ao tempo de meia-descarga?",
+            "campos": [
+              {
+                "rotulo": "Resposta",
+                "aceites": [
+                  "duplica",
+                  "dobro",
+                  "dobra",
+                  "2 vezes"
+                ]
+              }
+            ],
+            "resolucao": [
+              "Duplica, porque t ½ = R C ln 2."
+            ]
+          }
         },
         {
           "tipo": "atividade_laboratorial",

@@ -74,7 +74,7 @@
           "mascote_feedback_errado": "A força magnética não realiza trabalho, porque é sempre perpendicular ao movimento. O módulo da velocidade e a energia cinética mantêm-se constantes."
         },
         {
-          "tipo": "simulacao",
+          "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_carga_magnetica",
           "titulo": "Uma carga num campo magnético",
           "instrucao": "Escolhe a partícula, a velocidade, o campo magnético e o ângulo entre eles.",
@@ -95,7 +95,12 @@
             { "rotulo": "Raio (componente perpendicular)", "formula": "(function(){ var q = particula === 0 ? 1.60e-19 : (particula === 1 ? 1.60e-19 : 3.20e-19); var m = particula === 0 ? 1.67e-27 : (particula === 1 ? 9.11e-31 : 6.64e-27); var vperp = v * Math.sin(theta * Math.PI / 180); return m * vperp / (q * B); })()", "unidade": "m", "casas_decimais": 6 },
             { "rotulo": "Período", "formula": "(function(){ var q = particula === 0 ? 1.60e-19 : (particula === 1 ? 1.60e-19 : 3.20e-19); var m = particula === 0 ? 1.67e-27 : (particula === 1 ? 9.11e-31 : 6.64e-27); return 2 * Math.PI * m / (q * B); })()", "unidade": "s", "casas_decimais": 10 }
           ],
-          "pergunta_final": "Porque é que o protão e o eletrão, com a mesma velocidade, rodam em sentidos opostos e com raios muito diferentes? Resposta esperada: cargas de sinal oposto levam a forças de sentido oposto; o eletrão tem massa cerca de 1800 vezes menor, por isso o raio é muito menor."
+          "desafio": {
+            "enunciado": "Porque é que o protão e o eletrão, com a mesma velocidade, rodam em sentidos opostos e com raios muito diferentes?",
+            "resolucao": [
+              "Cargas de sinal oposto levam a forças de sentido oposto; o eletrão tem massa cerca de 1800 vezes menor, por isso o raio é muito menor."
+            ]
+          }
         },
         {
           "tipo": "analogia",

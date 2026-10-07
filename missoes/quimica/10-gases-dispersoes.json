@@ -4,7 +4,7 @@
   "titulo": "Gases e dispersões",
   "disciplina": "quimica",
   "ano": 10,
-  "imagem": "q10_baloes_helio_ar.png",
+  "imagem": "Gases e dispersão.png",
   "badge": {
     "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9 3h6\"/><path d=\"M10 3v6L5 19a1 1 0 0 0 .9 1.5h12.2A1 1 0 0 0 19 19l-5-10V3\"/><path d=\"M7.5 15h9\"/></svg>",
     "nome": "Mestre das Soluções"
