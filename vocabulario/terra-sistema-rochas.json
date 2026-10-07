@@ -1,0 +1,68 @@
+{
+  "unidade": "terra-sistema-rochas",
+  "titulo": "Geologia: A Terra e as Rochas",
+  "termos": [
+    {
+      "id": "sistema_fechado",
+      "termo": "Sistema fechado",
+      "definicao": "Sistema que troca energia mas não matéria com o exterior. A Terra é, aproximadamente, um sistema fechado: recebe energia solar e liberta calor, mas quase não troca matéria.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "geosfera"
+      ]
+    },
+    {
+      "id": "geosfera",
+      "termo": "Geosfera",
+      "definicao": "O subsistema sólido da Terra (e o núcleo externo líquido): crosta, manto e núcleo. Interage com a hidrosfera, a atmosfera e a biosfera.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sistema_fechado"
+      ]
+    },
+    {
+      "id": "rocha_sedimentar",
+      "termo": "Rocha sedimentar",
+      "definicao": "Rocha formada à superfície por meteorização, erosão, transporte e deposição de sedimentos, seguidos de diagénese. Regista paleoambientes, clima e fósseis.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "ciclo_litologico"
+      ]
+    },
+    {
+      "id": "rocha_magmatica",
+      "termo": "Rocha magmática",
+      "definicao": "Rocha formada por arrefecimento e solidificação do magma — em profundidade (plutónica) ou à superfície (vulcânica). Regista atividade magmática e pode ser datada por métodos radiométricos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "ciclo_litologico"
+      ]
+    },
+    {
+      "id": "rocha_metamorfica",
+      "termo": "Rocha metamórfica",
+      "definicao": "Rocha resultante da transformação, no estado sólido, de rochas pré-existentes por aumento de pressão e/ou temperatura. Regista colisões de placas e intrusões magmáticas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "ciclo_litologico"
+      ]
+    },
+    {
+      "id": "ciclo_litologico",
+      "termo": "Ciclo das rochas (ciclo litológico)",
+      "definicao": "Reciclagem contínua dos materiais da Terra: qualquer tipo de rocha pode transformar-se noutro, por meteorização/erosão/diagénese, metamorfismo, fusão/cristalização ou soerguimento.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "rocha_sedimentar",
+        "rocha_magmatica",
+        "rocha_metamorfica"
+      ]
+    }
+  ]
+}

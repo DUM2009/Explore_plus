@@ -306,7 +306,13 @@
                 <h3 class="missions-category-panel-name">Corpo Humano</h3>
                 <p class="missions-category-panel-tagline">Viaja pelo cérebro e pelo sistema nervoso que controla tudo o que fazes.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card locked"><div class="mission-card-info"><h2>Sistema Nervoso (10º ano)</h2><p>Viaja pelo cérebro e pelos neurónios.</p></div><button disabled>Em breve</button></div>
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Sistema Nervoso e Hormonal (10º ano)</h2>
+                            <p>Do neurónio à sinapse, do hipotálamo às hormonas vegetais — como o corpo se regula.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='sistema-nervoso' %}"><button type="button">Começar</button></a>
+                    </div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Corpo Humano" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>

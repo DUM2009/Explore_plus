@@ -1,0 +1,133 @@
+{
+  "unidade": "origem-e-interior-da-terra",
+  "titulo": "Geologia: Origem e Interior da Terra",
+  "termos": [
+    {
+      "id": "hipotese_nebular",
+      "termo": "Hipótese nebular",
+      "definicao": "O Sistema Solar formou-se há ≈4600 Ma a partir de uma nébula solar em rotação que colapsou e achatou num disco: o Sol formou-se no centro, e os planetas por acreção de planetesimais.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "diferenciacao_terra"
+      ]
+    },
+    {
+      "id": "diferenciacao_terra",
+      "termo": "Diferenciação da Terra",
+      "definicao": "Separação dos materiais da Terra primitiva fundida por densidade: ferro e níquel afundaram formando o núcleo; os silicatos, menos densos, formaram o manto e a crosta.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "hipotese_nebular",
+        "nucleo"
+      ]
+    },
+    {
+      "id": "meteorito",
+      "termo": "Meteorito",
+      "definicao": "Fragmento de asteroide que atinge a Terra. Os sideritos (ferro-níquel) e os condritos (silicatos primitivos) dão informação sobre a composição do núcleo e a idade do Sistema Solar.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "diferenciacao_terra"
+      ]
+    },
+    {
+      "id": "metodos_diretos",
+      "termo": "Métodos diretos",
+      "definicao": "Observação direta de materiais (afloramentos, minas, sondagens, xenólitos). Limitação: só dão acesso a uma camada muito superficial da Terra.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metodos_indiretos"
+      ]
+    },
+    {
+      "id": "metodos_indiretos",
+      "termo": "Métodos indiretos",
+      "definicao": "Interpretação de dados físicos (sismologia, gravimetria, geomagnetismo, geotermia) que permitem inferir as características de todo o interior da Terra. A sismologia é o mais importante.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metodos_diretos",
+        "descontinuidade_moho"
+      ]
+    },
+    {
+      "id": "descontinuidade_moho",
+      "termo": "Descontinuidade de Mohorovičić (Moho)",
+      "definicao": "Separa a crosta do manto; as ondas P e S aumentam de velocidade ao atravessá-la. A ≈5-10 km (oceanos) ou ≈30-70 km (continentes).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_gutenberg",
+        "litosfera"
+      ]
+    },
+    {
+      "id": "descontinuidade_gutenberg",
+      "termo": "Descontinuidade de Gutenberg",
+      "definicao": "Separa o manto do núcleo (≈2900 km). As ondas S deixam de se propagar (núcleo externo líquido); as ondas P diminuem bruscamente de velocidade.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_moho",
+        "zona_sombra_sismica",
+        "nucleo"
+      ]
+    },
+    {
+      "id": "zona_sombra_sismica",
+      "termo": "Zona de sombra sísmica",
+      "definicao": "Região entre ≈103° e 143° de distância angular ao epicentro onde não se registam ondas P nem S diretas — revelou a existência e o estado líquido do núcleo externo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_gutenberg"
+      ]
+    },
+    {
+      "id": "litosfera",
+      "termo": "Litosfera e astenosfera",
+      "definicao": "Litosfera: camada rígida (crosta + manto superior), dividida em placas. Astenosfera: camada plástica, parcialmente fundida, sobre a qual as placas deslizam.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_moho",
+        "isostasia"
+      ]
+    },
+    {
+      "id": "nucleo",
+      "termo": "Núcleo externo e interno",
+      "definicao": "Núcleo externo: líquido, ferro e níquel (2900-5150 km) — gera o campo magnético. Núcleo interno: sólido apesar da temperatura elevadíssima, devido à pressão (5150-6370 km).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "descontinuidade_gutenberg",
+        "paleomagnetismo"
+      ]
+    },
+    {
+      "id": "paleomagnetismo",
+      "termo": "Paleomagnetismo",
+      "definicao": "Estudo do campo magnético do passado registado nas rochas: a lava, ao arrefecer, fixa a orientação do campo magnético da época, incluindo as suas inversões de polaridade.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "nucleo"
+      ]
+    },
+    {
+      "id": "isostasia",
+      "termo": "Isostasia",
+      "definicao": "Estado de equilíbrio entre a litosfera e a astenosfera, semelhante à flutuação de gelo na água. A erosão de uma montanha faz a litosfera subir; a acumulação de sedimentos ou gelo faz-a afundar.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "litosfera"
+      ]
+    }
+  ]
+}

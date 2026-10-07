@@ -1,0 +1,36 @@
+{
+  "unidade": "riscos-ordenamento-territorio",
+  "titulo": "Geologia: Riscos e Ordenamento do Território",
+  "termos": [
+    {
+      "id": "bacia_hidrografica",
+      "termo": "Bacia hidrográfica",
+      "definicao": "Área drenada por um rio principal e pelos seus afluentes, limitada por linhas de cumeada. O leito de cheia, fértil mas sujeito a inundações, atrai ocupação humana.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "movimento_massa"
+      ]
+    },
+    {
+      "id": "deriva_litoral",
+      "termo": "Deriva litoral",
+      "definicao": "Transporte de areia ao longo da costa pelas correntes (em Portugal, predominantemente de norte para sul). Esporões retêm-na a montante mas agravam a erosão a jusante.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "bacia_hidrografica"
+      ]
+    },
+    {
+      "id": "movimento_massa",
+      "termo": "Movimentos em massa",
+      "definicao": "Deslocações de materiais pelas vertentes por ação da gravidade: desabamentos, deslizamentos, fluxos e reptação. Agravados por declive, água e desflorestação.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "bacia_hidrografica"
+      ]
+    }
+  ]
+}

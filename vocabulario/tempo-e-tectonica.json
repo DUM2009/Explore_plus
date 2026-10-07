@@ -1,0 +1,177 @@
+{
+  "unidade": "tempo-e-tectonica",
+  "titulo": "Geologia: Tempo e Tectónica de Placas",
+  "termos": [
+    {
+      "id": "datacao_relativa",
+      "termo": "Datação relativa",
+      "definicao": "Ordena acontecimentos geológicos no tempo (mais antigo/mais recente), sem indicar a idade em anos. Baseia-se nos princípios da estratigrafia (sobreposição, horizontalidade original, interseção, inclusão...).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "principio_sobreposicao",
+        "datacao_absoluta",
+        "discordancia"
+      ]
+    },
+    {
+      "id": "principio_sobreposicao",
+      "termo": "Princípio da sobreposição",
+      "definicao": "Numa sequência de estratos não deformada, um estrato é mais recente do que o que está por baixo e mais antigo do que o que está por cima.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "datacao_relativa"
+      ]
+    },
+    {
+      "id": "discordancia",
+      "termo": "Discordância",
+      "definicao": "Superfície de erosão ou de não deposição que separa dois conjuntos de estratos, representando uma lacuna no registo geológico.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "datacao_relativa"
+      ]
+    },
+    {
+      "id": "fossil_idade",
+      "termo": "Fóssil de idade (estratigráfico)",
+      "definicao": "Fóssil de um ser vivo que existiu durante pouco tempo mas com ampla distribuição geográfica — usado para datar e correlacionar estratos (ex.: trilobites, amonites).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "fossil_facies",
+        "datacao_relativa"
+      ]
+    },
+    {
+      "id": "fossil_facies",
+      "termo": "Fóssil de fácies",
+      "definicao": "Fóssil de um ser vivo que existiu durante muito tempo mas viveu em ambientes muito específicos — usado para reconstituir paleoambientes (ex.: corais).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "fossil_idade"
+      ]
+    },
+    {
+      "id": "datacao_absoluta",
+      "termo": "Datação absoluta (radiométrica)",
+      "definicao": "Atribui uma idade numérica a uma rocha ou mineral, com base no decaimento radioativo de um isótopo-pai num isótopo-filho, a um ritmo constante.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "semivida",
+        "datacao_relativa"
+      ]
+    },
+    {
+      "id": "semivida",
+      "termo": "Semivida",
+      "definicao": "Tempo necessário para que metade dos átomos de um isótopo-pai se transforme em isótopo-filho. É constante, independentemente da temperatura ou pressão.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "datacao_absoluta"
+      ]
+    },
+    {
+      "id": "escala_tempo_geologico",
+      "termo": "Escala do tempo geológico",
+      "definicao": "Divisão da história da Terra em éons, eras, períodos e épocas, cujos limites correspondem sobretudo a extinções em massa e ao aparecimento de novos grupos de seres vivos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "datacao_absoluta"
+      ]
+    },
+    {
+      "id": "atualismo",
+      "termo": "Atualismo (uniformitarismo)",
+      "definicao": "Princípio segundo o qual os processos geológicos atuais, lentos e graduais, explicam o passado — \"o presente é a chave do passado\" (Hutton, Lyell), em contraste com o catastrofismo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "deriva_continental"
+      ]
+    },
+    {
+      "id": "deriva_continental",
+      "termo": "Deriva continental",
+      "definicao": "Teoria de Wegener (1912-15): os continentes estiveram unidos num supercontinente, a Pangeia, e derivaram até às posições atuais. Tinha evidências fortes mas faltava-lhe um mecanismo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "expansao_fundos_oceanicos",
+        "tectonica_placas"
+      ]
+    },
+    {
+      "id": "expansao_fundos_oceanicos",
+      "termo": "Expansão dos fundos oceânicos",
+      "definicao": "Descoberta de Harry Hess: nas dorsais oceânicas forma-se nova crosta oceânica que se afasta para ambos os lados, sendo destruída nas fossas oceânicas (subducção).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "deriva_continental",
+        "tectonica_placas"
+      ]
+    },
+    {
+      "id": "tectonica_placas",
+      "termo": "Tectónica de placas",
+      "definicao": "A litosfera está dividida em placas que se deslocam sobre a astenosfera. A atividade sísmica, vulcânica e orogénica concentra-se nos limites das placas (divergentes, convergentes, transformantes).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "limite_divergente",
+        "limite_convergente",
+        "limite_transformante",
+        "ponto_quente"
+      ]
+    },
+    {
+      "id": "limite_divergente",
+      "termo": "Limite divergente",
+      "definicao": "Placas afastam-se; ascensão de magma basáltico forma nova litosfera oceânica (dorsais) ou riftes continentais. Sismos superficiais, vulcanismo efusivo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tectonica_placas",
+        "limite_convergente"
+      ]
+    },
+    {
+      "id": "limite_convergente",
+      "termo": "Limite convergente",
+      "definicao": "Placas aproximam-se: subducção (oceânica-continental ou oceânica-oceânica) com fossa e vulcanismo explosivo, ou colisão continental com formação de grandes cadeias montanhosas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tectonica_placas",
+        "limite_divergente"
+      ]
+    },
+    {
+      "id": "limite_transformante",
+      "termo": "Limite transformante",
+      "definicao": "Placas deslizam lateralmente; não há criação nem destruição de litosfera, mas há sismos frequentes (ex.: Falha de Santo André).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tectonica_placas"
+      ]
+    },
+    {
+      "id": "ponto_quente",
+      "termo": "Ponto quente (hotspot)",
+      "definicao": "Zona de ascensão de material quente do manto (pluma), fixa, que origina vulcanismo no interior das placas. Como a placa se move sobre ele, formam-se alinhamentos de ilhas com idade crescente (ex.: Havai).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tectonica_placas"
+      ]
+    }
+  ]
+}

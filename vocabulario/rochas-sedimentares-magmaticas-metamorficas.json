@@ -1,0 +1,156 @@
+{
+  "unidade": "rochas-sedimentares-magmaticas-metamorficas",
+  "titulo": "Geologia: Rochas em Detalhe",
+  "termos": [
+    {
+      "id": "meteorizacao_fisica",
+      "termo": "Meteorização física",
+      "definicao": "Fragmentação de rochas sem alteração da composição (crioclastia, termoclastia, haloclastia, descompressão). Mais intensa em climas frios ou áridos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "meteorizacao_quimica",
+        "sedimentogenese"
+      ]
+    },
+    {
+      "id": "meteorizacao_quimica",
+      "termo": "Meteorização química",
+      "definicao": "Alteração da composição mineralógica de uma rocha (dissolução, hidrólise, oxidação). Mais intensa em climas quentes e húmidos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "meteorizacao_fisica"
+      ]
+    },
+    {
+      "id": "sedimentogenese",
+      "termo": "Sedimentogénese",
+      "definicao": "Conjunto de processos que formam os sedimentos: meteorização, erosão, transporte e sedimentação.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "meteorizacao_fisica",
+        "diagenese"
+      ]
+    },
+    {
+      "id": "diagenese",
+      "termo": "Diagénese",
+      "definicao": "Transformação dos sedimentos soltos em rocha consolidada, a baixa temperatura e pressão: compactação, cimentação e recristalização.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sedimentogenese"
+      ]
+    },
+    {
+      "id": "rocha_detritica",
+      "termo": "Rocha detrítica",
+      "definicao": "Rocha sedimentar formada por fragmentos (clastos) de outras rochas, classificada pelo tamanho dos clastos (conglomerado/brecha, arenito, siltito, argilito).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "diagenese"
+      ]
+    },
+    {
+      "id": "fossilizacao",
+      "termo": "Fossilização",
+      "definicao": "Processos de preservação de restos de seres vivos: mineralização, moldagem, incarbonização, conservação e icnofósseis (marcas de atividade).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": []
+    },
+    {
+      "id": "rocha_mae",
+      "termo": "Rocha-mãe e rocha-armazém",
+      "definicao": "Rocha-mãe: onde o petróleo se forma a partir de matéria orgânica. Migra para a rocha-armazém (porosa e permeável), retida por uma rocha de cobertura impermeável.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "rocha_detritica"
+      ]
+    },
+    {
+      "id": "fusao_parcial",
+      "termo": "Fusão parcial",
+      "definicao": "Formação de magma por fusão incompleta de uma rocha (só os minerais com ponto de fusão mais baixo fundem), por descompressão, adição de água ou aumento de temperatura.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "serie_bowen"
+      ]
+    },
+    {
+      "id": "serie_bowen",
+      "termo": "Série de reações de Bowen",
+      "definicao": "Ordem pela qual os minerais cristalizam num magma em arrefecimento, da maior para a menor temperatura: olivina/plagioclase cálcica até quartzo. O líquido residual enriquece em sílica.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "fusao_parcial",
+        "diferenciacao_magmatica"
+      ]
+    },
+    {
+      "id": "diferenciacao_magmatica",
+      "termo": "Diferenciação magmática",
+      "definicao": "Processos (cristalização fracionada, assimilação, mistura de magmas) que fazem variar a composição de um magma, originando rochas diferentes a partir do mesmo magma inicial.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "serie_bowen"
+      ]
+    },
+    {
+      "id": "textura_magmatica",
+      "termo": "Textura das rochas magmáticas",
+      "definicao": "Depende da velocidade de arrefecimento: granular (lenta, plutónicas), agranular ou vítrea (rápida, vulcânicas), porfírica (duas fases — cristais grandes numa matriz fina).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": []
+    },
+    {
+      "id": "metamorfismo_contacto",
+      "termo": "Metamorfismo de contacto",
+      "definicao": "Metamorfismo dominado pela temperatura, em redor de intrusões magmáticas (auréola de metamorfismo). Produz rochas geralmente não foliadas (corneana, mármore, quartzito).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metamorfismo_regional"
+      ]
+    },
+    {
+      "id": "metamorfismo_regional",
+      "termo": "Metamorfismo regional",
+      "definicao": "Metamorfismo dominado por temperatura e pressão dirigida, em grandes áreas de colisão de placas. Produz rochas foliadas: ardósia, filito, micaxisto, gnaisse.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metamorfismo_contacto",
+        "foliacao"
+      ]
+    },
+    {
+      "id": "foliacao",
+      "termo": "Foliação",
+      "definicao": "Orientação paralela dos minerais, perpendicular à direção da tensão máxima, causada pela pressão dirigida no metamorfismo regional.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metamorfismo_regional"
+      ]
+    },
+    {
+      "id": "minerais_indice",
+      "termo": "Minerais-índice",
+      "definicao": "Minerais que só se formam em determinadas condições de pressão e temperatura, permitindo deduzir o grau de metamorfismo de uma rocha (ex.: clorite, granada, silimanite).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "metamorfismo_regional"
+      ]
+    }
+  ]
+}

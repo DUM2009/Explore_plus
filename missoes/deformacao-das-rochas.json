@@ -3,7 +3,10 @@
   "titulo": "Deformação das Rochas",
   "disciplina": "geologia",
   "area": "geologia",
-  "badge": { "icone": "〽️", "nome": "Leitor de Dobras e Falhas" },
+  "badge": {
+    "icone": "〽️",
+    "nome": "Leitor de Dobras e Falhas"
+  },
   "secoes": [
     {
       "secao_id": "tensoes-comportamento",
@@ -21,16 +24,31 @@
           "titulo": "Três tipos de tensão",
           "instrucao": "Clica em cada tipo de tensão para veres o que produz.",
           "pontos": [
-            { "id": "compressiva", "label": "Tensão compressiva", "explicacao": "Encurta e espessa as camadas; origina dobras e falhas inversas. Típica de limites convergentes." },
-            { "id": "distensiva", "label": "Tensão distensiva", "explicacao": "Estira e adelgaça as camadas; origina falhas normais. Típica de limites divergentes." },
-            { "id": "cisalhante", "label": "Tensão cisalhante", "explicacao": "Provoca deslocamento lateral; origina falhas de desligamento. Típica de limites transformantes." }
+            {
+              "id": "compressiva",
+              "label": "Tensão compressiva",
+              "explicacao": "Encurta e espessa as camadas; origina dobras e falhas inversas. Típica de limites convergentes."
+            },
+            {
+              "id": "distensiva",
+              "label": "Tensão distensiva",
+              "explicacao": "Estira e adelgaça as camadas; origina falhas normais. Típica de limites divergentes."
+            },
+            {
+              "id": "cisalhante",
+              "label": "Tensão cisalhante",
+              "explicacao": "Provoca deslocamento lateral; origina falhas de desligamento. Típica de limites transformantes."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Uma tensão que estira e adelgaça as camadas de rocha é do tipo:",
-          "opcoes": ["Distensiva", "Compressiva"],
-          "correta": 0,
+          "opcoes": [
+            "Compressiva",
+            "Distensiva"
+          ],
+          "correta": 1,
           "mascote_feedback_certo": "Exato! A tensão distensiva estica as camadas, ao contrário da compressiva, que as encurta.",
           "mascote_feedback_errado": "É distensiva — a compressiva encurta e espessa as camadas, não as estica."
         },
@@ -44,14 +62,20 @@
           "perguntas": [
             {
               "pergunta": "O comportamento dúctil de uma rocha é favorecido por:",
-              "opcoes": ["Temperatura e pressão elevadas, tensão lenta e prolongada", "Baixa temperatura e tensão súbita"],
+              "opcoes": [
+                "Temperatura e pressão elevadas, tensão lenta e prolongada",
+                "Baixa temperatura e tensão súbita"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Isso mesmo! Em profundidade, com calor e tempo, a rocha dobra em vez de fraturar.",
               "mascote_feedback_errado": "É favorecido por temperatura e pressão elevadas — baixa temperatura e tensão súbita favorecem o comportamento frágil."
             },
             {
               "pergunta": "À superfície, as rochas tendem a ter um comportamento predominantemente:",
-              "opcoes": ["Frágil (fraturam)", "Dúctil (dobram)"],
+              "opcoes": [
+                "Frágil (fraturam)",
+                "Dúctil (dobram)"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Correto! À superfície, temperatura e pressão baixas favorecem a fratura.",
               "mascote_feedback_errado": "É frágil — o comportamento dúctil é favorecido em profundidade, não à superfície."
@@ -73,15 +97,26 @@
           "titulo": "Anticlinal vs. sinclinal",
           "instrucao": "Clica em cada tipo de dobra.",
           "pontos": [
-            { "id": "anticlinal", "label": "Anticlinal", "explicacao": "Convexidade voltada para cima (em \"A\"). As rochas no núcleo da dobra são as mais antigas." },
-            { "id": "sinclinal", "label": "Sinclinal", "explicacao": "Concavidade voltada para cima (em \"U\"). As rochas no núcleo da dobra são as mais recentes." }
+            {
+              "id": "anticlinal",
+              "label": "Anticlinal",
+              "explicacao": "Convexidade voltada para cima (em \"A\"). As rochas no núcleo da dobra são as mais antigas."
+            },
+            {
+              "id": "sinclinal",
+              "label": "Sinclinal",
+              "explicacao": "Concavidade voltada para cima (em \"U\"). As rochas no núcleo da dobra são as mais recentes."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Numa dobra em forma de \"U\" (sinclinal), as rochas no núcleo são as:",
-          "opcoes": ["Mais recentes", "Mais antigas"],
-          "correta": 0,
+          "opcoes": [
+            "Mais antigas",
+            "Mais recentes"
+          ],
+          "correta": 1,
           "mascote_feedback_certo": "Exato! No sinclinal, o núcleo guarda as camadas mais jovens.",
           "mascote_feedback_errado": "São as mais recentes — no anticlinal é que o núcleo tem as rochas mais antigas."
         },
@@ -100,14 +135,20 @@
           "perguntas": [
             {
               "pergunta": "A zona de maior curvatura de uma dobra chama-se:",
-              "opcoes": ["Charneira", "Flanco"],
-              "correta": 0,
+              "opcoes": [
+                "Flanco",
+                "Charneira"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! A charneira é o ponto de curvatura máxima.",
               "mascote_feedback_errado": "É a charneira — os flancos são os lados da dobra, não o ponto de maior curvatura."
             },
             {
               "pergunta": "Usam-se os termos \"antiforma\" e \"sinforma\" quando:",
-              "opcoes": ["Não se conhece a idade relativa das camadas", "A dobra está muito inclinada"],
+              "opcoes": [
+                "Não se conhece a idade relativa das camadas",
+                "A dobra está muito inclinada"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Correto! Sem saber a idade das camadas, não se pode chamar-lhe anticlinal nem sinclinal com rigor.",
               "mascote_feedback_errado": "Usam-se quando não se conhece a idade relativa das camadas — não tem a ver com a inclinação."
@@ -133,15 +174,30 @@
           "titulo": "Normal, inversa e de desligamento",
           "instrucao": "Clica em cada tipo de falha.",
           "pontos": [
-            { "id": "falha_normal", "label": "Falha normal", "explicacao": "O teto desce em relação ao muro (há alongamento) — resultado de tensão distensiva." },
-            { "id": "falha_inversa", "label": "Falha inversa", "explicacao": "O teto sobe em relação ao muro (há encurtamento) — resultado de tensão compressiva. Com pouca inclinação, chama-se cavalgamento." },
-            { "id": "falha_desligamento", "label": "Falha de desligamento", "explicacao": "Os blocos deslocam-se horizontalmente, paralelamente ao plano de falha — resultado de tensão cisalhante." }
+            {
+              "id": "falha_normal",
+              "label": "Falha normal",
+              "explicacao": "O teto desce em relação ao muro (há alongamento) — resultado de tensão distensiva."
+            },
+            {
+              "id": "falha_inversa",
+              "label": "Falha inversa",
+              "explicacao": "O teto sobe em relação ao muro (há encurtamento) — resultado de tensão compressiva. Com pouca inclinação, chama-se cavalgamento."
+            },
+            {
+              "id": "falha_desligamento",
+              "label": "Falha de desligamento",
+              "explicacao": "Os blocos deslocam-se horizontalmente, paralelamente ao plano de falha — resultado de tensão cisalhante."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Numa falha inversa, o teto, em relação ao muro:",
-          "opcoes": ["Sobe", "Desce"],
+          "opcoes": [
+            "Sobe",
+            "Desce"
+          ],
           "correta": 0,
           "mascote_feedback_certo": "Exato! No falha inversa, a compressão empurra o teto para cima.",
           "mascote_feedback_errado": "Sobe — é na falha normal que o teto desce."
@@ -161,21 +217,30 @@
           "perguntas": [
             {
               "pergunta": "Um bloco abatido entre duas falhas normais chama-se:",
-              "opcoes": ["Graben", "Horst"],
-              "correta": 0,
+              "opcoes": [
+                "Horst",
+                "Graben"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! O graben é o bloco que desce; o horst é o que fica elevado.",
               "mascote_feedback_errado": "É o graben — o horst é o bloco elevado, não o abatido."
             },
             {
               "pergunta": "Uma falha inversa com pouca inclinação do plano de falha chama-se:",
-              "opcoes": ["Cavalgamento", "Desligamento"],
-              "correta": 0,
+              "opcoes": [
+                "Desligamento",
+                "Cavalgamento"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Correto! O cavalgamento é um caso particular de falha inversa.",
               "mascote_feedback_errado": "É o cavalgamento — o desligamento é um tipo de falha totalmente diferente, por cisalhamento."
             },
             {
               "pergunta": "Uma falha sem deslocamento entre os blocos chama-se:",
-              "opcoes": ["Diáclase", "Falha ativa"],
+              "opcoes": [
+                "Diáclase",
+                "Falha ativa"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Exato! Sem deslocamento, não é tecnicamente uma falha — é uma diáclase.",
               "mascote_feedback_errado": "É uma diáclase — uma falha ativa tem sempre deslocamento, só que é recente."

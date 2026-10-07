@@ -3,7 +3,10 @@
   "titulo": "Rochas Magmáticas",
   "disciplina": "geologia",
   "area": "geologia",
-  "badge": { "icone": "🔶", "nome": "Escultor de Magma" },
+  "badge": {
+    "icone": "🔶",
+    "nome": "Escultor de Magma"
+  },
   "secoes": [
     {
       "secao_id": "genese-dos-magmas",
@@ -21,15 +24,30 @@
           "titulo": "Os três gatilhos da fusão",
           "instrucao": "Clica em cada mecanismo que gera magma.",
           "pontos": [
-            { "id": "descompressao", "label": "Descompressão", "explicacao": "O manto ascende e o seu ponto de fusão baixa — origina magma basáltico, típico de dorsais e pontos quentes." },
-            { "id": "adicao_agua", "label": "Adição de água", "explicacao": "A água baixa o ponto de fusão das rochas; em zonas de subducção, a placa que mergulha liberta água para o manto acima — origina magma andesítico." },
-            { "id": "aumento_temp", "label": "Aumento de temperatura", "explicacao": "Magma quente que fica sob a crosta continental pode fundi-la — origina magma riolítico." }
+            {
+              "id": "descompressao",
+              "label": "Descompressão",
+              "explicacao": "O manto ascende e o seu ponto de fusão baixa — origina magma basáltico, típico de dorsais e pontos quentes."
+            },
+            {
+              "id": "adicao_agua",
+              "label": "Adição de água",
+              "explicacao": "A água baixa o ponto de fusão das rochas; em zonas de subducção, a placa que mergulha liberta água para o manto acima — origina magma andesítico."
+            },
+            {
+              "id": "aumento_temp",
+              "label": "Aumento de temperatura",
+              "explicacao": "Magma quente que fica sob a crosta continental pode fundi-la — origina magma riolítico."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Nas zonas de subducção, o que faz baixar o ponto de fusão do manto, gerando magma andesítico?",
-          "opcoes": ["A água libertada pela placa que mergulha", "A descompressão"],
+          "opcoes": [
+            "A água libertada pela placa que mergulha",
+            "A descompressão"
+          ],
           "correta": 0,
           "mascote_feedback_certo": "Exato! A água libertada pela placa em subducção é o fator-chave aqui.",
           "mascote_feedback_errado": "É a água — a descompressão está associada ao magma basáltico, em dorsais e pontos quentes."
@@ -44,8 +62,11 @@
           "perguntas": [
             {
               "pergunta": "A fusão parcial significa que:",
-              "opcoes": ["Só os minerais com ponto de fusão mais baixo fundem", "A rocha inteira funde de uma só vez"],
-              "correta": 0,
+              "opcoes": [
+                "A rocha inteira funde de uma só vez",
+                "Só os minerais com ponto de fusão mais baixo fundem"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! É por isso que se chama \"parcial\" — nunca funde tudo ao mesmo tempo.",
               "mascote_feedback_errado": "Só os minerais de ponto de fusão mais baixo fundem — não a rocha toda."
             }
@@ -71,15 +92,30 @@
           "layout": "escada",
           "instrucao": "Desce os degraus, da temperatura mais alta para a mais baixa.",
           "pontos": [
-            { "id": "olivina_plag", "label": "Alta temperatura (≈1200°C)", "explicacao": "Olivina (série descontínua) e plagioclase cálcica (série contínua) cristalizam primeiro." },
-            { "id": "piroxena_anfibola", "label": "Temperatura intermédia", "explicacao": "Piroxena, depois anfíbola, depois biotite (série descontínua); as plagioclases vão ficando progressivamente mais sódicas (série contínua)." },
-            { "id": "feldspato_k", "label": "Baixa temperatura (≈700°C)", "explicacao": "Feldspato potássico (ortóclase), depois moscovite, depois quartzo — os últimos minerais a cristalizar, em ambas as séries." }
+            {
+              "id": "olivina_plag",
+              "label": "Alta temperatura (≈1200°C)",
+              "explicacao": "Olivina (série descontínua) e plagioclase cálcica (série contínua) cristalizam primeiro."
+            },
+            {
+              "id": "piroxena_anfibola",
+              "label": "Temperatura intermédia",
+              "explicacao": "Piroxena, depois anfíbola, depois biotite (série descontínua); as plagioclases vão ficando progressivamente mais sódicas (série contínua)."
+            },
+            {
+              "id": "feldspato_k",
+              "label": "Baixa temperatura (≈700°C)",
+              "explicacao": "Feldspato potássico (ortóclase), depois moscovite, depois quartzo — os últimos minerais a cristalizar, em ambas as séries."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Na série descontínua, cada mineral reage com o líquido e dá origem a:",
-          "opcoes": ["Um mineral com estrutura diferente", "O mesmo mineral, só que maior"],
+          "opcoes": [
+            "Um mineral com estrutura diferente",
+            "O mesmo mineral, só que maior"
+          ],
           "correta": 0,
           "mascote_feedback_certo": "Exato! É isso que a torna \"descontínua\" — muda a estrutura a cada passo.",
           "mascote_feedback_errado": "Dá origem a um mineral com estrutura diferente — não é só crescimento do mesmo mineral."
@@ -99,21 +135,30 @@
           "perguntas": [
             {
               "pergunta": "À medida que um magma arrefece e cristaliza, o líquido residual fica progressivamente mais rico em:",
-              "opcoes": ["Sílica", "Ferro e magnésio"],
-              "correta": 0,
+              "opcoes": [
+                "Ferro e magnésio",
+                "Sílica"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Correto! O ferro e o magnésio são \"consumidos\" pelos primeiros minerais a cristalizar.",
               "mascote_feedback_errado": "Fica mais rico em sílica — o ferro e magnésio são usados primeiro, pelos minerais de alta temperatura."
             },
             {
               "pergunta": "Na série contínua, a composição das plagioclases varia de:",
-              "opcoes": ["Cálcica para sódica", "Sódica para cálcica"],
-              "correta": 0,
+              "opcoes": [
+                "Sódica para cálcica",
+                "Cálcica para sódica"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! Alta temperatura = cálcica; baixa temperatura = sódica.",
               "mascote_feedback_errado": "Varia de cálcica para sódica, à medida que a temperatura desce."
             },
             {
               "pergunta": "O mineral mais estável à superfície, por ser o último a cristalizar, é:",
-              "opcoes": ["O quartzo", "A olivina"],
+              "opcoes": [
+                "O quartzo",
+                "A olivina"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Exato! É por isso que domina as areias — resiste bem à meteorização.",
               "mascote_feedback_errado": "É o quartzo — a olivina, cristalizando primeiro, é dos minerais menos resistentes à meteorização."
@@ -135,15 +180,30 @@
           "titulo": "Diferenciação magmática",
           "instrucao": "Clica em cada processo de diferenciação.",
           "pontos": [
-            { "id": "cristalizacao_fracionada", "label": "Cristalização fracionada", "explicacao": "Os minerais formados são separados do líquido — por exemplo por diferenciação gravítica, com os cristais mais densos a afundar na câmara magmática." },
-            { "id": "assimilacao", "label": "Assimilação", "explicacao": "O magma incorpora e funde rochas encaixantes, alterando a sua composição." },
-            { "id": "mistura_magmas", "label": "Mistura de magmas", "explicacao": "Dois magmas diferentes misturam-se, originando uma composição intermédia." }
+            {
+              "id": "cristalizacao_fracionada",
+              "label": "Cristalização fracionada",
+              "explicacao": "Os minerais formados são separados do líquido — por exemplo por diferenciação gravítica, com os cristais mais densos a afundar na câmara magmática."
+            },
+            {
+              "id": "assimilacao",
+              "label": "Assimilação",
+              "explicacao": "O magma incorpora e funde rochas encaixantes, alterando a sua composição."
+            },
+            {
+              "id": "mistura_magmas",
+              "label": "Mistura de magmas",
+              "explicacao": "Dois magmas diferentes misturam-se, originando uma composição intermédia."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Um único magma pode originar rochas diferentes graças à:",
-          "opcoes": ["Diferenciação magmática", "Datação radiométrica"],
+          "opcoes": [
+            "Diferenciação magmática",
+            "Datação radiométrica"
+          ],
           "correta": 0,
           "mascote_feedback_certo": "Exato! Processos como a cristalização fracionada mudam a composição ao longo do arrefecimento.",
           "mascote_feedback_errado": "É a diferenciação magmática — a datação não tem relação com a variação de composição."
@@ -153,9 +213,21 @@
           "titulo": "Textura: a marca da velocidade de arrefecimento",
           "instrucao": "Clica em cada textura.",
           "pontos": [
-            { "id": "granular", "label": "Granular (plutónicas)", "explicacao": "Arrefecimento lento, em profundidade; todos os minerais visíveis a olho nu — rocha totalmente cristalizada." },
-            { "id": "agranular", "label": "Agranular/vítrea (vulcânicas)", "explicacao": "Arrefecimento rápido, à superfície; cristais muito pequenos ou ausentes (obsidiana, pedra-pomes, com muitas vesículas)." },
-            { "id": "porfirica", "label": "Porfírica", "explicacao": "Arrefecimento em duas fases (lento e depois rápido): cristais grandes (fenocristais) envolvidos numa matriz fina." }
+            {
+              "id": "granular",
+              "label": "Granular (plutónicas)",
+              "explicacao": "Arrefecimento lento, em profundidade; todos os minerais visíveis a olho nu — rocha totalmente cristalizada."
+            },
+            {
+              "id": "agranular",
+              "label": "Agranular/vítrea (vulcânicas)",
+              "explicacao": "Arrefecimento rápido, à superfície; cristais muito pequenos ou ausentes (obsidiana, pedra-pomes, com muitas vesículas)."
+            },
+            {
+              "id": "porfirica",
+              "label": "Porfírica",
+              "explicacao": "Arrefecimento em duas fases (lento e depois rápido): cristais grandes (fenocristais) envolvidos numa matriz fina."
+            }
           ]
         },
         {
@@ -173,21 +245,30 @@
           "perguntas": [
             {
               "pergunta": "O par plutónica/vulcânica com composição básica (45-52% sílica) é:",
-              "opcoes": ["Gabro / Basalto", "Granito / Riolito"],
-              "correta": 0,
+              "opcoes": [
+                "Granito / Riolito",
+                "Gabro / Basalto"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! Gabro (plutónica) e basalto (vulcânica) — ambos de composição básica, escuros.",
               "mascote_feedback_errado": "É gabro/basalto — granito/riolito são de composição ácida (clara)."
             },
             {
               "pergunta": "Uma rocha com fenocristais grandes numa matriz fina tem textura:",
-              "opcoes": ["Porfírica", "Granular"],
-              "correta": 0,
+              "opcoes": [
+                "Granular",
+                "Porfírica"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Correto! Resulta de um arrefecimento em duas fases, lento e depois rápido.",
               "mascote_feedback_errado": "É porfírica — a granular tem todos os cristais grandes e visíveis, sem essa mistura de tamanhos."
             },
             {
               "pergunta": "Em profundidade, massas magmáticas que cortam as camadas chamam-se:",
-              "opcoes": ["Diques", "Soleiras"],
+              "opcoes": [
+                "Diques",
+                "Soleiras"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Exato! Diques cortam as camadas; soleiras intercalam-se entre elas.",
               "mascote_feedback_errado": "São diques — as soleiras é que se intercalam entre as camadas, sem as cortar."

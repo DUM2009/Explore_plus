@@ -1446,9 +1446,9 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
 
 .biblioteca-termo-card p{
     margin:0;
-    color:#5c6b5f;
-    font-size:.9rem;
-    line-height:1.6;
+    color:#333a30;
+    font-size:.92rem;
+    line-height:1.65;
 }
 
 .biblioteca-termo-relacionados{
@@ -1456,7 +1456,7 @@ box-shadow:0 18px 35px rgba(31,138,91,.35);
     padding-top:6px;
     font-size:.8rem;
     font-style:italic;
-    color:#8a9086;
+    color:#5c655a;
 }
 
 .how{
@@ -6710,7 +6710,7 @@ html.dark-mode .flashcard-back{
 }
 
 html.dark-mode .flashcard-definition{
-    color:#bfe6cf;
+    color:#eaf6ee;
 }
 
 html.dark-mode .flashcards-progress-track{
@@ -11854,7 +11854,7 @@ body.shadcn-profile .profile-hero-rank {
 
 .biblioteca-livro-total {
     font-size: .78rem;
-    color: #767c70;
+    color: #4d534a;
 }
 
 .biblioteca-livro-paginas {
@@ -12579,9 +12579,9 @@ body.shadcn-profile .profile-hero-rank {
 
 .resumo-card p {
     margin: 0;
-    color: #5c6b5f;
-    font-size: .9rem;
-    line-height: 1.6;
+    color: #333a30;
+    font-size: .92rem;
+    line-height: 1.65;
 }
 
 .resumo-card-cta {
@@ -12715,7 +12715,7 @@ body.shadcn-profile .profile-hero-rank {
 
 .resumo-seccao > p {
     margin: 0 0 18px;
-    color: #555;
+    color: #33382f;
     line-height: 1.7;
 }
 
@@ -12806,13 +12806,13 @@ body.shadcn-profile .profile-hero-rank {
 
 .resumo-passo-texto strong {
     color: #1f2d22;
-    font-size: .95rem;
+    font-size: .97rem;
 }
 
 .resumo-passo-texto span {
-    color: #5c6b5f;
-    font-size: .88rem;
-    line-height: 1.65;
+    color: #363f38;
+    font-size: .92rem;
+    line-height: 1.7;
 }
 
 .resumo-dica {
@@ -12823,9 +12823,9 @@ body.shadcn-profile .profile-hero-rank {
     border-radius: 14px;
     background: #fff7e0;
     border: 1px solid #f2e2a8;
-    color: #7a6320;
-    font-size: .88rem;
-    line-height: 1.65;
+    color: #5c4a10;
+    font-size: .92rem;
+    line-height: 1.7;
 }
 
 .resumo-dica svg {
@@ -12997,6 +12997,26 @@ html.dark-mode .resumo-tabela th {
 
 html.dark-mode .resumo-tabela td {
     color: #cddad2;
+}
+
+/* Biblioteca do Explorador — cartões de conceitos (modo escuro). O cartão
+   ficava sempre branco com texto escuro, mesmo em modo escuro — o que o
+   destacava mal do resto da página e tornava o texto difícil de ler. */
+html.dark-mode .biblioteca-termo-card {
+    background: #1f2b23;
+    border-color: #2c3a30;
+}
+
+html.dark-mode .biblioteca-termo-card h3 {
+    color: #ffffff;
+}
+
+html.dark-mode .biblioteca-termo-card p {
+    color: #d3ddd6;
+}
+
+html.dark-mode .biblioteca-termo-relacionados {
+    color: #9faca3;
 }
 /* Real-device follow-up: two older, narrower breakpoints declared further
    above (max-width:768px and max-width:480px) re-set header/nav padding

@@ -3,7 +3,10 @@
   "titulo": "A Terra Como Sistema e as Rochas",
   "disciplina": "geologia",
   "area": "geologia",
-  "badge": { "icone": "🌍", "nome": "Guardião do Sistema Terra" },
+  "badge": {
+    "icone": "🌍",
+    "nome": "Guardião do Sistema Terra"
+  },
   "secoes": [
     {
       "secao_id": "quatro-subsistemas",
@@ -21,16 +24,36 @@
           "titulo": "Os quatro subsistemas terrestres",
           "instrucao": "Clica em cada subsistema para veres do que é feito e como interage com os outros.",
           "pontos": [
-            { "id": "geosfera", "label": "Geosfera", "explicacao": "A parte sólida da Terra (e o núcleo externo líquido): crosta, manto e núcleo. Os vulcões libertam gases para a atmosfera; as rochas fornecem nutrientes aos seres vivos." },
-            { "id": "hidrosfera", "label": "Hidrosfera", "explicacao": "Toda a água: oceanos, rios, lagos, águas subterrâneas e gelo (criosfera). A água erode e transporta rochas, e evapora para a atmosfera." },
-            { "id": "atmosfera", "label": "Atmosfera", "explicacao": "A camada gasosa que envolve a Terra (N₂ ≈ 78%, O₂ ≈ 21%, CO₂, vapor de água). O vento erode e transporta partículas; a chuva alimenta rios e aquíferos.", "curiosidade": "A composição da atmosfera não foi sempre esta — a fotossíntese dos primeiros seres vivos é que, ao longo de milhares de milhões de anos, foi enriquecendo o ar em oxigénio." },
-            { "id": "biosfera", "label": "Biosfera", "explicacao": "O conjunto dos seres vivos e dos locais onde vivem. As raízes fraturam rochas; a fotossíntese alterou a composição da atmosfera." }
+            {
+              "id": "geosfera",
+              "label": "Geosfera",
+              "explicacao": "A parte sólida da Terra (e o núcleo externo líquido): crosta, manto e núcleo. Os vulcões libertam gases para a atmosfera; as rochas fornecem nutrientes aos seres vivos."
+            },
+            {
+              "id": "hidrosfera",
+              "label": "Hidrosfera",
+              "explicacao": "Toda a água: oceanos, rios, lagos, águas subterrâneas e gelo (criosfera). A água erode e transporta rochas, e evapora para a atmosfera."
+            },
+            {
+              "id": "atmosfera",
+              "label": "Atmosfera",
+              "explicacao": "A camada gasosa que envolve a Terra (N₂ ≈ 78%, O₂ ≈ 21%, CO₂, vapor de água). O vento erode e transporta partículas; a chuva alimenta rios e aquíferos.",
+              "curiosidade": "A composição da atmosfera não foi sempre esta — a fotossíntese dos primeiros seres vivos é que, ao longo de milhares de milhões de anos, foi enriquecendo o ar em oxigénio."
+            },
+            {
+              "id": "biosfera",
+              "label": "Biosfera",
+              "explicacao": "O conjunto dos seres vivos e dos locais onde vivem. As raízes fraturam rochas; a fotossíntese alterou a composição da atmosfera."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "A Terra é, aproximadamente, um sistema:",
-          "opcoes": ["Aberto (troca matéria e energia)", "Fechado (troca energia, quase não troca matéria)"],
+          "opcoes": [
+            "Aberto (troca matéria e energia)",
+            "Fechado (troca energia, quase não troca matéria)"
+          ],
           "correta": 1,
           "mascote_feedback_certo": "Exato! Recebe energia solar e liberta calor, mas quase não troca matéria com o exterior.",
           "mascote_feedback_errado": "É um sistema fechado — troca energia, mas as trocas de matéria (meteoritos, gases que escapam) são desprezáveis."
@@ -45,21 +68,30 @@
           "perguntas": [
             {
               "pergunta": "A geosfera inclui:",
-              "opcoes": ["Crosta, manto e núcleo", "Apenas a crosta"],
+              "opcoes": [
+                "Crosta, manto e núcleo",
+                "Apenas a crosta"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Isso mesmo! A geosfera é toda a parte sólida, incluindo o núcleo externo líquido.",
               "mascote_feedback_errado": "Inclui crosta, manto e núcleo — não é só a camada mais à superfície."
             },
             {
               "pergunta": "A fotossíntese dos primeiros seres vivos alterou, ao longo do tempo, a composição de qual subsistema?",
-              "opcoes": ["A atmosfera", "O núcleo"],
-              "correta": 0,
+              "opcoes": [
+                "O núcleo",
+                "A atmosfera"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Correto! Foi a fotossíntese que, ao longo de milhares de milhões de anos, enriqueceu a atmosfera em oxigénio.",
               "mascote_feedback_errado": "Foi a atmosfera — o núcleo não é afetado diretamente pela biosfera."
             },
             {
               "pergunta": "Verdadeiro ou Falso: a Terra troca grandes quantidades de matéria com o espaço.",
-              "opcoes": ["Verdadeiro", "Falso"],
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
               "correta": 1,
               "mascote_feedback_certo": "Certo! É falso — as trocas de matéria (meteoritos, gases) são desprezáveis; a Terra é aproximadamente um sistema fechado.",
               "mascote_feedback_errado": "Na verdade é falso — a Terra troca sobretudo energia, não matéria, com o exterior."
@@ -81,10 +113,26 @@
           "titulo": "Como se estuda um planeta inteiro?",
           "instrucao": "Clica em cada método para veres como os geólogos trabalham.",
           "pontos": [
-            { "id": "campo", "label": "Trabalho de campo", "explicacao": "Observação, cartografia e recolha de amostras diretamente no terreno." },
-            { "id": "laboratorio", "label": "Trabalho laboratorial", "explicacao": "Análise de amostras e atividade experimental, com controlo de variáveis: identifica-se a variável independente (a que se manipula), a dependente (a que se mede) e as variáveis controladas." },
-            { "id": "modelos", "label": "Modelos", "explicacao": "Análogos ou matemáticos, usados quando um processo não pode ser reproduzido diretamente — mas têm sempre limitações: a escala de tempo, as dimensões e os materiais nunca são iguais aos reais." },
-            { "id": "tecnologia", "label": "Tecnologias", "explicacao": "Satélites, GPS e sismógrafos permitem observar e medir processos à escala de todo o planeta." }
+            {
+              "id": "campo",
+              "label": "Trabalho de campo",
+              "explicacao": "Observação, cartografia e recolha de amostras diretamente no terreno."
+            },
+            {
+              "id": "laboratorio",
+              "label": "Trabalho laboratorial",
+              "explicacao": "Análise de amostras e atividade experimental, com controlo de variáveis: identifica-se a variável independente (a que se manipula), a dependente (a que se mede) e as variáveis controladas."
+            },
+            {
+              "id": "modelos",
+              "label": "Modelos",
+              "explicacao": "Análogos ou matemáticos, usados quando um processo não pode ser reproduzido diretamente — mas têm sempre limitações: a escala de tempo, as dimensões e os materiais nunca são iguais aos reais."
+            },
+            {
+              "id": "tecnologia",
+              "label": "Tecnologias",
+              "explicacao": "Satélites, GPS e sismógrafos permitem observar e medir processos à escala de todo o planeta."
+            }
           ]
         },
         {
@@ -97,14 +145,20 @@
           "perguntas": [
             {
               "pergunta": "Num modelo geológico, uma limitação típica é:",
-              "opcoes": ["A escala de tempo, as dimensões e os materiais não serem iguais aos reais", "Ser sempre mais caro do que o trabalho de campo"],
+              "opcoes": [
+                "A escala de tempo, as dimensões e os materiais não serem iguais aos reais",
+                "Ser sempre mais caro do que o trabalho de campo"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Exato! Todo o modelo tem limitações relacionadas com escala, dimensão e materiais.",
               "mascote_feedback_errado": "A limitação principal está na escala de tempo, dimensões e materiais — não no custo."
             },
             {
               "pergunta": "Numa atividade experimental, a variável que se mede chama-se:",
-              "opcoes": ["Variável dependente", "Variável independente"],
+              "opcoes": [
+                "Variável dependente",
+                "Variável independente"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Correto! A variável dependente é a que se mede; a independente é a que se manipula.",
               "mascote_feedback_errado": "É a variável dependente — a independente é a que o investigador manipula."
@@ -130,15 +184,30 @@
           "titulo": "Sedimentares, magmáticas e metamórficas",
           "instrucao": "Clica em cada tipo de rocha para veres como se forma.",
           "pontos": [
-            { "id": "sedimentares", "label": "Rochas sedimentares", "explicacao": "Formam-se à superfície por meteorização, erosão, transporte e deposição de sedimentos, seguidos de diagénese (ex.: arenito, argilito, calcário). Registam paleoambientes, clima e fósseis." },
-            { "id": "magmaticas", "label": "Rochas magmáticas", "explicacao": "Formam-se por arrefecimento e solidificação do magma — em profundidade (plutónicas) ou à superfície (vulcânicas) (ex.: granito, basalto). Registam atividade vulcânica e magmática." },
-            { "id": "metamorficas", "label": "Rochas metamórficas", "explicacao": "Resultam da transformação, no estado sólido, de rochas pré-existentes por aumento de pressão e/ou temperatura (ex.: xisto, mármore, gnaisse). Registam colisões de placas e intrusões magmáticas." }
+            {
+              "id": "sedimentares",
+              "label": "Rochas sedimentares",
+              "explicacao": "Formam-se à superfície por meteorização, erosão, transporte e deposição de sedimentos, seguidos de diagénese (ex.: arenito, argilito, calcário). Registam paleoambientes, clima e fósseis."
+            },
+            {
+              "id": "magmaticas",
+              "label": "Rochas magmáticas",
+              "explicacao": "Formam-se por arrefecimento e solidificação do magma — em profundidade (plutónicas) ou à superfície (vulcânicas) (ex.: granito, basalto). Registam atividade vulcânica e magmática."
+            },
+            {
+              "id": "metamorficas",
+              "label": "Rochas metamórficas",
+              "explicacao": "Resultam da transformação, no estado sólido, de rochas pré-existentes por aumento de pressão e/ou temperatura (ex.: xisto, mármore, gnaisse). Registam colisões de placas e intrusões magmáticas."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Uma rocha que se forma por arrefecimento e solidificação do magma é:",
-          "opcoes": ["Sedimentar", "Magmática"],
+          "opcoes": [
+            "Sedimentar",
+            "Magmática"
+          ],
           "correta": 1,
           "mascote_feedback_certo": "Exato! Magmática — pode ser plutónica (profundidade) ou vulcânica (superfície).",
           "mascote_feedback_errado": "É magmática — a sedimentar forma-se à superfície, por acumulação de sedimentos."
@@ -155,11 +224,31 @@
           "layout": "escada",
           "instrucao": "Sobe os degraus do ciclo litológico.",
           "pontos": [
-            { "id": "meteorizacao", "label": "Meteorização, erosão e deposição", "explicacao": "Rochas à superfície desgastam-se; os sedimentos são transportados e depositados noutro local." },
-            { "id": "diagenese_ciclo", "label": "Diagénese", "explicacao": "Os sedimentos consolidam-se e formam rocha sedimentar." },
-            { "id": "metamorfismo_ciclo", "label": "Metamorfismo", "explicacao": "O aumento de pressão e/ou temperatura transforma qualquer rocha em rocha metamórfica, sem a fundir." },
-            { "id": "fusao_ciclo", "label": "Fusão e cristalização", "explicacao": "Se a temperatura for suficiente, forma-se magma; ao cristalizar, origina rocha magmática." },
-            { "id": "soerguimento", "label": "Soerguimento", "explicacao": "Os movimentos tectónicos trazem de volta à superfície rochas formadas em profundidade — e o ciclo recomeça." }
+            {
+              "id": "meteorizacao",
+              "label": "Meteorização, erosão e deposição",
+              "explicacao": "Rochas à superfície desgastam-se; os sedimentos são transportados e depositados noutro local."
+            },
+            {
+              "id": "diagenese_ciclo",
+              "label": "Diagénese",
+              "explicacao": "Os sedimentos consolidam-se e formam rocha sedimentar."
+            },
+            {
+              "id": "metamorfismo_ciclo",
+              "label": "Metamorfismo",
+              "explicacao": "O aumento de pressão e/ou temperatura transforma qualquer rocha em rocha metamórfica, sem a fundir."
+            },
+            {
+              "id": "fusao_ciclo",
+              "label": "Fusão e cristalização",
+              "explicacao": "Se a temperatura for suficiente, forma-se magma; ao cristalizar, origina rocha magmática."
+            },
+            {
+              "id": "soerguimento",
+              "label": "Soerguimento",
+              "explicacao": "Os movimentos tectónicos trazem de volta à superfície rochas formadas em profundidade — e o ciclo recomeça."
+            }
           ]
         },
         {
@@ -172,22 +261,31 @@
           "perguntas": [
             {
               "pergunta": "Uma rocha formada a partir de outra, no estado sólido, por aumento de pressão e temperatura, é:",
-              "opcoes": ["Metamórfica", "Sedimentar"],
-              "correta": 0,
+              "opcoes": [
+                "Sedimentar",
+                "Metamórfica"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! É o metamorfismo — transformação no estado sólido, sem fusão.",
               "mascote_feedback_errado": "É metamórfica — a sedimentar forma-se à superfície, não por transformação no estado sólido de outra rocha."
             },
             {
               "pergunta": "O que traz rochas formadas em profundidade de volta à superfície, fazendo o ciclo litológico recomeçar?",
-              "opcoes": ["O soerguimento (movimentos tectónicos)", "A fotossíntese"],
+              "opcoes": [
+                "O soerguimento (movimentos tectónicos)",
+                "A fotossíntese"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Correto! É o soerguimento, ligado aos movimentos tectónicos.",
               "mascote_feedback_errado": "É o soerguimento — a fotossíntese não tem relação direta com o ciclo das rochas."
             },
             {
               "pergunta": "Os fósseis, preservados sobretudo em rochas sedimentares, permitem:",
-              "opcoes": ["Reconstituir paleoambientes e datar relativamente as rochas", "Apenas decorar as rochas"],
-              "correta": 0,
+              "opcoes": [
+                "Apenas decorar as rochas",
+                "Reconstituir paleoambientes e datar relativamente as rochas"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Exato! São verdadeiros arquivos da história da Terra e da vida.",
               "mascote_feedback_errado": "Permitem reconstituir paleoambientes, datar e correlacionar rochas, e estudar a evolução da vida."
             }

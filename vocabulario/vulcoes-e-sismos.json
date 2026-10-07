@@ -1,0 +1,130 @@
+{
+  "unidade": "vulcoes-e-sismos",
+  "titulo": "Geologia: Vulcões e Sismos",
+  "termos": [
+    {
+      "id": "magma",
+      "termo": "Magma",
+      "definicao": "Mistura de material rochoso fundido, gases dissolvidos e cristais em suspensão. Quando chega à superfície e perde gases, chama-se lava.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "viscosidade_magma"
+      ]
+    },
+    {
+      "id": "viscosidade_magma",
+      "termo": "Viscosidade do magma",
+      "definicao": "Aumenta com o teor de sílica e diminui com a temperatura. Magmas mais viscosos retêm mais gases, o que torna a erupção mais explosiva.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "magma",
+        "vulcanismo_explosivo"
+      ]
+    },
+    {
+      "id": "vulcanismo_explosivo",
+      "termo": "Vulcanismo explosivo",
+      "definicao": "Associado a magma riolítico, muito viscoso: produz muitos piroclastos e nuvens ardentes. Contrasta com o vulcanismo efusivo (magma basáltico, escoadas de lava fluida).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "viscosidade_magma",
+        "piroclastos"
+      ]
+    },
+    {
+      "id": "piroclastos",
+      "termo": "Piroclastos",
+      "definicao": "Fragmentos projetados numa erupção, classificados pelo tamanho: cinzas (<2 mm), lapili/bagacina (2-64 mm), bombas e blocos (>64 mm).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "vulcanismo_explosivo"
+      ]
+    },
+    {
+      "id": "caldeira",
+      "termo": "Caldeira",
+      "definicao": "Depressão de grandes dimensões formada pelo colapso do topo de um vulcão após o esvaziamento da câmara magmática (ex.: Sete Cidades e Furnas, São Miguel).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "magma"
+      ]
+    },
+    {
+      "id": "vulcanismo_secundario",
+      "termo": "Vulcanismo secundário (residual)",
+      "definicao": "Manifestações em zonas vulcânicas sem erupção, devidas ao calor de magma em arrefecimento: fumarolas, géiseres, nascentes termais.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "caldeira"
+      ]
+    },
+    {
+      "id": "sismo",
+      "termo": "Sismo",
+      "definicao": "Movimento vibratório brusco da superfície terrestre, resultante da libertação súbita de energia acumulada nas rochas (teoria do ressalto elástico).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "hipocentro",
+        "ondas_sismicas"
+      ]
+    },
+    {
+      "id": "hipocentro",
+      "termo": "Hipocentro e epicentro",
+      "definicao": "Hipocentro (foco): local em profundidade onde se inicia a rutura. Epicentro: ponto da superfície na vertical do hipocentro, onde a intensidade é geralmente maior.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sismo"
+      ]
+    },
+    {
+      "id": "ondas_sismicas",
+      "termo": "Ondas sísmicas (P, S, L, R)",
+      "definicao": "Ondas P (longitudinais, mais rápidas, todos os meios), S (transversais, só sólidos), L e R (superficiais, mais lentas e destrutivas).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sismo"
+      ]
+    },
+    {
+      "id": "intensidade_magnitude",
+      "termo": "Intensidade e magnitude",
+      "definicao": "Intensidade: mede os efeitos de um sismo num local (escala EMS-98, varia com a distância). Magnitude: mede a energia libertada no foco (escala de Richter, um único valor por sismo).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sismo",
+        "isossista"
+      ]
+    },
+    {
+      "id": "isossista",
+      "termo": "Isossistas",
+      "definicao": "Linhas que unem pontos com a mesma intensidade sísmica, delimitando zonas de igual intensidade numa carta de isossistas.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "intensidade_magnitude"
+      ]
+    },
+    {
+      "id": "tsunami",
+      "termo": "Tsunami",
+      "definicao": "Onda de grande comprimento de onda gerada por deslocamento súbito de grandes volumes de água, sobretudo por sismos com epicentro no mar.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "sismo"
+      ]
+    }
+  ]
+}

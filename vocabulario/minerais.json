@@ -1,0 +1,58 @@
+{
+  "unidade": "minerais",
+  "titulo": "Geologia: Minerais",
+  "termos": [
+    {
+      "id": "mineral",
+      "termo": "Mineral",
+      "definicao": "Sólido natural, geralmente inorgânico, com composição química definida e estrutura cristalina. Sem estrutura cristalina, chama-se mineraloide (ex.: obsidiana).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "polimorfismo",
+        "dureza_mohs"
+      ]
+    },
+    {
+      "id": "polimorfismo",
+      "termo": "Polimorfismo e isomorfismo",
+      "definicao": "Polimorfismo: mesma composição química, estrutura cristalina diferente (ex.: diamante e grafite). Isomorfismo: mesma estrutura, composição variável por substituição de iões (ex.: olivina).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "mineral"
+      ]
+    },
+    {
+      "id": "dureza_mohs",
+      "termo": "Dureza (escala de Mohs)",
+      "definicao": "Resistência de um mineral a ser riscado, numa escala relativa de 1 (talco) a 10 (diamante); cada mineral risca os de dureza inferior.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "mineral",
+        "clivagem"
+      ]
+    },
+    {
+      "id": "clivagem",
+      "termo": "Clivagem e fratura",
+      "definicao": "Clivagem: tendência de um mineral para partir segundo superfícies planas (ex.: micas em lâminas). Fratura: rotura irregular, sem planos definidos (ex.: quartzo).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "dureza_mohs"
+      ]
+    },
+    {
+      "id": "silicatos",
+      "termo": "Silicatos",
+      "definicao": "Grupo de minerais mais abundante da crosta, com base no tetraedro de sílica [SiO4]4-. Inclui quartzo, feldspatos, micas, anfíbolas, piroxenas e olivina.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "mineral"
+      ]
+    }
+  ]
+}

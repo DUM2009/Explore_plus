@@ -3,7 +3,10 @@
   "titulo": "Sismologia",
   "disciplina": "geologia",
   "area": "geologia",
-  "badge": { "icone": "📈", "nome": "Leitor de Sismogramas" },
+  "badge": {
+    "icone": "📈",
+    "nome": "Leitor de Sismogramas"
+  },
   "secoes": [
     {
       "secao_id": "o-que-e-um-sismo",
@@ -26,14 +29,25 @@
           "titulo": "Hipocentro e epicentro",
           "instrucao": "Clica em cada ponto para veres a sua definição.",
           "pontos": [
-            { "id": "hipocentro", "label": "Hipocentro (foco)", "explicacao": "Local, em profundidade, onde se inicia a rutura da rocha." },
-            { "id": "epicentro", "label": "Epicentro", "explicacao": "Ponto da superfície na vertical do hipocentro, onde a intensidade é, em geral, maior." }
+            {
+              "id": "hipocentro",
+              "label": "Hipocentro (foco)",
+              "explicacao": "Local, em profundidade, onde se inicia a rutura da rocha."
+            },
+            {
+              "id": "epicentro",
+              "label": "Epicentro",
+              "explicacao": "Ponto da superfície na vertical do hipocentro, onde a intensidade é, em geral, maior."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "O ponto da superfície na vertical do hipocentro chama-se:",
-          "opcoes": ["Epicentro", "Isossista"],
+          "opcoes": [
+            "Epicentro",
+            "Isossista"
+          ],
           "correta": 0,
           "mascote_feedback_certo": "Exato! O epicentro é o ponto da superfície diretamente acima do foco.",
           "mascote_feedback_errado": "É o epicentro — a isossista é uma linha que une pontos de igual intensidade."
@@ -48,15 +62,21 @@
           "perguntas": [
             {
               "pergunta": "Sismos com foco a profundidades até ≈700 km só ocorrem em:",
-              "opcoes": ["Zonas de subducção", "Dorsais oceânicas"],
+              "opcoes": [
+                "Zonas de subducção",
+                "Dorsais oceânicas"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Isso mesmo! Só a subducção leva material a profundidades tão grandes, ao longo do plano de Benioff.",
               "mascote_feedback_errado": "Ocorrem nas zonas de subducção — as dorsais têm apenas sismos superficiais."
             },
             {
               "pergunta": "A maioria dos sismos tem origem:",
-              "opcoes": ["Tectónica", "Vulcânica"],
-              "correta": 0,
+              "opcoes": [
+                "Vulcânica",
+                "Tectónica"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Correto! Embora também existam sismos vulcânicos, de colapso e induzidos.",
               "mascote_feedback_errado": "A maioria é de origem tectónica — os vulcânicos são uma categoria à parte, menos frequente."
             }
@@ -82,16 +102,31 @@
           "layout": "timeline",
           "instrucao": "Clica em cada tipo de onda, pela ordem de chegada.",
           "pontos": [
-            { "id": "onda_p", "label": "Ondas P (primárias)", "explicacao": "Longitudinais; propagam-se em sólidos, líquidos e gases; as mais rápidas — as primeiras a chegar a um sismógrafo." },
-            { "id": "onda_s", "label": "Ondas S (secundárias)", "explicacao": "Transversais; só se propagam em sólidos; mais lentas do que as P." },
-            { "id": "onda_lr", "label": "Ondas L e R (superficiais)", "explicacao": "Formam-se quando as ondas de volume (P e S) chegam à superfície. São as mais lentas, mas de maior amplitude — as mais destrutivas." }
+            {
+              "id": "onda_p",
+              "label": "Ondas P (primárias)",
+              "explicacao": "Longitudinais; propagam-se em sólidos, líquidos e gases; as mais rápidas — as primeiras a chegar a um sismógrafo."
+            },
+            {
+              "id": "onda_s",
+              "label": "Ondas S (secundárias)",
+              "explicacao": "Transversais; só se propagam em sólidos; mais lentas do que as P."
+            },
+            {
+              "id": "onda_lr",
+              "label": "Ondas L e R (superficiais)",
+              "explicacao": "Formam-se quando as ondas de volume (P e S) chegam à superfície. São as mais lentas, mas de maior amplitude — as mais destrutivas."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "As ondas S não se propagam em:",
-          "opcoes": ["Líquidos e gases", "Sólidos"],
-          "correta": 0,
+          "opcoes": [
+            "Sólidos",
+            "Líquidos e gases"
+          ],
+          "correta": 1,
           "mascote_feedback_certo": "Exato! As ondas S só atravessam sólidos — esta propriedade é essencial para estudar o interior da Terra.",
           "mascote_feedback_errado": "Não se propagam em líquidos nem gases — só em sólidos."
         },
@@ -110,15 +145,21 @@
           "perguntas": [
             {
               "pergunta": "As primeiras ondas a chegar a um sismógrafo são sempre as:",
-              "opcoes": ["Ondas P", "Ondas L e R"],
+              "opcoes": [
+                "Ondas P",
+                "Ondas L e R"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Isso mesmo! São as mais rápidas de todas.",
               "mascote_feedback_errado": "São as ondas P, as mais rápidas — as L e R são as últimas a chegar."
             },
             {
               "pergunta": "Para localizar exatamente um epicentro por triangulação, são necessárias dados de:",
-              "opcoes": ["Pelo menos três estações", "Apenas uma estação"],
-              "correta": 0,
+              "opcoes": [
+                "Apenas uma estação",
+                "Pelo menos três estações"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Correto! Uma só estação dá a distância, mas são precisas três para localizar o ponto exato.",
               "mascote_feedback_errado": "São precisas pelo menos três estações — uma só dá a distância, não a localização exata."
             }
@@ -139,14 +180,25 @@
           "titulo": "Intensidade vs. magnitude",
           "instrucao": "Clica em cada conceito para veres a diferença.",
           "pontos": [
-            { "id": "intensidade", "label": "Intensidade", "explicacao": "Mede os efeitos de um sismo num local (escala EMS-98, graus I a XII). Varia de local para local, diminuindo em geral com a distância ao epicentro." },
-            { "id": "magnitude", "label": "Magnitude", "explicacao": "Mede a energia libertada no foco (escala de Richter). Um único valor por sismo — não varia com o local. Cada grau a mais representa ≈10× mais amplitude e ≈30× mais energia." }
+            {
+              "id": "intensidade",
+              "label": "Intensidade",
+              "explicacao": "Mede os efeitos de um sismo num local (escala EMS-98, graus I a XII). Varia de local para local, diminuindo em geral com a distância ao epicentro."
+            },
+            {
+              "id": "magnitude",
+              "label": "Magnitude",
+              "explicacao": "Mede a energia libertada no foco (escala de Richter). Um único valor por sismo — não varia com o local. Cada grau a mais representa ≈10× mais amplitude e ≈30× mais energia."
+            }
           ]
         },
         {
           "tipo": "micro_verificacao",
           "pergunta": "Um sismo tem sempre:",
-          "opcoes": ["Uma só magnitude, mas várias intensidades consoante o local", "Uma só intensidade e várias magnitudes"],
+          "opcoes": [
+            "Uma só magnitude, mas várias intensidades consoante o local",
+            "Uma só intensidade e várias magnitudes"
+          ],
           "correta": 0,
           "mascote_feedback_certo": "Exato! A magnitude é um valor único; a intensidade varia de local para local.",
           "mascote_feedback_errado": "É o contrário: magnitude única, intensidade variável consoante o local observado."
@@ -166,9 +218,21 @@
           "titulo": "O risco sísmico em Portugal",
           "instrucao": "Clica em cada zona para veres o seu tipo de risco sísmico.",
           "pontos": [
-            { "id": "interplacas_pt", "label": "Sismos interplacas", "explicacao": "Associados à zona de fratura Açores-Gibraltar. O sismo de 1 de novembro de 1755 (magnitude ≈8,5-9) destruiu grande parte de Lisboa e gerou um tsunami." },
-            { "id": "intraplaca_pt", "label": "Sismos intraplaca", "explicacao": "Associados a falhas ativas no continente, como no Vale Inferior do Tejo — ex.: sismo de Benavente (1909)." },
-            { "id": "acores_sism", "label": "Açores", "explicacao": "A região de maior atividade sísmica de Portugal, situada na junção tripla de placas." }
+            {
+              "id": "interplacas_pt",
+              "label": "Sismos interplacas",
+              "explicacao": "Associados à zona de fratura Açores-Gibraltar. O sismo de 1 de novembro de 1755 (magnitude ≈8,5-9) destruiu grande parte de Lisboa e gerou um tsunami."
+            },
+            {
+              "id": "intraplaca_pt",
+              "label": "Sismos intraplaca",
+              "explicacao": "Associados a falhas ativas no continente, como no Vale Inferior do Tejo — ex.: sismo de Benavente (1909)."
+            },
+            {
+              "id": "acores_sism",
+              "label": "Açores",
+              "explicacao": "A região de maior atividade sísmica de Portugal, situada na junção tripla de placas."
+            }
           ]
         },
         {
@@ -176,21 +240,30 @@
           "perguntas": [
             {
               "pergunta": "A escala de Richter mede:",
-              "opcoes": ["A magnitude (energia libertada)", "A intensidade (efeitos locais)"],
-              "correta": 0,
+              "opcoes": [
+                "A intensidade (efeitos locais)",
+                "A magnitude (energia libertada)"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Isso mesmo! A escala EMS-98 é que mede a intensidade.",
               "mascote_feedback_errado": "Mede a magnitude — a intensidade usa a escala EMS-98 (ou Mercalli)."
             },
             {
               "pergunta": "Os tsunamis, no oceano aberto, têm:",
-              "opcoes": ["Pequena altura e grande velocidade", "Grande altura e pequena velocidade"],
-              "correta": 0,
+              "opcoes": [
+                "Grande altura e pequena velocidade",
+                "Pequena altura e grande velocidade"
+              ],
+              "correta": 1,
               "mascote_feedback_certo": "Correto! Só ganham altura ao chegar a águas pouco profundas.",
               "mascote_feedback_errado": "Têm pequena altura e grande velocidade em mar aberto — a altura só aumenta perto da costa."
             },
             {
               "pergunta": "O sismo de 1 de novembro de 1755, em Portugal, foi um sismo:",
-              "opcoes": ["Interplacas", "Intraplaca"],
+              "opcoes": [
+                "Interplacas",
+                "Intraplaca"
+              ],
               "correta": 0,
               "mascote_feedback_certo": "Exato! Associado à zona de fratura Açores-Gibraltar, entre as placas Euroasiática e Africana.",
               "mascote_feedback_errado": "Foi interplacas — os sismos intraplaca, como o de Benavente, estão associados a falhas no interior do continente."

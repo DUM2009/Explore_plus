@@ -1,0 +1,77 @@
+{
+  "unidade": "deformacao-e-recursos",
+  "titulo": "Geologia: Deformação e Recursos",
+  "termos": [
+    {
+      "id": "tensao_rochas",
+      "termo": "Tensão compressiva, distensiva e cisalhante",
+      "definicao": "Compressiva (limites convergentes) origina dobras e falhas inversas. Distensiva (limites divergentes) origina falhas normais. Cisalhante (limites transformantes) origina falhas de desligamento.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "dobra",
+        "falha"
+      ]
+    },
+    {
+      "id": "dobra",
+      "termo": "Dobra (anticlinal e sinclinal)",
+      "definicao": "Deformação dúctil das camadas. Anticlinal: convexidade para cima, rochas mais antigas no núcleo. Sinclinal: concavidade para cima, rochas mais recentes no núcleo.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tensao_rochas"
+      ]
+    },
+    {
+      "id": "falha",
+      "termo": "Falha (normal, inversa, desligamento)",
+      "definicao": "Fratura com deslocamento relativo dos blocos. Normal: o teto desce (distensão). Inversa: o teto sobe (compressão). Desligamento: movimento horizontal (cisalhamento).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "tensao_rochas"
+      ]
+    },
+    {
+      "id": "recurso_reserva",
+      "termo": "Recurso e reserva geológica",
+      "definicao": "Recurso: material ou fonte de energia útil ao ser humano. Reserva: parte do recurso já identificada, explorável com lucro na tecnologia e condições atuais.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "jazigo_mineral"
+      ]
+    },
+    {
+      "id": "jazigo_mineral",
+      "termo": "Jazigo mineral e minério",
+      "definicao": "Jazigo: concentração anómala de um mineral explorável com vantagem económica. Minério: mineral do qual se extrai a substância útil; ganga: o resto, sem valor.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "recurso_reserva"
+      ]
+    },
+    {
+      "id": "aquifero",
+      "termo": "Aquífero livre e cativo",
+      "definicao": "Aquífero livre: limitado só na base, à pressão atmosférica, recarregado em toda a área. Aquífero cativo: entre duas camadas impermeáveis, sob pressão, mais protegido da poluição.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "porosidade_permeabilidade"
+      ]
+    },
+    {
+      "id": "porosidade_permeabilidade",
+      "termo": "Porosidade e permeabilidade",
+      "definicao": "Porosidade: percentagem de espaços vazios numa rocha. Permeabilidade: capacidade de a água a atravessar. Uma rocha pode ser muito porosa mas pouco permeável (ex.: argila).",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": [
+        "aquifero"
+      ]
+    }
+  ]
+}
