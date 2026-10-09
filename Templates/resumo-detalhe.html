@@ -9,6 +9,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>{{ resumo.nome }} — Resumos | Explore+</title>
+<script>
+    (function () {
+        try {
+            if (localStorage.getItem('explore-theme') === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+            }
+        } catch (error) {
+            // Ignora erros de acesso ao storage (navegação privada).
+        }
+    })();
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,8 +50,8 @@
 
     <div class="teste-container">
 
-    <div class="resumo-header resumo-header--has-image" style="--resumo-cor-a:{{ resumo.cor_a }};--resumo-cor-b:{{ resumo.cor_b }};background-image:linear-gradient(135deg, rgba(10,20,14,.6), rgba(10,20,14,.35)), url('{% static resumo.imagem %}');">
-        <span class="resumo-header-badge">{{ resumo.categoria }}</span>
+    <div class="resumo-header{% if resumo.imagem %} resumo-header--has-image{% endif %}" style="--resumo-cor-a:{{ resumo.cor_a }};--resumo-cor-b:{{ resumo.cor_b }};--resumo-cor-soft:{{ resumo.cor_soft }};{% if resumo.imagem %}background-image:linear-gradient(135deg, rgba(10,20,14,.6), rgba(10,20,14,.35)), url('{% static resumo.imagem %}');{% endif %}">
+        <span class="resumo-header-badge">{{ resumo.categoria|default:resumo.disciplina }}</span>
         <h1>{{ resumo.nome }}</h1>
         {% if conteudo.introducao %}<p>{{ conteudo.introducao|md_inline }}</p>{% endif %}
     </div>

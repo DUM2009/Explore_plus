@@ -2463,6 +2463,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'O Ciclo das Rochas e os Fósseis',
+                'imagem': 'images/geo_ciclo_das_rochas.png',
+                'imagem_alt': 'Esquema do ciclo litológico: sedimentos, rochas sedimentares, metamórficas e magmáticas ligadas por setas de meteorização e erosão, metamorfismo, fusão e cristalização.',
+                'imagem_max_width': '620px',
                 'texto': 'Os materiais da Terra são reciclados continuamente: qualquer tipo de rocha pode transformar-se noutro, alimentado pela energia solar (processos externos) e pela energia interna da Terra (processos internos). Os **fósseis**, preservados sobretudo em rochas sedimentares, permitem reconstituir paleoambientes, datar e correlacionar camadas, e estudar a evolução da vida.',
                 'passos': [
                     {
@@ -2518,6 +2521,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'Datação Relativa: Pôr os Acontecimentos em Ordem',
+                'imagem': 'images/geo_principios_estratigrafia.png',
+                'imagem_alt': 'Corte geológico interpretado, numerado do acontecimento mais antigo ao mais recente: deposição, inclinação, intrusão de granito, falha, discordância angular e filão.',
+                'imagem_max_width': '680px',
                 'texto': 'A **datação relativa** ordena acontecimentos geológicos no tempo — o que é mais antigo e o que é mais recente — sem indicar a idade em anos. Baseia-se nos princípios da estratigrafia.',
                 'definicoes': [
                     {
@@ -2556,6 +2562,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'Datação Absoluta: A Idade em Números',
+                'imagem': 'images/geo_decaimento_radioativo_semivida.png',
+                'imagem_alt': 'Gráfico da percentagem de isótopo-pai e isótopo-filho ao longo de 5 semividas, com frascos de bolinhas vermelhas e azuis a ilustrar a proporção em cada etapa.',
+                'imagem_max_width': '680px',
                 'texto': 'A **datação absoluta** atribui uma idade numérica a uma rocha, com base no **decaimento radioativo**: um isótopo-pai instável transforma-se em isótopo-filho estável a um ritmo constante. A **semivida** é o tempo necessário para que metade dos átomos do isótopo-pai se transforme. Datam-se sobretudo rochas **magmáticas**, porque o "relógio" só começa a contar quando os minerais cristalizam.',
                 'definicoes': [
                     {
@@ -2645,6 +2654,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'A Teoria da Tectónica de Placas',
+                'imagem': 'images/geo_limites_placas.png',
+                'imagem_alt': 'Corte esquemático com uma dorsal oceânica (limite divergente), uma fossa oceânica e vulcão (subducção, limite convergente), correntes de convecção na astenosfera e sismos cada vez mais profundos.',
+                'imagem_max_width': '680px',
                 'texto': 'A litosfera está dividida em placas que se deslocam sobre a astenosfera. A maior parte da atividade sísmica, vulcânica e de formação de montanhas concentra-se nos limites das placas.',
                 'definicoes': [
                     {
@@ -2781,6 +2793,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'Descontinuidades e o Modelo Químico',
+                'imagem': 'images/geo_zona_sombra_sismica.png',
+                'imagem_alt': 'Corte da Terra mostrando a propagação das ondas P e S a partir de um epicentro, com a zona de sombra sísmica entre os 103° e os 143°, revelando o núcleo externo líquido.',
+                'imagem_max_width': '560px',
                 'texto': 'Quando as ondas sísmicas mudam de velocidade bruscamente, essas superfícies chamam-se **descontinuidades** e marcam o limite entre camadas de composição química diferente.',
                 'definicoes': [
                     {
@@ -2800,6 +2815,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'O Modelo Físico: Litosfera, Astenosfera, Mesosfera',
+                'imagem': 'images/geo_estrutura_interna_terra.png',
+                'imagem_alt': 'Corte esférico da Terra, lado a lado: modelo químico (crosta, manto, núcleo) e modelo físico (litosfera, astenosfera, mesosfera, núcleo externo e interno), com as descontinuidades assinaladas.',
+                'imagem_max_width': '640px',
                 'texto': 'Além do modelo químico (crosta-manto-núcleo), existe o **modelo físico**, baseado no comportamento mecânico dos materiais.',
                 'definicoes': [
                     {
@@ -2872,6 +2890,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'Magma, Lava e a Estrutura de um Vulcão',
+                'imagem': 'images/geo_estrutura_vulcao.png',
+                'imagem_alt': 'Corte de um estratovulcão com câmara magmática, chaminé, cratera, cone secundário, filão, soleira e escoada de lava assinalados.',
+                'imagem_max_width': '640px',
                 'texto': 'O **magma** é uma mistura de material rochoso fundido, gases dissolvidos e cristais em suspensão; quando chega à superfície e perde gases, chama-se **lava**. Uma **caldeira** é uma depressão de grandes dimensões formada pelo colapso do topo de um vulcão após o esvaziamento da câmara magmática (ex.: Sete Cidades e Furnas, São Miguel).',
                 'definicoes': [
                     {
@@ -2976,6 +2997,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'As Ondas Sísmicas',
+                'imagem': 'images/geo_ondas_sismicas.png',
+                'imagem_alt': 'Comparação visual das ondas P, S, L (Love) e R (Rayleigh), mostrando o tipo de vibração das partículas em relação à direção de propagação.',
+                'imagem_max_width': '680px',
                 'texto': 'A energia de um sismo propaga-se através de vários tipos de ondas, cada uma com características próprias.',
                 'definicoes': [
                     {
@@ -3113,6 +3137,9 @@ RESUMOS_CONTEUDO = {
             {
                 'titulo': 'Ordenamento do Território',
                 'texto': 'O ordenamento do território organiza a ocupação do espaço de forma a compatibilizar as atividades humanas com os riscos e os recursos naturais, através de instrumentos como os **Planos Diretores Municipais (PDM)**, a **Reserva Ecológica Nacional (REN)** e a **Reserva Agrícola Nacional (RAN)**.',
+                'imagem': 'images/geo_riscos_ordenamento_territorio.png',
+                'imagem_alt': 'Esquema comparativo de riscos geológicos e ordenamento do território: rios e cheias (leito menor vs. leito de cheia), zonas costeiras (sapa e desmoronamento de arribas, deriva litoral e esporões) e vertentes (massa deslizada ao longo de uma superfície de rutura), com exemplos de boas e más práticas de ocupação e os instrumentos PDM, REN, RAN e POC.',
+                'imagem_max_width': '760px',
                 'dica': 'em todos os riscos geológicos deste capítulo há um padrão comum: **prevenir pelo ordenamento é sempre mais eficaz e mais barato do que remediar depois com obras** — seja em leitos de cheia, em arribas, em dunas ou em vertentes instáveis.',
             },
         ],
@@ -3162,6 +3189,9 @@ RESUMOS_CONTEUDO = {
             {
                 'titulo': 'Propriedades dos Minerais',
                 'texto': 'Os minerais identificam-se por um conjunto de propriedades físicas e químicas.',
+                'imagem': 'images/geo_escala_mohs.png',
+                'imagem_alt': 'Escala de dureza de Mohs, do talco (1) ao diamante (10), com referências práticas: a unha risca até à calcite (≈2,5), a moeda de cobre até à fluorite (≈3,5) e o vidro/canivete até à apatite (≈5,5).',
+                'imagem_max_width': '680px',
                 'definicoes': [
                     {
                         'termo': 'Cor e risca',
@@ -3218,6 +3248,9 @@ RESUMOS_CONTEUDO = {
             {
                 'titulo': 'Sedimentogénese: Meteorização, Erosão, Transporte',
                 'texto': 'A **meteorização** é a alteração de rochas no local onde estão. Pode ser física (fragmentação sem alterar a composição) ou química (altera a composição mineralógica).',
+                'imagem': 'images/geo_formacao_rochas_sedimentares.png',
+                'imagem_alt': 'Esquema da formação das rochas sedimentares: meteorização da montanha, erosão e transporte dos detritos por água, vento, gelo e gravidade, sedimentação em camadas numa bacia e, por fim, diagénese — compactação e cimentação dos sedimentos até formarem uma rocha consolidada como o arenito.',
+                'imagem_max_width': '720px',
                 'definicoes': [
                     {
                         'termo': 'Meteorização física',
@@ -3311,6 +3344,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'A Série de Reações de Bowen',
+                'imagem': 'images/geo_serie_bowen.png',
+                'imagem_alt': 'Esquema da série de Bowen, com a série descontínua (olivina, piroxena, anfíbola, biotite) e a série contínua (plagioclase cálcica a sódica), convergindo em ortóclase, moscovite e quartzo.',
+                'imagem_max_width': '680px',
                 'texto': 'Ao arrefecer, um magma não solidifica todo ao mesmo tempo — os minerais cristalizam por ordem de temperatura. Na **série descontínua** (ferromagnesianos), cada mineral reage com o líquido e origina um mineral com estrutura diferente: olivina → piroxena → anfíbola → biotite. Na **série contínua** (plagioclases), a estrutura mantém-se mas a composição varia de cálcica para sódica. Os últimos minerais a cristalizar são o feldspato potássico, a moscovite e o quartzo — o líquido residual fica cada vez mais rico em sílica.',
                 'dica': 'os primeiros minerais a cristalizar (olivina, plagioclase cálcica) são também os **primeiros a meteorizar-se** à superfície — são como os primeiros convidados a sair de uma festa; o quartzo, o último a cristalizar, é o mais resistente e o último "convidado" a sair, por isso domina as areias.',
             },
@@ -3385,6 +3421,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'Metamorfismo de Contacto vs. Regional',
+                'imagem': 'images/geo_metamorfismo_contacto.png',
+                'imagem_alt': 'Corte com uma intrusão magmática de granito a aquecer as rochas encaixantes (calcário, arenito, argilito), formando uma auréola de metamorfismo com mármore, quartzito e corneana.',
+                'imagem_max_width': '640px',
                 'texto': 'Consoante o fator dominante e a escala, distinguem-se dois grandes tipos.',
                 'definicoes': [
                     {
@@ -3504,6 +3543,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'Dobras',
+                'imagem': 'images/geo_dobras_anticlinal_sinclinal.png',
+                'imagem_alt': 'Corte de camadas dobradas por compressão, mostrando um anticlinal (núcleo com as rochas mais antigas) e um sinclinal (núcleo com as rochas mais recentes), com a charneira, o flanco e o plano axial assinalados.',
+                'imagem_max_width': '680px',
                 'texto': 'São deformações dúcteis em que as camadas ficam encurvadas, sem fraturar.',
                 'definicoes': [
                     {
@@ -3523,6 +3565,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'Falhas',
+                'imagem': 'images/geo_tipos_falhas.png',
+                'imagem_alt': 'Comparação visual de falha normal, falha inversa e falha de desligamento, com o sentido das tensões e do deslocamento do teto e do muro assinalados.',
+                'imagem_max_width': '680px',
                 'texto': 'São fraturas com deslocamento relativo dos blocos (ao contrário das diáclases, sem deslocamento).',
                 'definicoes': [
                     {
@@ -3593,6 +3638,9 @@ RESUMOS_CONTEUDO = {
             },
             {
                 'titulo': 'Recursos Hídricos: Aquíferos',
+                'imagem': 'images/geo_aquiferos.png',
+                'imagem_alt': 'Corte de camadas permeáveis e impermeáveis mostrando um aquífero livre (à pressão atmosférica, nível freático) e um aquífero cativo (entre camadas impermeáveis, com um furo artesiano repuxante).',
+                'imagem_max_width': '680px',
                 'texto': 'A água infiltra-se no solo, atravessando a zona de aeração até à zona de saturação — o limite entre as duas é o **nível freático**.',
                 'definicoes': [
                     {

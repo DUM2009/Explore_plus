@@ -12927,6 +12927,15 @@ html.dark-mode .teste-item-titulo {
     color: #ffffff;
 }
 
+/* .teste-container is normally forced white even in dark mode (see its
+   definition above), but resumo-detalhe.html reuses it as its content
+   wrapper — so here, scoped to that page only, it follows the dark theme
+   instead, matching the light text colours already set for .resumo-*. */
+html.dark-mode .resumo-detalhe-page .teste-container {
+    background: #14201a;
+    border-color: #2c3a30;
+}
+
 html.dark-mode .resumo-card {
     background: #1f2b23;
     border-color: #2c3a30;
