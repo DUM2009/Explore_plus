@@ -81,32 +81,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que os carros corroem mais depressa em zonas costeiras ou em países onde se põe sal nas estradas?",
-          "opcoes": [
-            "Porque o sal é um oxidante forte.",
-            "Porque os iões cloreto, dissolvidos na água, aumentam a condutividade e aceleram a corrosão.",
-            "Porque o sal tapa o metal.",
-            "Porque o sal aumenta a temperatura."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. A água salgada é um bom condutor iónico, o que facilita a deslocação dos iões entre as zonas de oxidação e de redução. Os iões Cl⁻ também destroem camadas protetoras de óxido.",
-          "mascote_feedback_errado": "O cloreto não é o oxidante (o oxidante é o O₂). Mas a água com sal conduz muito melhor os iões, e a corrosão acelera."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que o alumínio, sendo mais redutor do que o ferro, não se \"desfaz\" com a corrosão como o ferro?",
-          "opcoes": [
-            "Porque o alumínio não se oxida.",
-            "Porque forma uma camada fina, compacta e impermeável de óxido de alumínio que protege o metal por baixo.",
-            "Porque o alumínio é um não metal.",
-            "Porque o alumínio tem um potencial de redução positivo."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O Al₂O₃ adere à superfície e impede o contacto do metal com o O₂ e a água. A ferrugem, pelo contrário, é porosa e desprende-se.",
-          "mascote_feedback_errado": "O alumínio oxida-se facilmente, mas o óxido que forma é compacto e protetor. É a diferença em relação à ferrugem, que é permeável."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A crosta de um bolo e um pão a esfarelar.** Imagina dois bolos deixados ao ar. Um forma uma crosta dura e lisa que protege o miolo: é o alumínio com o seu óxido. O outro forma uma crosta que esfarela e cai, deixando o miolo exposto, que volta a secar e a esfarelar, até o bolo desaparecer: é o ferro com a ferrugem."
         },
@@ -118,6 +92,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Porque é que os carros corroem mais depressa em zonas costeiras ou em países onde se põe sal nas estradas?",
+              "opcoes": [
+                "Porque o sal é um oxidante forte.",
+                "Porque os iões cloreto, dissolvidos na água, aumentam a condutividade e aceleram a corrosão.",
+                "Porque o sal tapa o metal.",
+                "Porque o sal aumenta a temperatura."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A água salgada é um bom condutor iónico, o que facilita a deslocação dos iões entre as zonas de oxidação e de redução. Os iões Cl⁻ também destroem camadas protetoras de óxido.",
+              "mascote_feedback_errado": "O cloreto não é o oxidante (o oxidante é o O₂). Mas a água com sal conduz muito melhor os iões, e a corrosão acelera."
+            },
+            {
+              "pergunta": "Porque é que o alumínio, sendo mais redutor do que o ferro, não se \"desfaz\" com a corrosão como o ferro?",
+              "opcoes": [
+                "Porque o alumínio não se oxida.",
+                "Porque forma uma camada fina, compacta e impermeável de óxido de alumínio que protege o metal por baixo.",
+                "Porque o alumínio é um não metal.",
+                "Porque o alumínio tem um potencial de redução positivo."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O Al₂O₃ adere à superfície e impede o contacto do metal com o O₂ e a água. A ferrugem, pelo contrário, é porosa e desprende-se.",
+              "mascote_feedback_errado": "O alumínio oxida-se facilmente, mas o óxido que forma é compacto e protetor. É a diferença em relação à ferrugem, que é permeável."
+            },
             {
               "pergunta": "Na corrosão do ferro, o agente oxidante é principalmente:",
               "opcoes": [
@@ -239,32 +237,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a semirreação acertada da redução do ião dicromato a Cr³⁺ em meio ácido?",
-          "opcoes": [
-            "Cr₂O₇²⁻ + 14 H⁺ + 6 e⁻ → 2 Cr³⁺ + 7 H₂O",
-            "Cr₂O₇²⁻ + 7 H⁺ + 3 e⁻ → Cr³⁺ + 7 H₂O",
-            "Cr₂O₇²⁻ → 2 Cr³⁺ + 7 O²⁻",
-            "Cr₂O₇²⁻ + 14 H⁺ → 2 Cr³⁺ + 7 H₂O + 6 e⁻"
-          ],
-          "correta": 0,
-          "mascote_feedback_certo": "Certo. 2 Cr de cada lado; 7 O acertados com 7 H₂O; 14 H acertados com 14 H⁺; carga à esquerda +12 (−2 + 14), à direita +6: juntam-se 6 e⁻ à esquerda.",
-          "mascote_feedback_errado": "Segue os passos: 2 Cr³⁺ no produto; 7 H₂O para os O; 14 H⁺ para os H; a carga (−2 + 14 = +12 à esquerda, +6 à direita) acerta-se com 6 e⁻ à esquerda. Numa redução, os eletrões ficam nos reagentes."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na reação do cobre com o ácido nítrico, Cu + NO₃⁻ → Cu²⁺ + NO₂ (meio ácido), qual é a equação acertada?",
-          "opcoes": [
-            "Cu + NO₃⁻ + 2 H⁺ → Cu²⁺ + NO₂ + H₂O",
-            "Cu + 2 NO₃⁻ + 4 H⁺ → Cu²⁺ + 2 NO₂ + 2 H₂O",
-            "Cu + 2 NO₃⁻ → Cu²⁺ + 2 NO₂ + O₂",
-            "2 Cu + NO₃⁻ + 4 H⁺ → 2 Cu²⁺ + NO₂ + 2 H₂O"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. Oxidação: Cu → Cu²⁺ + 2 e⁻. Redução: NO₃⁻ + 2 H⁺ + e⁻ → NO₂ + H₂O (× 2). Somando: Cu + 2 NO₃⁻ + 4 H⁺ → Cu²⁺ + 2 NO₂ + 2 H₂O.",
-          "mascote_feedback_errado": "O cobre cede 2 eletrões e cada NO₃⁻ só recebe 1 (de +5 para +4). São precisos 2 NO₃⁻ por cada Cu. Acertando O e H: Cu + 2 NO₃⁻ + 4 H⁺ → Cu²⁺ + 2 NO₂ + 2 H₂O."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Acertar contas num grupo de amigos.** Depois de um jantar de grupo, acertar as contas segue sempre a mesma ordem: primeiro vês quem pagou o quê, depois quem deve a quem, e no fim ajustas para que o total pago seja igual ao total devido. No acerto redox é igual: primeiro os átomos \"principais\", depois os oxigénios (com água), depois os hidrogénios (com H⁺), depois as cargas (com eletrões) e, no fim, o que uma semirreação \"paga\" em eletrões tem de ser igual ao que a outra \"recebe\"."
         },
@@ -276,6 +248,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é a semirreação acertada da redução do ião dicromato a Cr³⁺ em meio ácido?",
+              "opcoes": [
+                "Cr₂O₇²⁻ + 14 H⁺ + 6 e⁻ → 2 Cr³⁺ + 7 H₂O",
+                "Cr₂O₇²⁻ + 7 H⁺ + 3 e⁻ → Cr³⁺ + 7 H₂O",
+                "Cr₂O₇²⁻ → 2 Cr³⁺ + 7 O²⁻",
+                "Cr₂O₇²⁻ + 14 H⁺ → 2 Cr³⁺ + 7 H₂O + 6 e⁻"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. 2 Cr de cada lado; 7 O acertados com 7 H₂O; 14 H acertados com 14 H⁺; carga à esquerda +12 (−2 + 14), à direita +6: juntam-se 6 e⁻ à esquerda.",
+              "mascote_feedback_errado": "Segue os passos: 2 Cr³⁺ no produto; 7 H₂O para os O; 14 H⁺ para os H; a carga (−2 + 14 = +12 à esquerda, +6 à direita) acerta-se com 6 e⁻ à esquerda. Numa redução, os eletrões ficam nos reagentes."
+            },
+            {
+              "pergunta": "Na reação do cobre com o ácido nítrico, Cu + NO₃⁻ → Cu²⁺ + NO₂ (meio ácido), qual é a equação acertada?",
+              "opcoes": [
+                "Cu + NO₃⁻ + 2 H⁺ → Cu²⁺ + NO₂ + H₂O",
+                "Cu + 2 NO₃⁻ + 4 H⁺ → Cu²⁺ + 2 NO₂ + 2 H₂O",
+                "Cu + 2 NO₃⁻ → Cu²⁺ + 2 NO₂ + O₂",
+                "2 Cu + NO₃⁻ + 4 H⁺ → 2 Cu²⁺ + NO₂ + 2 H₂O"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. Oxidação: Cu → Cu²⁺ + 2 e⁻. Redução: NO₃⁻ + 2 H⁺ + e⁻ → NO₂ + H₂O (× 2). Somando: Cu + 2 NO₃⁻ + 4 H⁺ → Cu²⁺ + 2 NO₂ + 2 H₂O.",
+              "mascote_feedback_errado": "O cobre cede 2 eletrões e cada NO₃⁻ só recebe 1 (de +5 para +4). São precisos 2 NO₃⁻ por cada Cu. Acertando O e H: Cu + 2 NO₃⁻ + 4 H⁺ → Cu²⁺ + 2 NO₂ + 2 H₂O."
+            },
             {
               "pergunta": "Ao acertar uma semirreação em meio ácido, os átomos de oxigénio acertam-se com:",
               "opcoes": [
@@ -430,32 +426,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Constrói-se uma pilha com os pares Zn²⁺/Zn (E° = −0,76 V) e Ag⁺/Ag (E° = +0,80 V). Qual é a força eletromotriz padrão e qual é o ânodo?",
-          "opcoes": [
-            "0,04 V; prata",
-            "1,56 V; zinco",
-            "1,56 V; prata",
-            "−1,56 V; zinco"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O par com E° maior (Ag⁺/Ag) é o cátodo; o zinco oxida-se no ânodo. E° = 0,80 − (−0,76) = 1,56 V.",
-          "mascote_feedback_errado": "O cátodo é o par com maior E° (prata, +0,80 V). O ânodo é o zinco. E° = E° cátodo − E° ânodo = 0,80 − (−0,76) = 1,56 V."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na pilha de Daniell, em que sentido se movem os iões NO₃⁻ da ponte salina?",
-          "opcoes": [
-            "Para a semicélula do cobre.",
-            "Para a semicélula do zinco (ânodo).",
-            "Não se movem.",
-            "Saem da ponte para o fio."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. No ânodo formam-se iões Zn²⁺, que tornariam a solução positiva. Os aniões da ponte migram para lá e mantêm a neutralidade.",
-          "mascote_feedback_errado": "No ânodo, a oxidação liberta Zn²⁺ na solução. Para compensar a carga positiva, os aniões (NO₃⁻) da ponte salina deslocam-se para a semicélula do zinco."
         },
         {
           "tipo": "simulacao",
@@ -669,6 +639,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Constrói-se uma pilha com os pares Zn²⁺/Zn (E° = −0,76 V) e Ag⁺/Ag (E° = +0,80 V). Qual é a força eletromotriz padrão e qual é o ânodo?",
+              "opcoes": [
+                "0,04 V; prata",
+                "1,56 V; zinco",
+                "1,56 V; prata",
+                "−1,56 V; zinco"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O par com E° maior (Ag⁺/Ag) é o cátodo; o zinco oxida-se no ânodo. E° = 0,80 − (−0,76) = 1,56 V.",
+              "mascote_feedback_errado": "O cátodo é o par com maior E° (prata, +0,80 V). O ânodo é o zinco. E° = E° cátodo − E° ânodo = 0,80 − (−0,76) = 1,56 V."
+            },
+            {
+              "pergunta": "Na pilha de Daniell, em que sentido se movem os iões NO₃⁻ da ponte salina?",
+              "opcoes": [
+                "Para a semicélula do cobre.",
+                "Para a semicélula do zinco (ânodo).",
+                "Não se movem.",
+                "Saem da ponte para o fio."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. No ânodo formam-se iões Zn²⁺, que tornariam a solução positiva. Os aniões da ponte migram para lá e mantêm a neutralidade.",
+              "mascote_feedback_errado": "No ânodo, a oxidação liberta Zn²⁺ na solução. Para compensar a carga positiva, os aniões (NO₃⁻) da ponte salina deslocam-se para a semicélula do zinco."
+            },
+            {
               "pergunta": "Numa pilha, o ânodo é:",
               "opcoes": [
                 "o polo positivo, onde ocorre a redução.",
@@ -769,32 +763,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual destes metais pode servir de ânodo de sacrifício para proteger uma tubagem de ferro (E°(Fe²⁺/Fe) = −0,44 V)?",
-          "opcoes": [
-            "Cobre (+0,34 V)",
-            "Chumbo (−0,13 V)",
-            "Magnésio (−2,37 V)",
-            "Prata (+0,80 V)"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. O magnésio tem E° muito menor do que o ferro: oxida-se preferencialmente e protege-o.",
-          "mascote_feedback_errado": "O ânodo de sacrifício tem de ser mais redutor do que o metal protegido, isto é, ter E° menor. Só o magnésio (−2,37 V) cumpre a condição."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Numa galvanoplastia para cromar uma peça de aço, a peça deve ser ligada:",
-          "opcoes": [
-            "ao polo positivo, como ânodo.",
-            "ao polo negativo, como cátodo, onde os iões de crómio se reduzem.",
-            "a nenhum polo.",
-            "à ponte salina."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Na eletrólise, a redução ocorre no cátodo (polo negativo). Os iões do metal de revestimento recebem eletrões e depositam-se como metal na peça.",
-          "mascote_feedback_errado": "Para depositar metal, os seus iões têm de se reduzir. A redução acontece no cátodo, que numa célula eletrolítica está ligado ao polo negativo da fonte."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O guarda-costas.** O ânodo de sacrifício é como um guarda-costas: põe-se à frente do ferro e \"leva os golpes\" (a oxidação) no lugar dele. Enquanto o guarda-costas existir, o ferro está seguro. Quando ele se gasta, tem de ser substituído, e é por isso que os blocos de zinco dos navios e o ânodo de magnésio dos esquentadores são trocados periodicamente."
         },
@@ -837,6 +805,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual destes metais pode servir de ânodo de sacrifício para proteger uma tubagem de ferro (E°(Fe²⁺/Fe) = −0,44 V)?",
+              "opcoes": [
+                "Cobre (+0,34 V)",
+                "Chumbo (−0,13 V)",
+                "Magnésio (−2,37 V)",
+                "Prata (+0,80 V)"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O magnésio tem E° muito menor do que o ferro: oxida-se preferencialmente e protege-o.",
+              "mascote_feedback_errado": "O ânodo de sacrifício tem de ser mais redutor do que o metal protegido, isto é, ter E° menor. Só o magnésio (−2,37 V) cumpre a condição."
+            },
+            {
+              "pergunta": "Numa galvanoplastia para cromar uma peça de aço, a peça deve ser ligada:",
+              "opcoes": [
+                "ao polo positivo, como ânodo.",
+                "ao polo negativo, como cátodo, onde os iões de crómio se reduzem.",
+                "a nenhum polo.",
+                "à ponte salina."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Na eletrólise, a redução ocorre no cátodo (polo negativo). Os iões do metal de revestimento recebem eletrões e depositam-se como metal na peça.",
+              "mascote_feedback_errado": "Para depositar metal, os seus iões têm de se reduzir. A redução acontece no cátodo, que numa célula eletrolítica está ligado ao polo negativo da fonte."
+            },
             {
               "pergunta": "O aço galvanizado é:",
               "opcoes": [

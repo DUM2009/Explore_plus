@@ -292,32 +292,6 @@
           }
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a ordem de grandeza de 0,000 72 m?",
-          "opcoes": [
-            "10⁻⁴ m",
-            "10⁻³ m",
-            "7,2 × 10⁻⁴ m",
-            "10⁻⁵ m"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. 0,000 72 m = 7,2 × 10⁻⁴ m. Como N = 7,2 ≥ 5, a ordem de grandeza é 10⁻⁴⁺¹ = 10⁻³ m.",
-          "mascote_feedback_errado": "Escreve primeiro em notação científica: 7,2 × 10⁻⁴ m. Como N = 7,2 é maior ou igual a 5, a ordem de grandeza é 10ⁿ⁺¹ = 10⁻³ m. 7,2 × 10⁻⁴ m é o valor em notação científica, não a ordem de grandeza."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O comprimento da ligação C–C no diamante é 0,154 nm. Quanto é em picómetros?",
-          "opcoes": [
-            "1,54 pm",
-            "15,4 pm",
-            "154 pm",
-            "1,54 × 10⁵ pm"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. De nm para pm desce-se um degrau na escada: multiplica-se por 10³. 0,154 × 10³ = 154 pm (= 1,54 Å).",
-          "mascote_feedback_errado": "nm e pm estão seguidos na escada de conversão. Para passar para a unidade mais pequena multiplica-se por 10³: 0,154 nm × 10³ = 154 pm."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Os andares de um prédio.** Imagina a escada de conversão como um prédio em que cada andar é mil vezes maior do que o de baixo: pm no rés-do-chão, depois nm, µm, mm, m, km, Mm, Gm e Tm no último andar. Para descer um andar, o número fica mil vezes maior (× 10³), porque a unidade é mil vezes mais pequena. Para subir, o número fica mil vezes menor (× 10⁻³). A ordem de grandeza diz-te em que andar está o valor. Dois valores no mesmo andar estão na mesma escala de comprimento."
         },
@@ -329,6 +303,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é a ordem de grandeza de 0,000 72 m?",
+              "opcoes": [
+                "10⁻⁴ m",
+                "10⁻³ m",
+                "7,2 × 10⁻⁴ m",
+                "10⁻⁵ m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. 0,000 72 m = 7,2 × 10⁻⁴ m. Como N = 7,2 ≥ 5, a ordem de grandeza é 10⁻⁴⁺¹ = 10⁻³ m.",
+              "mascote_feedback_errado": "Escreve primeiro em notação científica: 7,2 × 10⁻⁴ m. Como N = 7,2 é maior ou igual a 5, a ordem de grandeza é 10ⁿ⁺¹ = 10⁻³ m. 7,2 × 10⁻⁴ m é o valor em notação científica, não a ordem de grandeza."
+            },
+            {
+              "pergunta": "O comprimento da ligação C–C no diamante é 0,154 nm. Quanto é em picómetros?",
+              "opcoes": [
+                "1,54 pm",
+                "15,4 pm",
+                "154 pm",
+                "1,54 × 10⁵ pm"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. De nm para pm desce-se um degrau na escada: multiplica-se por 10³. 0,154 × 10³ = 154 pm (= 1,54 Å).",
+              "mascote_feedback_errado": "nm e pm estão seguidos na escada de conversão. Para passar para a unidade mais pequena multiplica-se por 10³: 0,154 nm × 10³ = 154 pm."
+            },
             {
               "pergunta": "Qual é a ordem de grandeza da constante de Avogadro, 6,02 × 10²³ mol⁻¹?",
               "opcoes": [
@@ -487,32 +485,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Quantos protões, neutrões e eletrões tem o ião ²³₁₁Na⁺?",
-          "opcoes": [
-            "11 protões, 12 neutrões, 11 eletrões",
-            "11 protões, 12 neutrões, 10 eletrões",
-            "12 protões, 11 neutrões, 11 eletrões",
-            "11 protões, 23 neutrões, 10 eletrões"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Z = 11 protões. Neutrões: 23 − 11 = 12. O ião tem carga +1: perdeu um eletrão, fica com 10.",
-          "mascote_feedback_errado": "Protões = Z = 11. Neutrões = A − Z = 12. A carga +1 indica que o átomo perdeu 1 eletrão: 11 − 1 = 10 eletrões."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O cobre tem dois isótopos: ⁶³Cu (62,93; 69,15 %) e ⁶⁵Cu (64,93; 30,85 %). Qual é a massa atómica relativa do cobre?",
-          "opcoes": [
-            "63,93",
-            "63,55",
-            "64,00",
-            "64,31"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. A r = 62,93 × 0,6915 + 64,93 × 0,3085 ≈ 43,52 + 20,03 = 63,55.",
-          "mascote_feedback_errado": "Faz a média ponderada, não a média simples: 62,93 × 0,6915 + 64,93 × 0,3085 ≈ 63,55. Fica mais perto de 63, o isótopo mais abundante."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A nota final de uma disciplina.** Imagina que a tua nota final é calculada com o teste a valer 70 % e o trabalho a valer 30 %. Se tiveres 15 no teste e 18 no trabalho, a tua média não é 16,5 (a média simples): é 15 × 0,70 + 18 × 0,30 = 15,9. A nota do teste \"pesa mais\". Com os isótopos é igual: o isótopo mais abundante pesa mais na massa atómica relativa. É por isso que o cloro tem 35,45 e não 36."
         },
@@ -524,6 +496,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Quantos protões, neutrões e eletrões tem o ião ²³₁₁Na⁺?",
+              "opcoes": [
+                "11 protões, 12 neutrões, 11 eletrões",
+                "11 protões, 12 neutrões, 10 eletrões",
+                "12 protões, 11 neutrões, 11 eletrões",
+                "11 protões, 23 neutrões, 10 eletrões"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Z = 11 protões. Neutrões: 23 − 11 = 12. O ião tem carga +1: perdeu um eletrão, fica com 10.",
+              "mascote_feedback_errado": "Protões = Z = 11. Neutrões = A − Z = 12. A carga +1 indica que o átomo perdeu 1 eletrão: 11 − 1 = 10 eletrões."
+            },
+            {
+              "pergunta": "O cobre tem dois isótopos: ⁶³Cu (62,93; 69,15 %) e ⁶⁵Cu (64,93; 30,85 %). Qual é a massa atómica relativa do cobre?",
+              "opcoes": [
+                "63,93",
+                "63,55",
+                "64,00",
+                "64,31"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A r = 62,93 × 0,6915 + 64,93 × 0,3085 ≈ 43,52 + 20,03 = 63,55.",
+              "mascote_feedback_errado": "Faz a média ponderada, não a média simples: 62,93 × 0,6915 + 64,93 × 0,3085 ≈ 63,55. Fica mais perto de 63, o isótopo mais abundante."
+            },
             {
               "pergunta": "Dois átomos são isótopos se tiverem:",
               "opcoes": [
@@ -635,32 +631,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Quantas moléculas de água há em 36,0 g de água? (M = 18,02 g/mol)",
-          "opcoes": [
-            "2,00 moléculas",
-            "6,02 × 10²³ moléculas",
-            "1,20 × 10²⁴ moléculas",
-            "2,17 × 10²⁵ moléculas"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. n = 36,0 / 18,02 ≈ 2,00 mol. N = 2,00 × 6,02 × 10²³ ≈ 1,20 × 10²⁴ moléculas. E há o dobro de átomos de hidrogénio: 2,41 × 10²⁴.",
-          "mascote_feedback_errado": "Primeiro a quantidade de matéria: n = m / M = 36,0 / 18,02 ≈ 2,00 mol. Depois o número de moléculas: N = n N A = 1,20 × 10²⁴."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a massa molar da glicose, C₆H₁₂O₆?",
-          "opcoes": [
-            "29,02 g/mol",
-            "180,18 g/mol",
-            "168,00 g/mol",
-            "24,00 g/mol"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. M = 6 × 12,01 + 12 × 1,01 + 6 × 16,00 = 72,06 + 12,12 + 96,00 = 180,18 g/mol.",
-          "mascote_feedback_errado": "Multiplica cada massa atómica pelo número de átomos: 6 × 12,01 + 12 × 1,01 + 6 × 16,00 = 180,18 g/mol."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A dúzia de ovos e a resma de papel.** Na mercearia, ninguém conta os ovos um a um: compra-se uma dúzia (12). Na papelaria, compra-se uma resma (500 folhas). A mole é a \"dúzia\" dos químicos, só que com 6,02 × 10²³ unidades. E a massa molar é como saber quanto pesa uma dúzia: uma dúzia de ovos de avestruz pesa muito mais do que uma dúzia de ovos de codorniz, embora ambas tenham 12 ovos. Uma mole de ouro pesa 197 g e uma mole de hidrogénio (H₂) pesa 2 g, mas ambas têm 6,02 × 10²³ entidades."
         },
@@ -702,6 +672,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Quantas moléculas de água há em 36,0 g de água? (M = 18,02 g/mol)",
+              "opcoes": [
+                "2,00 moléculas",
+                "6,02 × 10²³ moléculas",
+                "1,20 × 10²⁴ moléculas",
+                "2,17 × 10²⁵ moléculas"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. n = 36,0 / 18,02 ≈ 2,00 mol. N = 2,00 × 6,02 × 10²³ ≈ 1,20 × 10²⁴ moléculas. E há o dobro de átomos de hidrogénio: 2,41 × 10²⁴.",
+              "mascote_feedback_errado": "Primeiro a quantidade de matéria: n = m / M = 36,0 / 18,02 ≈ 2,00 mol. Depois o número de moléculas: N = n N A = 1,20 × 10²⁴."
+            },
+            {
+              "pergunta": "Qual é a massa molar da glicose, C₆H₁₂O₆?",
+              "opcoes": [
+                "29,02 g/mol",
+                "180,18 g/mol",
+                "168,00 g/mol",
+                "24,00 g/mol"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. M = 6 × 12,01 + 12 × 1,01 + 6 × 16,00 = 72,06 + 12,12 + 96,00 = 180,18 g/mol.",
+              "mascote_feedback_errado": "Multiplica cada massa atómica pelo número de átomos: 6 × 12,01 + 12 × 1,01 + 6 × 16,00 = 180,18 g/mol."
+            },
             {
               "pergunta": "Qual é a quantidade de matéria em 11,0 g de dióxido de carbono? (M(CO₂) = 44,01 g/mol)",
               "opcoes": [

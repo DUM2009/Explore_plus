@@ -14,13 +14,10 @@
       "tempo_estimado_min": 8,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_comboio_estacao.png",
-          "texto": "Estás sentado num comboio parado na estação. O comboio ao lado começa a andar e, por um segundo, juras que é o teu que se está a mexer. Estás parado ou em movimento? A resposta da Física é: depende de em relação a quê. Antes de descrever qualquer movimento, é preciso escolher um referencial.",
-          "mascote_texto": "Na Mecânica, quase todos os erros de sinal vêm de não se ter definido bem o referencial. Começa sempre por aqui."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Estás parado ou em movimento? Depende de em relação a quê.",
+          "mascote_texto": "Na Mecânica, quase todos os erros de sinal vêm de não se ter definido bem o referencial. Começa sempre por aqui.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Referencial e posição",
           "imagem": "f11_eixo_posicao.png",
           "texto_principal": "Um referencial é um corpo (ou ponto) em relação ao qual se descreve o movimento, associado a um sistema de eixos. Nos movimentos retilíneos basta um eixo, com uma origem e um sentido positivo. A posição de um corpo é dada pela sua coordenada nesse eixo. Um corpo está em movimento em relação a um referencial se a sua posição em relação a ele variar ao longo do tempo.",
@@ -38,36 +35,17 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Distância percorrida vs. deslocamento",
           "imagem": "f11_distancia_deslocamento.png",
           "texto_principal": "O deslocamento só depende das posições inicial e final. A distância percorrida depende de todo o caminho feito. Só são iguais (em módulo) quando o movimento é retilíneo e sem inversão de sentido.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "volta-pista", "label": "Volta completa à pista", "explicacao": "Distância percorrida = 400 m. Deslocamento = 0, porque a posição final é igual à inicial." },
+            { "id": "volta-pista", "label": "Volta completa à pista", "explicacao": "Distância percorrida = 400 m. Deslocamento = 0, porque a posição final é igual à inicial.", "curiosidade_sem_titulo": true, "curiosidade": "**A morada de uma casa**\n\nA posição de um corpo é como a morada de uma casa: só faz sentido se souberes a partir de onde contas. \"Número 30\" não diz nada se não souberes em que rua está e em que ponta começa a numeração. O referencial é a rua com a sua numeração: a origem é o número zero e o sentido positivo é o lado para onde os números crescem. O deslocamento é a diferença entre a morada de chegada e a de partida. A distância percorrida é quanto andaste de facto, incluindo as voltas que deste porque te enganaste no caminho." },
             { "id": "ida-volta", "label": "Ida e volta no eixo", "explicacao": "De 0 a 6 m e depois de 6 m a 2 m. Distância percorrida = 6 + 4 = 10 m. Deslocamento: Δx = 2 − 0 = 2 m." },
             { "id": "quando-coincidem", "label": "Quando coincidem", "explicacao": "Movimento retilíneo, sempre no mesmo sentido: distância percorrida = |Δx|." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um carro passa da posição x = 5 m para a posição x = −3 m, sempre no mesmo sentido. Qual é a componente escalar do deslocamento?",
-          "opcoes": ["8 m", "−8 m", "2 m", "−2 m"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Δx = x final − x inicial = −3 − 5 = −8 m. O sinal negativo indica que o carro se deslocou no sentido negativo do eixo.",
-          "mascote_feedback_errado": "Faz sempre final menos inicial: Δx = −3 − 5 = −8 m. O sinal é importante: indica o sentido do deslocamento."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um passageiro está sentado num avião em voo. Em relação a que referencial está em repouso?",
-          "opcoes": ["Em relação à Terra.", "Em relação ao próprio avião.", "Em relação às nuvens.", "Não está em repouso em relação a nenhum referencial."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. A posição do passageiro não varia em relação ao avião, por isso está em repouso nesse referencial, embora esteja em movimento em relação à Terra.",
-          "mascote_feedback_errado": "Repouso e movimento dependem do referencial. Em relação ao avião, a posição do passageiro não muda: está em repouso. Em relação à Terra, move-se a centenas de km/h."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A morada de uma casa.** A posição de um corpo é como a morada de uma casa: só faz sentido se souberes a partir de onde contas. \"Número 30\" não diz nada se não souberes em que rua está e em que ponta começa a numeração. O referencial é a rua com a sua numeração: a origem é o número zero e o sentido positivo é o lado para onde os números crescem. O deslocamento é a diferença entre a morada de chegada e a de partida. A distância percorrida é quanto andaste de facto, incluindo as voltas que deste porque te enganaste no caminho."
         },
         {
           "tipo": "aprofundar",
@@ -77,6 +55,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um carro passa da posição x = 5 m para a posição x = −3 m, sempre no mesmo sentido. Qual é a componente escalar do deslocamento?",
+              "opcoes": [
+                "8 m",
+                "−8 m",
+                "2 m",
+                "−2 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Δx = x final − x inicial = −3 − 5 = −8 m. O sinal negativo indica que o carro se deslocou no sentido negativo do eixo.",
+              "mascote_feedback_errado": "Faz sempre final menos inicial: Δx = −3 − 5 = −8 m. O sinal é importante: indica o sentido do deslocamento."
+            },
+            {
+              "pergunta": "Um passageiro está sentado num avião em voo. Em relação a que referencial está em repouso?",
+              "opcoes": [
+                "Em relação à Terra.",
+                "Em relação ao próprio avião.",
+                "Em relação às nuvens.",
+                "Não está em repouso em relação a nenhum referencial."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. A posição do passageiro não varia em relação ao avião, por isso está em repouso nesse referencial, embora esteja em movimento em relação à Terra.",
+              "mascote_feedback_errado": "Repouso e movimento dependem do referencial. Em relação ao avião, a posição do passageiro não muda: está em repouso. Em relação à Terra, move-se a centenas de km/h."
+            },
             {
               "pergunta": "Um atleta dá duas voltas completas a uma pista de 400 m. Quais são a distância percorrida e o módulo do deslocamento?",
               "opcoes": ["800 m e 800 m", "800 m e 0 m", "0 m e 800 m", "400 m e 0 m"],
@@ -109,13 +111,10 @@
       "tempo_estimado_min": 9,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_radar_velocidade.png",
-          "texto": "Nas autoestradas há troços com radar de velocidade média: uma câmara regista a hora a que passas num ponto e outra, uns quilómetros à frente, a hora a que passas no segundo ponto. Mesmo que abrandes ao passar pelas câmaras, se tiveres feito o troço demasiado depressa, és multado. Na Física há duas grandezas \"médias\" parecidas com isto, e é importante não as confundir.",
-          "mascote_texto": "Rapidez média e velocidade média parecem a mesma coisa. Não são, e os exames adoram essa diferença."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Rapidez média e velocidade média parecem iguais — não são.",
+          "mascote_texto": "Rapidez média e velocidade média parecem a mesma coisa. Não são, e os exames adoram essa diferença.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Rapidez, velocidade média e velocidade instantânea",
           "imagem": "f11_velocidade_tangente.png",
           "texto_principal": "A rapidez média mede a distância percorrida por unidade de tempo e é sempre positiva. A velocidade média é um vetor: é o deslocamento a dividir pelo intervalo de tempo. A velocidade instantânea é a velocidade num dado instante: é sempre tangente à trajetória e aponta no sentido do movimento.",
@@ -133,38 +132,19 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Gráficos posição-tempo",
           "imagem": "f11_graficos_xt.png",
           "texto_principal": "No gráfico da posição em função do tempo, o declive da reta (ou da tangente à curva num ponto) é a componente escalar da velocidade nesse instante.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "reta-horizontal", "label": "Reta horizontal", "explicacao": "Posição constante. O corpo está em repouso: v = 0." },
-            { "id": "reta-crescente", "label": "Reta crescente", "explicacao": "Velocidade constante e positiva. O corpo move-se no sentido positivo do eixo." },
+            { "id": "reta-crescente", "label": "Reta crescente", "explicacao": "Velocidade constante e positiva. O corpo move-se no sentido positivo do eixo.", "curiosidade_sem_titulo": true, "curiosidade": "**O passeio do cão**\n\nLevas o cão a passear: vais até ao parque, que fica a 500 m, andas às voltas lá dentro e voltas para casa. Ao fim de meia hora estás exatamente onde começaste. A tua velocidade média é zero, porque o deslocamento foi zero. Mas a tua rapidez média não é zero: andaste talvez 2 km em meia hora. A rapidez média conta todos os passos. A velocidade média só quer saber de onde partiste e onde chegaste." },
             { "id": "reta-decrescente", "label": "Reta decrescente", "explicacao": "Velocidade constante e negativa. O corpo move-se no sentido negativo." },
             { "id": "curva-maximo", "label": "Curva com máximo", "explicacao": "No ponto mais alto, a tangente é horizontal: v = 0 nesse instante. É onde o corpo inverte o sentido do movimento." },
             { "id": "curva-inclinada", "label": "Curva mais inclinada", "explicacao": "Quanto maior a inclinação da tangente (em módulo), maior a rapidez." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um carro desloca-se a 72 km/h. Qual é o módulo da sua velocidade em m/s?",
-          "opcoes": ["7,2 m/s", "20 m/s", "26 m/s", "259 m/s"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. 72 / 3,6 = 20 m/s.",
-          "mascote_feedback_errado": "Para passar de km/h para m/s divide-se por 3,6: 72 / 3,6 = 20 m/s."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O gráfico x-t de um corpo é uma reta que passa por (0 s; 2 m) e (4 s; 10 m). Qual é a componente escalar da sua velocidade?",
-          "opcoes": ["0,5 m/s", "2,0 m/s", "2,5 m/s", "8,0 m/s"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. v = Δx / Δt = (10 − 2) / (4 − 0) = 2,0 m/s.",
-          "mascote_feedback_errado": "A velocidade é o declive: v = Δx / Δt = (10 − 2) / (4 − 0) = 2,0 m/s. Não dividas a posição pelo tempo diretamente: usa as variações."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**O passeio do cão.** Levas o cão a passear: vais até ao parque, que fica a 500 m, andas às voltas lá dentro e voltas para casa. Ao fim de meia hora estás exatamente onde começaste. A tua velocidade média é zero, porque o deslocamento foi zero. Mas a tua rapidez média não é zero: andaste talvez 2 km em meia hora. A rapidez média conta todos os passos. A velocidade média só quer saber de onde partiste e onde chegaste."
         },
         {
           "tipo": "aprofundar",
@@ -174,6 +154,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um carro desloca-se a 72 km/h. Qual é o módulo da sua velocidade em m/s?",
+              "opcoes": [
+                "7,2 m/s",
+                "20 m/s",
+                "26 m/s",
+                "259 m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. 72 / 3,6 = 20 m/s.",
+              "mascote_feedback_errado": "Para passar de km/h para m/s divide-se por 3,6: 72 / 3,6 = 20 m/s."
+            },
+            {
+              "pergunta": "O gráfico x-t de um corpo é uma reta que passa por (0 s; 2 m) e (4 s; 10 m). Qual é a componente escalar da sua velocidade?",
+              "opcoes": [
+                "0,5 m/s",
+                "2,0 m/s",
+                "2,5 m/s",
+                "8,0 m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. v = Δx / Δt = (10 − 2) / (4 − 0) = 2,0 m/s.",
+              "mascote_feedback_errado": "A velocidade é o declive: v = Δx / Δt = (10 − 2) / (4 − 0) = 2,0 m/s. Não dividas a posição pelo tempo diretamente: usa as variações."
+            },
             {
               "pergunta": "Um automóvel percorre 120 km em 1 h 30 min. Qual é a sua rapidez média?",
               "opcoes": ["60 km/h", "80 km/h", "90 km/h", "180 km/h"],
@@ -206,13 +210,10 @@
       "tempo_estimado_min": 9,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_terra_lua.png",
-          "texto": "A Lua está a 384 000 km da Terra e não há nenhum fio a segurá-la. Mesmo assim, a Terra puxa-a e ela puxa a Terra: é ela que provoca as marés. E a mesma força que mantém a Lua em órbita é a que faz uma maçã cair da árvore. Isaac Newton percebeu isto no século XVII e escreveu uma única lei para as duas coisas.",
-          "mascote_texto": "Nesta secção há uma lei que confunde muita gente: a terceira lei de Newton. Lê os exemplos com atenção."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "A mesma força que prende a Lua faz uma maçã cair da árvore.",
+          "mascote_texto": "Nesta secção há uma lei que confunde muita gente: a terceira lei de Newton. Lê os exemplos com atenção.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "As quatro interações fundamentais",
           "imagem": "f11_quatro_interacoes.png",
           "texto_principal": "Uma força mede a interação entre dois corpos. É uma grandeza vetorial, medida em newton (N). Todas as forças da natureza resultam de apenas quatro interações fundamentais.",
@@ -225,7 +226,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Terceira lei de Newton e gravitação",
           "imagem": "f11_acao_reacao.png",
           "texto_principal": "A terceira lei de Newton (lei da ação-reação) diz que, quando um corpo exerce uma força sobre outro, este exerce sobre o primeiro uma força com a mesma intensidade, a mesma direção e sentido oposto. As duas forças do par estão aplicadas em corpos diferentes, por isso nunca se anulam. A lei da gravitação universal indica a intensidade da força gravítica entre dois corpos.",
@@ -233,7 +235,7 @@
           "pontos": [
             { "id": "par-acao-reacao", "label": "Par ação-reação", "explicacao": "Terra puxa a Lua e a Lua puxa a Terra com forças de igual intensidade. Uma está aplicada na Lua, a outra na Terra." },
             { "id": "mesma-natureza", "label": "Mesma natureza", "explicacao": "As duas forças de um par são sempre do mesmo tipo (ambas gravíticas, ambas de contacto, etc.)." },
-            { "id": "livro-mesa", "label": "Livro na mesa (armadilha)", "explicacao": "O peso do livro e a reação normal da mesa atuam ambos no livro. Não são par ação-reação. O par do peso do livro é a força com que o livro atrai a Terra. O par da normal é a força com que o livro empurra a mesa." },
+            { "id": "livro-mesa", "label": "Livro na mesa (armadilha)", "explicacao": "O peso do livro e a reação normal da mesa atuam ambos no livro. Não são par ação-reação. O par do peso do livro é a força com que o livro atrai a Terra. O par da normal é a força com que o livro empurra a mesa.", "curiosidade_sem_titulo": true, "curiosidade": "**Empurrar um amigo em patins**\n\nTu e um amigo estão de patins num ringue de gelo. Empurras o teu amigo. O que acontece? Ele desliza para trás, mas tu também deslizas para trás. Não foste tu que \"escolheste\" recuar: ao empurrá-lo, ele empurrou-te com a mesma força. Se ele for muito mais pesado do que tu, ele quase não se mexe e és tu que recuas mais. É exatamente o que acontece com a maçã e a Terra, só que aqui a \"pessoa pesada\" é o planeta inteiro." },
             { "id": "gravitacao-ponto", "label": "Gravitação", "explicacao": "A força é diretamente proporcional ao produto das massas e inversamente proporcional ao quadrado da distância entre os centros." },
             { "id": "peso-ponto", "label": "Peso", "explicacao": "É a força gravítica que a Terra exerce sobre um corpo junto à sua superfície: P = m g." }
           ],
@@ -244,34 +246,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é o peso de uma pessoa com 60 kg à superfície da Terra?",
-          "opcoes": ["60 N", "61 N", "588 N", "600 N"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. P = m g = 60 × 9,8 = 588 N.",
-          "mascote_feedback_errado": "O peso é uma força: P = m g = 60 × 9,8 = 588 N. A massa (60 kg) não é o peso."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Se a distância entre dois corpos duplicar, a força gravítica entre eles:",
-          "opcoes": ["duplica.", "fica reduzida a metade.", "fica reduzida a um quarto.", "mantém-se."],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. A força é inversamente proporcional a r². Com 2r, fica dividida por 2² = 4.",
-          "mascote_feedback_errado": "Na lei da gravitação, a distância está ao quadrado no denominador. Se r duplica, r² quadruplica e a força fica 4 vezes menor."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma maçã cai para a Terra. Qual das afirmações é correta?",
-          "opcoes": ["A Terra atrai a maçã, mas a maçã não atrai a Terra.", "A Terra atrai a maçã com uma força maior do que a maçã atrai a Terra.", "A maçã atrai a Terra com uma força de igual intensidade, mas a Terra quase não se move porque a sua massa é enorme.", "As duas forças anulam-se, por isso nenhuma se move."],
-          "correta": 2,
-          "mascote_feedback_certo": "Muito bem. As forças do par têm a mesma intensidade. Os efeitos é que são diferentes.",
-          "mascote_feedback_errado": "Pela terceira lei, as duas forças têm a mesma intensidade e não se anulam, porque estão aplicadas em corpos diferentes. A Terra quase não se move porque tem uma massa gigantesca."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Empurrar um amigo em patins.** Tu e um amigo estão de patins num ringue de gelo. Empurras o teu amigo. O que acontece? Ele desliza para trás, mas tu também deslizas para trás. Não foste tu que \"escolheste\" recuar: ao empurrá-lo, ele empurrou-te com a mesma força. Se ele for muito mais pesado do que tu, ele quase não se mexe e és tu que recuas mais. É exatamente o que acontece com a maçã e a Terra, só que aqui a \"pessoa pesada\" é o planeta inteiro."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Calcular g, massa vs. peso e as marés",
           "texto": "**Calcular g a partir da lei da gravitação**\n\nÀ superfície da Terra: g = G M / R² = 6,67 × 10⁻¹¹ × 5,97 × 10²⁴ / (6,37 × 10⁶)² ≈ 9,8 m s⁻². A aceleração gravítica diminui com a altitude: a 400 km de altitude (onde está a Estação Espacial Internacional) ainda é cerca de 8,7 m s⁻². Os astronautas flutuam não porque não haja gravidade, mas porque estão em queda livre permanente à volta da Terra.\n\n**Massa e peso**\n\nA massa é uma propriedade do corpo e não muda de lugar para lugar. O peso depende do sítio: na Lua, onde g ≈ 1,6 m s⁻², uma pessoa de 60 kg continua a ter 60 kg mas pesa apenas cerca de 96 N.\n\n**Curiosidade: as marés**\n\nA Lua atrai com mais força o lado da Terra que está mais perto dela e com menos força o lado oposto. Essa diferença deforma ligeiramente os oceanos e origina duas \"bossas\" de água: é por isso que há duas marés altas por dia."
@@ -279,6 +253,42 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é o peso de uma pessoa com 60 kg à superfície da Terra?",
+              "opcoes": [
+                "60 N",
+                "61 N",
+                "588 N",
+                "600 N"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. P = m g = 60 × 9,8 = 588 N.",
+              "mascote_feedback_errado": "O peso é uma força: P = m g = 60 × 9,8 = 588 N. A massa (60 kg) não é o peso."
+            },
+            {
+              "pergunta": "Se a distância entre dois corpos duplicar, a força gravítica entre eles:",
+              "opcoes": [
+                "duplica.",
+                "fica reduzida a metade.",
+                "fica reduzida a um quarto.",
+                "mantém-se."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. A força é inversamente proporcional a r². Com 2r, fica dividida por 2² = 4.",
+              "mascote_feedback_errado": "Na lei da gravitação, a distância está ao quadrado no denominador. Se r duplica, r² quadruplica e a força fica 4 vezes menor."
+            },
+            {
+              "pergunta": "Uma maçã cai para a Terra. Qual das afirmações é correta?",
+              "opcoes": [
+                "A Terra atrai a maçã, mas a maçã não atrai a Terra.",
+                "A Terra atrai a maçã com uma força maior do que a maçã atrai a Terra.",
+                "A maçã atrai a Terra com uma força de igual intensidade, mas a Terra quase não se move porque a sua massa é enorme.",
+                "As duas forças anulam-se, por isso nenhuma se move."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Muito bem. As forças do par têm a mesma intensidade. Os efeitos é que são diferentes.",
+              "mascote_feedback_errado": "Pela terceira lei, as duas forças têm a mesma intensidade e não se anulam, porque estão aplicadas em corpos diferentes. A Terra quase não se move porque tem uma massa gigantesca."
+            },
             {
               "pergunta": "Qual é a intensidade aproximada da força gravítica entre a Terra (5,97 × 10²⁴ kg) e a Lua (7,35 × 10²² kg), separadas por 3,84 × 10⁸ m?",
               "opcoes": ["2,0 × 10²⁰ N", "7,6 × 10²⁸ N", "1,1 × 10¹² N", "5,2 × 10¹¹ N"],
@@ -311,13 +321,10 @@
       "tempo_estimado_min": 9,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_travagem_autocarro.png",
-          "texto": "Vais de pé no autocarro e o motorista trava de repente. O teu corpo \"atira-se\" para a frente. Ninguém te empurrou. O que aconteceu foi que o teu corpo quis continuar a andar à velocidade a que ia, e o autocarro travou por baixo de ti. Esta tendência de manter o estado de movimento chama-se inércia, e é o ponto de partida das leis de Newton.",
-          "mascote_texto": "As três leis de Newton são a base de toda a Mecânica. A segunda é a mais usada em contas: F = m a."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "O teu corpo resiste a mudar de movimento — chama-se inércia.",
+          "mascote_texto": "As três leis de Newton são a base de toda a Mecânica. A segunda é a mais usada em contas: F = m a.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Segunda lei de Newton",
           "imagem": "f11_segunda_lei.png",
           "texto_principal": "A aceleração mede a rapidez com que a velocidade varia. A segunda lei de Newton relaciona a força resultante que atua num corpo com a aceleração que ele adquire. A primeira lei é um caso particular: quando a resultante é nula, a velocidade não muda.",
@@ -325,7 +332,7 @@
           "pontos": [
             { "id": "forca-resultante", "label": "Força resultante (F R)", "explicacao": "Soma vetorial de todas as forças que atuam no corpo." },
             { "id": "aceleracao", "label": "Aceleração (a)", "explicacao": "Tem sempre a mesma direção e o mesmo sentido da força resultante." },
-            { "id": "massa-inercia", "label": "Massa", "explicacao": "Mede a inércia do corpo, isto é, a sua resistência a alterar a velocidade. Com a mesma força, um corpo com o dobro da massa tem metade da aceleração." },
+            { "id": "massa-inercia", "label": "Massa", "explicacao": "Mede a inércia do corpo, isto é, a sua resistência a alterar a velocidade. Com a mesma força, um corpo com o dobro da massa tem metade da aceleração.", "curiosidade_sem_titulo": true, "curiosidade": "**O carrinho de supermercado**\n\nUm carrinho de supermercado vazio arranca com um toque. O mesmo carrinho cheio de garrafas de água exige que empurres com muito mais força para ganhar a mesma velocidade no mesmo tempo, e também é muito mais difícil de travar. A massa é essa \"teimosia\" em mudar de velocidade. A segunda lei diz exatamente quanto: se a massa duplicar, precisas do dobro da força para a mesma aceleração." },
             { "id": "primeira-lei", "label": "Primeira lei (lei da inércia)", "explicacao": "Se a resultante das forças é nula, um corpo em repouso continua em repouso e um corpo em movimento continua em movimento retilíneo uniforme." },
             { "id": "unidade-newton", "label": "Unidade", "explicacao": "1 N é a força resultante que comunica a um corpo de 1 kg uma aceleração de 1 m s⁻²." }
           ],
@@ -335,26 +342,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um carro com 1200 kg acelera a 2,0 m s⁻². Qual é a intensidade da força resultante que atua nele?",
-          "opcoes": ["600 N", "1202 N", "2400 N", "11 760 N"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. F R = m a = 1200 × 2,0 = 2400 N.",
-          "mascote_feedback_errado": "Usa a segunda lei: F R = m a = 1200 × 2,0 = 2400 N."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma sonda espacial muito longe de qualquer planeta ou estrela desliga os motores. O que acontece ao seu movimento?",
-          "opcoes": ["Para gradualmente, porque deixou de haver força.", "Continua em linha reta com velocidade constante.", "Começa a descrever uma trajetória circular.", "Acelera, porque deixa de haver atrito."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Sem forças (resultante nula), a velocidade mantém-se: é a primeira lei de Newton.",
-          "mascote_feedback_errado": "Não é preciso força para manter o movimento: é preciso força para o alterar. Com resultante nula, a sonda continua em movimento retilíneo uniforme."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**O carrinho de supermercado.** Um carrinho de supermercado vazio arranca com um toque. O mesmo carrinho cheio de garrafas de água exige que empurres com muito mais força para ganhar a mesma velocidade no mesmo tempo, e também é muito mais difícil de travar. A massa é essa \"teimosia\" em mudar de velocidade. A segunda lei diz exatamente quanto: se a massa duplicar, precisas do dobro da força para a mesma aceleração."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Aristóteles, Galileu e Newton; o sentido da resultante; estratégia",
           "texto": "**Curiosidade: Aristóteles, Galileu e Newton**\n\nDurante quase 2000 anos acreditou-se, com Aristóteles, que um corpo só se move enquanto alguém o empurra. Galileu, no século XVII, percebeu com experiências em planos inclinados que, se não houvesse atrito, uma bola continuaria a rolar para sempre. Newton organizou estas ideias nas suas três leis, publicadas em 1687.\n\n**A força resultante não tem o sentido da velocidade**\n\nA força resultante tem o sentido da aceleração, não obrigatoriamente o da velocidade. Um carro a travar move-se para a frente, mas a resultante aponta para trás. Um corpo lançado para cima sobe, mas a resultante (o peso) aponta para baixo.\n\n**Estratégia para exercícios**\n\n1. Desenha o corpo e todas as forças que atuam nele (diagrama de forças). 2. Escolhe um eixo, de preferência no sentido do movimento. 3. Calcula a resultante somando as componentes com sinal. 4. Aplica F R = m a."
@@ -362,6 +349,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um carro com 1200 kg acelera a 2,0 m s⁻². Qual é a intensidade da força resultante que atua nele?",
+              "opcoes": [
+                "600 N",
+                "1202 N",
+                "2400 N",
+                "11 760 N"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. F R = m a = 1200 × 2,0 = 2400 N.",
+              "mascote_feedback_errado": "Usa a segunda lei: F R = m a = 1200 × 2,0 = 2400 N."
+            },
+            {
+              "pergunta": "Uma sonda espacial muito longe de qualquer planeta ou estrela desliga os motores. O que acontece ao seu movimento?",
+              "opcoes": [
+                "Para gradualmente, porque deixou de haver força.",
+                "Continua em linha reta com velocidade constante.",
+                "Começa a descrever uma trajetória circular.",
+                "Acelera, porque deixa de haver atrito."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Sem forças (resultante nula), a velocidade mantém-se: é a primeira lei de Newton.",
+              "mascote_feedback_errado": "Não é preciso força para manter o movimento: é preciso força para o alterar. Com resultante nula, a sonda continua em movimento retilíneo uniforme."
+            },
             {
               "pergunta": "Sobre um corpo de 10 kg atuam duas forças horizontais: 50 N para a direita e 20 N para a esquerda. Qual é a aceleração?",
               "opcoes": ["7,0 m s⁻² para a direita", "3,0 m s⁻² para a direita", "3,0 m s⁻² para a esquerda", "5,0 m s⁻² para a direita"],

@@ -126,32 +126,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é o número de oxidação do crómio no ião dicromato, Cr₂O₇²⁻?",
-          "opcoes": [
-            "+3",
-            "+6",
-            "+7",
-            "+12"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. 2x + 7 × (−2) = −2, logo 2x = 12 e x = +6.",
-          "mascote_feedback_errado": "A soma dos n.o. é igual à carga do ião: 2x + 7 × (−2) = −2. 2x − 14 = −2, logo x = +6."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na reação Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), qual é o oxidante?",
-          "opcoes": [
-            "Zn",
-            "Cu²⁺",
-            "Zn²⁺",
-            "Cu"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O Cu²⁺ ganha eletrões (n.o. de +2 para 0): reduz-se, e por isso é o oxidante (provoca a oxidação do zinco).",
-          "mascote_feedback_errado": "O oxidante é a espécie que se reduz. O cobre passa de +2 (Cu²⁺) para 0 (Cu): ganhou eletrões. O Cu²⁺ é o oxidante; o Zn é o redutor."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O assaltante e a vítima.** Pensa no redutor como uma pessoa generosa que dá dinheiro (eletrões) e no oxidante como alguém que o recebe. Parece estranho, mas o nome vem do efeito que cada um tem no outro: quem dá o dinheiro \"reduz\" o outro (provoca a sua redução) e quem o recebe \"oxida\" o primeiro. E, como em qualquer troca de dinheiro, não pode haver alguém a receber sem alguém a dar: a oxidação e a redução acontecem sempre juntas."
         },
@@ -163,6 +137,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é o número de oxidação do crómio no ião dicromato, Cr₂O₇²⁻?",
+              "opcoes": [
+                "+3",
+                "+6",
+                "+7",
+                "+12"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. 2x + 7 × (−2) = −2, logo 2x = 12 e x = +6.",
+              "mascote_feedback_errado": "A soma dos n.o. é igual à carga do ião: 2x + 7 × (−2) = −2. 2x − 14 = −2, logo x = +6."
+            },
+            {
+              "pergunta": "Na reação Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), qual é o oxidante?",
+              "opcoes": [
+                "Zn",
+                "Cu²⁺",
+                "Zn²⁺",
+                "Cu"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O Cu²⁺ ganha eletrões (n.o. de +2 para 0): reduz-se, e por isso é o oxidante (provoca a oxidação do zinco).",
+              "mascote_feedback_errado": "O oxidante é a espécie que se reduz. O cobre passa de +2 (Cu²⁺) para 0 (Cu): ganhou eletrões. O Cu²⁺ é o oxidante; o Zn é o redutor."
+            },
             {
               "pergunta": "Numa reação redox, o redutor é a espécie que:",
               "opcoes": [
@@ -264,32 +262,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a semirreação de oxidação na reação Fe(s) + 2 H₃O⁺(aq) → Fe²⁺(aq) + H₂(g) + 2 H₂O(l)?",
-          "opcoes": [
-            "2 H₃O⁺ + 2 e⁻ → H₂ + 2 H₂O",
-            "Fe → Fe²⁺ + 2 e⁻",
-            "Fe²⁺ + 2 e⁻ → Fe",
-            "H₂ → 2 H⁺ + 2 e⁻"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O ferro passa de 0 para +2: perde 2 eletrões. Na semirreação de oxidação, os eletrões aparecem nos produtos.",
-          "mascote_feedback_errado": "A oxidação é a perda de eletrões. O Fe passa a Fe²⁺: Fe → Fe²⁺ + 2 e⁻. A outra é a semirreação de redução."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual dos metais NÃO reage com ácido clorídrico diluído, libertando hidrogénio?",
-          "opcoes": [
-            "Magnésio",
-            "Zinco",
-            "Ferro",
-            "Cobre"
-          ],
-          "correta": 3,
-          "mascote_feedback_certo": "Exato. O cobre tem menor poder redutor do que o hidrogénio: não consegue reduzir o H₃O⁺. Por isso os canos de cobre resistem bem.",
-          "mascote_feedback_errado": "Só reagem com os ácidos os metais com maior poder redutor do que o hidrogénio. Mg, Zn e Fe reagem; o cobre não."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O empréstimo bancário.** Numa transferência bancária, o banco regista duas operações: o débito numa conta e o crédito noutra. Separadas, cada uma parece incompleta. Juntas, formam a transferência, e o dinheiro que sai de uma conta é exatamente o que entra na outra. As semirreações são estas duas linhas do extrato: a oxidação é o débito de eletrões, a redução é o crédito. Para a \"transferência\" estar certa, os valores têm de bater."
         },
@@ -301,6 +273,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é a semirreação de oxidação na reação Fe(s) + 2 H₃O⁺(aq) → Fe²⁺(aq) + H₂(g) + 2 H₂O(l)?",
+              "opcoes": [
+                "2 H₃O⁺ + 2 e⁻ → H₂ + 2 H₂O",
+                "Fe → Fe²⁺ + 2 e⁻",
+                "Fe²⁺ + 2 e⁻ → Fe",
+                "H₂ → 2 H⁺ + 2 e⁻"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O ferro passa de 0 para +2: perde 2 eletrões. Na semirreação de oxidação, os eletrões aparecem nos produtos.",
+              "mascote_feedback_errado": "A oxidação é a perda de eletrões. O Fe passa a Fe²⁺: Fe → Fe²⁺ + 2 e⁻. A outra é a semirreação de redução."
+            },
+            {
+              "pergunta": "Qual dos metais NÃO reage com ácido clorídrico diluído, libertando hidrogénio?",
+              "opcoes": [
+                "Magnésio",
+                "Zinco",
+                "Ferro",
+                "Cobre"
+              ],
+              "correta": 3,
+              "mascote_feedback_certo": "Exato. O cobre tem menor poder redutor do que o hidrogénio: não consegue reduzir o H₃O⁺. Por isso os canos de cobre resistem bem.",
+              "mascote_feedback_errado": "Só reagem com os ácidos os metais com maior poder redutor do que o hidrogénio. Mg, Zn e Fe reagem; o cobre não."
+            },
             {
               "pergunta": "Na reação 2 Al(s) + 6 H₃O⁺(aq) → 2 Al³⁺(aq) + 3 H₂(g) + 6 H₂O(l), quantos eletrões são transferidos no total?",
               "opcoes": [
@@ -405,32 +401,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual destas reações ocorre espontaneamente?",
-          "opcoes": [
-            "Cu(s) + Fe²⁺(aq) → Cu²⁺(aq) + Fe(s)",
-            "Fe(s) + Cu²⁺(aq) → Fe²⁺(aq) + Cu(s)",
-            "2 Ag(s) + Zn²⁺(aq) → 2 Ag⁺(aq) + Zn(s)",
-            "Cu(s) + 2 H₃O⁺(aq) → Cu²⁺(aq) + H₂(g) + 2 H₂O(l)"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O ferro tem maior poder redutor do que o cobre e reduz os iões Cu²⁺. É por isso que um prego de ferro numa solução de sulfato de cobre fica revestido de cobre.",
-          "mascote_feedback_errado": "Verifica a série: Fe está acima de Cu. O ferro reduz o Cu²⁺, mas o cobre não reduz o Fe²⁺. A prata está abaixo do zinco e o cobre abaixo do hidrogénio: essas reações não ocorrem."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na \"árvore de prata\", Cu(s) + 2 Ag⁺(aq) → Cu²⁺(aq) + 2 Ag(s), porque é que a solução fica azul?",
-          "opcoes": [
-            "Porque a prata é azul.",
-            "Porque se formam iões Cu²⁺, que são azuis em solução.",
-            "Porque o nitrato é azul.",
-            "Porque a temperatura aumenta."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O cobre oxida-se a Cu²⁺, que dá cor azul à solução. A prata deposita-se no fio.",
-          "mascote_feedback_errado": "O cobre metálico oxida-se e passa para a solução como Cu²⁺, que tem cor azul em solução aquosa."
         },
         {
           "tipo": "simulacao",
@@ -874,6 +844,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual destas reações ocorre espontaneamente?",
+              "opcoes": [
+                "Cu(s) + Fe²⁺(aq) → Cu²⁺(aq) + Fe(s)",
+                "Fe(s) + Cu²⁺(aq) → Fe²⁺(aq) + Cu(s)",
+                "2 Ag(s) + Zn²⁺(aq) → 2 Ag⁺(aq) + Zn(s)",
+                "Cu(s) + 2 H₃O⁺(aq) → Cu²⁺(aq) + H₂(g) + 2 H₂O(l)"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O ferro tem maior poder redutor do que o cobre e reduz os iões Cu²⁺. É por isso que um prego de ferro numa solução de sulfato de cobre fica revestido de cobre.",
+              "mascote_feedback_errado": "Verifica a série: Fe está acima de Cu. O ferro reduz o Cu²⁺, mas o cobre não reduz o Fe²⁺. A prata está abaixo do zinco e o cobre abaixo do hidrogénio: essas reações não ocorrem."
+            },
+            {
+              "pergunta": "Na \"árvore de prata\", Cu(s) + 2 Ag⁺(aq) → Cu²⁺(aq) + 2 Ag(s), porque é que a solução fica azul?",
+              "opcoes": [
+                "Porque a prata é azul.",
+                "Porque se formam iões Cu²⁺, que são azuis em solução.",
+                "Porque o nitrato é azul.",
+                "Porque a temperatura aumenta."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O cobre oxida-se a Cu²⁺, que dá cor azul à solução. A prata deposita-se no fio.",
+              "mascote_feedback_errado": "O cobre metálico oxida-se e passa para a solução como Cu²⁺, que tem cor azul em solução aquosa."
+            },
             {
               "pergunta": "Na série eletroquímica, o metal com maior poder redutor:",
               "opcoes": [

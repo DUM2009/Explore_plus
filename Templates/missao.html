@@ -47,6 +47,7 @@
         window.exploreMascotWaveVideoUrl = "{% static 'Mascote a acenar.webm' %}";
         window.exploreMascotDoubtsImageUrl = "{% static 'images/Mascote com dúvidas.png' %}";
         window.exploreMascotExplainingImageUrl = "{% static 'images/Mascote a explicar.png' %}";
+        window.exploreMascotPopupImageUrl = "{% static 'images/Mascote pop-up.png' %}";
         window.exploreLogoUrl = "{% static 'images/Logo.png' %}";
         window.explorePaginaInicialUrl = "{% url 'pagina_inicial' %}";
         window.explorePerfilUrl = "{% url 'perfil' %}";
@@ -59,6 +60,7 @@
         window.exploreLogoutUrl = "{% url 'logout' %}";
         window.explorePlano = "{{ perfil.plano|default:'free' }}";
         window.exploreUsername = "{{ request.user.username|default:'' }}";
+        window.exploreTesteUrl = "{{ teste_url|default:'' }}";
     </script>
     <script src="{% static 'profile-xp.js' %}?v={% now 'U' %}"></script>
     <script src="{% static 'mascot-prefs.js' %}?v={% now 'U' %}"></script>
@@ -75,7 +77,8 @@
             mascoteChatUrl: window.exploreMascoteChatUrl,
             mascotWaveVideoUrl: window.exploreMascotWaveVideoUrl,
             mascotDoubtsImageUrl: window.exploreMascotDoubtsImageUrl,
-            mascotExplainingImageUrl: window.exploreMascotExplainingImageUrl
+            mascotExplainingImageUrl: window.exploreMascotExplainingImageUrl,
+            mascotPopupImageUrl: window.exploreMascotPopupImageUrl
         });
     </script>
 </body>

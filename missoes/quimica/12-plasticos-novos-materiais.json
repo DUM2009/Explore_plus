@@ -91,32 +91,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual destes é um polímero natural?",
-          "opcoes": [
-            "Polietileno",
-            "PVC",
-            "Celulose",
-            "Nylon"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. A celulose é produzida pelas plantas, a partir de glicose. Os outros são sintéticos.",
-          "mascote_feedback_errado": "Polietileno, PVC e nylon são fabricados pela indústria. A celulose existe na natureza: é o principal componente da madeira e do algodão."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um poliestireno tem massa molar média de 2,08 × 10⁵ g/mol. O motivo C₈H₈ tem 104 g/mol. Qual é o grau de polimerização?",
-          "opcoes": [
-            "104",
-            "2000",
-            "2,08 × 10⁵",
-            "2,16 × 10⁷"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. n = 2,08 × 10⁵ / 104 = 2000.",
-          "mascote_feedback_errado": "O grau de polimerização é a massa molar do polímero a dividir pela do motivo: 208 000 / 104 = 2000."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Colares de contas.** Um polímero é como um colar feito de contas. Cada conta é um monómero; o colar é a macromolécula. Um colar só com contas iguais é um homopolímero; com contas de duas cores alternadas, um copolímero. O número de contas é o grau de polimerização. Um monte de colares soltos (cadeias lineares) pode ser derretido e moldado de novo; se os colares estiverem todos atados uns aos outros por fios (reticulação), formam uma rede que já não se desfaz."
         },
@@ -128,6 +102,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual destes é um polímero natural?",
+              "opcoes": [
+                "Polietileno",
+                "PVC",
+                "Celulose",
+                "Nylon"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. A celulose é produzida pelas plantas, a partir de glicose. Os outros são sintéticos.",
+              "mascote_feedback_errado": "Polietileno, PVC e nylon são fabricados pela indústria. A celulose existe na natureza: é o principal componente da madeira e do algodão."
+            },
+            {
+              "pergunta": "Um poliestireno tem massa molar média de 2,08 × 10⁵ g/mol. O motivo C₈H₈ tem 104 g/mol. Qual é o grau de polimerização?",
+              "opcoes": [
+                "104",
+                "2000",
+                "2,08 × 10⁵",
+                "2,16 × 10⁷"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. n = 2,08 × 10⁵ / 104 = 2000.",
+              "mascote_feedback_errado": "O grau de polimerização é a massa molar do polímero a dividir pela do motivo: 208 000 / 104 = 2000."
+            },
             {
               "pergunta": "Uma macromolécula de um polímero é formada por:",
               "opcoes": [
@@ -242,32 +240,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual destes monómeros pode originar um polímero de adição?",
-          "opcoes": [
-            "Etano-1,2-diol (HO–CH₂–CH₂–OH)",
-            "Cloroeteno (CH₂=CHCl)",
-            "Ácido hexanodioico",
-            "Hexano-1,6-diamina"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O cloroeteno tem uma ligação dupla C=C que se pode abrir: polimeriza por adição e dá o PVC.",
-          "mascote_feedback_errado": "A polimerização de adição exige uma ligação dupla C=C no monómero. Dos apresentados, só o cloroeteno a tem. Os outros têm dois grupos funcionais e servem para condensação."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O PET forma-se a partir de um ácido dicarboxílico e de um diol, com libertação de água. A que família pertence e que tipo de polimerização é?",
-          "opcoes": [
-            "Poliolefina; adição.",
-            "Poliamida; condensação.",
-            "Poliéster; condensação.",
-            "Poliacrílico; adição."
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. Ácido + álcool forma ésteres, com saída de água: é um poliéster obtido por condensação. PET significa poli(tereftalato de etileno).",
-          "mascote_feedback_errado": "A reação de um ácido carboxílico com um álcool forma um éster e liberta água. Com monómeros bifuncionais, forma-se um poliéster, por condensação."
         },
         {
           "tipo": "simulacao",
@@ -482,6 +454,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Qual destes monómeros pode originar um polímero de adição?",
+              "opcoes": [
+                "Etano-1,2-diol (HO–CH₂–CH₂–OH)",
+                "Cloroeteno (CH₂=CHCl)",
+                "Ácido hexanodioico",
+                "Hexano-1,6-diamina"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O cloroeteno tem uma ligação dupla C=C que se pode abrir: polimeriza por adição e dá o PVC.",
+              "mascote_feedback_errado": "A polimerização de adição exige uma ligação dupla C=C no monómero. Dos apresentados, só o cloroeteno a tem. Os outros têm dois grupos funcionais e servem para condensação."
+            },
+            {
+              "pergunta": "O PET forma-se a partir de um ácido dicarboxílico e de um diol, com libertação de água. A que família pertence e que tipo de polimerização é?",
+              "opcoes": [
+                "Poliolefina; adição.",
+                "Poliamida; condensação.",
+                "Poliéster; condensação.",
+                "Poliacrílico; adição."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Ácido + álcool forma ésteres, com saída de água: é um poliéster obtido por condensação. PET significa poli(tereftalato de etileno).",
+              "mascote_feedback_errado": "A reação de um ácido carboxílico com um álcool forma um éster e liberta água. Com monómeros bifuncionais, forma-se um poliéster, por condensação."
+            },
+            {
               "pergunta": "Na polimerização de condensação:",
               "opcoes": [
                 "o único produto é o polímero.",
@@ -605,38 +601,36 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na síntese do nylon a partir de cloreto de hexanodioílo e hexano-1,6-diamina, qual é a pequena molécula libertada?",
-          "opcoes": [
-            "H₂O",
-            "HCl",
-            "NH₃",
-            "CO₂"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O cloro do cloreto de ácido e um hidrogénio da amina saem juntos como HCl, formando a ligação amida.",
-          "mascote_feedback_errado": "Na reação de um cloreto de ácido (–COCl) com uma amina (–NH₂), forma-se a ligação amida e liberta-se HCl. Com o ácido carboxílico seria água."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que a reciclagem mecânica de um plástico não pode ser repetida indefinidamente com a mesma qualidade?",
-          "opcoes": [
-            "Porque o plástico se transforma em metal.",
-            "Porque, a cada fusão e processamento, as cadeias poliméricas partem-se e as propriedades degradam-se.",
-            "Porque os plásticos não fundem.",
-            "Porque a lei o proíbe."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Ao contrário dos metais, as macromoléculas degradam-se a cada ciclo. Por isso o plástico reciclado é muitas vezes usado em produtos menos exigentes.",
-          "mascote_feedback_errado": "O aquecimento e o processamento partem as cadeias do polímero. A cada ciclo, o material fica com propriedades piores. É uma diferença importante em relação aos metais."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A camisola de lã reaproveitada.** Uma camisola velha pode ser desmanchada e a lã usada para tricotar outra. Mas a lã sai mais curta e fraca de cada vez, e ao fim de algumas vezes já só serve para enchimento. A reciclagem mecânica dos plásticos é assim. A reciclagem química é como desfazer a lã até à fibra original e fiá-la de novo: dá mais trabalho, mas o fio fica como novo."
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Na síntese do nylon a partir de cloreto de hexanodioílo e hexano-1,6-diamina, qual é a pequena molécula libertada?",
+              "opcoes": [
+                "H₂O",
+                "HCl",
+                "NH₃",
+                "CO₂"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O cloro do cloreto de ácido e um hidrogénio da amina saem juntos como HCl, formando a ligação amida.",
+              "mascote_feedback_errado": "Na reação de um cloreto de ácido (–COCl) com uma amina (–NH₂), forma-se a ligação amida e liberta-se HCl. Com o ácido carboxílico seria água."
+            },
+            {
+              "pergunta": "Porque é que a reciclagem mecânica de um plástico não pode ser repetida indefinidamente com a mesma qualidade?",
+              "opcoes": [
+                "Porque o plástico se transforma em metal.",
+                "Porque, a cada fusão e processamento, as cadeias poliméricas partem-se e as propriedades degradam-se.",
+                "Porque os plásticos não fundem.",
+                "Porque a lei o proíbe."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Ao contrário dos metais, as macromoléculas degradam-se a cada ciclo. Por isso o plástico reciclado é muitas vezes usado em produtos menos exigentes.",
+              "mascote_feedback_errado": "O aquecimento e o processamento partem as cadeias do polímero. A cada ciclo, o material fica com propriedades piores. É uma diferença importante em relação aos metais."
+            },
             {
               "pergunta": "Na AL 3.6, porque é que o nylon se forma apenas na interface entre os dois líquidos?",
               "opcoes": [
@@ -736,32 +730,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "O que caracteriza um material de base sustentável?",
-          "opcoes": [
-            "Ser barato.",
-            "Ser economicamente viável e, ao mesmo tempo, renovável, reciclável e biodegradável.",
-            "Ser sintético.",
-            "Ser feito de metal."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. As três características em conjunto, mais a viabilidade económica, definem um material de base sustentável. A cortiça é um bom exemplo.",
-          "mascote_feedback_errado": "Um material de base sustentável é renovável (fonte que se regenera), reciclável e biodegradável, e tem de ser economicamente viável."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que se usam suturas de ácido polilático (PLA) em certas cirurgias?",
-          "opcoes": [
-            "Porque são mais baratas do que o metal.",
-            "Porque são biocompatíveis e biodegradáveis: o corpo absorve-as e não é preciso retirá-las.",
-            "Porque são condutoras.",
-            "Porque não se degradam nunca."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O PLA é decomposto lentamente pelo organismo em ácido lático, uma substância que o corpo elimina naturalmente.",
-          "mascote_feedback_errado": "A vantagem é a biodegradabilidade com biocompatibilidade: as suturas desaparecem sozinhas, sem segunda intervenção."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O convidado bem-educado.** Um biomaterial é como um convidado numa casa muito exigente (o corpo humano): tem de se comportar bem, não provocar reações, cumprir a sua função e, nalguns casos, saber ir-se embora sozinho na hora certa (biodegradável). Um material sustentável é como um convidado que traz o que consome, arruma o que usa e não deixa lixo para trás."
         },
@@ -773,6 +741,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "O que caracteriza um material de base sustentável?",
+              "opcoes": [
+                "Ser barato.",
+                "Ser economicamente viável e, ao mesmo tempo, renovável, reciclável e biodegradável.",
+                "Ser sintético.",
+                "Ser feito de metal."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. As três características em conjunto, mais a viabilidade económica, definem um material de base sustentável. A cortiça é um bom exemplo.",
+              "mascote_feedback_errado": "Um material de base sustentável é renovável (fonte que se regenera), reciclável e biodegradável, e tem de ser economicamente viável."
+            },
+            {
+              "pergunta": "Porque é que se usam suturas de ácido polilático (PLA) em certas cirurgias?",
+              "opcoes": [
+                "Porque são mais baratas do que o metal.",
+                "Porque são biocompatíveis e biodegradáveis: o corpo absorve-as e não é preciso retirá-las.",
+                "Porque são condutoras.",
+                "Porque não se degradam nunca."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O PLA é decomposto lentamente pelo organismo em ácido lático, uma substância que o corpo elimina naturalmente.",
+              "mascote_feedback_errado": "A vantagem é a biodegradabilidade com biocompatibilidade: as suturas desaparecem sozinhas, sem segunda intervenção."
+            },
             {
               "pergunta": "Um biomaterial deve ser, antes de tudo:",
               "opcoes": [

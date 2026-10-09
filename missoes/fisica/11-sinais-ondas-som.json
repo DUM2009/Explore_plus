@@ -14,13 +14,10 @@
       "tempo_estimado_min": 8,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_onda_estadio.png",
-          "texto": "Num estádio cheio, os adeptos fazem a \"onda\": cada pessoa levanta-se e volta a sentar-se, sem sair do lugar. Mesmo assim, a onda dá a volta ao estádio inteiro em poucos segundos. O que viajou pelo estádio não foram as pessoas. Foi a perturbação. É exatamente isto que é uma onda.",
-          "mascote_texto": "Nesta missão vais perceber que o som, a luz, o Wi-Fi e as ondas do mar partilham as mesmas ideias base."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Numa onda, não são as pessoas que viajam — é a perturbação.",
+          "mascote_texto": "Nesta missão vais perceber que o som, a luz, o Wi-Fi e as ondas do mar partilham as mesmas ideias base.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Sinais e ondas",
           "imagem": "f11_corda_mola.png",
           "texto_principal": "Um sinal é uma perturbação de qualquer espécie, usada para comunicar ou transmitir informação. A propagação de um sinal num meio, ou no vazio, constitui uma onda. Uma onda transporta energia, mas não transporta matéria: as partículas do meio oscilam em torno da sua posição de equilíbrio e não viajam com a onda.",
@@ -29,29 +26,9 @@
             { "id": "onda-transversal", "label": "Onda transversal", "explicacao": "A oscilação é perpendicular à direção de propagação. Exemplos: onda numa corda, ondas eletromagnéticas (luz)." },
             { "id": "onda-longitudinal", "label": "Onda longitudinal", "explicacao": "A oscilação é na mesma direção da propagação. Exemplos: o som, uma onda numa mola esticada que se comprime e distende." },
             { "id": "ondas-mecanicas", "label": "Ondas mecânicas", "explicacao": "Precisam de um meio material para se propagar (sólido, líquido ou gás). Exemplos: som, ondas sísmicas, ondas na água." },
-            { "id": "ondas-eletromagneticas", "label": "Ondas eletromagnéticas", "explicacao": "Não precisam de meio: propagam-se também no vazio. Exemplos: luz, rádio, micro-ondas, raios X." },
+            { "id": "ondas-eletromagneticas", "label": "Ondas eletromagnéticas", "explicacao": "Não precisam de meio: propagam-se também no vazio. Exemplos: luz, rádio, micro-ondas, raios X.", "curiosidade_sem_titulo": true, "curiosidade": "**Passar um recado numa fila**\n\nNuma fila de pessoas, a primeira segreda um recado à segunda, que o segreda à terceira, e assim sucessivamente. O recado chega ao fim da fila, mas nenhuma pessoa saiu do seu lugar. A onda é o recado: a informação e a energia viajam, as partículas ficam onde estavam, só a \"passar a mensagem\" à vizinha. Se entre duas pessoas houver um espaço vazio grande demais (o vazio), o recado não passa, a menos que seja um tipo de mensagem que não precisa de ninguém para a transportar: uma onda eletromagnética." },
             { "id": "pulso-onda-periodica", "label": "Pulso e onda periódica", "explicacao": "Um pulso é uma perturbação isolada, de curta duração. Uma onda periódica resulta de uma perturbação que se repete a intervalos de tempo iguais." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na \"onda\" do estádio, as pessoas levantam-se e sentam-se (movimento vertical) e a onda avança ao longo das bancadas (horizontalmente). Que tipo de onda é?",
-          "opcoes": ["Longitudinal", "Transversal", "Eletromagnética", "Não é uma onda, porque as pessoas não se deslocam"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. A oscilação (vertical) é perpendicular à propagação (horizontal): onda transversal.",
-          "mascote_feedback_errado": "Compara as duas direções: as pessoas oscilam na vertical e a onda propaga-se na horizontal. São perpendiculares, por isso é uma onda transversal."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que o som não se propaga no espaço?",
-          "opcoes": ["Porque está demasiado frio.", "Porque é uma onda mecânica e no vazio não há meio material.", "Porque é uma onda transversal.", "Porque a gravidade é muito fraca."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O som precisa de partículas que vibrem para se propagar.",
-          "mascote_feedback_errado": "O som é uma onda mecânica: precisa de um meio material. No espaço, praticamente não há matéria, por isso o som não se propaga."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Passar um recado numa fila.** Numa fila de pessoas, a primeira segreda um recado à segunda, que o segreda à terceira, e assim sucessivamente. O recado chega ao fim da fila, mas nenhuma pessoa saiu do seu lugar. A onda é o recado: a informação e a energia viajam, as partículas ficam onde estavam, só a \"passar a mensagem\" à vizinha. Se entre duas pessoas houver um espaço vazio grande demais (o vazio), o recado não passa, a menos que seja um tipo de mensagem que não precisa de ninguém para a transportar: uma onda eletromagnética."
         },
         {
           "tipo": "aprofundar",
@@ -61,6 +38,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Na \"onda\" do estádio, as pessoas levantam-se e sentam-se (movimento vertical) e a onda avança ao longo das bancadas (horizontalmente). Que tipo de onda é?",
+              "opcoes": [
+                "Longitudinal",
+                "Transversal",
+                "Eletromagnética",
+                "Não é uma onda, porque as pessoas não se deslocam"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A oscilação (vertical) é perpendicular à propagação (horizontal): onda transversal.",
+              "mascote_feedback_errado": "Compara as duas direções: as pessoas oscilam na vertical e a onda propaga-se na horizontal. São perpendiculares, por isso é uma onda transversal."
+            },
+            {
+              "pergunta": "Porque é que o som não se propaga no espaço?",
+              "opcoes": [
+                "Porque está demasiado frio.",
+                "Porque é uma onda mecânica e no vazio não há meio material.",
+                "Porque é uma onda transversal.",
+                "Porque a gravidade é muito fraca."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O som precisa de partículas que vibrem para se propagar.",
+              "mascote_feedback_errado": "O som é uma onda mecânica: precisa de um meio material. No espaço, praticamente não há matéria, por isso o som não se propaga."
+            },
             {
               "pergunta": "Uma onda transporta:",
               "opcoes": ["matéria e energia.", "só matéria.", "energia, sem transporte de matéria.", "nem matéria nem energia."],
@@ -93,13 +94,10 @@
       "tempo_estimado_min": 10,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_diapasao.png",
-          "texto": "Os músicos afinam os instrumentos com um diapasão, um pequeno garfo de metal que, quando se bate nele, vibra 440 vezes por segundo e produz a nota lá. Essa vibração regular cria no ar uma onda que se repete no tempo e no espaço. Para a descrever, bastam quatro grandezas: período, frequência, comprimento de onda e amplitude.",
-          "mascote_texto": "A fórmula v = λ f é das mais usadas de todo o 11.º ano. Aparece no som, na luz e em muitas perguntas de exame."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Quatro grandezas bastam para descrever qualquer onda regular.",
+          "mascote_texto": "A fórmula v = λ f é das mais usadas de todo o 11.º ano. Aparece no som, na luz e em muitas perguntas de exame.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Grandezas de uma onda periódica",
           "imagem": "f11_grandezas_onda.png",
           "texto_principal": "Uma onda periódica repete-se no tempo (cada ponto do meio oscila sempre da mesma forma) e no espaço (a forma da onda repete-se ao longo da direção de propagação). A velocidade de propagação relaciona as duas periodicidades.",
@@ -117,14 +115,15 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Sinal harmónico",
           "imagem": "f11_sinal_harmonico.png",
           "texto_principal": "O sinal periódico mais simples é o sinal harmónico (ou sinusoidal). É descrito por uma função seno. Uma onda que resulta da propagação de um sinal harmónico chama-se onda harmónica.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "equacao-harmonica", "label": "Equação", "explicacao": "y = A sen(ω t), com y a elongação no instante t." },
-            { "id": "frequencia-angular", "label": "Frequência angular", "explicacao": "ω = 2π / T = 2π f, em rad/s." },
+            { "id": "frequencia-angular", "label": "Frequência angular", "explicacao": "ω = 2π / T = 2π f, em rad/s.", "curiosidade_sem_titulo": true, "curiosidade": "**O comboio de vagões**\n\nImagina um comboio a passar numa passagem de nível. O comprimento de cada vagão é o comprimento de onda. O número de vagões que passam por segundo é a frequência. A velocidade do comboio é o comprimento de cada vagão vezes o número de vagões por segundo: v = λ f. Se o comboio entrar num troço onde anda mais depressa (outro meio) mas continuarem a sair vagões da estação ao mesmo ritmo (mesma frequência), os vagões esticam-se: o comprimento de onda aumenta." },
             { "id": "ler-equacao", "label": "Como ler a equação", "explicacao": "Na expressão y = 0,02 sen(100π t) (SI), a amplitude é 0,02 m e ω = 100π rad/s. Logo f = ω / 2π = 50 Hz e T = 0,020 s." },
             { "id": "sinais-complexos", "label": "Sinais complexos", "explicacao": "Quase todos os sons reais não são harmónicos. Resultam da sobreposição de vários sinais harmónicos com frequências diferentes." }
           ],
@@ -132,22 +131,6 @@
             { "expressao": "y = A sen(ω t)", "significado": "", "unidades": "" },
             { "expressao": "ω = 2π f = 2π / T", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O som de um diapasão tem frequência 440 Hz e propaga-se no ar a 340 m/s. Qual é o comprimento de onda?",
-          "opcoes": ["0,77 m", "1,3 m", "100 m", "1,5 × 10⁵ m"],
-          "correta": 0,
-          "mascote_feedback_certo": "Certo. λ = v / f = 340 / 440 ≈ 0,77 m.",
-          "mascote_feedback_errado": "De v = λ f tiras λ = v / f = 340 / 440 ≈ 0,77 m."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um sinal é descrito por y = 0,05 sen(200π t) (SI). Qual é a sua frequência?",
-          "opcoes": ["200 Hz", "100 Hz", "628 Hz", "0,05 Hz"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. f = ω / 2π = 200π / 2π = 100 Hz.",
-          "mascote_feedback_errado": "O número dentro do seno, a multiplicar por t, é ω = 2π f. Aqui ω = 200π, logo f = 200π / 2π = 100 Hz."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -182,10 +165,6 @@
           }
         },
         {
-          "tipo": "analogia",
-          "texto": "**O comboio de vagões.** Imagina um comboio a passar numa passagem de nível. O comprimento de cada vagão é o comprimento de onda. O número de vagões que passam por segundo é a frequência. A velocidade do comboio é o comprimento de cada vagão vezes o número de vagões por segundo: v = λ f. Se o comboio entrar num troço onde anda mais depressa (outro meio) mas continuarem a sair vagões da estação ao mesmo ritmo (mesma frequência), os vagões esticam-se: o comprimento de onda aumenta."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "A frequência não muda de meio, e um erro comum",
           "texto": "**A frequência não muda ao mudar de meio**\n\nA frequência é imposta pela fonte. Quando uma onda passa do ar para a água, a velocidade muda e, como f se mantém, o comprimento de onda muda na mesma proporção.\n\n**Erro comum**\n\nConfundir o gráfico elongação-tempo com o gráfico elongação-posição. No primeiro, a distância entre duas cristas é o período (em s). No segundo, é o comprimento de onda (em m). Olha sempre para as unidades do eixo horizontal."
@@ -193,6 +172,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "O som de um diapasão tem frequência 440 Hz e propaga-se no ar a 340 m/s. Qual é o comprimento de onda?",
+              "opcoes": [
+                "0,77 m",
+                "1,3 m",
+                "100 m",
+                "1,5 × 10⁵ m"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. λ = v / f = 340 / 440 ≈ 0,77 m.",
+              "mascote_feedback_errado": "De v = λ f tiras λ = v / f = 340 / 440 ≈ 0,77 m."
+            },
+            {
+              "pergunta": "Um sinal é descrito por y = 0,05 sen(200π t) (SI). Qual é a sua frequência?",
+              "opcoes": [
+                "200 Hz",
+                "100 Hz",
+                "628 Hz",
+                "0,05 Hz"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. f = ω / 2π = 200π / 2π = 100 Hz.",
+              "mascote_feedback_errado": "O número dentro do seno, a multiplicar por t, é ω = 2π f. Aqui ω = 200π, logo f = 200π / 2π = 100 Hz."
+            },
             {
               "pergunta": "Uma onda propaga-se a 1500 m/s na água com comprimento de onda de 3,0 m. Qual é a sua frequência?",
               "opcoes": ["5,0 × 10⁻³ Hz", "500 Hz", "1503 Hz", "4500 Hz"],
@@ -225,13 +228,10 @@
       "tempo_estimado_min": 10,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_morcego_ecografia.png",
-          "texto": "Os morcegos caçam insetos às escuras. Os médicos veem um bebé dentro da barriga da mãe sem cirurgia. E ambos usam o mesmo truque: emitem sons tão agudos que nós não os conseguimos ouvir e escutam o eco. Para perceber como, é preciso saber o que é exatamente o som.",
-          "mascote_texto": "O som tem três características que confundem toda a gente: altura, intensidade e timbre. No fim desta secção vais distingui-las de olhos fechados."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Morcegos e médicos usam o mesmo truque: emitir som e ouvir o eco.",
+          "mascote_texto": "O som tem três características que confundem toda a gente: altura, intensidade e timbre. No fim desta secção vais distingui-las de olhos fechados.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "O que é o som",
           "imagem": "f11_som_compressoes.png",
           "texto_principal": "O som é uma onda mecânica longitudinal. Uma fonte sonora (uma corda, uma membrana, as cordas vocais) vibra e empurra as partículas do meio, criando zonas de maior pressão (compressões) e de menor pressão (rarefações) que se propagam. Pode ser descrito como uma variação de pressão que se propaga no meio.",
@@ -245,7 +245,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Características do som e espetro sonoro",
           "imagem": "f11_altura_intensidade_timbre.png",
           "texto_principal": "Os sons distinguem-se por três atributos, cada um associado a uma característica da onda. E o ouvido humano só deteta uma certa gama de frequências.",
@@ -260,36 +261,17 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Microfone e altifalante",
           "imagem": "f11_microfone_altifalante.png",
           "texto_principal": "O microfone e o altifalante fazem conversões opostas. São a razão pela qual o som pode ser gravado, transmitido e reproduzido.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "microfone", "label": "Microfone", "explicacao": "Converte um sinal sonoro num sinal elétrico com a mesma frequência e forma. A membrana vibra com o som e essa vibração origina uma tensão elétrica variável." },
+            { "id": "microfone", "label": "Microfone", "explicacao": "Converte um sinal sonoro num sinal elétrico com a mesma frequência e forma. A membrana vibra com o som e essa vibração origina uma tensão elétrica variável.", "curiosidade_sem_titulo": true, "curiosidade": "**A multidão no metro**\n\nImagina uma carruagem de metro cheia, com pessoas em pé ao longo do corredor. Alguém lá à frente dá um empurrão para trás. A pessoa de trás é empurrada contra a seguinte, que empurra a seguinte, e forma-se uma \"onda de aperto\" que viaja pelo corredor. Atrás do aperto, as pessoas voltam a afastar-se. Os apertos são as compressões e os espaços são as rarefações. Ninguém saiu do seu lugar, mas o empurrão chegou ao fundo da carruagem. O som no ar é igual, com moléculas em vez de pessoas." },
             { "id": "altifalante", "label": "Altifalante", "explicacao": "Converte um sinal elétrico num sinal sonoro. A corrente variável faz vibrar uma membrana (cone), que empurra o ar." },
             { "id": "ligacao-eletromagnetismo", "label": "Ligação ao eletromagnetismo", "explicacao": "Em muitos microfones e altifalantes, a conversão resulta da interação entre um íman e uma bobina. Vais perceber isto na Missão 4." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um barco emite um ultrassom na direção do fundo do mar e recebe o eco 0,40 s depois. Se a velocidade do som na água é 1500 m/s, qual é a profundidade?",
-          "opcoes": ["150 m", "300 m", "600 m", "3750 m"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. 2d = v t = 1500 × 0,40 = 600 m, logo d = 300 m.",
-          "mascote_feedback_errado": "No eco, o som faz o caminho duas vezes (ida e volta). 2d = 1500 × 0,40 = 600 m, portanto d = 300 m."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Dois sons têm a mesma amplitude, mas o som A tem 200 Hz e o som B tem 800 Hz. Qual é a afirmação correta?",
-          "opcoes": ["A é mais forte do que B.", "B é mais agudo do que A.", "A e B têm a mesma altura.", "B é mais grave do que A."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. A altura depende da frequência: maior frequência, som mais agudo.",
-          "mascote_feedback_errado": "A altura está ligada à frequência. B tem maior frequência, por isso é mais agudo. Como as amplitudes são iguais, a intensidade é a mesma."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A multidão no metro.** Imagina uma carruagem de metro cheia, com pessoas em pé ao longo do corredor. Alguém lá à frente dá um empurrão para trás. A pessoa de trás é empurrada contra a seguinte, que empurra a seguinte, e forma-se uma \"onda de aperto\" que viaja pelo corredor. Atrás do aperto, as pessoas voltam a afastar-se. Os apertos são as compressões e os espaços são as rarefações. Ninguém saiu do seu lugar, mas o empurrão chegou ao fundo da carruagem. O som no ar é igual, com moléculas em vez de pessoas."
         },
         {
           "tipo": "aprofundar",
@@ -299,6 +281,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um barco emite um ultrassom na direção do fundo do mar e recebe o eco 0,40 s depois. Se a velocidade do som na água é 1500 m/s, qual é a profundidade?",
+              "opcoes": [
+                "150 m",
+                "300 m",
+                "600 m",
+                "3750 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. 2d = v t = 1500 × 0,40 = 600 m, logo d = 300 m.",
+              "mascote_feedback_errado": "No eco, o som faz o caminho duas vezes (ida e volta). 2d = 1500 × 0,40 = 600 m, portanto d = 300 m."
+            },
+            {
+              "pergunta": "Dois sons têm a mesma amplitude, mas o som A tem 200 Hz e o som B tem 800 Hz. Qual é a afirmação correta?",
+              "opcoes": [
+                "A é mais forte do que B.",
+                "B é mais agudo do que A.",
+                "A e B têm a mesma altura.",
+                "B é mais grave do que A."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. A altura depende da frequência: maior frequência, som mais agudo.",
+              "mascote_feedback_errado": "A altura está ligada à frequência. B tem maior frequência, por isso é mais agudo. Como as amplitudes são iguais, a intensidade é a mesma."
+            },
             {
               "pergunta": "Qual das afirmações sobre o som é correta?",
               "opcoes": ["É uma onda eletromagnética transversal.", "É uma onda mecânica longitudinal.", "Propaga-se mais depressa no ar do que na água.", "Propaga-se no vazio."],
@@ -331,13 +337,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_osciloscopio.png",
-          "texto": "O som não se vê. Mas com um microfone e um osciloscópio podes transformá-lo num desenho no ecrã e medir o seu período, a sua frequência e a sua amplitude. E com dois microfones e um cronómetro muito preciso podes medir a velocidade do som na sala de aula. São as duas atividades laboratoriais desta missão.",
-          "mascote_texto": "No exame, é muito comum aparecer uma imagem de um osciloscópio e pedirem-te a frequência. Treina a leitura aqui."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Um microfone transforma o som invisível num desenho que podes medir.",
+          "mascote_texto": "No exame, é muito comum aparecer uma imagem de um osciloscópio e pedirem-te a frequência. Treina a leitura aqui.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Ler um osciloscópio",
           "imagem": "f11_ecra_osciloscopio.png",
           "texto_principal": "O osciloscópio mostra a tensão elétrica (eixo vertical) em função do tempo (eixo horizontal). O ecrã está dividido em quadrículas. Para converter divisões em valores reais, usa-se a base de tempo (no eixo horizontal) e a sensibilidade vertical (no eixo vertical).",
@@ -353,14 +356,6 @@
             { "expressao": "T = (n.º de divisões de um período) × (base de tempo)", "significado": "", "unidades": "" },
             { "expressao": "U máx = (n.º de divisões da amplitude) × (sensibilidade vertical)", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "No ecrã de um osciloscópio, um período ocupa 5 divisões e a base de tempo é 0,2 ms/div. Qual é a frequência do sinal?",
-          "opcoes": ["1,0 Hz", "200 Hz", "1000 Hz", "5000 Hz"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. T = 5 × 0,2 ms = 1,0 ms. f = 1 / T = 1000 Hz.",
-          "mascote_feedback_errado": "Calcula o período: T = 5 × 0,2 ms = 1,0 ms. Converte para segundos (1,0 × 10⁻³ s) e faz f = 1 / T = 1000 Hz."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -432,6 +427,18 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "No ecrã de um osciloscópio, um período ocupa 5 divisões e a base de tempo é 0,2 ms/div. Qual é a frequência do sinal?",
+              "opcoes": [
+                "1,0 Hz",
+                "200 Hz",
+                "1000 Hz",
+                "5000 Hz"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. T = 5 × 0,2 ms = 1,0 ms. f = 1 / T = 1000 Hz.",
+              "mascote_feedback_errado": "Calcula o período: T = 5 × 0,2 ms = 1,0 ms. Converte para segundos (1,0 × 10⁻³ s) e faz f = 1 / T = 1000 Hz."
+            },
             {
               "pergunta": "No osciloscópio, a amplitude de um sinal ocupa 2,5 divisões e a sensibilidade vertical é 0,5 V/div. Qual é a amplitude do sinal?",
               "opcoes": ["0,20 V", "1,25 V", "2,5 V", "5,0 V"],

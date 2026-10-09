@@ -14,13 +14,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_atomo_hidrogenio.png",
-          "texto": "Num átomo de hidrogénio, o protão atrai o eletrão com uma força elétrica e com uma força gravítica. A força elétrica é cerca de 10³⁹ vezes maior. É um número com 39 zeros. É por isso que, à escala dos átomos, a gravidade não conta para nada, e que tudo o que tocas, dobras ou partes depende da força elétrica.",
-          "mascote_texto": "A lei de Coulomb é gémea da lei da gravitação. A grande diferença é que as cargas podem repelir-se."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "À escala dos átomos, a força elétrica esmaga a gravidade.",
+          "mascote_texto": "A lei de Coulomb é gémea da lei da gravitação. A grande diferença é que as cargas podem repelir-se.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Lei de Coulomb",
           "imagem": "f12_lei_coulomb.png",
           "texto_principal": "A lei de Coulomb dá a intensidade da força elétrica entre duas cargas pontuais: é diretamente proporcional ao produto dos módulos das cargas e inversamente proporcional ao quadrado da distância entre elas. A força é atrativa entre cargas de sinais opostos e repulsiva entre cargas do mesmo sinal.",
@@ -29,7 +26,7 @@
             { "id": "constante-coulomb", "label": "Constante de Coulomb (k)", "explicacao": "No vazio (e, com boa aproximação, no ar), k = 9,0 × 10⁹ N m² C⁻². Noutros meios é menor." },
             { "id": "pares-acao-reacao-coulomb", "label": "Pares ação-reação", "explicacao": "As forças que as duas cargas exercem uma na outra têm a mesma intensidade e sentidos opostos." },
             { "id": "semelhancas-gravitacao", "label": "Semelhanças com a gravitação", "explicacao": "Ambas dependem de 1 / r² e atuam à distância." },
-            { "id": "diferencas-gravitacao", "label": "Diferenças", "explicacao": "A gravítica é sempre atrativa; a elétrica pode ser atrativa ou repulsiva. A elétrica é muitíssimo mais intensa." }
+            { "id": "diferencas-gravitacao", "label": "Diferenças", "explicacao": "A gravítica é sempre atrativa; a elétrica pode ser atrativa ou repulsiva. A elétrica é muitíssimo mais intensa.", "curiosidade_sem_titulo": true, "curiosidade": "**Dois ímanes de frigorífico**\n\nDois ímanes de frigorífico, a certa distância, atraem-se ou repelem-se conforme os viras. Aproxima-os para metade da distância e a força não duplica: fica muito mais forte. A força elétrica entre cargas comporta-se da mesma forma, com a regra exata de 1 / r²: metade da distância, quatro vezes a força. E, tal como com os ímanes, iguais repelem-se e diferentes atraem-se." }
           ],
           "caixa_formula": [
             { "expressao": "F e = k |q₁| |q₂| / r²", "significado": "Lei de Coulomb.", "unidades": "" },
@@ -39,26 +36,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Duas cargas de 2,0 µC e 3,0 µC estão separadas por 0,30 m no ar. Qual é a intensidade da força entre elas?",
-          "opcoes": ["0,18 N", "0,60 N", "6,0 × 10⁴ N", "2,0 N"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. F ≈ 0,60 N. Como têm o mesmo sinal, repelem-se.",
-          "mascote_feedback_errado": "Converte µC para C (10⁻⁶) e não te esqueças de elevar a distância ao quadrado: F = 9,0 × 10⁹ × 6,0 × 10⁻¹² / 0,090 = 0,60 N."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma carga de +2,0 nC está em x = 0 e outra de −2,0 nC em x = 0,20 m. Qual é o campo elétrico no ponto médio (x = 0,10 m)?",
-          "opcoes": ["Nulo.", "1,8 × 10³ N/C, no sentido positivo de x.", "3,6 × 10³ N/C, no sentido positivo de x.", "3,6 × 10³ N/C, no sentido negativo de x."],
-          "correta": 2,
-          "mascote_feedback_certo": "Muito bem. Os campos somam-se: 3,6 × 10³ N/C.",
-          "mascote_feedback_errado": "O campo da carga positiva aponta para fora dela (para +x no ponto médio). O da carga negativa aponta para ela (também +x). Somam-se: 2 × 1,8 × 10³ = 3,6 × 10³ N/C."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Dois ímanes de frigorífico.** Dois ímanes de frigorífico, a certa distância, atraem-se ou repelem-se conforme os viras. Aproxima-os para metade da distância e a força não duplica: fica muito mais forte. A força elétrica entre cargas comporta-se da mesma forma, com a regra exata de 1 / r²: metade da distância, quatro vezes a força. E, tal como com os ímanes, iguais repelem-se e diferentes atraem-se."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Elétrica vs. gravítica no átomo, e como somar campos de várias cargas",
           "texto": "**Comparar a força elétrica com a gravítica no átomo de hidrogénio**\n\nF e / F g = k e² / (G m e m p) ≈ 2,3 × 10³⁹. A razão não depende da distância, porque as duas forças variam com 1 / r².\n\n**Como somar campos de várias cargas**\n\n1. Desenha o campo de cada carga no ponto (para fora das positivas, para as negativas). 2. Calcula a intensidade de cada um com E = k |q| / r². 3. Soma os vetores: se estiverem na mesma direção, soma ou subtrai; se forem perpendiculares, usa o teorema de Pitágoras."
@@ -66,6 +43,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Duas cargas de 2,0 µC e 3,0 µC estão separadas por 0,30 m no ar. Qual é a intensidade da força entre elas?",
+              "opcoes": [
+                "0,18 N",
+                "0,60 N",
+                "6,0 × 10⁴ N",
+                "2,0 N"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. F ≈ 0,60 N. Como têm o mesmo sinal, repelem-se.",
+              "mascote_feedback_errado": "Converte µC para C (10⁻⁶) e não te esqueças de elevar a distância ao quadrado: F = 9,0 × 10⁹ × 6,0 × 10⁻¹² / 0,090 = 0,60 N."
+            },
+            {
+              "pergunta": "Uma carga de +2,0 nC está em x = 0 e outra de −2,0 nC em x = 0,20 m. Qual é o campo elétrico no ponto médio (x = 0,10 m)?",
+              "opcoes": [
+                "Nulo.",
+                "1,8 × 10³ N/C, no sentido positivo de x.",
+                "3,6 × 10³ N/C, no sentido positivo de x.",
+                "3,6 × 10³ N/C, no sentido negativo de x."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Muito bem. Os campos somam-se: 3,6 × 10³ N/C.",
+              "mascote_feedback_errado": "O campo da carga positiva aponta para fora dela (para +x no ponto médio). O da carga negativa aponta para ela (também +x). Somam-se: 2 × 1,8 × 10³ = 3,6 × 10³ N/C."
+            },
             {
               "pergunta": "Se o módulo de cada uma de duas cargas duplicar e a distância entre elas também duplicar, a força elétrica:",
               "opcoes": ["duplica.", "quadruplica.", "mantém-se.", "fica reduzida a um quarto."],
@@ -98,45 +99,22 @@
       "tempo_estimado_min": 9,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_carro_raio.png",
-          "texto": "Durante uma trovoada, um dos lugares mais seguros onde podes estar é dentro de um carro fechado. E não é por causa dos pneus de borracha, ao contrário do que muita gente pensa. É porque a carroçaria metálica funciona como uma \"gaiola\" que mantém o campo elétrico do lado de fora. Tudo começa num facto simples sobre os metais.",
-          "mascote_texto": "Esta secção tem poucas contas e muitas aplicações. Para-raios, gaiolas de Faraday e o \"efeito das pontas\"."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Um carro fechado protege-te de um raio — mas não pelos pneus.",
+          "mascote_texto": "Esta secção tem poucas contas e muitas aplicações. Para-raios, gaiolas de Faraday e o \"efeito das pontas\".", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Condutores em equilíbrio",
           "imagem": "f12_condutor_equilibrio.png",
           "texto_principal": "Num condutor, as cargas movem-se livremente. Um condutor está em equilíbrio eletrostático quando não há movimento orientado de cargas no seu interior. Nessa situação, verificam-se três propriedades importantes.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "campo-nulo-interior", "label": "Campo nulo no interior", "explicacao": "Se houvesse campo lá dentro, as cargas livres mover-se-iam. Em equilíbrio, E = 0 em todos os pontos do interior do condutor." },
-            { "id": "carga-excesso-superficie", "label": "Carga em excesso na superfície", "explicacao": "Toda a carga em excesso distribui-se pela superfície exterior do condutor." },
+            { "id": "carga-excesso-superficie", "label": "Carga em excesso na superfície", "explicacao": "Toda a carga em excesso distribui-se pela superfície exterior do condutor.", "curiosidade_sem_titulo": true, "curiosidade": "**Pessoas numa sala que se detestam**\n\nImagina uma sala cheia de pessoas que não se suportam umas às outras. Cada uma vai tentar afastar-se o mais possível das restantes, e acabam todas encostadas às paredes. Num condutor, as cargas em excesso fazem o mesmo: repelem-se e vão todas para a superfície. E se a sala tiver um canto em bico, é aí que se acumulam mais pessoas por metro quadrado, porque é o sítio mais longe do centro: é o efeito das pontas." },
             { "id": "campo-perpendicular-superficie", "label": "Campo perpendicular à superfície", "explicacao": "Junto à superfície exterior, o campo é perpendicular a ela (se tivesse uma componente paralela, as cargas deslizariam)." },
             { "id": "efeito-pontas", "label": "Efeito das pontas", "explicacao": "A carga acumula-se mais nas zonas mais pontiagudas (maior carga por unidade de área). Aí o campo é mais intenso." },
             { "id": "gaiola-faraday", "label": "Gaiola de Faraday", "explicacao": "Um invólucro condutor (mesmo em rede) blinda o seu interior de campos elétricos exteriores. É a blindagem eletrostática." },
             { "id": "para-raios", "label": "Para-raios", "explicacao": "Uma haste metálica pontiaguda no topo de um edifício, ligada à terra. Nas pontas o campo é muito intenso, o ar à volta ioniza-se e a descarga é \"atraída\" para a haste e conduzida em segurança até ao solo." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Onde se encontra a carga em excesso de uma esfera metálica carregada, em equilíbrio eletrostático?",
-          "opcoes": ["Uniformemente distribuída pelo volume.", "Concentrada no centro.", "Na superfície exterior.", "Metade no interior, metade na superfície."],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. As cargas em excesso repelem-se e afastam-se o máximo possível.",
-          "mascote_feedback_errado": "Num condutor em equilíbrio, a carga em excesso distribui-se toda pela superfície exterior. O interior fica com campo nulo."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que dentro de um elevador metálico o telemóvel perde muitas vezes a rede?",
-          "opcoes": ["Porque o elevador está em movimento.", "Porque o invólucro metálico funciona como uma gaiola de Faraday e bloqueia grande parte das ondas eletromagnéticas.", "Porque o ar dentro do elevador é diferente.", "Porque o elevador tem íman."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. As paredes metálicas blindam o interior dos campos elétricos exteriores.",
-          "mascote_feedback_errado": "A caixa metálica do elevador atua como uma gaiola de Faraday: os campos elétricos exteriores não chegam bem ao interior."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Pessoas numa sala que se detestam.** Imagina uma sala cheia de pessoas que não se suportam umas às outras. Cada uma vai tentar afastar-se o mais possível das restantes, e acabam todas encostadas às paredes. Num condutor, as cargas em excesso fazem o mesmo: repelem-se e vão todas para a superfície. E se a sala tiver um canto em bico, é aí que se acumulam mais pessoas por metro quadrado, porque é o sítio mais longe do centro: é o efeito das pontas."
         },
         {
           "tipo": "aprofundar",
@@ -146,6 +124,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Onde se encontra a carga em excesso de uma esfera metálica carregada, em equilíbrio eletrostático?",
+              "opcoes": [
+                "Uniformemente distribuída pelo volume.",
+                "Concentrada no centro.",
+                "Na superfície exterior.",
+                "Metade no interior, metade na superfície."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. As cargas em excesso repelem-se e afastam-se o máximo possível.",
+              "mascote_feedback_errado": "Num condutor em equilíbrio, a carga em excesso distribui-se toda pela superfície exterior. O interior fica com campo nulo."
+            },
+            {
+              "pergunta": "Porque é que dentro de um elevador metálico o telemóvel perde muitas vezes a rede?",
+              "opcoes": [
+                "Porque o elevador está em movimento.",
+                "Porque o invólucro metálico funciona como uma gaiola de Faraday e bloqueia grande parte das ondas eletromagnéticas.",
+                "Porque o ar dentro do elevador é diferente.",
+                "Porque o elevador tem íman."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. As paredes metálicas blindam o interior dos campos elétricos exteriores.",
+              "mascote_feedback_errado": "A caixa metálica do elevador atua como uma gaiola de Faraday: os campos elétricos exteriores não chegam bem ao interior."
+            },
             {
               "pergunta": "No interior de um condutor em equilíbrio eletrostático, o campo elétrico é:",
               "opcoes": ["máximo.", "nulo.", "igual ao da superfície.", "radial."],
@@ -178,13 +180,10 @@
       "tempo_estimado_min": 14,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_passaro_fio.png",
-          "texto": "Um pássaro pousa num fio de alta tensão a milhares de volts e nada lhe acontece. Um técnico que toque no mesmo fio estando em contacto com o chão morre. A diferença está numa palavra: diferença. O que importa não é o potencial elétrico de um ponto, mas a diferença de potencial entre dois pontos. As duas patas do pássaro estão praticamente ao mesmo potencial.",
-          "mascote_texto": "Nesta secção ligas o campo elétrico à energia e à tensão elétrica que usaste no 10.º ano."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Um pássaro pousa num fio de alta tensão e nada lhe acontece — o que importa é a diferença.",
+          "mascote_texto": "Nesta secção ligas o campo elétrico à energia e à tensão elétrica que usaste no 10.º ano.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Potencial elétrico e equipotenciais",
           "imagem": "f12_potencial_equipotenciais.png",
           "texto_principal": "A força elétrica é conservativa, por isso pode associar-se-lhe uma energia potencial. O potencial elétrico num ponto é a energia potencial elétrica por unidade de carga nesse ponto. As superfícies onde o potencial é igual chamam-se superfícies equipotenciais.",
@@ -194,7 +193,7 @@
             { "id": "potencial-eletrico-carga-pontual", "label": "Potencial elétrico de uma carga pontual", "explicacao": "V = k q / r (com sinal). Unidade: volt (V) = J/C." },
             { "id": "varias-cargas-potencial", "label": "Várias cargas", "explicacao": "O potencial num ponto é a soma algébrica (com sinais) dos potenciais criados por cada carga. É mais simples do que o campo, porque não é vetorial." },
             { "id": "trabalho-forca-eletrica", "label": "Trabalho da força elétrica", "explicacao": "Ao deslocar uma carga q de A para B: W A→B = q (V A − V B) = −ΔEp. Não depende do caminho." },
-            { "id": "superficies-equipotenciais", "label": "Superfícies equipotenciais", "explicacao": "Perpendiculares às linhas de campo em cada ponto. Deslocar uma carga ao longo de uma equipotencial não envolve trabalho da força elétrica." },
+            { "id": "superficies-equipotenciais", "label": "Superfícies equipotenciais", "explicacao": "Perpendiculares às linhas de campo em cada ponto. Deslocar uma carga ao longo de uma equipotencial não envolve trabalho da força elétrica.", "curiosidade_sem_titulo": true, "curiosidade": "**As curvas de nível de um mapa**\n\nNum mapa de montanha, as curvas de nível unem pontos à mesma altitude. Andar ao longo de uma curva de nível não custa esforço contra a gravidade. As setas que indicam para onde uma bola rolaria (o \"campo\") são sempre perpendiculares às curvas de nível e apontam para baixo. As superfícies equipotenciais são as curvas de nível do campo elétrico; o potencial é a altitude; e o campo aponta sempre \"para baixo\", do potencial mais alto para o mais baixo. Onde as curvas de nível estão mais juntas, a encosta é mais íngreme: onde as equipotenciais estão mais juntas, o campo é mais intenso." },
             { "id": "sentido-campo-potencial", "label": "Sentido do campo", "explicacao": "O campo elétrico aponta sempre no sentido dos potenciais decrescentes." },
             { "id": "campo-uniforme-placas", "label": "Campo uniforme", "explicacao": "Entre duas placas paralelas separadas por d, com diferença de potencial U, E = U / d." }
           ],
@@ -204,26 +203,6 @@
             { "expressao": "W A→B = q (V A − V B) = −ΔEp", "significado": "", "unidades": "" },
             { "expressao": "Campo uniforme: E = U / d", "significado": "U = diferença de potencial entre as placas; d = distância entre elas.", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é o potencial elétrico a 0,30 m de uma carga de +2,0 nC?",
-          "opcoes": ["20 V", "60 V", "200 V", "6,0 × 10⁻¹⁸ V"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. V = 60 V.",
-          "mascote_feedback_errado": "V = k q / r. A distância aparece só uma vez (não ao quadrado): V = 9,0 × 10⁹ × 2,0 × 10⁻⁹ / 0,30 = 60 V."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Duas placas paralelas separadas por 4,0 cm estão ligadas a uma fonte de 12 V. Qual é a intensidade do campo elétrico entre elas?",
-          "opcoes": ["0,48 V/m", "3,0 V/m", "300 V/m", "3,0 × 10⁴ V/m"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. E = U / d = 300 V/m.",
-          "mascote_feedback_errado": "Converte a distância para metros: 4,0 cm = 0,040 m. E = U / d = 12 / 0,040 = 300 V/m."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**As curvas de nível de um mapa.** Num mapa de montanha, as curvas de nível unem pontos à mesma altitude. Andar ao longo de uma curva de nível não custa esforço contra a gravidade. As setas que indicam para onde uma bola rolaria (o \"campo\") são sempre perpendiculares às curvas de nível e apontam para baixo. As superfícies equipotenciais são as curvas de nível do campo elétrico; o potencial é a altitude; e o campo aponta sempre \"para baixo\", do potencial mais alto para o mais baixo. Onde as curvas de nível estão mais juntas, a encosta é mais íngreme: onde as equipotenciais estão mais juntas, o campo é mais intenso."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -265,6 +244,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Qual é o potencial elétrico a 0,30 m de uma carga de +2,0 nC?",
+              "opcoes": [
+                "20 V",
+                "60 V",
+                "200 V",
+                "6,0 × 10⁻¹⁸ V"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. V = 60 V.",
+              "mascote_feedback_errado": "V = k q / r. A distância aparece só uma vez (não ao quadrado): V = 9,0 × 10⁹ × 2,0 × 10⁻⁹ / 0,30 = 60 V."
+            },
+            {
+              "pergunta": "Duas placas paralelas separadas por 4,0 cm estão ligadas a uma fonte de 12 V. Qual é a intensidade do campo elétrico entre elas?",
+              "opcoes": [
+                "0,48 V/m",
+                "3,0 V/m",
+                "300 V/m",
+                "3,0 × 10⁴ V/m"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. E = U / d = 300 V/m.",
+              "mascote_feedback_errado": "Converte a distância para metros: 4,0 cm = 0,040 m. E = U / d = 12 / 0,040 = 300 V/m."
+            },
+            {
               "pergunta": "Uma carga de 1,0 µC desloca-se de um ponto A (V A = 100 V) para um ponto B (V B = 40 V). Qual é o trabalho realizado pela força elétrica?",
               "opcoes": ["6,0 × 10⁻⁵ J", "−6,0 × 10⁻⁵ J", "1,4 × 10⁻⁴ J", "60 J"],
               "correta": 0,
@@ -296,13 +299,10 @@
       "tempo_estimado_min": 11,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_osciloscopio_crt.png",
-          "texto": "Os televisores e osciloscópios antigos tinham um tubo de raios catódicos: um canhão disparava eletrões, placas carregadas desviavam-nos, e cada eletrão acendia um ponto no ecrã. Hoje, o mesmo princípio acelera partículas nos grandes aceleradores, como o do CERN. Nesta secção vais perceber como um campo elétrico uniforme acelera e desvia cargas.",
-          "mascote_texto": "Boa notícia: já sabes resolver isto. Um eletrão num campo uniforme comporta-se como um projétil."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Um campo elétrico uniforme desvia cargas como um projétil.",
+          "mascote_texto": "Boa notícia: já sabes resolver isto. Um eletrão num campo uniforme comporta-se como um projétil.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Cargas em campos elétricos uniformes",
           "imagem": "f12_carga_campo_uniforme.png",
           "texto_principal": "Num campo elétrico uniforme, uma carga fica sujeita a uma força constante, F = q E. Desprezando o peso (muito pequeno para eletrões e protões), a aceleração é constante. O movimento é igual ao de um corpo sujeito a uma força constante, que estudaste na Missão 1.",
@@ -310,7 +310,7 @@
           "pontos": [
             { "id": "aceleracao-carga-campo", "label": "Aceleração", "explicacao": "a = q E / m. Constante, com a direção do campo (sentido do campo se q > 0, oposto se q < 0)." },
             { "id": "carga-repouso-paralela", "label": "Carga a partir do repouso (ou com velocidade paralela ao campo)", "explicacao": "Movimento retilíneo uniformemente variado." },
-            { "id": "carga-velocidade-perpendicular", "label": "Carga com velocidade inicial perpendicular ao campo", "explicacao": "Trajetória parabólica, como um lançamento horizontal. Movimento uniforme na direção inicial e uniformemente acelerado na direção do campo." },
+            { "id": "carga-velocidade-perpendicular", "label": "Carga com velocidade inicial perpendicular ao campo", "explicacao": "Trajetória parabólica, como um lançamento horizontal. Movimento uniforme na direção inicial e uniformemente acelerado na direção do campo.", "curiosidade_sem_titulo": true, "curiosidade": "**A bola a rolar numa mesa inclinada**\n\nImagina uma bola que rola em linha reta sobre uma mesa inclinada para um dos lados. Ela continua a avançar na direção em que a atiraste, mas vai descaindo cada vez mais para o lado mais baixo, desenhando uma parábola. Um eletrão entre as placas é essa bola: o campo elétrico faz o papel da inclinação, sempre a puxar para o mesmo lado, e a trajetória curva-se exatamente como a de um projétil." },
             { "id": "abordagem-energetica-carga", "label": "Abordagem energética", "explicacao": "Quando uma carga é acelerada por uma diferença de potencial U, o trabalho da força elétrica é igual à variação da energia cinética: |q| U = ΔEc." },
             { "id": "eletrao-volt", "label": "Eletrão-volt (eV)", "explicacao": "Energia adquirida por um eletrão acelerado por 1 V. 1 eV = 1,60 × 10⁻¹⁹ J." }
           ],
@@ -322,26 +322,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um eletrão, inicialmente em repouso, é acelerado por uma diferença de potencial de 100 V. Qual é a sua velocidade final?",
-          "opcoes": ["1,0 × 10² m/s", "5,9 × 10⁶ m/s", "3,5 × 10¹³ m/s", "3,0 × 10⁸ m/s"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. v ≈ 5,9 × 10⁶ m/s, cerca de 2 % da velocidade da luz.",
-          "mascote_feedback_errado": "Usa a energia: e U = ½ m v². v = √(2 e U / m) ≈ 5,9 × 10⁶ m/s."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um eletrão entra horizontalmente, a 1,0 × 10⁷ m/s, entre duas placas com 5,0 cm de comprimento onde há um campo vertical de 1,0 × 10³ V/m. Quanto se desvia na vertical até sair das placas?",
-          "opcoes": ["0,22 mm", "2,2 mm", "2,2 cm", "0 mm"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. y ≈ 2,2 mm.",
-          "mascote_feedback_errado": "Trata como um lançamento horizontal. Tempo entre as placas: t = L / v₀ = 5,0 × 10⁻⁹ s. Aceleração: a = e E / m ≈ 1,76 × 10¹⁴ m s⁻². Desvio: y = ½ a t² ≈ 2,2 mm."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A bola a rolar numa mesa inclinada.** Imagina uma bola que rola em linha reta sobre uma mesa inclinada para um dos lados. Ela continua a avançar na direção em que a atiraste, mas vai descaindo cada vez mais para o lado mais baixo, desenhando uma parábola. Um eletrão entre as placas é essa bola: o campo elétrico faz o papel da inclinação, sempre a puxar para o mesmo lado, e a trajetória curva-se exatamente como a de um projétil."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Porque se despreza o peso, e o eletrão-volt na física de partículas",
           "texto": "**Porque é que se despreza o peso**\n\nPara um eletrão, o peso é m g ≈ 9 × 10⁻³⁰ N. Num campo de 1000 V/m, a força elétrica é e E = 1,6 × 10⁻¹⁶ N, cerca de 10¹³ vezes maior. O peso não tem qualquer efeito visível.\n\n**O eletrão-volt na física de partículas**\n\nAs energias das partículas medem-se em eV e múltiplos (keV, MeV, GeV, TeV). No LHC do CERN, os protões atingem energias de vários TeV (10¹² eV)."
@@ -349,6 +329,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um eletrão, inicialmente em repouso, é acelerado por uma diferença de potencial de 100 V. Qual é a sua velocidade final?",
+              "opcoes": [
+                "1,0 × 10² m/s",
+                "5,9 × 10⁶ m/s",
+                "3,5 × 10¹³ m/s",
+                "3,0 × 10⁸ m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. v ≈ 5,9 × 10⁶ m/s, cerca de 2 % da velocidade da luz.",
+              "mascote_feedback_errado": "Usa a energia: e U = ½ m v². v = √(2 e U / m) ≈ 5,9 × 10⁶ m/s."
+            },
+            {
+              "pergunta": "Um eletrão entra horizontalmente, a 1,0 × 10⁷ m/s, entre duas placas com 5,0 cm de comprimento onde há um campo vertical de 1,0 × 10³ V/m. Quanto se desvia na vertical até sair das placas?",
+              "opcoes": [
+                "0,22 mm",
+                "2,2 mm",
+                "2,2 cm",
+                "0 mm"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. y ≈ 2,2 mm.",
+              "mascote_feedback_errado": "Trata como um lançamento horizontal. Tempo entre as placas: t = L / v₀ = 5,0 × 10⁻⁹ s. Aceleração: a = e E / m ≈ 1,76 × 10¹⁴ m s⁻². Desvio: y = ½ a t² ≈ 2,2 mm."
+            },
             {
               "pergunta": "Um protão e um eletrão são largados do repouso no mesmo campo elétrico uniforme. Qual das afirmações é correta?",
               "opcoes": ["Têm acelerações iguais.", "Sofrem forças de igual intensidade e sentidos opostos, mas o eletrão tem uma aceleração muito maior.", "O protão tem maior aceleração, porque tem mais massa.", "Não sofrem forças, porque partem do repouso."],
@@ -381,13 +385,10 @@
       "tempo_estimado_min": 14,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_flash_desfibrilhador.png",
-          "texto": "O flash de uma máquina fotográfica acumula energia durante alguns segundos e liberta-a toda num clarão de milésimos de segundo. Um desfibrilhador faz o mesmo para dar um choque que pode pôr um coração a bater outra vez. O componente que armazena essa energia é o condensador. E a forma como se descarrega é tão regular que pode ser usada como relógio.",
-          "mascote_texto": "Esta secção tem logaritmos. Se estiveres enferrujado, abre o bloco \"aprofundar\" antes da AL."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Um condensador guarda energia e liberta-a num instante.",
+          "mascote_texto": "Esta secção tem logaritmos. Se estiveres enferrujado, abre o bloco \"aprofundar\" antes da AL.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "O condensador",
           "imagem": "f12_condensador.png",
           "texto_principal": "Um condensador é um dispositivo que armazena carga e energia elétrica. É formado por dois condutores (armaduras) separados por um isolador. Quando é ligado a um gerador, as armaduras ficam com cargas iguais e opostas e cria-se um campo elétrico entre elas, onde fica armazenada a energia.",
@@ -404,7 +405,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Descarga num circuito RC",
           "imagem": "f12_descarga_rc.png",
           "texto_principal": "Quando um condensador carregado é ligado a uma resistência, descarrega-se. A tensão nos seus terminais não diminui de forma linear: diminui exponencialmente. A rapidez da descarga depende do produto R C, chamado constante de tempo.",
@@ -422,22 +424,6 @@
             { "expressao": "τ = R C", "significado": "", "unidades": "" },
             { "expressao": "t ½ = R C ln 2", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um condensador de 100 µF é carregado a 12 V. Qual é a carga armazenada?",
-          "opcoes": ["1,2 × 10⁻³ C", "8,3 C", "1,2 C", "1,2 × 10³ C"],
-          "correta": 0,
-          "mascote_feedback_certo": "Certo. Q = 1,2 × 10⁻³ C.",
-          "mascote_feedback_errado": "Converte a capacidade: 100 µF = 1,0 × 10⁻⁴ F. Q = C U = 1,0 × 10⁻⁴ × 12 = 1,2 × 10⁻³ C."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um condensador de 100 µF descarrega-se através de uma resistência de 10 kΩ. Quanto tempo demora a tensão a cair para metade?",
-          "opcoes": ["0,10 s", "0,69 s", "1,0 s", "1,4 s"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. t ½ ≈ 0,69 s.",
-          "mascote_feedback_errado": "Calcula primeiro a constante de tempo: R C = 1,0 s. t ½ = R C ln 2 = 0,69 s."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -509,6 +495,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um condensador de 100 µF é carregado a 12 V. Qual é a carga armazenada?",
+              "opcoes": [
+                "1,2 × 10⁻³ C",
+                "8,3 C",
+                "1,2 C",
+                "1,2 × 10³ C"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. Q = 1,2 × 10⁻³ C.",
+              "mascote_feedback_errado": "Converte a capacidade: 100 µF = 1,0 × 10⁻⁴ F. Q = C U = 1,0 × 10⁻⁴ × 12 = 1,2 × 10⁻³ C."
+            },
+            {
+              "pergunta": "Um condensador de 100 µF descarrega-se através de uma resistência de 10 kΩ. Quanto tempo demora a tensão a cair para metade?",
+              "opcoes": [
+                "0,10 s",
+                "0,69 s",
+                "1,0 s",
+                "1,4 s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. t ½ ≈ 0,69 s.",
+              "mascote_feedback_errado": "Calcula primeiro a constante de tempo: R C = 1,0 s. t ½ = R C ln 2 = 0,69 s."
+            },
             {
               "pergunta": "A unidade SI de capacidade é:",
               "opcoes": ["coulomb.", "volt.", "farad.", "ohm."],

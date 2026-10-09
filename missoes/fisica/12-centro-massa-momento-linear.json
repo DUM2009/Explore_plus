@@ -14,13 +14,10 @@
       "tempo_estimado_min": 10,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_salto_altura.png",
-          "texto": "No salto em altura, os atletas passam por cima da fasquia de costas, dobrados em arco (a técnica Fosbury). O mais surpreendente: o centro de massa do atleta pode passar por baixo da fasquia, enquanto o corpo passa todo por cima. Para perceber como, é preciso saber o que é o centro de massa e como se move.",
-          "mascote_texto": "O modelo da partícula que usaste nos últimos anos tinha uma condição escondida. Nesta secção percebes qual."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "O centro de massa de um atleta pode passar por baixo da fasquia — mesmo que ele passe por cima.",
+          "mascote_texto": "O modelo da partícula que usaste nos últimos anos tinha uma condição escondida. Nesta secção percebes qual.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "O centro de massa",
           "imagem": "f12_centro_massa.png",
           "texto_principal": "O centro de massa de um sistema de partículas é o ponto que se move como se toda a massa do sistema estivesse lá concentrada e todas as forças exteriores lá estivessem aplicadas. O modelo da partícula que usaste até agora consiste em estudar só o movimento do centro de massa: é válido quando não interessam as rotações nem as deformações do corpo.",
@@ -28,7 +25,7 @@
           "pontos": [
             { "id": "corpo-rigido", "label": "Corpo rígido", "explicacao": "Sistema de partículas cujas distâncias relativas não mudam (não se deforma)." },
             { "id": "objetos-simetricos", "label": "Objetos simétricos e homogéneos", "explicacao": "O centro de massa está no centro geométrico (esfera, cubo, placa retangular, anel)." },
-            { "id": "distribuicao-discreta", "label": "Distribuição discreta", "explicacao": "O centro de massa é a média das posições, pesada pelas massas. Fica mais perto das partículas mais pesadas." },
+            { "id": "distribuicao-discreta", "label": "Distribuição discreta", "explicacao": "O centro de massa é a média das posições, pesada pelas massas. Fica mais perto das partículas mais pesadas.", "curiosidade_sem_titulo": true, "curiosidade": "**A balança de pratos**\n\nO centro de massa de dois corpos ligados é o ponto onde os poderias equilibrar sobre um dedo. Com duas crianças iguais num baloiço de tábua, o ponto de equilíbrio fica a meio. Se uma for o dobro da outra, o ponto de equilíbrio aproxima-se da mais pesada. É exatamente a média pesada pelas massas." },
             { "id": "cm-fora-corpo", "label": "Pode estar fora do corpo", "explicacao": "Num anel, num boomerang ou num atleta dobrado em arco, o centro de massa pode não coincidir com nenhum ponto do material." },
             { "id": "movimento-cm", "label": "Movimento do centro de massa", "explicacao": "Só depende das forças exteriores. As forças interiores (entre as partes do sistema) não alteram o movimento do centro de massa." }
           ],
@@ -40,26 +37,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma massa de 2,0 kg está em x = 0 e outra de 3,0 kg em x = 5,0 m. Onde está o centro de massa?",
-          "opcoes": ["x = 2,0 m", "x = 2,5 m", "x = 3,0 m", "x = 5,0 m"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. x CM = (2,0 × 0 + 3,0 × 5,0) / 5,0 = 3,0 m.",
-          "mascote_feedback_errado": "x CM = (m₁ x₁ + m₂ x₂) / (m₁ + m₂) = (0 + 15) / 5,0 = 3,0 m. Não é o ponto médio, porque as massas são diferentes."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um projétil de fogo de artifício explode no ar em vários pedaços. Desprezando a resistência do ar, o que acontece ao centro de massa dos pedaços logo após a explosão?",
-          "opcoes": ["Para no ar.", "Continua a descrever a mesma parábola que o projétil descrevia.", "Sobe verticalmente.", "Cai verticalmente."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. As forças da explosão são interiores e não alteram o movimento do centro de massa.",
-          "mascote_feedback_errado": "A explosão é causada por forças interiores ao sistema. O movimento do centro de massa só depende das forças exteriores (o peso), por isso continua na mesma parábola."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A balança de pratos.** O centro de massa de dois corpos ligados é o ponto onde os poderias equilibrar sobre um dedo. Com duas crianças iguais num baloiço de tábua, o ponto de equilíbrio fica a meio. Se uma for o dobro da outra, o ponto de equilíbrio aproxima-se da mais pesada. É exatamente a média pesada pelas massas."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "A Terra não roda em torno do seu centro, e placas homogéneas compostas",
           "texto": "**Curiosidade: a Terra não roda em torno do seu centro**\n\nO centro de massa do sistema Terra-Lua está a cerca de 4,7 × 10⁶ m do centro da Terra, ainda dentro do planeta (o raio é 6,37 × 10⁶ m), mas não no centro. Na verdade, a Terra e a Lua rodam ambas em torno desse ponto. É este \"baloiçar\" que os astrónomos usam para detetar planetas à volta de outras estrelas: a estrela oscila à volta do centro de massa do sistema.\n\n**Placas homogéneas com formas compostas**\n\nPara uma placa em forma de L, divide-se em dois retângulos, localiza-se o centro de massa de cada um (no seu centro) e calcula-se o centro de massa do conjunto como se fossem duas partículas, cada uma com a massa do seu retângulo."
@@ -67,6 +44,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Uma massa de 2,0 kg está em x = 0 e outra de 3,0 kg em x = 5,0 m. Onde está o centro de massa?",
+              "opcoes": [
+                "x = 2,0 m",
+                "x = 2,5 m",
+                "x = 3,0 m",
+                "x = 5,0 m"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. x CM = (2,0 × 0 + 3,0 × 5,0) / 5,0 = 3,0 m.",
+              "mascote_feedback_errado": "x CM = (m₁ x₁ + m₂ x₂) / (m₁ + m₂) = (0 + 15) / 5,0 = 3,0 m. Não é o ponto médio, porque as massas são diferentes."
+            },
+            {
+              "pergunta": "Um projétil de fogo de artifício explode no ar em vários pedaços. Desprezando a resistência do ar, o que acontece ao centro de massa dos pedaços logo após a explosão?",
+              "opcoes": [
+                "Para no ar.",
+                "Continua a descrever a mesma parábola que o projétil descrevia.",
+                "Sobe verticalmente.",
+                "Cai verticalmente."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. As forças da explosão são interiores e não alteram o movimento do centro de massa.",
+              "mascote_feedback_errado": "A explosão é causada por forças interiores ao sistema. O movimento do centro de massa só depende das forças exteriores (o peso), por isso continua na mesma parábola."
+            },
             {
               "pergunta": "O modelo da partícula material deixa de ser adequado quando:",
               "opcoes": ["o corpo tem massa muito grande.", "interessa estudar a rotação ou a deformação do corpo.", "o corpo se move muito depressa.", "o corpo está sujeito a forças."],
@@ -99,13 +100,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_airbag.png",
-          "texto": "Num acidente a 50 km/h, o corpo de um passageiro tem de parar de qualquer forma. Se parar contra o volante, pára em milésimos de segundo e as forças são enormes. Se parar contra um airbag, demora cerca de dez vezes mais tempo, e a força é cerca de dez vezes menor. A velocidade perdida é a mesma: a diferença está no tempo. A grandeza que explica isto chama-se momento linear.",
-          "mascote_texto": "O momento linear é a \"quantidade de movimento\". Vais ver que se conserva em situações onde a energia cinética não se conserva."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "O que importa num impacto não é só a velocidade perdida — é o tempo que isso demora.",
+          "mascote_texto": "O momento linear é a \"quantidade de movimento\". Vais ver que se conserva em situações onde a energia cinética não se conserva.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Momento linear",
           "imagem": "f12_momento_linear.png",
           "texto_principal": "O momento linear de uma partícula é o produto da sua massa pela sua velocidade. É um vetor com a direção e o sentido da velocidade. A segunda lei de Newton, na sua forma mais geral, diz que a resultante das forças é igual à rapidez de variação do momento linear.",
@@ -125,7 +123,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Conservação do momento linear",
           "imagem": "f12_conservacao_momento.png",
           "texto_principal": "Se a resultante das forças exteriores que atuam num sistema for nula, o momento linear total do sistema conserva-se. As forças interiores podem mudar o momento de cada parte, mas o total fica igual. É a lei da conservação do momento linear.",
@@ -135,32 +134,12 @@
             { "id": "forcas-interiores", "label": "Forças interiores", "explicacao": "Quando se empurram, exercem forças iguais e opostas um no outro (terceira lei). Os impulsos são iguais e opostos." },
             { "id": "depois-patinadores", "label": "Depois", "explicacao": "O momento total continua nulo: 60 × (−2,0) + 40 × 3,0 = 0. O mais leve sai mais depressa." },
             { "id": "condicao-conservacao", "label": "Condição", "explicacao": "A resultante das forças exteriores é nula (ou desprezável durante o curto intervalo da interação, como numa colisão ou explosão)." },
-            { "id": "propulsao", "label": "Propulsão", "explicacao": "Um foguetão expele gases para trás com grande velocidade e ganha momento linear para a frente. Funciona no vazio, sem \"empurrar\" nada." }
+            { "id": "propulsao", "label": "Propulsão", "explicacao": "Um foguetão expele gases para trás com grande velocidade e ganha momento linear para a frente. Funciona no vazio, sem \"empurrar\" nada.", "curiosidade_sem_titulo": true, "curiosidade": "**Apanhar um ovo**\n\nSe alguém te atira um ovo cru e o apanhas com a mão rígida, parte-se. Se acompanhares o ovo com a mão, recuando o braço enquanto o apanhas, ele não se parte. Em ambos os casos o ovo perde a mesma velocidade (a mesma variação de momento linear). A diferença é que, recuando o braço, essa variação acontece durante mais tempo, e a força sobre o ovo é muito menor. É o princípio do airbag." }
           ],
           "caixa_formula": [
             { "expressao": "Se F R,ext = 0: p total inicial = p total final", "significado": "", "unidades": "" },
             { "expressao": "A uma dimensão: m₁ v₁ + m₂ v₂ = m₁ v₁' + m₂ v₂'", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um passageiro de 70 kg a 15 m/s é travado até parar. Sem airbag, a travagem demora 0,005 s; com airbag, 0,10 s. Qual é a força média com airbag?",
-          "opcoes": ["1,05 × 10³ N", "1,05 × 10⁴ N", "2,1 × 10⁵ N", "1,05 × 10⁶ N"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. |Δp| = 1050 kg m s⁻¹. Com airbag: F m = 1050 / 0,10 = 1,05 × 10⁴ N.",
-          "mascote_feedback_errado": "A variação do momento linear é 70 × 15 = 1050 kg m s⁻¹. F m = Δp / Δt = 1050 / 0,10 = 1,05 × 10⁴ N."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um canhão de 500 kg dispara uma bala de 5,0 kg a 200 m/s. Qual é a velocidade de recuo do canhão (desprezando o atrito)?",
-          "opcoes": ["0,5 m/s", "2,0 m/s", "20 m/s", "200 m/s"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. v = −1000 / 500 = −2,0 m/s.",
-          "mascote_feedback_errado": "O momento total era zero antes do disparo: 5,0 × 200 + 500 v = 0. v = −2,0 m/s. O sinal indica que o canhão recua."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Apanhar um ovo.** Se alguém te atira um ovo cru e o apanhas com a mão rígida, parte-se. Se acompanhares o ovo com a mão, recuando o braço enquanto o apanhas, ele não se parte. Em ambos os casos o ovo perde a mesma velocidade (a mesma variação de momento linear). A diferença é que, recuando o braço, essa variação acontece durante mais tempo, e a força sobre o ovo é muito menor. É o princípio do airbag."
         },
         {
           "tipo": "aprofundar",
@@ -170,6 +149,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um passageiro de 70 kg a 15 m/s é travado até parar. Sem airbag, a travagem demora 0,005 s; com airbag, 0,10 s. Qual é a força média com airbag?",
+              "opcoes": [
+                "1,05 × 10³ N",
+                "1,05 × 10⁴ N",
+                "2,1 × 10⁵ N",
+                "1,05 × 10⁶ N"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. |Δp| = 1050 kg m s⁻¹. Com airbag: F m = 1050 / 0,10 = 1,05 × 10⁴ N.",
+              "mascote_feedback_errado": "A variação do momento linear é 70 × 15 = 1050 kg m s⁻¹. F m = Δp / Δt = 1050 / 0,10 = 1,05 × 10⁴ N."
+            },
+            {
+              "pergunta": "Um canhão de 500 kg dispara uma bala de 5,0 kg a 200 m/s. Qual é a velocidade de recuo do canhão (desprezando o atrito)?",
+              "opcoes": [
+                "0,5 m/s",
+                "2,0 m/s",
+                "20 m/s",
+                "200 m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. v = −1000 / 500 = −2,0 m/s.",
+              "mascote_feedback_errado": "O momento total era zero antes do disparo: 5,0 × 200 + 500 v = 0. v = −2,0 m/s. O sinal indica que o canhão recua."
+            },
             {
               "pergunta": "Qual é o momento linear de um carro de 1000 kg a 20 m/s?",
               "opcoes": ["50 kg m s⁻¹", "2,0 × 10⁴ kg m s⁻¹", "2,0 × 10⁵ kg m s⁻¹", "4,0 × 10⁵ kg m s⁻¹"],
@@ -202,13 +205,10 @@
       "tempo_estimado_min": 13,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_bilhar_colisao.png",
-          "texto": "No bilhar, quando a bola branca bate de frente numa bola parada, às vezes a branca pára e a outra sai com a velocidade que a branca tinha. Parece truque, mas é física: as duas bolas têm a mesma massa e a colisão é quase elástica. Numa colisão de carros, pelo contrário, os carros podem ficar presos. As colisões classificam-se pelo que acontece à energia cinética.",
-          "mascote_texto": "Em todas as colisões desta secção, o momento linear conserva-se. A energia cinética é que depende do tipo de colisão."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Nem toda a colisão perde a mesma energia cinética.",
+          "mascote_texto": "Em todas as colisões desta secção, o momento linear conserva-se. A energia cinética é que depende do tipo de colisão.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Tipos de colisões",
           "imagem": "f12_tipos_colisoes.png",
           "texto_principal": "Numa colisão, as forças entre os corpos são muito intensas e duram muito pouco tempo, por isso as forças exteriores são desprezáveis e o momento linear do sistema conserva-se. Quanto à energia cinética, depende do tipo de colisão.",
@@ -218,7 +218,7 @@
             { "id": "colisao-inelastica", "label": "Colisão inelástica", "explicacao": "A energia cinética total diminui (parte é dissipada em deformação, som e aquecimento). Os corpos separam-se." },
             { "id": "colisao-perf-inelastica", "label": "Colisão perfeitamente inelástica", "explicacao": "Os corpos ficam juntos depois da colisão e movem-se com a mesma velocidade. É a colisão em que se perde mais energia cinética." },
             { "id": "massas-iguais-elastica", "label": "Massas iguais, colisão elástica frontal, um corpo parado", "explicacao": "Os corpos trocam de velocidades." },
-            { "id": "coeficiente-restituicao", "label": "Coeficiente de restituição (e)", "explicacao": "Razão entre a velocidade de afastamento e a velocidade de aproximação. e = 1: elástica; 0 < e < 1: inelástica; e = 0: perfeitamente inelástica." }
+            { "id": "coeficiente-restituicao", "label": "Coeficiente de restituição (e)", "explicacao": "Razão entre a velocidade de afastamento e a velocidade de aproximação. e = 1: elástica; 0 < e < 1: inelástica; e = 0: perfeitamente inelástica.", "curiosidade_sem_titulo": true, "curiosidade": "**A bola que salta**\n\nDeixa cair três bolas no chão: uma bola saltitona, uma bola de ténis e uma bola de plasticina. A saltitona volta quase à mesma altura: colisão quase elástica, e perto de 1. A de ténis sobe menos: colisão inelástica. A de plasticina fica colada ao chão: colisão perfeitamente inelástica, e = 0. O coeficiente de restituição é o \"salto\" que a colisão devolve, comparado com a velocidade com que chegaste." }
           ],
           "caixa_formula": [
             { "expressao": "Sempre: m₁ v₁ + m₂ v₂ = m₁ v₁' + m₂ v₂'", "significado": "", "unidades": "" },
@@ -227,22 +227,6 @@
             { "expressao": "e = |v₂' − v₁'| / |v₁ − v₂|", "significado": "Coeficiente de restituição (velocidade relativa de afastamento / de aproximação).", "unidades": "" },
             { "expressao": "Contra um alvo fixo: e = |v afastamento| / |v aproximação|", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um carro de 1000 kg a 20 m/s bate num carro parado de 1500 kg e ficam presos. Com que velocidade se movem logo após a colisão?",
-          "opcoes": ["20 m/s", "13 m/s", "8,0 m/s", "0 m/s"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. v' = 20 000 / 2500 = 8,0 m/s.",
-          "mascote_feedback_errado": "Conserva o momento linear: 1000 × 20 + 1500 × 0 = (1000 + 1500) v'. v' = 20 000 / 2500 = 8,0 m/s."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na colisão anterior, que fração da energia cinética inicial foi dissipada?",
-          "opcoes": ["0 %", "40 %", "60 %", "100 %"],
-          "correta": 2,
-          "mascote_feedback_certo": "Muito bem. Dissipou-se 60 %.",
-          "mascote_feedback_errado": "Ec antes = 2,0 × 10⁵ J. Ec depois = 8,0 × 10⁴ J. A diferença, 1,2 × 10⁵ J, é 60 % da energia inicial."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -269,10 +253,6 @@
               "O carrinho 1 pára e o carrinho 2 sai com a velocidade que o 1 tinha."
             ]
           }
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A bola que salta.** Deixa cair três bolas no chão: uma bola saltitona, uma bola de ténis e uma bola de plasticina. A saltitona volta quase à mesma altura: colisão quase elástica, e perto de 1. A de ténis sobe menos: colisão inelástica. A de plasticina fica colada ao chão: colisão perfeitamente inelástica, e = 0. O coeficiente de restituição é o \"salto\" que a colisão devolve, comparado com a velocidade com que chegaste."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -307,6 +287,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um carro de 1000 kg a 20 m/s bate num carro parado de 1500 kg e ficam presos. Com que velocidade se movem logo após a colisão?",
+              "opcoes": [
+                "20 m/s",
+                "13 m/s",
+                "8,0 m/s",
+                "0 m/s"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. v' = 20 000 / 2500 = 8,0 m/s.",
+              "mascote_feedback_errado": "Conserva o momento linear: 1000 × 20 + 1500 × 0 = (1000 + 1500) v'. v' = 20 000 / 2500 = 8,0 m/s."
+            },
+            {
+              "pergunta": "Na colisão anterior, que fração da energia cinética inicial foi dissipada?",
+              "opcoes": [
+                "0 %",
+                "40 %",
+                "60 %",
+                "100 %"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Muito bem. Dissipou-se 60 %.",
+              "mascote_feedback_errado": "Ec antes = 2,0 × 10⁵ J. Ec depois = 8,0 × 10⁴ J. A diferença, 1,2 × 10⁵ J, é 60 % da energia inicial."
+            },
             {
               "pergunta": "Numa colisão perfeitamente inelástica:",
               "opcoes": ["o momento linear e a energia cinética conservam-se.", "o momento linear conserva-se, mas há diminuição máxima de energia cinética, e os corpos ficam juntos.", "a energia cinética conserva-se, mas o momento não.", "nem o momento nem a energia cinética se conservam."],

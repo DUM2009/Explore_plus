@@ -1,0 +1,236 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{ teste.titulo }} | Explore+</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'style.css' %}?v={% now 'U' %}">
+
+</head>
+
+<body class="shadcn-profile">
+
+<section class="profile-layout profile-layout--no-sidebar">
+
+<div class="profile-main-shell">
+<div class="profile-content">
+
+<div class="missions-topbar">
+    <div class="missions-topbar-logo">
+        <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
+    </div>
+</div>
+
+<section class="missions-page teste-page">
+    <a href="{% url 'Testes' %}" class="teste-voltar">&larr; Voltar aos testes</a>
+
+    <div class="teste-container tm-container">
+        <h1>{{ teste.titulo }}</h1>
+        <p class="teste-meta">{{ teste.disciplina }} &middot; {{ perguntas|length }} perguntas &middot; Duração sugerida: {{ teste.duracao_sugerida_min }} minutos &middot; Nota de 0 a {{ perguntas|length }}</p>
+
+        <div id="tmPergunta" class="tm-pergunta" hidden>
+            <div class="tm-topo">
+                <span class="tm-contador" id="tmContador"></span>
+                <div class="tm-progresso" role="progressbar" aria-valuemin="0" aria-valuemax="{{ perguntas|length }}" id="tmProgresso"><div class="tm-progresso-barra" id="tmProgressoBarra"></div></div>
+            </div>
+            <div class="tm-etiquetas">
+                <span class="tm-etiqueta tm-nivel" id="tmNivel"></span>
+                <span class="tm-etiqueta tm-seccao" id="tmSeccao"></span>
+            </div>
+            <p class="tm-enunciado" id="tmEnunciado"></p>
+            <div class="tm-opcoes" id="tmOpcoes"></div>
+            <div class="tm-feedback" id="tmFeedback" role="status" aria-live="polite" hidden>
+                <p class="tm-feedback-titulo" id="tmFeedbackTitulo"></p>
+                <p class="tm-feedback-texto" id="tmFeedbackTexto"></p>
+            </div>
+            <div class="tm-acoes">
+                <button type="button" class="tm-botao" id="tmSeguinte" hidden>Seguinte</button>
+            </div>
+        </div>
+
+        <div id="tmResultado" class="tm-resultado" hidden>
+            <h2>Resultado</h2>
+            <div class="tm-nota"><span id="tmNota"></span><small id="tmNotaTotal"></small></div>
+            <p class="tm-resultado-texto" id="tmResultadoTexto"></p>
+            <h3>Resumo por secção</h3>
+            <ul class="tm-seccoes" id="tmSeccoes"></ul>
+            <div class="tm-acoes tm-acoes--resultado">
+                <button type="button" class="tm-botao" id="tmRefazer">Refazer o teste</button>
+                <a class="tm-botao tm-botao--secundario" href="{% url 'Testes' %}">Voltar aos testes</a>
+                <a class="tm-botao tm-botao--secundario" href="{{ missao_url }}">Voltar à missão</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+</div>
+
+</section>
+
+{{ perguntas|json_script:"tm-perguntas" }}
+{{ seccoes|json_script:"tm-seccoes-nomes" }}
+
+<script>
+window.exploreCsrfToken = '{{ csrf_token }}';
+(function () {
+    var perguntas = JSON.parse(document.getElementById('tm-perguntas').textContent);
+    var nomesSeccoes = JSON.parse(document.getElementById('tm-seccoes-nomes').textContent);
+    var testeId = '{{ teste_id }}';
+    var urlResponder = "{% url 'responder-teste-missao' teste_id %}";
+    var urlTerminar = "{% url 'terminar-teste-missao' teste_id %}";
+    var chaveSessao = 'tm-' + testeId;
+    var NIVEIS = { facil: 'Fácil', intermedia: 'Intermédia', dificil: 'Difícil' };
+    var LETRAS = ['A', 'B', 'C', 'D'];
+
+    var el = function (id) { return document.getElementById(id); };
+    var estado = { indice: 0, respostas: {} };
+
+    try {
+        var guardado = JSON.parse(sessionStorage.getItem(chaveSessao) || 'null');
+        if (guardado && guardado.respostas) {
+            estado.respostas = guardado.respostas;
+            var primeira = perguntas.findIndex(function (p) { return !(p.numero in estado.respostas); });
+            estado.indice = primeira === -1 ? perguntas.length - 1 : primeira;
+        }
+    } catch (e) { /* sem sessionStorage: o teste funciona na mesma */ }
+
+    function guardar() {
+        try { sessionStorage.setItem(chaveSessao, JSON.stringify({ respostas: estado.respostas })); } catch (e) { }
+    }
+
+    function post(url, corpo) {
+        return fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': window.exploreCsrfToken },
+            body: JSON.stringify(corpo)
+        }).then(function (r) {
+            if (!r.ok) throw new Error('Erro ' + r.status);
+            return r.json();
+        });
+    }
+
+    function mostrarPergunta() {
+        var p = perguntas[estado.indice];
+        var total = perguntas.length;
+        el('tmResultado').hidden = true;
+        el('tmPergunta').hidden = false;
+        el('tmContador').textContent = 'Pergunta ' + (estado.indice + 1) + ' de ' + total;
+        el('tmProgresso').setAttribute('aria-valuenow', estado.indice);
+        el('tmProgressoBarra').style.width = (estado.indice / total * 100) + '%';
+        el('tmNivel').textContent = NIVEIS[p.nivel] || p.nivel;
+        el('tmNivel').className = 'tm-etiqueta tm-nivel tm-nivel--' + p.nivel;
+        el('tmSeccao').textContent = 'Secção ' + p.seccao;
+        el('tmEnunciado').textContent = p.enunciado;
+        el('tmFeedback').hidden = true;
+        el('tmSeguinte').hidden = true;
+
+        var caixa = el('tmOpcoes');
+        caixa.innerHTML = '';
+        p.opcoes.forEach(function (texto, i) {
+            var b = document.createElement('button');
+            b.type = 'button';
+            b.className = 'tm-opcao';
+            b.dataset.indice = i;
+            b.innerHTML = '<span class="tm-opcao-letra">' + LETRAS[i] + '</span><span class="tm-opcao-texto"></span>';
+            b.querySelector('.tm-opcao-texto').textContent = texto;
+            b.addEventListener('click', function () { responder(i); });
+            caixa.appendChild(b);
+        });
+    }
+
+    function responder(escolha) {
+        var p = perguntas[estado.indice];
+        var botoes = el('tmOpcoes').querySelectorAll('.tm-opcao');
+        botoes.forEach(function (b) { b.disabled = true; });
+        post(urlResponder, { pergunta: p.numero, resposta: escolha }).then(function (r) {
+            estado.respostas[p.numero] = escolha;
+            guardar();
+            botoes.forEach(function (b, i) {
+                if (i === r.correta) b.classList.add('is-certa');
+                else if (i === escolha) b.classList.add('is-errada');
+            });
+            el('tmFeedback').className = 'tm-feedback ' + (r.certa ? 'is-certa' : 'is-errada');
+            el('tmFeedbackTitulo').textContent = r.certa ? 'Resposta certa' : 'Resposta errada';
+            el('tmFeedbackTexto').textContent = r.explicacao;
+            el('tmFeedback').hidden = false;
+            var ultima = estado.indice === perguntas.length - 1;
+            el('tmSeguinte').textContent = ultima ? 'Ver resultado' : 'Seguinte';
+            el('tmSeguinte').hidden = false;
+            el('tmSeguinte').focus();
+        }).catch(function () {
+            botoes.forEach(function (b) { b.disabled = false; });
+            el('tmFeedback').className = 'tm-feedback is-errada';
+            el('tmFeedbackTitulo').textContent = 'Não foi possível corrigir a resposta';
+            el('tmFeedbackTexto').textContent = 'Verifica a ligação e tenta outra vez.';
+            el('tmFeedback').hidden = false;
+        });
+    }
+
+    function mostrarResultado() {
+        post(urlTerminar, { respostas: estado.respostas }).then(function (r) {
+            el('tmPergunta').hidden = true;
+            el('tmResultado').hidden = false;
+            el('tmNota').textContent = r.nota;
+            el('tmNotaTotal').textContent = ' / ' + r.total;
+            var ratio = r.nota / r.total;
+            el('tmResultadoTexto').textContent = ratio >= 0.9 ? 'Excelente! Dominas esta matéria.'
+                : ratio >= 0.7 ? 'Muito bom. Revê as perguntas em que falhaste para fechar as dúvidas.'
+                : ratio >= 0.5 ? 'Positivo, mas ainda há secções para reforçar. Volta às missões e tenta de novo.'
+                : 'Ainda precisas de estudar mais esta matéria. Revê a missão e repete o teste.';
+            var lista = el('tmSeccoes');
+            lista.innerHTML = '';
+            r.seccoes.forEach(function (s) {
+                var li = document.createElement('li');
+                li.className = 'tm-seccao-linha' + (s.certas === s.total ? ' is-total' : '');
+                var nome = document.createElement('span');
+                nome.textContent = s.titulo === s.seccao ? s.seccao : s.seccao + ' — ' + s.titulo;
+                var valor = document.createElement('strong');
+                valor.textContent = s.certas + ' / ' + s.total;
+                li.appendChild(nome);
+                li.appendChild(valor);
+                lista.appendChild(li);
+            });
+            try { sessionStorage.removeItem(chaveSessao); } catch (e) { }
+        }).catch(function () {
+            el('tmFeedbackTitulo').textContent = 'Não foi possível calcular o resultado';
+            el('tmFeedbackTexto').textContent = 'Verifica a ligação e clica outra vez em "Ver resultado".';
+            el('tmFeedback').className = 'tm-feedback is-errada';
+            el('tmFeedback').hidden = false;
+        });
+    }
+
+    el('tmSeguinte').addEventListener('click', function () {
+        if (estado.indice < perguntas.length - 1) {
+            estado.indice += 1;
+            mostrarPergunta();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            mostrarResultado();
+        }
+    });
+
+    el('tmRefazer').addEventListener('click', function () {
+        estado = { indice: 0, respostas: {} };
+        guardar();
+        mostrarPergunta();
+        window.scrollTo({ top: 0 });
+    });
+
+    mostrarPergunta();
+})();
+</script>
+
+<script src="{% static 'header-actions.js' %}" defer></script>
+<script src="{% static 'activity-heartbeat.js' %}" defer></script>
+
+</body>
+</html>

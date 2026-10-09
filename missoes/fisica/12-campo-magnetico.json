@@ -14,13 +14,10 @@
       "tempo_estimado_min": 13,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_aurora_boreal.png",
-          "texto": "As auroras boreais são cortinas de luz verde e rosa que dançam no céu perto dos polos. São causadas por partículas com carga que vêm do Sol a enormes velocidades. O campo magnético da Terra desvia-as e obriga-as a descrever espirais em torno das linhas de campo, até chegarem à atmosfera perto dos polos, onde fazem brilhar os gases. Tudo começa com uma força estranha: uma força que é sempre perpendicular ao movimento.",
-          "mascote_texto": "A regra da mão direita vai ser a tua melhor amiga nesta missão. Treina-a com a tua mão enquanto lês."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "As auroras boreais nascem de uma força sempre perpendicular ao movimento.",
+          "mascote_texto": "A regra da mão direita vai ser a tua melhor amiga nesta missão. Treina-a com a tua mão enquanto lês.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Força magnética sobre uma carga",
           "imagem": "f12_forca_magnetica.png",
           "texto_principal": "Um campo magnético exerce uma força sobre uma carga elétrica em movimento. Essa força é perpendicular à velocidade da carga e ao campo magnético. A intensidade depende da carga, da velocidade, da intensidade do campo e do ângulo entre a velocidade e o campo. Cargas em repouso, ou a moverem-se paralelamente ao campo, não sofrem força magnética.",
@@ -40,14 +37,15 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Tipos de movimento num campo magnético",
           "imagem": "f12_movimentos_campo_magnetico.png",
           "texto_principal": "O tipo de movimento de uma carga num campo magnético uniforme depende do ângulo entre a sua velocidade e o campo.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "v-paralela-b", "label": "v paralela a B", "explicacao": "Não há força. Movimento retilíneo uniforme." },
-            { "id": "v-perpendicular-b", "label": "v perpendicular a B", "explicacao": "A força magnética é sempre perpendicular à velocidade e tem intensidade constante: é uma força centrípeta. Movimento circular uniforme." },
+            { "id": "v-perpendicular-b", "label": "v perpendicular a B", "explicacao": "A força magnética é sempre perpendicular à velocidade e tem intensidade constante: é uma força centrípeta. Movimento circular uniforme.", "curiosidade_sem_titulo": true, "curiosidade": "**A bola presa por um fio invisível**\n\nUma bola atada a um fio e posta a girar: o fio puxa-a sempre para o centro, perpendicularmente ao movimento, e ela nunca ganha nem perde velocidade, só muda de direção. A força magnética sobre uma carga é esse fio invisível. Com um campo mais forte, o \"fio\" é mais curto (raio menor). Com uma bola mais rápida ou mais pesada, o \"fio\" tem de ser mais comprido (raio maior)." },
             { "id": "raio-trajetoria", "label": "Raio da trajetória", "explicacao": "|q| v B = m v² / r, logo r = m v / (|q| B). Partículas mais rápidas ou mais pesadas descrevem círculos maiores; campos mais intensos dão círculos menores." },
             { "id": "periodo-mcu-magnetico", "label": "Período", "explicacao": "T = 2π m / (|q| B). Não depende da velocidade nem do raio." },
             { "id": "v-obliqua-b", "label": "v oblíqua a B", "explicacao": "A componente paralela dá movimento uniforme ao longo do campo; a componente perpendicular dá movimento circular. O resultado é uma hélice (movimento helicoidal)." }
@@ -56,22 +54,6 @@
             { "expressao": "r = m v / (|q| B)", "significado": "Raio da trajetória circular.", "unidades": "" },
             { "expressao": "T = 2π m / (|q| B)", "significado": "Período do movimento circular.", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um protão move-se a 2,0 × 10⁶ m/s perpendicularmente a um campo magnético de 0,50 T. Qual é o raio da sua trajetória?",
-          "opcoes": ["4,2 × 10⁻² m", "4,2 m", "2,1 × 10⁻² m", "6,7 × 10⁻⁹ m"],
-          "correta": 0,
-          "mascote_feedback_certo": "Certo. r ≈ 4,2 × 10⁻² m, cerca de 4 cm.",
-          "mascote_feedback_errado": "A força magnética é a força centrípeta: e v B = m v² / r, logo r = m v / (e B) ≈ 4,2 × 10⁻² m."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma partícula com carga descreve um movimento circular num campo magnético uniforme. Ao fim de uma volta completa, a sua energia cinética:",
-          "opcoes": ["aumentou.", "diminuiu.", "manteve-se.", "depende do sinal da carga."],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. A força magnética é sempre perpendicular à velocidade, por isso não realiza trabalho.",
-          "mascote_feedback_errado": "A força magnética não realiza trabalho, porque é sempre perpendicular ao movimento. O módulo da velocidade e a energia cinética mantêm-se constantes."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -103,10 +85,6 @@
           }
         },
         {
-          "tipo": "analogia",
-          "texto": "**A bola presa por um fio invisível.** Uma bola atada a um fio e posta a girar: o fio puxa-a sempre para o centro, perpendicularmente ao movimento, e ela nunca ganha nem perde velocidade, só muda de direção. A força magnética sobre uma carga é esse fio invisível. Com um campo mais forte, o \"fio\" é mais curto (raio menor). Com uma bola mais rápida ou mais pesada, o \"fio\" tem de ser mais comprido (raio maior)."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Auroras e cinturas de radiação, e ciclotrões na medicina",
           "texto": "**Auroras e cinturas de radiação**\n\nAs partículas do vento solar que entram no campo magnético terrestre descrevem hélices em torno das linhas de campo. Nos polos, as linhas mergulham na atmosfera e as partículas colidem com o oxigénio (luz verde e vermelha) e o azoto (luz azulada e rosa). Parte das partículas fica presa em regiões em forma de anel à volta da Terra: as cinturas de Van Allen.\n\n**Ciclotrões na medicina**\n\nNos ciclotrões, partículas com carga descrevem trajetórias circulares num campo magnético e são aceleradas por um campo elétrico em cada meia volta. Como o período não depende da velocidade, o campo elétrico pode alternar sempre ao mesmo ritmo. Os ciclotrões hospitalares produzem isótopos radioativos para diagnóstico (como os usados na tomografia por emissão de positrões, PET)."
@@ -114,6 +92,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um protão move-se a 2,0 × 10⁶ m/s perpendicularmente a um campo magnético de 0,50 T. Qual é o raio da sua trajetória?",
+              "opcoes": [
+                "4,2 × 10⁻² m",
+                "4,2 m",
+                "2,1 × 10⁻² m",
+                "6,7 × 10⁻⁹ m"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. r ≈ 4,2 × 10⁻² m, cerca de 4 cm.",
+              "mascote_feedback_errado": "A força magnética é a força centrípeta: e v B = m v² / r, logo r = m v / (e B) ≈ 4,2 × 10⁻² m."
+            },
+            {
+              "pergunta": "Uma partícula com carga descreve um movimento circular num campo magnético uniforme. Ao fim de uma volta completa, a sua energia cinética:",
+              "opcoes": [
+                "aumentou.",
+                "diminuiu.",
+                "manteve-se.",
+                "depende do sinal da carga."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. A força magnética é sempre perpendicular à velocidade, por isso não realiza trabalho.",
+              "mascote_feedback_errado": "A força magnética não realiza trabalho, porque é sempre perpendicular ao movimento. O módulo da velocidade e a energia cinética mantêm-se constantes."
+            },
             {
               "pergunta": "Uma carga move-se paralelamente às linhas de um campo magnético uniforme. A força magnética sobre ela é:",
               "opcoes": ["máxima.", "nula.", "perpendicular ao campo e de intensidade q v B.", "paralela ao campo."],
@@ -146,13 +148,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_espectrometro_massa.png",
-          "texto": "Como é que se sabe que um atleta tomou uma substância proibida, ou que um vinho do Porto é mesmo do Porto e não uma imitação? Uma das ferramentas usadas é o espectrómetro de massa, que separa átomos e moléculas pela sua massa, com uma precisão enorme. Funciona com a física desta secção: campos elétricos e magnéticos a trabalhar em conjunto.",
-          "mascote_texto": "Última secção de campos de forças. Juntas o campo elétrico da Missão 5 com o magnético da secção anterior."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Campos elétricos e magnéticos juntos conseguem separar átomos pela massa.",
+          "mascote_texto": "Última secção de campos de forças. Juntas o campo elétrico da Missão 5 com o magnético da secção anterior.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Seletor de velocidades e espectrómetro de massa",
           "imagem": "f12_seletor_espectrometro.png",
           "texto_principal": "Numa região onde existem ao mesmo tempo um campo elétrico e um campo magnético uniformes, uma carga em movimento fica sujeita às duas forças. Se os campos forem perpendiculares entre si e à velocidade, as forças podem anular-se para uma velocidade específica. Este princípio é usado no espectrómetro de massa para separar partículas pela massa.",
@@ -171,7 +170,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Força sobre um fio com corrente",
           "imagem": "f12_forca_fio_corrente.png",
           "texto_principal": "Um fio percorrido por corrente elétrica é um conjunto de cargas em movimento. Num campo magnético, cada carga sofre uma força magnética, e a soma destas forças é uma força sobre o fio.",
@@ -180,29 +180,9 @@
             { "id": "intensidade-forca-fio", "label": "Intensidade", "explicacao": "F = B I l sen θ." },
             { "id": "direcao-sentido-forca-fio", "label": "Direção e sentido", "explicacao": "Perpendicular ao fio e ao campo. Regra da mão direita, com os dedos no sentido da corrente." },
             { "id": "fio-paralelo-campo", "label": "Fio paralelo ao campo", "explicacao": "Não há força." },
-            { "id": "motor-eletrico", "label": "Motor elétrico", "explicacao": "Numa espira percorrida por corrente num campo magnético, as forças nos dois lados têm sentidos opostos e fazem-na rodar. É o princípio de todos os motores elétricos." },
+            { "id": "motor-eletrico", "label": "Motor elétrico", "explicacao": "Numa espira percorrida por corrente num campo magnético, as forças nos dois lados têm sentidos opostos e fazem-na rodar. É o princípio de todos os motores elétricos.", "curiosidade_sem_titulo": true, "curiosidade": "**A peneira de velocidades e a curva por pesos**\n\nO espectrómetro funciona em duas fases. Primeiro, o seletor é como um porteiro que só deixa passar quem vem a uma velocidade exata: os mais rápidos são empurrados para um lado, os mais lentos para o outro. Depois, todos os que passaram entram numa curva ao mesmo tempo e à mesma velocidade. Os mais pesados são como camiões: não conseguem curvar tão apertado e abrem mais a curva. Os mais leves fazem a curva curta. Onde cada um \"bate\" na parede indica o seu peso." },
             { "id": "altifalante-magnetico", "label": "Altifalante", "explicacao": "Uma bobina presa a um cone, num campo magnético, é percorrida por uma corrente variável; a força variável faz o cone vibrar e produzir som." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Num seletor de velocidades, o campo elétrico é 2,0 × 10⁴ V/m e o campo magnético é 0,10 T. Que velocidade têm as partículas que passam sem desvio?",
-          "opcoes": ["2,0 × 10³ m/s", "2,0 × 10⁵ m/s", "2,0 × 10⁶ m/s", "5,0 × 10⁻⁶ m/s"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. v = E / B = 2,0 × 10⁵ m/s.",
-          "mascote_feedback_errado": "As forças anulam-se quando q E = q v B, logo v = E / B = 2,0 × 10⁴ / 0,10 = 2,0 × 10⁵ m/s."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um fio com 0,30 m, percorrido por 5,0 A, está perpendicular a um campo magnético de 0,20 T. Qual é a intensidade da força sobre o fio?",
-          "opcoes": ["0,030 N", "0,30 N", "3,0 N", "7,5 N"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. F = 0,30 N.",
-          "mascote_feedback_errado": "Usa F = B I l sen θ com θ = 90°: 0,20 × 5,0 × 0,30 = 0,30 N."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A peneira de velocidades e a curva por pesos.** O espectrómetro funciona em duas fases. Primeiro, o seletor é como um porteiro que só deixa passar quem vem a uma velocidade exata: os mais rápidos são empurrados para um lado, os mais lentos para o outro. Depois, todos os que passaram entram numa curva ao mesmo tempo e à mesma velocidade. Os mais pesados são como camiões: não conseguem curvar tão apertado e abrem mais a curva. Os mais leves fazem a curva curta. Onde cada um \"bate\" na parede indica o seu peso."
         },
         {
           "tipo": "aprofundar",
@@ -212,6 +192,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Num seletor de velocidades, o campo elétrico é 2,0 × 10⁴ V/m e o campo magnético é 0,10 T. Que velocidade têm as partículas que passam sem desvio?",
+              "opcoes": [
+                "2,0 × 10³ m/s",
+                "2,0 × 10⁵ m/s",
+                "2,0 × 10⁶ m/s",
+                "5,0 × 10⁻⁶ m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. v = E / B = 2,0 × 10⁵ m/s.",
+              "mascote_feedback_errado": "As forças anulam-se quando q E = q v B, logo v = E / B = 2,0 × 10⁴ / 0,10 = 2,0 × 10⁵ m/s."
+            },
+            {
+              "pergunta": "Um fio com 0,30 m, percorrido por 5,0 A, está perpendicular a um campo magnético de 0,20 T. Qual é a intensidade da força sobre o fio?",
+              "opcoes": [
+                "0,030 N",
+                "0,30 N",
+                "3,0 N",
+                "7,5 N"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. F = 0,30 N.",
+              "mascote_feedback_errado": "Usa F = B I l sen θ com θ = 90°: 0,20 × 5,0 × 0,30 = 0,30 N."
+            },
             {
               "pergunta": "Num espectrómetro de massa, dois iões com a mesma carga e a mesma velocidade entram na câmara de deflexão. O ião com maior massa:",
               "opcoes": ["descreve uma trajetória de raio menor.", "descreve uma trajetória de raio maior.", "não é desviado.", "é desviado em sentido oposto."],

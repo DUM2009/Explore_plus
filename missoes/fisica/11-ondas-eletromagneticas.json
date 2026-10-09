@@ -14,13 +14,10 @@
       "tempo_estimado_min": 9,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_espetro_dia_a_dia.png",
-          "texto": "O rádio do carro, o Wi-Fi, o micro-ondas, o comando da televisão, a luz que estás a ver agora, o bronzeado na praia e a radiografia de um braço partido. Parecem coisas sem nada em comum, mas são todas o mesmo fenómeno: ondas eletromagnéticas. A única diferença entre elas é a frequência.",
-          "mascote_texto": "Nesta missão, a velocidade da luz c = 3,00 × 10⁸ m/s vai aparecer em quase todas as contas."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Luz, Wi-Fi e raios-X são o mesmo fenómeno — só muda a frequência.",
+          "mascote_texto": "Nesta missão, a velocidade da luz c = 3,00 × 10⁸ m/s vai aparecer em quase todas as contas.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Onda eletromagnética",
           "imagem": "f11_onda_em.png",
           "texto_principal": "Uma onda eletromagnética resulta da propagação de campos elétricos e magnéticos variáveis, perpendiculares entre si e à direção de propagação. É uma onda transversal e propaga-se no vazio, onde todas as ondas eletromagnéticas têm a mesma velocidade: c = 3,00 × 10⁸ m/s. Nos meios materiais propagam-se mais devagar.",
@@ -37,7 +34,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "O espetro eletromagnético",
           "imagem": "f11_espetro_em.png",
           "texto_principal": "O conjunto de todas as ondas eletromagnéticas, ordenadas por frequência (ou comprimento de onda), chama-se espetro eletromagnético. A luz visível é só uma parte muito pequena.",
@@ -46,32 +44,12 @@
             { "id": "ondas-radio", "label": "Ondas de rádio", "explicacao": "Maior comprimento de onda (de centímetros a quilómetros). Rádio, televisão, comunicações." },
             { "id": "micro-ondas", "label": "Micro-ondas", "explicacao": "Telemóveis, Wi-Fi, radares, fornos de micro-ondas, comunicações por satélite." },
             { "id": "infravermelho", "label": "Infravermelho", "explicacao": "Emitido por todos os corpos quentes (lembra-te do 10.º ano). Comandos à distância, câmaras térmicas." },
-            { "id": "visivel", "label": "Visível", "explicacao": "Cerca de 400 nm (violeta) a 700 nm (vermelho). A única parte que os nossos olhos detetam." },
+            { "id": "visivel", "label": "Visível", "explicacao": "Cerca de 400 nm (violeta) a 700 nm (vermelho). A única parte que os nossos olhos detetam.", "curiosidade_sem_titulo": true, "curiosidade": "**O piano com teclas infinitas**\n\nImagina um piano com milhares de teclas, das mais graves às mais agudas. Todas as teclas produzem o mesmo tipo de coisa, som, só com frequências diferentes. O espetro eletromagnético é esse piano: numa ponta, as \"notas graves\" (ondas de rádio, de baixa frequência); na outra, as \"notas agudíssimas\" (raios gama). Os nossos olhos só conseguem \"ouvir\" uma oitava minúscula ao meio: a luz visível. Tudo o resto está lá, mas é-nos invisível." },
             { "id": "ultravioleta", "label": "Ultravioleta", "explicacao": "Responsável pelo bronzeado e pelas queimaduras solares. Usado para esterilizar." },
             { "id": "raios-x", "label": "Raios X", "explicacao": "Radiografias e controlo de bagagens nos aeroportos." },
             { "id": "raios-gama", "label": "Raios gama", "explicacao": "Maior frequência e energia. Emitidos em reações nucleares. Usados em radioterapia e na esterilização de material médico." },
             { "id": "radiacao-ionizante", "label": "Radiação ionizante", "explicacao": "Ultravioleta de alta frequência, raios X e raios gama têm energia suficiente para arrancar eletrões aos átomos e danificar células. Por isso a exposição deve ser limitada." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma estação de rádio emite a 100 MHz. Qual é o comprimento de onda das ondas emitidas? (1 MHz = 10⁶ Hz)",
-          "opcoes": ["0,33 m", "3,00 m", "30,0 m", "3,00 × 10¹⁶ m"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. λ = c / f = 3,00 × 10⁸ / 1,00 × 10⁸ = 3,00 m.",
-          "mascote_feedback_errado": "Converte a frequência: 100 MHz = 1,00 × 10⁸ Hz. λ = c / f = 3,00 × 10⁸ / 1,00 × 10⁸ = 3,00 m."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Ordena por ordem crescente de frequência: luz visível, raios X, micro-ondas.",
-          "opcoes": ["Raios X, visível, micro-ondas.", "Micro-ondas, visível, raios X.", "Visível, micro-ondas, raios X.", "Micro-ondas, raios X, visível."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. As micro-ondas têm frequência mais baixa do que o visível, e os raios X mais alta.",
-          "mascote_feedback_errado": "No espetro, a frequência aumenta assim: rádio, micro-ondas, infravermelho, visível, ultravioleta, raios X, gama. Logo: micro-ondas, visível, raios X."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**O piano com teclas infinitas.** Imagina um piano com milhares de teclas, das mais graves às mais agudas. Todas as teclas produzem o mesmo tipo de coisa, som, só com frequências diferentes. O espetro eletromagnético é esse piano: numa ponta, as \"notas graves\" (ondas de rádio, de baixa frequência); na outra, as \"notas agudíssimas\" (raios gama). Os nossos olhos só conseguem \"ouvir\" uma oitava minúscula ao meio: a luz visível. Tudo o resto está lá, mas é-nos invisível."
         },
         {
           "tipo": "aprofundar",
@@ -81,6 +59,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Uma estação de rádio emite a 100 MHz. Qual é o comprimento de onda das ondas emitidas? (1 MHz = 10⁶ Hz)",
+              "opcoes": [
+                "0,33 m",
+                "3,00 m",
+                "30,0 m",
+                "3,00 × 10¹⁶ m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. λ = c / f = 3,00 × 10⁸ / 1,00 × 10⁸ = 3,00 m.",
+              "mascote_feedback_errado": "Converte a frequência: 100 MHz = 1,00 × 10⁸ Hz. λ = c / f = 3,00 × 10⁸ / 1,00 × 10⁸ = 3,00 m."
+            },
+            {
+              "pergunta": "Ordena por ordem crescente de frequência: luz visível, raios X, micro-ondas.",
+              "opcoes": [
+                "Raios X, visível, micro-ondas.",
+                "Micro-ondas, visível, raios X.",
+                "Visível, micro-ondas, raios X.",
+                "Micro-ondas, raios X, visível."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. As micro-ondas têm frequência mais baixa do que o visível, e os raios X mais alta.",
+              "mascote_feedback_errado": "No espetro, a frequência aumenta assim: rádio, micro-ondas, infravermelho, visível, ultravioleta, raios X, gama. Logo: micro-ondas, visível, raios X."
+            },
             {
               "pergunta": "Qual das afirmações sobre as ondas eletromagnéticas é correta?",
               "opcoes": ["São ondas longitudinais.", "Precisam de um meio material para se propagar.", "No vazio, todas se propagam com a mesma velocidade.", "Os raios X propagam-se no vazio mais depressa do que a luz visível."],
@@ -113,19 +115,16 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_palhinha_copo.png",
-          "texto": "Põe uma palhinha num copo de água e olha de lado: parece partida no ponto em que entra na água. Numa piscina, o fundo parece mais perto do que realmente está. A palhinha não está partida e a piscina não é mais baixa. É a luz que muda de direção quando passa do ar para a água. Chama-se refração.",
-          "mascote_texto": "A lei de Snell-Descartes é o cálculo mais frequente desta missão. Aprende a desenhar sempre a normal."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "A palhinha não está partida — é a luz que muda de direção.",
+          "mascote_texto": "A lei de Snell-Descartes é o cálculo mais frequente desta missão. Aprende a desenhar sempre a normal.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Reflexão e refração",
           "imagem": "f11_reflexao_refracao.png",
           "texto_principal": "Quando a luz incide na superfície de separação entre dois meios, parte é refletida (volta para o meio de onde veio), parte é refratada (passa para o outro meio, mudando de direção) e parte pode ser absorvida. Os ângulos medem-se sempre em relação à normal, a reta perpendicular à superfície no ponto de incidência.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "normal-refracao", "label": "Normal", "explicacao": "Perpendicular à superfície no ponto de incidência. Todos os ângulos se medem a partir dela, nunca a partir da superfície." },
+            { "id": "normal-refracao", "label": "Normal", "explicacao": "Perpendicular à superfície no ponto de incidência. Todos os ângulos se medem a partir dela, nunca a partir da superfície.", "curiosidade_sem_titulo": true, "curiosidade": "**O carrinho de compras que passa do alcatrão para a relva**\n\nEmpurras um carrinho de compras em diagonal do alcatrão para a relva. A roda da frente que toca primeiro na relva abranda, enquanto a outra ainda está no alcatrão e continua depressa. Resultado: o carrinho roda e muda de direção, ficando mais \"de frente\" para a fronteira, isto é, mais perto da normal. Se passares da relva para o alcatrão, acontece o contrário. Se entrares perpendicularmente, as duas rodas abrandam ao mesmo tempo e não há desvio. A luz faz exatamente o mesmo ao passar de um meio rápido para um meio lento." },
             { "id": "leis-reflexao", "label": "Leis da reflexão", "explicacao": "O raio incidente, o raio refletido e a normal estão no mesmo plano. O ângulo de reflexão é igual ao ângulo de incidência." },
             { "id": "refracao-ponto", "label": "Refração", "explicacao": "A luz muda de velocidade ao mudar de meio e, se não incidir perpendicularmente, muda também de direção." },
             { "id": "meio-mais-refringente", "label": "Meio mais refringente", "explicacao": "Meio onde a luz se propaga mais devagar (maior índice de refração). Ao entrar nele, a luz aproxima-se da normal." },
@@ -137,22 +136,6 @@
             { "expressao": "n₁ sen α₁ = n₂ sen α₂", "significado": "Lei de Snell-Descartes. α₁: ângulo de incidência; α₂: ângulo de refração (ambos em relação à normal).", "unidades": "" },
             { "expressao": "Valores de referência", "significado": "ar 1,00; água 1,33; vidro cerca de 1,50; acrílico cerca de 1,49; diamante 2,42.", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a velocidade da luz num vidro com índice de refração 1,50?",
-          "opcoes": ["4,50 × 10⁸ m/s", "3,00 × 10⁸ m/s", "2,00 × 10⁸ m/s", "1,50 × 10⁸ m/s"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. v = c / n = 3,00 × 10⁸ / 1,50 = 2,00 × 10⁸ m/s.",
-          "mascote_feedback_errado": "De n = c / v: v = c / n = 3,00 × 10⁸ / 1,50 = 2,00 × 10⁸ m/s. Num meio material, a luz é sempre mais lenta do que no vazio."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um feixe de luz passa do ar para a água com um ângulo de incidência de 45°. Qual é o ângulo de refração? (n ar = 1,00; n água = 1,33; sen 45° = 0,707)",
-          "opcoes": ["45°", "70°", "32°", "0°"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. sen α₂ ≈ 0,532, logo α₂ ≈ 32°.",
-          "mascote_feedback_errado": "Aplica Snell-Descartes: 1,00 × sen 45° = 1,33 × sen α₂. sen α₂ = 0,707 / 1,33 = 0,532, logo α₂ ≈ 32°."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -190,10 +173,6 @@
           }
         },
         {
-          "tipo": "analogia",
-          "texto": "**O carrinho de compras que passa do alcatrão para a relva.** Empurras um carrinho de compras em diagonal do alcatrão para a relva. A roda da frente que toca primeiro na relva abranda, enquanto a outra ainda está no alcatrão e continua depressa. Resultado: o carrinho roda e muda de direção, ficando mais \"de frente\" para a fronteira, isto é, mais perto da normal. Se passares da relva para o alcatrão, acontece o contrário. Se entrares perpendicularmente, as duas rodas abrandam ao mesmo tempo e não há desvio. A luz faz exatamente o mesmo ao passar de um meio rápido para um meio lento."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Frequência constante, dispersão e reflexão especular/difusa",
           "texto": "**A frequência mantém-se, o comprimento de onda muda**\n\nTal como no som, quando a luz passa de um meio para outro a frequência não muda. Como a velocidade muda, o comprimento de onda muda na mesma proporção: num meio com n = 1,50, o comprimento de onda é 1,50 vezes menor do que no vazio.\n\n**Dispersão da luz: o arco-íris**\n\nO índice de refração de um material depende ligeiramente da frequência da luz: é um pouco maior para o violeta do que para o vermelho. Por isso, num prisma, cada cor refrata com um ângulo ligeiramente diferente e a luz branca separa-se nas várias cores. Nas gotas de chuva acontece o mesmo, e forma-se o arco-íris.\n\n**Reflexão especular e difusa**\n\nNum espelho ou em água parada, a superfície é lisa e os raios paralelos são refletidos todos na mesma direção (reflexão especular): vês uma imagem. Numa folha de papel, a superfície é irregular à escala microscópica e a luz é refletida em todas as direções (reflexão difusa): não vês a tua imagem, mas vês a folha de qualquer ângulo.\n\n**Reflexão, transmissão e absorção**\n\nQuando uma onda eletromagnética incide num material, a fração refletida, transmitida e absorvida depende do material e da frequência. O vidro transmite o visível mas absorve grande parte do ultravioleta. As paredes de uma casa bloqueiam a luz, mas deixam passar parte das ondas de rádio e do Wi-Fi."
@@ -201,6 +180,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é a velocidade da luz num vidro com índice de refração 1,50?",
+              "opcoes": [
+                "4,50 × 10⁸ m/s",
+                "3,00 × 10⁸ m/s",
+                "2,00 × 10⁸ m/s",
+                "1,50 × 10⁸ m/s"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. v = c / n = 3,00 × 10⁸ / 1,50 = 2,00 × 10⁸ m/s.",
+              "mascote_feedback_errado": "De n = c / v: v = c / n = 3,00 × 10⁸ / 1,50 = 2,00 × 10⁸ m/s. Num meio material, a luz é sempre mais lenta do que no vazio."
+            },
+            {
+              "pergunta": "Um feixe de luz passa do ar para a água com um ângulo de incidência de 45°. Qual é o ângulo de refração? (n ar = 1,00; n água = 1,33; sen 45° = 0,707)",
+              "opcoes": [
+                "45°",
+                "70°",
+                "32°",
+                "0°"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. sen α₂ ≈ 0,532, logo α₂ ≈ 32°.",
+              "mascote_feedback_errado": "Aplica Snell-Descartes: 1,00 × sen 45° = 1,33 × sen α₂. sen α₂ = 0,707 / 1,33 = 0,532, logo α₂ ≈ 32°."
+            },
             {
               "pergunta": "Um raio de luz incide num espelho plano fazendo um ângulo de 30° com a superfície do espelho. Qual é o ângulo de reflexão?",
               "opcoes": ["30°", "60°", "90°", "120°"],
@@ -233,13 +236,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_fibra_otica.png",
-          "texto": "A internet que chega a tua casa viaja, em grande parte, dentro de fios de vidro mais finos do que um cabelo. A luz entra numa ponta e sai na outra, dezenas de quilómetros depois, mesmo que o fio faça curvas. Como é que a luz não \"foge\" pelos lados? Graças a um fenómeno chamado reflexão total.",
-          "mascote_texto": "Nesta secção está a AL 3.1, onde vais medir ângulos com um laser. Cuidado sempre com os olhos."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "A luz viaja dezenas de quilómetros dentro de fios de vidro sem escapar.",
+          "mascote_texto": "Nesta secção está a AL 3.1, onde vais medir ângulos com um laser. Cuidado sempre com os olhos.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Reflexão total",
           "imagem": "f11_reflexao_total.png",
           "texto_principal": "Quando a luz passa de um meio mais refringente para um meio menos refringente, afasta-se da normal. Aumentando o ângulo de incidência, chega-se a um valor, o ângulo crítico, para o qual o ângulo de refração é 90°. Acima desse ângulo não há refração: toda a luz é refletida. É a reflexão total.",
@@ -256,7 +256,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Fibras óticas",
           "imagem": "f11_fibra_interior.png",
           "texto_principal": "Uma fibra ótica é um fio muito fino de vidro ou plástico que guia a luz por reflexões totais sucessivas.",
@@ -264,30 +265,10 @@
           "pontos": [
             { "id": "nucleo-fibra", "label": "Núcleo", "explicacao": "Parte central, com índice de refração maior. É por onde a luz viaja." },
             { "id": "revestimento", "label": "Revestimento", "explicacao": "Camada à volta do núcleo, com índice de refração menor. A diferença de índices é o que permite a reflexão total." },
-            { "id": "reflexoes-totais", "label": "Reflexões totais", "explicacao": "A luz atinge a fronteira núcleo-revestimento com ângulos maiores do que o crítico e fica \"presa\" no núcleo." },
+            { "id": "reflexoes-totais", "label": "Reflexões totais", "explicacao": "A luz atinge a fronteira núcleo-revestimento com ângulos maiores do que o crítico e fica \"presa\" no núcleo.", "curiosidade_sem_titulo": true, "curiosidade": "**A bola de bilhar na tabela**\n\nNuma mesa de bilhar, se atirares a bola quase de frente para a tabela, ela até pode saltar por cima se tiver força. Mas se a atirares muito \"rasante\", de raspão, ela bate na tabela e volta sempre para dentro da mesa. Numa fibra ótica, a luz bate na parede do núcleo sempre de raspão, com ângulos maiores do que o crítico, e é sempre refletida para dentro. Ziguezagueia de tabela em tabela até ao fim da fibra." },
             { "id": "aplicacoes-fibra", "label": "Aplicações", "explicacao": "Telecomunicações (internet, televisão, telefone), endoscopia (ver o interior do corpo), iluminação decorativa." },
             { "id": "vantagens-fibra", "label": "Vantagens", "explicacao": "Grande capacidade de transmissão de informação, poucas perdas a longas distâncias e imunidade a interferências elétricas." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é o ângulo crítico para a luz que passa do vidro (n = 1,50) para o ar (n = 1,00)?",
-          "opcoes": ["33,7°", "41,8°", "48,8°", "90°"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. sen α c = 1,00 / 1,50 = 0,667, logo α c ≈ 41,8°.",
-          "mascote_feedback_errado": "sen α c = n₂ / n₁ = 1,00 / 1,50 = 0,667. α c = arcsen(0,667) ≈ 41,8°."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Pode haver reflexão total quando a luz passa do ar para a água?",
-          "opcoes": ["Sim, se o ângulo de incidência for maior do que 48,8°.", "Sim, para qualquer ângulo.", "Não, porque a luz está a passar para um meio mais refringente.", "Não, porque a água absorve toda a luz."],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. A reflexão total só é possível do meio mais refringente para o menos refringente.",
-          "mascote_feedback_errado": "A reflexão total exige que a luz vá de um meio mais refringente para um menos refringente. Do ar para a água é o contrário, por isso nunca há reflexão total."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A bola de bilhar na tabela.** Numa mesa de bilhar, se atirares a bola quase de frente para a tabela, ela até pode saltar por cima se tiver força. Mas se a atirares muito \"rasante\", de raspão, ela bate na tabela e volta sempre para dentro da mesa. Numa fibra ótica, a luz bate na parede do núcleo sempre de raspão, com ângulos maiores do que o crítico, e é sempre refletida para dentro. Ziguezagueia de tabela em tabela até ao fim da fibra."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -327,6 +308,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Qual é o ângulo crítico para a luz que passa do vidro (n = 1,50) para o ar (n = 1,00)?",
+              "opcoes": [
+                "33,7°",
+                "41,8°",
+                "48,8°",
+                "90°"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. sen α c = 1,00 / 1,50 = 0,667, logo α c ≈ 41,8°.",
+              "mascote_feedback_errado": "sen α c = n₂ / n₁ = 1,00 / 1,50 = 0,667. α c = arcsen(0,667) ≈ 41,8°."
+            },
+            {
+              "pergunta": "Pode haver reflexão total quando a luz passa do ar para a água?",
+              "opcoes": [
+                "Sim, se o ângulo de incidência for maior do que 48,8°.",
+                "Sim, para qualquer ângulo.",
+                "Não, porque a luz está a passar para um meio mais refringente.",
+                "Não, porque a água absorve toda a luz."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. A reflexão total só é possível do meio mais refringente para o menos refringente.",
+              "mascote_feedback_errado": "A reflexão total exige que a luz vá de um meio mais refringente para um menos refringente. Do ar para a água é o contrário, por isso nunca há reflexão total."
+            },
+            {
               "pergunta": "Quais são as condições para ocorrer reflexão total?",
               "opcoes": ["A luz passar para um meio mais refringente e o ângulo de incidência ser pequeno.", "A luz passar para um meio menos refringente e o ângulo de incidência ser superior ao ângulo crítico.", "A luz incidir perpendicularmente à superfície.", "Qualquer situação em que haja reflexão."],
               "correta": 1,
@@ -358,13 +363,10 @@
       "tempo_estimado_min": 11,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_cd_arco_iris.png",
-          "texto": "Se olhares para a face de um CD ou DVD à luz, vês cores do arco-íris. Não há tinta nenhuma. As cores aparecem porque a superfície do disco tem milhares de pistas microscópicas, muito próximas, que fazem a luz \"abrir-se\" e separar-se em cores. Este fenómeno chama-se difração, e permite medir o comprimento de onda da luz com uma régua.",
-          "mascote_texto": "Esta secção termina com a AL 3.2. É uma atividade curta, mas com uma fórmula nova: n λ = d sen θ."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "As cores de um CD não são tinta — são luz a dividir-se.",
+          "mascote_texto": "Esta secção termina com a AL 3.2. É uma atividade curta, mas com uma fórmula nova: n λ = d sen θ.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Difração",
           "imagem": "f11_difracao_fendas.png",
           "texto_principal": "A difração é o fenómeno em que uma onda contorna obstáculos ou se espalha ao passar por uma abertura. É característica de todas as ondas e é tanto mais acentuada quanto mais as dimensões do obstáculo ou da abertura se aproximam do comprimento de onda.",
@@ -378,7 +380,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Rede de difração",
           "imagem": "f11_rede_difracao.png",
           "texto_principal": "Uma rede de difração é uma placa com um grande número de fendas paralelas e igualmente espaçadas. Quando é iluminada com luz de um só comprimento de onda (um laser), forma no alvo uma série de pontos brilhantes (máximos) em direções bem definidas.",
@@ -386,7 +389,7 @@
           "pontos": [
             { "id": "maximo-central", "label": "Máximo central (ordem 0)", "explicacao": "Em frente, sem desvio." },
             { "id": "maximos-ordem-n", "label": "Máximos de ordem n", "explicacao": "Aparecem simétricos, dos dois lados, com ângulos θ tanto maiores quanto maior for n." },
-            { "id": "distancia-fendas", "label": "Distância entre fendas (d)", "explicacao": "Se a rede tem N linhas por milímetro, d = 1 / N mm." },
+            { "id": "distancia-fendas", "label": "Distância entre fendas (d)", "explicacao": "Se a rede tem N linhas por milímetro, d = 1 / N mm.", "curiosidade_sem_titulo": true, "curiosidade": "**As ondas do mar a entrar num porto**\n\nQuando as ondas do mar chegam a um porto com uma entrada muito larga, entram quase direitas, como se a entrada não existisse. Mas se a entrada for estreita, com uma largura parecida com a distância entre duas ondas, as ondas \"abrem-se\" em leque depois de passar e chegam a todos os cantos do porto. É por isso que os engenheiros desenham os quebra-mares com cuidado. A luz faz o mesmo, só que é preciso uma \"entrada de porto\" com um milésimo de milímetro para se notar." },
             { "id": "relacao-rede", "label": "Relação", "explicacao": "Quanto maior o comprimento de onda, maior o desvio. Por isso, com luz branca, cada ordem forma um pequeno espetro, com o vermelho mais desviado e o violeta menos." },
             { "id": "angulo-alvo", "label": "Ângulo a partir do alvo", "explicacao": "tan θ = x / D." }
           ],
@@ -395,26 +398,6 @@
             { "expressao": "d = 1 / N", "significado": "N = número de linhas por unidade de comprimento.", "unidades": "" },
             { "expressao": "tan θ = x / D", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma rede tem 600 linhas por milímetro. Qual é a distância entre fendas, em metros?",
-          "opcoes": ["600 m", "1,67 × 10⁻³ m", "1,67 × 10⁻⁶ m", "6,00 × 10⁻⁴ m"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. d = 1 / 600 mm = 1,67 × 10⁻³ mm = 1,67 × 10⁻⁶ m.",
-          "mascote_feedback_errado": "d = 1 / N. Com 600 linhas por mm: d = 1/600 mm = 1,67 × 10⁻³ mm. Passando para metros: 1,67 × 10⁻⁶ m."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um laser vermelho (λ = 650 nm) ilumina essa rede (d = 1,67 × 10⁻⁶ m). Qual é o ângulo do máximo de primeira ordem? (1 nm = 10⁻⁹ m)",
-          "opcoes": ["3,9°", "23°", "39°", "67°"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. sen θ ≈ 0,39. θ ≈ 23°.",
-          "mascote_feedback_errado": "Usa n λ = d sen θ com n = 1: sen θ = 650 × 10⁻⁹ / 1,67 × 10⁻⁶ ≈ 0,39. θ = arcsen(0,39) ≈ 23°."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**As ondas do mar a entrar num porto.** Quando as ondas do mar chegam a um porto com uma entrada muito larga, entram quase direitas, como se a entrada não existisse. Mas se a entrada for estreita, com uma largura parecida com a distância entre duas ondas, as ondas \"abrem-se\" em leque depois de passar e chegam a todos os cantos do porto. É por isso que os engenheiros desenham os quebra-mares com cuidado. A luz faz o mesmo, só que é preciso uma \"entrada de porto\" com um milésimo de milímetro para se notar."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -458,6 +441,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Uma rede tem 600 linhas por milímetro. Qual é a distância entre fendas, em metros?",
+              "opcoes": [
+                "600 m",
+                "1,67 × 10⁻³ m",
+                "1,67 × 10⁻⁶ m",
+                "6,00 × 10⁻⁴ m"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. d = 1 / 600 mm = 1,67 × 10⁻³ mm = 1,67 × 10⁻⁶ m.",
+              "mascote_feedback_errado": "d = 1 / N. Com 600 linhas por mm: d = 1/600 mm = 1,67 × 10⁻³ mm. Passando para metros: 1,67 × 10⁻⁶ m."
+            },
+            {
+              "pergunta": "Um laser vermelho (λ = 650 nm) ilumina essa rede (d = 1,67 × 10⁻⁶ m). Qual é o ângulo do máximo de primeira ordem? (1 nm = 10⁻⁹ m)",
+              "opcoes": [
+                "3,9°",
+                "23°",
+                "39°",
+                "67°"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. sen θ ≈ 0,39. θ ≈ 23°.",
+              "mascote_feedback_errado": "Usa n λ = d sen θ com n = 1: sen θ = 650 × 10⁻⁹ / 1,67 × 10⁻⁶ ≈ 0,39. θ = arcsen(0,39) ≈ 23°."
+            },
+            {
               "pergunta": "A difração de uma onda é mais acentuada quando:",
               "opcoes": ["a abertura é muito maior do que o comprimento de onda.", "a abertura tem dimensões da ordem de grandeza do comprimento de onda.", "a onda é longitudinal.", "a onda se propaga no vazio."],
               "correta": 1,
@@ -489,13 +496,10 @@
       "tempo_estimado_min": 11,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_ambulancia_doppler.png",
-          "texto": "Uma ambulância passa por ti com a sirene ligada. Enquanto se aproxima, o som parece mais agudo; no instante em que passa, fica de repente mais grave. A sirene não mudou. O que mudou foi o movimento da ambulância em relação a ti. Este efeito, que ouves na rua, permitiu aos astrónomos descobrir que o Universo está a expandir-se.",
-          "mascote_texto": "Última secção de Física do 11.º ano. Não tem contas, mas tem as ideias mais impressionantes do ano."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "O som de uma sirene muda com o movimento — e isso revelou que o Universo se expande.",
+          "mascote_texto": "Última secção de Física do 11.º ano. Não tem contas, mas tem as ideias mais impressionantes do ano.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Efeito Doppler",
           "imagem": "f11_efeito_doppler.png",
           "texto_principal": "O efeito Doppler é a alteração da frequência detetada de uma onda devido ao movimento relativo entre a fonte e o observador. Acontece com todas as ondas, sonoras e eletromagnéticas.",
@@ -509,37 +513,18 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "O Big Bang",
           "imagem": "f11_expansao_universo.png",
           "texto_principal": "A teoria do Big Bang afirma que o Universo teve origem, há cerca de 13,8 mil milhões de anos, num estado extremamente quente e denso, e que desde então se está a expandir e a arrefecer. Duas das principais provas desta teoria vêm das ondas eletromagnéticas.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "desvio-vermelho-galaxias", "label": "Desvio para o vermelho das galáxias", "explicacao": "Em 1929, Edwin Hubble mostrou que a luz das galáxias distantes chega com desvio para o vermelho, e tanto maior quanto mais distantes estão. Isto indica que as galáxias se estão a afastar de nós e umas das outras: o Universo está em expansão." },
+            { "id": "desvio-vermelho-galaxias", "label": "Desvio para o vermelho das galáxias", "explicacao": "Em 1929, Edwin Hubble mostrou que a luz das galáxias distantes chega com desvio para o vermelho, e tanto maior quanto mais distantes estão. Isto indica que as galáxias se estão a afastar de nós e umas das outras: o Universo está em expansão.", "curiosidade_sem_titulo": true, "curiosidade": "**O pão de passas no forno**\n\nImagina uma massa de pão com passas a crescer no forno. À medida que a massa cresce, todas as passas se afastam umas das outras. Se fosses uma passa, verias todas as outras a afastar-se de ti, e as mais distantes a afastar-se mais depressa, porque há mais massa a crescer entre vocês. E isso aconteceria qualquer que fosse a passa em que estivesses: não há uma passa no centro. O Universo é a massa, as galáxias são as passas, e o desvio para o vermelho é a forma de medir o afastamento." },
             { "id": "radiacao-cosmica-fundo", "label": "Radiação cósmica de fundo", "explicacao": "Em 1965, Arno Penzias e Robert Wilson detetaram, por acaso, uma radiação de micro-ondas que chega de todas as direções do céu. É radiação emitida quando o Universo era jovem e muito quente, \"esticada\" pela expansão até às micro-ondas. Corresponde a uma temperatura de cerca de 2,7 K." },
             { "id": "expansao-espaco", "label": "Expansão do espaço", "explicacao": "Não são as galáxias a fugir de um ponto central: é o próprio espaço entre elas que se expande. Não há um centro do Universo." },
             { "id": "outra-prova", "label": "Outra prova", "explicacao": "As abundâncias de hidrogénio e hélio no Universo concordam com as previstas pela teoria para os primeiros minutos após o Big Bang." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma ambulância aproxima-se de ti com a sirene ligada. Em relação ao som emitido, o som que ouves tem:",
-          "opcoes": ["menor frequência.", "maior frequência.", "a mesma frequência, mas mais intensidade.", "maior comprimento de onda."],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. As frentes de onda chegam-te mais juntas: frequência maior. O som parece mais agudo.",
-          "mascote_feedback_errado": "Com a fonte a aproximar-se, o comprimento de onda detetado diminui e a frequência detetada aumenta: o som parece mais agudo."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "As riscas do espetro de uma galáxia distante aparecem deslocadas para comprimentos de onda maiores do que os medidos em laboratório. O que se conclui?",
-          "opcoes": ["A galáxia está a aproximar-se.", "A galáxia está a afastar-se.", "A galáxia é mais quente do que o Sol.", "A galáxia está parada."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Desvio para comprimentos de onda maiores é desvio para o vermelho: a galáxia afasta-se.",
-          "mascote_feedback_errado": "Comprimentos de onda maiores do que o normal significam desvio para o vermelho, e isso indica que a fonte se está a afastar."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**O pão de passas no forno.** Imagina uma massa de pão com passas a crescer no forno. À medida que a massa cresce, todas as passas se afastam umas das outras. Se fosses uma passa, verias todas as outras a afastar-se de ti, e as mais distantes a afastar-se mais depressa, porque há mais massa a crescer entre vocês. E isso aconteceria qualquer que fosse a passa em que estivesses: não há uma passa no centro. O Universo é a massa, as galáxias são as passas, e o desvio para o vermelho é a forma de medir o afastamento."
         },
         {
           "tipo": "aprofundar",
@@ -549,6 +534,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Uma ambulância aproxima-se de ti com a sirene ligada. Em relação ao som emitido, o som que ouves tem:",
+              "opcoes": [
+                "menor frequência.",
+                "maior frequência.",
+                "a mesma frequência, mas mais intensidade.",
+                "maior comprimento de onda."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. As frentes de onda chegam-te mais juntas: frequência maior. O som parece mais agudo.",
+              "mascote_feedback_errado": "Com a fonte a aproximar-se, o comprimento de onda detetado diminui e a frequência detetada aumenta: o som parece mais agudo."
+            },
+            {
+              "pergunta": "As riscas do espetro de uma galáxia distante aparecem deslocadas para comprimentos de onda maiores do que os medidos em laboratório. O que se conclui?",
+              "opcoes": [
+                "A galáxia está a aproximar-se.",
+                "A galáxia está a afastar-se.",
+                "A galáxia é mais quente do que o Sol.",
+                "A galáxia está parada."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Desvio para comprimentos de onda maiores é desvio para o vermelho: a galáxia afasta-se.",
+              "mascote_feedback_errado": "Comprimentos de onda maiores do que o normal significam desvio para o vermelho, e isso indica que a fonte se está a afastar."
+            },
             {
               "pergunta": "O efeito Doppler consiste:",
               "opcoes": ["na alteração da frequência emitida por uma fonte quando ela se move.", "na alteração da frequência detetada devido ao movimento relativo entre a fonte e o observador.", "no aumento da intensidade do som com a proximidade da fonte.", "na mudança de direção de uma onda ao mudar de meio."],

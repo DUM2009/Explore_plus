@@ -1,0 +1,299 @@
+{
+  "id": "fis10-m1-teste-1",
+  "titulo": "Teste 1 — Energia e movimentos",
+  "missao": "fis10-m1",
+  "plano": "gratuito",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 30,
+  "seccoes": {
+    "1.1": "Energia e sistemas",
+    "1.2": "Trabalho de uma força",
+    "1.3": "Teorema da energia cinética e trabalho do peso",
+    "1.4": "Conservação da energia mecânica e forças não conservativas",
+    "1.5": "Potência, rendimento e atividades laboratoriais",
+    "AL 1.1": "Atividade laboratorial: variação da energia cinética e distância percorrida",
+    "AL 1.2": "Atividade laboratorial: queda e ressalto de uma bola"
+  },
+  "perguntas": [
+    {
+      "numero": 1,
+      "nivel": "facil",
+      "seccao": "1.1",
+      "enunciado": "Qual é a unidade de energia no Sistema Internacional?",
+      "opcoes": [
+        "watt (W)",
+        "joule (J)",
+        "newton (N)",
+        "quilograma (kg)"
+      ],
+      "correta": 1,
+      "explicacao": "A unidade SI de energia é o joule. O watt mede potência e o newton mede força."
+    },
+    {
+      "numero": 2,
+      "nivel": "facil",
+      "seccao": "1.1",
+      "enunciado": "A energia interna de um sistema está associada:",
+      "opcoes": [
+        "apenas à velocidade do sistema como um todo",
+        "apenas à altura a que o sistema se encontra",
+        "à força exercida pela vizinhança",
+        "à energia cinética e potencial das partículas (átomos e moléculas) que o constituem"
+      ],
+      "correta": 3,
+      "explicacao": "A energia interna é a soma das energias cinéticas e potenciais das partículas do sistema e manifesta-se, por exemplo, na temperatura."
+    },
+    {
+      "numero": 3,
+      "nivel": "facil",
+      "seccao": "1.1",
+      "enunciado": "Quando um carro trava até parar, a energia cinética:",
+      "opcoes": [
+        "transforma-se em energia interna dos travões e da vizinhança",
+        "desaparece",
+        "transforma-se em energia potencial gravítica",
+        "passa a ser energia cinética do solo"
+      ],
+      "correta": 0,
+      "explicacao": "A energia conserva-se. A energia cinética é dissipada e acaba como energia interna dos travões, dos pneus e do ar, que aquecem."
+    },
+    {
+      "numero": 4,
+      "nivel": "facil",
+      "seccao": "1.2",
+      "enunciado": "Um corpo de massa 2,0 kg move-se com velocidade de 3,0 m/s. Qual é a sua energia cinética?",
+      "opcoes": [
+        "3,0 J",
+        "18 J",
+        "9,0 J",
+        "6,0 J"
+      ],
+      "correta": 2,
+      "explicacao": "Ec = ½ m v² = ½ × 2,0 × 3,0² = 9,0 J."
+    },
+    {
+      "numero": 5,
+      "nivel": "facil",
+      "seccao": "1.2",
+      "enunciado": "Uma força de 10 N desloca um corpo 3,0 m, na direção e no sentido da força. Qual é o trabalho realizado pela força?",
+      "opcoes": [
+        "3,3 J",
+        "30 J",
+        "13 J",
+        "0 J"
+      ],
+      "correta": 1,
+      "explicacao": "W = F d cos α = 10 × 3,0 × cos 0° = 30 J."
+    },
+    {
+      "numero": 6,
+      "nivel": "facil",
+      "seccao": "1.2",
+      "enunciado": "Um bloco desliza numa mesa horizontal. Qual é o trabalho realizado pela força normal que a mesa exerce sobre o bloco?",
+      "opcoes": [
+        "Positivo, porque a força normal sustenta o bloco",
+        "Negativo, porque a força normal se opõe ao peso",
+        "Igual ao trabalho do peso",
+        "Nulo, porque a força normal é perpendicular ao deslocamento"
+      ],
+      "correta": 3,
+      "explicacao": "Com α = 90°, cos 90° = 0, logo W = 0. Uma força perpendicular ao deslocamento não realiza trabalho."
+    },
+    {
+      "numero": 7,
+      "nivel": "facil",
+      "seccao": "1.3",
+      "enunciado": "Qual é a energia potencial gravítica de um corpo de 2,0 kg que está a 5,0 m acima do nível de referência? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "98 J",
+        "10 J",
+        "49 J",
+        "196 J"
+      ],
+      "correta": 0,
+      "explicacao": "Epg = m g h = 2,0 × 9,8 × 5,0 = 98 J."
+    },
+    {
+      "numero": 8,
+      "nivel": "facil",
+      "seccao": "1.4",
+      "enunciado": "Num sistema em que só realizam trabalho forças conservativas, a energia mecânica:",
+      "opcoes": [
+        "aumenta sempre",
+        "diminui sempre",
+        "mantém-se constante",
+        "é sempre nula"
+      ],
+      "correta": 2,
+      "explicacao": "Sem forças dissipativas a realizar trabalho, a energia mecânica conserva-se: o que a energia cinética perde, a energia potencial ganha, e vice-versa."
+    },
+    {
+      "numero": 9,
+      "nivel": "facil",
+      "seccao": "1.5",
+      "enunciado": "Um aparelho transfere 600 J de energia em 20 s. Qual é a potência desenvolvida?",
+      "opcoes": [
+        "12 000 W",
+        "30 W",
+        "620 W",
+        "0,033 W"
+      ],
+      "correta": 1,
+      "explicacao": "P = E / Δt = 600 / 20 = 30 W."
+    },
+    {
+      "numero": 10,
+      "nivel": "facil",
+      "seccao": "1.5",
+      "enunciado": "Um motor recebe 200 J de energia e realiza 150 J de trabalho útil. Qual é o rendimento?",
+      "opcoes": [
+        "25 %",
+        "133 %",
+        "50 %",
+        "75 %"
+      ],
+      "correta": 3,
+      "explicacao": "η = E útil / E fornecida × 100 = 150 / 200 × 100 = 75 %."
+    },
+    {
+      "numero": 11,
+      "nivel": "intermedia",
+      "seccao": "1.2",
+      "enunciado": "Se a velocidade de um carro duplicar, a sua energia cinética:",
+      "opcoes": [
+        "quadruplica",
+        "duplica",
+        "fica metade",
+        "mantém-se"
+      ],
+      "correta": 0,
+      "explicacao": "Ec = ½ m v². Se v passa a 2v, Ec passa a ½ m (2v)² = 4 × (½ m v²): quadruplica."
+    },
+    {
+      "numero": 12,
+      "nivel": "intermedia",
+      "seccao": "1.2",
+      "enunciado": "Uma força de 20 N, que faz 60° com a horizontal, desloca um corpo 4,0 m na horizontal. Qual é o trabalho realizado por essa força? (cos 60° = 0,50)",
+      "opcoes": [
+        "20 J",
+        "69 J",
+        "40 J",
+        "80 J"
+      ],
+      "correta": 2,
+      "explicacao": "W = F d cos α = 20 × 4,0 × 0,50 = 40 J. Só a componente paralela ao deslocamento realiza trabalho."
+    },
+    {
+      "numero": 13,
+      "nivel": "intermedia",
+      "seccao": "1.3",
+      "enunciado": "Um corpo de 2,0 kg desce 3,0 m na vertical. Qual é o trabalho realizado pelo peso? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "−59 J",
+        "59 J",
+        "6,0 J",
+        "0 J"
+      ],
+      "correta": 1,
+      "explicacao": "Na descida, o peso tem o sentido do deslocamento: W = m g h = 2,0 × 9,8 × 3,0 = 58,8 J ≈ 59 J, positivo."
+    },
+    {
+      "numero": 14,
+      "nivel": "intermedia",
+      "seccao": "1.3",
+      "enunciado": "Um corpo de 4,0 kg parte do repouso e atinge a velocidade de 6,0 m/s. Qual é o trabalho realizado pela resultante das forças?",
+      "opcoes": [
+        "24 J",
+        "144 J",
+        "12 J",
+        "72 J"
+      ],
+      "correta": 3,
+      "explicacao": "Pelo teorema da energia cinética, W(FR) = ΔEc = ½ × 4,0 × 6,0² − 0 = 72 J."
+    },
+    {
+      "numero": 15,
+      "nivel": "intermedia",
+      "seccao": "1.4",
+      "enunciado": "Uma bola de 0,50 kg é largada do repouso de 2,0 m de altura. Desprezando a resistência do ar, com que velocidade chega ao solo? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "6,3 m/s",
+        "4,4 m/s",
+        "9,8 m/s",
+        "20 m/s"
+      ],
+      "correta": 0,
+      "explicacao": "Em conserva-se: m g h = ½ m v². Logo v = √(2 g h) = √(2 × 9,8 × 2,0) ≈ 6,3 m/s. A massa não influencia."
+    },
+    {
+      "numero": 16,
+      "nivel": "dificil",
+      "seccao": "1.4",
+      "enunciado": "Um esquiador de 70 kg parte do repouso a 15 m de altura e chega à base com 11 m/s. Qual é a energia dissipada? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "4,2 × 10³ J",
+        "1,0 × 10⁴ J",
+        "6,1 × 10³ J",
+        "1,5 × 10⁴ J"
+      ],
+      "correta": 2,
+      "explicacao": "Em,i = 70 × 9,8 × 15 = 10 290 J. Em,f = ½ × 70 × 11² = 4235 J. Energia dissipada = 10 290 − 4235 = 6055 J ≈ 6,1 × 10³ J."
+    },
+    {
+      "numero": 17,
+      "nivel": "dificil",
+      "seccao": "1.3",
+      "enunciado": "Um caixote de 10 kg é puxado numa superfície horizontal por uma força de 50 N, que faz 30° com a horizontal, ao longo de 5,0 m, com velocidade constante. Qual é o trabalho realizado pela força de atrito? (cos 30° = 0,87)",
+      "opcoes": [
+        "+2,2 × 10² J",
+        "−2,2 × 10² J",
+        "−2,5 × 10² J",
+        "0 J"
+      ],
+      "correta": 1,
+      "explicacao": "A velocidade é constante, logo ΔEc = 0 e W(FR) = 0. O peso e a normal não realizam trabalho. Então W(Fa) = −W(F) = −50 × 5,0 × 0,87 ≈ −2,2 × 10² J."
+    },
+    {
+      "numero": 18,
+      "nivel": "dificil",
+      "seccao": "AL 1.1",
+      "enunciado": "Na AL 1.1, um carrinho de 0,40 kg parte do repouso. O gráfico de ΔEc em função da distância percorrida tem declive 0,36 J/m. Qual é a velocidade do carrinho depois de percorrer 1,5 m?",
+      "opcoes": [
+        "0,54 m/s",
+        "0,36 m/s",
+        "2,7 m/s",
+        "1,6 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "ΔEc = declive × d = 0,36 × 1,5 = 0,54 J. Como parte do repouso, ½ × 0,40 × v² = 0,54, logo v² = 2,7 e v ≈ 1,6 m/s."
+    },
+    {
+      "numero": 19,
+      "nivel": "dificil",
+      "seccao": "1.5",
+      "enunciado": "Um guindaste eleva uma carga de 200 kg a 15 m de altura, com velocidade constante, em 30 s. A potência consumida pelo guindaste é 2,0 kW. Qual é o seu rendimento? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "49 %",
+        "25 %",
+        "98 %",
+        "65 %"
+      ],
+      "correta": 0,
+      "explicacao": "E útil = m g h = 200 × 9,8 × 15 = 29 400 J. P útil = 29 400 / 30 = 980 W. η = 980 / 2000 × 100 = 49 %."
+    },
+    {
+      "numero": 20,
+      "nivel": "dificil",
+      "seccao": "AL 1.2",
+      "enunciado": "Numa experiência como a da AL 1.2, uma bola é largada de 2,0 m e ressalta até 1,3 m. Que percentagem da energia mecânica é dissipada na colisão com o solo?",
+      "opcoes": [
+        "65 %",
+        "0,65 %",
+        "35 %",
+        "1,3 %"
+      ],
+      "correta": 2,
+      "explicacao": "No ponto mais alto a bola está parada e Em = m g h, logo h ressalto / h queda = 1,3 / 2,0 = 0,65: conserva 65 %. Dissipa 100 − 65 = 35 %."
+    }
+  ]
+}

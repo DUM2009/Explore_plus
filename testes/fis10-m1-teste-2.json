@@ -1,0 +1,299 @@
+{
+  "id": "fis10-m1-teste-2",
+  "titulo": "Teste 2 — Energia e movimentos",
+  "missao": "fis10-m1",
+  "plano": "pro",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 30,
+  "seccoes": {
+    "1.1": "Energia e sistemas",
+    "1.2": "Trabalho de uma força",
+    "1.3": "Teorema da energia cinética e trabalho do peso",
+    "1.4": "Conservação da energia mecânica e forças não conservativas",
+    "1.5": "Potência, rendimento e atividades laboratoriais",
+    "AL 1.1": "Atividade laboratorial: variação da energia cinética e distância percorrida",
+    "AL 1.2": "Atividade laboratorial: queda e ressalto de uma bola"
+  },
+  "perguntas": [
+    {
+      "numero": 1,
+      "nivel": "facil",
+      "seccao": "1.1",
+      "enunciado": "Qual das seguintes expressões representa a energia mecânica de um corpo?",
+      "opcoes": [
+        "Em = Ec − Epg",
+        "Em = Ec × Epg",
+        "Em = Ec + P",
+        "Em = Ec + Epg"
+      ],
+      "correta": 3,
+      "explicacao": "A energia mecânica é a soma da energia cinética com a energia potencial (gravítica, no caso mais comum no 10.º ano)."
+    },
+    {
+      "numero": 2,
+      "nivel": "facil",
+      "seccao": "1.3",
+      "enunciado": "De que depende a energia potencial gravítica de um corpo, perto da superfície da Terra?",
+      "opcoes": [
+        "Da massa do corpo, de g e da altura em relação ao nível de referência",
+        "Apenas da massa do corpo",
+        "Da velocidade do corpo",
+        "Do caminho percorrido pelo corpo até àquela altura"
+      ],
+      "correta": 0,
+      "explicacao": "Epg = m g h: depende da massa, de g e da altura em relação ao nível de referência. Não depende do caminho percorrido nem da velocidade."
+    },
+    {
+      "numero": 3,
+      "nivel": "facil",
+      "seccao": "1.2",
+      "enunciado": "Um corpo move-se na horizontal. Qual é o trabalho realizado pelo peso do corpo nesse deslocamento?",
+      "opcoes": [
+        "Positivo, porque o peso aponta para baixo",
+        "Negativo, porque o peso se opõe ao movimento",
+        "Nulo, porque o peso é perpendicular ao deslocamento",
+        "Igual a m g d"
+      ],
+      "correta": 2,
+      "explicacao": "O peso é vertical e o deslocamento é horizontal: α = 90° e cos 90° = 0. Logo W(P) = 0."
+    },
+    {
+      "numero": 4,
+      "nivel": "facil",
+      "seccao": "1.2",
+      "enunciado": "Qual é o sinal do trabalho realizado pela força de atrito cinético sobre um corpo que desliza?",
+      "opcoes": [
+        "Positivo, porque o atrito ajuda o corpo a parar",
+        "Negativo, porque a força de atrito tem sentido oposto ao deslocamento",
+        "Nulo, porque o atrito é perpendicular ao deslocamento",
+        "Depende da massa do corpo"
+      ],
+      "correta": 1,
+      "explicacao": "O atrito cinético tem sentido oposto ao deslocamento (α = 180°, cos 180° = −1), por isso o seu trabalho é negativo (trabalho resistente)."
+    },
+    {
+      "numero": 5,
+      "nivel": "facil",
+      "seccao": "1.5",
+      "enunciado": "Uma lâmpada tem potência de 60 W. Que energia transfere em 10 s?",
+      "opcoes": [
+        "6,0 J",
+        "70 J",
+        "0,17 J",
+        "600 J"
+      ],
+      "correta": 3,
+      "explicacao": "E = P × Δt = 60 × 10 = 600 J."
+    },
+    {
+      "numero": 6,
+      "nivel": "facil",
+      "seccao": "1.2",
+      "enunciado": "Qual é a energia cinética de um corpo de 0,50 kg que se move com velocidade de 4,0 m/s?",
+      "opcoes": [
+        "4,0 J",
+        "1,0 J",
+        "8,0 J",
+        "2,0 J"
+      ],
+      "correta": 0,
+      "explicacao": "Ec = ½ m v² = ½ × 0,50 × 4,0² = 4,0 J."
+    },
+    {
+      "numero": 7,
+      "nivel": "facil",
+      "seccao": "1.3",
+      "enunciado": "Se a altura de um corpo duplicar (com a mesma massa e o mesmo nível de referência), a energia potencial gravítica:",
+      "opcoes": [
+        "quadruplica",
+        "fica metade",
+        "duplica",
+        "mantém-se"
+      ],
+      "correta": 2,
+      "explicacao": "Epg = m g h é diretamente proporcional a h. Se h duplica, Epg duplica."
+    },
+    {
+      "numero": 8,
+      "nivel": "facil",
+      "seccao": "1.2",
+      "enunciado": "Sobre um corpo atuam duas forças que realizam trabalhos de 25 J e −10 J. Qual é o trabalho da força resultante?",
+      "opcoes": [
+        "35 J",
+        "15 J",
+        "−15 J",
+        "250 J"
+      ],
+      "correta": 1,
+      "explicacao": "O trabalho da resultante é a soma dos trabalhos de todas as forças: 25 + (−10) = 15 J."
+    },
+    {
+      "numero": 9,
+      "nivel": "facil",
+      "seccao": "AL 1.1",
+      "enunciado": "Na AL 1.1, porque é que se usa uma pala estreita no carrinho?",
+      "opcoes": [
+        "Para reduzir o atrito com a calha",
+        "Para aumentar a massa do carrinho",
+        "Para que o carrinho acelere mais",
+        "Porque assim a velocidade média na passagem pela célula é praticamente a velocidade instantânea"
+      ],
+      "correta": 3,
+      "explicacao": "Com uma pala estreita, o tempo de passagem é muito curto, e v = Δx / Δt aproxima-se da velocidade instantânea na posição da célula."
+    },
+    {
+      "numero": 10,
+      "nivel": "facil",
+      "seccao": "AL 1.2",
+      "enunciado": "Na AL 1.2, a bola ressalta sempre a uma altura inferior à da queda. Qual é a principal razão?",
+      "opcoes": [
+        "Na colisão com o solo, parte da energia mecânica é dissipada e aumenta a energia interna da bola, do solo e do ar",
+        "A bola perde massa em cada ressalto",
+        "A energia mecânica desaparece no ressalto",
+        "O peso da bola aumenta durante o ressalto"
+      ],
+      "correta": 0,
+      "explicacao": "A energia não desaparece: a maior parte da energia mecânica dissipada na colisão transforma-se em energia interna da bola, do solo e do ar, e em som."
+    },
+    {
+      "numero": 11,
+      "nivel": "intermedia",
+      "seccao": "1.3",
+      "enunciado": "Um corpo de 3,0 kg sobe de uma altura de 2,0 m para 6,0 m. Qual é o trabalho realizado pelo peso nesse deslocamento? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "+1,2 × 10² J",
+        "−59 J",
+        "−1,2 × 10² J",
+        "−1,8 × 10² J"
+      ],
+      "correta": 2,
+      "explicacao": "Na subida, o peso realiza trabalho negativo: W(P) = −m g Δh = −3,0 × 9,8 × (6,0 − 2,0) = −117,6 J ≈ −1,2 × 10² J."
+    },
+    {
+      "numero": 12,
+      "nivel": "intermedia",
+      "seccao": "1.2",
+      "enunciado": "Uma força de 15 N atua em sentido oposto ao deslocamento de 2,0 m de um corpo. Qual é o trabalho realizado por essa força? (cos 180° = −1)",
+      "opcoes": [
+        "+30 J",
+        "−30 J",
+        "−7,5 J",
+        "0 J"
+      ],
+      "correta": 1,
+      "explicacao": "W = F d cos 180° = 15 × 2,0 × (−1) = −30 J."
+    },
+    {
+      "numero": 13,
+      "nivel": "intermedia",
+      "seccao": "1.4",
+      "enunciado": "Uma bola é lançada na vertical, para cima, com 8,0 m/s. Desprezando a resistência do ar, que altura máxima atinge acima do ponto de lançamento? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "6,5 m",
+        "0,82 m",
+        "8,0 m",
+        "3,3 m"
+      ],
+      "correta": 3,
+      "explicacao": "Em conserva-se. Em cima, Ec = 0: ½ m v² = m g h, logo h = v² / (2 g) = 64 / 19,6 ≈ 3,3 m."
+    },
+    {
+      "numero": 14,
+      "nivel": "intermedia",
+      "seccao": "1.3",
+      "enunciado": "Um carro de 800 kg aumenta a velocidade de 10 m/s para 20 m/s. Qual é o trabalho realizado pela resultante das forças?",
+      "opcoes": [
+        "1,2 × 10⁵ J",
+        "4,0 × 10⁴ J",
+        "1,6 × 10⁵ J",
+        "8,0 × 10³ J"
+      ],
+      "correta": 0,
+      "explicacao": "W(FR) = ΔEc = ½ × 800 × (20² − 10²) = 400 × 300 = 1,2 × 10⁵ J. Atenção: ΔEc não é ½ m (Δv)²."
+    },
+    {
+      "numero": 15,
+      "nivel": "intermedia",
+      "seccao": "1.4",
+      "enunciado": "Uma esfera de 0,20 kg parte do repouso do topo de uma rampa sem atrito, a 0,80 m de altura. Qual é a velocidade com que chega à base? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "2,0 m/s",
+        "7,8 m/s",
+        "4,0 m/s",
+        "16 m/s"
+      ],
+      "correta": 2,
+      "explicacao": "m g h = ½ m v² → v = √(2 g h) = √(2 × 9,8 × 0,80) ≈ 4,0 m/s."
+    },
+    {
+      "numero": 16,
+      "nivel": "dificil",
+      "seccao": "1.3",
+      "enunciado": "Um bloco de 2,0 kg é lançado numa superfície horizontal com 6,0 m/s e para ao fim de 4,0 m. Qual é a intensidade da força de atrito, suposta constante?",
+      "opcoes": [
+        "4,5 N",
+        "9,0 N",
+        "18 N",
+        "36 N"
+      ],
+      "correta": 1,
+      "explicacao": "ΔEc = 0 − ½ × 2,0 × 6,0² = −36 J. Só o atrito realiza trabalho: −Fa × 4,0 = −36, logo Fa = 9,0 N."
+    },
+    {
+      "numero": 17,
+      "nivel": "dificil",
+      "seccao": "1.4",
+      "enunciado": "Um corpo de 1,5 kg parte do repouso do topo de uma rampa, a 1,2 m de altura, e chega à base com 3,5 m/s. Qual é a energia dissipada? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "9,2 J",
+        "18 J",
+        "27 J",
+        "8,5 J"
+      ],
+      "correta": 3,
+      "explicacao": "Em,i = 1,5 × 9,8 × 1,2 = 17,64 J. Em,f = ½ × 1,5 × 3,5² = 9,19 J. Energia dissipada = 17,64 − 9,19 ≈ 8,5 J."
+    },
+    {
+      "numero": 18,
+      "nivel": "dificil",
+      "seccao": "AL 1.2",
+      "enunciado": "Uma bola de 0,40 kg é largada de 1,8 m e ressalta até 1,1 m. Que energia mecânica é dissipada na colisão com o solo? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "2,7 J",
+        "7,1 J",
+        "4,3 J",
+        "0,70 J"
+      ],
+      "correta": 0,
+      "explicacao": "No ponto mais alto a bola está parada: Em = m g h. Energia dissipada = m g (1,8 − 1,1) = 0,40 × 9,8 × 0,70 ≈ 2,7 J."
+    },
+    {
+      "numero": 19,
+      "nivel": "dificil",
+      "seccao": "1.4",
+      "enunciado": "Um carro de montanha-russa, de 400 kg, passa no ponto A, a 20 m de altura, com velocidade de 6,0 m/s. Desprezando o atrito, qual é a velocidade no ponto B, a 8,0 m de altura? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "15 m/s",
+        "12 m/s",
+        "16 m/s",
+        "22 m/s"
+      ],
+      "correta": 2,
+      "explicacao": "Em,A = 400 × 9,8 × 20 + ½ × 400 × 6,0² = 78 400 + 7200 = 85 600 J. Em B, Ec = 85 600 − 400 × 9,8 × 8,0 = 54 240 J. v = √(2 × 54 240 / 400) ≈ 16 m/s. (15 m/s resulta de esquecer a velocidade inicial.)"
+    },
+    {
+      "numero": 20,
+      "nivel": "dificil",
+      "seccao": "1.5",
+      "enunciado": "Um motor elétrico eleva uma carga de 120 kg a 6,0 m de altura, com velocidade constante, em 8,0 s. O rendimento do motor é 70 %. Qual é a potência elétrica que o motor recebe? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "8,8 × 10² W",
+        "1,3 × 10³ W",
+        "6,2 × 10² W",
+        "1,8 × 10³ W"
+      ],
+      "correta": 1,
+      "explicacao": "E útil = 120 × 9,8 × 6,0 = 7056 J. P útil = 7056 / 8,0 = 882 W. Como η = P útil / P fornecida, P fornecida = 882 / 0,70 = 1260 W ≈ 1,3 × 10³ W."
+    }
+  ]
+}

@@ -14,19 +14,16 @@
       "tempo_estimado_min": 10,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_semaforo_arranque.png",
-          "texto": "O semáforo fica verde. Um carro arranca, ganha velocidade, mantém-se a 50 km/h durante uns quarteirões e depois trava para parar no semáforo seguinte. Se desenhares a velocidade desse carro em função do tempo, obténs um gráfico que conta toda a história da viagem: quando acelerou, quanto tempo andou a velocidade constante, quando travou e até quanto andou.",
-          "mascote_texto": "O gráfico velocidade-tempo é o mais útil da Mecânica: dá a aceleração pelo declive e o deslocamento pela área. Fica com isto de cor."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "O gráfico velocidade-tempo conta toda a história de uma viagem.",
+          "mascote_texto": "O gráfico velocidade-tempo é o mais útil da Mecânica: dá a aceleração pelo declive e o deslocamento pela área. Fica com isto de cor.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "O gráfico velocidade-tempo",
           "imagem": "f11_grafico_vt.png",
           "texto_principal": "No gráfico da componente escalar da velocidade em função do tempo (v-t), o declive é a aceleração e a área entre o gráfico e o eixo dos tempos é a componente escalar do deslocamento.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "troco-crescente", "label": "Troço crescente (0 a 10 s)", "explicacao": "Declive positivo: aceleração positiva. Como a velocidade também é positiva e está a aumentar em módulo, o movimento é acelerado." },
+            { "id": "troco-crescente", "label": "Troço crescente (0 a 10 s)", "explicacao": "Declive positivo: aceleração positiva. Como a velocidade também é positiva e está a aumentar em módulo, o movimento é acelerado.", "curiosidade_sem_titulo": true, "curiosidade": "**O extrato bancário**\n\nPensa no gráfico v-t como o gráfico do teu ordenado ao longo dos meses. O declive diz-te se estás a ser aumentado ou se o ordenado está a descer: é a aceleração. A área por baixo do gráfico é o total que recebeste ao longo do tempo: é o deslocamento. Para saber quanto ganhaste no total não chega olhar para o ordenado do último mês: tens de somar todos os meses, isto é, calcular a área." },
             { "id": "troco-horizontal", "label": "Troço horizontal (10 a 30 s)", "explicacao": "Declive nulo: aceleração nula. A velocidade é constante: movimento retilíneo uniforme." },
             { "id": "troco-decrescente", "label": "Troço decrescente (30 a 35 s)", "explicacao": "Declive negativo: aceleração com sentido oposto ao da velocidade. A rapidez diminui: movimento retardado." },
             { "id": "area-grafico", "label": "Área sob o gráfico", "explicacao": "Soma das áreas dos três troços = deslocamento total. Se o gráfico estiver abaixo do eixo, a área conta como deslocamento negativo." },
@@ -37,22 +34,6 @@
             { "expressao": "Δx = área sob o gráfico v-t", "significado": "", "unidades": "" },
             { "expressao": "MRU: v constante, a = 0, F R = 0; x = x₀ + v t", "significado": "Movimento retilíneo uniforme.", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "A velocidade de um corpo passa de 10 m/s para 30 m/s em 4,0 s, com aceleração constante. Qual é a aceleração?",
-          "opcoes": ["2,5 m s⁻²", "5,0 m s⁻²", "7,5 m s⁻²", "10 m s⁻²"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. a = Δv / Δt = (30 − 10) / 4,0 = 5,0 m s⁻².",
-          "mascote_feedback_errado": "A aceleração usa a variação de velocidade: a = (30 − 10) / 4,0 = 5,0 m s⁻²."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um corpo parte do repouso e, com aceleração constante, atinge 20 m/s ao fim de 10 s. Qual é o deslocamento nesse intervalo?",
-          "opcoes": ["20 m", "100 m", "200 m", "400 m"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. O gráfico v-t é um triângulo: área = ½ × 10 × 20 = 100 m.",
-          "mascote_feedback_errado": "O deslocamento é a área sob o gráfico v-t. Aqui é um triângulo com base 10 s e altura 20 m/s: área = ½ × 10 × 20 = 100 m."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -86,10 +67,6 @@
           }
         },
         {
-          "tipo": "analogia",
-          "texto": "**O extrato bancário.** Pensa no gráfico v-t como o gráfico do teu ordenado ao longo dos meses. O declive diz-te se estás a ser aumentado ou se o ordenado está a descer: é a aceleração. A área por baixo do gráfico é o total que recebeste ao longo do tempo: é o deslocamento. Para saber quanto ganhaste no total não chega olhar para o ordenado do último mês: tens de somar todos os meses, isto é, calcular a área."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Aceleração negativa, x-t a partir de v-t, e o MRU",
           "texto": "**Erro comum: aceleração negativa não quer dizer travar**\n\nSe o eixo apontar para a direita e um carro andar para a esquerda (v < 0) a ganhar rapidez, a aceleração é negativa e o movimento é acelerado. Travar é quando a velocidade e a aceleração têm sinais opostos.\n\n**Do gráfico v-t para o gráfico x-t**\n\nMRU (v constante): o gráfico x-t é uma reta. Movimento uniformemente variado (a constante, não nula): o gráfico v-t é uma reta inclinada e o gráfico x-t é uma parábola.\n\n**Movimento retilíneo uniforme e primeira lei**\n\nNo MRU a velocidade é constante e a aceleração é nula. Pela segunda lei, a resultante das forças também é nula. Um carro em autoestrada a 120 km/h constantes tem forças a atuar (motor, atrito, resistência do ar, peso, normal), mas equilibram-se."
@@ -97,6 +74,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "A velocidade de um corpo passa de 10 m/s para 30 m/s em 4,0 s, com aceleração constante. Qual é a aceleração?",
+              "opcoes": [
+                "2,5 m s⁻²",
+                "5,0 m s⁻²",
+                "7,5 m s⁻²",
+                "10 m s⁻²"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. a = Δv / Δt = (30 − 10) / 4,0 = 5,0 m s⁻².",
+              "mascote_feedback_errado": "A aceleração usa a variação de velocidade: a = (30 − 10) / 4,0 = 5,0 m s⁻²."
+            },
+            {
+              "pergunta": "Um corpo parte do repouso e, com aceleração constante, atinge 20 m/s ao fim de 10 s. Qual é o deslocamento nesse intervalo?",
+              "opcoes": [
+                "20 m",
+                "100 m",
+                "200 m",
+                "400 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. O gráfico v-t é um triângulo: área = ½ × 10 × 20 = 100 m.",
+              "mascote_feedback_errado": "O deslocamento é a área sob o gráfico v-t. Aqui é um triângulo com base 10 s e altura 20 m/s: área = ½ × 10 × 20 = 100 m."
+            },
             {
               "pergunta": "Num gráfico v-t, um troço é uma reta horizontal acima do eixo dos tempos. Nesse troço, o corpo:",
               "opcoes": ["está em repouso.", "move-se com velocidade constante no sentido positivo.", "tem aceleração constante e não nula.", "está a travar."],
@@ -129,13 +130,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_pena_martelo_lua.png",
-          "texto": "Em 1971, o astronauta David Scott, da missão Apollo 15, deixou cair ao mesmo tempo um martelo e uma pena na superfície da Lua. Chegaram ao chão exatamente no mesmo instante. Na Terra isso nunca acontece, porque o ar trava a pena. Mas sem ar, todos os corpos caem da mesma maneira, qualquer que seja a massa. Galileu tinha previsto isto 350 anos antes.",
-          "mascote_texto": "Esta secção tem as duas equações do movimento que vais usar até ao fim do secundário. E tem a AL 1.1."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Sem ar, todos os corpos caem exatamente da mesma maneira.",
+          "mascote_texto": "Esta secção tem as duas equações do movimento que vais usar até ao fim do secundário. E tem a AL 1.1.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Movimento uniformemente variado e queda livre",
           "imagem": "f11_queda_livre_eixo.png",
           "texto_principal": "Quando a aceleração é constante, o movimento retilíneo diz-se uniformemente variado. A queda livre é o movimento de um corpo sujeito apenas ao peso: a aceleração é a aceleração gravítica, g = 9,8 m s⁻², vertical e para baixo, igual para todos os corpos no mesmo local.",
@@ -153,33 +151,18 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Lançamento vertical para cima",
           "imagem": "f11_lancamento_vertical.png",
           "texto_principal": "Num lançamento vertical para cima (sem resistência do ar), a única força continua a ser o peso. A aceleração é sempre g, para baixo, na subida, no ponto mais alto e na descida.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "subida", "label": "Subida", "explicacao": "Velocidade para cima, aceleração para baixo. Movimento retardado." },
+            { "id": "subida", "label": "Subida", "explicacao": "Velocidade para cima, aceleração para baixo. Movimento retardado.", "curiosidade_sem_titulo": true, "curiosidade": "**A bola atirada ao ar é um carro a travar e a fazer marcha-atrás**\n\nImagina um carro numa rampa, sem motor, a subir por inércia. A rampa trava-o sempre com a mesma intensidade. Ele abranda, para um instante no topo e começa a descer de marcha-atrás, cada vez mais depressa. Em nenhum momento a \"força da rampa\" desapareceu: esteve sempre lá, a puxar para baixo. A bola atirada ao ar é igual: o peso trava-a a subir, pára-a por um instante e acelera-a a descer, sempre com a mesma aceleração." },
             { "id": "ponto-mais-alto", "label": "Ponto mais alto", "explicacao": "v = 0, mas a aceleração continua a ser 9,8 m s⁻² para baixo. A bola não fica \"parada no ar\": inverte o sentido." },
             { "id": "descida", "label": "Descida", "explicacao": "Velocidade e aceleração para baixo. Movimento acelerado." },
             { "id": "simetria", "label": "Simetria", "explicacao": "O tempo de subida é igual ao de descida até ao ponto de lançamento, e a bola regressa com a mesma rapidez com que foi lançada." }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma bola é lançada verticalmente para cima com 9,8 m/s. Quanto tempo demora a atingir a altura máxima e qual é essa altura? (despreza a resistência do ar)",
-          "opcoes": ["1,0 s e 9,8 m", "1,0 s e 4,9 m", "2,0 s e 4,9 m", "0,5 s e 2,5 m"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. No ponto mais alto v = 0: t = 1,0 s. Altura: y = 9,8 × 1,0 − 4,9 × 1,0² = 4,9 m.",
-          "mascote_feedback_errado": "Usa v = v₀ − 9,8 t com v = 0 no topo: t = 9,8 / 9,8 = 1,0 s. Depois y = v₀ t − 4,9 t² = 9,8 − 4,9 = 4,9 m."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na ausência de resistência do ar, uma bola de 5 kg e uma bola de 1 kg são largadas ao mesmo tempo da mesma altura. Qual chega primeiro ao chão?",
-          "opcoes": ["A de 5 kg, porque é mais pesada.", "A de 1 kg, porque é mais leve.", "Chegam ao mesmo tempo.", "Depende da altura."],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. a = P / m = m g / m = g, igual para as duas.",
-          "mascote_feedback_errado": "A aceleração de queda livre é g para todos os corpos: a = m g / m = g. A massa cancela. Chegam ao mesmo tempo."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -210,10 +193,6 @@
               "No ponto mais alto só a velocidade é nula. A aceleração continua a ser a da gravidade: 9,8 m s⁻², para baixo."
             ]
           }
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A bola atirada ao ar é um carro a travar e a fazer marcha-atrás.** Imagina um carro numa rampa, sem motor, a subir por inércia. A rampa trava-o sempre com a mesma intensidade. Ele abranda, para um instante no topo e começa a descer de marcha-atrás, cada vez mais depressa. Em nenhum momento a \"força da rampa\" desapareceu: esteve sempre lá, a puxar para baixo. A bola atirada ao ar é igual: o peso trava-a a subir, pára-a por um instante e acelera-a a descer, sempre com a mesma aceleração."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -251,6 +230,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Uma bola é lançada verticalmente para cima com 9,8 m/s. Quanto tempo demora a atingir a altura máxima e qual é essa altura? (despreza a resistência do ar)",
+              "opcoes": [
+                "1,0 s e 9,8 m",
+                "1,0 s e 4,9 m",
+                "2,0 s e 4,9 m",
+                "0,5 s e 2,5 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. No ponto mais alto v = 0: t = 1,0 s. Altura: y = 9,8 × 1,0 − 4,9 × 1,0² = 4,9 m.",
+              "mascote_feedback_errado": "Usa v = v₀ − 9,8 t com v = 0 no topo: t = 9,8 / 9,8 = 1,0 s. Depois y = v₀ t − 4,9 t² = 9,8 − 4,9 = 4,9 m."
+            },
+            {
+              "pergunta": "Na ausência de resistência do ar, uma bola de 5 kg e uma bola de 1 kg são largadas ao mesmo tempo da mesma altura. Qual chega primeiro ao chão?",
+              "opcoes": [
+                "A de 5 kg, porque é mais pesada.",
+                "A de 1 kg, porque é mais leve.",
+                "Chegam ao mesmo tempo.",
+                "Depende da altura."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. a = P / m = m g / m = g, igual para as duas.",
+              "mascote_feedback_errado": "A aceleração de queda livre é g para todos os corpos: a = m g / m = g. A massa cancela. Chegam ao mesmo tempo."
+            },
+            {
               "pergunta": "Uma pedra cai do repouso de 20 m de altura. Com que velocidade chega ao solo? (despreza a resistência do ar)",
               "opcoes": ["9,8 m/s", "14 m/s", "20 m/s", "196 m/s"],
               "correta": 2,
@@ -282,19 +285,16 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_escorrega.png",
-          "texto": "Num escorrega de parque aquático, desces a uma velocidade assustadora. No escorrega de plástico do parque infantil, às vezes nem sais do sítio. A inclinação conta, mas o atrito conta ainda mais. Nesta secção vais decompor o peso num plano inclinado, perceber o papel do atrito e fazer duas atividades laboratoriais sobre forças e movimentos.",
-          "mascote_texto": "Esta secção tem duas ALs seguidas. A AL 1.3 tem um gráfico (v² em função da distância) que sai muito em exame."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "A inclinação conta, mas o atrito conta ainda mais.",
+          "mascote_texto": "Esta secção tem duas ALs seguidas. A AL 1.3 tem um gráfico (v² em função da distância) que sai muito em exame.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Plano inclinado",
           "imagem": "f11_plano_inclinado.png",
           "texto_principal": "Num plano inclinado, é útil decompor o peso em duas componentes: uma paralela ao plano, que tende a fazer o corpo descer, e uma perpendicular ao plano, que é equilibrada pela reação normal. A força de atrito, quando existe, atua paralelamente ao plano e opõe-se ao deslizamento.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "componente-paralela", "label": "Componente paralela do peso", "explicacao": "P ∥ = m g sen θ. É a que \"puxa\" o corpo pela rampa abaixo." },
+            { "id": "componente-paralela", "label": "Componente paralela do peso", "explicacao": "P ∥ = m g sen θ. É a que \"puxa\" o corpo pela rampa abaixo.", "curiosidade_sem_titulo": true, "curiosidade": "**A escada rolante e o saco pesado**\n\nImagina que pousas um saco num tapete inclinado. O peso do saco \"divide-se\" em duas partes: uma empurra-o contra o tapete, a outra puxa-o pela rampa abaixo. Quanto mais inclinado o tapete, maior a parte que puxa pela rampa e menor a que empurra contra o tapete. Num tapete quase horizontal, o saco fica quieto: o atrito chega para o segurar. Num tapete muito inclinado, a parte que puxa pela rampa vence e o saco escorrega." },
             { "id": "componente-perpendicular", "label": "Componente perpendicular do peso", "explicacao": "P ⊥ = m g cos θ." },
             { "id": "reacao-normal-plano", "label": "Reação normal", "explicacao": "Perpendicular ao plano. Se não houver outras forças perpendiculares, N = m g cos θ. Atenção: num plano inclinado, N não é igual ao peso." },
             { "id": "forca-atrito-plano", "label": "Força de atrito", "explicacao": "Paralela às superfícies em contacto, com sentido oposto ao do deslizamento. Resulta das interações entre as duas superfícies." },
@@ -305,26 +305,6 @@
             { "expressao": "Sem atrito: a = g sen θ", "significado": "", "unidades": "" },
             { "expressao": "Com atrito, a descer: m a = m g sen θ − F a", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um bloco desliza sem atrito num plano inclinado 30° em relação à horizontal. Qual é a sua aceleração? (sen 30° = 0,50)",
-          "opcoes": ["9,8 m s⁻²", "8,5 m s⁻²", "4,9 m s⁻²", "0 m s⁻²"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. a = g sen θ = 9,8 × 0,50 = 4,9 m s⁻².",
-          "mascote_feedback_errado": "Sem atrito, só a componente paralela do peso é resultante: a = g sen θ = 9,8 × 0,50 = 4,9 m s⁻². A massa cancela."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O mesmo plano (30°), agora com um bloco de 2,0 kg sujeito a uma força de atrito de 4,0 N. Qual é a aceleração do bloco a descer?",
-          "opcoes": ["4,9 m s⁻²", "2,9 m s⁻²", "2,0 m s⁻²", "6,9 m s⁻²"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. P ∥ = 9,8 N. F R = 9,8 − 4,0 = 5,8 N. a = 5,8 / 2,0 = 2,9 m s⁻².",
-          "mascote_feedback_errado": "Calcula a resultante ao longo do plano: P ∥ − F a = 2,0 × 9,8 × 0,50 − 4,0 = 5,8 N. a = F R / m = 5,8 / 2,0 = 2,9 m s⁻²."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A escada rolante e o saco pesado.** Imagina que pousas um saco num tapete inclinado. O peso do saco \"divide-se\" em duas partes: uma empurra-o contra o tapete, a outra puxa-o pela rampa abaixo. Quanto mais inclinado o tapete, maior a parte que puxa pela rampa e menor a que empurra contra o tapete. Num tapete quase horizontal, o saco fica quieto: o atrito chega para o segurar. Num tapete muito inclinado, a parte que puxa pela rampa vence e o saco escorrega."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -391,6 +371,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Um bloco desliza sem atrito num plano inclinado 30° em relação à horizontal. Qual é a sua aceleração? (sen 30° = 0,50)",
+              "opcoes": [
+                "9,8 m s⁻²",
+                "8,5 m s⁻²",
+                "4,9 m s⁻²",
+                "0 m s⁻²"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. a = g sen θ = 9,8 × 0,50 = 4,9 m s⁻².",
+              "mascote_feedback_errado": "Sem atrito, só a componente paralela do peso é resultante: a = g sen θ = 9,8 × 0,50 = 4,9 m s⁻². A massa cancela."
+            },
+            {
+              "pergunta": "O mesmo plano (30°), agora com um bloco de 2,0 kg sujeito a uma força de atrito de 4,0 N. Qual é a aceleração do bloco a descer?",
+              "opcoes": [
+                "4,9 m s⁻²",
+                "2,9 m s⁻²",
+                "2,0 m s⁻²",
+                "6,9 m s⁻²"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. P ∥ = 9,8 N. F R = 9,8 − 4,0 = 5,8 N. a = 5,8 / 2,0 = 2,9 m s⁻².",
+              "mascote_feedback_errado": "Calcula a resultante ao longo do plano: P ∥ − F a = 2,0 × 9,8 × 0,50 − 4,0 = 5,8 N. a = F R / m = 5,8 / 2,0 = 2,9 m s⁻²."
+            },
+            {
               "pergunta": "Qual é a intensidade da reação normal sobre um bloco de 2,0 kg num plano inclinado 30°, sem outras forças perpendiculares ao plano? (cos 30° = 0,87)",
               "opcoes": ["9,8 N", "17 N", "19,6 N", "0 N"],
               "correta": 1,
@@ -422,19 +426,16 @@
       "tempo_estimado_min": 9,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_paraquedista.png",
-          "texto": "Um paraquedista salta de um avião a 4000 m. Durante os primeiros segundos acelera como qualquer corpo em queda. Mas a partir de certa altura deixa de acelerar e cai a uns 200 km/h constantes. Depois abre o paraquedas, trava bruscamente e acaba a descer a uns 20 km/h, suficientemente devagar para aterrar em segurança. Tudo isto é explicado por uma força que até agora temos desprezado: a resistência do ar.",
-          "mascote_texto": "Aqui vais ver que a segunda lei de Newton explica tudo, mesmo quando a força não é constante."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "A resistência do ar também é uma força — e muda tudo.",
+          "mascote_texto": "Aqui vais ver que a segunda lei de Newton explica tudo, mesmo quando a força não é constante.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Velocidade terminal",
           "imagem": "f11_velocidade_terminal.png",
           "texto_principal": "A resistência do ar é uma força que se opõe ao movimento de um corpo no ar e cuja intensidade aumenta com a velocidade do corpo. Na queda, à medida que a velocidade aumenta, a resistência do ar aumenta até igualar o peso. Nesse momento a resultante anula-se e o corpo passa a cair com velocidade constante: a velocidade terminal.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "inicio-queda", "label": "Início da queda", "explicacao": "Velocidade baixa, resistência do ar pequena. A resultante é quase o peso: a aceleração é quase g." },
+            { "id": "inicio-queda", "label": "Início da queda", "explicacao": "Velocidade baixa, resistência do ar pequena. A resultante é quase o peso: a aceleração é quase g.", "curiosidade_sem_titulo": true, "curiosidade": "**Correr contra a multidão**\n\nImagina que tentas correr numa rua cheia de gente que vem na direção contrária. Ao início, andas devagar e quase ninguém te trava. Quanto mais depressa tentas ir, mais pessoas empurras e mais te travam. Chega a um ponto em que o esforço que fazes é exatamente igual à resistência da multidão: já não consegues ir mais depressa, mas também não abrandas. Essa é a tua \"velocidade terminal\". Abrir um paraquedas é como abrir os braços no meio da multidão: de repente, apanhas muito mais gente e travas." },
             { "id": "durante-queda", "label": "Durante a queda", "explicacao": "A resistência aumenta, a resultante diminui e a aceleração diminui. A velocidade continua a aumentar, mas cada vez mais devagar." },
             { "id": "velocidade-terminal", "label": "Velocidade terminal", "explicacao": "Resistência do ar = peso. F R = 0, a = 0: movimento retilíneo uniforme." },
             { "id": "paraquedas-aberto", "label": "Paraquedas aberto", "explicacao": "A resistência do ar aumenta de repente e passa a ser maior do que o peso. A resultante aponta para cima: movimento retardado." },
@@ -446,26 +447,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um paraquedista com equipamento tem uma massa total de 80 kg e cai com velocidade terminal. Qual é a intensidade da resistência do ar?",
-          "opcoes": ["0 N", "80 N", "784 N", "Maior do que 784 N"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. Com velocidade constante, a resultante é nula: R ar = P = 80 × 9,8 = 784 N.",
-          "mascote_feedback_errado": "Velocidade terminal significa velocidade constante, logo F R = 0. A resistência do ar equilibra o peso: 80 × 9,8 = 784 N."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Logo depois de o paraquedas abrir, qual é o sentido da força resultante sobre o paraquedista?",
-          "opcoes": ["Para baixo, porque ele continua a cair.", "Para cima, porque a resistência do ar passa a ser maior do que o peso.", "É nula, porque ele atingiu a velocidade terminal.", "Horizontal."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. A resistência do ar fica maior do que o peso, e a resultante aponta para cima.",
-          "mascote_feedback_errado": "Ao abrir o paraquedas, a resistência do ar aumenta muito e ultrapassa o peso. A resultante aponta para cima: o movimento passa a retardado, embora o paraquedista continue a descer."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Correr contra a multidão.** Imagina que tentas correr numa rua cheia de gente que vem na direção contrária. Ao início, andas devagar e quase ninguém te trava. Quanto mais depressa tentas ir, mais pessoas empurras e mais te travam. Chega a um ponto em que o esforço que fazes é exatamente igual à resistência da multidão: já não consegues ir mais depressa, mas também não abrandas. Essa é a tua \"velocidade terminal\". Abrir um paraquedas é como abrir os braços no meio da multidão: de repente, apanhas muito mais gente e travas."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "De que depende a resistência do ar, e a gota de chuva",
           "texto": "**De que depende a resistência do ar**\n\nA resistência do ar aumenta com a velocidade, com a área da superfície exposta ao ar e depende da forma do corpo. É por isso que um paraquedista em posição \"de barriga para baixo\" cai mais devagar do que de cabeça para baixo, e que os carros de competição têm formas aerodinâmicas.\n\n**Porque é que a gota de chuva não nos magoa**\n\nUma gota de chuva cai de uma nuvem a mais de 1000 m de altura. Sem resistência do ar chegaria ao chão a mais de 140 m/s (cerca de 500 km/h). Com resistência do ar, atinge rapidamente uma velocidade terminal de cerca de 9 m/s.\n\n**Como fica o gráfico**\n\nCom resistência do ar, o gráfico v-t da queda deixa de ser uma reta: é uma curva cujo declive (a aceleração) diminui até se anular. O declive no início é g."
@@ -473,6 +454,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um paraquedista com equipamento tem uma massa total de 80 kg e cai com velocidade terminal. Qual é a intensidade da resistência do ar?",
+              "opcoes": [
+                "0 N",
+                "80 N",
+                "784 N",
+                "Maior do que 784 N"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Com velocidade constante, a resultante é nula: R ar = P = 80 × 9,8 = 784 N.",
+              "mascote_feedback_errado": "Velocidade terminal significa velocidade constante, logo F R = 0. A resistência do ar equilibra o peso: 80 × 9,8 = 784 N."
+            },
+            {
+              "pergunta": "Logo depois de o paraquedas abrir, qual é o sentido da força resultante sobre o paraquedista?",
+              "opcoes": [
+                "Para baixo, porque ele continua a cair.",
+                "Para cima, porque a resistência do ar passa a ser maior do que o peso.",
+                "É nula, porque ele atingiu a velocidade terminal.",
+                "Horizontal."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. A resistência do ar fica maior do que o peso, e a resultante aponta para cima.",
+              "mascote_feedback_errado": "Ao abrir o paraquedas, a resistência do ar aumenta muito e ultrapassa o peso. A resultante aponta para cima: o movimento passa a retardado, embora o paraquedista continue a descer."
+            },
             {
               "pergunta": "Durante a queda de um corpo com resistência do ar não desprezável, antes de atingir a velocidade terminal:",
               "opcoes": ["a aceleração é constante e igual a g.", "a aceleração diminui e a velocidade aumenta.", "a aceleração aumenta e a velocidade diminui.", "a velocidade é constante."],
@@ -505,13 +510,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f11_satelite_geoestacionario.png",
-          "texto": "Quando vês um jogo de futebol em direto, o sinal passa por um satélite a cerca de 36 000 km de altitude. Esse satélite dá uma volta à Terra exatamente no mesmo tempo que a Terra demora a rodar sobre si própria. Visto daqui, parece parado no céu, e é por isso que as antenas parabólicas podem ficar fixas. Para perceberes como é possível, precisas do movimento circular uniforme.",
-          "mascote_texto": "Última secção de Mecânica. Junta a lei da gravitação com a segunda lei de Newton. É a secção mais \"bonita\" do 11.º ano."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Alguns satélites parecem parados no céu — não estão.",
+          "mascote_texto": "Última secção de Mecânica. Junta a lei da gravitação com a segunda lei de Newton. É a secção mais \"bonita\" do 11.º ano.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Movimento circular uniforme",
           "imagem": "f11_mcu.png",
           "texto_principal": "No movimento circular uniforme (MCU), a trajetória é uma circunferência e o módulo da velocidade é constante. A direção da velocidade, porém, muda a cada instante, e por isso há aceleração. Essa aceleração aponta sempre para o centro da circunferência: é a aceleração centrípeta. Pela segunda lei de Newton, também a resultante das forças aponta para o centro.",
@@ -532,14 +534,15 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Satélites",
           "imagem": "f11_orbitas_satelites.png",
           "texto_principal": "Um satélite em órbita circular está sempre a \"cair\" para a Terra, mas move-se tão depressa na horizontal que a curvatura da sua queda acompanha a curvatura da Terra. A força gravítica é a resultante centrípeta. Igualando as duas expressões, obtém-se a velocidade orbital, que só depende da massa da Terra e do raio da órbita.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "raio-orbita", "label": "Raio da órbita", "explicacao": "r = R Terra + altitude. Erro frequente: usar só a altitude." },
-            { "id": "velocidade-orbital", "label": "Velocidade orbital", "explicacao": "Não depende da massa do satélite. Quanto mais afastado, menor a velocidade e maior o período." },
+            { "id": "velocidade-orbital", "label": "Velocidade orbital", "explicacao": "Não depende da massa do satélite. Quanto mais afastado, menor a velocidade e maior o período.", "curiosidade_sem_titulo": true, "curiosidade": "**A pedra na funda**\n\nPega numa pedra atada a um fio e fá-la girar sobre a tua cabeça. O fio puxa a pedra sempre para o centro (para a tua mão). Se o fio partir, a pedra não sai \"para fora\" em linha reta a partir do centro: sai pela tangente, na direção em que ia naquele instante. O fio não serve para dar velocidade à pedra, serve só para lhe mudar a direção continuamente. Num satélite, o fio é a força gravítica. Se a gravidade \"desligasse\", o satélite sairia pela tangente." },
             { "id": "estacao-espacial", "label": "Estação Espacial Internacional", "explicacao": "Altitude cerca de 400 km. Velocidade cerca de 7,7 km/s. Uma volta em cerca de 92 minutos." },
             { "id": "satelite-geoestacionario", "label": "Satélite geoestacionário", "explicacao": "Órbita no plano do equador, no mesmo sentido da rotação da Terra, com período de 24 h (um dia). Raio da órbita cerca de 4,22 × 10⁷ m, ou seja, altitude cerca de 36 000 km. Usado em telecomunicações e televisão." },
             { "id": "satelites-gps", "label": "Satélites GPS", "explicacao": "Cerca de 20 200 km de altitude, período de cerca de 12 h. Não são geoestacionários." }
@@ -549,22 +552,6 @@
             { "expressao": "v = √(G M / r)", "significado": "Velocidade orbital (M = massa da Terra).", "unidades": "" },
             { "expressao": "T = 2π r / v", "significado": "Período orbital.", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma criança num carrossel está a 5,0 m do centro e dá uma volta em 10 s. Qual é o módulo da sua velocidade e da sua aceleração?",
-          "opcoes": ["0,50 m/s e 0 m s⁻²", "3,1 m/s e 2,0 m s⁻²", "3,1 m/s e 0 m s⁻²", "31 m/s e 197 m s⁻²"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. v ≈ 3,1 m/s. a c = v² / r ≈ 2,0 m s⁻².",
-          "mascote_feedback_errado": "v = 2π r / T = 2π × 5,0 / 10 ≈ 3,1 m/s. A aceleração não é nula: a direção da velocidade muda sempre. a c = v² / r ≈ 2,0 m s⁻²."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Dois satélites estão na mesma órbita circular. Um tem o dobro da massa do outro. Como se comparam as suas velocidades?",
-          "opcoes": ["O mais pesado anda com o dobro da velocidade.", "O mais pesado anda com metade da velocidade.", "Têm a mesma velocidade.", "O mais pesado cai para a Terra."],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. Na expressão v = √(G M / r), a massa do satélite não aparece.",
-          "mascote_feedback_errado": "De G M m / r² = m v² / r, a massa m do satélite cancela: v = √(G M / r). Na mesma órbita, a velocidade é a mesma para qualquer satélite."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -597,10 +584,6 @@
           }
         },
         {
-          "tipo": "analogia",
-          "texto": "**A pedra na funda.** Pega numa pedra atada a um fio e fá-la girar sobre a tua cabeça. O fio puxa a pedra sempre para o centro (para a tua mão). Se o fio partir, a pedra não sai \"para fora\" em linha reta a partir do centro: sai pela tangente, na direção em que ia naquele instante. O fio não serve para dar velocidade à pedra, serve só para lhe mudar a direção continuamente. Num satélite, o fio é a força gravítica. Se a gravidade \"desligasse\", o satélite sairia pela tangente."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Cálculo para a ISS, a \"força centrífuga\" e a bala de canhão de Newton",
           "texto": "**Cálculo completo para a Estação Espacial Internacional**\n\nr = 6,37 × 10⁶ + 0,40 × 10⁶ = 6,77 × 10⁶ m. v = √(6,67 × 10⁻¹¹ × 5,97 × 10²⁴ / 6,77 × 10⁶) ≈ 7,7 × 10³ m/s. T = 2π × 6,77 × 10⁶ / 7,7 × 10³ ≈ 5,5 × 10³ s ≈ 92 min. Os astronautas veem cerca de 16 nasceres do Sol por dia.\n\n**Erro comum: a \"força centrífuga\"**\n\nNuma curva de carro, sentes-te \"atirado para fora\". Não há nenhuma força a puxar-te para fora: o teu corpo tende a continuar em linha reta (inércia) e é o carro que curva. No referencial da estrada, a resultante sobre ti aponta para o centro da curva.\n\n**Curiosidade: Newton e a bala de canhão**\n\nNewton imaginou um canhão no alto de uma montanha. Com pouca velocidade, a bala cai perto. Com mais, cai mais longe. Com velocidade suficiente, a curvatura da queda iguala a curvatura da Terra e a bala nunca chega ao chão: entra em órbita. Foi com este raciocínio que percebeu que a Lua está sempre a \"cair\" para a Terra."
@@ -608,6 +591,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Uma criança num carrossel está a 5,0 m do centro e dá uma volta em 10 s. Qual é o módulo da sua velocidade e da sua aceleração?",
+              "opcoes": [
+                "0,50 m/s e 0 m s⁻²",
+                "3,1 m/s e 2,0 m s⁻²",
+                "3,1 m/s e 0 m s⁻²",
+                "31 m/s e 197 m s⁻²"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. v ≈ 3,1 m/s. a c = v² / r ≈ 2,0 m s⁻².",
+              "mascote_feedback_errado": "v = 2π r / T = 2π × 5,0 / 10 ≈ 3,1 m/s. A aceleração não é nula: a direção da velocidade muda sempre. a c = v² / r ≈ 2,0 m s⁻²."
+            },
+            {
+              "pergunta": "Dois satélites estão na mesma órbita circular. Um tem o dobro da massa do outro. Como se comparam as suas velocidades?",
+              "opcoes": [
+                "O mais pesado anda com o dobro da velocidade.",
+                "O mais pesado anda com metade da velocidade.",
+                "Têm a mesma velocidade.",
+                "O mais pesado cai para a Terra."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Na expressão v = √(G M / r), a massa do satélite não aparece.",
+              "mascote_feedback_errado": "De G M m / r² = m v² / r, a massa m do satélite cancela: v = √(G M / r). Na mesma órbita, a velocidade é a mesma para qualquer satélite."
+            },
             {
               "pergunta": "No movimento circular uniforme:",
               "opcoes": ["a aceleração é nula porque o módulo da velocidade é constante.", "a aceleração aponta para o centro e só altera a direção da velocidade.", "a aceleração é tangente à trajetória.", "a força resultante aponta para fora da circunferência."],

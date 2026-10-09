@@ -76,32 +76,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Que massa de amoníaco se forma a partir de 14,0 g de N₂, com H₂ em excesso? (M(N₂) = 28,02 g/mol; M(NH₃) = 17,04 g/mol)",
-          "opcoes": [
-            "8,52 g",
-            "14,0 g",
-            "17,0 g",
-            "34,1 g"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. n(N₂) = 14,0 / 28,02 ≈ 0,500 mol. Pela proporção 1 : 2, n(NH₃) = 1,00 mol. m = 1,00 × 17,04 ≈ 17,0 g.",
-          "mascote_feedback_errado": "Passa sempre para moles: n(N₂) ≈ 0,500 mol. Cada mole de N₂ dá 2 mol de NH₃: 1,00 mol de NH₃, ou seja, 17,0 g."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na combustão do metano, CH₄ + 2 O₂ → CO₂ + 2 H₂O, que volume de O₂ (PTN) é necessário para queimar 0,50 mol de CH₄?",
-          "opcoes": [
-            "11,2 dm³",
-            "22,4 dm³",
-            "44,8 dm³",
-            "1,0 dm³"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. n(O₂) = 2 × 0,50 = 1,0 mol. V = 1,0 × 22,4 = 22,4 dm³.",
-          "mascote_feedback_errado": "A proporção CH₄ : O₂ é 1 : 2. Para 0,50 mol de CH₄ são precisas 1,0 mol de O₂, que ocupam 22,4 dm³ em PTN."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Montar bicicletas.** Para montar uma bicicleta precisas de 1 quadro e 2 rodas. A \"equação\" é: 1 quadro + 2 rodas → 1 bicicleta. Se tiveres 10 quadros, precisas de 20 rodas e fazes 10 bicicletas. Não interessa quanto pesa uma roda ou um quadro: a receita é em número de peças. A estequiometria funciona da mesma forma, em número de entidades (moles). As massas só entram no início (para saber quantas \"peças\" tens) e no fim (para saber quanto pesa o que fizeste)."
         },
@@ -113,6 +87,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Que massa de amoníaco se forma a partir de 14,0 g de N₂, com H₂ em excesso? (M(N₂) = 28,02 g/mol; M(NH₃) = 17,04 g/mol)",
+              "opcoes": [
+                "8,52 g",
+                "14,0 g",
+                "17,0 g",
+                "34,1 g"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. n(N₂) = 14,0 / 28,02 ≈ 0,500 mol. Pela proporção 1 : 2, n(NH₃) = 1,00 mol. m = 1,00 × 17,04 ≈ 17,0 g.",
+              "mascote_feedback_errado": "Passa sempre para moles: n(N₂) ≈ 0,500 mol. Cada mole de N₂ dá 2 mol de NH₃: 1,00 mol de NH₃, ou seja, 17,0 g."
+            },
+            {
+              "pergunta": "Na combustão do metano, CH₄ + 2 O₂ → CO₂ + 2 H₂O, que volume de O₂ (PTN) é necessário para queimar 0,50 mol de CH₄?",
+              "opcoes": [
+                "11,2 dm³",
+                "22,4 dm³",
+                "44,8 dm³",
+                "1,0 dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. n(O₂) = 2 × 0,50 = 1,0 mol. V = 1,0 × 22,4 = 22,4 dm³.",
+              "mascote_feedback_errado": "A proporção CH₄ : O₂ é 1 : 2. Para 0,50 mol de CH₄ são precisas 1,0 mol de O₂, que ocupam 22,4 dm³ em PTN."
+            },
             {
               "pergunta": "Na reação 2 H₂ + O₂ → 2 H₂O, quantas moles de água se formam a partir de 3,0 mol de O₂ (com H₂ em excesso)?",
               "opcoes": [
@@ -217,32 +215,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Fazem-se reagir 4,0 g de H₂ (M = 2,02 g/mol) com 16,0 g de O₂ (M = 32,00 g/mol): 2 H₂ + O₂ → 2 H₂O. Qual é o reagente limitante e que massa de água se forma?",
-          "opcoes": [
-            "H₂; 36,0 g",
-            "O₂; 18,0 g",
-            "O₂; 36,0 g",
-            "H₂; 18,0 g"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. n(H₂) ≈ 1,98 mol; n(O₂) = 0,500 mol. Para 0,500 mol de O₂ bastam 1,00 mol de H₂: o H₂ está em excesso e o O₂ é limitante. Formam-se 2 × 0,500 = 1,00 mol de H₂O, ou seja, cerca de 18,0 g.",
-          "mascote_feedback_errado": "Compara com a proporção 2 : 1. O O₂ (0,500 mol) precisaria de 1,00 mol de H₂, e há 1,98 mol: o O₂ esgota-se primeiro. Formam-se 1,00 mol de H₂O, cerca de 18,0 g."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "50,0 g de um calcário com 80,0 % de CaCO₃ (M = 100,09 g/mol) reagem completamente com ácido: CaCO₃ + 2 HCl → CaCl₂ + H₂O + CO₂. Que volume de CO₂ (PTN) se liberta?",
-          "opcoes": [
-            "11,2 dm³",
-            "8,95 dm³",
-            "22,4 dm³",
-            "4,48 dm³"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. Massa de CaCO₃ = 0,800 × 50,0 = 40,0 g. n = 40,0 / 100,09 ≈ 0,400 mol. Proporção 1 : 1: n(CO₂) ≈ 0,400 mol. V ≈ 0,400 × 22,4 ≈ 8,95 dm³.",
-          "mascote_feedback_errado": "Só 80 % da amostra é CaCO₃: 40,0 g, ou cerca de 0,400 mol. Forma-se a mesma quantidade de CO₂, que em PTN ocupa cerca de 8,95 dm³."
         },
         {
           "tipo": "simulacao",
@@ -411,6 +383,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Fazem-se reagir 4,0 g de H₂ (M = 2,02 g/mol) com 16,0 g de O₂ (M = 32,00 g/mol): 2 H₂ + O₂ → 2 H₂O. Qual é o reagente limitante e que massa de água se forma?",
+              "opcoes": [
+                "H₂; 36,0 g",
+                "O₂; 18,0 g",
+                "O₂; 36,0 g",
+                "H₂; 18,0 g"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. n(H₂) ≈ 1,98 mol; n(O₂) = 0,500 mol. Para 0,500 mol de O₂ bastam 1,00 mol de H₂: o H₂ está em excesso e o O₂ é limitante. Formam-se 2 × 0,500 = 1,00 mol de H₂O, ou seja, cerca de 18,0 g.",
+              "mascote_feedback_errado": "Compara com a proporção 2 : 1. O O₂ (0,500 mol) precisaria de 1,00 mol de H₂, e há 1,98 mol: o O₂ esgota-se primeiro. Formam-se 1,00 mol de H₂O, cerca de 18,0 g."
+            },
+            {
+              "pergunta": "50,0 g de um calcário com 80,0 % de CaCO₃ (M = 100,09 g/mol) reagem completamente com ácido: CaCO₃ + 2 HCl → CaCl₂ + H₂O + CO₂. Que volume de CO₂ (PTN) se liberta?",
+              "opcoes": [
+                "11,2 dm³",
+                "8,95 dm³",
+                "22,4 dm³",
+                "4,48 dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. Massa de CaCO₃ = 0,800 × 50,0 = 40,0 g. n = 40,0 / 100,09 ≈ 0,400 mol. Proporção 1 : 1: n(CO₂) ≈ 0,400 mol. V ≈ 0,400 × 22,4 ≈ 8,95 dm³.",
+              "mascote_feedback_errado": "Só 80 % da amostra é CaCO₃: 40,0 g, ou cerca de 0,400 mol. Forma-se a mesma quantidade de CO₂, que em PTN ocupa cerca de 8,95 dm³."
+            },
+            {
               "pergunta": "O reagente limitante é:",
               "opcoes": [
                 "o reagente que está em maior quantidade.",
@@ -506,32 +502,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a economia atómica da síntese do AAS: C₇H₆O₃ (138,12) + C₄H₆O₃ (102,09) → C₉H₈O₄ (180,16) + CH₃COOH (60,05)?",
-          "opcoes": [
-            "25,0 %",
-            "75,0 %",
-            "78,6 %",
-            "100 %"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. EA = 180,16 / (138,12 + 102,09) × 100 = 180,16 / 240,21 × 100 ≈ 75,0 %. Os outros 25 % acabam no ácido acético, o subproduto.",
-          "mascote_feedback_errado": "Divide a massa molar do produto desejado pela soma das massas molares dos reagentes: 180,16 / 240,21 ≈ 0,750, ou seja, 75,0 %. Não confundas com o rendimento (78,6 % no exemplo da AL)."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual destas reações tem economia atómica de 100 %?",
-          "opcoes": [
-            "CaCO₃ → CaO + CO₂",
-            "C₂H₄ + H₂O → C₂H₅OH",
-            "2 NaCl + H₂SO₄ → Na₂SO₄ + 2 HCl",
-            "Zn + 2 HCl → ZnCl₂ + H₂ (sendo o H₂ o produto desejado)"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Na hidratação do eteno, todos os átomos dos reagentes acabam no único produto, o etanol: EA = 100 %.",
-          "mascote_feedback_errado": "Só tem economia atómica de 100 % a reação em que não há subprodutos. Na hidratação do eteno forma-se apenas etanol."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Cortar bolachas na massa.** Fazes bolachas com um cortador. Mesmo que nenhuma se parta no forno (rendimento de 100 %), sobram sempre recortes de massa entre as bolachas: essa é a \"economia atómica\" que perdeste. Se usasses uma forma que aproveitasse toda a massa, por exemplo bolachas quadradas encostadas umas às outras, não sobrava nada. A química verde procura \"cortadores\" que não deixem recortes."
         },
@@ -543,6 +513,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é a economia atómica da síntese do AAS: C₇H₆O₃ (138,12) + C₄H₆O₃ (102,09) → C₉H₈O₄ (180,16) + CH₃COOH (60,05)?",
+              "opcoes": [
+                "25,0 %",
+                "75,0 %",
+                "78,6 %",
+                "100 %"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. EA = 180,16 / (138,12 + 102,09) × 100 = 180,16 / 240,21 × 100 ≈ 75,0 %. Os outros 25 % acabam no ácido acético, o subproduto.",
+              "mascote_feedback_errado": "Divide a massa molar do produto desejado pela soma das massas molares dos reagentes: 180,16 / 240,21 ≈ 0,750, ou seja, 75,0 %. Não confundas com o rendimento (78,6 % no exemplo da AL)."
+            },
+            {
+              "pergunta": "Qual destas reações tem economia atómica de 100 %?",
+              "opcoes": [
+                "CaCO₃ → CaO + CO₂",
+                "C₂H₄ + H₂O → C₂H₅OH",
+                "2 NaCl + H₂SO₄ → Na₂SO₄ + 2 HCl",
+                "Zn + 2 HCl → ZnCl₂ + H₂ (sendo o H₂ o produto desejado)"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Na hidratação do eteno, todos os átomos dos reagentes acabam no único produto, o etanol: EA = 100 %.",
+              "mascote_feedback_errado": "Só tem economia atómica de 100 % a reação em que não há subprodutos. Na hidratação do eteno forma-se apenas etanol."
+            },
             {
               "pergunta": "A economia atómica de uma reação:",
               "opcoes": [

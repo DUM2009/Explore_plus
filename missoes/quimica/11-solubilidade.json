@@ -71,32 +71,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que os peixes podem morrer num rio quando a água aquece muito no verão?",
-          "opcoes": [
-            "Porque a água quente tem mais sais.",
-            "Porque a solubilidade do oxigénio diminui com o aumento da temperatura.",
-            "Porque o oxigénio se transforma em ozono.",
-            "Porque a água quente é ácida."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Ao contrário da maioria dos sólidos, os gases são menos solúveis em água quente. Com menos O₂ dissolvido, os peixes podem asfixiar.",
-          "mascote_feedback_errado": "A solubilidade dos gases na água diminui quando a temperatura aumenta. A água quente retém menos O₂, o que é um problema para os seres aquáticos."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Para dissolver açúcar mais depressa no café, qual destas ações NÃO ajuda?",
-          "opcoes": [
-            "Mexer.",
-            "Usar açúcar em pó em vez de cubos.",
-            "Usar café mais quente.",
-            "Usar uma chávena maior com o mesmo café."
-          ],
-          "correta": 3,
-          "mascote_feedback_certo": "Exato. Agitação, maior área de superfície e temperatura mais alta aceleram a dissolução. O tamanho da chávena não muda nada.",
-          "mascote_feedback_errado": "Mexer, usar o soluto em pó e aquecer aumentam a rapidez de dissolução. Mudar de chávena, com o mesmo líquido, não tem efeito."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Separar uma fila de pessoas de mãos dadas.** Imagina uma fila enorme de pessoas de mãos dadas (a rede cristalina do sal). Chega uma multidão de \"seguranças\" (as moléculas de água), cada um com um íman de um lado. Vão-se colocando à volta das pessoas das pontas da fila, puxando-as até elas largarem as mãos. Cada pessoa solta fica rodeada de seguranças (ião hidratado). Quanto mais se agitar a multidão, ou se houver mais pontas soltas (soluto em pó), mais depressa a fila se desfaz."
         },
@@ -108,6 +82,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Porque é que os peixes podem morrer num rio quando a água aquece muito no verão?",
+              "opcoes": [
+                "Porque a água quente tem mais sais.",
+                "Porque a solubilidade do oxigénio diminui com o aumento da temperatura.",
+                "Porque o oxigénio se transforma em ozono.",
+                "Porque a água quente é ácida."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Ao contrário da maioria dos sólidos, os gases são menos solúveis em água quente. Com menos O₂ dissolvido, os peixes podem asfixiar.",
+              "mascote_feedback_errado": "A solubilidade dos gases na água diminui quando a temperatura aumenta. A água quente retém menos O₂, o que é um problema para os seres aquáticos."
+            },
+            {
+              "pergunta": "Para dissolver açúcar mais depressa no café, qual destas ações NÃO ajuda?",
+              "opcoes": [
+                "Mexer.",
+                "Usar açúcar em pó em vez de cubos.",
+                "Usar café mais quente.",
+                "Usar uma chávena maior com o mesmo café."
+              ],
+              "correta": 3,
+              "mascote_feedback_certo": "Exato. Agitação, maior área de superfície e temperatura mais alta aceleram a dissolução. O tamanho da chávena não muda nada.",
+              "mascote_feedback_errado": "Mexer, usar o soluto em pó e aquecer aumentam a rapidez de dissolução. Mudar de chávena, com o mesmo líquido, não tem efeito."
+            },
             {
               "pergunta": "Na dissolução do NaCl em água, as moléculas de água orientam-se de modo que:",
               "opcoes": [
@@ -204,32 +202,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma solução saturada com 100 g de água e KNO₃ a 60 °C (110 g) é arrefecida a 20 °C (solubilidade 31,6 g/100 g de água). Que massa de KNO₃ cristaliza?",
-          "opcoes": [
-            "31,6 g",
-            "78,4 g",
-            "110 g",
-            "141,6 g"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. A 20 °C só podem ficar dissolvidos 31,6 g. Cristalizam 110 − 31,6 = 78,4 g.",
-          "mascote_feedback_errado": "A massa que cristaliza é a diferença entre o que estava dissolvido (110 g) e o que pode ficar dissolvido a 20 °C (31,6 g): 78,4 g."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Juntando um pequeno cristal de soluto a uma solução, ele dissolve-se. A solução era:",
-          "opcoes": [
-            "saturada.",
-            "não saturada.",
-            "sobressaturada.",
-            "impossível de classificar."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Se ainda dissolve mais soluto, a solução não estava saturada. Numa saturada, o cristal ficaria igual; numa sobressaturada, provocaria cristalização.",
-          "mascote_feedback_errado": "O cristal dissolveu-se, logo a solução ainda tinha \"espaço\" para mais soluto: não estava saturada."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Lugares numa sala de cinema.** Uma sala de cinema tem um número máximo de lugares sentados: é a solubilidade. Com lugares livres, é uma solução não saturada. Com todos os lugares ocupados, saturada. Se por algum motivo houver pessoas a mais (sobressaturada), basta um pequeno empurrão para que as que estão a mais tenham de sair. E se a sala for \"aquecida\" (alargada), cabem mais pessoas: na maioria dos sólidos, a solubilidade aumenta com a temperatura."
         },
@@ -274,6 +246,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Uma solução saturada com 100 g de água e KNO₃ a 60 °C (110 g) é arrefecida a 20 °C (solubilidade 31,6 g/100 g de água). Que massa de KNO₃ cristaliza?",
+              "opcoes": [
+                "31,6 g",
+                "78,4 g",
+                "110 g",
+                "141,6 g"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A 20 °C só podem ficar dissolvidos 31,6 g. Cristalizam 110 − 31,6 = 78,4 g.",
+              "mascote_feedback_errado": "A massa que cristaliza é a diferença entre o que estava dissolvido (110 g) e o que pode ficar dissolvido a 20 °C (31,6 g): 78,4 g."
+            },
+            {
+              "pergunta": "Juntando um pequeno cristal de soluto a uma solução, ele dissolve-se. A solução era:",
+              "opcoes": [
+                "saturada.",
+                "não saturada.",
+                "sobressaturada.",
+                "impossível de classificar."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Se ainda dissolve mais soluto, a solução não estava saturada. Numa saturada, o cristal ficaria igual; numa sobressaturada, provocaria cristalização.",
+              "mascote_feedback_errado": "O cristal dissolveu-se, logo a solução ainda tinha \"espaço\" para mais soluto: não estava saturada."
+            },
             {
               "pergunta": "A solubilidade de uma substância é:",
               "opcoes": [
@@ -383,32 +379,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a solubilidade do cloreto de prata em água, a 25 °C? (K s = 1,8 × 10⁻¹⁰)",
-          "opcoes": [
-            "1,8 × 10⁻¹⁰ mol/dm³",
-            "1,3 × 10⁻⁵ mol/dm³",
-            "9,0 × 10⁻¹¹ mol/dm³",
-            "3,6 × 10⁻⁴ mol/dm³"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. AgCl é do tipo AB: s = √(1,8 × 10⁻¹⁰) ≈ 1,3 × 10⁻⁵ mol/dm³. Em massa, cerca de 1,9 mg por litro: muito pouco solúvel.",
-          "mascote_feedback_errado": "Para AB, K s = s × s = s², logo s = √K s = √(1,8 × 10⁻¹⁰) ≈ 1,3 × 10⁻⁵ mol/dm³."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Misturam-se volumes iguais de AgNO₃ 2,0 × 10⁻⁴ mol/dm³ e NaCl 2,0 × 10⁻⁴ mol/dm³. Forma-se precipitado de AgCl (K s = 1,8 × 10⁻¹⁰)?",
-          "opcoes": [
-            "Não, porque as concentrações são muito baixas.",
-            "Sim, porque Q = 1,0 × 10⁻⁸ > K s.",
-            "Não, porque Q = K s.",
-            "Sim, porque Q = 4,0 × 10⁻⁸ < K s."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Ao misturar volumes iguais, cada concentração fica a metade: [Ag⁺] = [Cl⁻] = 1,0 × 10⁻⁴ mol/dm³. Q = 1,0 × 10⁻⁸, muito maior do que K s: precipita AgCl.",
-          "mascote_feedback_errado": "Não te esqueças da diluição ao misturar: cada concentração passa para 1,0 × 10⁻⁴. Q = (1,0 × 10⁻⁴)² = 1,0 × 10⁻⁸ > 1,8 × 10⁻¹⁰: há precipitação."
         },
         {
           "tipo": "simulacao",
@@ -546,6 +516,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Qual é a solubilidade do cloreto de prata em água, a 25 °C? (K s = 1,8 × 10⁻¹⁰)",
+              "opcoes": [
+                "1,8 × 10⁻¹⁰ mol/dm³",
+                "1,3 × 10⁻⁵ mol/dm³",
+                "9,0 × 10⁻¹¹ mol/dm³",
+                "3,6 × 10⁻⁴ mol/dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. AgCl é do tipo AB: s = √(1,8 × 10⁻¹⁰) ≈ 1,3 × 10⁻⁵ mol/dm³. Em massa, cerca de 1,9 mg por litro: muito pouco solúvel.",
+              "mascote_feedback_errado": "Para AB, K s = s × s = s², logo s = √K s = √(1,8 × 10⁻¹⁰) ≈ 1,3 × 10⁻⁵ mol/dm³."
+            },
+            {
+              "pergunta": "Misturam-se volumes iguais de AgNO₃ 2,0 × 10⁻⁴ mol/dm³ e NaCl 2,0 × 10⁻⁴ mol/dm³. Forma-se precipitado de AgCl (K s = 1,8 × 10⁻¹⁰)?",
+              "opcoes": [
+                "Não, porque as concentrações são muito baixas.",
+                "Sim, porque Q = 1,0 × 10⁻⁸ > K s.",
+                "Não, porque Q = K s.",
+                "Sim, porque Q = 4,0 × 10⁻⁸ < K s."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Ao misturar volumes iguais, cada concentração fica a metade: [Ag⁺] = [Cl⁻] = 1,0 × 10⁻⁴ mol/dm³. Q = 1,0 × 10⁻⁸, muito maior do que K s: precipita AgCl.",
+              "mascote_feedback_errado": "Não te esqueças da diluição ao misturar: cada concentração passa para 1,0 × 10⁻⁴. Q = (1,0 × 10⁻⁴)² = 1,0 × 10⁻⁸ > 1,8 × 10⁻¹⁰: há precipitação."
+            },
+            {
               "pergunta": "Qual é a expressão do produto de solubilidade do PbI₂?",
               "opcoes": [
                 "K s = [Pb²⁺][I⁻]",
@@ -676,32 +670,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "O que acontece à solubilidade do AgCl se for adicionado cloreto de sódio à solução?",
-          "opcoes": [
-            "Aumenta, porque há mais iões.",
-            "Diminui, por efeito do ião comum (Cl⁻).",
-            "Não se altera.",
-            "O AgCl transforma-se em NaCl."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Aumentar [Cl⁻] desloca AgCl(s) ⇌ Ag⁺ + Cl⁻ no sentido da precipitação. Em NaCl 0,10 mol/dm³, a solubilidade baixa de 1,3 × 10⁻⁵ para 1,8 × 10⁻⁹ mol/dm³.",
-          "mascote_feedback_errado": "O Cl⁻ é um ião comum ao equilíbrio. Pelo Princípio de Le Châtelier, o equilíbrio desloca-se no sentido do sólido: a solubilidade diminui."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que o vinagre remove o calcário de uma chaleira?",
-          "opcoes": [
-            "Porque dissolve a água.",
-            "Porque o ácido reage com o carbonato de cálcio e forma iões solúveis e CO₂.",
-            "Porque o vinagre é uma base.",
-            "Porque arrefece a chaleira."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O ácido acético reage com o CaCO₃: o anião carbonato é consumido, o equilíbrio de solubilidade desloca-se e o calcário dissolve-se, libertando bolhas de CO₂.",
-          "mascote_feedback_errado": "O carbonato é uma base. O ácido do vinagre consome-o, e o CaCO₃ dissolve-se (com libertação de CO₂). É o efeito dos ácidos na solubilidade."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O ião comum é como um convidado repetido.** Imagina que a solução saturada é uma festa com lotação máxima, onde só pode haver um certo produto de \"rapazes × raparigas\" (K s). Se chegar um autocarro cheio de raparigas (ião comum), para o produto não passar do limite, têm de sair rapazes: e a festa acaba com muito menos rapazes lá dentro. Se, pelo contrário, alguém levar uma parte das raparigas para outra sala (ácido ou complexante), entram mais rapazes. A solubilidade é o número de \"pares\" que cabem na festa."
         },
@@ -713,6 +681,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "O que acontece à solubilidade do AgCl se for adicionado cloreto de sódio à solução?",
+              "opcoes": [
+                "Aumenta, porque há mais iões.",
+                "Diminui, por efeito do ião comum (Cl⁻).",
+                "Não se altera.",
+                "O AgCl transforma-se em NaCl."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Aumentar [Cl⁻] desloca AgCl(s) ⇌ Ag⁺ + Cl⁻ no sentido da precipitação. Em NaCl 0,10 mol/dm³, a solubilidade baixa de 1,3 × 10⁻⁵ para 1,8 × 10⁻⁹ mol/dm³.",
+              "mascote_feedback_errado": "O Cl⁻ é um ião comum ao equilíbrio. Pelo Princípio de Le Châtelier, o equilíbrio desloca-se no sentido do sólido: a solubilidade diminui."
+            },
+            {
+              "pergunta": "Porque é que o vinagre remove o calcário de uma chaleira?",
+              "opcoes": [
+                "Porque dissolve a água.",
+                "Porque o ácido reage com o carbonato de cálcio e forma iões solúveis e CO₂.",
+                "Porque o vinagre é uma base.",
+                "Porque arrefece a chaleira."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O ácido acético reage com o CaCO₃: o anião carbonato é consumido, o equilíbrio de solubilidade desloca-se e o calcário dissolve-se, libertando bolhas de CO₂.",
+              "mascote_feedback_errado": "O carbonato é uma base. O ácido do vinagre consome-o, e o CaCO₃ dissolve-se (com libertação de CO₂). É o efeito dos ácidos na solubilidade."
+            },
             {
               "pergunta": "A adição de um ácido aumenta a solubilidade de qual destes sais?",
               "opcoes": [

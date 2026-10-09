@@ -81,32 +81,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a configuração eletrónica do ião Fe³⁺ (Z = 26)?",
-          "opcoes": [
-            "[Ar] 4s² 3d³",
-            "[Ar] 3d⁵",
-            "[Ar] 4s² 3d⁶",
-            "[Ar] 4s¹ 3d⁴"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O Fe é [Ar] 4s² 3d⁶. Ao formar Fe³⁺, perde primeiro os 2 eletrões 4s e depois 1 eletrão 3d: [Ar] 3d⁵. Esta configuração, com o subnível d meio preenchido, é particularmente estável.",
-          "mascote_feedback_errado": "Os metais de transição perdem primeiro os eletrões 4s. Fe: [Ar] 4s² 3d⁶ → Fe³⁺: retiram-se 2 eletrões 4s e 1 eletrão 3d → [Ar] 3d⁵."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que o cloro tende a formar o ião Cl⁻ e o sódio o ião Na⁺?",
-          "opcoes": [
-            "O cloro tem energia de ionização baixa.",
-            "O sódio tem energia de ionização baixa e o cloro tem afinidade eletrónica elevada.",
-            "Os dois têm afinidade eletrónica elevada.",
-            "O sódio tem afinidade eletrónica elevada."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O sódio perde facilmente o seu eletrão 3s (energia de ionização baixa). O cloro liberta bastante energia ao captar um eletrão (afinidade eletrónica elevada).",
-          "mascote_feedback_errado": "Os metais caracterizam-se pela facilidade em perder eletrões (energia de ionização baixa); os não metais, pela tendência a captar eletrões (afinidade eletrónica elevada)."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Dar e receber.** Imagina pessoas numa feira de trocas. Algumas largam facilmente o que têm: são os metais (energia de ionização baixa). Outras ficam muito contentes quando recebem alguma coisa e não a largam: são os não metais (afinidade eletrónica elevada). Os metais de transição são como vendedores com muitos artigos: podem dar um, dois, três ou mais, conforme o cliente. É por isso que o ferro tanto aparece como Fe²⁺ como Fe³⁺."
         },
@@ -118,6 +92,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é a configuração eletrónica do ião Fe³⁺ (Z = 26)?",
+              "opcoes": [
+                "[Ar] 4s² 3d³",
+                "[Ar] 3d⁵",
+                "[Ar] 4s² 3d⁶",
+                "[Ar] 4s¹ 3d⁴"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O Fe é [Ar] 4s² 3d⁶. Ao formar Fe³⁺, perde primeiro os 2 eletrões 4s e depois 1 eletrão 3d: [Ar] 3d⁵. Esta configuração, com o subnível d meio preenchido, é particularmente estável.",
+              "mascote_feedback_errado": "Os metais de transição perdem primeiro os eletrões 4s. Fe: [Ar] 4s² 3d⁶ → Fe³⁺: retiram-se 2 eletrões 4s e 1 eletrão 3d → [Ar] 3d⁵."
+            },
+            {
+              "pergunta": "Porque é que o cloro tende a formar o ião Cl⁻ e o sódio o ião Na⁺?",
+              "opcoes": [
+                "O cloro tem energia de ionização baixa.",
+                "O sódio tem energia de ionização baixa e o cloro tem afinidade eletrónica elevada.",
+                "Os dois têm afinidade eletrónica elevada.",
+                "O sódio tem afinidade eletrónica elevada."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O sódio perde facilmente o seu eletrão 3s (energia de ionização baixa). O cloro liberta bastante energia ao captar um eletrão (afinidade eletrónica elevada).",
+              "mascote_feedback_errado": "Os metais caracterizam-se pela facilidade em perder eletrões (energia de ionização baixa); os não metais, pela tendência a captar eletrões (afinidade eletrónica elevada)."
+            },
             {
               "pergunta": "Os elementos de transição situam-se:",
               "opcoes": [
@@ -247,32 +245,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um sólido é muito duro, tem ponto de fusão superior a 1500 °C e não conduz a corrente elétrica nem fundido. Que tipo de sólido é, provavelmente?",
-          "opcoes": [
-            "Metálico",
-            "Iónico",
-            "Covalente",
-            "Molecular"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. Dureza e ponto de fusão muito elevados, sem condução mesmo fundido, são típicos de uma rede covalente, como o quartzo ou o diamante.",
-          "mascote_feedback_errado": "Os metálicos conduzem sempre; os iónicos conduzem fundidos; os moleculares têm pontos de fusão baixos. Só os sólidos covalentes (redes de ligações covalentes) têm este conjunto de propriedades."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que um cristal de sal parte quando se lhe bate com um martelo e uma peça de cobre apenas se deforma?",
-          "opcoes": [
-            "Porque o cobre é mais pesado.",
-            "Porque no sal, ao deslocar uma camada, ficam iões do mesmo sinal frente a frente e repelem-se; no cobre, os eletrões deslocalizados reajustam-se e mantêm a ligação.",
-            "Porque o sal é um sólido molecular.",
-            "Porque o cobre não tem ligações."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. A deslocação de camadas num cristal iónico gera repulsões e o cristal fratura. No metal, a \"nuvem\" de eletrões continua a unir os cernes, e o metal deforma-se sem partir.",
-          "mascote_feedback_errado": "No sólido iónico, deslizar uma camada põe catiões frente a catiões e aniões frente a aniões: repelem-se e o cristal parte. No metal, os eletrões deslocalizados acompanham os cernes e a ligação mantém-se."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Uma piscina de bolas.** Imagina berlindes (os cernes) mergulhados numa piscina de bolas pequeninas (os eletrões). Podes empurrar os berlindes e mudá-los de sítio, e as bolas pequenas fecham logo os espaços, mantendo tudo junto: é a maleabilidade. Se encostares um fio elétrico à piscina, as bolas pequenas fluem facilmente de um lado para o outro: é a condução. Num cristal iónico, pelo contrário, não há bolas soltas: cada peça está presa às vizinhas de carga oposta, e um empurrão desfaz a arrumação."
         },
@@ -284,6 +256,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um sólido é muito duro, tem ponto de fusão superior a 1500 °C e não conduz a corrente elétrica nem fundido. Que tipo de sólido é, provavelmente?",
+              "opcoes": [
+                "Metálico",
+                "Iónico",
+                "Covalente",
+                "Molecular"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Dureza e ponto de fusão muito elevados, sem condução mesmo fundido, são típicos de uma rede covalente, como o quartzo ou o diamante.",
+              "mascote_feedback_errado": "Os metálicos conduzem sempre; os iónicos conduzem fundidos; os moleculares têm pontos de fusão baixos. Só os sólidos covalentes (redes de ligações covalentes) têm este conjunto de propriedades."
+            },
+            {
+              "pergunta": "Porque é que um cristal de sal parte quando se lhe bate com um martelo e uma peça de cobre apenas se deforma?",
+              "opcoes": [
+                "Porque o cobre é mais pesado.",
+                "Porque no sal, ao deslocar uma camada, ficam iões do mesmo sinal frente a frente e repelem-se; no cobre, os eletrões deslocalizados reajustam-se e mantêm a ligação.",
+                "Porque o sal é um sólido molecular.",
+                "Porque o cobre não tem ligações."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. A deslocação de camadas num cristal iónico gera repulsões e o cristal fratura. No metal, a \"nuvem\" de eletrões continua a unir os cernes, e o metal deforma-se sem partir.",
+              "mascote_feedback_errado": "No sólido iónico, deslizar uma camada põe catiões frente a catiões e aniões frente a aniões: repelem-se e o cristal parte. No metal, os eletrões deslocalizados acompanham os cernes e a ligação mantém-se."
+            },
             {
               "pergunta": "A ligação metálica resulta:",
               "opcoes": [
@@ -378,19 +374,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na etapa CuSO₄(aq) + Zn(s) → ZnSO₄(aq) + Cu(s), que tipo de reação ocorre e qual é o redutor?",
-          "opcoes": [
-            "Ácido-base; o Cu²⁺.",
-            "Precipitação; o SO₄²⁻.",
-            "Oxidação-redução; o Zn.",
-            "Oxidação-redução; o Cu²⁺."
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. O zinco passa de 0 para +2 (oxida-se, é o redutor) e o cobre de +2 para 0 (reduz-se, é o oxidante).",
-          "mascote_feedback_errado": "Há variação de números de oxidação: é redox. O Zn cede eletrões (oxida-se): é o redutor. O Cu²⁺ é o oxidante."
-        },
-        {
           "tipo": "atividade_laboratorial",
           "codigo": "AL 1.2",
           "titulo": "Um ciclo do cobre",
@@ -437,6 +420,18 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Na etapa CuSO₄(aq) + Zn(s) → ZnSO₄(aq) + Cu(s), que tipo de reação ocorre e qual é o redutor?",
+              "opcoes": [
+                "Ácido-base; o Cu²⁺.",
+                "Precipitação; o SO₄²⁻.",
+                "Oxidação-redução; o Zn.",
+                "Oxidação-redução; o Cu²⁺."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O zinco passa de 0 para +2 (oxida-se, é o redutor) e o cobre de +2 para 0 (reduz-se, é o oxidante).",
+              "mascote_feedback_errado": "Há variação de números de oxidação: é redox. O Zn cede eletrões (oxida-se): é o redutor. O Cu²⁺ é o oxidante."
+            },
             {
               "pergunta": "Porque é que os metais podem ser reciclados indefinidamente?",
               "opcoes": [

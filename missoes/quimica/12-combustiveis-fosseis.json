@@ -96,19 +96,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Numa coluna de fracionamento, onde é recolhida a fração com moléculas maiores?",
-          "opcoes": [
-            "No topo, onde a temperatura é mais baixa.",
-            "Na base, onde a temperatura é mais alta.",
-            "A meio da coluna.",
-            "Não é recolhida."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Moléculas maiores têm forças intermoleculares mais intensas e pontos de ebulição mais altos: condensam logo em baixo.",
-          "mascote_feedback_errado": "Quanto maior a molécula, mais alto o ponto de ebulição. As moléculas grandes condensam cedo, na zona quente da base. As pequenas sobem até ao topo."
-        },
-        {
           "tipo": "atividade_laboratorial",
           "codigo": "AL 2.1",
           "titulo": "Destilação fracionada de uma mistura de três componentes",
@@ -343,6 +330,18 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Numa coluna de fracionamento, onde é recolhida a fração com moléculas maiores?",
+              "opcoes": [
+                "No topo, onde a temperatura é mais baixa.",
+                "Na base, onde a temperatura é mais alta.",
+                "A meio da coluna.",
+                "Não é recolhida."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Moléculas maiores têm forças intermoleculares mais intensas e pontos de ebulição mais altos: condensam logo em baixo.",
+              "mascote_feedback_errado": "Quanto maior a molécula, mais alto o ponto de ebulição. As moléculas grandes condensam cedo, na zona quente da base. As pequenas sobem até ao topo."
+            },
+            {
               "pergunta": "A destilação fracionada do petróleo separa os componentes com base:",
               "opcoes": [
                 "na sua cor.",
@@ -491,32 +490,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é o nome IUPAC de CH₃–CH(CH₃)–CH₂–CH₃?",
-          "opcoes": [
-            "3-metilbutano",
-            "2-metilbutano",
-            "pentano",
-            "2-etilpropano"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Cadeia principal de 4 carbonos (butano), com um metil no carbono 2 (numerando pela ponta mais próxima da ramificação). É isómero de cadeia do pentano.",
-          "mascote_feedback_errado": "A cadeia mais longa tem 4 carbonos. Numera-se a partir da ponta mais perto da ramificação: o metil fica no carbono 2. Nome: 2-metilbutano."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O etanol (CH₃CH₂OH) e o metoximetano (CH₃OCH₃) são:",
-          "opcoes": [
-            "o mesmo composto.",
-            "isómeros de cadeia.",
-            "isómeros de grupo funcional.",
-            "isómeros de posição."
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. Ambos são C₂H₆O, mas um é um álcool e o outro um éter. Têm propriedades muito diferentes: o etanol ferve a 78 °C e o metoximetano a −24 °C.",
-          "mascote_feedback_errado": "Têm a mesma fórmula molecular (C₂H₆O) mas grupos funcionais diferentes (álcool e éter): isomeria de grupo funcional."
-        },
-        {
           "tipo": "analogia",
           "texto": "**As mesmas peças de Lego.** Isómeros são como construções diferentes feitas com exatamente as mesmas peças de Lego. Com as mesmas peças podes fazer um carro comprido (cadeia linear) ou um carro mais compacto (ramificado); podes pôr a antena na frente ou atrás (posição); ou até fazer um avião em vez de um carro (grupo funcional diferente). As peças são as mesmas (fórmula molecular), mas o objeto e o que ele faz são diferentes."
         },
@@ -528,6 +501,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é o nome IUPAC de CH₃–CH(CH₃)–CH₂–CH₃?",
+              "opcoes": [
+                "3-metilbutano",
+                "2-metilbutano",
+                "pentano",
+                "2-etilpropano"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Cadeia principal de 4 carbonos (butano), com um metil no carbono 2 (numerando pela ponta mais próxima da ramificação). É isómero de cadeia do pentano.",
+              "mascote_feedback_errado": "A cadeia mais longa tem 4 carbonos. Numera-se a partir da ponta mais perto da ramificação: o metil fica no carbono 2. Nome: 2-metilbutano."
+            },
+            {
+              "pergunta": "O etanol (CH₃CH₂OH) e o metoximetano (CH₃OCH₃) são:",
+              "opcoes": [
+                "o mesmo composto.",
+                "isómeros de cadeia.",
+                "isómeros de grupo funcional.",
+                "isómeros de posição."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Ambos são C₂H₆O, mas um é um álcool e o outro um éter. Têm propriedades muito diferentes: o etanol ferve a 78 °C e o metoximetano a −24 °C.",
+              "mascote_feedback_errado": "Têm a mesma fórmula molecular (C₂H₆O) mas grupos funcionais diferentes (álcool e éter): isomeria de grupo funcional."
+            },
             {
               "pergunta": "O cracking catalítico tem como objetivo:",
               "opcoes": [
@@ -652,32 +649,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual dos isómeros de C₅H₁₂ tem o ponto de ebulição mais baixo?",
-          "opcoes": [
-            "Pentano",
-            "2-metilbutano",
-            "2,2-dimetilpropano",
-            "Todos iguais"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. O 2,2-dimetilpropano é o mais ramificado e compacto (quase esférico): menor área de contacto, forças de London mais fracas, ponto de ebulição de 9,5 °C.",
-          "mascote_feedback_errado": "Com a mesma massa molar, quanto mais ramificada a molécula, menor a área de contacto e mais fracas as forças de London. O 2,2-dimetilpropano é o mais ramificado."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "No benzeno, as ligações carbono-carbono têm:",
-          "opcoes": [
-            "três comprimentos de 154 pm e três de 134 pm.",
-            "todas o mesmo comprimento, intermédio entre simples e dupla.",
-            "todas o comprimento de uma ligação dupla.",
-            "todas o comprimento de uma ligação tripla."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. A ressonância distribui os eletrões por todo o anel: as seis ligações são iguais, com cerca de 139 pm.",
-          "mascote_feedback_errado": "As estruturas de Kekulé sugerem ligações alternadas, mas a molécula real é o híbrido de ressonância: seis ligações iguais (cerca de 139 pm)."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A mula, o cavalo e o burro.** Uma mula é cruzamento de cavalo e burra. Não passa metade do tempo como cavalo e metade como burro: é sempre uma mula, um animal com características de ambos. O benzeno real é como a mula: não alterna entre as duas estruturas de Kekulé, é permanentemente uma mistura das duas. As estruturas de ressonância são só as nossas formas de o desenhar com o modelo de Lewis."
         },
@@ -689,6 +660,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual dos isómeros de C₅H₁₂ tem o ponto de ebulição mais baixo?",
+              "opcoes": [
+                "Pentano",
+                "2-metilbutano",
+                "2,2-dimetilpropano",
+                "Todos iguais"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O 2,2-dimetilpropano é o mais ramificado e compacto (quase esférico): menor área de contacto, forças de London mais fracas, ponto de ebulição de 9,5 °C.",
+              "mascote_feedback_errado": "Com a mesma massa molar, quanto mais ramificada a molécula, menor a área de contacto e mais fracas as forças de London. O 2,2-dimetilpropano é o mais ramificado."
+            },
+            {
+              "pergunta": "No benzeno, as ligações carbono-carbono têm:",
+              "opcoes": [
+                "três comprimentos de 154 pm e três de 134 pm.",
+                "todas o mesmo comprimento, intermédio entre simples e dupla.",
+                "todas o comprimento de uma ligação dupla.",
+                "todas o comprimento de uma ligação tripla."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. A ressonância distribui os eletrões por todo o anel: as seis ligações são iguais, com cerca de 139 pm.",
+              "mascote_feedback_errado": "As estruturas de Kekulé sugerem ligações alternadas, mas a molécula real é o híbrido de ressonância: seis ligações iguais (cerca de 139 pm)."
+            },
             {
               "pergunta": "A ressonância explica:",
               "opcoes": [
@@ -803,32 +798,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Que pressão exercem 2,00 mol de um gás num recipiente de 10,0 dm³ a 300 K?",
-          "opcoes": [
-            "4,99 × 10³ Pa",
-            "4,99 × 10⁵ Pa",
-            "4,99 × 10⁸ Pa",
-            "499 Pa"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. V = 10,0 dm³ = 1,00 × 10⁻² m³. p = n R T / V = 2,00 × 8,314 × 300 / 1,00 × 10⁻² ≈ 4,99 × 10⁵ Pa (cerca de 4,9 atm).",
-          "mascote_feedback_errado": "Com R = 8,314, o volume tem de estar em m³: 10,0 dm³ = 0,0100 m³. p = 2,00 × 8,314 × 300 / 0,0100 ≈ 4,99 × 10⁵ Pa."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a massa volúmica do propano (M = 44,1 g/mol) a 25 °C e 1,00 atm?",
-          "opcoes": [
-            "0,55 g/dm³",
-            "1,80 g/dm³",
-            "1,97 g/dm³",
-            "44,1 g/dm³"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. ρ = p M / (R T) = 1,00 × 44,1 / (0,0821 × 298,15) ≈ 1,80 g/dm³. É mais denso do que o ar (cerca de 1,18 g/dm³ a 25 °C): uma fuga acumula-se junto ao chão.",
-          "mascote_feedback_errado": "Usa ρ = p M / (R T) com T = 298,15 K e R = 0,0821 atm dm³ mol⁻¹ K⁻¹: 44,1 / 24,5 ≈ 1,80 g/dm³."
         },
         {
           "tipo": "simulacao",
@@ -999,6 +968,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Que pressão exercem 2,00 mol de um gás num recipiente de 10,0 dm³ a 300 K?",
+              "opcoes": [
+                "4,99 × 10³ Pa",
+                "4,99 × 10⁵ Pa",
+                "4,99 × 10⁸ Pa",
+                "499 Pa"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. V = 10,0 dm³ = 1,00 × 10⁻² m³. p = n R T / V = 2,00 × 8,314 × 300 / 1,00 × 10⁻² ≈ 4,99 × 10⁵ Pa (cerca de 4,9 atm).",
+              "mascote_feedback_errado": "Com R = 8,314, o volume tem de estar em m³: 10,0 dm³ = 0,0100 m³. p = 2,00 × 8,314 × 300 / 0,0100 ≈ 4,99 × 10⁵ Pa."
+            },
+            {
+              "pergunta": "Qual é a massa volúmica do propano (M = 44,1 g/mol) a 25 °C e 1,00 atm?",
+              "opcoes": [
+                "0,55 g/dm³",
+                "1,80 g/dm³",
+                "1,97 g/dm³",
+                "44,1 g/dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. ρ = p M / (R T) = 1,00 × 44,1 / (0,0821 × 298,15) ≈ 1,80 g/dm³. É mais denso do que o ar (cerca de 1,18 g/dm³ a 25 °C): uma fuga acumula-se junto ao chão.",
+              "mascote_feedback_errado": "Usa ρ = p M / (R T) com T = 298,15 K e R = 0,0821 atm dm³ mol⁻¹ K⁻¹: 44,1 / 24,5 ≈ 1,80 g/dm³."
+            },
+            {
               "pergunta": "Qual é o volume ocupado por 1,00 mol de gás ideal a 25 °C e 1,00 atm?",
               "opcoes": [
                 "22,4 dm³",
@@ -1109,19 +1102,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que o biodiesel de óleos alimentares usados é considerado uma boa alternativa?",
-          "opcoes": [
-            "Porque não emite CO₂ na combustão.",
-            "Porque reaproveita um resíduo poluente e o carbono que emite foi captado recentemente pelas plantas.",
-            "Porque é mais barato do que a água.",
-            "Porque não precisa de nenhuma reação química."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O biodiesel ainda emite CO₂, mas esse carbono veio da atmosfera há pouco tempo (através das plantas). E evita que o óleo usado polua águas e esgotos.",
-          "mascote_feedback_errado": "O biodiesel também emite CO₂ quando arde. A vantagem é que esse carbono foi captado recentemente pelas plantas, e que se reaproveita um resíduo que, de outra forma, poluiria."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A conta-poupança e a conta-corrente.** Os combustíveis fósseis são como uma poupança de carbono feita durante milhões de anos e guardada no subsolo. Quando os queimamos, estamos a gastar essa poupança toda de uma vez e a pôr o carbono na atmosfera. Os biocombustíveis são como uma conta-corrente: o carbono que as plantas tiraram do ar este ano é o que volta ao ar quando o combustível arde. A conta fica mais equilibrada."
         },
@@ -1171,6 +1151,18 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Porque é que o biodiesel de óleos alimentares usados é considerado uma boa alternativa?",
+              "opcoes": [
+                "Porque não emite CO₂ na combustão.",
+                "Porque reaproveita um resíduo poluente e o carbono que emite foi captado recentemente pelas plantas.",
+                "Porque é mais barato do que a água.",
+                "Porque não precisa de nenhuma reação química."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O biodiesel ainda emite CO₂, mas esse carbono veio da atmosfera há pouco tempo (através das plantas). E evita que o óleo usado polua águas e esgotos.",
+              "mascote_feedback_errado": "O biodiesel também emite CO₂ quando arde. A vantagem é que esse carbono foi captado recentemente pelas plantas, e que se reaproveita um resíduo que, de outra forma, poluiria."
+            },
             {
               "pergunta": "Na produção de biodiesel, a reação principal é:",
               "opcoes": [

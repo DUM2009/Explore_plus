@@ -106,32 +106,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual dos fotões tem maior energia?",
-          "opcoes": [
-            "Um fotão de luz vermelha.",
-            "Um fotão de infravermelho.",
-            "Um fotão de luz violeta.",
-            "Um fotão de micro-ondas."
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. Entre estas radiações, a luz violeta tem a maior frequência e, por isso, fotões com maior energia (E = h f).",
-          "mascote_feedback_errado": "A energia do fotão aumenta com a frequência: micro-ondas, infravermelho, vermelho, violeta. O violeta é o mais energético destes."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "As riscas escuras do espetro da luz solar coincidem com as riscas de emissão do sódio. O que se conclui?",
-          "opcoes": [
-            "O Sol não tem sódio.",
-            "A atmosfera do Sol contém sódio, que absorve esses comprimentos de onda.",
-            "A luz solar é um espetro de emissão de riscas.",
-            "O sódio só existe na Terra."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. As riscas de absorção de um elemento aparecem nas mesmas posições que as de emissão. Se estão lá, é porque há átomos desse elemento a absorver a luz.",
-          "mascote_feedback_errado": "As riscas escuras são de absorção. Coincidirem com as de emissão do sódio indica que há sódio na atmosfera solar a absorver essas radiações."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O código de barras.** Cada produto do supermercado tem um código de barras único: um padrão de riscas pretas e brancas que a caixa lê e identifica. Os espetros de riscas são os códigos de barras dos elementos químicos. O espetroscópio é o leitor: basta ver o padrão de riscas para saber que elemento está presente, mesmo numa estrela a milhares de anos-luz."
         },
@@ -143,6 +117,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual dos fotões tem maior energia?",
+              "opcoes": [
+                "Um fotão de luz vermelha.",
+                "Um fotão de infravermelho.",
+                "Um fotão de luz violeta.",
+                "Um fotão de micro-ondas."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Entre estas radiações, a luz violeta tem a maior frequência e, por isso, fotões com maior energia (E = h f).",
+              "mascote_feedback_errado": "A energia do fotão aumenta com a frequência: micro-ondas, infravermelho, vermelho, violeta. O violeta é o mais energético destes."
+            },
+            {
+              "pergunta": "As riscas escuras do espetro da luz solar coincidem com as riscas de emissão do sódio. O que se conclui?",
+              "opcoes": [
+                "O Sol não tem sódio.",
+                "A atmosfera do Sol contém sódio, que absorve esses comprimentos de onda.",
+                "A luz solar é um espetro de emissão de riscas.",
+                "O sódio só existe na Terra."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. As riscas de absorção de um elemento aparecem nas mesmas posições que as de emissão. Se estão lá, é porque há átomos desse elemento a absorver a luz.",
+              "mascote_feedback_errado": "As riscas escuras são de absorção. Coincidirem com as de emissão do sódio indica que há sódio na atmosfera solar a absorver essas radiações."
+            },
             {
               "pergunta": "O espetro de emissão de um elemento é:",
               "opcoes": [
@@ -257,32 +255,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na transição do eletrão do hidrogénio de n = 3 para n = 2, qual é o comprimento de onda da luz emitida?",
-          "opcoes": [
-            "122 nm (ultravioleta)",
-            "486 nm (azul)",
-            "657 nm (vermelho)",
-            "1877 nm (infravermelho)"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. ΔE = 2,18 × 10⁻¹⁸ × (1/4 − 1/9) ≈ 3,03 × 10⁻¹⁹ J. λ = h c / ΔE = 6,63 × 10⁻³⁴ × 3,00 × 10⁸ / 3,03 × 10⁻¹⁹ ≈ 6,57 × 10⁻⁷ m. É a risca vermelha do hidrogénio.",
-          "mascote_feedback_errado": "E₃ = −2,18 × 10⁻¹⁸ / 9 e E₂ = −2,18 × 10⁻¹⁸ / 4. A diferença é 3,03 × 10⁻¹⁹ J. λ = h c / E ≈ 657 nm, no vermelho (série de Balmer)."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um eletrão de hidrogénio no estado fundamental pode absorver um fotão de 1,00 × 10⁻¹⁸ J?",
-          "opcoes": [
-            "Sim, e passa para n = 2.",
-            "Não, porque essa energia não corresponde a nenhuma diferença entre níveis.",
-            "Sim, e fica entre n = 1 e n = 2.",
-            "Sim, e é ionizado."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. De n = 1 para n = 2 são precisos 1,64 × 10⁻¹⁸ J. Qualquer valor que não corresponda exatamente a uma diferença entre níveis não é absorvido (e é demasiado pequeno para ionizar).",
-          "mascote_feedback_errado": "A energia está quantizada: o eletrão só absorve fotões com energia exatamente igual a uma diferença entre níveis. 1,00 × 10⁻¹⁸ J não corresponde a nenhuma (n = 1 → 2 exige 1,64 × 10⁻¹⁸ J)."
         },
         {
           "tipo": "simulacao",
@@ -708,6 +680,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Na transição do eletrão do hidrogénio de n = 3 para n = 2, qual é o comprimento de onda da luz emitida?",
+              "opcoes": [
+                "122 nm (ultravioleta)",
+                "486 nm (azul)",
+                "657 nm (vermelho)",
+                "1877 nm (infravermelho)"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. ΔE = 2,18 × 10⁻¹⁸ × (1/4 − 1/9) ≈ 3,03 × 10⁻¹⁹ J. λ = h c / ΔE = 6,63 × 10⁻³⁴ × 3,00 × 10⁸ / 3,03 × 10⁻¹⁹ ≈ 6,57 × 10⁻⁷ m. É a risca vermelha do hidrogénio.",
+              "mascote_feedback_errado": "E₃ = −2,18 × 10⁻¹⁸ / 9 e E₂ = −2,18 × 10⁻¹⁸ / 4. A diferença é 3,03 × 10⁻¹⁹ J. λ = h c / E ≈ 657 nm, no vermelho (série de Balmer)."
+            },
+            {
+              "pergunta": "Um eletrão de hidrogénio no estado fundamental pode absorver um fotão de 1,00 × 10⁻¹⁸ J?",
+              "opcoes": [
+                "Sim, e passa para n = 2.",
+                "Não, porque essa energia não corresponde a nenhuma diferença entre níveis.",
+                "Sim, e fica entre n = 1 e n = 2.",
+                "Sim, e é ionizado."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. De n = 1 para n = 2 são precisos 1,64 × 10⁻¹⁸ J. Qualquer valor que não corresponda exatamente a uma diferença entre níveis não é absorvido (e é demasiado pequeno para ionizar).",
+              "mascote_feedback_errado": "A energia está quantizada: o eletrão só absorve fotões com energia exatamente igual a uma diferença entre níveis. 1,00 × 10⁻¹⁸ J não corresponde a nenhuma (n = 1 → 2 exige 1,64 × 10⁻¹⁸ J)."
+            },
+            {
               "pergunta": "Na série de Balmer do hidrogénio, as transições terminam no nível:",
               "opcoes": [
                 "n = 1",
@@ -848,32 +844,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Quantos eletrões pode conter, no máximo, o subnível 3d?",
-          "opcoes": [
-            "2",
-            "6",
-            "10",
-            "18"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. O subnível d tem 5 orbitais, cada uma com até 2 eletrões: 10 eletrões.",
-          "mascote_feedback_errado": "O subnível d tem 5 orbitais. Com 2 eletrões por orbital, cabem 10 eletrões."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "No espetro fotoeletrónico do oxigénio, qual é o subnível com eletrões de maior energia de remoção?",
-          "opcoes": [
-            "2p",
-            "2s",
-            "1s",
-            "Todos iguais"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. Os eletrões 1s estão mais perto do núcleo e são mais fortemente atraídos: é preciso mais energia para os remover.",
-          "mascote_feedback_errado": "Quanto mais perto do núcleo, mais atraído está o eletrão e maior a energia de remoção. No oxigénio, são os eletrões 1s."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A fotografia de longa exposição de uma abelha.** Imagina que tiras uma fotografia com uma exposição de um minuto a uma abelha que voa à volta de uma flor. Na foto, não vês a abelha numa posição: vês uma mancha difusa, mais densa onde a abelha passou mais vezes. Essa mancha é como a orbital: não diz onde o eletrão está num instante, mas mostra onde é mais provável encontrá-lo. E, tal como a abelha, o eletrão pode aparecer longe da flor, só que com menos probabilidade."
         },
@@ -885,6 +855,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Quantos eletrões pode conter, no máximo, o subnível 3d?",
+              "opcoes": [
+                "2",
+                "6",
+                "10",
+                "18"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O subnível d tem 5 orbitais, cada uma com até 2 eletrões: 10 eletrões.",
+              "mascote_feedback_errado": "O subnível d tem 5 orbitais. Com 2 eletrões por orbital, cabem 10 eletrões."
+            },
+            {
+              "pergunta": "No espetro fotoeletrónico do oxigénio, qual é o subnível com eletrões de maior energia de remoção?",
+              "opcoes": [
+                "2p",
+                "2s",
+                "1s",
+                "Todos iguais"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Os eletrões 1s estão mais perto do núcleo e são mais fortemente atraídos: é preciso mais energia para os remover.",
+              "mascote_feedback_errado": "Quanto mais perto do núcleo, mais atraído está o eletrão e maior a energia de remoção. No oxigénio, são os eletrões 1s."
+            },
             {
               "pergunta": "As três orbitais 2p de um átomo:",
               "opcoes": [
@@ -994,32 +988,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a configuração eletrónica do enxofre (Z = 16) no estado fundamental?",
-          "opcoes": [
-            "1s² 2s² 2p⁶ 3s² 3p⁴",
-            "1s² 2s² 2p⁶ 3s² 3p⁶",
-            "1s² 2s² 2p⁸ 3s² 3p²",
-            "1s² 2s² 2p⁶ 3p⁶"
-          ],
-          "correta": 0,
-          "mascote_feedback_certo": "Certo. 2 + 2 + 6 + 2 + 4 = 16. Os 4 eletrões 3p distribuem-se: dois emparelhados numa orbital e dois desemparelhados nas outras duas.",
-          "mascote_feedback_errado": "Preenche pela ordem 1s, 2s, 2p, 3s, 3p, respeitando os máximos (s: 2; p: 6). 1s² 2s² 2p⁶ 3s² e sobram 4 eletrões para 3p: 3p⁴."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Quantos eletrões desemparelhados tem o átomo de azoto (Z = 7) no estado fundamental?",
-          "opcoes": [
-            "0",
-            "1",
-            "3",
-            "5"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Muito bem. 1s² 2s² 2p³. Pela regra de Hund, os 3 eletrões 2p ocupam cada um a sua orbital, todos desemparelhados.",
-          "mascote_feedback_errado": "A configuração é 1s² 2s² 2p³. Nas três orbitais 2p degeneradas, os três eletrões ficam um em cada orbital (maximização de eletrões desemparelhados): 3 desemparelhados."
         },
         {
           "tipo": "simulacao",
@@ -1264,6 +1232,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é a configuração eletrónica do enxofre (Z = 16) no estado fundamental?",
+              "opcoes": [
+                "1s² 2s² 2p⁶ 3s² 3p⁴",
+                "1s² 2s² 2p⁶ 3s² 3p⁶",
+                "1s² 2s² 2p⁸ 3s² 3p²",
+                "1s² 2s² 2p⁶ 3p⁶"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. 2 + 2 + 6 + 2 + 4 = 16. Os 4 eletrões 3p distribuem-se: dois emparelhados numa orbital e dois desemparelhados nas outras duas.",
+              "mascote_feedback_errado": "Preenche pela ordem 1s, 2s, 2p, 3s, 3p, respeitando os máximos (s: 2; p: 6). 1s² 2s² 2p⁶ 3s² e sobram 4 eletrões para 3p: 3p⁴."
+            },
+            {
+              "pergunta": "Quantos eletrões desemparelhados tem o átomo de azoto (Z = 7) no estado fundamental?",
+              "opcoes": [
+                "0",
+                "1",
+                "3",
+                "5"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Muito bem. 1s² 2s² 2p³. Pela regra de Hund, os 3 eletrões 2p ocupam cada um a sua orbital, todos desemparelhados.",
+              "mascote_feedback_errado": "A configuração é 1s² 2s² 2p³. Nas três orbitais 2p degeneradas, os três eletrões ficam um em cada orbital (maximização de eletrões desemparelhados): 3 desemparelhados."
+            },
             {
               "pergunta": "Qual é a configuração eletrónica do cálcio (Z = 20)?",
               "opcoes": [

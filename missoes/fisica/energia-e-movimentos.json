@@ -13,17 +13,14 @@
       "tempo_estimado_min": 8,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f10_montanha_russa.png",
-          "texto": "Uma montanha-russa não tem motor durante a maior parte do percurso. É puxada até ao ponto mais alto uma única vez e, a partir daí, desce, sobe, dá voltas e trava sozinha. De onde vem a energia para tudo isso? E porque é que a segunda subida é sempre mais baixa do que a primeira? Para responder, a Física começa por uma pergunta simples: o que é que estamos a estudar?",
-          "mascote_texto": "Na Física, antes de fazer contas, decide-se sempre qual é o sistema. Parece burocracia, mas é aqui que metade dos erros começa."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "pontos_seta": true,
           "titulo": "Sistema, fronteira e vizinhança",
           "imagem": "f10_sistema_fronteira.png",
           "cartao_estilo": true,
           "chips_setas": true,
+          "mascote_titulo": "O sistema vem sempre primeiro.",
+          "mascote_texto": "Uma montanha-russa não tem motor durante a maior parte do percurso. É puxada até ao ponto mais alto uma única vez e, a partir daí, desce, sobe, dá voltas e trava sozinha. De onde vem a energia para tudo isso? E porque é que a segunda subida é sempre mais baixa do que a primeira? Para responder, a Física começa por uma pergunta simples: o que é que estamos a estudar? Antes de fazer contas, decide-se sempre qual é o sistema. Parece burocracia, mas é aqui que metade dos erros começa.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "sistema", "label": "Sistema", "imagem": "f10_sistema.png", "explicacao": "O que escolhemos estudar. Aqui, o carrinho com os passageiros.", "curiosidade_sem_titulo": true, "curiosidade": "**Quando podemos usar o modelo da partícula material**\n\nSó quando o corpo se desloca sem rodar e sem se deformar, ou quando essas alterações não interessam para o problema. Um carro numa estrada reta pode ser uma partícula. Uma bola a rodar sobre si própria, se quisermos estudar a rotação, não pode." },
@@ -87,24 +84,32 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um carro com 1000 kg desloca-se a 20 m/s. Qual é a sua energia cinética?",
-          "opcoes": ["1,0 × 10⁴ J", "2,0 × 10⁴ J", "2,0 × 10⁵ J", "4,0 × 10⁵ J"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. Ec = ½ × 1000 × 20² = ½ × 1000 × 400 = 2,0 × 10⁵ J.",
-          "mascote_feedback_errado": "Não te esqueças de elevar a velocidade ao quadrado: Ec = ½ × 1000 × 20² = 500 × 400 = 2,0 × 10⁵ J."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Se a velocidade de um corpo duplicar, a sua energia cinética...",
-          "opcoes": ["também duplica.", "fica quatro vezes maior.", "fica reduzida a metade.", "mantém-se, porque a massa não mudou."],
-          "correta": 1,
-          "mascote_feedback_certo": "Isso mesmo. Como a velocidade está ao quadrado, 2² = 4. É por isso que um choque a 100 km/h é muito mais grave do que a 50 km/h: tem quatro vezes mais energia cinética.",
-          "mascote_feedback_errado": "A energia cinética é proporcional ao quadrado da velocidade. Se v passa para 2v, Ec passa para (2)² = 4 vezes o valor inicial."
-        },
-        {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um carro com 1000 kg desloca-se a 20 m/s. Qual é a sua energia cinética?",
+              "opcoes": [
+                "1,0 × 10⁴ J",
+                "2,0 × 10⁴ J",
+                "2,0 × 10⁵ J",
+                "4,0 × 10⁵ J"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Ec = ½ × 1000 × 20² = ½ × 1000 × 400 = 2,0 × 10⁵ J.",
+              "mascote_feedback_errado": "Não te esqueças de elevar a velocidade ao quadrado: Ec = ½ × 1000 × 20² = 500 × 400 = 2,0 × 10⁵ J."
+            },
+            {
+              "pergunta": "Se a velocidade de um corpo duplicar, a sua energia cinética...",
+              "opcoes": [
+                "também duplica.",
+                "fica quatro vezes maior.",
+                "fica reduzida a metade.",
+                "mantém-se, porque a massa não mudou."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo. Como a velocidade está ao quadrado, 2² = 4. É por isso que um choque a 100 km/h é muito mais grave do que a 50 km/h: tem quatro vezes mais energia cinética.",
+              "mascote_feedback_errado": "A energia cinética é proporcional ao quadrado da velocidade. Se v passa para 2v, Ec passa para (2)² = 4 vezes o valor inicial."
+            },
             {
               "pergunta": "Qual das seguintes afirmações descreve corretamente a vizinhança de um sistema?",
               "opcoes": ["É a parte do sistema mais próxima da fronteira.", "É tudo o que está fora do sistema e pode interagir com ele.", "É a linha que separa o sistema do resto do universo.", "É o ponto onde se concentra a massa do sistema."],
@@ -151,16 +156,12 @@
       "tempo_estimado_min": 9,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f10_mala_rodas.png",
-          "texto": "Estás a puxar uma mala de rodas pelo aeroporto. Puxas a pega inclinada, mas a mala desloca-se na horizontal. Parte da força que fazes serve para mover a mala; a outra parte só a puxa para cima, sem a fazer avançar. Na Física, só a parte útil da força \"conta\" para transferir energia. A essa transferência chama-se trabalho.",
-          "mascote_texto": "Atenção: em Física, segurar um saco pesado parado não é trabalho. Cansa, mas não há deslocamento."
-        },
-        {
           "tipo": "formula_interativa",
           "titulo": "Trabalho de uma força constante",
           "rotulo": "Trabalho (W)",
           "imagem": "f10_trabalho_forca_constante.png",
+          "mascote_titulo": "Nem toda a força realiza trabalho.",
+          "mascote_texto": "Imagina que estás a puxar uma mala de rodas pelo aeroporto. Puxas a pega inclinada, mas a mala desloca-se na horizontal. Parte da força que fazes serve para mover a mala; a outra parte só a puxa para cima, sem a fazer avançar. Na Física, só a parte útil da força \"conta\" para transferir energia. A essa transferência chama-se trabalho.",
           "texto": "Uma força é uma interação entre dois corpos, capaz de alterar o movimento de um corpo ou de o deformar. É uma grandeza vetorial: tem intensidade (que se mede em newton, N), direção e sentido.\n\nQuando uma força atua sobre um corpo que se desloca, pode transferir-lhe energia. Se o ponto de aplicação não se desloca, não há trabalho: segurar um saco pesado parado cansa, mas não é trabalho.\n\nO trabalho de uma força constante mede a energia transferida por essa força quando o ponto de aplicação se desloca. Só a componente da força na direção do deslocamento realiza trabalho. A componente perpendicular ao deslocamento não realiza trabalho.",
           "instrucao": "Clica numa bolinha por baixo da fórmula para veres o que significa cada letra.",
           "formula": [
@@ -262,22 +263,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Puxas uma caixa com uma força de 20 N que faz um ângulo de 60° com a horizontal. A caixa desloca-se 5 m na horizontal. Qual é o trabalho realizado por essa força? (cos 60° = 0,50)",
-          "opcoes": ["100 J", "87 J", "50 J", "10 J"],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. W = 20 × 5 × cos 60° = 100 × 0,50 = 50 J. Só metade da força foi aproveitada.",
-          "mascote_feedback_errado": "Não te esqueças do cos α. W = F d cos α = 20 × 5 × 0,50 = 50 J."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um satélite descreve uma órbita circular em torno da Terra. A força gravítica aponta sempre para o centro da órbita. Qual é o trabalho dessa força?",
-          "opcoes": ["Positivo, porque o satélite se move.", "Negativo, porque puxa o satélite para dentro.", "Nulo, porque em cada instante a força é perpendicular ao movimento.", "Impossível de saber sem a massa do satélite."],
-          "correta": 2,
-          "mascote_feedback_certo": "Muito bem. Se a força é sempre perpendicular ao movimento, não transfere energia. Por isso a rapidez do satélite se mantém constante.",
-          "mascote_feedback_errado": "Olha para o ângulo: a força aponta para o centro e o movimento é tangente à órbita, portanto α = 90° e cos 90° = 0. O trabalho é nulo."
-        },
-        {
           "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_trabalho",
           "visual": "trabalho_caixa",
@@ -305,6 +290,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Puxas uma caixa com uma força de 20 N que faz um ângulo de 60° com a horizontal. A caixa desloca-se 5 m na horizontal. Qual é o trabalho realizado por essa força? (cos 60° = 0,50)",
+              "opcoes": [
+                "100 J",
+                "87 J",
+                "50 J",
+                "10 J"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. W = 20 × 5 × cos 60° = 100 × 0,50 = 50 J. Só metade da força foi aproveitada.",
+              "mascote_feedback_errado": "Não te esqueças do cos α. W = F d cos α = 20 × 5 × 0,50 = 50 J."
+            },
+            {
+              "pergunta": "Um satélite descreve uma órbita circular em torno da Terra. A força gravítica aponta sempre para o centro da órbita. Qual é o trabalho dessa força?",
+              "opcoes": [
+                "Positivo, porque o satélite se move.",
+                "Negativo, porque puxa o satélite para dentro.",
+                "Nulo, porque em cada instante a força é perpendicular ao movimento.",
+                "Impossível de saber sem a massa do satélite."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Muito bem. Se a força é sempre perpendicular ao movimento, não transfere energia. Por isso a rapidez do satélite se mantém constante.",
+              "mascote_feedback_errado": "Olha para o ângulo: a força aponta para o centro e o movimento é tangente à órbita, portanto α = 90° e cos 90° = 0. O trabalho é nulo."
+            },
             {
               "pergunta": "Puxas uma caixa com uma força de 20 N que faz um ângulo de 60° com a horizontal. A caixa desloca-se 5 m na horizontal. Qual é o trabalho realizado por essa força? (cos 60° = 0,50)",
               "opcoes": ["100 J", "87 J", "50 J", "10 J"],
@@ -351,73 +360,156 @@
       "tempo_estimado_min": 9,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f10_queda_bola.png",
-          "texto": "Deixas cair uma bola do segundo andar. Durante a queda, ninguém a empurra, mas ela fica cada vez mais rápida. Quem está a fornecer-lhe energia cinética? A resposta é o peso. E há uma regra simples que liga o trabalho de todas as forças à variação da energia cinética. Chama-se teorema da energia cinética e é uma das ferramentas mais usadas nos exames.",
-          "mascote_texto": "Esta secção tem duas fórmulas que aparecem em quase todos os exames. Vale a pena ficares com elas de cor."
-        },
-        {
           "tipo": "diagrama_interativo",
           "titulo": "Teorema da energia cinética",
-          "imagem": "f10_teorema_ec.png",
-          "texto_principal": "O teorema da energia cinética (ou lei do trabalho-energia) diz que o trabalho realizado pela resultante das forças que atuam num corpo é igual à variação da sua energia cinética. Se o trabalho total é positivo, o corpo ganha energia cinética (acelera). Se é negativo, perde (trava). Se é nulo, a energia cinética mantém-se.",
-          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "mascote_titulo": "Duas fórmulas que valem o exame.",
+          "mascote_texto": "Deixas cair uma bola do segundo andar. Durante a queda, ninguém a empurra, mas ela fica cada vez mais rápida. Quem está a fornecer-lhe energia cinética? A resposta é o peso. E há uma regra simples que liga o trabalho de todas as forças à variação da energia cinética. Chama-se teorema da energia cinética e é uma das ferramentas mais usadas nos exames.",
           "pontos": [
-            { "id": "estado-inicial", "label": "Estado inicial A", "explicacao": "Energia cinética inicial Ec,A = ½ m vA²." },
-            { "id": "forcas", "label": "Forças", "explicacao": "Todas as forças que atuam no corpo, incluindo peso, normal, atrito e forças aplicadas." },
-            { "id": "trabalho-total", "label": "Trabalho total", "explicacao": "Soma dos trabalhos de todas as forças entre A e B." },
-            { "id": "estado-final", "label": "Estado final B", "explicacao": "Energia cinética final Ec,B = ½ m vB²." }
-          ],
-          "caixa_formula": [
-            { "expressao": "W(FR) = ΔEc = Ec,final − Ec,inicial", "significado": "Teorema da energia cinética. Válido para qualquer força, conservativa ou não.", "unidades": "" }
+            {
+              "id": "teorema-energia-cinetica",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Estratégia para exercícios**\n\n1. Identifica o sistema e desenha todas as forças.\n\n2. Calcula o trabalho de cada força (as perpendiculares ao deslocamento dão zero).\n\n3. Soma tudo e iguala a ΔEc. Se o enunciado só pede a velocidade final e não fala em forças dissipativas, o método da conservação da energia mecânica costuma ser mais rápido.",
+              "label": "Lei do trabalho-energia",
+              "imagem": "f10_teorema_ec.png",
+              "explicacao": "O teorema da energia cinética (ou lei do trabalho-energia) diz que o trabalho realizado pela resultante das forças que atuam num corpo é igual à variação da sua energia cinética. Se o trabalho total é positivo, o corpo ganha energia cinética (acelera). Se é negativo, perde (trava). Se é nulo, a energia cinética mantém-se.",
+              "caixa_formula": [
+                {
+                  "expressao": "W(FR) = ΔEc = Ec,final − Ec,inicial",
+                  "significado": "Teorema da energia cinética. Válido para qualquer força, conservativa ou não."
+                }
+              ]
+            }
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "cartao_passos",
           "titulo": "Trabalho do peso",
-          "imagem": "f10_trabalho_peso.png",
-          "texto_principal": "O peso é uma força com uma propriedade especial: o seu trabalho entre dois pontos só depende do desnível entre eles, não do caminho percorrido. Forças com esta propriedade chamam-se forças conservativas. A cada força conservativa associa-se uma energia potencial. Ao peso associa-se a energia potencial gravítica.",
-          "instrucao": "Clica em cada ponto para veres a explicação.",
-          "pontos": [
-            { "id": "corpo-desce", "label": "Corpo a descer", "explicacao": "O peso realiza trabalho positivo: W(P) = m g h. A energia potencial gravítica diminui." },
-            { "id": "corpo-sobe", "label": "Corpo a subir", "explicacao": "O peso realiza trabalho negativo: W(P) = −m g h. A energia potencial gravítica aumenta." },
-            { "id": "percurso-qualquer", "label": "Percurso qualquer", "explicacao": "Pela vertical ou pela rampa, o trabalho do peso é o mesmo se o desnível h for o mesmo." },
-            { "id": "percurso-fechado", "label": "Percurso fechado", "explicacao": "Se o corpo volta ao ponto de partida, o trabalho do peso é nulo." },
-            { "id": "nivel-referencia", "label": "Nível de referência", "explicacao": "A altura h mede-se a partir de um nível escolhido por nós, onde Epg = 0. A escolha não altera as variações de energia, só os valores absolutos." }
-          ],
-          "caixa_formula": [
-            { "expressao": "Epg = m g h", "significado": "Energia potencial gravítica do sistema corpo + Terra.", "unidades": "g = 9,8 m s⁻², h em metros acima do nível de referência." },
-            { "expressao": "W(P) = −ΔEpg", "significado": "O trabalho do peso é simétrico da variação da energia potencial gravítica.", "unidades": "" }
+          "passos": [
+            {
+              "titulo": "Trabalho do peso",
+              "texto": "O peso é uma força com uma propriedade especial: o seu trabalho entre dois pontos só depende do desnível entre eles, não do caminho percorrido. Forças com esta propriedade chamam-se forças conservativas. A cada força conservativa associa-se uma energia potencial. Ao peso associa-se a energia potencial gravítica.",
+              "imagem": "f10_peso_intro.png",
+              "imagem_legenda": "Esquema de uma caixa que desce por uma rampa e por uma queda vertical, com o peso e o desnível h marcados.",
+              "caixa_formula": [
+                {
+                  "expressao": "Epg = m g h",
+                  "significado": "Energia potencial gravítica do sistema corpo + Terra.",
+                  "unidades": "g = 9,8 m s⁻², h em metros acima do nível de referência."
+                }
+              ]
+            },
+            {
+              "titulo": "Trabalho do peso - Corpo a descer",
+              "texto": "O peso realiza trabalho positivo: W(P) = m g h. A energia potencial gravítica diminui.",
+              "imagem": "f10_peso_desce.png",
+              "imagem_legenda": "Corpo a descer: o peso e o deslocamento apontam no mesmo sentido.",
+              "caixa_formula": [
+                {
+                  "expressao": "W(P) = m g h",
+                  "significado": "Trabalho do peso na descida: positivo, com h igual ao desnível.",
+                  "unidades": ""
+                },
+                {
+                  "expressao": "W(P) = −ΔEpg",
+                  "significado": "O trabalho do peso é simétrico da variação da energia potencial gravítica.",
+                  "unidades": ""
+                }
+              ]
+            },
+            {
+              "titulo": "Trabalho do peso - Corpo a subir",
+              "texto": "O peso realiza trabalho negativo: W(P) = −m g h. A energia potencial gravítica aumenta.",
+              "imagem": "f10_peso_sobe.png",
+              "imagem_legenda": "Corpo a subir: o peso aponta para baixo e o deslocamento para cima.",
+              "caixa_formula": [
+                {
+                  "expressao": "W(P) = −m g h",
+                  "significado": "Trabalho do peso na subida: negativo, com h igual ao desnível.",
+                  "unidades": ""
+                },
+                {
+                  "expressao": "W(P) = −ΔEpg",
+                  "significado": "O trabalho do peso é simétrico da variação da energia potencial gravítica.",
+                  "unidades": ""
+                }
+              ]
+            },
+            {
+              "titulo": "Trabalho do peso - Percurso qualquer",
+              "texto": "Pela vertical ou pela rampa, o trabalho do peso é o mesmo se o desnível h for o mesmo.",
+              "imagem": "f10_peso_percurso.png",
+              "imagem_legenda": "Dois percursos diferentes entre os mesmos pontos A e B, com o mesmo desnível h.",
+              "caixa_formula": [
+                {
+                  "expressao": "W(P) = −ΔEpg",
+                  "significado": "Só depende das alturas inicial e final, não do percurso.",
+                  "unidades": ""
+                }
+              ],
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**A escada e o elevador**\n\nImagina que queres ir do rés-do-chão ao 3.º andar. Podes ir pela escada, pelo elevador ou pela rampa do parque de estacionamento, que dá voltas e voltas. O caminho é diferente, mas a diferença de altura entre o rés-do-chão e o 3.º andar é sempre a mesma. O trabalho do peso é como essa diferença de altura: só importa onde começas e onde acabas. Com o atrito é o contrário: quanto mais voltas dás pela rampa, mais energia perdes. Por isso o atrito não é uma força conservativa."
+            },
+            {
+              "titulo": "Trabalho do peso - Percurso fechado",
+              "texto": "Se o corpo volta ao ponto de partida, o trabalho do peso é nulo.",
+              "imagem": "f10_peso_fechado.png",
+              "imagem_legenda": "Percurso fechado: o corpo sai de A e volta a A.",
+              "caixa_formula": [
+                {
+                  "expressao": "W(P) = 0",
+                  "significado": "Num percurso fechado, ΔEpg = 0.",
+                  "unidades": ""
+                }
+              ],
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Forças conservativas e não conservativas**\n\n**Conservativas:** o trabalho não depende do caminho, só das posições inicial e final; em percurso fechado é nulo. Exemplos: peso, força elástica.\n\n**Não conservativas:** o trabalho depende do caminho. Exemplos: atrito, resistência do ar, força exercida por uma pessoa ou por um motor."
+            },
+            {
+              "titulo": "Trabalho do peso - Nível de referência",
+              "texto": "A altura h mede-se a partir de um nível escolhido por nós, onde Epg = 0. A escolha não altera as variações de energia, só os valores absolutos.",
+              "imagem": "f10_peso_nivel.png",
+              "imagem_legenda": "Dois níveis de referência diferentes para o mesmo movimento, com Epg = 0 em sítios diferentes.",
+              "caixa_formula": [
+                {
+                  "expressao": "Epg = m g h",
+                  "significado": "Os valores de Epg dependem do nível de referência; as variações não.",
+                  "unidades": "h medido a partir do nível de referência (Epg = 0)."
+                }
+              ],
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Porque é que o nível de referência não importa**\n\nSe puseres o zero no chão ou em cima da mesa, os valores de Epg mudam, mas a diferença entre dois pontos é sempre a mesma. E na Física o que conta são as variações. Escolhe o nível de referência que te dá contas mais simples, normalmente o ponto mais baixo do movimento."
+            }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um livro de 2 kg é levantado do chão até uma prateleira a 1,5 m de altura. Qual é o trabalho realizado pelo peso?",
-          "opcoes": ["29 J", "−29 J", "3,0 J", "0 J, porque o livro fica parado no fim"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O livro sobe, o peso aponta para baixo: trabalho resistente. W(P) = −m g h = −2 × 9,8 × 1,5 = −29,4 J ≈ −29 J.",
-          "mascote_feedback_errado": "O peso aponta para baixo e o livro sobe, por isso o trabalho do peso é negativo: W(P) = −m g h = −2 × 9,8 × 1,5 = −29,4 J ≈ −29 J. O facto de ficar parado no fim não interessa: conta o deslocamento."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um carrinho com 2 kg parte do repouso e, depois de todas as forças terem realizado um trabalho total de 36 J, qual é a sua velocidade?",
-          "opcoes": ["3 m/s", "6 m/s", "18 m/s", "36 m/s"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. W(FR) = ΔEc → 36 = ½ × 2 × v² − 0 → v² = 36 → v = 6 m/s.",
-          "mascote_feedback_errado": "Aplica o teorema: W(FR) = Ec,final − Ec,inicial. Como parte do repouso, Ec,inicial = 0. 36 = ½ × 2 × v², logo v² = 36 e v = 6 m/s."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A escada e o elevador.** Imagina que queres ir do rés-do-chão ao 3.º andar. Podes ir pela escada, pelo elevador ou pela rampa do parque de estacionamento, que dá voltas e voltas. O caminho é diferente, mas a diferença de altura entre o rés-do-chão e o 3.º andar é sempre a mesma. O trabalho do peso é como essa diferença de altura: só importa onde começas e onde acabas. Com o atrito é o contrário: quanto mais voltas dás pela rampa, mais energia perdes. Por isso o atrito não é uma força conservativa."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Nível de referência, forças conservativas e estratégia de exercícios",
-          "texto": "**Porque é que o nível de referência não importa**\n\nSe puseres o zero no chão ou em cima da mesa, os valores de Epg mudam, mas a diferença entre dois pontos é sempre a mesma. E na Física o que conta são as variações. Escolhe o nível de referência que te dá contas mais simples, normalmente o ponto mais baixo do movimento.\n\n**Forças conservativas e não conservativas**\n\nConservativas: o trabalho não depende do caminho, só das posições inicial e final; em percurso fechado é nulo. Exemplos: peso, força elástica. Não conservativas: o trabalho depende do caminho. Exemplos: atrito, resistência do ar, força exercida por uma pessoa ou por um motor.\n\n**Estratégia para exercícios**\n\n1. Identifica o sistema e desenha todas as forças. 2. Calcula o trabalho de cada força (as perpendiculares ao deslocamento dão zero). 3. Soma tudo e iguala a ΔEc. Se o enunciado só pede a velocidade final e não fala em forças dissipativas, o método da conservação da energia mecânica costuma ser mais rápido."
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um livro de 2 kg é levantado do chão até uma prateleira a 1,5 m de altura. Qual é o trabalho realizado pelo peso?",
+              "opcoes": [
+                "29 J",
+                "−29 J",
+                "3,0 J",
+                "0 J, porque o livro fica parado no fim"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O livro sobe, o peso aponta para baixo: trabalho resistente. W(P) = −m g h = −2 × 9,8 × 1,5 = −29,4 J ≈ −29 J.",
+              "mascote_feedback_errado": "O peso aponta para baixo e o livro sobe, por isso o trabalho do peso é negativo: W(P) = −m g h = −2 × 9,8 × 1,5 = −29,4 J ≈ −29 J. O facto de ficar parado no fim não interessa: conta o deslocamento."
+            },
+            {
+              "pergunta": "Um carrinho com 2 kg parte do repouso e, depois de todas as forças terem realizado um trabalho total de 36 J, qual é a sua velocidade?",
+              "opcoes": [
+                "3 m/s",
+                "6 m/s",
+                "18 m/s",
+                "36 m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. W(FR) = ΔEc → 36 = ½ × 2 × v² − 0 → v² = 36 → v = 6 m/s.",
+              "mascote_feedback_errado": "Aplica o teorema: W(FR) = Ec,final − Ec,inicial. Como parte do repouso, Ec,inicial = 0. 36 = ½ × 2 × v², logo v² = 36 e v = 6 m/s."
+            },
             {
               "pergunta": "Uma bola com 0,20 kg cai de uma altura de 5,0 m. Qual é o trabalho realizado pelo peso durante a queda?",
               "opcoes": ["0,98 J", "9,8 J", "−9,8 J", "49 J"],
@@ -450,19 +542,16 @@
       "tempo_estimado_min": 10,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f10_pendulo_skate.png",
-          "texto": "Um skater larga-se do topo de uma rampa em U. Sem dar ao pé, sobe do outro lado quase até à mesma altura. Quase. A cada vai-vem, sobe um pouco menos, até ficar parado no fundo. Se não houvesse atrito nem ar, ficaria a oscilar para sempre. Nesta secção vais perceber porquê, e vais aprender a calcular quanta energia se \"perde\".",
-          "mascote_texto": "Spoiler: a energia não se perde. Muda de forma e deixa de ser útil. Isto é mais importante do que parece."
-        },
-        {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Conservação da energia mecânica",
           "imagem": "f10_rampa_energias.png",
+          "mascote_titulo": "A energia não desaparece, só muda de forma.",
+          "mascote_texto": "Um skater larga-se do topo de uma rampa em U. Sem dar ao pé, sobe do outro lado quase até à mesma altura. Quase. A cada vai-vem, sobe um pouco menos, até ficar parado no fundo. Se não houvesse atrito nem ar, ficaria a oscilar para sempre. Nesta secção vais perceber porquê, e vais aprender a calcular quanta energia se \"perde\".",
           "texto_principal": "Quando sobre um sistema só atuam forças conservativas (ou quando as forças não conservativas não realizam trabalho), a energia mecânica mantém-se constante. A energia cinética e a potencial transformam-se uma na outra, mas a soma não muda. Chama-se a isto conservação da energia mecânica.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "topo", "label": "Topo (repouso)", "explicacao": "Ec = 0. Toda a energia mecânica é potencial gravítica: Em = m g h." },
+            { "id": "topo", "label": "Topo (repouso)", "explicacao": "Ec = 0. Toda a energia mecânica é potencial gravítica: Em = m g h.", "curiosidade_sem_titulo": true, "curiosidade": "**Porque é que a primeira subida da montanha-russa é sempre a mais alta**\n\nA primeira subida é feita com a ajuda de um motor. A partir daí, sem motor, a energia mecânica só pode diminuir por causa do atrito e da resistência do ar. Nenhuma subida seguinte pode ser mais alta do que a primeira. Os engenheiros projetam o percurso para que, mesmo com a dissipação, o carrinho tenha energia suficiente para chegar ao fim." },
             { "id": "meio", "label": "A meio da descida", "explicacao": "Parte da Epg já se transformou em Ec. A soma continua igual." },
             { "id": "fundo", "label": "Fundo", "explicacao": "Epg = 0 (se for o nível de referência). Toda a energia mecânica é cinética: velocidade máxima." },
             { "id": "normal", "label": "Reação normal", "explicacao": "É perpendicular ao movimento em cada instante, por isso não realiza trabalho e não altera a energia mecânica, mesmo sendo uma força não conservativa." }
@@ -470,40 +559,29 @@
           "caixa_formula": [
             { "expressao": "Em,inicial = Em,final (se só forças conservativas realizam trabalho)", "significado": "Conservação da energia mecânica.", "unidades": "" },
             { "expressao": "v = √(2 g h)", "significado": "Velocidade ao fim de uma descida de altura h a partir do repouso, sem dissipação. Não depende da massa.", "unidades": "" }
-          ]
+          ],
+          "aprofundar": {
+            "titulo": "Pistas no enunciado",
+            "texto": "\"Despreze a resistência do ar\", \"superfície polida\", \"sem atrito\": podes usar a conservação da energia mecânica. \"A bola sobe a uma altura menor\", \"o bloco para\", \"a velocidade é menor do que a prevista\": há dissipação, usa W(Fnc) = ΔEm."
+          }
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Quando há dissipação",
           "imagem": "f10_dissipacao.png",
           "texto_principal": "Se atuarem forças não conservativas que realizam trabalho, como o atrito ou a resistência do ar, a energia mecânica varia. A variação é igual ao trabalho dessas forças. Quando esse trabalho é negativo, diz-se que há dissipação de energia: a energia mecânica transforma-se em energia interna (aquecimento), que já não pode ser facilmente aproveitada.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "forcas-dissipativas", "label": "Forças dissipativas", "explicacao": "Atrito e resistência do ar realizam trabalho negativo e diminuem a energia mecânica." },
-            { "id": "energia-interna", "label": "Energia interna", "explicacao": "A energia \"perdida\" aparece como aumento de energia interna das superfícies, do ar e do próprio corpo." },
-            { "id": "energia-total", "label": "Energia total", "explicacao": "A energia total (mecânica + interna) do conjunto sistema + vizinhança conserva-se sempre." },
+            { "id": "energia-interna", "label": "Energia interna", "explicacao": "A energia \"perdida\" aparece como aumento de energia interna das superfícies, do ar e do próprio corpo.", "curiosidade_sem_titulo": true, "curiosidade": "**A areia na ampulheta.** A energia mecânica de um sistema sem atrito é como uma ampulheta: a areia passa de cima para baixo e de baixo para cima, mas a quantidade total é sempre a mesma. A energia potencial é a areia de cima, a cinética é a de baixo. Agora imagina que a ampulheta tem uma pequena fenda e, em cada volta, cai um pouco de areia para a mesa. Essa areia não desapareceu, está na mesa. Mas já não volta para dentro da ampulheta. É isso a dissipação: a energia continua a existir, só que como energia interna espalhada pela vizinhança, onde já não serve para pôr o skater a subir." },
+            { "id": "energia-total", "label": "Energia total", "explicacao": "A energia total (mecânica + interna) do conjunto sistema + vizinhança conserva-se sempre.", "curiosidade_sem_titulo": true, "curiosidade": "**Conservação da energia mecânica vs. conservação da energia**\n\nSão coisas diferentes. A energia total conserva-se sempre, em qualquer situação: é um princípio fundamental da Física. A energia mecânica só se conserva se as forças não conservativas não realizarem trabalho. Num exame, quando escreves \"a energia conserva-se\", tens de dizer qual." },
             { "id": "forcas-motoras", "label": "Forças motoras", "explicacao": "Um motor ou uma pessoa podem realizar trabalho positivo e aumentar a energia mecânica." }
           ],
           "caixa_formula": [
             { "expressao": "W(Fnc) = ΔEm", "significado": "O trabalho das forças não conservativas é igual à variação da energia mecânica.", "unidades": "" },
             { "expressao": "Energia dissipada = |W(forças dissipativas)|", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma bola com 0,5 kg cai do repouso de uma altura de 2,0 m. Desprezando a resistência do ar, com que velocidade chega ao chão?",
-          "opcoes": ["2,0 m/s", "4,0 m/s", "6,3 m/s", "20 m/s"],
-          "correta": 2,
-          "mascote_feedback_certo": "Isso mesmo. m g h = ½ m v², logo v = √(2 × 9,8 × 2,0) = √39,2 ≈ 6,3 m/s. Repara que a massa se cancelou.",
-          "mascote_feedback_errado": "Iguala a energia mecânica no início e no fim: m g h = ½ m v². A massa cancela: v = √(2 g h) = √(2 × 9,8 × 2,0) = √39,2 ≈ 6,3 m/s."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um esquiador com 60 kg parte do repouso do topo de uma pista com 20 m de desnível e chega ao fundo a 15 m/s. Qual foi o trabalho das forças não conservativas?",
-          "opcoes": ["−5,0 × 10³ J", "−1,2 × 10⁴ J", "6,75 × 10³ J", "0 J"],
-          "correta": 0,
-          "mascote_feedback_certo": "Excelente. Em,i = 60 × 9,8 × 20 = 11 760 J. Em,f = ½ × 60 × 15² = 6750 J. W(Fnc) = 6750 − 11 760 = −5010 J ≈ −5,0 × 10³ J.",
-          "mascote_feedback_errado": "Calcula Em no início e no fim. No topo: Em = m g h = 60 × 9,8 × 20 = 11 760 J. No fundo: Em = ½ m v² = ½ × 60 × 225 = 6750 J. W(Fnc) = ΔEm = 6750 − 11 760 = −5010 J ≈ −5,0 × 10³ J."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -537,17 +615,32 @@
           }
         },
         {
-          "tipo": "analogia",
-          "texto": "**A areia na ampulheta.** A energia mecânica de um sistema sem atrito é como uma ampulheta: a areia passa de cima para baixo e de baixo para cima, mas a quantidade total é sempre a mesma. A energia potencial é a areia de cima, a cinética é a de baixo. Agora imagina que a ampulheta tem uma pequena fenda e, em cada volta, cai um pouco de areia para a mesa. Essa areia não desapareceu, está na mesa. Mas já não volta para dentro da ampulheta. É isso a dissipação: a energia continua a existir, só que como energia interna espalhada pela vizinhança, onde já não serve para pôr o skater a subir."
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Conservação da energia mecânica, pistas do enunciado e curiosidade",
-          "texto": "**Conservação da energia mecânica vs. conservação da energia**\n\nSão coisas diferentes. A energia total conserva-se sempre, em qualquer situação: é um princípio fundamental da Física. A energia mecânica só se conserva se as forças não conservativas não realizarem trabalho. Num exame, quando escreves \"a energia conserva-se\", tens de dizer qual.\n\n**Pistas no enunciado**\n\n\"Despreze a resistência do ar\", \"superfície polida\", \"sem atrito\": podes usar a conservação da energia mecânica. \"A bola sobe a uma altura menor\", \"o bloco para\", \"a velocidade é menor do que a prevista\": há dissipação, usa W(Fnc) = ΔEm.\n\n**Curiosidade: porque é que a primeira subida da montanha-russa é a mais alta**\n\nA primeira subida é feita com a ajuda de um motor. A partir daí, sem motor, a energia mecânica só pode diminuir por causa do atrito e da resistência do ar. Nenhuma subida seguinte pode ser mais alta do que a primeira. Os engenheiros projetam o percurso para que, mesmo com a dissipação, o carrinho tenha energia suficiente para chegar ao fim."
-        },
-        {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Uma bola com 0,5 kg cai do repouso de uma altura de 2,0 m. Desprezando a resistência do ar, com que velocidade chega ao chão?",
+              "opcoes": [
+                "2,0 m/s",
+                "4,0 m/s",
+                "6,3 m/s",
+                "20 m/s"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Isso mesmo. m g h = ½ m v², logo v = √(2 × 9,8 × 2,0) = √39,2 ≈ 6,3 m/s. Repara que a massa se cancelou.",
+              "mascote_feedback_errado": "Iguala a energia mecânica no início e no fim: m g h = ½ m v². A massa cancela: v = √(2 g h) = √(2 × 9,8 × 2,0) = √39,2 ≈ 6,3 m/s."
+            },
+            {
+              "pergunta": "Um esquiador com 60 kg parte do repouso do topo de uma pista com 20 m de desnível e chega ao fundo a 15 m/s. Qual foi o trabalho das forças não conservativas?",
+              "opcoes": [
+                "−5,0 × 10³ J",
+                "−1,2 × 10⁴ J",
+                "6,75 × 10³ J",
+                "0 J"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Excelente. Em,i = 60 × 9,8 × 20 = 11 760 J. Em,f = ½ × 60 × 15² = 6750 J. W(Fnc) = 6750 − 11 760 = −5010 J ≈ −5,0 × 10³ J.",
+              "mascote_feedback_errado": "Calcula Em no início e no fim. No topo: Em = m g h = 60 × 9,8 × 20 = 11 760 J. No fundo: Em = ½ m v² = ½ × 60 × 225 = 6750 J. W(Fnc) = ΔEm = 6750 − 11 760 = −5010 J ≈ −5,0 × 10³ J."
+            },
             {
               "pergunta": "Um corpo desce uma rampa sem atrito. Durante a descida:",
               "opcoes": ["a energia cinética e a potencial gravítica aumentam.", "a energia potencial gravítica diminui e a energia mecânica mantém-se.", "a energia mecânica diminui, porque o corpo desce.", "a energia cinética mantém-se, porque não há atrito."],
@@ -580,20 +673,15 @@
       "tempo_estimado_min": 10,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f10_escadas_elevador.png",
-          "texto": "Subir as escadas até ao 4.º andar a correr ou a passo: a energia que gastas a elevar o teu corpo é a mesma nos dois casos. Então porque é que a correr ficas sem fôlego? Porque fizeste a mesma transferência de energia em menos tempo. A grandeza que mede isto é a potência. E há outra pergunta: de toda a energia que o teu corpo (ou um motor) usa, quanta é aproveitada? A resposta é o rendimento.",
-          "mascote_texto": "Esta secção fecha a missão com as duas atividades laboratoriais. São perguntas certas em exame: vê com calma."
-        },
-        {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true, "pontos_seta": true,
           "titulo": "Potência e rendimento",
           "imagem": "f10_rendimento_fluxo.png",
+          "mascote_titulo": "Mesma energia, tempos diferentes: é isso que a potência mede.",
+          "mascote_texto": "Subir as escadas até ao 4.º andar a correr ou a passo: a energia que gastas a elevar o teu corpo é a mesma nos dois casos. Então porque é que a correr ficas sem fôlego? Porque fizeste a mesma transferência de energia em menos tempo. A grandeza que mede isto é a potência. E há outra pergunta: de toda a energia que o teu corpo (ou um motor) usa, quanta é aproveitada? A resposta é o rendimento.",
           "texto_principal": "A potência é a rapidez com que a energia é transferida. O rendimento é a fração da energia fornecida que é aproveitada para o fim pretendido. Nenhum sistema real tem rendimento de 100 %, porque há sempre alguma energia dissipada.",
-          "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "energia-fornecida", "label": "Energia fornecida", "explicacao": "Toda a energia que entra no sistema (por exemplo, energia elétrica que entra num motor)." },
-            { "id": "energia-util", "label": "Energia útil", "explicacao": "A parte que é usada para o fim pretendido (por exemplo, elevar uma carga)." },
+            { "id": "energia-util", "label": "Energia útil", "explicacao": "A parte que é usada para o fim pretendido (por exemplo, elevar uma carga).", "curiosidade_sem_titulo": true, "curiosidade": "**Encher um balde com uma mangueira furada**\n\nA potência é o caudal da mangueira: quantos litros por segundo saem da torneira. O rendimento é a fração da água que chega ao balde. Se a mangueira tiver furos, parte da água perde-se pelo caminho. Uma mangueira com mais caudal enche o balde mais depressa (mais potência), e uma mangueira com menos furos desperdiça menos água (mais rendimento). São coisas diferentes: podes ter uma mangueira muito potente e toda furada." },
             { "id": "energia-dissipada", "label": "Energia dissipada", "explicacao": "A parte que não é aproveitada, geralmente como aumento de energia interna (aquecimento)." },
             { "id": "balanco", "label": "Balanço", "explicacao": "Energia fornecida = energia útil + energia dissipada." }
           ],
@@ -601,18 +689,6 @@
             { "expressao": "P = E / Δt", "significado": "Potência.", "unidades": "P em watt (W), E em joule (J), Δt em segundo (s). 1 W = 1 J/s." },
             { "expressao": "η = E útil / E fornecida × 100", "significado": "Rendimento, em percentagem. Também se pode usar η = P útil / P fornecida × 100.", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um motor eleva uma carga de 500 kg a 10 m de altura, com velocidade constante, em 20 s. O motor consome uma potência de 4000 W. Qual é o seu rendimento?",
-          "opcoes": ["25 %", "50 %", "61 %", "80 %"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. E útil = m g h = 500 × 9,8 × 10 = 4,9 × 10⁴ J. P útil = 4,9 × 10⁴ / 20 = 2450 W. η = 2450 / 4000 × 100 ≈ 61 %.",
-          "mascote_feedback_errado": "Calcula primeiro a energia útil: E = m g h = 500 × 9,8 × 10 = 49 000 J. Depois a potência útil: 49 000 / 20 = 2450 W. Rendimento: 2450 / 4000 × 100 ≈ 61 %."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Encher um balde com uma mangueira furada.** A potência é o caudal da mangueira: quantos litros por segundo saem da torneira. O rendimento é a fração da água que chega ao balde. Se a mangueira tiver furos, parte da água perde-se pelo caminho. Uma mangueira com mais caudal enche o balde mais depressa (mais potência), e uma mangueira com menos furos desperdiça menos água (mais rendimento). São coisas diferentes: podes ter uma mangueira muito potente e toda furada."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -652,14 +728,6 @@
           "texto": "Medir é comparar uma grandeza com uma unidade. Nenhuma medição é perfeita: há sempre uma incerteza associada.\n\n**1. Incerteza de leitura**\n\nInstrumento analógico (régua, termómetro de mercúrio, proveta): metade da menor divisão da escala. Régua graduada em milímetros: incerteza de leitura = 0,5 mm. Instrumento digital (cronómetro digital, multímetro, balança digital): uma unidade do último dígito. Balança que mostra 12,34 g: incerteza = 0,01 g. O resultado escreve-se com a incerteza: comprimento = (12,5 ± 0,5) mm.\n\n**2. Medições repetidas**\n\nQuando se repete uma medição várias vezes, o valor mais provável é a média dos valores obtidos. A incerteza absoluta pode ser estimada pelo maior desvio em módulo em relação à média. Exemplo: tempos 1,52 s; 1,48 s; 1,55 s. Média = 1,52 s. Desvios: 0,00; 0,04; 0,03. Maior desvio = 0,04 s. Resultado: t = (1,52 ± 0,04) s.\n\n**3. Incerteza relativa**\n\nIncerteza relativa = incerteza absoluta / valor medido, normalmente em percentagem. No exemplo anterior: 0,04 / 1,52 × 100 = 2,6 %. Quanto menor a incerteza relativa, mais precisa é a medição.\n\n**4. Erro percentual (quando se conhece o valor de referência)**\n\nErro percentual = |valor experimental − valor de referência| / valor de referência × 100. Mede a exatidão do resultado.\n\n**5. Precisão e exatidão**\n\nPrecisão: os valores medidos estão próximos uns dos outros (pouca dispersão). Exatidão: o valor medido está próximo do valor verdadeiro. Uma medição pode ser precisa e pouco exata (todos os tiros agrupados, mas longe do centro do alvo).\n\n**6. Erros sistemáticos e aleatórios**\n\nErros sistemáticos: afetam sempre no mesmo sentido (balança mal calibrada, zero da escala deslocado, paralaxe feita sempre do mesmo lado). Não se eliminam repetindo a medição. Afetam a exatidão. Erros aleatórios: variam de medição para medição, em sentido imprevisível (tempo de reação a acionar o cronómetro, pequenas vibrações). Reduzem-se repetindo a medição e calculando a média. Afetam a precisão.\n\n**7. Algarismos significativos**\n\nO resultado final não pode ter mais algarismos significativos do que os dados permitem. A incerteza escreve-se normalmente com um algarismo significativo, e o valor medido acaba na mesma casa decimal da incerteza."
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um multímetro digital indica 4,37 V. Qual é a incerteza de leitura?",
-          "opcoes": ["0,5 V", "0,05 V", "0,01 V", "0,005 V"],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. Num instrumento digital, a incerteza de leitura é uma unidade do último dígito apresentado: 0,01 V.",
-          "mascote_feedback_errado": "Nos instrumentos digitais não se usa metade da menor divisão. A incerteza é uma unidade do último dígito: aqui, 0,01 V."
-        },
-        {
           "tipo": "atividade_laboratorial",
           "codigo": "AL 1.2",
           "titulo": "Movimento vertical de queda e ressalto de uma bola: transformações e transferências de energia",
@@ -689,6 +757,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um motor eleva uma carga de 500 kg a 10 m de altura, com velocidade constante, em 20 s. O motor consome uma potência de 4000 W. Qual é o seu rendimento?",
+              "opcoes": [
+                "25 %",
+                "50 %",
+                "61 %",
+                "80 %"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. E útil = m g h = 500 × 9,8 × 10 = 4,9 × 10⁴ J. P útil = 4,9 × 10⁴ / 20 = 2450 W. η = 2450 / 4000 × 100 ≈ 61 %.",
+              "mascote_feedback_errado": "Calcula primeiro a energia útil: E = m g h = 500 × 9,8 × 10 = 49 000 J. Depois a potência útil: 49 000 / 20 = 2450 W. Rendimento: 2450 / 4000 × 100 ≈ 61 %."
+            },
+            {
+              "pergunta": "Um multímetro digital indica 4,37 V. Qual é a incerteza de leitura?",
+              "opcoes": [
+                "0,5 V",
+                "0,05 V",
+                "0,01 V",
+                "0,005 V"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Num instrumento digital, a incerteza de leitura é uma unidade do último dígito apresentado: 0,01 V.",
+              "mascote_feedback_errado": "Nos instrumentos digitais não se usa metade da menor divisão. A incerteza é uma unidade do último dígito: aqui, 0,01 V."
+            },
             {
               "pergunta": "Dois alunos com a mesma massa sobem a mesma escada. O João demora 10 s e a Rita 20 s. Qual das afirmações é correta?",
               "opcoes": ["O João transferiu mais energia.", "A Rita desenvolveu maior potência.", "Transferiram a mesma energia, mas o João desenvolveu o dobro da potência.", "Desenvolveram a mesma potência, porque a altura é igual."],

@@ -81,32 +81,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Calcula a entalpia-padrão de combustão do etanol, C₂H₅OH(l) + 3 O₂(g) → 2 CO₂(g) + 3 H₂O(l). (ΔfH°: C₂H₅OH(l) −277,7; CO₂(g) −393,5; H₂O(l) −285,8 kJ/mol)",
-          "opcoes": [
-            "−1367 kJ/mol",
-            "−401,6 kJ/mol",
-            "−1922 kJ/mol",
-            "+1367 kJ/mol"
-          ],
-          "correta": 0,
-          "mascote_feedback_certo": "Certo. Produtos: 2 × (−393,5) + 3 × (−285,8) = −787,0 − 857,4 = −1644,4 kJ. Reagentes: −277,7 kJ (o O₂ conta 0). ΔcH° = −1644,4 − (−277,7) ≈ −1367 kJ/mol.",
-          "mascote_feedback_errado": "Usa produtos menos reagentes, com os coeficientes: [2 × (−393,5) + 3 × (−285,8)] − [−277,7] ≈ −1367 kJ/mol. O O₂ é uma substância elementar: ΔfH° = 0."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual destas equações representa a entalpia-padrão de formação da água líquida?",
-          "opcoes": [
-            "2 H₂(g) + O₂(g) → 2 H₂O(l)",
-            "H₂(g) + ½ O₂(g) → H₂O(l)",
-            "H₂O(l) → H₂(g) + ½ O₂(g)",
-            "2 H(g) + O(g) → H₂O(l)"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Forma-se 1 mol de H₂O a partir das substâncias elementares nas formas mais estáveis (H₂ e O₂ gasosos). Por isso aparece o coeficiente ½.",
-          "mascote_feedback_errado": "A definição exige a formação de 1 mol do composto a partir das substâncias elementares na forma mais estável. Só H₂(g) + ½ O₂(g) → H₂O(l) cumpre as duas condições."
-        },
-        {
           "tipo": "simulacao",
           "id": "sim_entalpia_formacao",
           "titulo": "Calcula ΔH com a tabela",
@@ -250,6 +224,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Calcula a entalpia-padrão de combustão do etanol, C₂H₅OH(l) + 3 O₂(g) → 2 CO₂(g) + 3 H₂O(l). (ΔfH°: C₂H₅OH(l) −277,7; CO₂(g) −393,5; H₂O(l) −285,8 kJ/mol)",
+              "opcoes": [
+                "−1367 kJ/mol",
+                "−401,6 kJ/mol",
+                "−1922 kJ/mol",
+                "+1367 kJ/mol"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. Produtos: 2 × (−393,5) + 3 × (−285,8) = −787,0 − 857,4 = −1644,4 kJ. Reagentes: −277,7 kJ (o O₂ conta 0). ΔcH° = −1644,4 − (−277,7) ≈ −1367 kJ/mol.",
+              "mascote_feedback_errado": "Usa produtos menos reagentes, com os coeficientes: [2 × (−393,5) + 3 × (−285,8)] − [−277,7] ≈ −1367 kJ/mol. O O₂ é uma substância elementar: ΔfH° = 0."
+            },
+            {
+              "pergunta": "Qual destas equações representa a entalpia-padrão de formação da água líquida?",
+              "opcoes": [
+                "2 H₂(g) + O₂(g) → 2 H₂O(l)",
+                "H₂(g) + ½ O₂(g) → H₂O(l)",
+                "H₂O(l) → H₂(g) + ½ O₂(g)",
+                "2 H(g) + O(g) → H₂O(l)"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Forma-se 1 mol de H₂O a partir das substâncias elementares nas formas mais estáveis (H₂ e O₂ gasosos). Por isso aparece o coeficiente ½.",
+              "mascote_feedback_errado": "A definição exige a formação de 1 mol do composto a partir das substâncias elementares na forma mais estável. Só H₂(g) + ½ O₂(g) → H₂O(l) cumpre as duas condições."
+            },
+            {
               "pergunta": "A entalpia-padrão de formação do O₂(g) é:",
               "opcoes": [
                 "−249 kJ/mol",
@@ -360,32 +358,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Sabendo que ΔcH°(C, grafite) = −393,5, ΔcH°(H₂) = −285,8 e ΔcH°(CH₄) = −890,3 kJ/mol, qual é a entalpia-padrão de formação do metano, C(s) + 2 H₂(g) → CH₄(g)?",
-          "opcoes": [
-            "−74,8 kJ/mol",
-            "−965,1 kJ/mol",
-            "+74,8 kJ/mol",
-            "−211,0 kJ/mol"
-          ],
-          "correta": 0,
-          "mascote_feedback_certo": "Certo. Usa a combustão do C (× 1), a do H₂ (× 2) e a do CH₄ invertida: −393,5 + 2 × (−285,8) + 890,3 = −74,8 kJ/mol.",
-          "mascote_feedback_errado": "Precisas de C e H₂ nos reagentes e CH₄ nos produtos. Combustão do C tal como está; combustão do H₂ multiplicada por 2; combustão do CH₄ invertida (sinal trocado). Soma: −393,5 − 571,6 + 890,3 = −74,8 kJ/mol."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Se N₂(g) + 3 H₂(g) → 2 NH₃(g) tem ΔH = −92,2 kJ, qual é o ΔH de NH₃(g) → ½ N₂(g) + 3/2 H₂(g)?",
-          "opcoes": [
-            "−92,2 kJ",
-            "+92,2 kJ",
-            "+46,1 kJ",
-            "−46,1 kJ"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. Invertendo, o sinal muda (+92,2 kJ); dividindo por 2, o valor fica a metade: +46,1 kJ.",
-          "mascote_feedback_errado": "A equação pedida é a inversa (troca o sinal) e com metade dos coeficientes (divide por 2): +92,2 / 2 = +46,1 kJ."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Subir a montanha por dois caminhos.** Para ir da aldeia ao cume de uma montanha, podes subir por um trilho direto e íngreme ou por um caminho com várias etapas, incluindo uma descida a meio. A diferença de altitude entre a aldeia e o cume é sempre a mesma. A Lei de Hess diz isto para a entalpia: não importa por que \"etapas\" passa a reação, a variação total é a mesma. É isso que permite calcular reações difíceis de medir a partir de outras fáceis."
         },
@@ -397,6 +369,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Sabendo que ΔcH°(C, grafite) = −393,5, ΔcH°(H₂) = −285,8 e ΔcH°(CH₄) = −890,3 kJ/mol, qual é a entalpia-padrão de formação do metano, C(s) + 2 H₂(g) → CH₄(g)?",
+              "opcoes": [
+                "−74,8 kJ/mol",
+                "−965,1 kJ/mol",
+                "+74,8 kJ/mol",
+                "−211,0 kJ/mol"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. Usa a combustão do C (× 1), a do H₂ (× 2) e a do CH₄ invertida: −393,5 + 2 × (−285,8) + 890,3 = −74,8 kJ/mol.",
+              "mascote_feedback_errado": "Precisas de C e H₂ nos reagentes e CH₄ nos produtos. Combustão do C tal como está; combustão do H₂ multiplicada por 2; combustão do CH₄ invertida (sinal trocado). Soma: −393,5 − 571,6 + 890,3 = −74,8 kJ/mol."
+            },
+            {
+              "pergunta": "Se N₂(g) + 3 H₂(g) → 2 NH₃(g) tem ΔH = −92,2 kJ, qual é o ΔH de NH₃(g) → ½ N₂(g) + 3/2 H₂(g)?",
+              "opcoes": [
+                "−92,2 kJ",
+                "+92,2 kJ",
+                "+46,1 kJ",
+                "−46,1 kJ"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Invertendo, o sinal muda (+92,2 kJ); dividindo por 2, o valor fica a metade: +46,1 kJ.",
+              "mascote_feedback_errado": "A equação pedida é a inversa (troca o sinal) e com metade dos coeficientes (divide por 2): +92,2 / 2 = +46,1 kJ."
+            },
             {
               "pergunta": "A Lei de Hess baseia-se no facto de:",
               "opcoes": [
@@ -498,32 +494,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual destes combustíveis liberta mais energia por grama?",
-          "opcoes": [
-            "Octano (ΔcH° = −5470 kJ/mol; M = 114,2 g/mol)",
-            "Metano (ΔcH° = −890 kJ/mol; M = 16,04 g/mol)",
-            "Etanol (ΔcH° = −1367 kJ/mol; M = 46,07 g/mol)",
-            "Metanol (ΔcH° = −726 kJ/mol; M = 32,04 g/mol)"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Metano: 890 / 16,04 ≈ 55,5 kJ/g; octano: 5470 / 114,2 ≈ 47,9 kJ/g; etanol: 29,7 kJ/g; metanol: 22,7 kJ/g. Por mole, o octano liberta mais; por grama, o metano ganha.",
-          "mascote_feedback_errado": "Divide |ΔcH°| pela massa molar: metano 55,5; octano 47,9; etanol 29,7; metanol 22,7 kJ/g. O octano liberta mais por mole, mas não por grama."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que o etanol (C₂H₆O) liberta menos energia por grama do que o etano (C₂H₆)?",
-          "opcoes": [
-            "Porque tem menos carbonos.",
-            "Porque já contém oxigénio ligado ao carbono: está parcialmente oxidado e \"aproveita\" menos a combustão.",
-            "Porque é líquido.",
-            "Porque tem ligações de hidrogénio que libertam energia."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Parte da energia que o etanol poderia libertar \"já foi gasta\" ao ligar o oxigénio na molécula. E o oxigénio aumenta a massa sem contribuir com energia.",
-          "mascote_feedback_errado": "Os combustíveis oxigenados estão parcialmente oxidados: têm menos ligações C–H e C–C para transformar em C=O e O–H, e o oxigénio pesa sem dar energia."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A pilha meio gasta.** Um combustível oxigenado é como uma pilha que já foi usada durante algum tempo: ainda funciona, mas dá menos energia do que uma nova do mesmo tamanho. O hidrocarboneto é a pilha nova: todos os seus átomos de carbono e hidrogénio estão à espera de reagir com o oxigénio. No álcool, uma parte desse \"trabalho\" já está feita."
         },
@@ -566,6 +536,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual destes combustíveis liberta mais energia por grama?",
+              "opcoes": [
+                "Octano (ΔcH° = −5470 kJ/mol; M = 114,2 g/mol)",
+                "Metano (ΔcH° = −890 kJ/mol; M = 16,04 g/mol)",
+                "Etanol (ΔcH° = −1367 kJ/mol; M = 46,07 g/mol)",
+                "Metanol (ΔcH° = −726 kJ/mol; M = 32,04 g/mol)"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Metano: 890 / 16,04 ≈ 55,5 kJ/g; octano: 5470 / 114,2 ≈ 47,9 kJ/g; etanol: 29,7 kJ/g; metanol: 22,7 kJ/g. Por mole, o octano liberta mais; por grama, o metano ganha.",
+              "mascote_feedback_errado": "Divide |ΔcH°| pela massa molar: metano 55,5; octano 47,9; etanol 29,7; metanol 22,7 kJ/g. O octano liberta mais por mole, mas não por grama."
+            },
+            {
+              "pergunta": "Porque é que o etanol (C₂H₆O) liberta menos energia por grama do que o etano (C₂H₆)?",
+              "opcoes": [
+                "Porque tem menos carbonos.",
+                "Porque já contém oxigénio ligado ao carbono: está parcialmente oxidado e \"aproveita\" menos a combustão.",
+                "Porque é líquido.",
+                "Porque tem ligações de hidrogénio que libertam energia."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Parte da energia que o etanol poderia libertar \"já foi gasta\" ao ligar o oxigénio na molécula. E o oxigénio aumenta a massa sem contribuir com energia.",
+              "mascote_feedback_errado": "Os combustíveis oxigenados estão parcialmente oxidados: têm menos ligações C–H e C–C para transformar em C=O e O–H, e o oxigénio pesa sem dar energia."
+            },
             {
               "pergunta": "Na AL 2.5, a energia recebida pela água foi 6270 J e queimaram-se 0,300 g de metanol (M = 32,04 g/mol). Qual é o ΔcH experimental?",
               "opcoes": [

@@ -185,6 +185,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             this.missao = missao;
             this.root = options.root;
             this.missionsIndexUrl = options.missionsIndexUrl || '#';
+            // Teste grátis desta missão (painel "Testa o que aprendeste"); vazio = ainda não existe.
+            this.testeUrl = options.testeUrl || window.exploreTesteUrl || '';
             this.mascotImageUrl = options.mascotImageUrl || '';
             this.progressSyncUrl = options.progressSyncUrl || window.exploreProgressSyncUrl || '';
             this.activityHeartbeatUrl = options.activityHeartbeatUrl || window.exploreActivityHeartbeatUrl || '';
@@ -193,6 +195,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             this.mascotWaveVideoUrl = options.mascotWaveVideoUrl || window.exploreMascotWaveVideoUrl || '';
             this.mascotDoubtsImageUrl = options.mascotDoubtsImageUrl || window.exploreMascotDoubtsImageUrl || '';
             this.mascotExplainingImageUrl = options.mascotExplainingImageUrl || window.exploreMascotExplainingImageUrl || '';
+            this.mascotPopupImageUrl = options.mascotPopupImageUrl || window.exploreMascotPopupImageUrl || '';
 
             // Estado do painel de chat — não persiste em localStorage (tal
             // como na Fotossíntese, o chat começa sempre fechado e sem
@@ -621,6 +624,15 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                                             <span class="mo-reward-btn">+${totalXP} XP</span>
                                             ${this.missao.badge ? `<span class="mo-reward-btn">${escapeHtml(this.missao.badge.nome || '')}</span>` : ''}
                                         </div>
+                                    </div>
+                                    <div class="mo-card mo-teste-card">
+                                        <h3>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
+                                            Testa o que aprendeste
+                                        </h3>
+                                        ${this.testeUrl
+                                            ? `<a class="mo-teste-btn" href="${escapeAttr(this.testeUrl)}">Testar</a>`
+                                            : '<span class="mo-teste-btn is-em-breve" aria-disabled="true">Testar<small>Em breve</small></span>'}
                                     </div>
                                 </aside>
                             </div>
@@ -1168,6 +1180,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 case 'diagrama_interativo': return this.renderDiagrama(screen);
                 case 'formula_interativa': return this.renderFormulaInterativa(screen);
                 case 'acordeao': return this.renderAcordeao(screen);
+                case 'cartao_passos': return this.renderCartaoPassos(section, screen, screenIndex);
                 case 'micro_verificacao': return this.renderMicroVerificacao(section, screen, screenIndex);
                 case 'analogia': return this.renderAnalogia(screen);
                 case 'aprofundar': return this.renderAprofundar(screen);
@@ -1248,6 +1261,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (pose === 'pensar' && this.mascotDoubtsImageUrl) {
                 return `<img class="mascot-overlay-figure" src="${this.mascotDoubtsImageUrl}" alt="Mascote a pensar">`;
             }
+            // Sem pose: popup de entrada num ecrã de gancho (ver
+            // showMascotPopup) — mascote própria deste popup, diferente da
+            // usada nos outros popups da missão.
+            if (!pose && this.mascotPopupImageUrl) {
+                return `<img class="mascot-overlay-figure" src="${this.mascotPopupImageUrl}" alt="Mascote">`;
+            }
             if (this.mascotExplainingImageUrl) {
                 return `<img class="mascot-overlay-figure" src="${this.mascotExplainingImageUrl}" alt="Mascote a explicar">`;
             }
@@ -1260,19 +1279,56 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             return `<span class="mascot-overlay-figure me-mascot-avatar--fallback"></span>`;
         }
 
-        showMascotPopup(texto) {
+        /** Ícone do selo do popup de entrada (ver showMascotPopup), consoante
+         *  a disciplina da missão (missao.disciplina) — átomo para Física,
+         *  frasco para Química, montanha para Geologia, e folha (o mesmo
+         *  ícone já usado no emblema de Biodiversidade) para as restantes
+         *  disciplinas de Biologia. */
+        disciplinaBadgeIconHtml() {
+            const disciplina = this.missao?.disciplina || '';
+            const icones = {
+                fisica: '<circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/>',
+                quimica: '<path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/>',
+                geologia: '<path d="m8 3 4 8 5-5 5 15H2L8 3z"/>',
+            };
+            const path = icones[disciplina] || '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>';
+            return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
+        }
+
+        showMascotPopup(texto, eyebrow, titulo) {
             if (!this.mascotEnabled() || !texto) return;
             document.querySelector('.me-mascot-popup')?.remove();
+
+            const eyebrowHtml = eyebrow
+                ? `
+                    <div class="me-mascot-popup-eyebrow">
+                        <span class="me-mascot-popup-badge" aria-hidden="true">${this.disciplinaBadgeIconHtml()}</span>
+                        <span>${escapeHtml(eyebrow)}</span>
+                    </div>
+                `
+                : '';
+            const tituloHtml = titulo
+                ? `<p class="me-mascot-popup-titulo">${escapeHtml(titulo)}</p>`
+                : '';
+            const setaHtml = `
+                <svg class="me-mascot-popup-seta" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                </svg>
+            `;
 
             const overlay = document.createElement('div');
             overlay.className = 'mascot-overlay me-mascot-popup';
             overlay.innerHTML = `
-                <div class="mascot-overlay-card mascot-overlay-card--split" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
+                <div class="mascot-overlay-card mascot-overlay-card--split me-mascot-popup-hook" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
                     <button type="button" class="mascot-overlay-close" aria-label="Fechar">✕</button>
                     <div class="mascot-overlay-split-figure">${this.mascotOverlayFigureHtml()}</div>
                     <div class="mascot-overlay-split-body">
+                        ${eyebrowHtml}
+                        ${tituloHtml}
                         <p class="mascot-overlay-text">${escapeHtml(texto).replace(/\n/g, '<br>')}</p>
-                        <button type="button" class="mascot-overlay-btn">Bora explorar!</button>
+                        <div class="me-mascot-popup-actions">
+                            <button type="button" class="mascot-overlay-btn">Bora explorar${setaHtml}</button>
+                        </div>
                     </div>
                 </div>
             `;
@@ -1293,16 +1349,20 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const popupKey = `${section.secao_id}::${screenIndex}`;
             if (this._lastGanchoPopupKey === popupKey) return;
 
-            // Nas analogias sem cartao_estilo, o mascote_texto já aparece
-            // inline (ver mascotInlineCardHtml em renderAnalogia) — só as
-            // de cartao_estilo (sem esse cartão inline) entram aqui, para
-            // não sair duplicado (popup + cartão inline ao mesmo tempo).
-            const temGancho = screen.tipo === 'gancho'
-                || screen.tipo === 'diagrama_interativo'
-                || (screen.tipo === 'analogia' && screen.cartao_estilo);
-            if (temGancho && screen.mascote_texto) {
+            // Qualquer ecrã com mascote_texto mostra o popup de entrada —
+            // já não depende do tipo de ecrã, para o aluno poder ir direto
+            // ao conteúdo real (ex: formula_interativa) sem precisar de um
+            // ecrã "gancho" só para mostrar essa frase (ver instruções da
+            // Daniela: eliminar as páginas que só tinham essa frase).
+            // Duas exceções, com popup próprio mais abaixo: quiz_seccao e
+            // micro_verificacao. E nas analogias sem cartao_estilo, o
+            // mascote_texto já aparece inline (ver mascotInlineCardHtml em
+            // renderAnalogia), por isso não voltam a aparecer aqui também.
+            const mascoteJaInline = screen.tipo === 'analogia' && !screen.cartao_estilo;
+            const temPopupProprio = screen.tipo === 'quiz_seccao' || screen.tipo === 'micro_verificacao';
+            if (!mascoteJaInline && !temPopupProprio && screen.mascote_texto) {
                 this._lastGanchoPopupKey = popupKey;
-                this.showMascotPopup(screen.mascote_texto);
+                this.showMascotPopup(screen.mascote_texto, section.titulo, screen.mascote_titulo);
                 return;
             }
 
@@ -2002,7 +2062,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         pontoDetailInnerHtml(ponto) {
             const imagemHtml = ponto.imagem ? `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(ponto.imagem)}" alt="${escapeHtml(ponto.label || '')}" onerror="this.style.display='none'">` : '';
             const conteudoHtml = `
-                <h4 class="me-escada-detail-title">${escapeHtml(ponto.label || '')}</h4>
+                ${ponto.label ? `<h4 class="me-escada-detail-title">${escapeHtml(ponto.label)}</h4>` : ''}
                 <div class="me-escada-detail-text-row">
                     <p class="me-escada-detail-text">${escapeHtml(ponto.explicacao || '')}</p>
                     ${this.curiosidadeToggleHtml(ponto)}
@@ -2024,6 +2084,44 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     <div class="me-escada-detail-content">${conteudoHtml}</div>
                 </div>
             `;
+        }
+
+        /** Barra "‹ 2 / 5 ›" no fundo do cartão de um ponto (ver
+         *  screen.pontos_seta/bindDiagramaSetaNav) — substitui a fila de
+         *  chips quando o ecrã tem um primeiro slide (texto_principal +
+         *  caixa_formula) seguido dos pontos, tudo navegado por uma seta em
+         *  vez de se escolher livremente. */
+        setaNavHtml(index, total) {
+            return `
+                <div class="me-seta-nav">
+                    <button type="button" class="me-seta-nav-btn me-seta-nav-btn--prev" ${index === 0 ? 'disabled' : ''} aria-label="Anterior">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <span class="me-seta-nav-contador">${index + 1} / ${total}</span>
+                    <button type="button" class="me-seta-nav-btn me-seta-nav-btn--next" ${index === total - 1 ? 'disabled' : ''} aria-label="Seguinte">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
+            `;
+        }
+
+        /** Liga os botões do setaNavHtml — cada clique substitui por
+         *  completo o conteúdo do cartão (pontoDetailInnerHtml do slide
+         *  seguinte/anterior) e volta a ligar curiosidade/atenção/
+         *  inquérito desse slide, tal como bindDiagramaChips faz por
+         *  ponto. */
+        bindDiagramaSetaNav(slides) {
+            const explicacaoEl = this.root.querySelector('#meDiagramaExplicacao');
+            if (!explicacaoEl) return;
+            const irPara = (index) => {
+                explicacaoEl.innerHTML = this.pontoDetailInnerHtml(slides[index]) + this.setaNavHtml(index, slides.length);
+                this.bindCuriosidadeToggle(explicacaoEl);
+                this.bindAtencaoToggle(explicacaoEl);
+                this.bindInquerito(explicacaoEl, slides[index]);
+                explicacaoEl.querySelector('.me-seta-nav-btn--prev')?.addEventListener('click', () => irPara(index - 1));
+                explicacaoEl.querySelector('.me-seta-nav-btn--next')?.addEventListener('click', () => irPara(index + 1));
+            };
+            irPara(0);
         }
 
         /**
@@ -2163,6 +2261,84 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     <div class="me-acordeao">${itensHtml}</div>
                 </div>
             `;
+        }
+
+        /**
+         * Ecrã "cartao_passos": um só cartão (imagem à esquerda, texto à
+         * direita) que muda de passo com uma seta por baixo do texto, sem
+         * mudar de página. Cada passo (screen.passos) traz { titulo, texto,
+         * imagem?, imagem_legenda?, caixa_formula?, curiosidade? }; só o
+         * lado direito e a imagem mudam. O passo atual fica em
+         * this.cartaoPassoEstado (não persiste ao recarregar a página).
+         */
+        cartaoPassoChave(section, screenIndex) {
+            return `${section.secao_id}::${screenIndex}`;
+        }
+
+        cartaoPassosInnerHtml(screen, indice) {
+            const passos = screen.passos || [];
+            const passo = passos[indice] || {};
+            const paragrafos = String(passo.texto || '').split(/\n\s*\n/).filter(Boolean)
+                .map((par) => `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(par))}</p>`).join('');
+            const chevron = (d) => `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
+            const anterior = indice > 0
+                ? `<button type="button" class="me-cp-seta" data-cp-anterior aria-label="Passo anterior">${chevron('m15 18-6-6 6-6')}</button>`
+                : '';
+            const seguinte = indice < passos.length - 1
+                ? `<button type="button" class="me-cp-seta" data-cp-seguinte aria-label="Passo seguinte">${chevron('m9 18 6-6-6-6')}</button>`
+                : '';
+            const curiosidade = passo.curiosidade
+                ? `<div class="me-curiosidade-baixo">${this.curiosidadeToggleHtml(passo)}</div>${this.curiosidadeRevealHtml(passo)}`
+                : '';
+            const imagemHtml = imagemEcraHtml(passo.imagem, 'me-escada-detail-image', passo.titulo || '', passo.imagem_legenda || (passo.imagem ? passo.titulo : ''));
+            return `
+                <div class="me-escada-detail-columns">
+                    <div class="me-escada-detail-media">${imagemHtml}</div>
+                    <div class="me-escada-detail-divider" aria-hidden="true"></div>
+                    <div class="me-escada-detail-content">
+                        ${passo.titulo ? `<h4 class="me-escada-detail-title">${escapeHtml(passo.titulo)}</h4>` : ''}
+                        ${paragrafos}
+                        ${this.caixaFormulaHtml(passo.caixa_formula)}
+                        ${curiosidade}
+                        <div class="me-cp-nav">
+                            <span class="me-cp-contador">${indice + 1} / ${passos.length}</span>
+                            ${anterior}${seguinte}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        renderCartaoPassos(section, screen, screenIndex) {
+            this.cartaoPassoEstado = this.cartaoPassoEstado || {};
+            const indice = this.cartaoPassoEstado[this.cartaoPassoChave(section, screenIndex)] || 0;
+            return `
+                <div class="mascot-overlay-card me-mascot-inline me-gancho-card">
+                    <div class="me-escada-detail me-cartao-passos" data-cartao-passos>${this.cartaoPassosInnerHtml(screen, indice)}</div>
+                </div>
+            `;
+        }
+
+        bindCartaoPassos(screen, section, screenIndex) {
+            const container = this.root.querySelector('[data-cartao-passos]');
+            if (!container) return;
+            const chave = this.cartaoPassoChave(section, screenIndex);
+            const total = (screen.passos || []).length;
+            const desenhar = () => {
+                container.innerHTML = this.cartaoPassosInnerHtml(screen, this.cartaoPassoEstado[chave] || 0);
+                this.bindCuriosidadeToggle(container);
+            };
+            container.addEventListener('click', (event) => {
+                const atual = this.cartaoPassoEstado[chave] || 0;
+                if (event.target.closest('[data-cp-seguinte]')) {
+                    this.cartaoPassoEstado[chave] = Math.min(total - 1, atual + 1);
+                    desenhar();
+                } else if (event.target.closest('[data-cp-anterior]')) {
+                    this.cartaoPassoEstado[chave] = Math.max(0, atual - 1);
+                    desenhar();
+                }
+            });
+            this.bindCuriosidadeToggle(container);
         }
 
         bindAcordeao() {
@@ -2331,10 +2507,26 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // chips normais via screen.cartao_estilo, sem mudar o layout da
             // fila de pontos.
             const useCardDetail = isEscada || isArvore || isMapa || screen.cartao_estilo === true;
+            // screen.pontos_seta: em vez da fila de chips + imagem +
+            // fórmula soltas por cima, tudo vira um único cartão navegado
+            // por uma seta. Com texto_principal, o primeiro "slide" é esse
+            // texto + a caixa_formula do ecrã; sem ele, começa logo no
+            // primeiro ponto. Os pontos herdam screen.imagem se não
+            // tiverem a sua própria (ver slidesSeta mais abaixo e
+            // bindDiagramaSetaNav).
+            const temSeta = screen.pontos_seta === true;
+            const slidesSeta = temSeta
+                ? [
+                    ...(screen.texto_principal ? [{ explicacao: screen.texto_principal, imagem: screen.imagem, caixa_formula: screen.caixa_formula }] : []),
+                    ...pontos.map((ponto) => ({ ...ponto, imagem: ponto.imagem || screen.imagem })),
+                ]
+                : null;
             const primeiroPonto = pontos[0] || {};
-            const explicacaoHtml = useCardDetail
-                ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(primeiroPonto)}</div>`
-                : `<div class="me-diagrama-explicacao did-you-know" id="meDiagramaExplicacao" hidden></div>`;
+            const explicacaoHtml = temSeta
+                ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(slidesSeta[0])}${this.setaNavHtml(0, slidesSeta.length)}</div>`
+                : useCardDetail
+                    ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(primeiroPonto)}</div>`
+                    : `<div class="me-diagrama-explicacao did-you-know" id="meDiagramaExplicacao" hidden></div>`;
 
             // Título + frase-ponte centrados por cima da linha temporal —
             // título primeiro, frase-ponte logo a seguir.
@@ -2356,8 +2548,10 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // texto_principal (Física) — explicação corrida que acompanha o
             // diagrama, distinta da frase-ponte (uma frase curta) e do
             // intro_texto (isco antes do título): aqui é o corpo principal
-            // do ecrã, por isso vem depois da ponte e antes da imagem.
-            const textoPrincipalHtml = screen.texto_principal
+            // do ecrã, por isso vem depois da ponte e antes da imagem. Com
+            // pontos_seta, já vive dentro do primeiro slide do cartão (ver
+            // slidesSeta), por isso não se repete aqui.
+            const textoPrincipalHtml = (screen.texto_principal && !temSeta)
                 ? `<div class="me-diagrama-texto-principal">${textToHtml(screen.texto_principal)}</div>`
                 : '';
 
@@ -2367,17 +2561,17 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     ${screen.ponte_texto ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.ponte_texto)}</p>` : ''}
                 `}
                 ${textoPrincipalHtml}
-                ${(isEscada || isArvore || isMapa) ? '' : (screen.video
+                ${(isEscada || isArvore || isMapa || temSeta) ? '' : (screen.video
                     ? `<video class="me-video-chroma-source" data-chroma-key="white" src="/static/${encodeURIComponent(screen.video)}" autoplay loop muted playsinline style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none"></video>
                        <canvas class="card-visual me-video-chroma-canvas"></canvas>`
                     : imagemEcraHtml(screen.imagem, 'card-visual', screen.titulo || '', screen.imagem_legenda))}
-                ${(isTimeline || screen.sem_chips) ? '' : instrucaoHtml}
-                ${screen.sem_chips ? '' : pontosHtml}
+                ${(isTimeline || screen.sem_chips || temSeta) ? '' : instrucaoHtml}
+                ${(screen.sem_chips || temSeta) ? '' : pontosHtml}
                 ${isTimeline ? instrucaoHtml : ''}
                 ${explicacaoHtml}
                 ${this.tabelasHtml(screen.tabelas)}
                 ${this.escadaConversaoHtml(screen.escada_conversao)}
-                ${this.caixaFormulaHtml(screen.caixa_formula)}
+                ${temSeta ? '' : this.caixaFormulaHtml(screen.caixa_formula)}
                 ${pontos.some((ponto) => ponto.exercicio)
                     ? `<div id="meDiagramaExercicio">${screen.cartao_estilo ? this.exercicioPontoHtml(screen, primeiroPonto) : ''}</div>`
                     : ''}
@@ -3118,6 +3312,14 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
          *  tanto para o diagrama do ecrã atual como para uma cópia dele a
          *  aparecer só como pano de fundo (ver findBackdropScreen). */
         bindDiagramaChips(diagramScreen) {
+            if (diagramScreen.pontos_seta === true) {
+                const slides = [
+                    ...(diagramScreen.texto_principal ? [{ explicacao: diagramScreen.texto_principal, imagem: diagramScreen.imagem, caixa_formula: diagramScreen.caixa_formula }] : []),
+                    ...(diagramScreen.pontos || []).map((ponto) => ({ ...ponto, imagem: ponto.imagem || diagramScreen.imagem })),
+                ];
+                this.bindDiagramaSetaNav(slides);
+                return;
+            }
             const isEscada = diagramScreen.layout === 'escada';
             const isArvore = diagramScreen.layout === 'arvore';
             const isMapa = diagramScreen.layout === 'mapa';
@@ -3176,10 +3378,14 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                                     <strong>${escapeHtml(ponto.label)}</strong>
                                     ${introHtml}
                                     <p>${escapeHtml(ponto.explicacao)}</p>
+                                    ${ponto.curiosidade ? `<div class="me-curiosidade-baixo">${this.curiosidadeToggleHtml(ponto)}</div>${this.curiosidadeRevealHtml(ponto)}` : ''}
                                     ${this.saberMaisHtml(ponto)}
                                 </div>
                             </div>
                         `;
+                        // 💡 por baixo do texto (ponto.curiosidade), que só
+                        // mostra a curiosidade depois de se clicar.
+                        this.bindCuriosidadeToggle(explicacaoEl);
                     }
                 });
             });
@@ -3248,6 +3454,10 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
 
             if (screen.tipo === 'formula_interativa') {
                 this.bindFormulaInterativa(screen);
+            }
+
+            if (screen.tipo === 'cartao_passos') {
+                this.bindCartaoPassos(screen, section, screenIndex);
             }
 
             if (screen.tipo === 'acordeao') {

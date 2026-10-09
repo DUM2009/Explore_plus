@@ -64,32 +64,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Num sistema em equilíbrio químico:",
-          "opcoes": [
-            "a reação parou.",
-            "as concentrações de reagentes e produtos são iguais.",
-            "as reações direta e inversa ocorrem à mesma velocidade e as concentrações mantêm-se constantes.",
-            "só existem produtos."
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. O equilíbrio é dinâmico: as duas reações continuam, à mesma velocidade, e por isso as concentrações não variam.",
-          "mascote_feedback_errado": "No equilíbrio, nada parou: as reações direta e inversa continuam, à mesma velocidade. As concentrações ficam constantes, mas não são necessariamente iguais."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Num gráfico concentração-tempo, como se reconhece que o sistema atingiu o equilíbrio?",
-          "opcoes": [
-            "Quando as curvas se cruzam.",
-            "Quando todas as concentrações passam a ser constantes (curvas horizontais).",
-            "Quando a concentração dos reagentes é zero.",
-            "Quando a concentração dos produtos é máxima e depois desce."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O equilíbrio corresponde ao instante a partir do qual todas as curvas ficam horizontais. O ponto em que se cruzam não tem significado especial.",
-          "mascote_feedback_errado": "O cruzamento das curvas não indica equilíbrio. O equilíbrio é atingido quando as concentrações deixam de variar: todas as curvas ficam horizontais."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Duas lojas e uma escada rolante.** Imagina dois andares de um centro comercial ligados por duas escadas rolantes, uma a subir e outra a descer. De manhã, toda a gente está em baixo, e sobe muita gente. Aos poucos, há mais gente em cima, e começa também a descer mais gente. A certa altura, por minuto, sobem tantas pessoas como as que descem. O número de pessoas em cada andar deixa de mudar, embora as escadas continuem cheias de gente. É o equilíbrio dinâmico. E repara: os dois andares não têm de ter o mesmo número de pessoas."
         },
@@ -101,6 +75,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Num sistema em equilíbrio químico:",
+              "opcoes": [
+                "a reação parou.",
+                "as concentrações de reagentes e produtos são iguais.",
+                "as reações direta e inversa ocorrem à mesma velocidade e as concentrações mantêm-se constantes.",
+                "só existem produtos."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O equilíbrio é dinâmico: as duas reações continuam, à mesma velocidade, e por isso as concentrações não variam.",
+              "mascote_feedback_errado": "No equilíbrio, nada parou: as reações direta e inversa continuam, à mesma velocidade. As concentrações ficam constantes, mas não são necessariamente iguais."
+            },
+            {
+              "pergunta": "Num gráfico concentração-tempo, como se reconhece que o sistema atingiu o equilíbrio?",
+              "opcoes": [
+                "Quando as curvas se cruzam.",
+                "Quando todas as concentrações passam a ser constantes (curvas horizontais).",
+                "Quando a concentração dos reagentes é zero.",
+                "Quando a concentração dos produtos é máxima e depois desce."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O equilíbrio corresponde ao instante a partir do qual todas as curvas ficam horizontais. O ponto em que se cruzam não tem significado especial.",
+              "mascote_feedback_errado": "O cruzamento das curvas não indica equilíbrio. O equilíbrio é atingido quando as concentrações deixam de variar: todas as curvas ficam horizontais."
+            },
             {
               "pergunta": "Qual é a condição necessária para que uma reação reversível atinja o equilíbrio?",
               "opcoes": [
@@ -212,32 +210,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Para H₂(g) + I₂(g) ⇌ 2 HI(g), a 430 °C, no equilíbrio: [H₂] = [I₂] = 1,0 × 10⁻³ mol/dm³ e [HI] = 7,35 × 10⁻³ mol/dm³. Qual é o valor de K c?",
-          "opcoes": [
-            "7,35",
-            "54",
-            "3,7 × 10³",
-            "1,9 × 10⁻²"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. K c = [HI]² / ([H₂][I₂]) = (7,35 × 10⁻³)² / (1,0 × 10⁻³ × 1,0 × 10⁻³) = 5,40 × 10⁻⁵ / 1,0 × 10⁻⁶ ≈ 54.",
-          "mascote_feedback_errado": "Não te esqueças do expoente 2 do HI (coeficiente 2): K c = (7,35 × 10⁻³)² / (1,0 × 10⁻³)² ≈ 54."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "A 25 °C, a reação N₂(g) + O₂(g) ⇌ 2 NO(g) tem K c ≈ 4,5 × 10⁻³¹. O que se conclui?",
-          "opcoes": [
-            "Forma-se muito NO à temperatura ambiente.",
-            "A reação é praticamente inexistente à temperatura ambiente: no equilíbrio, quase só há N₂ e O₂.",
-            "A reação é muito rápida.",
-            "A reação é completa."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. K c minúsculo significa reação muito pouco extensa. É por isso que o azoto e o oxigénio do ar coexistem sem reagir. Só a altas temperaturas (motores, relâmpagos) se forma NO em quantidade.",
-          "mascote_feedback_errado": "K c muito pequeno indica que, no equilíbrio, predominam os reagentes. A 25 °C o ar quase não forma NO."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A nota de um aluno que já foi corrigida.** K c é como a classificação final de uma reação numa escala que vai de \"quase nada\" a \"quase tudo\". Um K c de 10⁻³⁰ é como um aluno que nem abriu o teste. Um K c de 10³⁰ é um 20 em 20. Repara que a nota não diz nada sobre quanto tempo o aluno demorou a fazer o teste: da mesma forma, K c diz quanto a reação avança, mas não diz se é rápida ou lenta."
         },
@@ -249,6 +221,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Para H₂(g) + I₂(g) ⇌ 2 HI(g), a 430 °C, no equilíbrio: [H₂] = [I₂] = 1,0 × 10⁻³ mol/dm³ e [HI] = 7,35 × 10⁻³ mol/dm³. Qual é o valor de K c?",
+              "opcoes": [
+                "7,35",
+                "54",
+                "3,7 × 10³",
+                "1,9 × 10⁻²"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. K c = [HI]² / ([H₂][I₂]) = (7,35 × 10⁻³)² / (1,0 × 10⁻³ × 1,0 × 10⁻³) = 5,40 × 10⁻⁵ / 1,0 × 10⁻⁶ ≈ 54.",
+              "mascote_feedback_errado": "Não te esqueças do expoente 2 do HI (coeficiente 2): K c = (7,35 × 10⁻³)² / (1,0 × 10⁻³)² ≈ 54."
+            },
+            {
+              "pergunta": "A 25 °C, a reação N₂(g) + O₂(g) ⇌ 2 NO(g) tem K c ≈ 4,5 × 10⁻³¹. O que se conclui?",
+              "opcoes": [
+                "Forma-se muito NO à temperatura ambiente.",
+                "A reação é praticamente inexistente à temperatura ambiente: no equilíbrio, quase só há N₂ e O₂.",
+                "A reação é muito rápida.",
+                "A reação é completa."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. K c minúsculo significa reação muito pouco extensa. É por isso que o azoto e o oxigénio do ar coexistem sem reagir. Só a altas temperaturas (motores, relâmpagos) se forma NO em quantidade.",
+              "mascote_feedback_errado": "K c muito pequeno indica que, no equilíbrio, predominam os reagentes. A 25 °C o ar quase não forma NO."
+            },
             {
               "pergunta": "Qual é a expressão de K c para 2 SO₂(g) + O₂(g) ⇌ 2 SO₃(g)?",
               "opcoes": [
@@ -345,32 +341,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Para H₂ + I₂ ⇌ 2 HI (K c = 54), num instante: [HI] = 0,010 mol/dm³ e [H₂] = [I₂] = 0,0020 mol/dm³. Em que sentido evolui o sistema?",
-          "opcoes": [
-            "Sentido inverso, porque Q c > K c.",
-            "Sentido direto, porque Q c = 25 < K c.",
-            "Já está em equilíbrio.",
-            "Não se pode prever."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Q c = 0,010² / (0,0020 × 0,0020) = 1,0 × 10⁻⁴ / 4,0 × 10⁻⁶ = 25. Como 25 < 54, forma-se mais HI.",
-          "mascote_feedback_errado": "Calcula Q c com as concentrações dadas: 0,010² / 0,0020² = 25. Q c < K c, logo a reação avança no sentido direto (forma HI)."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Num sistema, Q c = 120 e K c = 54. O que vai acontecer às concentrações de reagentes?",
-          "opcoes": [
-            "Diminuem.",
-            "Aumentam, porque a reação inversa é favorecida.",
-            "Mantêm-se.",
-            "Tornam-se nulas."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Q c > K c: há produtos a mais. A reação inversa consome produtos e forma reagentes, até Q c baixar para 54.",
-          "mascote_feedback_errado": "Com Q c > K c, o sistema evolui no sentido inverso: produtos transformam-se em reagentes, e a concentração de reagentes aumenta."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O termóstato.** Um termóstato está programado para 21 °C (o K c). Se a sala está a 18 °C (Q < K), liga o aquecimento. Se está a 24 °C (Q > K), liga o ar condicionado. Se está a 21 °C, não faz nada. O quociente da reação é a temperatura atual da sala: comparando-a com o valor programado, sabes para que lado o sistema vai \"corrigir\"."
         },
@@ -382,6 +352,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Para H₂ + I₂ ⇌ 2 HI (K c = 54), num instante: [HI] = 0,010 mol/dm³ e [H₂] = [I₂] = 0,0020 mol/dm³. Em que sentido evolui o sistema?",
+              "opcoes": [
+                "Sentido inverso, porque Q c > K c.",
+                "Sentido direto, porque Q c = 25 < K c.",
+                "Já está em equilíbrio.",
+                "Não se pode prever."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Q c = 0,010² / (0,0020 × 0,0020) = 1,0 × 10⁻⁴ / 4,0 × 10⁻⁶ = 25. Como 25 < 54, forma-se mais HI.",
+              "mascote_feedback_errado": "Calcula Q c com as concentrações dadas: 0,010² / 0,0020² = 25. Q c < K c, logo a reação avança no sentido direto (forma HI)."
+            },
+            {
+              "pergunta": "Num sistema, Q c = 120 e K c = 54. O que vai acontecer às concentrações de reagentes?",
+              "opcoes": [
+                "Diminuem.",
+                "Aumentam, porque a reação inversa é favorecida.",
+                "Mantêm-se.",
+                "Tornam-se nulas."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Q c > K c: há produtos a mais. A reação inversa consome produtos e forma reagentes, até Q c baixar para 54.",
+              "mascote_feedback_errado": "Com Q c > K c, o sistema evolui no sentido inverso: produtos transformam-se em reagentes, e a concentração de reagentes aumenta."
+            },
             {
               "pergunta": "Q c e K c têm a mesma expressão matemática, mas:",
               "opcoes": [
@@ -491,32 +485,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Para N₂(g) + 3 H₂(g) ⇌ 2 NH₃(g), ΔH < 0, o que favorece a formação de amoníaco?",
-          "opcoes": [
-            "Aumentar a temperatura e diminuir a pressão.",
-            "Diminuir a temperatura e aumentar a pressão.",
-            "Adicionar um catalisador.",
-            "Retirar N₂."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. A reação direta é exotérmica: baixar a temperatura favorece-a. Passa de 4 moles de gás para 2: aumentar a pressão favorece o lado com menos moles, os produtos.",
-          "mascote_feedback_errado": "Pela temperatura: diminuir favorece o sentido exotérmico (direto). Pela pressão: aumentar favorece o lado com menos moles de gás (2 mol de NH₃ contra 4 mol de reagentes)."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Para N₂O₄(g) (incolor) ⇌ 2 NO₂(g) (castanho), ΔH > 0. Ao mergulhar o recipiente em água quente, a cor:",
-          "opcoes": [
-            "fica mais clara.",
-            "fica mais escura, porque o equilíbrio se desloca no sentido endotérmico (formação de NO₂).",
-            "não muda.",
-            "fica verde."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Aquecer favorece o sentido endotérmico, que aqui é o direto: forma-se mais NO₂ castanho. K c aumenta.",
-          "mascote_feedback_errado": "A reação direta é endotérmica (ΔH > 0). Ao aquecer, o sistema \"contraria\" absorvendo energia: desloca-se no sentido direto e forma mais NO₂, castanho."
         },
         {
           "tipo": "simulacao",
@@ -728,6 +696,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Para N₂(g) + 3 H₂(g) ⇌ 2 NH₃(g), ΔH < 0, o que favorece a formação de amoníaco?",
+              "opcoes": [
+                "Aumentar a temperatura e diminuir a pressão.",
+                "Diminuir a temperatura e aumentar a pressão.",
+                "Adicionar um catalisador.",
+                "Retirar N₂."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A reação direta é exotérmica: baixar a temperatura favorece-a. Passa de 4 moles de gás para 2: aumentar a pressão favorece o lado com menos moles, os produtos.",
+              "mascote_feedback_errado": "Pela temperatura: diminuir favorece o sentido exotérmico (direto). Pela pressão: aumentar favorece o lado com menos moles de gás (2 mol de NH₃ contra 4 mol de reagentes)."
+            },
+            {
+              "pergunta": "Para N₂O₄(g) (incolor) ⇌ 2 NO₂(g) (castanho), ΔH > 0. Ao mergulhar o recipiente em água quente, a cor:",
+              "opcoes": [
+                "fica mais clara.",
+                "fica mais escura, porque o equilíbrio se desloca no sentido endotérmico (formação de NO₂).",
+                "não muda.",
+                "fica verde."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Aquecer favorece o sentido endotérmico, que aqui é o direto: forma-se mais NO₂ castanho. K c aumenta.",
+              "mascote_feedback_errado": "A reação direta é endotérmica (ΔH > 0). Ao aquecer, o sistema \"contraria\" absorvendo energia: desloca-se no sentido direto e forma mais NO₂, castanho."
+            },
             {
               "pergunta": "Num equilíbrio gasoso com o mesmo número de moles de gás nos dois lados (por exemplo, H₂ + I₂ ⇌ 2 HI), aumentar a pressão:",
               "opcoes": [

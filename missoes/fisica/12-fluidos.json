@@ -14,13 +14,10 @@
       "tempo_estimado_min": 10,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_salto_alto_elefante.png",
-          "texto": "Um elefante de 5 toneladas e uma pessoa de 60 kg de saltos altos: qual estraga mais um chão de madeira? Por estranho que pareça, pode ser a pessoa. O elefante espalha o peso por quatro patas enormes; o salto alto concentra-o numa área minúscula. O que estraga o chão não é a força: é a pressão.",
-          "mascote_texto": "Esta missão tem muitas unidades de pressão diferentes. Fica com a tabela de conversões à mão."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "O que estraga um chão não é a força — é a pressão.",
+          "mascote_texto": "Esta missão tem muitas unidades de pressão diferentes. Fica com a tabela de conversões à mão.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Fluidos e pressão",
           "imagem": "f12_pressao_area.png",
           "texto_principal": "Um fluido é uma substância que pode escoar e toma a forma do recipiente: os líquidos e os gases. Os fluidos exercem forças sobre as superfícies com que estão em contacto, sempre perpendiculares a essas superfícies. A pressão é a intensidade da força perpendicular por unidade de área.",
@@ -29,7 +26,7 @@
             { "id": "fluido-def", "label": "Fluido", "explicacao": "Líquidos (praticamente incompressíveis) e gases (compressíveis)." },
             { "id": "massa-volumica", "label": "Massa volúmica (ρ)", "explicacao": "Massa por unidade de volume. Água: 1,00 × 10³ kg m⁻³. Ar: cerca de 1,3 kg m⁻³." },
             { "id": "densidade-relativa", "label": "Densidade relativa (d)", "explicacao": "Razão entre a massa volúmica de uma substância e a da água. Não tem unidades. Ex.: o ferro tem d ≈ 7,9." },
-            { "id": "pressao-def", "label": "Pressão (p)", "explicacao": "Força perpendicular por unidade de área. Unidade SI: pascal (Pa). 1 Pa = 1 N/m²." },
+            { "id": "pressao-def", "label": "Pressão (p)", "explicacao": "Força perpendicular por unidade de área. Unidade SI: pascal (Pa). 1 Pa = 1 N/m².", "curiosidade_sem_titulo": true, "curiosidade": "**A cama de pregos**\n\nDeitar num único prego seria impossível. Deitar numa cama com mil pregos é um número de circo sem perigo. O peso da pessoa é o mesmo, mas dividido por mil pontas: a força em cada ponto é mil vezes menor. É por isso que as botas de neve e os pneus de tratores são largos (para não afundar) e as facas e as agulhas são afiadas (para cortar e perfurar com pouca força)." },
             { "id": "forca-pressao", "label": "Força de pressão", "explicacao": "Força que o fluido exerce sobre uma superfície. É sempre perpendicular à superfície e tem intensidade F = p A." }
           ],
           "caixa_formula": [
@@ -40,26 +37,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma pessoa de 60 kg apoia todo o peso num salto com 1,0 cm² de área. Qual é a pressão exercida no chão? (1 cm² = 10⁻⁴ m²)",
-          "opcoes": ["5,9 × 10² Pa", "6,0 × 10³ Pa", "5,9 × 10⁶ Pa", "5,9 × 10⁸ Pa"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. p = F / A ≈ 5,9 × 10⁶ Pa, cerca de 58 vezes a pressão atmosférica.",
-          "mascote_feedback_errado": "A força é o peso: 60 × 9,8 = 588 N. A área em m² é 1,0 × 10⁻⁴ m². p = 588 / 10⁻⁴ ≈ 5,9 × 10⁶ Pa."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um bloco tem 2,0 kg e 2,5 × 10⁻⁴ m³ de volume. Qual é a sua densidade relativa?",
-          "opcoes": ["0,80", "2,5", "8,0", "8,0 × 10³"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. ρ = 8,0 × 10³ kg m⁻³. d = 8,0.",
-          "mascote_feedback_errado": "Calcula ρ = m / V = 8,0 × 10³ kg m⁻³ e divide pela massa volúmica da água: d = 8,0. A densidade relativa não tem unidades."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A cama de pregos.** Deitar num único prego seria impossível. Deitar numa cama com mil pregos é um número de circo sem perigo. O peso da pessoa é o mesmo, mas dividido por mil pontas: a força em cada ponto é mil vezes menor. É por isso que as botas de neve e os pneus de tratores são largos (para não afundar) e as facas e as agulhas são afiadas (para cortar e perfurar com pouca força)."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "A pressão atmosférica e os hemisférios de Magdeburgo",
           "texto": "**A pressão atmosférica**\n\nEstás sempre debaixo de uma coluna de ar com dezenas de quilómetros. O seu peso exerce uma pressão de cerca de 1,01 × 10⁵ Pa ao nível do mar: aproximadamente o peso de 10 toneladas por cada metro quadrado. Não o sentes porque os fluidos dentro do teu corpo exercem uma pressão igual, de dentro para fora.\n\n**Curiosidade: os hemisférios de Magdeburgo**\n\nEm 1654, Otto von Guericke juntou dois hemisférios de cobre e retirou o ar do interior. Duas parelhas de cavalos, a puxar em sentidos opostos, não conseguiram separá-los. Era a pressão do ar exterior a mantê-los juntos."
@@ -67,6 +44,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Uma pessoa de 60 kg apoia todo o peso num salto com 1,0 cm² de área. Qual é a pressão exercida no chão? (1 cm² = 10⁻⁴ m²)",
+              "opcoes": [
+                "5,9 × 10² Pa",
+                "6,0 × 10³ Pa",
+                "5,9 × 10⁶ Pa",
+                "5,9 × 10⁸ Pa"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. p = F / A ≈ 5,9 × 10⁶ Pa, cerca de 58 vezes a pressão atmosférica.",
+              "mascote_feedback_errado": "A força é o peso: 60 × 9,8 = 588 N. A área em m² é 1,0 × 10⁻⁴ m². p = 588 / 10⁻⁴ ≈ 5,9 × 10⁶ Pa."
+            },
+            {
+              "pergunta": "Um bloco tem 2,0 kg e 2,5 × 10⁻⁴ m³ de volume. Qual é a sua densidade relativa?",
+              "opcoes": [
+                "0,80",
+                "2,5",
+                "8,0",
+                "8,0 × 10³"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. ρ = 8,0 × 10³ kg m⁻³. d = 8,0.",
+              "mascote_feedback_errado": "Calcula ρ = m / V = 8,0 × 10³ kg m⁻³ e divide pela massa volúmica da água: d = 8,0. A densidade relativa não tem unidades."
+            },
             {
               "pergunta": "A força de pressão que um fluido exerce sobre uma superfície é:",
               "opcoes": ["sempre vertical.", "sempre paralela à superfície.", "sempre perpendicular à superfície.", "sempre dirigida para baixo."],
@@ -99,13 +100,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_mergulhador.png",
-          "texto": "Quando mergulhas até ao fundo de uma piscina, sentes os ouvidos a doer. A 10 metros de profundidade no mar, a pressão é o dobro da que sentes à superfície. E o curioso é que não importa se estás numa piscina estreita ou no meio do oceano: só conta a profundidade.",
-          "mascote_texto": "A lei fundamental da hidrostática é uma fórmula curta, mas explica barragens, mergulho, barómetros e travões de carro."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Debaixo de água, só a profundidade conta para a pressão.",
+          "mascote_texto": "A lei fundamental da hidrostática é uma fórmula curta, mas explica barragens, mergulho, barómetros e travões de carro.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Lei fundamental da hidrostática",
           "imagem": "f12_hidrostatica.png",
           "texto_principal": "Num líquido em equilíbrio, a pressão aumenta com a profundidade. A diferença de pressão entre dois pontos só depende da diferença de profundidade, da massa volúmica do líquido e de g. Pontos à mesma profundidade, no mesmo líquido em equilíbrio, estão à mesma pressão, qualquer que seja a forma do recipiente.",
@@ -123,7 +121,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Medir a pressão e lei de Pascal",
           "imagem": "f12_barometro_prensa.png",
           "texto_principal": "A pressão mede-se com manómetros (pressão de gases em recipientes, pneus, garrafas) e barómetros (pressão atmosférica). A lei de Pascal diz que uma variação de pressão aplicada num ponto de um líquido em equilíbrio se transmite integralmente a todos os pontos do líquido.",
@@ -131,7 +130,7 @@
           "pontos": [
             { "id": "barometro-torricelli", "label": "Barómetro de Torricelli", "explicacao": "A pressão atmosférica sustenta uma coluna de mercúrio com cerca de 76 cm: p₀ = ρ Hg g h. Por isso, 1 atm = 760 mmHg." },
             { "id": "com-agua-barometro", "label": "Com água", "explicacao": "A mesma pressão atmosférica sustentaria uma coluna de água com cerca de 10,3 m. É por isso que o mercúrio (muito mais denso) é usado nos barómetros." },
-            { "id": "manometro-tubo-u", "label": "Manómetro de tubo em U", "explicacao": "A diferença de nível do líquido nos dois ramos mede a diferença entre a pressão do gás e a atmosférica: Δp = ρ g Δh." },
+            { "id": "manometro-tubo-u", "label": "Manómetro de tubo em U", "explicacao": "A diferença de nível do líquido nos dois ramos mede a diferença entre a pressão do gás e a atmosférica: Δp = ρ g Δh.", "curiosidade_sem_titulo": true, "curiosidade": "**A pilha de colchões**\n\nImagina uma pilha de colchões. O colchão de cima não tem nada por cima e está fofo. O de baixo tem o peso de todos os outros e está esmagado. Quanto mais abaixo, mais peso acima, mais pressão. Num líquido, cada \"camada\" suporta o peso das camadas de cima, e por isso a pressão cresce com a profundidade. Numa piscina estreita ou no oceano, a \"pilha\" por cima de ti à mesma profundidade tem a mesma altura, e a pressão é a mesma." },
             { "id": "lei-pascal", "label": "Lei de Pascal", "explicacao": "A pressão aplicada no êmbolo pequeno transmite-se a todo o líquido." },
             { "id": "prensa-hidraulica", "label": "Prensa hidráulica", "explicacao": "p₁ = p₂, logo F₁ / A₁ = F₂ / A₂. Uma força pequena num êmbolo pequeno produz uma força grande no êmbolo grande. Aplicações: elevadores de automóveis nas oficinas, travões hidráulicos, cadeiras de cabeleireiro." }
           ],
@@ -141,26 +140,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a pressão total a 10 m de profundidade no mar? (ρ água do mar ≈ 1,03 × 10³ kg m⁻³; p₀ = 1,01 × 10⁵ Pa)",
-          "opcoes": ["1,01 × 10⁵ Pa", "1,01 × 10⁵ Pa + 1,01 × 10³ Pa", "2,0 × 10⁵ Pa", "1,0 × 10⁶ Pa"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. p ≈ 2,0 × 10⁵ Pa. Cerca de 2 atm.",
-          "mascote_feedback_errado": "p = p₀ + ρ g h ≈ 1,01 × 10⁵ + 1,01 × 10⁵ ≈ 2,0 × 10⁵ Pa. A cada 10 m de água, a pressão aumenta cerca de 1 atm."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Numa prensa hidráulica, o êmbolo pequeno tem 10 cm² e o grande 500 cm². Que força é preciso fazer no êmbolo pequeno para elevar um carro de 1000 kg?",
-          "opcoes": ["9,8 × 10³ N", "196 N", "20 N", "4,9 × 10⁵ N"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. F₁ = F₂ × A₁ / A₂ = 196 N.",
-          "mascote_feedback_errado": "De F₁ / A₁ = F₂ / A₂: F₁ = 9800 × (10 / 500) = 196 N."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A pilha de colchões.** Imagina uma pilha de colchões. O colchão de cima não tem nada por cima e está fofo. O de baixo tem o peso de todos os outros e está esmagado. Quanto mais abaixo, mais peso acima, mais pressão. Num líquido, cada \"camada\" suporta o peso das camadas de cima, e por isso a pressão cresce com a profundidade. Numa piscina estreita ou no oceano, a \"pilha\" por cima de ti à mesma profundidade tem a mesma altura, e a pressão é a mesma."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Barragens, pressão atmosférica com a altitude, e a prensa hidráulica",
           "texto": "**Porque é que as barragens são mais largas em baixo**\n\nA pressão da água aumenta com a profundidade. No fundo da albufeira, a força por metro quadrado sobre a parede é muito maior do que à superfície. Por isso as barragens de gravidade são muito mais espessas na base.\n\n**A pressão atmosférica diminui com a altitude**\n\nNo topo da Serra da Estrela (cerca de 2000 m), a pressão atmosférica é cerca de 80 % da do nível do mar. No topo do Evereste, é cerca de um terço. Com menos pressão, a água ferve a menos de 100 °C.\n\n**A prensa hidráulica não \"cria\" energia**\n\nA força no êmbolo grande é maior, mas ele desloca-se muito menos. O trabalho realizado nos dois êmbolos é igual (desprezando perdas): F₁ d₁ = F₂ d₂."
@@ -168,6 +147,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é a pressão total a 10 m de profundidade no mar? (ρ água do mar ≈ 1,03 × 10³ kg m⁻³; p₀ = 1,01 × 10⁵ Pa)",
+              "opcoes": [
+                "1,01 × 10⁵ Pa",
+                "1,01 × 10⁵ Pa + 1,01 × 10³ Pa",
+                "2,0 × 10⁵ Pa",
+                "1,0 × 10⁶ Pa"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. p ≈ 2,0 × 10⁵ Pa. Cerca de 2 atm.",
+              "mascote_feedback_errado": "p = p₀ + ρ g h ≈ 1,01 × 10⁵ + 1,01 × 10⁵ ≈ 2,0 × 10⁵ Pa. A cada 10 m de água, a pressão aumenta cerca de 1 atm."
+            },
+            {
+              "pergunta": "Numa prensa hidráulica, o êmbolo pequeno tem 10 cm² e o grande 500 cm². Que força é preciso fazer no êmbolo pequeno para elevar um carro de 1000 kg?",
+              "opcoes": [
+                "9,8 × 10³ N",
+                "196 N",
+                "20 N",
+                "4,9 × 10⁵ N"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. F₁ = F₂ × A₁ / A₂ = 196 N.",
+              "mascote_feedback_errado": "De F₁ / A₁ = F₂ / A₂: F₁ = 9800 × (10 / 500) = 196 N."
+            },
             {
               "pergunta": "Três recipientes de formas diferentes têm água até à mesma altura. No fundo de qual é maior a pressão?",
               "opcoes": ["No mais largo.", "No mais estreito.", "É igual nos três.", "No que tem mais água."],
@@ -200,13 +203,10 @@
       "tempo_estimado_min": 11,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_navio_iceberg.png",
-          "texto": "Um prego de aço afunda na água. Um navio de aço com 200 000 toneladas flutua. E um iceberg flutua com cerca de 90 % do volume escondido debaixo de água. A explicação está numa força que todos os fluidos exercem sobre os corpos mergulhados neles, descoberta há mais de 2000 anos por Arquimedes.",
-          "mascote_texto": "Diz a lenda que Arquimedes teve esta ideia no banho e saiu a correr pela rua a gritar \"Eureka!\". Pelo menos a física é verdadeira."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Um prego afunda e um navio de 200 mil toneladas flutua — a mesma força explica os dois.",
+          "mascote_texto": "Diz a lenda que Arquimedes teve esta ideia no banho e saiu a correr pela rua a gritar \"Eureka!\". Pelo menos a física é verdadeira.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Lei de Arquimedes",
           "imagem": "f12_arquimedes.png",
           "texto_principal": "Um corpo total ou parcialmente mergulhado num fluido fica sujeito a uma força vertical, dirigida para cima, chamada impulsão. A lei de Arquimedes diz que a intensidade da impulsão é igual ao peso do fluido deslocado pelo corpo. A impulsão resulta de a pressão na face de baixo do corpo ser maior do que na face de cima.",
@@ -215,7 +215,7 @@
             { "id": "impulsao", "label": "Impulsão (I)", "explicacao": "Vertical, para cima. I = ρ fluido × V imerso × g." },
             { "id": "volume-imerso", "label": "Volume imerso", "explicacao": "Só conta o volume do corpo que está dentro do fluido." },
             { "id": "afunda", "label": "Afunda", "explicacao": "Se o corpo totalmente submerso tem peso maior do que a impulsão (ρ corpo > ρ fluido)." },
-            { "id": "flutua", "label": "Flutua", "explicacao": "Se ρ corpo < ρ fluido, o corpo sobe até ficar parcialmente imerso, com impulsão igual ao peso." },
+            { "id": "flutua", "label": "Flutua", "explicacao": "Se ρ corpo < ρ fluido, o corpo sobe até ficar parcialmente imerso, com impulsão igual ao peso.", "curiosidade_sem_titulo": true, "curiosidade": "**O lugar vazio na piscina**\n\nImagina que tiras da piscina um \"bloco\" de água com a forma exata do teu corpo. A água à volta estava a segurar esse bloco, sem que ele subisse nem descesse: a força para cima que a água fazia era exatamente igual ao peso desse bloco de água. Agora entras tu no lugar do bloco. A água à volta faz exatamente a mesma força, porque não sabe que és tu. Se pesares mais do que o bloco de água que substituíste, afundas; se pesares menos, flutuas." },
             { "id": "equilibrio-submerso", "label": "Equilíbrio submerso", "explicacao": "Se ρ corpo = ρ fluido, fica em equilíbrio em qualquer ponto do fluido." },
             { "id": "fracao-imersa", "label": "Fração imersa de um corpo que flutua", "explicacao": "V imerso / V total = ρ corpo / ρ fluido." },
             { "id": "peso-aparente", "label": "Peso aparente", "explicacao": "Peso de um corpo mergulhado menos a impulsão. É o que um dinamómetro indica com o corpo dentro de água." }
@@ -225,22 +225,6 @@
             { "expressao": "Flutuação em equilíbrio: I = P, logo V imerso / V = ρ corpo / ρ fluido", "significado": "", "unidades": "" },
             { "expressao": "Peso aparente = P − I", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma pedra de 0,60 kg e volume 2,0 × 10⁻⁴ m³ é pendurada num dinamómetro e totalmente mergulhada em água. Quanto indica o dinamómetro?",
-          "opcoes": ["5,9 N", "3,9 N", "2,0 N", "7,8 N"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Peso aparente = 5,88 − 1,96 ≈ 3,9 N.",
-          "mascote_feedback_errado": "Calcula a impulsão: I = ρ água V g = 1,96 N. O dinamómetro indica o peso aparente: 5,88 − 1,96 ≈ 3,9 N."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O gelo tem massa volúmica 917 kg m⁻³ e a água do mar 1025 kg m⁻³. Que fração de um iceberg está submersa?",
-          "opcoes": ["10 %", "50 %", "89 %", "100 %"],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. Cerca de 89 % do iceberg está debaixo de água.",
-          "mascote_feedback_errado": "Num corpo que flutua, a fração imersa é ρ corpo / ρ fluido = 917 / 1025 ≈ 0,89, ou seja, 89 %."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -286,10 +270,6 @@
           }
         },
         {
-          "tipo": "analogia",
-          "texto": "**O lugar vazio na piscina.** Imagina que tiras da piscina um \"bloco\" de água com a forma exata do teu corpo. A água à volta estava a segurar esse bloco, sem que ele subisse nem descesse: a força para cima que a água fazia era exatamente igual ao peso desse bloco de água. Agora entras tu no lugar do bloco. A água à volta faz exatamente a mesma força, porque não sabe que és tu. Se pesares mais do que o bloco de água que substituíste, afundas; se pesares menos, flutuas."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Porque o aço flutua, submarinos, e a impulsão no ar",
           "texto": "**Porque é que um navio de aço flutua**\n\nO aço é quase 8 vezes mais denso do que a água, mas o navio não é um bloco maciço: é um casco oco, cheio de ar. A massa volúmica média do navio (aço + ar) é menor do que a da água. O casco desloca um volume de água enorme, cujo peso iguala o peso do navio.\n\n**Como funciona um submarino**\n\nUm submarino tem tanques de lastro. Para descer, enche-os de água: o peso aumenta e fica maior do que a impulsão. Para subir, expulsa a água com ar comprimido: o peso diminui. Para ficar a uma profundidade constante, ajusta a água nos tanques até o peso igualar a impulsão.\n\n**A impulsão também existe no ar**\n\nOs balões de ar quente e os dirigíveis sobem porque o gás no seu interior (ar quente ou hélio) é menos denso do que o ar à volta. A impulsão do ar é maior do que o peso total do balão."
@@ -297,6 +277,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Uma pedra de 0,60 kg e volume 2,0 × 10⁻⁴ m³ é pendurada num dinamómetro e totalmente mergulhada em água. Quanto indica o dinamómetro?",
+              "opcoes": [
+                "5,9 N",
+                "3,9 N",
+                "2,0 N",
+                "7,8 N"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Peso aparente = 5,88 − 1,96 ≈ 3,9 N.",
+              "mascote_feedback_errado": "Calcula a impulsão: I = ρ água V g = 1,96 N. O dinamómetro indica o peso aparente: 5,88 − 1,96 ≈ 3,9 N."
+            },
+            {
+              "pergunta": "O gelo tem massa volúmica 917 kg m⁻³ e a água do mar 1025 kg m⁻³. Que fração de um iceberg está submersa?",
+              "opcoes": [
+                "10 %",
+                "50 %",
+                "89 %",
+                "100 %"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Cerca de 89 % do iceberg está debaixo de água.",
+              "mascote_feedback_errado": "Num corpo que flutua, a fração imersa é ρ corpo / ρ fluido = 917 / 1025 ≈ 0,89, ou seja, 89 %."
+            },
             {
               "pergunta": "Um corpo totalmente mergulhado em água desce mais fundo. A impulsão:",
               "opcoes": ["aumenta, porque a pressão aumenta.", "mantém-se, porque o volume imerso e a massa volúmica da água não mudam.", "diminui.", "anula-se no fundo."],
@@ -329,13 +333,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_mel_agua.png",
-          "texto": "Deixa cair um berlinde num copo de água e outro num frasco de mel. Na água, cai quase de imediato. No mel, desce lentamente, a velocidade constante. O mel \"agarra\" o berlinde muito mais do que a água. Esta propriedade dos fluidos chama-se viscosidade, e é possível medi-la com uma proveta, umas esferas e um cronómetro.",
-          "mascote_texto": "Esta é a última secção de Mecânica do 12.º ano, com a quarta e última AL do domínio."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Alguns fluidos \"agarram\" os objetos mais do que outros — chama-se viscosidade.",
+          "mascote_texto": "Esta é a última secção de Mecânica do 12.º ano, com a quarta e última AL do domínio.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Viscosidade e lei de Stokes",
           "imagem": "f12_esfera_stokes.png",
           "texto_principal": "Um corpo que se move num fluido fica sujeito a uma força de resistência que se opõe ao movimento e que aumenta com a velocidade. Para esferas pequenas a moverem-se devagar em líquidos viscosos, a força de resistência é dada pela lei de Stokes: é proporcional à velocidade, ao raio da esfera e ao coeficiente de viscosidade do fluido.",
@@ -345,33 +346,13 @@
             { "id": "forcas-esfera", "label": "Forças na esfera", "explicacao": "Peso (para baixo), impulsão (para cima) e força de resistência (para cima, oposta ao movimento)." },
             { "id": "inicio-queda-visc", "label": "Início da queda", "explicacao": "A resistência é pequena e a esfera acelera." },
             { "id": "velocidade-terminal-visc", "label": "Velocidade terminal", "explicacao": "Quando P = I + F resistência, a resultante é nula e a velocidade fica constante." },
-            { "id": "dependencias-visc", "label": "Dependências", "explicacao": "A velocidade terminal aumenta com o quadrado do raio da esfera e com a diferença entre as massas volúmicas da esfera e do fluido, e diminui com a viscosidade." },
+            { "id": "dependencias-visc", "label": "Dependências", "explicacao": "A velocidade terminal aumenta com o quadrado do raio da esfera e com a diferença entre as massas volúmicas da esfera e do fluido, e diminui com a viscosidade.", "curiosidade_sem_titulo": true, "curiosidade": "**Andar na piscina**\n\nTentar correr dentro de uma piscina é muito mais difícil do que correr na praia. A água \"agarra\" as pernas, e quanto mais depressa as tentas mexer, mais ela resiste. Se a piscina estivesse cheia de mel, mal te conseguirias mexer. A viscosidade é esse \"grau de agarrar\" do fluido. E, tal como o paraquedista do 11.º ano, uma esfera a cair num líquido acaba por atingir uma velocidade em que a resistência equilibra as outras forças." },
             { "id": "valores-referencia-visc", "label": "Valores de referência de η (a 20 °C)", "explicacao": "Água cerca de 1,0 × 10⁻³ Pa s; azeite cerca de 0,08 Pa s; glicerina cerca de 1,5 Pa s; mel cerca de 2 a 10 Pa s." }
           ],
           "caixa_formula": [
             { "expressao": "F resistência = 6π η r v", "significado": "Lei de Stokes.", "unidades": "" },
             { "expressao": "v t = 2 r² g (ρ esfera − ρ fluido) / (9 η)", "significado": "Velocidade terminal.", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Se o raio de uma esfera duplicar (mesmo material, mesmo fluido), a sua velocidade terminal:",
-          "opcoes": ["duplica.", "fica quatro vezes maior.", "fica reduzida a metade.", "mantém-se."],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. v t é proporcional a r². Com o dobro do raio, fica 4 vezes maior.",
-          "mascote_feedback_errado": "Na expressão v t = 2 r² g (ρ esfera − ρ fluido) / (9 η), o raio está ao quadrado. Com 2r, v t fica 4 vezes maior."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma esfera de aço (ρ = 7,8 × 10³ kg m⁻³) com raio 1,0 mm cai em glicerina (ρ = 1,26 × 10³ kg m⁻³; η = 1,5 Pa s). Qual é a velocidade terminal?",
-          "opcoes": ["9,5 × 10⁻³ m/s", "9,5 × 10⁻⁶ m/s", "0,95 m/s", "1,1 × 10⁻² m/s"],
-          "correta": 0,
-          "mascote_feedback_certo": "Certo. v t ≈ 9,5 × 10⁻³ m/s, cerca de 1 cm por segundo.",
-          "mascote_feedback_errado": "Converte o raio: 1,0 mm = 1,0 × 10⁻³ m. v t = 2 × 10⁻⁶ × 9,8 × 6540 / 13,5 ≈ 9,5 × 10⁻³ m/s."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Andar na piscina.** Tentar correr dentro de uma piscina é muito mais difícil do que correr na praia. A água \"agarra\" as pernas, e quanto mais depressa as tentas mexer, mais ela resiste. Se a piscina estivesse cheia de mel, mal te conseguirias mexer. A viscosidade é esse \"grau de agarrar\" do fluido. E, tal como o paraquedista do 11.º ano, uma esfera a cair num líquido acaba por atingir uma velocidade em que a resistência equilibra as outras forças."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -416,6 +397,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Se o raio de uma esfera duplicar (mesmo material, mesmo fluido), a sua velocidade terminal:",
+              "opcoes": [
+                "duplica.",
+                "fica quatro vezes maior.",
+                "fica reduzida a metade.",
+                "mantém-se."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. v t é proporcional a r². Com o dobro do raio, fica 4 vezes maior.",
+              "mascote_feedback_errado": "Na expressão v t = 2 r² g (ρ esfera − ρ fluido) / (9 η), o raio está ao quadrado. Com 2r, v t fica 4 vezes maior."
+            },
+            {
+              "pergunta": "Uma esfera de aço (ρ = 7,8 × 10³ kg m⁻³) com raio 1,0 mm cai em glicerina (ρ = 1,26 × 10³ kg m⁻³; η = 1,5 Pa s). Qual é a velocidade terminal?",
+              "opcoes": [
+                "9,5 × 10⁻³ m/s",
+                "9,5 × 10⁻⁶ m/s",
+                "0,95 m/s",
+                "1,1 × 10⁻² m/s"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. v t ≈ 9,5 × 10⁻³ m/s, cerca de 1 cm por segundo.",
+              "mascote_feedback_errado": "Converte o raio: 1,0 mm = 1,0 × 10⁻³ m. v t = 2 × 10⁻⁶ × 9,8 × 6540 / 13,5 ≈ 9,5 × 10⁻³ m/s."
+            },
             {
               "pergunta": "Numa esfera que cai num líquido com velocidade terminal, qual é a relação entre as forças?",
               "opcoes": ["P = F resistência", "P = I + F resistência", "P + I = F resistência", "P = I"],

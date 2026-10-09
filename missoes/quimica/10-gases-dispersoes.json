@@ -81,32 +81,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Que volume ocupam 88,0 g de dióxido de carbono em condições PTN? (M(CO₂) = 44,01 g/mol)",
-          "opcoes": [
-            "22,4 dm³",
-            "44,8 dm³",
-            "88,0 dm³",
-            "1970 dm³"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. n = 88,0 / 44,01 ≈ 2,00 mol. V = 2,00 × 22,4 = 44,8 dm³.",
-          "mascote_feedback_errado": "Calcula primeiro a quantidade de matéria: n = m / M ≈ 2,00 mol. Depois V = n V m = 2,00 × 22,4 = 44,8 dm³."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que um balão cheio de hélio sobe no ar? (M(He) = 4,00 g/mol; massa molar média do ar ≈ 28,96 g/mol)",
-          "opcoes": [
-            "Porque o hélio tem mais moléculas.",
-            "Porque, nas mesmas condições, o hélio é cerca de 7 vezes menos denso do que o ar.",
-            "Porque o hélio é um gás nobre e não reage.",
-            "Porque o hélio está mais quente."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. ρ(He) = 4,00 / 22,4 ≈ 0,179 g/dm³; ρ(ar) = 28,96 / 22,4 ≈ 1,29 g/dm³ (PTN). O balão de hélio é mais leve do que o ar que desloca: a impulsão fá-lo subir.",
-          "mascote_feedback_errado": "Com o mesmo volume, os dois balões têm o mesmo número de partículas. Mas uma mole de hélio pesa 4 g e uma mole de ar cerca de 29 g: o hélio é muito menos denso e o balão sobe."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Estádio com adeptos pequenos e grandes.** Imagina um estádio enorme com 100 adeptos espalhados pelas bancadas. Se forem crianças ou adultos, o estádio \"parece\" igualmente vazio: o espaço é todo entre as pessoas, não as pessoas em si. O volume de um gás é assim: é quase todo espaço vazio entre partículas, e o tamanho de cada partícula não conta. Mas se pesares o estádio, faz diferença se são crianças ou adultos. É por isso que o volume depende só do número de partículas, mas a massa volúmica depende do tipo de gás."
         },
@@ -118,6 +92,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Que volume ocupam 88,0 g de dióxido de carbono em condições PTN? (M(CO₂) = 44,01 g/mol)",
+              "opcoes": [
+                "22,4 dm³",
+                "44,8 dm³",
+                "88,0 dm³",
+                "1970 dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. n = 88,0 / 44,01 ≈ 2,00 mol. V = 2,00 × 22,4 = 44,8 dm³.",
+              "mascote_feedback_errado": "Calcula primeiro a quantidade de matéria: n = m / M ≈ 2,00 mol. Depois V = n V m = 2,00 × 22,4 = 44,8 dm³."
+            },
+            {
+              "pergunta": "Porque é que um balão cheio de hélio sobe no ar? (M(He) = 4,00 g/mol; massa molar média do ar ≈ 28,96 g/mol)",
+              "opcoes": [
+                "Porque o hélio tem mais moléculas.",
+                "Porque, nas mesmas condições, o hélio é cerca de 7 vezes menos denso do que o ar.",
+                "Porque o hélio é um gás nobre e não reage.",
+                "Porque o hélio está mais quente."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. ρ(He) = 4,00 / 22,4 ≈ 0,179 g/dm³; ρ(ar) = 28,96 / 22,4 ≈ 1,29 g/dm³ (PTN). O balão de hélio é mais leve do que o ar que desloca: a impulsão fá-lo subir.",
+              "mascote_feedback_errado": "Com o mesmo volume, os dois balões têm o mesmo número de partículas. Mas uma mole de hélio pesa 4 g e uma mole de ar cerca de 29 g: o hélio é muito menos denso e o balão sobe."
+            },
             {
               "pergunta": "O volume molar de um gás depende:",
               "opcoes": [
@@ -279,32 +277,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Num local, a concentração de CO₂ no ar é 420 ppm. Qual é a fração molar do CO₂?",
-          "opcoes": [
-            "0,420",
-            "4,20 × 10⁻²",
-            "4,20 × 10⁻⁴",
-            "420"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. 420 ppm = 420 / 10⁶ = 4,20 × 10⁻⁴. Corresponde a 0,042 %.",
-          "mascote_feedback_errado": "ppm significa \"por milhão\": x = 420 / 1 000 000 = 4,20 × 10⁻⁴."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é o gás de efeito de estufa emitido sobretudo pela queima de combustíveis fósseis?",
-          "opcoes": [
-            "Árgon",
-            "Dióxido de carbono",
-            "Azoto",
-            "Oxigénio"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. A queima de carvão, petróleo e gás natural liberta CO₂, o principal responsável pelo aumento do efeito de estufa causado pela atividade humana.",
-          "mascote_feedback_errado": "A combustão de combustíveis fósseis (compostos de carbono) produz CO₂, que é um gás de efeito de estufa. Azoto, oxigénio e árgon não absorvem a radiação infravermelha de forma significativa."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O cobertor da Terra.** Os gases de efeito de estufa são como um cobertor à volta da Terra. Sem nenhum cobertor, a temperatura média do planeta seria cerca de −18 °C, e a vida como a conhecemos não existiria. Com o cobertor natural, é cerca de 15 °C. O problema é que estamos a acrescentar camadas ao cobertor, e a Terra está a ficar demasiado quente. E, tal como com um cobertor, não é preciso muito: uma camada fina a mais faz diferença."
         },
@@ -316,6 +288,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Num local, a concentração de CO₂ no ar é 420 ppm. Qual é a fração molar do CO₂?",
+              "opcoes": [
+                "0,420",
+                "4,20 × 10⁻²",
+                "4,20 × 10⁻⁴",
+                "420"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. 420 ppm = 420 / 10⁶ = 4,20 × 10⁻⁴. Corresponde a 0,042 %.",
+              "mascote_feedback_errado": "ppm significa \"por milhão\": x = 420 / 1 000 000 = 4,20 × 10⁻⁴."
+            },
+            {
+              "pergunta": "Qual é o gás de efeito de estufa emitido sobretudo pela queima de combustíveis fósseis?",
+              "opcoes": [
+                "Árgon",
+                "Dióxido de carbono",
+                "Azoto",
+                "Oxigénio"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. A queima de carvão, petróleo e gás natural liberta CO₂, o principal responsável pelo aumento do efeito de estufa causado pela atividade humana.",
+              "mascote_feedback_errado": "A combustão de combustíveis fósseis (compostos de carbono) produz CO₂, que é um gás de efeito de estufa. Azoto, oxigénio e árgon não absorvem a radiação infravermelha de forma significativa."
+            },
             {
               "pergunta": "Qual é o componente maioritário do ar?",
               "opcoes": [
@@ -437,32 +433,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Dissolvem-se 5,85 g de cloreto de sódio (M = 58,44 g/mol) em água até perfazer 250 cm³ de solução. Qual é a concentração?",
-          "opcoes": [
-            "0,100 mol/dm³",
-            "0,400 mol/dm³",
-            "23,4 mol/dm³",
-            "0,0234 mol/dm³"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. n = 5,85 / 58,44 ≈ 0,100 mol. V = 0,250 dm³. c = 0,100 / 0,250 = 0,400 mol/dm³. A concentração mássica é 5,85 / 0,250 = 23,4 g/dm³.",
-          "mascote_feedback_errado": "Converte o volume: 250 cm³ = 0,250 dm³. n = 5,85 / 58,44 ≈ 0,100 mol. c = n / V = 0,400 mol/dm³."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Dissolvem-se 20 g de açúcar em 180 g de água. Qual é a percentagem em massa de açúcar?",
-          "opcoes": [
-            "11 %",
-            "10 %",
-            "20 %",
-            "18 %"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. m solução = 20 + 180 = 200 g. % (m/m) = 20 / 200 × 100 = 10 %.",
-          "mascote_feedback_errado": "A percentagem é em relação à massa da solução, não à do solvente: 20 / (20 + 180) × 100 = 10 %."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A limonada.** Imagina que fazes limonada. \"Quanto açúcar tem?\" pode responder-se de várias formas: \"2 colheres por jarro\" (concentração mássica), \"5 % do peso\" (percentagem em massa) ou \"uma molécula de açúcar para cada 200 de água\" (fração molar). São formas diferentes de dizer a mesma coisa, e cada área usa a mais prática. Os químicos gostam da concentração em mol/dm³ porque conta partículas, e as reações acontecem entre partículas."
         },
@@ -508,6 +478,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Dissolvem-se 5,85 g de cloreto de sódio (M = 58,44 g/mol) em água até perfazer 250 cm³ de solução. Qual é a concentração?",
+              "opcoes": [
+                "0,100 mol/dm³",
+                "0,400 mol/dm³",
+                "23,4 mol/dm³",
+                "0,0234 mol/dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. n = 5,85 / 58,44 ≈ 0,100 mol. V = 0,250 dm³. c = 0,100 / 0,250 = 0,400 mol/dm³. A concentração mássica é 5,85 / 0,250 = 23,4 g/dm³.",
+              "mascote_feedback_errado": "Converte o volume: 250 cm³ = 0,250 dm³. n = 5,85 / 58,44 ≈ 0,100 mol. c = n / V = 0,400 mol/dm³."
+            },
+            {
+              "pergunta": "Dissolvem-se 20 g de açúcar em 180 g de água. Qual é a percentagem em massa de açúcar?",
+              "opcoes": [
+                "11 %",
+                "10 %",
+                "20 %",
+                "18 %"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. m solução = 20 + 180 = 200 g. % (m/m) = 20 / 200 × 100 = 10 %.",
+              "mascote_feedback_errado": "A percentagem é em relação à massa da solução, não à do solvente: 20 / (20 + 180) × 100 = 10 %."
+            },
             {
               "pergunta": "O leite é um exemplo de:",
               "opcoes": [
@@ -602,32 +596,6 @@
               "unidades": ""
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Que volume de uma solução 0,500 mol/dm³ é preciso para preparar 50,00 cm³ de solução 0,100 mol/dm³?",
-          "opcoes": [
-            "2,50 cm³",
-            "10,00 cm³",
-            "25,00 cm³",
-            "250 cm³"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. V i = c f V f / c i = 0,100 × 50,00 / 0,500 = 10,00 cm³. O fator de diluição é 5.",
-          "mascote_feedback_errado": "Usa c i V i = c f V f: V i = (0,100 × 50,00) / 0,500 = 10,00 cm³. As unidades de volume podem ficar em cm³, desde que sejam as mesmas dos dois lados."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma solução 1,0 mol/dm³ é diluída duas vezes seguidas, cada vez com fator 10. Qual é a concentração final?",
-          "opcoes": [
-            "0,50 mol/dm³",
-            "0,10 mol/dm³",
-            "0,010 mol/dm³",
-            "0,050 mol/dm³"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. Fator total = 10 × 10 = 100. c f = 1,0 / 100 = 0,010 mol/dm³.",
-          "mascote_feedback_errado": "Os fatores de diluição sucessivos multiplicam-se: 10 × 10 = 100. c f = 1,0 / 100 = 0,010 mol/dm³."
         },
         {
           "tipo": "simulacao",
@@ -755,6 +723,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Que volume de uma solução 0,500 mol/dm³ é preciso para preparar 50,00 cm³ de solução 0,100 mol/dm³?",
+              "opcoes": [
+                "2,50 cm³",
+                "10,00 cm³",
+                "25,00 cm³",
+                "250 cm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. V i = c f V f / c i = 0,100 × 50,00 / 0,500 = 10,00 cm³. O fator de diluição é 5.",
+              "mascote_feedback_errado": "Usa c i V i = c f V f: V i = (0,100 × 50,00) / 0,500 = 10,00 cm³. As unidades de volume podem ficar em cm³, desde que sejam as mesmas dos dois lados."
+            },
+            {
+              "pergunta": "Uma solução 1,0 mol/dm³ é diluída duas vezes seguidas, cada vez com fator 10. Qual é a concentração final?",
+              "opcoes": [
+                "0,50 mol/dm³",
+                "0,10 mol/dm³",
+                "0,010 mol/dm³",
+                "0,050 mol/dm³"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Fator total = 10 × 10 = 100. c f = 1,0 / 100 = 0,010 mol/dm³.",
+              "mascote_feedback_errado": "Os fatores de diluição sucessivos multiplicam-se: 10 × 10 = 100. c f = 1,0 / 100 = 0,010 mol/dm³."
+            },
             {
               "pergunta": "Numa diluição, o que se mantém constante?",
               "opcoes": [

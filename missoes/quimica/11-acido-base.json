@@ -81,32 +81,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na reação NH₃ + H₂O ⇌ NH₄⁺ + OH⁻, qual é o papel da água?",
-          "opcoes": [
-            "Base, porque aceita um protão.",
-            "Ácido, porque cede um protão ao amoníaco.",
-            "Não participa na reação.",
-            "Oxidante."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. A água cede um protão ao NH₃ e transforma-se em OH⁻ (a sua base conjugada). Com o HCl, pelo contrário, a água aceita um protão. Por isso é anfotérica.",
-          "mascote_feedback_errado": "Segue o protão: passa da água para o amoníaco. Quem cede o protão é o ácido. Aqui a água é o ácido; o par conjugado é H₂O / OH⁻."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a base conjugada do ácido acético, CH₃COOH?",
-          "opcoes": [
-            "CH₃COOH₂⁺",
-            "CH₃COO⁻",
-            "OH⁻",
-            "H₃O⁺"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Retirando um protão ao CH₃COOH, obtém-se o ião acetato, CH₃COO⁻.",
-          "mascote_feedback_errado": "A base conjugada de um ácido obtém-se retirando-lhe um H⁺: CH₃COOH − H⁺ = CH₃COO⁻."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Passar a bola.** Imagina um jogo em que só existe uma bola: o protão. Quem tem a bola e a passa é o ácido. Quem a apanha é a base. Depois do passe, quem a deu ficou sem ela (base conjugada, porque agora pode voltar a apanhar uma) e quem a recebeu ficou com ela (ácido conjugado, porque agora pode passá-la). A água é como um jogador que tanto pode passar como receber, conforme quem estiver à frente: é anfotérica."
         },
@@ -118,6 +92,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Na reação NH₃ + H₂O ⇌ NH₄⁺ + OH⁻, qual é o papel da água?",
+              "opcoes": [
+                "Base, porque aceita um protão.",
+                "Ácido, porque cede um protão ao amoníaco.",
+                "Não participa na reação.",
+                "Oxidante."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A água cede um protão ao NH₃ e transforma-se em OH⁻ (a sua base conjugada). Com o HCl, pelo contrário, a água aceita um protão. Por isso é anfotérica.",
+              "mascote_feedback_errado": "Segue o protão: passa da água para o amoníaco. Quem cede o protão é o ácido. Aqui a água é o ácido; o par conjugado é H₂O / OH⁻."
+            },
+            {
+              "pergunta": "Qual é a base conjugada do ácido acético, CH₃COOH?",
+              "opcoes": [
+                "CH₃COOH₂⁺",
+                "CH₃COO⁻",
+                "OH⁻",
+                "H₃O⁺"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Retirando um protão ao CH₃COOH, obtém-se o ião acetato, CH₃COO⁻.",
+              "mascote_feedback_errado": "A base conjugada de um ácido obtém-se retirando-lhe um H⁺: CH₃COOH − H⁺ = CH₃COO⁻."
+            },
             {
               "pergunta": "Segundo Brönsted-Lowry, uma base é uma espécie que:",
               "opcoes": [
@@ -276,32 +274,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é o pH de uma solução de hidróxido de sódio 0,010 mol/dm³, a 25 °C? (o NaOH dissocia-se completamente)",
-          "opcoes": [
-            "2,00",
-            "7,00",
-            "12,00",
-            "0,010"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. [OH⁻] = 0,010 mol/dm³, pOH = 2,00 e pH = 14,00 − 2,00 = 12,00.",
-          "mascote_feedback_errado": "O NaOH dá [OH⁻] = 1,0 × 10⁻² mol/dm³. [H₃O⁺] = K w / [OH⁻] = 1,0 × 10⁻¹². pH = 12,00."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O pH de uma chuva passou de 5,6 para 4,6. A concentração de H₃O⁺:",
-          "opcoes": [
-            "aumentou 1 vez.",
-            "aumentou 10 vezes.",
-            "diminuiu 10 vezes.",
-            "aumentou 1,2 vezes."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Descer uma unidade de pH corresponde a multiplicar [H₃O⁺] por 10.",
-          "mascote_feedback_errado": "A escala é logarítmica: 10^(−4,6) / 10^(−5,6) = 10¹ = 10. A chuva ficou dez vezes mais ácida."
-        },
-        {
           "tipo": "simulacao",
           "id": "sim_escala_ph",
           "titulo": "Mede o pH",
@@ -457,6 +429,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Qual é o pH de uma solução de hidróxido de sódio 0,010 mol/dm³, a 25 °C? (o NaOH dissocia-se completamente)",
+              "opcoes": [
+                "2,00",
+                "7,00",
+                "12,00",
+                "0,010"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. [OH⁻] = 0,010 mol/dm³, pOH = 2,00 e pH = 14,00 − 2,00 = 12,00.",
+              "mascote_feedback_errado": "O NaOH dá [OH⁻] = 1,0 × 10⁻² mol/dm³. [H₃O⁺] = K w / [OH⁻] = 1,0 × 10⁻¹². pH = 12,00."
+            },
+            {
+              "pergunta": "O pH de uma chuva passou de 5,6 para 4,6. A concentração de H₃O⁺:",
+              "opcoes": [
+                "aumentou 1 vez.",
+                "aumentou 10 vezes.",
+                "diminuiu 10 vezes.",
+                "aumentou 1,2 vezes."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Descer uma unidade de pH corresponde a multiplicar [H₃O⁺] por 10.",
+              "mascote_feedback_errado": "A escala é logarítmica: 10^(−4,6) / 10^(−5,6) = 10¹ = 10. A chuva ficou dez vezes mais ácida."
+            },
+            {
               "pergunta": "Qual é o pH de uma solução com [H₃O⁺] = 1,0 × 10⁻³ mol/dm³?",
               "opcoes": [
                 "1,0",
@@ -572,32 +568,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é o pH de uma solução 0,10 mol/dm³ de ácido acético (K a = 1,8 × 10⁻⁵)?",
-          "opcoes": [
-            "1,00",
-            "2,87",
-            "4,74",
-            "5,74"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. [H₃O⁺] ≈ √(1,8 × 10⁻⁵ × 0,10) = √(1,8 × 10⁻⁶) ≈ 1,34 × 10⁻³ mol/dm³. pH ≈ 2,87. Só cerca de 1,3 % das moléculas estão ionizadas.",
-          "mascote_feedback_errado": "O ácido acético é fraco: [H₃O⁺] não é 0,10. No equilíbrio, K a = x² / (0,10 − x) ≈ x² / 0,10. x ≈ 1,34 × 10⁻³ e pH ≈ 2,87. (pH 1,00 seria o de um ácido forte com a mesma concentração.)"
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O amoníaco tem K b = 1,8 × 10⁻⁵. Qual é a constante de acidez do ião amónio, NH₄⁺, a 25 °C?",
-          "opcoes": [
-            "1,8 × 10⁻⁵",
-            "5,6 × 10⁻¹⁰",
-            "1,8 × 10⁹",
-            "1,0 × 10⁻¹⁴"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. K a = K w / K b = 1,00 × 10⁻¹⁴ / 1,8 × 10⁻⁵ ≈ 5,6 × 10⁻¹⁰. O NH₄⁺ é um ácido muito fraco.",
-          "mascote_feedback_errado": "Para um par conjugado, K a × K b = K w. K a(NH₄⁺) = 1,00 × 10⁻¹⁴ / 1,8 × 10⁻⁵ ≈ 5,6 × 10⁻¹⁰."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Quem empresta o carregador.** Imagina uma turma em que cada aluno tem um carregador de telemóvel. Os alunos \"ácido forte\" emprestam sempre o carregador, sem hesitar: no fim, todos os carregadores estão emprestados. Os alunos \"ácido fraco\" emprestam de vez em quando e pedem-no logo de volta: no fim, a maioria dos carregadores está com os donos. A constante de acidez mede essa vontade de emprestar. E uma turma pequena de \"fortes\" (diluído) pode ter menos carregadores emprestados do que uma turma enorme de \"fracos\" (concentrado): força e quantidade são coisas diferentes."
         },
@@ -637,6 +607,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é o pH de uma solução 0,10 mol/dm³ de ácido acético (K a = 1,8 × 10⁻⁵)?",
+              "opcoes": [
+                "1,00",
+                "2,87",
+                "4,74",
+                "5,74"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. [H₃O⁺] ≈ √(1,8 × 10⁻⁵ × 0,10) = √(1,8 × 10⁻⁶) ≈ 1,34 × 10⁻³ mol/dm³. pH ≈ 2,87. Só cerca de 1,3 % das moléculas estão ionizadas.",
+              "mascote_feedback_errado": "O ácido acético é fraco: [H₃O⁺] não é 0,10. No equilíbrio, K a = x² / (0,10 − x) ≈ x² / 0,10. x ≈ 1,34 × 10⁻³ e pH ≈ 2,87. (pH 1,00 seria o de um ácido forte com a mesma concentração.)"
+            },
+            {
+              "pergunta": "O amoníaco tem K b = 1,8 × 10⁻⁵. Qual é a constante de acidez do ião amónio, NH₄⁺, a 25 °C?",
+              "opcoes": [
+                "1,8 × 10⁻⁵",
+                "5,6 × 10⁻¹⁰",
+                "1,8 × 10⁹",
+                "1,0 × 10⁻¹⁴"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. K a = K w / K b = 1,00 × 10⁻¹⁴ / 1,8 × 10⁻⁵ ≈ 5,6 × 10⁻¹⁰. O NH₄⁺ é um ácido muito fraco.",
+              "mascote_feedback_errado": "Para um par conjugado, K a × K b = K w. K a(NH₄⁺) = 1,00 × 10⁻¹⁴ / 1,8 × 10⁻⁵ ≈ 5,6 × 10⁻¹⁰."
+            },
             {
               "pergunta": "Um ácido forte em água:",
               "opcoes": [
@@ -783,32 +777,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na titulação de 25,00 cm³ de HCl com NaOH 0,100 mol/dm³, gastaram-se 20,00 cm³ de NaOH até ao ponto de equivalência. Qual é a concentração do HCl?",
-          "opcoes": [
-            "0,125 mol/dm³",
-            "0,0800 mol/dm³",
-            "0,100 mol/dm³",
-            "0,0500 mol/dm³"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. n(NaOH) = 0,100 × 0,02000 = 2,00 × 10⁻³ mol = n(HCl). c(HCl) = 2,00 × 10⁻³ / 0,02500 = 0,0800 mol/dm³.",
-          "mascote_feedback_errado": "No ponto de equivalência, c ácido V ácido = c base V base: c = 0,100 × 20,00 / 25,00 = 0,0800 mol/dm³."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na titulação de ácido acético com NaOH, o pH no ponto de equivalência é cerca de 8,7. Qual é o indicador mais adequado?",
-          "opcoes": [
-            "Alaranjado de metilo (3,1 a 4,4)",
-            "Azul de bromotimol (6,0 a 7,6)",
-            "Fenolftaleína (8,2 a 10,0)",
-            "Qualquer um serve."
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. A zona de viragem da fenolftaleína inclui o pH do ponto de equivalência. O alaranjado de metilo mudaria de cor muito antes.",
-          "mascote_feedback_errado": "O indicador deve mudar de cor perto do pH do ponto de equivalência (8,7). Só a fenolftaleína tem a zona de viragem à volta desse valor."
-        },
-        {
           "tipo": "simulacao",
           "id": "sim_titulacao",
           "titulo": "Titula o ácido",
@@ -942,6 +910,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Na titulação de 25,00 cm³ de HCl com NaOH 0,100 mol/dm³, gastaram-se 20,00 cm³ de NaOH até ao ponto de equivalência. Qual é a concentração do HCl?",
+              "opcoes": [
+                "0,125 mol/dm³",
+                "0,0800 mol/dm³",
+                "0,100 mol/dm³",
+                "0,0500 mol/dm³"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. n(NaOH) = 0,100 × 0,02000 = 2,00 × 10⁻³ mol = n(HCl). c(HCl) = 2,00 × 10⁻³ / 0,02500 = 0,0800 mol/dm³.",
+              "mascote_feedback_errado": "No ponto de equivalência, c ácido V ácido = c base V base: c = 0,100 × 20,00 / 25,00 = 0,0800 mol/dm³."
+            },
+            {
+              "pergunta": "Na titulação de ácido acético com NaOH, o pH no ponto de equivalência é cerca de 8,7. Qual é o indicador mais adequado?",
+              "opcoes": [
+                "Alaranjado de metilo (3,1 a 4,4)",
+                "Azul de bromotimol (6,0 a 7,6)",
+                "Fenolftaleína (8,2 a 10,0)",
+                "Qualquer um serve."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. A zona de viragem da fenolftaleína inclui o pH do ponto de equivalência. O alaranjado de metilo mudaria de cor muito antes.",
+              "mascote_feedback_errado": "O indicador deve mudar de cor perto do pH do ponto de equivalência (8,7). Só a fenolftaleína tem a zona de viragem à volta desse valor."
+            },
+            {
               "pergunta": "O ponto de equivalência de uma titulação corresponde:",
               "opcoes": [
                 "ao momento em que o indicador muda de cor.",
@@ -1035,32 +1027,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que a água da chuva não poluída tem pH cerca de 5,6 e não 7?",
-          "opcoes": [
-            "Porque contém sal.",
-            "Porque dissolve o CO₂ do ar, que reage com a água e forma um ácido fraco.",
-            "Porque contém ácido sulfúrico.",
-            "Porque é destilada."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O CO₂ dissolvido forma H₂CO₃, que se ioniza parcialmente e liberta H₃O⁺. Daí o pH ligeiramente ácido.",
-          "mascote_feedback_errado": "Mesmo sem poluição, a chuva dissolve CO₂, que torna a água ligeiramente ácida (pH ≈ 5,6). A chuva ácida, com pH inferior, deve-se a óxidos de enxofre e de azoto."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual dos gases é o principal responsável pela chuva ácida originada pela queima de carvão?",
-          "opcoes": [
-            "CO₂",
-            "SO₂",
-            "CH₄",
-            "O₃"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O carvão contém enxofre, que ao arder forma SO₂. Este dá origem ao ácido sulfúrico, um ácido forte.",
-          "mascote_feedback_errado": "O CO₂ forma um ácido fraco e é responsável pela acidez natural da chuva. A chuva ácida vem sobretudo do SO₂ (e dos NOx), que formam ácidos fortes."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Um pouco de limão e uma colher de ácido.** Toda a chuva tem um \"toque de limão\" (o CO₂), e isso é normal: as rochas, os lagos e os seres vivos estão adaptados. A chuva ácida é como se alguém despejasse colheres de ácido de bateria na água. Não é uma pequena diferença de grau: o pH pode baixar para 4 ou menos, ou seja, mais de 30 vezes mais ácida do que o normal."
         },
@@ -1072,6 +1038,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Porque é que a água da chuva não poluída tem pH cerca de 5,6 e não 7?",
+              "opcoes": [
+                "Porque contém sal.",
+                "Porque dissolve o CO₂ do ar, que reage com a água e forma um ácido fraco.",
+                "Porque contém ácido sulfúrico.",
+                "Porque é destilada."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O CO₂ dissolvido forma H₂CO₃, que se ioniza parcialmente e liberta H₃O⁺. Daí o pH ligeiramente ácido.",
+              "mascote_feedback_errado": "Mesmo sem poluição, a chuva dissolve CO₂, que torna a água ligeiramente ácida (pH ≈ 5,6). A chuva ácida, com pH inferior, deve-se a óxidos de enxofre e de azoto."
+            },
+            {
+              "pergunta": "Qual dos gases é o principal responsável pela chuva ácida originada pela queima de carvão?",
+              "opcoes": [
+                "CO₂",
+                "SO₂",
+                "CH₄",
+                "O₃"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O carvão contém enxofre, que ao arder forma SO₂. Este dá origem ao ácido sulfúrico, um ácido forte.",
+              "mascote_feedback_errado": "O CO₂ forma um ácido fraco e é responsável pela acidez natural da chuva. A chuva ácida vem sobretudo do SO₂ (e dos NOx), que formam ácidos fortes."
+            },
             {
               "pergunta": "Considera-se chuva ácida a chuva com pH:",
               "opcoes": [

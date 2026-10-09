@@ -14,13 +14,10 @@
       "tempo_estimado_min": 11,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_basquetebol_trajetoria.png",
-          "texto": "Um lançamento de três pontos no basquetebol: a bola sai da mão, sobe, curva e entra no cesto. No 11.º ano estudaste movimentos em linha reta. Mas quase nada no mundo real se move numa só dimensão. Para descrever a bola, precisas de dois eixos ao mesmo tempo: um horizontal e um vertical. E a boa notícia é que podes tratar cada eixo em separado.",
-          "mascote_texto": "A ideia chave da missão: um movimento a duas dimensões é a soma de dois movimentos a uma dimensão, que acontecem ao mesmo tempo."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Um movimento em duas dimensões é a soma de dois movimentos independentes.",
+          "mascote_texto": "A ideia chave da missão: um movimento a duas dimensões é a soma de dois movimentos a uma dimensão, que acontecem ao mesmo tempo.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Posição e vetores unitários",
           "imagem": "f12_vetor_posicao.png",
           "texto_principal": "Num referencial cartesiano com dois eixos, a posição de uma partícula é dada pelo vetor posição, que tem uma componente segundo cada eixo. As funções x(t) e y(t) chamam-se equações paramétricas do movimento. Juntas, descrevem completamente o movimento.",
@@ -28,7 +25,7 @@
           "pontos": [
             { "id": "vetor-posicao", "label": "Vetor posição (r)", "explicacao": "Vai da origem até à partícula. r = x ex + y ey." },
             { "id": "vetores-unitarios", "label": "Vetores unitários (ex, ey)", "explicacao": "Vetores de módulo 1 com a direção e o sentido dos eixos Ox e Oy." },
-            { "id": "equacoes-parametricas", "label": "Equações paramétricas", "explicacao": "x = x(t) e y = y(t). Cada uma descreve o movimento projetado num eixo." },
+            { "id": "equacoes-parametricas", "label": "Equações paramétricas", "explicacao": "x = x(t) e y = y(t). Cada uma descreve o movimento projetado num eixo.", "curiosidade_sem_titulo": true, "curiosidade": "**A sombra no chão e a sombra na parede**\n\nImagina uma bola a voar numa sala com uma lâmpada no teto e outra na parede. A lâmpada do teto projeta a sombra da bola no chão: essa sombra move-se só ao longo do chão, é o movimento em x. A lâmpada lateral projeta a sombra na parede: essa sombra sobe e desce, é o movimento em y. Cada sombra, sozinha, faz um movimento simples a uma dimensão. A bola real faz os dois ao mesmo tempo. Estudar um movimento a duas dimensões é estudar as duas sombras em separado e depois juntá-las." },
             { "id": "trajetoria-2d", "label": "Trajetória", "explicacao": "Linha descrita pela partícula no plano. Obtém-se eliminando t das equações paramétricas, o que dá y em função de x." },
             { "id": "deslocamento-2d", "label": "Deslocamento (Δr)", "explicacao": "Vetor que vai da posição inicial à posição final: Δr = Δx ex + Δy ey." },
             { "id": "uniforme-uniformemente-variado", "label": "Uniforme ou uniformemente variado em cada eixo", "explicacao": "Se a coordenada depende de t (primeiro grau), o movimento nesse eixo é uniforme. Se depende de t², é uniformemente variado." }
@@ -42,26 +39,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "As equações paramétricas de uma partícula são x = 3,0 t e y = 20 − 4,9 t² (SI). Qual é a sua posição no instante t = 2,0 s?",
-          "opcoes": ["(6,0 ; 20) m", "(6,0 ; 0,4) m", "(3,0 ; 15,1) m", "(6,0 ; −19,6) m"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. x = 3,0 × 2,0 = 6,0 m; y = 20 − 4,9 × 2,0² = 0,4 m. r = 6,0 ex + 0,4 ey (m).",
-          "mascote_feedback_errado": "Substitui t = 2,0 s nas duas equações: x = 3,0 × 2,0 = 6,0 m e y = 20 − 4,9 × 4,0 = 0,4 m."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Para a posição r = 4 t ex + 2 t² ey (SI), qual é o vetor aceleração?",
-          "opcoes": ["a = 4 ex + 4 t ey", "a = 4 ey", "a = 2 ey", "a = 0"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. v = dr/dt = 4 ex + 4 t ey. a = dv/dt = 4 ey (m s⁻²). Movimento uniforme em x e uniformemente acelerado em y.",
-          "mascote_feedback_errado": "Deriva duas vezes. Primeira derivada: v = 4 ex + 4 t ey (a derivada de 4t é 4; a de 2t² é 4t). Segunda derivada: a = 4 ey."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**A sombra no chão e a sombra na parede.** Imagina uma bola a voar numa sala com uma lâmpada no teto e outra na parede. A lâmpada do teto projeta a sombra da bola no chão: essa sombra move-se só ao longo do chão, é o movimento em x. A lâmpada lateral projeta a sombra na parede: essa sombra sobe e desce, é o movimento em y. Cada sombra, sozinha, faz um movimento simples a uma dimensão. A bola real faz os dois ao mesmo tempo. Estudar um movimento a duas dimensões é estudar as duas sombras em separado e depois juntá-las."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "As derivadas de que precisas, trajetória vs. gráfico, e velocidade tangente",
           "texto": "**As derivadas de que precisas**\n\nDerivada de uma constante: zero. Ex.: d(20)/dt = 0. Derivada de a t: a. Ex.: d(3,0 t)/dt = 3,0. Derivada de a t²: 2 a t. Ex.: d(−4,9 t²)/dt = −9,8 t. A derivada de uma soma é a soma das derivadas.\n\n**Erro comum: trajetória não é gráfico**\n\nO gráfico de y em função de t e a trajetória (y em função de x) são coisas diferentes. Uma partícula que se move numa reta inclinada pode ter gráficos x(t) e y(t) curvos. Lê sempre as legendas dos eixos.\n\n**Velocidade tangente à trajetória**\n\nEm cada ponto, o vetor velocidade é tangente à trajetória e aponta no sentido do movimento. A aceleração, em geral, não é tangente: vais ver na próxima secção como se decompõe."
@@ -69,6 +46,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "As equações paramétricas de uma partícula são x = 3,0 t e y = 20 − 4,9 t² (SI). Qual é a sua posição no instante t = 2,0 s?",
+              "opcoes": [
+                "(6,0 ; 20) m",
+                "(6,0 ; 0,4) m",
+                "(3,0 ; 15,1) m",
+                "(6,0 ; −19,6) m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. x = 3,0 × 2,0 = 6,0 m; y = 20 − 4,9 × 2,0² = 0,4 m. r = 6,0 ex + 0,4 ey (m).",
+              "mascote_feedback_errado": "Substitui t = 2,0 s nas duas equações: x = 3,0 × 2,0 = 6,0 m e y = 20 − 4,9 × 4,0 = 0,4 m."
+            },
+            {
+              "pergunta": "Para a posição r = 4 t ex + 2 t² ey (SI), qual é o vetor aceleração?",
+              "opcoes": [
+                "a = 4 ex + 4 t ey",
+                "a = 4 ey",
+                "a = 2 ey",
+                "a = 0"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. v = dr/dt = 4 ex + 4 t ey. a = dv/dt = 4 ey (m s⁻²). Movimento uniforme em x e uniformemente acelerado em y.",
+              "mascote_feedback_errado": "Deriva duas vezes. Primeira derivada: v = 4 ex + 4 t ey (a derivada de 4t é 4; a de 2t² é 4t). Segunda derivada: a = 4 ey."
+            },
             {
               "pergunta": "A posição de uma partícula é r = (2,0 + 5,0 t) ex + 3,0 ey (SI). O movimento é:",
               "opcoes": ["retilíneo uniforme, paralelo ao eixo Ox.", "retilíneo uniformemente acelerado.", "curvilíneo.", "de repouso."],
@@ -101,19 +102,16 @@
       "tempo_estimado_min": 11,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_curva_formula1.png",
-          "texto": "Um piloto de Fórmula 1 entra numa curva e carrega no acelerador ao mesmo tempo. Sente duas coisas: é empurrado contra o banco (ganha rapidez) e é \"atirado\" para o lado de fora da curva (muda de direção). As duas sensações correspondem às duas componentes da aceleração: uma altera o módulo da velocidade, a outra altera a direção.",
-          "mascote_texto": "Esta decomposição é das ideias mais importantes da Mecânica do 12.º ano. Com ela percebes qualquer curva."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Numa curva sentes duas coisas — e são duas acelerações diferentes.",
+          "mascote_texto": "Esta decomposição é das ideias mais importantes da Mecânica do 12.º ano. Com ela percebes qualquer curva.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Decomposição da aceleração",
           "imagem": "f12_aceleracao_tn.png",
           "texto_principal": "A aceleração pode decompor-se em duas componentes perpendiculares: a componente tangencial, na direção da velocidade, e a componente normal, perpendicular à velocidade e dirigida para o centro de curvatura da trajetória.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "aceleracao-tangencial", "label": "Aceleração tangencial (a t)", "explicacao": "Tem a direção da velocidade. Altera o módulo da velocidade. Se aponta no sentido da velocidade, a rapidez aumenta; se aponta no sentido oposto, diminui." },
+            { "id": "aceleracao-tangencial", "label": "Aceleração tangencial (a t)", "explicacao": "Tem a direção da velocidade. Altera o módulo da velocidade. Se aponta no sentido da velocidade, a rapidez aumenta; se aponta no sentido oposto, diminui.", "curiosidade_sem_titulo": true, "curiosidade": "**O acelerador e o volante**\n\nNum carro, tens dois comandos para mudar a velocidade: o acelerador (e o travão) e o volante. O acelerador muda a rapidez: é a aceleração tangencial. O volante muda a direção: é a aceleração normal. Numa reta a acelerar, só usas o acelerador. Numa rotunda a velocidade constante, só usas o volante. Numa saída de rotunda a acelerar, usas os dois, e a aceleração total é a combinação das duas." },
             { "id": "aceleracao-normal", "label": "Aceleração normal (a n)", "explicacao": "Perpendicular à velocidade, aponta para o centro de curvatura. Altera a direção da velocidade. Só existe em movimentos curvilíneos." },
             { "id": "raio-curvatura", "label": "Raio de curvatura (r)", "explicacao": "Raio da circunferência que melhor se ajusta à trajetória nesse ponto. Curva mais apertada: raio menor, curvatura maior." },
             { "id": "movimento-retilineo-tn", "label": "Movimento retilíneo", "explicacao": "a n = 0. Toda a aceleração é tangencial." },
@@ -128,26 +126,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um carro descreve uma curva com raio 50 m. Num dado instante, move-se a 10 m/s e a sua rapidez aumenta 2,0 m/s em cada segundo. Qual é o módulo da aceleração?",
-          "opcoes": ["2,0 m s⁻²", "2,8 m s⁻²", "4,0 m s⁻²", "0,20 m s⁻²"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. a t = 2,0 m s⁻²; a n = v² / r = 2,0 m s⁻². |a| = √(2,0² + 2,0²) ≈ 2,8 m s⁻².",
-          "mascote_feedback_errado": "Calcula as duas componentes: a t = 2,0 m s⁻² e a n = v² / r = 10² / 50 = 2,0 m s⁻². São perpendiculares: |a| = √(4,0 + 4,0) ≈ 2,8 m s⁻²."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um corpo move-se numa trajetória curva com o módulo da velocidade constante. Qual das afirmações é correta?",
-          "opcoes": ["A aceleração é nula.", "A aceleração tangencial é nula e a normal não é nula.", "A aceleração normal é nula e a tangencial não é nula.", "As duas componentes são nulas."],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Rapidez constante: a t = 0. Trajetória curva: a direção muda, logo a n ≠ 0.",
-          "mascote_feedback_errado": "A aceleração tangencial mede a variação da rapidez, que aqui é nula. Mas a direção da velocidade muda em cada instante, e isso exige aceleração normal."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**O acelerador e o volante.** Num carro, tens dois comandos para mudar a velocidade: o acelerador (e o travão) e o volante. O acelerador muda a rapidez: é a aceleração tangencial. O volante muda a direção: é a aceleração normal. Numa reta a acelerar, só usas o acelerador. Numa rotunda a velocidade constante, só usas o volante. Numa saída de rotunda a acelerar, usas os dois, e a aceleração total é a combinação das duas."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Porque a n = v² / r, como calcular a partir de r(t), e ligação ao 11.º ano",
           "texto": "**Porque é que a n = v² / r**\n\nQuanto mais depressa descreves uma curva, mais depressa a direção da velocidade tem de mudar (fator v²). Quanto mais apertada a curva (r pequeno), maior a mudança de direção para a mesma distância percorrida. É por isso que as curvas apertadas se fazem devagar.\n\n**Como calcular a t e a n a partir de r(t)**\n\n1. Calcula v(t) e a(t) derivando. 2. Calcula |v| e deriva-o para obter a t (ou usa a t = (a · v) / |v|). 3. Obtém a n = √(|a|² − a t²). 4. Se precisares do raio de curvatura: r = v² / a n.\n\n**Ligação ao 11.º ano**\n\nNo MCU do 11.º ano, a aceleração centrípeta era a aceleração normal (a t = 0). No 12.º ano generaliza-se para qualquer trajetória e qualquer variação de rapidez."
@@ -155,6 +133,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um carro descreve uma curva com raio 50 m. Num dado instante, move-se a 10 m/s e a sua rapidez aumenta 2,0 m/s em cada segundo. Qual é o módulo da aceleração?",
+              "opcoes": [
+                "2,0 m s⁻²",
+                "2,8 m s⁻²",
+                "4,0 m s⁻²",
+                "0,20 m s⁻²"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. a t = 2,0 m s⁻²; a n = v² / r = 2,0 m s⁻². |a| = √(2,0² + 2,0²) ≈ 2,8 m s⁻².",
+              "mascote_feedback_errado": "Calcula as duas componentes: a t = 2,0 m s⁻² e a n = v² / r = 10² / 50 = 2,0 m s⁻². São perpendiculares: |a| = √(4,0 + 4,0) ≈ 2,8 m s⁻²."
+            },
+            {
+              "pergunta": "Um corpo move-se numa trajetória curva com o módulo da velocidade constante. Qual das afirmações é correta?",
+              "opcoes": [
+                "A aceleração é nula.",
+                "A aceleração tangencial é nula e a normal não é nula.",
+                "A aceleração normal é nula e a tangencial não é nula.",
+                "As duas componentes são nulas."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Rapidez constante: a t = 0. Trajetória curva: a direção muda, logo a n ≠ 0.",
+              "mascote_feedback_errado": "A aceleração tangencial mede a variação da rapidez, que aqui é nula. Mas a direção da velocidade muda em cada instante, e isso exige aceleração normal."
+            },
             {
               "pergunta": "Num movimento retilíneo acelerado:",
               "opcoes": ["a n ≠ 0 e a t = 0.", "a n = 0 e a t ≠ 0.", "a n ≠ 0 e a t ≠ 0.", "a n = 0 e a t = 0."],
@@ -187,13 +189,10 @@
       "tempo_estimado_min": 14,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_remate_futebol.png",
-          "texto": "Um guarda-redes pontapeia a bola do chão para o meio-campo adversário. Com que ângulo deve rematar para a bola ir o mais longe possível? Se a resistência do ar for desprezável, a resposta é 45°. Nesta secção vais perceber porquê, e vais medir no laboratório como o alcance depende da velocidade de lançamento.",
-          "mascote_texto": "O truque para qualquer projétil: horizontal é MRU, vertical é queda livre. Sempre."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Sem resistência do ar, o alcance máximo de um lançamento é sempre a 45°.",
+          "mascote_texto": "O truque para qualquer projétil: horizontal é MRU, vertical é queda livre. Sempre.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "O movimento de um projétil",
           "imagem": "f12_projetil.png",
           "texto_principal": "Quando a força resultante sobre uma partícula é constante, a aceleração também é constante. Se a velocidade inicial não tem a mesma direção da força, o movimento é a composição de um movimento uniforme (na direção perpendicular à força) e de um movimento uniformemente variado (na direção da força). Um projétil, desprezando a resistência do ar, é o exemplo mais importante: a única força é o peso.",
@@ -204,7 +203,7 @@
             { "id": "altura-maxima-projetil", "label": "Altura máxima", "explicacao": "v y = 0. A velocidade no topo não é nula: é v₀ cos θ, horizontal." },
             { "id": "alcance-projetil", "label": "Alcance", "explicacao": "Distância horizontal até o projétil voltar à altura de lançamento." },
             { "id": "trajetoria-projetil", "label": "Trajetória", "explicacao": "Uma parábola." },
-            { "id": "lancamento-horizontal", "label": "Lançamento horizontal", "explicacao": "θ = 0°. v₀ y = 0. O projétil cai como se fosse largado, enquanto avança com velocidade constante." }
+            { "id": "lancamento-horizontal", "label": "Lançamento horizontal", "explicacao": "θ = 0°. v₀ y = 0. O projétil cai como se fosse largado, enquanto avança com velocidade constante.", "curiosidade_sem_titulo": true, "curiosidade": "**O comboio e a bola atirada ao ar**\n\nEstás num comboio que anda a velocidade constante e atiras uma bola ao ar, na vertical. Para ti, ela sobe e desce e volta à tua mão. Para quem está na estação, a bola descreve uma parábola: sobe e desce, mas ao mesmo tempo avança com o comboio. É exatamente um projétil: o movimento horizontal (o do comboio) é uniforme e não interfere com o vertical (a subida e descida). Os dois acontecem ao mesmo tempo, cada um na sua dimensão." }
           ],
           "caixa_formula": [
             { "expressao": "x = x₀ + v₀ cos θ t", "significado": "", "unidades": "" },
@@ -214,22 +213,6 @@
             { "expressao": "h máx = v₀² sen² θ / (2 g)", "significado": "Altura máxima acima do ponto de lançamento.", "unidades": "" },
             { "expressao": "Lançamento horizontal de altura h: t q = √(2h / g); A = v₀ √(2h / g)", "significado": "", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma bola rola para fora de uma mesa com 1,25 m de altura, com velocidade horizontal de 2,0 m/s. A que distância da base da mesa toca no chão?",
-          "opcoes": ["0,51 m", "1,0 m", "2,5 m", "4,1 m"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. t q ≈ 0,505 s. A = v₀ t q ≈ 1,0 m.",
-          "mascote_feedback_errado": "Primeiro o tempo de queda: t = √(2h / g) = √(2,5 / 9,8) ≈ 0,505 s. Depois o alcance: A = 2,0 × 0,505 ≈ 1,0 m."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um projétil é lançado do chão a 20 m/s, com 45° acima da horizontal. Qual é o alcance? (sen 90° = 1)",
-          "opcoes": ["20 m", "29 m", "41 m", "82 m"],
-          "correta": 2,
-          "mascote_feedback_certo": "Muito bem. A = v₀² sen(2θ) / g ≈ 41 m.",
-          "mascote_feedback_errado": "Usa A = v₀² sen(2θ) / g. Com θ = 45°, sen 90° = 1: A = 400 / 9,8 ≈ 41 m."
         },
         {
           "tipo": "simulacao", "painel_colunas": true,
@@ -267,10 +250,6 @@
               "Ângulos complementares (a soma dá 90°) têm o mesmo alcance: 30° e 60° dão o mesmo alcance."
             ]
           }
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**O comboio e a bola atirada ao ar.** Estás num comboio que anda a velocidade constante e atiras uma bola ao ar, na vertical. Para ti, ela sobe e desce e volta à tua mão. Para quem está na estação, a bola descreve uma parábola: sobe e desce, mas ao mesmo tempo avança com o comboio. É exatamente um projétil: o movimento horizontal (o do comboio) é uniforme e não interfere com o vertical (a subida e descida). Os dois acontecem ao mesmo tempo, cada um na sua dimensão."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -313,6 +292,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Uma bola rola para fora de uma mesa com 1,25 m de altura, com velocidade horizontal de 2,0 m/s. A que distância da base da mesa toca no chão?",
+              "opcoes": [
+                "0,51 m",
+                "1,0 m",
+                "2,5 m",
+                "4,1 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. t q ≈ 0,505 s. A = v₀ t q ≈ 1,0 m.",
+              "mascote_feedback_errado": "Primeiro o tempo de queda: t = √(2h / g) = √(2,5 / 9,8) ≈ 0,505 s. Depois o alcance: A = 2,0 × 0,505 ≈ 1,0 m."
+            },
+            {
+              "pergunta": "Um projétil é lançado do chão a 20 m/s, com 45° acima da horizontal. Qual é o alcance? (sen 90° = 1)",
+              "opcoes": [
+                "20 m",
+                "29 m",
+                "41 m",
+                "82 m"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Muito bem. A = v₀² sen(2θ) / g ≈ 41 m.",
+              "mascote_feedback_errado": "Usa A = v₀² sen(2θ) / g. Com θ = 45°, sen 90° = 1: A = 400 / 9,8 ≈ 41 m."
+            },
+            {
               "pergunta": "No ponto mais alto da trajetória de um projétil lançado obliquamente (sem resistência do ar):",
               "opcoes": ["a velocidade é nula.", "a velocidade é horizontal e a aceleração é g, vertical para baixo.", "a aceleração é nula.", "a velocidade e a aceleração são perpendiculares e ambas nulas."],
               "correta": 1,
@@ -344,13 +347,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_empurrar_armario.png",
-          "texto": "Tentas empurrar um armário pesado. Fazes força, mais força, e ele não se mexe. De repente, desliza, e a partir daí consegues mantê-lo em movimento com menos esforço do que precisaste para o arrancar. Isto não é impressão tua: o atrito que impede um corpo de arrancar é maior do que o atrito que se opõe a um corpo que já está a deslizar.",
-          "mascote_texto": "No 11.º ano, a força de atrito era dada no enunciado. No 12.º ano vais calculá-la com os coeficientes de atrito."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "É preciso mais força para arrancar um objeto do que para o manter a deslizar.",
+          "mascote_texto": "No 11.º ano, a força de atrito era dada no enunciado. No 12.º ano vais calculá-la com os coeficientes de atrito.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Atrito estático e cinético",
           "imagem": "f12_atrito_grafico.png",
           "texto_principal": "As forças que atuam num corpo podem ser forças aplicadas (um empurrão, a tração de um motor, o peso) ou forças de ligação, que resultam do contacto com outros corpos e restringem o movimento (reação normal, tensão de um fio, atrito). A força de atrito opõe-se ao deslizamento (ou à tendência para deslizar) entre as superfícies.",
@@ -360,33 +360,13 @@
             { "id": "atrito-estatico-maximo", "label": "Atrito estático máximo", "explicacao": "F a,e máx = μ e N. É a força mínima necessária para pôr o corpo a deslizar." },
             { "id": "atrito-cinetico", "label": "Atrito cinético", "explicacao": "Atua quando o corpo já desliza. É aproximadamente constante: F a,c = μ c N." },
             { "id": "coeficientes-atrito", "label": "Coeficientes de atrito", "explicacao": "μ e (estático) e μ c (cinético) dependem dos materiais em contacto. Em geral, μ c < μ e. Não têm unidades." },
-            { "id": "leis-empiricas-atrito", "label": "Leis empíricas do atrito", "explicacao": "A força de atrito depende dos materiais e da reação normal, mas não depende da área (aparente) de contacto." }
+            { "id": "leis-empiricas-atrito", "label": "Leis empíricas do atrito", "explicacao": "A força de atrito depende dos materiais e da reação normal, mas não depende da área (aparente) de contacto.", "curiosidade_sem_titulo": true, "curiosidade": "**Velcro e pentes**\n\nImagina que as duas superfícies em contacto são dois pentes com os dentes encaixados uns nos outros. Parados, os dentes estão bem encaixados e é difícil pôr um pente a deslizar sobre o outro. Depois de começar a deslizar, os dentes vão \"saltando\" e já não têm tempo de encaixar tão bem: é mais fácil manter o movimento. Esse é o motivo de μ c < μ e. E se tornares os pentes mais largos, sem os apertar mais um contra o outro, não fica mais difícil: por isso a área aparente não conta." }
           ],
           "caixa_formula": [
             { "expressao": "F a,e ≤ μ e N", "significado": "Atrito estático.", "unidades": "" },
             { "expressao": "F a,c = μ c N", "significado": "Atrito cinético.", "unidades": "" },
             { "expressao": "Plano inclinado no limiar de deslizar: μ e = tan θ c", "significado": "θ c = ângulo a partir do qual o corpo começa a deslizar.", "unidades": "" }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um armário de 50 kg está num chão horizontal, com μ e = 0,40 e μ c = 0,30. Qual é a força horizontal mínima para o pôr a deslizar?",
-          "opcoes": ["147 N", "196 N", "490 N", "20 N"],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. N = 490 N. F a,e máx = μ e N = 196 N.",
-          "mascote_feedback_errado": "A força mínima para arrancar é o atrito estático máximo: μ e N = 0,40 × (50 × 9,8) = 196 N."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Empurras o mesmo armário com 150 N e ele não se mexe. Qual é a intensidade da força de atrito?",
-          "opcoes": ["196 N", "147 N", "150 N", "0 N"],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. O armário está em repouso: o atrito estático iguala a força aplicada, 150 N.",
-          "mascote_feedback_errado": "Com o armário parado, a resultante é nula. O atrito estático ajusta-se e iguala a força aplicada: 150 N. μ e N = 196 N é só o valor máximo."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**Velcro e pentes.** Imagina que as duas superfícies em contacto são dois pentes com os dentes encaixados uns nos outros. Parados, os dentes estão bem encaixados e é difícil pôr um pente a deslizar sobre o outro. Depois de começar a deslizar, os dentes vão \"saltando\" e já não têm tempo de encaixar tão bem: é mais fácil manter o movimento. Esse é o motivo de μ c < μ e. E se tornares os pentes mais largos, sem os apertar mais um contra o outro, não fica mais difícil: por isso a área aparente não conta."
         },
         {
           "tipo": "atividade_laboratorial",
@@ -427,6 +407,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Um armário de 50 kg está num chão horizontal, com μ e = 0,40 e μ c = 0,30. Qual é a força horizontal mínima para o pôr a deslizar?",
+              "opcoes": [
+                "147 N",
+                "196 N",
+                "490 N",
+                "20 N"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. N = 490 N. F a,e máx = μ e N = 196 N.",
+              "mascote_feedback_errado": "A força mínima para arrancar é o atrito estático máximo: μ e N = 0,40 × (50 × 9,8) = 196 N."
+            },
+            {
+              "pergunta": "Empurras o mesmo armário com 150 N e ele não se mexe. Qual é a intensidade da força de atrito?",
+              "opcoes": [
+                "196 N",
+                "147 N",
+                "150 N",
+                "0 N"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. O armário está em repouso: o atrito estático iguala a força aplicada, 150 N.",
+              "mascote_feedback_errado": "Com o armário parado, a resultante é nula. O atrito estático ajusta-se e iguala a força aplicada: 150 N. μ e N = 196 N é só o valor máximo."
+            },
+            {
               "pergunta": "Um bloco de 5,0 kg desliza numa mesa horizontal com μ c = 0,30. Qual é a intensidade da força de atrito?",
               "opcoes": ["1,5 N", "14,7 N", "49 N", "16,3 N"],
               "correta": 1,
@@ -458,13 +462,10 @@
       "tempo_estimado_min": 12,
       "ecrãs": [
         {
-          "tipo": "gancho",
-          "imagem": "f12_looping_montanha_russa.png",
-          "texto": "Na montanha-russa, o carrinho passa de cabeça para baixo no topo de um looping e os passageiros não caem. Nas autoestradas, as curvas são ligeiramente inclinadas para dentro. Numa roda gigante, sentes-te mais leve no topo e mais pesado em baixo. Tudo isto se explica com a segunda lei de Newton aplicada a movimentos curvos, e com a energia que já conheces do 10.º ano.",
-          "mascote_texto": "Nesta secção juntas quase tudo: forças, atrito, energia e movimento circular. É a secção de exercícios mais completa da missão."
-        },
-        {
           "tipo": "diagrama_interativo",
+          "mascote_titulo": "Numa curva, sentes-te mais leve ou mais pesado consoante o movimento circular.",
+          "mascote_texto": "Nesta secção juntas quase tudo: forças, atrito, energia e movimento circular. É a secção de exercícios mais completa da missão.", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Corpos ligados",
           "imagem": "f12_corpos_ligados.png",
           "texto_principal": "Quando corpos estão ligados por fios (inextensíveis e de massa desprezável), movem-se com a mesma aceleração em módulo, e a tensão tem a mesma intensidade ao longo do fio. Aplica-se a segunda lei de Newton a cada corpo em separado e resolve-se o sistema de equações. Também se pode usar a conservação (ou a variação) da energia mecânica.",
@@ -482,7 +483,8 @@
           ]
         },
         {
-          "tipo": "diagrama_interativo",
+          "tipo": "diagrama_interativo", "cartao_estilo": true,
+          "pontos_seta": true,
           "titulo": "Movimentos circulares",
           "imagem": "f12_curvas_circulares.png",
           "texto_principal": "Em qualquer movimento circular, a componente normal da resultante das forças é F n = m v² / r, dirigida para o centro. Essa força não é uma força nova: é a soma das componentes das forças reais (atrito, normal, peso, tensão) na direção do centro.",
@@ -490,7 +492,7 @@
           "pontos": [
             { "id": "curva-plana", "label": "Curva plana", "explicacao": "É o atrito estático entre os pneus e a estrada que fornece a força centrípeta. Velocidade máxima sem derrapar: v máx = √(μ e g r)." },
             { "id": "curva-relevé", "label": "Curva com relevé, sem atrito", "explicacao": "A componente horizontal da normal fornece a força centrípeta. Velocidade ideal: tan θ = v² / (r g)." },
-            { "id": "topo-looping", "label": "Topo de um looping", "explicacao": "Peso e normal apontam ambos para baixo (para o centro). m g + N = m v² / r. Velocidade mínima para não cair: N = 0, v mín = √(g r)." },
+            { "id": "topo-looping", "label": "Topo de um looping", "explicacao": "Peso e normal apontam ambos para baixo (para o centro). m g + N = m v² / r. Velocidade mínima para não cair: N = 0, v mín = √(g r).", "curiosidade_sem_titulo": true, "curiosidade": "**O balde de água a girar**\n\nSe rodares um balde com água num círculo vertical suficientemente depressa, a água não cai nem quando o balde está de cabeça para baixo. Não é que a gravidade tenha desaparecido: a água está a cair, mas o balde \"cai\" à mesma velocidade e ainda a empurra para o centro. Se rodares devagar demais, o peso sozinho é mais do que o necessário para curvar a água, e ela cai-te em cima. O carrinho no looping é esse balde." },
             { "id": "roda-gigante-topo", "label": "Roda gigante, no topo", "explicacao": "m g − N = m v² / r. A normal é menor do que o peso: sentes-te mais leve." },
             { "id": "roda-gigante-baixo", "label": "Roda gigante, em baixo", "explicacao": "N − m g = m v² / r. A normal é maior do que o peso: sentes-te mais pesado." }
           ],
@@ -502,26 +504,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um bloco A de 2,0 kg está numa mesa sem atrito, ligado por um fio a um bloco B de 0,50 kg suspenso. Qual é a aceleração do sistema?",
-          "opcoes": ["9,8 m s⁻²", "2,5 m s⁻²", "2,0 m s⁻²", "1,2 m s⁻²"],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. a = m B g / (m A + m B) ≈ 2,0 m s⁻².",
-          "mascote_feedback_errado": "A força que põe o sistema em movimento é o peso de B, mas tem de acelerar as duas massas: a = 0,50 × 9,8 / (2,0 + 0,50) ≈ 2,0 m s⁻²."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a velocidade mínima que um carrinho deve ter no topo de um looping de raio 5,0 m para não perder o contacto com os carris?",
-          "opcoes": ["2,2 m/s", "7,0 m/s", "9,8 m/s", "49 m/s"],
-          "correta": 1,
-          "mascote_feedback_certo": "Muito bem. v = √(g r) = 7,0 m/s.",
-          "mascote_feedback_errado": "No topo, a força centrípeta mínima é só o peso (N = 0): m g = m v² / r. v = √(g r) = √(9,8 × 5,0) = 7,0 m/s."
-        },
-        {
-          "tipo": "analogia",
-          "texto": "**O balde de água a girar.** Se rodares um balde com água num círculo vertical suficientemente depressa, a água não cai nem quando o balde está de cabeça para baixo. Não é que a gravidade tenha desaparecido: a água está a cair, mas o balde \"cai\" à mesma velocidade e ainda a empurra para o centro. Se rodares devagar demais, o peso sozinho é mais do que o necessário para curvar a água, e ela cai-te em cima. O carrinho no looping é esse balde."
-        },
-        {
           "tipo": "aprofundar",
           "titulo": "Curvas inclinadas, velocidade máxima numa curva, e a ligação à energia",
           "texto": "**Porque é que as curvas das autoestradas são inclinadas**\n\nNuma curva plana, a força centrípeta vem toda do atrito. Se a estrada estiver molhada ou com gelo, o atrito diminui e o carro derrapa. Inclinando a estrada (relevé), a própria normal contribui para a força centrípeta, e o carro precisa de menos atrito. Exemplo: raio 100 m e velocidade 20 m/s (72 km/h): tan θ ≈ 0,41, θ ≈ 22°.\n\n**Velocidade máxima numa curva plana**\n\nCurva de raio 50 m com μ e = 0,80 (asfalto seco): v máx ≈ 19,8 m/s ≈ 71 km/h. Com a estrada molhada (μ e = 0,50), v máx ≈ 15,7 m/s ≈ 56 km/h.\n\n**Ligação à energia**\n\nPara saber a velocidade no topo de um looping a partir da altura de partida, usa a conservação da energia mecânica: m g h partida = m g (2r) + ½ m v². Sem atrito, para o carrinho passar o looping é preciso partir de h ≥ 2,5 r."
@@ -529,6 +511,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um bloco A de 2,0 kg está numa mesa sem atrito, ligado por um fio a um bloco B de 0,50 kg suspenso. Qual é a aceleração do sistema?",
+              "opcoes": [
+                "9,8 m s⁻²",
+                "2,5 m s⁻²",
+                "2,0 m s⁻²",
+                "1,2 m s⁻²"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. a = m B g / (m A + m B) ≈ 2,0 m s⁻².",
+              "mascote_feedback_errado": "A força que põe o sistema em movimento é o peso de B, mas tem de acelerar as duas massas: a = 0,50 × 9,8 / (2,0 + 0,50) ≈ 2,0 m s⁻²."
+            },
+            {
+              "pergunta": "Qual é a velocidade mínima que um carrinho deve ter no topo de um looping de raio 5,0 m para não perder o contacto com os carris?",
+              "opcoes": [
+                "2,2 m/s",
+                "7,0 m/s",
+                "9,8 m/s",
+                "49 m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. v = √(g r) = 7,0 m/s.",
+              "mascote_feedback_errado": "No topo, a força centrípeta mínima é só o peso (N = 0): m g = m v² / r. v = √(g r) = √(9,8 × 5,0) = 7,0 m/s."
+            },
             {
               "pergunta": "Um carro descreve uma curva plana e horizontal com velocidade constante. Qual é a força que o mantém na curva?",
               "opcoes": ["O peso.", "A reação normal.", "A força de atrito estático entre os pneus e a estrada.", "Uma força centrífuga."],

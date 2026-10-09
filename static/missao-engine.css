@@ -1958,6 +1958,69 @@ html.dark-mode .me-escada-detail-divider {
     background: rgba(255, 255, 255, .12);
 }
 
+/* Navegação "‹ 2 / 5 ›" dentro do cartão (ver screen.pontos_seta,
+   setaNavHtml/bindDiagramaSetaNav em missao-engine.js) — substitui a fila
+   de chips quando o ecrã tem um slide inicial (texto + fórmula) seguido
+   dos pontos, tudo navegado por uma seta em vez de escolha livre. */
+.me-seta-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+button.me-seta-nav-btn {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid #1f8a5b;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #1f8a5b;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-seta-nav-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+button.me-seta-nav-btn:hover:not(:disabled) {
+    background: #eaf3ec;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-seta-nav-btn:disabled {
+    opacity: .35;
+    cursor: default;
+    border-color: #c4d3ca;
+    color: #c4d3ca;
+}
+
+.me-seta-nav-contador {
+    font-size: .85rem;
+    font-weight: 700;
+    color: #767c70;
+    min-width: 42px;
+    text-align: center;
+}
+
+html.dark-mode .me-seta-nav {
+    border-top-color: rgba(255, 255, 255, .1);
+}
+
+html.dark-mode button.me-seta-nav-btn {
+    background: #24201a;
+}
+
 /* Painel com uma pergunta de opinião (ver ponto.inquerito/inqueritoHtml
    em missao-engine.js), dentro da coluna de texto, por baixo do resto do
    conteúdo do ponto. */
@@ -3256,6 +3319,105 @@ html.dark-mode .me-mascot-popup button.mascot-overlay-btn:not(:disabled) {
     color: #ffffff;
 }
 
+/* Popup de entrada num ecrã de gancho (ver showMascotPopup em
+   missao-engine.js) — mascote maior, selo com ícone da disciplina +
+   <secção> por cima do texto, e a seta no botão "Bora explorar!" —
+   para se aproximar do design pedido pela Daniela. */
+.me-mascot-popup-hook {
+    padding: 30px 32px;
+}
+
+.me-mascot-popup-hook .mascot-overlay-figure {
+    width: 220px;
+}
+
+.me-mascot-popup-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.me-mascot-popup-badge {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #eaf3ec;
+    color: #1f8a5b;
+    flex-shrink: 0;
+}
+
+.me-mascot-popup-badge svg {
+    width: 16px;
+    height: 16px;
+}
+
+.me-mascot-popup-eyebrow span:last-child {
+    color: #1f8a5b;
+    font-weight: 800;
+    font-size: .74rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.me-mascot-popup-titulo {
+    margin: 0 0 8px;
+    font-weight: 800;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: #15241c;
+}
+
+.me-mascot-popup-hook .mascot-overlay-text {
+    font-weight: 400;
+    font-size: .92rem;
+    line-height: 1.55;
+    color: #4b5a52;
+}
+
+/* Sem título próprio, o texto (a única frase do popup) continua a
+   funcionar como o destaque principal. */
+.me-mascot-popup-hook:not(:has(.me-mascot-popup-titulo)) .mascot-overlay-text {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #15241c;
+}
+
+.me-mascot-popup-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 18px;
+}
+
+.me-mascot-popup-hook button.mascot-overlay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 999px;
+}
+
+.me-mascot-popup-seta {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    stroke: #ffffff;
+}
+
+html.dark-mode .me-mascot-popup-badge {
+    background: rgba(31, 138, 91, .18);
+}
+
+html.dark-mode .me-mascot-popup-hook .mascot-overlay-text {
+    color: #b9c7bd;
+}
+
+html.dark-mode .me-mascot-popup-hook:not(:has(.me-mascot-popup-titulo)) .mascot-overlay-text,
+html.dark-mode .me-mascot-popup-titulo {
+    color: #e6ede9;
+}
+
 /* "Concluir secção"/"Concluir missão" na mesma cor e forma. */
 .screen-nav button.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal) {
     border: 1px solid #1f8a5b;
@@ -3465,4 +3627,172 @@ html.dark-mode .me-simulacao-saidas {
 
 html.dark-mode .me-simulacao-saida::before {
     background: #7fd6a8;
+}
+
+/* Ecrã "cartao_passos" (ver renderCartaoPassos): uma seta por baixo do
+   texto muda só o lado direito e a imagem do cartão. */
+.me-cp-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.me-cp-contador {
+    margin-right: 4px;
+    font-size: .85rem;
+    font-weight: 700;
+    color: #6b7a72;
+}
+
+button.me-cp-seta,
+button.me-cp-seta:hover,
+button.me-cp-seta:focus,
+button.me-cp-seta:active {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #c4d3ca;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: none;
+    color: #1c2a22;
+    transform: none;
+    cursor: pointer;
+}
+
+button.me-cp-seta:hover {
+    border-color: #1f8a5b;
+    color: #1f8a5b;
+}
+
+button.me-cp-seta[data-cp-seguinte],
+button.me-cp-seta[data-cp-seguinte]:hover {
+    border-color: #1f8a5b;
+    background: #1f8a5b;
+    color: #ffffff;
+}
+
+button.me-cp-seta[data-cp-seguinte]:hover {
+    background: #17724a;
+}
+
+html.dark-mode .me-cp-contador {
+    color: #b8b2aa;
+}
+
+html.dark-mode button.me-cp-seta:not([data-cp-seguinte]) {
+    border-color: rgba(255, 255, 255, .25);
+    background: #2a2622;
+    color: #e6e1da;
+}
+
+/* "Concluir secção"/"Concluir missão": numa linha só dele, por baixo das
+   bolinhas das páginas, centrado e com cantos bem arredondados. */
+.screen-nav:has(.me-nav-paginas):has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal)) {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 14px;
+}
+
+.screen-nav:has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal))::after {
+    content: "";
+    order: 3;
+    flex-basis: 100%;
+    height: 0;
+}
+
+.screen-nav:has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal)) #mePrevBtn {
+    order: 1;
+}
+
+.screen-nav:has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal)) .me-nav-paginas {
+    order: 2;
+    flex: 0 1 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+}
+
+.screen-nav:has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal)) button.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal) {
+    order: 4;
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0 auto;
+    padding: 11px 32px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* Na última página (com "Concluir secção"), a seta < vai para o canto de
+   baixo à esquerda do painel, na linha do botão. */
+.screen-nav:has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal)) {
+    position: relative;
+}
+
+.screen-nav:has(.screen-nav-btn[data-nav-action="next"]:not(.screen-nav-btn--sinal)) button#mePrevBtn.screen-nav-btn--sinal {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 44px;
+    padding: 0 10px;
+}
+/* Painel "Testa o que aprendeste" do mapa da missão (por baixo das
+   recompensas): botão "Testar" para o teste grátis da missão, ou "Em breve"
+   quando esse teste ainda não existe. */
+.mo-teste-card .mo-teste-btn,
+.mo-teste-card a.mo-teste-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    align-self: flex-start;
+    padding: 10px 26px;
+    border: 1px solid #1f8a5b;
+    border-radius: 12px;
+    background: #1f8a5b;
+    color: #ffffff;
+    font-size: .95rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.mo-teste-card a.mo-teste-btn:hover {
+    border-color: #17724a;
+    background: #17724a;
+}
+
+.mo-teste-card .mo-teste-btn.is-em-breve {
+    border-color: #d5ddd8;
+    background: #eef1ee;
+    color: #6b7a72;
+    cursor: not-allowed;
+}
+
+.mo-teste-card .mo-teste-btn small {
+    font-size: .7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #6b7a72;
+}
+
+html.dark-mode .mo-teste-card .mo-teste-btn.is-em-breve {
+    border-color: #27272a;
+    background: #202023;
+    color: #a1a1aa;
+}
+
+html.dark-mode .mo-teste-card .mo-teste-btn small {
+    background: #17171a;
+    color: #a1a1aa;
 }

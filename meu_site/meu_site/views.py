@@ -843,7 +843,15 @@ def pagina_missao(request, missao_id):
     except OperationalError:
         perfil = None
 
-    return render(request, 'missao.html', {'missao': missao, 'missao_json': missao, 'perfil': perfil})
+    # Teste grátis (Teste 1, plano Free) desta missão, se já existir — o painel
+    # "Testa o que aprendeste" do mapa da missão leva para lá (ver MISSOES_TESTES).
+    teste_url = ''
+    for missao_teste in MISSOES_TESTES:
+        for teste in missao_teste['testes']:
+            if teste['plano'] == 'free' and teste.get('teste_id') and TESTE_FREE_PARA_MISSAO.get(teste['teste_id']) == missao_id:
+                teste_url = reverse(teste.get('rota', 'teste-fotossintese'), args=[teste['teste_id']])
+
+    return render(request, 'missao.html', {'missao': missao, 'missao_json': missao, 'perfil': perfil, 'teste_url': teste_url})
 
 
 @login_required(login_url='login')
@@ -1159,6 +1167,17 @@ MISSOES_TESTES = [
             {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'celulas-endossimbiotica'},
         ],
     },
+    {
+        'categoria': 'Energia e Movimentos',
+        'titulo': 'Energia e Movimentos',
+        'meta': ['20 perguntas por teste', '30 minutos', 'Correção automática'],
+        'correcao': 'Uma pergunta de cada vez, com explicação logo a seguir.',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m1-teste-1', 'rota': 'teste-missao'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-2', 'rota': 'teste-missao'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-3', 'rota': 'teste-missao'},
+        ],
+    },
 ]
 
 # Capítulos que ainda não têm testes escritos — aparecem na página de
@@ -1185,7 +1204,6 @@ _TESTES_EM_BREVE = [
     ('Ecologia', 'Ecossistemas'),
     ('Corpo Humano', 'Sistema Nervoso'),
     ('Botânica', 'Fisiologia Vegetal'),
-    ('Energia e Movimentos', 'Energia e Movimentos'),
     ('Energia e Fenómenos Elétricos', 'Energia e Fenómenos Elétricos'),
     ('Energia, Fenómenos Térmicos e Radiação', 'Energia, Fenómenos Térmicos e Radiação'),
     ('Movimento e Interações', 'Movimento e Interações'),
@@ -1208,6 +1226,16 @@ for _categoria, _titulo in _TESTES_EM_BREVE:
     })
 
 
+# Missão de cada teste grátis (teste_id -> missao_id), para o botão "Testar"
+# do mapa da missão. Acrescenta aqui quando um teste novo passar a existir.
+TESTE_FREE_PARA_MISSAO = {
+    'fotossintese': 'fotossintese',
+    'diversidade': 'diversidade-organizacao-biologica',
+    'celulas': 'celulas-organelos',
+    'fis10-m1-teste-1': 'energia-e-movimentos',
+}
+
+
 def encontrar_config_teste(teste_id):
     for missao in MISSOES_TESTES:
         for teste in missao['testes']:
@@ -1227,7 +1255,7 @@ def montar_categorias_testes(plano_aluno):
                 'plano': teste['plano'],
                 'disponivel': disponivel,
                 'desbloqueado': teste['plano'] == 'free' or plano_aluno == 'pro',
-                'url': reverse('teste-fotossintese', args=[teste['teste_id']]) if disponivel else None,
+                'url': reverse(teste.get('rota', 'teste-fotossintese'), args=[teste['teste_id']]) if disponivel else None,
             })
         categorias.setdefault(missao['categoria'], []).append({**missao, 'testes': testes})
     return [
@@ -3829,6 +3857,8 @@ def pagina_teste_fotossintese(request, teste_id):
     config_teste = encontrar_config_teste(teste_id)
     if config_teste is None:
         raise Http404('Teste não encontrado.')
+    if config_teste.get('rota') == 'teste-missao':
+        return redirect('teste-missao', teste_id=teste_id)
 
     try:
         perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
@@ -4123,6 +4153,108 @@ def corrigir_teste_fotossintese(request, teste_id):
         'cotacaoTotal': teste['cotacao_total'],
         'perguntas': resultado_perguntas,
         'feedbackIA': feedback_ia,
+    })
+
+
+CAMPOS_PUBLICOS_TESTE_MISSAO = ('numero', 'nivel', 'seccao', 'enunciado', 'opcoes')
+
+
+def _config_teste_missao(request, teste_id):
+    """Config + permissão de um teste de missão (formato "uma pergunta de cada
+    vez", ver teste-missao.html). Os testes Pro redirecionam os alunos Free."""
+    config_teste = encontrar_config_teste(teste_id)
+    if config_teste is None or config_teste.get('rota') != 'teste-missao':
+        raise Http404('Teste não encontrado.')
+    try:
+        perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    plano_aluno = perfil.plano if perfil is not None else 'free'
+    bloqueado = config_teste['plano'] == 'pro' and plano_aluno != 'pro'
+    try:
+        teste = carregar_teste(teste_id)
+    except FileNotFoundError:
+        raise Http404('Teste não encontrado.')
+    return config_teste, perfil, bloqueado, teste
+
+
+@login_required(login_url='login')
+def pagina_teste_missao(request, teste_id):
+    config_teste, perfil, bloqueado, teste = _config_teste_missao(request, teste_id)
+    if bloqueado:
+        return redirect('superexplore')
+
+    # O gabarito e as explicações só saem do servidor depois de o aluno
+    # responder (responder_teste_missao) — nunca vão no HTML da página.
+    perguntas_publicas = [
+        {chave: pergunta[chave] for chave in CAMPOS_PUBLICOS_TESTE_MISSAO}
+        for pergunta in teste['perguntas']
+    ]
+    return render(request, 'teste-missao.html', {
+        'perfil': perfil,
+        'teste': teste,
+        'teste_id': teste_id,
+        'perguntas': perguntas_publicas,
+        'seccoes': teste.get('seccoes', {}),
+        'missao_url': reverse('missao', args=[{'fis10-m1': 'energia-e-movimentos'}.get(teste.get('missao'), teste.get('missao', ''))]),
+    })
+
+
+@login_required(login_url='login')
+@require_POST
+def responder_teste_missao(request, teste_id):
+    """Corrige uma pergunta: devolve a opção certa e a explicação."""
+    _, _, bloqueado, teste = _config_teste_missao(request, teste_id)
+    if bloqueado:
+        return JsonResponse({'erro': 'Teste exclusivo do plano Pro.'}, status=403)
+    try:
+        dados = json.loads(request.body or '{}')
+        numero = int(dados.get('pergunta'))
+        escolha = int(dados.get('resposta'))
+    except (TypeError, ValueError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+    pergunta = next((p for p in teste['perguntas'] if p['numero'] == numero), None)
+    if pergunta is None or not 0 <= escolha < len(pergunta['opcoes']):
+        return JsonResponse({'erro': 'Pergunta ou opção inexistente.'}, status=400)
+    return JsonResponse({
+        'certa': escolha == pergunta['correta'],
+        'correta': pergunta['correta'],
+        'explicacao': pergunta['explicacao'],
+    })
+
+
+@login_required(login_url='login')
+@require_POST
+def terminar_teste_missao(request, teste_id):
+    """Nota final (0 a 20 = respostas certas) com o resumo por secção. A nota
+    é recalculada aqui a partir das opções escolhidas, não vem do browser."""
+    _, perfil, bloqueado, teste = _config_teste_missao(request, teste_id)
+    if bloqueado:
+        return JsonResponse({'erro': 'Teste exclusivo do plano Pro.'}, status=403)
+    try:
+        dados = json.loads(request.body or '{}')
+        respostas = {int(k): int(v) for k, v in (dados.get('respostas') or {}).items()}
+    except (TypeError, ValueError, AttributeError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+
+    por_seccao = {}
+    nota = 0
+    for pergunta in teste['perguntas']:
+        certa = respostas.get(pergunta['numero']) == pergunta['correta']
+        nota += 1 if certa else 0
+        resumo = por_seccao.setdefault(pergunta['seccao'], {'certas': 0, 'total': 0})
+        resumo['total'] += 1
+        resumo['certas'] += 1 if certa else 0
+
+    total = len(teste['perguntas'])
+    registar_resultado(request.user, 'teste', teste_id, '', nota / total * 100)
+    return JsonResponse({
+        'nota': nota,
+        'total': total,
+        'seccoes': [
+            {'seccao': seccao, 'titulo': teste.get('seccoes', {}).get(seccao, seccao), **resumo}
+            for seccao, resumo in por_seccao.items()
+        ],
     })
 
 

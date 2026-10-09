@@ -106,32 +106,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Que tipo de ligação existe no brometo de potássio, KBr?",
-          "opcoes": [
-            "Covalente",
-            "Iónica",
-            "Metálica",
-            "Não há ligação"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O potássio (metal alcalino) transfere um eletrão para o bromo (halogéneo), formando K⁺ e Br⁻, que se atraem numa rede cristalina.",
-          "mascote_feedback_errado": "K é um metal e Br é um não metal. Há transferência de eletrões e formação de iões K⁺ e Br⁻: ligação iónica."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "No gráfico da energia do H₂ em função da distância internuclear, o que representa o valor mínimo de energia?",
-          "opcoes": [
-            "A distância a que os átomos se repelem ao máximo.",
-            "A situação de maior estabilidade, com o comprimento de ligação e a energia de ligação.",
-            "A distância a que os átomos deixam de interagir.",
-            "A energia de ionização do hidrogénio."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O mínimo corresponde ao equilíbrio entre atrações e repulsões: a distância é o comprimento de ligação e a profundidade é a energia de ligação.",
-          "mascote_feedback_errado": "No mínimo da curva, o sistema tem a menor energia possível: é a molécula estável. A distância do mínimo é o comprimento de ligação e a profundidade é a energia de ligação."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Três formas de partilhar.** Imagina três formas de resolver quem fica com uma bola. Na ligação covalente, dois amigos seguram a mesma bola ao mesmo tempo, e isso mantém-nos juntos. Na ligação iónica, um dá a bola ao outro: um fica \"positivo\" (sem bola), outro \"negativo\" (com bola a mais), e atraem-se porque ficaram diferentes. Na ligação metálica, há um monte de bolas no meio de uma multidão e ninguém é dono de nenhuma: todos as passam uns aos outros, o que mantém a multidão unida e permite às bolas circular de um lado ao outro (condução elétrica)."
         },
@@ -143,6 +117,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Que tipo de ligação existe no brometo de potássio, KBr?",
+              "opcoes": [
+                "Covalente",
+                "Iónica",
+                "Metálica",
+                "Não há ligação"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O potássio (metal alcalino) transfere um eletrão para o bromo (halogéneo), formando K⁺ e Br⁻, que se atraem numa rede cristalina.",
+              "mascote_feedback_errado": "K é um metal e Br é um não metal. Há transferência de eletrões e formação de iões K⁺ e Br⁻: ligação iónica."
+            },
+            {
+              "pergunta": "No gráfico da energia do H₂ em função da distância internuclear, o que representa o valor mínimo de energia?",
+              "opcoes": [
+                "A distância a que os átomos se repelem ao máximo.",
+                "A situação de maior estabilidade, com o comprimento de ligação e a energia de ligação.",
+                "A distância a que os átomos deixam de interagir.",
+                "A energia de ionização do hidrogénio."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O mínimo corresponde ao equilíbrio entre atrações e repulsões: a distância é o comprimento de ligação e a profundidade é a energia de ligação.",
+              "mascote_feedback_errado": "No mínimo da curva, o sistema tem a menor energia possível: é a molécula estável. A distância do mínimo é o comprimento de ligação e a profundidade é a energia de ligação."
+            },
             {
               "pergunta": "A formação de uma ligação química:",
               "opcoes": [
@@ -301,32 +299,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Quantos pares de eletrões não ligantes tem o átomo de oxigénio na molécula de água?",
-          "opcoes": [
-            "0",
-            "1",
-            "2",
-            "4"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. O oxigénio tem 6 eletrões de valência: usa 2 em duas ligações simples com os H e fica com 4, ou seja, 2 pares não ligantes. Com os 2 pares ligantes, completa o octeto.",
-          "mascote_feedback_errado": "O oxigénio tem 6 eletrões de valência. Partilha um com cada H (2 pares ligantes) e sobram 4 eletrões: 2 pares não ligantes."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Na molécula de CO₂ (O=C=O), quantos eletrões de valência há no total?",
-          "opcoes": [
-            "12",
-            "16",
-            "18",
-            "22"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. C: 4; O: 6 × 2 = 12. Total 16 eletrões: 4 pares ligantes (duas ligações duplas) e 4 pares não ligantes (2 em cada O).",
-          "mascote_feedback_errado": "Soma os eletrões de valência: carbono 4 + 2 oxigénios × 6 = 16. São 8 pares: 4 ligantes (nas duas ligações duplas) e 4 não ligantes."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Os lugares à mesa.** Imagina que cada átomo quer ter 8 lugares ocupados à sua mesa. O oxigénio traz 6 pessoas e precisa de mais 2. Se se sentar ao lado de dois hidrogénios, cada um \"empresta\" uma pessoa e o oxigénio \"empresta\" uma de volta: cada par partilhado conta para os dois lados. No azoto (N₂), cada átomo traz 5 e precisa de 3: os dois partilham 3 pares, uma ligação tripla. Quanto mais pares se partilham, mais apertado e mais forte fica o abraço entre os átomos."
         },
@@ -338,6 +310,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Quantos pares de eletrões não ligantes tem o átomo de oxigénio na molécula de água?",
+              "opcoes": [
+                "0",
+                "1",
+                "2",
+                "4"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O oxigénio tem 6 eletrões de valência: usa 2 em duas ligações simples com os H e fica com 4, ou seja, 2 pares não ligantes. Com os 2 pares ligantes, completa o octeto.",
+              "mascote_feedback_errado": "O oxigénio tem 6 eletrões de valência. Partilha um com cada H (2 pares ligantes) e sobram 4 eletrões: 2 pares não ligantes."
+            },
+            {
+              "pergunta": "Na molécula de CO₂ (O=C=O), quantos eletrões de valência há no total?",
+              "opcoes": [
+                "12",
+                "16",
+                "18",
+                "22"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. C: 4; O: 6 × 2 = 12. Total 16 eletrões: 4 pares ligantes (duas ligações duplas) e 4 pares não ligantes (2 em cada O).",
+              "mascote_feedback_errado": "Soma os eletrões de valência: carbono 4 + 2 oxigénios × 6 = 16. São 8 pares: 4 ligantes (nas duas ligações duplas) e 4 não ligantes."
+            },
             {
               "pergunta": "Qual é a ligação entre os átomos de azoto na molécula de N₂?",
               "opcoes": [
@@ -475,32 +471,6 @@
               "explicacao": "Sempre apolares (H₂, N₂, O₂, Cl₂)."
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é a geometria da molécula de amoníaco, NH₃?",
-          "opcoes": [
-            "Triangular plana",
-            "Tetraédrica",
-            "Piramidal trigonal",
-            "Angular"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. O azoto tem 3 pares ligantes e 1 par não ligante. Os quatro pares distribuem-se num tetraedro, mas a geometria (posição dos átomos) é uma pirâmide com o N no topo.",
-          "mascote_feedback_errado": "À volta do N há 4 pares (3 ligantes e 1 não ligante). A geometria descreve-se pela posição dos átomos: os 3 H formam a base e o N fica no topo de uma pirâmide trigonal."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O dióxido de carbono tem ligações C=O polares. A molécula é:",
-          "opcoes": [
-            "polar, porque as ligações são polares.",
-            "apolar, porque é linear e as polaridades das duas ligações se anulam.",
-            "polar, porque o oxigénio é mais eletronegativo.",
-            "iónica."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. As duas ligações C=O são iguais e estão em sentidos opostos (180°): as polaridades anulam-se e a molécula é apolar.",
-          "mascote_feedback_errado": "Ter ligações polares não chega. No CO₂, as duas ligações são iguais e opostas (geometria linear) e anulam-se: a molécula é apolar."
         },
         {
           "tipo": "simulacao",
@@ -692,6 +662,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Qual é a geometria da molécula de amoníaco, NH₃?",
+              "opcoes": [
+                "Triangular plana",
+                "Tetraédrica",
+                "Piramidal trigonal",
+                "Angular"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O azoto tem 3 pares ligantes e 1 par não ligante. Os quatro pares distribuem-se num tetraedro, mas a geometria (posição dos átomos) é uma pirâmide com o N no topo.",
+              "mascote_feedback_errado": "À volta do N há 4 pares (3 ligantes e 1 não ligante). A geometria descreve-se pela posição dos átomos: os 3 H formam a base e o N fica no topo de uma pirâmide trigonal."
+            },
+            {
+              "pergunta": "O dióxido de carbono tem ligações C=O polares. A molécula é:",
+              "opcoes": [
+                "polar, porque as ligações são polares.",
+                "apolar, porque é linear e as polaridades das duas ligações se anulam.",
+                "polar, porque o oxigénio é mais eletronegativo.",
+                "iónica."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. As duas ligações C=O são iguais e estão em sentidos opostos (180°): as polaridades anulam-se e a molécula é apolar.",
+              "mascote_feedback_errado": "Ter ligações polares não chega. No CO₂, as duas ligações são iguais e opostas (geometria linear) e anulam-se: a molécula é apolar."
+            },
+            {
               "pergunta": "A geometria do metano (CH₄) é:",
               "opcoes": [
                 "quadrangular plana, com ângulos de 90°.",
@@ -825,32 +819,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "O propano é usado no gás de botija. Qual é a sua fórmula molecular?",
-          "opcoes": [
-            "C₃H₆",
-            "C₃H₈",
-            "C₃H₄",
-            "CH₃"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Alcano com 3 carbonos: C n H 2n+2 = C₃H₈.",
-          "mascote_feedback_errado": "O propano é um alcano (terminação -ano) com 3 carbonos (prefixo prop-). Fórmula geral C n H 2n+2: C₃H₈."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "A molécula CH₃–CO–CH₃ (propanona) pertence à família dos(as):",
-          "opcoes": [
-            "álcoois",
-            "aldeídos",
-            "cetonas",
-            "ácidos carboxílicos"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. O grupo carbonilo (C=O) está num carbono ligado a dois outros carbonos: é uma cetona.",
-          "mascote_feedback_errado": "O C=O está no carbono do meio, entre dois carbonos. Quando o carbonilo não está na ponta da cadeia, trata-se de uma cetona. Se estivesse na ponta, seria um aldeído."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A estrutura do carro e os acessórios.** A cadeia de carbonos é como a estrutura de um carro: pode ser curta ou comprida, com várias formas. Os grupos funcionais são os acessórios que definem para que serve o carro: um reboque, uma escada de bombeiros, uma sirene de ambulância. Carros com estruturas diferentes mas com a mesma escada de bombeiros fazem trabalhos parecidos. Moléculas com cadeias diferentes mas com o mesmo grupo funcional (por exemplo, –OH) têm propriedades químicas parecidas."
         },
@@ -862,6 +830,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "O propano é usado no gás de botija. Qual é a sua fórmula molecular?",
+              "opcoes": [
+                "C₃H₆",
+                "C₃H₈",
+                "C₃H₄",
+                "CH₃"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Alcano com 3 carbonos: C n H 2n+2 = C₃H₈.",
+              "mascote_feedback_errado": "O propano é um alcano (terminação -ano) com 3 carbonos (prefixo prop-). Fórmula geral C n H 2n+2: C₃H₈."
+            },
+            {
+              "pergunta": "A molécula CH₃–CO–CH₃ (propanona) pertence à família dos(as):",
+              "opcoes": [
+                "álcoois",
+                "aldeídos",
+                "cetonas",
+                "ácidos carboxílicos"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O grupo carbonilo (C=O) está num carbono ligado a dois outros carbonos: é uma cetona.",
+              "mascote_feedback_errado": "O C=O está no carbono do meio, entre dois carbonos. Quando o carbonilo não está na ponta da cadeia, trata-se de uma cetona. Se estivesse na ponta, seria um aldeído."
+            },
             {
               "pergunta": "Qual dos compostos é um hidrocarboneto insaturado?",
               "opcoes": [
@@ -956,32 +948,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Que forças intermoleculares predominam entre moléculas de metano (CH₄)?",
-          "opcoes": [
-            "Ligações de hidrogénio",
-            "Dipolo permanente-dipolo permanente",
-            "Forças de London",
-            "Ligações covalentes"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. O metano é apolar, por isso as únicas forças entre as suas moléculas são as de London. São fracas: o metano ferve a −162 °C.",
-          "mascote_feedback_errado": "O metano é apolar e o H está ligado a C (não a F, O ou N): não há ligações de hidrogénio nem dipolos permanentes. Só forças de London."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que a água (H₂O, M = 18 g/mol) ferve a 100 °C e o sulfureto de hidrogénio (H₂S, M = 34 g/mol) a −60 °C?",
-          "opcoes": [
-            "Porque o H₂S é mais pesado.",
-            "Porque entre as moléculas de água se estabelecem ligações de hidrogénio, muito mais intensas.",
-            "Porque o H₂S é apolar.",
-            "Porque a água tem ligações covalentes mais fortes."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O H ligado ao O, muito eletronegativo, permite ligações de hidrogénio entre moléculas de água. O enxofre não é suficientemente eletronegativo para isso.",
-          "mascote_feedback_errado": "Pelas forças de London, o H₂S (maior) até deveria ferver a temperatura mais alta. A diferença está nas ligações de hidrogénio da água, que o H₂S não forma."
-        },
-        {
           "tipo": "analogia",
           "texto": "**Velcro, ímanes e fita-cola.** As forças de London são como fita-cola fraquinha: todas as moléculas a têm, e quanto maior a superfície, mais cola. As forças entre dipolos permanentes são como pequenos ímanes: as moléculas polares alinham-se e atraem-se. As ligações de hidrogénio são como velcro: bem mais fortes, e só funcionam entre certas peças (H ligado a N, O ou F). E nenhuma destas \"colas\" é tão forte como a solda que mantém os átomos unidos dentro da molécula (a ligação covalente)."
         },
@@ -1021,6 +987,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Que forças intermoleculares predominam entre moléculas de metano (CH₄)?",
+              "opcoes": [
+                "Ligações de hidrogénio",
+                "Dipolo permanente-dipolo permanente",
+                "Forças de London",
+                "Ligações covalentes"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. O metano é apolar, por isso as únicas forças entre as suas moléculas são as de London. São fracas: o metano ferve a −162 °C.",
+              "mascote_feedback_errado": "O metano é apolar e o H está ligado a C (não a F, O ou N): não há ligações de hidrogénio nem dipolos permanentes. Só forças de London."
+            },
+            {
+              "pergunta": "Porque é que a água (H₂O, M = 18 g/mol) ferve a 100 °C e o sulfureto de hidrogénio (H₂S, M = 34 g/mol) a −60 °C?",
+              "opcoes": [
+                "Porque o H₂S é mais pesado.",
+                "Porque entre as moléculas de água se estabelecem ligações de hidrogénio, muito mais intensas.",
+                "Porque o H₂S é apolar.",
+                "Porque a água tem ligações covalentes mais fortes."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O H ligado ao O, muito eletronegativo, permite ligações de hidrogénio entre moléculas de água. O enxofre não é suficientemente eletronegativo para isso.",
+              "mascote_feedback_errado": "Pelas forças de London, o H₂S (maior) até deveria ferver a temperatura mais alta. A diferença está nas ligações de hidrogénio da água, que o H₂S não forma."
+            },
             {
               "pergunta": "Entre moléculas de água estabelecem-se, entre outras, ligações de hidrogénio porque:",
               "opcoes": [

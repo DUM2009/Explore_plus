@@ -64,32 +64,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um elemento tem a configuração 1s² 2s² 2p⁶ 3s² 3p⁵. Em que período e grupo se encontra?",
-          "opcoes": [
-            "Período 2, grupo 15",
-            "Período 3, grupo 17",
-            "Período 3, grupo 7",
-            "Período 5, grupo 17"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Nível de valência n = 3: 3.º período. 7 eletrões de valência (3s² 3p⁵) no bloco p: grupo 17. É o cloro.",
-          "mascote_feedback_errado": "O período é o nível de valência (n = 3). Os eletrões de valência são 3s² 3p⁵ = 7; no bloco p, grupo = 7 + 10 = 17."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "O magnésio (grupo 2) e o cálcio (grupo 2) têm propriedades químicas semelhantes porque:",
-          "opcoes": [
-            "têm o mesmo número de protões.",
-            "estão no mesmo período.",
-            "têm o mesmo número de eletrões de valência (2) com configuração de valência semelhante (ns²).",
-            "têm a mesma massa atómica."
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. Mg: 3s²; Ca: 4s². Configurações de valência do mesmo tipo levam a comportamentos químicos semelhantes.",
-          "mascote_feedback_errado": "As propriedades químicas dependem dos eletrões de valência. Elementos do mesmo grupo têm o mesmo número e o mesmo tipo de configuração de valência (aqui, ns²)."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O calendário.** A tabela periódica é como um calendário. Os dias estão numerados por ordem (o número atómico), mas arrumados em linhas de semanas (os períodos) de forma que todas as segundas-feiras fiquem na mesma coluna (os grupos). As segundas-feiras \"comportam-se\" de forma parecida, tal como os elementos do mesmo grupo. E tal como sabes que dia da semana é o dia 15 se souberes em que dia calhou o dia 1, sabes onde fica um elemento se souberes a sua configuração eletrónica."
         },
@@ -101,6 +75,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um elemento tem a configuração 1s² 2s² 2p⁶ 3s² 3p⁵. Em que período e grupo se encontra?",
+              "opcoes": [
+                "Período 2, grupo 15",
+                "Período 3, grupo 17",
+                "Período 3, grupo 7",
+                "Período 5, grupo 17"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Nível de valência n = 3: 3.º período. 7 eletrões de valência (3s² 3p⁵) no bloco p: grupo 17. É o cloro.",
+              "mascote_feedback_errado": "O período é o nível de valência (n = 3). Os eletrões de valência são 3s² 3p⁵ = 7; no bloco p, grupo = 7 + 10 = 17."
+            },
+            {
+              "pergunta": "O magnésio (grupo 2) e o cálcio (grupo 2) têm propriedades químicas semelhantes porque:",
+              "opcoes": [
+                "têm o mesmo número de protões.",
+                "estão no mesmo período.",
+                "têm o mesmo número de eletrões de valência (2) com configuração de valência semelhante (ns²).",
+                "têm a mesma massa atómica."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Mg: 3s²; Ca: 4s². Configurações de valência do mesmo tipo levam a comportamentos químicos semelhantes.",
+              "mascote_feedback_errado": "As propriedades químicas dependem dos eletrões de valência. Elementos do mesmo grupo têm o mesmo número e o mesmo tipo de configuração de valência (aqui, ns²)."
+            },
             {
               "pergunta": "Na Tabela Periódica atual, os elementos estão ordenados por ordem crescente de:",
               "opcoes": [
@@ -245,32 +243,6 @@
               "explicacao": "Na⁺, Mg²⁺, F⁻ e O²⁻ têm todos 10 eletrões, como o néon."
             }
           ]
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual dos átomos tem maior raio atómico: sódio (Z = 11) ou cloro (Z = 17)?",
-          "opcoes": [
-            "Cloro, porque tem mais eletrões.",
-            "Sódio, porque tem menor carga nuclear e os eletrões de valência no mesmo nível são menos atraídos.",
-            "São iguais, porque estão no mesmo período.",
-            "Cloro, porque é um não metal."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. Estão no mesmo período (nível de valência 3). O cloro tem mais 6 protões, que atraem mais os eletrões e contraem o átomo.",
-          "mascote_feedback_errado": "No mesmo período, o raio diminui da esquerda para a direita. O cloro tem maior carga nuclear e atrai mais os eletrões de valência: é mais pequeno do que o sódio."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que o potássio é mais reativo do que o sódio?",
-          "opcoes": [
-            "Porque tem mais eletrões de valência.",
-            "Porque tem menor energia de ionização: o seu eletrão de valência está num nível mais afastado e é mais facilmente removido.",
-            "Porque tem maior massa.",
-            "Porque é um gás nobre."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O eletrão 4s do potássio está mais longe do núcleo do que o 3s do sódio. É mais fácil de remover, e o potássio reage mais facilmente.",
-          "mascote_feedback_errado": "A reatividade dos metais alcalinos depende da facilidade em perder o eletrão de valência. No potássio, esse eletrão está no nível 4, mais afastado: energia de ionização menor, maior reatividade."
         },
         {
           "tipo": "simulacao",
@@ -720,6 +692,30 @@
           "tipo": "quiz_seccao",
           "perguntas": [
             {
+              "pergunta": "Qual dos átomos tem maior raio atómico: sódio (Z = 11) ou cloro (Z = 17)?",
+              "opcoes": [
+                "Cloro, porque tem mais eletrões.",
+                "Sódio, porque tem menor carga nuclear e os eletrões de valência no mesmo nível são menos atraídos.",
+                "São iguais, porque estão no mesmo período.",
+                "Cloro, porque é um não metal."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Estão no mesmo período (nível de valência 3). O cloro tem mais 6 protões, que atraem mais os eletrões e contraem o átomo.",
+              "mascote_feedback_errado": "No mesmo período, o raio diminui da esquerda para a direita. O cloro tem maior carga nuclear e atrai mais os eletrões de valência: é mais pequeno do que o sódio."
+            },
+            {
+              "pergunta": "Porque é que o potássio é mais reativo do que o sódio?",
+              "opcoes": [
+                "Porque tem mais eletrões de valência.",
+                "Porque tem menor energia de ionização: o seu eletrão de valência está num nível mais afastado e é mais facilmente removido.",
+                "Porque tem maior massa.",
+                "Porque é um gás nobre."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O eletrão 4s do potássio está mais longe do núcleo do que o 3s do sódio. É mais fácil de remover, e o potássio reage mais facilmente.",
+              "mascote_feedback_errado": "A reatividade dos metais alcalinos depende da facilidade em perder o eletrão de valência. No potássio, esse eletrão está no nível 4, mais afastado: energia de ionização menor, maior reatividade."
+            },
+            {
               "pergunta": "Ao longo de um grupo, de cima para baixo, a energia de ionização:",
               "opcoes": [
                 "aumenta.",
@@ -820,19 +816,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Um bloco metálico tem 54,0 g e ocupa 20,0 cm³. De que metal se trata, provavelmente?",
-          "opcoes": [
-            "Ferro (d = 7,87)",
-            "Alumínio (d = 2,70)",
-            "Cobre (d = 8,96)",
-            "Ouro (d = 19,3)"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. ρ = 54,0 / 20,0 = 2,70 g/cm³. d = 2,70 / 1,00 = 2,70: alumínio.",
-          "mascote_feedback_errado": "Calcula a massa volúmica: 54,0 / 20,0 = 2,70 g/cm³. Dividindo pela da água (1,00 g/cm³), d = 2,70, que é a do alumínio."
-        },
-        {
           "tipo": "analogia",
           "texto": "**A mala de viagem.** Duas malas iguais, do mesmo tamanho: uma cheia de livros, outra cheia de almofadas. Pesam de forma muito diferente, embora ocupem o mesmo espaço. A densidade diz-te quanto \"pesa\" cada centímetro cúbico de uma substância. O ouro é como a mala dos livros: um cubo de ouro com 10 cm de lado pesa 19,3 kg. O mesmo cubo de alumínio pesa 2,7 kg."
         },
@@ -874,6 +857,18 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Um bloco metálico tem 54,0 g e ocupa 20,0 cm³. De que metal se trata, provavelmente?",
+              "opcoes": [
+                "Ferro (d = 7,87)",
+                "Alumínio (d = 2,70)",
+                "Cobre (d = 8,96)",
+                "Ouro (d = 19,3)"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. ρ = 54,0 / 20,0 = 2,70 g/cm³. d = 2,70 / 1,00 = 2,70: alumínio.",
+              "mascote_feedback_errado": "Calcula a massa volúmica: 54,0 / 20,0 = 2,70 g/cm³. Dividindo pela da água (1,00 g/cm³), d = 2,70, que é a do alumínio."
+            },
             {
               "pergunta": "A densidade relativa de uma substância:",
               "opcoes": [

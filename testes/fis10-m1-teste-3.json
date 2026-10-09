@@ -1,0 +1,299 @@
+{
+  "id": "fis10-m1-teste-3",
+  "titulo": "Teste 3 — Energia e movimentos",
+  "missao": "fis10-m1",
+  "plano": "pro",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 30,
+  "seccoes": {
+    "1.1": "Energia e sistemas",
+    "1.2": "Trabalho de uma força",
+    "1.3": "Teorema da energia cinética e trabalho do peso",
+    "1.4": "Conservação da energia mecânica e forças não conservativas",
+    "1.5": "Potência, rendimento e atividades laboratoriais",
+    "AL 1.1": "Atividade laboratorial: variação da energia cinética e distância percorrida",
+    "AL 1.2": "Atividade laboratorial: queda e ressalto de uma bola"
+  },
+  "perguntas": [
+    {
+      "numero": 1,
+      "nivel": "facil",
+      "seccao": "1.2",
+      "enunciado": "Como varia a energia cinética de um corpo com a sua velocidade?",
+      "opcoes": [
+        "É diretamente proporcional ao quadrado da velocidade",
+        "É diretamente proporcional à velocidade",
+        "É inversamente proporcional à velocidade",
+        "Não depende da velocidade"
+      ],
+      "correta": 0,
+      "explicacao": "Ec = ½ m v²: é proporcional a v², por isso o gráfico de Ec em função de v é uma parábola."
+    },
+    {
+      "numero": 2,
+      "nivel": "facil",
+      "seccao": "1.3",
+      "enunciado": "Qual é o trabalho realizado pelo peso de um corpo que volta ao ponto de partida, por qualquer percurso?",
+      "opcoes": [
+        "Positivo",
+        "Negativo",
+        "Nulo, porque o peso é uma força conservativa",
+        "Depende do comprimento do percurso"
+      ],
+      "correta": 2,
+      "explicacao": "O trabalho do peso só depende do desnível entre a posição inicial e final. Em percurso fechado, o desnível é nulo e W(P) = 0."
+    },
+    {
+      "numero": 3,
+      "nivel": "facil",
+      "seccao": "1.3",
+      "enunciado": "Qual das seguintes forças é conservativa?",
+      "opcoes": [
+        "O atrito cinético",
+        "O peso",
+        "A resistência do ar",
+        "A resistência da água ao movimento de um barco"
+      ],
+      "correta": 1,
+      "explicacao": "O peso é conservativo: o seu trabalho não depende do percurso. O atrito e as resistências do ar e da água são dissipativos."
+    },
+    {
+      "numero": 4,
+      "nivel": "facil",
+      "seccao": "1.5",
+      "enunciado": "A quantos watt correspondem 2,5 kW?",
+      "opcoes": [
+        "25 W",
+        "0,0025 W",
+        "250 W",
+        "2500 W"
+      ],
+      "correta": 3,
+      "explicacao": "1 kW = 1000 W, logo 2,5 kW = 2,5 × 1000 = 2500 W."
+    },
+    {
+      "numero": 5,
+      "nivel": "facil",
+      "seccao": "1.2",
+      "enunciado": "Uma força realiza trabalho positivo quando:",
+      "opcoes": [
+        "tem uma componente no sentido do deslocamento",
+        "é perpendicular ao deslocamento",
+        "tem sentido oposto ao deslocamento",
+        "o corpo está parado"
+      ],
+      "correta": 0,
+      "explicacao": "W = F d cos α é positivo se 0° ≤ α < 90°, isto é, quando a força tem componente no sentido do deslocamento."
+    },
+    {
+      "numero": 6,
+      "nivel": "facil",
+      "seccao": "1.4",
+      "enunciado": "Um pêndulo oscila sem atrito. Em que ponto da trajetória é máxima a energia cinética?",
+      "opcoes": [
+        "No ponto mais alto",
+        "Em todos os pontos, porque a energia mecânica é constante",
+        "No ponto mais baixo, onde a energia potencial é mínima",
+        "No ponto onde a tensão do fio é nula"
+      ],
+      "correta": 2,
+      "explicacao": "Como Em = Ec + Ep é constante, a Ec é máxima onde a Ep é mínima: no ponto mais baixo."
+    },
+    {
+      "numero": 7,
+      "nivel": "facil",
+      "seccao": "1.5",
+      "enunciado": "Porque é que o rendimento de uma máquina real é sempre inferior a 100 %?",
+      "opcoes": [
+        "Porque a energia fornecida é sempre menor do que a energia útil",
+        "Porque há sempre energia dissipada, que não é aproveitada para o fim pretendido",
+        "Porque parte da energia deixa de existir",
+        "Porque a potência é sempre menor do que a energia"
+      ],
+      "correta": 1,
+      "explicacao": "Energia fornecida = energia útil + energia dissipada. Há sempre alguma energia dissipada (em geral como energia interna), por isso a energia útil é menor do que a fornecida."
+    },
+    {
+      "numero": 8,
+      "nivel": "facil",
+      "seccao": "1.4",
+      "enunciado": "O trabalho realizado pelas forças dissipativas sobre um sistema é:",
+      "opcoes": [
+        "positivo, porque a energia mecânica aumenta",
+        "nulo, porque a energia se conserva",
+        "sempre igual à variação da energia potencial",
+        "negativo e igual à variação da energia mecânica"
+      ],
+      "correta": 3,
+      "explicacao": "W(Fnc) = ΔEm. Com forças dissipativas, a energia mecânica diminui, logo o trabalho é negativo."
+    },
+    {
+      "numero": 9,
+      "nivel": "facil",
+      "seccao": "AL 1.1",
+      "enunciado": "Na AL 1.1, o gráfico de ΔEc em função da distância percorrida é uma reta que passa pela origem. Isto significa que:",
+      "opcoes": [
+        "ΔEc é diretamente proporcional à distância percorrida",
+        "ΔEc é inversamente proporcional à distância percorrida",
+        "ΔEc não depende da distância percorrida",
+        "a velocidade do carrinho é constante"
+      ],
+      "correta": 0,
+      "explicacao": "Uma reta pela origem indica proporcionalidade direta: ΔEc = FR × d. O declive é a intensidade da resultante."
+    },
+    {
+      "numero": 10,
+      "nivel": "facil",
+      "seccao": "AL 1.2",
+      "enunciado": "Na AL 1.2, o declive da reta de h ressalto em função de h queda é 0,80. Que percentagem da energia mecânica se dissipa em cada ressalto?",
+      "opcoes": [
+        "80 %",
+        "0,20 %",
+        "20 %",
+        "100 %"
+      ],
+      "correta": 2,
+      "explicacao": "O declive indica a fração conservada (80 %). Dissipa-se 1 − 0,80 = 0,20, ou seja, 20 %."
+    },
+    {
+      "numero": 11,
+      "nivel": "intermedia",
+      "seccao": "1.4",
+      "enunciado": "Uma esfera é lançada na vertical, para cima, com 12 m/s. Desprezando a resistência do ar, qual é a altura máxima que atinge? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "14,7 m",
+        "7,3 m",
+        "1,2 m",
+        "12 m"
+      ],
+      "correta": 1,
+      "explicacao": "h = v² / (2 g) = 144 / 19,6 ≈ 7,3 m. (14,7 m resulta de esquecer o fator 2.)"
+    },
+    {
+      "numero": 12,
+      "nivel": "intermedia",
+      "seccao": "1.3",
+      "enunciado": "Um caixote de 5,0 kg é elevado 2,0 m, com velocidade constante, por uma força F. Durante a subida, a força de atrito realiza −15 J. Qual é o trabalho realizado por F? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "98 J",
+        "83 J",
+        "15 J",
+        "1,1 × 10² J"
+      ],
+      "correta": 3,
+      "explicacao": "A velocidade é constante: W(F) + W(P) + W(Fa) = 0. W(P) = −5,0 × 9,8 × 2,0 = −98 J. Então W(F) = 98 + 15 = 113 J ≈ 1,1 × 10² J."
+    },
+    {
+      "numero": 13,
+      "nivel": "intermedia",
+      "seccao": "1.3",
+      "enunciado": "Sobre um corpo de 3,0 kg, inicialmente em repouso, atuam forças que realizam trabalhos de 30 J e −12 J. Qual é a velocidade final do corpo?",
+      "opcoes": [
+        "3,5 m/s",
+        "2,0 m/s",
+        "4,5 m/s",
+        "6,0 m/s"
+      ],
+      "correta": 0,
+      "explicacao": "W(FR) = 30 − 12 = 18 J = ΔEc = ½ × 3,0 × v². Logo v² = 12 e v ≈ 3,5 m/s."
+    },
+    {
+      "numero": 14,
+      "nivel": "intermedia",
+      "seccao": "1.5",
+      "enunciado": "Uma aluna de 55 kg sobe 12 m de escadas em 20 s. Qual é a potência média desenvolvida? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "6,5 × 10³ W",
+        "33 W",
+        "3,2 × 10² W",
+        "5,4 × 10² W"
+      ],
+      "correta": 2,
+      "explicacao": "E = m g h = 55 × 9,8 × 12 = 6468 J. P = E / Δt = 6468 / 20 ≈ 3,2 × 10² W."
+    },
+    {
+      "numero": 15,
+      "nivel": "intermedia",
+      "seccao": "1.5",
+      "enunciado": "Um sistema recebe 800 J de energia e realiza 520 J de trabalho útil. Qual é a energia dissipada?",
+      "opcoes": [
+        "5,2 × 10² J",
+        "2,8 × 10² J",
+        "1,3 × 10³ J",
+        "65 J"
+      ],
+      "correta": 1,
+      "explicacao": "Energia fornecida = energia útil + energia dissipada, logo energia dissipada = 800 − 520 = 280 J = 2,8 × 10² J."
+    },
+    {
+      "numero": 16,
+      "nivel": "dificil",
+      "seccao": "1.4",
+      "enunciado": "Um pêndulo, de massa 0,50 kg e fio de 1,2 m, é largado do repouso com o fio na horizontal. Qual é a velocidade da massa no ponto mais baixo, desprezando a resistência do ar? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "3,4 m/s",
+        "2,4 m/s",
+        "6,9 m/s",
+        "4,8 m/s"
+      ],
+      "correta": 3,
+      "explicacao": "A tensão do fio é perpendicular ao deslocamento e não realiza trabalho. A massa desce 1,2 m: m g h = ½ m v², logo v = √(2 × 9,8 × 1,2) ≈ 4,8 m/s."
+    },
+    {
+      "numero": 17,
+      "nivel": "dificil",
+      "seccao": "1.3",
+      "enunciado": "Um carro de 1200 kg, a 25 m/s, trava até parar ao longo de 50 m. Qual é a intensidade média da força resultante?",
+      "opcoes": [
+        "7,5 × 10³ N",
+        "3,8 × 10³ N",
+        "1,5 × 10⁴ N",
+        "3,8 × 10⁵ N"
+      ],
+      "correta": 0,
+      "explicacao": "W(FR) = ΔEc = 0 − ½ × 1200 × 25² = −3,75 × 10⁵ J. Como W = −F d, F = 3,75 × 10⁵ / 50 = 7,5 × 10³ N."
+    },
+    {
+      "numero": 18,
+      "nivel": "dificil",
+      "seccao": "1.4",
+      "enunciado": "Um caixote de 4,0 kg desliza do repouso numa rampa com 3,0 m de comprimento e 1,5 m de desnível, e chega à base com 4,0 m/s. Qual é a intensidade média da força de atrito? (g = 9,8 m s⁻²)",
+      "opcoes": [
+        "27 N",
+        "20 N",
+        "8,9 N",
+        "11 N"
+      ],
+      "correta": 2,
+      "explicacao": "Em,i = 4,0 × 9,8 × 1,5 = 58,8 J. Em,f = ½ × 4,0 × 4,0² = 32 J. W(Fa) = ΔEm = −26,8 J. Como W = −Fa × d, Fa = 26,8 / 3,0 ≈ 8,9 N."
+    },
+    {
+      "numero": 19,
+      "nivel": "dificil",
+      "seccao": "AL 1.1",
+      "enunciado": "Na AL 1.1, um carrinho de 0,50 kg, com uma pala de 2,0 cm, parte do repouso e a pala demora 0,020 s a passar na célula, colocada a 0,80 m da posição de largada. Qual é a intensidade da resultante das forças?",
+      "opcoes": [
+        "0,25 N",
+        "0,31 N",
+        "0,50 N",
+        "3,1 × 10³ N"
+      ],
+      "correta": 1,
+      "explicacao": "Δx = 0,020 m, logo v = 0,020 / 0,020 = 1,0 m/s. ΔEc = ½ × 0,50 × 1,0² = 0,25 J. FR = ΔEc / d = 0,25 / 0,80 ≈ 0,31 N. (3,1 × 10³ N resulta de não converter cm em m.)"
+    },
+    {
+      "numero": 20,
+      "nivel": "dificil",
+      "seccao": "AL 1.2",
+      "enunciado": "Numa experiência como a da AL 1.2, h ressalto = 0,64 × h queda. A bola é largada de 1,5 m. Qual é a altura atingida no segundo ressalto, admitindo que o declive se mantém?",
+      "opcoes": [
+        "0,96 m",
+        "0,41 m",
+        "0,54 m",
+        "0,61 m"
+      ],
+      "correta": 3,
+      "explicacao": "1.º ressalto: 0,64 × 1,5 = 0,96 m. 2.º ressalto: 0,64 × 0,96 ≈ 0,61 m. (0,96 m é o 1.º ressalto; 0,54 m é a altura correspondente à parte dissipada.)"
+    }
+  ]
+}

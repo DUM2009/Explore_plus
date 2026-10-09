@@ -86,32 +86,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual é o número de coordenação do ferro no ião [Fe(CN)₆]⁴⁻?",
-          "opcoes": [
-            "1",
-            "4",
-            "6",
-            "10"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Certo. Seis ligandos CN⁻, cada um ligado ao ferro por um átomo dador (o carbono): número de coordenação 6.",
-          "mascote_feedback_errado": "O número de coordenação é o número de átomos dadores ligados ao metal. Há 6 ligandos CN⁻ monodentados: 6."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Uma solução absorve sobretudo luz laranja e vermelha. De que cor a vemos?",
-          "opcoes": [
-            "Laranja",
-            "Vermelha",
-            "Azul",
-            "Incolor"
-          ],
-          "correta": 2,
-          "mascote_feedback_certo": "Exato. Vemos a luz que não é absorvida: a cor complementar do laranja-vermelho, ou seja, azul. É o caso das soluções de Cu²⁺.",
-          "mascote_feedback_errado": "A cor que vemos é a da luz transmitida, ou seja, a complementar da absorvida. Absorvendo laranja e vermelho, a solução parece azul."
-        },
-        {
           "tipo": "atividade_laboratorial",
           "codigo": "AL 1.5",
           "titulo": "A cor e a composição quantitativa de soluções com iões metálicos",
@@ -218,6 +192,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Qual é o número de coordenação do ferro no ião [Fe(CN)₆]⁴⁻?",
+              "opcoes": [
+                "1",
+                "4",
+                "6",
+                "10"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Seis ligandos CN⁻, cada um ligado ao ferro por um átomo dador (o carbono): número de coordenação 6.",
+              "mascote_feedback_errado": "O número de coordenação é o número de átomos dadores ligados ao metal. Há 6 ligandos CN⁻ monodentados: 6."
+            },
+            {
+              "pergunta": "Uma solução absorve sobretudo luz laranja e vermelha. De que cor a vemos?",
+              "opcoes": [
+                "Laranja",
+                "Vermelha",
+                "Azul",
+                "Incolor"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Vemos a luz que não é absorvida: a cor complementar do laranja-vermelho, ou seja, azul. É o caso das soluções de Cu²⁺.",
+              "mascote_feedback_errado": "A cor que vemos é a da luz transmitida, ou seja, a complementar da absorvida. Absorvendo laranja e vermelho, a solução parece azul."
+            },
             {
               "pergunta": "Num complexo, os ligandos têm em comum:",
               "opcoes": [
@@ -364,32 +362,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Porque é que a intoxicação por monóxido de carbono é tão grave?",
-          "opcoes": [
-            "Porque o CO é um ácido forte.",
-            "Porque o CO forma com o ferro da hemoglobina um complexo muito mais estável do que o O₂, impedindo o transporte de oxigénio.",
-            "Porque o CO destrói os glóbulos vermelhos.",
-            "Porque o CO se transforma em CO₂ no sangue."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O CO ocupa o lugar do O₂ no ferro do grupo hemo e quase não sai. Os tecidos ficam sem oxigénio, mesmo que se respire normalmente.",
-          "mascote_feedback_errado": "O CO é um ligando que se liga ao ferro da hemoglobina com muito mais força do que o oxigénio. A hemoglobina fica \"ocupada\" e deixa de transportar O₂."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Durante o exercício físico intenso, os músculos produzem mais CO₂ e o pH local baixa. Que efeito tem isto na hemoglobina?",
-          "opcoes": [
-            "Aumenta a afinidade para o O₂, que fica retido.",
-            "Diminui a afinidade para o O₂, que é libertado mais facilmente para os músculos.",
-            "Não tem efeito.",
-            "Transforma a hemoglobina em CO₂."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. Este é o efeito do pH na fixação do oxigénio: os tecidos que mais trabalham recebem mais oxigénio.",
-          "mascote_feedback_errado": "A pH mais baixo, a hemoglobina liga-se menos ao O₂ e liberta-o. É precisamente nos músculos ativos (com mais CO₂ e pH mais baixo) que isso acontece."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O autocarro que enche e esvazia.** A hemoglobina é como um autocarro com quatro lugares que faz a viagem pulmões-tecidos. Nos pulmões, onde há imensos passageiros (O₂), entra um e logo os outros entram com mais facilidade (cooperatividade). Nos tecidos, quando um sai, os outros saem mais depressa. O CO é um passageiro que se senta e nunca mais se levanta: ocupa o lugar e o autocarro deixa de transportar oxigénio."
         },
@@ -401,6 +373,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Porque é que a intoxicação por monóxido de carbono é tão grave?",
+              "opcoes": [
+                "Porque o CO é um ácido forte.",
+                "Porque o CO forma com o ferro da hemoglobina um complexo muito mais estável do que o O₂, impedindo o transporte de oxigénio.",
+                "Porque o CO destrói os glóbulos vermelhos.",
+                "Porque o CO se transforma em CO₂ no sangue."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O CO ocupa o lugar do O₂ no ferro do grupo hemo e quase não sai. Os tecidos ficam sem oxigénio, mesmo que se respire normalmente.",
+              "mascote_feedback_errado": "O CO é um ligando que se liga ao ferro da hemoglobina com muito mais força do que o oxigénio. A hemoglobina fica \"ocupada\" e deixa de transportar O₂."
+            },
+            {
+              "pergunta": "Durante o exercício físico intenso, os músculos produzem mais CO₂ e o pH local baixa. Que efeito tem isto na hemoglobina?",
+              "opcoes": [
+                "Aumenta a afinidade para o O₂, que fica retido.",
+                "Diminui a afinidade para o O₂, que é libertado mais facilmente para os músculos.",
+                "Não tem efeito.",
+                "Transforma a hemoglobina em CO₂."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Este é o efeito do pH na fixação do oxigénio: os tecidos que mais trabalham recebem mais oxigénio.",
+              "mascote_feedback_errado": "A pH mais baixo, a hemoglobina liga-se menos ao O₂ e liberta-o. É precisamente nos músculos ativos (com mais CO₂ e pH mais baixo) que isso acontece."
+            },
             {
               "pergunta": "Qual destes metais é essencial ao transporte de oxigénio no sangue?",
               "opcoes": [
@@ -527,32 +523,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "A 1,0 dm³ de um tampão com 0,10 mol de CH₃COOH e 0,10 mol de CH₃COO⁻ (pK a = 4,74) junta-se 0,010 mol de HCl. Qual é o novo pH?",
-          "opcoes": [
-            "2,00",
-            "4,65",
-            "4,74",
-            "7,00"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O H₃O⁺ adicionado reage com o acetato: ficam 0,11 mol de ácido e 0,09 mol de base. pH = 4,74 + log(0,09 / 0,11) ≈ 4,74 − 0,09 = 4,65. Em água pura, a mesma adição baixaria o pH de 7,00 para 2,00.",
-          "mascote_feedback_errado": "O HCl reage com a base do tampão: CH₃COO⁻ passa a 0,09 mol e CH₃COOH a 0,11 mol. pH = pK a + log(0,09 / 0,11) ≈ 4,65. O pH quase não muda."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Qual dos pares pode formar uma solução-tampão?",
-          "opcoes": [
-            "HCl / NaCl",
-            "NH₃ / NH₄Cl",
-            "NaOH / NaCl",
-            "HNO₃ / KNO₃"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. NH₃ é uma base fraca e NH₄⁺ o seu ácido conjugado. Os outros pares incluem ácidos ou bases fortes, cujas espécies conjugadas não têm propriedades ácido-base significativas.",
-          "mascote_feedback_errado": "Um tampão precisa de um par conjugado fraco. HCl, NaOH e HNO₃ são fortes. Só NH₃ / NH₄⁺ é um par base fraca / ácido conjugado."
-        },
-        {
           "tipo": "simulacao",
           "id": "sim_tampao",
           "titulo": "Titulação ácido forte-base fraca e zona tampão",
@@ -638,6 +608,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "A 1,0 dm³ de um tampão com 0,10 mol de CH₃COOH e 0,10 mol de CH₃COO⁻ (pK a = 4,74) junta-se 0,010 mol de HCl. Qual é o novo pH?",
+              "opcoes": [
+                "2,00",
+                "4,65",
+                "4,74",
+                "7,00"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O H₃O⁺ adicionado reage com o acetato: ficam 0,11 mol de ácido e 0,09 mol de base. pH = 4,74 + log(0,09 / 0,11) ≈ 4,74 − 0,09 = 4,65. Em água pura, a mesma adição baixaria o pH de 7,00 para 2,00.",
+              "mascote_feedback_errado": "O HCl reage com a base do tampão: CH₃COO⁻ passa a 0,09 mol e CH₃COOH a 0,11 mol. pH = pK a + log(0,09 / 0,11) ≈ 4,65. O pH quase não muda."
+            },
+            {
+              "pergunta": "Qual dos pares pode formar uma solução-tampão?",
+              "opcoes": [
+                "HCl / NaCl",
+                "NH₃ / NH₄Cl",
+                "NaOH / NaCl",
+                "HNO₃ / KNO₃"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. NH₃ é uma base fraca e NH₄⁺ o seu ácido conjugado. Os outros pares incluem ácidos ou bases fortes, cujas espécies conjugadas não têm propriedades ácido-base significativas.",
+              "mascote_feedback_errado": "Um tampão precisa de um par conjugado fraco. HCl, NaOH e HNO₃ são fortes. Só NH₃ / NH₄⁺ é um par base fraca / ácido conjugado."
+            },
             {
               "pergunta": "Uma solução-tampão é formada por:",
               "opcoes": [
@@ -744,32 +738,6 @@
           ]
         },
         {
-          "tipo": "micro_verificacao",
-          "pergunta": "Num conversor catalítico, os gases do escape passam por uma superfície sólida com platina. Que tipo de catálise é?",
-          "opcoes": [
-            "Homogénea",
-            "Heterogénea",
-            "Enzimática",
-            "Não é catálise"
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Certo. O catalisador é sólido e os reagentes são gasosos: fases diferentes, catálise heterogénea.",
-          "mascote_feedback_errado": "Na catálise heterogénea, o catalisador está numa fase diferente dos reagentes. Aqui, o metal é sólido e os gases reagem à sua superfície."
-        },
-        {
-          "tipo": "micro_verificacao",
-          "pergunta": "Adicionar um catalisador a uma reação em equilíbrio:",
-          "opcoes": [
-            "aumenta a quantidade de produtos no equilíbrio.",
-            "não altera as quantidades no equilíbrio, mas o equilíbrio é atingido mais depressa.",
-            "torna a reação exotérmica.",
-            "diminui K c."
-          ],
-          "correta": 1,
-          "mascote_feedback_certo": "Exato. O catalisador acelera igualmente a reação direta e a inversa. O equilíbrio é o mesmo.",
-          "mascote_feedback_errado": "O catalisador altera apenas a velocidade, não a extensão. As concentrações de equilíbrio e K c mantêm-se."
-        },
-        {
           "tipo": "analogia",
           "texto": "**O túnel na montanha.** Para ir de uma aldeia à outra, tens de atravessar uma montanha. O caminho normal sobe até ao topo: é demorado e cansativo (energia de ativação alta). Um catalisador é como um túnel: chegas à mesma aldeia, à mesma altitude, mas muito mais depressa e com menos esforço. O túnel não muda onde começas nem onde acabas (ΔH igual), e pode ser usado nos dois sentidos (acelera a reação direta e a inversa)."
         },
@@ -781,6 +749,30 @@
         {
           "tipo": "quiz_seccao",
           "perguntas": [
+            {
+              "pergunta": "Num conversor catalítico, os gases do escape passam por uma superfície sólida com platina. Que tipo de catálise é?",
+              "opcoes": [
+                "Homogénea",
+                "Heterogénea",
+                "Enzimática",
+                "Não é catálise"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O catalisador é sólido e os reagentes são gasosos: fases diferentes, catálise heterogénea.",
+              "mascote_feedback_errado": "Na catálise heterogénea, o catalisador está numa fase diferente dos reagentes. Aqui, o metal é sólido e os gases reagem à sua superfície."
+            },
+            {
+              "pergunta": "Adicionar um catalisador a uma reação em equilíbrio:",
+              "opcoes": [
+                "aumenta a quantidade de produtos no equilíbrio.",
+                "não altera as quantidades no equilíbrio, mas o equilíbrio é atingido mais depressa.",
+                "torna a reação exotérmica.",
+                "diminui K c."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O catalisador acelera igualmente a reação direta e a inversa. O equilíbrio é o mesmo.",
+              "mascote_feedback_errado": "O catalisador altera apenas a velocidade, não a extensão. As concentrações de equilíbrio e K c mantêm-se."
+            },
             {
               "pergunta": "Um catalisador:",
               "opcoes": [
