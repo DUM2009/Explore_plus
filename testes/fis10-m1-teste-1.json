@@ -1,299 +1,348 @@
 {
   "id": "fis10-m1-teste-1",
   "titulo": "Teste 1 — Energia e movimentos",
-  "missao": "fis10-m1",
-  "plano": "gratuito",
   "disciplina": "Física",
-  "duracao_sugerida_min": 30,
-  "seccoes": {
-    "1.1": "Energia e sistemas",
-    "1.2": "Trabalho de uma força",
-    "1.3": "Teorema da energia cinética e trabalho do peso",
-    "1.4": "Conservação da energia mecânica e forças não conservativas",
-    "1.5": "Potência, rendimento e atividades laboratoriais",
-    "AL 1.1": "Atividade laboratorial: variação da energia cinética e distância percorrida",
-    "AL 1.2": "Atividade laboratorial: queda e ressalto de uma bola"
+  "duracao_sugerida_min": 90,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      { "grandeza": "Módulo da aceleração gravítica (g)", "valor": "9,8 m s⁻²" }
+    ],
+    "formulas": [
+      "Energia cinética: Ec = ½ m v²",
+      "Energia potencial gravítica (perto da superfície): Epg = m g h",
+      "Energia mecânica: Em = Ec + Epg",
+      "Trabalho de uma força constante: W = F d cos α",
+      "Trabalho do peso: W(P) = −Δ(Epg) = −m g Δh",
+      "Teorema da energia cinética: W(FR) = ΔEc",
+      "Variação da energia mecânica: W(Fnc) = ΔEm",
+      "Potência: P = E / Δt (ou P = W / Δt)",
+      "Rendimento: η = (E útil / E fornecida) × 100 = (P útil / P fornecida) × 100",
+      "Velocidade média numa pala: v = Δx / Δt"
+    ]
   },
-  "perguntas": [
+  "grupos": [
     {
       "numero": 1,
-      "nivel": "facil",
-      "seccao": "1.1",
-      "enunciado": "Qual é a unidade de energia no Sistema Internacional?",
-      "opcoes": [
-        "watt (W)",
-        "joule (J)",
-        "newton (N)",
-        "quilograma (kg)"
-      ],
-      "correta": 1,
-      "explicacao": "A unidade SI de energia é o joule. O watt mede potência e o newton mede força."
+      "titulo": "Questão 1",
+      "texto_apoio": "Um skater, com o seu skate, forma um sistema de massa 55 kg. O sistema parte do repouso do topo de uma rampa curva, a 2,5 m de altura em relação à base, e desce ao longo de um percurso de 6,0 m. Considere a base da rampa como nível de referência da energia potencial gravítica e o sistema como uma partícula (modelo do centro de massa).",
+      "figuras": [
+        { "imagem": "images/f10_ex1_rampa.png", "alt": "Skater numa rampa curva, do topo à base", "legenda": "Figura 1" }
+      ]
     },
     {
       "numero": 2,
-      "nivel": "facil",
-      "seccao": "1.1",
-      "enunciado": "A energia interna de um sistema está associada:",
-      "opcoes": [
-        "apenas à velocidade do sistema como um todo",
-        "apenas à altura a que o sistema se encontra",
-        "à força exercida pela vizinhança",
-        "à energia cinética e potencial das partículas (átomos e moléculas) que o constituem"
-      ],
-      "correta": 3,
-      "explicacao": "A energia interna é a soma das energias cinéticas e potenciais das partículas do sistema e manifesta-se, por exemplo, na temperatura."
+      "titulo": "Questão 2",
+      "texto_apoio": "Um automóvel de massa 1100 kg desloca-se numa estrada reta e horizontal com velocidade de 72 km/h. O condutor trava e o automóvel pára ao fim de 40 m. Admita que a força de travagem é constante e tem a direção do movimento.",
+      "figuras": [
+        { "imagem": "images/f10_ex1_travagem.png", "alt": "Automóvel em travagem numa estrada reta e horizontal", "legenda": "Figura 2" }
+      ]
     },
     {
       "numero": 3,
-      "nivel": "facil",
-      "seccao": "1.1",
-      "enunciado": "Quando um carro trava até parar, a energia cinética:",
-      "opcoes": [
-        "transforma-se em energia interna dos travões e da vizinhança",
-        "desaparece",
-        "transforma-se em energia potencial gravítica",
-        "passa a ser energia cinética do solo"
-      ],
-      "correta": 0,
-      "explicacao": "A energia conserva-se. A energia cinética é dissipada e acaba como energia interna dos travões, dos pneus e do ar, que aquecem."
+      "titulo": "Questão 3",
+      "texto_apoio": "Um elevador de obra eleva uma carga de massa 250 kg a uma altura de 12 m, com velocidade constante, em 15 s. A potência elétrica fornecida ao motor do elevador é 3,0 kW. Considere a carga como uma partícula.",
+      "figuras": [
+        { "imagem": "images/f10_ex1_elevador.png", "alt": "Elevador de obra a elevar uma carga", "legenda": "Figura 3" }
+      ]
     },
     {
       "numero": 4,
-      "nivel": "facil",
-      "seccao": "1.2",
-      "enunciado": "Um corpo de massa 2,0 kg move-se com velocidade de 3,0 m/s. Qual é a sua energia cinética?",
-      "opcoes": [
-        "3,0 J",
-        "18 J",
-        "9,0 J",
-        "6,0 J"
+      "titulo": "Questão 4",
+      "texto_apoio": "Numa atividade laboratorial, um grupo de alunos largou uma bola, do repouso, de várias alturas (h queda) e mediu a altura máxima atingida após o primeiro ressalto (h ressalto). Os resultados obtidos encontram-se na tabela seguinte.",
+      "figuras": [
+        { "imagem": "images/f10_ex1_ressalto.png", "alt": "Bola largada de uma altura h queda e a ressaltar até h ressalto", "legenda": "Figura 4" }
       ],
-      "correta": 2,
-      "explicacao": "Ec = ½ m v² = ½ × 2,0 × 3,0² = 9,0 J."
+      "tabela_apoio": {
+        "titulo": "Tabela 1",
+        "colunas": ["h queda (m)", "0,40", "0,60", "0,80", "1,00", "1,20"],
+        "linhas": [
+          ["h ressalto (m)", "0,26", "0,39", "0,52", "0,65", "0,78"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1_1", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.1",
+      "enunciado": "Desprezando todas as forças dissipativas, qual é o valor da energia mecânica do sistema no topo da rampa?",
+      "opcoes": [
+        { "letra": "A", "texto": "1,3 × 10³ J" },
+        { "letra": "B", "texto": "1,4 × 10² J" },
+        { "letra": "C", "texto": "2,7 × 10³ J" },
+        { "letra": "D", "texto": "5,4 × 10² J" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "Em = Epg + Ec = m g h + 0 = 55 × 9,8 × 2,5 = 1347,5 J ≈ 1,3 × 10³ J."
     },
     {
-      "numero": 5,
-      "nivel": "facil",
-      "seccao": "1.2",
-      "enunciado": "Uma força de 10 N desloca um corpo 3,0 m, na direção e no sentido da força. Qual é o trabalho realizado pela força?",
-      "opcoes": [
-        "3,3 J",
-        "30 J",
-        "13 J",
-        "0 J"
+      "id": "p1_2", "grupo": 1, "tipo": "completar_texto", "numero": "1.2",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Desprezando o atrito, no topo da rampa a energia cinética do sistema é a) ______ e, durante a descida, a energia mecânica do sistema b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "nula" },
+            { "letra": "B", "texto": "igual à energia mecânica" },
+            { "letra": "C", "texto": "metade da energia mecânica" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "aumenta" },
+            { "letra": "B", "texto": "diminui" },
+            { "letra": "C", "texto": "mantém-se" }
+          ]
+        }
       ],
-      "correta": 1,
-      "explicacao": "W = F d cos α = 10 × 3,0 × cos 0° = 30 J."
+      "resposta_correta": { "a": "A", "b": "C" }, "cotacao": 10,
+      "explicacao": "No topo o sistema está em repouso, logo Ec = 0. Sem forças dissipativas, a energia mecânica mantém-se."
     },
     {
-      "numero": 6,
-      "nivel": "facil",
-      "seccao": "1.2",
-      "enunciado": "Um bloco desliza numa mesa horizontal. Qual é o trabalho realizado pela força normal que a mesa exerce sobre o bloco?",
-      "opcoes": [
-        "Positivo, porque a força normal sustenta o bloco",
-        "Negativo, porque a força normal se opõe ao peso",
-        "Igual ao trabalho do peso",
-        "Nulo, porque a força normal é perpendicular ao deslocamento"
+      "id": "p1_3", "grupo": 1, "tipo": "calc", "numero": "1.3",
+      "enunciado": "Desprezando as forças dissipativas, determine a velocidade do sistema ao chegar à base da rampa. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Conclui que a energia mecânica se conserva (não há forças dissipativas): Em no topo = Em na base.", "pontos": 3 },
+        { "descricao": "Escreve e aplica m g h = ½ m v² (a massa simplifica-se).", "pontos": 4 },
+        { "descricao": "Obtém v = 7,0 m/s (com unidade correta).", "pontos": 3 }
       ],
-      "correta": 3,
-      "explicacao": "Com α = 90°, cos 90° = 0, logo W = 0. Uma força perpendicular ao deslocamento não realiza trabalho."
+      "resolucao_modelo": "Em topo = Em base → m g h = ½ m v² → v = √(2 g h) = √(2 × 9,8 × 2,5) = 7,0 m/s.",
+      "resposta_final": "7,0 m/s", "cotacao": 10
     },
     {
-      "numero": 7,
-      "nivel": "facil",
-      "seccao": "1.3",
-      "enunciado": "Qual é a energia potencial gravítica de um corpo de 2,0 kg que está a 5,0 m acima do nível de referência? (g = 9,8 m s⁻²)",
+      "id": "p1_4", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.4",
+      "enunciado": "Na realidade, o sistema chega à base da rampa com velocidade de 6,0 m/s. Qual é a energia dissipada durante a descida?",
       "opcoes": [
-        "98 J",
-        "10 J",
-        "49 J",
-        "196 J"
+        { "letra": "A", "texto": "9,9 × 10² J" },
+        { "letra": "B", "texto": "1,3 × 10³ J" },
+        { "letra": "C", "texto": "1,4 × 10² J" },
+        { "letra": "D", "texto": "3,6 × 10² J" }
       ],
-      "correta": 0,
-      "explicacao": "Epg = m g h = 2,0 × 9,8 × 5,0 = 98 J."
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "Em,i = 1347,5 J. Em,f = ½ × 55 × 6,0² = 990 J. Energia dissipada = 1347,5 − 990 = 357,5 J ≈ 3,6 × 10² J."
     },
     {
-      "numero": 8,
-      "nivel": "facil",
-      "seccao": "1.4",
-      "enunciado": "Num sistema em que só realizam trabalho forças conservativas, a energia mecânica:",
-      "opcoes": [
-        "aumenta sempre",
-        "diminui sempre",
-        "mantém-se constante",
-        "é sempre nula"
+      "id": "p1_5", "grupo": 1, "tipo": "calc", "numero": "1.5",
+      "enunciado": "Determine a intensidade média da força de atrito que atuou no sistema durante a descida (admita que o percurso ao longo da rampa tem 6,0 m e que a velocidade na base é 6,0 m/s). Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Relaciona o trabalho das forças não conservativas com a variação da energia mecânica: W(Fnc) = ΔEm.", "pontos": 3 },
+        { "descricao": "Calcula Em,i = 1347,5 J e Em,f = 990 J, e obtém ΔEm = −357,5 J.", "pontos": 4 },
+        { "descricao": "Calcula Fa = 357,5 / 6,0 ≈ 60 N (intensidade da força de atrito, com unidade).", "pontos": 3 }
       ],
-      "correta": 2,
-      "explicacao": "Sem forças dissipativas a realizar trabalho, a energia mecânica conserva-se: o que a energia cinética perde, a energia potencial ganha, e vice-versa."
+      "resolucao_modelo": "W(Fa) = ΔEm = 990 − 1347,5 = −357,5 J. Como W(Fa) = −Fa × d, Fa = 357,5 / 6,0 ≈ 60 N.",
+      "resposta_final": "6,0 × 10¹ N", "cotacao": 10
+    },
+
+    {
+      "id": "p2_1", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.1",
+      "enunciado": "Qual é a energia cinética do automóvel no início da travagem?",
+      "opcoes": [
+        { "letra": "A", "texto": "4,4 × 10⁵ J" },
+        { "letra": "B", "texto": "2,2 × 10⁴ J" },
+        { "letra": "C", "texto": "2,2 × 10⁵ J" },
+        { "letra": "D", "texto": "2,9 × 10⁶ J" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "72 km/h = 20 m/s. Ec = ½ × 1100 × 20² = 2,2 × 10⁵ J. (2,9 × 10⁶ J resulta de usar 72 como se fosse m/s.)"
     },
     {
-      "numero": 9,
-      "nivel": "facil",
-      "seccao": "1.5",
-      "enunciado": "Um aparelho transfere 600 J de energia em 20 s. Qual é a potência desenvolvida?",
-      "opcoes": [
-        "12 000 W",
-        "30 W",
-        "620 W",
-        "0,033 W"
+      "id": "p2_2", "grupo": 2, "tipo": "correspondencia", "numero": "2.2",
+      "enunciado": "Faça corresponder cada uma das forças que atuam no automóvel durante a travagem (Coluna I) ao tipo de trabalho que realizam (Coluna II). Cada número pode ser utilizado mais do que uma vez.",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Peso do automóvel" },
+        { "letra": "b", "texto": "Força normal exercida pela estrada" },
+        { "letra": "c", "texto": "Força de travagem (atrito entre os pneus e a estrada)" }
       ],
-      "correta": 1,
-      "explicacao": "P = E / Δt = 600 / 20 = 30 W."
+      "coluna_direita": [
+        { "numero": "1", "texto": "Trabalho positivo" },
+        { "numero": "2", "texto": "Trabalho nulo" },
+        { "numero": "3", "texto": "Trabalho negativo" }
+      ],
+      "resposta_correta": { "a": "2", "b": "2", "c": "3" }, "cotacao": 10,
+      "explicacao": "O peso e a força normal são perpendiculares ao deslocamento (trabalho nulo). A força de travagem tem sentido oposto ao deslocamento (trabalho negativo)."
     },
     {
-      "numero": 10,
-      "nivel": "facil",
-      "seccao": "1.5",
-      "enunciado": "Um motor recebe 200 J de energia e realiza 150 J de trabalho útil. Qual é o rendimento?",
-      "opcoes": [
-        "25 %",
-        "133 %",
-        "50 %",
-        "75 %"
+      "id": "p2_3", "grupo": 2, "tipo": "calc", "numero": "2.3",
+      "enunciado": "Determine a intensidade da força de travagem. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Aplica o teorema da energia cinética: W(FR) = ΔEc = 0 − 2,2 × 10⁵ J.", "pontos": 3 },
+        { "descricao": "Relaciona o trabalho com a força: W = −F d (força oposta ao deslocamento).", "pontos": 4 },
+        { "descricao": "Obtém F = 5,5 × 10³ N (com unidade).", "pontos": 3 }
       ],
-      "correta": 3,
-      "explicacao": "η = E útil / E fornecida × 100 = 150 / 200 × 100 = 75 %."
+      "resolucao_modelo": "ΔEc = 0 − ½ × 1100 × 20² = −2,2 × 10⁵ J. W(FR) = −F × 40 → F = 2,2 × 10⁵ / 40 = 5,5 × 10³ N.",
+      "resposta_final": "5,5 × 10³ N", "cotacao": 10
     },
     {
-      "numero": 11,
-      "nivel": "intermedia",
-      "seccao": "1.2",
-      "enunciado": "Se a velocidade de um carro duplicar, a sua energia cinética:",
+      "id": "p2_4", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.4",
+      "enunciado": "Se o automóvel tivesse o dobro da velocidade inicial e a mesma força de travagem, a distância de travagem seria:",
       "opcoes": [
-        "quadruplica",
-        "duplica",
-        "fica metade",
-        "mantém-se"
+        { "letra": "A", "texto": "quatro vezes maior" },
+        { "letra": "B", "texto": "duas vezes maior" },
+        { "letra": "C", "texto": "igual" },
+        { "letra": "D", "texto": "metade" }
       ],
-      "correta": 0,
-      "explicacao": "Ec = ½ m v². Se v passa a 2v, Ec passa a ½ m (2v)² = 4 × (½ m v²): quadruplica."
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "d = Ec / F e Ec é proporcional a v². Se v duplica, Ec quadruplica e a distância quadruplica."
     },
     {
-      "numero": 12,
-      "nivel": "intermedia",
-      "seccao": "1.2",
-      "enunciado": "Uma força de 20 N, que faz 60° com a horizontal, desloca um corpo 4,0 m na horizontal. Qual é o trabalho realizado por essa força? (cos 60° = 0,50)",
-      "opcoes": [
-        "20 J",
-        "69 J",
-        "40 J",
-        "80 J"
+      "id": "p2_5", "grupo": 2, "tipo": "open", "numero": "2.5",
+      "enunciado": "Explique, com base no teorema da energia cinética, por que razão a distância de travagem aumenta mais depressa do que a velocidade inicial. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Para o automóvel parar, o trabalho da força de travagem tem de igualar (em módulo) a energia cinética inicial: W(FR) = ΔEc.", "pontos": 4 },
+        { "descricao": "A energia cinética é proporcional ao quadrado da velocidade: se a velocidade duplica, a energia cinética quadruplica.", "pontos": 3 },
+        { "descricao": "Com força de travagem constante, W = F d, logo a distância é proporcional à energia cinética e, por isso, ao quadrado da velocidade.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
       ],
-      "correta": 2,
-      "explicacao": "W = F d cos α = 20 × 4,0 × 0,50 = 40 J. Só a componente paralela ao deslocamento realiza trabalho."
+      "resolucao_modelo": "Para parar, a força de travagem tem de realizar um trabalho negativo de módulo igual à energia cinética inicial (teorema da energia cinética). Como Ec = ½ m v², duplicar a velocidade quadruplica a energia cinética. Com a mesma força, W = F d, pelo que a distância necessária também quadruplica: aumenta com o quadrado da velocidade.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p3_1", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.1",
+      "enunciado": "Qual é o trabalho realizado pelo peso da carga durante a subida?",
+      "opcoes": [
+        { "letra": "A", "texto": "+2,9 × 10⁴ J" },
+        { "letra": "B", "texto": "−2,9 × 10⁴ J" },
+        { "letra": "C", "texto": "−3,0 × 10³ J" },
+        { "letra": "D", "texto": "0 J" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "W(P) = −m g h = −250 × 9,8 × 12 = −2,94 × 10⁴ J. Na subida, o peso tem sentido oposto ao deslocamento."
     },
     {
-      "numero": 13,
-      "nivel": "intermedia",
-      "seccao": "1.3",
-      "enunciado": "Um corpo de 2,0 kg desce 3,0 m na vertical. Qual é o trabalho realizado pelo peso? (g = 9,8 m s⁻²)",
+      "id": "p3_2", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.2",
+      "enunciado": "Qual é a potência útil do elevador, ou seja, a potência usada para elevar a carga?",
       "opcoes": [
-        "−59 J",
-        "59 J",
-        "6,0 J",
-        "0 J"
+        { "letra": "A", "texto": "2,9 × 10⁴ W" },
+        { "letra": "B", "texto": "3,0 × 10³ W" },
+        { "letra": "C", "texto": "9,8 × 10² W" },
+        { "letra": "D", "texto": "2,0 × 10³ W" }
       ],
-      "correta": 1,
-      "explicacao": "Na descida, o peso tem o sentido do deslocamento: W = m g h = 2,0 × 9,8 × 3,0 = 58,8 J ≈ 59 J, positivo."
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "E útil = m g h = 2,94 × 10⁴ J. P útil = 2,94 × 10⁴ / 15 = 1,96 × 10³ W ≈ 2,0 × 10³ W."
     },
     {
-      "numero": 14,
-      "nivel": "intermedia",
-      "seccao": "1.3",
-      "enunciado": "Um corpo de 4,0 kg parte do repouso e atinge a velocidade de 6,0 m/s. Qual é o trabalho realizado pela resultante das forças?",
-      "opcoes": [
-        "24 J",
-        "144 J",
-        "12 J",
-        "72 J"
+      "id": "p3_3", "grupo": 3, "tipo": "calc", "numero": "3.3",
+      "enunciado": "Determine o rendimento do elevador. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a energia útil (ou a potência útil): m g h = 2,94 × 10⁴ J (P útil = 1,96 × 10³ W).", "pontos": 3 },
+        { "descricao": "Relaciona o rendimento com a potência (ou a energia) útil e fornecida: η = P útil / P fornecida × 100.", "pontos": 4 },
+        { "descricao": "Obtém η ≈ 65 %.", "pontos": 3 }
       ],
-      "correta": 3,
-      "explicacao": "Pelo teorema da energia cinética, W(FR) = ΔEc = ½ × 4,0 × 6,0² − 0 = 72 J."
+      "resolucao_modelo": "P útil = 250 × 9,8 × 12 / 15 = 1960 W. η = 1960 / 3000 × 100 ≈ 65 %.",
+      "resposta_final": "65 %", "cotacao": 10
     },
     {
-      "numero": 15,
-      "nivel": "intermedia",
-      "seccao": "1.4",
-      "enunciado": "Uma bola de 0,50 kg é largada do repouso de 2,0 m de altura. Desprezando a resistência do ar, com que velocidade chega ao solo? (g = 9,8 m s⁻²)",
-      "opcoes": [
-        "6,3 m/s",
-        "4,4 m/s",
-        "9,8 m/s",
-        "20 m/s"
+      "id": "p3_4", "grupo": 3, "tipo": "completar_texto", "numero": "3.4",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Durante a subida, o trabalho realizado pela força que o cabo exerce na carga é a) ______ do trabalho realizado pelo peso, e a variação da energia cinética da carga é b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "simétrico" },
+            { "letra": "B", "texto": "igual" },
+            { "letra": "C", "texto": "nulo, comparado com o valor" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "positiva" },
+            { "letra": "B", "texto": "nula" },
+            { "letra": "C", "texto": "negativa" }
+          ]
+        }
       ],
-      "correta": 0,
-      "explicacao": "Em conserva-se: m g h = ½ m v². Logo v = √(2 g h) = √(2 × 9,8 × 2,0) ≈ 6,3 m/s. A massa não influencia."
+      "resposta_correta": { "a": "A", "b": "B" }, "cotacao": 10,
+      "explicacao": "A velocidade é constante, logo ΔEc = 0 e W(F cabo) + W(P) = 0: o trabalho da força do cabo é simétrico do trabalho do peso."
     },
     {
-      "numero": 16,
-      "nivel": "dificil",
-      "seccao": "1.4",
-      "enunciado": "Um esquiador de 70 kg parte do repouso a 15 m de altura e chega à base com 11 m/s. Qual é a energia dissipada? (g = 9,8 m s⁻²)",
-      "opcoes": [
-        "4,2 × 10³ J",
-        "1,0 × 10⁴ J",
-        "6,1 × 10³ J",
-        "1,5 × 10⁴ J"
+      "id": "p3_5", "grupo": 3, "tipo": "calc", "numero": "3.5",
+      "enunciado": "Determine a energia dissipada no motor durante a subida da carga. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a energia fornecida: E = P Δt = 3000 × 15 = 4,5 × 10⁴ J.", "pontos": 3 },
+        { "descricao": "Calcula a energia útil: m g h = 2,94 × 10⁴ J.", "pontos": 3 },
+        { "descricao": "Relaciona: energia dissipada = energia fornecida − energia útil.", "pontos": 2 },
+        { "descricao": "Obtém 1,6 × 10⁴ J (com unidade).", "pontos": 2 }
       ],
-      "correta": 2,
-      "explicacao": "Em,i = 70 × 9,8 × 15 = 10 290 J. Em,f = ½ × 70 × 11² = 4235 J. Energia dissipada = 10 290 − 4235 = 6055 J ≈ 6,1 × 10³ J."
+      "resolucao_modelo": "E fornecida = 3000 × 15 = 45 000 J. E útil = 29 400 J. E dissipada = 45 000 − 29 400 = 15 600 J ≈ 1,6 × 10⁴ J.",
+      "resposta_final": "1,6 × 10⁴ J", "cotacao": 10
+    },
+
+    {
+      "id": "p4_1", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.1",
+      "enunciado": "Qual é o tipo de gráfico que se espera obter, traçando h ressalto (eixo vertical) em função de h queda (eixo horizontal)?",
+      "opcoes": [
+        { "letra": "A", "texto": "Uma reta que passa pela origem, com declive superior a 1" },
+        { "letra": "B", "texto": "Uma parábola com a concavidade voltada para cima" },
+        { "letra": "C", "texto": "Uma reta horizontal" },
+        { "letra": "D", "texto": "Uma reta que passa pela origem, com declive inferior a 1" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "No ponto mais alto, a bola está parada e Em = m g h. A razão h ressalto / h queda é constante e menor do que 1, pois há dissipação de energia."
     },
     {
-      "numero": 17,
-      "nivel": "dificil",
-      "seccao": "1.3",
-      "enunciado": "Um caixote de 10 kg é puxado numa superfície horizontal por uma força de 50 N, que faz 30° com a horizontal, ao longo de 5,0 m, com velocidade constante. Qual é o trabalho realizado pela força de atrito? (cos 30° = 0,87)",
-      "opcoes": [
-        "+2,2 × 10² J",
-        "−2,2 × 10² J",
-        "−2,5 × 10² J",
-        "0 J"
+      "id": "p4_2", "grupo": 4, "tipo": "calc", "numero": "4.2",
+      "enunciado": "Determine a percentagem de energia mecânica dissipada na colisão da bola com o solo. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Obtém o declive da reta de ajuste (regressão linear na calculadora): 0,65.", "pontos": 4 },
+        { "descricao": "Interpreta o declive como a fração da energia mecânica que se conserva (Em é proporcional a h).", "pontos": 3 },
+        { "descricao": "Calcula a percentagem dissipada: 100 − 65 = 35 %.", "pontos": 3 }
       ],
-      "correta": 1,
-      "explicacao": "A velocidade é constante, logo ΔEc = 0 e W(FR) = 0. O peso e a normal não realizam trabalho. Então W(Fa) = −W(F) = −50 × 5,0 × 0,87 ≈ −2,2 × 10² J."
+      "resolucao_modelo": "O declive da reta de ajuste é 0,65. A bola conserva 65 % da energia mecânica; dissipa 100 − 65 = 35 %.",
+      "resposta_final": "35 %", "cotacao": 10
     },
     {
-      "numero": 18,
-      "nivel": "dificil",
-      "seccao": "AL 1.1",
-      "enunciado": "Na AL 1.1, um carrinho de 0,40 kg parte do repouso. O gráfico de ΔEc em função da distância percorrida tem declive 0,36 J/m. Qual é a velocidade do carrinho depois de percorrer 1,5 m?",
+      "id": "p4_3", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.3",
+      "enunciado": "Admitindo que h ressalto = 0,65 × h queda, qual é a altura de ressalto previsível se a bola for largada de 1,60 m?",
       "opcoes": [
-        "0,54 m/s",
-        "0,36 m/s",
-        "2,7 m/s",
-        "1,6 m/s"
+        { "letra": "A", "texto": "0,56 m" },
+        { "letra": "B", "texto": "1,60 m" },
+        { "letra": "C", "texto": "1,04 m" },
+        { "letra": "D", "texto": "2,46 m" }
       ],
-      "correta": 3,
-      "explicacao": "ΔEc = declive × d = 0,36 × 1,5 = 0,54 J. Como parte do repouso, ½ × 0,40 × v² = 0,54, logo v² = 2,7 e v ≈ 1,6 m/s."
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "h ressalto = 0,65 × 1,60 = 1,04 m. (2,46 m resulta de dividir por 0,65.)"
     },
     {
-      "numero": 19,
-      "nivel": "dificil",
-      "seccao": "1.5",
-      "enunciado": "Um guindaste eleva uma carga de 200 kg a 15 m de altura, com velocidade constante, em 30 s. A potência consumida pelo guindaste é 2,0 kW. Qual é o seu rendimento? (g = 9,8 m s⁻²)",
-      "opcoes": [
-        "49 %",
-        "25 %",
-        "98 %",
-        "65 %"
+      "id": "p4_4", "grupo": 4, "tipo": "open", "numero": "4.4",
+      "enunciado": "Descreva como se deve proceder, na atividade, para medir a altura de ressalto de forma rigorosa, indicando duas medidas que reduzam os erros de medição. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "A bola é largada do repouso (sem impulso) e sempre da mesma altura, repetindo-se a medição pelo menos três vezes e calculando a média.", "pontos": 4 },
+        { "descricao": "A leitura da altura máxima do ressalto é feita com os olhos ao nível da bola (ou com filmagem), para evitar erro de paralaxe.", "pontos": 3 },
+        { "descricao": "As alturas são sempre medidas a partir do mesmo ponto da bola (por exemplo, a base).", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
       ],
-      "correta": 0,
-      "explicacao": "E útil = m g h = 200 × 9,8 × 15 = 29 400 J. P útil = 29 400 / 30 = 980 W. η = 980 / 2000 × 100 = 49 %."
+      "resolucao_modelo": "Larga-se a bola do repouso, sem impulso, de uma altura conhecida, junto de uma régua vertical. Repete-se a medição pelo menos três vezes para a mesma altura e calcula-se a média. Reduz-se o erro de paralaxe lendo a altura com os olhos ao nível da bola (ou filmando o ressalto) e medindo as alturas sempre do mesmo ponto da bola.",
+      "cotacao": 10
     },
     {
-      "numero": 20,
-      "nivel": "dificil",
-      "seccao": "AL 1.2",
-      "enunciado": "Numa experiência como a da AL 1.2, uma bola é largada de 2,0 m e ressalta até 1,3 m. Que percentagem da energia mecânica é dissipada na colisão com o solo?",
-      "opcoes": [
-        "65 %",
-        "0,65 %",
-        "35 %",
-        "1,3 %"
+      "id": "p4_5", "grupo": 4, "tipo": "completar_texto", "numero": "4.5",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Em cada ressalto, a energia mecânica da bola a) ______ e a energia dissipada transforma-se em energia b) ______ da bola, do solo e do ar.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "aumenta" },
+            { "letra": "B", "texto": "diminui" },
+            { "letra": "C", "texto": "mantém-se" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "interna" },
+            { "letra": "B", "texto": "cinética" },
+            { "letra": "C", "texto": "potencial gravítica" }
+          ]
+        }
       ],
-      "correta": 2,
-      "explicacao": "No ponto mais alto a bola está parada e Em = m g h, logo h ressalto / h queda = 1,3 / 2,0 = 0,65: conserva 65 %. Dissipa 100 − 65 = 35 %."
+      "resposta_correta": { "a": "B", "b": "A" }, "cotacao": 10,
+      "explicacao": "Na colisão há dissipação: a energia mecânica da bola diminui e a energia dissipada transforma-se em energia interna da bola, do solo e do ar."
     }
   ]
 }

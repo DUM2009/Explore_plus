@@ -1,0 +1,332 @@
+{
+  "id": "fis10-m2-teste-2",
+  "titulo": "Teste 2 — Energia e fenómenos elétricos",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 90,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      { "grandeza": "Carga elementar (e)", "valor": "1,6 × 10⁻¹⁹ C" },
+      { "grandeza": "Resistividade do cobre (20 °C)", "valor": "1,7 × 10⁻⁸ Ω m" },
+      { "grandeza": "Resistividade do alumínio (20 °C)", "valor": "2,8 × 10⁻⁸ Ω m" },
+      { "grandeza": "Resistividade do nicrómio (20 °C)", "valor": "1,1 × 10⁻⁶ Ω m" },
+      { "grandeza": "Tensão da rede doméstica (Portugal)", "valor": "230 V" },
+      { "grandeza": "1 kWh", "valor": "3,6 × 10⁶ J" }
+    ],
+    "formulas": [
+      "Corrente elétrica: I = Q / Δt",
+      "Diferença de potencial: U = E / Q",
+      "Resistência elétrica: R = U / I",
+      "Resistência de um fio: R = ρ l / A",
+      "Potência elétrica: P = U I",
+      "Energia elétrica: E = P Δt",
+      "Efeito Joule: P = R I² = U² / R",
+      "Associação em série: Req = R1 + R2 + ...; I igual; U = U1 + U2 + ...",
+      "Associação em paralelo: 1/Req = 1/R1 + 1/R2 + ...; U igual; I = I1 + I2 + ...",
+      "Gerador real: U = ε − r I",
+      "Balanço energético do gerador: ε I = U I + r I²",
+      "Rendimento do gerador: η = (U / ε) × 100",
+      "Corrente de curto-circuito: I = ε / r"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "Questão 1",
+      "texto_apoio": "Numa atividade laboratorial (AL 2.1), um grupo de alunos pretendeu determinar a força eletromotriz e a resistência interna de uma pilha. Montaram um circuito com a pilha, um interruptor, um reóstato e um amperímetro, todos em série, e ligaram um voltímetro aos terminais da pilha. Variando a resistência do reóstato, registaram os valores da diferença de potencial nos terminais da pilha (U) e da corrente (I).",
+      "figuras": [
+        { "imagem": "images/f10_el2_AL21.png", "alt": "Circuito da AL 2.1: pilha, interruptor, reóstato e amperímetro em série, voltímetro aos terminais da pilha", "legenda": "Figura 1" }
+      ],
+      "tabela_apoio": {
+        "titulo": "Tabela 1",
+        "colunas": ["I (A)", "0,10", "0,20", "0,30", "0,40", "0,50", "0,60"],
+        "linhas": [
+          ["U (V)", "4,41", "4,31", "4,24", "4,13", "4,06", "3,95"]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "Questão 2",
+      "texto_apoio": "No circuito da figura, a fonte de tensão é ideal e tem força eletromotriz 12 V. A resistência R1 = 4,0 Ω está ligada em série com a associação em paralelo das resistências R2 = 6,0 Ω e R3 = 3,0 Ω. A corrente fornecida pela fonte é I, e I2 e I3 são as correntes em R2 e R3.",
+      "figuras": [
+        { "imagem": "images/f10_el2_circuito_misto.png", "alt": "Fonte de 12 V, R1 em série com R2 e R3 em paralelo, correntes I, I2 e I3 assinaladas", "legenda": "Figura 2" }
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "Questão 3",
+      "texto_apoio": "Um secador de cabelo tem a indicação 230 V; 2000 W. É utilizado durante 15 min por dia, ao longo de 30 dias, ligado à rede doméstica (230 V). Considere que o preço da energia elétrica é 0,16 € por kWh.",
+      "figuras": [
+        { "imagem": "images/f10_el2_secador.png", "alt": "Secador de cabelo com etiqueta 230 V; 2000 W", "legenda": "Figura 3" }
+      ]
+    },
+    {
+      "numero": 4,
+      "titulo": "Questão 4",
+      "texto_apoio": "Para estudar as características de um condutor, mediu-se a diferença de potencial (U) nos seus terminais para diferentes valores da corrente (I) que o percorre, à temperatura constante.",
+      "figuras": [
+        { "imagem": "images/f10_el2_grafico_UI.png", "alt": "Gráfico de U em função de I, com reta de ajuste que passa pela origem", "legenda": "Figura 4" }
+      ],
+      "tabela_apoio": {
+        "titulo": "Tabela 1",
+        "colunas": ["I (A)", "0,050", "0,101", "0,149", "0,201", "0,250"],
+        "linhas": [
+          ["U (V)", "1,0", "2,0", "3,0", "4,0", "5,0"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1_1", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.1",
+      "enunciado": "Qual é a forma correta de ligar os aparelhos de medida neste circuito?",
+      "opcoes": [
+        { "letra": "A", "texto": "Amperímetro em paralelo e voltímetro em série" },
+        { "letra": "B", "texto": "Ambos em série" },
+        { "letra": "C", "texto": "Amperímetro em série e voltímetro em paralelo com a pilha" },
+        { "letra": "D", "texto": "Ambos em paralelo com o reóstato" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "O amperímetro é percorrido pela corrente (série); o voltímetro mede a diferença de potencial entre os terminais da pilha (paralelo)."
+    },
+    {
+      "id": "p1_2", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.2",
+      "enunciado": "Com o interruptor aberto, o valor indicado pelo voltímetro é aproximadamente:",
+      "opcoes": [
+        { "letra": "A", "texto": "a resistência interna da pilha" },
+        { "letra": "B", "texto": "a força eletromotriz da pilha" },
+        { "letra": "C", "texto": "zero" },
+        { "letra": "D", "texto": "a corrente de curto-circuito" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "Sem corrente, não há queda de tensão na resistência interna e U = ε."
+    },
+    {
+      "id": "p1_3", "grupo": 1, "tipo": "calc", "numero": "1.3",
+      "enunciado": "Utilizando a calculadora gráfica, determine a força eletromotriz e a resistência interna da pilha. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Traça o gráfico de U em função de I e faz a regressão linear dos pontos (U = ε − r I).", "pontos": 3 },
+        { "descricao": "Obtém a ordenada na origem da reta de ajuste: ε ≈ 4,5 V.", "pontos": 3 },
+        { "descricao": "Identifica a resistência interna com o módulo do declive (o declive é negativo).", "pontos": 2 },
+        { "descricao": "Obtém r ≈ 0,90 Ω (com unidade).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "A reta de ajuste é U = 4,50 − 0,90 I (SI). A ordenada na origem é ε ≈ 4,5 V; o módulo do declive é r ≈ 0,90 Ω.",
+      "resposta_final": "ε ≈ 4,5 V; r ≈ 0,90 Ω", "cotacao": 10
+    },
+    {
+      "id": "p1_4", "grupo": 1, "tipo": "calc", "numero": "1.4",
+      "enunciado": "Admita que ε = 4,5 V e r = 0,90 Ω. Determine o rendimento da pilha quando é percorrida por uma corrente de 0,50 A. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a tensão nos terminais: U = ε − r I = 4,5 − 0,90 × 0,50 = 4,05 V.", "pontos": 4 },
+        { "descricao": "Escreve η = U / ε × 100.", "pontos": 3 },
+        { "descricao": "Obtém η = 90 %.", "pontos": 3 }
+      ],
+      "resolucao_modelo": "U = 4,5 − 0,90 × 0,50 = 4,05 V. η = 4,05 / 4,5 × 100 = 90 %.",
+      "resposta_final": "90 %", "cotacao": 10
+    },
+    {
+      "id": "p1_5", "grupo": 1, "tipo": "open", "numero": "1.5",
+      "enunciado": "Na atividade, o interruptor deve ser mantido fechado apenas o tempo necessário para cada leitura. Explique porquê. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Com o circuito fechado há corrente e a pilha dissipa energia no seu interior por efeito Joule (r I²), pelo que aquece.", "pontos": 4 },
+        { "descricao": "A temperatura e o estado da pilha influenciam a resistência interna (e a força eletromotriz), que deixaria de ser constante ao longo da atividade e os pontos deixariam de estar alinhados.", "pontos": 3 },
+        { "descricao": "Mantendo o circuito aberto entre leituras, a pilha também se preserva e todas as leituras se fazem em condições comparáveis.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Quando o circuito está fechado, passa corrente e há energia dissipada no interior da pilha, por efeito Joule (r I²), que aquece. Com o aquecimento, a resistência interna altera-se e os pontos deixam de ficar alinhados, o que falseia a determinação de ε e r. Abrir o interruptor entre leituras mantém condições comparáveis e preserva a pilha.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p2_1", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.1",
+      "enunciado": "Qual é a relação entre as correntes representadas?",
+      "opcoes": [
+        { "letra": "A", "texto": "I = I2 = I3" },
+        { "letra": "B", "texto": "I = I2 + I3" },
+        { "letra": "C", "texto": "I2 = I3" },
+        { "letra": "D", "texto": "I = I2 − I3" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "No nó, a soma das correntes que entram é igual à soma das que saem (conservação da carga): I = I2 + I3."
+    },
+    {
+      "id": "p2_2", "grupo": 2, "tipo": "calc", "numero": "2.2",
+      "enunciado": "Determine a intensidade da corrente fornecida pela fonte. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a resistência equivalente da associação em paralelo: 1/R = 1/6,0 + 1/3,0, logo R = 2,0 Ω.", "pontos": 4 },
+        { "descricao": "Calcula a resistência equivalente do circuito: Req = 4,0 + 2,0 = 6,0 Ω.", "pontos": 3 },
+        { "descricao": "Obtém I = 12 / 6,0 = 2,0 A (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "1/Rp = 1/6,0 + 1/3,0 = 0,50 → Rp = 2,0 Ω. Req = 4,0 + 2,0 = 6,0 Ω. I = 12 / 6,0 = 2,0 A.",
+      "resposta_final": "2,0 A", "cotacao": 10
+    },
+    {
+      "id": "p2_3", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.3",
+      "enunciado": "Qual é a diferença de potencial nos terminais de R3?",
+      "opcoes": [
+        { "letra": "A", "texto": "4,0 V" },
+        { "letra": "B", "texto": "12 V" },
+        { "letra": "C", "texto": "8,0 V" },
+        { "letra": "D", "texto": "2,0 V" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "Em R1 a ddp é 4,0 × 2,0 = 8,0 V; a associação em paralelo fica com 12 − 8,0 = 4,0 V (a mesma em R2 e R3)."
+    },
+    {
+      "id": "p2_4", "grupo": 2, "tipo": "calc", "numero": "2.4",
+      "enunciado": "Determine a potência dissipada em R2. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a diferença de potencial na associação em paralelo: U = 12 − R1 I = 12 − 4,0 × 2,0 = 4,0 V.", "pontos": 4 },
+        { "descricao": "Escreve P = U² / R2 (ou P = U I2 com I2 = U / R2).", "pontos": 3 },
+        { "descricao": "Obtém P ≈ 2,7 W (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "U = 12 − 4,0 × 2,0 = 4,0 V. P = U² / R2 = 4,0² / 6,0 ≈ 2,7 W.",
+      "resposta_final": "2,7 W", "cotacao": 10
+    },
+    {
+      "id": "p2_5", "grupo": 2, "tipo": "open", "numero": "2.5",
+      "enunciado": "A resistência R3 funde e passa a comportar-se como um circuito aberto. Preveja, justificando, como variam a corrente fornecida pela fonte e a corrente em R2. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Sem o ramo de R3, a resistência equivalente do circuito aumenta (de 6,0 Ω para 4,0 + 6,0 = 10 Ω).", "pontos": 4 },
+        { "descricao": "Com a mesma tensão da fonte, a corrente fornecida diminui (de 2,0 A para 1,2 A).", "pontos": 3 },
+        { "descricao": "Toda a corrente passa agora em R2, pelo que a corrente em R2 aumenta (de 0,67 A para 1,2 A).", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Sem R3, deixa de existir o ramo em paralelo e a resistência equivalente passa de 6,0 Ω para 4,0 + 6,0 = 10 Ω. Como a tensão da fonte é a mesma, a corrente fornecida diminui de 2,0 A para 12 / 10 = 1,2 A. Essa corrente passa toda em R2, cuja corrente aumenta de 0,67 A para 1,2 A.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p3_1", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.1",
+      "enunciado": "Qual é a energia consumida pelo secador num dia, em kWh?",
+      "opcoes": [
+        { "letra": "A", "texto": "30 kWh" },
+        { "letra": "B", "texto": "2,0 kWh" },
+        { "letra": "C", "texto": "8,3 kWh" },
+        { "letra": "D", "texto": "0,50 kWh" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "E = P Δt = 2,0 kW × 0,25 h = 0,50 kWh. (30 kWh resulta de usar 15 min como se fossem 15 h.)"
+    },
+    {
+      "id": "p3_2", "grupo": 3, "tipo": "calc", "numero": "3.2",
+      "enunciado": "Determine a intensidade da corrente que percorre o secador quando está em funcionamento normal. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Relaciona a potência com a tensão e a corrente: P = U I.", "pontos": 4 },
+        { "descricao": "Substitui os valores: I = 2000 / 230.", "pontos": 3 },
+        { "descricao": "Obtém I ≈ 8,7 A (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "I = P / U = 2000 / 230 ≈ 8,7 A.",
+      "resposta_final": "8,7 A", "cotacao": 10
+    },
+    {
+      "id": "p3_3", "grupo": 3, "tipo": "calc", "numero": "3.3",
+      "enunciado": "Determine a resistência do secador em funcionamento normal. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Escreve uma expressão que permita o cálculo: R = U² / P (ou R = U / I com I = 8,7 A).", "pontos": 4 },
+        { "descricao": "Substitui os valores: R = 230² / 2000.", "pontos": 3 },
+        { "descricao": "Obtém R ≈ 26 Ω (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "R = U² / P = 230² / 2000 ≈ 26 Ω.",
+      "resposta_final": "26 Ω", "cotacao": 10
+    },
+    {
+      "id": "p3_4", "grupo": 3, "tipo": "calc", "numero": "3.4",
+      "enunciado": "Determine o custo da energia consumida pelo secador ao fim de 30 dias. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a energia consumida em 30 dias: 0,50 × 30 = 15 kWh.", "pontos": 4 },
+        { "descricao": "Multiplica a energia pelo preço do kWh: 15 × 0,16.", "pontos": 3 },
+        { "descricao": "Obtém 2,4 € (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "E = 2,0 × 0,25 × 30 = 15 kWh. Custo = 15 × 0,16 = 2,4 €.",
+      "resposta_final": "2,4 €", "cotacao": 10
+    },
+    {
+      "id": "p3_5", "grupo": 3, "tipo": "completar_texto", "numero": "3.5",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Se o secador fosse ligado a uma tensão de 115 V (metade de 230 V), mantendo-se a resistência, a corrente que o percorreria a) ______ e a potência b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "duplicaria" },
+            { "letra": "B", "texto": "reduzir-se-ia a metade" },
+            { "letra": "C", "texto": "manter-se-ia" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "duplicaria" },
+            { "letra": "B", "texto": "reduzir-se-ia a um quarto" },
+            { "letra": "C", "texto": "reduzir-se-ia a metade" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "B", "b": "B" }, "cotacao": 10,
+      "explicacao": "I = U / R: metade da tensão dá metade da corrente. P = U² / R: com metade da tensão, a potência fica reduzida a um quarto."
+    },
+
+    {
+      "id": "p4_1", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.1",
+      "enunciado": "Os resultados permitem concluir que o condutor é:",
+      "opcoes": [
+        { "letra": "A", "texto": "óhmico, porque a razão U / I é aproximadamente constante" },
+        { "letra": "B", "texto": "óhmico, porque U aumenta quando I aumenta" },
+        { "letra": "C", "texto": "não óhmico, porque a resistência varia com a corrente" },
+        { "letra": "D", "texto": "não óhmico, porque o gráfico passa pela origem" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "U / I ≈ 20 Ω em todas as medições (reta que passa pela origem): condutor óhmico."
+    },
+    {
+      "id": "p4_2", "grupo": 4, "tipo": "calc", "numero": "4.2",
+      "enunciado": "Utilizando a calculadora gráfica, determine a resistência do condutor. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Traça o gráfico de U em função de I e faz a regressão linear.", "pontos": 3 },
+        { "descricao": "Obtém o declive da reta de ajuste: ≈ 20 V/A.", "pontos": 3 },
+        { "descricao": "Identifica o declive (com U no eixo vertical) com a resistência.", "pontos": 2 },
+        { "descricao": "Obtém R ≈ 20 Ω (com unidade).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "A reta de ajuste tem declive ≈ 20,0 V/A. Com U em função de I, o declive é a resistência: R ≈ 20 Ω.",
+      "resposta_final": "20 Ω", "cotacao": 10
+    },
+    {
+      "id": "p4_3", "grupo": 4, "tipo": "calc", "numero": "4.3",
+      "enunciado": "O condutor é um fio de nicrómio (ρ = 1,1 × 10⁻⁶ Ω m) com secção reta de área 0,50 mm². Determine o comprimento do fio. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Escreve R = ρ l / A e resolve em ordem ao comprimento: l = R A / ρ.", "pontos": 3 },
+        { "descricao": "Converte a área para metros quadrados: 0,50 × 10⁻⁶ m².", "pontos": 2 },
+        { "descricao": "Substitui os valores: l = 20 × 0,50 × 10⁻⁶ / 1,1 × 10⁻⁶.", "pontos": 3 },
+        { "descricao": "Obtém l ≈ 9,1 m (com unidade).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "l = R A / ρ = 20 × 0,50 × 10⁻⁶ / (1,1 × 10⁻⁶) ≈ 9,1 m.",
+      "resposta_final": "9,1 m", "cotacao": 10
+    },
+    {
+      "id": "p4_4", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.4",
+      "enunciado": "O filamento de uma lâmpada incandescente é um condutor não óhmico porque:",
+      "opcoes": [
+        { "letra": "A", "texto": "a sua resistência diminui quando a corrente aumenta" },
+        { "letra": "B", "texto": "a corrente que o percorre não depende da tensão" },
+        { "letra": "C", "texto": "a sua temperatura diminui com a corrente" },
+        { "letra": "D", "texto": "a sua resistividade aumenta com a temperatura, que aumenta com a corrente" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "Quando a corrente aumenta, o filamento aquece e, sendo metálico, a resistividade aumenta; R deixa de ser constante e o gráfico U-I curva."
+    },
+    {
+      "id": "p4_5", "grupo": 4, "tipo": "open", "numero": "4.5",
+      "enunciado": "Descreva o aspeto esperado do gráfico U em função de I para o filamento de uma lâmpada e justifique-o. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "O gráfico não é uma reta: é uma curva (com o declive a aumentar com a corrente).", "pontos": 4 },
+        { "descricao": "Ao aumentar a corrente, o filamento aquece e, sendo metálico, a resistividade (e a resistência) aumenta com a temperatura.", "pontos": 3 },
+        { "descricao": "Logo, U / I não é constante, ou seja, o filamento não cumpre a lei de Ohm: é um condutor não óhmico.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "O gráfico U-I do filamento é uma curva, não uma reta. Quando a corrente aumenta, o filamento aquece e, como é metálico, a sua resistividade e a sua resistência aumentam. Assim, U / I não é constante: o filamento não cumpre a lei de Ohm (condutor não óhmico) e o declive aumenta com a corrente.",
+      "cotacao": 10
+    }
+  ]
+}

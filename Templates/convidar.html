@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Resumos | Explore+</title>
+<title>Convidar Amigos | Explore+</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +46,6 @@
 <span class="profile-sidebar-label">Perfil</span>
 </a>
 
-
 <a href="{% url 'index-missions' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target-icon lucide-target"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
 <span class="profile-sidebar-label">Missões</span>
 </a>
@@ -56,7 +55,7 @@
 <a href="{% url 'Testes' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-spreadsheet-icon lucide-file-spreadsheet"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg></span>
 <span class="profile-sidebar-label">Testes</span>
 </a>
-<a href="{% url 'Resumos' %}" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
+<a href="{% url 'Resumos' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
 <span class="profile-sidebar-label">Resumos</span>
 </a>
 <a href="mailto:{{ EMAIL_SUPORTE }}">
@@ -150,50 +149,58 @@
     </button>
 </div>
 
-<section class="missions-page">
-    <div class="resumo-title-row">
-        <h1>Resumos</h1>
-        {% if perfil.plano != 'pro' %}
-        <a href="{% url 'superexplore' %}" class="superexplore-inline-cta">SuperExplore</a>
-        {% endif %}
-    </div>
-    <div class="missions-page-subrow">
-        <p>Revisões diretas ao ponto, prontas para reveres antes de um teste.</p>
-        <div class="subject-switcher">
-            <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
-                <span>{% if subject == 'geology' %}Explore Geology{% else %}Explore Biology{% endif %}</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
-                <li><a href="{% url 'Resumos' %}" class="subject-switcher-option{% if subject != 'geology' %} is-active{% endif %}" data-subject="biology">Explore Biology</a></li>
-                <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
-                <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
-                <li><a href="{% url 'Resumos-geologia' %}" class="subject-switcher-option{% if subject == 'geology' %} is-active{% endif %}" data-subject="geology">Explore Geology</a></li>
-            </ul>
-        </div>
+<section class="missions-page convidar-page">
+    {% if perfil %}
+    <div class="convidar-hero-card">
+        <span class="convidar-gift-badge" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+        </span>
+        <h1>Estuda de Graça o Mês Inteiro!</h1>
+        <p>A cada <strong>{{ amigos_necessarios }} amigos</strong> que se registarem com o teu link, ganhas <strong>30 Dias PRO</strong> de graça! 🎁</p>
+
+        <a class="convidar-whatsapp-btn" href="https://wa.me/?text={{ link_convite|urlencode }}" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.46 3.45 1.32 4.95L2 22l5.3-1.39a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.44 9.9-9.9 0-2.64-1.03-5.13-2.9-7a9.82 9.82 0 0 0-6.99-2.91zm0 1.67c2.21 0 4.29.86 5.85 2.43a8.23 8.23 0 0 1 2.42 5.82c0 4.56-3.71 8.27-8.27 8.27a8.3 8.3 0 0 1-4.21-1.15l-.3-.18-3.14.82.84-3.06-.2-.31a8.26 8.26 0 0 1-1.27-4.4c0-4.56 3.71-8.24 8.28-8.24zm-4.54 4.6c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64 2.03.87 2.45.7 2.9.65.44-.04 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2a7.3 7.3 0 0 1-1.35-1.68c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.32-.75-1.8-.2-.47-.4-.4-.55-.41z"/></svg>
+            Convidar Amigos no WhatsApp
+        </a>
+        <button type="button" class="convidar-copy-btn" id="convidarCopyLinkBtn" data-link="{{ link_convite }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar Link
+        </button>
     </div>
 
-    {% if resumos %}
-    <div class="cards resumos-grid">
-        {% for r in resumos %}
-        <a href="{% url 'resumo-detalhe' r.id %}" class="card resumo-card" style="--resumo-cor-a:{{ r.cor_a }};--resumo-cor-b:{{ r.cor_b }};--resumo-cor-soft:{{ r.cor_soft }};">
-            <div class="resumo-card-top">
-                <span class="resumo-card-icon" aria-hidden="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>
-                </span>
-                <span class="resumo-card-badge">{{ r.disciplina }}</span>
-            </div>
-            <h3>{{ r.nome }}</h3>
-            <p>{{ r.descricao_curta }}</p>
-            <span class="resumo-card-cta">
-                Ler resumo
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+    <div class="stats-card convidar-progress-card">
+        <div class="convidar-progress-head">
+            <span class="convidar-progress-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </span>
-        </a>
-        {% endfor %}
+            <span class="convidar-progress-title">{{ amigos_convidados }}/{{ amigos_necessarios }} Amigos Convidados</span>
+            <span class="convidar-progress-badge">+30 dias PRO</span>
+        </div>
+        <div class="barra convidar-progress-bar">
+            <div class="progresso" style="width: {% widthratio amigos_convidados amigos_necessarios 100 %}%"></div>
+        </div>
+        <p class="convidar-progress-caption">
+            {% if amigos_faltam > 0 %}Faltam {{ amigos_faltam }} amigo{{ amigos_faltam|pluralize }} para ganhares 30 dias de Plano PRO{% else %}Convida o teu primeiro amigo para começares!{% endif %}
+            {% if recompensas_ganhas > 0 %}<br><small>Já ganhaste {{ recompensas_ganhas }} recompensa{{ recompensas_ganhas|pluralize }} até agora. 🎉</small>{% endif %}
+        </p>
+    </div>
+
+    <div class="stats-card convidar-link-card">
+        <h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>
+            Seu Link de Convite
+        </h2>
+        <div class="convidar-link-row">
+            <span class="convidar-link-field">{{ link_convite }}</span>
+            <button type="button" class="convidar-link-copy-btn" data-link="{{ link_convite }}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                Copiar
+            </button>
+        </div>
+        <p class="convidar-codigo-row">Código: <span class="convidar-codigo-pill">{{ codigo_referral }}</span></p>
     </div>
     {% else %}
-    <p>Estamos a preparar os resumos — volta em breve.</p>
+    <p class="stats-empty">Não foi possível carregar o teu link de convite agora — tenta recarregar a página.</p>
     {% endif %}
 </section>
 
@@ -203,9 +210,6 @@
 </section>
 
 <script>
-window.exploreCsrfToken = "{{ csrf_token }}";
-window.exploreActivityHeartbeatUrl = "{% url 'registar-atividade' %}";
-
 const accountTrigger = document.getElementById('profileAccountTrigger');
 const accountMenu = document.getElementById('profileAccountMenu');
 
@@ -222,11 +226,25 @@ document.addEventListener('click', (event) => {
         accountTrigger?.setAttribute('aria-expanded', 'false');
     }
 });
+
+function copiarParaClipboard(texto, botao) {
+    navigator.clipboard?.writeText(texto).then(() => {
+        const textoOriginal = botao.textContent;
+        botao.classList.add('is-copied');
+        botao.textContent = 'Copiado!';
+        setTimeout(() => {
+            botao.textContent = textoOriginal;
+            botao.classList.remove('is-copied');
+        }, 1800);
+    });
+}
+
+document.querySelectorAll('[data-link]').forEach((botao) => {
+    botao.addEventListener('click', () => copiarParaClipboard(botao.dataset.link, botao));
+});
 </script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
-<script src="{% static 'subject-switcher.js' %}" defer></script>
-<script src="{% static 'activity-heartbeat.js' %}" defer></script>
 
 </body>
 

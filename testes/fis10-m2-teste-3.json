@@ -1,0 +1,332 @@
+{
+  "id": "fis10-m2-teste-3",
+  "titulo": "Teste 3 — Energia e fenómenos elétricos",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 90,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      { "grandeza": "Carga elementar (e)", "valor": "1,6 × 10⁻¹⁹ C" },
+      { "grandeza": "Resistividade do cobre (20 °C)", "valor": "1,7 × 10⁻⁸ Ω m" },
+      { "grandeza": "Resistividade do alumínio (20 °C)", "valor": "2,8 × 10⁻⁸ Ω m" },
+      { "grandeza": "Resistividade do nicrómio (20 °C)", "valor": "1,1 × 10⁻⁶ Ω m" },
+      { "grandeza": "Tensão da rede doméstica (Portugal)", "valor": "230 V" },
+      { "grandeza": "1 kWh", "valor": "3,6 × 10⁶ J" }
+    ],
+    "formulas": [
+      "Corrente elétrica: I = Q / Δt",
+      "Diferença de potencial: U = E / Q",
+      "Resistência elétrica: R = U / I",
+      "Resistência de um fio: R = ρ l / A",
+      "Potência elétrica: P = U I",
+      "Energia elétrica: E = P Δt",
+      "Efeito Joule: P = R I² = U² / R",
+      "Associação em série: Req = R1 + R2 + ...; I igual; U = U1 + U2 + ...",
+      "Associação em paralelo: 1/Req = 1/R1 + 1/R2 + ...; U igual; I = I1 + I2 + ...",
+      "Gerador real: U = ε − r I",
+      "Balanço energético do gerador: ε I = U I + r I²",
+      "Rendimento do gerador: η = (U / ε) × 100",
+      "Corrente de curto-circuito: I = ε / r"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "Questão 1",
+      "texto_apoio": "Um gerador de força eletromotriz 12,0 V e resistência interna 0,50 Ω alimenta uma resistência exterior de 5,5 Ω.",
+      "figuras": [
+        { "imagem": "images/f10_el3_gerador.png", "alt": "Gerador de força eletromotriz ε e resistência interna r, ligado a uma resistência exterior R", "legenda": "Figura 1" }
+      ]
+    },
+    {
+      "numero": 2,
+      "titulo": "Questão 2",
+      "texto_apoio": "Uma fonte de tensão ideal de 30 V alimenta duas resistências, R1 = 10 Ω e R2 = 20 Ω, ligadas em série. Numa segunda situação, liga-se uma terceira resistência, R3 = 20 Ω, em paralelo com R2.",
+      "figuras": [
+        { "imagem": "images/f10_el3_serie_paralelo.png", "alt": "Fonte de 30 V, R1 em série com R2; na segunda situação, R3 em paralelo com R2", "legenda": "Figura 2" }
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "Questão 3",
+      "texto_apoio": "Uma central elétrica transporta uma potência de 1,0 MW até uma cidade através de uma linha cuja resistência total é 4,0 Ω. Admita que a potência é transportada à tensão de 20 kV (situação A) ou à tensão de 200 kV (situação B), sendo a potência transportada igual ao produto da tensão pela corrente na linha.",
+      "figuras": [
+        { "imagem": "images/f10_el3_linha_transporte.png", "alt": "Central elétrica, linha de transporte e posto de transformação junto à cidade", "legenda": "Figura 3" }
+      ]
+    },
+    {
+      "numero": 4,
+      "titulo": "Questão 4",
+      "texto_apoio": "Numa atividade laboratorial (AL 2.1), um grupo de alunos determinou a característica de uma pilha, variando a resistência de um reóstato ligado aos seus terminais. Os valores da corrente (I) e da diferença de potencial nos terminais da pilha (U) estão registados na tabela seguinte.",
+      "figuras": [
+        { "imagem": "images/f10_el3_AL21_graf.png", "alt": "Gráfico de U em função de I (em A), com reta de ajuste descendente", "legenda": "Figura 4" }
+      ],
+      "tabela_apoio": {
+        "titulo": "Tabela 1",
+        "colunas": ["I (mA)", "50", "100", "150", "200", "250"],
+        "linhas": [
+          ["U (V)", "5,40", "5,30", "5,19", "5,10", "5,01"]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1_1", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.1",
+      "enunciado": "Qual é a diferença de potencial nos terminais do gerador, quando está ligado à resistência de 5,5 Ω?",
+      "opcoes": [
+        { "letra": "A", "texto": "12,0 V" },
+        { "letra": "B", "texto": "11,0 V" },
+        { "letra": "C", "texto": "6,0 V" },
+        { "letra": "D", "texto": "1,0 V" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "I = ε / (R + r) = 12,0 / 6,0 = 2,0 A. U = ε − r I = 12,0 − 0,50 × 2,0 = 11,0 V."
+    },
+    {
+      "id": "p1_2", "grupo": 1, "tipo": "calc", "numero": "1.2",
+      "enunciado": "Determine a intensidade da corrente no circuito. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Relaciona a força eletromotriz com a resistência total do circuito: ε = (R + r) I (ou U = ε − r I e U = R I).", "pontos": 4 },
+        { "descricao": "Substitui os valores: I = 12,0 / (5,5 + 0,50).", "pontos": 3 },
+        { "descricao": "Obtém I = 2,0 A (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "ε = (R + r) I → I = 12,0 / (5,5 + 0,50) = 2,0 A.",
+      "resposta_final": "2,0 A", "cotacao": 10
+    },
+    {
+      "id": "p1_3", "grupo": 1, "tipo": "calc", "numero": "1.3",
+      "enunciado": "Determine a potência total fornecida pelo gerador, a potência útil e a potência dissipada no seu interior, e verifique o balanço energético. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a potência total: ε I = 12,0 × 2,0 = 24 W.", "pontos": 2 },
+        { "descricao": "Calcula a potência útil: U I = 11,0 × 2,0 = 22 W.", "pontos": 3 },
+        { "descricao": "Calcula a potência dissipada no interior: r I² = 0,50 × 2,0² = 2,0 W.", "pontos": 3 },
+        { "descricao": "Verifica que 24 W = 22 W + 2,0 W (conservação da energia).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "P total = ε I = 24 W; P útil = U I = 22 W; P dissipada = r I² = 2,0 W. 22 + 2,0 = 24 W.",
+      "resposta_final": "24 W; 22 W; 2,0 W", "cotacao": 10
+    },
+    {
+      "id": "p1_4", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.4",
+      "enunciado": "Qual é o rendimento do gerador nestas condições?",
+      "opcoes": [
+        { "letra": "A", "texto": "100 %" },
+        { "letra": "B", "texto": "8,3 %" },
+        { "letra": "C", "texto": "92 %" },
+        { "letra": "D", "texto": "46 %" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "η = U / ε × 100 = 11,0 / 12,0 × 100 ≈ 92 %."
+    },
+    {
+      "id": "p1_5", "grupo": 1, "tipo": "open", "numero": "1.5",
+      "enunciado": "Ligar diretamente os terminais de um gerador com um fio condutor (curto-circuito) é perigoso. Explique porquê, indicando o valor da corrente nesta situação para o gerador do enunciado. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "No curto-circuito a resistência exterior é praticamente nula e a corrente atinge o valor máximo, I = ε / r = 12,0 / 0,50 = 24 A.", "pontos": 4 },
+        { "descricao": "A diferença de potencial nos terminais é praticamente nula e toda a potência fornecida (ε I) é dissipada no interior do gerador (r I²).", "pontos": 3 },
+        { "descricao": "A pilha aquece muito e pode danificar-se, havendo risco de queimaduras ou de incêndio.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "No curto-circuito, a resistência exterior é praticamente nula e a corrente é máxima: I = ε / r = 12,0 / 0,50 = 24 A. A diferença de potencial nos terminais é praticamente nula e toda a potência fornecida pelo gerador é dissipada no seu interior, por efeito Joule. O gerador aquece muito e pode danificar-se.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p2_1", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.1",
+      "enunciado": "Na primeira situação (só R1 e R2), qual é a intensidade da corrente no circuito?",
+      "opcoes": [
+        { "letra": "A", "texto": "3,0 A" },
+        { "letra": "B", "texto": "1,5 A" },
+        { "letra": "C", "texto": "0,50 A" },
+        { "letra": "D", "texto": "1,0 A" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "Req = 10 + 20 = 30 Ω. I = U / Req = 30 / 30 = 1,0 A."
+    },
+    {
+      "id": "p2_2", "grupo": 2, "tipo": "calc", "numero": "2.2",
+      "enunciado": "Na primeira situação, determine a diferença de potencial em R2 e a potência nela dissipada. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a resistência equivalente: Req = 30 Ω.", "pontos": 2 },
+        { "descricao": "Calcula a corrente: I = 1,0 A.", "pontos": 2 },
+        { "descricao": "Calcula a diferença de potencial em R2: U2 = R2 I = 20 V.", "pontos": 3 },
+        { "descricao": "Calcula a potência dissipada em R2: P = U2 I = 20 W (ou R2 I²).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "Req = 30 Ω; I = 1,0 A; U2 = 20 × 1,0 = 20 V; P2 = U2 I = 20 W.",
+      "resposta_final": "U2 = 20 V; P2 = 20 W", "cotacao": 10
+    },
+    {
+      "id": "p2_3", "grupo": 2, "tipo": "correspondencia", "numero": "2.3",
+      "enunciado": "Faça corresponder cada uma das grandezas da primeira situação (Coluna I) ao respetivo valor (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Resistência equivalente do circuito" },
+        { "letra": "b", "texto": "Diferença de potencial em R1" },
+        { "letra": "c", "texto": "Potência total fornecida pela fonte" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "10 V" },
+        { "numero": "2", "texto": "30 Ω" },
+        { "numero": "3", "texto": "30 W" },
+        { "numero": "4", "texto": "20 V" }
+      ],
+      "resposta_correta": { "a": "2", "b": "1", "c": "3" }, "cotacao": 10,
+      "explicacao": "Req = 30 Ω; U1 = R1 I = 10 V; P total = U I = 30 × 1,0 = 30 W. O valor 20 V é a ddp em R2."
+    },
+    {
+      "id": "p2_4", "grupo": 2, "tipo": "calc", "numero": "2.4",
+      "enunciado": "Na segunda situação (com R3), determine a intensidade da corrente fornecida pela fonte. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a resistência equivalente da associação em paralelo de R2 e R3: 1/R = 1/20 + 1/20, logo R = 10 Ω.", "pontos": 4 },
+        { "descricao": "Calcula a resistência equivalente do circuito: Req = 10 + 10 = 20 Ω.", "pontos": 3 },
+        { "descricao": "Obtém I = 30 / 20 = 1,5 A (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "Rp = 20 × 20 / (20 + 20) = 10 Ω. Req = 10 + 10 = 20 Ω. I = 30 / 20 = 1,5 A.",
+      "resposta_final": "1,5 A", "cotacao": 10
+    },
+    {
+      "id": "p2_5", "grupo": 2, "tipo": "open", "numero": "2.5",
+      "enunciado": "Compare a potência dissipada em R1 nas duas situações, justificando. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Ao ligar R3 em paralelo com R2, a resistência equivalente do circuito diminui (de 30 Ω para 20 Ω).", "pontos": 4 },
+        { "descricao": "Com a mesma tensão da fonte, a corrente fornecida (que atravessa R1) aumenta de 1,0 A para 1,5 A.", "pontos": 3 },
+        { "descricao": "Como P = R1 I², a potência dissipada em R1 aumenta: passa de 10 W para 22,5 W.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Ao ligar R3 em paralelo com R2, a resistência equivalente diminui de 30 Ω para 20 Ω; com a mesma tensão, a corrente que atravessa R1 aumenta de 1,0 A para 1,5 A. Como P = R1 I², a potência dissipada em R1 aumenta de 10 W para 22,5 W.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p3_1", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.1",
+      "enunciado": "Qual é a corrente na linha na situação A (20 kV)?",
+      "opcoes": [
+        { "letra": "A", "texto": "50 A" },
+        { "letra": "B", "texto": "5,0 A" },
+        { "letra": "C", "texto": "2,0 × 10⁻² A" },
+        { "letra": "D", "texto": "5,0 × 10² A" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "P = U I → I = 1,0 × 10⁶ / 20 × 10³ = 50 A."
+    },
+    {
+      "id": "p3_2", "grupo": 3, "tipo": "calc", "numero": "3.2",
+      "enunciado": "Determine a potência dissipada na linha na situação A. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Relaciona a potência transportada com a tensão e a corrente: I = P / U.", "pontos": 3 },
+        { "descricao": "Obtém I = 50 A.", "pontos": 2 },
+        { "descricao": "Relaciona a potência dissipada por efeito Joule: P diss = R I².", "pontos": 3 },
+        { "descricao": "Obtém P diss = 1,0 × 10⁴ W.", "pontos": 2 }
+      ],
+      "resolucao_modelo": "I = 1,0 × 10⁶ / 20 × 10³ = 50 A. P diss = R I² = 4,0 × 50² = 1,0 × 10⁴ W.",
+      "resposta_final": "1,0 × 10⁴ W", "cotacao": 10
+    },
+    {
+      "id": "p3_3", "grupo": 3, "tipo": "calc", "numero": "3.3",
+      "enunciado": "Determine a potência dissipada na linha na situação B. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a corrente na linha: I = 1,0 × 10⁶ / 200 × 10³ = 5,0 A.", "pontos": 4 },
+        { "descricao": "Calcula a potência dissipada: P diss = R I² = 4,0 × 5,0².", "pontos": 3 },
+        { "descricao": "Obtém P diss = 1,0 × 10² W.", "pontos": 3 }
+      ],
+      "resolucao_modelo": "I = 1,0 × 10⁶ / 200 × 10³ = 5,0 A. P diss = 4,0 × 5,0² = 1,0 × 10² W.",
+      "resposta_final": "1,0 × 10² W", "cotacao": 10
+    },
+    {
+      "id": "p3_4", "grupo": 3, "tipo": "completar_texto", "numero": "3.4",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Para transportar a mesma potência, ao aumentar a tensão na linha a corrente a) ______ e a potência dissipada na linha b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "aumenta" },
+            { "letra": "B", "texto": "diminui" },
+            { "letra": "C", "texto": "mantém-se" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "aumenta" },
+            { "letra": "B", "texto": "diminui" },
+            { "letra": "C", "texto": "mantém-se" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "B", "b": "B" }, "cotacao": 10,
+      "explicacao": "Com P = U I constante, mais U implica menos I. Como P diss = R I², menos corrente implica muito menos energia dissipada."
+    },
+    {
+      "id": "p3_5", "grupo": 3, "tipo": "open", "numero": "3.5",
+      "enunciado": "Explique porque é que a eletricidade é transportada a alta tensão e depois a tensão é reduzida junto às habitações. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Para uma dada potência (P = U I), uma tensão mais elevada implica uma corrente menor na linha.", "pontos": 4 },
+        { "descricao": "A potência dissipada na linha por efeito Joule é R I²; se a corrente se reduz, as perdas reduzem-se com o quadrado da corrente (dividindo a corrente por 10, as perdas ficam 100 vezes menores).", "pontos": 3 },
+        { "descricao": "Junto às habitações a tensão é baixada, nos postos de transformação, para os 230 V da rede doméstica, por segurança e porque os aparelhos são projetados para essa tensão.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Para transportar uma dada potência (P = U I), quanto maior a tensão, menor a corrente na linha. Como a potência dissipada por efeito Joule é R I², reduzir a corrente 10 vezes reduz as perdas 100 vezes. Junto às habitações, a tensão é reduzida nos postos de transformação para 230 V, a tensão da rede doméstica para que os aparelhos são projetados.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p4_1", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.1",
+      "enunciado": "Com o interruptor aberto, qual seria o valor aproximado indicado pelo voltímetro?",
+      "opcoes": [
+        { "letra": "A", "texto": "0 V" },
+        { "letra": "B", "texto": "2,0 V" },
+        { "letra": "C", "texto": "5,5 V" },
+        { "letra": "D", "texto": "2,8 V" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "Sem corrente, U = ε. A ordenada na origem da reta de ajuste, ≈ 5,5 V, é a força eletromotriz."
+    },
+    {
+      "id": "p4_2", "grupo": 4, "tipo": "calc", "numero": "4.2",
+      "enunciado": "Utilizando a calculadora gráfica, determine a força eletromotriz e a resistência interna da pilha. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Converte a corrente para ampere (I em A = I em mA / 1000).", "pontos": 2 },
+        { "descricao": "Traça o gráfico de U em função de I e faz a regressão linear.", "pontos": 3 },
+        { "descricao": "Obtém ε ≈ 5,5 V (ordenada na origem).", "pontos": 3 },
+        { "descricao": "Obtém r ≈ 2,0 Ω (módulo do declive).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "Com I em ampere, a reta de ajuste é U = 5,49 − 1,96 I (SI). Logo ε ≈ 5,5 V e r = |declive| ≈ 2,0 Ω.",
+      "resposta_final": "ε ≈ 5,5 V; r ≈ 2,0 Ω", "cotacao": 10
+    },
+    {
+      "id": "p4_3", "grupo": 4, "tipo": "calc", "numero": "4.3",
+      "enunciado": "Determine a corrente de curto-circuito da pilha. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Relaciona a corrente de curto-circuito com ε e r: no curto-circuito U = 0, logo I = ε / r.", "pontos": 4 },
+        { "descricao": "Substitui os valores: I = 5,5 / 2,0.", "pontos": 3 },
+        { "descricao": "Obtém I ≈ 2,8 A (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "U = ε − r I = 0 → I = ε / r = 5,49 / 1,96 ≈ 2,8 A.",
+      "resposta_final": "2,8 A", "cotacao": 10
+    },
+    {
+      "id": "p4_4", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.4",
+      "enunciado": "Uma pilha gasta mantém aproximadamente a mesma força eletromotriz, mas a sua resistência interna aumenta. Quando fornece a mesma corrente, a diferença de potencial nos seus terminais:",
+      "opcoes": [
+        { "letra": "A", "texto": "é menor" },
+        { "letra": "B", "texto": "é maior" },
+        { "letra": "C", "texto": "é igual" },
+        { "letra": "D", "texto": "é nula" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "U = ε − r I. Com ε igual e r maior, o termo r I é maior e U é menor."
+    },
+    {
+      "id": "p4_5", "grupo": 4, "tipo": "open", "numero": "4.5",
+      "enunciado": "Descreva o procedimento que permite obter a curva característica de uma pilha, indicando como se ligam os aparelhos de medida e uma precaução a ter durante a atividade. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Monta-se um circuito com a pilha, o interruptor, o reóstato e o amperímetro em série, com o voltímetro ligado em paralelo aos terminais da pilha.", "pontos": 4 },
+        { "descricao": "Varia-se a resistência do reóstato e registam-se, para cada valor, os pares (U, I); obtêm-se pelo menos seis pontos, traça-se o gráfico de U em função de I e faz-se a regressão linear.", "pontos": 3 },
+        { "descricao": "Precaução: manter o interruptor fechado só o tempo necessário a cada leitura (para a pilha não aquecer) e nunca reduzir a resistência exterior a zero (curto-circuito).", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Monta-se um circuito com a pilha, o interruptor, o reóstato e o amperímetro em série, e liga-se o voltímetro aos terminais da pilha, em paralelo. Varia-se a resistência do reóstato e registam-se pelo menos seis pares (U, I). Traça-se o gráfico de U em função de I e faz-se a regressão linear: a ordenada na origem é ε e o módulo do declive é r. Mantém-se o interruptor fechado só o tempo necessário a cada leitura, para a pilha não aquecer, e evita-se o curto-circuito.",
+      "cotacao": 10
+    }
+  ]
+}

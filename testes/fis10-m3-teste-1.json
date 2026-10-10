@@ -1,0 +1,336 @@
+{
+  "id": "fis10-m3-teste-1",
+  "titulo": "Teste 1 — Energia, fenómenos térmicos e radiação",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 90,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      { "grandeza": "Capacidade térmica mássica da água líquida", "valor": "4,18 × 10³ J kg⁻¹ °C⁻¹" },
+      { "grandeza": "Capacidade térmica mássica do gelo", "valor": "2,1 × 10³ J kg⁻¹ °C⁻¹" },
+      { "grandeza": "Capacidade térmica mássica do alumínio", "valor": "9,0 × 10² J kg⁻¹ °C⁻¹" },
+      { "grandeza": "Variação de entalpia mássica de fusão da água", "valor": "3,34 × 10⁵ J kg⁻¹" },
+      { "grandeza": "Variação de entalpia mássica de vaporização da água", "valor": "2,26 × 10⁶ J kg⁻¹" },
+      { "grandeza": "Condutividade térmica do vidro", "valor": "0,80 W m⁻¹ K⁻¹" },
+      { "grandeza": "Condutividade térmica da madeira", "valor": "0,15 W m⁻¹ K⁻¹" },
+      { "grandeza": "Conversão de temperaturas", "valor": "T (K) = θ (°C) + 273,15" }
+    ],
+    "formulas": [
+      "Primeira lei da termodinâmica: ΔU = W + Q + R",
+      "Energia para variar a temperatura: E = m c ΔT",
+      "Energia para mudar de estado físico: E = m ΔH",
+      "Condução: Q / Δt = k A ΔT / l",
+      "Irradiância: P / A",
+      "Rendimento de um painel fotovoltaico: η = (P elétrica / P radiação incidente) × 100, com P radiação incidente = irradiância × área",
+      "Rendimento de uma máquina: η = (E útil / E fornecida) × 100",
+      "Potência elétrica: P = U I; energia: E = P Δt; 1 kWh = 3,6 × 10⁶ J",
+      "Balanço energético num sistema isolado: energia cedida = energia recebida (ΔU = 0)",
+      "Erro percentual: |valor experimental − valor tabelado| / valor tabelado × 100"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "Questão 1",
+      "texto_apoio": "Um gás encontra-se num cilindro com êmbolo, inicialmente à temperatura de 27 °C. O gás é comprimido: a vizinhança realiza sobre o gás um trabalho de 350 J e o gás cede 120 J à vizinhança como calor. Considere desprezável a troca de energia por radiação.",
+      "figuras": [
+        { "imagem": "images/f10_t1_bomba_gas.png", "alt": "Cilindro com êmbolo a comprimir um gás, com energia cedida como calor para a vizinhança", "legenda": "Figura 1" }
+      ]
+    },
+    {
+      "numero": 2,
+      "titulo": "Questão 2",
+      "texto_apoio": "Um painel fotovoltaico, com 2,0 m² de área, está orientado para receber a radiação solar perpendicularmente. A irradiância é 800 W/m². Nestas condições, o painel fornece uma potência elétrica de 280 W.",
+      "figuras": [
+        { "imagem": "images/f10_t1_painel.png", "alt": "Painel fotovoltaico inclinado a receber radiação solar, ligado a uma lâmpada", "legenda": "Figura 2" }
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "Questão 3",
+      "texto_apoio": "Uma janela de vidro simples tem 1,5 m² de área e 5,0 mm de espessura. A temperatura no interior da casa é 21 °C e no exterior é 6 °C. Considere que a condutividade térmica do vidro é 0,80 W m⁻¹ K⁻¹ e que as temperaturas se mantêm constantes.",
+      "figuras": [
+        { "imagem": "images/f10_t1_janela.png", "alt": "Janela de vidro simples, interior a 21 °C e exterior a 6 °C", "legenda": "Figura 3" }
+      ]
+    },
+    {
+      "numero": 4,
+      "titulo": "Questão 4",
+      "texto_apoio": "Um aquecedor de imersão, de potência 600 W, aquece 1,5 kg de água, inicialmente a 18 °C, até 98 °C. Admita que toda a energia fornecida pelo aquecedor é absorvida pela água. Considere: capacidade térmica mássica da água, c = 4,18 × 10³ J kg⁻¹ °C⁻¹; variação de entalpia mássica de fusão do gelo, ΔH = 3,34 × 10⁵ J kg⁻¹.",
+      "figuras": [
+        { "imagem": "images/f10_t1_aquecimento.png", "alt": "Aquecedor de imersão num recipiente com água, com gráfico de temperatura em função do tempo", "legenda": "Figura 4" }
+      ]
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1_1", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.1",
+      "enunciado": "Qual é a temperatura inicial do gás, expressa em kelvin?",
+      "opcoes": [
+        { "letra": "A", "texto": "3,0 × 10² K" },
+        { "letra": "B", "texto": "27 K" },
+        { "letra": "C", "texto": "246 K" },
+        { "letra": "D", "texto": "573 K" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "T = θ + 273,15 = 27 + 273,15 = 300,15 K ≈ 3,0 × 10² K. (246 K resulta de subtrair 27 a 273.)"
+    },
+    {
+      "id": "p1_2", "grupo": 1, "tipo": "calc", "numero": "1.2",
+      "enunciado": "Determine a variação da energia interna do gás. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Identifica os sinais das transferências: W = +350 J (energia recebida como trabalho) e Q = −120 J (energia cedida como calor); R = 0.", "pontos": 4 },
+        { "descricao": "Aplica a primeira lei da termodinâmica: ΔU = W + Q + R.", "pontos": 3 },
+        { "descricao": "Obtém ΔU = +230 J (com unidade e sinal).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "W = +350 J; Q = −120 J; R = 0. ΔU = W + Q + R = 350 − 120 + 0 = +230 J.",
+      "resposta_final": "+230 J", "cotacao": 10
+    },
+    {
+      "id": "p1_3", "grupo": 1, "tipo": "completar_texto", "numero": "1.3",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Como a energia interna do gás aumenta, a temperatura do gás a) ______. A energia transferida como calor entre dois sistemas faz-se espontaneamente do sistema a temperatura b) ______ para o sistema a temperatura mais baixa.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "aumenta" },
+            { "letra": "B", "texto": "diminui" },
+            { "letra": "C", "texto": "mantém-se" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "mais baixa" },
+            { "letra": "B", "texto": "mais alta" },
+            { "letra": "C", "texto": "igual" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "A", "b": "B" }, "cotacao": 10,
+      "explicacao": "A temperatura está relacionada com a energia cinética média das partículas; ao aumentar a energia interna do gás, a temperatura aumenta. O calor é energia transferida do sistema a temperatura mais alta para o de temperatura mais baixa."
+    },
+    {
+      "id": "p1_4", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.4",
+      "enunciado": "O funcionamento de um termómetro baseia-se:",
+      "opcoes": [
+        { "letra": "A", "texto": "na primeira lei da termodinâmica" },
+        { "letra": "B", "texto": "na conservação da energia mecânica" },
+        { "letra": "C", "texto": "no efeito Joule" },
+        { "letra": "D", "texto": "na lei zero da termodinâmica: o termómetro atinge o equilíbrio térmico com o corpo" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "Quando o termómetro fica em equilíbrio térmico com o corpo, estão à mesma temperatura, e a leitura do termómetro é a temperatura do corpo (lei zero)."
+    },
+    {
+      "id": "p1_5", "grupo": 1, "tipo": "open", "numero": "1.5",
+      "enunciado": "Num dia frio, um banco de jardim com uma parte de metal e outra de madeira, ambas ao ar livre há horas, parece mais frio no metal do que na madeira. Explique porquê. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "As duas partes estão em equilíbrio térmico com o ambiente, logo à mesma temperatura: a sensação de frio não resulta de uma temperatura diferente.", "pontos": 4 },
+        { "descricao": "O metal tem uma condutividade térmica muito maior do que a madeira, pelo que retira energia à mão (como calor) mais depressa.", "pontos": 3 },
+        { "descricao": "A pele deteta a rapidez com que perde energia, e não a temperatura do objeto; por isso o metal parece mais frio.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "O metal e a madeira estão em equilíbrio térmico com o ambiente, logo à mesma temperatura. Porém, o metal tem uma condutividade térmica muito maior, pelo que, quando se toca nele, a energia é transferida da mão para o metal (como calor) muito mais depressa. A pele sente a rapidez com que perde energia e não a temperatura do objeto, por isso o metal parece mais frio.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p2_1", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.1",
+      "enunciado": "Qual é a potência da radiação que incide no painel?",
+      "opcoes": [
+        { "letra": "A", "texto": "4,0 × 10² W" },
+        { "letra": "B", "texto": "2,8 × 10² W" },
+        { "letra": "C", "texto": "1,6 × 10³ W" },
+        { "letra": "D", "texto": "1,6 × 10⁶ W" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "P incidente = irradiância × área = 800 × 2,0 = 1,6 × 10³ W."
+    },
+    {
+      "id": "p2_2", "grupo": 2, "tipo": "calc", "numero": "2.2",
+      "enunciado": "Determine o rendimento do painel. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a potência da radiação incidente: 800 × 2,0 = 1,6 × 10³ W.", "pontos": 4 },
+        { "descricao": "Escreve η = P elétrica / P incidente × 100.", "pontos": 3 },
+        { "descricao": "Obtém η = 17,5 % (≈ 18 %).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "P incidente = 800 × 2,0 = 1600 W. η = 280 / 1600 × 100 = 17,5 %.",
+      "resposta_final": "17,5 %", "cotacao": 10
+    },
+    {
+      "id": "p2_3", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.3",
+      "enunciado": "Porque é que a energia do Sol consegue chegar à Terra?",
+      "opcoes": [
+        { "letra": "A", "texto": "Porque é transportada pelo ar" },
+        { "letra": "B", "texto": "Por condução através do espaço" },
+        { "letra": "C", "texto": "Por convecção das partículas do Sol" },
+        { "letra": "D", "texto": "Porque a radiação eletromagnética propaga-se no vazio, sem precisar de meio material" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "Entre o Sol e a Terra há praticamente vazio: a condução e a convecção precisam de matéria; só a radiação se propaga no vazio."
+    },
+    {
+      "id": "p2_4", "grupo": 2, "tipo": "correspondencia", "numero": "2.4",
+      "enunciado": "Faça corresponder cada dispositivo (Coluna I) à respetiva função (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Painel fotovoltaico" },
+        { "letra": "b", "texto": "Coletor solar térmico" },
+        { "letra": "c", "texto": "Câmara térmica" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Produz energia elétrica a partir da radiação" },
+        { "numero": "2", "texto": "Aquece um fluido, normalmente água" },
+        { "numero": "3", "texto": "Deteta radiação infravermelha emitida pelos corpos" },
+        { "numero": "4", "texto": "Armazena energia elétrica em baterias" }
+      ],
+      "resposta_correta": { "a": "1", "b": "2", "c": "3" }, "cotacao": 10,
+      "explicacao": "O painel fotovoltaico produz energia elétrica; o coletor térmico aquece um fluido; a câmara térmica deteta a radiação infravermelha que os corpos emitem. A última opção não se aplica a nenhum dos dispositivos."
+    },
+    {
+      "id": "p2_5", "grupo": 2, "tipo": "open", "numero": "2.5",
+      "enunciado": "Explique porque é que um objeto escuro e baço aquece mais ao Sol do que um objeto claro e polido. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "A radiação que incide num corpo pode ser absorvida, refletida ou transmitida; as superfícies escuras e baças absorvem mais e as claras e polidas refletem mais.", "pontos": 4 },
+        { "descricao": "A radiação absorvida aumenta a energia interna do corpo, pelo que o objeto escuro, que absorve mais, aquece mais.", "pontos": 3 },
+        { "descricao": "Um corpo aquece enquanto absorve mais radiação do que emite; atinge o equilíbrio quando a potência absorvida iguala a emitida.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "A radiação que incide num corpo pode ser absorvida, refletida ou transmitida. Uma superfície escura e baça absorve grande parte da radiação incidente, enquanto uma superfície clara e polida reflete-a. A radiação absorvida aumenta a energia interna do corpo, por isso o objeto escuro aquece mais. O corpo aquece enquanto absorve mais radiação do que emite, até que as potências se igualem.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p3_1", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.1",
+      "enunciado": "Qual é a rapidez de transferência de energia por condução através do vidro?",
+      "opcoes": [
+        { "letra": "A", "texto": "3,6 W" },
+        { "letra": "B", "texto": "3,6 × 10³ W" },
+        { "letra": "C", "texto": "1,8 × 10³ W" },
+        { "letra": "D", "texto": "7,2 × 10³ W" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "Q/Δt = k A ΔT / l = 0,80 × 1,5 × 15 / 5,0 × 10⁻³ = 3,6 × 10³ W. (3,6 W resulta de não converter a espessura para metros.)"
+    },
+    {
+      "id": "p3_2", "grupo": 3, "tipo": "calc", "numero": "3.2",
+      "enunciado": "Determine a energia transferida através do vidro durante 1,0 h. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a rapidez de transferência: Q/Δt = k A ΔT / l = 3,6 × 10³ W (com l = 5,0 × 10⁻³ m e ΔT = 15 K).", "pontos": 4 },
+        { "descricao": "Converte o tempo para segundos (3600 s) e escreve E = (Q/Δt) × Δt.", "pontos": 3 },
+        { "descricao": "Obtém E ≈ 1,3 × 10⁷ J (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "Q/Δt = 0,80 × 1,5 × 15 / 5,0 × 10⁻³ = 3,6 × 10³ W. E = 3,6 × 10³ × 3600 ≈ 1,3 × 10⁷ J.",
+      "resposta_final": "1,3 × 10⁷ J", "cotacao": 10
+    },
+    {
+      "id": "p3_3", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.3",
+      "enunciado": "Se a espessura do vidro duplicasse, mantendo-se as restantes condições, a rapidez de transferência de energia:",
+      "opcoes": [
+        { "letra": "A", "texto": "reduzir-se-ia a metade" },
+        { "letra": "B", "texto": "duplicaria" },
+        { "letra": "C", "texto": "manter-se-ia" },
+        { "letra": "D", "texto": "quadruplicaria" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "Q/Δt é inversamente proporcional à espessura l. Com 2l, a rapidez de transferência reduz-se a metade."
+    },
+    {
+      "id": "p3_4", "grupo": 3, "tipo": "completar_texto", "numero": "3.4",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Num aquecedor elétrico, o ar quente sobe porque fica a) ______ denso. A transferência de energia por movimento de matéria num fluido designa-se b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "mais" },
+            { "letra": "B", "texto": "menos" },
+            { "letra": "C", "texto": "igualmente" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "condução" },
+            { "letra": "B", "texto": "convecção" },
+            { "letra": "C", "texto": "radiação" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "B", "b": "B" }, "cotacao": 10,
+      "explicacao": "O ar aquecido dilata, fica menos denso e sobe; o ar mais frio e mais denso desce. A energia transportada pelo movimento do fluido é transferida por convecção."
+    },
+    {
+      "id": "p3_5", "grupo": 3, "tipo": "open", "numero": "3.5",
+      "enunciado": "Os vidros duplos reduzem as perdas de energia de uma casa, em comparação com os vidros simples. Explique porquê. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Entre os dois vidros existe uma camada de ar (ou de outro gás) com condutividade térmica muito baixa, o que reduz a transferência de energia por condução.", "pontos": 4 },
+        { "descricao": "A camada é fina e fechada, pelo que o ar não circula livremente, o que reduz a transferência de energia por convecção.", "pontos": 3 },
+        { "descricao": "Sendo Q/Δt = k A ΔT / l, a rapidez de transferência diminui, e é necessária menos energia para manter a casa quente.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Entre os dois vidros existe uma camada fina de ar (ou de outro gás), cuja condutividade térmica é muito baixa, o que reduz a transferência de energia por condução. Por ser fina e fechada, o ar não circula, o que reduz a convecção. A rapidez de transferência de energia diminui e a casa perde menos energia.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p4_1", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.1",
+      "enunciado": "Qual é a energia necessária para aquecer a água?",
+      "opcoes": [
+        { "letra": "A", "texto": "6,3 × 10³ J" },
+        { "letra": "B", "texto": "6,3 × 10⁵ J" },
+        { "letra": "C", "texto": "5,0 × 10⁴ J" },
+        { "letra": "D", "texto": "5,0 × 10⁵ J" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "E = m c ΔT = 1,5 × 4,18 × 10³ × 80 = 5,0 × 10⁵ J."
+    },
+    {
+      "id": "p4_2", "grupo": 4, "tipo": "calc", "numero": "4.2",
+      "enunciado": "Determine o intervalo de tempo durante o qual o aquecedor esteve ligado. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a energia necessária: E = m c ΔT = 5,0 × 10⁵ J.", "pontos": 4 },
+        { "descricao": "Relaciona a potência com a energia e o tempo: Δt = E / P.", "pontos": 3 },
+        { "descricao": "Obtém Δt ≈ 8,4 × 10² s (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "E = 1,5 × 4,18 × 10³ × 80 = 5,016 × 10⁵ J. Δt = E / P = 5,016 × 10⁵ / 600 ≈ 8,4 × 10² s.",
+      "resposta_final": "8,4 × 10² s", "cotacao": 10
+    },
+    {
+      "id": "p4_3", "grupo": 4, "tipo": "calc", "numero": "4.3",
+      "enunciado": "Determine a energia necessária para fundir completamente 0,80 kg de gelo, já a 0 °C. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Reconhece que, durante a fusão, a temperatura se mantém constante, pelo que se usa E = m ΔH (e não m c ΔT).", "pontos": 4 },
+        { "descricao": "Substitui os valores: E = 0,80 × 3,34 × 10⁵.", "pontos": 3 },
+        { "descricao": "Obtém E ≈ 2,7 × 10⁵ J (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "E = m ΔH = 0,80 × 3,34 × 10⁵ = 2,672 × 10⁵ J ≈ 2,7 × 10⁵ J.",
+      "resposta_final": "2,7 × 10⁵ J", "cotacao": 10
+    },
+    {
+      "id": "p4_4", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.4",
+      "enunciado": "Durante a fusão do gelo, à pressão normal, a temperatura da mistura gelo-água:",
+      "opcoes": [
+        { "letra": "A", "texto": "aumenta regularmente" },
+        { "letra": "B", "texto": "mantém-se constante, a 0 °C" },
+        { "letra": "C", "texto": "diminui" },
+        { "letra": "D", "texto": "oscila entre 0 °C e 100 °C" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "Numa mudança de estado de uma substância pura, a temperatura mantém-se constante. A energia fornecida serve para quebrar ligações entre partículas."
+    },
+    {
+      "id": "p4_5", "grupo": 4, "tipo": "open", "numero": "4.5",
+      "enunciado": "Fornece-se a mesma energia a 1,0 kg de água e a 1,0 kg de alumínio (c = 9,0 × 10² J kg⁻¹ °C⁻¹), inicialmente à mesma temperatura. Indique, justificando, qual dos dois aquece mais. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "A variação de temperatura é ΔT = E / (m c); com E e m iguais, ΔT é inversamente proporcional a c.", "pontos": 4 },
+        { "descricao": "O alumínio tem menor capacidade térmica mássica, logo sofre a maior variação de temperatura (cerca de 4,6 vezes superior à da água).", "pontos": 3 },
+        { "descricao": "A água, com c elevada, aquece e arrefece mais devagar, o que explica, por exemplo, os climas mais amenos das zonas costeiras.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Pela expressão E = m c ΔT, a variação de temperatura é ΔT = E / (m c). Como a energia e a massa são iguais, ΔT é inversamente proporcional a c. O alumínio tem menor capacidade térmica mássica (9,0 × 10² contra 4,18 × 10³ J kg⁻¹ °C⁻¹), pelo que aquece mais, cerca de 4,6 vezes mais do que a água.",
+      "cotacao": 10
+    }
+  ]
+}

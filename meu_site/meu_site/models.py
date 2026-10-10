@@ -1,3 +1,5 @@
+import secrets
+import string
 from datetime import timedelta
 
 from django.db import models
@@ -5,6 +7,22 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save  # Importação necessária
 from django.dispatch import receiver          # Importação necessária
 from django.utils import timezone
+
+# Código de convite de cada aluno (ver PerfilAluno.codigo_referral e a
+# página "Convidar Amigos", Templates/convidar.html) — 6 carateres
+# maiúsculos/dígitos, fáceis de ler/escrever à mão, sem O/0/I/1 (ambíguos
+# ao ditar ou copiar de viva voz) para reduzir erros de translineação.
+ALFABETO_CODIGO_REFERRAL = ''.join(c for c in string.ascii_uppercase + string.digits if c not in 'O0I1')
+
+
+def gerar_codigo_referral_unico():
+    # PerfilAluno só fica definida mais abaixo neste ficheiro, mas o nome só
+    # é resolvido quando esta função é mesmo chamada (não na definição),
+    # altura em que a classe já existe — por isso não precisa de import.
+    while True:
+        codigo = ''.join(secrets.choice(ALFABETO_CODIGO_REFERRAL) for _ in range(6))
+        if not PerfilAluno.objects.filter(codigo_referral=codigo).exists():
+            return codigo
 
 # Perguntas semanais que cada plano tem direito a fazer ao Kim.
 LIMITES_CHAT_SEMANAL = {
@@ -85,6 +103,15 @@ class PerfilAluno(models.Model):
     # existia diretamente nos ficheiros vocabulario/<unidade>.json, que era
     # partilhado por TODOS os alunos.
     vocabulario_estado = models.JSONField(default=dict, blank=True)
+    # Código de convite único deste aluno (ver gerar_codigo_referral_unico
+    # acima) — gerado ao criar a conta (ver criar_perfil_aluno), com
+    # fallback lazy em pagina_convidar para perfis antigos sem código.
+    codigo_referral = models.CharField(max_length=6, unique=True, blank=True, null=True)
+    # Quem trouxe este aluno (preenchido no signup a partir do ?ref= do
+    # link de convite, ver pagina_signup) — None se não veio de um convite.
+    convidado_por = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True, related_name='convidados'
+    )
 
     class Meta:
         app_label = 'meu_site'
@@ -211,7 +238,7 @@ class InqueritoAluno(models.Model):
 @receiver(post_save, sender=User)
 def criar_perfil_aluno(sender, instance, created, **kwargs):
     if created:
-        PerfilAluno.objects.create(user=instance)
+        PerfilAluno.objects.create(user=instance, codigo_referral=gerar_codigo_referral_unico())
 
 # Adiciona esta classe no final do teu meu_site/models.py
 

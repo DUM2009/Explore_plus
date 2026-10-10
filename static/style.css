@@ -3333,6 +3333,215 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
     font-weight:600;
 }
 
+/* Figuras de contexto (uma por grupo/questão). Se a imagem falhar (ainda
+   não foi adicionada a static/images/), o onerror inline esconde o <img>
+   e .is-indisponivel mostra o texto placeholder em vez do ícone partido. */
+.teste-figura{
+    margin:0 0 18px;
+    text-align:center;
+}
+
+.teste-figura-imagem{
+    max-width:100%;
+    max-height:320px;
+    border-radius:12px;
+    border:1px solid #e2e3db;
+}
+
+.teste-figura figcaption{
+    margin-top:6px;
+    font-size:.82rem;
+    font-weight:700;
+    color:#66756e;
+}
+
+.teste-figura-placeholder-texto{
+    display:none;
+    margin:0;
+    padding:28px 18px;
+    background:#f4f6f1;
+    border:1px dashed #c7cbc0;
+    border-radius:12px;
+    color:#66756e;
+    font-size:.86rem;
+}
+
+.teste-figura.is-indisponivel .teste-figura-imagem{
+    display:none;
+}
+
+.teste-figura.is-indisponivel .teste-figura-placeholder-texto{
+    display:block;
+}
+
+/* Botão "Formulário" + modal de constantes/fórmulas — mesma pastilha e
+   mesmo padrão de overlay/modal do temporizador (.teste-timer-*). */
+.teste-formulario-modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(20,24,18,.45);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:60;
+}
+
+.teste-formulario-modal-overlay[hidden]{
+    display:none;
+}
+
+.teste-formulario-modal{
+    position:relative;
+    background:#fff;
+    border-radius:18px;
+    padding:28px;
+    max-width:460px;
+    width:100%;
+    max-height:80vh;
+    overflow-y:auto;
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.teste-formulario-modal h3{
+    margin:0 0 16px;
+    font-size:1.1rem;
+    font-weight:800;
+    color:#1c1c1c;
+}
+
+.teste-formulario-tabela{
+    margin-bottom:16px;
+}
+
+.teste-formulario-lista{
+    margin:0;
+    padding-left:20px;
+    color:#3d4640;
+    font-size:.9rem;
+    line-height:1.7;
+}
+
+/* Autoavaliação (plano Free, perguntas calc/open) — o aluno vê a
+   resolução modelo e marca os critérios que a sua resposta cumpre. */
+.teste-autoavaliacao-aviso{
+    background:#fff;
+    border:1px solid #e2e3db;
+    border-radius:12px;
+    padding:14px 18px;
+    margin-bottom:16px;
+    color:#3d4640;
+    font-size:.9rem;
+    line-height:1.5;
+}
+
+.teste-autoavaliacao-item{
+    background:#fff;
+    border:1px solid #e2e3db;
+    border-radius:12px;
+    padding:16px 18px;
+    margin-bottom:14px;
+}
+
+.teste-autoavaliacao-resolucao,
+.teste-autoavaliacao-resposta-final{
+    color:#3d4640;
+    font-size:.88rem;
+    line-height:1.5;
+    margin:6px 0;
+}
+
+.teste-autoavaliacao-instrucao{
+    font-size:.82rem;
+    font-weight:700;
+    color:#66756e;
+    margin:12px 0 8px;
+}
+
+.teste-criterios-lista{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.teste-criterio-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#f4f6f1;
+    border-radius:10px;
+    padding:10px 14px;
+    cursor:pointer;
+    font-size:.88rem;
+}
+
+.teste-criterio-texto{
+    flex:1 1 auto;
+    color:#333;
+}
+
+.teste-criterio-pontos{
+    flex:none;
+    font-weight:700;
+    color:#1f8a5b;
+}
+
+/* Contestação (plano Pro, perguntas calc/open) */
+.teste-contestar-btn{
+    margin-top:10px;
+    background:none;
+    border:1px solid #c7cbc0;
+    border-radius:999px;
+    padding:6px 16px;
+    font-size:.8rem;
+    font-weight:700;
+    color:#66756e;
+    cursor:pointer;
+}
+
+.teste-contestar-btn:hover{
+    border-color:#1f8a5b;
+    color:#1f8a5b;
+}
+
+.teste-contestar-form{
+    margin-top:10px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.teste-contestar-motivo{
+    width:100%;
+    padding:10px 14px;
+    border:2px solid #ddd;
+    border-radius:10px;
+    font-size:.88rem;
+    font-family:inherit;
+    resize:vertical;
+}
+
+.teste-contestar-enviar{
+    align-self:flex-start;
+    background:#90a668;
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:8px 20px;
+    font-size:.84rem;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.teste-contestar-enviar:hover{
+    background:#7c9457;
+}
+
+.teste-contestar-enviar:disabled{
+    opacity:.7;
+    cursor:default;
+}
+
 @media (max-width:700px){
     .teste-correspondencia,
     .teste-ordenacao{
@@ -5985,6 +6194,16 @@ background:#27ae60;
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.signup-referral-note {
+  margin: -4px 0 4px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #fff7e0;
+  color: #92650a;
+  font-size: .86rem;
+  text-align: center;
 }
 
 .form-group {
@@ -9444,6 +9663,59 @@ body.shadcn-profile .profile-sidebar-nav a.is-active .profile-sidebar-icon svg {
     stroke: var(--sp-primary);
 }
 
+/* "Convidar Amigos" na sidebar principal — mesmo item que estava no menu
+   da conta, só que agora aqui. O link base só define 2 colunas de grid
+   (ícone + rótulo, ver .profile-sidebar-nav a), por isso o badge "OFERTA"
+   (um 3º filho) ficava sem coluna própria e saía cortado — dá-lhe aqui
+   uma 3ª coluna "auto". */
+.profile-sidebar-nav a.sidebar-nav-invite {
+    grid-template-columns: 24px 1fr auto;
+}
+
+body.shadcn-profile .sidebar-nav-invite-badge {
+    margin-left: auto;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #ffc93c;
+    color: #4a3300;
+    font-size: .64rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+}
+
+/* Presente a saltar, dourado e brilhante — para se notar como convite a
+   clicar em vez de mais um ícone cinzento igual aos outros. */
+.sidebar-nav-invite .profile-sidebar-icon {
+    border-radius: 7px;
+    background: #ffc93c;
+    color: #4a3300;
+    box-shadow: 0 0 12px rgba(255, 201, 60, .85), 0 0 4px rgba(255, 201, 60, .9);
+    animation: sidebar-invite-float 1.4s ease-in-out infinite;
+}
+
+@keyframes sidebar-invite-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sidebar-nav-invite .profile-sidebar-icon {
+        animation: none;
+    }
+}
+
+/* "Convidar Amigos" é a label mais comprida da sidebar e, com a 3ª coluna
+   do badge "OFERTA" a ocupar espaço (ver grid-template-columns acima), já
+   não cabe numa linha só — em vez de cortar com "…" (ver white-space:nowrap
+   em .profile-sidebar-label), deixa quebrar em duas linhas para o texto
+   continuar todo legível. */
+.sidebar-nav-invite .profile-sidebar-label {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.25;
+}
+
 body.shadcn-profile .profile-sidebar-nav {
     scrollbar-color: var(--sp-border) transparent;
 }
@@ -10314,34 +10586,6 @@ body.shadcn-profile .profile-level-badge small {
     opacity: 1;
 }
 
-/* Stat card icons: plain colored line icons, no background badge. */
-body.shadcn-profile .profile-stat-icon {
-    display: grid;
-    place-items: center;
-    width: 24px;
-    height: 24px;
-    margin: 0 auto 6px;
-    background: none;
-    border-radius: 0;
-}
-
-body.shadcn-profile .profile-stat-icon svg {
-    width: 22px;
-    height: 22px;
-}
-
-body.shadcn-profile .profile-stat-icon--streak {
-    color: var(--sp-primary);
-}
-
-body.shadcn-profile .profile-stat-icon--trophy {
-    color: var(--sp-primary);
-}
-
-body.shadcn-profile .profile-stat-icon--flag {
-    color: var(--sp-primary);
-}
-
 /* "As minhas missões" sits directly on the page background (no card of its
    own) — each mission is a flat row underneath, divided by a hairline. */
 body.shadcn-profile .profile-biology {
@@ -10857,12 +11101,31 @@ body.shadcn-profile .profile-header-actions--icons-only {
 
 body.shadcn-profile .profile-hero {
     display: flex;
+    flex-direction: column;
+    gap: 14px;
+    /* Direct child of .profile-main-shell (not .profile-content, which is
+       capped at max-width — see .profile-content), so this banner spans
+       the full page width instead of being boxed in with the rest of the
+       Perfil tab; margin-top replaces the 24px .profile-content grid gap
+       it would otherwise have had between it and .missions-topbar above. */
+    margin-top: 24px;
+    margin-bottom: 32px;
+    padding: 28px 28px 28px 24px;
+    border-radius: 24px;
+    /* Camada branca semi-transparente por cima da foto para o nome/painel
+       do Kim continuarem legíveis, em vez da foto pura (que tem céu e água
+       muito claros em algumas zonas, pouco contraste com texto escuro). */
+    background:
+        linear-gradient(rgba(255, 255, 255, .55), rgba(255, 255, 255, .55)),
+        url('/static/images/Fundo paisagem perfil.png') center / cover no-repeat;
+}
+
+body.shadcn-profile .profile-hero-main {
+    display: flex;
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 28px;
-    margin-bottom: 32px;
-    padding-left: 8px;
 }
 
 body.shadcn-profile .profile-hero-left {
@@ -11113,72 +11376,44 @@ body.shadcn-profile .profile-hero-next-title {
     font-size: .76rem;
 }
 
-body.shadcn-profile .profile-hero-mascot-card {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+/* Quote, sitting in the hero's right-hand slot (where the "Falar com o
+   Kim" card used to be) instead of in the aside column — a plain caption
+   directly on the hero's landscape photo (no card/background of its own).
+   align-self pushes it down to roughly line up with the level pill at the
+   bottom of .profile-hero-left, instead of sitting flush with the top of
+   the row (the hero-left column's default flex-start alignment). */
+body.shadcn-profile .profile-hero-quote {
+    position: relative;
+    z-index: 1;
+    align-self: flex-end;
+    flex: 1 1 320px;
     max-width: 420px;
-    padding: 16px 22px 16px 16px;
-    border-radius: 20px;
-    background: var(--sp-accent-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity .35s ease;
 }
 
-/* Hidden while the Kim chat panel is open — no point inviting the
-   student to "Falar com o Kim" when that conversation is already open. */
-body.shadcn-profile .profile-hero-mascot-card[hidden] {
-    display: none;
+body.shadcn-profile .profile-hero-quote.is-fading {
+    opacity: 0;
 }
 
-/* Same card, but blended into the page instead of standing out in its
-   own tinted box (used on the Testes index, next to the page title). */
-body.shadcn-profile .profile-hero-mascot-card--flat {
-    background: none;
+body.shadcn-profile .profile-hero-quote-text {
+    margin: 0;
+    color: #1c1c1c;
+    text-shadow: 0 1px 6px rgba(255, 255, 255, .45);
+    font-family: var(--sp-font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.45;
 }
 
-body.shadcn-profile .profile-hero-mascot-img {
-    flex: none;
-    width: 128px;
-    height: 128px;
-    object-fit: contain;
-}
-
-body.shadcn-profile .profile-hero-mascot-greeting {
-    margin: 0 0 2px;
-    color: var(--sp-fg);
-    font-weight: 700;
-}
-
-body.shadcn-profile .profile-hero-mascot-question {
-    margin: 0 0 10px;
-    color: var(--sp-muted-fg);
-    font-size: .86rem;
-    line-height: 1.4;
-}
-
-body.shadcn-profile .profile-hero-chat-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 16px;
-    border: none;
-    border-radius: 999px;
-    background: var(--sp-primary);
-    color: var(--sp-primary-fg);
-    font-size: .84rem;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: none;
-}
-
-body.shadcn-profile .profile-hero-chat-btn:hover {
-    background: #24593a;
-    transform: none;
-    box-shadow: none;
-}
-
-body.shadcn-profile .profile-hero-chat-btn svg {
-    width: 16px;
-    height: 16px;
+body.shadcn-profile .profile-hero-quote-dash {
+    display: block;
+    margin-top: 10px;
+    color: #1c1c1c;
+    text-shadow: 0 1px 6px rgba(255, 255, 255, .45);
+    opacity: .85;
 }
 
 /* ---- Tabs ---- */
@@ -11250,23 +11485,55 @@ body.shadcn-profile .profile-tab.is-disabled em {
    Perfil/Conquistas/Estatísticas tab panels get the same explicit
    guarantee — a hidden tab must never render alongside the active one. */
 body.shadcn-profile .profile-tab-panel[hidden],
-body.shadcn-profile .profile-grid-aside[hidden] {
+body.shadcn-profile .profile-grid-aside[hidden],
+body.shadcn-profile .profile-missions-section[hidden] {
     display: none !important;
 }
 
 /* ---- Two-column grid ---- */
+/* .profile-grid-main and .profile-grid-aside share row 1 (XP card next to
+   Teste Vocacional); .profile-missions-section ("O teu percurso") is a
+   separate grid item spanning both columns in row 2, full width, instead
+   of being boxed into .profile-grid-main's narrower column — it used to
+   sit nested there, cramped next to the empty rest of the aside column. */
 
 body.shadcn-profile .profile-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 320px;
     gap: 24px;
-    align-items: start;
+    align-items: stretch;
 }
 
-/* Separador "Conquistas": a aside (citação + resumo rápido) só existe no
-   separador "Perfil", então aqui a coluna de 320px fica vazia — esta
-   classe (posta por profile-django.js ao trocar de separador) tira essa
-   coluna para o conteúdo principal esticar até à largura toda. */
+/* Row 1 items (.profile-grid-main, .profile-grid-aside) stretch to match
+   heights via the grid's align-items above, but that only grows the grid
+   cell itself — these fill-throughs make the actual visible card inside
+   each cell grow to match, so the XP panel and Teste Vocacional panel
+   line up at the same height. */
+body.shadcn-profile .profile-grid-main,
+body.shadcn-profile .profile-grid-main .profile-tab-panel,
+body.shadcn-profile .profile-grid-aside {
+    display: flex;
+    flex-direction: column;
+}
+
+body.shadcn-profile .profile-grid-main .profile-tab-panel {
+    flex: 1;
+}
+
+body.shadcn-profile .profile-subject-card,
+body.shadcn-profile .profile-vocacional-card {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+body.shadcn-profile .profile-missions-section {
+    grid-column: 1 / -1;
+}
+
+/* Separador "Conquistas"/"Estatísticas": a aside (Teste Vocacional) só
+   existe no separador "Perfil", então aqui a coluna de 320px fica vazia —
+   esta classe (posta por profile-django.js ao trocar de separador) tira
+   essa coluna para o conteúdo principal esticar até à largura toda. */
 body.shadcn-profile .profile-grid.is-single-column {
     grid-template-columns: minmax(0, 1fr);
 }
@@ -11282,7 +11549,6 @@ body.shadcn-profile .profile-grid.is-single-column {
 body.shadcn-profile .profile-subject-card {
     position: relative;
     padding: 24px 28px;
-    margin-bottom: 24px;
     border-radius: var(--sp-radius);
     background: var(--sp-accent-soft);
 }
@@ -11416,6 +11682,77 @@ body.shadcn-profile .profile-missions-card .mission-row {
     padding: 18px 0;
 }
 
+/* ---- "O teu percurso" card (Perfil tab) ---- */
+
+body.shadcn-profile .profile-percurso-card {
+    padding: 24px 28px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-percurso-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+}
+
+@media (max-width: 560px) {
+    body.shadcn-profile .profile-percurso-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+body.shadcn-profile .profile-percurso-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 14px;
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-percurso-stat-icon {
+    display: inline-flex;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-percurso-stat-label {
+    color: var(--sp-muted-fg);
+    font-size: .88rem;
+}
+
+body.shadcn-profile .profile-percurso-stat-valor {
+    color: var(--sp-fg);
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+body.shadcn-profile .profile-percurso-stat-valor small {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-percurso-atividade-titulo {
+    margin: 0 0 4px;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-percurso-atividade-caption {
+    margin: 0 0 16px;
+    color: var(--sp-muted-fg);
+    font-size: .82rem;
+}
+
+body.shadcn-profile .profile-percurso-card .stats-tempo-chart {
+    height: 140px;
+}
+
 /* ---- Conquistas tab: badge grid ---- */
 
 body.shadcn-profile .profile-badges-card {
@@ -11510,141 +11847,11 @@ body.shadcn-profile .profile-badge-card.is-unlocked .profile-badge-status {
     color: var(--sp-primary);
 }
 
-/* ---- Right column: quote + quick stats ---- */
-
-body.shadcn-profile .profile-quote-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    padding: 24px;
-    margin-bottom: 24px;
-    border-radius: var(--sp-radius);
-    background: var(--sp-accent-soft);
-    overflow: hidden;
-    /* height and margin-bottom are kept in sync by JS (syncQuoteCardHeight
-       in profile-django.js): height matches .profile-subject-card (the XP
-       panel next to it) so this card looks the same size as that one, and
-       margin-bottom is padded out so "Resumo rápido" (the card below it)
-       still lines up with .profile-missions-card despite this card being
-       shorter than the gap between them. A fixed height, so rotating to a
-       longer quote can't grow this card — overflow:hidden is just the
-       backstop if a future quote is too long to fit. */
-}
-
-body.shadcn-profile .profile-quote-card .profile-subject-leaf {
-    display: inline-flex;
-    margin-bottom: 12px;
-    color: var(--sp-primary);
-}
-
-body.shadcn-profile .profile-quote-card .profile-subject-leaf svg {
-    width: 22px;
-    height: 22px;
-}
-
-body.shadcn-profile .profile-quote-text {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    max-width: 26ch;
-    color: var(--sp-fg);
-    font-family: var(--sp-font-serif);
-    font-style: italic;
-    font-size: 1.1rem;
-    line-height: 1.45;
-    transition: opacity .35s ease;
-}
-
-body.shadcn-profile .profile-quote-card.is-fading .profile-quote-text,
-body.shadcn-profile .profile-quote-card.is-fading .profile-quote-dash {
-    opacity: 0;
-}
-
-body.shadcn-profile .profile-quote-dash {
-    position: relative;
-    z-index: 1;
-    display: block;
-    margin-top: 14px;
-    color: var(--sp-muted-fg);
-}
-
-body.shadcn-profile .profile-quickstats-card {
-    padding: 22px 24px;
-    border-radius: var(--sp-radius);
-    background: var(--sp-card);
-    border: 1px solid var(--sp-border);
-}
-
-body.shadcn-profile .profile-quickstats-card h2 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 16px;
-    color: var(--sp-fg);
-    font-family: var(--sp-font-serif);
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-body.shadcn-profile .profile-quickstats-card h2 svg {
-    width: 18px;
-    height: 18px;
-    color: var(--sp-primary);
-}
-
-body.shadcn-profile .profile-quickstat-row {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 0;
-    border-top: 1px solid var(--sp-border);
-}
-
-body.shadcn-profile .profile-quickstat-row:first-of-type {
-    border-top: none;
-    padding-top: 0;
-}
-
-body.shadcn-profile .profile-quickstat-row .profile-stat-icon {
-    display: grid;
-    place-items: center;
-    flex: none;
-    width: 40px;
-    height: 40px;
-    margin: 0;
-    border-radius: 50%;
-    background: var(--sp-accent-soft);
-}
-
-body.shadcn-profile .profile-quickstat-row .profile-stat-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-body.shadcn-profile .profile-quickstat-row > span {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-
-body.shadcn-profile .profile-quickstat-row b {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--sp-fg);
-}
-
-body.shadcn-profile .profile-quickstat-row small {
-    color: var(--sp-muted-fg);
-    font-size: .78rem;
-}
-
 body.shadcn-profile .profile-vocacional-card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 14px;
-    margin-top: 20px;
     padding: 18px 20px;
     border-radius: var(--sp-radius);
     background: var(--sp-accent-soft);
@@ -11706,11 +11913,11 @@ body.shadcn-profile .profile-vocacional-btn:hover {
 }
 
 @media (max-width: 720px) {
-    body.shadcn-profile .profile-hero {
+    body.shadcn-profile .profile-hero-main {
         flex-direction: column;
     }
 
-    /* .profile-hero uses align-items:flex-start (needed for the desktop
+    /* .profile-hero-main uses align-items:flex-start (needed for the desktop
        row layout), which never stretches a flex item to the container's
        width — so once flex-direction flips to column above, .profile-hero-left
        renders at its own content width instead of the row's width. That's
@@ -11732,7 +11939,7 @@ body.shadcn-profile .profile-vocacional-btn:hover {
         min-width: 0;
     }
 
-    body.shadcn-profile .profile-hero-mascot-card {
+    body.shadcn-profile .profile-hero-quote {
         max-width: none;
         width: 100%;
     }
@@ -11752,15 +11959,60 @@ body.shadcn-profile .profile-hero-rank {
    variáveis --biblioteca-cor-* definidas inline pelo template. */
 .biblioteca-estante {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 210px);
-    gap: 30px 26px;
+    grid-template-columns: repeat(auto-fill, 145px);
+    gap: 26px 18px;
+    /* Fundo de madeira leve a fazer de "parede" da estante, com um grão
+       subtil (linhas diagonais muito ténues) para não ficar um bloco de
+       cor lisa. Cada .biblioteca-livro-item desenha depois a sua própria
+       "tábua" por baixo (ver ::after), para dar a sensação de
+       compartimentos separados em vez de um único fundo contínuo. */
+    padding: 34px 28px 46px;
+    border-radius: 20px;
+    background:
+        repeating-linear-gradient(95deg, rgba(255, 255, 255, .05) 0 2px, transparent 2px 7px),
+        linear-gradient(175deg, #dcb98c 0%, #c89e6e 45%, #ad7f52 100%);
+    box-shadow: inset 0 3px 10px rgba(63, 38, 15, .2);
 }
 
 .biblioteca-livro-item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 14px;
+    /* Espaço reservado para a "tábua" da prateleira (ver ::after) não
+       sobrepor o botão/texto do livro — como o grid estica cada item à
+       altura da fila (ver align-items do grid, que por omissão é
+       "stretch"), esta folga fica sempre encostada ao fundo da fila, não
+       ao fundo de cada livro individual. */
+    padding-bottom: 18px;
+}
+
+/* A "tábua" por baixo de cada livro — sai um pouco para os lados (até ao
+   meio do gap) para parecer uma prateleira contínua a dividir as filas,
+   em vez de um retalho preso só à largura de cada livro. */
+.biblioteca-livro-item::after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    right: -10px;
+    bottom: 0;
+    height: 14px;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, #ecd3ac 0%, #cda172 55%, #a87a4a 100%);
+    box-shadow: 0 3px 4px rgba(63, 38, 15, .35), inset 0 1px 0 rgba(255, 255, 255, .35);
+}
+
+/* Paredes laterais do compartimento — uma linha fina entre livros,
+   parando antes da tábua para não lhe sobrepor o brilho do topo. */
+.biblioteca-livro-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 16px;
+    left: -10px;
+    width: 1px;
+    background: rgba(63, 38, 15, .18);
 }
 
 /* Livro em "3D": .biblioteca-livro é a área de perspetiva (fica parada);
@@ -11783,7 +12035,7 @@ body.shadcn-profile .profile-hero-rank {
     aspect-ratio: 49 / 60;
     transform-style: preserve-3d;
     transition: transform .5s ease-out;
-    --livro-profundidade: 46px;
+    --livro-profundidade: 32px;
 }
 
 .biblioteca-livro:hover .biblioteca-livro-3d {
@@ -11818,7 +12070,7 @@ body.shadcn-profile .profile-hero-rank {
 .biblioteca-livro-conteudo {
     position: relative;
     flex: 0 0 auto;
-    padding: 12px 14px 14px;
+    padding: 8px 10px 10px;
     overflow: hidden;
 }
 
@@ -11846,14 +12098,14 @@ body.shadcn-profile .profile-hero-rank {
 }
 
 .biblioteca-livro-nome {
-    font-size: 1rem;
+    font-size: .82rem;
     font-weight: 700;
     line-height: 1.2;
     color: #20252b;
 }
 
 .biblioteca-livro-total {
-    font-size: .78rem;
+    font-size: .68rem;
     color: #4d534a;
 }
 
@@ -11878,19 +12130,19 @@ body.shadcn-profile .profile-hero-rank {
 
 .biblioteca-livro-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 7px;
+    right: 7px;
     z-index: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 24px;
-    height: 24px;
-    padding: 0 6px;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
     border-radius: 999px;
     background: #ffffff;
     color: var(--biblioteca-cor-a);
-    font-size: .74rem;
+    font-size: .64rem;
     font-weight: 800;
 }
 
@@ -11911,7 +12163,7 @@ body.shadcn-profile .profile-hero-rank {
 }
 
 .biblioteca-livro-vazio-texto {
-    font-size: .78rem;
+    font-size: .68rem;
     font-style: italic;
     color: #8a938c;
 }
@@ -12122,7 +12374,7 @@ body.shadcn-profile .profile-hero-rank {
 
 @media (max-width: 600px) {
     .biblioteca-estante {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
 
     .biblioteca-unidade-header {
@@ -12149,6 +12401,218 @@ body.shadcn-profile .profile-hero-rank {
     margin: -8px 0 4px;
     color: #666;
     font-size: 1rem;
+}
+
+/* ---- Convidar Amigos (Templates/convidar.html) ---- */
+
+.convidar-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 560px;
+}
+
+.convidar-hero-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 32px 28px;
+    border-radius: 20px;
+    background: var(--sp-card, #fff);
+    border: 1px solid var(--sp-border, #e5e7eb);
+    text-align: center;
+}
+
+.convidar-gift-badge {
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    margin-bottom: 6px;
+    border-radius: 20px;
+    background: linear-gradient(160deg, #ffe08a, #ffbf47);
+    color: #8a5a00;
+    box-shadow: 0 0 24px rgba(255, 191, 71, .6);
+}
+
+.convidar-hero-card h1 {
+    margin: 0;
+    font-family: var(--sp-font-serif, serif);
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--sp-fg, #1f2a24);
+}
+
+.convidar-hero-card p {
+    margin: 0 0 10px;
+    color: var(--sp-muted-fg, #6b7280);
+    font-size: .96rem;
+    line-height: 1.5;
+}
+
+.convidar-hero-card p strong {
+    color: var(--sp-primary, #1f8a5b);
+}
+
+.convidar-whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 13px;
+    border-radius: 12px;
+    background: #25d366;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.convidar-whatsapp-btn:hover {
+    filter: brightness(.96);
+}
+
+.convidar-copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--sp-border, #e5e7eb);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--sp-fg, #1f2a24);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.convidar-copy-btn:hover {
+    background: var(--sp-accent-soft, #eaf7ee);
+}
+
+.convidar-copy-btn.is-copied {
+    border-color: var(--sp-primary, #1f8a5b);
+    color: var(--sp-primary, #1f8a5b);
+}
+
+.convidar-progress-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.convidar-progress-icon {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--sp-accent-soft, #eaf7ee);
+    color: var(--sp-primary, #1f8a5b);
+}
+
+.convidar-progress-title {
+    font-weight: 700;
+    color: var(--sp-fg, #1f2a24);
+}
+
+.convidar-progress-badge {
+    margin-left: auto;
+    padding: 4px 11px;
+    border-radius: 999px;
+    background: #ffc93c;
+    color: #4a3300;
+    font-size: .74rem;
+    font-weight: 800;
+}
+
+.convidar-progress-bar {
+    height: 8px;
+    border-radius: 999px;
+    background: var(--sp-border, #e5e7eb);
+    overflow: hidden;
+}
+
+.convidar-progress-bar .progresso {
+    height: 100%;
+    background: var(--sp-primary, #1f8a5b);
+    border-radius: 999px;
+}
+
+.convidar-progress-caption {
+    margin: 10px 0 0;
+    color: var(--sp-muted-fg, #6b7280);
+    font-size: .86rem;
+}
+
+.convidar-link-card h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 14px;
+    font-size: 1rem;
+    color: var(--sp-fg, #1f2a24);
+}
+
+.convidar-link-row {
+    display: flex;
+    gap: 10px;
+}
+
+.convidar-link-field {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 11px 14px;
+    border-radius: 10px;
+    background: var(--sp-accent-soft, #eaf7ee);
+    color: var(--sp-fg, #1f2a24);
+    font-size: .88rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.convidar-link-copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: none;
+    padding: 0 16px;
+    border: none;
+    border-radius: 10px;
+    background: var(--sp-primary, #1f8a5b);
+    color: #fff;
+    font-weight: 700;
+    font-size: .86rem;
+    cursor: pointer;
+}
+
+.convidar-link-copy-btn:hover {
+    filter: brightness(.96);
+}
+
+.convidar-link-copy-btn.is-copied {
+    background: #146c3f;
+}
+
+.convidar-codigo-row {
+    margin: 14px 0 0;
+    color: var(--sp-muted-fg, #6b7280);
+    font-size: .88rem;
+}
+
+.convidar-codigo-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--sp-border, #e5e7eb);
+    font-weight: 700;
+    letter-spacing: .04em;
+    color: var(--sp-fg, #1f2a24);
 }
 
 .stats-card {

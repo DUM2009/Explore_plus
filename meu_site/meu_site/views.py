@@ -19,8 +19,12 @@ from django.views.decorators.http import require_POST
 from django.utils import timezone
 from .models import (
     PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel,
-    ResultadoAvaliacao, RegistoAtividadeDiaria,
+    ResultadoAvaliacao, RegistoAtividadeDiaria, gerar_codigo_referral_unico,
 )
+
+# Nº de amigos convidados (via código de referral) necessário para ganhar a
+# recompensa — ver pagina_convidar e "Convidar Amigos" em Templates/convidar.html.
+AMIGOS_NECESSARIOS_RECOMPENSA = 5
 
 # Mapeia teste_id/exame_id e missao_id para uma das 5 unidades da Biblioteca
 # do Explorador (ver UNIDADES_BIBLIOTECA mais abaixo) — usado só para
@@ -639,6 +643,58 @@ def calcular_dados_estatisticas(request, perfil):
 
 
 @login_required(login_url='login')
+def pagina_convidar(request):
+    """"Convidar Amigos": link/código de referral do aluno + progresso para
+    a recompensa de AMIGOS_NECESSARIOS_RECOMPENSA convites (ver modelo
+    PerfilAluno.codigo_referral/convidado_por e pagina_signup, que liga a
+    conta nova à de quem convidou). A atribuição da recompensa em si (dias
+    de Plano PRO) ainda não está ligada ao Stripe — fica só a contagem e a
+    barra de progresso por agora; conceder os dias é uma decisão de
+    faturação a implementar à parte."""
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    if perfil is None:
+        return render(request, 'convidar.html', {'perfil': None})
+
+    # Perfis criados antes deste campo existir não têm código — gera um
+    # agora, na primeira visita a esta página (ver criar_perfil_aluno em
+    # models.py, que já gera o código para contas novas).
+    if not perfil.codigo_referral:
+        perfil.codigo_referral = gerar_codigo_referral_unico()
+        perfil.save(update_fields=['codigo_referral'])
+
+    amigos_convidados_total = User.objects.filter(perfilaluno__convidado_por=request.user).count()
+    ciclo_atual = amigos_convidados_total % AMIGOS_NECESSARIOS_RECOMPENSA
+    # ciclo_atual também dá 0 quando ainda não convidou ninguém (0 % 5 == 0),
+    # mas aí "faltam 0" estaria errado — só é mesmo 0 depois de já ter
+    # convidado pelo menos AMIGOS_NECESSARIOS_RECOMPENSA amigos.
+    if amigos_convidados_total == 0:
+        faltam = AMIGOS_NECESSARIOS_RECOMPENSA
+    elif ciclo_atual == 0:
+        faltam = 0
+    else:
+        faltam = AMIGOS_NECESSARIOS_RECOMPENSA - ciclo_atual
+    recompensas_ganhas = amigos_convidados_total // AMIGOS_NECESSARIOS_RECOMPENSA
+
+    link_convite = request.build_absolute_uri(
+        f"{reverse('signup')}?ref={perfil.codigo_referral}"
+    )
+
+    return render(request, 'convidar.html', {
+        'perfil': perfil,
+        'codigo_referral': perfil.codigo_referral,
+        'link_convite': link_convite,
+        'amigos_convidados': ciclo_atual,
+        'amigos_necessarios': AMIGOS_NECESSARIOS_RECOMPENSA,
+        'amigos_faltam': faltam,
+        'recompensas_ganhas': recompensas_ganhas,
+    })
+
+
+@login_required(login_url='login')
 def pagina_estatisticas(request):
     try:
         perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
@@ -692,6 +748,11 @@ def pagina_signup(request):
     if request.user.is_authenticated:
         return redirecionar_apos_autenticacao(request.user)
 
+    # Código de convite (ver pagina_convidar): chega por querystring no
+    # link partilhado (?ref=CODIGO) e viaja pelo formulário num campo
+    # escondido (ver signup.html) para sobreviver ao POST.
+    codigo_referral = (request.POST.get('ref') or request.GET.get('ref') or '').strip().upper()
+
     erro = None
     if request.method == 'POST':
         username = request.POST.get('username', '').strip()
@@ -709,10 +770,17 @@ def pagina_signup(request):
             erro = 'Esse email já está registado.'
         else:
             user = User.objects.create_user(username=username, email=email, password=password)
+            if codigo_referral:
+                # Silenciosamente ignora um código inválido/próprio — não
+                # vale a pena bloquear o registo por causa do convite.
+                convidador = User.objects.filter(perfilaluno__codigo_referral=codigo_referral).first()
+                if convidador:
+                    user.perfilaluno.convidado_por = convidador
+                    user.perfilaluno.save(update_fields=['convidado_por'])
             login(request, user)
             return redirecionar_apos_autenticacao(user)
 
-    return render(request, 'signup.html', {'erro': erro})
+    return render(request, 'signup.html', {'erro': erro, 'codigo_referral': codigo_referral})
 
 
 def pagina_logout(request):
@@ -1093,9 +1161,9 @@ CATEGORIA_TESTES_IMAGENS = {
     'Obtenção de Matéria': 'images/Folha.png',
     'Distribuição de Matéria': 'images/Coração.png',
     'Transformação e Utilização de Energia': 'images/Mitocôndira.png',
-    'Evolução Biológica': 'images/especie.jpg',
+    'Evolução': 'images/especie.jpg',
     'Sistemática dos Seres Vivos': 'images/organismo.jpg',
-    'Genética': 'images/Wallpaper DNA.png',
+    'Crescimento, Renovação e Diferenciação Celular': 'images/Wallpaper DNA.png',
     'Citologia': 'images/Célula.png',
     'Ecologia': 'images/ecossistema.jpg',
     'Corpo Humano': 'images/Wallpaper corpo humano.png',
@@ -1104,10 +1172,15 @@ CATEGORIA_TESTES_IMAGENS = {
     'Energia e Fenómenos Elétricos': 'images/Energia e fenómenos elétricos.png',
     'Energia, Fenómenos Térmicos e Radiação': 'images/Fenómenos térmicos e radiação.png',
     'Movimento e Interações': 'images/Movimentos e interações.png',
-    'Forças e Movimentos': 'images/f11_pena_martelo_lua.png',
     'Sinais, Ondas e Som': 'images/Sinais e ondas.png',
     'Eletromagnetismo': 'images/Eletromagnetismo.png',
-    'Ondas Eletromagnéticas': 'images/f11_espetro_dia_a_dia.png',
+    'Cinemática e Dinâmica 2D': 'images/f12_remate_futebol.png',
+    'Centro de Massa e Momento Linear': 'images/f12_airbag.png',
+    'Fluidos': 'images/f12_navio_iceberg.png',
+    'Campo Gravítico': 'images/f12_orbitas_kepler.png',
+    'Campo Elétrico': 'images/f12_atomo_hidrogenio.png',
+    'Campo Magnético': 'images/f12_aurora_boreal.png',
+    'Física Moderna': 'images/f12_ferro_incandescente.png',
 }
 
 # Categorias cuja imagem usa background-size:contain em vez de cover (ver
@@ -1124,10 +1197,56 @@ CATEGORIA_TESTES_DISCIPLINA = {
     'Energia e Fenómenos Elétricos': 'physics',
     'Energia, Fenómenos Térmicos e Radiação': 'physics',
     'Movimento e Interações': 'physics',
-    'Forças e Movimentos': 'physics',
     'Sinais, Ondas e Som': 'physics',
     'Eletromagnetismo': 'physics',
-    'Ondas Eletromagnéticas': 'physics',
+    'Cinemática e Dinâmica 2D': 'physics',
+    'Centro de Massa e Momento Linear': 'physics',
+    'Fluidos': 'physics',
+    'Campo Gravítico': 'physics',
+    'Campo Elétrico': 'physics',
+    'Campo Magnético': 'physics',
+    'Física Moderna': 'physics',
+}
+
+# Ano letivo de cada categoria (ver data-ano em .missions-category, tal
+# como em index-missions.html) — usado pelo ano-switcher para filtrar
+# dentro da disciplina escolhida. Espelha o ano que cada tema tem em
+# index-missions.html; "Genética" e "Forças e Movimentos" agrupam aqui
+# vários temas que lá estão espalhados por mais do que um ano — fica o
+# ano predominante, é uma aproximação só para os que ainda não têm
+# conteúdo próprio marcado (ver _TESTES_EM_BREVE acima). Categoria sem
+# entrada aqui fica sem ano (sem filtro de ano — ver montar_categorias_testes).
+CATEGORIA_TESTES_ANO = {
+    'Biodiversidade': '10',
+    'Bioquímica': '10',
+    'Obtenção de Matéria': '10',
+    'Distribuição de Matéria': '10',
+    'Transformação e Utilização de Energia': '10',
+    'Citologia': '10',
+    'Botânica': '10',
+    'Corpo Humano': '10',
+    'Ecologia': '10',
+    'Evolução': '11',
+    'Sistemática dos Seres Vivos': '11',
+    'Crescimento, Renovação e Diferenciação Celular': '11',
+    'Reprodução': '11',
+    'Reprodução e Manipulação da Fertilidade': '12',
+    'Património Genético': '12',
+    'Imunidade e Controlo de Doenças': '12',
+    'Produção de Alimentos e Sustentabilidade': '12',
+    'Energia e Movimentos': '10',
+    'Energia e Fenómenos Elétricos': '10',
+    'Energia, Fenómenos Térmicos e Radiação': '10',
+    'Movimento e Interações': '11',
+    'Sinais, Ondas e Som': '11',
+    'Eletromagnetismo': '11',
+    'Cinemática e Dinâmica 2D': '12',
+    'Centro de Massa e Momento Linear': '12',
+    'Fluidos': '12',
+    'Campo Gravítico': '12',
+    'Campo Elétrico': '12',
+    'Campo Magnético': '12',
+    'Física Moderna': '12',
 }
 
 # Cada missão tem 3 testes: o primeiro incluído no plano Free, os outros
@@ -1135,7 +1254,7 @@ CATEGORIA_TESTES_DISCIPLINA = {
 # teste ainda não tiver conteúdo — a página mostra-o como "Em breve".
 MISSOES_TESTES = [
     {
-        'categoria': 'Botânica',
+        'categoria': 'Obtenção de Matéria',
         'titulo': 'Fotossíntese',
         'meta': ['Grupos I, II e III', '14-16 perguntas', '45 minutos'],
         'correcao': 'Correção automática e por IA.',
@@ -1170,12 +1289,34 @@ MISSOES_TESTES = [
     {
         'categoria': 'Energia e Movimentos',
         'titulo': 'Energia e Movimentos',
-        'meta': ['20 perguntas por teste', '30 minutos', 'Correção automática'],
-        'correcao': 'Uma pergunta de cada vez, com explicação logo a seguir.',
+        'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
+        'correcao': 'Correção automática e por IA.',
         'testes': [
-            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m1-teste-1', 'rota': 'teste-missao'},
-            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-2', 'rota': 'teste-missao'},
-            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-3', 'rota': 'teste-missao'},
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m1-teste-1'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-2'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-3'},
+        ],
+    },
+    {
+        'categoria': 'Energia e Fenómenos Elétricos',
+        'titulo': 'Energia e Fenómenos Elétricos',
+        'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
+        'correcao': 'Correção automática e por IA.',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m2-teste-1'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m2-teste-2'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m2-teste-3'},
+        ],
+    },
+    {
+        'categoria': 'Energia, Fenómenos Térmicos e Radiação',
+        'titulo': 'Energia, Fenómenos Térmicos e Radiação',
+        'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
+        'correcao': 'Correção automática e por IA.',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m3-teste-1'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m3-teste-2'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m3-teste-3'},
         ],
     },
 ]
@@ -1187,30 +1328,41 @@ MISSOES_TESTES = [
 # exatamente os usados em index-missions.html.
 _TESTES_EM_BREVE = [
     ('Bioquímica', 'Biomoléculas'),
+    ('Obtenção de Matéria', 'Membrana Celular e Transporte Transmembranar'),
     ('Obtenção de Matéria', 'Obtenção de Matéria pelos Seres Heterotróficos'),
     ('Distribuição de Matéria', 'Xilema e Floema'),
     ('Distribuição de Matéria', 'Transporte nos Animais'),
     ('Transformação e Utilização de Energia', 'Respiração Aeróbia e Fermentação'),
     ('Transformação e Utilização de Energia', 'Trocas Gasosas'),
-    ('Evolução Biológica', 'Lamarckismo e Darwinismo'),
+    ('Evolução', 'A Origem da Célula Eucariótica'),
+    ('Evolução', 'Lamarckismo e Darwinismo'),
     ('Sistemática dos Seres Vivos', 'Taxonomia e Sistemática'),
-    ('Genética', 'O Código da Vida'),
-    ('Genética', 'Síntese Proteica'),
-    ('Genética', 'Mitose'),
-    ('Genética', 'Meiose e Reprodução Sexuada'),
-    ('Genética', 'Reprodução Assexuada'),
-    ('Genética', 'Ciclos de Vida'),
-    ('Citologia', 'Ciclo Celular'),
+    ('Crescimento, Renovação e Diferenciação Celular', 'O Código da Vida'),
+    ('Crescimento, Renovação e Diferenciação Celular', 'Síntese Proteica'),
+    ('Crescimento, Renovação e Diferenciação Celular', 'Ciclo Celular'),
+    ('Crescimento, Renovação e Diferenciação Celular', 'Mitose'),
+    ('Reprodução', 'Meiose e Reprodução Sexuada'),
+    ('Reprodução', 'Reprodução Assexuada'),
+    ('Reprodução', 'Ciclos de Vida'),
     ('Ecologia', 'Ecossistemas'),
-    ('Corpo Humano', 'Sistema Nervoso'),
+    ('Corpo Humano', 'Sistema Nervoso e Hormonal'),
     ('Botânica', 'Fisiologia Vegetal'),
-    ('Energia e Fenómenos Elétricos', 'Energia e Fenómenos Elétricos'),
-    ('Energia, Fenómenos Térmicos e Radiação', 'Energia, Fenómenos Térmicos e Radiação'),
+    ('Reprodução e Manipulação da Fertilidade', 'Reprodução e Manipulação da Fertilidade'),
+    ('Património Genético', 'Património Genético'),
+    ('Imunidade e Controlo de Doenças', 'Imunidade e Controlo de Doenças'),
+    ('Produção de Alimentos e Sustentabilidade', 'Produção de Alimentos e Sustentabilidade'),
     ('Movimento e Interações', 'Movimento e Interações'),
-    ('Forças e Movimentos', 'Forças e Movimentos'),
+    ('Movimento e Interações', 'Forças e Movimentos'),
     ('Sinais, Ondas e Som', 'Sinais, Ondas e Som'),
     ('Eletromagnetismo', 'Eletromagnetismo'),
-    ('Ondas Eletromagnéticas', 'Ondas Eletromagnéticas'),
+    ('Eletromagnetismo', 'Ondas Eletromagnéticas'),
+    ('Cinemática e Dinâmica 2D', 'Cinemática e Dinâmica 2D'),
+    ('Centro de Massa e Momento Linear', 'Centro de Massa e Momento Linear'),
+    ('Fluidos', 'Fluidos'),
+    ('Campo Gravítico', 'Campo Gravítico'),
+    ('Campo Elétrico', 'Campo Elétrico'),
+    ('Campo Magnético', 'Campo Magnético'),
+    ('Física Moderna', 'Física Moderna'),
 ]
 for _categoria, _titulo in _TESTES_EM_BREVE:
     MISSOES_TESTES.append({
@@ -1233,6 +1385,8 @@ TESTE_FREE_PARA_MISSAO = {
     'diversidade': 'diversidade-organizacao-biologica',
     'celulas': 'celulas-organelos',
     'fis10-m1-teste-1': 'energia-e-movimentos',
+    'fis10-m2-teste-1': 'energia-e-fenomenos-eletricos',
+    'fis10-m3-teste-1': 'energia-fenomenos-termicos-radiacao',
 }
 
 
@@ -1265,6 +1419,7 @@ def montar_categorias_testes(plano_aluno):
             'imagem': CATEGORIA_TESTES_IMAGENS.get(nome, 'images/Biology image.jpg'),
             'imagem_contain': nome in CATEGORIA_TESTES_IMAGENS_CONTAIN,
             'disciplina': CATEGORIA_TESTES_DISCIPLINA.get(nome, 'biology'),
+            'ano': CATEGORIA_TESTES_ANO.get(nome),
         }
         for nome, missoes in categorias.items()
     ]
@@ -3897,6 +4052,7 @@ def carregar_teste(teste_id):
 CHAVES_SECRETAS_PERGUNTA = (
     'resposta_correta', 'criterios_correcao', 'tolerancia_numerica',
     'palavras_chave', 'grupos_palavras_chave', 'minimo_grupos',
+    'resolucao_modelo', 'resposta_modelo', 'resposta_final',
 )
 
 
@@ -4130,6 +4286,86 @@ def corrigir_perguntas_longas_com_ia(perguntas_longas):
     return resultado
 
 
+def formatar_criterios_lista(criterios):
+    """criterios_correcao de perguntas 'calc'/'open' é uma lista de etapas/
+    tópicos com pontos próprios (ao contrário da string livre usada em
+    resposta_longa) — isto gera o texto para o prompt da IA."""
+    return '\n'.join(
+        f"- ({criterio.get('pontos', 0)} pontos) {criterio.get('descricao', '')}"
+        for criterio in (criterios or [])
+    )
+
+
+def corrigir_perguntas_estruturadas_com_ia(perguntas_estruturadas, disciplina, contexto_contestacao=None):
+    """Corrige perguntas 'calc'/'open' (plano Pro) com a Claude (Haiku), a
+    partir de uma lista de critérios com pontos próprios e, quando
+    disponível, a resolução/resposta modelo como referência. Sem limite de
+    uso — não passa por verificar_e_incrementar_uso_chat()."""
+    resultado = {}
+
+    if not settings.ANTHROPIC_API_KEY:
+        for pergunta, _ in perguntas_estruturadas:
+            resultado[pergunta['id']] = {
+                'pontos': 0,
+                'feedback': 'A correção automática desta pergunta ainda não está configurada.',
+            }
+        return resultado
+
+    blocos_pedido = []
+    for pergunta, resposta in perguntas_estruturadas:
+        referencia = pergunta.get('resolucao_modelo') or pergunta.get('resposta_modelo') or ''
+        bloco = (
+            f"Pergunta \"{pergunta['id']}\" (cotação máxima: {pergunta['cotacao']} pontos)\n"
+            f"Enunciado: {pergunta['enunciado']}\n"
+            f"Critérios de classificação (com pontos por etapa/tópico):\n{formatar_criterios_lista(pergunta.get('criterios_correcao'))}\n"
+            f"Resolução/resposta modelo de referência: {referencia}\n"
+            f"Resposta do aluno: {(resposta or '').strip() or '(sem resposta)'}"
+        )
+        if contexto_contestacao and contexto_contestacao.get(pergunta['id']):
+            bloco += f"\n\nO aluno contesta a correção anterior, com o seguinte motivo: {contexto_contestacao[pergunta['id']]}\nReconsidera a pontuação à luz deste motivo, mas só a ajustes se o motivo for válido face aos critérios."
+        blocos_pedido.append(bloco)
+
+    formato_json = ', '.join(
+        f'"{pergunta["id"]}": {{"pontuacao": numero, "feedback": "texto"}}'
+        for pergunta, _ in perguntas_estruturadas
+    )
+    prompt = (
+        f"És um professor de {disciplina} do ensino secundário em Portugal a corrigir um teste. "
+        "Para cada pergunta abaixo, atribui uma pontuação entre 0 e a cotação máxima indicada, "
+        "somando os pontos de cada etapa/tópico dos critérios de classificação que a resposta do aluno "
+        "cumpre (mesmo que com palavras diferentes das da resolução modelo, desde que o raciocínio e o "
+        "resultado estejam corretos), e escreve um feedback curto (1 a 2 frases, em português de "
+        "Portugal) sobre o que está bem ou o que falta.\n\n"
+        + "\n\n---\n\n".join(blocos_pedido)
+        + "\n\nResponde APENAS com um objeto JSON válido, sem texto antes ou depois, no formato exato:\n"
+        + "{" + formato_json + "}"
+    )
+
+    try:
+        client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
+        response = client.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=1200,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        texto_resposta = next((bloco.text for bloco in response.content if bloco.type == 'text'), '{}')
+        correcao_ia = json.loads(texto_resposta)
+    except (anthropic.RateLimitError, anthropic.APIStatusError, anthropic.APIConnectionError, ValueError, TypeError):
+        correcao_ia = {}
+
+    for pergunta, _ in perguntas_estruturadas:
+        item = correcao_ia.get(pergunta['id']) if isinstance(correcao_ia, dict) else None
+        if isinstance(item, dict) and isinstance(item.get('pontuacao'), (int, float)):
+            pontos = max(0.0, min(float(pergunta['cotacao']), float(item['pontuacao'])))
+            feedback = str(item.get('feedback', ''))[:500]
+        else:
+            pontos = 0
+            feedback = 'Não foi possível obter a correção da IA para esta pergunta. Tenta submeter novamente.'
+        resultado[pergunta['id']] = {'pontos': pontos, 'feedback': feedback}
+
+    return resultado
+
+
 @login_required(login_url='login')
 @require_POST
 def corrigir_teste_fotossintese(request, teste_id):
@@ -4163,11 +4399,15 @@ def corrigir_teste_fotossintese(request, teste_id):
     resultado_perguntas = {}
     pontos_totais = 0.0
     perguntas_longas = []
+    perguntas_estruturadas = []
 
     for pergunta in teste['perguntas']:
         resposta = respostas_aluno.get(pergunta['id'])
         if pergunta['tipo'] == 'resposta_longa':
             perguntas_longas.append((pergunta, resposta))
+            continue
+        if pergunta['tipo'] in ('calc', 'open'):
+            perguntas_estruturadas.append((pergunta, resposta))
             continue
         pontos = corrigir_pergunta_automatica(pergunta, resposta)
         pontos_totais += pontos
@@ -4181,6 +4421,48 @@ def corrigir_teste_fotossintese(request, teste_id):
             resultado_perguntas[pergunta['id']] = {'pontos': item['pontos'], 'cotacao': pergunta['cotacao']}
             feedback_ia[pergunta['id']] = item['feedback']
             pontos_totais += item['pontos']
+
+    # Perguntas 'calc'/'open': no plano Free o aluno autoavalia-se a partir
+    # da resolução modelo e dos critérios (ver autoavaliar_teste_fotossintese)
+    # — a nota só fica definitiva depois disso. No plano Pro, a IA corrige
+    # já aqui, tal como as de resposta_longa, com direito a contestação.
+    autoavaliacao_pendente = {}
+    if perguntas_estruturadas and config_teste['plano'] == 'free':
+        for pergunta, _ in perguntas_estruturadas:
+            resultado_perguntas[pergunta['id']] = {
+                'pontos': None,
+                'cotacao': pergunta['cotacao'],
+                'aguardaAutoavaliacao': True,
+            }
+            autoavaliacao_pendente[pergunta['id']] = {
+                'criterios': pergunta.get('criterios_correcao') or [],
+                'resolucao': pergunta.get('resolucao_modelo') or pergunta.get('resposta_modelo') or '',
+                'respostaFinal': pergunta.get('resposta_final') or '',
+                'cotacao': pergunta['cotacao'],
+            }
+    elif perguntas_estruturadas:
+        disciplina = teste.get('disciplina', 'Ciências')
+        correcao_ia = corrigir_perguntas_estruturadas_com_ia(perguntas_estruturadas, disciplina)
+        for pergunta, _ in perguntas_estruturadas:
+            item = correcao_ia.get(pergunta['id'], {'pontos': 0, 'feedback': ''})
+            resultado_perguntas[pergunta['id']] = {
+                'pontos': item['pontos'], 'cotacao': pergunta['cotacao'], 'podeContestar': True,
+            }
+            feedback_ia[pergunta['id']] = item['feedback']
+            pontos_totais += item['pontos']
+
+    if autoavaliacao_pendente:
+        # Nota ainda não é definitiva — fica pendente da autoavaliação do
+        # aluno (ver autoavaliar_teste_fotossintese). Não regista resultado
+        # nem limpa o rascunho enquanto isso não acontecer.
+        return JsonResponse({
+            'autoavaliacaoPendente': True,
+            'pontosAutomaticos': round(pontos_totais, 2),
+            'cotacaoTotal': teste['cotacao_total'],
+            'perguntas': resultado_perguntas,
+            'feedbackIA': feedback_ia,
+            'autoavaliacao': autoavaliacao_pendente,
+        })
 
     nota_final = round(pontos_totais / (teste['cotacao_total'] / 20), 1)
 
@@ -4201,6 +4483,147 @@ def corrigir_teste_fotossintese(request, teste_id):
         'cotacaoTotal': teste['cotacao_total'],
         'perguntas': resultado_perguntas,
         'feedbackIA': feedback_ia,
+    })
+
+
+@login_required(login_url='login')
+@require_POST
+def autoavaliar_teste_fotossintese(request, teste_id):
+    """Finaliza a nota de um teste do plano Free depois de o aluno se
+    autoavaliar nas perguntas 'calc'/'open', a partir da resolução modelo e
+    dos critérios (ver corrigir_teste_fotossintese). Os pontos automáticos
+    já corrigidos (mc/comp/assoc/...) vêm do pedido anterior; os critérios
+    e as suas cotações máximas são sempre lidos do próprio ficheiro do
+    teste no servidor, nunca confiados ao valor que o aluno envia."""
+    config_teste = encontrar_config_teste(teste_id)
+    if config_teste is None:
+        raise Http404('Teste não encontrado.')
+    if config_teste['plano'] != 'free':
+        return JsonResponse({'erro': 'Autoavaliação disponível apenas nos testes do plano gratuito.'}, status=403)
+
+    try:
+        perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+
+    try:
+        dados_pedido = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+
+    pontos_automaticos = dados_pedido.get('pontosAutomaticos')
+    autoavaliacoes = dados_pedido.get('autoavaliacoes')
+    if not isinstance(pontos_automaticos, (int, float)) or not isinstance(autoavaliacoes, dict):
+        return JsonResponse({'erro': 'Dados em falta.'}, status=400)
+
+    try:
+        teste = carregar_teste(teste_id)
+    except FileNotFoundError:
+        raise Http404('Teste não encontrado.')
+
+    perguntas_estruturadas = [p for p in teste['perguntas'] if p['tipo'] in ('calc', 'open')]
+    cotacao_estruturada = sum(p['cotacao'] for p in perguntas_estruturadas)
+    cotacao_automatica_max = teste['cotacao_total'] - cotacao_estruturada
+    pontos_totais = max(0.0, min(float(cotacao_automatica_max), float(pontos_automaticos)))
+
+    resultado_perguntas = {}
+    for pergunta in perguntas_estruturadas:
+        criterios = pergunta.get('criterios_correcao') or []
+        autoavaliacao_pergunta = autoavaliacoes.get(pergunta['id'])
+        pontos_pergunta = 0.0
+        if isinstance(autoavaliacao_pergunta, dict):
+            for indice_str, pontos_atribuidos in autoavaliacao_pergunta.items():
+                try:
+                    indice = int(indice_str)
+                    criterio = criterios[indice]
+                except (ValueError, IndexError):
+                    continue
+                if not isinstance(pontos_atribuidos, (int, float)):
+                    continue
+                pontos_pergunta += max(0.0, min(float(criterio.get('pontos', 0)), float(pontos_atribuidos)))
+        pontos_pergunta = round(min(float(pergunta['cotacao']), pontos_pergunta), 2)
+        resultado_perguntas[pergunta['id']] = pontos_pergunta
+        pontos_totais += pontos_pergunta
+
+    nota_final = round(pontos_totais / (teste['cotacao_total'] / 20), 1)
+
+    if perfil is not None:
+        progresso_testes = dict(perfil.progresso_testes or {})
+        if progresso_testes.pop(teste_id, None) is not None:
+            perfil.progresso_testes = progresso_testes
+            perfil.save(update_fields=['progresso_testes'])
+        unidade = TESTE_ID_PARA_UNIDADE.get(teste_id, '')
+        registar_resultado(request.user, 'teste', teste_id, unidade, nota_final / 20 * 100)
+
+    return JsonResponse({
+        'notaFinal': nota_final,
+        'pontosTotais': round(pontos_totais, 2),
+        'cotacaoTotal': teste['cotacao_total'],
+        'perguntas': resultado_perguntas,
+    })
+
+
+@login_required(login_url='login')
+@require_POST
+def contestar_correcao_teste(request, teste_id):
+    """Pede à IA para reconsiderar a correção de uma pergunta 'calc'/'open'
+    de um teste Pro, à luz do motivo dado pelo aluno, e recalcula a nota
+    final a partir das pontuações atuais de todas as perguntas (enviadas
+    pelo browser, exatamente como estavam depois da última correção)."""
+    config_teste = encontrar_config_teste(teste_id)
+    if config_teste is None:
+        raise Http404('Teste não encontrado.')
+    if config_teste['plano'] != 'pro':
+        return JsonResponse({'erro': 'Contestação disponível apenas nos testes do plano SuperExplore.'}, status=403)
+
+    try:
+        perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    plano_aluno = perfil.plano if perfil is not None else 'free'
+    if plano_aluno != 'pro':
+        return JsonResponse({'erro': 'Este teste está disponível apenas no plano SuperExplore.'}, status=403)
+
+    try:
+        dados_pedido = json.loads(request.body or '{}')
+    except (TypeError, ValueError):
+        return JsonResponse({'erro': 'Dados inválidos.'}, status=400)
+
+    pergunta_id = str(dados_pedido.get('perguntaId', '')).strip()
+    resposta_aluno = dados_pedido.get('respostaAluno')
+    motivo = str(dados_pedido.get('motivo', '')).strip()
+    pontos_atuais = dados_pedido.get('pontosAtuais')
+    if not pergunta_id or not motivo or not isinstance(pontos_atuais, dict):
+        return JsonResponse({'erro': 'Dados em falta.'}, status=400)
+
+    try:
+        teste = carregar_teste(teste_id)
+    except FileNotFoundError:
+        raise Http404('Teste não encontrado.')
+
+    pergunta = next((p for p in teste['perguntas'] if p['id'] == pergunta_id and p['tipo'] in ('calc', 'open')), None)
+    if pergunta is None:
+        return JsonResponse({'erro': 'Pergunta não encontrada.'}, status=404)
+
+    disciplina = teste.get('disciplina', 'Ciências')
+    correcao_ia = corrigir_perguntas_estruturadas_com_ia(
+        [(pergunta, resposta_aluno)], disciplina, contexto_contestacao={pergunta_id: motivo},
+    )
+    item = correcao_ia.get(pergunta_id, {'pontos': 0, 'feedback': ''})
+
+    pontos_totais = sum(float(valor) for valor in pontos_atuais.values() if isinstance(valor, (int, float)))
+    pontos_totais = pontos_totais - float(pontos_atuais.get(pergunta_id, 0) or 0) + item['pontos']
+    nota_final = round(pontos_totais / (teste['cotacao_total'] / 20), 1)
+
+    if perfil is not None:
+        unidade = TESTE_ID_PARA_UNIDADE.get(teste_id, '')
+        registar_resultado(request.user, 'teste', teste_id, unidade, nota_final / 20 * 100)
+
+    return JsonResponse({
+        'pontos': item['pontos'],
+        'feedback': item['feedback'],
+        'notaFinal': nota_final,
+        'pontosTotais': round(pontos_totais, 2),
     })
 
 

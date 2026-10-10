@@ -1,0 +1,317 @@
+{
+  "id": "fis10-m3-teste-3",
+  "titulo": "Teste 3 — Energia, fenómenos térmicos e radiação",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 90,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      { "grandeza": "Capacidade térmica mássica da água líquida", "valor": "4,18 × 10³ J kg⁻¹ °C⁻¹" },
+      { "grandeza": "Capacidade térmica mássica do gelo", "valor": "2,1 × 10³ J kg⁻¹ °C⁻¹" },
+      { "grandeza": "Capacidade térmica mássica do alumínio", "valor": "9,0 × 10² J kg⁻¹ °C⁻¹" },
+      { "grandeza": "Variação de entalpia mássica de fusão da água", "valor": "3,34 × 10⁵ J kg⁻¹" },
+      { "grandeza": "Variação de entalpia mássica de vaporização da água", "valor": "2,26 × 10⁶ J kg⁻¹" },
+      { "grandeza": "Condutividade térmica do vidro", "valor": "0,80 W m⁻¹ K⁻¹" },
+      { "grandeza": "Condutividade térmica da madeira", "valor": "0,15 W m⁻¹ K⁻¹" },
+      { "grandeza": "Conversão de temperaturas", "valor": "T (K) = θ (°C) + 273,15" }
+    ],
+    "formulas": [
+      "Primeira lei da termodinâmica: ΔU = W + Q + R",
+      "Energia para variar a temperatura: E = m c ΔT",
+      "Energia para mudar de estado físico: E = m ΔH",
+      "Condução: Q / Δt = k A ΔT / l",
+      "Irradiância: P / A",
+      "Rendimento de um painel fotovoltaico: η = (P elétrica / P radiação incidente) × 100, com P radiação incidente = irradiância × área",
+      "Rendimento de uma máquina: η = (E útil / E fornecida) × 100",
+      "Potência elétrica: P = U I; energia: E = P Δt; 1 kWh = 3,6 × 10⁶ J",
+      "Balanço energético num sistema isolado: energia cedida = energia recebida (ΔU = 0)",
+      "Erro percentual: |valor experimental − valor tabelado| / valor tabelado × 100"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "Questão 1",
+      "texto_apoio": "Numa atividade laboratorial (AL 3.3), um grupo de alunos pretendeu determinar a variação de entalpia mássica de fusão do gelo. Colocaram 250 g de água a 42,0 °C num calorímetro e juntaram 40,0 g de gelo fundente, a 0 °C e previamente seco. Fecharam o calorímetro e agitaram até se atingir a temperatura mínima, 24,0 °C. Considere que a capacidade térmica mássica da água é 4,18 × 10³ J kg⁻¹ °C⁻¹ e que o valor tabelado da variação de entalpia mássica de fusão do gelo é 3,34 × 10⁵ J kg⁻¹.",
+      "figuras": [
+        { "imagem": "images/f10_t3_AL33.png", "alt": "Calorímetro de esferovite com tampa, termómetro e agitador, com gelo seco a juntar a água quente", "legenda": "Figura 1" }
+      ]
+    },
+    {
+      "numero": 2,
+      "titulo": "Questão 2",
+      "texto_apoio": "Pretende-se aquecer 0,50 kg de gelo, inicialmente a −10 °C, até se obter água líquida a 20 °C, à pressão normal. Considere: capacidade térmica mássica do gelo, 2,1 × 10³ J kg⁻¹ °C⁻¹; da água líquida, 4,18 × 10³ J kg⁻¹ °C⁻¹; variação de entalpia mássica de fusão do gelo, 3,34 × 10⁵ J kg⁻¹.",
+      "figuras": [
+        { "imagem": "images/f10_t3_gelo_agua.png", "alt": "Gráfico da temperatura em função da energia fornecida, desde gelo a −10 °C até água líquida a 20 °C, com patamar a 0 °C", "legenda": "Figura 2" }
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "Questão 3",
+      "texto_apoio": "Um painel fotovoltaico, de rendimento 19 % e com 1,80 m² de área, está orientado de modo a receber a radiação solar perpendicularmente. A irradiância média ao longo do dia é 850 W/m².",
+      "figuras": [
+        { "imagem": "images/f10_t3_painel_coletor.png", "alt": "Telhado com um painel fotovoltaico e um coletor solar térmico, com radiação solar a incidir perpendicularmente", "legenda": "Figura 3" }
+      ]
+    },
+    {
+      "numero": 4,
+      "titulo": "Questão 4",
+      "texto_apoio": "Uma janela de vidro, com 1,2 m² de área e 6,0 mm de espessura, separa o interior de uma casa, a 22 °C, do exterior, a 4 °C. Considere que as temperaturas se mantêm constantes e que a condutividade térmica do vidro é 0,80 W m⁻¹ K⁻¹ e a da madeira é 0,15 W m⁻¹ K⁻¹.",
+      "figuras": [
+        { "imagem": "images/f10_t3_janela_isolamento.png", "alt": "Janela de vidro de 1,2 m², interior a 22 °C e exterior a 4 °C, e placa de madeira com as mesmas dimensões", "legenda": "Figura 4" }
+      ]
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1_1", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.1",
+      "enunciado": "Porque é que o gelo deve ser seco com papel antes de ser introduzido no calorímetro?",
+      "opcoes": [
+        { "letra": "A", "texto": "Para aumentar a temperatura do gelo" },
+        { "letra": "B", "texto": "Para não introduzir água líquida, que não precisa de fundir e falsearia o resultado" },
+        { "letra": "C", "texto": "Para que o gelo funda mais depressa" },
+        { "letra": "D", "texto": "Para diminuir a massa de água no calorímetro" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "A água que acompanha o gelo não precisa de fundir, pelo que a massa de gelo seria sobrestimada e o valor de ΔH calculado ficaria errado."
+    },
+    {
+      "id": "p1_2", "grupo": 1, "tipo": "calc", "numero": "1.2",
+      "enunciado": "Admitindo que o calorímetro é um sistema isolado, determine a temperatura final prevista para a mistura. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Conclui que, num sistema isolado, a energia cedida pela água quente é igual à energia recebida pelo gelo (ΔU = 0).", "pontos": 3 },
+        { "descricao": "Escreve m água c (θi − θf) = m gelo ΔH + m gelo c θf (fusão do gelo e posterior aquecimento da água resultante).", "pontos": 4 },
+        { "descricao": "Obtém θf ≈ 25 °C.", "pontos": 3 }
+      ],
+      "resolucao_modelo": "0,250 × 4180 × (42,0 − θ) = 0,040 × 3,34 × 10⁵ + 0,040 × 4180 × θ → 43 890 − 1045 θ = 13 360 + 167,2 θ → θ ≈ 25,2 °C.",
+      "resposta_final": "≈ 25 °C", "cotacao": 10
+    },
+    {
+      "id": "p1_3", "grupo": 1, "tipo": "calc", "numero": "1.3",
+      "enunciado": "Determine a variação de entalpia mássica de fusão do gelo obtida pelos alunos (θf = 24,0 °C). Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Aplica o balanço energético: energia cedida pela água = energia recebida pelo gelo.", "pontos": 3 },
+        { "descricao": "Escreve m água c (θi − θf) = m gelo ΔH + m gelo c θf.", "pontos": 3 },
+        { "descricao": "Substitui os valores (massas em kg).", "pontos": 2 },
+        { "descricao": "Obtém ΔH ≈ 3,7 × 10⁵ J kg⁻¹ (com unidade).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "0,250 × 4180 × (42,0 − 24,0) = 0,040 × ΔH + 0,040 × 4180 × 24,0 → 18 810 = 0,040 ΔH + 4013 → ΔH ≈ 3,7 × 10⁵ J kg⁻¹.",
+      "resposta_final": "3,7 × 10⁵ J kg⁻¹", "cotacao": 10
+    },
+    {
+      "id": "p1_4", "grupo": 1, "tipo": "calc", "numero": "1.4",
+      "enunciado": "Determine o erro percentual do valor obtido em 1.3 (3,7 × 10⁵ J kg⁻¹), em relação ao valor tabelado. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Escreve a expressão do erro percentual: |valor experimental − valor tabelado| / valor tabelado × 100.", "pontos": 4 },
+        { "descricao": "Substitui os valores: |3,70 × 10⁵ − 3,34 × 10⁵| / 3,34 × 10⁵ × 100.", "pontos": 3 },
+        { "descricao": "Obtém ≈ 11 %.", "pontos": 3 }
+      ],
+      "resolucao_modelo": "Erro = |3,70 × 10⁵ − 3,34 × 10⁵| / 3,34 × 10⁵ × 100 ≈ 11 %.",
+      "resposta_final": "11 %", "cotacao": 10
+    },
+    {
+      "id": "p1_5", "grupo": 1, "tipo": "open", "numero": "1.5",
+      "enunciado": "O valor obtido pelos alunos é superior ao valor tabelado. Indique uma fonte de erro que possa justificar este resultado, explicando de que modo contribui para ele, e uma medida que a reduza. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "O calorímetro não é um sistema perfeitamente isolado: a água, mais quente do que a vizinhança, transfere energia para o exterior, e a temperatura final é inferior à esperada.", "pontos": 4 },
+        { "descricao": "Com θf menor, o balanço atribui ao gelo uma energia recebida superior à real, e o ΔH calculado é superior ao tabelado.", "pontos": 3 },
+        { "descricao": "Para reduzir o erro: usar um calorímetro bem isolado e com tampa, e fazer as medições rapidamente.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "O calorímetro não é um sistema perfeitamente isolado: como a água está mais quente do que a vizinhança, perde energia para o exterior, e a temperatura final é menor do que seria. O balanço energético atribui então ao gelo mais energia do que a realmente absorvida, e o ΔH calculado fica superior ao valor tabelado. Pode reduzir-se o erro usando um calorímetro bem isolado, com tampa, e medindo rapidamente.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p2_1", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.1",
+      "enunciado": "Qual é a energia necessária para aquecer o gelo de −10 °C até 0 °C?",
+      "opcoes": [
+        { "letra": "A", "texto": "2,1 × 10⁴ J" },
+        { "letra": "B", "texto": "1,7 × 10⁵ J" },
+        { "letra": "C", "texto": "4,2 × 10⁴ J" },
+        { "letra": "D", "texto": "1,1 × 10⁴ J" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "E1 = m c gelo ΔT = 0,50 × 2,1 × 10³ × 10 = 1,05 × 10⁴ J ≈ 1,1 × 10⁴ J."
+    },
+    {
+      "id": "p2_2", "grupo": 2, "tipo": "calc", "numero": "2.2",
+      "enunciado": "Determine a energia total necessária para todo o processo. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a energia para aquecer o gelo até 0 °C: E1 = 1,05 × 10⁴ J.", "pontos": 3 },
+        { "descricao": "Calcula a energia para fundir o gelo: E2 = m ΔH = 1,67 × 10⁵ J.", "pontos": 3 },
+        { "descricao": "Calcula a energia para aquecer a água de 0 °C a 20 °C: E3 = m c ΔT = 4,18 × 10⁴ J.", "pontos": 3 },
+        { "descricao": "Obtém a energia total: E ≈ 2,2 × 10⁵ J.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "E1 = 0,50 × 2,1 × 10³ × 10 = 1,05 × 10⁴ J; E2 = 0,50 × 3,34 × 10⁵ = 1,67 × 10⁵ J; E3 = 0,50 × 4,18 × 10³ × 20 = 4,18 × 10⁴ J. E = E1 + E2 + E3 ≈ 2,2 × 10⁵ J.",
+      "resposta_final": "2,2 × 10⁵ J", "cotacao": 10
+    },
+    {
+      "id": "p2_3", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.3",
+      "enunciado": "Se a potência fornecida for constante, qual é a etapa de maior duração?",
+      "opcoes": [
+        { "letra": "A", "texto": "O aquecimento do gelo de −10 °C a 0 °C" },
+        { "letra": "B", "texto": "O aquecimento da água de 0 °C a 20 °C" },
+        { "letra": "C", "texto": "A fusão do gelo, a 0 °C" },
+        { "letra": "D", "texto": "Todas as etapas têm a mesma duração" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "A energia necessária é maior na fusão (1,67 × 10⁵ J), contra 1,05 × 10⁴ J e 4,18 × 10⁴ J nas outras etapas. Com potência constante, a etapa de maior energia é a de maior duração."
+    },
+    {
+      "id": "p2_4", "grupo": 2, "tipo": "calc", "numero": "2.4",
+      "enunciado": "Admitindo que a energia total necessária é 2,19 × 10⁵ J e que o gelo é aquecido por uma resistência de potência 500 W, sem perdas, determine o intervalo de tempo de todo o processo. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Relaciona a energia, a potência e o tempo: Δt = E / P.", "pontos": 4 },
+        { "descricao": "Substitui os valores: Δt = 2,19 × 10⁵ / 500.", "pontos": 3 },
+        { "descricao": "Obtém Δt ≈ 4,4 × 10² s (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "Δt = E / P = 2,19 × 10⁵ / 500 = 438 s ≈ 4,4 × 10² s.",
+      "resposta_final": "4,4 × 10² s", "cotacao": 10
+    },
+    {
+      "id": "p2_5", "grupo": 2, "tipo": "open", "numero": "2.5",
+      "enunciado": "Durante a fusão do gelo, a temperatura mantém-se constante, embora se continue a fornecer energia. Explique porquê. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Durante a mudança de estado, a energia fornecida é utilizada para quebrar ligações entre as partículas (aumenta a energia potencial), e não para aumentar a sua agitação.", "pontos": 4 },
+        { "descricao": "A temperatura está relacionada com a energia cinética média das partículas, que não varia durante a fusão.", "pontos": 3 },
+        { "descricao": "A temperatura mantém-se constante até todo o gelo fundir, num patamar, e a energia envolvida é dada por E = m ΔH.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Durante a fusão, a energia fornecida serve para quebrar as ligações entre as partículas (aumenta a energia potencial do sistema), e não para aumentar a agitação das partículas. Como a temperatura está relacionada com a energia cinética média das partículas, que não varia, a temperatura mantém-se constante até todo o gelo fundir. A energia envolvida é E = m ΔH.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p3_1", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.1",
+      "enunciado": "Qual é a potência da radiação que incide no painel?",
+      "opcoes": [
+        { "letra": "A", "texto": "1,5 × 10³ W" },
+        { "letra": "B", "texto": "4,7 × 10² W" },
+        { "letra": "C", "texto": "2,9 × 10² W" },
+        { "letra": "D", "texto": "1,5 × 10⁶ W" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "P incidente = 850 × 1,80 = 1530 W ≈ 1,5 × 10³ W."
+    },
+    {
+      "id": "p3_2", "grupo": 3, "tipo": "calc", "numero": "3.2",
+      "enunciado": "Determine a potência elétrica fornecida pelo painel. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a potência da radiação incidente: 850 × 1,80 = 1,53 × 10³ W.", "pontos": 3 },
+        { "descricao": "Relaciona a potência elétrica com o rendimento: P elétrica = η/100 × P incidente.", "pontos": 4 },
+        { "descricao": "Obtém P elétrica ≈ 2,9 × 10² W.", "pontos": 3 }
+      ],
+      "resolucao_modelo": "P incidente = 850 × 1,80 = 1530 W. P elétrica = 0,19 × 1530 ≈ 2,9 × 10² W.",
+      "resposta_final": "2,9 × 10² W", "cotacao": 10
+    },
+    {
+      "id": "p3_3", "grupo": 3, "tipo": "calc", "numero": "3.3",
+      "enunciado": "Determine a energia elétrica fornecida pelo painel em 5,0 h, em kWh. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Converte a potência para quilowatt: 2,9 × 10² W = 0,29 kW.", "pontos": 3 },
+        { "descricao": "Escreve E = P Δt.", "pontos": 4 },
+        { "descricao": "Obtém E ≈ 1,5 kWh.", "pontos": 3 }
+      ],
+      "resolucao_modelo": "E = P Δt = 0,2907 kW × 5,0 h ≈ 1,5 kWh.",
+      "resposta_final": "1,5 kWh", "cotacao": 10
+    },
+    {
+      "id": "p3_4", "grupo": 3, "tipo": "completar_texto", "numero": "3.4",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "A potência fornecida por um painel fotovoltaico é máxima quando a radiação incide a) ______ à superfície do painel. O coletor solar térmico b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "perpendicularmente" },
+            { "letra": "B", "texto": "paralelamente" },
+            { "letra": "C", "texto": "com um ângulo de 45°" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "aquece um fluido, normalmente água" },
+            { "letra": "B", "texto": "produz energia elétrica" },
+            { "letra": "C", "texto": "armazena energia elétrica" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "A", "b": "A" }, "cotacao": 10,
+      "explicacao": "A potência é máxima quando a radiação incide perpendicularmente. O coletor solar térmico usa a radiação para aquecer um fluido, não para produzir energia elétrica."
+    },
+    {
+      "id": "p3_5", "grupo": 3, "tipo": "open", "numero": "3.5",
+      "enunciado": "Distinga um painel fotovoltaico de um coletor solar térmico, indicando a forma de energia obtida em cada caso. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "O painel fotovoltaico, feito de materiais semicondutores, transforma diretamente a energia da radiação em energia elétrica.", "pontos": 4 },
+        { "descricao": "O coletor solar térmico tem uma superfície escura que absorve a radiação e aquece um fluido, aumentando a sua energia interna (por exemplo, para águas quentes sanitárias).", "pontos": 3 },
+        { "descricao": "Produzem formas de energia diferentes: um fornece energia elétrica, o outro energia sob a forma de aumento da energia interna do fluido, e não se podem confundir.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "O painel fotovoltaico, feito de materiais semicondutores, transforma diretamente a energia da radiação em energia elétrica. O coletor solar térmico possui uma superfície escura que absorve a radiação e aquece um fluido, normalmente água, aumentando a sua energia interna; destina-se, por exemplo, a águas quentes sanitárias. Produzem, portanto, formas de energia diferentes.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p4_1", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.1",
+      "enunciado": "Qual é a rapidez de transferência de energia por condução através do vidro?",
+      "opcoes": [
+        { "letra": "A", "texto": "2,9 W" },
+        { "letra": "B", "texto": "1,6 × 10² W" },
+        { "letra": "C", "texto": "2,9 × 10³ W" },
+        { "letra": "D", "texto": "5,2 × 10⁴ W" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "Q/Δt = k A ΔT / l = 0,80 × 1,2 × 18 / 6,0 × 10⁻³ = 2,88 × 10³ W ≈ 2,9 × 10³ W."
+    },
+    {
+      "id": "p4_2", "grupo": 4, "tipo": "calc", "numero": "4.2",
+      "enunciado": "Determine a energia transferida através do vidro durante 8,0 h. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a rapidez de transferência: Q/Δt = 2,9 × 10³ W.", "pontos": 3 },
+        { "descricao": "Converte o tempo para segundos: 8,0 h = 2,88 × 10⁴ s.", "pontos": 3 },
+        { "descricao": "Escreve E = (Q/Δt) × Δt.", "pontos": 2 },
+        { "descricao": "Obtém E ≈ 8,3 × 10⁷ J (com unidade).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "Q/Δt = 2880 W; Δt = 8,0 × 3600 = 2,88 × 10⁴ s. E = 2880 × 2,88 × 10⁴ ≈ 8,3 × 10⁷ J.",
+      "resposta_final": "8,3 × 10⁷ J", "cotacao": 10
+    },
+    {
+      "id": "p4_3", "grupo": 4, "tipo": "calc", "numero": "4.3",
+      "enunciado": "Determine a rapidez de transferência de energia por condução se o vidro fosse substituído por uma placa de madeira com a mesma área e a mesma espessura. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Escreve Q/Δt = k A ΔT / l.", "pontos": 3 },
+        { "descricao": "Substitui os valores (l = 6,0 × 10⁻³ m; ΔT = 18 K; k = 0,15 W m⁻¹ K⁻¹).", "pontos": 3 },
+        { "descricao": "Obtém Q/Δt = 5,4 × 10² W (com unidade).", "pontos": 4 }
+      ],
+      "resolucao_modelo": "Q/Δt = 0,15 × 1,2 × 18 / 6,0 × 10⁻³ = 5,4 × 10² W.",
+      "resposta_final": "5,4 × 10² W", "cotacao": 10
+    },
+    {
+      "id": "p4_4", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.4",
+      "enunciado": "Qual das seguintes alterações diminuiria a energia transferida por condução através de uma parede?",
+      "opcoes": [
+        { "letra": "A", "texto": "Aumentar a espessura da parede" },
+        { "letra": "B", "texto": "Aumentar a área da parede" },
+        { "letra": "C", "texto": "Usar um material de maior condutividade térmica" },
+        { "letra": "D", "texto": "Aumentar a diferença de temperatura entre as faces" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "Q/Δt = k A ΔT / l: diminui se l aumenta; aumenta se k, A ou ΔT aumentarem."
+    },
+    {
+      "id": "p4_5", "grupo": 4, "tipo": "open", "numero": "4.5",
+      "enunciado": "Explique porque é que materiais como a lã de rocha e o esferovite são bons isoladores térmicos, referindo a condução e a convecção. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Estes materiais prendem ar em pequenos compartimentos; o ar parado tem condutividade térmica muito baixa, o que reduz a condução.", "pontos": 4 },
+        { "descricao": "Como o ar fica retido, não circula livremente, o que impede a formação de correntes de convecção.", "pontos": 3 },
+        { "descricao": "Sendo Q/Δt = k A ΔT / l, uma condutividade térmica baixa reduz a rapidez de transferência de energia através do material.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Estes materiais prendem ar em pequenos compartimentos. O ar parado tem condutividade térmica muito baixa, o que reduz a condução, e, como fica retido, não circula, o que impede a convecção. Sendo Q/Δt = k A ΔT / l, uma condutividade térmica baixa reduz a rapidez com que a energia é transferida através do material.",
+      "cotacao": 10
+    }
+  ]
+}

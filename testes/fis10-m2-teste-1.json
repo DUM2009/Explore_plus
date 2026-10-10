@@ -1,0 +1,336 @@
+{
+  "id": "fis10-m2-teste-1",
+  "titulo": "Teste 1 — Energia e fenómenos elétricos",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 90,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      { "grandeza": "Carga elementar (e)", "valor": "1,6 × 10⁻¹⁹ C" },
+      { "grandeza": "Resistividade do cobre (20 °C)", "valor": "1,7 × 10⁻⁸ Ω m" },
+      { "grandeza": "Resistividade do alumínio (20 °C)", "valor": "2,8 × 10⁻⁸ Ω m" },
+      { "grandeza": "Resistividade do nicrómio (20 °C)", "valor": "1,1 × 10⁻⁶ Ω m" },
+      { "grandeza": "Tensão da rede doméstica (Portugal)", "valor": "230 V" },
+      { "grandeza": "1 kWh", "valor": "3,6 × 10⁶ J" }
+    ],
+    "formulas": [
+      "Corrente elétrica: I = Q / Δt",
+      "Diferença de potencial: U = E / Q",
+      "Resistência elétrica: R = U / I",
+      "Resistência de um fio: R = ρ l / A",
+      "Potência elétrica: P = U I",
+      "Energia elétrica: E = P Δt",
+      "Efeito Joule: P = R I² = U² / R",
+      "Associação em série: Req = R1 + R2 + ...; I igual; U = U1 + U2 + ...",
+      "Associação em paralelo: 1/Req = 1/R1 + 1/R2 + ...; U igual; I = I1 + I2 + ...",
+      "Gerador real: U = ε − r I",
+      "Balanço energético do gerador: ε I = U I + r I²",
+      "Rendimento do gerador: η = (U / ε) × 100",
+      "Corrente de curto-circuito: I = ε / r"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "Questão 1",
+      "texto_apoio": "O circuito esquematizado na figura é constituído por uma pilha de força eletromotriz 9,0 V, um interruptor, uma lâmpada, um amperímetro e um voltímetro. Quando o interruptor está fechado, o amperímetro indica 0,50 A. Admita que a pilha é ideal (resistência interna desprezável) e que o circuito esteve fechado durante 2,0 min.",
+      "figuras": [
+        { "imagem": "images/f10_el1_circuito.png", "alt": "Circuito com pilha, interruptor, lâmpada, amperímetro e voltímetro", "legenda": "Figura 1" }
+      ]
+    },
+    {
+      "numero": 2,
+      "titulo": "Questão 2",
+      "texto_apoio": "Uma resistência de aquecimento é constituída por um fio de nicrómio com 2,0 m de comprimento e secção reta de área 0,25 mm². Considere que a resistividade do nicrómio é 1,1 × 10⁻⁶ Ω m e que a resistência é ligada a uma fonte de tensão de 12 V.",
+      "figuras": [
+        { "imagem": "images/f10_el1_fio_nicromio.png", "alt": "Resistência de aquecimento feita de fio de nicrómio enrolado, ligada a uma fonte de 12 V", "legenda": "Figura 2" }
+      ]
+    },
+    {
+      "numero": 3,
+      "titulo": "Questão 3",
+      "texto_apoio": "Um aquecedor elétrico tem a indicação 230 V; 1,5 kW. Funciona ligado à rede doméstica (230 V), durante 4,0 h por dia, ao longo de 30 dias. Considere que o preço da energia elétrica é 0,16 € por kWh.",
+      "figuras": [
+        { "imagem": "images/f10_el1_aquecedor.png", "alt": "Aquecedor elétrico com etiqueta 230 V; 1,5 kW", "legenda": "Figura 3" }
+      ]
+    },
+    {
+      "numero": 4,
+      "titulo": "Questão 4",
+      "texto_apoio": "Duas resistências, R1 = 6,0 Ω e R2 = 3,0 Ω, são ligadas a uma fonte de tensão ideal de 12 V, primeiro em série e depois em paralelo, como representado na figura.",
+      "figuras": [
+        { "imagem": "images/f10_el1_serie_paralelo.png", "alt": "R1 e R2 ligadas em série e, à direita, em paralelo, à mesma fonte de 12 V", "legenda": "Figura 4" }
+      ]
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1_1", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.1",
+      "enunciado": "Qual é o valor da carga elétrica que atravessa uma secção reta do circuito durante os 2,0 min?",
+      "opcoes": [
+        { "letra": "A", "texto": "60 C" },
+        { "letra": "B", "texto": "1,0 C" },
+        { "letra": "C", "texto": "30 C" },
+        { "letra": "D", "texto": "4,2 × 10⁻³ C" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "Q = I Δt = 0,50 × (2,0 × 60) = 60 C. (1,0 C resulta de não converter os minutos em segundos.)"
+    },
+    {
+      "id": "p1_2", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.2",
+      "enunciado": "Como deve estar ligado o voltímetro para medir a diferença de potencial nos terminais da lâmpada?",
+      "opcoes": [
+        { "letra": "A", "texto": "Em série com a lâmpada" },
+        { "letra": "B", "texto": "Em série com a pilha, depois de retirar a lâmpada" },
+        { "letra": "C", "texto": "Em paralelo com a lâmpada" },
+        { "letra": "D", "texto": "Em série com o amperímetro" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "O voltímetro compara dois pontos do circuito, por isso liga-se aos terminais do componente, em paralelo."
+    },
+    {
+      "id": "p1_3", "grupo": 1, "tipo": "calc", "numero": "1.3",
+      "enunciado": "Determine a energia transferida pela pilha às cargas elétricas durante os 2,0 min. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a carga que atravessa o circuito: Q = I Δt = 60 C.", "pontos": 3 },
+        { "descricao": "Relaciona a energia com a diferença de potencial e a carga: E = U Q (ou E = U I Δt).", "pontos": 4 },
+        { "descricao": "Obtém E = 5,4 × 10² J (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "Q = 0,50 × 120 = 60 C. E = U Q = 9,0 × 60 = 540 J.",
+      "resposta_final": "5,4 × 10² J", "cotacao": 10
+    },
+    {
+      "id": "p1_4", "grupo": 1, "tipo": "completar_texto", "numero": "1.4",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "No circuito exterior à pilha, o sentido convencional da corrente é a) ______, e o movimento dos eletrões faz-se em sentido b) ______ ao sentido convencional.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "do polo negativo para o polo positivo" },
+            { "letra": "B", "texto": "do polo positivo para o polo negativo" },
+            { "letra": "C", "texto": "variável ao longo do tempo" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "igual" },
+            { "letra": "B", "texto": "oposto" },
+            { "letra": "C", "texto": "perpendicular" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "B", "b": "B" }, "cotacao": 10,
+      "explicacao": "Por convenção, a corrente vai do polo positivo para o negativo no circuito exterior. Os eletrões têm carga negativa e deslocam-se em sentido oposto."
+    },
+    {
+      "id": "p1_5", "grupo": 1, "tipo": "open", "numero": "1.5",
+      "enunciado": "Explique porque é que o amperímetro se liga em série e o voltímetro em paralelo. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "O amperímetro mede a corrente elétrica, pelo que esta tem de passar por dentro dele: liga-se em série, intercalado no circuito.", "pontos": 4 },
+        { "descricao": "O voltímetro mede a diferença de potencial entre dois pontos, pelo que se liga em paralelo, aos terminais do componente.", "pontos": 3 },
+        { "descricao": "Ligar o amperímetro em paralelo (ou diretamente aos terminais da pilha) pode danificá-lo, e ligar o voltímetro em série não permite medir a diferença de potencial no componente.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "A corrente elétrica é a carga que atravessa uma secção do circuito por unidade de tempo, por isso o amperímetro tem de ser percorrido pela corrente e liga-se em série. A diferença de potencial é uma comparação entre dois pontos, por isso o voltímetro liga-se em paralelo, aos terminais do componente. Ligar o amperímetro em paralelo pode danificá-lo.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p2_1", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.1",
+      "enunciado": "Qual é o valor da resistência do fio?",
+      "opcoes": [
+        { "letra": "A", "texto": "8,8 × 10⁻⁶ Ω" },
+        { "letra": "B", "texto": "2,2 Ω" },
+        { "letra": "C", "texto": "8,8 Ω" },
+        { "letra": "D", "texto": "35 Ω" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "R = ρ l / A = 1,1 × 10⁻⁶ × 2,0 / (0,25 × 10⁻⁶) = 8,8 Ω. (8,8 × 10⁻⁶ Ω resulta de não converter mm² em m².)"
+    },
+    {
+      "id": "p2_2", "grupo": 2, "tipo": "calc", "numero": "2.2",
+      "enunciado": "Determine a intensidade da corrente que percorre a resistência quando está ligada à fonte de 12 V. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a resistência do fio: R = ρ l / A = 8,8 Ω (com A = 0,25 × 10⁻⁶ m²).", "pontos": 4 },
+        { "descricao": "Aplica a definição de resistência: I = U / R.", "pontos": 3 },
+        { "descricao": "Obtém I ≈ 1,4 A (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "R = 1,1 × 10⁻⁶ × 2,0 / (0,25 × 10⁻⁶) = 8,8 Ω. I = U / R = 12 / 8,8 ≈ 1,4 A.",
+      "resposta_final": "1,4 A", "cotacao": 10
+    },
+    {
+      "id": "p2_3", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.3",
+      "enunciado": "Se se utilizasse um fio do mesmo material e com o mesmo comprimento, mas com o dobro do diâmetro, a resistência do fio seria:",
+      "opcoes": [
+        { "letra": "A", "texto": "duas vezes menor" },
+        { "letra": "B", "texto": "igual" },
+        { "letra": "C", "texto": "quatro vezes maior" },
+        { "letra": "D", "texto": "quatro vezes menor" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "Dobrar o diâmetro quadruplica a área da secção (A é proporcional ao quadrado do diâmetro). Como R é inversamente proporcional a A, R fica quatro vezes menor."
+    },
+    {
+      "id": "p2_4", "grupo": 2, "tipo": "completar_texto", "numero": "2.4",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Se o gráfico da diferença de potencial em função da corrente num condutor for uma reta que passa pela origem, o condutor é a) ______ e o declive da reta é igual b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "óhmico" },
+            { "letra": "B", "texto": "não óhmico" },
+            { "letra": "C", "texto": "supercondutor" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "à resistência do condutor" },
+            { "letra": "B", "texto": "ao inverso da resistência" },
+            { "letra": "C", "texto": "à potência dissipada" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "A", "b": "A" }, "cotacao": 10,
+      "explicacao": "Uma reta que passa pela origem indica R = U / I constante: condutor óhmico. Com U no eixo vertical, o declive é R."
+    },
+    {
+      "id": "p2_5", "grupo": 2, "tipo": "open", "numero": "2.5",
+      "enunciado": "Os fios das instalações elétricas de uma casa são de cobre, enquanto as resistências de aquecimento são de nicrómio. Explique porquê, com base na resistividade e no efeito Joule. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "O cobre tem resistividade muito baixa, logo os fios têm pouca resistência (R = ρ l / A) e dissipam pouca energia por efeito Joule.", "pontos": 4 },
+        { "descricao": "O nicrómio tem resistividade elevada, logo uma resistência grande; a potência dissipada P = R I² é elevada e o fio aquece muito.", "pontos": 3 },
+        { "descricao": "Nos fios de instalação o aquecimento é uma perda de energia e um risco; numa resistência de aquecimento é precisamente o efeito pretendido.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "O cobre tem resistividade muito baixa, por isso os fios de uma instalação têm resistência muito pequena e, pelo efeito Joule (P = R I²), dissipam pouca energia e quase não aquecem. O nicrómio tem resistividade elevada, logo resistência elevada, e dissipa muita energia, aquecendo: é o que se pretende num aquecedor.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p3_1", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.1",
+      "enunciado": "Qual é a energia elétrica consumida pelo aquecedor num dia, em kWh?",
+      "opcoes": [
+        { "letra": "A", "texto": "1,5 kWh" },
+        { "letra": "B", "texto": "6,0 kWh" },
+        { "letra": "C", "texto": "0,38 kWh" },
+        { "letra": "D", "texto": "360 kWh" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "E = P Δt = 1,5 kW × 4,0 h = 6,0 kWh. (1,5 kWh resulta de não multiplicar pelo tempo.)"
+    },
+    {
+      "id": "p3_2", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.2",
+      "enunciado": "Qual é a intensidade da corrente elétrica que percorre o aquecedor quando está ligado?",
+      "opcoes": [
+        { "letra": "A", "texto": "0,15 A" },
+        { "letra": "B", "texto": "1,5 A" },
+        { "letra": "C", "texto": "3,5 × 10⁵ A" },
+        { "letra": "D", "texto": "6,5 A" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "P = U I → I = P / U = 1500 / 230 ≈ 6,5 A."
+    },
+    {
+      "id": "p3_3", "grupo": 3, "tipo": "calc", "numero": "3.3",
+      "enunciado": "Determine o custo da energia consumida pelo aquecedor ao fim de 30 dias. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a energia consumida em 30 dias: 1,5 × 4,0 × 30 = 180 kWh.", "pontos": 4 },
+        { "descricao": "Multiplica a energia pelo preço do kWh: 180 × 0,16.", "pontos": 3 },
+        { "descricao": "Obtém 28,8 € (ou 29 €).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "E = 1,5 × 4,0 × 30 = 180 kWh. Custo = 180 × 0,16 = 28,8 €.",
+      "resposta_final": "28,8 €", "cotacao": 10
+    },
+    {
+      "id": "p3_4", "grupo": 3, "tipo": "calc", "numero": "3.4",
+      "enunciado": "Determine a resistência elétrica do aquecedor em funcionamento normal. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Escreve uma expressão que permita o cálculo: R = U² / P (ou calcula I = P / U e usa R = U / I).", "pontos": 4 },
+        { "descricao": "Substitui os valores: R = 230² / 1500.", "pontos": 3 },
+        { "descricao": "Obtém R ≈ 35 Ω (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "R = U² / P = 230² / 1500 ≈ 35 Ω. (Em alternativa: I = 6,5 A e R = U / I = 230 / 6,5 ≈ 35 Ω.)",
+      "resposta_final": "35 Ω", "cotacao": 10
+    },
+    {
+      "id": "p3_5", "grupo": 3, "tipo": "open", "numero": "3.5",
+      "enunciado": "Se a corrente que percorre um fio de uma extensão duplicar, a potência dissipada nesse fio quadruplica. Justifique esta afirmação e explique porque é perigoso ligar vários aparelhos potentes à mesma extensão. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "A potência dissipada por efeito Joule é P = R I²; se I duplica, I² quadruplica, logo P quadruplica (R constante).", "pontos": 4 },
+        { "descricao": "Os aparelhos ligados à extensão estão em paralelo: as correntes somam-se no fio da extensão, que passa a ser percorrido por uma corrente elevada.", "pontos": 3 },
+        { "descricao": "O fio aquece muito (energia dissipada elevada) e pode provocar um incêndio; o disjuntor ou o fusível servem para abrir o circuito quando a corrente é excessiva.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Pelo efeito Joule, P = R I². Duplicando I, I² quadruplica e a potência dissipada também. Como os aparelhos ligados a uma extensão estão em paralelo, as suas correntes somam-se no fio da extensão; a corrente pode ser elevada e o fio dissipar muita energia, aquecendo e podendo causar um incêndio. Os disjuntores protegem a instalação, abrindo o circuito.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p4_1", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.1",
+      "enunciado": "Qual é a resistência equivalente da associação em série?",
+      "opcoes": [
+        { "letra": "A", "texto": "2,0 Ω" },
+        { "letra": "B", "texto": "4,5 Ω" },
+        { "letra": "C", "texto": "18 Ω" },
+        { "letra": "D", "texto": "9,0 Ω" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "Em série, Req = R1 + R2 = 6,0 + 3,0 = 9,0 Ω. (2,0 Ω seria a associação em paralelo.)"
+    },
+    {
+      "id": "p4_2", "grupo": 4, "tipo": "calc", "numero": "4.2",
+      "enunciado": "Na ligação em série, determine a diferença de potencial nos terminais de R1. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a resistência equivalente: Req = 9,0 Ω.", "pontos": 2 },
+        { "descricao": "Calcula a corrente no circuito: I = U / Req ≈ 1,3 A.", "pontos": 3 },
+        { "descricao": "Aplica a definição de resistência a R1: U1 = R1 I.", "pontos": 3 },
+        { "descricao": "Obtém U1 = 8,0 V (com unidade).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "Req = 6,0 + 3,0 = 9,0 Ω. I = 12 / 9,0 = 1,33 A. U1 = R1 I = 6,0 × 1,33 = 8,0 V.",
+      "resposta_final": "8,0 V", "cotacao": 10
+    },
+    {
+      "id": "p4_3", "grupo": 4, "tipo": "correspondencia", "numero": "4.3",
+      "enunciado": "Faça corresponder cada uma das propriedades (Coluna I) ao tipo de ligação a que se aplica (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "A corrente é a mesma em todos os componentes" },
+        { "letra": "b", "texto": "A diferença de potencial é a mesma em todos os ramos" },
+        { "letra": "c", "texto": "Se um componente avaria, os restantes deixam de funcionar" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Ligação em série" },
+        { "numero": "2", "texto": "Ligação em paralelo" }
+      ],
+      "resposta_correta": { "a": "1", "b": "2", "c": "1" }, "cotacao": 10,
+      "explicacao": "Em série a corrente é igual em todos os componentes e uma avaria interrompe o circuito. Em paralelo a ddp é a mesma em todos os ramos."
+    },
+    {
+      "id": "p4_4", "grupo": 4, "tipo": "calc", "numero": "4.4",
+      "enunciado": "Na ligação em paralelo, determine a intensidade da corrente fornecida pela fonte. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a corrente em R1: I1 = U / R1 = 12 / 6,0 = 2,0 A (a ddp em cada ramo é 12 V).", "pontos": 3 },
+        { "descricao": "Calcula a corrente em R2: I2 = U / R2 = 12 / 3,0 = 4,0 A.", "pontos": 3 },
+        { "descricao": "Aplica a conservação da carga no nó: I = I1 + I2.", "pontos": 2 },
+        { "descricao": "Obtém I = 6,0 A (com unidade).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "I1 = 12 / 6,0 = 2,0 A; I2 = 12 / 3,0 = 4,0 A; I = I1 + I2 = 6,0 A.",
+      "resposta_final": "6,0 A", "cotacao": 10
+    },
+    {
+      "id": "p4_5", "grupo": 4, "tipo": "open", "numero": "4.5",
+      "enunciado": "Explique porque é que a resistência equivalente de uma associação em paralelo é menor do que a menor das resistências associadas. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Cada ramo adicional constitui um caminho extra para a corrente.", "pontos": 4 },
+        { "descricao": "Como a diferença de potencial é a mesma em todos os ramos, a corrente total (soma das correntes dos ramos) aumenta.", "pontos": 3 },
+        { "descricao": "Sendo Req = U / I total, com I total maior do que a corrente em qualquer ramo, a resistência equivalente é menor do que qualquer das resistências.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Em paralelo, cada resistência constitui um caminho adicional para a corrente. Todos os ramos estão sujeitos à mesma diferença de potencial, por isso a corrente total é a soma das correntes dos ramos e é maior do que a corrente em qualquer ramo. Como Req = U / I, a resistência equivalente é menor do que a menor das resistências.",
+      "cotacao": 10
+    }
+  ]
+}

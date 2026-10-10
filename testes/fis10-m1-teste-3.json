@@ -1,299 +1,335 @@
 {
   "id": "fis10-m1-teste-3",
   "titulo": "Teste 3 — Energia e movimentos",
-  "missao": "fis10-m1",
-  "plano": "pro",
   "disciplina": "Física",
-  "duracao_sugerida_min": 30,
-  "seccoes": {
-    "1.1": "Energia e sistemas",
-    "1.2": "Trabalho de uma força",
-    "1.3": "Teorema da energia cinética e trabalho do peso",
-    "1.4": "Conservação da energia mecânica e forças não conservativas",
-    "1.5": "Potência, rendimento e atividades laboratoriais",
-    "AL 1.1": "Atividade laboratorial: variação da energia cinética e distância percorrida",
-    "AL 1.2": "Atividade laboratorial: queda e ressalto de uma bola"
+  "duracao_sugerida_min": 90,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      { "grandeza": "Módulo da aceleração gravítica (g)", "valor": "9,8 m s⁻²" }
+    ],
+    "formulas": [
+      "Energia cinética: Ec = ½ m v²",
+      "Energia potencial gravítica (perto da superfície): Epg = m g h",
+      "Energia mecânica: Em = Ec + Epg",
+      "Trabalho de uma força constante: W = F d cos α",
+      "Trabalho do peso: W(P) = −Δ(Epg) = −m g Δh",
+      "Teorema da energia cinética: W(FR) = ΔEc",
+      "Variação da energia mecânica: W(Fnc) = ΔEm",
+      "Potência: P = E / Δt (ou P = W / Δt)",
+      "Rendimento: η = (E útil / E fornecida) × 100 = (P útil / P fornecida) × 100",
+      "Velocidade média numa pala: v = Δx / Δt"
+    ]
   },
-  "perguntas": [
+  "grupos": [
     {
       "numero": 1,
-      "nivel": "facil",
-      "seccao": "1.2",
-      "enunciado": "Como varia a energia cinética de um corpo com a sua velocidade?",
-      "opcoes": [
-        "É diretamente proporcional ao quadrado da velocidade",
-        "É diretamente proporcional à velocidade",
-        "É inversamente proporcional à velocidade",
-        "Não depende da velocidade"
-      ],
-      "correta": 0,
-      "explicacao": "Ec = ½ m v²: é proporcional a v², por isso o gráfico de Ec em função de v é uma parábola."
+      "titulo": "Questão 1",
+      "texto_apoio": "Um pêndulo é constituído por uma esfera de massa 0,200 kg presa a um fio inextensível, de massa desprezável e comprimento 0,80 m. A esfera é largada do repouso, com o fio a fazer um ângulo de 60° com a vertical. Considere o ponto mais baixo da trajetória como nível de referência da energia potencial gravítica e a resistência do ar desprezável. (cos 60° = 0,50)",
+      "figuras": [
+        { "imagem": "images/f10_ex3_pendulo.png", "alt": "Pêndulo largado do repouso com o fio a 60° da vertical", "legenda": "Figura 1" }
+      ]
     },
     {
       "numero": 2,
-      "nivel": "facil",
-      "seccao": "1.3",
-      "enunciado": "Qual é o trabalho realizado pelo peso de um corpo que volta ao ponto de partida, por qualquer percurso?",
-      "opcoes": [
-        "Positivo",
-        "Negativo",
-        "Nulo, porque o peso é uma força conservativa",
-        "Depende do comprimento do percurso"
-      ],
-      "correta": 2,
-      "explicacao": "O trabalho do peso só depende do desnível entre a posição inicial e final. Em percurso fechado, o desnível é nulo e W(P) = 0."
+      "titulo": "Questão 2",
+      "texto_apoio": "Um bloco de massa 3,0 kg, inicialmente em repouso, é puxado numa superfície horizontal rugosa por uma força F, de intensidade 12 N, que faz um ângulo de 60° com a horizontal. O bloco desloca-se 2,0 m. A força de atrito tem intensidade constante, 2,0 N. (cos 60° = 0,50)",
+      "figuras": [
+        { "imagem": "images/f10_ex3_bloco_forca.png", "alt": "Bloco puxado por uma força F a 60° da horizontal numa superfície rugosa", "legenda": "Figura 2" }
+      ]
     },
     {
       "numero": 3,
-      "nivel": "facil",
-      "seccao": "1.3",
-      "enunciado": "Qual das seguintes forças é conservativa?",
-      "opcoes": [
-        "O atrito cinético",
-        "O peso",
-        "A resistência do ar",
-        "A resistência da água ao movimento de um barco"
+      "titulo": "Questão 3",
+      "texto_apoio": "Numa atividade laboratorial (AL 1.2), um grupo de alunos largou uma bola, do repouso, de várias alturas (h queda) e mediu a altura máxima atingida após o primeiro ressalto (h ressalto). Os resultados obtidos encontram-se na tabela seguinte.",
+      "figuras": [
+        { "imagem": "images/f10_ex3_ressalto.png", "alt": "Bola largada de uma altura h queda e a ressaltar até h ressalto", "legenda": "Figura 3" }
       ],
-      "correta": 1,
-      "explicacao": "O peso é conservativo: o seu trabalho não depende do percurso. O atrito e as resistências do ar e da água são dissipativos."
+      "tabela_apoio": {
+        "titulo": "Tabela 1",
+        "colunas": ["h queda (m)", "0,50", "0,80", "1,10", "1,40", "1,70"],
+        "linhas": [
+          ["h ressalto (m)", "0,36", "0,58", "0,79", "1,01", "1,22"]
+        ]
+      }
     },
     {
       "numero": 4,
-      "nivel": "facil",
-      "seccao": "1.5",
-      "enunciado": "A quantos watt correspondem 2,5 kW?",
+      "titulo": "Questão 4",
+      "texto_apoio": "Um elevador de um edifício eleva seis pessoas, de massa total 480 kg (considere só a massa das pessoas), a uma altura de 18 m, com velocidade constante, em 12 s. A potência elétrica fornecida ao motor do elevador é 10 kW.",
+      "figuras": [
+        { "imagem": "images/f10_ex3_elevador.png", "alt": "Elevador de um edifício a elevar seis pessoas", "legenda": "Figura 4" }
+      ]
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1_1", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.1",
+      "enunciado": "Qual é o trabalho realizado pela força que o fio exerce na esfera durante o movimento?",
       "opcoes": [
-        "25 W",
-        "0,0025 W",
-        "250 W",
-        "2500 W"
+        { "letra": "A", "texto": "Positivo, porque a força aponta para o ponto de suspensão" },
+        { "letra": "B", "texto": "Nulo, porque a força é sempre perpendicular ao deslocamento" },
+        { "letra": "C", "texto": "Negativo, porque a força se opõe ao peso" },
+        { "letra": "D", "texto": "Igual ao trabalho do peso" }
       ],
-      "correta": 3,
-      "explicacao": "1 kW = 1000 W, logo 2,5 kW = 2,5 × 1000 = 2500 W."
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "A tensão do fio é sempre perpendicular à trajetória (α = 90°), por isso W = 0. Só o peso realiza trabalho."
     },
     {
-      "numero": 5,
-      "nivel": "facil",
-      "seccao": "1.2",
-      "enunciado": "Uma força realiza trabalho positivo quando:",
-      "opcoes": [
-        "tem uma componente no sentido do deslocamento",
-        "é perpendicular ao deslocamento",
-        "tem sentido oposto ao deslocamento",
-        "o corpo está parado"
+      "id": "p1_2", "grupo": 1, "tipo": "calc", "numero": "1.2",
+      "enunciado": "Determine a altura da esfera, em relação ao ponto mais baixo, no instante em que é largada. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Identifica, pela geometria, que h = L − L cos θ (distância do ponto de suspensão ao ponto mais baixo menos a projeção vertical do fio).", "pontos": 4 },
+        { "descricao": "Substitui os valores: h = 0,80 − 0,80 × cos 60°.", "pontos": 3 },
+        { "descricao": "Obtém h = 0,40 m (com unidade).", "pontos": 3 }
       ],
-      "correta": 0,
-      "explicacao": "W = F d cos α é positivo se 0° ≤ α < 90°, isto é, quando a força tem componente no sentido do deslocamento."
+      "resolucao_modelo": "h = L − L cos 60° = 0,80 − 0,80 × 0,50 = 0,40 m.",
+      "resposta_final": "0,40 m", "cotacao": 10
     },
     {
-      "numero": 6,
-      "nivel": "facil",
-      "seccao": "1.4",
-      "enunciado": "Um pêndulo oscila sem atrito. Em que ponto da trajetória é máxima a energia cinética?",
-      "opcoes": [
-        "No ponto mais alto",
-        "Em todos os pontos, porque a energia mecânica é constante",
-        "No ponto mais baixo, onde a energia potencial é mínima",
-        "No ponto onde a tensão do fio é nula"
+      "id": "p1_3", "grupo": 1, "tipo": "calc", "numero": "1.3",
+      "enunciado": "Determine a velocidade da esfera ao passar no ponto mais baixo da trajetória. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Conclui que a energia mecânica se conserva (o fio não realiza trabalho e a resistência do ar é desprezável).", "pontos": 3 },
+        { "descricao": "Escreve m g h = ½ m v².", "pontos": 4 },
+        { "descricao": "Obtém v ≈ 2,8 m/s (com unidade).", "pontos": 3 }
       ],
-      "correta": 2,
-      "explicacao": "Como Em = Ec + Ep é constante, a Ec é máxima onde a Ep é mínima: no ponto mais baixo."
+      "resolucao_modelo": "m g h = ½ m v² → v = √(2 g h) = √(2 × 9,8 × 0,40) ≈ 2,8 m/s.",
+      "resposta_final": "2,8 m/s", "cotacao": 10
     },
     {
-      "numero": 7,
-      "nivel": "facil",
-      "seccao": "1.5",
-      "enunciado": "Porque é que o rendimento de uma máquina real é sempre inferior a 100 %?",
-      "opcoes": [
-        "Porque a energia fornecida é sempre menor do que a energia útil",
-        "Porque há sempre energia dissipada, que não é aproveitada para o fim pretendido",
-        "Porque parte da energia deixa de existir",
-        "Porque a potência é sempre menor do que a energia"
+      "id": "p1_4", "grupo": 1, "tipo": "completar_texto", "numero": "1.4",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "No ponto mais baixo da trajetória, a energia cinética da esfera é a) ______ e a energia potencial gravítica é b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "máxima" },
+            { "letra": "B", "texto": "nula" },
+            { "letra": "C", "texto": "igual à energia potencial" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "máxima" },
+            { "letra": "B", "texto": "nula" },
+            { "letra": "C", "texto": "igual à energia cinética" }
+          ]
+        }
       ],
-      "correta": 1,
-      "explicacao": "Energia fornecida = energia útil + energia dissipada. Há sempre alguma energia dissipada (em geral como energia interna), por isso a energia útil é menor do que a fornecida."
+      "resposta_correta": { "a": "A", "b": "B" }, "cotacao": 10,
+      "explicacao": "Com o nível de referência no ponto mais baixo, Epg = 0 e toda a energia mecânica é cinética (máxima)."
     },
     {
-      "numero": 8,
-      "nivel": "facil",
-      "seccao": "1.4",
-      "enunciado": "O trabalho realizado pelas forças dissipativas sobre um sistema é:",
+      "id": "p1_5", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.5",
+      "enunciado": "Se a massa da esfera fosse o dobro, a velocidade no ponto mais baixo seria:",
       "opcoes": [
-        "positivo, porque a energia mecânica aumenta",
-        "nulo, porque a energia se conserva",
-        "sempre igual à variação da energia potencial",
-        "negativo e igual à variação da energia mecânica"
+        { "letra": "A", "texto": "o dobro" },
+        { "letra": "B", "texto": "igual" },
+        { "letra": "C", "texto": "metade" },
+        { "letra": "D", "texto": "quatro vezes maior" }
       ],
-      "correta": 3,
-      "explicacao": "W(Fnc) = ΔEm. Com forças dissipativas, a energia mecânica diminui, logo o trabalho é negativo."
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "v = √(2 g h) não depende da massa."
+    },
+
+    {
+      "id": "p2_1", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.1",
+      "enunciado": "Qual é o trabalho realizado pela força F no deslocamento do bloco?",
+      "opcoes": [
+        { "letra": "A", "texto": "24 J" },
+        { "letra": "B", "texto": "21 J" },
+        { "letra": "C", "texto": "6,0 J" },
+        { "letra": "D", "texto": "12 J" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "W(F) = F d cos 60° = 12 × 2,0 × 0,50 = 12 J."
     },
     {
-      "numero": 9,
-      "nivel": "facil",
-      "seccao": "AL 1.1",
-      "enunciado": "Na AL 1.1, o gráfico de ΔEc em função da distância percorrida é uma reta que passa pela origem. Isto significa que:",
-      "opcoes": [
-        "ΔEc é diretamente proporcional à distância percorrida",
-        "ΔEc é inversamente proporcional à distância percorrida",
-        "ΔEc não depende da distância percorrida",
-        "a velocidade do carrinho é constante"
+      "id": "p2_2", "grupo": 2, "tipo": "correspondencia", "numero": "2.2",
+      "enunciado": "Faça corresponder cada uma das forças que atuam no bloco (Coluna I) ao tipo de trabalho que realizam (Coluna II). Cada número pode ser utilizado mais do que uma vez.",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "Peso do bloco" },
+        { "letra": "b", "texto": "Força de atrito" },
+        { "letra": "c", "texto": "Força F" }
       ],
-      "correta": 0,
-      "explicacao": "Uma reta pela origem indica proporcionalidade direta: ΔEc = FR × d. O declive é a intensidade da resultante."
+      "coluna_direita": [
+        { "numero": "1", "texto": "Trabalho positivo" },
+        { "numero": "2", "texto": "Trabalho nulo" },
+        { "numero": "3", "texto": "Trabalho negativo" }
+      ],
+      "resposta_correta": { "a": "2", "b": "3", "c": "1" }, "cotacao": 10,
+      "explicacao": "O peso é perpendicular ao deslocamento (nulo); o atrito tem sentido oposto (negativo); F tem componente no sentido do deslocamento (positivo)."
     },
     {
-      "numero": 10,
-      "nivel": "facil",
-      "seccao": "AL 1.2",
-      "enunciado": "Na AL 1.2, o declive da reta de h ressalto em função de h queda é 0,80. Que percentagem da energia mecânica se dissipa em cada ressalto?",
-      "opcoes": [
-        "80 %",
-        "0,20 %",
-        "20 %",
-        "100 %"
+      "id": "p2_3", "grupo": 2, "tipo": "calc", "numero": "2.3",
+      "enunciado": "Determine o trabalho realizado pela resultante das forças que atuam no bloco. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Conclui que o peso e a força normal não realizam trabalho (perpendiculares ao deslocamento).", "pontos": 2 },
+        { "descricao": "Calcula W(F) = 12 J.", "pontos": 3 },
+        { "descricao": "Calcula W(Fa) = −2,0 × 2,0 = −4,0 J.", "pontos": 3 },
+        { "descricao": "Obtém W(FR) = 8,0 J (soma dos trabalhos).", "pontos": 2 }
       ],
-      "correta": 2,
-      "explicacao": "O declive indica a fração conservada (80 %). Dissipa-se 1 − 0,80 = 0,20, ou seja, 20 %."
+      "resolucao_modelo": "W(FR) = W(P) + W(N) + W(F) + W(Fa) = 0 + 0 + 12 − 4,0 = 8,0 J.",
+      "resposta_final": "8,0 J", "cotacao": 10
     },
     {
-      "numero": 11,
-      "nivel": "intermedia",
-      "seccao": "1.4",
-      "enunciado": "Uma esfera é lançada na vertical, para cima, com 12 m/s. Desprezando a resistência do ar, qual é a altura máxima que atinge? (g = 9,8 m s⁻²)",
-      "opcoes": [
-        "14,7 m",
-        "7,3 m",
-        "1,2 m",
-        "12 m"
+      "id": "p2_4", "grupo": 2, "tipo": "calc", "numero": "2.4",
+      "enunciado": "Determine a velocidade do bloco no fim do deslocamento. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Aplica o teorema da energia cinética: W(FR) = ΔEc = ½ m v² − 0.", "pontos": 4 },
+        { "descricao": "Escreve 8,0 = ½ × 3,0 × v².", "pontos": 3 },
+        { "descricao": "Obtém v ≈ 2,3 m/s (com unidade).", "pontos": 3 }
       ],
-      "correta": 1,
-      "explicacao": "h = v² / (2 g) = 144 / 19,6 ≈ 7,3 m. (14,7 m resulta de esquecer o fator 2.)"
+      "resolucao_modelo": "8,0 = ½ × 3,0 × v² → v² = 5,33 → v ≈ 2,3 m/s.",
+      "resposta_final": "2,3 m/s", "cotacao": 10
     },
     {
-      "numero": 12,
-      "nivel": "intermedia",
-      "seccao": "1.3",
-      "enunciado": "Um caixote de 5,0 kg é elevado 2,0 m, com velocidade constante, por uma força F. Durante a subida, a força de atrito realiza −15 J. Qual é o trabalho realizado por F? (g = 9,8 m s⁻²)",
-      "opcoes": [
-        "98 J",
-        "83 J",
-        "15 J",
-        "1,1 × 10² J"
+      "id": "p2_5", "grupo": 2, "tipo": "open", "numero": "2.5",
+      "enunciado": "Compare, justificando com base no teorema da energia cinética, a velocidade final do bloco com a que seria obtida se a força de atrito fosse desprezável. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Sem atrito, o trabalho da resultante seria só o de F: 12 J, superior aos 8,0 J com atrito.", "pontos": 4 },
+        { "descricao": "Pelo teorema da energia cinética, W(FR) = ΔEc: com maior trabalho da resultante, a variação de energia cinética é maior.", "pontos": 3 },
+        { "descricao": "Logo, a velocidade final seria maior (≈ 2,8 m/s, em vez de ≈ 2,3 m/s).", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
       ],
-      "correta": 3,
-      "explicacao": "A velocidade é constante: W(F) + W(P) + W(Fa) = 0. W(P) = −5,0 × 9,8 × 2,0 = −98 J. Então W(F) = 98 + 15 = 113 J ≈ 1,1 × 10² J."
+      "resolucao_modelo": "Sem atrito, W(FR) = W(F) = 12 J, superior aos 8,0 J com atrito. Pelo teorema da energia cinética, W(FR) = ΔEc, logo o bloco ganharia mais energia cinética e atingiria maior velocidade (v = √(2 × 12 / 3,0) ≈ 2,8 m/s, em vez de ≈ 2,3 m/s).",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p3_1", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.1",
+      "enunciado": "Para traçar o gráfico que permite relacionar as duas grandezas, qual das seguintes opções é a mais adequada?",
+      "opcoes": [
+        { "letra": "A", "texto": "h queda no eixo horizontal e h ressalto no eixo vertical" },
+        { "letra": "B", "texto": "h ressalto no eixo horizontal e h queda no eixo vertical" },
+        { "letra": "C", "texto": "Tempo no eixo horizontal e h ressalto no eixo vertical" },
+        { "letra": "D", "texto": "h queda no eixo horizontal e a massa da bola no eixo vertical" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "A grandeza que se controla (variável independente: h queda) vai para o eixo horizontal; a que se mede (h ressalto) vai para o eixo vertical."
     },
     {
-      "numero": 13,
-      "nivel": "intermedia",
-      "seccao": "1.3",
-      "enunciado": "Sobre um corpo de 3,0 kg, inicialmente em repouso, atuam forças que realizam trabalhos de 30 J e −12 J. Qual é a velocidade final do corpo?",
-      "opcoes": [
-        "3,5 m/s",
-        "2,0 m/s",
-        "4,5 m/s",
-        "6,0 m/s"
+      "id": "p3_2", "grupo": 3, "tipo": "calc", "numero": "3.2",
+      "enunciado": "Utilizando a calculadora gráfica, determine a percentagem de energia mecânica dissipada em cada colisão da bola com o solo. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Traça o gráfico de h ressalto em função de h queda e faz a regressão linear.", "pontos": 3 },
+        { "descricao": "Obtém o declive da reta de ajuste: ≈ 0,72.", "pontos": 3 },
+        { "descricao": "Interpreta o declive como a fração da energia mecânica conservada (Em é proporcional a h, com a bola parada nos pontos mais altos).", "pontos": 2 },
+        { "descricao": "Obtém 100 − 72 = 28 % de energia dissipada.", "pontos": 2 }
       ],
-      "correta": 0,
-      "explicacao": "W(FR) = 30 − 12 = 18 J = ΔEc = ½ × 3,0 × v². Logo v² = 12 e v ≈ 3,5 m/s."
+      "resolucao_modelo": "O declive da reta de ajuste é ≈ 0,72. A bola conserva 72 % da energia mecânica. Dissipa-se 100 − 72 = 28 %.",
+      "resposta_final": "28 %", "cotacao": 10
     },
     {
-      "numero": 14,
-      "nivel": "intermedia",
-      "seccao": "1.5",
-      "enunciado": "Uma aluna de 55 kg sobe 12 m de escadas em 20 s. Qual é a potência média desenvolvida? (g = 9,8 m s⁻²)",
+      "id": "p3_3", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.3",
+      "enunciado": "Admitindo que h ressalto = 0,72 × h queda, qual é a altura de ressalto previsível se a bola for largada de 2,00 m?",
       "opcoes": [
-        "6,5 × 10³ W",
-        "33 W",
-        "3,2 × 10² W",
-        "5,4 × 10² W"
+        { "letra": "A", "texto": "1,28 m" },
+        { "letra": "B", "texto": "1,44 m" },
+        { "letra": "C", "texto": "2,00 m" },
+        { "letra": "D", "texto": "2,78 m" }
       ],
-      "correta": 2,
-      "explicacao": "E = m g h = 55 × 9,8 × 12 = 6468 J. P = E / Δt = 6468 / 20 ≈ 3,2 × 10² W."
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "h ressalto = 0,72 × 2,00 = 1,44 m. (2,78 m resulta de dividir por 0,72.)"
     },
     {
-      "numero": 15,
-      "nivel": "intermedia",
-      "seccao": "1.5",
-      "enunciado": "Um sistema recebe 800 J de energia e realiza 520 J de trabalho útil. Qual é a energia dissipada?",
-      "opcoes": [
-        "5,2 × 10² J",
-        "2,8 × 10² J",
-        "1,3 × 10³ J",
-        "65 J"
+      "id": "p3_4", "grupo": 3, "tipo": "completar_texto", "numero": "3.4",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Na colisão com o solo, a energia mecânica da bola imediatamente depois é a) ______ à energia mecânica imediatamente antes, e a energia dissipada b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "superior" },
+            { "letra": "B", "texto": "igual" },
+            { "letra": "C", "texto": "inferior" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "desaparece" },
+            { "letra": "B", "texto": "transforma-se em energia interna" },
+            { "letra": "C", "texto": "transforma-se em energia cinética" }
+          ]
+        }
       ],
-      "correta": 1,
-      "explicacao": "Energia fornecida = energia útil + energia dissipada, logo energia dissipada = 800 − 520 = 280 J = 2,8 × 10² J."
+      "resposta_correta": { "a": "C", "b": "B" }, "cotacao": 10,
+      "explicacao": "Há dissipação: a energia mecânica diminui e a energia dissipada transforma-se em energia interna da bola, do solo e do ar."
     },
     {
-      "numero": 16,
-      "nivel": "dificil",
-      "seccao": "1.4",
-      "enunciado": "Um pêndulo, de massa 0,50 kg e fio de 1,2 m, é largado do repouso com o fio na horizontal. Qual é a velocidade da massa no ponto mais baixo, desprezando a resistência do ar? (g = 9,8 m s⁻²)",
-      "opcoes": [
-        "3,4 m/s",
-        "2,4 m/s",
-        "6,9 m/s",
-        "4,8 m/s"
+      "id": "p3_5", "grupo": 3, "tipo": "open", "numero": "3.5",
+      "enunciado": "Indique duas fontes de erro que podem afetar os resultados desta atividade e descreva uma medida que reduza cada uma delas. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Erro de paralaxe na leitura da altura de ressalto, reduzido com a leitura ao nível da bola ou com filmagem.", "pontos": 4 },
+        { "descricao": "A bola não ser largada do repouso, ou na vertical, reduzido largando-a sem impulso, repetindo as medições e calculando a média.", "pontos": 3 },
+        { "descricao": "Medição inconsistente do ponto de referência da altura (base ou centro da bola), reduzida medindo sempre do mesmo ponto.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
       ],
-      "correta": 3,
-      "explicacao": "A tensão do fio é perpendicular ao deslocamento e não realiza trabalho. A massa desce 1,2 m: m g h = ½ m v², logo v = √(2 × 9,8 × 1,2) ≈ 4,8 m/s."
+      "resolucao_modelo": "Uma fonte de erro é a paralaxe: reduz-se lendo a altura com os olhos ao nível da bola ou filmando o ressalto. Outra é largar a bola com impulso ou fora da vertical: reduz-se largando-a do repouso, repetindo a medição e calculando a média. Convém ainda medir sempre as alturas do mesmo ponto da bola.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p4_1", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.1",
+      "enunciado": "Qual é a energia útil transferida ao elevador para elevar as pessoas?",
+      "opcoes": [
+        { "letra": "A", "texto": "4,7 × 10³ J" },
+        { "letra": "B", "texto": "8,8 × 10⁴ J" },
+        { "letra": "C", "texto": "8,5 × 10⁴ J" },
+        { "letra": "D", "texto": "7,1 × 10³ J" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "E útil = m g h = 480 × 9,8 × 18 = 84 672 J ≈ 8,5 × 10⁴ J."
     },
     {
-      "numero": 17,
-      "nivel": "dificil",
-      "seccao": "1.3",
-      "enunciado": "Um carro de 1200 kg, a 25 m/s, trava até parar ao longo de 50 m. Qual é a intensidade média da força resultante?",
+      "id": "p4_2", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.2",
+      "enunciado": "Qual é a potência útil do elevador?",
       "opcoes": [
-        "7,5 × 10³ N",
-        "3,8 × 10³ N",
-        "1,5 × 10⁴ N",
-        "3,8 × 10⁵ N"
+        { "letra": "A", "texto": "8,5 × 10⁴ W" },
+        { "letra": "B", "texto": "7,1 × 10³ W" },
+        { "letra": "C", "texto": "1,0 × 10⁴ W" },
+        { "letra": "D", "texto": "3,9 × 10² W" }
       ],
-      "correta": 0,
-      "explicacao": "W(FR) = ΔEc = 0 − ½ × 1200 × 25² = −3,75 × 10⁵ J. Como W = −F d, F = 3,75 × 10⁵ / 50 = 7,5 × 10³ N."
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "P útil = E útil / Δt = 84 672 / 12 = 7056 W ≈ 7,1 × 10³ W."
     },
     {
-      "numero": 18,
-      "nivel": "dificil",
-      "seccao": "1.4",
-      "enunciado": "Um caixote de 4,0 kg desliza do repouso numa rampa com 3,0 m de comprimento e 1,5 m de desnível, e chega à base com 4,0 m/s. Qual é a intensidade média da força de atrito? (g = 9,8 m s⁻²)",
-      "opcoes": [
-        "27 N",
-        "20 N",
-        "8,9 N",
-        "11 N"
+      "id": "p4_3", "grupo": 4, "tipo": "calc", "numero": "4.3",
+      "enunciado": "Determine o rendimento do elevador. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Escreve a expressão: η = P útil / P fornecida × 100.", "pontos": 4 },
+        { "descricao": "Substitui os valores: 7056 / 10 000 × 100.", "pontos": 3 },
+        { "descricao": "Obtém η ≈ 71 %.", "pontos": 3 }
       ],
-      "correta": 2,
-      "explicacao": "Em,i = 4,0 × 9,8 × 1,5 = 58,8 J. Em,f = ½ × 4,0 × 4,0² = 32 J. W(Fa) = ΔEm = −26,8 J. Como W = −Fa × d, Fa = 26,8 / 3,0 ≈ 8,9 N."
+      "resolucao_modelo": "η = 7056 / 10 000 × 100 = 70,56 % ≈ 71 %.",
+      "resposta_final": "71 %", "cotacao": 10
     },
     {
-      "numero": 19,
-      "nivel": "dificil",
-      "seccao": "AL 1.1",
-      "enunciado": "Na AL 1.1, um carrinho de 0,50 kg, com uma pala de 2,0 cm, parte do repouso e a pala demora 0,020 s a passar na célula, colocada a 0,80 m da posição de largada. Qual é a intensidade da resultante das forças?",
-      "opcoes": [
-        "0,25 N",
-        "0,31 N",
-        "0,50 N",
-        "3,1 × 10³ N"
+      "id": "p4_4", "grupo": 4, "tipo": "calc", "numero": "4.4",
+      "enunciado": "Determine a energia dissipada no motor do elevador durante a subida. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a energia fornecida: P Δt = 10 000 × 12 = 1,2 × 10⁵ J.", "pontos": 3 },
+        { "descricao": "Calcula a energia útil: 8,5 × 10⁴ J.", "pontos": 3 },
+        { "descricao": "Obtém a energia dissipada = fornecida − útil ≈ 3,5 × 10⁴ J (com unidade).", "pontos": 4 }
       ],
-      "correta": 1,
-      "explicacao": "Δx = 0,020 m, logo v = 0,020 / 0,020 = 1,0 m/s. ΔEc = ½ × 0,50 × 1,0² = 0,25 J. FR = ΔEc / d = 0,25 / 0,80 ≈ 0,31 N. (3,1 × 10³ N resulta de não converter cm em m.)"
+      "resolucao_modelo": "E fornecida = 10 000 × 12 = 120 000 J. E útil = 84 672 J. E dissipada = 120 000 − 84 672 ≈ 3,5 × 10⁴ J.",
+      "resposta_final": "3,5 × 10⁴ J", "cotacao": 10
     },
     {
-      "numero": 20,
-      "nivel": "dificil",
-      "seccao": "AL 1.2",
-      "enunciado": "Numa experiência como a da AL 1.2, h ressalto = 0,64 × h queda. A bola é largada de 1,5 m. Qual é a altura atingida no segundo ressalto, admitindo que o declive se mantém?",
-      "opcoes": [
-        "0,96 m",
-        "0,41 m",
-        "0,54 m",
-        "0,61 m"
+      "id": "p4_5", "grupo": 4, "tipo": "open", "numero": "4.5",
+      "enunciado": "Explique em que diferem a potência e o rendimento de uma máquina, e indique se duas máquinas com a mesma potência podem ter rendimentos diferentes. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "A potência é a rapidez com que a energia é transferida (P = E / Δt); o rendimento é a fração da energia fornecida que é aproveitada (η = E útil / E fornecida).", "pontos": 4 },
+        { "descricao": "Duas máquinas com a mesma potência podem ter rendimentos diferentes: para a mesma energia fornecida por segundo, podem aproveitar frações diferentes.", "pontos": 3 },
+        { "descricao": "Por outro lado, máquinas com potências diferentes podem ter o mesmo rendimento; são grandezas independentes.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
       ],
-      "correta": 3,
-      "explicacao": "1.º ressalto: 0,64 × 1,5 = 0,96 m. 2.º ressalto: 0,64 × 0,96 ≈ 0,61 m. (0,96 m é o 1.º ressalto; 0,54 m é a altura correspondente à parte dissipada.)"
+      "resolucao_modelo": "A potência mede a rapidez com que a energia é transferida (P = E / Δt). O rendimento mede a fração da energia fornecida que é aproveitada. Duas máquinas com a mesma potência podem aproveitar frações diferentes dessa energia e ter, portanto, rendimentos diferentes; e máquinas com potências diferentes podem ter o mesmo rendimento.",
+      "cotacao": 10
     }
   ]
 }

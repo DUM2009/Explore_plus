@@ -29,7 +29,9 @@
 
       <form method="post" action="{% url 'signup' %}" class="light-login-form">
         {% csrf_token %}
+        {% if codigo_referral %}<input type="hidden" name="ref" value="{{ codigo_referral }}">{% endif %}
         {% if erro %}<p class="form-error">{{ erro }}</p>{% endif %}
+        {% if codigo_referral %}<p class="signup-referral-note">🎁 Convidado com o código <strong>{{ codigo_referral }}</strong></p>{% endif %}
 
         <div class="form-group">
           <label for="nome">Nome de utilizador</label>

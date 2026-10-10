@@ -326,7 +326,7 @@ subjectSwitcherBtn?.addEventListener('click', () => {
     subjectSwitcherMenu.hidden = isOpen;
 });
 
-const heroChatBtn = document.getElementById('heroChatBtn');
+const profileMascoteFab = document.getElementById('profileMascoteFab');
 const mascoteChatPanel = document.getElementById('mascoteChatPanel');
 const mascoteChatMessages = document.getElementById('mascoteChatMessages');
 const mascoteChatForm = document.getElementById('mascoteChatForm');
@@ -335,7 +335,6 @@ const mascoteChatSend = document.getElementById('mascoteChatSend');
 let mascoteChatHistory = [];
 
 const profileLayoutEl = document.querySelector('.profile-layout');
-const heroMascotCard = heroChatBtn?.closest('.profile-hero-mascot-card');
 
 function setKimChatOpenLayout(isOpen) {
     const sidebar = document.getElementById('profileSidebar');
@@ -349,7 +348,9 @@ function setKimChatOpenLayout(isOpen) {
         }
     }
     profileLayoutEl?.classList.toggle('kim-chat-open', isOpen);
-    if (heroMascotCard) heroMascotCard.hidden = isOpen;
+    // No point in the floating button inviting the student to "Falar com
+    // o Kim" when that conversation is already open.
+    if (profileMascoteFab) profileMascoteFab.hidden = isOpen;
 }
 
 function openMascoteChatPanel() {
@@ -429,7 +430,7 @@ async function sendMascoteChatMessage() {
     }
 }
 
-heroChatBtn?.addEventListener('click', openMascoteChatPanel);
+profileMascoteFab?.addEventListener('click', openMascoteChatPanel);
 
 document.getElementById('mascoteChatClose')?.addEventListener('click', () => {
     if (mascoteChatPanel) mascoteChatPanel.hidden = true;
@@ -442,10 +443,10 @@ mascoteChatForm?.addEventListener('submit', (event) => {
 });
 
 /** Perfil/Conquistas tabs swap which panel shows in the main column — no
- *  page navigation. The aside (quote + resumo rápido) only shows on
- *  "Perfil" (ver data-tab-panel="perfil" no .profile-grid-aside); quando
- *  está escondida, .profile-grid ganha is-single-column para o grid deixar
- *  de reservar a coluna de 320px que ela ocupava, e o cartão de conquistas
+ *  page navigation. The aside (Teste Vocacional) only shows on "Perfil"
+ *  (ver data-tab-panel="perfil" no .profile-grid-aside); quando está
+ *  escondida, .profile-grid ganha is-single-column para o grid deixar de
+ *  reservar a coluna de 320px que ela ocupava, e o conteúdo principal
  *  esticar para a largura toda em vez de deixar aquele espaço vazio. */
 const profileTabButtons = document.querySelectorAll('.profile-tab[data-tab-target]');
 const profileTabPanels = document.querySelectorAll('[data-tab-panel]');
@@ -475,42 +476,11 @@ const SCIENCE_QUOTES = [
     { text: 'O que observamos não é a natureza em si, mas a natureza exposta ao nosso método de questionamento.', author: 'Werner Heisenberg' },
 ];
 
-const profileQuoteCard = document.querySelector('.profile-quote-card');
+const profileQuoteCard = document.querySelector('.profile-hero-quote');
 const profileQuoteText = document.getElementById('profileQuoteText');
 const profileQuoteAuthor = document.getElementById('profileQuoteAuthor');
-const profileSubjectCard = document.querySelector('.profile-subject-card');
-// "Resumo rápido" sits right below the quote card, in the same column, and
-// still needs to line up with .profile-missions-card (the bordered mission
-// list next to it) — so the quote card itself is only as tall as the XP
-// panel, but gets a bottom margin that makes up the rest of the gap.
-const profileMissionsCard = document.querySelector('.profile-missions-card');
-
-/** Keeps the quote card's own height matched to .profile-subject-card (the
- *  XP panel, same row, different grid column — CSS alone can't align them),
- *  then pads its bottom margin so "Resumo rápido" still starts level with
- *  .profile-missions-card. A fixed height (not min-height) so a longer
- *  quote can never grow the card taller than the XP panel —
- *  .profile-quote-card has overflow:hidden as a backstop for that case. */
-function syncQuoteCardHeight() {
-    if (!profileQuoteCard || !profileSubjectCard) return;
-    // offsetParent is null while the "Perfil" tab panel is hidden (e.g. the
-    // "Conquistas" tab is active) — skip rather than collapse the quote
-    // card to 0, since a hidden element's rect is meaningless.
-    if (profileSubjectCard.offsetParent === null) return;
-    const targetHeight = profileSubjectCard.getBoundingClientRect().height;
-    profileQuoteCard.style.height = `${Math.max(targetHeight, 0)}px`;
-
-    if (profileMissionsCard && profileMissionsCard.offsetParent !== null) {
-        const quoteBottom = profileQuoteCard.getBoundingClientRect().bottom;
-        const missionsTop = profileMissionsCard.getBoundingClientRect().top;
-        profileQuoteCard.style.marginBottom = `${Math.max(missionsTop - quoteBottom, 0)}px`;
-    }
-}
 
 if (profileQuoteCard && profileQuoteText && profileQuoteAuthor) {
-    syncQuoteCardHeight();
-    window.addEventListener('resize', syncQuoteCardHeight);
-
     let quoteIndex = 0;
 
     setInterval(() => {
@@ -522,7 +492,6 @@ if (profileQuoteCard && profileQuoteText && profileQuoteAuthor) {
             profileQuoteText.textContent = quote.text;
             profileQuoteAuthor.textContent = `— ${quote.author}`;
             profileQuoteCard.classList.remove('is-fading');
-            syncQuoteCardHeight();
         }, 350);
     }, 5000);
 }

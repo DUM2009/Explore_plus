@@ -1,0 +1,342 @@
+{
+  "id": "fis10-m3-teste-2",
+  "titulo": "Teste 2 — Energia, fenómenos térmicos e radiação",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 90,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      { "grandeza": "Capacidade térmica mássica da água líquida", "valor": "4,18 × 10³ J kg⁻¹ °C⁻¹" },
+      { "grandeza": "Capacidade térmica mássica do gelo", "valor": "2,1 × 10³ J kg⁻¹ °C⁻¹" },
+      { "grandeza": "Capacidade térmica mássica do alumínio", "valor": "9,0 × 10² J kg⁻¹ °C⁻¹" },
+      { "grandeza": "Variação de entalpia mássica de fusão da água", "valor": "3,34 × 10⁵ J kg⁻¹" },
+      { "grandeza": "Variação de entalpia mássica de vaporização da água", "valor": "2,26 × 10⁶ J kg⁻¹" },
+      { "grandeza": "Condutividade térmica do vidro", "valor": "0,80 W m⁻¹ K⁻¹" },
+      { "grandeza": "Condutividade térmica da madeira", "valor": "0,15 W m⁻¹ K⁻¹" },
+      { "grandeza": "Conversão de temperaturas", "valor": "T (K) = θ (°C) + 273,15" }
+    ],
+    "formulas": [
+      "Primeira lei da termodinâmica: ΔU = W + Q + R",
+      "Energia para variar a temperatura: E = m c ΔT",
+      "Energia para mudar de estado físico: E = m ΔH",
+      "Condução: Q / Δt = k A ΔT / l",
+      "Irradiância: P / A",
+      "Rendimento de um painel fotovoltaico: η = (P elétrica / P radiação incidente) × 100, com P radiação incidente = irradiância × área",
+      "Rendimento de uma máquina: η = (E útil / E fornecida) × 100",
+      "Potência elétrica: P = U I; energia: E = P Δt; 1 kWh = 3,6 × 10⁶ J",
+      "Balanço energético num sistema isolado: energia cedida = energia recebida (ΔU = 0)",
+      "Erro percentual: |valor experimental − valor tabelado| / valor tabelado × 100"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "Questão 1",
+      "texto_apoio": "Numa atividade laboratorial (AL 3.2), um grupo de alunos pretendeu determinar a capacidade térmica mássica do alumínio. Utilizaram um bloco de alumínio de massa 0,500 kg, envolvido por material isolador, com uma resistência de aquecimento e um termómetro nos orifícios. A resistência foi ligada a uma fonte que fornecia 12,0 V e uma corrente de 2,50 A, constantes. A temperatura inicial do bloco era 20,0 °C. Registaram-se os valores seguintes. Com os valores da Tabela 1, calcularam a energia fornecida (E) e a variação de temperatura (ΔT) do bloco (Tabela 2).",
+      "figuras": [
+        { "imagem": "images/f10_t2_AL32.png", "alt": "Bloco de alumínio envolvido em esferovite, com resistência de aquecimento, termómetro, fonte, voltímetro e amperímetro", "legenda": "Figura 1" }
+      ],
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Temperatura em função do tempo",
+        "colunas": ["Δt (s)", "60", "120", "180", "240", "300", "360"],
+        "linhas": [
+          ["θ (°C)", "23,8", "27,5", "31,4", "35,1", "39,0", "42,7"]
+        ]
+      },
+      "tabela_apoio_2": {
+        "titulo": "Tabela 2 — Energia fornecida e variação de temperatura",
+        "colunas": ["E (J)", "1800", "3600", "5400", "7200", "9000", "10800"],
+        "linhas": [
+          ["ΔT (°C)", "3,8", "7,5", "11,4", "15,1", "19,0", "22,7"]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "Questão 2",
+      "texto_apoio": "Numa atividade laboratorial (AL 3.1), um grupo de alunos estudou a potência elétrica fornecida por um painel fotovoltaico. O painel, com 0,0100 m² de área, foi iluminado perpendicularmente, com irradiância 400 W/m². Ligaram ao painel um reóstato e um amperímetro em série e um voltímetro em paralelo com o painel. Variando a resistência do reóstato, registaram os valores seguintes.",
+      "figuras": [
+        { "imagem": "images/f10_t2_AL31.png", "alt": "Circuito da AL 3.1: painel fotovoltaico iluminado, reóstato e amperímetro em série, voltímetro em paralelo", "legenda": "Figura 2" }
+      ],
+      "tabela_apoio": {
+        "titulo": "Tabela 1",
+        "colunas": ["U (V)", "0,60", "2,40", "3,60", "4,20", "4,60", "4,80"],
+        "linhas": [
+          ["I (mA)", "60,0", "59,7", "56,4", "47,9", "33,0", "19,8"]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "Questão 3",
+      "texto_apoio": "Situação A: Um motor de automóvel recebe, por cada ciclo de funcionamento, 8,0 × 10⁴ J de energia libertada na combustão do combustível, e fornece 2,2 × 10⁴ J como trabalho útil. Situação B: Ao encher o pneu de uma bicicleta com uma bomba manual, o ar no interior da bomba é comprimido: o êmbolo realiza sobre o ar um trabalho de 150 J e o ar cede 40 J à vizinhança como calor. Considere desprezável a troca de energia por radiação.",
+      "figuras": [
+        { "imagem": "images/f10_t2_motor_bomba.png", "alt": "Diagrama de energia de um motor de automóvel e bomba de bicicleta a comprimir o ar", "legenda": "Figura 3" }
+      ]
+    },
+    {
+      "numero": 4,
+      "titulo": "Questão 4",
+      "texto_apoio": "Uma parede de uma casa tem 12 m² de área e 20 cm de espessura. A condutividade térmica do material da parede é 0,60 W m⁻¹ K⁻¹. A temperatura no interior da casa é 20 °C e no exterior é 5 °C, e ambas se mantêm constantes.",
+      "figuras": [
+        { "imagem": "images/f10_t2_parede.png", "alt": "Parede de uma casa com 12 m² de área e 20 cm de espessura, interior a 20 °C e exterior a 5 °C", "legenda": "Figura 4" }
+      ]
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1_1", "grupo": 1, "tipo": "escolha_multipla", "numero": "1.1",
+      "enunciado": "Qual é a razão de se envolver o bloco com material isolador?",
+      "opcoes": [
+        { "letra": "A", "texto": "Aumentar a energia fornecida pela resistência" },
+        { "letra": "B", "texto": "Impedir que o bloco emita radiação" },
+        { "letra": "C", "texto": "Reduzir a energia transferida do bloco para a vizinhança" },
+        { "letra": "D", "texto": "Aumentar a capacidade térmica mássica do bloco" }
+      ],
+      "resposta_correta": "C", "cotacao": 10,
+      "explicacao": "O isolador reduz as perdas de energia para a vizinhança, de modo que a energia fornecida se aproxime da energia absorvida pelo bloco."
+    },
+    {
+      "id": "p1_2", "grupo": 1, "tipo": "calc", "numero": "1.2",
+      "enunciado": "Determine a energia fornecida ao bloco ao fim de 240 s. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a potência da resistência: P = U I = 12,0 × 2,50 = 30,0 W.", "pontos": 3 },
+        { "descricao": "Escreve E = P Δt.", "pontos": 4 },
+        { "descricao": "Obtém E = 7,2 × 10³ J (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "P = U I = 12,0 × 2,50 = 30,0 W. E = P Δt = 30,0 × 240 = 7,2 × 10³ J.",
+      "resposta_final": "7,2 × 10³ J", "cotacao": 10
+    },
+    {
+      "id": "p1_3", "grupo": 1, "tipo": "calc", "numero": "1.3",
+      "enunciado": "Utilizando a calculadora gráfica, determine a capacidade térmica mássica do alumínio, a partir dos valores da Tabela 2. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Traça o gráfico de ΔT em função de E e faz a regressão linear.", "pontos": 3 },
+        { "descricao": "Obtém o declive da reta de ajuste: ≈ 2,1 × 10⁻³ °C/J.", "pontos": 3 },
+        { "descricao": "Relaciona o declive com a capacidade térmica mássica: declive = 1 / (m c).", "pontos": 2 },
+        { "descricao": "Obtém c = 1 / (m × declive) ≈ 9,5 × 10² J kg⁻¹ °C⁻¹ (com unidade).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "A reta de ajuste de ΔT em função de E tem declive ≈ 2,11 × 10⁻³ °C/J. Como E = m c ΔT, ΔT = E / (m c), logo declive = 1 / (m c). c = 1 / (0,500 × 2,11 × 10⁻³) ≈ 9,5 × 10² J kg⁻¹ °C⁻¹.",
+      "resposta_final": "9,5 × 10² J kg⁻¹ °C⁻¹", "cotacao": 10
+    },
+    {
+      "id": "p1_4", "grupo": 1, "tipo": "calc", "numero": "1.4",
+      "enunciado": "O valor tabelado da capacidade térmica mássica do alumínio é 9,0 × 10² J kg⁻¹ °C⁻¹. Determine o erro percentual do valor experimental obtido em 1.3 (9,5 × 10² J kg⁻¹ °C⁻¹). Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Escreve a expressão do erro percentual: |valor experimental − valor tabelado| / valor tabelado × 100.", "pontos": 4 },
+        { "descricao": "Substitui os valores: |950 − 900| / 900 × 100.", "pontos": 3 },
+        { "descricao": "Obtém ≈ 5,6 %.", "pontos": 3 }
+      ],
+      "resolucao_modelo": "Erro percentual = |9,5 × 10² − 9,0 × 10²| / 9,0 × 10² × 100 ≈ 5,6 %.",
+      "resposta_final": "5,6 %", "cotacao": 10
+    },
+    {
+      "id": "p1_5", "grupo": 1, "tipo": "open", "numero": "1.5",
+      "enunciado": "O valor experimental da capacidade térmica mássica é superior ao valor tabelado. Indique uma causa possível e explique de que modo contribui para esse resultado. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Uma parte da energia fornecida é transferida para a vizinhança (isolamento imperfeito), pelo que o bloco absorve menos energia do que a calculada.", "pontos": 4 },
+        { "descricao": "Por isso, a variação de temperatura do bloco é menor do que a esperada para a energia fornecida.", "pontos": 3 },
+        { "descricao": "Como c = E / (m ΔT), um ΔT menor (com E fornecida usada no cálculo) conduz a um valor de c superior ao verdadeiro.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "O isolamento do bloco não é perfeito, pelo que parte da energia fornecida é transferida para a vizinhança. A variação de temperatura do bloco é, por isso, menor do que a esperada para a energia fornecida. Como c = E / (m ΔT), um ΔT menor com a mesma energia calculada dá um valor experimental de c superior ao tabelado.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p2_1", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.1",
+      "enunciado": "Como devem estar ligados os aparelhos de medida neste circuito?",
+      "opcoes": [
+        { "letra": "A", "texto": "Amperímetro em paralelo com o painel e voltímetro em série" },
+        { "letra": "B", "texto": "Amperímetro em série com o painel e voltímetro em paralelo com o painel" },
+        { "letra": "C", "texto": "Ambos em série com o reóstato" },
+        { "letra": "D", "texto": "Ambos em paralelo com o reóstato" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "O amperímetro tem de ser percorrido pela corrente (série) e o voltímetro mede a diferença de potencial nos terminais do painel (paralelo)."
+    },
+    {
+      "id": "p2_2", "grupo": 2, "tipo": "calc", "numero": "2.2",
+      "enunciado": "Para U = 3,60 V, determine a resistência exterior ligada ao painel e a potência elétrica fornecida pelo painel. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Relaciona a resistência com a diferença de potencial e a corrente: R = U / I.", "pontos": 3 },
+        { "descricao": "Converte a corrente para ampere (56,4 mA = 0,0564 A) e obtém R ≈ 64 Ω.", "pontos": 2 },
+        { "descricao": "Relaciona a potência com U e I: P = U I.", "pontos": 3 },
+        { "descricao": "Obtém P ≈ 0,20 W (com unidade).", "pontos": 2 }
+      ],
+      "resolucao_modelo": "I = 56,4 mA = 0,0564 A. R = 3,60 / 0,0564 ≈ 64 Ω. P = U I = 3,60 × 0,0564 ≈ 0,203 W.",
+      "resposta_final": "R ≈ 64 Ω; P ≈ 0,20 W", "cotacao": 10
+    },
+    {
+      "id": "p2_3", "grupo": 2, "tipo": "escolha_multipla", "numero": "2.3",
+      "enunciado": "O gráfico da potência elétrica fornecida pelo painel em função da resistência exterior:",
+      "opcoes": [
+        { "letra": "A", "texto": "aumenta, atinge um máximo e depois diminui" },
+        { "letra": "B", "texto": "é uma reta crescente" },
+        { "letra": "C", "texto": "é uma reta decrescente" },
+        { "letra": "D", "texto": "é uma linha horizontal" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "Com resistências muito baixas, a tensão é quase nula; com resistências muito altas, a corrente é quase nula. Em ambos os extremos P = U I é pequena, havendo um máximo intermédio."
+    },
+    {
+      "id": "p2_4", "grupo": 2, "tipo": "calc", "numero": "2.4",
+      "enunciado": "Admitindo que a potência máxima fornecida pelo painel foi 0,203 W, determine o rendimento do painel nessas condições. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a potência da radiação incidente: irradiância × área = 400 × 0,0100 = 4,0 W.", "pontos": 4 },
+        { "descricao": "Escreve η = P elétrica / P incidente × 100.", "pontos": 3 },
+        { "descricao": "Obtém η ≈ 5,1 %.", "pontos": 3 }
+      ],
+      "resolucao_modelo": "P incidente = 400 × 0,0100 = 4,0 W. η = 0,203 / 4,0 × 100 ≈ 5,1 %.",
+      "resposta_final": "5,1 %", "cotacao": 10
+    },
+    {
+      "id": "p2_5", "grupo": 2, "tipo": "open", "numero": "2.5",
+      "enunciado": "Explique porque é que a potência fornecida pelo painel não é máxima nem para resistências exteriores muito baixas nem para resistências muito altas. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "Para resistências muito baixas, a corrente é elevada mas a diferença de potencial nos terminais do painel é quase nula, pelo que P = U I é pequena.", "pontos": 4 },
+        { "descricao": "Para resistências muito altas, a diferença de potencial é elevada mas a corrente é quase nula, e P = U I também é pequena.", "pontos": 3 },
+        { "descricao": "Existe, por isso, um valor intermédio da resistência exterior para o qual o produto U I, ou seja, a potência, é máximo.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "Com uma resistência exterior muito baixa, a corrente é elevada, mas a diferença de potencial nos terminais do painel é quase nula, e a potência P = U I é pequena. Com uma resistência muito alta, a diferença de potencial é elevada mas a corrente é quase nula, e a potência também é pequena. Entre os dois extremos há um valor de resistência para o qual o produto U I é máximo.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p3_1", "grupo": 3, "tipo": "escolha_multipla", "numero": "3.1",
+      "enunciado": "Qual é o rendimento do motor na situação A?",
+      "opcoes": [
+        { "letra": "A", "texto": "73 %" },
+        { "letra": "B", "texto": "2,8 %" },
+        { "letra": "C", "texto": "100 %" },
+        { "letra": "D", "texto": "28 %" }
+      ],
+      "resposta_correta": "D", "cotacao": 10,
+      "explicacao": "η = E útil / E fornecida × 100 = 2,2 × 10⁴ / 8,0 × 10⁴ × 100 = 27,5 % ≈ 28 %."
+    },
+    {
+      "id": "p3_2", "grupo": 3, "tipo": "calc", "numero": "3.2",
+      "enunciado": "Determine a energia dissipada pelo motor por ciclo de funcionamento. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Relaciona as energias: energia fornecida = energia útil + energia dissipada.", "pontos": 4 },
+        { "descricao": "Substitui os valores: 8,0 × 10⁴ − 2,2 × 10⁴.", "pontos": 3 },
+        { "descricao": "Obtém 5,8 × 10⁴ J (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "E dissipada = E fornecida − E útil = 8,0 × 10⁴ − 2,2 × 10⁴ = 5,8 × 10⁴ J.",
+      "resposta_final": "5,8 × 10⁴ J", "cotacao": 10
+    },
+    {
+      "id": "p3_3", "grupo": 3, "tipo": "calc", "numero": "3.3",
+      "enunciado": "Na situação B, determine a variação da energia interna do ar no interior da bomba. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Identifica os sinais: W = +150 J (trabalho realizado sobre o ar), Q = −40 J (calor cedido) e R = 0.", "pontos": 4 },
+        { "descricao": "Aplica a primeira lei da termodinâmica: ΔU = W + Q + R.", "pontos": 3 },
+        { "descricao": "Obtém ΔU = +110 J (com unidade e sinal).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "ΔU = W + Q + R = 150 − 40 + 0 = +110 J.",
+      "resposta_final": "+110 J", "cotacao": 10
+    },
+    {
+      "id": "p3_4", "grupo": 3, "tipo": "completar_texto", "numero": "3.4",
+      "enunciado": "Complete o texto seguinte, selecionando, para cada espaço, a opção correta.",
+      "texto_com_espacos": "Na situação B, o trabalho realizado sobre o ar é a) ______ e, por isso, a energia interna do ar b) ______.",
+      "espacos": [
+        {
+          "id": "a",
+          "opcoes": [
+            { "letra": "A", "texto": "positivo" },
+            { "letra": "B", "texto": "negativo" },
+            { "letra": "C", "texto": "nulo" }
+          ]
+        },
+        {
+          "id": "b",
+          "opcoes": [
+            { "letra": "A", "texto": "aumenta" },
+            { "letra": "B", "texto": "diminui" },
+            { "letra": "C", "texto": "mantém-se" }
+          ]
+        }
+      ],
+      "resposta_correta": { "a": "A", "b": "A" }, "cotacao": 10,
+      "explicacao": "O êmbolo realiza trabalho sobre o ar (W > 0). Como ΔU = +110 J, a energia interna do ar aumenta, o que explica o aquecimento da bomba."
+    },
+    {
+      "id": "p3_5", "grupo": 3, "tipo": "open", "numero": "3.5",
+      "enunciado": "Explique porque é que nenhum motor tem rendimento de 100 %, referindo o destino da energia dissipada. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "A energia fornecida divide-se em energia útil e energia dissipada (aquecimento do motor, gases de escape, atrito); a energia total conserva-se (primeira lei).", "pontos": 4 },
+        { "descricao": "A energia dissipada transforma-se em energia interna da vizinhança, dispersa e a temperatura pouco acima da ambiente, pelo que já não pode ser aproveitada.", "pontos": 3 },
+        { "descricao": "Segundo a segunda lei, nenhuma máquina converte integralmente a energia fornecida em trabalho útil: o rendimento é sempre inferior a 100 %.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "A energia total conserva-se, mas parte da energia fornecida ao motor é dissipada (aquecimento do motor, gases de escape, atrito) e transforma-se em energia interna da vizinhança, dispersa e a uma temperatura pouco acima da ambiente, não podendo ser aproveitada. Pela segunda lei da termodinâmica, nenhuma máquina converte integralmente a energia fornecida em trabalho útil, por isso o rendimento é sempre inferior a 100 %.",
+      "cotacao": 10
+    },
+
+    {
+      "id": "p4_1", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.1",
+      "enunciado": "Qual é a rapidez de transferência de energia por condução através da parede?",
+      "opcoes": [
+        { "letra": "A", "texto": "5,4 × 10² W" },
+        { "letra": "B", "texto": "5,4 W" },
+        { "letra": "C", "texto": "8,1 × 10⁴ W" },
+        { "letra": "D", "texto": "1,1 × 10² W" }
+      ],
+      "resposta_correta": "A", "cotacao": 10,
+      "explicacao": "Q/Δt = k A ΔT / l = 0,60 × 12 × 15 / 0,20 = 5,4 × 10² W."
+    },
+    {
+      "id": "p4_2", "grupo": 4, "tipo": "calc", "numero": "4.2",
+      "enunciado": "Determine a energia transferida através da parede ao longo de um dia. Apresente todas as etapas de resolução.",
+      "criterios_correcao": [
+        { "descricao": "Calcula a rapidez de transferência: Q/Δt = k A ΔT / l = 5,4 × 10² W.", "pontos": 4 },
+        { "descricao": "Converte um dia em segundos (24 × 3600 = 8,64 × 10⁴ s) e escreve E = (Q/Δt) × Δt.", "pontos": 3 },
+        { "descricao": "Obtém E ≈ 4,7 × 10⁷ J (com unidade).", "pontos": 3 }
+      ],
+      "resolucao_modelo": "Q/Δt = 0,60 × 12 × 15 / 0,20 = 540 W. E = 540 × 8,64 × 10⁴ ≈ 4,7 × 10⁷ J.",
+      "resposta_final": "4,7 × 10⁷ J", "cotacao": 10
+    },
+    {
+      "id": "p4_3", "grupo": 4, "tipo": "escolha_multipla", "numero": "4.3",
+      "enunciado": "Se a espessura da parede passasse para 40 cm, mantendo-se as restantes condições, a rapidez de transferência de energia seria:",
+      "opcoes": [
+        { "letra": "A", "texto": "1,1 × 10³ W" },
+        { "letra": "B", "texto": "2,7 × 10² W" },
+        { "letra": "C", "texto": "5,4 × 10² W" },
+        { "letra": "D", "texto": "1,4 × 10² W" }
+      ],
+      "resposta_correta": "B", "cotacao": 10,
+      "explicacao": "Q/Δt é inversamente proporcional a l. Com o dobro da espessura, a rapidez passa para metade: 5,4 × 10² / 2 = 2,7 × 10² W."
+    },
+    {
+      "id": "p4_4", "grupo": 4, "tipo": "correspondencia", "numero": "4.4",
+      "enunciado": "Faça corresponder cada situação (Coluna I) ao principal mecanismo de transferência de energia envolvido (Coluna II).",
+      "coluna_esquerda": [
+        { "letra": "a", "texto": "A energia do Sol chega à Terra" },
+        { "letra": "b", "texto": "Uma colher de metal aquece numa chávena de chá" },
+        { "letra": "c", "texto": "A água de uma panela aquece por inteiro ao lume" }
+      ],
+      "coluna_direita": [
+        { "numero": "1", "texto": "Condução" },
+        { "numero": "2", "texto": "Convecção" },
+        { "numero": "3", "texto": "Radiação" }
+      ],
+      "resposta_correta": { "a": "3", "b": "1", "c": "2" }, "cotacao": 10,
+      "explicacao": "No vazio só há radiação; na colher (sólido) a energia propaga-se por condução; na água da panela formam-se correntes de convecção."
+    },
+    {
+      "id": "p4_5", "grupo": 4, "tipo": "open", "numero": "4.5",
+      "enunciado": "Os aquecedores são geralmente colocados junto ao chão e os aparelhos de ar condicionado perto do teto. Explique porquê, com base nos mecanismos de transferência de energia. Apresente um texto bem estruturado e utilize linguagem científica adequada.",
+      "criterios_correcao": [
+        { "descricao": "O ar aquecido dilata, fica menos denso e sobe; o ar frio, mais denso, desce.", "pontos": 4 },
+        { "descricao": "Formam-se correntes de convecção: o ar quente que sobe do aquecedor, junto ao chão, aquece toda a divisão, e o ar frio que desce volta ao aquecedor.", "pontos": 3 },
+        { "descricao": "O ar arrefecido pelo aparelho de ar condicionado, junto ao teto, fica mais denso e desce, arrefecendo a divisão por convecção.", "pontos": 2 },
+        { "descricao": "Estruturação e linguagem científica adequadas.", "pontos": 1 }
+      ],
+      "resolucao_modelo": "O ar aquecido dilata, fica menos denso e sobe, enquanto o ar frio, mais denso, desce. Com o aquecedor junto ao chão, o ar quente sobe e o ar frio desce para ser aquecido, formando correntes de convecção que aquecem toda a divisão. Com o ar condicionado junto ao teto, o ar arrefecido fica mais denso e desce, arrefecendo a divisão pelo mesmo mecanismo.",
+      "cotacao": 10
+    }
+  ]
+}

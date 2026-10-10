@@ -63,11 +63,12 @@
 <a href="/Testes/"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-spreadsheet-icon lucide-file-spreadsheet"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg></span>
 <span class="profile-sidebar-label">Testes</span>
 </a>
-<a href="/exames/"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
-<span class="profile-sidebar-label">Exames</span>
-</a>
 <a href="/Resumos/"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
 <span class="profile-sidebar-label">Resumos</span>
+</a>
+<a href="mailto:{{ EMAIL_SUPORTE }}">
+<span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></span>
+<span class="profile-sidebar-label">Suporte</span>
 </a>
 </nav>
 
@@ -163,7 +164,11 @@
     </div>
 </div>
 
+</div>
+
 <div class="profile-hero">
+
+    <div class="profile-hero-main">
 
     <div class="profile-hero-left">
         <div class="profile-hero-avatar-wrap">
@@ -205,20 +210,16 @@
         </div>
     </div>
 
-    <div class="profile-hero-mascot-card">
-        <video src="{% static 'Mascote a acenar.webm' %}" class="profile-hero-mascot-img" id="heroMascotImg" autoplay loop muted playsinline></video>
-        <div class="profile-hero-mascot-copy">
-            <p class="profile-hero-mascot-greeting">Olá, {{ request.user.username }}!</p>
-            <p class="profile-hero-mascot-question">Precisas de ajuda a esclarecer dúvidas ou tens alguma curiosidade?</p>
-            <button type="button" class="profile-hero-chat-btn" id="heroChatBtn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                <span>Falar com o Kim</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-        </div>
+    <div class="profile-hero-quote">
+        <p class="profile-hero-quote-text" id="profileQuoteText">A ciência é a forma mais bonita de explorar o mundo.</p>
+        <span class="profile-hero-quote-dash" id="profileQuoteAuthor" aria-hidden="true">—</span>
+    </div>
+
     </div>
 
 </div>
+
+<div class="profile-content">
 
 <nav class="profile-tabs">
     <button type="button" class="profile-tab is-active" data-tab-target="perfil">
@@ -270,33 +271,6 @@
             {% endif %}
 
             <span id="nivelAluno" hidden></span>
-        </div>
-
-        <div class="profile-missions-section">
-            <div class="profile-missions-head">
-                <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> As minhas missões</h2>
-                <a href="{% url 'index-missions' %}" class="profile-missions-viewall">Ver todas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            </div>
-
-            <div class="profile-missions-card">
-                {% for missao in missoes %}
-                <a class="mission-row" href="{% url missao.url missao_id=missao.url_kwargs.missao_id %}">
-                    <span class="mission-row-icon" aria-hidden="true">{{ missao.icone|safe }}</span>
-                    <span class="mission-row-body">
-                        <span class="mission-row-category">{{ missao.categoria }}</span>
-                        <span class="mission-row-title">{{ missao.titulo }}</span>
-                        <span class="mission-row-desc">{{ missao.descricao }}</span>
-                    </span>
-                    <span class="mission-row-progress">
-                        <span class="mission-row-bar"><span class="mission-row-bar-fill" style="width: {{ missao.percent }}%"></span></span>
-                        <span class="mission-row-percent">{{ missao.percent }}%</span>
-                    </span>
-                    <span class="mission-row-arrow" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                    </span>
-                </a>
-                {% endfor %}
-            </div>
         </div>
 
     </div>
@@ -453,28 +427,6 @@
 
     <div class="profile-grid-aside" data-tab-panel="perfil">
 
-        <div class="profile-quote-card">
-            <p class="profile-quote-text" id="profileQuoteText">A ciência é a forma mais bonita de explorar o mundo.</p>
-            <span class="profile-quote-dash" id="profileQuoteAuthor" aria-hidden="true">—</span>
-        </div>
-
-        <div class="profile-quickstats-card">
-            <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8l6 6v12a2 2 0 0 1-2 2z"/></svg> Resumo rápido</h2>
-
-            <div class="profile-quickstat-row">
-                <strong class="profile-stat-icon profile-stat-icon--streak"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg></strong>
-                <span><b id="profileStreakCount">0</b><small>Dias de sequência</small></span>
-            </div>
-            <div class="profile-quickstat-row">
-                <strong class="profile-stat-icon profile-stat-icon--trophy"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66V17a1 1 0 0 1-1 1 2 2 0 0 0-2 2v2"/><path d="M14 14.66V17a1 1 0 0 0 1 1 2 2 0 0 1 2 2v2"/><path d="M17.916 10H19.5A2.5 2.5 0 0 0 22 7.5V5a1 1 0 0 0-1-1h-3"/><path d="M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6.084 10H4.5A2.5 2.5 0 0 1 2 7.5V5a1 1 0 0 1 1-1h3"/></svg></strong>
-                <span><b id="profileAchievementCount">{{ total_conquistas }}</b><small>Conquistas</small></span>
-            </div>
-            <div class="profile-quickstat-row">
-                <strong class="profile-stat-icon profile-stat-icon--flag"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"/></svg></strong>
-                <span><b id="profileMissionCount">{{ missoes_completas }}</b><small>Missões concluídas</small></span>
-            </div>
-        </div>
-
         <div class="profile-vocacional-card">
             <div class="profile-vocacional-top">
                 <span class="profile-vocacional-icon" aria-hidden="true">
@@ -493,12 +445,56 @@
 
     </div>
 
+    <div class="profile-missions-section" data-tab-panel="perfil">
+        <div class="profile-missions-head">
+            <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/></svg> O teu percurso</h2>
+        </div>
+
+        <div class="profile-percurso-card">
+            <h3 class="profile-percurso-atividade-titulo">Tempo de estudo semanal</h3>
+            <div class="stats-tempo-chart">
+                {% for dia in tempo_estudo_dias %}
+                <div class="stats-tempo-col">
+                    <span class="stats-tempo-valor">{{ dia.valor_label }}</span>
+                    <span class="stats-tempo-bar" style="height: {{ dia.percent }}%"></span>
+                    <span class="stats-tempo-label">{{ dia.label|slice:":3" }}</span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="profile-percurso-stats">
+                <div class="profile-percurso-stat">
+                    <span class="profile-percurso-stat-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.75a2.122 2.122 0 0 0 1.597-1.16z"/></svg></span>
+                    <span class="profile-percurso-stat-label">XP total</span>
+                    <span class="profile-percurso-stat-valor">{{ xp }}</span>
+                </div>
+                <div class="profile-percurso-stat">
+                    <span class="profile-percurso-stat-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4"/></svg></span>
+                    <span class="profile-percurso-stat-label">Sequência de dias</span>
+                    <span class="profile-percurso-stat-valor">{{ sequencia_atual }} <small>dia{{ sequencia_atual|pluralize }}</small></span>
+                </div>
+                <div class="profile-percurso-stat">
+                    <span class="profile-percurso-stat-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></span>
+                    <span class="profile-percurso-stat-label">Conquistas</span>
+                    <span class="profile-percurso-stat-valor">{{ total_conquistas }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 </div>
 </div>
 
 </section>
+
+<button type="button" class="teste-mascote-fab" id="profileMascoteFab" aria-label="Falar com o Kim">
+    <video class="teste-mascote-fab-img" autoplay loop muted playsinline aria-hidden="true">
+        <source src="{% static 'Mascote a acenar.webm' %}" type="video/webm">
+    </video>
+    <span class="teste-mascote-fab-tooltip">Precisas de ajuda a esclarecer dúvidas?</span>
+</button>
 
 <div class="mascote-chat-panel" id="mascoteChatPanel" hidden>
     <div class="mascote-chat-header">

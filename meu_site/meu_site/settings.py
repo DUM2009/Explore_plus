@@ -23,6 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR.parent / '.env')
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
 
+# Email de contacto mostrado no link "Suporte" do menu da conta (ver
+# meu_site.context_processors.constantes_do_site e os templates que usam
+# {{ EMAIL_SUPORTE }}) — placeholder até termos o endereço real.
+EMAIL_SUPORTE = os.environ.get('EMAIL_SUPORTE', 'exploremore.pt6@gmail.com')
+
 # Stripe — assinatura SuperExplore (ver meu_site/meu_site/views.py e o
 # comando `python manage.py stripe_setup`).
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
@@ -143,6 +148,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'meu_site.context_processors.constantes_do_site',
             ],
         },
     },

@@ -37,6 +37,9 @@
         <p class="teste-meta">{{ teste.disciplina }} &middot; Duração sugerida: {{ teste.duracao_sugerida_min }} minutos &middot; Cotação total: {{ teste.cotacao_total }} pontos</p>
 
         <div class="teste-timer-bar">
+            {% if teste.formulario %}
+            <button type="button" class="teste-timer-toggle-btn" id="testeFormularioToggleBtn">Formulário</button>
+            {% endif %}
             <button type="button" class="teste-timer-toggle-btn" id="testeTimerToggleBtn">Adicionar temporizador</button>
         </div>
 
@@ -45,6 +48,14 @@
         <div class="teste-grupo">
             <h2>{{ grupo.titulo }}</h2>
             <p class="teste-texto-apoio">{{ grupo.texto_apoio }}</p>
+
+            {% for figura in grupo.figuras %}
+            <figure class="teste-figura">
+                <img src="{% static figura.imagem %}" alt="{{ figura.alt }}" class="teste-figura-imagem" onerror="this.closest('.teste-figura').classList.add('is-indisponivel')">
+                <figcaption>{{ figura.legenda }}</figcaption>
+                <p class="teste-figura-placeholder-texto">{{ figura.legenda }} — imagem indisponível ({{ figura.alt }})</p>
+            </figure>
+            {% endfor %}
 
             {% if grupo.tabela_apoio %}
             <p class="teste-tabela-titulo">{{ grupo.tabela_apoio.titulo }}</p>
@@ -62,6 +73,22 @@
             </div>
             {% endif %}
 
+            {% if grupo.tabela_apoio_2 %}
+            <p class="teste-tabela-titulo">{{ grupo.tabela_apoio_2.titulo }}</p>
+            <div class="teste-tabela-wrapper">
+                <table class="teste-tabela">
+                    <thead>
+                        <tr>{% for coluna in grupo.tabela_apoio_2.colunas %}<th>{{ coluna }}</th>{% endfor %}</tr>
+                    </thead>
+                    <tbody>
+                        {% for linha in grupo.tabela_apoio_2.linhas %}
+                        <tr>{% for valor in linha %}<td>{{ valor }}</td>{% endfor %}</tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+
             {% if grupo.esquema_apoio %}
             <p class="teste-esquema">{{ grupo.esquema_apoio }}</p>
             {% endif %}
@@ -70,7 +97,7 @@
                 {% if pergunta.grupo == grupo.numero %}
                 <div class="teste-pergunta" data-pergunta-id="{{ pergunta.id }}" data-tipo="{{ pergunta.tipo }}">
                     <div class="teste-pergunta-head">
-                        <span class="teste-pergunta-numero">{{ pergunta.id|slice:"1:" }}.</span>
+                        <span class="teste-pergunta-numero">{% if pergunta.numero %}{{ pergunta.numero }}{% else %}{{ pergunta.id|slice:"1:" }}.{% endif %}</span>
                         <p class="teste-pergunta-enunciado">{{ pergunta.enunciado }}</p>
                         <span class="teste-pergunta-cotacao">{{ pergunta.cotacao }} pts</span>
                     </div>
@@ -154,6 +181,12 @@
                     {% elif pergunta.tipo == 'resposta_longa' %}
                     <textarea class="teste-input-longa" rows="5" placeholder="Escreve a tua resposta..."></textarea>
 
+                    {% elif pergunta.tipo == 'calc' %}
+                    <textarea class="teste-input-longa" rows="6" placeholder="Apresenta todas as etapas de resolução..."></textarea>
+
+                    {% elif pergunta.tipo == 'open' %}
+                    <textarea class="teste-input-longa" rows="6" placeholder="Escreve um texto bem estruturado, com linguagem científica adequada..."></textarea>
+
                     {% elif pergunta.tipo == 'verdadeiro_falso' %}
                     <div class="teste-vf">
                         {% for item in pergunta.itens %}
@@ -224,6 +257,34 @@
     <span id="testeTimerFabDisplay">--:--</span>
 </button>
 
+{% if teste.formulario %}
+<div class="teste-formulario-modal-overlay" id="testeFormularioModalOverlay" hidden>
+    <div class="teste-formulario-modal">
+        <button type="button" class="teste-timer-modal-close" id="testeFormularioModalClose" aria-label="Fechar">✕</button>
+        <h3>Formulário</h3>
+
+        {% if teste.formulario.constantes %}
+        <table class="teste-tabela teste-formulario-tabela">
+            <thead><tr><th>Grandeza</th><th>Valor</th></tr></thead>
+            <tbody>
+                {% for constante in teste.formulario.constantes %}
+                <tr><td>{{ constante.grandeza }}</td><td>{{ constante.valor }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+        {% if teste.formulario.formulas %}
+        <ul class="teste-formulario-lista">
+            {% for formula in teste.formulario.formulas %}
+            <li>{{ formula }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
 <button type="button" class="teste-mascote-fab" id="testeMascoteFab" aria-label="Falar com o Kim">
     <video class="teste-mascote-fab-img" autoplay loop muted playsinline aria-hidden="true">
         <source src="{% static 'Mascote a acenar.webm' %}" type="video/webm">
@@ -250,6 +311,8 @@
 window.exploreCsrfToken = '{{ csrf_token }}';
 window.exploreActivityHeartbeatUrl = '{% url "registar-atividade" %}';
 window.exploreCorrigirTesteUrl = '{% url "corrigir-teste-fotossintese" teste_id %}';
+window.exploreAutoavaliarTesteUrl = '{% url "autoavaliar-teste-fotossintese" teste_id %}';
+window.exploreContestarCorrecaoUrl = '{% url "contestar-correcao-teste" teste_id %}';
 window.exploreGuardarProgressoTesteUrl = '{% url "guardar-progresso-teste" %}';
 window.exploreTesteId = '{{ teste_id }}';
 window.exploreProgressoGuardado = JSON.parse(document.getElementById('progresso-guardado-data').textContent);
@@ -359,7 +422,7 @@ function coletarRespostas() {
             respostas[id] = posicoes;
         } else if (tipo === 'resposta_curta') {
             respostas[id] = bloco.querySelector('.teste-input-curta')?.value.trim() || '';
-        } else if (tipo === 'resposta_longa') {
+        } else if (tipo === 'resposta_longa' || tipo === 'calc' || tipo === 'open') {
             respostas[id] = bloco.querySelector('.teste-input-longa')?.value.trim() || '';
         } else if (tipo === 'verdadeiro_falso') {
             const valor = {};
@@ -404,7 +467,7 @@ function restaurarRespostas(respostas) {
         } else if (tipo === 'resposta_curta') {
             const input = bloco.querySelector('.teste-input-curta');
             if (input && valor) input.value = valor;
-        } else if (tipo === 'resposta_longa') {
+        } else if (tipo === 'resposta_longa' || tipo === 'calc' || tipo === 'open') {
             const textarea = bloco.querySelector('.teste-input-longa');
             if (textarea && valor) textarea.value = valor;
         } else if (tipo === 'verdadeiro_falso') {
@@ -449,6 +512,18 @@ async function guardarProgresso() {
     }
 }
 
+let ultimaRespostasAluno = {};
+let ultimosPontosAtuais = {};
+
+function atribuirXpTeste(notaFinal) {
+    if (!window.ProfileXP) return;
+    const xp = Math.max(10, Math.round(notaFinal * 2));
+    window.ProfileXP.awardXPToCurrentUser(xp, `teste-${window.exploreTesteId}`, undefined, {
+        type: 'teste',
+        percentage: (notaFinal / 20) * 100,
+    });
+}
+
 function mostrarResultado(dados) {
     document.querySelectorAll('#testeForm input, #testeForm select, #testeForm textarea, #testeSubmitBtn').forEach((el) => {
         el.disabled = true;
@@ -457,14 +532,29 @@ function mostrarResultado(dados) {
     const aviso = document.getElementById('testeGuardadoAviso');
     if (aviso) aviso.hidden = true;
 
+    ultimosPontosAtuais = {};
+    Object.entries(dados.perguntas || {}).forEach(([perguntaId, info]) => {
+        ultimosPontosAtuais[perguntaId] = info.pontos;
+    });
+
     let feedbackHtml = '';
     Object.entries(dados.feedbackIA || {}).forEach(([perguntaId, feedback]) => {
-        const numero = perguntaId.replace('p', '');
         const info = dados.perguntas[perguntaId] || {};
+        const numero = document.querySelector(`.teste-pergunta[data-pergunta-id="${perguntaId}"] .teste-pergunta-numero`)?.textContent || perguntaId;
+        const contestarHtml = info.podeContestar
+            ? `
+                <button type="button" class="teste-contestar-btn" data-contestar-id="${perguntaId}">Contestar correção</button>
+                <div class="teste-contestar-form" id="contestarForm-${perguntaId}" hidden>
+                    <textarea class="teste-contestar-motivo" rows="3" placeholder="Explica porque achas que a correção devia ser diferente..."></textarea>
+                    <button type="button" class="teste-contestar-enviar" data-contestar-enviar-id="${perguntaId}">Enviar contestação</button>
+                </div>
+            `
+            : '';
         feedbackHtml += `
-            <div class="teste-feedback-ia">
+            <div class="teste-feedback-ia" id="feedbackIa-${perguntaId}">
                 <p class="teste-feedback-ia-titulo">Pergunta ${numero} <span>${info.pontos} / ${info.cotacao} pts</span></p>
                 <p class="teste-feedback-ia-texto">${escapeHtml(feedback)}</p>
+                ${contestarHtml}
             </div>
         `;
     });
@@ -480,6 +570,142 @@ function mostrarResultado(dados) {
         ${feedbackHtml}
     `;
     resultadoEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    resultadoEl.querySelectorAll('[data-contestar-id]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const forma = document.getElementById(`contestarForm-${btn.dataset.contestarId}`);
+            if (forma) forma.hidden = !forma.hidden;
+        });
+    });
+    resultadoEl.querySelectorAll('[data-contestar-enviar-id]').forEach((btn) => {
+        btn.addEventListener('click', () => enviarContestacao(btn.dataset.contestarEnviarId));
+    });
+
+    atribuirXpTeste(dados.notaFinal);
+}
+
+async function enviarContestacao(perguntaId) {
+    const forma = document.getElementById(`contestarForm-${perguntaId}`);
+    const motivo = forma?.querySelector('.teste-contestar-motivo')?.value.trim();
+    if (!motivo) return;
+    const enviarBtn = forma.querySelector('.teste-contestar-enviar');
+    enviarBtn.disabled = true;
+    enviarBtn.textContent = 'A reconsiderar...';
+
+    try {
+        const response = await fetch(window.exploreContestarCorrecaoUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': window.exploreCsrfToken },
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                perguntaId,
+                respostaAluno: ultimaRespostasAluno[perguntaId] || '',
+                motivo,
+                pontosAtuais: ultimosPontosAtuais,
+            }),
+        });
+        const dados = await response.json();
+        if (!response.ok) throw new Error(dados.erro || 'Não foi possível rever a correção.');
+
+        ultimosPontosAtuais[perguntaId] = dados.pontos;
+        const bloco = document.getElementById(`feedbackIa-${perguntaId}`);
+        if (bloco) {
+            bloco.querySelector('.teste-feedback-ia-titulo span').textContent = `${dados.pontos} / ${bloco.querySelector('.teste-feedback-ia-titulo span').textContent.split('/')[1]}`;
+            bloco.querySelector('.teste-feedback-ia-texto').textContent = dados.feedback;
+            forma.hidden = true;
+        }
+        document.querySelector('.teste-nota-final-valor').innerHTML = `${dados.notaFinal}<small>/20</small>`;
+        document.querySelector('.teste-nota-final-pontos').textContent = `${dados.pontosTotais} / ${document.querySelector('.teste-nota-final-pontos').textContent.split('/')[1].trim()}`;
+    } catch (error) {
+        enviarBtn.textContent = 'Enviar contestação';
+        enviarBtn.disabled = false;
+        alert(error.message);
+        return;
+    }
+    enviarBtn.textContent = 'Contestação enviada';
+}
+
+function renderAutoavaliacaoPendente(dados) {
+    document.querySelectorAll('#testeForm input, #testeForm select, #testeForm textarea, #testeSubmitBtn').forEach((el) => {
+        el.disabled = true;
+    });
+    const aviso = document.getElementById('testeGuardadoAviso');
+    if (aviso) aviso.hidden = true;
+
+    let painelHtml = '';
+    Object.entries(dados.autoavaliacao || {}).forEach(([perguntaId, info]) => {
+        const numero = document.querySelector(`.teste-pergunta[data-pergunta-id="${perguntaId}"] .teste-pergunta-numero`)?.textContent || perguntaId;
+        const criteriosHtml = (info.criterios || []).map((criterio, indice) => `
+            <label class="teste-criterio-item">
+                <input type="checkbox" class="teste-criterio-check" data-pergunta-id="${perguntaId}" data-indice="${indice}" data-pontos="${criterio.pontos}">
+                <span class="teste-criterio-texto">${escapeHtml(criterio.descricao)}</span>
+                <span class="teste-criterio-pontos">${criterio.pontos} pts</span>
+            </label>
+        `).join('');
+        painelHtml += `
+            <div class="teste-autoavaliacao-item" data-autoavaliacao-id="${perguntaId}">
+                <p class="teste-feedback-ia-titulo">Pergunta ${numero} <span>${info.cotacao} pts</span></p>
+                ${info.resolucao ? `<p class="teste-autoavaliacao-resolucao"><strong>Resolução modelo:</strong> ${escapeHtml(info.resolucao)}</p>` : ''}
+                ${info.respostaFinal ? `<p class="teste-autoavaliacao-resposta-final"><strong>Resposta final:</strong> ${escapeHtml(info.respostaFinal)}</p>` : ''}
+                <p class="teste-autoavaliacao-instrucao">Marca os critérios que a tua resposta cumpre:</p>
+                <div class="teste-criterios-lista">${criteriosHtml}</div>
+            </div>
+        `;
+    });
+
+    const resultadoEl = document.getElementById('testeResultadoFinal');
+    resultadoEl.hidden = false;
+    resultadoEl.innerHTML = `
+        <div class="teste-autoavaliacao-aviso">
+            Corrigimos automaticamente as perguntas de escolha e completar. Para as perguntas de cálculo e resposta
+            aberta, compara a tua resposta com a resolução modelo e marca os critérios que cumpriste — tu próprio
+            atribuis os pontos dessas perguntas.
+        </div>
+        ${painelHtml}
+        <button type="button" class="teste-submeter-btn" id="testeConfirmarAutoavaliacaoBtn">Confirmar autoavaliação</button>
+    `;
+    resultadoEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    document.getElementById('testeConfirmarAutoavaliacaoBtn').addEventListener('click', async () => {
+        const btn = document.getElementById('testeConfirmarAutoavaliacaoBtn');
+        btn.disabled = true;
+        btn.textContent = 'A finalizar...';
+
+        const autoavaliacoes = {};
+        resultadoEl.querySelectorAll('.teste-autoavaliacao-item').forEach((item) => {
+            const perguntaId = item.dataset.autoavaliacaoId;
+            autoavaliacoes[perguntaId] = {};
+            item.querySelectorAll('.teste-criterio-check').forEach((check) => {
+                autoavaliacoes[perguntaId][check.dataset.indice] = check.checked ? Number(check.dataset.pontos) : 0;
+            });
+        });
+
+        try {
+            const response = await fetch(window.exploreAutoavaliarTesteUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': window.exploreCsrfToken },
+                credentials: 'same-origin',
+                body: JSON.stringify({ pontosAutomaticos: dados.pontosAutomaticos, autoavaliacoes }),
+            });
+            const resultadoFinal = await response.json();
+            if (!response.ok) throw new Error(resultadoFinal.erro || 'Não foi possível finalizar a autoavaliação.');
+
+            resultadoEl.innerHTML = `
+                <div class="teste-nota-final">
+                    <span class="teste-nota-final-label">Nota final</span>
+                    <span class="teste-nota-final-valor">${resultadoFinal.notaFinal}<small>/20</small></span>
+                    <span class="teste-nota-final-pontos">${resultadoFinal.pontosTotais} / ${resultadoFinal.cotacaoTotal} pontos</span>
+                </div>
+                <p class="teste-autoavaliacao-aviso">Autoavaliação confirmada. A nota já inclui os pontos que atribuíste nas perguntas de cálculo e resposta aberta.</p>
+            `;
+            resultadoEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            atribuirXpTeste(resultadoFinal.notaFinal);
+        } catch (error) {
+            btn.disabled = false;
+            btn.textContent = 'Confirmar autoavaliação';
+            alert(error.message);
+        }
+    });
 }
 
 if (window.exploreProgressoGuardado && Object.keys(window.exploreProgressoGuardado).length > 0) {
@@ -501,16 +727,22 @@ document.getElementById('testeForm').addEventListener('submit', async (event) =>
     submitBtn.textContent = 'A corrigir...';
 
     try {
+        const respostas = coletarRespostas();
+        ultimaRespostasAluno = respostas;
         const response = await fetch(window.exploreCorrigirTesteUrl, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'X-CSRFToken': window.exploreCsrfToken },
             credentials: 'same-origin',
-            body: JSON.stringify({ respostas: coletarRespostas() }),
+            body: JSON.stringify({ respostas }),
         });
         const dados = await response.json();
         if (!response.ok) throw new Error(dados.erro || 'Não foi possível corrigir o teste.');
         submitBtn.textContent = 'Teste corrigido';
-        mostrarResultado(dados);
+        if (dados.autoavaliacaoPendente) {
+            renderAutoavaliacaoPendente(dados);
+        } else {
+            mostrarResultado(dados);
+        }
     } catch (error) {
         const resultadoEl = document.getElementById('testeResultadoFinal');
         resultadoEl.hidden = false;
@@ -645,9 +877,23 @@ document.getElementById('testeForm').addEventListener('submit', async (event) =>
 
     modalDisplay.textContent = formatarTempo(lerMinutos() * 60);
 })();
+
+(function () {
+    const toggleBtn = document.getElementById('testeFormularioToggleBtn');
+    const overlay = document.getElementById('testeFormularioModalOverlay');
+    const closeBtn = document.getElementById('testeFormularioModalClose');
+    if (!toggleBtn || !overlay) return;
+
+    toggleBtn.addEventListener('click', () => { overlay.hidden = false; });
+    closeBtn?.addEventListener('click', () => { overlay.hidden = true; });
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) overlay.hidden = true;
+    });
+})();
 </script>
 <script src="{% static 'header-actions.js' %}" defer></script>
 <script src="{% static 'activity-heartbeat.js' %}" defer></script>
+<script src="{% static 'profile-xp.js' %}" defer></script>
 
 </body>
 
