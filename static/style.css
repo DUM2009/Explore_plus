@@ -5323,19 +5323,6 @@ background:#27ae60;
     box-shadow:14px 0 32px rgba(0,0,0,.18);
 }
 
-/* On phones, the 86vw cap left a sliver of the page showing down the
-   right edge instead of the drawer covering the full screen — widen it
-   to the actual viewport. .profile-sidebar-nav (the <nav> between the
-   logo and the theme/account block) already scrolls internally via its
-   own flex:1 1 auto + overflow-y:auto + thin scrollbar further below, so
-   "Tema" and the account/email stay fixed in place without any extra
-   work here. */
-@media (max-width:600px){
-    .profile-sidebar{
-        width:100vw;
-    }
-}
-
 .profile-sidebar.is-open{
     transform:translateX(0);
 }
@@ -5370,6 +5357,9 @@ background:#27ae60;
     font-size:1.1rem;
     font-weight:700;
     margin-bottom:28px;
+    /* Keeps its natural size regardless of how little room .profile-sidebar-nav
+       has to shrink into — see flex:0 1 auto there. */
+    flex-shrink:0;
 }
 
 .profile-sidebar-brand .logo img{
@@ -5378,15 +5368,13 @@ background:#27ae60;
     object-fit:contain;
 }
 
-/* Mobile-only close (X) for the off-canvas drawer — on phones the sidebar
-   now spans the full width (see .profile-sidebar's 100vw rule below), so
-   there's no backdrop strip left to tap to dismiss it, and the hamburger
-   toggle that opened it sits in .missions-topbar, underneath the sidebar
-   itself while it's open. #navDrawerClose is already wired by
-   nav-drawer.js (setOpen(false) on click) — it just had no button to
-   attach to. Hidden on desktop, where the sidebar is persistent and this
-   would be a close button that doesn't actually close anything (its CSS
-   forces the sidebar open regardless of the aria/class state this sets). */
+/* Extra way to close the off-canvas drawer on mobile, next to the
+   hamburger toggle in .missions-topbar (which the drawer itself covers
+   while open). #navDrawerClose is already wired by nav-drawer.js
+   (setOpen(false) on click) — it just had no button to attach to. Hidden
+   on desktop, where the sidebar is persistent and this would be a close
+   button that doesn't actually close anything (its CSS forces the
+   sidebar open regardless of the aria/class state this sets). */
 .profile-sidebar-close{
     margin-left:auto;
     /* .nav-drawer-close (its base class) is styled for the old brown
@@ -5412,7 +5400,15 @@ background:#27ae60;
     flex-direction:column;
     gap:14px;
 
-    flex:1 1 auto;
+    /* flex-grow:0 (not 1) — nav should only take the room its own links
+       need, so "Tema"/the account sit right after it instead of being
+       pushed down by nav claiming all the sidebar's leftover height.
+       flex-shrink stays 1 (with min-height:0) so nav still gets squeezed
+       — and scrolls, via overflow-y:auto below — on a short screen where
+       everything doesn't fit; see flex-shrink:0 on .profile-sidebar-brand,
+       .sidebar-theme-card and .profile-account, which keeps all of that
+       squeeze pressure on nav alone. */
+    flex:0 1 auto;
     min-height:0;
     overflow-y:auto;
     overflow-x:hidden;
