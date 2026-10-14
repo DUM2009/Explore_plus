@@ -11951,30 +11951,65 @@ body.shadcn-profile .profile-vocacional-btn:hover {
 }
 
 @media (max-width: 720px) {
+    /* Full-bleed horizontally only (not vertically) — .profile-layout's
+       24px padding at this width otherwise leaves a visible gap down both
+       sides of the mountain background instead of it reaching the actual
+       screen edges. */
+    body.shadcn-profile .profile-hero {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        border-radius: 0;
+    }
+
     body.shadcn-profile .profile-hero-main {
         flex-direction: column;
     }
 
-    /* .profile-hero-main uses align-items:flex-start (needed for the desktop
-       row layout), which never stretches a flex item to the container's
-       width — so once flex-direction flips to column above, .profile-hero-left
-       renders at its own content width instead of the row's width. That's
-       normally invisible, but .profile-hero-info h1 is a large (2.4rem)
-       greeting containing the username as one unbreakable word: on phones
-       narrower than ~380px that word alone can be wider than the space
-       .profile-hero-left would otherwise get, so it was overflowing the
-       viewport (and, since it's not size-constrained by the container at
-       all, doing so by the same amount regardless of how narrow the phone
-       actually is). Giving it an explicit full width lets its children
-       shrink against something real. */
+    /* "Olá, <username>!" moves to its own full-width row above the avatar
+       instead of competing for room beside it (which, at 2.4rem with the
+       username as one unbreakable word, was overflowing narrow phones
+       regardless of how narrow). .profile-hero-info (h1 + rank + level
+       pill) is dissolved with display:contents so all three become direct
+       grid items of .profile-hero-left alongside .profile-hero-avatar-wrap
+       — the greeting spans the full row, and the rank/level stack up
+       beside the avatar on the row below. */
     body.shadcn-profile .profile-hero-left {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "greeting greeting"
+            "avatar   rank"
+            "avatar   level";
+        column-gap: 16px;
+        row-gap: 4px;
+        align-items: center;
         width: 100%;
         min-width: 0;
-        flex-wrap: wrap;
     }
 
     body.shadcn-profile .profile-hero-info {
-        min-width: 0;
+        display: contents;
+    }
+
+    body.shadcn-profile .profile-hero-info h1 {
+        grid-area: greeting;
+    }
+
+    body.shadcn-profile .profile-hero-avatar-wrap {
+        grid-area: avatar;
+        align-self: start;
+    }
+
+    body.shadcn-profile .profile-hero-rank {
+        grid-area: rank;
+        align-self: end;
+    }
+
+    body.shadcn-profile .profile-hero-level-pill {
+        grid-area: level;
+        align-self: start;
+        justify-self: start;
     }
 
     body.shadcn-profile .profile-hero-quote {
