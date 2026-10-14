@@ -29,11 +29,14 @@
 
 <section class="profile-layout has-sidebar sidebar-collapsible">
 
-<aside class="profile-sidebar is-open" id="profileSidebar" aria-hidden="false">
+<aside class="profile-sidebar" id="profileSidebar" aria-hidden="true">
 <div class="profile-sidebar-brand">
 <div>
             <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
         </div>
+<button type="button" class="nav-drawer-close profile-sidebar-close" id="navDrawerClose" aria-label="Fechar menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+</button>
 </div>
 
 <nav class="profile-sidebar-nav">
@@ -153,6 +156,9 @@
     <div class="missions-topbar-logo">
         <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
     </div>
+    <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="Abrir menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
     <div class="header-icon-wrapper">
     <button class="header-icon-btn" id="notificationsBtn" type="button" aria-label="Notificações" aria-expanded="false">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-icon lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>

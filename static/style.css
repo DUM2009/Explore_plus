@@ -5378,6 +5378,35 @@ background:#27ae60;
     object-fit:contain;
 }
 
+/* Mobile-only close (X) for the off-canvas drawer — on phones the sidebar
+   now spans the full width (see .profile-sidebar's 100vw rule below), so
+   there's no backdrop strip left to tap to dismiss it, and the hamburger
+   toggle that opened it sits in .missions-topbar, underneath the sidebar
+   itself while it's open. #navDrawerClose is already wired by
+   nav-drawer.js (setOpen(false) on click) — it just had no button to
+   attach to. Hidden on desktop, where the sidebar is persistent and this
+   would be a close button that doesn't actually close anything (its CSS
+   forces the sidebar open regardless of the aria/class state this sets). */
+.profile-sidebar-close{
+    margin-left:auto;
+    /* .nav-drawer-close (its base class) is styled for the old brown
+       drawer — white icon on a translucent white chip, invisible against
+       this sidebar's light background. Make it match the surrounding
+       text color instead. */
+    background:rgba(0,0,0,.05);
+    color:inherit;
+}
+
+.profile-sidebar-close:hover{
+    background:rgba(0,0,0,.1);
+}
+
+@media (min-width:981px){
+    .profile-sidebar-close{
+        display:none;
+    }
+}
+
 .profile-sidebar-nav{
     display:flex;
     flex-direction:column;
