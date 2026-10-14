@@ -5324,7 +5324,15 @@ background:#27ae60;
 }
 
 .profile-sidebar.is-open{
-    transform:translateX(0);
+    /* none, not translateX(0) — some mobile browsers (notably Android
+       Chrome) mis-handle position:fixed on an element that also carries
+       *any* non-none transform (even an identity one like translateX(0)):
+       during scroll, instead of staying pinned to the viewport, the
+       element visibly scrolls along with the page content behind it.
+       Dropping to a real "no transform" once open avoids that; the
+       transition still animates correctly from translateX(-100%) since
+       "none" is itself a valid transition endpoint. */
+    transform:none;
 }
 
 /* Forces the sidebar off-canvas on both breakpoints while the Kim chat
