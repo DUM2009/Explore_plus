@@ -5323,6 +5323,19 @@ background:#27ae60;
     box-shadow:14px 0 32px rgba(0,0,0,.18);
 }
 
+/* On phones, the 86vw cap left a sliver of the page showing down the
+   right edge instead of the drawer covering the full screen — widen it
+   to the actual viewport. .profile-sidebar-nav (the <nav> between the
+   logo and the theme/account block) already scrolls internally via its
+   own flex:1 1 auto + overflow-y:auto + thin scrollbar further below, so
+   "Tema" and the account/email stay fixed in place without any extra
+   work here. */
+@media (max-width:600px){
+    .profile-sidebar{
+        width:100vw;
+    }
+}
+
 .profile-sidebar.is-open{
     transform:translateX(0);
 }
