@@ -12023,6 +12023,17 @@ body.shadcn-profile .profile-vocacional-btn:hover {
     body.shadcn-profile .profile-hero-quote {
         max-width: none;
         width: 100%;
+        /* flex:1 1 320px (desktop) makes sense there — it fills a side
+           column next to .profile-hero-left. Stacked on mobile, that same
+           320px basis forced the quote's own box to be 320px tall for just
+           two lines of text, and justify-content:center (also from the
+           desktop rule) then centered that short text inside it — a big
+           gap of bare background above and below the quote, which is also
+           why the hero card itself (height is just its content + padding)
+           ran so much taller than it needed to. Let it size to its actual
+           content instead. */
+        flex: 0 1 auto;
+        justify-content: flex-start;
     }
 }
 
