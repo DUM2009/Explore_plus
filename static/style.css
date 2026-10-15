@@ -10852,7 +10852,11 @@ body.shadcn-profile .profile-help-tip[hidden] {
     z-index: 1500;
     width: 400px;
     max-width: 100vw;
-    height: 100vh;
+    /* No explicit height: top:0 + bottom:0 alone already sizes this to the
+       real visible viewport. An explicit 100vh here used to override that
+       and could run taller than the actual visible area on mobile (the
+       address bar isn't counted the same way), pushing .mascote-chat-form
+       off the bottom of the screen where it couldn't be seen or reached. */
     max-height: none;
     background: #ffffff;
     border: none;
@@ -10877,9 +10881,8 @@ body.shadcn-profile .profile-help-tip[hidden] {
 .mascote-chat-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 10px;
-    padding: 16px 18px;
+    padding: 16px 10px 16px 18px;
     background: linear-gradient(135deg, #eafaf1 0%, #f4fbf7 65%);
     border-bottom: 1px solid #cde7d9;
     font-weight: 800;
@@ -10890,16 +10893,25 @@ body.shadcn-profile .profile-help-tip[hidden] {
 
 /* Small "online" dot before the title — the header text is a bare <span>
    in the markup, so this is styled on the span itself rather than a
-   dedicated wrapper element. */
+   dedicated wrapper element. flex:1 (instead of the header's own
+   justify-content:space-between) is what actually keeps "Fala com o Kim"
+   on one line and centered: it gives the dot+text group all the room
+   left of the close button and centers them within that room, instead of
+   letting the group shrink/wrap to fit whatever space is left over. */
 .mascote-chat-header span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .mascote-chat-header span::before {
     content: "";
-    flex: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin: -2px 8px 0 0;
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -10908,11 +10920,18 @@ body.shadcn-profile .profile-help-tip[hidden] {
 }
 
 .mascote-chat-close {
+    /* A sitewide `button{width:100%}` reset (mobile) was otherwise the only
+       width rule in play here, since this component never set its own —
+       it stretched the button across nearly the whole header, which is
+       the actual reason the title got squeezed onto two lines and "✕"
+       rendered mid-width instead of flush against the right edge. */
+    flex: none;
+    width: auto;
     background: none;
     border: none;
     box-shadow: none;
     color: #66756e;
-    padding: 2px 6px;
+    padding: 4px;
     cursor: pointer;
     font-size: .9rem;
 }
