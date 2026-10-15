@@ -9703,11 +9703,38 @@ body.shadcn-profile .profile-sidebar {
 }
 
 body.shadcn-profile .profile-sidebar-brand {
+    position: relative;
     justify-content: center;
     color: var(--sp-fg);
     padding-bottom: 16px;
     margin-bottom: 12px;
     border-bottom: 1px solid var(--sp-border);
+}
+
+/* .profile-sidebar-close's own margin-left:auto (meant to push it to the
+   far right of the brand row) fights justify-content:center above — the
+   auto margin eats the row's free space, so the logo never actually
+   lands in the middle. Taking the close button out of the flex flow
+   entirely (absolute, centered on its own) lets the logo center on the
+   full row width regardless of the button's own size. Also drops its
+   background chip — just the icon, like it's sitting directly on the
+   page, per request. */
+body.shadcn-profile .profile-sidebar-close,
+body.shadcn-profile .profile-sidebar-close:hover {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-left: 0;
+    background: none;
+    /* button.profile-sidebar-close (element+class): zero the site-wide
+       button{}/button:hover{} reset's own box-shadow (soft green glow),
+       which otherwise still reads as a chip behind the icon. */
+    box-shadow: none;
+}
+
+body.shadcn-profile .profile-sidebar-close:hover {
+    opacity: .7;
 }
 
 body.shadcn-profile .profile-account {
