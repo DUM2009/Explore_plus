@@ -2235,6 +2235,18 @@ margin-bottom:50px;
     .missions-category-panel{
         max-width:300px;
     }
+
+    /* Title + "SuperExplore" badge + button no longer fit on one line at
+       this narrower card width (300px above) — without flex-wrap they
+       just overflowed the card's right edge instead of dropping the
+       button to its own line underneath. */
+    .teste-item{
+        flex-wrap:wrap;
+    }
+
+    .teste-item-titulo{
+        flex-wrap:wrap;
+    }
 }
 
 .missions-grid{
