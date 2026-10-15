@@ -20,6 +20,7 @@ from django.utils import timezone
 from .models import (
     PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel,
     ResultadoAvaliacao, RegistoAtividadeDiaria, gerar_codigo_referral_unico,
+    ConversaMascote,
 )
 
 # Nº de amigos convidados (via código de referral) necessário para ganhar a
@@ -1142,6 +1143,13 @@ def mascote_chat(request):
     section_title = str(dados.get('sectionTitle', ''))[:200]
     context_text = str(dados.get('context', ''))[:6000]
 
+    conversa_id = dados.get('conversaId')
+    conversa = None
+    if conversa_id:
+        conversa = ConversaMascote.objects.filter(id=conversa_id, user=request.user).first()
+    if conversa is None:
+        conversa = ConversaMascote.objects.create(user=request.user)
+
     history = dados.get('history')
     messages = []
     if isinstance(history, list):
@@ -1190,7 +1198,48 @@ def mascote_chat(request):
     except anthropic.APIConnectionError:
         return JsonResponse({'erro': 'Não foi possível ligar ao serviço de chat.'}, status=502)
 
-    return JsonResponse({'reply': reply})
+    agora = timezone.now().isoformat()
+    mensagens = list(conversa.mensagens or [])
+    mensagens.append({'role': 'user', 'text': user_message, 'criado_em': agora})
+    mensagens.append({'role': 'assistant', 'text': reply, 'criado_em': agora})
+    conversa.mensagens = mensagens
+    if not conversa.titulo:
+        conversa.titulo = user_message[:60]
+    conversa.atualizado_em = timezone.now()
+    conversa.save(update_fields=['mensagens', 'titulo', 'atualizado_em'])
+
+    return JsonResponse({'reply': reply, 'conversaId': conversa.id, 'titulo': conversa.titulo})
+
+
+@login_required(login_url='login')
+def mascote_conversas(request):
+    """Lista as conversas guardadas do aluno com o Kim, mais recentes
+    primeiro — usada para preencher o painel de histórico no chat."""
+    conversas = ConversaMascote.objects.filter(user=request.user).order_by('-atualizado_em')[:30]
+    return JsonResponse({
+        'conversas': [
+            {
+                'id': conversa.id,
+                'titulo': conversa.titulo or 'Conversa sem título',
+                'atualizado_em': conversa.atualizado_em.isoformat(),
+            }
+            for conversa in conversas
+        ],
+    })
+
+
+@login_required(login_url='login')
+def mascote_conversa_detalhe(request, conversa_id):
+    """Devolve as mensagens completas de uma conversa guardada, para o
+    aluno poder voltar a ela a partir do painel de histórico."""
+    conversa = ConversaMascote.objects.filter(id=conversa_id, user=request.user).first()
+    if conversa is None:
+        return JsonResponse({'erro': 'Conversa não encontrada.'}, status=404)
+    return JsonResponse({
+        'id': conversa.id,
+        'titulo': conversa.titulo,
+        'mensagens': conversa.mensagens or [],
+    })
 
 
 # Imagem do painel quadrado de cada categoria na página de Testes — as

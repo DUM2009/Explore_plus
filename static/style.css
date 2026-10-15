@@ -10882,13 +10882,41 @@ body.shadcn-profile .profile-help-tip[hidden] {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 16px 10px 16px 18px;
+    padding: 16px 10px;
     background: linear-gradient(135deg, #eafaf1 0%, #f4fbf7 65%);
     border-bottom: 1px solid #cde7d9;
     font-weight: 800;
     letter-spacing: .01em;
     color: #16382a;
     font-size: .92rem;
+}
+
+/* History icon and close button are the same small size on either side
+   of the title, which is what keeps it genuinely centered (not just
+   centered within whatever's left of a single right-hand button). */
+.mascote-chat-history-btn {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 50%;
+    padding: 0;
+    color: #3a5a4a;
+    cursor: pointer;
+}
+
+.mascote-chat-history-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mascote-chat-history-btn:hover,
+.mascote-chat-history-btn[aria-expanded="true"] {
+    background: rgba(31, 138, 91, .1);
 }
 
 /* Small "online" dot before the title — the header text is a bare <span>
@@ -10917,6 +10945,93 @@ body.shadcn-profile .profile-help-tip[hidden] {
     border-radius: 50%;
     background: #3ecf76;
     box-shadow: 0 0 0 3px rgba(62, 207, 118, .22);
+}
+
+/* Dropdown with the student's saved conversations — sits as an overlay
+   right under the header, inside the already-clipped chat panel. */
+.mascote-chat-history-panel {
+    position: absolute;
+    top: 57px;
+    left: 10px;
+    right: 10px;
+    z-index: 5;
+    max-height: min(60vh, 420px);
+    overflow-y: auto;
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #e2ece6;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(18, 61, 40, .16);
+}
+
+.mascote-chat-history-panel[hidden] {
+    display: none;
+}
+
+.mascote-chat-history-new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px dashed #9fcbb3;
+    border-radius: 10px;
+    background: #f3faf6;
+    color: #1f8a5b;
+    font-weight: 700;
+    font-size: .85rem;
+    cursor: pointer;
+}
+
+.mascote-chat-history-new svg {
+    width: 16px;
+    height: 16px;
+}
+
+.mascote-chat-history-empty {
+    margin: 4px 0;
+    padding: 10px;
+    color: #76867f;
+    font-size: .82rem;
+    text-align: center;
+}
+
+.mascote-chat-history-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mascote-chat-history-item {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    background: none;
+    text-align: left;
+    color: #244a37;
+    font-size: .84rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.mascote-chat-history-item:hover,
+.mascote-chat-history-item.is-active {
+    background: #eafaf1;
+}
+
+.mascote-chat-history-item-meta {
+    display: block;
+    margin-top: 2px;
+    color: #8a9a92;
+    font-size: .72rem;
+    font-weight: 500;
 }
 
 .mascote-chat-close {
