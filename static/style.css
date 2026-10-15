@@ -12336,6 +12336,10 @@ body.shadcn-profile .profile-tabs-bottom {
        clear the bar's height (safe-area included) plus a small gap. */
     body.shadcn-profile .teste-mascote-fab {
         bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+        border-radius: 50%;
+        background: linear-gradient(180deg, #b9d461 0%, #9abe4f 100%);
+        box-shadow: 0 8px 20px -8px rgba(135, 177, 51, .55);
+        padding: 6px;
     }
 
     /* Reorder .profile-grid's direct children (all siblings — the grid is
