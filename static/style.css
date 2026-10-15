@@ -9954,13 +9954,18 @@ body.shadcn-profile .profile-sidebar-collapse:hover {
 /* Account footer + menu */
 
 body.shadcn-profile .profile-account-trigger {
-    border: 1px solid var(--sp-border);
-    background: var(--sp-card);
+    border: none;
+    background: transparent;
     color: var(--sp-fg);
+    /* button.profile-account-trigger (element+class): zero the site-wide
+       button{}/button:hover{} reset's own box-shadow (soft green glow),
+       which otherwise still reads as the rectangle we just removed above. */
+    box-shadow: none;
 }
 
 body.shadcn-profile .profile-account-trigger:hover {
     background: var(--sp-accent-soft);
+    box-shadow: none;
 }
 
 body.shadcn-profile .profile-account-avatar {
