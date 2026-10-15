@@ -181,7 +181,10 @@
             <span class="profile-hero-avatar" id="profileHeroAvatar" aria-hidden="true">{{ request.user.username|first|upper }}</span>
             <button type="button" class="profile-hero-avatar-edit" id="profileAvatarEditBtn" aria-haspopup="true" aria-expanded="false" aria-controls="profileAvatarPicker" aria-label="Escolher avatar do Kim">
                 <span class="profile-hero-avatar-edit-label profile-hero-avatar-edit-label--desktop">Mudar avatar</span>
-                <span class="profile-hero-avatar-edit-label profile-hero-avatar-edit-label--mobile">✏️ Editar perfil</span>
+                <span class="profile-hero-avatar-edit-label profile-hero-avatar-edit-label--mobile">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                    Editar perfil
+                </span>
             </button>
 
             <div class="profile-avatar-picker" id="profileAvatarPicker" hidden>

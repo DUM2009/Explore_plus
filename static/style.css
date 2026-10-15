@@ -5286,6 +5286,16 @@ background:#27ae60;
     z-index:1100;
 }
 
+/* Below 981px, .profile-main-shell has no overflow of its own — the page
+   itself (html/body) is what scrolls, and the overlay above is just a
+   fixed, non-scrollable backdrop, so dragging over it was still scrolling
+   that page underneath. Locking html/body while the drawer is open (see
+   nav-drawer.js) actually stops it. */
+html.nav-drawer-open,
+body.nav-drawer-open {
+    overflow: hidden;
+}
+
 .profile-layout{
     display:flex;
     position:relative;
@@ -11235,10 +11245,17 @@ body.shadcn-profile .profile-hero-avatar-edit:hover {
 }
 
 /* Desktop keeps the plain "Mudar avatar" wording; the mobile mockup labels
-   the same button "✏️ Editar perfil" instead — two text nodes, CSS picks
-   which one shows, no JS/behaviour change either way. */
+   the same button "Editar perfil" (with a pencil icon) instead — two text
+   nodes, CSS picks which one shows, no JS/behaviour change either way. */
 body.shadcn-profile .profile-hero-avatar-edit-label--mobile {
     display: none;
+    align-items: center;
+    gap: 4px;
+}
+
+body.shadcn-profile .profile-hero-avatar-edit-label--mobile svg {
+    width: 13px;
+    height: 13px;
 }
 
 /* New mobile-only line between the greeting and the level pill — hidden
@@ -12060,7 +12077,7 @@ body.shadcn-profile .profile-tabs-bottom {
     }
 
     body.shadcn-profile .profile-hero-avatar-edit-label--mobile {
-        display: inline;
+        display: inline-flex;
     }
 
     /* The rotating quote now lives in .profile-quote-banner, above the
@@ -12294,6 +12311,13 @@ body.shadcn-profile .profile-tabs-bottom {
 
     body.shadcn-profile .profile-main-shell {
         padding-bottom: 76px;
+    }
+
+    /* The floating "talk to Kim" button sits above everything (z-index:80)
+       but was still overlapping the new fixed bottom tab bar — raise it to
+       clear the bar's height (safe-area included) plus a small gap. */
+    body.shadcn-profile .teste-mascote-fab {
+        bottom: calc(80px + env(safe-area-inset-bottom, 0px));
     }
 }
 

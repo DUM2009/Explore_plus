@@ -14,6 +14,13 @@
         drawer.classList.toggle('is-open', isOpen);
         drawer.setAttribute('aria-hidden', String(!isOpen));
         overlay.toggleAttribute('hidden', !isOpen);
+        // The off-canvas drawer only overlays the viewport — it doesn't stop
+        // a touch-drag over the overlay from scrolling whatever's behind it
+        // (the real scrollable element, e.g. .profile-main-shell, isn't an
+        // ancestor of the overlay). Locking the page itself while open is
+        // the only way to actually block that.
+        document.documentElement.classList.toggle('nav-drawer-open', isOpen);
+        document.body.classList.toggle('nav-drawer-open', isOpen);
     }
 
     // On desktop, #profileSidebar is open by default (no class needed) and
