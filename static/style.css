@@ -12119,7 +12119,7 @@ body.shadcn-profile .profile-tabs-bottom {
         display: flex;
         align-items: center;
         gap: 16px;
-        height: 180px;
+        height: 192px;
         margin: 0 0 4px;
         padding: 20px 20px 20px 24px;
         border-radius: var(--sp-radius);
@@ -12174,8 +12174,8 @@ body.shadcn-profile .profile-tabs-bottom {
 
     body.shadcn-profile .profile-quote-banner-illustration {
         flex: none;
-        width: 100px;
-        height: 100px;
+        width: 140px;
+        height: 140px;
         object-fit: contain;
     }
 
@@ -12336,6 +12336,50 @@ body.shadcn-profile .profile-tabs-bottom {
        clear the bar's height (safe-area included) plus a small gap. */
     body.shadcn-profile .teste-mascote-fab {
         bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Reorder .profile-grid's direct children (all siblings — the grid is
+       already a single column at this width): Explore Biology, then the
+       quote banner, then Atividade Recente, then Teste Vocacional. */
+    body.shadcn-profile .profile-grid-main {
+        order: 1;
+    }
+
+    body.shadcn-profile .profile-quote-banner {
+        order: 2;
+    }
+
+    body.shadcn-profile .profile-missions-section {
+        order: 3;
+    }
+
+    body.shadcn-profile .profile-grid-aside {
+        order: 4;
+    }
+
+    /* Topbar: notifications on the left, hamburger pinned right, logo
+       centered between them (true centering regardless of each icon's own
+       width — the logo wrapper takes all the leftover space and centers
+       its image inside that space, rather than relying on both sides
+       being equal width like justify-content:space-between would need). */
+    body.shadcn-profile .missions-topbar .header-icon-wrapper {
+        order: 1;
+        margin-left: 0;
+    }
+
+    /* No `display` here on purpose — .missions-topbar-logo's own show/hide
+       logic (hidden while the sidebar is open) stays exactly as it was;
+       this only changes how it's laid out for the cases it's already
+       shown in. */
+    body.shadcn-profile .missions-topbar-logo {
+        order: 2;
+        flex: 1 1 auto;
+        justify-content: center;
+    }
+
+    body.shadcn-profile .missions-topbar .nav-drawer-toggle {
+        order: 3;
+        margin-left: 0;
     }
 }
 
