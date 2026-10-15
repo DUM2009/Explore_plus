@@ -13261,8 +13261,14 @@ body.shadcn-profile .profile-hero-rank {
 }
 
 @media (max-width: 600px) {
+    /* At this width the shelf's own content area (after its own left/right
+       padding) only fits a single 140px-minimum column — one giant book
+       stretching to fill the whole row (and, since each book keeps its
+       aspect-ratio, just as tall). A smaller minimum plus less padding
+       fits two narrower, shorter books per row instead. */
     .biblioteca-estante {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        padding: 24px 18px 34px;
     }
 
     .biblioteca-unidade-header {
