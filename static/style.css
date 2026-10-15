@@ -12021,8 +12021,9 @@ body.shadcn-profile .profile-tabs-bottom {
         margin-left: calc(50% - 50vw);
         margin-right: calc(50% - 50vw);
         border-radius: 0;
-        /* Mountain photo removed on mobile — a plain soft tint instead. */
-        background: var(--sp-accent-soft);
+        /* Mountain photo removed on mobile — blends into the page itself
+           instead of standing out as its own green card. */
+        background: var(--sp-bg);
     }
 
     body.shadcn-profile .profile-hero-main {
@@ -12059,6 +12060,9 @@ body.shadcn-profile .profile-tabs-bottom {
     body.shadcn-profile .profile-hero-info h1 {
         grid-area: greeting;
         align-self: center;
+        /* Smaller than the desktop 2.4rem so "Olá, <username>!" fits on one
+           line next to the avatar instead of wrapping onto two. */
+        font-size: 1.6rem;
     }
 
     body.shadcn-profile .profile-hero-avatar-wrap {
