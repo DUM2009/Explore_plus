@@ -11549,6 +11549,7 @@ body.shadcn-profile .profile-tab.is-disabled em {
    guarantee — a hidden tab must never render alongside the active one. */
 body.shadcn-profile .profile-tab-panel[hidden],
 body.shadcn-profile .profile-grid-aside[hidden],
+body.shadcn-profile .profile-quote-banner[hidden],
 body.shadcn-profile .profile-missions-section[hidden] {
     display: none !important;
 }
@@ -12062,20 +12063,12 @@ body.shadcn-profile .profile-tabs-bottom {
         display: inline;
     }
 
+    /* The rotating quote now lives in .profile-quote-banner, above the
+       Explore Biology card (see @media(max-width:720px) further down) —
+       profile-django.js keeps both in sync, but the hero's own copy has
+       no room here and would just duplicate it, so it's hidden on mobile. */
     body.shadcn-profile .profile-hero-quote {
-        max-width: none;
-        width: 100%;
-        /* flex:1 1 320px (desktop) makes sense there — it fills a side
-           column next to .profile-hero-left. Stacked on mobile, that same
-           320px basis forced the quote's own box to be 320px tall for just
-           two lines of text, and justify-content:center (also from the
-           desktop rule) then centered that short text inside it — a big
-           gap of bare background above and below the quote, which is also
-           why the hero card itself (height is just its content + padding)
-           ran so much taller than it needed to. Let it size to its actual
-           content instead. */
-        flex: 0 1 auto;
-        justify-content: flex-start;
+        display: none;
     }
 
     /* Leaf icon ahead of "Nível X" — text-only on desktop, matches mockup. */
@@ -12084,72 +12077,56 @@ body.shadcn-profile .profile-tabs-bottom {
     }
 
     /* ---- Quote banner (Darwin quote), directly above Teste Vocacional ---- */
+    /* Flat card matching the rest of the page's language (same radius/
+       accent-soft tone as .profile-vocacional-card) instead of the earlier
+       wavy-edge illustrated banner — simpler and more consistent. Mirrors
+       the hero's own rotating quote (profile-django.js updates both). */
     body.shadcn-profile .profile-quote-banner {
         display: flex;
-        align-items: center;
-        gap: 14px;
-        position: relative;
-        margin: -4px 0 4px;
-        padding: 28px 18px 20px;
-        border-radius: 20px;
-        overflow: hidden;
-        background: linear-gradient(160deg, #e7f0e1 0%, #bcd8ab 55%, #8fc17c 100%);
-        box-shadow: 0 10px 24px -14px rgba(47, 107, 69, .4);
-    }
-
-    /* Wavy top edge, drawn as an SVG sitting over the banner's top-left
-       corner in the page's own background colour (--sp-bg), so it reads
-       as the banner being "cut" by a wave instead of a straight edge. */
-    body.shadcn-profile .profile-quote-banner::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 18px;
-        background: var(--sp-bg);
-        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 10V3c8-4 17-4 25 0s17 4 25 0 17-4 25 0 17 4 25 0v7z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
-        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10' preserveAspectRatio='none'%3E%3Cpath d='M0 10V3c8-4 17-4 25 0s17 4 25 0 17-4 25 0 17 4 25 0v7z'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+        align-items: flex-start;
+        gap: 12px;
+        margin: 0 0 4px;
+        padding: 18px 20px;
+        border-radius: var(--sp-radius);
+        border-left: 4px solid var(--sp-primary);
+        background: var(--sp-accent-soft);
     }
 
     body.shadcn-profile .profile-quote-banner-mark {
         flex: none;
-        margin-top: 10px;
-        color: rgba(255, 255, 255, .75);
+        margin-top: -6px;
+        color: var(--sp-primary);
+        opacity: .4;
         font-family: var(--sp-font-serif);
-        font-size: 3rem;
+        font-size: 2.2rem;
         line-height: 1;
     }
 
     body.shadcn-profile .profile-quote-banner-copy {
         flex: 1 1 auto;
         min-width: 0;
-        padding-left: 12px;
-        border-left: 3px solid var(--sp-primary);
+        transition: opacity .35s ease;
+    }
+
+    body.shadcn-profile .profile-quote-banner.is-fading .profile-quote-banner-copy {
+        opacity: 0;
     }
 
     body.shadcn-profile .profile-quote-banner-text {
         margin: 0;
-        color: #1c2e1f;
+        color: var(--sp-fg);
         font-family: var(--sp-font-serif);
         font-style: italic;
-        font-size: .92rem;
-        line-height: 1.4;
+        font-size: .9rem;
+        line-height: 1.42;
     }
 
     body.shadcn-profile .profile-quote-banner-author {
         display: block;
         margin-top: 8px;
-        color: #2f4a34;
+        color: var(--sp-primary);
         font-size: .78rem;
         font-weight: 700;
-    }
-
-    body.shadcn-profile .profile-quote-banner-illustration {
-        flex: none;
-        width: 72px;
-        height: 48px;
-        align-self: flex-end;
     }
 
     /* ---- "Atividade Recente" ---- */
@@ -12205,8 +12182,24 @@ body.shadcn-profile .profile-tabs-bottom {
         width: 36px;
         height: 36px;
         border-radius: 50%;
+        overflow: hidden;
         background: var(--sp-accent-soft);
-        font-size: 1.05rem;
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    /* Missão = livro/roxo, quiz = alvo/azul, teste ou exame = folha/rosa —
+       cor por categoria de atividade, pedido explicitamente. */
+    body.shadcn-profile .profile-atividade-icon--missao {
+        background: #ede7fb;
+    }
+
+    body.shadcn-profile .profile-atividade-icon--quiz {
+        background: #e3f0fc;
+    }
+
+    body.shadcn-profile .profile-atividade-icon--teste {
+        background: #fbe6ef;
     }
 
     body.shadcn-profile .profile-atividade-info {
@@ -12245,18 +12238,6 @@ body.shadcn-profile .profile-tabs-bottom {
     body.shadcn-profile .profile-atividade-status.is-complete {
         background: var(--sp-primary);
         color: #fff;
-    }
-
-    body.shadcn-profile .profile-atividade-chevron {
-        flex: none;
-        display: grid;
-        place-items: center;
-        color: var(--sp-muted-fg);
-    }
-
-    body.shadcn-profile .profile-atividade-chevron svg {
-        width: 16px;
-        height: 16px;
     }
 
     body.shadcn-profile .profile-atividade-empty {

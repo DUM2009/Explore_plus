@@ -479,19 +479,29 @@ const SCIENCE_QUOTES = [
 const profileQuoteCard = document.querySelector('.profile-hero-quote');
 const profileQuoteText = document.getElementById('profileQuoteText');
 const profileQuoteAuthor = document.getElementById('profileQuoteAuthor');
+// Mobile mirrors the same rotating quote inside .profile-quote-banner
+// (above the Explore Biology card) instead of the hero, which is hidden
+// on mobile — see static/style.css.
+const profileQuoteBanner = document.getElementById('profileQuoteBanner');
+const profileQuoteTextMobile = document.getElementById('profileQuoteTextMobile');
+const profileQuoteAuthorMobile = document.getElementById('profileQuoteAuthorMobile');
 
-if (profileQuoteCard && profileQuoteText && profileQuoteAuthor) {
+if (profileQuoteText && profileQuoteAuthor) {
     let quoteIndex = 0;
 
     setInterval(() => {
         quoteIndex = (quoteIndex + 1) % SCIENCE_QUOTES.length;
-        profileQuoteCard.classList.add('is-fading');
+        profileQuoteCard?.classList.add('is-fading');
+        profileQuoteBanner?.classList.add('is-fading');
 
         setTimeout(() => {
             const quote = SCIENCE_QUOTES[quoteIndex];
             profileQuoteText.textContent = quote.text;
             profileQuoteAuthor.textContent = `— ${quote.author}`;
-            profileQuoteCard.classList.remove('is-fading');
+            if (profileQuoteTextMobile) profileQuoteTextMobile.textContent = quote.text;
+            if (profileQuoteAuthorMobile) profileQuoteAuthorMobile.textContent = `— ${quote.author}`;
+            profileQuoteCard?.classList.remove('is-fading');
+            profileQuoteBanner?.classList.remove('is-fading');
         }, 350);
     }, 5000);
 }

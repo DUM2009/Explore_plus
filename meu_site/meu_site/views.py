@@ -334,6 +334,46 @@ def pagina_perfil(request):
     # função precisa (vocabulario_estado, etc.), por isso fica de fora.
     dados_estatisticas = {} if perfil_legacy else calcular_dados_estatisticas(request, perfil)
 
+    # "Atividade Recente" (separador Estatísticas): eventos reais, não
+    # progresso estático — ResultadoAvaliacao já guarda um histórico com
+    # data real (criado_em) de cada quiz/teste/exame corrigido; missões
+    # completas a 100% não têm data guardada, por isso entram no fim, sem
+    # `criado_em`. `categoria` decide o ícone/cor no template (missao =
+    # livro roxo, quiz = alvo azul, teste/exame = folha rosa).
+    nomes_unidades = {unidade['id']: unidade['nome'] for unidade in UNIDADES_BIBLIOTECA}
+    atividade_recente = []
+    for resultado in ResultadoAvaliacao.objects.filter(user=request.user).order_by('-criado_em')[:10]:
+        unidade_nome = nomes_unidades.get(resultado.unidade, '')
+        if resultado.tipo == 'missao_seccao':
+            missao_id = resultado.identificador.split(':')[0]
+            titulo_missao = next((m['titulo'] for m in missoes if m['id'] == missao_id), None)
+            atividade_recente.append({
+                'categoria': 'quiz',
+                'titulo': f'Quiz — {titulo_missao or unidade_nome or "missão"}',
+                'subtitulo': unidade_nome,
+                'percent': round(resultado.nota_percentagem),
+                'criado_em': resultado.criado_em,
+            })
+        else:
+            rotulo = 'Exame' if resultado.tipo == 'exame' else 'Teste'
+            atividade_recente.append({
+                'categoria': 'teste',
+                'titulo': f'{rotulo} de {unidade_nome}' if unidade_nome else rotulo,
+                'subtitulo': unidade_nome,
+                'percent': round(resultado.nota_percentagem),
+                'criado_em': resultado.criado_em,
+            })
+    for missao in missoes:
+        if missao['percent'] >= 100:
+            atividade_recente.append({
+                'categoria': 'missao',
+                'titulo': missao['titulo'],
+                'subtitulo': missao['categoria'],
+                'percent': 100,
+                'criado_em': None,
+            })
+    atividade_recente = atividade_recente[:6]
+
     return render(request, 'perfil.html', {
         'perfil': perfil,
         'nivel': perfil.nivel,
@@ -354,6 +394,7 @@ def pagina_perfil(request):
         'titulo_descricao': titulo_descricao,
         'proximo_titulo': proximo_titulo,
         'niveis_para_kim_nivel10': max(0, 10 - perfil.nivel),
+        'atividade_recente': atividade_recente,
         **dados_estatisticas,
     })
 

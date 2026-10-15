@@ -248,6 +248,14 @@
 
 <div class="profile-grid">
 
+    <div class="profile-quote-banner" id="profileQuoteBanner" data-tab-panel="perfil">
+        <span class="profile-quote-banner-mark" aria-hidden="true">&ldquo;</span>
+        <div class="profile-quote-banner-copy">
+            <p class="profile-quote-banner-text" id="profileQuoteTextMobile">A ciência é a forma mais bonita de explorar o mundo.</p>
+            <span class="profile-quote-banner-author" id="profileQuoteAuthorMobile">— Explore+</span>
+        </div>
+    </div>
+
     <div class="profile-grid-main">
 
     <div class="profile-tab-panel" data-tab-panel="perfil">
@@ -431,24 +439,34 @@
             <p class="stats-empty">A tua Biblioteca do Explorador ainda está vazia.</p>
             {% endif %}
         </div>
+
+        <div class="profile-atividade-section">
+            <div class="profile-atividade-head">
+                <h2>Atividade Recente</h2>
+                <a href="{% url 'index-missions' %}" class="profile-atividade-ver-tudo">Ver tudo →</a>
+            </div>
+            <div class="profile-atividade-list">
+                {% for item in atividade_recente %}
+                <div class="profile-atividade-item">
+                    <span class="profile-atividade-icon profile-atividade-icon--{{ item.categoria }}" aria-hidden="true">
+                        {% if item.categoria == 'missao' %}📘{% elif item.categoria == 'quiz' %}🎯{% else %}📄{% endif %}
+                    </span>
+                    <span class="profile-atividade-info">
+                        <span class="profile-atividade-title">{{ item.titulo }}</span>
+                        <span class="profile-atividade-meta">{{ item.subtitulo }}{% if item.criado_em %} · {{ item.criado_em|date:"d/m" }}{% endif %}</span>
+                    </span>
+                    <span class="profile-atividade-status{% if item.percent >= 100 %} is-complete{% endif %}">{% if item.percent >= 100 %}Concluído{% else %}{{ item.percent }}%{% endif %}</span>
+                </div>
+                {% empty %}
+                <p class="profile-atividade-empty">Ainda não há atividade registada — as tuas missões, quizzes e testes aparecem aqui assim que começares.</p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
     </div>
 
     <div class="profile-grid-aside" data-tab-panel="perfil">
-
-        <div class="profile-quote-banner">
-            <span class="profile-quote-banner-mark" aria-hidden="true">&ldquo;</span>
-            <div class="profile-quote-banner-copy">
-                <p class="profile-quote-banner-text">Não é a espécie mais forte que sobrevive, nem a mais inteligente, mas a que melhor se adapta à mudança.</p>
-                <span class="profile-quote-banner-author">— Charles Darwin</span>
-            </div>
-            <svg class="profile-quote-banner-illustration" viewBox="0 0 120 80" aria-hidden="true" focusable="false">
-                <circle cx="94" cy="18" r="13" fill="#ffe29a"/>
-                <polygon points="0,80 28,32 48,56 68,26 120,80" fill="#2f6b45"/>
-                <polygon points="18,80 42,48 56,66 78,40 112,80" fill="#4b8f63" opacity=".85"/>
-            </svg>
-        </div>
 
         <div class="profile-vocacional-card">
             <div class="profile-vocacional-top">
@@ -470,7 +488,7 @@
 
     <div class="profile-missions-section" data-tab-panel="perfil">
         <div class="profile-missions-head">
-            <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/></svg> O teu percurso</h2>
+            <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/></svg> Atividade Recente</h2>
         </div>
 
         <div class="profile-percurso-card">
@@ -502,30 +520,6 @@
                     <span class="profile-percurso-stat-valor">{{ total_conquistas }}</span>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="profile-atividade-section" data-tab-panel="perfil">
-        <div class="profile-atividade-head">
-            <h2>Atividade Recente</h2>
-            <a href="{% url 'index-missions' %}" class="profile-atividade-ver-tudo">Ver tudo →</a>
-        </div>
-        <div class="profile-atividade-list">
-            {% for item in missoes|slice:":4" %}
-            <a href="{% url 'missao' missao_id=item.id %}" class="profile-atividade-item">
-                <span class="profile-atividade-icon" aria-hidden="true">{{ item.icone }}</span>
-                <span class="profile-atividade-info">
-                    <span class="profile-atividade-title">{{ item.titulo }}</span>
-                    <span class="profile-atividade-meta">{{ item.categoria }}</span>
-                </span>
-                <span class="profile-atividade-status{% if item.percent >= 100 %} is-complete{% endif %}">{% if item.percent >= 100 %}Concluído{% else %}{{ item.percent }}%{% endif %}</span>
-                <span class="profile-atividade-chevron" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                </span>
-            </a>
-            {% empty %}
-            <p class="profile-atividade-empty">Ainda não começaste nenhuma missão — explora a Biblioteca do Explorador para começar!</p>
-            {% endfor %}
         </div>
     </div>
 
