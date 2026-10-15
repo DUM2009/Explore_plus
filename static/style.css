@@ -12360,6 +12360,17 @@ body.shadcn-profile .profile-tabs-bottom {
         min-width: 0;
     }
 
+    /* "Explore Biology" was wrapping onto 2 lines now that the card shares
+       its width with the avatar — smaller type plus nowrap keeps it on one
+       line, matching the mockup. */
+    body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger {
+        font-size: .98rem;
+    }
+
+    body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger span {
+        white-space: nowrap;
+    }
+
     body.shadcn-profile .profile-subject-avatar-wrap {
         display: block;
         position: relative;
@@ -12367,9 +12378,9 @@ body.shadcn-profile .profile-tabs-bottom {
     }
 
     body.shadcn-profile .profile-subject-avatar {
-        width: 128px;
-        height: 128px;
-        font-size: 2.8rem;
+        width: 96px;
+        height: 96px;
+        font-size: 2.1rem;
     }
 
     body.shadcn-profile .profile-subject-avatar-edit {
@@ -12378,8 +12389,8 @@ body.shadcn-profile .profile-tabs-bottom {
         bottom: 0;
         display: grid;
         place-items: center;
-        width: 32px;
-        height: 32px;
+        width: 26px;
+        height: 26px;
         padding: 0;
         border: 2px solid var(--sp-card);
         border-radius: 50%;
@@ -12389,8 +12400,8 @@ body.shadcn-profile .profile-tabs-bottom {
     }
 
     body.shadcn-profile .profile-subject-avatar-edit svg {
-        width: 15px;
-        height: 15px;
+        width: 13px;
+        height: 13px;
     }
 
     body.shadcn-profile .profile-subject-avatar-edit:hover {
