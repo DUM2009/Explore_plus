@@ -4026,24 +4026,43 @@ html[data-theme="dark"] .intro-equation {
 
     .lesson-topbar {
         padding: 14px 18px;
-        /* The title can wrap to two lines on narrow screens (see
-           .lesson-topbar-title below); align everything to the top of the
-           row instead of the previous vertical centering, otherwise the
-           close button and XP/theme icons float halfway down between the
-           title and progress bar instead of sitting level with the title. */
-        align-items: start;
+        /* 1fr auto 1fr let each side column grow to its own min-content
+           width — since the actions column (XP pill + theme toggle) is
+           wider than the close button's, the two "equal" 1fr columns ended
+           up genuinely unequal, pulling the centered title column left of
+           true center. Fixed, equal widths on both flanks (sized to fit
+           the wider one) make the middle column symmetric again. */
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 10px;
     }
 
     .lesson-topbar-titles {
         max-width: none;
+        /* justify-self:center (set above, unchanged here) only positions
+           the box within its grid track — with the default auto width it
+           still sized to its nowrap content and overflowed into the
+           actions column next to it. width:100% makes it actually fill
+           the (now minmax(0,1fr)-constrained) track, so the ellipsis on
+           .lesson-topbar-title below has a real width to truncate against.
+           The track itself sits between two auto-sized flanks of
+           different widths (close button vs. XP pill + theme toggle),
+           so centering within just this track still reads as off-center
+           against the actual page — nudge it over by roughly half that
+           difference to compensate. */
+        width: 100%;
+        margin-left: 12px;
     }
 
-    /* Long mission titles no longer force the middle grid column past the
-       viewport width (which pushed the close button and actions off-screen)
-       — let them wrap instead of overflowing on one nowrap line. */
+    /* Was white-space:normal (wrap) so a long mission title couldn't force
+       the middle column past the viewport width and push the close button
+       and actions off-screen — now that both flanks are fixed-width (see
+       .lesson-topbar above), the title column can't grow past what's left
+       between them, so nowrap + ellipsis is safe and keeps short titles
+       like "Energia e sistemas" on one line instead of wrapping needlessly. */
     .lesson-topbar-title {
-        white-space: normal;
-        overflow-wrap: break-word;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 

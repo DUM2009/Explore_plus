@@ -804,6 +804,22 @@ html.dark-mode .me-caixa-exercicio .me-caixa-formula-expressao {
         flex: 1 1 90px;
         width: auto;
     }
+
+    /* Caso comum (um só campo): o botão de enviar caía para a linha de
+       baixo porque o campo acima ocupava a linha toda (width:100%) e não
+       sobrava espaço ao lado — passa a dividir a linha com ele em vez de
+       reservar a linha toda, ficando ao lado da unidade como seria de
+       esperar. Com mais do que um campo mantém-se o comportamento (cada
+       um na sua própria linha), para não os espremer uns contra os outros. */
+    .me-ex-campos:has(> .me-ex-campo:only-of-type) {
+        flex-wrap: nowrap;
+    }
+
+    .me-ex-campo:only-of-type {
+        width: auto;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
 }
 
 /* Botão "×10ⁿ": escreve ×10^ no campo, para não ser preciso procurar o
