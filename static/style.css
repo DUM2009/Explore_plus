@@ -3586,6 +3586,12 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
     display:block;
 }
 
+/* Desktop keeps the waving video; the static, face-cropped image (see
+   @media(max-width:720px) further down) is mobile-only. */
+.teste-mascote-fab-img--mobile{
+    display:none;
+}
+
 .teste-mascote-fab-tooltip{
     position:absolute;
     right:0;
@@ -12473,7 +12479,23 @@ body.shadcn-profile .profile-tabs-bottom {
         border-radius: 50%;
         background: linear-gradient(180deg, #b9d461 0%, #9abe4f 100%);
         box-shadow: 0 8px 20px -8px rgba(135, 177, 51, .55);
-        padding: 6px;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* Static image instead of the waving video on mobile, zoomed and
+       repositioned so the face fills the circle (object-fit:contain from
+       the base rule would otherwise show the whole body tiny in the
+       middle) — desktop keeps the video, swapped in here. */
+    body.shadcn-profile .teste-mascote-fab-img--desktop {
+        display: none;
+    }
+
+    body.shadcn-profile .teste-mascote-fab-img--mobile {
+        display: block;
+        object-fit: cover;
+        object-position: center 15%;
+        transform: scale(1.8);
     }
 
     /* Reorder .profile-grid's direct children (all siblings — the grid is
