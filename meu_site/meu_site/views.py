@@ -1323,13 +1323,14 @@ CATEGORIA_TESTES_IMAGENS = {
     'Movimento e Interações': 'images/Movimentos e interações.png',
     'Sinais, Ondas e Som': 'images/Sinais e ondas.png',
     'Eletromagnetismo': 'images/Eletromagnetismo.png',
-    'Cinemática e Dinâmica 2D': 'images/f12_remate_futebol.png',
-    'Centro de Massa e Momento Linear': 'images/f12_airbag.png',
-    'Fluidos': 'images/f12_navio_iceberg.png',
-    'Campo Gravítico': 'images/f12_orbitas_kepler.png',
-    'Campo Elétrico': 'images/f12_atomo_hidrogenio.png',
-    'Campo Magnético': 'images/f12_aurora_boreal.png',
-    'Física Moderna': 'images/f12_ferro_incandescente.png',
+    # As 7 categorias de Física do 12º ano (Cinemática e Dinâmica 2D, Centro
+    # de Massa e Momento Linear, Fluidos, Campo Gravítico, Campo Elétrico,
+    # Campo Magnético, Física Moderna) ainda não têm imagem própria — os
+    # ficheiros f12_*.png nunca chegaram a existir em static/images/, o que
+    # causava um 500 em produção (o ManifestStaticFilesStorage do WhiteNoise
+    # rebenta em {% static %} de um ficheiro que não está no manifest). Sem
+    # entrada aqui, caem no fallback (.get(nome, 'images/Biology image.jpg')
+    # abaixo) até existir uma imagem real para cada uma.
 }
 
 # Categorias cuja imagem usa background-size:contain em vez de cover (ver
