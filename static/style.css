@@ -13439,6 +13439,7 @@ body.shadcn-profile .profile-hero-rank {
 
 .stats-tempo-col {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13464,7 +13465,16 @@ body.shadcn-profile .profile-hero-rank {
 .stats-tempo-label {
     font-size: .68rem;
     color: var(--sp-muted-fg, #9ca3af);
-    white-space: nowrap;
+    /* Some unit names ("Tempo e Tectónica de Placas", "Riscos e
+       Ordenamento do Território"...) are long — nowrap forced every
+       column to be at least as wide as its own label, and with many
+       columns that total minimum width overflowed the card, forcing a
+       horizontal scrollbar. Wrapping instead lets columns actually
+       shrink to fit (min-width:0 on .stats-tempo-col is what allows it). */
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-align: center;
+    line-height: 1.25;
 }
 
 /* Aba "30d" — gráfico de linha com um ponto por dia (evolução real), em
