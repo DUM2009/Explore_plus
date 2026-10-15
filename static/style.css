@@ -11737,6 +11737,13 @@ body.shadcn-profile .profile-missions-head h2 svg {
     color: var(--sp-primary);
 }
 
+body.shadcn-profile .profile-atividade-ver-tudo {
+    color: var(--sp-primary);
+    font-size: .82rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
 body.shadcn-profile .profile-missions-viewall {
     display: inline-flex;
     align-items: center;
@@ -12098,30 +12105,29 @@ body.shadcn-profile .profile-tabs-bottom {
        accent-soft tone as .profile-vocacional-card) instead of the earlier
        wavy-edge illustrated banner — simpler and more consistent. Mirrors
        the hero's own rotating quote (profile-django.js updates both). */
+    /* Fixed height regardless of which quote is showing (quotes vary a lot
+       in length) — .profile-quote-banner-text clamps to 4 lines with an
+       ellipsis instead of growing the card, so swapping quotes never
+       reflows the page around it. */
     body.shadcn-profile .profile-quote-banner {
         display: flex;
-        align-items: flex-start;
-        gap: 12px;
+        align-items: center;
+        gap: 16px;
+        height: 180px;
         margin: 0 0 4px;
-        padding: 18px 20px;
+        padding: 20px 20px 20px 24px;
         border-radius: var(--sp-radius);
-        border-left: 4px solid var(--sp-primary);
-        background: var(--sp-accent-soft);
-    }
-
-    body.shadcn-profile .profile-quote-banner-mark {
-        flex: none;
-        margin-top: -6px;
-        color: var(--sp-primary);
-        opacity: .4;
-        font-family: var(--sp-font-serif);
-        font-size: 2.2rem;
-        line-height: 1;
+        background: var(--sp-bg);
+        border: 1px solid var(--sp-border);
+        overflow: hidden;
     }
 
     body.shadcn-profile .profile-quote-banner-copy {
         flex: 1 1 auto;
         min-width: 0;
+        padding-left: 14px;
+        border-left: 4px solid;
+        border-image: linear-gradient(180deg, var(--sp-primary) 0%, #16331f 100%) 1;
         transition: opacity .35s ease;
     }
 
@@ -12129,49 +12135,55 @@ body.shadcn-profile .profile-tabs-bottom {
         opacity: 0;
     }
 
+    body.shadcn-profile .profile-quote-banner-mark {
+        display: block;
+        margin: -8px 0 2px;
+        color: var(--sp-primary);
+        font-family: var(--sp-font-serif);
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
     body.shadcn-profile .profile-quote-banner-text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
         margin: 0;
         color: var(--sp-fg);
         font-family: var(--sp-font-serif);
         font-style: italic;
-        font-size: .9rem;
-        line-height: 1.42;
+        font-size: .92rem;
+        line-height: 1.4;
     }
 
     body.shadcn-profile .profile-quote-banner-author {
         display: block;
         margin-top: 8px;
-        color: var(--sp-primary);
+        color: var(--sp-muted-fg);
         font-size: .78rem;
-        font-weight: 700;
+        font-weight: 600;
+    }
+
+    body.shadcn-profile .profile-quote-banner-illustration {
+        flex: none;
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
     }
 
     /* ---- "Atividade Recente" ---- */
     body.shadcn-profile .profile-atividade-section {
         display: block;
-        margin-top: 24px;
+        margin-top: 4px;
     }
 
-    body.shadcn-profile .profile-atividade-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 12px;
-    }
-
-    body.shadcn-profile .profile-atividade-head h2 {
-        margin: 0;
-        font-family: var(--sp-font-serif);
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--sp-fg);
-    }
-
-    body.shadcn-profile .profile-atividade-ver-tudo {
-        color: var(--sp-primary);
-        font-size: .82rem;
-        font-weight: 700;
-        text-decoration: none;
+    /* Desktop keeps "O teu percurso"'s original chart/stats content under
+       the (now retitled) "Atividade Recente" heading; on mobile the real
+       activity list above replaces it instead of sitting alongside it. */
+    body.shadcn-profile .profile-percurso-card {
+        display: none;
     }
 
     body.shadcn-profile .profile-atividade-list {
