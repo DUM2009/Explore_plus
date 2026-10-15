@@ -2158,8 +2158,9 @@ body.shadcn-profile .plans-note {
 }
 
 /* Paywall shown on page load for free-plan users on a pro-only page (ver
-   Resumos.html) — reaproveita o mesmo .plan-card do SuperExplore, só que
-   dentro de um modal em vez da página /superexplore/ inteira. */
+   Resumos.html), or opened on demand from a "Desbloquear" button elsewhere
+   (ver Testes.html) — reaproveita o mesmo .plan-card do SuperExplore, só
+   que dentro de um modal em vez da página /superexplore/ inteira. */
 body.shadcn-profile .pro-gate-overlay {
     position: fixed;
     inset: 0;
@@ -2170,6 +2171,10 @@ body.shadcn-profile .pro-gate-overlay {
     padding: 24px;
     background: rgba(10, 15, 10, .55);
     overflow-y: auto;
+}
+
+body.shadcn-profile .pro-gate-overlay[hidden] {
+    display: none;
 }
 
 body.shadcn-profile .pro-gate-modal {
@@ -2186,8 +2191,10 @@ body.shadcn-profile .pro-gate-close {
     z-index: 1;
     display: grid;
     place-items: center;
+    box-sizing: border-box;
     width: 32px;
     height: 32px;
+    padding: 0;
     border-radius: 50%;
     background: var(--sp-card);
     color: var(--sp-fg);
