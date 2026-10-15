@@ -12898,6 +12898,20 @@ body.shadcn-profile .profile-tabs-bottom {
         order: 3;
         margin-left: 0;
     }
+
+    /* Testes' topbar has no greeting/notifications to balance against — just
+       the hamburger, pinned to the right instead of the 3-part layout above.
+       !important: same specificity as the rules above (equal class count),
+       so simply coming later in the file isn't enough to win here — both
+       target the same .nav-drawer-toggle/.missions-topbar-logo elements. */
+    body.shadcn-profile .missions-topbar--minimal .missions-topbar-logo {
+        display: none !important;
+    }
+
+    body.shadcn-profile .missions-topbar--minimal .nav-drawer-toggle {
+        order: 0 !important;
+        margin-left: auto !important;
+    }
 }
 
 /* Belt-and-braces for any username length at any width: a single very
