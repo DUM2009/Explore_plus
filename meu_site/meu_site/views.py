@@ -546,7 +546,7 @@ def _progresso_missoes_por_unidade(perfil):
         missoes_por_unidade[unidade_id].append(missao_id)
 
     pontos = []
-    for unidade in UNIDADES_BIBLIOTECA:
+    for unidade in UNIDADES_BIBLIOTECA_BIOLOGIA:
         missao_ids = missoes_por_unidade.get(unidade['id'], [])
         if not missao_ids:
             pontos.append({
@@ -567,7 +567,7 @@ def _quizzes_por_unidade(user):
     quizzes (testes, exames e secções de missão) de cada capítulo, com a
     barra colorida consoante o desempenho (vermelho/amarelo/verde)."""
     pontos = []
-    for unidade in UNIDADES_BIBLIOTECA:
+    for unidade in UNIDADES_BIBLIOTECA_BIOLOGIA:
         notas = list(
             ResultadoAvaliacao.objects.filter(user=user, unidade=unidade['id'])
             .values_list('nota_percentagem', flat=True)
@@ -591,10 +591,13 @@ def _quizzes_por_missao(user):
     quebrada por missão em vez de por capítulo (só quizzes de secção de
     missão, ver tipo='missao_seccao' em salvar_progresso_missao): uma
     barra por missão já tentada, todas juntas no mesmo gráfico."""
+    unidades_biologia_ids = {unidade['id'] for unidade in UNIDADES_BIBLIOTECA_BIOLOGIA}
     resultados = ResultadoAvaliacao.objects.filter(user=user, tipo='missao_seccao')
     notas_por_missao = defaultdict(list)
     for resultado in resultados:
         missao_id = resultado.identificador.split(':', 1)[0]
+        if MISSAO_ID_PARA_UNIDADE.get(missao_id) not in unidades_biologia_ids:
+            continue
         notas_por_missao[missao_id].append(resultado.nota_percentagem)
 
     pontos = []
@@ -663,7 +666,7 @@ def calcular_dados_estatisticas(request, perfil):
     # aluno da Biblioteca do Explorador (ver aplicar_estado_vocabulario_aluno),
     # só somado nas 5 unidades em vez de mostrado unidade a unidade.
     vocab_totais = {'dominado': 0, 'a_rever': 0, 'novo': 0}
-    for unidade in UNIDADES_BIBLIOTECA:
+    for unidade in UNIDADES_BIBLIOTECA_BIOLOGIA:
         termos = aplicar_estado_vocabulario_aluno(perfil, unidade['id'], carregar_termos_unidade(unidade['id']))
         for termo in termos:
             vocab_totais[termo['estado']] = vocab_totais.get(termo['estado'], 0) + 1
@@ -1743,6 +1746,13 @@ UNIDADES_BIBLIOTECA = [
     {'id': 'rochas-sedimentares-magmaticas-metamorficas', 'nome': 'Rochas em Detalhe', 'cor_a': '#b0762f', 'cor_b': '#d19a3f', 'cor_soft': '#fbf1e2', 'disciplina': 'Geologia'},
     {'id': 'deformacao-e-recursos', 'nome': 'Deformação e Recursos', 'cor_a': '#3f5a6b', 'cor_b': '#5f87a6', 'cor_soft': '#e9eff2', 'disciplina': 'Geologia'},
 ]
+
+# Só a Biologia está selecionável no separador Perfil por agora (as outras
+# disciplinas do subject-switcher ainda têm "Em breve") — por isso as
+# estatísticas por unidade (missões/quizzes/vocabulário) ficam-se só pelas
+# unidades de Biologia, em vez de misturarem capítulos de Geologia que o
+# aluno nem sequer pode escolher ver.
+UNIDADES_BIBLIOTECA_BIOLOGIA = [u for u in UNIDADES_BIBLIOTECA if u['disciplina'] == 'Biologia']
 
 
 def carregar_termos_unidade(unidade_id):
