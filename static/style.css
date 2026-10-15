@@ -12483,10 +12483,10 @@ body.shadcn-profile .profile-tabs-bottom {
         overflow: hidden;
     }
 
-    /* Static image instead of the waving video on mobile, zoomed and
-       repositioned so the face fills the circle (object-fit:contain from
-       the base rule would otherwise show the whole body tiny in the
-       middle) — desktop keeps the video, swapped in here. */
+    /* Static image instead of the waving video on mobile — already a tight
+       square crop (hat + face + shoulders) made from the source photo, so
+       it just needs to fill the circle; no extra zoom/positioning needed
+       the way the old full-body image did. Desktop keeps the video. */
     body.shadcn-profile .teste-mascote-fab-img--desktop {
         display: none;
     }
@@ -12494,8 +12494,6 @@ body.shadcn-profile .profile-tabs-bottom {
     body.shadcn-profile .teste-mascote-fab-img--mobile {
         display: block;
         object-fit: cover;
-        object-position: center 15%;
-        transform: scale(1.8);
     }
 
     /* Reorder .profile-grid's direct children (all siblings — the grid is
