@@ -2206,6 +2206,15 @@ margin-bottom:50px;
         margin-left:0;
     }
 
+    /* .subject-switcher-menu's right:0 assumes the trigger sits at the
+       right edge of a row (desktop) — now that the trigger is left-aligned
+       in the stacked column above, a menu wider than the trigger opened
+       off the left edge of the screen instead of under the trigger. */
+    .missions-page-subrow .subject-switcher-menu{
+        right:auto;
+        left:0;
+    }
+
     /* Spans the same width as the category cards/board below instead of
        just hugging its own content, so the whole filter row reads as one
        aligned block with the rest of the page. */
