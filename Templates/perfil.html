@@ -21,6 +21,8 @@
     window.exploreUserId = '{{ request.user.id|escapejs }}';
     window.exploreUserEmail = '{{ request.user.email|escapejs }}';
     window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
+    window.exploreMascoteConversasUrl = '{% url "mascote-conversas" %}';
+    window.exploreMascoteConversaDetalheUrlBase = '{% url "mascote-conversa-detalhe" 0 %}'.slice(0, -2);
     window.exploreCsrfToken = '{{ csrf_token }}';
     window.exploreActivityHeartbeatUrl = '{% url "registar-atividade" %}';
 </script>
@@ -555,12 +557,25 @@
 
 <div class="mascote-chat-panel" id="mascoteChatPanel" hidden>
     <div class="mascote-chat-header">
+        <button type="button" class="mascote-chat-history-btn" id="mascoteChatHistoryBtn" aria-haspopup="true" aria-expanded="false" aria-label="Conversas anteriores">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.64-6.36L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+        </button>
         <span>Fala com o Kim</span>
         <button type="button" class="mascote-chat-close" id="mascoteChatClose" aria-label="Fechar">✕</button>
     </div>
+    <div class="mascote-chat-history-panel" id="mascoteChatHistoryPanel" hidden>
+        <button type="button" class="mascote-chat-history-new" id="mascoteChatNewBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Nova conversa
+        </button>
+        <p class="mascote-chat-history-empty" id="mascoteChatHistoryEmpty" hidden>Ainda não tens conversas guardadas.</p>
+        <ul class="mascote-chat-history-list" id="mascoteChatHistoryList"></ul>
+    </div>
     <div class="mascote-chat-messages" id="mascoteChatMessages">
         <div class="mascote-chat-welcome" id="mascoteChatWelcome">
-            <img src="{% static 'images/Mascote com dúvidas.png' %}" class="mascote-chat-welcome-video" alt="Mascote com dúvidas">
+            <video class="mascote-chat-welcome-video" autoplay loop muted playsinline aria-hidden="true">
+                <source src="{% static 'Mascote a acenar.webm' %}" type="video/webm">
+            </video>
             <div class="mascote-chat-welcome-copy">
                 <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
                 <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>

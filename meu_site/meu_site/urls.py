@@ -73,6 +73,8 @@ urlpatterns = [
     path('api/registar-atividade/', views.registar_atividade_view, name='registar-atividade'),
     path('api/pergunta-errada/', views.registar_pergunta_errada, name='registar-pergunta-errada'),
     path('api/mascote-chat/', views.mascote_chat, name='mascote-chat'),
+    path('api/mascote-conversas/', views.mascote_conversas, name='mascote-conversas'),
+    path('api/mascote-conversas/<int:conversa_id>/', views.mascote_conversa_detalhe, name='mascote-conversa-detalhe'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

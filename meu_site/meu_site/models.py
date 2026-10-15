@@ -278,3 +278,22 @@ class PerguntaQuiz(models.Model):
 
     def __str__(self):
         return f"[{self.get_missao_display()}] {self.enunciado[:40]}..."
+
+
+class ConversaMascote(models.Model):
+    """Uma conversa guardada com o Kim (a mascote) — cada aluno pode ter
+    várias, para poder voltar a uma mais antiga em vez de perder tudo
+    sempre que fecha o painel de chat. `mensagens` guarda a lista completa
+    (role + text) na ordem em que aconteceram."""
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='conversas_mascote')
+    titulo = models.CharField(max_length=120, blank=True, default='')
+    mensagens = models.JSONField(default=list, blank=True)
+    criado_em = models.DateTimeField(default=timezone.now)
+    atualizado_em = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        app_label = 'meu_site'
+        ordering = ['-atualizado_em']
+
+    def __str__(self):
+        return self.titulo or f"Conversa #{self.pk}"
