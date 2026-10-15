@@ -2189,6 +2189,35 @@ margin-bottom:50px;
     .missions-page-subrow{
         margin-bottom:28px;
     }
+
+    /* .subject-switcher's margin-left:auto exists to push it to the right
+       end of the row on desktop (next to the intro text) — in a wrapped
+       flex row (flex-wrap:wrap above), that auto margin still applies per
+       line, so once it wraps onto its own line here it floats off to the
+       right instead of sitting under the intro text like everything else.
+       Stacking the row as a column and zeroing the margin keeps Explore
+       Biology left-aligned with the year tabs below it, as requested. */
+    .missions-page-subrow{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .missions-page-subrow .subject-switcher{
+        margin-left:0;
+    }
+
+    /* Spans the same width as the category cards/board below instead of
+       just hugging its own content, so the whole filter row reads as one
+       aligned block with the rest of the page. */
+    .ano-switcher{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    .ano-switcher-option{
+        flex:1;
+        text-align:center;
+    }
 }
 
 .missions-grid{
