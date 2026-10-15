@@ -12118,10 +12118,10 @@ body.shadcn-profile .profile-tabs-bottom {
     body.shadcn-profile .profile-quote-banner {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 10px;
         height: 192px;
         margin: 0 0 4px;
-        padding: 20px 20px 20px 24px;
+        padding: 20px 14px 20px 18px;
         border-radius: var(--sp-radius);
         background: var(--sp-bg);
         border: 1px solid var(--sp-border);
@@ -12174,8 +12174,8 @@ body.shadcn-profile .profile-tabs-bottom {
 
     body.shadcn-profile .profile-quote-banner-illustration {
         flex: none;
-        width: 140px;
-        height: 140px;
+        width: 88px;
+        height: 88px;
         object-fit: contain;
     }
 
@@ -12357,12 +12357,12 @@ body.shadcn-profile .profile-tabs-bottom {
         order: 4;
     }
 
-    /* Topbar: notifications on the left, hamburger pinned right, logo
+    /* Topbar: hamburger pinned left, notifications pinned right, logo
        centered between them (true centering regardless of each icon's own
        width — the logo wrapper takes all the leftover space and centers
        its image inside that space, rather than relying on both sides
        being equal width like justify-content:space-between would need). */
-    body.shadcn-profile .missions-topbar .header-icon-wrapper {
+    body.shadcn-profile .missions-topbar .nav-drawer-toggle {
         order: 1;
         margin-left: 0;
     }
@@ -12377,7 +12377,7 @@ body.shadcn-profile .profile-tabs-bottom {
         justify-content: center;
     }
 
-    body.shadcn-profile .missions-topbar .nav-drawer-toggle {
+    body.shadcn-profile .missions-topbar .header-icon-wrapper {
         order: 3;
         margin-left: 0;
     }
