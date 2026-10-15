@@ -12513,6 +12513,15 @@ body.shadcn-profile .profile-tabs-bottom {
         gap: 10px;
     }
 
+    /* .subject-switcher's margin-left:auto exists to push it to the right
+       of the title on the same row (the desktop/default layout) — in the
+       stacked column above, that same auto margin instead pushes it to
+       the right of its own row, when it should just sit under the title,
+       aligned with it. */
+    body.shadcn-profile .stats-tempo-header .subject-switcher {
+        margin-left: 0;
+    }
+
     /* The hero ("Olá, admin!" + avatar) now tracks the active tab like the
        rest of the Perfil content (data-tab-panel="perfil" on it) — it
        shouldn't still show while viewing Conquistas/Estatísticas. Only
