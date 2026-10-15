@@ -2301,17 +2301,6 @@ margin-bottom:50px;
         max-width:300px;
     }
 
-    /* Title + "SuperExplore" badge + button no longer fit on one line at
-       this narrower card width (300px above) — without flex-wrap they
-       just overflowed the card's right edge instead of dropping the
-       button to its own line underneath. */
-    .teste-item{
-        flex-wrap:wrap;
-    }
-
-    .teste-item-titulo{
-        flex-wrap:wrap;
-    }
 }
 
 .missions-grid{
@@ -4766,6 +4755,11 @@ cursor:not-allowed;
 }
 
 .teste-item-btn{
+    /* Overrides the sitewide mobile button{width:100%} reset — "Começar" is
+       wrapped in an <a> that shrinks to fit, so it never hit this, but
+       "Desbloquear" (a plain <button>, no wrapper) stretched to the full
+       row width without this. */
+    width:auto;
     flex:none;
     padding:8px 18px;
     border-radius:999px;
@@ -4779,16 +4773,6 @@ cursor:not-allowed;
     box-shadow:none;
 }
 
-.teste-item-btn--pro{
-    background:linear-gradient(135deg,#ffb020,#f5860a);
-    color:#241300;
-    box-shadow:0 6px 16px rgba(245,134,10,.3);
-}
-
-.teste-item-btn--pro:hover{
-    background:linear-gradient(135deg,#ffb020,#f5860a);
-    filter:brightness(1.08);
-}
 .lesson{
 
 padding:80px 8%;
