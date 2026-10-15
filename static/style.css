@@ -8530,6 +8530,22 @@ html.dark-mode .account-actions #logoutBtn {
     margin-left: auto;
 }
 
+/* Evolução das notas now has two dropdowns (Disciplina + Fonte de Dados)
+   side by side — wrapping them in one flex item keeps .stats-tempo-header's
+   justify-content:space-between treating the pair as a single element on
+   the right, instead of spreading title/Disciplina/Fonte evenly across the
+   whole row as 3 separate flex children. */
+.stats-evolucao-controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.stats-evolucao-controles .subject-switcher {
+    margin-left: 0;
+}
+
 .subject-switcher-trigger {
     display: flex;
     align-items: center;
@@ -12527,6 +12543,24 @@ body.shadcn-profile .profile-tabs-bottom {
         margin-left: 0;
     }
 
+    /* Evolução das notas' Disciplina + Fonte de Dados wrapper: stack the
+       two dropdowns under each other instead of side by side, same as the
+       title/control stacking above. */
+    body.shadcn-profile .stats-evolucao-controles {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 0;
+    }
+
+    /* .subject-switcher-menu's right:0 assumes the trigger sits at the
+       right edge of a row (desktop) — now that the trigger is left-aligned
+       in the stacked column above, a menu wider than the trigger opened
+       off the left edge of the screen instead of under the trigger. */
+    body.shadcn-profile .stats-tempo-header .subject-switcher-menu {
+        right: auto;
+        left: 0;
+    }
+
     /* The hero ("Olá, admin!" + avatar) now tracks the active tab like the
        rest of the Perfil content (data-tab-panel="perfil" on it) — it
        shouldn't still show while viewing Conquistas/Estatísticas. Only
@@ -13435,6 +13469,7 @@ body.shadcn-profile .profile-hero-rank {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     margin-bottom: 18px;
 }
 
