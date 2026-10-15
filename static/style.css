@@ -4773,6 +4773,17 @@ cursor:not-allowed;
     box-shadow:none;
 }
 
+.teste-item-btn--pro{
+    background:linear-gradient(135deg,#ffb020,#f5860a);
+    color:#241300;
+    box-shadow:0 6px 16px rgba(245,134,10,.3);
+}
+
+.teste-item-btn--pro:hover{
+    background:linear-gradient(135deg,#ffb020,#f5860a);
+    filter:brightness(1.08);
+}
+
 .lesson{
 
 padding:80px 8%;
