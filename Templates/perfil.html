@@ -358,15 +358,32 @@
         <div class="stats-card">
             <div class="stats-tempo-header">
                 <h2>Evolução das notas</h2>
-                <div class="subject-switcher" id="statsEvolucaoModo">
-                    <button type="button" class="subject-switcher-trigger" id="statsEvolucaoModoBtn" aria-haspopup="true" aria-expanded="false">
-                        <span id="statsEvolucaoModoLabel">Testes</span>
+                <div class="stats-evolucao-controles">
+                <div class="subject-switcher" id="statsEvolucaoDisciplina">
+                    <button type="button" class="subject-switcher-trigger" id="statsEvolucaoDisciplinaBtn" aria-haspopup="true" aria-expanded="false">
+                        <span id="statsEvolucaoDisciplinaLabel">Biologia</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <ul class="subject-switcher-menu" id="statsEvolucaoModoMenu" hidden>
-                        <li><button type="button" class="subject-switcher-option is-active" data-modo="teste">Testes</button></li>
-                        <li><button type="button" class="subject-switcher-option" data-modo="exame">Exames</button></li>
+                    <ul class="subject-switcher-menu" id="statsEvolucaoDisciplinaMenu" hidden>
+                        <li><button type="button" class="subject-switcher-option is-active" data-disciplina="biologia">Biologia</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-disciplina="geologia">Geologia</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-disciplina="fisica">Física</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-disciplina="quimica">Química</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-disciplina="bg_exames">Biologia e Geologia (exames)</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-disciplina="fq_exames">Física e Química (exames)</button></li>
                     </ul>
+                </div>
+                <div class="subject-switcher" id="statsEvolucaoFonte">
+                    <button type="button" class="subject-switcher-trigger" id="statsEvolucaoFonteBtn" aria-haspopup="true" aria-expanded="false">
+                        <span id="statsEvolucaoFonteLabel">Geral</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <ul class="subject-switcher-menu" id="statsEvolucaoFonteMenu" hidden>
+                        <li><button type="button" class="subject-switcher-option is-active" data-fonte="geral">Geral</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-fonte="teste">Testes</button></li>
+                        <li><button type="button" class="subject-switcher-option" data-fonte="simulado">Simulados</button></li>
+                    </ul>
+                </div>
                 </div>
             </div>
             <div id="statsEvolucaoChart">

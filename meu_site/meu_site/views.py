@@ -400,15 +400,10 @@ def pagina_perfil(request):
     })
 
 
-def _evolucao_notas(user, tipo):
-    """Gráfico "Evolução das notas" — um ponto por teste ou exame
-    corrigido (consoante `tipo`), na ordem em que aconteceram. Devolve os
-    pontos e já as coordenadas do <polyline> (viewBox 0 0 300 100), para o
-    template só desenhar, sem fazer contas — ver stats-evolucao.js para a
-    troca entre "Testes" e "Exames"."""
-    resultados = list(
-        ResultadoAvaliacao.objects.filter(user=user, tipo=tipo).order_by('criado_em')
-    )
+def _resultados_para_evolucao(resultados):
+    """Devolve os pontos do gráfico "Evolução das notas" e já as
+    coordenadas do <polyline> (viewBox 0 0 300 100), para o template só
+    desenhar, sem fazer contas — ver stats-evolucao.js."""
     pontos = [
         {
             'label': resultado.criado_em.strftime('%d/%m'),
@@ -427,6 +422,60 @@ def _evolucao_notas(user, tipo):
             for i, ponto in enumerate(pontos)
         )
     return {'pontos': pontos, 'coords': coords}
+
+
+# Disciplinas do dropdown "Disciplina" da Evolução das notas que são
+# avaliadas por teste de capítulo, com sub-seleção de "Fonte de Dados"
+# (Física e Química ainda não têm nenhuma unidade/teste próprio — só são
+# avaliadas via exame nacional, ver PARES_EVOLUCAO_EXAMES — por isso o seu
+# modo de testes fica sempre vazio até existir esse conteúdo).
+DISCIPLINAS_EVOLUCAO_TESTES = {
+    'biologia': 'Biologia',
+    'geologia': 'Geologia',
+    'fisica': 'Física',
+    'quimica': 'Química',
+}
+
+# As outras duas opções do dropdown: pares de disciplinas avaliados só por
+# exame nacional (sem "Fonte de Dados" — o exame já é a única fonte).
+PARES_EVOLUCAO_EXAMES = {
+    'bg_exames': 'Biologia e Geologia',
+    'fq_exames': 'Física e Química',
+}
+
+
+def _evolucao_notas_disciplina(user, disciplina, fonte):
+    """Gráfico "Evolução das notas" para uma disciplina avaliada por teste
+    de capítulo, filtrado por `fonte` ('geral'/'teste'/'simulado').
+    "Simulados" ainda não existe na app, por isso fica sempre vazio até
+    essa funcionalidade existir — e "Geral" coincide com "Testes" enquanto
+    essa for a única fonte real de notas."""
+    if fonte == 'simulado':
+        return _resultados_para_evolucao([])
+    unidades_ids = [
+        uid for uid, disc in UNIDADE_ID_PARA_DISCIPLINA.items() if disc == disciplina
+    ]
+    resultados = list(
+        ResultadoAvaliacao.objects.filter(
+            user=user, tipo='teste', unidade__in=unidades_ids
+        ).order_by('criado_em')
+    )
+    return _resultados_para_evolucao(resultados)
+
+
+def _evolucao_notas_exames(user, par_disciplinas):
+    """Gráfico "Evolução das notas" para um par de disciplinas avaliado só
+    por exame nacional (Biologia e Geologia / Física e Química)."""
+    exame_ids = [
+        exame['exame_id'] for exame in EXAMES_DISPONIVEIS
+        if exame['disciplina'] == par_disciplinas
+    ]
+    resultados = list(
+        ResultadoAvaliacao.objects.filter(
+            user=user, tipo='exame', identificador__in=exame_ids
+        ).order_by('criado_em')
+    )
+    return _resultados_para_evolucao(resultados)
 
 
 def _formatar_minutos(minutos):
@@ -616,14 +665,21 @@ def calcular_dados_estatisticas(request, perfil):
     Reaproveitado por pagina_estatisticas e pelo separador "Estatísticas"
     de pagina_perfil, para não duplicar esta lógica nos dois sítios."""
     # (a) Gráfico de evolução — um ponto por teste ou exame corrigido, na
-    # ordem em que aconteceram, trocável entre "Testes" e "Exames" no
-    # dropdown do cartão (ver stats-evolucao.js).
+    # ordem em que aconteceram, trocável por Disciplina (Biologia/Geologia/
+    # Física/Química + os dois pares avaliados por exame) e, dentro de cada
+    # disciplina, por Fonte de Dados (Geral/Testes/Simulados) no dropdown
+    # do cartão (ver stats-evolucao.js).
     evolucao_periodos = {
-        'teste': _evolucao_notas(request.user, 'teste'),
-        'exame': _evolucao_notas(request.user, 'exame'),
+        f'{chave_disciplina}_{fonte}': _evolucao_notas_disciplina(request.user, nome_disciplina, fonte)
+        for chave_disciplina, nome_disciplina in DISCIPLINAS_EVOLUCAO_TESTES.items()
+        for fonte in ('geral', 'teste', 'simulado')
     }
-    evolucao = evolucao_periodos['teste']['pontos']
-    evolucao_pontos = evolucao_periodos['teste']['coords']
+    evolucao_periodos.update({
+        chave: _evolucao_notas_exames(request.user, par_disciplinas)
+        for chave, par_disciplinas in PARES_EVOLUCAO_EXAMES.items()
+    })
+    evolucao = evolucao_periodos['biologia_geral']['pontos']
+    evolucao_pontos = evolucao_periodos['biologia_geral']['coords']
 
     # (b) Desempenho por unidade — três formas de ver o mesmo capítulo,
     # trocáveis no dropdown do cartão (ver stats-desempenho.js):
@@ -1753,6 +1809,12 @@ UNIDADES_BIBLIOTECA = [
 # unidades de Biologia, em vez de misturarem capítulos de Geologia que o
 # aluno nem sequer pode escolher ver.
 UNIDADES_BIBLIOTECA_BIOLOGIA = [u for u in UNIDADES_BIBLIOTECA if u['disciplina'] == 'Biologia']
+
+# Unidade -> disciplina, para separar a Evolução das notas por disciplina
+# (ver _evolucao_notas_disciplina). Física e Química não têm unidades/testes
+# ainda (só são avaliadas via exame), por isso nunca aparecem aqui — os seus
+# modos de "testes" do gráfico ficam sempre vazios até existir conteúdo.
+UNIDADE_ID_PARA_DISCIPLINA = {u['id']: u['disciplina'] for u in UNIDADES_BIBLIOTECA}
 
 
 def carregar_termos_unidade(unidade_id):
