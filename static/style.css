@@ -2218,6 +2218,14 @@ margin-bottom:50px;
         flex:1;
         text-align:center;
     }
+
+    /* Each category card stretches to the grid column's full width (which
+       is the whole board, since only one column fits this narrow) — caps
+       it narrower, left-aligned same as everything above it, instead of
+       reaching almost edge-to-edge of the screen. */
+    .missions-category-panel{
+        max-width:300px;
+    }
 }
 
 .missions-grid{
