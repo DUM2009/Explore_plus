@@ -677,6 +677,13 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 drawer.setAttribute('aria-hidden', String(!isOpen));
                 overlay.toggleAttribute('hidden', !isOpen);
                 page?.classList.toggle('sidebar-open', isOpen);
+                // Same class nav-drawer.js toggles elsewhere (see style.css
+                // html.nav-drawer-open/body.nav-drawer-open{overflow:hidden})
+                // — without it, the mission page behind this drawer (which
+                // this engine builds on its own, so nav-drawer.js never
+                // binds to it) stays scrollable while the drawer is open.
+                document.documentElement.classList.toggle('nav-drawer-open', isOpen);
+                document.body.classList.toggle('nav-drawer-open', isOpen);
             };
 
             toggle?.addEventListener('click', () => setSidebarOpen(!drawer?.classList.contains('is-open')));
