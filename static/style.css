@@ -3878,6 +3878,45 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
     background:#7c9457;
 }
 
+/* Mascot chat panel (Testes) in dark mode — same reasoning as the Perfil
+   panel above: every color here is a hardcoded light hex. */
+html.dark-mode .teste-mascote-panel {
+    background: #17171a;
+    border-left-color: #27272a;
+    box-shadow: -18px 0 40px rgba(0, 0, 0, .5);
+}
+
+html.dark-mode .teste-mascote-panel-header {
+    background: #111113;
+    border-bottom-color: #27272a;
+    color: #f4f4f5;
+}
+
+html.dark-mode .teste-mascote-panel-close {
+    color: #a1a1aa;
+}
+
+html.dark-mode .teste-mascote-bubble--assistant {
+    background: #1f1f23;
+    color: #f4f4f5;
+    border-color: #27272a;
+}
+
+html.dark-mode .teste-mascote-bubble--assistant.is-typing {
+    color: #8a8a93;
+}
+
+html.dark-mode .teste-mascote-form {
+    background: #17171a;
+    border-top-color: #27272a;
+}
+
+html.dark-mode .teste-mascote-input {
+    border-color: #27272a;
+    background: #0a0a0b;
+    color: #f4f4f5;
+}
+
 @media (max-width:480px){
     .teste-mascote-fab{
         right:16px;
@@ -11463,6 +11502,109 @@ body.shadcn-profile .profile-help-tip[hidden] {
 
 .mascote-chat-send:active {
     transform: scale(.96);
+}
+
+/* Mascot chat panel (Perfil) in dark mode — every color above is a
+   hardcoded light hex, so none of it adapted on its own; only the few
+   properties already reading var(--sp-fg)/--sp-border/--sp-card did. */
+html.dark-mode .mascote-chat-panel {
+    background: #17171a;
+    border-left-color: #27272a;
+    box-shadow: -18px 0 40px rgba(0, 0, 0, .5);
+}
+
+html.dark-mode .mascote-chat-header {
+    background: linear-gradient(135deg, #16231a 0%, #111113 65%);
+    border-bottom-color: #27272a;
+    color: #f4f4f5;
+}
+
+html.dark-mode .mascote-chat-history-btn {
+    color: #c9dcae;
+}
+
+html.dark-mode .mascote-chat-history-btn:hover,
+html.dark-mode .mascote-chat-history-btn[aria-expanded="true"] {
+    background: rgba(93, 163, 86, .18);
+}
+
+html.dark-mode .mascote-chat-history-panel {
+    background: #17171a;
+    border-color: #27272a;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .5);
+}
+
+html.dark-mode .mascote-chat-history-new {
+    border-color: #3a5a44;
+    background: rgba(93, 163, 86, .1);
+    color: #7cc26f;
+}
+
+html.dark-mode .mascote-chat-history-empty {
+    color: #a1a1aa;
+}
+
+html.dark-mode .mascote-chat-history-item {
+    color: #f4f4f5;
+}
+
+html.dark-mode .mascote-chat-history-item:hover,
+html.dark-mode .mascote-chat-history-item.is-active {
+    background: rgba(93, 163, 86, .14);
+}
+
+html.dark-mode .mascote-chat-history-item-meta {
+    color: #a1a1aa;
+}
+
+html.dark-mode .mascote-chat-close {
+    color: #a1a1aa;
+}
+
+html.dark-mode .mascote-chat-messages {
+    background: #0a0a0b;
+    scrollbar-color: #3f3f46 transparent;
+}
+
+html.dark-mode .mascote-chat-messages::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+}
+
+html.dark-mode .mascote-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #52525b;
+}
+
+html.dark-mode .mascote-chat-welcome-greeting {
+    color: #7cc26f;
+}
+
+html.dark-mode .mascote-chat-suggestion:hover {
+    border-color: #3a5a44;
+}
+
+html.dark-mode .mascote-chat-bubble--assistant {
+    background: #1f1f23;
+    color: #f4f4f5;
+    border-color: #27272a;
+}
+
+html.dark-mode .mascote-chat-bubble--assistant.is-typing {
+    color: #8a8a93;
+}
+
+html.dark-mode .mascote-chat-form {
+    background: #17171a;
+    border-top-color: #27272a;
+}
+
+html.dark-mode .mascote-chat-input {
+    border-color: #27272a;
+    background: #0a0a0b;
+    color: #f4f4f5;
+}
+
+html.dark-mode .mascote-chat-input:focus {
+    background: #111113;
 }
 
 /* =====================================================================
