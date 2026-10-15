@@ -268,70 +268,72 @@
     <div class="profile-tab-panel" data-tab-panel="perfil">
 
         <div class="profile-subject-card">
-            <div class="profile-subject-card-head">
-                <div class="subject-switcher">
-                    <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
-                        <span>Explore Biology</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                    </button>
-                    <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
-                        <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
-                        <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
-                        <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
-                        <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
-                    </ul>
+            <div class="profile-subject-card-main">
+                <div class="profile-subject-card-head">
+                    <div class="subject-switcher">
+                        <button type="button" class="subject-switcher-trigger" id="subjectSwitcherBtn" aria-haspopup="true" aria-expanded="false">
+                            <span>Explore Biology</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
+                        <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
+                            <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
+                            <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
+                            <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
+                            <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="profile-subject-avatar-wrap" id="profileSubjectAvatarWrap">
-                    <span class="profile-hero-avatar profile-subject-avatar" id="profileSubjectAvatar" aria-hidden="true">{{ request.user.username|first|upper }}</span>
-                    <button type="button" class="profile-subject-avatar-edit" id="profileSubjectAvatarEditBtn" aria-haspopup="true" aria-expanded="false" aria-controls="profileSubjectAvatarPicker" aria-label="Escolher avatar do Kim">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
-                    </button>
-                    <div class="profile-avatar-picker" id="profileSubjectAvatarPicker" hidden>
-                        <p class="profile-avatar-picker-title">Avatar do Kim</p>
-                        <div class="profile-avatar-picker-options">
-                            <button type="button" class="profile-avatar-option is-active" data-avatar-id="padrao">
-                                <span class="profile-avatar-option-preview profile-avatar-option-preview--letra" aria-hidden="true">{{ request.user.username|first|upper }}</span>
-                                <span class="profile-avatar-option-label">Padrão</span>
-                            </button>
-                            <button type="button" class="profile-avatar-option" data-avatar-id="havaiano">
-                                <span class="profile-avatar-option-preview" aria-hidden="true">
-                                    <img src="{% static 'images/Kim o Havaiano.png' %}" alt="">
-                                </span>
-                                <span class="profile-avatar-option-label">Kim Havaiano</span>
-                            </button>
-                            <button type="button" class="profile-avatar-option" data-avatar-id="astronauta">
-                                <span class="profile-avatar-option-preview" aria-hidden="true">
-                                    <img src="{% static 'images/Kim o austronauta.png' %}" alt="">
-                                </span>
-                                <span class="profile-avatar-option-label">Kim Astronauta</span>
-                            </button>
-                            <button type="button" class="profile-avatar-option" data-avatar-id="aventureiro">
-                                <span class="profile-avatar-option-preview" aria-hidden="true">
-                                    <img src="{% static 'images/Kim o aventureiro.png' %}" alt="">
-                                </span>
-                                <span class="profile-avatar-option-label">Kim Aventureiro</span>
-                            </button>
-                        </div>
+                <span class="profile-hero-level-pill profile-subject-level-pill" id="profileSubjectLevelPillWrap">Nível <span id="profileLevelBadgeSubject">{{ nivel }}</span></span>
+
+                <p class="profile-subject-xp" id="xpAluno"><strong>{{ xp }}</strong> <span>/ {{ proximo_nivel_xp }} XP</span></p>
+
+                <div class="barra profile-progress-bar">
+                    <div class="progresso" id="xpProgressBar" data-progress="{{ xp_progress_percent }}"></div>
+                </div>
+
+                {% if proximo_titulo and proximo_titulo.0 == proximo_nivel %}
+                <p class="profile-subject-caption" id="xpNextLevelText">Nível {{ proximo_titulo.0 }} desbloqueia "{{ proximo_titulo.1 }}"</p>
+                {% else %}
+                <p class="profile-subject-caption" id="xpNextLevelText">{{ xp_restante }} XP até ao nível {{ proximo_nivel }}</p>
+                {% endif %}
+
+                <span id="nivelAluno" hidden></span>
+            </div>
+
+            <div class="profile-subject-avatar-wrap" id="profileSubjectAvatarWrap">
+                <span class="profile-hero-avatar profile-subject-avatar" id="profileSubjectAvatar" aria-hidden="true">{{ request.user.username|first|upper }}</span>
+                <button type="button" class="profile-subject-avatar-edit" id="profileSubjectAvatarEditBtn" aria-haspopup="true" aria-expanded="false" aria-controls="profileSubjectAvatarPicker" aria-label="Escolher avatar do Kim">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                </button>
+                <div class="profile-avatar-picker" id="profileSubjectAvatarPicker" hidden>
+                    <p class="profile-avatar-picker-title">Avatar do Kim</p>
+                    <div class="profile-avatar-picker-options">
+                        <button type="button" class="profile-avatar-option is-active" data-avatar-id="padrao">
+                            <span class="profile-avatar-option-preview profile-avatar-option-preview--letra" aria-hidden="true">{{ request.user.username|first|upper }}</span>
+                            <span class="profile-avatar-option-label">Padrão</span>
+                        </button>
+                        <button type="button" class="profile-avatar-option" data-avatar-id="havaiano">
+                            <span class="profile-avatar-option-preview" aria-hidden="true">
+                                <img src="{% static 'images/Kim o Havaiano.png' %}" alt="">
+                            </span>
+                            <span class="profile-avatar-option-label">Kim Havaiano</span>
+                        </button>
+                        <button type="button" class="profile-avatar-option" data-avatar-id="astronauta">
+                            <span class="profile-avatar-option-preview" aria-hidden="true">
+                                <img src="{% static 'images/Kim o austronauta.png' %}" alt="">
+                            </span>
+                            <span class="profile-avatar-option-label">Kim Astronauta</span>
+                        </button>
+                        <button type="button" class="profile-avatar-option" data-avatar-id="aventureiro">
+                            <span class="profile-avatar-option-preview" aria-hidden="true">
+                                <img src="{% static 'images/Kim o aventureiro.png' %}" alt="">
+                            </span>
+                            <span class="profile-avatar-option-label">Kim Aventureiro</span>
+                        </button>
                     </div>
                 </div>
             </div>
-
-            <span class="profile-hero-level-pill profile-subject-level-pill" id="profileSubjectLevelPillWrap">Nível <span id="profileLevelBadgeSubject">{{ nivel }}</span></span>
-
-            <p class="profile-subject-xp" id="xpAluno"><strong>{{ xp }}</strong> <span>/ {{ proximo_nivel_xp }} XP</span></p>
-
-            <div class="barra profile-progress-bar">
-                <div class="progresso" id="xpProgressBar" data-progress="{{ xp_progress_percent }}"></div>
-            </div>
-
-            {% if proximo_titulo and proximo_titulo.0 == proximo_nivel %}
-            <p class="profile-subject-caption" id="xpNextLevelText">Nível {{ proximo_titulo.0 }} desbloqueia "{{ proximo_titulo.1 }}"</p>
-            {% else %}
-            <p class="profile-subject-caption" id="xpNextLevelText">{{ xp_restante }} XP até ao nível {{ proximo_nivel }}</p>
-            {% endif %}
-
-            <span id="nivelAluno" hidden></span>
         </div>
 
     </div>

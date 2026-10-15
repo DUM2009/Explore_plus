@@ -12345,27 +12345,41 @@ body.shadcn-profile .profile-tabs-bottom {
         text-overflow: ellipsis;
     }
 
+    /* The card becomes a two-column row: the text (title, level, XP, bar,
+       caption) on the left, the avatar big and vertically centered on the
+       right — matching the size/position the user circled in their
+       mockup screenshot. */
+    body.shadcn-profile .profile-subject-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    body.shadcn-profile .profile-subject-card-main {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
     body.shadcn-profile .profile-subject-avatar-wrap {
         display: block;
         position: relative;
         flex: none;
-        margin-left: auto;
     }
 
     body.shadcn-profile .profile-subject-avatar {
-        width: 48px;
-        height: 48px;
-        font-size: 1.1rem;
+        width: 128px;
+        height: 128px;
+        font-size: 2.8rem;
     }
 
     body.shadcn-profile .profile-subject-avatar-edit {
         position: absolute;
-        right: -2px;
-        bottom: -2px;
+        right: 0;
+        bottom: 0;
         display: grid;
         place-items: center;
-        width: 22px;
-        height: 22px;
+        width: 32px;
+        height: 32px;
         padding: 0;
         border: 2px solid var(--sp-card);
         border-radius: 50%;
@@ -12375,8 +12389,8 @@ body.shadcn-profile .profile-tabs-bottom {
     }
 
     body.shadcn-profile .profile-subject-avatar-edit svg {
-        width: 12px;
-        height: 12px;
+        width: 15px;
+        height: 15px;
     }
 
     body.shadcn-profile .profile-subject-avatar-edit:hover {
@@ -12385,18 +12399,23 @@ body.shadcn-profile .profile-tabs-bottom {
         transform: none;
     }
 
-    /* This picker's trigger sits at the right edge of the card header row
-       (not the left, like the hero's own copy) — right:0 instead of the
-       original left:0 keeps it from opening off the right edge of the
-       screen, same fix as the Estatísticas dropdowns. */
+    /* This picker's trigger sits at the right edge of the card (not the
+       left, like the hero's own copy) — right:0 instead of the original
+       left:0 keeps it from opening off the right edge of the screen, same
+       fix as the Estatísticas dropdowns. */
     body.shadcn-profile #profileSubjectAvatarPicker {
         left: auto;
         right: 0;
     }
 
+    /* The pill's own background (--sp-accent-soft) is the exact same
+       color as .profile-subject-card's background here, so it was
+       blending in instead of reading as a chip — give it the card's
+       (lighter) background instead, like the hero's version sits on. */
     body.shadcn-profile .profile-subject-level-pill {
         display: inline-flex;
         margin: 0 0 10px;
+        background: var(--sp-card);
     }
 
     /* ---- Quote banner (Darwin quote), directly above Teste Vocacional ---- */
