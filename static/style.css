@@ -9805,6 +9805,13 @@ html.dark-mode body.shadcn-profile {
     --sp-accent-soft: rgba(93, 163, 86, .14);
 }
 
+/* .nav-drawer-toggle (the mobile hamburger) has a fixed brown color that
+   never adapted to dark mode, making it nearly invisible against the dark
+   topbar — unlike the notifications bell, which already follows --sp-fg. */
+html.dark-mode body.shadcn-profile .nav-drawer-toggle {
+    color: var(--sp-fg);
+}
+
 html.dark-mode body.shadcn-profile .sidebar-plan-card {
     background: #1b1f1c;
     border-color: transparent;
