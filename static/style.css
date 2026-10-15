@@ -9914,6 +9914,12 @@ body.shadcn-profile .sidebar-theme-label {
 }
 
 body.shadcn-profile .sidebar-theme-card .header-icon-btn {
+    /* A sitewide `button{width:100%}` mobile reset is otherwise the only
+       width rule in play here — it stretched the button across the whole
+       card, leaving the icon wherever it happened to sit inside that
+       wide button instead of flush against the card's right edge. */
+    flex: none;
+    width: auto;
     padding: 4px;
     border-radius: 8px;
 }
@@ -12554,6 +12560,10 @@ body.shadcn-profile .profile-tabs-bottom {
         order: 2;
         flex: 1 1 auto;
         justify-content: center;
+        /* The hamburger (40px) and the notifications wrapper (28px) aren't
+           the same width, so centering within the space left over between
+           them lands a bit right of true page-center — nudge it back. */
+        margin-right: 24px;
     }
 
     body.shadcn-profile .missions-topbar .header-icon-wrapper {
