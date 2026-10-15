@@ -216,8 +216,12 @@ if (storedProfile) {
     // The hexagon badge is otherwise stuck with whatever the server
     // rendered on page load — keep it showing the exact same number as the
     // text above instead of two different totals that can drift apart.
-    const profileLevelBadge = document.getElementById('profileLevelBadge');
-    if (profileLevelBadge) profileLevelBadge.textContent = level;
+    // Two copies exist (hero + the Explore Biology card's mobile copy, see
+    // Templates/perfil.html), so both get the update.
+    ['profileLevelBadge', 'profileLevelBadgeSubject'].forEach((id) => {
+        const badge = document.getElementById(id);
+        if (badge) badge.textContent = level;
+    });
 
     const streakDays = Math.max(0, Number(storedProfile.streak?.current) || 0);
     if (profileStreakCount) profileStreakCount.textContent = streakDays;

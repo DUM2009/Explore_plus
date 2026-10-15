@@ -1877,6 +1877,13 @@ body.shadcn-profile .missions-page{
     object-fit:contain;
 }
 
+/* Perfil's mobile header swaps the logo for "Olá, <nome>!" (see
+   @media(max-width:720px) below) — hidden the rest of the time, since the
+   logo is what every other page (and Perfil's own desktop view) shows. */
+.missions-topbar-greeting{
+    display:none;
+}
+
 /* The hamburger always sits on the right, whether or not the logo next to
    it is visible — margin-left:auto (not justify-content:space-between)
    keeps it pinned there even when it's the row's only visible child. */
@@ -11864,6 +11871,17 @@ body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger:hover {
     transform: none;
 }
 
+/* Mobile-only duplicate of the hero's avatar/level widgets, relocated
+   into the Explore Biology card (see @media(max-width:720px) below) —
+   hidden here since desktop keeps the original hero layout unchanged. */
+body.shadcn-profile .profile-subject-avatar-wrap {
+    display: none;
+}
+
+body.shadcn-profile .profile-subject-level-pill {
+    display: none;
+}
+
 body.shadcn-profile .profile-subject-xp {
     position: relative;
     z-index: 1;
@@ -12298,6 +12316,87 @@ body.shadcn-profile .profile-tabs-bottom {
     /* Leaf icon ahead of "Nível X" — text-only on desktop, matches mockup. */
     body.shadcn-profile .profile-hero-level-pill::before {
         content: "🌱 ";
+    }
+
+    /* The hero's own avatar, greeting and level pill all moved out on
+       mobile — the greeting into the header (.missions-topbar-greeting
+       below), the avatar and level into the Explore Biology card
+       (.profile-subject-avatar-wrap / .profile-subject-level-pill below).
+       Nothing of substance is left to show here (the rank line and quote
+       are already hidden above), so the whole block goes rather than
+       leaving an empty box; the per-child rules above are harmless once
+       their parent is hidden, so they're left as-is. */
+    body.shadcn-profile .profile-hero {
+        display: none;
+    }
+
+    body.shadcn-profile .missions-topbar-logo img {
+        display: none;
+    }
+
+    body.shadcn-profile .missions-topbar-greeting {
+        display: block;
+        font-family: var(--sp-font-serif);
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--sp-fg);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    body.shadcn-profile .profile-subject-avatar-wrap {
+        display: block;
+        position: relative;
+        flex: none;
+        margin-left: auto;
+    }
+
+    body.shadcn-profile .profile-subject-avatar {
+        width: 48px;
+        height: 48px;
+        font-size: 1.1rem;
+    }
+
+    body.shadcn-profile .profile-subject-avatar-edit {
+        position: absolute;
+        right: -2px;
+        bottom: -2px;
+        display: grid;
+        place-items: center;
+        width: 22px;
+        height: 22px;
+        padding: 0;
+        border: 2px solid var(--sp-card);
+        border-radius: 50%;
+        background: var(--sp-primary);
+        color: #fff;
+        box-shadow: none;
+    }
+
+    body.shadcn-profile .profile-subject-avatar-edit svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    body.shadcn-profile .profile-subject-avatar-edit:hover {
+        background: var(--sp-primary);
+        box-shadow: none;
+        transform: none;
+    }
+
+    /* This picker's trigger sits at the right edge of the card header row
+       (not the left, like the hero's own copy) — right:0 instead of the
+       original left:0 keeps it from opening off the right edge of the
+       screen, same fix as the Estatísticas dropdowns. */
+    body.shadcn-profile #profileSubjectAvatarPicker {
+        left: auto;
+        right: 0;
+    }
+
+    body.shadcn-profile .profile-subject-level-pill {
+        display: inline-flex;
+        margin: 0 0 10px;
     }
 
     /* ---- Quote banner (Darwin quote), directly above Teste Vocacional ---- */

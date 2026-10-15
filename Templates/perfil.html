@@ -157,6 +157,7 @@
 <div class="missions-topbar">
     <div class="missions-topbar-logo">
         <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
+        <span class="missions-topbar-greeting">Olá, {{ request.user.username }}!</span>
     </div>
     <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="Abrir menu">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -280,7 +281,43 @@
                         <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
                     </ul>
                 </div>
+
+                <div class="profile-subject-avatar-wrap" id="profileSubjectAvatarWrap">
+                    <span class="profile-hero-avatar profile-subject-avatar" id="profileSubjectAvatar" aria-hidden="true">{{ request.user.username|first|upper }}</span>
+                    <button type="button" class="profile-subject-avatar-edit" id="profileSubjectAvatarEditBtn" aria-haspopup="true" aria-expanded="false" aria-controls="profileSubjectAvatarPicker" aria-label="Escolher avatar do Kim">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                    </button>
+                    <div class="profile-avatar-picker" id="profileSubjectAvatarPicker" hidden>
+                        <p class="profile-avatar-picker-title">Avatar do Kim</p>
+                        <div class="profile-avatar-picker-options">
+                            <button type="button" class="profile-avatar-option is-active" data-avatar-id="padrao">
+                                <span class="profile-avatar-option-preview profile-avatar-option-preview--letra" aria-hidden="true">{{ request.user.username|first|upper }}</span>
+                                <span class="profile-avatar-option-label">Padrão</span>
+                            </button>
+                            <button type="button" class="profile-avatar-option" data-avatar-id="havaiano">
+                                <span class="profile-avatar-option-preview" aria-hidden="true">
+                                    <img src="{% static 'images/Kim o Havaiano.png' %}" alt="">
+                                </span>
+                                <span class="profile-avatar-option-label">Kim Havaiano</span>
+                            </button>
+                            <button type="button" class="profile-avatar-option" data-avatar-id="astronauta">
+                                <span class="profile-avatar-option-preview" aria-hidden="true">
+                                    <img src="{% static 'images/Kim o austronauta.png' %}" alt="">
+                                </span>
+                                <span class="profile-avatar-option-label">Kim Astronauta</span>
+                            </button>
+                            <button type="button" class="profile-avatar-option" data-avatar-id="aventureiro">
+                                <span class="profile-avatar-option-preview" aria-hidden="true">
+                                    <img src="{% static 'images/Kim o aventureiro.png' %}" alt="">
+                                </span>
+                                <span class="profile-avatar-option-label">Kim Aventureiro</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <span class="profile-hero-level-pill profile-subject-level-pill" id="profileSubjectLevelPillWrap">Nível <span id="profileLevelBadgeSubject">{{ nivel }}</span></span>
 
             <p class="profile-subject-xp" id="xpAluno"><strong>{{ xp }}</strong> <span>/ {{ proximo_nivel_xp }} XP</span></p>
 
@@ -643,52 +680,77 @@
 <script src="{% static 'avatar-selector.js' %}"></script>
 <script>
 (function () {
-    const avatarSpan = document.getElementById('profileHeroAvatar');
-    const editBtn = document.getElementById('profileAvatarEditBtn');
-    const picker = document.getElementById('profileAvatarPicker');
-    const opcoes = picker ? Array.from(picker.querySelectorAll('.profile-avatar-option[data-avatar-id]')) : [];
-    if (!window.ExploreAvatar || !avatarSpan || !editBtn || !picker) return;
+    if (!window.ExploreAvatar) return;
 
-    const letraOriginal = avatarSpan.textContent;
+    // Two widgets share this same binding logic: the original one in the
+    // hero (desktop) and a second copy inside the Explore Biology card
+    // (mobile, where the hero itself is hidden — see style.css). Both read
+    // and write the same window.ExploreAvatar state, so picking an avatar
+    // in either one keeps both in sync even if only one is ever visible at
+    // a given breakpoint.
+    const widgets = [
+        { avatarId: 'profileHeroAvatar', editBtnId: 'profileAvatarEditBtn', pickerId: 'profileAvatarPicker' },
+        { avatarId: 'profileSubjectAvatar', editBtnId: 'profileSubjectAvatarEditBtn', pickerId: 'profileSubjectAvatarPicker' },
+    ].map(({ avatarId, editBtnId, pickerId }) => {
+        const avatarSpan = document.getElementById(avatarId);
+        const editBtn = document.getElementById(editBtnId);
+        const picker = document.getElementById(pickerId);
+        if (!avatarSpan || !editBtn || !picker) return null;
+        return {
+            avatarSpan,
+            editBtn,
+            picker,
+            letraOriginal: avatarSpan.textContent,
+            opcoes: Array.from(picker.querySelectorAll('.profile-avatar-option[data-avatar-id]')),
+        };
+    }).filter(Boolean);
+
+    if (!widgets.length) return;
 
     function aplicarAvatar() {
         const url = window.ExploreAvatar.getSelectedAvatarUrl();
-        if (url) {
-            avatarSpan.innerHTML = `<img src="${url}" alt="">`;
-            avatarSpan.classList.add('profile-hero-avatar--imagem');
-        } else {
-            avatarSpan.textContent = letraOriginal;
-            avatarSpan.classList.remove('profile-hero-avatar--imagem');
-        }
         const idAtual = window.ExploreAvatar.getSelectedAvatarId();
-        opcoes.forEach((opcao) => {
-            opcao.classList.toggle('is-active', opcao.dataset.avatarId === idAtual);
+        widgets.forEach((widget) => {
+            if (url) {
+                widget.avatarSpan.innerHTML = `<img src="${url}" alt="">`;
+                widget.avatarSpan.classList.add('profile-hero-avatar--imagem');
+            } else {
+                widget.avatarSpan.textContent = widget.letraOriginal;
+                widget.avatarSpan.classList.remove('profile-hero-avatar--imagem');
+            }
+            widget.opcoes.forEach((opcao) => {
+                opcao.classList.toggle('is-active', opcao.dataset.avatarId === idAtual);
+            });
         });
     }
 
-    function fecharPicker() {
-        picker.hidden = true;
-        editBtn.setAttribute('aria-expanded', 'false');
+    function fecharPicker(widget) {
+        widget.picker.hidden = true;
+        widget.editBtn.setAttribute('aria-expanded', 'false');
     }
 
-    editBtn.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const abrir = picker.hidden;
-        picker.hidden = !abrir;
-        editBtn.setAttribute('aria-expanded', String(abrir));
+    widgets.forEach((widget) => {
+        widget.editBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const abrir = widget.picker.hidden;
+            widget.picker.hidden = !abrir;
+            widget.editBtn.setAttribute('aria-expanded', String(abrir));
+        });
+
+        widget.opcoes.forEach((opcao) => {
+            opcao.addEventListener('click', () => {
+                window.ExploreAvatar.setSelectedAvatarId(opcao.dataset.avatarId);
+                aplicarAvatar();
+                fecharPicker(widget);
+            });
+        });
     });
 
     document.addEventListener('click', (event) => {
-        if (!picker.hidden && !picker.contains(event.target) && event.target !== editBtn) {
-            fecharPicker();
-        }
-    });
-
-    opcoes.forEach((opcao) => {
-        opcao.addEventListener('click', () => {
-            window.ExploreAvatar.setSelectedAvatarId(opcao.dataset.avatarId);
-            aplicarAvatar();
-            fecharPicker();
+        widgets.forEach((widget) => {
+            if (!widget.picker.hidden && !widget.picker.contains(event.target) && event.target !== widget.editBtn) {
+                fecharPicker(widget);
+            }
         });
     });
 
