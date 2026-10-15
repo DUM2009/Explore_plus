@@ -357,7 +357,13 @@ function openMascoteChatPanel() {
     if (!mascoteChatPanel) return;
     mascoteChatPanel.hidden = false;
     setKimChatOpenLayout(true);
-    mascoteChatInput?.focus();
+    // Auto-focusing the input pops the on-screen keyboard open immediately
+    // on mobile, covering half the panel before the student has even read
+    // the welcome message — only do it where there's no virtual keyboard
+    // to worry about. Tapping the suggestions/input still focuses it.
+    if (window.matchMedia('(min-width: 721px)').matches) {
+        mascoteChatInput?.focus();
+    }
 }
 
 const mascoteChatWelcome = document.getElementById('mascoteChatWelcome');
