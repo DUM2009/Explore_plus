@@ -12313,11 +12313,6 @@ body.shadcn-profile .profile-tabs-bottom {
         display: none;
     }
 
-    /* Leaf icon ahead of "Nível X" — text-only on desktop, matches mockup. */
-    body.shadcn-profile .profile-hero-level-pill::before {
-        content: "🌱 ";
-    }
-
     /* The hero's own avatar, greeting and level pill all moved out on
        mobile — the greeting into the header (.missions-topbar-greeting
        below), the avatar and level into the Explore Biology card
@@ -12424,7 +12419,11 @@ body.shadcn-profile .profile-tabs-bottom {
        blending in instead of reading as a chip — give it the card's
        (lighter) background instead, like the hero's version sits on. */
     body.shadcn-profile .profile-subject-level-pill {
-        display: inline-flex;
+        /* inline-flex (not inline-block) turns the "Nível " text and the
+           number span into separate anonymous flex items, and the space
+           between them collapses — inline-block keeps it a single run of
+           text so the space survives, same as the hero's own copy. */
+        display: inline-block;
         margin: 0 0 10px;
         background: var(--sp-card);
     }
