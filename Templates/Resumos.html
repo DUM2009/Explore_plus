@@ -18,6 +18,45 @@
 
 <body class="shadcn-profile">
 
+{% if perfil.plano != 'pro' %}
+<div class="pro-gate-overlay">
+    <div class="pro-gate-modal">
+        <a href="{% url 'perfil' %}" class="pro-gate-close" aria-label="Fechar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </a>
+        <h2 class="pro-gate-title">Desbloqueia a funcionalidade pro</h2>
+        <div class="plan-card plan-card--highlight">
+            <div class="plan-card-head">
+                <span class="plan-card-name">SuperExplore</span>
+                <span class="plan-card-badge">Recomendado</span>
+            </div>
+            <div class="plan-interval" role="radiogroup" aria-label="Periodicidade">
+                <button type="button" class="plan-interval-btn" role="radio" aria-checked="false" data-intervalo="quinzenal">Quinzenal</button>
+                <button type="button" class="plan-interval-btn is-active" role="radio" aria-checked="true" data-intervalo="mensal">Mensal</button>
+                <button type="button" class="plan-interval-btn" role="radio" aria-checked="false" data-intervalo="anual">Anual</button>
+            </div>
+            <p class="plan-card-price-old" id="planPriceOld">19,99€/mês</p>
+            <p class="plan-card-price"><strong id="planPriceValue">9,99€</strong><span id="planPricePeriod">/mês</span></p>
+            <p class="plan-card-saving" id="planPriceSaving"></p>
+            <p class="plan-card-tagline">Para quem quer ir mais longe todas as semanas.</p>
+            <ul class="plan-card-features">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Tudo o que está no plano Gratuito</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>IA ilimitada</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Simulados</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Plano de estudo</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Estatísticas</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acesso a todos os testes e exames com IA para auxiliar</li>
+            </ul>
+            <form method="post" action="{% url 'iniciar-checkout-superexplore' %}">
+                {% csrf_token %}
+                <input type="hidden" name="intervalo" id="planIntervaloInput" value="mensal">
+                <button type="submit" class="plan-card-btn plan-card-btn--highlight">Ativar SuperExplore</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
 
 <section class="profile-layout has-sidebar sidebar-collapsible">
@@ -225,6 +264,33 @@ document.addEventListener('click', (event) => {
         accountTrigger?.setAttribute('aria-expanded', 'false');
     }
 });
+</script>
+<script>
+(function () {
+    const planos = {
+        quinzenal: { valor: '5,99€', periodo: '/quinzena', antigo: '', poupanca: 'Sem fidelização. Cancelas quando quiseres.' },
+        mensal: { valor: '9,99€', periodo: '/mês', antigo: '19,99€/mês', poupanca: '' },
+        anual: { valor: '69,99€', periodo: '/ano', antigo: '', poupanca: 'Só 5,83€ por mês — poupas cerca de 42% face ao plano mensal.' }
+    };
+    const botoes = document.querySelectorAll('.plan-interval-btn');
+    const el = (id) => document.getElementById(id);
+    if (!botoes.length) return;
+    botoes.forEach((btn) => btn.addEventListener('click', () => {
+        const p = planos[btn.dataset.intervalo];
+        botoes.forEach((b) => {
+            const ativo = b === btn;
+            b.classList.toggle('is-active', ativo);
+            b.setAttribute('aria-checked', String(ativo));
+        });
+        el('planPriceValue').textContent = p.valor;
+        el('planPricePeriod').textContent = p.periodo;
+        el('planPriceOld').textContent = p.antigo;
+        el('planPriceOld').style.visibility = p.antigo ? 'visible' : 'hidden';
+        el('planPriceSaving').textContent = p.poupanca;
+        const input = el('planIntervaloInput');
+        if (input) input.value = btn.dataset.intervalo;
+    }));
+})();
 </script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>

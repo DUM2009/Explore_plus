@@ -2157,6 +2157,64 @@ body.shadcn-profile .plans-note {
     text-align: center;
 }
 
+/* Paywall shown on page load for free-plan users on a pro-only page (ver
+   Resumos.html) — reaproveita o mesmo .plan-card do SuperExplore, só que
+   dentro de um modal em vez da página /superexplore/ inteira. */
+body.shadcn-profile .pro-gate-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(10, 15, 10, .55);
+    overflow-y: auto;
+}
+
+body.shadcn-profile .pro-gate-modal {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: auto;
+}
+
+body.shadcn-profile .pro-gate-close {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--sp-card);
+    color: var(--sp-fg);
+    border: 1px solid var(--sp-border);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+    text-decoration: none;
+}
+
+body.shadcn-profile .pro-gate-close svg {
+    width: 16px;
+    height: 16px;
+}
+
+body.shadcn-profile .pro-gate-title {
+    margin: 0 0 16px;
+    /* Symmetric padding so the centered text doesn't run under the close
+       button, which sits at the top-right of the whole modal (title
+       included), not just the card below it. */
+    padding: 0 36px;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+    font-family: var(--sp-font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
 .missions-page h1{
 
 font-size:3rem;
