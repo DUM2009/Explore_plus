@@ -12021,6 +12021,8 @@ body.shadcn-profile .profile-tabs-bottom {
         margin-left: calc(50% - 50vw);
         margin-right: calc(50% - 50vw);
         border-radius: 0;
+        /* Mountain photo removed on mobile — a plain soft tint instead. */
+        background: var(--sp-accent-soft);
     }
 
     body.shadcn-profile .profile-hero-main {
