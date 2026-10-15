@@ -235,3 +235,26 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+
+# Without this, Django's default LOGGING config only mails ADMINS on a 500
+# (which we don't have set up) — nothing is ever written to stdout/stderr,
+# so Render's Logs tab shows just the plain "500" access-log line with no
+# Python traceback at all. This prints the full traceback for every
+# unhandled view exception, regardless of DEBUG, so it shows up there.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
