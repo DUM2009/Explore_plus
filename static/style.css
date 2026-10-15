@@ -12895,17 +12895,38 @@ body.shadcn-profile .profile-tabs-bottom {
     }
 
     /* Testes' topbar has no greeting/notifications to balance against — just
-       the hamburger, pinned to the right instead of the 3-part layout above.
+       the hamburger. Taking it out of the document flow (instead of just
+       reordering it within the row) lets "Testes" below rise into the
+       space the row used to reserve, so the heading sits level with the
+       hamburger rather than a whole row beneath it.
        !important: same specificity as the rules above (equal class count),
        so simply coming later in the file isn't enough to win here — both
        target the same .nav-drawer-toggle/.missions-topbar-logo elements. */
+    body.shadcn-profile .profile-content:has(.missions-topbar--minimal) {
+        position: relative;
+    }
+
+    body.shadcn-profile .missions-topbar--minimal {
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: auto !important;
+        margin-bottom: 0 !important;
+        width: auto !important;
+    }
+
     body.shadcn-profile .missions-topbar--minimal .missions-topbar-logo {
         display: none !important;
     }
 
     body.shadcn-profile .missions-topbar--minimal .nav-drawer-toggle {
         order: 0 !important;
-        margin-left: auto !important;
+        margin-left: 0 !important;
+        /* Nudges the hamburger down from the row's very top edge to level
+           with "Testes" — the heading's own box sits a little below the
+           row's top due to its line-height, not a margin we can zero out. */
+        top: 8px;
+        position: relative;
     }
 }
 
