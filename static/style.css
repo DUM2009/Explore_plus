@@ -12496,6 +12496,27 @@ body.shadcn-profile .profile-tabs-bottom {
         object-fit: cover;
     }
 
+    /* "Tempo de estudo", "Evolução das notas" and "Desempenho por unidade"
+       (Estatísticas) all share .stats-tempo-header: a title plus a pill
+       group or dropdown, side by side with no wrap handling — on a narrow
+       screen the title wrapped onto 3 lines while the control sat
+       half-overlapping it. Stacking them instead gives each its own row. */
+    body.shadcn-profile .stats-tempo-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* The hero ("Olá, admin!" + avatar) now tracks the active tab like the
+       rest of the Perfil content (data-tab-panel="perfil" on it) — it
+       shouldn't still show while viewing Conquistas/Estatísticas. Only
+       needed on mobile: .profile-hero's own display:flex already beats
+       the plain [hidden] default on its own, which is exactly why desktop
+       needs nothing here to keep the hero shown on every tab there. */
+    body.shadcn-profile .profile-hero[hidden] {
+        display: none !important;
+    }
+
     /* Reorder .profile-grid's direct children (all siblings — the grid is
        already a single column at this width): Explore Biology, then the
        quote banner, then Atividade Recente, then Teste Vocacional. */
