@@ -236,9 +236,12 @@ html[data-theme="dark"] .mission-intro-back:hover {
 .mo-topbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 16px;
     margin-bottom: 20px;
+    /* Anchors the hamburger toggle below, so it can be pinned to the
+       right without pushing the now-centered logo off-center. */
+    position: relative;
 }
 
 .mo-header-logo {
@@ -259,12 +262,18 @@ html[data-theme="dark"] .mission-intro-back:hover {
    — reused here as-is, just recoloured to match this page instead of the
    site's default brown. */
 .mo-topbar .nav-drawer-toggle {
-    /* Keeps it pinned to the right even when the logo next to it is
-       hidden (sidebar open) — with justify-content:space-between alone,
-       a single remaining flex child would snap back to the left. */
-    margin-left: auto;
+    /* Pinned to the corner independently of the logo, which is centered
+       via justify-content on the row above — stays put whether the logo
+       is shown or hidden (sidebar open). */
+    position: absolute;
+    right: 0;
+    margin-left: 0;
     color: #4a584f;
     box-shadow: none;
+    /* Sitewide mobile button{width:100%} reset resolves against the
+       topbar's full width here (only `right` is set, no `left`) —
+       same fix as the mission-card toggle elsewhere in this codebase. */
+    width: auto;
 }
 
 .mo-topbar .nav-drawer-toggle:hover {

@@ -329,6 +329,19 @@ if (bibliotecaFilterEl && bibliotecaFilterTrigger && bibliotecaFilterMenu) {
 <script src="{% static 'animation-prefs.js' %}"></script>
 <script src="{% static 'activity-heartbeat.js' %}" defer></script>
 
+{% if request.user.is_authenticated %}
+<script>
+    window.exploreMascoteChatUrl = window.exploreMascoteChatUrl || '{% url "mascote-chat" %}';
+    window.exploreMascoteConversasUrl = window.exploreMascoteConversasUrl || '{% url "mascote-conversas" %}';
+    window.exploreMascoteConversaDetalheUrlBase = window.exploreMascoteConversaDetalheUrlBase || '{% url "mascote-conversa-detalhe" 0 %}'.slice(0, -2);
+    window.exploreCsrfToken = window.exploreCsrfToken || '{{ csrf_token }}';
+    window.exploreMascoteWebmUrl = window.exploreMascoteWebmUrl || '{% static "Mascote a acenar.webm" %}';
+    window.exploreMascoteImgUrl = window.exploreMascoteImgUrl || '{% static "images/Mascote botao flutuante.png" %}';
+    window.exploreUsername = window.exploreUsername || '{{ request.user.username|escapejs }}';
+</script>
+<script src="{% static 'mascote-fab-global.js' %}" defer></script>
+{% endif %}
+
 </body>
 
 </html>

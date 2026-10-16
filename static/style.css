@@ -12497,15 +12497,105 @@ body.shadcn-profile .profile-vocacional-btn:hover {
     box-shadow: none;
 }
 
-/* ---- Mobile-only Perfil additions: quote banner, "Atividade Recente" and
-   the fixed bottom tab bar. None of these three exist in the desktop
-   design, so each is hidden by default here and only switched on inside
-   the @media(max-width:720px) block below — keeps every selector out of
-   the desktop cascade entirely instead of relying on viewport alone. */
-body.shadcn-profile .profile-quote-banner,
+/* ---- Mobile-only Perfil additions: "Atividade Recente" and the fixed
+   bottom tab bar. Neither exists in the desktop design, so each is hidden
+   by default here and only switched on inside the @media(max-width:720px)
+   block below — keeps every selector out of the desktop cascade entirely
+   instead of relying on viewport alone. (.profile-quote-banner used to be
+   in this list too — it's shown on desktop now, see .profile-hero-row
+   below, alongside the hero instead of being desktop-only hidden.) */
 body.shadcn-profile .profile-atividade-section,
 body.shadcn-profile .profile-tabs-bottom {
     display: none;
+}
+
+/* ---- Desktop: hero card + quote banner side by side ----
+   .profile-hero already spans the full page width on its own (see the
+   comment on .profile-hero above); .profile-hero-row just wraps it
+   together with .profile-quote-banner so the quote sits to its right
+   instead of being hidden entirely on desktop. Mobile keeps today's
+   stacked layout (row collapses to a plain block, each child keeps its
+   own existing mobile styling from the @media(max-width:720px) block). */
+body.shadcn-profile .profile-hero-row {
+    display: block;
+}
+
+@media (min-width: 721px) {
+    body.shadcn-profile .profile-hero-row {
+        display: flex;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-hero {
+        flex: 1 1 62%;
+        min-width: 0;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1 1 38%;
+        min-width: 0;
+        margin: 24px 0 32px;
+        padding: 20px 14px 20px 18px;
+        border-radius: var(--sp-radius);
+        background: var(--sp-bg);
+        border: 1px solid var(--sp-border);
+        overflow: hidden;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-copy {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding-left: 14px;
+        border-left: 4px solid;
+        border-image: linear-gradient(180deg, var(--sp-primary) 0%, #16331f 100%) 1;
+        transition: opacity .35s ease;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner.is-fading .profile-quote-banner-copy {
+        opacity: 0;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-mark {
+        display: block;
+        margin: -8px 0 2px;
+        color: var(--sp-primary);
+        font-family: var(--sp-font-serif);
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
+        overflow: hidden;
+        margin: 0;
+        color: var(--sp-fg);
+        font-family: var(--sp-font-serif);
+        font-style: italic;
+        font-size: .95rem;
+        line-height: 1.5;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-author {
+        display: block;
+        margin-top: 8px;
+        color: var(--sp-muted-fg);
+        font-size: .8rem;
+        font-weight: 600;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-illustration {
+        flex: none;
+        width: 96px;
+        height: 96px;
+        object-fit: contain;
+    }
 }
 
 @media (max-width: 720px) {
@@ -14672,6 +14762,10 @@ html.dark-mode .biblioteca-estante {
 html.dark-mode .biblioteca-livro-item::after {
     background: linear-gradient(to bottom, #5c4530 0%, #40301d 55%, #291b0d 100%);
     box-shadow: 0 3px 4px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+html.dark-mode .biblioteca-livro-item::before {
+    background: rgba(0, 0, 0, .35);
 }
 /* Real-device follow-up: two older, narrower breakpoints declared further
    above (max-width:768px and max-width:480px) re-set header/nav padding
