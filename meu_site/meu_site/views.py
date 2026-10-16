@@ -10,7 +10,7 @@ from django.http import JsonResponse, Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db import OperationalError
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -20,6 +20,7 @@ from django.utils import timezone
 from .models import (
     PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel,
     ResultadoAvaliacao, RegistoAtividadeDiaria, gerar_codigo_referral_unico,
+    ConversaMascote,
 )
 
 # Nº de amigos convidados (via código de referral) necessário para ganhar a
@@ -334,6 +335,46 @@ def pagina_perfil(request):
     # função precisa (vocabulario_estado, etc.), por isso fica de fora.
     dados_estatisticas = {} if perfil_legacy else calcular_dados_estatisticas(request, perfil)
 
+    # "Atividade Recente" (separador Estatísticas): eventos reais, não
+    # progresso estático — ResultadoAvaliacao já guarda um histórico com
+    # data real (criado_em) de cada quiz/teste/exame corrigido; missões
+    # completas a 100% não têm data guardada, por isso entram no fim, sem
+    # `criado_em`. `categoria` decide o ícone/cor no template (missao =
+    # livro roxo, quiz = alvo azul, teste/exame = folha rosa).
+    nomes_unidades = {unidade['id']: unidade['nome'] for unidade in UNIDADES_BIBLIOTECA}
+    atividade_recente = []
+    for resultado in ResultadoAvaliacao.objects.filter(user=request.user).order_by('-criado_em')[:10]:
+        unidade_nome = nomes_unidades.get(resultado.unidade, '')
+        if resultado.tipo == 'missao_seccao':
+            missao_id = resultado.identificador.split(':')[0]
+            titulo_missao = next((m['titulo'] for m in missoes if m['id'] == missao_id), None)
+            atividade_recente.append({
+                'categoria': 'quiz',
+                'titulo': f'Quiz — {titulo_missao or unidade_nome or "missão"}',
+                'subtitulo': unidade_nome,
+                'percent': round(resultado.nota_percentagem),
+                'criado_em': resultado.criado_em,
+            })
+        else:
+            rotulo = 'Exame' if resultado.tipo == 'exame' else 'Teste'
+            atividade_recente.append({
+                'categoria': 'teste',
+                'titulo': f'{rotulo} de {unidade_nome}' if unidade_nome else rotulo,
+                'subtitulo': unidade_nome,
+                'percent': round(resultado.nota_percentagem),
+                'criado_em': resultado.criado_em,
+            })
+    for missao in missoes:
+        if missao['percent'] >= 100:
+            atividade_recente.append({
+                'categoria': 'missao',
+                'titulo': missao['titulo'],
+                'subtitulo': missao['categoria'],
+                'percent': 100,
+                'criado_em': None,
+            })
+    atividade_recente = atividade_recente[:6]
+
     return render(request, 'perfil.html', {
         'perfil': perfil,
         'nivel': perfil.nivel,
@@ -354,19 +395,15 @@ def pagina_perfil(request):
         'titulo_descricao': titulo_descricao,
         'proximo_titulo': proximo_titulo,
         'niveis_para_kim_nivel10': max(0, 10 - perfil.nivel),
+        'atividade_recente': atividade_recente,
         **dados_estatisticas,
     })
 
 
-def _evolucao_notas(user, tipo):
-    """Gráfico "Evolução das notas" — um ponto por teste ou exame
-    corrigido (consoante `tipo`), na ordem em que aconteceram. Devolve os
-    pontos e já as coordenadas do <polyline> (viewBox 0 0 300 100), para o
-    template só desenhar, sem fazer contas — ver stats-evolucao.js para a
-    troca entre "Testes" e "Exames"."""
-    resultados = list(
-        ResultadoAvaliacao.objects.filter(user=user, tipo=tipo).order_by('criado_em')
-    )
+def _resultados_para_evolucao(resultados):
+    """Devolve os pontos do gráfico "Evolução das notas" e já as
+    coordenadas do <polyline> (viewBox 0 0 300 100), para o template só
+    desenhar, sem fazer contas — ver stats-evolucao.js."""
     pontos = [
         {
             'label': resultado.criado_em.strftime('%d/%m'),
@@ -385,6 +422,60 @@ def _evolucao_notas(user, tipo):
             for i, ponto in enumerate(pontos)
         )
     return {'pontos': pontos, 'coords': coords}
+
+
+# Disciplinas do dropdown "Disciplina" da Evolução das notas que são
+# avaliadas por teste de capítulo, com sub-seleção de "Fonte de Dados"
+# (Física e Química ainda não têm nenhuma unidade/teste próprio — só são
+# avaliadas via exame nacional, ver PARES_EVOLUCAO_EXAMES — por isso o seu
+# modo de testes fica sempre vazio até existir esse conteúdo).
+DISCIPLINAS_EVOLUCAO_TESTES = {
+    'biologia': 'Biologia',
+    'geologia': 'Geologia',
+    'fisica': 'Física',
+    'quimica': 'Química',
+}
+
+# As outras duas opções do dropdown: pares de disciplinas avaliados só por
+# exame nacional (sem "Fonte de Dados" — o exame já é a única fonte).
+PARES_EVOLUCAO_EXAMES = {
+    'bg_exames': 'Biologia e Geologia',
+    'fq_exames': 'Física e Química',
+}
+
+
+def _evolucao_notas_disciplina(user, disciplina, fonte):
+    """Gráfico "Evolução das notas" para uma disciplina avaliada por teste
+    de capítulo, filtrado por `fonte` ('geral'/'teste'/'simulado').
+    "Simulados" ainda não existe na app, por isso fica sempre vazio até
+    essa funcionalidade existir — e "Geral" coincide com "Testes" enquanto
+    essa for a única fonte real de notas."""
+    if fonte == 'simulado':
+        return _resultados_para_evolucao([])
+    unidades_ids = [
+        uid for uid, disc in UNIDADE_ID_PARA_DISCIPLINA.items() if disc == disciplina
+    ]
+    resultados = list(
+        ResultadoAvaliacao.objects.filter(
+            user=user, tipo='teste', unidade__in=unidades_ids
+        ).order_by('criado_em')
+    )
+    return _resultados_para_evolucao(resultados)
+
+
+def _evolucao_notas_exames(user, par_disciplinas):
+    """Gráfico "Evolução das notas" para um par de disciplinas avaliado só
+    por exame nacional (Biologia e Geologia / Física e Química)."""
+    exame_ids = [
+        exame['exame_id'] for exame in EXAMES_DISPONIVEIS
+        if exame['disciplina'] == par_disciplinas
+    ]
+    resultados = list(
+        ResultadoAvaliacao.objects.filter(
+            user=user, tipo='exame', identificador__in=exame_ids
+        ).order_by('criado_em')
+    )
+    return _resultados_para_evolucao(resultados)
 
 
 def _formatar_minutos(minutos):
@@ -504,7 +595,7 @@ def _progresso_missoes_por_unidade(perfil):
         missoes_por_unidade[unidade_id].append(missao_id)
 
     pontos = []
-    for unidade in UNIDADES_BIBLIOTECA:
+    for unidade in UNIDADES_BIBLIOTECA_BIOLOGIA:
         missao_ids = missoes_por_unidade.get(unidade['id'], [])
         if not missao_ids:
             pontos.append({
@@ -525,7 +616,7 @@ def _quizzes_por_unidade(user):
     quizzes (testes, exames e secções de missão) de cada capítulo, com a
     barra colorida consoante o desempenho (vermelho/amarelo/verde)."""
     pontos = []
-    for unidade in UNIDADES_BIBLIOTECA:
+    for unidade in UNIDADES_BIBLIOTECA_BIOLOGIA:
         notas = list(
             ResultadoAvaliacao.objects.filter(user=user, unidade=unidade['id'])
             .values_list('nota_percentagem', flat=True)
@@ -549,10 +640,13 @@ def _quizzes_por_missao(user):
     quebrada por missão em vez de por capítulo (só quizzes de secção de
     missão, ver tipo='missao_seccao' em salvar_progresso_missao): uma
     barra por missão já tentada, todas juntas no mesmo gráfico."""
+    unidades_biologia_ids = {unidade['id'] for unidade in UNIDADES_BIBLIOTECA_BIOLOGIA}
     resultados = ResultadoAvaliacao.objects.filter(user=user, tipo='missao_seccao')
     notas_por_missao = defaultdict(list)
     for resultado in resultados:
         missao_id = resultado.identificador.split(':', 1)[0]
+        if MISSAO_ID_PARA_UNIDADE.get(missao_id) not in unidades_biologia_ids:
+            continue
         notas_por_missao[missao_id].append(resultado.nota_percentagem)
 
     pontos = []
@@ -571,14 +665,21 @@ def calcular_dados_estatisticas(request, perfil):
     Reaproveitado por pagina_estatisticas e pelo separador "Estatísticas"
     de pagina_perfil, para não duplicar esta lógica nos dois sítios."""
     # (a) Gráfico de evolução — um ponto por teste ou exame corrigido, na
-    # ordem em que aconteceram, trocável entre "Testes" e "Exames" no
-    # dropdown do cartão (ver stats-evolucao.js).
+    # ordem em que aconteceram, trocável por Disciplina (Biologia/Geologia/
+    # Física/Química + os dois pares avaliados por exame) e, dentro de cada
+    # disciplina, por Fonte de Dados (Geral/Testes/Simulados) no dropdown
+    # do cartão (ver stats-evolucao.js).
     evolucao_periodos = {
-        'teste': _evolucao_notas(request.user, 'teste'),
-        'exame': _evolucao_notas(request.user, 'exame'),
+        f'{chave_disciplina}_{fonte}': _evolucao_notas_disciplina(request.user, nome_disciplina, fonte)
+        for chave_disciplina, nome_disciplina in DISCIPLINAS_EVOLUCAO_TESTES.items()
+        for fonte in ('geral', 'teste', 'simulado')
     }
-    evolucao = evolucao_periodos['teste']['pontos']
-    evolucao_pontos = evolucao_periodos['teste']['coords']
+    evolucao_periodos.update({
+        chave: _evolucao_notas_exames(request.user, par_disciplinas)
+        for chave, par_disciplinas in PARES_EVOLUCAO_EXAMES.items()
+    })
+    evolucao = evolucao_periodos['biologia_geral']['pontos']
+    evolucao_pontos = evolucao_periodos['biologia_geral']['coords']
 
     # (b) Desempenho por unidade — três formas de ver o mesmo capítulo,
     # trocáveis no dropdown do cartão (ver stats-desempenho.js):
@@ -621,7 +722,7 @@ def calcular_dados_estatisticas(request, perfil):
     # aluno da Biblioteca do Explorador (ver aplicar_estado_vocabulario_aluno),
     # só somado nas 5 unidades em vez de mostrado unidade a unidade.
     vocab_totais = {'dominado': 0, 'a_rever': 0, 'novo': 0}
-    for unidade in UNIDADES_BIBLIOTECA:
+    for unidade in UNIDADES_BIBLIOTECA_BIOLOGIA:
         termos = aplicar_estado_vocabulario_aluno(perfil, unidade['id'], carregar_termos_unidade(unidade['id']))
         for termo in termos:
             vocab_totais[termo['estado']] = vocab_totais.get(termo['estado'], 0) + 1
@@ -1109,6 +1210,13 @@ def mascote_chat(request):
     section_title = str(dados.get('sectionTitle', ''))[:200]
     context_text = str(dados.get('context', ''))[:6000]
 
+    conversa_id = dados.get('conversaId')
+    conversa = None
+    if conversa_id:
+        conversa = ConversaMascote.objects.filter(id=conversa_id, user=request.user).first()
+    if conversa is None:
+        conversa = ConversaMascote.objects.create(user=request.user)
+
     history = dados.get('history')
     messages = []
     if isinstance(history, list):
@@ -1157,7 +1265,48 @@ def mascote_chat(request):
     except anthropic.APIConnectionError:
         return JsonResponse({'erro': 'Não foi possível ligar ao serviço de chat.'}, status=502)
 
-    return JsonResponse({'reply': reply})
+    agora = timezone.now().isoformat()
+    mensagens = list(conversa.mensagens or [])
+    mensagens.append({'role': 'user', 'text': user_message, 'criado_em': agora})
+    mensagens.append({'role': 'assistant', 'text': reply, 'criado_em': agora})
+    conversa.mensagens = mensagens
+    if not conversa.titulo:
+        conversa.titulo = user_message[:60]
+    conversa.atualizado_em = timezone.now()
+    conversa.save(update_fields=['mensagens', 'titulo', 'atualizado_em'])
+
+    return JsonResponse({'reply': reply, 'conversaId': conversa.id, 'titulo': conversa.titulo})
+
+
+@login_required(login_url='login')
+def mascote_conversas(request):
+    """Lista as conversas guardadas do aluno com o Kim, mais recentes
+    primeiro — usada para preencher o painel de histórico no chat."""
+    conversas = ConversaMascote.objects.filter(user=request.user).order_by('-atualizado_em')[:30]
+    return JsonResponse({
+        'conversas': [
+            {
+                'id': conversa.id,
+                'titulo': conversa.titulo or 'Conversa sem título',
+                'atualizado_em': conversa.atualizado_em.isoformat(),
+            }
+            for conversa in conversas
+        ],
+    })
+
+
+@login_required(login_url='login')
+def mascote_conversa_detalhe(request, conversa_id):
+    """Devolve as mensagens completas de uma conversa guardada, para o
+    aluno poder voltar a ela a partir do painel de histórico."""
+    conversa = ConversaMascote.objects.filter(id=conversa_id, user=request.user).first()
+    if conversa is None:
+        return JsonResponse({'erro': 'Conversa não encontrada.'}, status=404)
+    return JsonResponse({
+        'id': conversa.id,
+        'titulo': conversa.titulo,
+        'mensagens': conversa.mensagens or [],
+    })
 
 
 # Imagem do painel quadrado de cada categoria na página de Testes — as
@@ -1182,13 +1331,14 @@ CATEGORIA_TESTES_IMAGENS = {
     'Movimento e Interações': 'images/Movimentos e interações.png',
     'Sinais, Ondas e Som': 'images/Sinais e ondas.png',
     'Eletromagnetismo': 'images/Eletromagnetismo.png',
-    'Cinemática e Dinâmica 2D': 'images/f12_remate_futebol.png',
-    'Centro de Massa e Momento Linear': 'images/f12_airbag.png',
-    'Fluidos': 'images/f12_navio_iceberg.png',
-    'Campo Gravítico': 'images/f12_orbitas_kepler.png',
-    'Campo Elétrico': 'images/f12_atomo_hidrogenio.png',
-    'Campo Magnético': 'images/f12_aurora_boreal.png',
-    'Física Moderna': 'images/f12_ferro_incandescente.png',
+    # As 7 categorias de Física do 12º ano (Cinemática e Dinâmica 2D, Centro
+    # de Massa e Momento Linear, Fluidos, Campo Gravítico, Campo Elétrico,
+    # Campo Magnético, Física Moderna) ainda não têm imagem própria — os
+    # ficheiros f12_*.png nunca chegaram a existir em static/images/, o que
+    # causava um 500 em produção (o ManifestStaticFilesStorage do WhiteNoise
+    # rebenta em {% static %} de um ficheiro que não está no manifest). Sem
+    # entrada aqui, caem no fallback (.get(nome, 'images/Biology image.jpg')
+    # abaixo) até existir uma imagem real para cada uma.
 }
 
 # Categorias cuja imagem usa background-size:contain em vez de cover (ver
@@ -1661,6 +1811,19 @@ UNIDADES_BIBLIOTECA = [
     {'id': 'rochas-sedimentares-magmaticas-metamorficas', 'nome': 'Rochas em Detalhe', 'cor_a': '#b0762f', 'cor_b': '#d19a3f', 'cor_soft': '#fbf1e2', 'disciplina': 'Geologia'},
     {'id': 'deformacao-e-recursos', 'nome': 'Deformação e Recursos', 'cor_a': '#3f5a6b', 'cor_b': '#5f87a6', 'cor_soft': '#e9eff2', 'disciplina': 'Geologia'},
 ]
+
+# Só a Biologia está selecionável no separador Perfil por agora (as outras
+# disciplinas do subject-switcher ainda têm "Em breve") — por isso as
+# estatísticas por unidade (missões/quizzes/vocabulário) ficam-se só pelas
+# unidades de Biologia, em vez de misturarem capítulos de Geologia que o
+# aluno nem sequer pode escolher ver.
+UNIDADES_BIBLIOTECA_BIOLOGIA = [u for u in UNIDADES_BIBLIOTECA if u['disciplina'] == 'Biologia']
+
+# Unidade -> disciplina, para separar a Evolução das notas por disciplina
+# (ver _evolucao_notas_disciplina). Física e Química não têm unidades/testes
+# ainda (só são avaliadas via exame), por isso nunca aparecem aqui — os seus
+# modos de "testes" do gráfico ficam sempre vazios até existir conteúdo.
+UNIDADE_ID_PARA_DISCIPLINA = {u['id']: u['disciplina'] for u in UNIDADES_BIBLIOTECA}
 
 
 def carregar_termos_unidade(unidade_id):
@@ -3948,7 +4111,35 @@ def pagina_Configurações(request):
     except OperationalError:
         perfil = None
 
-    return render(request, 'Configurações.html', {'perfil': perfil})
+    # "Segurança": quem entrou só pela Google (allauth) nunca teve uma
+    # password local — has_usable_password() é a forma do próprio Django
+    # de o saber (fica False nessas contas). O cartão só aparece para
+    # quem ainda não tem uma, e desaparece assim que a criar.
+    erro_senha = None
+    sucesso_senha = False
+    if request.method == 'POST' and request.POST.get('acao') == 'criar-senha':
+        nova_senha = request.POST.get('nova_senha', '')
+        confirmar_senha = request.POST.get('confirmar_senha', '')
+        if not nova_senha or not confirmar_senha:
+            erro_senha = 'Preenche os dois campos.'
+        elif nova_senha != confirmar_senha:
+            erro_senha = 'As palavras-passe não coincidem.'
+        elif len(nova_senha) < 8:
+            erro_senha = 'A palavra-passe tem de ter pelo menos 8 caracteres.'
+        else:
+            request.user.set_password(nova_senha)
+            request.user.save()
+            # Sem isto a sessão ficava inválida (o Django liga a sessão ao
+            # hash da password) e o pedido seguinte via dar logout forçado.
+            update_session_auth_hash(request, request.user)
+            sucesso_senha = True
+
+    return render(request, 'Configurações.html', {
+        'perfil': perfil,
+        'precisa_criar_senha': not request.user.has_usable_password(),
+        'erro_senha': erro_senha,
+        'sucesso_senha': sucesso_senha,
+    })
 
 
 @login_required(login_url='login')

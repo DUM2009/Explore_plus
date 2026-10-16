@@ -1877,6 +1877,13 @@ body.shadcn-profile .missions-page{
     object-fit:contain;
 }
 
+/* Perfil's mobile header swaps the logo for "Olá, <nome>!" (see
+   @media(max-width:720px) below) — hidden the rest of the time, since the
+   logo is what every other page (and Perfil's own desktop view) shows. */
+.missions-topbar-greeting{
+    display:none;
+}
+
 /* The hamburger always sits on the right, whether or not the logo next to
    it is visible — margin-left:auto (not justify-content:space-between)
    keeps it pinned there even when it's the row's only visible child. */
@@ -2150,6 +2157,66 @@ body.shadcn-profile .plans-note {
     text-align: center;
 }
 
+/* Paywall shown on page load for free-plan users on a pro-only page (ver
+   Resumos.html), or opened on demand from a "Desbloquear" button elsewhere
+   (ver Testes.html) — reaproveita o mesmo .plan-card do SuperExplore, só
+   que dentro de um modal em vez da página /superexplore/ inteira. */
+body.shadcn-profile .pro-gate-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(10, 15, 10, .55);
+    overflow-y: auto;
+}
+
+body.shadcn-profile .pro-gate-overlay[hidden] {
+    display: none;
+}
+
+/* --sp-accent-soft is a translucent green in dark mode (meant for subtle
+   hover tints elsewhere) — used as the whole .plan-card--highlight
+   background, it let the page behind the overlay show through doubled,
+   making both layers of text unreadable. The popup's card needs a solid
+   backdrop regardless of what's behind it. */
+html.dark-mode body.shadcn-profile .pro-gate-modal .plan-card--highlight {
+    background: #152018;
+}
+
+body.shadcn-profile .pro-gate-modal {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: auto;
+}
+
+body.shadcn-profile .pro-gate-close {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--sp-card);
+    color: var(--sp-fg);
+    border: 1px solid var(--sp-border);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, .18);
+    text-decoration: none;
+}
+
+body.shadcn-profile .pro-gate-close svg {
+    width: 16px;
+    height: 16px;
+}
+
 .missions-page h1{
 
 font-size:3rem;
@@ -2182,6 +2249,53 @@ margin-bottom:50px;
     .missions-page-subrow{
         margin-bottom:28px;
     }
+
+    /* .subject-switcher's margin-left:auto exists to push it to the right
+       end of the row on desktop (next to the intro text) — in a wrapped
+       flex row (flex-wrap:wrap above), that auto margin still applies per
+       line, so once it wraps onto its own line here it floats off to the
+       right instead of sitting under the intro text like everything else.
+       Stacking the row as a column and zeroing the margin keeps Explore
+       Biology left-aligned with the year tabs below it, as requested. */
+    .missions-page-subrow{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .missions-page-subrow .subject-switcher{
+        margin-left:0;
+    }
+
+    /* .subject-switcher-menu's right:0 assumes the trigger sits at the
+       right edge of a row (desktop) — now that the trigger is left-aligned
+       in the stacked column above, a menu wider than the trigger opened
+       off the left edge of the screen instead of under the trigger. */
+    .missions-page-subrow .subject-switcher-menu{
+        right:auto;
+        left:0;
+    }
+
+    /* Spans the same width as the category cards/board below instead of
+       just hugging its own content, so the whole filter row reads as one
+       aligned block with the rest of the page. */
+    .ano-switcher{
+        width:100%;
+        box-sizing:border-box;
+    }
+
+    .ano-switcher-option{
+        flex:1;
+        text-align:center;
+    }
+
+    /* Each category card stretches to the grid column's full width (which
+       is the whole board, since only one column fits this narrow) — caps
+       it narrower, left-aligned same as everything above it, instead of
+       reaching almost edge-to-edge of the screen. */
+    .missions-category-panel{
+        max-width:300px;
+    }
+
 }
 
 .missions-grid{
@@ -3586,6 +3700,12 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
     display:block;
 }
 
+/* Desktop keeps the waving video; the static, face-cropped image (see
+   @media(max-width:720px) further down) is mobile-only. */
+.teste-mascote-fab-img--mobile{
+    display:none;
+}
+
 .teste-mascote-fab-tooltip{
     position:absolute;
     right:0;
@@ -3756,6 +3876,45 @@ button.missions-category-panel-toggle[aria-expanded="true"]:hover{
 
 .teste-mascote-send:hover{
     background:#7c9457;
+}
+
+/* Mascot chat panel (Testes) in dark mode — same reasoning as the Perfil
+   panel above: every color here is a hardcoded light hex. */
+html.dark-mode .teste-mascote-panel {
+    background: #17171a;
+    border-left-color: #27272a;
+    box-shadow: -18px 0 40px rgba(0, 0, 0, .5);
+}
+
+html.dark-mode .teste-mascote-panel-header {
+    background: #111113;
+    border-bottom-color: #27272a;
+    color: #f4f4f5;
+}
+
+html.dark-mode .teste-mascote-panel-close {
+    color: #a1a1aa;
+}
+
+html.dark-mode .teste-mascote-bubble--assistant {
+    background: #1f1f23;
+    color: #f4f4f5;
+    border-color: #27272a;
+}
+
+html.dark-mode .teste-mascote-bubble--assistant.is-typing {
+    color: #8a8a93;
+}
+
+html.dark-mode .teste-mascote-form {
+    background: #17171a;
+    border-top-color: #27272a;
+}
+
+html.dark-mode .teste-mascote-input {
+    border-color: #27272a;
+    background: #0a0a0b;
+    color: #f4f4f5;
 }
 
 @media (max-width:480px){
@@ -4514,6 +4673,29 @@ cursor:not-allowed;
     flex:1 1 auto;
 }
 
+/* The toggle used to sit inline next to the title (align-items:center on
+   the row), vertically centered against however many lines the title
+   wrapped to — for a long title like "Membrana Celular e Transporte
+   Transmembranar" that put it mid-way down an awkward 4-line title
+   instead of in a predictable spot. Moves it to the card's bottom-right
+   corner instead, so the title can wrap freely without the toggle
+   fighting it for width or drifting around based on its line count. */
+.teste-missions-grid .mission-card{
+    position:relative;
+}
+
+.teste-missions-grid .mission-card-toggle{
+    position:absolute;
+    right:14px;
+    bottom:14px;
+    margin-left:0;
+    /* Sitewide mobile button{width:100%} reset — harmless for the old
+       inline placement (flex already capped its width to content), but
+       with only `right` set here it resolves against the card's full
+       content width instead. */
+    width:auto;
+}
+
 .mission-card-meta{
     display:flex;
     flex-wrap:wrap;
@@ -4630,6 +4812,11 @@ cursor:not-allowed;
 }
 
 .teste-item-btn{
+    /* Overrides the sitewide mobile button{width:100%} reset — "Começar" is
+       wrapped in an <a> that shrinks to fit, so it never hit this, but
+       "Desbloquear" (a plain <button>, no wrapper) stretched to the full
+       row width without this. */
+    width:auto;
     flex:none;
     padding:8px 18px;
     border-radius:999px;
@@ -4653,6 +4840,7 @@ cursor:not-allowed;
     background:linear-gradient(135deg,#ffb020,#f5860a);
     filter:brightness(1.08);
 }
+
 .lesson{
 
 padding:80px 8%;
@@ -5286,6 +5474,16 @@ background:#27ae60;
     z-index:1100;
 }
 
+/* Below 981px, .profile-main-shell has no overflow of its own — the page
+   itself (html/body) is what scrolls, and the overlay above is just a
+   fixed, non-scrollable backdrop, so dragging over it was still scrolling
+   that page underneath. Locking html/body while the drawer is open (see
+   nav-drawer.js) actually stops it. */
+html.nav-drawer-open,
+body.nav-drawer-open {
+    overflow: hidden;
+}
+
 .profile-layout{
     display:flex;
     position:relative;
@@ -5324,7 +5522,15 @@ background:#27ae60;
 }
 
 .profile-sidebar.is-open{
-    transform:translateX(0);
+    /* none, not translateX(0) — some mobile browsers (notably Android
+       Chrome) mis-handle position:fixed on an element that also carries
+       *any* non-none transform (even an identity one like translateX(0)):
+       during scroll, instead of staying pinned to the viewport, the
+       element visibly scrolls along with the page content behind it.
+       Dropping to a real "no transform" once open avoids that; the
+       transition still animates correctly from translateX(-100%) since
+       "none" is itself a valid transition endpoint. */
+    transform:none;
 }
 
 /* Forces the sidebar off-canvas on both breakpoints while the Kim chat
@@ -5357,6 +5563,9 @@ background:#27ae60;
     font-size:1.1rem;
     font-weight:700;
     margin-bottom:28px;
+    /* Keeps its natural size regardless of how little room .profile-sidebar-nav
+       has to shrink into — see flex:0 1 auto there. */
+    flex-shrink:0;
 }
 
 .profile-sidebar-brand .logo img{
@@ -5365,12 +5574,47 @@ background:#27ae60;
     object-fit:contain;
 }
 
+/* Extra way to close the off-canvas drawer on mobile, next to the
+   hamburger toggle in .missions-topbar (which the drawer itself covers
+   while open). #navDrawerClose is already wired by nav-drawer.js
+   (setOpen(false) on click) — it just had no button to attach to. Hidden
+   on desktop, where the sidebar is persistent and this would be a close
+   button that doesn't actually close anything (its CSS forces the
+   sidebar open regardless of the aria/class state this sets). */
+.profile-sidebar-close{
+    margin-left:auto;
+    /* .nav-drawer-close (its base class) is styled for the old brown
+       drawer — white icon on a translucent white chip, invisible against
+       this sidebar's light background. Make it match the surrounding
+       text color instead. */
+    background:rgba(0,0,0,.05);
+    color:inherit;
+}
+
+.profile-sidebar-close:hover{
+    background:rgba(0,0,0,.1);
+}
+
+@media (min-width:981px){
+    .profile-sidebar-close{
+        display:none;
+    }
+}
+
 .profile-sidebar-nav{
     display:flex;
     flex-direction:column;
     gap:14px;
 
-    flex:1 1 auto;
+    /* flex-grow:0 (not 1) — nav should only take the room its own links
+       need, so "Tema"/the account sit right after it instead of being
+       pushed down by nav claiming all the sidebar's leftover height.
+       flex-shrink stays 1 (with min-height:0) so nav still gets squeezed
+       — and scrolls, via overflow-y:auto below — on a short screen where
+       everything doesn't fit; see flex-shrink:0 on .profile-sidebar-brand,
+       .sidebar-theme-card and .profile-account, which keeps all of that
+       squeeze pressure on nav alone. */
+    flex:0 1 auto;
     min-height:0;
     overflow-y:auto;
     overflow-x:hidden;
@@ -8468,6 +8712,22 @@ html.dark-mode .account-actions #logoutBtn {
     margin-left: auto;
 }
 
+/* Evolução das notas now has two dropdowns (Disciplina + Fonte de Dados)
+   side by side — wrapping them in one flex item keeps .stats-tempo-header's
+   justify-content:space-between treating the pair as a single element on
+   the right, instead of spreading title/Disciplina/Fonte evenly across the
+   whole row as 3 separate flex children. */
+.stats-evolucao-controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.stats-evolucao-controles .subject-switcher {
+    margin-left: 0;
+}
+
 .subject-switcher-trigger {
     display: flex;
     align-items: center;
@@ -9563,7 +9823,7 @@ body {
    ===================================================================== */
 
 body.shadcn-profile {
-    --sp-bg: #faf9f5;
+    --sp-bg: #ffffff;
     --sp-card: #ffffff;
     --sp-border: #e7e8e1;
     --sp-fg: #202821;
@@ -9602,6 +9862,13 @@ html.dark-mode body.shadcn-profile {
     --sp-accent-soft: rgba(93, 163, 86, .14);
 }
 
+/* .nav-drawer-toggle (the mobile hamburger) has a fixed brown color that
+   never adapted to dark mode, making it nearly invisible against the dark
+   topbar — unlike the notifications bell, which already follows --sp-fg. */
+html.dark-mode body.shadcn-profile .nav-drawer-toggle {
+    color: var(--sp-fg);
+}
+
 html.dark-mode body.shadcn-profile .sidebar-plan-card {
     background: #1b1f1c;
     border-color: transparent;
@@ -9625,11 +9892,38 @@ body.shadcn-profile .profile-sidebar {
 }
 
 body.shadcn-profile .profile-sidebar-brand {
+    position: relative;
     justify-content: center;
     color: var(--sp-fg);
     padding-bottom: 16px;
     margin-bottom: 12px;
     border-bottom: 1px solid var(--sp-border);
+}
+
+/* .profile-sidebar-close's own margin-left:auto (meant to push it to the
+   far right of the brand row) fights justify-content:center above — the
+   auto margin eats the row's free space, so the logo never actually
+   lands in the middle. Taking the close button out of the flex flow
+   entirely (absolute, centered on its own) lets the logo center on the
+   full row width regardless of the button's own size. Also drops its
+   background chip — just the icon, like it's sitting directly on the
+   page, per request. */
+body.shadcn-profile .profile-sidebar-close,
+body.shadcn-profile .profile-sidebar-close:hover {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-left: 0;
+    background: none;
+    /* button.profile-sidebar-close (element+class): zero the site-wide
+       button{}/button:hover{} reset's own box-shadow (soft green glow),
+       which otherwise still reads as a chip behind the icon. */
+    box-shadow: none;
+}
+
+body.shadcn-profile .profile-sidebar-close:hover {
+    opacity: .7;
 }
 
 body.shadcn-profile .profile-account {
@@ -9852,6 +10146,12 @@ body.shadcn-profile .sidebar-theme-label {
 }
 
 body.shadcn-profile .sidebar-theme-card .header-icon-btn {
+    /* A sitewide `button{width:100%}` mobile reset is otherwise the only
+       width rule in play here — it stretched the button across the whole
+       card, leaving the icon wherever it happened to sit inside that
+       wide button instead of flush against the card's right edge. */
+    flex: none;
+    width: auto;
     padding: 4px;
     border-radius: 8px;
 }
@@ -9886,13 +10186,18 @@ body.shadcn-profile .profile-sidebar-collapse:hover {
 /* Account footer + menu */
 
 body.shadcn-profile .profile-account-trigger {
-    border: 1px solid var(--sp-border);
-    background: var(--sp-card);
+    border: none;
+    background: transparent;
     color: var(--sp-fg);
+    /* button.profile-account-trigger (element+class): zero the site-wide
+       button{}/button:hover{} reset's own box-shadow (soft green glow),
+       which otherwise still reads as the rectangle we just removed above. */
+    box-shadow: none;
 }
 
 body.shadcn-profile .profile-account-trigger:hover {
     background: var(--sp-accent-soft);
+    box-shadow: none;
 }
 
 body.shadcn-profile .profile-account-avatar {
@@ -10796,7 +11101,11 @@ body.shadcn-profile .profile-help-tip[hidden] {
     z-index: 1500;
     width: 400px;
     max-width: 100vw;
-    height: 100vh;
+    /* No explicit height: top:0 + bottom:0 alone already sizes this to the
+       real visible viewport. An explicit 100vh here used to override that
+       and could run taller than the actual visible area on mobile (the
+       address bar isn't counted the same way), pushing .mascote-chat-form
+       off the bottom of the screen where it couldn't be seen or reached. */
     max-height: none;
     background: #ffffff;
     border: none;
@@ -10821,9 +11130,8 @@ body.shadcn-profile .profile-help-tip[hidden] {
 .mascote-chat-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 10px;
-    padding: 16px 18px;
+    padding: 16px 10px;
     background: linear-gradient(135deg, #eafaf1 0%, #f4fbf7 65%);
     border-bottom: 1px solid #cde7d9;
     font-weight: 800;
@@ -10832,18 +11140,55 @@ body.shadcn-profile .profile-help-tip[hidden] {
     font-size: .92rem;
 }
 
+/* History icon and close button are the same small size on either side
+   of the title, which is what keeps it genuinely centered (not just
+   centered within whatever's left of a single right-hand button). */
+.mascote-chat-history-btn {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 50%;
+    padding: 0;
+    color: #3a5a4a;
+    cursor: pointer;
+}
+
+.mascote-chat-history-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mascote-chat-history-btn:hover,
+.mascote-chat-history-btn[aria-expanded="true"] {
+    background: rgba(31, 138, 91, .1);
+}
+
 /* Small "online" dot before the title — the header text is a bare <span>
    in the markup, so this is styled on the span itself rather than a
-   dedicated wrapper element. */
+   dedicated wrapper element. flex:1 (instead of the header's own
+   justify-content:space-between) is what actually keeps "Fala com o Kim"
+   on one line and centered: it gives the dot+text group all the room
+   left of the close button and centers them within that room, instead of
+   letting the group shrink/wrap to fit whatever space is left over. */
 .mascote-chat-header span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .mascote-chat-header span::before {
     content: "";
-    flex: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin: -2px 8px 0 0;
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -10851,12 +11196,106 @@ body.shadcn-profile .profile-help-tip[hidden] {
     box-shadow: 0 0 0 3px rgba(62, 207, 118, .22);
 }
 
+/* Dropdown with the student's saved conversations — sits as an overlay
+   right under the header, inside the already-clipped chat panel. */
+.mascote-chat-history-panel {
+    position: absolute;
+    top: 57px;
+    left: 10px;
+    right: 10px;
+    z-index: 5;
+    max-height: min(60vh, 420px);
+    overflow-y: auto;
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #e2ece6;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(18, 61, 40, .16);
+}
+
+.mascote-chat-history-panel[hidden] {
+    display: none;
+}
+
+.mascote-chat-history-new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 8px;
+    border: 1px dashed #9fcbb3;
+    border-radius: 10px;
+    background: #f3faf6;
+    color: #1f8a5b;
+    font-weight: 700;
+    font-size: .85rem;
+    cursor: pointer;
+}
+
+.mascote-chat-history-new svg {
+    width: 16px;
+    height: 16px;
+}
+
+.mascote-chat-history-empty {
+    margin: 4px 0;
+    padding: 10px;
+    color: #76867f;
+    font-size: .82rem;
+    text-align: center;
+}
+
+.mascote-chat-history-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mascote-chat-history-item {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    background: none;
+    text-align: left;
+    color: #244a37;
+    font-size: .84rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.mascote-chat-history-item:hover,
+.mascote-chat-history-item.is-active {
+    background: #eafaf1;
+}
+
+.mascote-chat-history-item-meta {
+    display: block;
+    margin-top: 2px;
+    color: #8a9a92;
+    font-size: .72rem;
+    font-weight: 500;
+}
+
 .mascote-chat-close {
+    /* A sitewide `button{width:100%}` reset (mobile) was otherwise the only
+       width rule in play here, since this component never set its own —
+       it stretched the button across nearly the whole header, which is
+       the actual reason the title got squeezed onto two lines and "✕"
+       rendered mid-width instead of flush against the right edge. */
+    flex: none;
+    width: auto;
     background: none;
     border: none;
     box-shadow: none;
     color: #66756e;
-    padding: 2px 6px;
+    padding: 4px;
     cursor: pointer;
     font-size: .9rem;
 }
@@ -11088,6 +11527,109 @@ body.shadcn-profile .profile-help-tip[hidden] {
     transform: scale(.96);
 }
 
+/* Mascot chat panel (Perfil) in dark mode — every color above is a
+   hardcoded light hex, so none of it adapted on its own; only the few
+   properties already reading var(--sp-fg)/--sp-border/--sp-card did. */
+html.dark-mode .mascote-chat-panel {
+    background: #17171a;
+    border-left-color: #27272a;
+    box-shadow: -18px 0 40px rgba(0, 0, 0, .5);
+}
+
+html.dark-mode .mascote-chat-header {
+    background: linear-gradient(135deg, #16231a 0%, #111113 65%);
+    border-bottom-color: #27272a;
+    color: #f4f4f5;
+}
+
+html.dark-mode .mascote-chat-history-btn {
+    color: #c9dcae;
+}
+
+html.dark-mode .mascote-chat-history-btn:hover,
+html.dark-mode .mascote-chat-history-btn[aria-expanded="true"] {
+    background: rgba(93, 163, 86, .18);
+}
+
+html.dark-mode .mascote-chat-history-panel {
+    background: #17171a;
+    border-color: #27272a;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .5);
+}
+
+html.dark-mode .mascote-chat-history-new {
+    border-color: #3a5a44;
+    background: rgba(93, 163, 86, .1);
+    color: #7cc26f;
+}
+
+html.dark-mode .mascote-chat-history-empty {
+    color: #a1a1aa;
+}
+
+html.dark-mode .mascote-chat-history-item {
+    color: #f4f4f5;
+}
+
+html.dark-mode .mascote-chat-history-item:hover,
+html.dark-mode .mascote-chat-history-item.is-active {
+    background: rgba(93, 163, 86, .14);
+}
+
+html.dark-mode .mascote-chat-history-item-meta {
+    color: #a1a1aa;
+}
+
+html.dark-mode .mascote-chat-close {
+    color: #a1a1aa;
+}
+
+html.dark-mode .mascote-chat-messages {
+    background: #0a0a0b;
+    scrollbar-color: #3f3f46 transparent;
+}
+
+html.dark-mode .mascote-chat-messages::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+}
+
+html.dark-mode .mascote-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #52525b;
+}
+
+html.dark-mode .mascote-chat-welcome-greeting {
+    color: #7cc26f;
+}
+
+html.dark-mode .mascote-chat-suggestion:hover {
+    border-color: #3a5a44;
+}
+
+html.dark-mode .mascote-chat-bubble--assistant {
+    background: #1f1f23;
+    color: #f4f4f5;
+    border-color: #27272a;
+}
+
+html.dark-mode .mascote-chat-bubble--assistant.is-typing {
+    color: #8a8a93;
+}
+
+html.dark-mode .mascote-chat-form {
+    background: #17171a;
+    border-top-color: #27272a;
+}
+
+html.dark-mode .mascote-chat-input {
+    border-color: #27272a;
+    background: #0a0a0b;
+    color: #f4f4f5;
+}
+
+html.dark-mode .mascote-chat-input:focus {
+    background: #111113;
+}
+
 /* =====================================================================
    PERFIL — editorial redesign (hero + tabs), sidebar restored. Scoped to
    body.shadcn-profile, so this only ever touches /perfil/.
@@ -11186,6 +11728,30 @@ body.shadcn-profile .profile-hero-avatar-edit:hover {
     color: var(--sp-primary);
     box-shadow: none;
     transform: none;
+}
+
+/* Desktop keeps the plain "Mudar avatar" wording; the mobile mockup labels
+   the same button "Editar perfil" (with a pencil icon) instead — two text
+   nodes, CSS picks which one shows, no JS/behaviour change either way. */
+body.shadcn-profile .profile-hero-avatar-edit-label--mobile {
+    display: none;
+    align-items: center;
+    gap: 4px;
+}
+
+body.shadcn-profile .profile-hero-avatar-edit-label--mobile svg {
+    width: 13px;
+    height: 13px;
+}
+
+/* New mobile-only line between the greeting and the level pill — hidden
+   on desktop by default since it has no place in that layout (see
+   .profile-hero-rank there), shown back in the @media block below. */
+body.shadcn-profile .profile-hero-subtitle {
+    display: none;
+    margin: 4px 0 0;
+    color: var(--sp-muted-fg);
+    font-size: .92rem;
 }
 
 body.shadcn-profile .profile-avatar-picker {
@@ -11486,6 +12052,7 @@ body.shadcn-profile .profile-tab.is-disabled em {
    guarantee — a hidden tab must never render alongside the active one. */
 body.shadcn-profile .profile-tab-panel[hidden],
 body.shadcn-profile .profile-grid-aside[hidden],
+body.shadcn-profile .profile-quote-banner[hidden],
 body.shadcn-profile .profile-missions-section[hidden] {
     display: none !important;
 }
@@ -11589,6 +12156,17 @@ body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger:hover {
     transform: none;
 }
 
+/* Mobile-only duplicate of the hero's avatar/level widgets, relocated
+   into the Explore Biology card (see @media(max-width:720px) below) —
+   hidden here since desktop keeps the original hero layout unchanged. */
+body.shadcn-profile .profile-subject-avatar-wrap {
+    display: none;
+}
+
+body.shadcn-profile .profile-subject-level-pill {
+    display: none;
+}
+
 body.shadcn-profile .profile-subject-xp {
     position: relative;
     z-index: 1;
@@ -11654,6 +12232,13 @@ body.shadcn-profile .profile-missions-head h2 svg {
     width: 20px;
     height: 20px;
     color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-atividade-ver-tudo {
+    color: var(--sp-primary);
+    font-size: .82rem;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 body.shadcn-profile .profile-missions-viewall {
@@ -11912,36 +12497,691 @@ body.shadcn-profile .profile-vocacional-btn:hover {
     box-shadow: none;
 }
 
+/* ---- Mobile-only Perfil additions: "Atividade Recente" and the fixed
+   bottom tab bar. Neither exists in the desktop design, so each is hidden
+   by default here and only switched on inside the @media(max-width:720px)
+   block below — keeps every selector out of the desktop cascade entirely
+   instead of relying on viewport alone. (.profile-quote-banner used to be
+   in this list too — it's shown on desktop now, see .profile-hero-row
+   below, alongside the hero instead of being desktop-only hidden.) */
+body.shadcn-profile .profile-atividade-section,
+body.shadcn-profile .profile-tabs-bottom {
+    display: none;
+}
+
+/* ---- Desktop: hero card + quote banner side by side ----
+   .profile-hero already spans the full page width on its own (see the
+   comment on .profile-hero above); .profile-hero-row just wraps it
+   together with .profile-quote-banner so the quote sits to its right
+   instead of being hidden entirely on desktop. Mobile keeps today's
+   stacked layout (row collapses to a plain block, each child keeps its
+   own existing mobile styling from the @media(max-width:720px) block). */
+body.shadcn-profile .profile-hero-row {
+    display: block;
+}
+
+@media (min-width: 721px) {
+    body.shadcn-profile .profile-hero-row {
+        display: flex;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-hero {
+        flex: 1 1 62%;
+        min-width: 0;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex: 1 1 38%;
+        min-width: 0;
+        margin: 24px 0 32px;
+        padding: 20px 14px 20px 18px;
+        border-radius: var(--sp-radius);
+        background: var(--sp-bg);
+        border: 1px solid var(--sp-border);
+        overflow: hidden;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-copy {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding-left: 14px;
+        border-left: 4px solid;
+        border-image: linear-gradient(180deg, var(--sp-primary) 0%, #16331f 100%) 1;
+        transition: opacity .35s ease;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner.is-fading .profile-quote-banner-copy {
+        opacity: 0;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-mark {
+        display: block;
+        margin: -8px 0 2px;
+        color: var(--sp-primary);
+        font-family: var(--sp-font-serif);
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
+        overflow: hidden;
+        margin: 0;
+        color: var(--sp-fg);
+        font-family: var(--sp-font-serif);
+        font-style: italic;
+        font-size: .95rem;
+        line-height: 1.5;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-author {
+        display: block;
+        margin-top: 8px;
+        color: var(--sp-muted-fg);
+        font-size: .8rem;
+        font-weight: 600;
+    }
+
+    body.shadcn-profile .profile-hero-row .profile-quote-banner-illustration {
+        flex: none;
+        width: 96px;
+        height: 96px;
+        object-fit: contain;
+    }
+}
+
 @media (max-width: 720px) {
+    /* Full-bleed horizontally only (not vertically) — .profile-layout's
+       24px padding at this width otherwise leaves a visible gap down both
+       sides of the mountain background instead of it reaching the actual
+       screen edges. */
+    body.shadcn-profile .profile-hero {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        border-radius: 0;
+        /* Mountain photo removed on mobile — blends into the page itself
+           instead of standing out as its own green card. */
+        background: var(--sp-bg);
+    }
+
     body.shadcn-profile .profile-hero-main {
         flex-direction: column;
     }
 
-    /* .profile-hero-main uses align-items:flex-start (needed for the desktop
-       row layout), which never stretches a flex item to the container's
-       width — so once flex-direction flips to column above, .profile-hero-left
-       renders at its own content width instead of the row's width. That's
-       normally invisible, but .profile-hero-info h1 is a large (2.4rem)
-       greeting containing the username as one unbreakable word: on phones
-       narrower than ~380px that word alone can be wider than the space
-       .profile-hero-left would otherwise get, so it was overflowing the
-       viewport (and, since it's not size-constrained by the container at
-       all, doing so by the same amount regardless of how narrow the phone
-       actually is). Giving it an explicit full width lets its children
-       shrink against something real. */
+    /* Avatar (+ "Editar perfil" link right under it) sits in its own
+       column on the left, spanning all three rows; "Olá, <username>!",
+       the subtitle and the level pill stack in the column beside it —
+       matches the mockup (greeting beside the avatar, not above it).
+       .profile-hero-info is dissolved with display:contents so its
+       children become direct grid items of .profile-hero-left alongside
+       .profile-hero-avatar-wrap. .profile-hero-rank (the title/rank line)
+       has no place in this layout and is hidden in favour of the new
+       subtitle line. */
     body.shadcn-profile .profile-hero-left {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "avatar greeting"
+            "avatar subtitle"
+            "avatar level";
+        column-gap: 16px;
+        row-gap: 4px;
+        align-items: start;
         width: 100%;
         min-width: 0;
-        flex-wrap: wrap;
     }
 
     body.shadcn-profile .profile-hero-info {
+        display: contents;
+    }
+
+    body.shadcn-profile .profile-hero-info h1 {
+        grid-area: greeting;
+        align-self: center;
+        /* Smaller than the desktop 2.4rem so "Olá, <username>!" fits on one
+           line next to the avatar instead of wrapping onto two. */
+        font-size: 1.6rem;
+    }
+
+    body.shadcn-profile .profile-hero-avatar-wrap {
+        grid-area: avatar;
+        align-self: start;
+    }
+
+    body.shadcn-profile .profile-hero-rank {
+        display: none;
+    }
+
+    body.shadcn-profile .profile-hero-subtitle {
+        display: block;
+        grid-area: subtitle;
+    }
+
+    body.shadcn-profile .profile-hero-level-pill {
+        grid-area: level;
+        align-self: start;
+        justify-self: start;
+    }
+
+    body.shadcn-profile .profile-hero-avatar-edit-label--desktop {
+        display: none;
+    }
+
+    body.shadcn-profile .profile-hero-avatar-edit-label--mobile {
+        display: inline-flex;
+    }
+
+    /* The rotating quote now lives in .profile-quote-banner, above the
+       Explore Biology card (see @media(max-width:720px) further down) —
+       profile-django.js keeps both in sync, but the hero's own copy has
+       no room here and would just duplicate it, so it's hidden on mobile. */
+    body.shadcn-profile .profile-hero-quote {
+        display: none;
+    }
+
+    /* The hero's own avatar, greeting and level pill all moved out on
+       mobile — the greeting into the header (.missions-topbar-greeting
+       below), the avatar and level into the Explore Biology card
+       (.profile-subject-avatar-wrap / .profile-subject-level-pill below).
+       Nothing of substance is left to show here (the rank line and quote
+       are already hidden above), so the whole block goes rather than
+       leaving an empty box; the per-child rules above are harmless once
+       their parent is hidden, so they're left as-is. */
+    body.shadcn-profile .profile-hero {
+        display: none;
+    }
+
+    body.shadcn-profile .missions-topbar-logo img {
+        display: none;
+    }
+
+    body.shadcn-profile .missions-topbar-greeting {
+        display: block;
+        font-family: var(--sp-font-serif);
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--sp-fg);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* The card becomes a two-column row: the text (title, level, XP, bar,
+       caption) on the left, the avatar big and vertically centered on the
+       right — matching the size/position the user circled in their
+       mockup screenshot. */
+    body.shadcn-profile .profile-subject-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    body.shadcn-profile .profile-subject-card-main {
+        flex: 1 1 auto;
         min-width: 0;
     }
 
-    body.shadcn-profile .profile-hero-quote {
-        max-width: none;
-        width: 100%;
+    /* "Explore Biology" was wrapping onto 2 lines now that the card shares
+       its width with the avatar — smaller type plus nowrap keeps it on one
+       line, matching the mockup. */
+    body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger {
+        font-size: .98rem;
+    }
+
+    body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger span {
+        white-space: nowrap;
+    }
+
+    body.shadcn-profile .profile-subject-avatar-wrap {
+        display: block;
+        position: relative;
+        flex: none;
+    }
+
+    body.shadcn-profile .profile-subject-avatar {
+        width: 96px;
+        height: 96px;
+        font-size: 2.1rem;
+    }
+
+    body.shadcn-profile .profile-subject-avatar-edit {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        display: grid;
+        place-items: center;
+        width: 26px;
+        height: 26px;
+        padding: 0;
+        border: 2px solid var(--sp-card);
+        border-radius: 50%;
+        background: var(--sp-primary);
+        color: #fff;
+        box-shadow: none;
+    }
+
+    body.shadcn-profile .profile-subject-avatar-edit svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    body.shadcn-profile .profile-subject-avatar-edit:hover {
+        background: var(--sp-primary);
+        box-shadow: none;
+        transform: none;
+    }
+
+    /* This picker's trigger sits at the right edge of the card (not the
+       left, like the hero's own copy) — right:0 instead of the original
+       left:0 keeps it from opening off the right edge of the screen, same
+       fix as the Estatísticas dropdowns. */
+    body.shadcn-profile #profileSubjectAvatarPicker {
+        left: auto;
+        right: 0;
+    }
+
+    /* The pill's own background (--sp-accent-soft) is the exact same
+       color as .profile-subject-card's background here, so it was
+       blending in instead of reading as a chip — give it the card's
+       (lighter) background instead, like the hero's version sits on. */
+    body.shadcn-profile .profile-subject-level-pill {
+        /* inline-flex (not inline-block) turns the "Nível " text and the
+           number span into separate anonymous flex items, and the space
+           between them collapses — inline-block keeps it a single run of
+           text so the space survives, same as the hero's own copy. */
+        display: inline-block;
+        margin: 0 0 10px;
+        background: var(--sp-card);
+    }
+
+    /* ---- Quote banner (Darwin quote), directly above Teste Vocacional ---- */
+    /* Flat card matching the rest of the page's language (same radius/
+       accent-soft tone as .profile-vocacional-card) instead of the earlier
+       wavy-edge illustrated banner — simpler and more consistent. Mirrors
+       the hero's own rotating quote (profile-django.js updates both). */
+    /* Fixed height regardless of which quote is showing (quotes vary a lot
+       in length) — .profile-quote-banner-text clamps to 4 lines with an
+       ellipsis instead of growing the card, so swapping quotes never
+       reflows the page around it. */
+    body.shadcn-profile .profile-quote-banner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 192px;
+        margin: 0 0 4px;
+        padding: 20px 14px 20px 18px;
+        border-radius: var(--sp-radius);
+        background: var(--sp-bg);
+        border: 1px solid var(--sp-border);
+        overflow: hidden;
+    }
+
+    body.shadcn-profile .profile-quote-banner-copy {
+        flex: 1 1 auto;
+        min-width: 0;
+        padding-left: 14px;
+        border-left: 4px solid;
+        border-image: linear-gradient(180deg, var(--sp-primary) 0%, #16331f 100%) 1;
+        transition: opacity .35s ease;
+    }
+
+    body.shadcn-profile .profile-quote-banner.is-fading .profile-quote-banner-copy {
+        opacity: 0;
+    }
+
+    body.shadcn-profile .profile-quote-banner-mark {
+        display: block;
+        margin: -8px 0 2px;
+        color: var(--sp-primary);
+        font-family: var(--sp-font-serif);
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    body.shadcn-profile .profile-quote-banner-text {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        overflow: hidden;
+        margin: 0;
+        color: var(--sp-fg);
+        font-family: var(--sp-font-serif);
+        font-style: italic;
+        font-size: .92rem;
+        line-height: 1.4;
+    }
+
+    body.shadcn-profile .profile-quote-banner-author {
+        display: block;
+        margin-top: 8px;
+        color: var(--sp-muted-fg);
+        font-size: .78rem;
+        font-weight: 600;
+    }
+
+    body.shadcn-profile .profile-quote-banner-illustration {
+        flex: none;
+        width: 88px;
+        height: 88px;
+        object-fit: contain;
+    }
+
+    /* ---- "Atividade Recente" ---- */
+    body.shadcn-profile .profile-atividade-section {
+        display: block;
+        margin-top: 4px;
+    }
+
+    /* Desktop keeps "O teu percurso"'s original chart/stats content under
+       the (now retitled) "Atividade Recente" heading; on mobile the real
+       activity list above replaces it instead of sitting alongside it. */
+    body.shadcn-profile .profile-percurso-card {
+        display: none;
+    }
+
+    body.shadcn-profile .profile-atividade-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    body.shadcn-profile .profile-atividade-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: var(--sp-card);
+        border: 1px solid var(--sp-border);
+        text-decoration: none;
+        color: inherit;
+    }
+
+    body.shadcn-profile .profile-atividade-icon {
+        display: grid;
+        place-items: center;
+        flex: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: var(--sp-accent-soft);
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    /* Missão = livro/roxo, quiz = alvo/azul, teste ou exame = folha/rosa —
+       cor por categoria de atividade, pedido explicitamente. */
+    body.shadcn-profile .profile-atividade-icon--missao {
+        background: #ede7fb;
+    }
+
+    body.shadcn-profile .profile-atividade-icon--quiz {
+        background: #e3f0fc;
+    }
+
+    body.shadcn-profile .profile-atividade-icon--teste {
+        background: #fbe6ef;
+    }
+
+    body.shadcn-profile .profile-atividade-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    body.shadcn-profile .profile-atividade-title {
+        font-size: .88rem;
+        font-weight: 600;
+        color: var(--sp-fg);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    body.shadcn-profile .profile-atividade-meta {
+        font-size: .74rem;
+        color: var(--sp-muted-fg);
+    }
+
+    body.shadcn-profile .profile-atividade-status {
+        flex: none;
+        padding: 3px 10px;
+        border-radius: 999px;
+        background: var(--sp-accent-soft);
+        color: var(--sp-primary);
+        font-size: .7rem;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    body.shadcn-profile .profile-atividade-status.is-complete {
+        background: var(--sp-primary);
+        color: #fff;
+    }
+
+    body.shadcn-profile .profile-atividade-empty {
+        margin: 0;
+        padding: 16px;
+        border-radius: 14px;
+        background: var(--sp-accent-soft);
+        color: var(--sp-muted-fg);
+        font-size: .85rem;
+        text-align: center;
+    }
+
+    /* ---- Fixed bottom tab bar — reuses the existing Perfil/Conquistas/
+       Estatísticas tabs (same classes + data-tab-target), just as a second,
+       page-level set of buttons; static/profile-django.js already wires up
+       every element matching .profile-tab[data-tab-target], so it keeps
+       both sets of buttons' active state and panel visibility in sync
+       automatically. The original top .profile-tabs nav stays as-is. */
+    body.shadcn-profile .profile-tabs-bottom {
+        display: flex;
+        position: fixed;
+        z-index: 40;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: space-around;
+        gap: 4px;
+        padding: 8px 8px calc(8px + env(safe-area-inset-bottom, 0px));
+        background: var(--sp-card);
+        border-top: 1px solid var(--sp-border);
+        box-shadow: 0 -8px 20px -16px rgba(0, 0, 0, .3);
+    }
+
+    body.shadcn-profile .profile-tabs-bottom .profile-tab {
+        flex-direction: column;
+        gap: 2px;
+        padding: 6px 10px;
+        margin-bottom: 0;
+        border-bottom: none;
+        font-size: .68rem;
+    }
+
+    body.shadcn-profile .profile-tabs-bottom .profile-tab svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Top tabs nav is redundant with the new bottom bar on mobile, and the
+       page needs bottom padding so content doesn't end up hidden behind
+       the now-fixed bar. */
+    body.shadcn-profile .profile-tabs {
+        display: none;
+    }
+
+    body.shadcn-profile .profile-main-shell {
+        padding-bottom: 76px;
+    }
+
+    /* The floating "talk to Kim" button sits above everything (z-index:80)
+       but was still overlapping the new fixed bottom tab bar — raise it to
+       clear the bar's height (safe-area included) plus a small gap. */
+    body.shadcn-profile .teste-mascote-fab {
+        bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+        border-radius: 50%;
+        background: linear-gradient(180deg, #b9d461 0%, #9abe4f 100%);
+        box-shadow: 0 8px 20px -8px rgba(135, 177, 51, .55);
+        padding: 0;
+        overflow: hidden;
+    }
+
+    /* Static image instead of the waving video on mobile — already a tight
+       square crop (hat + face + shoulders) made from the source photo, so
+       it just needs to fill the circle; no extra zoom/positioning needed
+       the way the old full-body image did. Desktop keeps the video. */
+    body.shadcn-profile .teste-mascote-fab-img--desktop {
+        display: none;
+    }
+
+    body.shadcn-profile .teste-mascote-fab-img--mobile {
+        display: block;
+        object-fit: cover;
+    }
+
+    /* "Tempo de estudo", "Evolução das notas" and "Desempenho por unidade"
+       (Estatísticas) all share .stats-tempo-header: a title plus a pill
+       group or dropdown, side by side with no wrap handling — on a narrow
+       screen the title wrapped onto 3 lines while the control sat
+       half-overlapping it. Stacking them instead gives each its own row. */
+    body.shadcn-profile .stats-tempo-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* .subject-switcher's margin-left:auto exists to push it to the right
+       of the title on the same row (the desktop/default layout) — in the
+       stacked column above, that same auto margin instead pushes it to
+       the right of its own row, when it should just sit under the title,
+       aligned with it. */
+    body.shadcn-profile .stats-tempo-header .subject-switcher {
+        margin-left: 0;
+    }
+
+    /* Evolução das notas' Disciplina + Fonte de Dados wrapper: stack the
+       two dropdowns under each other instead of side by side, same as the
+       title/control stacking above. */
+    body.shadcn-profile .stats-evolucao-controles {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 0;
+    }
+
+    /* .subject-switcher-menu's right:0 assumes the trigger sits at the
+       right edge of a row (desktop) — now that the trigger is left-aligned
+       in the stacked column above, a menu wider than the trigger opened
+       off the left edge of the screen instead of under the trigger. */
+    body.shadcn-profile .stats-tempo-header .subject-switcher-menu {
+        right: auto;
+        left: 0;
+    }
+
+    /* The hero ("Olá, admin!" + avatar) now tracks the active tab like the
+       rest of the Perfil content (data-tab-panel="perfil" on it) — it
+       shouldn't still show while viewing Conquistas/Estatísticas. Only
+       needed on mobile: .profile-hero's own display:flex already beats
+       the plain [hidden] default on its own, which is exactly why desktop
+       needs nothing here to keep the hero shown on every tab there. */
+    body.shadcn-profile .profile-hero[hidden] {
+        display: none !important;
+    }
+
+    /* Reorder .profile-grid's direct children (all siblings — the grid is
+       already a single column at this width): Explore Biology, then the
+       quote banner, then Atividade Recente, then Teste Vocacional. */
+    body.shadcn-profile .profile-grid-main {
+        order: 1;
+    }
+
+    body.shadcn-profile .profile-quote-banner {
+        order: 2;
+    }
+
+    body.shadcn-profile .profile-missions-section {
+        order: 3;
+    }
+
+    body.shadcn-profile .profile-grid-aside {
+        order: 4;
+    }
+
+    /* Topbar: hamburger pinned left, notifications pinned right, logo
+       centered between them (true centering regardless of each icon's own
+       width — the logo wrapper takes all the leftover space and centers
+       its image inside that space, rather than relying on both sides
+       being equal width like justify-content:space-between would need). */
+    body.shadcn-profile .missions-topbar .nav-drawer-toggle {
+        order: 1;
+        margin-left: 0;
+    }
+
+    /* No `display` here on purpose — .missions-topbar-logo's own show/hide
+       logic (hidden while the sidebar is open) stays exactly as it was;
+       this only changes how it's laid out for the cases it's already
+       shown in. */
+    body.shadcn-profile .missions-topbar-logo {
+        order: 2;
+        flex: 1 1 auto;
+        justify-content: center;
+        /* The hamburger (40px) and the notifications wrapper (28px) aren't
+           the same width, so centering within the space left over between
+           them lands a bit right of true page-center — nudge it back. */
+        margin-right: 24px;
+    }
+
+    body.shadcn-profile .missions-topbar .header-icon-wrapper {
+        order: 3;
+        margin-left: 0;
+    }
+
+    /* Testes' topbar has no greeting/notifications to balance against — just
+       the hamburger. Taking it out of the document flow (instead of just
+       reordering it within the row) lets "Testes" below rise into the
+       space the row used to reserve, so the heading sits level with the
+       hamburger rather than a whole row beneath it.
+       !important: same specificity as the rules above (equal class count),
+       so simply coming later in the file isn't enough to win here — both
+       target the same .nav-drawer-toggle/.missions-topbar-logo elements. */
+    body.shadcn-profile .profile-content:has(.missions-topbar--minimal) {
+        position: relative;
+    }
+
+    body.shadcn-profile .missions-topbar--minimal {
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: auto !important;
+        margin-bottom: 0 !important;
+        width: auto !important;
+    }
+
+    body.shadcn-profile .missions-topbar--minimal .missions-topbar-logo {
+        display: none !important;
+    }
+
+    body.shadcn-profile .missions-topbar--minimal .nav-drawer-toggle {
+        order: 0 !important;
+        margin-left: 0 !important;
+        /* Nudges the hamburger down from the row's very top edge to level
+           with "Testes" — the heading's own box sits a little below the
+           row's top due to its line-height, not a margin we can zero out. */
+        top: 8px;
+        position: relative;
     }
 }
 
@@ -12373,8 +13613,14 @@ body.shadcn-profile .profile-hero-rank {
 }
 
 @media (max-width: 600px) {
+    /* At this width the shelf's own content area (after its own left/right
+       padding) only fits a single 140px-minimum column — one giant book
+       stretching to fill the whole row (and, since each book keeps its
+       aspect-ratio, just as tall). A smaller minimum plus less padding
+       fits two narrower, shorter books per row instead. */
     .biblioteca-estante {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        padding: 24px 18px 34px;
     }
 
     .biblioteca-unidade-header {
@@ -12794,6 +14040,7 @@ body.shadcn-profile .profile-hero-rank {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
     margin-bottom: 18px;
 }
 
@@ -12812,6 +14059,7 @@ body.shadcn-profile .profile-hero-rank {
 
 .stats-tempo-col {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12837,7 +14085,16 @@ body.shadcn-profile .profile-hero-rank {
 .stats-tempo-label {
     font-size: .68rem;
     color: var(--sp-muted-fg, #9ca3af);
-    white-space: nowrap;
+    /* Some unit names ("Tempo e Tectónica de Placas", "Riscos e
+       Ordenamento do Território"...) are long — nowrap forced every
+       column to be at least as wide as its own label, and with many
+       columns that total minimum width overflowed the card, forcing a
+       horizontal scrollbar. Wrapping instead lets columns actually
+       shrink to fit (min-width:0 on .stats-tempo-col is what allows it). */
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-align: center;
+    line-height: 1.25;
 }
 
 /* Aba "30d" — gráfico de linha com um ponto por dia (evolução real), em
@@ -13491,6 +14748,25 @@ html.dark-mode .biblioteca-termo-card p {
 html.dark-mode .biblioteca-termo-relacionados {
     color: #9faca3;
 }
+
+/* Biblioteca do Explorador — a estante ficava sempre com a mesma madeira
+   clara em modo escuro, destoando do resto da página. Passa a um castanho
+   escuro, mantendo o mesmo grão e a mesma tábua por baixo de cada livro. */
+html.dark-mode .biblioteca-estante {
+    background:
+        repeating-linear-gradient(95deg, rgba(255, 255, 255, .04) 0 2px, transparent 2px 7px),
+        linear-gradient(175deg, #4a3522 0%, #3a2817 45%, #2b1d10 100%);
+    box-shadow: inset 0 3px 10px rgba(0, 0, 0, .4);
+}
+
+html.dark-mode .biblioteca-livro-item::after {
+    background: linear-gradient(to bottom, #5c4530 0%, #40301d 55%, #291b0d 100%);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+html.dark-mode .biblioteca-livro-item::before {
+    background: rgba(0, 0, 0, .35);
+}
 /* Real-device follow-up: two older, narrower breakpoints declared further
    above (max-width:768px and max-width:480px) re-set header/nav padding
    and nav's justify-content — being later in the cascade at those widths,
@@ -13786,3 +15062,18 @@ button.tm-opcao.is-errada .tm-opcao-letra { background: #e0525e; color: #fff; }
 .tm-feedback p.tm-feedback-titulo { margin: 0 0 6px; }
 .tm-feedback p.tm-feedback-texto { margin: 0; }
 .tm-pergunta p.tm-enunciado { margin: 0 0 20px; }
+/* Preferência "Animações" (ver Configurações.html e animation-prefs.js) —
+   desativa transições e animações CSS em todo o site. Duração quase-zero
+   em vez de `none`/`0s`: alguns componentes esperam que um evento
+   `transitionend` dispare (ex: o menu lateral a fechar-se), e isso só
+   acontece com uma transição que realmente corre, ainda que instantânea
+   aos olhos de quem vê. */
+html.no-animations,
+html.no-animations *,
+html.no-animations *::before,
+html.no-animations *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+}

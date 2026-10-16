@@ -84,10 +84,10 @@
   "11-acido-base": true,
   "11-oxidacao-reducao": true,
   "11-solubilidade": true,
-  "12-estrutura-metais": true,
-  "12-degradacao-metais": true,
-  "12-metais-ambiente-vida": true,
-  "12-combustiveis-fosseis": true,
-  "12-energia-combustiveis": true,
-  "12-plasticos-novos-materiais": true
+  "12-estrutura-metais": false,
+  "12-degradacao-metais": false,
+  "12-metais-ambiente-vida": false,
+  "12-combustiveis-fosseis": false,
+  "12-energia-combustiveis": false,
+  "12-plasticos-novos-materiais": false
 }

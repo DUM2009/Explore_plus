@@ -216,8 +216,12 @@ if (storedProfile) {
     // The hexagon badge is otherwise stuck with whatever the server
     // rendered on page load — keep it showing the exact same number as the
     // text above instead of two different totals that can drift apart.
-    const profileLevelBadge = document.getElementById('profileLevelBadge');
-    if (profileLevelBadge) profileLevelBadge.textContent = level;
+    // Two copies exist (hero + the Explore Biology card's mobile copy, see
+    // Templates/perfil.html), so both get the update.
+    ['profileLevelBadge', 'profileLevelBadgeSubject'].forEach((id) => {
+        const badge = document.getElementById(id);
+        if (badge) badge.textContent = level;
+    });
 
     const streakDays = Math.max(0, Number(storedProfile.streak?.current) || 0);
     if (profileStreakCount) profileStreakCount.textContent = streakDays;
@@ -357,18 +361,53 @@ function openMascoteChatPanel() {
     if (!mascoteChatPanel) return;
     mascoteChatPanel.hidden = false;
     setKimChatOpenLayout(true);
-    mascoteChatInput?.focus();
+    // Auto-focusing the input pops the on-screen keyboard open immediately
+    // on mobile, covering half the panel before the student has even read
+    // the welcome message — only do it where there's no virtual keyboard
+    // to worry about. Tapping the suggestions/input still focuses it.
+    if (window.matchMedia('(min-width: 721px)').matches) {
+        mascoteChatInput?.focus();
+    }
 }
 
 const mascoteChatWelcome = document.getElementById('mascoteChatWelcome');
+// Kept so a "nova conversa" can restore the exact welcome screen after
+// it's been removed (appendMascoteChatMessage always clears it out first).
+const mascoteChatWelcomeHTML = mascoteChatWelcome ? mascoteChatWelcome.outerHTML : '';
 
-mascoteChatWelcome?.querySelectorAll('.mascote-chat-suggestion').forEach((button) => {
-    button.addEventListener('click', () => {
-        if (!mascoteChatInput) return;
-        mascoteChatInput.value = button.dataset.suggestion || '';
-        mascoteChatInput.focus();
+function bindMascoteSuggestionButtons(root) {
+    root?.querySelectorAll('.mascote-chat-suggestion').forEach((button) => {
+        button.addEventListener('click', () => {
+            if (!mascoteChatInput) return;
+            mascoteChatInput.value = button.dataset.suggestion || '';
+            mascoteChatInput.focus();
+            // Setting .value moves the caret to the end, and the input then
+            // auto-scrolls to keep it visible — on a long suggestion that
+            // scrolls the very start of the text (including its first
+            // letter) out of view, half-hidden behind the pill's rounded
+            // edge. Moving the caret back to the start keeps the beginning
+            // visible instead.
+            mascoteChatInput.setSelectionRange(0, 0);
+        });
     });
-});
+}
+
+bindMascoteSuggestionButtons(mascoteChatWelcome);
+
+let currentConversaId = null;
+
+function resetMascoteChatToWelcome() {
+    if (!mascoteChatMessages) return;
+    mascoteChatMessages.innerHTML = mascoteChatWelcomeHTML;
+    bindMascoteSuggestionButtons(mascoteChatMessages);
+    currentConversaId = null;
+    mascoteChatHistory = [];
+    if (mascoteChatInput) {
+        mascoteChatInput.disabled = false;
+        mascoteChatInput.placeholder = 'Escreve a tua pergunta...';
+    }
+    if (mascoteChatSend) mascoteChatSend.disabled = false;
+}
 
 function appendMascoteChatMessage(role, text, isTyping = false) {
     if (!mascoteChatMessages) return null;
@@ -405,7 +444,8 @@ async function sendMascoteChatMessage() {
                 missionTitle: 'Perfil',
                 sectionTitle: '',
                 context: '',
-                history: historyBeforeThisMessage
+                history: historyBeforeThisMessage,
+                conversaId: currentConversaId
             })
         });
 
@@ -424,6 +464,7 @@ async function sendMascoteChatMessage() {
 
         appendMascoteChatMessage('assistant', data.reply || '...');
         mascoteChatHistory.push({ role: 'assistant', text: data.reply || '' });
+        if (data.conversaId) currentConversaId = data.conversaId;
     } catch (error) {
         typingEl?.remove();
         appendMascoteChatMessage('assistant', 'Não consegui ligar ao servidor. Verifica a tua ligação.');
@@ -440,6 +481,82 @@ document.getElementById('mascoteChatClose')?.addEventListener('click', () => {
 mascoteChatForm?.addEventListener('submit', (event) => {
     event.preventDefault();
     sendMascoteChatMessage();
+});
+
+/** History icon next to "Fala com o Kim" — lists the student's saved
+ *  conversations (each exchange with Kim is persisted server-side, see
+ *  mascote_chat/ConversaMascote) so they can pick up an older one, or
+ *  start a new one, instead of only ever having the one open session. */
+const mascoteChatHistoryBtn = document.getElementById('mascoteChatHistoryBtn');
+const mascoteChatHistoryPanel = document.getElementById('mascoteChatHistoryPanel');
+const mascoteChatHistoryList = document.getElementById('mascoteChatHistoryList');
+const mascoteChatHistoryEmpty = document.getElementById('mascoteChatHistoryEmpty');
+const mascoteChatNewBtn = document.getElementById('mascoteChatNewBtn');
+
+function formatMascoteConversaData(isoString) {
+    const data = new Date(isoString);
+    if (Number.isNaN(data.getTime())) return '';
+    return data.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit' });
+}
+
+async function loadMascoteConversaList() {
+    if (!mascoteChatHistoryList || !window.exploreMascoteConversasUrl) return;
+    mascoteChatHistoryList.innerHTML = '';
+    try {
+        const response = await fetch(window.exploreMascoteConversasUrl, { credentials: 'same-origin' });
+        const data = await response.json().catch(() => ({}));
+        const conversas = Array.isArray(data.conversas) ? data.conversas : [];
+        if (mascoteChatHistoryEmpty) mascoteChatHistoryEmpty.hidden = conversas.length > 0;
+        conversas.forEach((conversa) => {
+            const li = document.createElement('li');
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'mascote-chat-history-item';
+            if (conversa.id === currentConversaId) button.classList.add('is-active');
+            button.innerHTML = `${escapeActivityText(conversa.titulo)}<span class="mascote-chat-history-item-meta">${formatMascoteConversaData(conversa.atualizado_em)}</span>`;
+            button.addEventListener('click', () => loadMascoteConversa(conversa.id));
+            li.appendChild(button);
+            mascoteChatHistoryList.appendChild(li);
+        });
+    } catch {
+        if (mascoteChatHistoryEmpty) {
+            mascoteChatHistoryEmpty.hidden = false;
+            mascoteChatHistoryEmpty.textContent = 'Não foi possível carregar as conversas guardadas.';
+        }
+    }
+}
+
+async function loadMascoteConversa(conversaId) {
+    if (!window.exploreMascoteConversaDetalheUrlBase) return;
+    try {
+        const response = await fetch(`${window.exploreMascoteConversaDetalheUrlBase}${conversaId}/`, { credentials: 'same-origin' });
+        if (!response.ok) return;
+        const data = await response.json();
+        if (!mascoteChatMessages) return;
+        mascoteChatMessages.innerHTML = '';
+        const mensagens = Array.isArray(data.mensagens) ? data.mensagens : [];
+        mensagens.forEach((mensagem) => appendMascoteChatMessage(mensagem.role, mensagem.text));
+        currentConversaId = data.id;
+        mascoteChatHistory = mensagens.map((mensagem) => ({ role: mensagem.role, text: mensagem.text }));
+        if (mascoteChatHistoryPanel) mascoteChatHistoryPanel.hidden = true;
+        mascoteChatHistoryBtn?.setAttribute('aria-expanded', 'false');
+    } catch {
+        // A conversa continua disponível na lista para tentar outra vez.
+    }
+}
+
+mascoteChatHistoryBtn?.addEventListener('click', () => {
+    if (!mascoteChatHistoryPanel) return;
+    const willOpen = mascoteChatHistoryPanel.hidden;
+    mascoteChatHistoryPanel.hidden = !willOpen;
+    mascoteChatHistoryBtn.setAttribute('aria-expanded', String(willOpen));
+    if (willOpen) loadMascoteConversaList();
+});
+
+mascoteChatNewBtn?.addEventListener('click', () => {
+    resetMascoteChatToWelcome();
+    if (mascoteChatHistoryPanel) mascoteChatHistoryPanel.hidden = true;
+    mascoteChatHistoryBtn?.setAttribute('aria-expanded', 'false');
 });
 
 /** Perfil/Conquistas tabs swap which panel shows in the main column — no
@@ -479,19 +596,29 @@ const SCIENCE_QUOTES = [
 const profileQuoteCard = document.querySelector('.profile-hero-quote');
 const profileQuoteText = document.getElementById('profileQuoteText');
 const profileQuoteAuthor = document.getElementById('profileQuoteAuthor');
+// Mobile mirrors the same rotating quote inside .profile-quote-banner
+// (above the Explore Biology card) instead of the hero, which is hidden
+// on mobile — see static/style.css.
+const profileQuoteBanner = document.getElementById('profileQuoteBanner');
+const profileQuoteTextMobile = document.getElementById('profileQuoteTextMobile');
+const profileQuoteAuthorMobile = document.getElementById('profileQuoteAuthorMobile');
 
-if (profileQuoteCard && profileQuoteText && profileQuoteAuthor) {
+if (profileQuoteText && profileQuoteAuthor) {
     let quoteIndex = 0;
 
     setInterval(() => {
         quoteIndex = (quoteIndex + 1) % SCIENCE_QUOTES.length;
-        profileQuoteCard.classList.add('is-fading');
+        profileQuoteCard?.classList.add('is-fading');
+        profileQuoteBanner?.classList.add('is-fading');
 
         setTimeout(() => {
             const quote = SCIENCE_QUOTES[quoteIndex];
             profileQuoteText.textContent = quote.text;
             profileQuoteAuthor.textContent = `— ${quote.author}`;
-            profileQuoteCard.classList.remove('is-fading');
+            if (profileQuoteTextMobile) profileQuoteTextMobile.textContent = quote.text;
+            if (profileQuoteAuthorMobile) profileQuoteAuthorMobile.textContent = `— ${quote.author}`;
+            profileQuoteCard?.classList.remove('is-fading');
+            profileQuoteBanner?.classList.remove('is-fading');
         }, 350);
     }, 5000);
 }

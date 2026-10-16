@@ -24,6 +24,9 @@ from . import views  # Importa o ficheiro views que criaste
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),  # Login com Google (django-allauth)
+    # Formulário de "Idioma" em Configurações.html faz POST aqui (vista
+    # pronta do Django: muda session[LANGUAGE_SESSION_KEY] e redireciona).
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', views.pagina_inicial, name='pagina_inicial'),  # Rota para a tua página inicial
     path('termos/', views.pagina_termos, name='termos'),
     path('privacidade/', views.pagina_privacidade, name='privacidade'),
@@ -73,6 +76,8 @@ urlpatterns = [
     path('api/registar-atividade/', views.registar_atividade_view, name='registar-atividade'),
     path('api/pergunta-errada/', views.registar_pergunta_errada, name='registar-pergunta-errada'),
     path('api/mascote-chat/', views.mascote_chat, name='mascote-chat'),
+    path('api/mascote-conversas/', views.mascote_conversas, name='mascote-conversas'),
+    path('api/mascote-conversas/<int:conversa_id>/', views.mascote_conversa_detalhe, name='mascote-conversa-detalhe'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

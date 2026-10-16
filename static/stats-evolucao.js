@@ -1,10 +1,14 @@
 (function () {
-    const modoBtn = document.getElementById('statsEvolucaoModoBtn');
-    const modoMenu = document.getElementById('statsEvolucaoModoMenu');
-    const modoLabel = document.getElementById('statsEvolucaoModoLabel');
+    const disciplinaBtn = document.getElementById('statsEvolucaoDisciplinaBtn');
+    const disciplinaMenu = document.getElementById('statsEvolucaoDisciplinaMenu');
+    const disciplinaLabel = document.getElementById('statsEvolucaoDisciplinaLabel');
+    const fonteWrap = document.getElementById('statsEvolucaoFonte');
+    const fonteBtn = document.getElementById('statsEvolucaoFonteBtn');
+    const fonteMenu = document.getElementById('statsEvolucaoFonteMenu');
+    const fonteLabel = document.getElementById('statsEvolucaoFonteLabel');
     const chart = document.getElementById('statsEvolucaoChart');
     const dadosEl = document.getElementById('statsEvolucaoDados');
-    if (!modoBtn || !modoMenu || !chart || !dadosEl) return;
+    if (!disciplinaBtn || !disciplinaMenu || !chart || !dadosEl) return;
 
     let periodos;
     try {
@@ -13,15 +17,36 @@
         return;
     }
 
-    const mensagensVazio = {
-        teste: 'Ainda não corrigiste nenhum teste — assim que o fizeres, a tua evolução aparece aqui.',
-        exame: 'Ainda não corrigiste nenhum exame — assim que o fizeres, a tua evolução aparece aqui.',
-    };
+    // Disciplinas avaliadas só por exame (par de disciplinas) — sem
+    // "Fonte de Dados", o exame já é a única fonte.
+    const disciplinasExame = new Set(['bg_exames', 'fq_exames']);
 
-    function renderizar(modo) {
-        const dados = periodos[modo] || { pontos: [], coords: '' };
+    let disciplinaAtual = 'biologia';
+    let fonteAtual = 'geral';
+
+    function chaveAtual() {
+        return disciplinasExame.has(disciplinaAtual)
+            ? disciplinaAtual
+            : `${disciplinaAtual}_${fonteAtual}`;
+    }
+
+    function mensagemVazia() {
+        if (disciplinaAtual === 'bg_exames') {
+            return 'Ainda não corrigiste nenhum exame de Biologia e Geologia — assim que o fizeres, a tua evolução aparece aqui.';
+        }
+        if (disciplinaAtual === 'fq_exames') {
+            return 'Ainda não corrigiste nenhum exame de Física e Química — assim que o fizeres, a tua evolução aparece aqui.';
+        }
+        if (fonteAtual === 'simulado') {
+            return 'Ainda não fizeste nenhum simulado — assim que o fizeres, a tua evolução aparece aqui.';
+        }
+        return 'Ainda não corrigiste nenhum teste — assim que o fizeres, a tua evolução aparece aqui.';
+    }
+
+    function renderizar() {
+        const dados = periodos[chaveAtual()] || { pontos: [], coords: '' };
         if (dados.pontos.length === 0) {
-            chart.innerHTML = `<p class="stats-empty">${mensagensVazio[modo] || 'Ainda não há dados.'}</p>`;
+            chart.innerHTML = `<p class="stats-empty">${mensagemVazia()}</p>`;
             return;
         }
 
@@ -48,30 +73,46 @@
         `;
     }
 
-    modoBtn.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const isOpen = modoBtn.getAttribute('aria-expanded') === 'true';
-        modoBtn.setAttribute('aria-expanded', String(!isOpen));
-        modoMenu.hidden = isOpen;
+    function bindDropdown(btn, menu, onEscolher) {
+        btn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isOpen = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!isOpen));
+            menu.hidden = isOpen;
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!menu.hidden && !menu.contains(event.target) && !btn.contains(event.target)) {
+                menu.hidden = true;
+                btn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        menu.addEventListener('click', (event) => {
+            const opcao = event.target.closest('button');
+            if (!opcao) return;
+
+            menu.querySelectorAll('button').forEach((item) => item.classList.remove('is-active'));
+            opcao.classList.add('is-active');
+            menu.hidden = true;
+            btn.setAttribute('aria-expanded', 'false');
+
+            onEscolher(opcao);
+        });
+    }
+
+    bindDropdown(disciplinaBtn, disciplinaMenu, (opcao) => {
+        disciplinaAtual = opcao.dataset.disciplina;
+        if (disciplinaLabel) disciplinaLabel.textContent = opcao.textContent.trim();
+        if (fonteWrap) fonteWrap.hidden = disciplinasExame.has(disciplinaAtual);
+        renderizar();
     });
 
-    document.addEventListener('click', (event) => {
-        if (!modoMenu.hidden && !modoMenu.contains(event.target) && !modoBtn.contains(event.target)) {
-            modoMenu.hidden = true;
-            modoBtn.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    modoMenu.addEventListener('click', (event) => {
-        const opcao = event.target.closest('[data-modo]');
-        if (!opcao) return;
-
-        modoMenu.querySelectorAll('[data-modo]').forEach((span) => span.classList.remove('is-active'));
-        opcao.classList.add('is-active');
-        if (modoLabel) modoLabel.textContent = opcao.textContent.trim();
-        modoMenu.hidden = true;
-        modoBtn.setAttribute('aria-expanded', 'false');
-
-        renderizar(opcao.dataset.modo);
-    });
+    if (fonteBtn && fonteMenu) {
+        bindDropdown(fonteBtn, fonteMenu, (opcao) => {
+            fonteAtual = opcao.dataset.fonte;
+            if (fonteLabel) fonteLabel.textContent = opcao.textContent.trim();
+            renderizar();
+        });
+    }
 })();

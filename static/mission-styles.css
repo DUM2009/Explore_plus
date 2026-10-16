@@ -236,9 +236,12 @@ html[data-theme="dark"] .mission-intro-back:hover {
 .mo-topbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 16px;
     margin-bottom: 20px;
+    /* Anchors the hamburger toggle below, so it can be pinned to the
+       right without pushing the now-centered logo off-center. */
+    position: relative;
 }
 
 .mo-header-logo {
@@ -259,12 +262,18 @@ html[data-theme="dark"] .mission-intro-back:hover {
    — reused here as-is, just recoloured to match this page instead of the
    site's default brown. */
 .mo-topbar .nav-drawer-toggle {
-    /* Keeps it pinned to the right even when the logo next to it is
-       hidden (sidebar open) — with justify-content:space-between alone,
-       a single remaining flex child would snap back to the left. */
-    margin-left: auto;
+    /* Pinned to the corner independently of the logo, which is centered
+       via justify-content on the row above — stays put whether the logo
+       is shown or hidden (sidebar open). */
+    position: absolute;
+    right: 0;
+    margin-left: 0;
     color: #4a584f;
     box-shadow: none;
+    /* Sitewide mobile button{width:100%} reset resolves against the
+       topbar's full width here (only `right` is set, no `left`) —
+       same fix as the mission-card toggle elsewhere in this codebase. */
+    width: auto;
 }
 
 .mo-topbar .nav-drawer-toggle:hover {
@@ -4011,33 +4020,58 @@ html[data-theme="dark"] .intro-equation {
 }
 
 /* Below this width there isn't room for a 280px sidebar alongside the
-   content — drop it and let the topbar (mission title + progress) carry
-   navigation context on its own, same as before the sidebar existed. */
+   content if it's docked — drop it in that case and let the topbar
+   (mission title + progress) carry navigation context on its own, same as
+   before the sidebar existed. The default floating mode needs no such
+   room (zero footprint, chat escapes via position:fixed — see
+   .mission-shell:not(.is-chat-docked) .mascote-chat-panel above), so it's
+   deliberately excluded here: this used to hide .mission-sidebar
+   unconditionally, which also hid the chat panel it contains, so tapping
+   .mascot-chat-fab on mobile opened nothing. */
 @media (max-width: 900px) {
-    .mission-sidebar {
+    .mission-shell.is-chat-docked .mission-sidebar {
         display: none;
     }
 
     .lesson-topbar {
         padding: 14px 18px;
-        /* The title can wrap to two lines on narrow screens (see
-           .lesson-topbar-title below); align everything to the top of the
-           row instead of the previous vertical centering, otherwise the
-           close button and XP/theme icons float halfway down between the
-           title and progress bar instead of sitting level with the title. */
-        align-items: start;
+        /* 1fr auto 1fr let each side column grow to its own min-content
+           width — since the actions column (XP pill + theme toggle) is
+           wider than the close button's, the two "equal" 1fr columns ended
+           up genuinely unequal, pulling the centered title column left of
+           true center. Fixed, equal widths on both flanks (sized to fit
+           the wider one) make the middle column symmetric again. */
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 10px;
     }
 
     .lesson-topbar-titles {
         max-width: none;
+        /* justify-self:center (set above, unchanged here) only positions
+           the box within its grid track — with the default auto width it
+           still sized to its nowrap content and overflowed into the
+           actions column next to it. width:100% makes it actually fill
+           the (now minmax(0,1fr)-constrained) track, so the ellipsis on
+           .lesson-topbar-title below has a real width to truncate against.
+           The track itself sits between two auto-sized flanks of
+           different widths (close button vs. XP pill + theme toggle),
+           so centering within just this track still reads as off-center
+           against the actual page — nudge it over by roughly half that
+           difference to compensate. */
+        width: 100%;
+        margin-left: 12px;
     }
 
-    /* Long mission titles no longer force the middle grid column past the
-       viewport width (which pushed the close button and actions off-screen)
-       — let them wrap instead of overflowing on one nowrap line. */
+    /* Was white-space:normal (wrap) so a long mission title couldn't force
+       the middle column past the viewport width and push the close button
+       and actions off-screen — now that both flanks are fixed-width (see
+       .lesson-topbar above), the title column can't grow past what's left
+       between them, so nowrap + ellipsis is safe and keeps short titles
+       like "Energia e sistemas" on one line instead of wrapping needlessly. */
     .lesson-topbar-title {
-        white-space: normal;
-        overflow-wrap: break-word;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -5224,6 +5258,123 @@ html[data-theme="dark"] .lesson-theme-toggle:hover {
     background: rgba(255, 255, 255, .06);
     box-shadow: none;
     transform: none;
+}
+
+/* Mascot chat panel (mission player) in dark mode — overrides the beige
+   "AI assistant" look set above with every color hardcoded as a light hex,
+   same as the (also-unstyled-for-dark) Perfil/Testes versions. */
+html[data-theme="dark"] .mascote-chat-panel {
+    background: #17171a;
+    border-top-color: #27272a;
+}
+
+html[data-theme="dark"] .mascote-chat-header,
+html[data-theme="dark"] .mascote-chat-header span {
+    background: #111113;
+    border-bottom-color: #27272a;
+    color: #f4f4f5;
+}
+
+html[data-theme="dark"] .mascote-chat-header span::before {
+    background: #5da356;
+    box-shadow: 0 0 0 3px rgba(93, 163, 86, .22);
+}
+
+html[data-theme="dark"] .mascote-chat-header .mascote-chat-close,
+html[data-theme="dark"] .mascote-chat-dock-btn {
+    color: #a1a1aa;
+}
+
+html[data-theme="dark"] .mascote-chat-header .mascote-chat-close:hover,
+html[data-theme="dark"] .mascote-chat-dock-btn:hover {
+    color: #f4f4f5;
+}
+
+html[data-theme="dark"] .mascote-chat-messages {
+    background: #0a0a0b;
+    scrollbar-color: #3f3f46 transparent;
+}
+
+html[data-theme="dark"] .mascote-chat-messages::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+}
+
+html[data-theme="dark"] .mascote-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #52525b;
+}
+
+html[data-theme="dark"] .mascote-chat-welcome::before {
+    background: radial-gradient(circle, rgba(93, 163, 86, .18), rgba(93, 163, 86, 0) 70%);
+}
+
+html[data-theme="dark"] .mascote-chat-welcome-greeting {
+    color: #7cc26f;
+}
+
+html[data-theme="dark"] .mascote-chat-welcome-title {
+    color: #f4f4f5;
+}
+
+html[data-theme="dark"] .mascote-chat-welcome-subtitle {
+    color: #a1a1aa;
+}
+
+html[data-theme="dark"] .mascote-chat-suggestion {
+    background: #1f1f23;
+    border-color: #27272a;
+    color: #f4f4f5;
+}
+
+html[data-theme="dark"] .mascote-chat-suggestion svg {
+    color: #7cc26f;
+}
+
+html[data-theme="dark"] .mascote-chat-suggestion:hover {
+    background: #27272a;
+    border-color: #3a5a44;
+}
+
+html[data-theme="dark"] .mascote-chat-bubble--user {
+    background: #3a6b2f;
+}
+
+html[data-theme="dark"] .mascote-chat-bubble--assistant {
+    background: #1f1f23;
+    color: #f4f4f5;
+    border-color: #27272a;
+}
+
+html[data-theme="dark"] .mascote-chat-bubble--assistant.is-typing {
+    color: #8a8a93;
+}
+
+html[data-theme="dark"] .mascote-chat-form {
+    background: #17171a;
+    border-top-color: #27272a;
+}
+
+html[data-theme="dark"] .mascote-chat-input {
+    background: #0a0a0b;
+    border-color: #27272a;
+    color: #f4f4f5;
+}
+
+html[data-theme="dark"] .mascote-chat-input::placeholder {
+    color: #71717a;
+}
+
+html[data-theme="dark"] .mascote-chat-input:focus {
+    background: #111113;
+    border-color: #5da356;
+    box-shadow: 0 0 0 3px rgba(93, 163, 86, .18);
+}
+
+html[data-theme="dark"] .mascote-chat-send {
+    background: #3a6b2f;
+}
+
+html[data-theme="dark"] .mascote-chat-send:hover {
+    background: #4a8a3c;
 }
 
 html[data-theme="dark"] .lesson-help-fab-img {
