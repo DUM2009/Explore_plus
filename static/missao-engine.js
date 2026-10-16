@@ -639,9 +639,27 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                         </section>
                     </div>
                 </div>
+                <button type="button" class="mascot-chat-fab" id="moMascotFab" aria-label="Falar com a mascote">
+                    ${this.mascotFabFigureHtml()}
+                </button>
             `;
 
             this.bindMapaChrome();
+
+            // O botão flutuante aqui no mapa abre o chat dentro da secção
+            // ativa (mesmo mecanismo de #meMascotFab em renderSeccao) — não
+            // há painel de chat próprio desta vista.
+            this.root.querySelector('#moMascotFab')?.addEventListener('click', () => {
+                const index = this.state.activeSectionIndex || 0;
+                const section = this.getSection(index);
+                if (!(section.secao_id in this.state.screenIndexBySection)) {
+                    this.state.screenIndexBySection[section.secao_id] = 0;
+                }
+                this.state.view = 'seccao';
+                this.chatOpen = true;
+                this.saveState();
+                this.render();
+            });
 
             this.root.querySelectorAll('[data-section-index]').forEach((btn) => {
                 btn.addEventListener('click', () => {
