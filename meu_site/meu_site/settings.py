@@ -96,6 +96,10 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # Tem de vir depois de SessionMiddleware (lê a língua guardada na sessão
+    # pelo set_language — ver Configurações.html) e antes de CommonMiddleware
+    # (que já depende da língua escolhida para esta request).
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -197,7 +201,22 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# Português é a língua por omissão real do site (todo o conteúdo das missões
+# e testes só existe em português — ver o comentário em Configurações.html
+# sobre o que "Idioma" traduz e o que não traduz). As outras duas foram
+# pedidas por termos vários alunos chineses em Portugal, e por o inglês ser
+# língua franca.
+LANGUAGE_CODE = 'pt'
+
+LANGUAGES = [
+    ('pt', 'Português'),
+    ('en', 'English'),
+    ('zh-hans', '中文'),
+]
+
+LOCALE_PATHS = [
+    BASE_DIR.parent / 'locale',
+]
 
 TIME_ZONE = 'UTC'
 

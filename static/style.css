@@ -14968,3 +14968,18 @@ button.tm-opcao.is-errada .tm-opcao-letra { background: #e0525e; color: #fff; }
 .tm-feedback p.tm-feedback-titulo { margin: 0 0 6px; }
 .tm-feedback p.tm-feedback-texto { margin: 0; }
 .tm-pergunta p.tm-enunciado { margin: 0 0 20px; }
+/* Preferência "Animações" (ver Configurações.html e animation-prefs.js) —
+   desativa transições e animações CSS em todo o site. Duração quase-zero
+   em vez de `none`/`0s`: alguns componentes esperam que um evento
+   `transitionend` dispare (ex: o menu lateral a fechar-se), e isso só
+   acontece com uma transição que realmente corre, ainda que instantânea
+   aos olhos de quem vê. */
+html.no-animations,
+html.no-animations *,
+html.no-animations *::before,
+html.no-animations *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+}

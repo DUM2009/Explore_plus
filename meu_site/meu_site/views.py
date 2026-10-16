@@ -10,7 +10,7 @@ from django.http import JsonResponse, Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db import OperationalError
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -4077,7 +4077,35 @@ def pagina_Configurações(request):
     except OperationalError:
         perfil = None
 
-    return render(request, 'Configurações.html', {'perfil': perfil})
+    # "Segurança": quem entrou só pela Google (allauth) nunca teve uma
+    # password local — has_usable_password() é a forma do próprio Django
+    # de o saber (fica False nessas contas). O cartão só aparece para
+    # quem ainda não tem uma, e desaparece assim que a criar.
+    erro_senha = None
+    sucesso_senha = False
+    if request.method == 'POST' and request.POST.get('acao') == 'criar-senha':
+        nova_senha = request.POST.get('nova_senha', '')
+        confirmar_senha = request.POST.get('confirmar_senha', '')
+        if not nova_senha or not confirmar_senha:
+            erro_senha = 'Preenche os dois campos.'
+        elif nova_senha != confirmar_senha:
+            erro_senha = 'As palavras-passe não coincidem.'
+        elif len(nova_senha) < 8:
+            erro_senha = 'A palavra-passe tem de ter pelo menos 8 caracteres.'
+        else:
+            request.user.set_password(nova_senha)
+            request.user.save()
+            # Sem isto a sessão ficava inválida (o Django liga a sessão ao
+            # hash da password) e o pedido seguinte via dar logout forçado.
+            update_session_auth_hash(request, request.user)
+            sucesso_senha = True
+
+    return render(request, 'Configurações.html', {
+        'perfil': perfil,
+        'precisa_criar_senha': not request.user.has_usable_password(),
+        'erro_senha': erro_senha,
+        'sucesso_senha': sucesso_senha,
+    })
 
 
 @login_required(login_url='login')
