@@ -4673,6 +4673,29 @@ cursor:not-allowed;
     flex:1 1 auto;
 }
 
+/* The toggle used to sit inline next to the title (align-items:center on
+   the row), vertically centered against however many lines the title
+   wrapped to — for a long title like "Membrana Celular e Transporte
+   Transmembranar" that put it mid-way down an awkward 4-line title
+   instead of in a predictable spot. Moves it to the card's bottom-right
+   corner instead, so the title can wrap freely without the toggle
+   fighting it for width or drifting around based on its line count. */
+.teste-missions-grid .mission-card{
+    position:relative;
+}
+
+.teste-missions-grid .mission-card-toggle{
+    position:absolute;
+    right:14px;
+    bottom:14px;
+    margin-left:0;
+    /* Sitewide mobile button{width:100%} reset — harmless for the old
+       inline placement (flex already capped its width to content), but
+       with only `right` set here it resolves against the card's full
+       content width instead. */
+    width:auto;
+}
+
 .mission-card-meta{
     display:flex;
     flex-wrap:wrap;
