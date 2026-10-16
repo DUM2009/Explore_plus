@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-16 11:32+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+msgid "Definições"
+msgstr "Settings"
+
+msgid "Fechar menu"
+msgstr "Close menu"
+
+msgid "Plano"
+msgstr "Plan"
+
+msgid "Pro"
+msgstr "Pro"
+
+msgid "Gratuito"
+msgstr "Free"
+
+msgid "Perfil"
+msgstr "Profile"
+
+msgid "Missões"
+msgstr "Missions"
+
+msgid "Testes"
+msgstr "Tests"
+
+msgid "Suporte"
+msgstr "Support"
+
+msgid "Tema"
+msgstr "Theme"
+
+msgid "Configurações"
+msgstr "Settings"
+
+msgid "Terminar sessão"
+msgstr "Log out"
+
+msgid "Abrir menu"
+msgstr "Open menu"
+
+msgid "Personaliza a tua experiência no Explore+."
+msgstr "Customize your Explore+ experience"
+
+msgid "Idioma"
+msgstr "Language"
+
+msgid "Escolhe o idioma da interface."
+msgstr "Choose the interface language"
+
+msgid "Traduz o menu e os botões da interface. O conteúdo das missões e dos testes continua só em português por agora."
+msgstr "Translates the menu and interface buttons. Mission and test content is still Portuguese-only for now."
+
+msgid "Animações"
+msgstr "Animations"
+
+msgid "Ativar animações e transições na interface."
+msgstr "Enable animations and transitions in the interface"
+
+msgid "Animações ativadas"
+msgstr "Animations enabled"
+
+msgid "Comentários da mascote"
+msgstr "Mascot comments"
+
+msgid "Mostra as falas e o feedback da mascote durante as missões. O conteúdo principal (texto, diagramas, perguntas e opções) mantém-se sempre visível, mesmo desativado."
+msgstr "Shows the mascot's lines and feedback during missions. The main content (text, diagrams, questions and options) always stays visible, even when disabled."
+
+msgid "Botão visível"
+msgstr "Button visible"
+
+msgid "Segurança"
+msgstr "Security"
+
+msgid "Cria uma palavra-passe para entrares também com email."
+msgstr "Create a password to also sign in with email"
+
+msgid "Entraste com a Google. Cria uma palavra-passe para também poderes entrar com email."
+msgstr "You signed in with Google. Create a password to also be able to sign in with email."
+
+msgid "Palavra-passe criada! Já podes entrar com o teu email e esta palavra-passe."
+msgstr "Password created! You can now sign in with your email and this password."
+
+msgid "Nova palavra-passe"
+msgstr "New password"
+
+msgid "Confirmar"
+msgstr "Confirm"
+
+msgid "Criar palavra-passe"
+msgstr "Create password"
+
+msgid "Biblioteca do Explorador"
+msgstr "Explorer's Library"
+
+msgid "Resumos"
+msgstr "Summaries"

@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -7,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Definições | Explore+</title>
+<title>{% trans 'Definições' %} | Explore+</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,20 +17,52 @@
 
 <style>
     .settings-page { max-width: 720px; }
-    .settings-section { margin-bottom: 28px; }
-    .settings-section h2 { font-size: 1.1rem; margin: 0 0 12px; }
-    .settings-toggle-card {
+    .settings-page > p { color: #5b6b62; }
+    .settings-card {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        background: var(--card-bg, #fff);
+        border: 1px solid #e1e6de;
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 18px;
+    }
+    .settings-card-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+    }
+    .settings-card-icon {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: #eaf3e9;
+        color: #1f8a5b;
+    }
+    .settings-card-icon svg { width: 20px; height: 20px; }
+    .settings-card-copy strong { display: block; margin-bottom: 4px; font-size: 1rem; }
+    .settings-card-copy p { margin: 0; color: #5b6b62; font-size: .9rem; }
+    .settings-card-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
-        background: var(--card-bg, #fff);
-        border: 1px solid #e1e6de;
-        border-radius: 16px;
-        padding: 18px 20px;
     }
-    .settings-toggle-copy strong { display: block; margin-bottom: 4px; }
-    .settings-toggle-copy p { margin: 0; color: #5b6b62; font-size: .9rem; }
+    .settings-card-row-label { font-size: .88rem; font-weight: 600; color: #3a4a40; }
+    .settings-select {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid #d7ddd3;
+        background: #fff;
+        font: inherit;
+        font-weight: 600;
+        color: #1c2a22;
+    }
     .settings-toggle-switch {
         position: relative;
         width: 46px;
@@ -40,6 +73,7 @@
         background: #d7ddd3;
         cursor: pointer;
         transition: background .15s ease;
+        padding: 0;
     }
     .settings-toggle-switch::after {
         content: '';
@@ -54,8 +88,37 @@
     }
     .settings-toggle-switch[aria-checked="true"] { background: #1f8a5b; }
     .settings-toggle-switch[aria-checked="true"]::after { transform: translateX(20px); }
-    html.dark-mode .settings-toggle-card { background: #182018; border-color: #2a352a; }
-    html.dark-mode .settings-toggle-copy p { color: #d7ddd3; }
+    .settings-password-form { display: flex; flex-direction: column; gap: 12px; }
+    .settings-password-form label { font-size: .85rem; font-weight: 600; color: #3a4a40; }
+    .settings-password-form input {
+        width: 100%;
+        margin-top: 6px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid #d7ddd3;
+        font: inherit;
+    }
+    .settings-password-error { margin: 0; color: #b3261e; font-size: .85rem; }
+    .settings-password-success { margin: 0; color: #1f8a5b; font-size: .85rem; font-weight: 600; }
+    .settings-primary-btn {
+        align-self: flex-start;
+        width: auto;
+        padding: 10px 22px;
+        border: none;
+        border-radius: 999px;
+        background: #1f8a5b;
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: none;
+    }
+    .settings-primary-btn:hover { background: #176b46; box-shadow: none; transform: none; }
+    html.dark-mode .settings-card { background: #182018; border-color: #2a352a; }
+    html.dark-mode .settings-card-copy p,
+    html.dark-mode .settings-page > p { color: #a8bdae; }
+    html.dark-mode .settings-select,
+    html.dark-mode .settings-password-form input { background: #0f1710; border-color: #2a352a; color: #eef3ea; }
 </style>
 
 </head>
@@ -70,7 +133,7 @@
 <div>
     <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
 </div>
-<button type="button" class="nav-drawer-close profile-sidebar-close" id="navDrawerClose" aria-label="Fechar menu">
+<button type="button" class="nav-drawer-close profile-sidebar-close" id="navDrawerClose" aria-label="{% trans 'Fechar menu' %}">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
 </button>
 </div>
@@ -78,8 +141,8 @@
 <nav class="profile-sidebar-nav">
 <div class="sidebar-plan-card">
 <div class="sidebar-plan-info">
-<span class="sidebar-plan-label">Plano</span>
-<strong class="sidebar-plan-name">{% if perfil.plano == 'pro' %}Pro{% else %}Gratuito{% endif %}</strong>
+<span class="sidebar-plan-label">{% trans 'Plano' %}</span>
+<strong class="sidebar-plan-name">{% if perfil.plano == 'pro' %}{% trans 'Pro' %}{% else %}{% trans 'Gratuito' %}{% endif %}</strong>
 </div>
 {% if perfil.plano == 'pro' %}
 <span class="sidebar-plan-cta sidebar-plan-cta--badge">SuperExplore</span>
@@ -89,24 +152,24 @@
 </div>
 
 <a href="{% url 'perfil' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
-<span class="profile-sidebar-label">Perfil</span>
+<span class="profile-sidebar-label">{% trans 'Perfil' %}</span>
 </a>
 
 
 <a href="{% url 'index-missions' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
-<span class="profile-sidebar-label">Missões</span>
+<span class="profile-sidebar-label">{% trans 'Missões' %}</span>
 </a>
 <a href="{% url 'Testes' %}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg></span>
-<span class="profile-sidebar-label">Testes</span>
+<span class="profile-sidebar-label">{% trans 'Testes' %}</span>
 </a>
 <a href="mailto:{{ EMAIL_SUPORTE }}">
 <span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></span>
-<span class="profile-sidebar-label">Suporte</span>
+<span class="profile-sidebar-label">{% trans 'Suporte' %}</span>
 </a>
 </nav>
 
 <div class="sidebar-theme-card">
-<span class="sidebar-theme-label">Tema</span>
+<span class="sidebar-theme-label">{% trans 'Tema' %}</span>
 <button class="header-icon-btn theme-toggle-btn" id="sidebarThemeToggleBtn" type="button" aria-label="Ativar modo escuro" aria-pressed="false">
 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
 <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
@@ -127,11 +190,11 @@
     <div class="profile-account-menu" id="profileAccountMenu" hidden>
         <a href="{% url 'Configurações' %}" class="is-active" aria-current="page">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/></svg>
-            <span>Configurações</span>
+            <span>{% trans 'Configurações' %}</span>
         </a>
         <a href="{% url 'logout' %}" class="profile-account-logout">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/><path d="M21 19V5a2 2 0 0 0-2-2h-6"/></svg>
-            <span>Terminar sessão</span>
+            <span>{% trans 'Terminar sessão' %}</span>
         </a>
     </div>
 </div>
@@ -144,25 +207,101 @@
     <div class="missions-topbar-logo">
         <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
     </div>
-    <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="Abrir menu">
+    <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="{% trans 'Abrir menu' %}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
 </div>
 
 <section class="missions-page settings-page">
-    <h1>Definições</h1>
-    <p>Personaliza a tua experiência no Explore+.</p>
+    <h1>{% trans 'Definições' %}</h1>
+    <p>{% trans 'Personaliza a tua experiência no Explore+.' %}</p>
 
-    <div class="settings-section">
-        <h2>Missões</h2>
-        <div class="settings-toggle-card">
-            <div class="settings-toggle-copy">
-                <strong>Comentários da mascote</strong>
-                <p>Mostra as falas e o feedback da mascote durante as missões. O conteúdo principal (texto, diagramas, perguntas e opções) mantém-se sempre visível, mesmo desativado.</p>
+    <div class="settings-card">
+        <div class="settings-card-head">
+            <span class="settings-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg>
+            </span>
+            <div class="settings-card-copy">
+                <strong>{% trans 'Idioma' %}</strong>
+                <p>{% trans 'Escolhe o idioma da interface.' %}</p>
             </div>
-            <button type="button" class="settings-toggle-switch" id="mascotCommentsToggle" role="switch" aria-checked="true" aria-label="Comentários da mascote"></button>
+        </div>
+        <form method="post" action="{% url 'set_language' %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <select name="language" class="settings-select" onchange="this.form.submit()">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as AVAILABLE_LANGUAGES %}
+                {% for code, name in AVAILABLE_LANGUAGES %}
+                <option value="{{ code }}"{% if code == LANGUAGE_CODE %} selected{% endif %}>{{ name }}</option>
+                {% endfor %}
+            </select>
+        </form>
+        <p style="margin:0;color:#8a978e;font-size:.78rem;">{% trans 'Traduz o menu e os botões da interface. O conteúdo das missões e dos testes continua só em português por agora.' %}</p>
+    </div>
+
+    <div class="settings-card">
+        <div class="settings-card-head">
+            <span class="settings-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+            </span>
+            <div class="settings-card-copy">
+                <strong>{% trans 'Animações' %}</strong>
+                <p>{% trans 'Ativar animações e transições na interface.' %}</p>
+            </div>
+        </div>
+        <div class="settings-card-row">
+            <span class="settings-card-row-label" id="animationsToggleLabel">{% trans 'Animações ativadas' %}</span>
+            <button type="button" class="settings-toggle-switch" id="animationsToggle" role="switch" aria-checked="true" aria-labelledby="animationsToggleLabel"></button>
         </div>
     </div>
+
+    <div class="settings-card">
+        <div class="settings-card-head">
+            <span class="settings-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <div class="settings-card-copy">
+                <strong>{% trans 'Comentários da mascote' %}</strong>
+                <p>{% trans 'Mostra as falas e o feedback da mascote durante as missões. O conteúdo principal (texto, diagramas, perguntas e opções) mantém-se sempre visível, mesmo desativado.' %}</p>
+            </div>
+        </div>
+        <div class="settings-card-row">
+            <span class="settings-card-row-label" id="mascotToggleLabel">{% trans 'Botão visível' %}</span>
+            <button type="button" class="settings-toggle-switch" id="mascotCommentsToggle" role="switch" aria-checked="true" aria-labelledby="mascotToggleLabel"></button>
+        </div>
+    </div>
+
+    {% if precisa_criar_senha or sucesso_senha %}
+    <div class="settings-card">
+        <div class="settings-card-head">
+            <span class="settings-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </span>
+            <div class="settings-card-copy">
+                <strong>{% trans 'Segurança' %}</strong>
+                <p>{% trans 'Cria uma palavra-passe para entrares também com email.' %}</p>
+            </div>
+        </div>
+        <p style="margin:0;color:#5b6b62;font-size:.88rem;">{% trans 'Entraste com a Google. Cria uma palavra-passe para também poderes entrar com email.' %}</p>
+        {% if sucesso_senha %}
+        <p class="settings-password-success">{% trans 'Palavra-passe criada! Já podes entrar com o teu email e esta palavra-passe.' %}</p>
+        {% else %}
+        <form method="post" class="settings-password-form">
+            {% csrf_token %}
+            <input type="hidden" name="acao" value="criar-senha">
+            {% if erro_senha %}<p class="settings-password-error">{{ erro_senha }}</p>{% endif %}
+            <label>{% trans 'Nova palavra-passe' %}
+                <input type="password" name="nova_senha" autocomplete="new-password" required minlength="8">
+            </label>
+            <label>{% trans 'Confirmar' %}
+                <input type="password" name="confirmar_senha" autocomplete="new-password" required minlength="8">
+            </label>
+            <button type="submit" class="settings-primary-btn">{% trans 'Criar palavra-passe' %}</button>
+        </form>
+        {% endif %}
+    </div>
+    {% endif %}
 </section>
 
 </div>
@@ -190,6 +329,7 @@ document.addEventListener('click', (event) => {
 </script>
 <script src="{% static 'nav-drawer.js' %}" defer></script>
 <script src="{% static 'header-actions.js' %}" defer></script>
+<script src="{% static 'animation-prefs.js' %}"></script>
 <script src="{% static 'mascot-prefs.js' %}"></script>
 <script>
     const mascotToggle = document.getElementById('mascotCommentsToggle');
@@ -199,6 +339,17 @@ document.addEventListener('click', (event) => {
         mascotToggle.addEventListener('click', () => {
             const next = mascotToggle.getAttribute('aria-checked') !== 'true';
             window.MascotPrefs.setEnabled(next);
+            applyState(next);
+        });
+    }
+
+    const animationsToggle = document.getElementById('animationsToggle');
+    if (animationsToggle && window.AnimationPrefs) {
+        const applyState = (enabled) => animationsToggle.setAttribute('aria-checked', String(enabled));
+        applyState(window.AnimationPrefs.isEnabled());
+        animationsToggle.addEventListener('click', () => {
+            const next = animationsToggle.getAttribute('aria-checked') !== 'true';
+            window.AnimationPrefs.setEnabled(next);
             applyState(next);
         });
     }
