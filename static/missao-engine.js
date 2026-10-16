@@ -20,12 +20,58 @@
             .replace(/>/g, '&gt;');
     }
 
+    // Termos da Biblioteca do Explorador desta missão (ver
+    // termos_vocabulario_para_missao em views.py e window.exploreVocabularioTermos
+    // em missao.html) — sublinhados em qualquer texto de ecrã onde apareçam,
+    // para o aluno reconhecer de relance que aquela palavra tem uma definição
+    // lá. Construído uma única vez (lazy) e reaproveitado em todos os ecrãs.
+    let vocabularioRegex;
+    let vocabularioRegexPronta = false;
+
+    function obterRegexVocabulario() {
+        if (vocabularioRegexPronta) return vocabularioRegex;
+        vocabularioRegexPronta = true;
+        const termos = Array.isArray(window.exploreVocabularioTermos) ? window.exploreVocabularioTermos : [];
+        const unicos = [...new Set(termos.filter((termo) => typeof termo === 'string' && termo.trim()))];
+        if (!unicos.length) {
+            vocabularioRegex = null;
+            return null;
+        }
+        // Termos mais longos primeiro, para um termo mais específico (ex:
+        // "Consumidores secundários e terciários") vencer sobre um prefixo
+        // mais curto que também seja termo por si (ex: "Consumidores").
+        unicos.sort((a, b) => b.length - a.length);
+        const alternativas = unicos.map((termo) => termo.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+        try {
+            // \p{L}/\p{N} (com a flag u) tratam letras acentuadas (ex: "ç",
+            // "ã") como parte da palavra — um \b normal não o faz, e deixaria
+            // de bloquear, por exemplo, "população" a meio de outra palavra.
+            vocabularioRegex = new RegExp(`(?<![\\p{L}\\p{N}])(${alternativas})(?![\\p{L}\\p{N}])`, 'giu');
+        } catch (error) {
+            vocabularioRegex = null;
+        }
+        return vocabularioRegex;
+    }
+
+    function sublinharVocabulario(escapedValue) {
+        const regex = obterRegexVocabulario();
+        if (!regex) return escapedValue;
+        return escapedValue.replace(regex, '<u>$1</u>');
+    }
+
+    // [texto](https://...) -> link que abre noutro separador. Só http(s).
+    function linkMarkdown(escapedValue) {
+        return escapedValue.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    }
+
     // **negrito** — mesma sintaxe do filtro md_inline usado nos Resumos
     // (ver meu_site/templatetags/resumo_extras.py), aplicado depois de
     // escapeHtml porque o conteúdo vem de missoes/*.json, não de input
-    // de utilizadores.
+    // de utilizadores. Sublinha os termos de vocabulário e os links
+    // [texto](url) primeiro: se um calhar dentro de **...**, acaba dentro
+    // do <strong> depois.
     function boldMarkdown(escapedValue) {
-        return escapedValue.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        return linkMarkdown(sublinharVocabulario(escapedValue)).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     }
 
     // Plain text with line breaks (\n\n) turned into paragraphs — content
@@ -1295,14 +1341,22 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
         }
 
-        showMascotPopup(texto, eyebrow, titulo) {
+        /** Ícone de alvo para o selo do popup "tenho um desafio para ti"
+         *  (ver showEntryPopupIfNeeded) — substitui o ícone da disciplina
+         *  nesse popup em concreto, já que este não é sobre a disciplina
+         *  mas sim sobre o desafio em si. */
+        desafioBadgeIconHtml() {
+            return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>';
+        }
+
+        showMascotPopup(texto, eyebrow, titulo, eyebrowIconHtml) {
             if (!this.mascotEnabled() || !texto) return;
             document.querySelector('.me-mascot-popup')?.remove();
 
             const eyebrowHtml = eyebrow
                 ? `
                     <div class="me-mascot-popup-eyebrow">
-                        <span class="me-mascot-popup-badge" aria-hidden="true">${this.disciplinaBadgeIconHtml()}</span>
+                        <span class="me-mascot-popup-badge" aria-hidden="true">${eyebrowIconHtml || this.disciplinaBadgeIconHtml()}</span>
                         <span>${escapeHtml(eyebrow)}</span>
                     </div>
                 `
@@ -1373,7 +1427,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 const quizState = this.getQuizState(section);
                 if (quizState.current === 0 && quizState.answers.length === 0) {
                     this._lastGanchoPopupKey = popupKey;
-                    this.showMascotPopup(`Agora que já viste "${section.titulo}", tenho um desafio para ti.`);
+                    this.showMascotPopup(`Agora que já viste "${section.titulo}", tenho um desafio para ti.`, 'Desafio', null, this.desafioBadgeIconHtml());
                 }
                 return;
             }
@@ -2061,10 +2115,21 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
          */
         pontoDetailInnerHtml(ponto) {
             const imagemHtml = ponto.imagem ? `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(ponto.imagem)}" alt="${escapeHtml(ponto.label || '')}" onerror="this.style.display='none'">` : '';
+            // Legenda visível por baixo da foto (nome do que se vê + link para
+            // a página de onde veio) — só usado em fotos reais tiradas de
+            // fora do site (ex: parques nacionais), nunca em ilustrações/
+            // diagramas próprios, que não precisam de crédito.
+            const fonteHtml = ponto.imagem && ponto.imagem_fonte
+                ? `
+                    <p class="me-escada-detail-imagem-fonte">
+                        ${escapeHtml(ponto.imagem_fonte.texto || '')}${ponto.imagem_fonte.url ? ` — <a href="${escapeAttr(ponto.imagem_fonte.url)}" target="_blank" rel="noopener noreferrer">fonte</a>` : ''}
+                    </p>
+                `
+                : '';
             const conteudoHtml = `
                 ${ponto.label ? `<h4 class="me-escada-detail-title">${escapeHtml(ponto.label)}</h4>` : ''}
                 <div class="me-escada-detail-text-row">
-                    <p class="me-escada-detail-text">${escapeHtml(ponto.explicacao || '')}</p>
+                    <p class="me-escada-detail-text">${boldMarkdown(escapeHtml(ponto.explicacao || ''))}</p>
                     ${this.curiosidadeToggleHtml(ponto)}
                     ${this.atencaoToggleHtml(ponto)}
                 </div>
@@ -2079,7 +2144,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (!imagemHtml) return conteudoHtml;
             return `
                 <div class="me-escada-detail-columns">
-                    <div class="me-escada-detail-media">${imagemHtml}</div>
+                    <div class="me-escada-detail-media">${imagemHtml}${fonteHtml}</div>
                     <div class="me-escada-detail-divider" aria-hidden="true"></div>
                     <div class="me-escada-detail-content">${conteudoHtml}</div>
                 </div>
@@ -2475,12 +2540,26 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // temporal (ver tituloPonteHtml).
             const hasIntro = Boolean(screen.intro_imagem || screen.intro_texto);
             const hasIntroTexto = Boolean(screen.intro_texto);
+            // screen.ponte_na_intro: a frase-ponte normalmente vive logo a
+            // seguir ao título (ver mais abaixo) — esta opção junta-a aqui
+            // dentro do mesmo painel do isco, logo por baixo do
+            // intro_texto, para ecrãs em que as duas frases devem ler-se
+            // como um só bloco (ex: a escada de "Diversidade e Organização
+            // Biológica" — ver instruções da Daniela).
+            const ponteNaIntro = screen.ponte_na_intro === true && Boolean(screen.ponte_texto);
+            // screen.intro_justificado: o texto do painel do isco é
+            // centrado por omissão — esta opção justifica-o em vez disso
+            // (ver instruções da Daniela).
+            const introTextoClasse = screen.intro_justificado
+                ? 'me-diagrama-intro-texto me-diagrama-intro-texto--justificado'
+                : 'me-diagrama-intro-texto';
             // Isco sozinho ainda partilha a caixa com traço fino (ver
             // .me-diagrama-intro-bloco no CSS) — screen.intro_sem_caixa
             // salta essa caixa (só texto solto), para quando o guião pede
             // o texto sem painel à volta.
             const introParagrafosHtml = `
-                ${screen.intro_texto ? `<p class="me-diagrama-intro-texto">${escapeHtml(screen.intro_texto)}</p>` : ''}
+                ${screen.intro_texto ? `<p class="${introTextoClasse}">${escapeHtml(screen.intro_texto)}</p>` : ''}
+                ${ponteNaIntro ? `<p class="${introTextoClasse}">${escapeHtml(screen.ponte_texto)}</p>` : ''}
             `;
             const introTextoHtml = hasIntroTexto
                 ? `<div class="me-intro-texto-col">${screen.intro_sem_caixa
@@ -2558,7 +2637,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const diagramaHtml = `
                 ${isTimeline ? tituloPonteHtml : `
                     ${screen.titulo ? `<h3>${escapeHtml(screen.titulo)}</h3>` : ''}
-                    ${screen.ponte_texto ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.ponte_texto)}</p>` : ''}
+                    ${(screen.ponte_texto && !ponteNaIntro) ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.ponte_texto)}</p>` : ''}
                 `}
                 ${textoPrincipalHtml}
                 ${(isEscada || isArvore || isMapa || temSeta) ? '' : (screen.video
@@ -2779,6 +2858,40 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // estudo"), para quando o conteúdo não é uma curiosidade extra
             // mas antes algo como uma analogia/resumo que merece o seu
             // próprio nome — sem precisar de um screen.titulo à parte.
+            // aprofundar.estilo === 'interrogacao': botão redondo "?" (fundo
+            // azul bebé translúcido) que, ao clicar, abre o texto num painel
+            // branco com borda suave (ver bindInterrogacaoToggle).
+            if (aprofundar.estilo === 'interrogacao') {
+                // Imagem opcional à esquerda do texto (ver ponto.imagem_fonte
+                // para o mesmo padrão de legenda+fonte usado nas fotos dos
+                // pontos — aqui aplicado ao painel de "Queres saber mais?").
+                const imagemHtml = aprofundar.imagem ? `<img class="me-interrogacao-imagem" src="/static/images/${encodeURIComponent(aprofundar.imagem)}" alt="${escapeHtml(aprofundar.titulo || '')}" onerror="this.style.display='none'">` : '';
+                const fonteHtml = aprofundar.imagem && aprofundar.imagem_fonte
+                    ? `
+                        <p class="me-interrogacao-imagem-fonte">
+                            ${escapeHtml(aprofundar.imagem_fonte.texto || '')}${aprofundar.imagem_fonte.url ? ` — <a href="${escapeAttr(aprofundar.imagem_fonte.url)}" target="_blank" rel="noopener noreferrer">fonte</a>` : ''}
+                        </p>
+                    `
+                    : '';
+                const corpoHtml = `
+                    ${aprofundar.titulo ? `<p class="me-interrogacao-titulo">${escapeHtml(aprofundar.titulo)}</p>` : ''}
+                    <div class="me-interrogacao-texto">${textToHtml(aprofundar.texto)}</div>
+                `;
+                const painelHtml = imagemHtml
+                    ? `
+                        <div class="me-interrogacao-columns">
+                            <div class="me-interrogacao-media">${imagemHtml}${fonteHtml}</div>
+                            <div class="me-interrogacao-content">${corpoHtml}</div>
+                        </div>
+                    `
+                    : corpoHtml;
+                return `
+                    <div class="me-interrogacao">
+                        <button type="button" class="me-interrogacao-toggle" aria-expanded="false" aria-label="${escapeHtml(aprofundar.rotulo || aprofundar.titulo || 'Queres saber mais?')}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5"/><path d="M12 18.5h.01"/></svg></button>
+                        <div class="me-interrogacao-painel" hidden>${painelHtml}</div>
+                    </div>
+                `;
+            }
             const rotulo = aprofundar.rotulo ? escapeHtml(aprofundar.rotulo) : `Queres saber mais? — ${escapeHtml(aprofundar.titulo)}`;
             // aprofundar.icone: lâmpada à frente do rótulo em vez da setinha ▸
             // (ver .me-saber-mais--icone no CSS).
@@ -3182,12 +3295,13 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 const correctCount = quizState.answers.filter((a) => a.correct).length;
                 const total = perguntas.length;
                 const ratio = total ? correctCount / total : 0;
-                const allCorrect = total > 0 && correctCount === total;
-
-                // Verde se acertar tudo, amarelo se acertar metade ou mais,
-                // vermelho caso contrário — proporcional ao nº de perguntas
-                // da secção, não fixo em "3".
-                const resultModifier = allCorrect ? 'green' : (ratio >= 0.5 ? 'yellow' : 'red');
+                // Vermelho se acertar menos de metade; amarelo se estiver à
+                // volta de metade (metade ou até meio ponto acima — ex: 3/5,
+                // já que metade de 5 é 2,5); verde (com confetti) acima disso
+                // — proporcional ao nº de perguntas da secção.
+                const metade = total / 2;
+                const allCorrect = correctCount > metade + 0.5;
+                const resultModifier = allCorrect ? 'green' : (correctCount >= metade ? 'yellow' : 'red');
 
                 // Revisão: pergunta a pergunta, com todas as opções (não só
                 // a escolhida) — a certa sempre a verde, a errada que
@@ -3432,6 +3546,16 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         }
 
         bindScreenInteractions(section, screen, screenIndex) {
+            this.root.querySelectorAll('.me-interrogacao').forEach((wrap) => {
+                const toggle = wrap.querySelector('.me-interrogacao-toggle');
+                const painel = wrap.querySelector('.me-interrogacao-painel');
+                toggle.addEventListener('click', () => {
+                    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+                    toggle.setAttribute('aria-expanded', String(!isOpen));
+                    painel.hidden = isOpen;
+                });
+            });
+
             // Re-render substitui o <video> por um elemento novo a cada
             // vez (troca de ponto, popup, etc.) — o atributo autoplay do
             // HTML nem sempre chega a tempo de arrancar (a promise de
@@ -3621,6 +3745,13 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                         <div class="me-celebracao-xp">
                             <span>+</span><span id="meCelebracaoXpValue">0</span><span>XP</span>
                         </div>
+                        <p class="me-celebracao-xp-legenda">XP ganho ao longo de toda a missão</p>
+                        ${this.missao.badge?.nome ? `
+                            <div class="me-celebracao-emblema">
+                                <span class="me-celebracao-emblema-legenda">Emblema desbloqueado</span>
+                                <span class="me-celebracao-emblema-nome">${escapeHtml(this.missao.badge.nome)}</span>
+                            </div>
+                        ` : ''}
                         <button type="button" class="lesson-primary-btn" id="meCelebracaoContinueBtn">Voltar ao mapa de missões</button>
                     </div>
                 </div>

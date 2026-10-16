@@ -3,7 +3,7 @@
   "titulo": "Diversidade e Organização Biológica",
   "disciplina": "biodiversidade",
   "imagem": "Wallpaper biodiversidade.png",
-  "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z\"/><path d=\"M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12\"/></svg>", "nome": "Mestre da Biodiversidade" },
+  "badge": { "icone": "🌍", "nome": "Mestre da Biodiversidade" },
   "secoes": [
     {
       "secao_id": "hierarquia-biologica",
@@ -18,6 +18,8 @@
           "intro_imagem": "Lago com peixes.png",
           "intro_texto": "Um peixe sozinho não é um ecossistema. Mas o peixe, mais os outros peixes, mais as algas, mais o rio onde vivem... isso já é.",
           "ponte_texto": "Repara que essa frase já percorre vários dos níveis que os ecólogos usam para organizar a vida: o peixe sozinho, o grupo de peixes da mesma espécie, e todo o rio à sua volta. Conhece a seguir a escada completa, do nível mais simples ao mais amplo.",
+          "ponte_na_intro": true,
+          "intro_justificado": true,
           "titulo": "A escada dos níveis de hierarquia biológica",
           "layout": "escada",
           "instrucao": "Clica em cada degrau para veres a explicação — repara como cada nível é maior e mais complexo do que o anterior.",
@@ -205,11 +207,11 @@
           "imagem": "tres_niveis_biodiversidade.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "diversidade_genetica", "label": "Diversidade genética", "explicacao": "A variedade de genes que existe dentro de uma mesma espécie — é o que torna, por exemplo, cada humano geneticamente único, ou permite que existam raças de cães tão diferentes entre si." },
-            { "id": "diversidade_especies", "label": "Diversidade de espécies", "explicacao": "O número e a variedade de espécies diferentes presentes numa determinada área — é o significado mais comum e intuitivo de \"biodiversidade\"." },
-            { "id": "diversidade_ecossistemas", "label": "Diversidade de ecossistemas", "explicacao": "A variedade de habitats e ecossistemas diferentes presentes numa região ou no planeta (florestas, oceanos, desertos, zonas húmidas...)." }
+            { "id": "diversidade_genetica", "label": "Diversidade genética", "imagem": "Diversidade de genes.png", "explicacao": "A variedade de genes que existe dentro de uma mesma espécie — é o que torna, por exemplo, cada humano geneticamente único, ou permite que existam raças de cães tão diferentes entre si." },
+            { "id": "diversidade_especies", "label": "Diversidade de espécies", "imagem": "Diversidade de espécies.png", "explicacao": "O número e a variedade de espécies diferentes presentes numa determinada área — é o significado mais comum e intuitivo de \"biodiversidade\".", "curiosidade": "**Autóctone** (ou nativa) é a espécie que ocorre naturalmente numa região, sem intervenção humana. **Endémica** é uma autóctone ainda mais restrita: só existe naturalmente nessa região e em mais lado nenhum (ex: o lince-ibérico, na Península Ibérica).\n\n**Exótica** (ou introduzida) é a espécie que vive fora da sua área natural porque o ser humano a levou para lá, de propósito ou por acidente. **Invasora** é uma exótica que se instala, se espalha depressa e ameaça as espécies locais (ex: a acácia e o jacinto-de-água em Portugal). Nem toda a exótica é invasora — muitas vivem sem causar problemas." },
+            { "id": "diversidade_ecossistemas", "label": "Diversidade de ecossistemas", "imagem": "Diversidade de ecossistemas.png", "explicacao": "A variedade de habitats e ecossistemas diferentes presentes numa região ou no planeta (florestas, oceanos, desertos, zonas húmidas...)." }
           ],
-          "aprofundar": {
+          "aprofundar": { "estilo": "interrogacao",
             "titulo": "Onde está concentrada a maior parte da biodiversidade do planeta",
             "texto": "A biodiversidade não está distribuída de forma uniforme pelo planeta. Certas regiões, chamadas hotspots de biodiversidade, concentram uma proporção desproporcionalmente alta de espécies (muitas delas endémicas, ou seja, que não existem em mais lado nenhum) — exemplos incluem a Floresta Atlântica no Brasil, Madagáscar, ou a região do Mediterrâneo. Estas zonas são também, frequentemente, as mais ameaçadas por atividade humana, o que as torna prioridades centrais para os esforços globais de conservação."
           }
@@ -285,14 +287,16 @@
           "imagem": "estrategias_conservacao.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "areas_protegidas", "label": "Áreas protegidas", "explicacao": "Parques nacionais e reservas naturais, onde a atividade humana é limitada ou regulada, para proteger habitats e espécies." },
-            { "id": "reproducao_cativeiro", "label": "Reprodução em cativeiro", "explicacao": "Programas que reproduzem espécies ameaçadas em ambientes controlados (zoos, centros de conservação), por vezes com o objetivo de reintroduzi-las na natureza." },
-            { "id": "legislacao", "label": "Legislação e acordos internacionais", "explicacao": "Leis nacionais e tratados internacionais (como a CITES, que regula o comércio internacional de espécies ameaçadas) que restringem atividades prejudiciais à biodiversidade." },
-            { "id": "restauro_ecologico", "label": "Restauro ecológico", "explicacao": "Ações ativas para recuperar ecossistemas degradados, como reflorestação ou reintrodução de espécies-chave." }
+            { "id": "areas_protegidas", "label": "Áreas protegidas", "explicacao": "Parques nacionais e reservas naturais, onde a atividade humana é limitada ou regulada, para proteger habitats e espécies.", "imagem": "parque_nacional_peneda_geres.jpg", "imagem_fonte": { "texto": "Serra Amarela, Parque Nacional da Peneda-Gerês", "url": "https://commons.wikimedia.org/wiki/File:Serra_Amarela_(3998067385)_(2).jpg" } },
+            { "id": "reproducao_cativeiro", "label": "Reprodução em cativeiro", "explicacao": "Programas que reproduzem espécies ameaçadas em ambientes controlados (zoos, centros de conservação), por vezes com o objetivo de reintroduzi-las na natureza.", "imagem": "jardim_zoologico_lisboa.jpg", "imagem_fonte": { "texto": "Jardim Zoológico de Lisboa", "url": "https://commons.wikimedia.org/wiki/File:Jardim_Zoologico_Lisboa_1.JPG" } },
+            { "id": "legislacao", "label": "Legislação e acordos internacionais", "explicacao": "Leis nacionais e tratados internacionais (como a CITES, que regula o comércio internacional de espécies ameaçadas) que restringem atividades prejudiciais à biodiversidade. Se queres saber mais da CITES, acede a [este link](https://cites.org).", "imagem": "cites_convencao_internacional.jpg", "imagem_fonte": { "texto": "Espécies protegidas pela CITES", "url": "https://avespt.com/wp-content/uploads/2021/02/cites_convencao_internacional.jpg" } },
+            { "id": "restauro_ecologico", "label": "Restauro ecológico", "imagem": "Restauro ecológico.png", "explicacao": "Ações ativas para recuperar ecossistemas degradados, como reflorestação ou reintrodução de espécies-chave. Se tens interesse em participar num projeto de restauro ecológico, explora o [Plantar uma Árvore — restauro de florestas autóctones](https://plantarumaarvore.org/)." }
           ],
-          "aprofundar": {
+          "aprofundar": { "estilo": "interrogacao",
             "titulo": "A Lista Vermelha da IUCN — como se mede o risco de extinção",
-            "texto": "A União Internacional para a Conservação da Natureza (IUCN) mantém a \"Lista Vermelha\", um sistema padronizado que classifica o estado de conservação das espécies em categorias como: Pouco Preocupante, Quase Ameaçada, Vulnerável, Em Perigo, Criticamente em Perigo, Extinta na Natureza, e Extinta. Esta classificação baseia-se em critérios como a taxa de declínio populacional, o tamanho e fragmentação da área de distribuição, e o tamanho total da população — permitindo aos cientistas e governos priorizar recursos de conservação para as espécies mais urgentemente ameaçadas."
+            "imagem": "iucn_lista_vermelha_categorias.png",
+            "imagem_fonte": { "texto": "Categorias da Lista Vermelha da IUCN", "url": "https://commons.wikimedia.org/wiki/File:Status_iucn3.1_WCAG.svg" },
+            "texto": "A União Internacional para a Conservação da Natureza (IUCN) mantém a \"Lista Vermelha\", um sistema padronizado que classifica o estado de conservação das espécies em categorias como: Pouco Preocupante, Quase Ameaçada, Vulnerável, Em Perigo, Criticamente em Perigo, Extinta na Natureza, e Extinta. Esta classificação baseia-se em critérios como a taxa de declínio populacional, o tamanho e fragmentação da área de distribuição, e o tamanho total da população — permitindo aos cientistas e governos priorizar recursos de conservação para as espécies mais urgentemente ameaçadas. Se queres saber mais, acede ao [site da Lista Vermelha da IUCN](https://www.iucnredlist.org/)."
           }
         },
         {

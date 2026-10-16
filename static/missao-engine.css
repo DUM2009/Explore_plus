@@ -396,23 +396,32 @@ html.dark-mode .screen-nav .me-nav-paginas button.screen-nav-page.active:hover {
 /* Imagem à esquerda, texto (frase-isco + frase-ponte) à direita, quando
    um ecrã de diagrama tem os dois (ver introHtml em renderDiagrama,
    missao-engine.js) — só um dos dois, continua sozinho e centrado. */
+/* Grid em vez de flex: um item flex com proporção própria (como uma
+   <img>) ignora align-items:stretch no eixo transversal — o grid não tem
+   essa exceção, por isso é o que permite mesmo igualar a altura da
+   imagem à da coluna de texto ao lado (ver .me-intro-columns .me-gancho-
+   hero-image, com height:100% + object-fit:cover a cortar a imagem em
+   vez de a distorcer). */
 .me-intro-columns {
-    display: flex;
+    display: grid;
+    grid-template-columns: 45% 1fr;
     align-items: stretch;
     gap: 24px;
     margin-bottom: 24px;
 }
 
 .me-intro-columns .me-gancho-hero-image {
-    flex: 1 1 45%;
-    min-width: 0;
-    height: auto;
-    align-self: stretch;
+    width: 100%;
+    max-width: none;
+    /* height:0 + min-height:100% tira a altura intrínseca da imagem do
+       cálculo da linha do grid: quem manda é o painel de texto. */
+    height: 0;
+    min-height: 100%;
+    object-fit: cover;
     margin: 0;
 }
 
 .me-intro-columns .me-intro-texto-col {
-    flex: 1 1 55%;
     min-width: 0;
 }
 
@@ -422,7 +431,12 @@ html.dark-mode .screen-nav .me-nav-paginas button.screen-nav-page.active:hover {
 
 @media (max-width: 640px) {
     .me-intro-columns {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+
+    .me-intro-columns .me-gancho-hero-image {
+        height: auto;
+        min-height: 0;
     }
 }
 
@@ -438,6 +452,10 @@ html.dark-mode .screen-nav .me-nav-paginas button.screen-nav-page.active:hover {
     font-size: 1.1rem;
     margin: 0 0 14px;
     text-align: center;
+}
+
+.me-gancho-card .me-diagrama-intro-texto--justificado {
+    text-align: justify;
 }
 
 .me-gancho-card .me-diagrama-ponte-texto {
@@ -1924,11 +1942,34 @@ html.dark-mode .me-escada-step-label {
     flex: 1 1 40%;
     min-width: 0;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    gap: 6px;
 }
 
 .me-escada-detail-media .me-escada-detail-image {
     margin: 0;
+}
+
+/* Legenda visível por baixo de uma foto real (não uma ilustração própria),
+   com o nome do que se vê e um link para a página de onde a imagem veio
+   — ver ponto.imagem_fonte em missoes/*.json e pontoDetailInnerHtml. */
+.me-escada-detail-imagem-fonte {
+    margin: 0;
+    max-width: 100%;
+    color: #6b7280;
+    font-size: .76rem;
+    text-align: center;
+}
+
+.me-escada-detail-imagem-fonte a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+html.dark-mode .me-escada-detail-imagem-fonte {
+    color: #9ca3af;
 }
 
 .me-escada-detail-divider {
@@ -2027,7 +2068,7 @@ html.dark-mode button.me-seta-nav-btn {
 .me-ponto-inquerito {
     width: 100%;
     max-width: 480px;
-    margin: 14px 0 0 auto;
+    margin: 14px auto 0;
     padding: 18px 20px;
     border: 1px solid rgba(0, 0, 0, .12);
     border-radius: 16px;
@@ -2831,6 +2872,52 @@ html.dark-mode .me-analogia-texto-bloco {
     object-fit: contain;
 }
 
+.me-celebracao-badge {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.me-celebracao-xp-legenda {
+    margin: -20px 0 24px;
+    font-size: .85rem;
+    opacity: .7;
+}
+
+/* Emblema da missão a brilhar (pulso suave do halo dourado). */
+.me-celebracao-emblema {
+    margin: 0 0 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.me-celebracao-emblema-legenda {
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    opacity: .7;
+}
+
+.me-celebracao-emblema-nome {
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    color: #6b4a00;
+    background: linear-gradient(135deg, #ffe58a, #ffc83d);
+    border: 1px solid #ffd966;
+    animation: me-emblema-brilho 2s ease-in-out infinite;
+}
+
+@keyframes me-emblema-brilho {
+    0%, 100% { box-shadow: 0 0 8px 2px rgba(255, 200, 61, .5); }
+    50% { box-shadow: 0 0 22px 8px rgba(255, 200, 61, .85); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .me-celebracao-emblema-nome { animation: none; box-shadow: 0 0 14px 4px rgba(255, 200, 61, .6); }
+}
+
 .me-celebracao-card h1 {
     margin: 0 0 8px;
 }
@@ -2973,7 +3060,10 @@ html.dark-mode .me-celebracao-card {
 .me-quiz-resultado-conclusao-painel {
     position: relative;
     z-index: 1;
-    margin: 20px 0 0;
+    /* Mesma largura da lista de opções da revisão (.me-quiz-resultado-revisao). */
+    max-width: 480px;
+    margin: 20px auto 0;
+    text-align: left;
 }
 
 .me-quiz-resultado-conclusao {
@@ -3795,4 +3885,132 @@ html.dark-mode .mo-teste-card .mo-teste-btn.is-em-breve {
 html.dark-mode .mo-teste-card .mo-teste-btn small {
     background: #17171a;
     color: #a1a1aa;
+}
+/* "?" de aprofundar.estilo === 'interrogacao' (ver aprofundarHtml): botão
+   redondo com fundo azul bebé quase transparente; o texto abre num painel
+   branco com borda preta suave e cantos arredondados. */
+.me-gancho-card .me-interrogacao {
+    margin-top: 16px;
+    text-align: left;
+}
+
+button.me-interrogacao-toggle {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(135, 195, 245, 0.22);
+    color: #2f7fc1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-interrogacao-toggle:hover,
+button.me-interrogacao-toggle:focus-visible {
+    background: rgba(135, 195, 245, 0.35);
+    box-shadow: none;
+    transform: none;
+}
+
+.me-interrogacao-painel {
+    margin-top: 12px;
+    padding: 16px 18px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    text-align: left;
+}
+
+.me-interrogacao-titulo {
+    margin: 0 0 8px;
+    font-weight: 700;
+    color: #1c2a22;
+}
+
+.me-interrogacao-texto p {
+    margin: 0;
+    color: #4b5a52;
+}
+
+.me-interrogacao-texto p + p {
+    margin-top: 10px;
+}
+
+/* Imagem opcional à esquerda do texto (ver aprofundar.imagem) — imagem
+   numa coluna mais estreita, legenda/fonte por baixo, texto na coluna
+   maior ao lado (mesma ideia de .me-escada-detail-columns). */
+.me-interrogacao-columns {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.me-interrogacao-media {
+    flex: 0 1 40%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.me-interrogacao-imagem {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.me-interrogacao-imagem-fonte {
+    margin: 0;
+    max-width: 100%;
+    color: #6b7280;
+    font-size: .74rem;
+    text-align: center;
+}
+
+.me-interrogacao-imagem-fonte a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.me-interrogacao-content {
+    flex: 1 1 60%;
+    min-width: 0;
+}
+
+html.dark-mode .me-interrogacao-imagem-fonte {
+    color: #9ca3af;
+}
+
+@media (max-width: 560px) {
+    .me-interrogacao-columns {
+        flex-direction: column;
+    }
+
+    .me-interrogacao-media {
+        flex: none;
+        width: 100%;
+    }
+}
+
+html.dark-mode button.me-interrogacao-toggle {
+    background: rgba(135, 195, 245, 0.18);
+    color: #8cc4f2;
+}
+
+html.dark-mode .me-interrogacao-painel {
+    background: #17171a;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+html.dark-mode .me-interrogacao-titulo {
+    color: #f4f4f5;
+}
+
+html.dark-mode .me-interrogacao-texto p {
+    color: #d4d4d8;
 }

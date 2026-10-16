@@ -28,8 +28,10 @@
     <div class="me-root" id="missaoRoot"></div>
 
     {{ missao_json|json_script:"missao-data" }}
+    {{ termos_vocabulario|json_script:"termos-vocabulario-data" }}
 
     <script>
+        window.exploreVocabularioTermos = JSON.parse(document.getElementById('termos-vocabulario-data').textContent);
         window.exploreCurrentUser = {
             uid: "{{ request.user.id|default:'' }}",
             email: "{{ request.user.email|default:'' }}"

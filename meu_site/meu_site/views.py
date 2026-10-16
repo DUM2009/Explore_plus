@@ -133,11 +133,11 @@ def pagina_perfil(request):
             'descricao': 'Descobre como a vida se organiza, se classifica, e porque a biodiversidade importa.',
         },
         'biomoleculas': {
-            'categoria': 'Bioquímica',
+            'categoria': 'Biodiversidade',
             'descricao': 'Descobre as moléculas que constroem todos os seres vivos.',
         },
         'celulas-organelos': {
-            'categoria': 'Citologia',
+            'categoria': 'Biodiversidade',
             'descricao': 'Explora a unidade fundamental da vida e o "emprego" de cada organelo.',
         },
         'energia-e-movimentos': {
@@ -919,7 +919,15 @@ def pagina_missao(request, missao_id):
             if teste['plano'] == 'free' and teste.get('teste_id') and TESTE_FREE_PARA_MISSAO.get(teste['teste_id']) == missao_id:
                 teste_url = reverse(teste.get('rota', 'teste-fotossintese'), args=[teste['teste_id']])
 
-    return render(request, 'missao.html', {'missao': missao, 'missao_json': missao, 'perfil': perfil, 'teste_url': teste_url})
+    termos_vocabulario = termos_vocabulario_para_missao(missao)
+
+    return render(request, 'missao.html', {
+        'missao': missao,
+        'missao_json': missao,
+        'perfil': perfil,
+        'teste_url': teste_url,
+        'termos_vocabulario': termos_vocabulario,
+    })
 
 
 @login_required(login_url='login')
@@ -1678,6 +1686,32 @@ def aplicar_estado_vocabulario_aluno(perfil, unidade_id, termos):
         else:
             termo['estado'] = 'novo'
             termo['ultima_revisao'] = None
+    return termos
+
+
+def termos_vocabulario_para_missao(missao):
+    """Lista (sem duplicados) dos termos da Biblioteca do Explorador a
+    sublinhar no texto desta missão (ver sublinharVocabulario em
+    missao-engine.js) — todos os termos das unidades da mesma disciplina
+    (Biologia ou Geologia), já que uma missão típica atravessa vários
+    "capítulos" da Biblioteca (ex: a missão de Biodiversidade fala de
+    células, ecologia, etc.) e não há um mapeamento 1 para 1 fiável entre
+    missao_id e uma única unidade. Física e Química ainda não têm
+    vocabulario/*.json, por isso devolve lista vazia para essas."""
+    disciplina = missao.get('disciplina', '')
+    if disciplina in ('fisica', 'quimica'):
+        return []
+    grupo = 'Geologia' if disciplina == 'geologia' else 'Biologia'
+    vistos = set()
+    termos = []
+    for unidade in UNIDADES_BIBLIOTECA:
+        if unidade['disciplina'] != grupo:
+            continue
+        for termo in carregar_termos_unidade(unidade['id']):
+            texto = termo.get('termo')
+            if texto and texto not in vistos:
+                vistos.add(texto)
+                termos.append(texto)
     return termos
 
 
