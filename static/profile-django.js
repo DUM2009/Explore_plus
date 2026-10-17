@@ -593,31 +593,23 @@ const SCIENCE_QUOTES = [
     { text: 'O que observamos não é a natureza em si, mas a natureza exposta ao nosso método de questionamento.', author: 'Werner Heisenberg' },
 ];
 
-const profileQuoteCard = document.querySelector('.profile-hero-quote');
+// A citação só vive em .profile-quote-banner agora (ver perfil.html) — já
+// não há uma segunda cópia a rodar dentro do .profile-hero.
+const profileQuoteBanner = document.getElementById('profileQuoteBanner');
 const profileQuoteText = document.getElementById('profileQuoteText');
 const profileQuoteAuthor = document.getElementById('profileQuoteAuthor');
-// Mobile mirrors the same rotating quote inside .profile-quote-banner
-// (above the Explore Biology card) instead of the hero, which is hidden
-// on mobile — see static/style.css.
-const profileQuoteBanner = document.getElementById('profileQuoteBanner');
-const profileQuoteTextMobile = document.getElementById('profileQuoteTextMobile');
-const profileQuoteAuthorMobile = document.getElementById('profileQuoteAuthorMobile');
 
 if (profileQuoteText && profileQuoteAuthor) {
     let quoteIndex = 0;
 
     setInterval(() => {
         quoteIndex = (quoteIndex + 1) % SCIENCE_QUOTES.length;
-        profileQuoteCard?.classList.add('is-fading');
         profileQuoteBanner?.classList.add('is-fading');
 
         setTimeout(() => {
             const quote = SCIENCE_QUOTES[quoteIndex];
             profileQuoteText.textContent = quote.text;
             profileQuoteAuthor.textContent = `— ${quote.author}`;
-            if (profileQuoteTextMobile) profileQuoteTextMobile.textContent = quote.text;
-            if (profileQuoteAuthorMobile) profileQuoteAuthorMobile.textContent = `— ${quote.author}`;
-            profileQuoteCard?.classList.remove('is-fading');
             profileQuoteBanner?.classList.remove('is-fading');
         }, 350);
     }, 5000);

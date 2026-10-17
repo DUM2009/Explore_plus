@@ -14,22 +14,24 @@
         {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
+          "sem_chips": true,
           "mascote_texto": "Porque achas que és constituído por 70% de água?\nVamos perceber porque é que a água é tão especial para as células.",
+          "titulo": "A molécula de água",
+          "imagem": "molecula_agua_3d.png",
+          "texto_principal": "Cada molécula de água é como um pequeno íman: o lado do hidrogénio fica ligeiramente positivo, o lado do oxigénio fica ligeiramente negativo. Por isso, o hidrogénio de uma molécula de água é atraído pelo oxigénio da molécula vizinha, formando uma ligação de hidrogénio — como uma corrente de ímanes ligeiramente inclinados, todos a puxarem-se uns aos outros. É essa \"atração em cadeia\" que dá à água tantas das suas propriedades especiais."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "mascote_texto": "É essa atração em cadeia entre as moléculas que explica tudo o que a água faz por ti — vamos ver as suas funções na célula.",
           "titulo": "As funções da água na célula",
-          "video": "Molécula a girar.mp4",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "solvente", "label": "Solvente universal", "explicacao": "A água dissolve a maioria das substâncias polares — é por isso que quase todas as reações químicas da célula acontecem dissolvidas em água." },
             { "id": "transporte", "label": "Transporte", "explicacao": "Serve de meio de transporte e difusão de substâncias entre o interior e o exterior da célula, e entre células diferentes." },
             { "id": "termorregulacao", "label": "Termorregulação", "explicacao": "Ajuda a regular a temperatura dos seres vivos — por exemplo, ao evaporar (como no suor), retira calor ao corpo." },
             { "id": "reacoes_quimicas", "label": "Reações químicas", "explicacao": "Participa diretamente em reações como a hidrólise (quebra de moléculas com consumo de água) e reações de oxidação, graças à sua capacidade de ionização." }
-          ]
-        },
-        {
-          "tipo": "analogia",
-          "cartao_estilo": true,
-          "mascote_texto": "Pensa nisto como...",
-          "texto": "💡 Cada molécula de água é como um pequeno íman: o lado do hidrogénio fica ligeiramente positivo, o lado do oxigénio fica ligeiramente negativo. Por isso, o hidrogénio de uma molécula de água é atraído pelo oxigénio da molécula vizinha, formando uma ligação de hidrogénio — como uma corrente de ímanes ligeiramente inclinados, todos a puxarem-se uns aos outros. É essa \"atração em cadeia\" que dá à água tantas das suas propriedades especiais.",
+          ],
           "aprofundar": {
             "titulo": "Sais minerais: os parceiros discretos da água",
             "texto": "Além da água, as células contêm sais minerais — compostos inorgânicos como o sódio, o potássio, o cálcio ou o magnésio — que, apesar de não serem tão \"protagonistas\" como a água, são essenciais para inúmeras funções: regulam o equilíbrio de líquidos dentro e fora da célula, participam na transmissão de impulsos nervosos, são necessários para a contração muscular, e entram na constituição de estruturas como os ossos. Muitos deles dissolvem-se facilmente em água — precisamente por esta ser tão boa solvente — o que lhes permite circular livremente pelo organismo."

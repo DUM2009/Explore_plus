@@ -2,7 +2,8 @@
   "missao_id": "celulas-organelos",
   "titulo": "Células e Organelos",
   "disciplina": "citologia",
-  "imagem": "Célula.png",
+  "xp_total": 240,
+  "imagem": "Fundo celulas organelos.png",
   "badge": { "icone": "<img src=\"/static/images/Emblema celula.png\" alt=\"Mestre da Célula\">", "icone_creditos": "Cell icons created by dDara - Flaticon (flaticon.com/free-icons/cell)", "nome": "Mestre da Célula" },
   "secoes": [
     {
@@ -23,12 +24,12 @@
           "layout": "timeline",
           "instrucao": "Clica em cada marco para veres a explicação.",
           "pontos": [
-            { "id": "hooke", "label": "Robert Hooke (1665)", "imagem": "cientista_robert_hooke.jpg", "intro": "Tudo começou com um pedaço de cortiça, um microscópio rudimentar, e uma palavra que ainda hoje usamos.", "explicacao": "Ao observar uma fatia fina de cortiça ao microscópio, viu pequenos compartimentos vazios que lhe lembraram os quartos (cells, em inglês) de um mosteiro — e assim nasceu a palavra \"célula\". Na verdade, Hooke só viu as paredes celulares vazias de células vegetais mortas, não células vivas." },
-            { "id": "leeuwenhoek", "label": "Antonie van Leeuwenhoek (anos 1670)", "imagem": "cientista_leeuwenhoek.jpg", "explicacao": "Construindo microscópios simples mas muito potentes para a época (com uma única lente), foi o primeiro a observar células vivas em movimento — a que chamou \"animálculos\" — incluindo bactérias e protozoários, mais de 150 anos antes de a teoria celular ser formalizada." },
-            { "id": "schleiden_schwann", "label": "Schleiden e Schwann (1838-1839)", "imagem": "cientistas_schleiden_schwann.jpg", "explicacao": "O botânico Matthias Schleiden concluiu que todas as plantas são feitas de células; um ano depois, o zoólogo Theodor Schwann chegou à mesma conclusão para os animais — lançando as bases da Teoria Celular." },
-            { "id": "virchow", "label": "Rudolf Virchow (1855)", "imagem": "cientista_rudolf_virchow.jpg", "explicacao": "Acrescentou o princípio que faltava: todas as células surgem de células pré-existentes, por divisão — resumido na frase latina omnis cellula e cellula." }
+            { "id": "hooke", "label": "Robert Hooke (1665)", "imagem": "cientista_robert_hooke.jpg", "imagem_fonte": { "texto": "Robert Hooke — retrato moderno (Rita Greer, 2004); não sobrevive nenhum retrato da época", "url": "https://commons.wikimedia.org/wiki/File:13_Portrait_of_Robert_Hooke.JPG" }, "intro": "Tudo começou com um pedaço de cortiça, um microscópio rudimentar, e uma palavra que ainda hoje usamos.", "explicacao": "Ao observar uma fatia fina de cortiça ao microscópio, viu pequenos compartimentos vazios que lhe lembraram os quartos (cells, em inglês) de um mosteiro — e assim nasceu a palavra \"célula\". Na verdade, Hooke só viu as paredes celulares vazias de células vegetais mortas, não células vivas." },
+            { "id": "leeuwenhoek", "label": "Antonie van Leeuwenhoek (anos 1670)", "imagem": "cientista_leeuwenhoek.jpg", "imagem_fonte": { "texto": "Antonie van Leeuwenhoek, retrato de Jan Verkolje (depois de 1680)", "url": "https://commons.wikimedia.org/wiki/File:Anthonie_van_Leeuwenhoek_(1632-1723)._Natuurkundige_te_Delft_Rijksmuseum_SK-A-957.jpeg" }, "explicacao": "Construindo microscópios simples mas muito potentes para a época (com uma única lente), foi o primeiro a observar células vivas em movimento — a que chamou \"animálculos\" — incluindo bactérias e protozoários, mais de 150 anos antes de a teoria celular ser formalizada." },
+            { "id": "schleiden_schwann", "label": "Schleiden e Schwann (1838-1839)", "imagem": "cientistas_schleiden_schwann.jpg", "imagem_fonte": { "texto": "Matthias Schleiden (esq.) e Theodor Schwann (dir.)", "url": "https://commons.wikimedia.org/wiki/File:PSM_V22_D156_Matthias_Jacob_Schleiden.jpg" }, "explicacao": "O botânico Matthias Schleiden concluiu que todas as plantas são feitas de células; um ano depois, o zoólogo Theodor Schwann chegou à mesma conclusão para os animais — lançando as bases da Teoria Celular." },
+            { "id": "virchow", "label": "Rudolf Virchow (1855)", "imagem": "cientista_rudolf_virchow.jpg", "imagem_fonte": { "texto": "Rudolf Virchow", "url": "https://commons.wikimedia.org/wiki/File:Rudolf_Virchow_NLM3.jpg" }, "explicacao": "Acrescentou o princípio que faltava: todas as células surgem de células pré-existentes, por divisão — resumido na frase latina omnis cellula e cellula." }
           ],
-          "aprofundar": {
+          "aprofundar": { "estilo": "interrogacao",
             "titulo": "Os 3 princípios da Teoria Celular",
             "texto": "A Teoria Celular moderna resume-se a 3 ideias centrais: (1) todos os seres vivos são constituídos por uma ou mais células; (2) a célula é a unidade básica de estrutura e função de todos os seres vivos; (3) todas as células provêm de células pré-existentes, por divisão celular. Estes três princípios, reunidos ao longo de quase 200 anos de investigação de vários cientistas diferentes, continuam válidos até hoje, sendo um dos pilares fundamentais de toda a Biologia moderna."
           }
@@ -87,7 +88,6 @@
           "tipo": "diagrama_interativo",
           "intro_imagem": "gancho_tipos_celulas.png",
           "mascote_texto": "Existem células tão simples que cabem milhares delas num grão de areia — e outras tão complexas que só uma já é um organismo inteiro. Qual é a diferença?",
-          "intro_texto": "Nesta secção vamos comparar os dois grandes tipos de células que existem na natureza.",
           "ponte_texto": "Explora o esquema abaixo para veres o que distingue cada tipo de célula.",
           "intro_sem_caixa": true,
           "titulo": "Procariótica vs. Eucariótica",
@@ -95,15 +95,11 @@
           "cartao_estilo": true,
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "procariotica", "label": "Célula procariótica", "explicacao": "Não tem núcleo delimitado por membrana — o material genético (DNA) fica disperso numa região chamada nucleoide. Também não tem organelos membranares complexos. Exemplo: bactérias.", "saber_mais": "Apesar de mais simples estruturalmente, as células procarióticas (bactérias e arqueias) são o grupo de seres vivos mais numeroso e mais amplamente distribuído do planeta, existindo em praticamente todos os ambientes imagináveis — desde fontes hidrotermais no fundo do oceano a nuvens na atmosfera. A \"simplicidade\" estrutural não significa desvantagem evolutiva; é apenas uma estratégia biológica diferente, extremamente eficiente há mais de 3.5 mil milhões de anos." },
+            { "id": "procariotica", "label": "Célula procariótica", "explicacao": "Não tem núcleo delimitado por membrana — o material genético (DNA) fica disperso numa região chamada nucleoide. Também não tem organelos membranares complexos. Exemplo: bactérias.", "curiosidade_sem_titulo": true, "curiosidade": "Apesar de mais simples estruturalmente, as células procarióticas (bactérias e arqueias) são o grupo de seres vivos mais numeroso e mais amplamente distribuído do planeta, existindo em praticamente todos os ambientes imagináveis — desde fontes hidrotermais no fundo do oceano a nuvens na atmosfera. A \"simplicidade\" estrutural não significa desvantagem evolutiva; é apenas uma estratégia biológica diferente, extremamente eficiente há mais de 3.5 mil milhões de anos." },
             { "id": "eucariotica", "label": "Célula eucariótica", "explicacao": "Tem um núcleo verdadeiro, delimitado por uma membrana nuclear, e vários organelos membranares especializados. Exemplo: células animais, vegetais, fúngicas." },
             { "id": "animal", "label": "Célula animal", "pai": "eucariotica", "explicacao": "Célula eucariótica sem parede celular e sem cloroplastos — normalmente com formato mais arredondado e irregular." },
             { "id": "vegetal", "label": "Célula vegetal", "pai": "eucariotica", "explicacao": "Célula eucariótica com parede celular (rígida, feita de celulose), cloroplastos (para fotossíntese) e geralmente um grande vacúolo central." }
-          ],
-          "aprofundar": {
-            "rotulo": "Guia de estudo",
-            "texto": "Uma célula procariótica é como um estúdio (apartamento de divisão única): tudo acontece no mesmo espaço aberto, sem paredes internas a separar funções. Uma célula eucariótica é como uma casa com vários quartos: cada organelo é uma \"divisão\" especializada (o núcleo é o escritório onde ficam os documentos importantes — o DNA —, a mitocôndria é a sala de máquinas que gera energia, etc.), o que permite organizar e especializar melhor cada tarefa."
-          }
+          ]
         },
         {
           "tipo": "quiz_seccao",
@@ -130,11 +126,11 @@
               "mascote_feedback_errado": "As bactérias são procarióticas — não têm núcleo delimitado por membrana."
             },
             {
-              "pergunta": "O que distingue estruturalmente uma célula eucariótica de uma procariótica?",
-              "opcoes": ["O tamanho", "A presença de núcleo delimitado por membrana"],
-              "correta": 1,
-              "mascote_feedback_certo": "Boa! É a presença de um núcleo verdadeiro que define as células eucarióticas.",
-              "mascote_feedback_errado": "O que distingue é a presença de núcleo delimitado por membrana, não o tamanho."
+              "pergunta": "Numa célula procariótica, o material genético (DNA) encontra-se:",
+              "opcoes": ["Disperso numa região chamada nucleoide", "Dentro de um núcleo delimitado por membrana"],
+              "correta": 0,
+              "mascote_feedback_certo": "Boa! Sem núcleo delimitado por membrana, o DNA fica disperso numa região chamada nucleoide.",
+              "mascote_feedback_errado": "É nas células eucarióticas que o DNA está dentro de um núcleo; nas procarióticas fica disperso no nucleoide."
             },
             {
               "pergunta": "Uma célula com parede celular e cloroplastos é:",
@@ -164,23 +160,24 @@
         {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
-          "intro_imagem": "gancho_organelos.png",
           "mascote_texto": "Se uma célula fosse uma cidade, cada organelo teria o seu próprio \"emprego\". Vamos conhecer os trabalhadores desta cidade microscópica?",
-          "intro_texto": "Vamos abrir uma célula eucariótica e conhecer, um a um, os organelos que a mantêm a funcionar.",
+          "intro_texto": "Uma célula procariótica é como um estúdio (apartamento de divisão única): tudo acontece no mesmo espaço aberto, sem paredes internas a separar funções. Uma célula eucariótica é como uma casa com vários quartos: cada organelo é uma \"divisão\" especializada (o núcleo é o escritório onde ficam os documentos importantes — o DNA —, a mitocôndria é a sala de máquinas que gera energia, etc.), o que permite organizar e especializar melhor cada tarefa.",
           "ponte_texto": "Começa por explorar os organelos principais de uma célula animal.",
           "titulo": "Organelos principais de uma célula animal",
-          "imagem": "organelos_celula_animal.png",
+          "imagem": "Célula animal organelos.png",
+          "layout": "mapa",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "nucleo", "label": "Núcleo", "explicacao": "Contém o DNA (material genético) e controla todas as atividades da célula. Dentro dele está o nucléolo, onde se formam os ribossomas.", "saber_mais": "Dica de estudo: imagina a célula como uma fábrica com departamentos especializados — o núcleo é o escritório de gestão, guardando os \"planos\" (DNA) de tudo o que a fábrica produz." },
-            { "id": "ribossomas", "label": "Ribossomas", "explicacao": "Pequenas estruturas (não delimitadas por membrana) responsáveis pela síntese de proteínas, a partir das instruções do DNA.", "saber_mais": "Dica de estudo: nessa fábrica, o retículo endoplasmático rugoso e os ribossomas são a linha de produção, a fabricar proteínas." },
-            { "id": "rer", "label": "Retículo endoplasmático rugoso (RER)", "explicacao": "Rede de membranas com ribossomas agarrados à superfície — sintetiza proteínas que serão exportadas ou usadas em membranas.", "saber_mais": "Dica de estudo: nessa fábrica, o retículo endoplasmático rugoso e os ribossomas são a linha de produção, a fabricar proteínas." },
-            { "id": "rel", "label": "Retículo endoplasmático liso (REL)", "explicacao": "Semelhante ao rugoso, mas sem ribossomas — especializado na síntese de lípidos e na desintoxicação de substâncias." },
-            { "id": "golgi", "label": "Complexo de Golgi", "explicacao": "Recebe proteínas e lípidos do retículo endoplasmático, modifica-os, e empacota-os em vesículas para serem enviados para o destino certo (dentro ou fora da célula).", "saber_mais": "Dica de estudo: nessa fábrica, o complexo de Golgi é o departamento de embalagem e expedição, a preparar tudo para envio." },
-            { "id": "mitocondria", "label": "Mitocôndria", "explicacao": "A \"central elétrica\" da célula — produz a maior parte do ATP (energia) através da respiração celular.", "saber_mais": "Dica de estudo: nessa fábrica, a mitocôndria é a central elétrica, a fornecer energia a todos os outros departamentos." },
-            { "id": "lisossoma", "label": "Lisossoma", "explicacao": "Contém enzimas digestivas, usadas para decompor resíduos celulares, partículas estranhas, ou organelos danificados.", "saber_mais": "Dica de estudo: nessa fábrica, os lisossomas são a equipa de limpeza e reciclagem, a decompor o que já não serve." },
-            { "id": "membrana_plasmatica", "label": "Membrana plasmática", "explicacao": "Delimita a célula e controla a entrada e saída de substâncias (é seletivamente permeável)." },
-            { "id": "citoesqueleto", "label": "Citoesqueleto", "explicacao": "Rede de filamentos proteicos que dá forma e suporte estrutural à célula, e permite o movimento de organelos no seu interior." }
+            { "id": "nucleo", "label": "Núcleo", "pos": { "x": 26, "y": 24 }, "explicacao": "Contém o DNA (material genético) e controla todas as atividades da célula. Dentro dele está o nucléolo, onde se formam os ribossomas.", "curiosidade_sem_titulo": true, "curiosidade": "Dica de estudo: imagina a célula como uma fábrica com departamentos especializados — o núcleo é o escritório de gestão, guardando os \"planos\" (DNA) de tudo o que a fábrica produz." },
+            { "id": "ribossomas", "label": "Ribossomas", "pos": { "x": 7, "y": 22 }, "seta": { "x": 12.5, "y": 36.5 }, "explicacao": "Pequenas estruturas (não delimitadas por membrana) responsáveis pela síntese de proteínas, a partir das instruções do DNA.", "curiosidade_sem_titulo": true, "curiosidade": "Dica de estudo: nessa fábrica, o retículo endoplasmático rugoso e os ribossomas são a linha de produção, a fabricar proteínas." },
+            { "id": "rer", "label": "Retículo endoplasmático rugoso (RER)", "pos": { "x": 46, "y": 37 }, "explicacao": "Rede de membranas com ribossomas agarrados à superfície — sintetiza proteínas que serão exportadas ou usadas em membranas.", "curiosidade_sem_titulo": true, "curiosidade": "Dica de estudo: nessa fábrica, o retículo endoplasmático rugoso e os ribossomas são a linha de produção, a fabricar proteínas." },
+            { "id": "rel", "label": "Retículo endoplasmático liso (REL)", "pos": { "x": 54, "y": 47 }, "explicacao": "Semelhante ao rugoso, mas sem ribossomas — especializado na síntese de lípidos e na desintoxicação de substâncias." },
+            { "id": "golgi", "label": "Complexo de Golgi", "pos": { "x": 29.5, "y": 61 }, "explicacao": "Recebe proteínas e lípidos do retículo endoplasmático, modifica-os, e empacota-os em vesículas para serem enviados para o destino certo (dentro ou fora da célula).", "curiosidade_sem_titulo": true, "curiosidade": "Dica de estudo: nessa fábrica, o complexo de Golgi é o departamento de embalagem e expedição, a preparar tudo para envio." },
+            { "id": "mitocondria", "label": "Mitocôndria", "pos": { "x": 63, "y": 44.5 }, "explicacao": "A \"central elétrica\" da célula — produz a maior parte do ATP (energia) através da respiração celular.", "curiosidade_sem_titulo": true, "curiosidade": "Dica de estudo: nessa fábrica, a mitocôndria é a central elétrica, a fornecer energia a todos os outros departamentos." },
+            { "id": "lisossoma", "label": "Lisossoma", "pos": { "x": 50, "y": 76 }, "seta": { "x": 46, "y": 60 }, "explicacao": "Contém enzimas digestivas, usadas para decompor resíduos celulares, partículas estranhas, ou organelos danificados.", "curiosidade_sem_titulo": true, "curiosidade": "Dica de estudo: nessa fábrica, os lisossomas são a equipa de limpeza e reciclagem, a decompor o que já não serve." },
+            { "id": "membrana_plasmatica", "label": "Membrana plasmática", "pos": { "x": 72.5, "y": 33 }, "explicacao": "Delimita a célula e controla a entrada e saída de substâncias (é seletivamente permeável)." },
+            { "id": "citoesqueleto", "label": "Citoesqueleto", "pos": { "x": 5, "y": 68 }, "seta": { "x": 11, "y": 44 }, "explicacao": "Rede de filamentos proteicos que dá forma e suporte estrutural à célula, e permite o movimento de organelos no seu interior." },
+            { "id": "citoplasma", "label": "Citoplasma", "pos": { "x": 87, "y": 72 }, "seta": { "x": 58, "y": 67.5 }, "explicacao": "Tudo o que está dentro da membrana plasmática, à volta do núcleo: o citosol (um meio gelatinoso, sobretudo água) e os organelos mergulhados nele. É aqui que decorre grande parte das reações químicas da célula." }
           ]
         },
         {
@@ -195,6 +192,36 @@
             { "id": "vacuolo_central", "label": "Vacúolo central", "pos": { "x": 70, "y": 54 }, "explicacao": "Grande estrutura membranar que ocupa a maior parte do volume da célula vegetal, armazenando água, nutrientes e resíduos, e ajudando a manter a rigidez da célula (turgescência)." },
             { "id": "parede_celular", "label": "Parede celular", "pos": { "x": 6, "y": 48 }, "explicacao": "Camada rígida externa à membrana plasmática, feita principalmente de celulose, que dá proteção e suporte estrutural extra à célula vegetal." }
           ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "sem_chips": true,
+          "ponte_texto": "Já viste os organelos de cada uma em separado — hora de as comparar lado a lado.",
+          "titulo": "Célula animal vs. célula vegetal",
+          "tabelas": [
+            {
+              "titulo": "Que estruturas tem cada uma?",
+              "colunas": ["Estrutura", "Célula animal", "Célula vegetal"],
+              "linhas": [
+                ["Núcleo", "✓", "✓"],
+                ["Ribossomas", "✓", "✓"],
+                ["Retículo endoplasmático (rugoso e liso)", "✓", "✓"],
+                ["Complexo de Golgi", "✓", "✓"],
+                ["Mitocôndrias", "✓", "✓"],
+                ["Membrana plasmática", "✓", "✓"],
+                ["Citoplasma e citoesqueleto", "✓", "✓"],
+                ["Lisossomas", "✓", "—"],
+                ["Cloroplastos", "—", "✓"],
+                ["Vacúolo central (grande)", "—", "✓"],
+                ["Parede celular", "—", "✓"]
+              ],
+              "nota": "Os lisossomas são mais característicos das células animais — nas células vegetais, é sobretudo o vacúolo central que desempenha essa função digestiva."
+            }
+          ],
+          "aprofundar": { "estilo": "interrogacao",
+            "titulo": "Porque é que há diferenças, se a origem é a mesma?",
+            "texto": "Tanto a célula animal como a vegetal são eucarióticas e partilham a mesma \"maquinaria\" básica, herdada de antepassados comuns muito antigos. As diferenças surgiram porque, ao longo da evolução, cada linhagem ficou especializada num estilo de vida diferente: as plantas são fixas e produzem o seu próprio alimento (daí a parede celular, para suporte e proteção, e os cloroplastos, para a fotossíntese), enquanto os animais se deslocam e obtêm o alimento de outros organismos (o que torna a forma mais flexível, sem parede celular, uma vantagem)."
+          }
         },
         {
           "tipo": "quiz_seccao",

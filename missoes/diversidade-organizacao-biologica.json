@@ -2,6 +2,7 @@
   "missao_id": "diversidade-organizacao-biologica",
   "titulo": "Diversidade e Organização Biológica",
   "disciplina": "biodiversidade",
+  "xp_total": 150,
   "imagem": "Wallpaper biodiversidade.png",
   "badge": { "icone": "🌍", "nome": "Mestre da Biodiversidade" },
   "secoes": [
@@ -324,12 +325,7 @@
               "mascote_feedback_errado": "O nome correto é espécies invasoras — endémicas são espécies que só existem naturalmente numa dada região."
             },
             {
-              "pergunta": "A principal causa atual de perda de biodiversidade é:",
-              "opcoes": ["Destruição de habitat", "Reprodução em cativeiro"],
-              "correta": 0,
-              "mascote_feedback_certo": "Boa! A destruição de habitats naturais é hoje a maior ameaça à biodiversidade global.",
-              "mascote_feedback_errado": "A principal causa atual é a destruição de habitat, não a reprodução em cativeiro (que é uma estratégia de conservação)."
-            },
+              "pergunta": "Reflorestar uma área degradada com espécies autóctones é um exemplo de:", "opcoes": ["Introdução de espécies exóticas", "Restauro ecológico"], "correta": 1, "mascote_feedback_certo": "Boa! O restauro ecológico recupera ecossistemas degradados, por exemplo com reflorestação.", "mascote_feedback_errado": "É restauro ecológico — recuperar um ecossistema degradado com espécies autóctones, e não introduzir espécies exóticas."},
             {
               "pergunta": "A Lista Vermelha, que classifica o risco de extinção das espécies, é mantida por:",
               "opcoes": ["A IUCN", "As Nações Unidas apenas"],

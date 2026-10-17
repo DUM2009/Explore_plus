@@ -31,6 +31,16 @@
     const anoSwitcher = document.getElementById('anoSwitcher');
     const anoOpcoes = anoSwitcher ? anoSwitcher.querySelectorAll('.ano-switcher-option') : [];
     let anoAtual = '10';
+    // data-todos-anos (página de Testes): mostra sempre 10º/11º/12º, mesmo
+    // sem conteúdo nesse ano, com uma mensagem "Em breve" (ver #anoVazio).
+    const mostrarTodosAnos = !!(anoSwitcher && anoSwitcher.hasAttribute('data-todos-anos'));
+    const anoVazio = document.getElementById('anoVazio');
+
+    function atualizarAnoVazio() {
+        if (!anoVazio) return;
+        const haVisiveis = Array.from(categorias).some((c) => !c.hidden);
+        anoVazio.hidden = haVisiveis;
+    }
 
     // Frase "Escolhe uma missão e começa a tua aventura na Biologia." — só
     // existe em Templates/index-missions.html (ver #missionsPageIntro);
@@ -46,12 +56,18 @@
             if (categoria.dataset.subject !== disciplinaAtual || !categoria.dataset.ano) return;
             categoria.hidden = categoria.dataset.ano !== anoAtual;
         });
+        atualizarAnoVazio();
     }
 
     // Só mostra os anos que a disciplina tem de facto (ex: Química só tem
     // 10º ano) e, se o ano ativo não existir nela, passa para o primeiro
     // que existir.
     function atualizarAnosDisponiveis(disciplina) {
+        if (mostrarTodosAnos) {
+            anoOpcoes.forEach((opcao) => { opcao.hidden = false; });
+            anoOpcoes.forEach((o) => o.classList.toggle('is-active', o.dataset.ano === anoAtual));
+            return true;
+        }
         const anosDisponiveis = new Set(
             Array.from(categorias)
                 .filter((c) => c.dataset.subject === disciplina && c.dataset.ano)
@@ -86,6 +102,7 @@
             introParagrafo.textContent = `Escolhe uma missão e começa a tua aventura na ${NOME_DISCIPLINA[disciplina]}.`;
         }
         if (anoSwitcher) anoSwitcher.hidden = !temAnos;
+        atualizarAnoVazio();
     }
 
     // Guarda a disciplina escolhida (localStorage, partilhado entre

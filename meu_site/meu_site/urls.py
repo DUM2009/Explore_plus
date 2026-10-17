@@ -53,6 +53,7 @@ urlpatterns = [
     path('Resumos/geologia/', views.pagina_Resumos_geologia, name='Resumos-geologia'),
     path('Resumos/<str:resumo_id>/', views.pagina_resumo_detalhe, name='resumo-detalhe'),
     path('Conquistas/', views.pagina_Conquistas, name='Conquistas'),
+    path('kim/', views.pagina_kim, name='kim'),
     path('Configurações/', views.pagina_Configurações, name='Configurações'),
     path('superexplore/', views.pagina_superexplore, name='superexplore'),
     path('superexplore/ativar/', views.iniciar_checkout_superexplore, name='iniciar-checkout-superexplore'),

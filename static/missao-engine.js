@@ -413,15 +413,48 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         // modelo de XP fixo por secção (o campo "xp" no JSON já não é usado
         // para calcular recompensas).
 
-        /** Maior XP que um ecrã pode valer — usado só para os badges de
-         *  "recompensa" mostrados antes de começar (mapa da missão), que
-         *  mostram o melhor cenário possível (quiz 100% certo). */
-        screenMaxXP(screen) {
-            return screen.tipo === 'quiz_seccao' ? 30 : 15;
+        /** Maior XP que cada ecrã pode valer (chave "<secao_id>::<índice>"),
+         *  usado nos badges de "recompensa" mostrados antes de começar (mapa
+         *  da missão) — o melhor cenário possível (quiz 100% certo). Pesos
+         *  base: 15 por ecrã, 30 por quiz. Se a missão tiver "xp_total" no
+         *  JSON, os pesos são escalados para somarem exatamente esse valor
+         *  (resto distribuído pelos maiores restos), em vez do cálculo
+         *  automático. */
+        xpMaxMap() {
+            if (this._xpMaxMap) return this._xpMaxMap;
+            const itens = [];
+            this.sections.forEach((section) => {
+                (section.ecrãs || []).forEach((screen, i) => {
+                    itens.push({ key: `${section.secao_id}::${i}`, peso: screen.tipo === 'quiz_seccao' ? 30 : 15 });
+                });
+            });
+            const somaPesos = itens.reduce((sum, item) => sum + item.peso, 0);
+            const alvo = Number(this.missao.xp_total);
+            const mapa = {};
+            if (alvo > 0 && somaPesos > 0) {
+                itens.forEach((item) => {
+                    const exato = (item.peso * alvo) / somaPesos;
+                    item.valor = Math.floor(exato);
+                    item.resto = exato - item.valor;
+                });
+                let falta = alvo - itens.reduce((sum, item) => sum + item.valor, 0);
+                [...itens].sort((a, b) => b.resto - a.resto).forEach((item) => {
+                    if (falta > 0) { item.valor += 1; falta -= 1; }
+                });
+            } else {
+                itens.forEach((item) => { item.valor = item.peso; });
+            }
+            itens.forEach((item) => { mapa[item.key] = item.valor; });
+            this._xpMaxMap = mapa;
+            return mapa;
+        }
+
+        screenMaxXP(section, screenIndex) {
+            return this.xpMaxMap()[`${section.secao_id}::${screenIndex}`] || 0;
         }
 
         sectionMaxXP(section) {
-            return (section.ecrãs || []).reduce((sum, screen) => sum + this.screenMaxXP(screen), 0);
+            return (section.ecrãs || []).reduce((sum, _, i) => sum + this.screenMaxXP(section, i), 0);
         }
 
         totalMissionXP() {
@@ -438,14 +471,15 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         /** Recompensa do quiz de secção, consoante o desempenho: tudo certo
          *  = 30 XP; pelo menos metade certo (mas não tudo) = 15 XP; menos de
          *  metade (incluindo zero) = 5 XP. */
-        computeQuizSectionXP(section, screen) {
+        computeQuizSectionXP(section, screen, screenIndex) {
+            const maximo = this.screenMaxXP(section, screenIndex);
             const totalQuestions = (screen.perguntas || []).length;
-            if (totalQuestions === 0) return 5;
+            if (totalQuestions === 0) return Math.round(maximo / 6);
             const quizState = this.state.quizState[section.secao_id];
             const correct = quizState ? quizState.answers.filter((a) => a.correct).length : 0;
-            if (correct === totalQuestions) return 30;
-            if (correct >= totalQuestions / 2) return 15;
-            return 5;
+            if (correct === totalQuestions) return maximo;
+            if (correct >= totalQuestions / 2) return Math.round(maximo / 2);
+            return Math.round(maximo / 6);
         }
 
         /** Paga a recompensa de um ecrã exatamente uma vez — a chave
@@ -459,8 +493,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (this.state.xpAwardedPages[key]) return;
 
             const amount = screen.tipo === 'quiz_seccao'
-                ? this.computeQuizSectionXP(section, screen)
-                : 15;
+                ? this.computeQuizSectionXP(section, screen, screenIndex)
+                : this.screenMaxXP(section, screenIndex);
 
             this.state.xpAwardedPages[key] = amount;
             this.saveState();
@@ -1352,7 +1386,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
 
         /** Ícone do selo do popup de entrada (ver showMascotPopup), consoante
          *  a disciplina da missão (missao.disciplina) — átomo para Física,
-         *  frasco para Química, montanha para Geologia, e folha (o mesmo
+         *  frasco para Química, montanha para Geologia, microscópio para Citologia, e folha (o mesmo
          *  ícone já usado no emblema de Biodiversidade) para as restantes
          *  disciplinas de Biologia. */
         disciplinaBadgeIconHtml() {
@@ -1361,6 +1395,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 fisica: '<circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/>',
                 quimica: '<path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/>',
                 geologia: '<path d="m8 3 4 8 5-5 5 15H2L8 3z"/>',
+                citologia: '<path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/>',
             };
             const path = icones[disciplina] || '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>';
             return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${path}</svg>`;
@@ -1606,9 +1641,10 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 const ano = partido ? partido[2].trim() : '';
                 return `
                     <li class="me-timeline-item">
-                        ${nome ? `<span class="me-timeline-label">${escapeHtml(nome)}</span>` : ''}
-                        <button type="button" class="me-diagrama-chip me-timeline-dot" data-ponto-index="${i}" aria-label="${escapeHtml(ponto.label || '')}" title="${escapeHtml(ponto.label || '')}"></button>
-                        ${ano ? `<span class="me-timeline-caption">${escapeHtml(ano)}</span>` : ''}
+                        <button type="button" class="me-diagrama-chip me-timeline-dot" data-ponto-index="${i}" aria-label="${escapeHtml(ponto.label || '')}" title="${escapeHtml(ponto.label || '')}">
+                            ${nome ? `<span class="me-timeline-label">${escapeHtml(nome)}</span>` : ''}
+                            ${ano ? `<span class="me-timeline-caption">${escapeHtml(ano)}</span>` : ''}
+                        </button>
                     </li>
                 `;
             }).join('');
@@ -2294,9 +2330,24 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     </button>
                 `;
             }).join('');
+            // ponto.seta { x, y }: o marcador fica numa zona livre (ponto.pos)
+            // e uma seta aponta dali para a estrutura (x/y, 0-100), para
+            // estruturas pequenas que o próprio marcador taparia. Coordenadas
+            // em % no SVG, por isso a seta não se deforma com a imagem.
+            const setasHtml = pontos.map((ponto) => {
+                if (!ponto.seta || typeof ponto.seta.x !== 'number' || typeof ponto.seta.y !== 'number') return '';
+                const x1 = (ponto.pos && typeof ponto.pos.x === 'number') ? ponto.pos.x : 50;
+                const y1 = (ponto.pos && typeof ponto.pos.y === 'number') ? ponto.pos.y : 50;
+                const linha = `x1="${x1}%" y1="${y1}%" x2="${ponto.seta.x}%" y2="${ponto.seta.y}%"`;
+                return `<line class="me-mapa-seta-contorno" ${linha}/><line class="me-mapa-seta" ${linha} marker-end="url(#meMapaSetaPonta)"/>`;
+            }).join('');
+            const setasSvg = setasHtml
+                ? `<svg class="me-mapa-setas" aria-hidden="true"><defs><marker id="meMapaSetaPonta" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto"><path d="M1 2 L13 8 L1 14 Z" class="me-mapa-seta-ponta"/></marker></defs>${setasHtml}</svg>`
+                : '';
             return `
                 <div class="me-mapa-wrap">
                     <img class="me-mapa-image" src="/static/images/${encodeURIComponent(screen.imagem)}" alt="${escapeHtml(screen.titulo || '')}" onerror="this.style.display='none'">
+                    ${setasSvg}
                     ${marcadoresHtml}
                 </div>
             `;
@@ -3469,18 +3520,19 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // uma curiosidade ou um inquérito no HTML inicial — sem isto,
             // só ganhavam a interação depois de se clicar noutro degrau e
             // voltar a este.
+            const pontosDiagrama = diagramScreen.pontos || [];
             if (explicacaoEl) {
                 this.bindCuriosidadeToggle(explicacaoEl);
                 this.bindAtencaoToggle(explicacaoEl);
-                this.bindInquerito(explicacaoEl, diagramScreen.pontos[0]);
+                this.bindInquerito(explicacaoEl, pontosDiagrama[0]);
             }
             const exercicioInicialEl = this.root.querySelector('#meDiagramaExercicio');
             if (exercicioInicialEl) {
-                this.bindExercicio(exercicioInicialEl, diagramScreen, diagramScreen.pontos[0]);
+                this.bindExercicio(exercicioInicialEl, diagramScreen, pontosDiagrama[0]);
             }
             this.root.querySelectorAll('[data-ponto-index]').forEach((chip) => {
                 chip.addEventListener('click', () => {
-                    const ponto = diagramScreen.pontos[Number(chip.dataset.pontoIndex)];
+                    const ponto = pontosDiagrama[Number(chip.dataset.pontoIndex)];
                     this.root.querySelectorAll(activeSelector).forEach((c) => c.classList.remove('is-active'));
                     chip.classList.add('is-active');
                     const exercicioEl = this.root.querySelector('#meDiagramaExercicio');

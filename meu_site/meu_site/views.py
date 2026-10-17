@@ -1309,6 +1309,19 @@ def mascote_conversa_detalhe(request, conversa_id):
     })
 
 
+@login_required(login_url='login')
+def pagina_kim(request):
+    """Página de página inteira do Kim — substitui o botão flutuante nas
+    páginas com sidebar (ver mascote-fab-global.js, que não é carregado
+    aqui nem nessas páginas): histórico de conversas à esquerda, chat à
+    direita, usando as mesmas APIs mascote-chat/mascote-conversas."""
+    try:
+        perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
+    except OperationalError:
+        perfil = None
+    return render(request, 'kim.html', {'perfil': perfil})
+
+
 # Imagem do painel quadrado de cada categoria na página de Testes — as
 # mesmas imagens usadas para a mesma categoria em index-missions.html.
 # Categoria sem entrada aqui cai no genérico 'images/Biology image.jpg'.
@@ -1455,28 +1468,30 @@ MISSOES_TESTES = [
             {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-3'},
         ],
     },
-    {
-        'categoria': 'Energia e Fenómenos Elétricos',
-        'titulo': 'Energia e Fenómenos Elétricos',
-        'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
-        'correcao': 'Correção automática e por IA.',
-        'testes': [
-            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m2-teste-1'},
-            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m2-teste-2'},
-            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m2-teste-3'},
-        ],
-    },
-    {
-        'categoria': 'Energia, Fenómenos Térmicos e Radiação',
-        'titulo': 'Energia, Fenómenos Térmicos e Radiação',
-        'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
-        'correcao': 'Correção automática e por IA.',
-        'testes': [
-            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m3-teste-1'},
-            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m3-teste-2'},
-            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m3-teste-3'},
-        ],
-    },
+    # ARQUIVADO (capítulo retirado do site; reativar descomentando o bloco abaixo):
+    #     {
+    #         'categoria': 'Energia e Fenómenos Elétricos',
+    #         'titulo': 'Energia e Fenómenos Elétricos',
+    #         'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
+    #         'correcao': 'Correção automática e por IA.',
+    #         'testes': [
+    #             {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m2-teste-1'},
+    #             {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m2-teste-2'},
+    #             {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m2-teste-3'},
+    #         ],
+    #     },
+    # ARQUIVADO (capítulo retirado do site; reativar descomentando o bloco abaixo):
+    #     {
+    #         'categoria': 'Energia, Fenómenos Térmicos e Radiação',
+    #         'titulo': 'Energia, Fenómenos Térmicos e Radiação',
+    #         'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
+    #         'correcao': 'Correção automática e por IA.',
+    #         'testes': [
+    #             {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m3-teste-1'},
+    #             {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m3-teste-2'},
+    #             {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m3-teste-3'},
+    #         ],
+    #     },
 ]
 
 # Capítulos que ainda não têm testes escritos — aparecem na página de
@@ -1492,9 +1507,9 @@ _TESTES_EM_BREVE = [
     ('Distribuição de Matéria', 'Transporte nos Animais'),
     ('Transformação e Utilização de Energia', 'Respiração Aeróbia e Fermentação'),
     ('Transformação e Utilização de Energia', 'Trocas Gasosas'),
-    ('Evolução', 'A Origem da Célula Eucariótica'),
-    ('Evolução', 'Lamarckismo e Darwinismo'),
-    ('Sistemática dos Seres Vivos', 'Taxonomia e Sistemática'),
+    # ARQUIVADO: ('Evolução', 'A Origem da Célula Eucariótica'),
+    # ARQUIVADO: ('Evolução', 'Lamarckismo e Darwinismo'),
+    # ARQUIVADO: ('Sistemática dos Seres Vivos', 'Taxonomia e Sistemática'),
     ('Crescimento, Renovação e Diferenciação Celular', 'O Código da Vida'),
     ('Crescimento, Renovação e Diferenciação Celular', 'Síntese Proteica'),
     ('Crescimento, Renovação e Diferenciação Celular', 'Ciclo Celular'),
@@ -1504,23 +1519,24 @@ _TESTES_EM_BREVE = [
     ('Reprodução', 'Ciclos de Vida'),
     ('Ecologia', 'Ecossistemas'),
     ('Corpo Humano', 'Sistema Nervoso e Hormonal'),
-    ('Botânica', 'Fisiologia Vegetal'),
+    # ARQUIVADO (capítulo de Botânica retirado da Explore Biology; reativar quando for preciso):
+    # ('Botânica', 'Fisiologia Vegetal'),
     ('Reprodução e Manipulação da Fertilidade', 'Reprodução e Manipulação da Fertilidade'),
-    ('Património Genético', 'Património Genético'),
-    ('Imunidade e Controlo de Doenças', 'Imunidade e Controlo de Doenças'),
-    ('Produção de Alimentos e Sustentabilidade', 'Produção de Alimentos e Sustentabilidade'),
+    # ARQUIVADO: ('Património Genético', 'Património Genético'),
+    # ARQUIVADO: ('Imunidade e Controlo de Doenças', 'Imunidade e Controlo de Doenças'),
+    # ARQUIVADO: ('Produção de Alimentos e Sustentabilidade', 'Produção de Alimentos e Sustentabilidade'),
     ('Movimento e Interações', 'Movimento e Interações'),
     ('Movimento e Interações', 'Forças e Movimentos'),
-    ('Sinais, Ondas e Som', 'Sinais, Ondas e Som'),
-    ('Eletromagnetismo', 'Eletromagnetismo'),
-    ('Eletromagnetismo', 'Ondas Eletromagnéticas'),
+    # ARQUIVADO: ('Sinais, Ondas e Som', 'Sinais, Ondas e Som'),
+    # ARQUIVADO: ('Eletromagnetismo', 'Eletromagnetismo'),
+    # ARQUIVADO: ('Eletromagnetismo', 'Ondas Eletromagnéticas'),
     ('Cinemática e Dinâmica 2D', 'Cinemática e Dinâmica 2D'),
     ('Centro de Massa e Momento Linear', 'Centro de Massa e Momento Linear'),
-    ('Fluidos', 'Fluidos'),
-    ('Campo Gravítico', 'Campo Gravítico'),
-    ('Campo Elétrico', 'Campo Elétrico'),
-    ('Campo Magnético', 'Campo Magnético'),
-    ('Física Moderna', 'Física Moderna'),
+    # ARQUIVADO: ('Fluidos', 'Fluidos'),
+    # ARQUIVADO: ('Campo Gravítico', 'Campo Gravítico'),
+    # ARQUIVADO: ('Campo Elétrico', 'Campo Elétrico'),
+    # ARQUIVADO: ('Campo Magnético', 'Campo Magnético'),
+    # ARQUIVADO: ('Física Moderna', 'Física Moderna'),
 ]
 for _categoria, _titulo in _TESTES_EM_BREVE:
     MISSOES_TESTES.append({
@@ -1559,6 +1575,11 @@ def encontrar_config_teste(teste_id):
 def montar_categorias_testes(plano_aluno):
     categorias = {}
     for missao in MISSOES_TESTES:
+        # Só aparecem capítulos com pelo menos um teste já escrito — os
+        # painéis "Em breve" (teste_id a None) ficam guardados em
+        # MISSOES_TESTES/_TESTES_EM_BREVE mas não são mostrados.
+        if not any(teste.get('teste_id') is not None for teste in missao['testes']):
+            continue
         testes = []
         for teste in missao['testes']:
             disponivel = teste.get('teste_id') is not None
@@ -1801,7 +1822,8 @@ UNIDADES_BIBLIOTECA = [
     {'id': 'genetica', 'nome': 'Genética', 'cor_a': '#6c4fb0', 'cor_b': '#8a6bd1', 'cor_soft': '#efe7fa', 'disciplina': 'Biologia'},
     {'id': 'ecologia', 'nome': 'Ecologia', 'cor_a': '#5f7d33', 'cor_b': '#789b4a', 'cor_soft': '#eef3e0', 'disciplina': 'Biologia'},
     {'id': 'corpo_humano', 'nome': 'Corpo Humano', 'cor_a': '#b03a3a', 'cor_b': '#dc3545', 'cor_soft': '#fdecee', 'disciplina': 'Biologia'},
-    {'id': 'botanica', 'nome': 'Botânica', 'cor_a': '#2f6b45', 'cor_b': '#1f8a5b', 'cor_soft': '#eaf3e9', 'disciplina': 'Biologia'},
+    # ARQUIVADO (capítulo de Botânica retirado da Explore Biology; reativar quando for preciso):
+    # {'id': 'botanica', 'nome': 'Botânica', 'cor_a': '#2f6b45', 'cor_b': '#1f8a5b', 'cor_soft': '#eaf3e9', 'disciplina': 'Biologia'},
     {'id': 'terra-sistema-rochas', 'nome': 'A Terra e as Rochas', 'cor_a': '#6b4a2f', 'cor_b': '#8f6b45', 'cor_soft': '#f1ece4', 'disciplina': 'Geologia'},
     {'id': 'tempo-e-tectonica', 'nome': 'Tempo e Tectónica de Placas', 'cor_a': '#1d4e73', 'cor_b': '#2f7ea6', 'cor_soft': '#e6f0f5', 'disciplina': 'Geologia'},
     {'id': 'origem-e-interior-da-terra', 'nome': 'Origem e Interior da Terra', 'cor_a': '#3a3a6b', 'cor_b': '#5a5a9e', 'cor_soft': '#eaeaf5', 'disciplina': 'Geologia'},

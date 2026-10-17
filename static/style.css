@@ -11631,6 +11631,167 @@ html.dark-mode .mascote-chat-input:focus {
 }
 
 /* =====================================================================
+   KIM — página de página inteira (ver kim.html): substitui o botão
+   flutuante nas páginas com sidebar. Reaproveita as classes
+   .mascote-chat-messages/-welcome/-bubble/-form (antes só usadas dentro
+   do painel fixo .mascote-chat-panel) encaixadas numa coluna normal, em
+   vez de um drawer sobreposto.
+   ===================================================================== */
+
+.kim-page-subtitle {
+    margin: -6px 0 20px;
+    color: var(--sp-muted, #6b7a71);
+    font-size: .95rem;
+}
+
+.kim-layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 18px;
+    height: calc(100vh - 230px);
+    min-height: 480px;
+}
+
+.kim-conversas-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 16px;
+    background: var(--sp-card, #ffffff);
+    border: 1px solid var(--sp-border, #e7e8e1);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.kim-nova-conversa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 11px;
+    border: 1px dashed #9fcbb3;
+    border-radius: 12px;
+    background: #f3faf6;
+    color: #1f8a5b;
+    font-weight: 700;
+    font-size: .88rem;
+    cursor: pointer;
+}
+
+.kim-nova-conversa svg {
+    width: 16px;
+    height: 16px;
+}
+
+.kim-conversas-titulo {
+    margin: 6px 0 0;
+    color: var(--sp-muted, #6b7a71);
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.kim-conversas-empty {
+    margin: 4px 0;
+    padding: 10px;
+    color: #8a9a92;
+    font-size: .82rem;
+    text-align: center;
+}
+
+.kim-conversas-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+}
+
+.kim-conversa-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    background: none;
+    text-align: left;
+    color: var(--sp-fg, #202821);
+    font-size: .84rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.kim-conversa-item:hover,
+.kim-conversa-item.is-active {
+    background: var(--sp-accent-soft, #eaf3e9);
+}
+
+.kim-conversa-item-meta {
+    margin-top: 2px;
+    color: #8a9a92;
+    font-size: .72rem;
+    font-weight: 500;
+}
+
+.kim-chat-col {
+    display: flex;
+    flex-direction: column;
+    background: var(--sp-card, #ffffff);
+    border: 1px solid var(--sp-border, #e7e8e1);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.kim-chat-messages {
+    background: #f7faf8;
+}
+
+@media (max-width: 860px) {
+    .kim-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto minmax(420px, 1fr);
+        height: auto;
+    }
+
+    .kim-conversas-col {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .kim-conversas-titulo {
+        display: none;
+    }
+
+    .kim-conversas-list {
+        flex-direction: row;
+    }
+
+    .kim-conversa-item {
+        min-width: 160px;
+    }
+}
+
+html.dark-mode .kim-conversas-col,
+html.dark-mode .kim-chat-col {
+    background: #17171a;
+    border-color: #27272a;
+}
+
+html.dark-mode .kim-chat-messages {
+    background: #0f0f10;
+}
+
+html.dark-mode .kim-conversa-item:hover,
+html.dark-mode .kim-conversa-item.is-active {
+    background: #1f1f23;
+}
+
+/* =====================================================================
    PERFIL — editorial redesign (hero + tabs), sidebar restored. Scoped to
    body.shadcn-profile, so this only ever touches /perfil/.
    ===================================================================== */
@@ -11654,12 +11815,9 @@ body.shadcn-profile .profile-hero {
     margin-bottom: 32px;
     padding: 28px 28px 28px 24px;
     border-radius: 24px;
-    /* Camada branca semi-transparente por cima da foto para o nome/painel
-       do Kim continuarem legíveis, em vez da foto pura (que tem céu e água
-       muito claros em algumas zonas, pouco contraste com texto escuro). */
-    background:
-        linear-gradient(rgba(255, 255, 255, .55), rgba(255, 255, 255, .55)),
-        url('/static/images/Fundo paisagem perfil.png') center / cover no-repeat;
+    /* Mesmo verde suave do cartão "Explore Biology" (.profile-subject-card),
+       em vez da foto de paisagem que tinha antes. */
+    background: var(--sp-accent-soft);
 }
 
 body.shadcn-profile .profile-hero-main {
@@ -11940,46 +12098,6 @@ body.shadcn-profile .profile-hero-next-title {
     margin: 8px 0 0;
     color: var(--sp-muted-fg);
     font-size: .76rem;
-}
-
-/* Quote, sitting in the hero's right-hand slot (where the "Falar com o
-   Kim" card used to be) instead of in the aside column — a plain caption
-   directly on the hero's landscape photo (no card/background of its own).
-   align-self pushes it down to roughly line up with the level pill at the
-   bottom of .profile-hero-left, instead of sitting flush with the top of
-   the row (the hero-left column's default flex-start alignment). */
-body.shadcn-profile .profile-hero-quote {
-    position: relative;
-    z-index: 1;
-    align-self: flex-end;
-    flex: 1 1 320px;
-    max-width: 420px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transition: opacity .35s ease;
-}
-
-body.shadcn-profile .profile-hero-quote.is-fading {
-    opacity: 0;
-}
-
-body.shadcn-profile .profile-hero-quote-text {
-    margin: 0;
-    color: #1c1c1c;
-    text-shadow: 0 1px 6px rgba(255, 255, 255, .45);
-    font-family: var(--sp-font-serif);
-    font-style: italic;
-    font-size: 1.1rem;
-    line-height: 1.45;
-}
-
-body.shadcn-profile .profile-hero-quote-dash {
-    display: block;
-    margin-top: 10px;
-    color: #1c1c1c;
-    text-shadow: 0 1px 6px rgba(255, 255, 255, .45);
-    opacity: .85;
 }
 
 /* ---- Tabs ---- */
@@ -12678,14 +12796,6 @@ body.shadcn-profile .profile-hero-row {
 
     body.shadcn-profile .profile-hero-avatar-edit-label--mobile {
         display: inline-flex;
-    }
-
-    /* The rotating quote now lives in .profile-quote-banner, above the
-       Explore Biology card (see @media(max-width:720px) further down) —
-       profile-django.js keeps both in sync, but the hero's own copy has
-       no room here and would just duplicate it, so it's hidden on mobile. */
-    body.shadcn-profile .profile-hero-quote {
-        display: none;
     }
 
     /* The hero's own avatar, greeting and level pill all moved out on
@@ -15076,4 +15186,37 @@ html.no-animations *::after {
     animation-delay: 0ms !important;
     transition-duration: 0.001ms !important;
     transition-delay: 0ms !important;
+}
+
+/* Mensagem da página de Testes quando o ano escolhido ainda não tem testes. */
+.missions-ano-vazio {
+    margin: 32px auto;
+    text-align: center;
+    font-weight: 600;
+    color: #6b7a72;
+}
+
+html.dark-mode .missions-ano-vazio {
+    color: #a1a1aa;
+}
+
+/* ARQUIVADO: a estante de madeira da Biblioteca (fundo, tábuas e paredes
+   laterais) foi retirada — ficam só os livros. Para repor a estante, apaga
+   este bloco. */
+.biblioteca-estante,
+html.dark-mode .biblioteca-estante {
+    background: none;
+    box-shadow: none;
+    padding: 12px 0 24px;
+}
+
+.biblioteca-livro-item {
+    padding-bottom: 0;
+}
+
+.biblioteca-livro-item::before,
+.biblioteca-livro-item::after,
+html.dark-mode .biblioteca-livro-item::before,
+html.dark-mode .biblioteca-livro-item::after {
+    content: none;
 }

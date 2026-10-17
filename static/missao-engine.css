@@ -1761,9 +1761,13 @@ html.dark-mode .me-timeline-rail {
     align-items: center;
 }
 
+/* O nome e o ano vivem dentro do botão (ver renderDiagrama), por isso
+   clicar neles também abre o ponto; ::before alarga ainda a zona de clique. */
 .me-diagrama-chip.me-timeline-dot {
-    width: 16px;
-    height: 16px;
+    position: relative;
+    overflow: visible;
+    width: 24px;
+    height: 24px;
     padding: 0;
     border-radius: 50%;
     background: #1f8a5b;
@@ -1780,20 +1784,26 @@ html.dark-mode .me-diagrama-chip.me-timeline-dot {
     background: #17734a;
 }
 
+.me-diagrama-chip.me-timeline-dot::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+}
+
 .me-diagrama-chip.me-timeline-dot.is-active {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     background: #123f2a;
 }
 
 .me-timeline-label {
     position: absolute;
-    bottom: calc(100% + 10px);
+    bottom: calc(100% + 14px);
     left: 50%;
     transform: translateX(-50%) rotate(-16deg);
     transform-origin: bottom center;
     white-space: nowrap;
-    font-size: .78rem;
+    font-size: .95rem;
     font-weight: 600;
     color: #1f5c33;
 }
@@ -1804,11 +1814,11 @@ html.dark-mode .me-timeline-label {
 
 .me-timeline-caption {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 14px);
     left: 50%;
     transform: translateX(-50%);
     white-space: nowrap;
-    font-size: .78rem;
+    font-size: .92rem;
     font-weight: 700;
     color: #4b5a52;
 }
@@ -2773,6 +2783,36 @@ html.dark-mode .me-arvore-node.is-active {
     border-radius: 14px;
 }
 
+/* Setas de ponto.seta (ver renderDiagramaMapa): contorno branco por baixo
+   para se lerem sobre qualquer cor da imagem. */
+.me-mapa-setas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.me-mapa-seta-contorno {
+    stroke: #ffffff;
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.me-mapa-seta {
+    stroke: #1f8a5b;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.me-mapa-seta-ponta {
+    fill: #1f8a5b;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linejoin: round;
+}
+
 .me-mapa-marker {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -2916,22 +2956,31 @@ html.dark-mode .me-analogia-texto-bloco {
 }
 
 .me-celebracao-emblema-nome {
+    position: relative;
+    overflow: hidden;
     padding: 10px 22px;
     border-radius: 999px;
     font-weight: 800;
-    color: #6b4a00;
-    background: linear-gradient(135deg, #ffe58a, #ffc83d);
-    border: 1px solid #ffd966;
-    animation: me-emblema-brilho 2s ease-in-out infinite;
+    color: #20242a;
+    background: linear-gradient(135deg, #e2e6ea, #9aa3ab 45%, #d4d8dc 65%, #7c848c);
 }
 
-@keyframes me-emblema-brilho {
-    0%, 100% { box-shadow: 0 0 8px 2px rgba(255, 200, 61, .5); }
-    50% { box-shadow: 0 0 22px 8px rgba(255, 200, 61, .85); }
+/* Faixa de luz que atravessa o emblema (mesma do selo da missão, ver
+   .mo-hero-badge::after em mission-styles.css). */
+.me-celebracao-emblema-nome::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .8) 48%, rgba(255, 255, 255, .8) 54%, transparent 72%);
+    background-size: 250% 100%;
+    background-position: 160% 0;
+    pointer-events: none;
+    animation: sidebar-plan-cta-shine 3.2s ease-in-out infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .me-celebracao-emblema-nome { animation: none; box-shadow: 0 0 14px 4px rgba(255, 200, 61, .6); }
+html.dark-mode .me-celebracao-emblema-nome {
+    background: linear-gradient(135deg, #c7ccd1, #7d858d 45%, #b9bfc4 65%, #5c636a);
+    color: #14171b;
 }
 
 .me-celebracao-card h1 {
