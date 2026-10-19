@@ -11640,6 +11640,11 @@ html.dark-mode .mascote-chat-form {
     border-top-color: #27272a;
 }
 
+html.dark-mode .kim-chat-disclaimer {
+    background: #17171a;
+    color: #6b7177;
+}
+
 html.dark-mode .mascote-chat-input {
     border-color: #27272a;
     background: #0a0a0b;
@@ -11846,6 +11851,30 @@ html.dark-mode body.shadcn-profile .profile-content:has(.kim-page--full) .missio
 
 .kim-chat-messages {
     background: #f7faf8;
+}
+
+/* Sugestões do Kim em lista (não grelha 2 colunas) — .mascote-chat-suggestions
+   é partilhada com o painel flutuante noutras páginas, por isso a mudança
+   fica presa a .kim-chat-messages em vez de alterar a regra partilhada. */
+.kim-chat-messages .mascote-chat-suggestions {
+    grid-template-columns: 1fr;
+}
+
+.kim-chat-messages .mascote-chat-suggestion {
+    padding: 13px 14px;
+}
+
+.mascote-chat-suggestion-emoji {
+    font-size: 1rem;
+}
+
+.kim-chat-disclaimer {
+    margin: 0;
+    padding: 8px 14px 12px;
+    background: #ffffff;
+    color: var(--sp-muted, #9aa39c);
+    font-size: .72rem;
+    text-align: center;
 }
 
 @media (max-width: 860px) {
