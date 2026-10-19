@@ -11675,6 +11675,19 @@ body.shadcn-profile .profile-main-shell:has(.kim-page--full) {
     padding-bottom: 0;
 }
 
+/* .profile-layout's own 24px side padding (generic, pre-shadcn-profile
+   rule shared by every page below 760px) is what was keeping the topbar
+   divider and the chat content inset from the real screen edges instead
+   of reaching them. Scoped to that same breakpoint — at desktop widths
+   .profile-layout's padding instead reserves room for the fixed sidebar
+   nav, and zeroing it there slides the whole page under the sidebar. */
+@media (max-width: 760px) {
+    body.shadcn-profile .profile-layout:has(.kim-page--full) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 /* Kim's page shows the greeting next to the hamburger instead of a page
    title, so the gap after the topbar can shrink — and a thin, soft line
    marks it off from the persona header right below, instead of the usual
@@ -11805,13 +11818,30 @@ html.dark-mode body.shadcn-profile .profile-content:has(.kim-page--full) .missio
     overflow: hidden;
 }
 
-.kim-persona-header {
+/* Cabeçalho do Kim fundido na própria .missions-topbar (ver kim.html):
+   ícone de conversas à esquerda, foto+nome do Kim a seguir, hambúrguer
+   empurrado para o fim da linha. .kim-topbar-persona/.kim-conversas-toggle/
+   .nav-drawer-toggle só precisam de ordem aqui — tudo o resto (tamanho,
+   cor) já vem das regras partilhadas de .missions-topbar. */
+body.shadcn-profile .missions-topbar.kim-topbar .kim-conversas-toggle {
+    order: 1;
+}
+
+.kim-topbar-persona {
+    order: 2;
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--sp-border, #e7e8e1);
-    background: var(--sp-card, #ffffff);
+    gap: 10px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+/* Beats the site-wide "hamburger pinned left" rule for <=720px (same
+   selector + one more class = higher specificity, regardless of which
+   comes later in the file) — on Kim's page it goes last instead. */
+body.shadcn-profile .missions-topbar.kim-topbar .nav-drawer-toggle {
+    order: 3;
+    margin-left: 0;
 }
 
 .kim-persona-avatar {
@@ -11823,6 +11853,12 @@ html.dark-mode body.shadcn-profile .profile-content:has(.kim-page--full) .missio
     border-radius: 12px;
     background: #1f8a5b;
     overflow: hidden;
+}
+
+.kim-persona-avatar--small {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
 }
 
 .kim-persona-avatar img {
@@ -11870,11 +11906,27 @@ html.dark-mode body.shadcn-profile .profile-content:has(.kim-page--full) .missio
 
 .kim-chat-disclaimer {
     margin: 0;
-    padding: 8px 14px 12px;
+    padding: 6px 14px 10px;
     background: #ffffff;
     color: var(--sp-muted, #9aa39c);
-    font-size: .72rem;
+    font-size: .62rem;
     text-align: center;
+}
+
+/* Caixa de pergunta do Kim retangular (não a pílula/stadium partilhada
+   por .mascote-chat-input noutras páginas). */
+.kim-chat-col .mascote-chat-input {
+    border-radius: 14px;
+}
+
+/* Conteúdo do chat a tocar nas margens do ecrã em vez de deixar uma
+   moldura lateral — só nesta página (ver nota acima sobre .kim-chat-messages). */
+.kim-chat-messages {
+    padding: 12px 6px;
+}
+
+.kim-chat-messages .mascote-chat-welcome {
+    padding: 20px 6px 8px;
 }
 
 @media (max-width: 860px) {
