@@ -11658,18 +11658,33 @@ html.dark-mode .mascote-chat-input:focus {
    vez de um drawer sobreposto.
    ===================================================================== */
 
-.kim-page-subtitle {
-    margin: -6px 0 20px;
-    color: var(--sp-muted, #6b7a71);
-    font-size: .95rem;
+body.shadcn-profile .missions-page.kim-page--full {
+    padding-bottom: 0;
+}
+
+/* Kim's page has no bottom tab bar, so it doesn't need the 76px of
+   .profile-main-shell clearance that rule reserves for it below 720px —
+   left in place, that gap is exactly what pushed the chat's own, already
+   exact, 100%-of-the-screen height into extra scroll. */
+body.shadcn-profile .profile-main-shell:has(.kim-page--full) {
+    padding-bottom: 0;
 }
 
 .kim-layout {
     display: grid;
     grid-template-columns: 280px minmax(0, 1fr);
     gap: 18px;
-    height: calc(100vh - 230px);
+    height: calc(100vh - 140px);
     min-height: 480px;
+    position: relative;
+}
+
+.kim-conversas-header {
+    display: none;
+}
+
+.kim-conversas-toggle {
+    display: none;
 }
 
 .kim-conversas-col {
@@ -11816,27 +11831,119 @@ html.dark-mode .mascote-chat-input:focus {
 }
 
 @media (max-width: 860px) {
+    /* No telemóvel o chat ocupa o ecrã inteiro (a conta exata é feita em
+       kim.js, que mede o espaço já ocupado acima do .kim-layout em vez de
+       assumir uma altura fixa de topbar) e a lista de conversas deixa de
+       ser uma coluna sempre visível — passa a um drawer que desliza por
+       cima, aberto pelo botão no cabeçalho. */
+    body.shadcn-profile .missions-page.kim-page--full {
+        padding: 0;
+    }
+
     .kim-layout {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto minmax(420px, 1fr);
-        height: auto;
+        display: block;
+        /* Fallback antes do kim.js medir o espaço real acima do layout
+           (topbar + paddings) e definir --kim-fill-height com precisão. */
+        height: var(--kim-fill-height, calc(100dvh - 64px));
     }
 
-    .kim-conversas-col {
-        flex-direction: row;
-        overflow-x: auto;
+    .kim-chat-col {
+        height: 100%;
+        border: none;
+        border-radius: 0;
     }
 
-    .kim-conversas-titulo {
+    .kim-persona-header {
+        border-radius: 0;
+    }
+
+    .kim-conversas-toggle {
+        display: grid;
+        flex: none;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: none;
+        box-shadow: none;
+        color: var(--sp-fg, #202821);
+        cursor: pointer;
+    }
+
+    .kim-conversas-toggle svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .kim-conversas-toggle:hover,
+    .kim-conversas-toggle[aria-expanded="true"] {
+        background: var(--sp-accent-soft, #eaf3e9);
+    }
+
+    .kim-conversas-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 20, 14, .4);
+        z-index: 40;
+    }
+
+    .kim-conversas-overlay[hidden] {
         display: none;
     }
 
-    .kim-conversas-list {
-        flex-direction: row;
+    .kim-conversas-col {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 41;
+        width: min(320px, 86vw);
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 0 30px rgba(0, 0, 0, .18);
+        transform: translateX(-100%);
+        transition: transform .25s ease;
     }
 
-    .kim-conversa-item {
-        min-width: 160px;
+    .kim-conversas-col.is-open {
+        transform: translateX(0);
+    }
+
+    .kim-conversas-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .kim-conversas-header .kim-conversas-titulo {
+        margin: 0;
+    }
+
+    .kim-conversas-close {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: none;
+        box-shadow: none;
+        color: var(--sp-fg, #202821);
+        cursor: pointer;
+    }
+
+    .kim-conversas-close svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .kim-conversas-list {
+        flex: 1 1 auto;
     }
 }
 

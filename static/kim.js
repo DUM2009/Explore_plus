@@ -13,11 +13,53 @@
     const novaConversaBtn = document.getElementById('kimNovaConversaBtn');
     const listaEl = document.getElementById('kimConversasList');
     const vaziaEl = document.getElementById('kimConversasEmpty');
+    const conversasCol = document.getElementById('kimConversasCol');
+    const conversasOverlay = document.getElementById('kimConversasOverlay');
+    const conversasToggleBtn = document.getElementById('kimConversasToggleBtn');
+    const conversasCloseBtn = document.getElementById('kimConversasCloseBtn');
+    const kimLayout = document.querySelector('.kim-layout');
 
     if (!messagesEl || !form || !input) return;
 
+    /* No telemóvel o chat ocupa o ecrã todo: em vez de assumir uma altura
+       fixa de topbar (que muda consoante o dispositivo/zoom), mede-se o
+       espaço já ocupado acima do .kim-layout e usa-se o resto. */
+    function ajustarAlturaLayout() {
+        if (!kimLayout) return;
+        if (window.innerWidth > 860) {
+            kimLayout.style.removeProperty('--kim-fill-height');
+            return;
+        }
+        const topo = kimLayout.getBoundingClientRect().top;
+        kimLayout.style.setProperty('--kim-fill-height', `${window.innerHeight - topo}px`);
+    }
+    ajustarAlturaLayout();
+    window.addEventListener('resize', ajustarAlturaLayout);
+    window.addEventListener('orientationchange', ajustarAlturaLayout);
+
     let history = [];
     let conversaId = null;
+
+    function fecharConversas() {
+        conversasCol?.classList.remove('is-open');
+        conversasCol?.setAttribute('aria-hidden', 'true');
+        if (conversasOverlay) conversasOverlay.hidden = true;
+        conversasToggleBtn?.setAttribute('aria-expanded', 'false');
+    }
+
+    function abrirConversas() {
+        conversasCol?.classList.add('is-open');
+        conversasCol?.setAttribute('aria-hidden', 'false');
+        if (conversasOverlay) conversasOverlay.hidden = false;
+        conversasToggleBtn?.setAttribute('aria-expanded', 'true');
+    }
+
+    conversasToggleBtn?.addEventListener('click', () => {
+        if (conversasCol?.classList.contains('is-open')) fecharConversas();
+        else abrirConversas();
+    });
+    conversasCloseBtn?.addEventListener('click', fecharConversas);
+    conversasOverlay?.addEventListener('click', fecharConversas);
 
     function bindSuggestionButtons(root) {
         root?.querySelectorAll('.mascote-chat-suggestion').forEach((button) => {
@@ -98,6 +140,7 @@
             }
             if (sendBtn) sendBtn.disabled = false;
             carregarListaConversas();
+            fecharConversas();
         } catch (error) {
             // silencia — a conversa simplesmente não abre
         }
@@ -115,6 +158,7 @@
         }
         if (sendBtn) sendBtn.disabled = false;
         carregarListaConversas();
+        fecharConversas();
     });
 
     async function sendMessage() {
