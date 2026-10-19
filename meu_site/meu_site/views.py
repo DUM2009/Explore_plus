@@ -124,8 +124,18 @@ def pagina_perfil(request):
     progresso = {} if perfil_legacy else (perfil.progresso_missoes or {})
     badges = {} if perfil_legacy else (perfil.conquistas or {})
 
-    (_, titulo_nome, titulo_icone, titulo_descricao), proximo_titulo = titulo_para_nivel(perfil.nivel)
-    if not perfil_legacy and perfil.titulo_atual != titulo_nome:
+    # Disciplina escolhida no subject-switcher (ver static/subject-switcher.js
+    # e profile-django.js, que reenviam isto aqui por querystring assim que
+    # leem a escolha guardada no localStorage) — 'biology' por omissão no
+    # primeiro carregamento da página, antes de o JS correr.
+    disciplina_atual = request.GET.get('disciplina', 'biology')
+    if disciplina_atual not in PerfilAluno.DISCIPLINAS_SUPORTADAS:
+        disciplina_atual = 'biology'
+    nivel_atual = perfil.obter_nivel_disciplina(disciplina_atual)
+    xp_atual = perfil.obter_xp_disciplina(disciplina_atual)
+
+    (_, titulo_nome, titulo_icone, titulo_descricao), proximo_titulo = titulo_para_nivel(nivel_atual)
+    if not perfil_legacy and disciplina_atual == 'biology' and perfil.titulo_atual != titulo_nome:
         perfil.titulo_atual = titulo_nome
         perfil.save(update_fields=['titulo_atual'])
 
@@ -381,12 +391,13 @@ def pagina_perfil(request):
 
     return render(request, 'perfil.html', {
         'perfil': perfil,
-        'nivel': perfil.nivel,
-        'xp': perfil.pontos_xp,
-        'xp_progress_percent': perfil.pontos_xp % 100,
-        'proximo_nivel_xp': perfil.nivel * 100,
-        'xp_restante': (perfil.nivel * 100) - perfil.pontos_xp,
-        'proximo_nivel': perfil.nivel + 1,
+        'nivel': nivel_atual,
+        'xp': xp_atual,
+        'xp_progress_percent': xp_atual % 100,
+        'proximo_nivel_xp': nivel_atual * 100,
+        'xp_restante': (nivel_atual * 100) - xp_atual,
+        'proximo_nivel': nivel_atual + 1,
+        'disciplina_atual': disciplina_atual,
         'progresso_missoes': progresso,
         'progresso_medio': round(sum(missao['percent'] for missao in missoes) / len(missoes)) if missoes else 0,
         'missoes_completas': sum(1 for missao in missoes if missao['percent'] >= 100),
@@ -1212,6 +1223,14 @@ def salvar_progresso_missao(request):
                     unidade, float(score),
                 )
 
+    # Em que disciplina gravar este XP — ver static/profile-xp.js (manda-a
+    # no corpo do pedido) e DISCIPLINA_MISSAO_PARA_SUBJECT acima. 'biology'
+    # por omissão: mantém o comportamento de sempre para pedidos antigos
+    # (sem este campo) e para o pseudo-mission_id "profile".
+    disciplina = str(dados.get('disciplina', '') or 'biology').strip().lower()
+    if disciplina not in PerfilAluno.DISCIPLINAS_SUPORTADAS:
+        disciplina = 'biology'
+
     xp = dados.get('xp')
     if isinstance(xp, (int, float)) and xp >= 0:
         # max() é de propósito: o XP "oficial" de cada aluno vive no
@@ -1221,9 +1240,8 @@ def salvar_progresso_missao(request):
         # dispositivo. O efeito secundário é que uma alteração manual no
         # admin não "pega" enquanto o browser do aluno continuar a
         # ressincronizar o valor antigo por cima.
-        perfil.pontos_xp = max(perfil.pontos_xp, int(xp))
-        perfil.nivel = perfil.pontos_xp // 100 + 1
-        update_fields.extend(['pontos_xp', 'nivel'])
+        perfil.sincronizar_xp_disciplina(disciplina, int(xp))
+        update_fields.extend(['pontos_xp', 'nivel'] if disciplina == 'biology' else ['xp_disciplinas'])
 
     perfil.save(update_fields=update_fields)
 
@@ -1231,8 +1249,9 @@ def salvar_progresso_missao(request):
         'ok': True,
         'missionId': mission_id,
         'percent': percentage,
-        'xp': perfil.pontos_xp,
-        'level': perfil.nivel,
+        'disciplina': disciplina,
+        'xp': perfil.obter_xp_disciplina(disciplina),
+        'level': perfil.obter_nivel_disciplina(disciplina),
     })
 
 
@@ -1979,6 +1998,32 @@ UNIDADES_BIBLIOTECA_BIOLOGIA = [u for u in UNIDADES_BIBLIOTECA if u['disciplina'
 # ainda (só são avaliadas via exame), por isso nunca aparecem aqui — os seus
 # modos de "testes" do gráfico ficam sempre vazios até existir conteúdo.
 UNIDADE_ID_PARA_DISCIPLINA = {u['id']: u['disciplina'] for u in UNIDADES_BIBLIOTECA}
+
+# O campo "disciplina" de cada missoes/<id>.json (ver pagina_missao) é mais
+# fino do que as 4 opções do subject-switcher — as missões de Biologia
+# usam o nome da própria unidade (citologia/bioquimica/...), não "biology"
+# a direito. Usado por salvar_progresso_missao para saber em que disciplina
+# (das 4 do PerfilAluno.DISCIPLINAS_SUPORTADAS) gravar o XP de cada missão.
+DISCIPLINA_MISSAO_PARA_SUBJECT = {
+    'citologia': 'biology', 'bioquimica': 'biology', 'genetica': 'biology',
+    'ecologia': 'biology', 'corpo_humano': 'biology', 'botanica': 'biology',
+    'geologia': 'geology', 'fisica': 'physics', 'quimica': 'chemistry',
+}
+
+
+def obter_subject_da_missao(missao_id):
+    """Carrega só o suficiente de missoes/<id>.json para saber a que
+    disciplina do subject-switcher ela pertence — ver
+    DISCIPLINA_MISSAO_PARA_SUBJECT acima."""
+    pasta_missoes = settings.BASE_DIR.parent / 'missoes'
+    for caminho_json in [pasta_missoes / f'{missao_id}.json', *pasta_missoes.glob(f'*/{missao_id}.json')]:
+        try:
+            with open(caminho_json, encoding='utf-8') as ficheiro:
+                missao_json = json.load(ficheiro)
+            return DISCIPLINA_MISSAO_PARA_SUBJECT.get(missao_json.get('disciplina'), 'biology')
+        except (FileNotFoundError, json.JSONDecodeError):
+            continue
+    return 'biology'
 
 
 def carregar_termos_unidade(unidade_id):
