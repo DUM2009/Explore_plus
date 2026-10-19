@@ -893,7 +893,7 @@ def pagina_logout(request):
     return redirect('login')
 
 
-def enviar_email_brevo(destinatario, assunto, texto):
+def enviar_email_brevo(destinatario, assunto, texto, html=None):
     """
     Envia um email pela API HTTP da Brevo (brevo.com) — ver o comentário em
     settings.py (BREVO_API_KEY) sobre porque não se usa SMTP direto aqui
@@ -901,9 +901,24 @@ def enviar_email_brevo(destinatario, assunto, texto):
     pendura o pedido em vez de dar um erro apanhável). `timeout` curto e
     exceções apanhadas de propósito: uma falha aqui nunca deve rebentar a
     página que pediu o email — só significa que o email não chega.
+
+    `html`, quando dado, evita um problema real visto em produção: emails
+    só de texto simples com um link comprido (como o de redefinir password)
+    podem ser quebrados a meio pela codificação quoted-printable usada no
+    envio, e o cliente de email (Gmail, etc.) deteta/liga só um bocado do
+    URL — o link parece sempre "inválido" mesmo recém-criado. Um link como
+    <a href="..."> dentro de HTML não sofre disso.
     """
     if not settings.BREVO_API_KEY:
         return False
+    payload = {
+        'sender': {'email': settings.DEFAULT_FROM_EMAIL, 'name': 'Explore+'},
+        'to': [{'email': destinatario}],
+        'subject': assunto,
+        'textContent': texto,
+    }
+    if html:
+        payload['htmlContent'] = html
     try:
         resposta = requests.post(
             'https://api.brevo.com/v3/smtp/email',
@@ -912,12 +927,7 @@ def enviar_email_brevo(destinatario, assunto, texto):
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
-            json={
-                'sender': {'email': settings.DEFAULT_FROM_EMAIL, 'name': 'Explore+'},
-                'to': [{'email': destinatario}],
-                'subject': assunto,
-                'textContent': texto,
-            },
+            json=payload,
             timeout=8,
         )
         return resposta.ok
@@ -959,6 +969,20 @@ def pagina_recuperar_password(request):
                         f'Clica no link abaixo para escolheres uma nova (válido por algumas horas):\n\n'
                         f'{link}\n\n'
                         f'Se não foste tu a pedir, ignora este email — a tua password atual continua válida.'
+                    ),
+                    html=(
+                        f'<div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;padding:24px">'
+                        f'<p>Olá {user.username},</p>'
+                        f'<p>Recebemos um pedido para repor a tua password na Explore+. '
+                        f'Clica no botão abaixo para escolheres uma nova (válido por algumas horas):</p>'
+                        f'<p style="text-align:center;margin:28px 0">'
+                        f'<a href="{link}" style="background:#9abe4f;color:#26380d;padding:12px 28px;'
+                        f'border-radius:18px;text-decoration:none;font-weight:bold;display:inline-block">'
+                        f'Escolher nova password</a></p>'
+                        f'<p style="color:#6b7280;font-size:0.85rem">Se o botão não funcionar, copia e cola este '
+                        f'link no browser:<br>{link}</p>'
+                        f'<p>Se não foste tu a pedir, ignora este email — a tua password atual continua válida.</p>'
+                        f'</div>'
                     ),
                 )
             enviado = True
