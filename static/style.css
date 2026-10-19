@@ -12647,6 +12647,17 @@ body.shadcn-profile .profile-tabs-bottom {
     display: none;
 }
 
+/* Duas cópias do cartão de citação — uma ao lado do hero no desktop
+   (dentro de .profile-hero-row), outra depois do cartão "Explore Biology"
+   no telemóvel (dentro de .profile-grid, usando o mesmo truque de `order`
+   que já reordena .profile-grid-main para antes dela — ver mais abaixo).
+   Não dá para mover UM elemento entre os dois sítios só com CSS, por
+   estarem em ramos diferentes da árvore (o hero vive fora de
+   .profile-content); profile-django.js atualiza as duas em paralelo. */
+body.shadcn-profile .profile-quote-banner--mobile {
+    display: none;
+}
+
 /* ---- Desktop: hero card + quote banner side by side ----
    .profile-hero already spans the full page width on its own (see the
    comment on .profile-hero above); .profile-hero-row just wraps it
@@ -12942,6 +12953,16 @@ body.shadcn-profile .profile-hero-row {
        in length) — .profile-quote-banner-text clamps to 4 lines with an
        ellipsis instead of growing the card, so swapping quotes never
        reflows the page around it. */
+    /* No telemóvel a cópia do desktop (ao lado do hero) nunca aparece — só
+       a que está dentro de .profile-grid, reordenada para depois do cartão
+       "Explore Biology" pelo bloco de `order` mais abaixo. Seletor com as
+       duas classes (em vez de só --desktop) de propósito, para ganhar por
+       especificidade à regra .profile-quote-banner logo a seguir, que
+       também lhe toca (mesmo media query) e marca display:flex. */
+    body.shadcn-profile .profile-quote-banner.profile-quote-banner--desktop {
+        display: none;
+    }
+
     body.shadcn-profile .profile-quote-banner {
         display: flex;
         align-items: center;

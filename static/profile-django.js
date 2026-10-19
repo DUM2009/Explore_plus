@@ -593,24 +593,26 @@ const SCIENCE_QUOTES = [
     { text: 'O que observamos não é a natureza em si, mas a natureza exposta ao nosso método de questionamento.', author: 'Werner Heisenberg' },
 ];
 
-// A citação só vive em .profile-quote-banner agora (ver perfil.html) — já
-// não há uma segunda cópia a rodar dentro do .profile-hero.
-const profileQuoteBanner = document.getElementById('profileQuoteBanner');
-const profileQuoteText = document.getElementById('profileQuoteText');
-const profileQuoteAuthor = document.getElementById('profileQuoteAuthor');
+// Duas cópias do cartão (.profile-quote-banner--desktop ao lado do hero,
+// .profile-quote-banner--mobile depois do cartão "Explore Biology" — ver
+// perfil.html/style.css sobre porque não dá para ser só uma) — por
+// classe, não por id, para atualizar as duas ao mesmo tempo.
+const profileQuoteBanners = document.querySelectorAll('.profile-quote-banner');
+const profileQuoteTexts = document.querySelectorAll('.profile-quote-banner-text');
+const profileQuoteAuthors = document.querySelectorAll('.profile-quote-banner-author');
 
-if (profileQuoteText && profileQuoteAuthor) {
+if (profileQuoteTexts.length) {
     let quoteIndex = 0;
 
     setInterval(() => {
         quoteIndex = (quoteIndex + 1) % SCIENCE_QUOTES.length;
-        profileQuoteBanner?.classList.add('is-fading');
+        profileQuoteBanners.forEach((el) => el.classList.add('is-fading'));
 
         setTimeout(() => {
             const quote = SCIENCE_QUOTES[quoteIndex];
-            profileQuoteText.textContent = quote.text;
-            profileQuoteAuthor.textContent = `— ${quote.author}`;
-            profileQuoteBanner?.classList.remove('is-fading');
+            profileQuoteTexts.forEach((el) => { el.textContent = quote.text; });
+            profileQuoteAuthors.forEach((el) => { el.textContent = `— ${quote.author}`; });
+            profileQuoteBanners.forEach((el) => el.classList.remove('is-fading'));
         }, 350);
     }, 5000);
 }
