@@ -5506,6 +5506,15 @@ body.nav-drawer-open {
     width:min(320px,86vw);
     height:100vh;
     min-height:100vh;
+    /* 100vh no telemóvel é medido contra a altura "cheia" do ecrã, maior do
+       que o espaço realmente visível quando a barra de endereço do browser
+       está à vista — a conta (.profile-account, ao fundo) ficava cortada
+       por baixo dessa barra sem forma de lhe chegar (só .profile-sidebar-nav
+       tem scroll próprio, de propósito, para a conta ficar sempre visível
+       — ver o comentário aí). dvh mede o espaço visível a sério; navegadores
+       sem suporte ficam com o 100vh acima. */
+    height:100dvh;
+    min-height:100dvh;
 
     --sb-pad-r:26px;
     padding:30px 26px;
