@@ -11670,6 +11670,24 @@ body.shadcn-profile .profile-main-shell:has(.kim-page--full) {
     padding-bottom: 0;
 }
 
+/* Kim's page shows the greeting next to the hamburger instead of a page
+   title, so the gap after the topbar can shrink — and a thin, soft line
+   marks it off from the persona header right below, instead of the usual
+   24px of plain whitespace. */
+body.shadcn-profile .profile-content:has(.kim-page--full) {
+    gap: 10px;
+}
+
+body.shadcn-profile .profile-content:has(.kim-page--full) .missions-topbar {
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, .08);
+}
+
+html.dark-mode body.shadcn-profile .profile-content:has(.kim-page--full) .missions-topbar {
+    border-bottom-color: rgba(255, 255, 255, .08);
+}
+
 .kim-layout {
     display: grid;
     grid-template-columns: 280px minmax(0, 1fr);
