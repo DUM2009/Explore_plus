@@ -12620,6 +12620,32 @@ body.shadcn-profile .profile-vocacional-card {
     background: var(--sp-accent-soft);
 }
 
+/* Mesma cor pastel do cartão "Explore X" ao lado (ver
+   .profile-subject-card--chemistry/--physics/--geology acima). */
+body.shadcn-profile .profile-vocacional-card--chemistry {
+    background: #fdeee0;
+}
+
+body.shadcn-profile .profile-vocacional-card--physics {
+    background: #efe7fa;
+}
+
+body.shadcn-profile .profile-vocacional-card--geology {
+    background: #f1ece4;
+}
+
+html.dark-mode body.shadcn-profile .profile-vocacional-card--chemistry {
+    background: rgba(230, 140, 60, .14);
+}
+
+html.dark-mode body.shadcn-profile .profile-vocacional-card--physics {
+    background: rgba(140, 100, 200, .14);
+}
+
+html.dark-mode body.shadcn-profile .profile-vocacional-card--geology {
+    background: rgba(170, 130, 90, .14);
+}
+
 body.shadcn-profile .profile-vocacional-top {
     display: flex;
     align-items: center;
