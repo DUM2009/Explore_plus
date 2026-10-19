@@ -20,6 +20,21 @@
             .replace(/>/g, '&gt;');
     }
 
+    // O campo "disciplina" de cada missoes/<id>.json é mais fino do que as
+    // 4 opções do subject-switcher (Biologia usa o nome da própria unidade
+    // — citologia/bioquimica/... — não "biology" a direito). Mesma tabela
+    // que DISCIPLINA_MISSAO_PARA_SUBJECT em views.py — mantém os dois lados
+    // em sincronia manualmente, já que um é Python e o outro JS.
+    const DISCIPLINA_MISSAO_PARA_SUBJECT = {
+        citologia: 'biology', bioquimica: 'biology', genetica: 'biology',
+        ecologia: 'biology', corpo_humano: 'biology', botanica: 'biology',
+        geologia: 'geology', fisica: 'physics', quimica: 'chemistry',
+    };
+
+    function disciplinaSubjectDaMissao(missao) {
+        return DISCIPLINA_MISSAO_PARA_SUBJECT[missao?.disciplina] || 'biology';
+    }
+
     // Termos da Biblioteca do Explorador desta missão (ver
     // termos_vocabulario_para_missao em views.py e window.exploreVocabularioTermos
     // em missao.html) — sublinhados em qualquer texto de ecrã onde apareçam,
@@ -229,6 +244,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
     class MissaoEngine {
         constructor(missao, options = {}) {
             this.missao = missao;
+            this.disciplinaSubject = disciplinaSubjectDaMissao(missao);
             this.root = options.root;
             this.missionsIndexUrl = options.missionsIndexUrl || '#';
             // Teste grátis desta missão (painel "Testa o que aprendeste"); vazio = ainda não existe.
@@ -509,7 +525,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 const source = window.ProfileXP.buildRewardSource
                     ? window.ProfileXP.buildRewardSource('missao', `${this.missao.missao_id}:${key}`)
                     : undefined;
-                window.ProfileXP.awardXPToCurrentUser(amount, source);
+                window.ProfileXP.awardXPToCurrentUser(amount, source, undefined, {}, this.disciplinaSubject);
             }
         }
 
@@ -1078,7 +1094,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             let xpStat = '';
             if (window.ProfileXP) {
                 try {
-                    const stats = window.ProfileXP.getProfileStats(window.ProfileXP.getCurrentUserProfile());
+                    const stats = window.ProfileXP.getProfileStats(window.ProfileXP.getCurrentUserProfile(undefined, this.disciplinaSubject));
                     xpStat = `<span class="lesson-stat">${stats.xp} XP</span>`;
                 } catch (error) {
                     xpStat = '';
@@ -3772,7 +3788,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             });
 
             const xpAfter = window.ProfileXP
-                ? window.ProfileXP.getProfileStats(window.ProfileXP.getCurrentUserProfile()).xp
+                ? window.ProfileXP.getProfileStats(window.ProfileXP.getCurrentUserProfile(undefined, this.disciplinaSubject)).xp
                 : totalXP;
 
             fetch(this.progressSyncUrl, {
@@ -3786,7 +3802,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                         completedSections: this.state.completedSections,
                         sectionScores
                     },
-                    xp: xpAfter
+                    xp: xpAfter,
+                    disciplina: this.disciplinaSubject
                 })
             }).catch(() => {
                 // Fire-and-forget — o progresso local (localStorage) já foi guardado.

@@ -112,12 +112,47 @@ class PerfilAluno(models.Model):
     convidado_por = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True, blank=True, related_name='convidados'
     )
+    # Nível/XP de Biologia continuam a viver em pontos_xp/nivel acima (seria
+    # arriscado migrar dados reais de alunos já lançados só para "arrumar").
+    # As outras disciplinas do subject-switcher (chemistry/physics/geology)
+    # ganham aqui o seu próprio progresso, independente — ver
+    # obter_xp_disciplina/obter_nivel_disciplina/sincronizar_xp_disciplina
+    # abaixo, usados em pagina_perfil e salvar_progresso_missao (views.py).
+    # Formato: {"chemistry": 120, "physics": 340, "geology": 0}.
+    xp_disciplinas = models.JSONField(default=dict, blank=True)
+
+    DISCIPLINAS_SUPORTADAS = ('biology', 'chemistry', 'physics', 'geology')
 
     class Meta:
         app_label = 'meu_site'
 
     def __str__(self):
         return f"Perfil de {self.user.username} - Nível {self.nivel}"
+
+    def obter_xp_disciplina(self, disciplina):
+        if disciplina not in self.DISCIPLINAS_SUPORTADAS or disciplina == 'biology':
+            return self.pontos_xp
+        return int((self.xp_disciplinas or {}).get(disciplina, 0))
+
+    def obter_nivel_disciplina(self, disciplina):
+        if disciplina not in self.DISCIPLINAS_SUPORTADAS or disciplina == 'biology':
+            return self.nivel
+        return self.obter_xp_disciplina(disciplina) // 100 + 1
+
+    def sincronizar_xp_disciplina(self, disciplina, xp_novo):
+        """
+        max() de propósito, não substituição direta — mesma razão do
+        pontos_xp original: o XP "oficial" vive no localStorage do browser
+        (ver static/profile-xp.js), e um browser novo/cache limpa não pode
+        apagar XP já sincronizado de outro dispositivo.
+        """
+        if disciplina not in self.DISCIPLINAS_SUPORTADAS or disciplina == 'biology':
+            self.pontos_xp = max(self.pontos_xp, int(xp_novo))
+            self.nivel = self.pontos_xp // 100 + 1
+            return
+        atual = dict(self.xp_disciplinas or {})
+        atual[disciplina] = max(int(atual.get(disciplina, 0)), int(xp_novo))
+        self.xp_disciplinas = atual
 
     def verificar_e_incrementar_uso_chat(self):
         """

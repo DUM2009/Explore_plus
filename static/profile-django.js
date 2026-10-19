@@ -150,10 +150,14 @@ function renderRecentActivity(profile) {
     `;
 }
 
-function getStoredProfile() {
+// Mesma lógica de sufixo de static/profile-xp.js (getProfileStorageKey) —
+// 'biology' (ou omitido) usa a chave de sempre, sem sufixo, para não
+// "perder" o XP já guardado antes de existir esta distinção.
+function getStoredProfile(disciplina) {
+    const sufixo = (disciplina && disciplina !== 'biology') ? `_${disciplina}` : '';
     const keys = [
-        `explore_profile_uid:django-${window.exploreUserId}`,
-        `explore_profile_email:${String(window.exploreUserEmail || '').toLowerCase()}`
+        `explore_profile_uid:django-${window.exploreUserId}${sufixo}`,
+        `explore_profile_email:${String(window.exploreUserEmail || '').toLowerCase()}${sufixo}`
     ];
 
     for (const key of keys) {
@@ -178,6 +182,10 @@ function getStoredProfile() {
         }
     }
 
+    // mission_* são sempre de missões de Biologia (fotossíntese, etc.) —
+    // só faz sentido como fallback para esse balde.
+    if (disciplina && disciplina !== 'biology') return null;
+
     const missionIds = ['photosynthesis', 'mitosis', 'meiosis'];
     const legacyProfile = { xp: 0 };
 
@@ -199,9 +207,20 @@ function getStoredProfile() {
     return legacyProfile.xp > 0 ? legacyProfile : null;
 }
 
-const storedProfile = getStoredProfile();
-renderRecentActivity(storedProfile || {});
-if (storedProfile) {
+renderRecentActivity(getStoredProfile() || {});
+
+// Disciplina que o servidor já usou para desenhar nivel/XP nesta resposta
+// (ver disciplina_atual em pagina_perfil, views.py — por omissão Biologia,
+// ou a que vier em ?disciplina= quando o subject-switcher navega para lá).
+// Aplica por cima o que estiver no localStorage dessa MESMA disciplina
+// (o XP "oficial" vive aqui, no browser — ver profile-xp.js) só quando
+// existir mesmo; sem isso, fica tal e qual o servidor desenhou (evita
+// mostrar "0 XP" para um aluno antigo só porque este browser/cache não
+// tem o progresso guardado localmente).
+function aplicarXPDisciplina(disciplina) {
+    const storedProfile = getStoredProfile(disciplina);
+    if (!storedProfile) return;
+
     const xp = Math.max(0, Number(storedProfile.xp) || 0);
     // +1 so a brand-new student reads as "Nível 1", not "Nível 0" — matches
     // the same convention used server-side (PerfilAluno.nivel, models.py).
@@ -226,6 +245,30 @@ if (storedProfile) {
     const streakDays = Math.max(0, Number(storedProfile.streak?.current) || 0);
     if (profileStreakCount) profileStreakCount.textContent = streakDays;
 }
+
+const CHAVE_DISCIPLINA_SWITCHER = 'explore_disciplina_switcher';
+const disciplinaAtual = ['biology', 'chemistry', 'physics', 'geology'].includes(window.exploreDisciplinaAtual)
+    ? window.exploreDisciplinaAtual
+    : 'biology';
+
+// Chegou aqui sem ?disciplina= (ex: link direto, ou veio de outra página)
+// mas o aluno tinha escolhido outra disciplina antes (ver
+// static/subject-switcher.js, index-missions.html) — honra essa escolha
+// com um único redirect, para o Perfil não "esquecer" o que foi escolhido
+// nas Missões.
+if (!new URLSearchParams(window.location.search).has('disciplina')) {
+    let guardada = null;
+    try {
+        guardada = localStorage.getItem(CHAVE_DISCIPLINA_SWITCHER);
+    } catch (erro) {
+        guardada = null;
+    }
+    if (guardada && guardada !== 'biology' && ['chemistry', 'physics', 'geology'].includes(guardada)) {
+        window.location.replace(`?disciplina=${encodeURIComponent(guardada)}`);
+    }
+}
+
+aplicarXPDisciplina(disciplinaAtual);
 
 function getMissionProgressPercent(missionId) {
     const keys = [
@@ -329,6 +372,38 @@ subjectSwitcherBtn?.addEventListener('click', () => {
     subjectSwitcherBtn.setAttribute('aria-expanded', String(!isOpen));
     subjectSwitcherMenu.hidden = isOpen;
 });
+
+// Escolher uma disciplina aqui no Perfil: navega para ?disciplina=<x>, para
+// pagina_perfil (views.py) desenhar o nivel/XP certo a sério no servidor
+// (não dá para isto ser só um re-render em JS — sem recarregar, não há
+// forma fiável de saber o XP real de uma disciplina que este browser/cache
+// ainda não tem guardada localmente). Também guarda a escolha na mesma
+// chave que static/subject-switcher.js usa (index-missions.html), para as
+// duas páginas lembrarem a mesma disciplina.
+const NOME_SWITCHER_TRIGGER = { biology: 'Explore Biology', chemistry: 'Explore Chemistry', physics: 'Explore Physics', geology: 'Explore Geology' };
+subjectSwitcherMenu?.querySelectorAll('.subject-switcher-option:not([disabled])').forEach((opcao) => {
+    opcao.addEventListener('click', () => {
+        const disciplina = opcao.dataset.subject;
+        try {
+            localStorage.setItem(CHAVE_DISCIPLINA_SWITCHER, disciplina);
+        } catch (erro) {
+            // Ignora erros de armazenamento (navegação privada/quota).
+        }
+        window.location.href = `?disciplina=${encodeURIComponent(disciplina)}`;
+    });
+});
+
+// Estado inicial do botão/menu (o nivel/XP já vêm certos do servidor,
+// desenhados para disciplinaAtual — ver pagina_perfil) — só falta pôr o
+// texto do botão e o "is-active" a condizer, para quando a disciplina
+// escolhida não for Biologia.
+if (disciplinaAtual !== 'biology') {
+    const trigger = subjectSwitcherBtn?.querySelector('span');
+    if (trigger && NOME_SWITCHER_TRIGGER[disciplinaAtual]) trigger.textContent = NOME_SWITCHER_TRIGGER[disciplinaAtual];
+    subjectSwitcherMenu?.querySelectorAll('.subject-switcher-option').forEach((opcao) => {
+        opcao.classList.toggle('is-active', opcao.dataset.subject === disciplinaAtual);
+    });
+}
 
 const profileMascoteFab = document.getElementById('profileMascoteFab');
 const mascoteChatPanel = document.getElementById('mascoteChatPanel');
