@@ -166,23 +166,29 @@
     </div>
 </div>
 
-<section class="missions-page kim-page">
-    <h1>Kim · assistente IA</h1>
-    <p class="kim-page-subtitle">Tira dúvidas, pede resumos ou prepara-te para um teste — o Kim guarda as tuas conversas para voltares a elas sempre que precisares.</p>
-
+<section class="missions-page kim-page kim-page--full">
     <div class="kim-layout">
-        <aside class="kim-conversas-col">
+        <div class="kim-conversas-overlay" id="kimConversasOverlay" hidden></div>
+        <aside class="kim-conversas-col" id="kimConversasCol" aria-hidden="true">
+            <div class="kim-conversas-header">
+                <p class="kim-conversas-titulo">{% trans 'Conversas' %}</p>
+                <button type="button" class="kim-conversas-close" id="kimConversasCloseBtn" aria-label="{% trans 'Fechar' %}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
             <button type="button" class="kim-nova-conversa" id="kimNovaConversaBtn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
                 {% trans 'Nova conversa' %}
             </button>
-            <p class="kim-conversas-titulo">{% trans 'Conversas' %}</p>
             <p class="kim-conversas-empty" id="kimConversasEmpty" hidden>{% trans 'Ainda não tens conversas guardadas.' %}</p>
             <ul class="kim-conversas-list" id="kimConversasList"></ul>
         </aside>
 
         <div class="kim-chat-col">
             <div class="kim-persona-header">
+                <button type="button" class="kim-conversas-toggle" id="kimConversasToggleBtn" aria-label="{% trans 'Conversas' %}" aria-expanded="false" aria-controls="kimConversasCol">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
+                </button>
                 <span class="kim-persona-avatar">
                     <img src="{% static 'images/Kim o aventureiro.png' %}" alt="Kim o Aventureiro">
                 </span>
