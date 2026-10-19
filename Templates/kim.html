@@ -148,23 +148,22 @@
 <div class="profile-main-shell">
 <div class="profile-content">
 
-<div class="missions-topbar">
-    <div class="missions-topbar-logo">
-        <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
-        <span class="missions-topbar-greeting">{% trans 'Olá' %}, {{ request.user.username }}!</span>
-    </div>
+<div class="missions-topbar kim-topbar">
+    <button type="button" class="kim-conversas-toggle" id="kimConversasToggleBtn" aria-label="{% trans 'Conversas' %}" aria-expanded="false" aria-controls="kimConversasCol">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
+    </button>
+    <span class="kim-topbar-persona">
+        <span class="kim-persona-avatar kim-persona-avatar--small">
+            <img src="{% static 'images/Kim o aventureiro.png' %}" alt="Kim o Aventureiro">
+        </span>
+        <span class="kim-persona-info">
+            <strong class="kim-persona-name">Kim o Aventureiro</strong>
+            <span class="kim-persona-role">{% trans 'Assistente de Estudo' %}</span>
+        </span>
+    </span>
     <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="{% trans 'Abrir menu' %}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
-    <div class="header-icon-wrapper">
-    <button class="header-icon-btn" id="notificationsBtn" type="button" aria-label="Notificações" aria-expanded="false">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-icon lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
-    <span class="header-icon-badge" id="notificationsBadge" hidden>0</span>
-    </button>
-    <ul class="notifications-panel" id="notificationsPanel" hidden>
-        <li class="notifications-empty">Nenhuma notificação</li>
-    </ul>
-    </div>
 </div>
 
 <section class="missions-page kim-page kim-page--full">
@@ -186,18 +185,6 @@
         </aside>
 
         <div class="kim-chat-col">
-            <div class="kim-persona-header">
-                <button type="button" class="kim-conversas-toggle" id="kimConversasToggleBtn" aria-label="{% trans 'Conversas' %}" aria-expanded="false" aria-controls="kimConversasCol">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
-                </button>
-                <span class="kim-persona-avatar">
-                    <img src="{% static 'images/Kim o aventureiro.png' %}" alt="Kim o Aventureiro">
-                </span>
-                <span class="kim-persona-info">
-                    <strong class="kim-persona-name">Kim o Aventureiro</strong>
-                    <span class="kim-persona-role">{% trans 'Assistente de Estudo' %}</span>
-                </span>
-            </div>
             <div class="mascote-chat-messages kim-chat-messages" id="kimChatMessages">
                 <div class="mascote-chat-welcome" id="kimChatWelcome">
                     <div class="mascote-chat-welcome-copy">
