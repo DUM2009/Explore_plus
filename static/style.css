@@ -6471,7 +6471,10 @@ body.nav-drawer-open {
 }
 
 .forgot-link {
-  color: #2563eb;
+  /* Mesmo verde do .login-button (ver o seu próprio comentário sobre a
+     origem da cor) — este tom mais escuro do degradê em vez do mais claro,
+     para ler bem como texto sobre fundo branco. */
+  color: #6d9c2e;
   text-decoration: none;
   font-size: 0.8rem;
   font-weight: 500;
@@ -6479,6 +6482,11 @@ body.nav-drawer-open {
 
 .forgot-link:hover {
   text-decoration: underline;
+}
+
+.forgot-link--below {
+  display: inline-block;
+  margin-top: 8px;
 }
 
 .input-shell {
@@ -6647,7 +6655,7 @@ body.nav-drawer-open {
 }
 
 .bottom-signup a {
-  color: #2563eb;
+  color: #6d9c2e;
   text-decoration: none;
   font-weight: 600;
 }
