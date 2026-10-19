@@ -14,6 +14,10 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils import timezone
@@ -887,6 +891,81 @@ def pagina_signup(request):
 def pagina_logout(request):
     logout(request)
     return redirect('login')
+
+
+def pagina_recuperar_password(request):
+    """
+    Pede o email e, se existir uma conta com password (as contas só-Google
+    não têm uma a recuperar — ver has_usable_password em
+    pagina_Configurações), envia um link de recuperação por email usando o
+    mesmo gerador de tokens do Django admin (default_token_generator): o
+    link expira sozinho e fica inválido assim que a password muda.
+    """
+    enviado = False
+    erro = None
+
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip()
+        if not email:
+            erro = 'Indica o teu email.'
+        else:
+            # Nunca revela se o email existe ou não — evita que alguém use
+            # este formulário para descobrir que emails estão registados.
+            user = User.objects.filter(email__iexact=email, is_active=True).first()
+            if user and user.has_usable_password():
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                token = default_token_generator.make_token(user)
+                link = request.build_absolute_uri(
+                    reverse('redefinir-password', args=[uid, token])
+                )
+                send_mail(
+                    subject='Recuperar password — Explore+',
+                    message=(
+                        f'Olá {user.username},\n\n'
+                        f'Recebemos um pedido para repor a tua password na Explore+. '
+                        f'Clica no link abaixo para escolheres uma nova (válido por algumas horas):\n\n'
+                        f'{link}\n\n'
+                        f'Se não foste tu a pedir, ignora este email — a tua password atual continua válida.'
+                    ),
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[user.email],
+                    fail_silently=True,
+                )
+            enviado = True
+
+    return render(request, 'recuperar-password.html', {'enviado': enviado, 'erro': erro})
+
+
+def pagina_redefinir_password(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    link_valido = user is not None and default_token_generator.check_token(user, token)
+    erro = None
+    sucesso = False
+
+    if link_valido and request.method == 'POST':
+        nova_password = request.POST.get('nova_password', '')
+        confirmar_password = request.POST.get('confirmar_password', '')
+        if not nova_password or not confirmar_password:
+            erro = 'Preenche os dois campos.'
+        elif nova_password != confirmar_password:
+            erro = 'As palavras-passe não coincidem.'
+        elif len(nova_password) < 8:
+            erro = 'A palavra-passe tem de ter pelo menos 8 caracteres.'
+        else:
+            user.set_password(nova_password)
+            user.save()
+            sucesso = True
+
+    return render(request, 'redefinir-password.html', {
+        'link_valido': link_valido,
+        'erro': erro,
+        'sucesso': sucesso,
+    })
 
 
 DISCIPLINAS_INQUERITO = [

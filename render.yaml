@@ -43,6 +43,18 @@ services:
         sync: false
       - key: GOOGLE_OAUTH_CLIENT_SECRET
         sync: false
+      # Email de "recuperar password" (ver pagina_recuperar_password em
+      # views.py) — sem isto configurado, settings.py usa o backend de
+      # consola e o email nunca é mesmo enviado. Para usar o Gmail:
+      # 1. Ativa a verificação em 2 passos na conta Gmail que vai enviar
+      #    (ex: exploremore.pt26@gmail.com).
+      # 2. Gera uma "palavra-passe de aplicação" em
+      #    myaccount.google.com/apppasswords (NÃO é a password normal da
+      #    conta) e usa-a aqui como EMAIL_HOST_PASSWORD.
+      - key: EMAIL_HOST_USER
+        sync: false
+      - key: EMAIL_HOST_PASSWORD
+        sync: false
       # Used only by `createsuperuser --noinput` above, which reads these
       # three exact env var names itself (Django convention). The `|| true`
       # keeps redeploys from failing once the account already exists.
