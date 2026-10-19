@@ -280,7 +280,7 @@
 
     <div class="profile-tab-panel" data-tab-panel="perfil">
 
-        <div class="profile-subject-card">
+        <div class="profile-subject-card{% if disciplina_atual != 'biology' %} profile-subject-card--{{ disciplina_atual }}{% endif %}">
             <div class="profile-subject-card-main">
                 <div class="profile-subject-card-head">
                     <div class="subject-switcher">
