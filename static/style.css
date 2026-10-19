@@ -11906,27 +11906,69 @@ body.shadcn-profile .missions-topbar.kim-topbar .nav-drawer-toggle {
 
 .kim-chat-disclaimer {
     margin: 0;
-    padding: 6px 14px 10px;
+    padding: 3px 14px 6px;
     background: #ffffff;
     color: var(--sp-muted, #9aa39c);
-    font-size: .62rem;
+    font-size: .56rem;
     text-align: center;
 }
 
 /* Caixa de pergunta do Kim retangular (não a pílula/stadium partilhada
-   por .mascote-chat-input noutras páginas). */
+   por .mascote-chat-input noutras páginas) e mais baixa. */
 .kim-chat-col .mascote-chat-input {
     border-radius: 14px;
+    padding: 7px 14px;
 }
 
-/* Conteúdo do chat a tocar nas margens do ecrã em vez de deixar uma
-   moldura lateral — só nesta página (ver nota acima sobre .kim-chat-messages). */
+.kim-chat-col .mascote-chat-form {
+    padding: 8px 14px 8px;
+}
+
+/* Botão de enviar do Kim sem o círculo verde — só o ícone, a verde, como
+   os outros botões "planos" do cabeçalho (nav-drawer-toggle e tal). */
+.kim-chat-col .mascote-chat-send {
+    width: auto;
+    height: auto;
+    padding: 6px;
+    background: none;
+    box-shadow: none;
+    color: #1f8a5b;
+}
+
+.kim-chat-col .mascote-chat-send:hover {
+    background: none;
+    box-shadow: none;
+    transform: scale(1.1);
+}
+
+/* O painel do chat ocupa o ecrã todo (ver .kim-page--full), mas o
+   conteúdo lá dentro — texto, sugestões — continua com uma margem
+   lateral confortável em vez de tocar nas bordas. */
 .kim-chat-messages {
-    padding: 12px 6px;
+    padding: 12px 16px;
 }
 
 .kim-chat-messages .mascote-chat-welcome {
-    padding: 20px 6px 8px;
+    padding: 16px 4px 8px;
+}
+
+/* O círculo verde brilhante por trás do vídeo da mascote (removido desta
+   página) ficava a pairar sozinho sem nada para iluminar. */
+.kim-chat-messages .mascote-chat-welcome::before {
+    display: none;
+}
+
+.kim-chat-welcome-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    color: #1f8a5b;
+}
+
+.kim-chat-welcome-icon svg {
+    width: 32px;
+    height: 32px;
 }
 
 @media (max-width: 860px) {
