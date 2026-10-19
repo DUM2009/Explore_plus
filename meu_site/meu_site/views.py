@@ -4,6 +4,7 @@ import unicodedata
 from collections import defaultdict
 from datetime import timedelta
 import anthropic
+import requests
 import stripe
 from django.conf import settings
 from django.http import JsonResponse, Http404, HttpResponse
@@ -15,7 +16,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import send_mail
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.csrf import csrf_exempt
@@ -893,6 +893,38 @@ def pagina_logout(request):
     return redirect('login')
 
 
+def enviar_email_brevo(destinatario, assunto, texto):
+    """
+    Envia um email pela API HTTP da Brevo (brevo.com) — ver o comentário em
+    settings.py (BREVO_API_KEY) sobre porque não se usa SMTP direto aqui
+    (o Render bloqueia essas ligações nos planos mais baratos, e isso
+    pendura o pedido em vez de dar um erro apanhável). `timeout` curto e
+    exceções apanhadas de propósito: uma falha aqui nunca deve rebentar a
+    página que pediu o email — só significa que o email não chega.
+    """
+    if not settings.BREVO_API_KEY:
+        return False
+    try:
+        resposta = requests.post(
+            'https://api.brevo.com/v3/smtp/email',
+            headers={
+                'api-key': settings.BREVO_API_KEY,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            json={
+                'sender': {'email': settings.DEFAULT_FROM_EMAIL, 'name': 'Explore+'},
+                'to': [{'email': destinatario}],
+                'subject': assunto,
+                'textContent': texto,
+            },
+            timeout=8,
+        )
+        return resposta.ok
+    except requests.RequestException:
+        return False
+
+
 def pagina_recuperar_password(request):
     """
     Pede o email e, se existir uma conta com password (as contas só-Google
@@ -918,18 +950,16 @@ def pagina_recuperar_password(request):
                 link = request.build_absolute_uri(
                     reverse('redefinir-password', args=[uid, token])
                 )
-                send_mail(
-                    subject='Recuperar password — Explore+',
-                    message=(
+                enviar_email_brevo(
+                    destinatario=user.email,
+                    assunto='Recuperar password — Explore+',
+                    texto=(
                         f'Olá {user.username},\n\n'
                         f'Recebemos um pedido para repor a tua password na Explore+. '
                         f'Clica no link abaixo para escolheres uma nova (válido por algumas horas):\n\n'
                         f'{link}\n\n'
                         f'Se não foste tu a pedir, ignora este email — a tua password atual continua válida.'
                     ),
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[user.email],
-                    fail_silently=True,
                 )
             enviado = True
 

@@ -43,17 +43,19 @@ services:
         sync: false
       - key: GOOGLE_OAUTH_CLIENT_SECRET
         sync: false
-      # Email de "recuperar password" (ver pagina_recuperar_password em
-      # views.py) — sem isto configurado, settings.py usa o backend de
-      # consola e o email nunca é mesmo enviado. Para usar o Gmail:
-      # 1. Ativa a verificação em 2 passos na conta Gmail que vai enviar
-      #    (ex: exploremore.pt26@gmail.com).
-      # 2. Gera uma "palavra-passe de aplicação" em
-      #    myaccount.google.com/apppasswords (NÃO é a password normal da
-      #    conta) e usa-a aqui como EMAIL_HOST_PASSWORD.
-      - key: EMAIL_HOST_USER
-        sync: false
-      - key: EMAIL_HOST_PASSWORD
+      # Email de "recuperar password" (ver enviar_email_brevo em views.py) —
+      # mandado pela API HTTP da Brevo (brevo.com), não por SMTP direto: o
+      # Render bloqueia ligações de saída em smtp.gmail.com:587 (e portas
+      # SMTP em geral) nos planos mais baratos, o que pendura o pedido até
+      # o worker do gunicorn ser morto, sem dar um erro normal. Sem
+      # BREVO_API_KEY definida, o email simplesmente não chega a sair (a
+      # página continua a funcionar). Para configurar:
+      # 1. Cria conta grátis em app.brevo.com (300 emails/dia, sem cartão).
+      # 2. Em Senders, Domains & Dedicated IPs, adiciona e verifica o
+      #    remetente (ex: exploremore.pt26@gmail.com) — chega um email de
+      #    confirmação, não precisa de teres um domínio próprio.
+      # 3. Em SMTP & API > API Keys, cria uma chave e usa-a aqui.
+      - key: BREVO_API_KEY
         sync: false
       # Used only by `createsuperuser --noinput` above, which reads these
       # three exact env var names itself (Django convention). The `|| true`

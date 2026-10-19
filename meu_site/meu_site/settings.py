@@ -247,25 +247,15 @@ STORAGES = {
 }
 
 
-# Email (usado para o email de "recuperar password" — ver pagina_recuperar_password
-# em views.py)
-# https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
-
-# Sem EMAIL_HOST_USER/PASSWORD definidos (dev local, ou produção antes de
-# configurares isto no Render), cai no backend de consola — os emails
-# aparecem só nos logs, nunca chegam a sair, mas nada rebenta.
-if os.environ.get('EMAIL_HOST_USER'):
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
-    EMAIL_PORT = int(os.environ.get('EMAIL_PORT', '587'))
-    EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True') == 'True'
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    # Para o Gmail, isto tem de ser uma "palavra-passe de aplicação" (App
-    # Password) gerada em myaccount.google.com/apppasswords — a password
-    # normal da conta Google não funciona aqui.
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Email (usado para o email de "recuperar password" — ver enviar_email_brevo
+# em views.py). Manda-se via a API HTTP da Brevo (brevo.com), não por SMTP
+# direto: o Render bloqueia ligações de saída em smtp.gmail.com:587 (e
+# portas SMTP em geral) nos planos mais baratos — o pedido fica pendurado
+# até o worker do gunicorn ser morto por timeout, nunca chega a dar erro
+# "normal" (nada que um try/except apanhe). A API da Brevo usa HTTPS
+# (porta 443, igual a qualquer pedido normal do site), por isso não bate
+# nesse bloqueio.
+BREVO_API_KEY = os.environ.get('BREVO_API_KEY', '')
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_SUPORTE)
 
