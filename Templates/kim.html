@@ -151,6 +151,7 @@
 <div class="missions-topbar">
     <div class="missions-topbar-logo">
         <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
+        <span class="missions-topbar-greeting">{% trans 'Olá' %}, {{ request.user.username }}!</span>
     </div>
     <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="{% trans 'Abrir menu' %}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -199,11 +200,7 @@
             </div>
             <div class="mascote-chat-messages kim-chat-messages" id="kimChatMessages">
                 <div class="mascote-chat-welcome" id="kimChatWelcome">
-                    <video class="mascote-chat-welcome-video" autoplay loop muted playsinline aria-hidden="true">
-                        <source src="{% static 'Mascote a acenar.webm' %}" type="video/webm">
-                    </video>
                     <div class="mascote-chat-welcome-copy">
-                        <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
                         <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>
                         <p class="mascote-chat-welcome-subtitle">Estou aqui para te ajudar a estudar. Escolhe uma sugestão ou escreve a tua pergunta!</p>
                     </div>
