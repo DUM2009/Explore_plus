@@ -12279,6 +12279,16 @@ body.shadcn-profile .profile-subject-card-head .subject-switcher {
     flex: 1 1 auto;
 }
 
+/* .subject-switcher-menu's right:0 (base rule) assumes the trigger sits
+   at the right edge of its row — here the trigger text sits at the LEFT
+   of the card instead, so a menu anchored to its right edge opened
+   mostly off the left edge of the screen on narrower phones (same bug
+   already fixed once for .missions-page-subrow, see the comment there). */
+body.shadcn-profile .profile-subject-card-head .subject-switcher-menu {
+    right: auto;
+    left: 0;
+}
+
 body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger {
     padding: 0;
     background: none;
