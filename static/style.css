@@ -11642,7 +11642,7 @@ html.dark-mode .mascote-chat-form {
 
 html.dark-mode .kim-chat-disclaimer {
     background: #17171a;
-    color: #6b7177;
+    color: #45484a;
 }
 
 html.dark-mode .mascote-chat-input {
@@ -11685,6 +11685,12 @@ body.shadcn-profile .profile-main-shell:has(.kim-page--full) {
     body.shadcn-profile .profile-layout:has(.kim-page--full) {
         padding-left: 0;
         padding-right: 0;
+        /* kim.js already measures .kim-layout's height from wherever it
+           actually starts, so the top padding is harmless — but this
+           bottom padding sat below .kim-layout with nothing accounting
+           for it, adding 24px the page could scroll down into although
+           only the conversas list (inside .kim-layout) should scroll. */
+        padding-bottom: 0;
     }
 }
 
@@ -11908,9 +11914,16 @@ body.shadcn-profile .missions-topbar.kim-topbar .nav-drawer-toggle {
     margin: 0;
     padding: 3px 14px 6px;
     background: #ffffff;
-    color: var(--sp-muted, #9aa39c);
+    color: #c2c9c4;
     font-size: .56rem;
     text-align: center;
+}
+
+/* A caixa de pergunta é o elemento com que se interage — devia saltar
+   mais à vista do que o aviso por baixo dela, não o contrário. */
+.kim-chat-col .mascote-chat-input {
+    border-color: #b9d4c4;
+    background: #ffffff;
 }
 
 /* Caixa de pergunta do Kim retangular (não a pílula/stadium partilhada
