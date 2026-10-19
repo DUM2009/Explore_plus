@@ -10150,7 +10150,10 @@ body.shadcn-profile .sidebar-theme-card {
 body.shadcn-profile .sidebar-theme-card::before {
     content: "";
     position: absolute;
-    top: -12px;
+    /* Mesmo valor do margin-top deste cartão — põe a linha mesmo a seguir
+       a "Suporte" (fim do scroll de .profile-sidebar-nav), em vez de a
+       meio do espaço antes do cartão "Tema". */
+    top: -24px;
     left: 0;
     right: 0;
     border-top: 1px solid var(--sp-border);
@@ -14182,11 +14185,33 @@ body.shadcn-profile .profile-hero-rank {
     height: 160px;
     border-bottom: 1px solid var(--sp-border, #e5e7eb);
     padding-bottom: 6px;
+    /* Com muitas unidades (ex: Citologia, Bioquímica, Genética, Ecologia,
+       Corpo Humano, Botânica...) espremer tudo na largura do cartão deixava
+       as colunas demasiado estreitas no telemóvel — passa a scroll
+       horizontal com largura fixa por coluna (ver .stats-tempo-col) em vez
+       de encolher sem limite. */
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 138, 91, .4) transparent;
+}
+
+.stats-tempo-chart::-webkit-scrollbar {
+    height: 6px;
+}
+
+.stats-tempo-chart::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.stats-tempo-chart::-webkit-scrollbar-thumb {
+    background: rgba(31, 138, 91, .4);
+    border-radius: 999px;
 }
 
 .stats-tempo-col {
-    flex: 1;
-    min-width: 0;
+    flex: 0 0 68px;
+    width: 68px;
     display: flex;
     flex-direction: column;
     align-items: center;
