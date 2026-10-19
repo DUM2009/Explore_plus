@@ -12258,6 +12258,36 @@ body.shadcn-profile .profile-subject-card {
     background: var(--sp-accent-soft);
 }
 
+/* O cartão "Explore X" muda de cor pastel consoante a disciplina ativa
+   (ver disciplina_atual em pagina_perfil, views.py, que desenha a classe
+   profile-subject-card--<disciplina> no HTML) — Biologia fica a verde de
+   sempre (var(--sp-accent-soft), por omissão, sem classe extra). As
+   outras cores reaproveitam os mesmos tons pastel já usados noutros
+   sítios do site (ex: unidades da Biblioteca do Explorador). */
+body.shadcn-profile .profile-subject-card--chemistry {
+    background: #fdeee0;
+}
+
+body.shadcn-profile .profile-subject-card--physics {
+    background: #efe7fa;
+}
+
+body.shadcn-profile .profile-subject-card--geology {
+    background: #f1ece4;
+}
+
+html.dark-mode body.shadcn-profile .profile-subject-card--chemistry {
+    background: rgba(230, 140, 60, .14);
+}
+
+html.dark-mode body.shadcn-profile .profile-subject-card--physics {
+    background: rgba(140, 100, 200, .14);
+}
+
+html.dark-mode body.shadcn-profile .profile-subject-card--geology {
+    background: rgba(170, 130, 90, .14);
+}
+
 body.shadcn-profile .profile-subject-card-head {
     display: flex;
     align-items: center;
