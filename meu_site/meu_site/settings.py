@@ -25,8 +25,9 @@ ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
 
 # Email de contacto mostrado no link "Suporte" do menu da conta (ver
 # meu_site.context_processors.constantes_do_site e os templates que usam
-# {{ EMAIL_SUPORTE }}) — placeholder até termos o endereço real.
-EMAIL_SUPORTE = os.environ.get('EMAIL_SUPORTE', 'exploremore.pt6@gmail.com')
+# {{ EMAIL_SUPORTE }}) — o mesmo endereço já usado nas páginas legais
+# (Política de Privacidade, Termos, Cookies).
+EMAIL_SUPORTE = os.environ.get('EMAIL_SUPORTE', 'exploremore.pt26@gmail.com')
 
 # Stripe — assinatura SuperExplore (ver meu_site/meu_site/views.py e o
 # comando `python manage.py stripe_setup`).
