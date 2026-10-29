@@ -26,6 +26,7 @@
     window.exploreMascoteConversaDetalheUrlBase = '{% url "mascote-conversa-detalhe" 0 %}'.slice(0, -2);
     window.exploreCsrfToken = '{{ csrf_token }}';
     window.exploreActivityHeartbeatUrl = '{% url "registar-atividade" %}';
+    window.exploreDisciplinaAtual = '{{ disciplina_atual|default:"biology" }}';
 </script>
 
 <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
@@ -236,11 +237,11 @@
 
 </div>
 
-<div class="profile-quote-banner" id="profileQuoteBanner" data-tab-panel="perfil">
+<div class="profile-quote-banner profile-quote-banner--desktop" data-tab-panel="perfil">
     <div class="profile-quote-banner-copy">
         <span class="profile-quote-banner-mark" aria-hidden="true">&ldquo;</span>
-        <p class="profile-quote-banner-text" id="profileQuoteText">A ciência é a forma mais bonita de explorar o mundo.</p>
-        <span class="profile-quote-banner-author" id="profileQuoteAuthor">— Explore+</span>
+        <p class="profile-quote-banner-text">A ciência é a forma mais bonita de explorar o mundo.</p>
+        <span class="profile-quote-banner-author">— Explore+</span>
     </div>
     <img class="profile-quote-banner-illustration" src="{% static 'images/Ilustração montanha citação.png' %}" alt="" aria-hidden="true">
 </div>
@@ -266,11 +267,20 @@
 
 <div class="profile-grid">
 
+    <div class="profile-quote-banner profile-quote-banner--mobile" data-tab-panel="perfil">
+        <div class="profile-quote-banner-copy">
+            <span class="profile-quote-banner-mark" aria-hidden="true">&ldquo;</span>
+            <p class="profile-quote-banner-text">A ciência é a forma mais bonita de explorar o mundo.</p>
+            <span class="profile-quote-banner-author">— Explore+</span>
+        </div>
+        <img class="profile-quote-banner-illustration" src="{% static 'images/Ilustração montanha citação.png' %}" alt="" aria-hidden="true">
+    </div>
+
     <div class="profile-grid-main">
 
     <div class="profile-tab-panel" data-tab-panel="perfil">
 
-        <div class="profile-subject-card">
+        <div class="profile-subject-card{% if disciplina_atual != 'biology' %} profile-subject-card--{{ disciplina_atual }}{% endif %}">
             <div class="profile-subject-card-main">
                 <div class="profile-subject-card-head">
                     <div class="subject-switcher">
@@ -280,9 +290,9 @@
                         </button>
                         <ul class="subject-switcher-menu" id="subjectSwitcherMenu" hidden>
                             <li><button type="button" class="subject-switcher-option is-active" data-subject="biology">Explore Biology</button></li>
-                            <li><button type="button" class="subject-switcher-option" data-subject="chemistry" disabled>Explore Chemistry <span class="subject-soon">Em breve</span></button></li>
-                            <li><button type="button" class="subject-switcher-option" data-subject="physics" disabled>Explore Physics <span class="subject-soon">Em breve</span></button></li>
-                            <li><button type="button" class="subject-switcher-option" data-subject="geology" disabled>Explore Geology <span class="subject-soon">Em breve</span></button></li>
+                            <li><button type="button" class="subject-switcher-option" data-subject="chemistry">Explore Chemistry</button></li>
+                            <li><button type="button" class="subject-switcher-option" data-subject="physics">Explore Physics</button></li>
+                            <li><button type="button" class="subject-switcher-option" data-subject="geology">Explore Geology</button></li>
                         </ul>
                     </div>
                 </div>
@@ -508,7 +518,7 @@
 
     <div class="profile-grid-aside" data-tab-panel="perfil">
 
-        <div class="profile-vocacional-card">
+        <div class="profile-vocacional-card{% if disciplina_atual != 'biology' %} profile-vocacional-card--{{ disciplina_atual }}{% endif %}">
             <div class="profile-vocacional-top">
                 <span class="profile-vocacional-icon" aria-hidden="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>

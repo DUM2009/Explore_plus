@@ -4,6 +4,7 @@ import unicodedata
 from collections import defaultdict
 from datetime import timedelta
 import anthropic
+import requests
 import stripe
 from django.conf import settings
 from django.http import JsonResponse, Http404, HttpResponse
@@ -14,6 +15,9 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils import timezone
@@ -120,8 +124,18 @@ def pagina_perfil(request):
     progresso = {} if perfil_legacy else (perfil.progresso_missoes or {})
     badges = {} if perfil_legacy else (perfil.conquistas or {})
 
-    (_, titulo_nome, titulo_icone, titulo_descricao), proximo_titulo = titulo_para_nivel(perfil.nivel)
-    if not perfil_legacy and perfil.titulo_atual != titulo_nome:
+    # Disciplina escolhida no subject-switcher (ver static/subject-switcher.js
+    # e profile-django.js, que reenviam isto aqui por querystring assim que
+    # leem a escolha guardada no localStorage) — 'biology' por omissão no
+    # primeiro carregamento da página, antes de o JS correr.
+    disciplina_atual = request.GET.get('disciplina', 'biology')
+    if disciplina_atual not in PerfilAluno.DISCIPLINAS_SUPORTADAS:
+        disciplina_atual = 'biology'
+    nivel_atual = perfil.obter_nivel_disciplina(disciplina_atual)
+    xp_atual = perfil.obter_xp_disciplina(disciplina_atual)
+
+    (_, titulo_nome, titulo_icone, titulo_descricao), proximo_titulo = titulo_para_nivel(nivel_atual)
+    if not perfil_legacy and disciplina_atual == 'biology' and perfil.titulo_atual != titulo_nome:
         perfil.titulo_atual = titulo_nome
         perfil.save(update_fields=['titulo_atual'])
 
@@ -377,12 +391,13 @@ def pagina_perfil(request):
 
     return render(request, 'perfil.html', {
         'perfil': perfil,
-        'nivel': perfil.nivel,
-        'xp': perfil.pontos_xp,
-        'xp_progress_percent': perfil.pontos_xp % 100,
-        'proximo_nivel_xp': perfil.nivel * 100,
-        'xp_restante': (perfil.nivel * 100) - perfil.pontos_xp,
-        'proximo_nivel': perfil.nivel + 1,
+        'nivel': nivel_atual,
+        'xp': xp_atual,
+        'xp_progress_percent': xp_atual % 100,
+        'proximo_nivel_xp': nivel_atual * 100,
+        'xp_restante': (nivel_atual * 100) - xp_atual,
+        'proximo_nivel': nivel_atual + 1,
+        'disciplina_atual': disciplina_atual,
         'progresso_missoes': progresso,
         'progresso_medio': round(sum(missao['percent'] for missao in missoes) / len(missoes)) if missoes else 0,
         'missoes_completas': sum(1 for missao in missoes if missao['percent'] >= 100),
@@ -889,6 +904,135 @@ def pagina_logout(request):
     return redirect('login')
 
 
+def enviar_email_brevo(destinatario, assunto, texto, html=None):
+    """
+    Envia um email pela API HTTP da Brevo (brevo.com) — ver o comentário em
+    settings.py (BREVO_API_KEY) sobre porque não se usa SMTP direto aqui
+    (o Render bloqueia essas ligações nos planos mais baratos, e isso
+    pendura o pedido em vez de dar um erro apanhável). `timeout` curto e
+    exceções apanhadas de propósito: uma falha aqui nunca deve rebentar a
+    página que pediu o email — só significa que o email não chega.
+
+    `html`, quando dado, evita um problema real visto em produção: emails
+    só de texto simples com um link comprido (como o de redefinir password)
+    podem ser quebrados a meio pela codificação quoted-printable usada no
+    envio, e o cliente de email (Gmail, etc.) deteta/liga só um bocado do
+    URL — o link parece sempre "inválido" mesmo recém-criado. Um link como
+    <a href="..."> dentro de HTML não sofre disso.
+    """
+    if not settings.BREVO_API_KEY:
+        return False
+    payload = {
+        'sender': {'email': settings.DEFAULT_FROM_EMAIL, 'name': 'Explore+'},
+        'to': [{'email': destinatario}],
+        'subject': assunto,
+        'textContent': texto,
+    }
+    if html:
+        payload['htmlContent'] = html
+    try:
+        resposta = requests.post(
+            'https://api.brevo.com/v3/smtp/email',
+            headers={
+                'api-key': settings.BREVO_API_KEY,
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            json=payload,
+            timeout=8,
+        )
+        return resposta.ok
+    except requests.RequestException:
+        return False
+
+
+def pagina_recuperar_password(request):
+    """
+    Pede o email e, se existir uma conta com password (as contas só-Google
+    não têm uma a recuperar — ver has_usable_password em
+    pagina_Configurações), envia um link de recuperação por email usando o
+    mesmo gerador de tokens do Django admin (default_token_generator): o
+    link expira sozinho e fica inválido assim que a password muda.
+    """
+    enviado = False
+    erro = None
+
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip()
+        if not email:
+            erro = 'Indica o teu email.'
+        else:
+            # Nunca revela se o email existe ou não — evita que alguém use
+            # este formulário para descobrir que emails estão registados.
+            user = User.objects.filter(email__iexact=email, is_active=True).first()
+            if user and user.has_usable_password():
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                token = default_token_generator.make_token(user)
+                link = request.build_absolute_uri(
+                    reverse('redefinir-password', args=[uid, token])
+                )
+                enviar_email_brevo(
+                    destinatario=user.email,
+                    assunto='Recuperar password — Explore+',
+                    texto=(
+                        f'Olá {user.username},\n\n'
+                        f'Recebemos um pedido para repor a tua password na Explore+. '
+                        f'Clica no link abaixo para escolheres uma nova (válido por algumas horas):\n\n'
+                        f'{link}\n\n'
+                        f'Se não foste tu a pedir, ignora este email — a tua password atual continua válida.'
+                    ),
+                    html=(
+                        f'<div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;padding:24px">'
+                        f'<p>Olá {user.username},</p>'
+                        f'<p>Recebemos um pedido para repor a tua password na Explore+. '
+                        f'Clica no botão abaixo para escolheres uma nova (válido por algumas horas):</p>'
+                        f'<p style="text-align:center;margin:28px 0">'
+                        f'<a href="{link}" style="background:#9abe4f;color:#26380d;padding:12px 28px;'
+                        f'border-radius:18px;text-decoration:none;font-weight:bold;display:inline-block">'
+                        f'Escolher nova password</a></p>'
+                        f'<p style="color:#6b7280;font-size:0.85rem">Se o botão não funcionar, copia e cola este '
+                        f'link no browser:<br>{link}</p>'
+                        f'<p>Se não foste tu a pedir, ignora este email — a tua password atual continua válida.</p>'
+                        f'</div>'
+                    ),
+                )
+            enviado = True
+
+    return render(request, 'recuperar-password.html', {'enviado': enviado, 'erro': erro})
+
+
+def pagina_redefinir_password(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    link_valido = user is not None and default_token_generator.check_token(user, token)
+    erro = None
+    sucesso = False
+
+    if link_valido and request.method == 'POST':
+        nova_password = request.POST.get('nova_password', '')
+        confirmar_password = request.POST.get('confirmar_password', '')
+        if not nova_password or not confirmar_password:
+            erro = 'Preenche os dois campos.'
+        elif nova_password != confirmar_password:
+            erro = 'As palavras-passe não coincidem.'
+        elif len(nova_password) < 8:
+            erro = 'A palavra-passe tem de ter pelo menos 8 caracteres.'
+        else:
+            user.set_password(nova_password)
+            user.save()
+            sucesso = True
+
+    return render(request, 'redefinir-password.html', {
+        'link_valido': link_valido,
+        'erro': erro,
+        'sucesso': sucesso,
+    })
+
+
 DISCIPLINAS_INQUERITO = [
     ('biologia', 'Biologia'),
     ('quimica', 'Química'),
@@ -1079,6 +1223,14 @@ def salvar_progresso_missao(request):
                     unidade, float(score),
                 )
 
+    # Em que disciplina gravar este XP — ver static/profile-xp.js (manda-a
+    # no corpo do pedido) e DISCIPLINA_MISSAO_PARA_SUBJECT acima. 'biology'
+    # por omissão: mantém o comportamento de sempre para pedidos antigos
+    # (sem este campo) e para o pseudo-mission_id "profile".
+    disciplina = str(dados.get('disciplina', '') or 'biology').strip().lower()
+    if disciplina not in PerfilAluno.DISCIPLINAS_SUPORTADAS:
+        disciplina = 'biology'
+
     xp = dados.get('xp')
     if isinstance(xp, (int, float)) and xp >= 0:
         # max() é de propósito: o XP "oficial" de cada aluno vive no
@@ -1088,9 +1240,8 @@ def salvar_progresso_missao(request):
         # dispositivo. O efeito secundário é que uma alteração manual no
         # admin não "pega" enquanto o browser do aluno continuar a
         # ressincronizar o valor antigo por cima.
-        perfil.pontos_xp = max(perfil.pontos_xp, int(xp))
-        perfil.nivel = perfil.pontos_xp // 100 + 1
-        update_fields.extend(['pontos_xp', 'nivel'])
+        perfil.sincronizar_xp_disciplina(disciplina, int(xp))
+        update_fields.extend(['pontos_xp', 'nivel'] if disciplina == 'biology' else ['xp_disciplinas'])
 
     perfil.save(update_fields=update_fields)
 
@@ -1098,8 +1249,9 @@ def salvar_progresso_missao(request):
         'ok': True,
         'missionId': mission_id,
         'percent': percentage,
-        'xp': perfil.pontos_xp,
-        'level': perfil.nivel,
+        'disciplina': disciplina,
+        'xp': perfil.obter_xp_disciplina(disciplina),
+        'level': perfil.obter_nivel_disciplina(disciplina),
     })
 
 
@@ -1846,6 +1998,32 @@ UNIDADES_BIBLIOTECA_BIOLOGIA = [u for u in UNIDADES_BIBLIOTECA if u['disciplina'
 # ainda (só são avaliadas via exame), por isso nunca aparecem aqui — os seus
 # modos de "testes" do gráfico ficam sempre vazios até existir conteúdo.
 UNIDADE_ID_PARA_DISCIPLINA = {u['id']: u['disciplina'] for u in UNIDADES_BIBLIOTECA}
+
+# O campo "disciplina" de cada missoes/<id>.json (ver pagina_missao) é mais
+# fino do que as 4 opções do subject-switcher — as missões de Biologia
+# usam o nome da própria unidade (citologia/bioquimica/...), não "biology"
+# a direito. Usado por salvar_progresso_missao para saber em que disciplina
+# (das 4 do PerfilAluno.DISCIPLINAS_SUPORTADAS) gravar o XP de cada missão.
+DISCIPLINA_MISSAO_PARA_SUBJECT = {
+    'citologia': 'biology', 'bioquimica': 'biology', 'genetica': 'biology',
+    'ecologia': 'biology', 'corpo_humano': 'biology', 'botanica': 'biology',
+    'geologia': 'geology', 'fisica': 'physics', 'quimica': 'chemistry',
+}
+
+
+def obter_subject_da_missao(missao_id):
+    """Carrega só o suficiente de missoes/<id>.json para saber a que
+    disciplina do subject-switcher ela pertence — ver
+    DISCIPLINA_MISSAO_PARA_SUBJECT acima."""
+    pasta_missoes = settings.BASE_DIR.parent / 'missoes'
+    for caminho_json in [pasta_missoes / f'{missao_id}.json', *pasta_missoes.glob(f'*/{missao_id}.json')]:
+        try:
+            with open(caminho_json, encoding='utf-8') as ficheiro:
+                missao_json = json.load(ficheiro)
+            return DISCIPLINA_MISSAO_PARA_SUBJECT.get(missao_json.get('disciplina'), 'biology')
+        except (FileNotFoundError, json.JSONDecodeError):
+            continue
+    return 'biology'
 
 
 def carregar_termos_unidade(unidade_id):

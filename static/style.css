@@ -5506,6 +5506,15 @@ body.nav-drawer-open {
     width:min(320px,86vw);
     height:100vh;
     min-height:100vh;
+    /* 100vh no telemóvel é medido contra a altura "cheia" do ecrã, maior do
+       que o espaço realmente visível quando a barra de endereço do browser
+       está à vista — a conta (.profile-account, ao fundo) ficava cortada
+       por baixo dessa barra sem forma de lhe chegar (só .profile-sidebar-nav
+       tem scroll próprio, de propósito, para a conta ficar sempre visível
+       — ver o comentário aí). dvh mede o espaço visível a sério; navegadores
+       sem suporte ficam com o 100vh acima. */
+    height:100dvh;
+    min-height:100dvh;
 
     --sb-pad-r:26px;
     padding:30px 26px;
@@ -6471,7 +6480,10 @@ body.nav-drawer-open {
 }
 
 .forgot-link {
-  color: #2563eb;
+  /* Mesmo verde do .login-button (ver o seu próprio comentário sobre a
+     origem da cor) — este tom mais escuro do degradê em vez do mais claro,
+     para ler bem como texto sobre fundo branco. */
+  color: #6d9c2e;
   text-decoration: none;
   font-size: 0.8rem;
   font-weight: 500;
@@ -6479,6 +6491,11 @@ body.nav-drawer-open {
 
 .forgot-link:hover {
   text-decoration: underline;
+}
+
+.forgot-link--below {
+  display: inline-block;
+  margin-top: 8px;
 }
 
 .input-shell {
@@ -6647,7 +6664,7 @@ body.nav-drawer-open {
 }
 
 .bottom-signup a {
-  color: #2563eb;
+  color: #6d9c2e;
   text-decoration: none;
   font-weight: 600;
 }
@@ -10133,7 +10150,10 @@ body.shadcn-profile .sidebar-theme-card {
 body.shadcn-profile .sidebar-theme-card::before {
     content: "";
     position: absolute;
-    top: -12px;
+    /* Mesmo valor do margin-top deste cartão — põe a linha mesmo a seguir
+       a "Suporte" (fim do scroll de .profile-sidebar-nav), em vez de a
+       meio do espaço antes do cartão "Tema". */
+    top: -24px;
     left: 0;
     right: 0;
     border-top: 1px solid var(--sp-border);
@@ -12664,6 +12684,36 @@ body.shadcn-profile .profile-subject-card {
     background: var(--sp-accent-soft);
 }
 
+/* O cartão "Explore X" muda de cor pastel consoante a disciplina ativa
+   (ver disciplina_atual em pagina_perfil, views.py, que desenha a classe
+   profile-subject-card--<disciplina> no HTML) — Biologia fica a verde de
+   sempre (var(--sp-accent-soft), por omissão, sem classe extra). As
+   outras cores reaproveitam os mesmos tons pastel já usados noutros
+   sítios do site (ex: unidades da Biblioteca do Explorador). */
+body.shadcn-profile .profile-subject-card--chemistry {
+    background: #fdeee0;
+}
+
+body.shadcn-profile .profile-subject-card--physics {
+    background: #efe7fa;
+}
+
+body.shadcn-profile .profile-subject-card--geology {
+    background: #f1ece4;
+}
+
+html.dark-mode body.shadcn-profile .profile-subject-card--chemistry {
+    background: rgba(230, 140, 60, .14);
+}
+
+html.dark-mode body.shadcn-profile .profile-subject-card--physics {
+    background: rgba(140, 100, 200, .14);
+}
+
+html.dark-mode body.shadcn-profile .profile-subject-card--geology {
+    background: rgba(170, 130, 90, .14);
+}
+
 body.shadcn-profile .profile-subject-card-head {
     display: flex;
     align-items: center;
@@ -12683,6 +12733,16 @@ body.shadcn-profile .profile-subject-card-head .profile-subject-leaf svg {
 
 body.shadcn-profile .profile-subject-card-head .subject-switcher {
     flex: 1 1 auto;
+}
+
+/* .subject-switcher-menu's right:0 (base rule) assumes the trigger sits
+   at the right edge of its row — here the trigger text sits at the LEFT
+   of the card instead, so a menu anchored to its right edge opened
+   mostly off the left edge of the screen on narrower phones (same bug
+   already fixed once for .missions-page-subrow, see the comment there). */
+body.shadcn-profile .profile-subject-card-head .subject-switcher-menu {
+    right: auto;
+    left: 0;
 }
 
 body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger {
@@ -12986,6 +13046,32 @@ body.shadcn-profile .profile-vocacional-card {
     background: var(--sp-accent-soft);
 }
 
+/* Mesma cor pastel do cartão "Explore X" ao lado (ver
+   .profile-subject-card--chemistry/--physics/--geology acima). */
+body.shadcn-profile .profile-vocacional-card--chemistry {
+    background: #fdeee0;
+}
+
+body.shadcn-profile .profile-vocacional-card--physics {
+    background: #efe7fa;
+}
+
+body.shadcn-profile .profile-vocacional-card--geology {
+    background: #f1ece4;
+}
+
+html.dark-mode body.shadcn-profile .profile-vocacional-card--chemistry {
+    background: rgba(230, 140, 60, .14);
+}
+
+html.dark-mode body.shadcn-profile .profile-vocacional-card--physics {
+    background: rgba(140, 100, 200, .14);
+}
+
+html.dark-mode body.shadcn-profile .profile-vocacional-card--geology {
+    background: rgba(170, 130, 90, .14);
+}
+
 body.shadcn-profile .profile-vocacional-top {
     display: flex;
     align-items: center;
@@ -13050,6 +13136,17 @@ body.shadcn-profile .profile-vocacional-btn:hover {
    below, alongside the hero instead of being desktop-only hidden.) */
 body.shadcn-profile .profile-atividade-section,
 body.shadcn-profile .profile-tabs-bottom {
+    display: none;
+}
+
+/* Duas cópias do cartão de citação — uma ao lado do hero no desktop
+   (dentro de .profile-hero-row), outra depois do cartão "Explore Biology"
+   no telemóvel (dentro de .profile-grid, usando o mesmo truque de `order`
+   que já reordena .profile-grid-main para antes dela — ver mais abaixo).
+   Não dá para mover UM elemento entre os dois sítios só com CSS, por
+   estarem em ramos diferentes da árvore (o hero vive fora de
+   .profile-content); profile-django.js atualiza as duas em paralelo. */
+body.shadcn-profile .profile-quote-banner--mobile {
     display: none;
 }
 
@@ -13348,6 +13445,16 @@ body.shadcn-profile .profile-hero-row {
        in length) — .profile-quote-banner-text clamps to 4 lines with an
        ellipsis instead of growing the card, so swapping quotes never
        reflows the page around it. */
+    /* No telemóvel a cópia do desktop (ao lado do hero) nunca aparece — só
+       a que está dentro de .profile-grid, reordenada para depois do cartão
+       "Explore Biology" pelo bloco de `order` mais abaixo. Seletor com as
+       duas classes (em vez de só --desktop) de propósito, para ganhar por
+       especificidade à regra .profile-quote-banner logo a seguir, que
+       também lhe toca (mesmo media query) e marca display:flex. */
+    body.shadcn-profile .profile-quote-banner.profile-quote-banner--desktop {
+        display: none;
+    }
+
     body.shadcn-profile .profile-quote-banner {
         display: flex;
         align-items: center;
@@ -14591,11 +14698,33 @@ body.shadcn-profile .profile-hero-rank {
     height: 160px;
     border-bottom: 1px solid var(--sp-border, #e5e7eb);
     padding-bottom: 6px;
+    /* Com muitas unidades (ex: Citologia, Bioquímica, Genética, Ecologia,
+       Corpo Humano, Botânica...) espremer tudo na largura do cartão deixava
+       as colunas demasiado estreitas no telemóvel — passa a scroll
+       horizontal com largura fixa por coluna (ver .stats-tempo-col) em vez
+       de encolher sem limite. */
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(31, 138, 91, .4) transparent;
+}
+
+.stats-tempo-chart::-webkit-scrollbar {
+    height: 6px;
+}
+
+.stats-tempo-chart::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.stats-tempo-chart::-webkit-scrollbar-thumb {
+    background: rgba(31, 138, 91, .4);
+    border-radius: 999px;
 }
 
 .stats-tempo-col {
-    flex: 1;
-    min-width: 0;
+    flex: 0 0 68px;
+    width: 68px;
     display: flex;
     flex-direction: column;
     align-items: center;

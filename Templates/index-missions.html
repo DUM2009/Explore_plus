@@ -238,7 +238,6 @@
     </div>
     {% endif %}
 
-    {% if 'ecossistemas' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/ecossistema.jpg' %}')" aria-hidden="true"></span>
@@ -254,12 +253,11 @@
             </div>
         </div>
     </div>
-    {% endif %}
 
     {% if 'fotossintese' in missoes_lancadas or 'obtencao-materia-heterotroficos' in missoes_lancadas or '10-membrana-transporte' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Folha.png' %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Obtenção de Matéria.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Obtenção de Matéria</h3>
                 <p class="missions-category-panel-tagline">Da luz do sol ao açúcar nas tuas células — percebe como a vida se alimenta.</p>
@@ -288,7 +286,6 @@
     </div>
     {% endif %}
 
-    {% if 'sistema-nervoso' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Wallpaper corpo humano.png' %}');background-position:center top;" aria-hidden="true"></span>
@@ -296,13 +293,7 @@
                 <h3 class="missions-category-panel-name">Corpo Humano</h3>
                 <p class="missions-category-panel-tagline">Viaja pelo cérebro e pelo sistema nervoso que controla tudo o que fazes.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Sistema Nervoso e Hormonal (10º ano)</h2>
-                            <p>Do neurónio à sinapse, do hipotálamo às hormonas vegetais — como o corpo se regula.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='sistema-nervoso' %}"><button type="button">Começar</button></a>
-                    </div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Sistema Nervoso e Hormonal (10º ano)</h2><p>Do neurónio à sinapse, do hipotálamo às hormonas vegetais — como o corpo se regula.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Corpo Humano" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -310,9 +301,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
 
-    {% if 'xilema-floema' in missoes_lancadas or 'transporte-animais' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Coração.png' %}')" aria-hidden="true"></span>
@@ -320,12 +309,8 @@
                 <h3 class="missions-category-panel-name">Distribuição de Matéria</h3>
                 <p class="missions-category-panel-tagline">Viaja pelo caminho que a água e os nutrientes percorrem dentro dos seres vivos.</p>
                 <div class="missions-grid" hidden>
-                    {% if 'xilema-floema' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Xilema e Floema (10º ano)</h2><p>Descobre como a planta transporta água e nutrientes.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if 'transporte-animais' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Transporte nos Animais (10º ano)</h2><p>Descobre como o sistema circulatório distribui matéria pelo corpo.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Distribuição de Matéria" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -333,10 +318,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
 
-    {% comment %}ARQUIVADO: capítulo de Botânica retirado da Explore Biology (reativar quando for preciso)
-    {% if 'fisiologia-vegetal' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Relva.jpeg' %}')" aria-hidden="true"></span>
@@ -352,10 +334,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% if 'respiracao-aerobia-fermentacao' in missoes_lancadas or 'trocas-gasosas' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="10">
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Mitocôndira.png' %}')" aria-hidden="true"></span>
@@ -363,12 +342,8 @@
                 <h3 class="missions-category-panel-name">Transformação e Utilização de Energia</h3>
                 <p class="missions-category-panel-tagline">Descobre como os seres vivos libertam a energia escondida nos alimentos.</p>
                 <div class="missions-grid" hidden>
-                    {% if 'respiracao-aerobia-fermentacao' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Respiração Aeróbia e Fermentação (10º ano)</h2><p>Descobre como os seres vivos libertam energia dos nutrientes.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if 'trocas-gasosas' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Trocas Gasosas (10º ano)</h2><p>Descobre como os seres vivos trocam gases com o ambiente.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Transformação e Utilização de Energia" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -376,7 +351,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
 
     {% if 'codigo-da-vida' in missoes_lancadas or 'sintese-proteica' in missoes_lancadas or 'ciclo-celular' in missoes_lancadas or 'mitose' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="11" hidden>
@@ -445,21 +419,15 @@
     </div>
     {% endif %}
 
-    {% comment %}ARQUIVADO: capítulo "Evolução" (reativar quando for preciso)
-    {% if 'lamarckismo-darwinismo' in missoes_lancadas or '11-origem-celula-eucariotica' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="11" hidden>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/especie.jpg' %}')" aria-hidden="true"></span>
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Evolução.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Evolução</h3>
                 <p class="missions-category-panel-tagline">As teorias que tentaram explicar como as espécies mudam ao longo do tempo.</p>
                 <div class="missions-grid" hidden>
-                    {% if '11-origem-celula-eucariotica' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>A Origem da Célula Eucariótica (11º ano)</h2><p>Os modelos autogénico e endossimbiótico, e as provas que os sustentam.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if 'lamarckismo-darwinismo' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Lamarckismo e Darwinismo (11º ano)</h2><p>Descobre as duas grandes teorias que tentaram explicar a evolução das espécies.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Evolução" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -467,11 +435,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% comment %}ARQUIVADO: capítulo "Sistemática dos Seres Vivos" (reativar quando for preciso)
-    {% if 'taxonomia-sistematica' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/organismo.jpg' %}')" aria-hidden="true"></span>
@@ -487,12 +451,11 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
     {% if '12-gametogenese-fecundacao' in missoes_lancadas or '12-manipulacao-fertilidade' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="12" hidden>
         <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Reprodução e Manipulação da Fertilidade.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Reprodução e Manipulação da Fertilidade</h3>
                 <p class="missions-category-panel-tagline">Gametogénese, fecundação e as técnicas que ajudam — ou travam — a fertilidade humana.</p>
@@ -512,20 +475,15 @@
     </div>
     {% endif %}
 
-    {% comment %}ARQUIVADO: capítulo "Património Genético" (reativar quando for preciso)
-    {% if '12-mendel-hereditariedade' in missoes_lancadas or '12-engenharia-genetica' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="12" hidden>
         <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Património Genético.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Património Genético</h3>
                 <p class="missions-category-panel-tagline">De Mendel à engenharia genética — como a informação passa de geração em geração, e como a manipulamos.</p>
                 <div class="missions-grid" hidden>
-                    {% if '12-mendel-hereditariedade' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Mendel e a Hereditariedade (12º ano)</h2><p>Mono e diibridismo, os trabalhos de Morgan e a hereditariedade ligada ao sexo.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if '12-engenharia-genetica' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Engenharia Genética (12º ano)</h2><p>ADN recombinante, clonagem, diagnóstico genético e as questões bioéticas que levantam.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Património Genético" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -533,23 +491,16 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% comment %}ARQUIVADO: capítulo "Imunidade e Controlo de Doenças" (reativar quando for preciso)
-    {% if '12-sistema-imunitario' in missoes_lancadas or '12-desequilibrios-imunitarios' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="12" hidden>
         <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Imunidade e Controlo de Doenças.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Imunidade e Controlo de Doenças</h3>
                 <p class="missions-category-panel-tagline">Como o corpo se defende, o que acontece quando a defesa falha, e o que a biotecnologia faz por ela.</p>
                 <div class="missions-grid" hidden>
-                    {% if '12-sistema-imunitario' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>O Sistema Imunitário (12º ano)</h2><p>Defesas específicas e não específicas, imunidade humoral e celular, ativa e passiva.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if '12-desequilibrios-imunitarios' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Desequilíbrios Imunitários e Biotecnologia (12º ano)</h2><p>Alergias, doenças autoimunes, imunodeficiências, vacinas e anticorpos monoclonais.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Imunidade e Controlo de Doenças" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -557,23 +508,16 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% comment %}ARQUIVADO: capítulo "Produção de Alimentos e Sustentabilidade" (reativar quando for preciso)
-    {% if '12-microrganismos-alimentos' in missoes_lancadas or '12-conservacao-ogm-pragas' in missoes_lancadas %}
     <div class="missions-category" data-subject="biology" data-ano="12" hidden>
         <div class="missions-category-panel">
+            <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Produção de Alimentos e Sustentabilidade.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
                 <h3 class="missions-category-panel-name">Produção de Alimentos e Sustentabilidade</h3>
                 <p class="missions-category-panel-tagline">Fermentações, conservação, OGM e controlo de pragas — alimentar o mundo sem o esgotar.</p>
                 <div class="missions-grid" hidden>
-                    {% if '12-microrganismos-alimentos' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Microrganismos e Produção de Alimentos (12º ano)</h2><p>Fermentações na indústria alimentar e o papel dos microrganismos.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
-                    {% if '12-conservacao-ogm-pragas' in missoes_lancadas %}
                     <div class="mission-card locked"><div class="mission-card-info"><h2>Conservação, OGM e Controlo de Pragas (12º ano)</h2><p>Métodos de conservação, organismos geneticamente modificados e controlo biológico.</p></div><button disabled>Em breve</button></div>
-                    {% endif %}
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Produção de Alimentos e Sustentabilidade" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -581,8 +525,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
     {% if 'energia-e-movimentos' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="10" hidden>
@@ -608,8 +550,6 @@
     </div>
     {% endif %}
 
-    {% comment %}ARQUIVADO: capítulo "Energia e Fenómenos Elétricos" (reativar quando for preciso)
-    {% if 'energia-e-fenomenos-eletricos' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="10" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Energia e fenómenos elétricos.png' %}')" aria-hidden="true"></span>
@@ -617,13 +557,7 @@
                 <h3 class="missions-category-panel-name">Energia e Fenómenos Elétricos</h3>
                 <p class="missions-category-panel-tagline">O que acontece quando carregas no interruptor? Corrente, tensão, resistência, circuitos e pilhas.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Energia e Fenómenos Elétricos (10º ano)</h2>
-                            <p>Corrente, tensão, resistência, circuitos em série e em paralelo, e pilhas.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='energia-e-fenomenos-eletricos' %}"><button type="button">Começar</button></a>
-                    </div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Energia e Fenómenos Elétricos (10º ano)</h2><p>Corrente, tensão, resistência, circuitos em série e em paralelo, e pilhas.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Energia e Fenómenos Elétricos" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -631,11 +565,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% comment %}ARQUIVADO: capítulo "Energia, Fenómenos Térmicos e Radiação" (reativar quando for preciso)
-    {% if 'energia-fenomenos-termicos-radiacao' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="10" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Fenómenos térmicos e radiação.png' %}')" aria-hidden="true"></span>
@@ -643,13 +573,7 @@
                 <h3 class="missions-category-panel-name">Energia, Fenómenos Térmicos e Radiação</h3>
                 <p class="missions-category-panel-tagline">Porque é que um banco de metal parece mais frio do que um de madeira, se estão à mesma temperatura? Temperatura, calor, radiação e as leis da termodinâmica.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Energia, Fenómenos Térmicos e Radiação (10º ano)</h2>
-                            <p>Temperatura, calor, condução, convecção, radiação e as leis da termodinâmica.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='energia-fenomenos-termicos-radiacao' %}"><button type="button">Começar</button></a>
-                    </div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Energia, Fenómenos Térmicos e Radiação (10º ano)</h2><p>Temperatura, calor, condução, convecção, radiação e as leis da termodinâmica.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Energia, Fenómenos Térmicos e Radiação" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -657,8 +581,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
     {% if '11-movimento-e-interacoes' in missoes_lancadas or '11-forcas-e-movimentos' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="11" hidden>
@@ -695,8 +617,6 @@
     </div>
     {% endif %}
 
-    {% comment %}ARQUIVADO: capítulo "Sinais, Ondas e Som" (reativar quando for preciso)
-    {% if '11-sinais-ondas-som' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Sinais e ondas.png' %}')" aria-hidden="true"></span>
@@ -704,13 +624,7 @@
                 <h3 class="missions-category-panel-name">Sinais, Ondas e Som</h3>
                 <p class="missions-category-panel-tagline">Porque é que no espaço ninguém te ouve gritar? Sinais, ondas, período, frequência, comprimento de onda e as características do som.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Sinais, Ondas e Som (11º ano)</h2>
-                            <p>Sinais, ondas, período, frequência, comprimento de onda e as características do som.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='11-sinais-ondas-som' %}"><button type="button">Começar</button></a>
-                    </div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Sinais, Ondas e Som (11º ano)</h2><p>Sinais, ondas, período, frequência, comprimento de onda e as características do som.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Sinais, Ondas e Som" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -718,11 +632,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% comment %}ARQUIVADO: capítulo "Eletromagnetismo" (reativar quando for preciso)
-    {% if '11-eletromagnetismo' in missoes_lancadas or '11-ondas-eletromagneticas' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Eletromagnetismo.png' %}')" aria-hidden="true"></span>
@@ -730,24 +640,8 @@
                 <h3 class="missions-category-panel-name">Eletromagnetismo</h3>
                 <p class="missions-category-panel-tagline">Como é que uma barragem ou uma eólica produz eletricidade? Carga, campo elétrico, campo magnético, indução eletromagnética e transformadores.</p>
                 <div class="missions-grid" hidden>
-                    {% if '11-eletromagnetismo' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Eletromagnetismo (11º ano)</h2>
-                            <p>Carga, campo elétrico, campo magnético, indução eletromagnética e transformadores.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='11-eletromagnetismo' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
-                    {% if '11-ondas-eletromagneticas' in missoes_lancadas %}
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Ondas Eletromagnéticas (11º ano)</h2>
-                            <p>Espetro eletromagnético, reflexão, refração, fibras óticas, difração, efeito Doppler e Big Bang.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='11-ondas-eletromagneticas' %}"><button type="button">Começar</button></a>
-                    </div>
-                    {% endif %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Eletromagnetismo (11º ano)</h2><p>Carga, campo elétrico, campo magnético, indução eletromagnética e transformadores.</p></div><button disabled>Em breve</button></div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Ondas Eletromagnéticas (11º ano)</h2><p>Espetro eletromagnético, reflexão, refração, fibras óticas, difração, efeito Doppler e Big Bang.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Eletromagnetismo" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -755,8 +649,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
     {% if '12-cinematica-dinamica-2d' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="12" hidden>
@@ -806,8 +698,6 @@
     </div>
     {% endif %}
 
-    {% comment %}ARQUIVADO: capítulo "Fluidos" (reativar quando for preciso)
-    {% if '12-fluidos' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="12" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Energia e movimentos.png' %}')" aria-hidden="true"></span>
@@ -815,13 +705,7 @@
                 <h3 class="missions-category-panel-name">Fluidos</h3>
                 <p class="missions-category-panel-tagline">Como é que um navio de milhares de toneladas flutua? Pressão, hidrostática, impulsão e viscosidade.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Fluidos (12º ano)</h2>
-                            <p>Pressão, hidrostática, impulsão e viscosidade.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='12-fluidos' %}"><button type="button">Começar</button></a>
-                    </div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Fluidos (12º ano)</h2><p>Pressão, hidrostática, impulsão e viscosidade.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Fluidos" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -829,11 +713,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% comment %}ARQUIVADO: capítulo "Campo Gravítico" (reativar quando for preciso)
-    {% if '12-campo-gravitico' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="12" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Energia e movimentos.png' %}')" aria-hidden="true"></span>
@@ -841,13 +721,7 @@
                 <h3 class="missions-category-panel-name">Campo Gravítico</h3>
                 <p class="missions-category-panel-tagline">Porque é que a Lua não tem atmosfera? Leis de Kepler, campo gravítico, energia potencial gravítica e velocidade de escape.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Campo Gravítico (12º ano)</h2>
-                            <p>Leis de Kepler, campo gravítico, energia potencial gravítica e velocidade de escape.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='12-campo-gravitico' %}"><button type="button">Começar</button></a>
-                    </div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Campo Gravítico (12º ano)</h2><p>Leis de Kepler, campo gravítico, energia potencial gravítica e velocidade de escape.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Campo Gravítico" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -855,11 +729,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% comment %}ARQUIVADO: capítulo "Campo Elétrico" (reativar quando for preciso)
-    {% if '12-campo-eletrico' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="12" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Energia e movimentos.png' %}')" aria-hidden="true"></span>
@@ -867,13 +737,7 @@
                 <h3 class="missions-category-panel-name">Campo Elétrico</h3>
                 <p class="missions-category-panel-tagline">Porque é que estás seguro dentro de um carro durante uma trovoada? Lei de Coulomb, potencial elétrico, condutores, cargas em movimento e condensadores.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Campo Elétrico (12º ano)</h2>
-                            <p>Lei de Coulomb, potencial elétrico, condutores, cargas em movimento e condensadores.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='12-campo-eletrico' %}"><button type="button">Começar</button></a>
-                    </div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Campo Elétrico (12º ano)</h2><p>Lei de Coulomb, potencial elétrico, condutores, cargas em movimento e condensadores.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Campo Elétrico" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -881,11 +745,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% comment %}ARQUIVADO: capítulo "Campo Magnético" (reativar quando for preciso)
-    {% if '12-campo-magnetico' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="12" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Energia e movimentos.png' %}')" aria-hidden="true"></span>
@@ -893,13 +753,7 @@
                 <h3 class="missions-category-panel-name">Campo Magnético</h3>
                 <p class="missions-category-panel-tagline">Como se separam isótopos ou se fazem as auroras boreais? Força magnética, movimento circular de cargas e espectrómetro de massa.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Campo Magnético (12º ano)</h2>
-                            <p>Força magnética, movimento circular de cargas e espectrómetro de massa.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='12-campo-magnetico' %}"><button type="button">Começar</button></a>
-                    </div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Campo Magnético (12º ano)</h2><p>Força magnética, movimento circular de cargas e espectrómetro de massa.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Campo Magnético" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -907,11 +761,7 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
-    {% comment %}ARQUIVADO: capítulo "Física Moderna" (reativar quando for preciso)
-    {% if '12-fisica-moderna' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="12" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Energia e movimentos.png' %}')" aria-hidden="true"></span>
@@ -919,13 +769,7 @@
                 <h3 class="missions-category-panel-name">Física Moderna</h3>
                 <p class="missions-category-panel-tagline">A luz é onda ou partícula? E porque é que o radão é um problema nas casas do interior norte? Radiação térmica, fotões, efeito fotoelétrico, núcleos e radioatividade.</p>
                 <div class="missions-grid" hidden>
-                    <div class="mission-card">
-                        <div class="mission-card-info">
-                            <h2>Física Moderna (12º ano)</h2>
-                            <p>Radiação térmica, fotões, efeito fotoelétrico, núcleos e radioatividade.</p>
-                        </div>
-                        <a href="{% url 'missao' missao_id='12-fisica-moderna' %}"><button type="button">Começar</button></a>
-                    </div>
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Física Moderna (12º ano)</h2><p>Radiação térmica, fotões, efeito fotoelétrico, núcleos e radioatividade.</p></div><button disabled>Em breve</button></div>
                 </div>
                 <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Física Moderna" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -933,8 +777,6 @@
             </div>
         </div>
     </div>
-    {% endif %}
-    {% endcomment %}
 
     {% if '10-massa-tamanho-atomos' in missoes_lancadas %}
     <div class="missions-category" data-subject="chemistry" data-ano="10" hidden>

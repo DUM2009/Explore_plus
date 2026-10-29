@@ -114,8 +114,14 @@ function getUserStorageKey(user) {
     return 'guest';
 }
 
-function getProfileStorageKey(user) {
-    return `${PROFILE_STORAGE_PREFIX}${getUserStorageKey(user)}`;
+// disciplina (opcional): 'biology' (ou omitido) usa exatamente a mesma
+// chave de sempre — zero risco de "perder" o XP já guardado de alunos
+// existentes. Só chemistry/physics/geology ganham uma chave própria,
+// à parte, com o seu progresso independente (ver subject-switcher no
+// Perfil e DISCIPLINAS_SUPORTADAS em models.py).
+function getProfileStorageKey(user, disciplina) {
+    const sufixo = (disciplina && disciplina !== 'biology') ? `_${disciplina}` : '';
+    return `${PROFILE_STORAGE_PREFIX}${getUserStorageKey(user)}${sufixo}`;
 }
 
 function getLevelFromXP(xp) {
@@ -282,24 +288,32 @@ function migrateLegacyMissionXP(profile, storage, user) {
     };
 }
 
-function readProfile(storage, user) {
-    const key = getProfileStorageKey(user);
+function readProfile(storage, user, disciplina) {
+    const key = getProfileStorageKey(user, disciplina);
     const storedProfile = sanitizeProfile(safelyParseJSON(storage?.getItem?.(key)));
+
+    // As chaves mission_* antigas (ver getLegacyMissionXP) são todas de
+    // missões de Biologia (fotossíntese, etc.) — só faz sentido importá-las
+    // para o balde "biology", nunca para chemistry/physics/geology.
+    if (disciplina && disciplina !== 'biology') {
+        return storedProfile;
+    }
+
     const migration = migrateLegacyMissionXP(storedProfile, storage, user);
 
     if (migration.changed) {
-        writeProfile(storage, user, migration.profile);
+        writeProfile(storage, user, migration.profile, disciplina);
     }
 
     return migration.profile;
 }
 
-function writeProfile(storage, user, profile) {
+function writeProfile(storage, user, profile, disciplina) {
     if (!storage?.setItem) {
         return;
     }
 
-    storage.setItem(getProfileStorageKey(user), JSON.stringify(sanitizeProfile(profile)));
+    storage.setItem(getProfileStorageKey(user, disciplina), JSON.stringify(sanitizeProfile(profile)));
 }
 
 function buildRewardSource(type, identifier) {
@@ -425,13 +439,13 @@ function getDefaultStorage(storage) {
     return typeof localStorage !== 'undefined' ? localStorage : null;
 }
 
-function commitProfileUpdate(user, profile, storage) {
-    writeProfile(storage, user, profile);
-    syncProfileWithDjango(profile);
+function commitProfileUpdate(user, profile, storage, disciplina) {
+    writeProfile(storage, user, profile, disciplina);
+    syncProfileWithDjango(profile, disciplina);
     announceProfileUpdate(user, profile);
 }
 
-function syncProfileWithDjango(profile) {
+function syncProfileWithDjango(profile, disciplina) {
     if (typeof window === 'undefined' || !window.exploreProgressSyncUrl) {
         return;
     }
@@ -446,7 +460,8 @@ function syncProfileWithDjango(profile) {
         body: JSON.stringify({
             missionId: 'profile',
             progress: { totalSections: 1, completedSections: [] },
-            xp: sanitizeProfile(profile).xp
+            xp: sanitizeProfile(profile).xp,
+            disciplina: disciplina || 'biology'
         })
     }).catch((error) => {
         console.warn('Não foi possível sincronizar o XP com o Django:', error);
@@ -467,12 +482,12 @@ function buildLevelResetProfile(profile) {
     };
 }
 
-function resetLevelForUser(user, storage) {
+function resetLevelForUser(user, storage, disciplina) {
     const resolvedStorage = getDefaultStorage(storage);
-    const currentProfile = readProfile(resolvedStorage, user);
+    const currentProfile = readProfile(resolvedStorage, user, disciplina);
     const resetProfile = sanitizeProfile(buildLevelResetProfile(currentProfile));
 
-    commitProfileUpdate(user, resetProfile, resolvedStorage);
+    commitProfileUpdate(user, resetProfile, resolvedStorage, disciplina);
 
     return {
         profile: resetProfile,
@@ -484,15 +499,15 @@ function resetProfileForUser(user, storage) {
     return resetLevelForUser(user, storage);
 }
 
-function awardXPToUser(user, amount, source, storage, activityDetails = {}) {
+function awardXPToUser(user, amount, source, storage, activityDetails = {}, disciplina) {
     const resolvedStorage = getDefaultStorage(storage);
-    const currentProfile = readProfile(resolvedStorage, user);
+    const currentProfile = readProfile(resolvedStorage, user, disciplina);
     const result = awardXP(currentProfile, amount, source, activityDetails);
     const badgeResult = unlockBadgesForSource(result.profile, source);
     const nextProfile = badgeResult.profile;
 
     if (result.awarded || badgeResult.changed) {
-        commitProfileUpdate(user, nextProfile, resolvedStorage);
+        commitProfileUpdate(user, nextProfile, resolvedStorage, disciplina);
     }
 
     return {
@@ -502,13 +517,13 @@ function awardXPToUser(user, amount, source, storage, activityDetails = {}) {
     };
 }
 
-function unlockBadgesForUser(user, source, storage) {
+function unlockBadgesForUser(user, source, storage, disciplina) {
     const resolvedStorage = getDefaultStorage(storage);
-    const currentProfile = readProfile(resolvedStorage, user);
+    const currentProfile = readProfile(resolvedStorage, user, disciplina);
     const result = unlockBadgesForSource(currentProfile, source);
 
     if (result.changed) {
-        commitProfileUpdate(user, result.profile, resolvedStorage);
+        commitProfileUpdate(user, result.profile, resolvedStorage, disciplina);
     }
 
     return result;
@@ -522,16 +537,16 @@ function getCurrentUser() {
     return window.exploreCurrentUser || null;
 }
 
-function getCurrentUserProfile(storage) {
-    return readProfile(getDefaultStorage(storage), getCurrentUser());
+function getCurrentUserProfile(storage, disciplina) {
+    return readProfile(getDefaultStorage(storage), getCurrentUser(), disciplina);
 }
 
-function awardXPToCurrentUser(amount, source, storage, activityDetails = {}) {
-    return awardXPToUser(getCurrentUser(), amount, source, getDefaultStorage(storage), activityDetails);
+function awardXPToCurrentUser(amount, source, storage, activityDetails = {}, disciplina) {
+    return awardXPToUser(getCurrentUser(), amount, source, getDefaultStorage(storage), activityDetails, disciplina);
 }
 
-function unlockBadgesForCurrentUser(source, storage) {
-    return unlockBadgesForUser(getCurrentUser(), source, getDefaultStorage(storage));
+function unlockBadgesForCurrentUser(source, storage, disciplina) {
+    return unlockBadgesForUser(getCurrentUser(), source, getDefaultStorage(storage), disciplina);
 }
 
 function resetCurrentUserProfile(storage) {

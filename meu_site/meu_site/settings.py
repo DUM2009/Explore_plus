@@ -25,8 +25,9 @@ ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
 
 # Email de contacto mostrado no link "Suporte" do menu da conta (ver
 # meu_site.context_processors.constantes_do_site e os templates que usam
-# {{ EMAIL_SUPORTE }}) — placeholder até termos o endereço real.
-EMAIL_SUPORTE = os.environ.get('EMAIL_SUPORTE', 'exploremore.pt6@gmail.com')
+# {{ EMAIL_SUPORTE }}) — o mesmo endereço já usado nas páginas legais
+# (Política de Privacidade, Termos, Cookies).
+EMAIL_SUPORTE = os.environ.get('EMAIL_SUPORTE', 'exploremore.pt26@gmail.com')
 
 # Stripe — assinatura SuperExplore (ver meu_site/meu_site/views.py e o
 # comando `python manage.py stripe_setup`).
@@ -246,14 +247,17 @@ STORAGES = {
 }
 
 
-# Email
-# https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
+# Email (usado para o email de "recuperar password" — ver enviar_email_brevo
+# em views.py). Manda-se via a API HTTP da Brevo (brevo.com), não por SMTP
+# direto: o Render bloqueia ligações de saída em smtp.gmail.com:587 (e
+# portas SMTP em geral) nos planos mais baratos — o pedido fica pendurado
+# até o worker do gunicorn ser morto por timeout, nunca chega a dar erro
+# "normal" (nada que um try/except apanhe). A API da Brevo usa HTTPS
+# (porta 443, igual a qualquer pedido normal do site), por isso não bate
+# nesse bloqueio.
+BREVO_API_KEY = os.environ.get('BREVO_API_KEY', '')
 
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_SUPORTE)
 
 
 # Without this, Django's default LOGGING config only mails ADMINS on a 500
