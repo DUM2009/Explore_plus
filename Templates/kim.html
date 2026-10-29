@@ -17,7 +17,7 @@
 
 </head>
 
-<body class="shadcn-profile">
+<body class="shadcn-profile kim-body">
 
 <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
 
@@ -166,50 +166,64 @@
     </div>
 </div>
 
-<section class="missions-page kim-page">
-    <h1>Kim · assistente IA</h1>
-    <p class="kim-page-subtitle">Tira dúvidas, pede resumos ou prepara-te para um teste — o Kim guarda as tuas conversas para voltares a elas sempre que precisares.</p>
-
-    <div class="kim-layout">
-        <aside class="kim-conversas-col">
+<div class="kim-workspace" id="kimWorkspace">
+    <aside class="kim-conversas" id="kimConversas">
+        <div class="kim-conversas-header">
+            <img class="kim-avatar kim-avatar--sm" src="{% static 'images/Mascote botao flutuante.png' %}" alt="">
+            <span>Conversas</span>
+        </div>
+        <div class="kim-conversas-body">
             <button type="button" class="kim-nova-conversa" id="kimNovaConversaBtn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-                {% trans 'Nova conversa' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                Nova Conversa
             </button>
-            <p class="kim-conversas-titulo">{% trans 'Conversas' %}</p>
-            <p class="kim-conversas-empty" id="kimConversasEmpty" hidden>{% trans 'Ainda não tens conversas guardadas.' %}</p>
+            <div class="kim-conversas-empty" id="kimConversasEmpty" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                <p>Nenhuma conversa ainda</p>
+            </div>
             <ul class="kim-conversas-list" id="kimConversasList"></ul>
-        </aside>
+        </div>
+    </aside>
 
-        <div class="kim-chat-col">
-            <div class="mascote-chat-messages kim-chat-messages" id="kimChatMessages">
-                <div class="mascote-chat-welcome" id="kimChatWelcome">
-                    <video class="mascote-chat-welcome-video" autoplay loop muted playsinline aria-hidden="true">
-                        <source src="{% static 'Mascote a acenar.webm' %}" type="video/webm">
-                    </video>
-                    <div class="mascote-chat-welcome-copy">
-                        <p class="mascote-chat-welcome-greeting">Olá, {{ request.user.username }}!</p>
-                        <h3 class="mascote-chat-welcome-title">Bem-vindo de volta! Como posso ajudar?</h3>
-                        <p class="mascote-chat-welcome-subtitle">Estou aqui para te ajudar a estudar. Escolhe uma sugestão ou escreve a tua pergunta!</p>
-                    </div>
-                    <div class="mascote-chat-suggestions">
-                        <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes explicar-me este conceito de forma simples?">Explicar um conceito</button>
-                        <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes resumir a matéria desta unidade?">Resumir a matéria</button>
-                        <button type="button" class="mascote-chat-suggestion" data-suggestion="Ajuda-me a preparar-me para um teste.">Preparar um teste</button>
-                        <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes dar-me um exemplo prático?">Dar um exemplo</button>
-                        <button type="button" class="mascote-chat-suggestion" data-suggestion="Podes corrigir a minha resposta?">Corrigir a resposta</button>
-                    </div>
+    <div class="kim-chat">
+        <div class="kim-chat-header">
+            <button type="button" class="kim-icon-btn" id="kimToggleConversas" aria-label="Mostrar/esconder conversas" aria-expanded="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/></svg>
+            </button>
+            <img class="kim-avatar" src="{% static 'images/Mascote botao flutuante.png' %}" alt="">
+            <div class="kim-chat-header-text">
+                <strong>Kim</strong>
+                <span>Assistente virtual</span>
+            </div>
+        </div>
+
+        <div class="kim-messages" id="kimChatMessages">
+            <div class="kim-welcome" id="kimChatWelcome">
+                <div class="kim-welcome-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+                </div>
+                <h2 class="kim-welcome-title">Olá, {{ request.user.username }}! 👋</h2>
+                <p class="kim-welcome-text">Sou o Kim, o teu assistente virtual de estudo. Pergunta-me qualquer coisa sobre a matéria!</p>
+                <div class="kim-suggestions">
+                    <button type="button" class="kim-suggestion" data-suggestion="Podes explicar-me um conceito de forma simples?"><span aria-hidden="true">💡</span>Explica-me um conceito</button>
+                    <button type="button" class="kim-suggestion" data-suggestion="O que devo rever hoje?"><span aria-hidden="true">📚</span>O que rever hoje?</button>
+                    <button type="button" class="kim-suggestion" data-suggestion="Ajuda-me a preparar-me para um teste."><span aria-hidden="true">📝</span>Preparar um teste</button>
+                    <button type="button" class="kim-suggestion" data-suggestion="Podes dar-me um exemplo prático?"><span aria-hidden="true">🧠</span>Dá-me um exemplo</button>
                 </div>
             </div>
-            <form class="mascote-chat-form" id="kimChatForm">
-                <input type="text" class="mascote-chat-input" id="kimChatInput" placeholder="Pergunta ao Kim..." autocomplete="off" maxlength="500">
-                <button type="submit" class="mascote-chat-send" id="kimChatSend" aria-label="Enviar">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        </div>
+
+        <div class="kim-composer">
+            <form class="kim-form" id="kimChatForm">
+                <input type="text" class="kim-input" id="kimChatInput" placeholder="Pergunta ao Kim..." autocomplete="off" maxlength="500">
+                <button type="submit" class="kim-send" id="kimChatSend" aria-label="Enviar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
                 </button>
             </form>
+            <p class="kim-disclaimer">O Kim pode cometer erros. Considera verificar informações importantes.</p>
         </div>
     </div>
-</section>
+</div>
 
 </div>
 </div>

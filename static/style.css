@@ -11631,36 +11631,75 @@ html.dark-mode .mascote-chat-input:focus {
 }
 
 /* =====================================================================
-   KIM — página de página inteira (ver kim.html): substitui o botão
-   flutuante nas páginas com sidebar. Reaproveita as classes
-   .mascote-chat-messages/-welcome/-bubble/-form (antes só usadas dentro
-   do painel fixo .mascote-chat-panel) encaixadas numa coluna normal, em
-   vez de um drawer sobreposto.
+   KIM — página do assistente (ver kim.html). Ocupa todo o espaço à
+   direita da sidebar: coluna de conversas + chat, sem título de página.
    ===================================================================== */
 
-.kim-page-subtitle {
-    margin: -6px 0 20px;
-    color: var(--sp-muted, #6b7a71);
-    font-size: .95rem;
+.kim-workspace {
+    display: flex;
+    background: #f7f8f7;
+    overflow: hidden;
+    font-family: inherit;
 }
 
-.kim-layout {
-    display: grid;
-    grid-template-columns: 280px minmax(0, 1fr);
-    gap: 18px;
-    height: calc(100vh - 230px);
-    min-height: 480px;
+@media (min-width: 981px) {
+    .kim-body .missions-topbar {
+        display: none;
+    }
+
+    .kim-workspace {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: var(--sp-sidebar-w);
+        right: 0;
+        z-index: 5;
+    }
+
+    .profile-sidebar.is-collapsed ~ .profile-main-shell .kim-workspace {
+        left: var(--sp-sidebar-w-collapsed);
+    }
+
+    .profile-layout.is-sidebar-collapsed .kim-workspace {
+        left: 0;
+    }
 }
 
-.kim-conversas-col {
+/* ---- Coluna de conversas ---- */
+
+.kim-conversas {
+    flex: 0 0 288px;
     display: flex;
     flex-direction: column;
+    background: #ffffff;
+    border-right: 1px solid #e6e8e6;
+    min-height: 0;
+}
+
+.kim-workspace.is-conversas-hidden .kim-conversas {
+    display: none;
+}
+
+.kim-conversas-header {
+    display: flex;
+    align-items: center;
     gap: 10px;
-    padding: 16px;
-    background: var(--sp-card, #ffffff);
-    border: 1px solid var(--sp-border, #e7e8e1);
-    border-radius: 18px;
-    overflow: hidden;
+    height: 56px;
+    padding: 0 14px;
+    border-bottom: 1px solid #e6e8e6;
+    font-weight: 600;
+    font-size: .95rem;
+    color: #1d2420;
+    flex: none;
+}
+
+.kim-conversas-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 12px 16px;
+    overflow-y: auto;
+    min-height: 0;
 }
 
 .kim-nova-conversa {
@@ -11669,14 +11708,20 @@ html.dark-mode .mascote-chat-input:focus {
     justify-content: center;
     gap: 8px;
     width: 100%;
-    padding: 11px;
-    border: 1px dashed #9fcbb3;
-    border-radius: 12px;
-    background: #f3faf6;
-    color: #1f8a5b;
+    height: 38px;
+    border: none;
+    border-radius: 8px;
+    background: #1f8a5b;
+    color: #ffffff;
+    font: inherit;
     font-weight: 700;
-    font-size: .88rem;
+    font-size: .9rem;
     cursor: pointer;
+    transition: background .15s ease;
+}
+
+.kim-nova-conversa:hover {
+    background: #197a50;
 }
 
 .kim-nova-conversa svg {
@@ -11684,21 +11729,29 @@ html.dark-mode .mascote-chat-input:focus {
     height: 16px;
 }
 
-.kim-conversas-titulo {
-    margin: 6px 0 0;
-    color: var(--sp-muted, #6b7a71);
-    font-size: .78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-}
-
 .kim-conversas-empty {
-    margin: 4px 0;
-    padding: 10px;
-    color: #8a9a92;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 34px 10px;
+    color: #7b847f;
     font-size: .82rem;
     text-align: center;
+}
+
+.kim-conversas-empty[hidden] {
+    display: none;
+}
+
+.kim-conversas-empty svg {
+    width: 34px;
+    height: 34px;
+    color: #b9c0bc;
+}
+
+.kim-conversas-empty p {
+    margin: 0;
 }
 
 .kim-conversas-list {
@@ -11707,88 +11760,461 @@ html.dark-mode .mascote-chat-input:focus {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    overflow-y: auto;
+    gap: 2px;
 }
 
 .kim-conversa-item {
     display: flex;
     flex-direction: column;
+    gap: 2px;
     width: 100%;
-    padding: 10px 12px;
+    padding: 9px 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     background: none;
     text-align: left;
-    color: var(--sp-fg, #202821);
-    font-size: .84rem;
+    font: inherit;
+    color: #1d2420;
+    font-size: .85rem;
     font-weight: 600;
     cursor: pointer;
 }
 
-.kim-conversa-item:hover,
+.kim-conversa-item-titulo {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.kim-conversa-item:hover {
+    background: #f2f4f2;
+}
+
 .kim-conversa-item.is-active {
-    background: var(--sp-accent-soft, #eaf3e9);
+    background: #e8f4ee;
+    color: #156b46;
 }
 
 .kim-conversa-item-meta {
-    margin-top: 2px;
-    color: #8a9a92;
+    color: #8a938e;
     font-size: .72rem;
     font-weight: 500;
 }
 
-.kim-chat-col {
+/* ---- Coluna do chat ---- */
+
+.kim-chat {
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    background: var(--sp-card, #ffffff);
-    border: 1px solid var(--sp-border, #e7e8e1);
-    border-radius: 18px;
-    overflow: hidden;
+    min-width: 0;
+    min-height: 0;
 }
 
-.kim-chat-messages {
-    background: #f7faf8;
+.kim-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+    padding: 0 20px;
+    background: #f7f8f7;
+    border-bottom: 1px solid #e6e8e6;
+    flex: none;
 }
 
-@media (max-width: 860px) {
-    .kim-layout {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto minmax(420px, 1fr);
-        height: auto;
+.kim-icon-btn {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: none;
+    color: #3d4541;
+    cursor: pointer;
+}
+
+.kim-icon-btn,
+.kim-icon-btn:hover {
+    background: none;
+    box-shadow: none;
+    transform: none;
+}
+
+.kim-icon-btn:hover {
+    color: #1f8a5b;
+}
+
+.kim-icon-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.kim-workspace.is-conversas-hidden .kim-icon-btn svg {
+    transform: scaleX(-1);
+}
+
+.kim-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #e8f4ee;
+    flex: none;
+}
+
+.kim-avatar--sm {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+.kim-chat-header-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.kim-chat-header-text strong {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1d2420;
+}
+
+.kim-chat-header-text span {
+    font-size: .75rem;
+    color: #7b847f;
+}
+
+.kim-messages {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px max(24px, calc((100% - 760px) / 2));
+    overflow-y: auto;
+    min-height: 0;
+    scrollbar-width: thin;
+    scrollbar-color: #cfd5d1 transparent;
+}
+
+.kim-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: auto 0;
+    padding: 12px 0;
+}
+
+.kim-welcome-icon {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 14px;
+    background: #e8f4ee;
+    color: #1f8a5b;
+    margin-bottom: 22px;
+}
+
+.kim-welcome-icon svg {
+    width: 34px;
+    height: 34px;
+}
+
+.kim-welcome-title {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1d2420;
+}
+
+.kim-welcome-text {
+    margin: 0 0 24px;
+    max-width: 440px;
+    font-size: .95rem;
+    line-height: 1.45;
+    color: #59625d;
+}
+
+.kim-suggestions {
+    display: grid;
+    grid-template-columns: repeat(2, 220px);
+    gap: 12px;
+}
+
+.kim-suggestion {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 58px;
+    padding: 10px 34px 10px 10px;
+    border: 1px solid #e8ebe9;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .7);
+    box-shadow: none;
+    text-align: left;
+    font: inherit;
+    font-size: .84rem;
+    font-weight: 500;
+    line-height: 1.3;
+    color: #2a312d;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.kim-suggestion span {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #f0f5f2;
+    font-size: 1.05rem;
+    flex: none;
+    transition: background .2s ease;
+}
+
+.kim-suggestion::after {
+    content: "→";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translate(-4px, -50%);
+    color: #1f8a5b;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.kim-suggestion:hover {
+    background: #ffffff;
+    border-color: #c9e4d5;
+    box-shadow: 0 8px 20px -12px rgba(16, 70, 45, .35);
+    transform: translateY(-1px);
+}
+
+.kim-suggestion:hover span {
+    background: #e2f1e9;
+}
+
+.kim-suggestion:hover::after {
+    opacity: 1;
+    transform: translate(0, -50%);
+}
+
+.kim-suggestion:focus-visible {
+    outline: 2px solid #1f8a5b;
+    outline-offset: 2px;
+}
+
+.kim-nova-conversa,
+.kim-nova-conversa:hover,
+.kim-conversa-item,
+.kim-conversa-item:hover,
+.kim-send,
+.kim-send:hover {
+    box-shadow: none;
+    transform: none;
+}
+
+.kim-messages .mascote-chat-bubble {
+    max-width: 78%;
+}
+
+.kim-composer {
+    flex: none;
+    padding: 12px max(24px, calc((100% - 760px) / 2)) 10px;
+    border-top: 1px solid #e6e8e6;
+    background: #f7f8f7;
+}
+
+.kim-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 6px 6px 16px;
+    border: 1px solid #dfe3e0;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(16, 24, 20, .04);
+}
+
+.kim-form:focus-within {
+    border-color: #1f8a5b;
+    box-shadow: 0 0 0 3px rgba(31, 138, 91, .12);
+}
+
+.kim-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 36px;
+    border: none;
+    background: none;
+    font: inherit;
+    font-size: .92rem;
+    color: #1d2420;
+}
+
+.kim-input:focus {
+    outline: none;
+}
+
+.kim-send {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    background: #e4e7e5;
+    color: #6f7873;
+    cursor: pointer;
+    flex: none;
+    transition: background .15s ease, color .15s ease;
+}
+
+.kim-form:focus-within .kim-send,
+.kim-send:hover {
+    background: #1f8a5b;
+    color: #ffffff;
+}
+
+.kim-send:disabled {
+    background: #e4e7e5;
+    color: #a6ada9;
+    cursor: not-allowed;
+}
+
+.kim-send svg {
+    width: 17px;
+    height: 17px;
+}
+
+.kim-disclaimer {
+    margin: 8px 0 0;
+    text-align: center;
+    font-size: .72rem;
+    color: #7b847f;
+}
+
+/* ---- Mobile: chat a toda a largura, conversas como painel por cima ---- */
+
+@media (max-width: 980px) {
+    .kim-workspace {
+        position: relative;
+        height: calc(100dvh - 90px);
+        border: 1px solid #e6e8e6;
+        border-radius: 14px;
     }
 
-    .kim-conversas-col {
-        flex-direction: row;
-        overflow-x: auto;
+    .kim-conversas {
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: min(300px, 85%);
+        z-index: 3;
+        box-shadow: 8px 0 24px rgba(0, 0, 0, .12);
     }
 
-    .kim-conversas-titulo {
-        display: none;
+    .kim-suggestions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
     }
 
-    .kim-conversas-list {
-        flex-direction: row;
-    }
-
-    .kim-conversa-item {
-        min-width: 160px;
+    .kim-messages,
+    .kim-composer {
+        padding-left: 14px;
+        padding-right: 14px;
     }
 }
 
-html.dark-mode .kim-conversas-col,
-html.dark-mode .kim-chat-col {
+/* ---- Modo escuro ---- */
+
+html.dark-mode .kim-workspace,
+html.dark-mode .kim-chat-header,
+html.dark-mode .kim-composer {
+    background: #111113;
+}
+
+html.dark-mode .kim-conversas {
     background: #17171a;
+}
+
+html.dark-mode .kim-workspace,
+html.dark-mode .kim-conversas,
+html.dark-mode .kim-conversas-header,
+html.dark-mode .kim-chat-header,
+html.dark-mode .kim-composer {
     border-color: #27272a;
 }
 
-html.dark-mode .kim-chat-messages {
-    background: #0f0f10;
+html.dark-mode .kim-conversas-header,
+html.dark-mode .kim-chat-header-text strong,
+html.dark-mode .kim-welcome-title,
+html.dark-mode .kim-conversa-item,
+html.dark-mode .kim-input {
+    color: #f4f4f5;
 }
 
-html.dark-mode .kim-conversa-item:hover,
-html.dark-mode .kim-conversa-item.is-active {
+html.dark-mode .kim-welcome-text,
+html.dark-mode .kim-chat-header-text span,
+html.dark-mode .kim-disclaimer,
+html.dark-mode .kim-conversas-empty {
+    color: #a1a1aa;
+}
+
+html.dark-mode .kim-icon-btn {
+    color: #d4d4d8;
+}
+
+html.dark-mode .kim-icon-btn:hover,
+html.dark-mode .kim-conversa-item:hover {
     background: #1f1f23;
+}
+
+html.dark-mode .kim-conversa-item.is-active {
+    background: #16231a;
+    color: #7cc26f;
+}
+
+html.dark-mode .kim-welcome-icon,
+html.dark-mode .kim-avatar {
+    background: #16231a;
+    color: #7cc26f;
+}
+
+html.dark-mode .kim-suggestion,
+html.dark-mode .kim-form {
+    background: #17171a;
+    border-color: #27272a;
+    color: #f4f4f5;
+}
+
+html.dark-mode .kim-send {
+    background: #27272a;
+    color: #a1a1aa;
+}
+
+html.dark-mode .kim-suggestion span {
+    background: #1f1f23;
+}
+
+html.dark-mode .kim-suggestion:hover {
+    background: #1c1c20;
+    border-color: #2f4a3a;
+}
+
+html.dark-mode .kim-suggestion:hover span {
+    background: #16231a;
+}
+
+html.dark-mode .kim-icon-btn:hover {
+    background: none;
+    color: #7cc26f;
 }
 
 /* =====================================================================

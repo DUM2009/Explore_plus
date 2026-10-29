@@ -1,9 +1,9 @@
 /**
- * Página de página inteira do Kim (ver kim.html): coluna de conversas
- * guardadas à esquerda + chat à direita, usando as mesmas APIs do painel
- * flutuante (mascote-chat / mascote-conversas / mascote-conversas/<id>).
+ * Página do Kim (ver kim.html): coluna de conversas guardadas + chat,
+ * usando as APIs mascote-chat / mascote-conversas / mascote-conversas/<id>.
  */
 (function () {
+    const workspace = document.getElementById('kimWorkspace');
     const messagesEl = document.getElementById('kimChatMessages');
     const form = document.getElementById('kimChatForm');
     const input = document.getElementById('kimChatInput');
@@ -11,16 +11,32 @@
     const welcomeEl = document.getElementById('kimChatWelcome');
     const welcomeHTML = welcomeEl ? welcomeEl.outerHTML : '';
     const novaConversaBtn = document.getElementById('kimNovaConversaBtn');
+    const toggleBtn = document.getElementById('kimToggleConversas');
     const listaEl = document.getElementById('kimConversasList');
     const vaziaEl = document.getElementById('kimConversasEmpty');
+    const mobileQuery = window.matchMedia('(max-width: 980px)');
 
     if (!messagesEl || !form || !input) return;
 
     let history = [];
     let conversaId = null;
 
+    function setConversasVisiveis(visiveis) {
+        workspace?.classList.toggle('is-conversas-hidden', !visiveis);
+        toggleBtn?.setAttribute('aria-expanded', String(visiveis));
+    }
+    setConversasVisiveis(!mobileQuery.matches);
+
+    toggleBtn?.addEventListener('click', () => {
+        setConversasVisiveis(workspace.classList.contains('is-conversas-hidden'));
+    });
+
+    function fecharConversasNoMobile() {
+        if (mobileQuery.matches) setConversasVisiveis(false);
+    }
+
     function bindSuggestionButtons(root) {
-        root?.querySelectorAll('.mascote-chat-suggestion').forEach((button) => {
+        root?.querySelectorAll('.kim-suggestion').forEach((button) => {
             button.addEventListener('click', () => {
                 input.value = button.dataset.suggestion || '';
                 input.focus();
@@ -45,6 +61,12 @@
         } catch (error) {
             return '';
         }
+    }
+
+    function desbloquearInput() {
+        input.disabled = false;
+        input.placeholder = 'Pergunta ao Kim...';
+        if (sendBtn) sendBtn.disabled = false;
     }
 
     async function carregarListaConversas() {
@@ -76,7 +98,8 @@
         } catch (error) {
             if (vaziaEl) {
                 vaziaEl.hidden = false;
-                vaziaEl.textContent = 'Não foi possível carregar as conversas guardadas.';
+                const texto = vaziaEl.querySelector('p');
+                if (texto) texto.textContent = 'Não foi possível carregar as conversas.';
             }
         }
     }
@@ -92,11 +115,8 @@
             mensagens.forEach((mensagem) => appendBubble(mensagem.role, mensagem.text));
             history = mensagens.map((mensagem) => ({ role: mensagem.role, text: mensagem.text }));
             conversaId = id;
-            if (input) {
-                input.disabled = false;
-                input.placeholder = 'Pergunta ao Kim...';
-            }
-            if (sendBtn) sendBtn.disabled = false;
+            desbloquearInput();
+            fecharConversasNoMobile();
             carregarListaConversas();
         } catch (error) {
             // silencia — a conversa simplesmente não abre
@@ -108,12 +128,9 @@
         bindSuggestionButtons(messagesEl);
         history = [];
         conversaId = null;
-        if (input) {
-            input.disabled = false;
-            input.placeholder = 'Pergunta ao Kim...';
-            input.focus();
-        }
-        if (sendBtn) sendBtn.disabled = false;
+        desbloquearInput();
+        fecharConversasNoMobile();
+        input.focus();
         carregarListaConversas();
     });
 
@@ -143,7 +160,7 @@
             typingEl?.remove();
             if (!response.ok) {
                 appendBubble('assistant', data.erro || 'Não consegui responder agora. Tenta mais tarde.');
-                if (data.limiteAtingido && input && sendBtn) {
+                if (data.limiteAtingido && sendBtn) {
                     input.disabled = true;
                     input.placeholder = 'Sem perguntas disponíveis esta semana';
                     sendBtn.disabled = true;
