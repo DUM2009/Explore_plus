@@ -13072,6 +13072,35 @@ html.dark-mode body.shadcn-profile .profile-vocacional-card--geology {
     background: rgba(170, 130, 90, .14);
 }
 
+/* Painel da foto de perfil: mesma cor pastel dos cartões acima. Só a partir
+   de 721px — no telemóvel o painel funde-se com o fundo da página (ver
+   .profile-hero em @media (max-width: 720px)), seja qual for a disciplina. */
+@media (min-width: 721px) {
+    body.shadcn-profile .profile-hero--chemistry {
+        background: #fdeee0;
+    }
+
+    body.shadcn-profile .profile-hero--physics {
+        background: #efe7fa;
+    }
+
+    body.shadcn-profile .profile-hero--geology {
+        background: #f1ece4;
+    }
+
+    html.dark-mode body.shadcn-profile .profile-hero--chemistry {
+        background: rgba(230, 140, 60, .14);
+    }
+
+    html.dark-mode body.shadcn-profile .profile-hero--physics {
+        background: rgba(140, 100, 200, .14);
+    }
+
+    html.dark-mode body.shadcn-profile .profile-hero--geology {
+        background: rgba(170, 130, 90, .14);
+    }
+}
+
 body.shadcn-profile .profile-vocacional-top {
     display: flex;
     align-items: center;

@@ -33,7 +33,7 @@
           "titulo": "Mas afinal o que é a energia?",
           "cartao_estilo": true,
           "texto": "**A energia é como dinheiro numa conta.** Pensa na energia de um sistema como o saldo de uma conta bancária. O dinheiro pode estar em várias formas dentro da conta (à ordem, a prazo), tal como a energia pode estar em forma cinética ou potencial dentro do sistema.",
-          "imagem": "f10_energia_conta.png",
+          "imagem": "f10_energia_conta.jpg",
           "imagem_legenda": "Ilustração de uma conta bancária com o saldo dividido em duas formas, à ordem e a prazo, a representar a energia cinética e potencial de um sistema.",
           "curiosidade_sem_titulo": true,
           "curiosidade": "E tal como o dinheiro pode entrar ou sair da conta de três maneiras: por transferência, por depósito ou por levantamento.\n\nNa Física, as três maneiras de transferir energia entre o sistema e a vizinhança são o **trabalho (W)**, o **calor (Q)** e a **radiação (R)**.\n\nO dinheiro não aparece nem desaparece do nada: se o saldo mudou, houve uma transferência. Com a energia é igual.\n\nMas veremos isso na próxima secção..."
@@ -53,7 +53,7 @@
           "cartao_estilo": true,
           "sem_chips": true,
           "pontos": [
-            { "id": "energia-potencial", "label": "Energia potencial", "imagem": "f10_energia_potencial.png", "explicacao": "Energia associada à posição relativa de corpos que interagem. No 10.º ano, a mais importante é a energia potencial gravítica (sistema corpo + Terra): quanto mais alto está o carrinho, maior é a sua energia potencial. Também existe energia potencial elástica e elétrica.", "caixa_formula": [{ "expressao": "Ep = m g h", "unidades": ["**Ep** em joule (**J**)", "**m** em quilograma (**kg**)", "**g** em metro por segundo ao quadrado (**m s⁻²**)", "**h** em metro (**m**)"] }], "exercicio": {"enunciado": "Um carrinho de montanha-russa, de massa **500 kg**, está parado no ponto mais alto, a **40 m** do solo. Calcula a sua energia potencial gravítica em relação ao solo. Considera g = 10 m s⁻².", "campos": [{"rotulo": "Ep", "unidade": "J", "correta": 200000}], "resolucao": ["Ep = m g h", "Ep = 500 × 10 × 40 = 200 000 J"], "resposta": "Ep = 2,0 × 10⁵ J"} }
+            { "id": "energia-potencial", "label": "Energia potencial", "imagem": "f10_energia_potencial.jpg", "explicacao": "Energia associada à posição relativa de corpos que interagem. No 10.º ano, a mais importante é a energia potencial gravítica (sistema corpo + Terra): quanto mais alto está o carrinho, maior é a sua energia potencial. Também existe energia potencial elástica e elétrica.", "caixa_formula": [{ "expressao": "Ep = m g h", "unidades": ["**Ep** em joule (**J**)", "**m** em quilograma (**kg**)", "**g** em metro por segundo ao quadrado (**m s⁻²**)", "**h** em metro (**m**)"] }], "exercicio": {"enunciado": "Um carrinho de montanha-russa, de massa **500 kg**, está parado no ponto mais alto, a **40 m** do solo. Calcula a sua energia potencial gravítica em relação ao solo. Considera g = 10 m s⁻².", "campos": [{"rotulo": "Ep", "unidade": "J", "correta": 200000}], "resolucao": ["Ep = m g h", "Ep = 500 × 10 × 40 = 200 000 J"], "resposta": "Ep = 2,0 × 10⁵ J"} }
           ]
         },
         {
@@ -62,7 +62,7 @@
           "cartao_estilo": true,
           "sem_chips": true,
           "pontos": [
-            { "id": "energia-mecanica", "label": "Energia mecânica", "imagem": "f10_energia_mecanica.png", "explicacao": "Soma da energia cinética com a energia potencial: Em = Ec + Ep. É a energia que depende do movimento e da posição do sistema como um todo, à escala macroscópica.", "caixa_formula": [{ "expressao": "Em = Ec + Ep", "unidades": ["**Em** em joule (**J**)", "**Ec** em joule (**J**)", "**Ep** em joule (**J**)"] }], "exercicio": {"enunciado": "Num certo instante, o carrinho de **500 kg** está a **20 m** do solo e move-se com uma velocidade de **10 m s⁻¹**. Calcula a sua energia mecânica em relação ao solo. Considera g = 10 m s⁻².", "campos": [{"rotulo": "Em", "unidade": "J", "correta": 125000}], "resolucao": ["Energia cinética: Ec = ½ × 500 × 10² = 25 000 J", "Energia potencial: Ep = 500 × 10 × 20 = 100 000 J", "Em = Ec + Ep = 25 000 + 100 000 = 125 000 J"], "resposta": "Em = 1,25 × 10⁵ J"} }
+            { "id": "energia-mecanica", "label": "Energia mecânica", "imagem": "f10_energia_mecanica.jpg", "explicacao": "Soma da energia cinética com a energia potencial: Em = Ec + Ep. É a energia que depende do movimento e da posição do sistema como um todo, à escala macroscópica.", "caixa_formula": [{ "expressao": "Em = Ec + Ep", "unidades": ["**Em** em joule (**J**)", "**Ec** em joule (**J**)", "**Ep** em joule (**J**)"] }], "exercicio": {"enunciado": "Num certo instante, o carrinho de **500 kg** está a **20 m** do solo e move-se com uma velocidade de **10 m s⁻¹**. Calcula a sua energia mecânica em relação ao solo. Considera g = 10 m s⁻².", "campos": [{"rotulo": "Em", "unidade": "J", "correta": 125000}], "resolucao": ["Energia cinética: Ec = ½ × 500 × 10² = 25 000 J", "Energia potencial: Ep = 500 × 10 × 20 = 100 000 J", "Em = Ec + Ep = 25 000 + 100 000 = 125 000 J"], "resposta": "Em = 1,25 × 10⁵ J"} }
           ]
         },
         {
@@ -71,7 +71,7 @@
           "cartao_estilo": true,
           "sem_chips": true,
           "pontos": [
-            { "id": "energia-interna", "label": "Energia interna", "imagem": "f10_energia_interna.png", "explicacao": "Soma das energias cinéticas e potenciais de todas as partículas (átomos, moléculas) que constituem o sistema. Não se vê a olho nu, mas manifesta-se, por exemplo, na temperatura. Quando um carro trava, a energia cinética não desaparece: transforma-se em energia interna dos travões, que aquecem.", "caixa_formula": [{ "expressao": "Ei = ΣEc + ΣEp", "unidades": ["**Ei** em joule (**J**)", "**ΣEc** (soma das energias cinéticas das partículas) em joule (**J**)", "**ΣEp** (soma das energias potenciais das partículas) em joule (**J**)"] }], "exercicio": {"enunciado": "Uma panela com água é aquecida no fogão. A água fica mais quente, mas não se desloca nem muda de altura. Que energia do sistema (a água) aumentou? Justifica.", "campos": [{"rotulo": "Aumentou a", "aceites": ["interna"]}], "resolucao": ["A energia mecânica não mudou: a água não ganhou velocidade nem altura, por isso a energia cinética e a energia potencial da água, como um todo, ficaram iguais.", "O que aumentou foi a energia interna: ao aquecer, as partículas da água passam a agitar-se mais, e a soma das suas energias cinéticas e potenciais aumenta. Manifesta-se no aumento da temperatura."], "resposta": "aumentou a energia interna da água."} }
+            { "id": "energia-interna", "label": "Energia interna", "imagem": "f10_energia_interna.jpg", "explicacao": "Soma das energias cinéticas e potenciais de todas as partículas (átomos, moléculas) que constituem o sistema. Não se vê a olho nu, mas manifesta-se, por exemplo, na temperatura. Quando um carro trava, a energia cinética não desaparece: transforma-se em energia interna dos travões, que aquecem.", "caixa_formula": [{ "expressao": "Ei = ΣEc + ΣEp", "unidades": ["**Ei** em joule (**J**)", "**ΣEc** (soma das energias cinéticas das partículas) em joule (**J**)", "**ΣEp** (soma das energias potenciais das partículas) em joule (**J**)"] }], "exercicio": {"enunciado": "Uma panela com água é aquecida no fogão. A água fica mais quente, mas não se desloca nem muda de altura. Que energia do sistema (a água) aumentou? Justifica.", "campos": [{"rotulo": "Aumentou a", "aceites": ["interna"]}], "resolucao": ["A energia mecânica não mudou: a água não ganhou velocidade nem altura, por isso a energia cinética e a energia potencial da água, como um todo, ficaram iguais.", "O que aumentou foi a energia interna: ao aquecer, as partículas da água passam a agitar-se mais, e a soma das suas energias cinéticas e potenciais aumenta. Manifesta-se no aumento da temperatura."], "resposta": "aumentou a energia interna da água."} }
           ]
         },
         {
@@ -80,7 +80,7 @@
           "cartao_estilo": true,
           "sem_chips": true,
           "pontos": [
-            { "id": "energia-total", "label": "Energia total", "imagem": "f10_energia_total.png", "explicacao": "A energia total de um sistema inclui a energia mecânica (escala macroscópica) e a energia interna (escala microscópica): E = Em + Ei.", "caixa_formula": [{ "expressao": "E = Em + Ei", "unidades": ["**E** em joule (**J**)", "**Em** em joule (**J**)", "**Ei** em joule (**J**)"] }], "exercicio": {"enunciado": "Um sistema tem energia mecânica de **800 J** e energia interna de **300 J**. Calcula a sua energia total. Depois, supõe que não há trocas de energia com a vizinhança e que, por causa do atrito, a energia mecânica desce para **500 J**: qual passa a ser a energia interna?", "campos": [{"rotulo": "Energia total", "unidade": "J", "correta": 1100}, {"rotulo": "Energia interna depois", "unidade": "J", "correta": 600}], "resolucao": ["E = Em + Ei = 800 + 300 = 1100 J", "Sem trocas com a vizinhança, a energia total mantém-se: 1100 J.", "Ei = E − Em = 1100 − 500 = 600 J"], "resposta": "E = 1100 J (1,1 × 10³ J); a energia interna passa a 600 J."} }
+            { "id": "energia-total", "label": "Energia total", "imagem": "f10_energia_total.jpg", "explicacao": "A energia total de um sistema inclui a energia mecânica (escala macroscópica) e a energia interna (escala microscópica): E = Em + Ei.", "caixa_formula": [{ "expressao": "E = Em + Ei", "unidades": ["**E** em joule (**J**)", "**Em** em joule (**J**)", "**Ei** em joule (**J**)"] }], "exercicio": {"enunciado": "Um sistema tem energia mecânica de **800 J** e energia interna de **300 J**. Calcula a sua energia total. Depois, supõe que não há trocas de energia com a vizinhança e que, por causa do atrito, a energia mecânica desce para **500 J**: qual passa a ser a energia interna?", "campos": [{"rotulo": "Energia total", "unidade": "J", "correta": 1100}, {"rotulo": "Energia interna depois", "unidade": "J", "correta": 600}], "resolucao": ["E = Em + Ei = 800 + 300 = 1100 J", "Sem trocas com a vizinhança, a energia total mantém-se: 1100 J.", "Ei = E − Em = 1100 − 500 = 600 J"], "resposta": "E = 1100 J (1,1 × 10³ J); a energia interna passa a 600 J."} }
           ]
         },
         {
@@ -159,7 +159,7 @@
           "tipo": "formula_interativa",
           "titulo": "Trabalho de uma força constante",
           "rotulo": "Trabalho (W)",
-          "imagem": "f10_trabalho_forca_constante.png",
+          "imagens": ["f10_trabalho_carrinho.jpg", "f10_trabalho_saco.jpg"],
           "mascote_titulo": "Nem toda a força realiza trabalho.",
           "mascote_texto": "Imagina que estás a puxar uma mala de rodas pelo aeroporto. Puxas a pega inclinada, mas a mala desloca-se na horizontal. Parte da força que fazes serve para mover a mala; a outra parte só a puxa para cima, sem a fazer avançar. Na Física, só a parte útil da força \"conta\" para transferir energia. A essa transferência chama-se trabalho.",
           "texto": "Uma força é uma interação entre dois corpos, capaz de alterar o movimento de um corpo ou de o deformar. É uma grandeza vetorial: tem intensidade (que se mede em newton, N), direção e sentido.\n\nQuando uma força atua sobre um corpo que se desloca, pode transferir-lhe energia. Se o ponto de aplicação não se desloca, não há trabalho: segurar um saco pesado parado cansa, mas não é trabalho.\n\nO trabalho de uma força constante mede a energia transferida por essa força quando o ponto de aplicação se desloca. Só a componente da força na direção do deslocamento realiza trabalho. A componente perpendicular ao deslocamento não realiza trabalho.",
@@ -236,7 +236,7 @@
           "itens": [
             {
               "rotulo": "Trabalho potente (W > 0)",
-              "imagem": "f10_trabalho_potente.png",
+              "imagem": "f10_trabalho_potente.jpg",
               "explicacao": "0° ≤ α < 90°. A força favorece o movimento e transfere energia para o sistema. Exemplo: empurrar um carrinho de compras para a frente."
             },
             {
@@ -258,8 +258,9 @@
           "titulo": "Trabalho total",
           "cartao_estilo": true,
           "sem_chips": true,
+          "exercicio_ao_lado": true,
           "pontos": [
-            { "id": "trabalho-total", "label": "Soma dos trabalhos", "imagem": "f10_trabalho_total.png", "explicacao": "O trabalho total realizado sobre um sistema é a soma dos trabalhos de todas as forças, e é igual ao trabalho da força resultante.", "caixa_formula": [{"expressao": "W total = W(F1) + W(F2) + ... = W(F resultante)"}], "exercicio": {"enunciado": "Sobre um bloco atuam três forças, que realizam trabalhos de **+60 J**, **−25 J** e **0 J**. Calcula o trabalho total realizado sobre o bloco.", "campos": [{"rotulo": "W total", "unidade": "J", "correta": 35}], "resolucao": ["W total = W(F1) + W(F2) + W(F3)", "W total = 60 + (−25) + 0 = 35 J"], "resposta": "W total = 35 J"} }
+            { "id": "trabalho-total", "label": "Soma dos trabalhos", "explicacao": "O trabalho total realizado sobre um sistema é a soma dos trabalhos de todas as forças, e é igual ao trabalho da força resultante.", "caixa_formula": [{"expressao": "W total = W(F1) + W(F2) + ... = W(F resultante)"}], "exercicio": {"enunciado": "Sobre um bloco atuam três forças, que realizam trabalhos de **+60 J**, **−25 J** e **0 J**. Calcula o trabalho total realizado sobre o bloco.", "campos": [{"rotulo": "W total", "unidade": "J", "correta": 35}], "resolucao": ["W total = W(F1) + W(F2) + W(F3)", "W total = 60 + (−25) + 0 = 35 J"], "resposta": "W total = 35 J"} }
           ]
         },
         {

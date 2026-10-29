@@ -1978,6 +1978,13 @@ html.dark-mode .me-escada-step-label {
     margin: 0;
 }
 
+/* Várias imagens empilhadas (screen.imagens) — mais espaço entre elas e
+   começam no topo da coluna em vez de ficarem centradas na vertical. */
+.me-escada-detail-media--stack {
+    justify-content: flex-start;
+    gap: 14px;
+}
+
 /* Legenda visível por baixo de uma foto real (não uma ilustração própria),
    com o nome do que se vê e um link para a página de onde a imagem veio
    — ver ponto.imagem_fonte em missoes/*.json e pontoDetailInnerHtml. */
@@ -2008,6 +2015,28 @@ html.dark-mode .me-escada-detail-imagem-fonte {
 .me-escada-detail-content {
     flex: 1 1 60%;
     min-width: 0;
+}
+
+/* screen.exercicio_ao_lado: explicação à esquerda, exercício à direita,
+   metade-metade e alinhados pelo topo. O exercício já está dentro do
+   cartão, por isso perde a sua própria caixa (borda/fundo). */
+.me-escada-detail--exercicio-lado .me-escada-detail-columns {
+    align-items: stretch;
+}
+
+.me-escada-detail--exercicio-lado .me-escada-detail-content {
+    flex: 1 1 50%;
+}
+
+.me-escada-detail--exercicio-lado .me-caixa-exercicio .me-caixa-formula {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+}
+
+html.dark-mode .me-escada-detail--exercicio-lado .me-caixa-exercicio .me-caixa-formula {
+    background: none;
 }
 
 @media (max-width: 640px) {
@@ -2402,13 +2431,17 @@ html.dark-mode .me-ponto-curiosidade-reveal strong {
     color: #e6ede9;
 }
 
+/* width:auto (não 100%) para a caixa ter o tamanho exato da imagem
+   desenhada — com 100% + max-height, uma imagem quadrada ficava centrada
+   numa caixa mais larga e o border-radius arredondava só essa caixa
+   invisível, não os cantos da própria imagem. */
 .me-escada-detail-image {
-    width: 100%;
-    max-width: 420px;
+    width: auto;
+    max-width: min(100%, 420px);
     max-height: 320px;
     height: auto;
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: 16px;
     display: block;
     margin: 0 auto 16px;
 }
@@ -3479,11 +3512,8 @@ html.dark-mode .me-mascot-popup button.mascot-overlay-btn:not(:disabled) {
    <secção> por cima do texto, e a seta no botão "Bora explorar!" —
    para se aproximar do design pedido pela Daniela. */
 .me-mascot-popup-hook {
+    width: min(640px, 100%);
     padding: 30px 32px;
-}
-
-.me-mascot-popup-hook .mascot-overlay-figure {
-    width: 220px;
 }
 
 .me-mascot-popup-eyebrow {

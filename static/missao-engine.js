@@ -257,7 +257,6 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             this.mascotWaveVideoUrl = options.mascotWaveVideoUrl || window.exploreMascotWaveVideoUrl || '';
             this.mascotDoubtsImageUrl = options.mascotDoubtsImageUrl || window.exploreMascotDoubtsImageUrl || '';
             this.mascotExplainingImageUrl = options.mascotExplainingImageUrl || window.exploreMascotExplainingImageUrl || '';
-            this.mascotPopupImageUrl = options.mascotPopupImageUrl || window.exploreMascotPopupImageUrl || '';
 
             // Estado do painel de chat — não persiste em localStorage (tal
             // como na Fotossíntese, o chat começa sempre fechado e sem
@@ -1382,12 +1381,6 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (pose === 'pensar' && this.mascotDoubtsImageUrl) {
                 return `<img class="mascot-overlay-figure" src="${this.mascotDoubtsImageUrl}" alt="Mascote a pensar">`;
             }
-            // Sem pose: popup de entrada num ecrã de gancho (ver
-            // showMascotPopup) — mascote própria deste popup, diferente da
-            // usada nos outros popups da missão.
-            if (!pose && this.mascotPopupImageUrl) {
-                return `<img class="mascot-overlay-figure" src="${this.mascotPopupImageUrl}" alt="Mascote">`;
-            }
             if (this.mascotExplainingImageUrl) {
                 return `<img class="mascot-overlay-figure" src="${this.mascotExplainingImageUrl}" alt="Mascote a explicar">`;
             }
@@ -1451,7 +1444,6 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             overlay.innerHTML = `
                 <div class="mascot-overlay-card mascot-overlay-card--split me-mascot-popup-hook" role="dialog" aria-modal="true" aria-label="Mensagem da mascote">
                     <button type="button" class="mascot-overlay-close" aria-label="Fechar">✕</button>
-                    <div class="mascot-overlay-split-figure">${this.mascotOverlayFigureHtml()}</div>
                     <div class="mascot-overlay-split-body">
                         ${eyebrowHtml}
                         ${tituloHtml}
@@ -2545,9 +2537,18 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             }).join('');
             const paragrafosHtml = String(screen.texto || '').split(/\n\s*\n/).filter(Boolean)
                 .map((par) => `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(par))}</p>`).join('');
-            const imagemHtml = screen.imagem
-                ? `<div class="me-escada-detail-media">${imagemEcraHtml(screen.imagem, 'me-escada-detail-image', screen.rotulo || screen.titulo || '', screen.imagem_legenda)}</div>`
-                : '<div class="me-escada-detail-media"></div>';
+            // screen.imagens (lista) mostra várias imagens empilhadas na
+            // coluna da esquerda, pela ordem da lista; screen.imagem continua
+            // a servir para o caso de uma só.
+            const imagens = Array.isArray(screen.imagens) && screen.imagens.length
+                ? screen.imagens
+                : (screen.imagem ? [screen.imagem] : []);
+            const altImagem = screen.rotulo || screen.titulo || '';
+            const imagemHtml = `
+                <div class="me-escada-detail-media${imagens.length > 1 ? ' me-escada-detail-media--stack' : ''}">
+                    ${imagens.map((nome) => imagemEcraHtml(nome, 'me-escada-detail-image', altImagem, imagens.length === 1 ? screen.imagem_legenda : '')).join('')}
+                </div>
+            `;
             const pseudoPonto = { id: 'formula', exercicio: screen.exercicio };
             return `
                 <div class="mascot-overlay-card me-mascot-inline me-gancho-card">
@@ -2693,7 +2694,21 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 ]
                 : null;
             const primeiroPonto = pontos[0] || {};
-            const explicacaoHtml = temSeta
+            // screen.exercicio_ao_lado: o cartão do ponto (título, texto,
+            // fórmula) fica à esquerda e o exercício à direita, separados
+            // pela linha vertical — em vez do exercício por baixo do cartão.
+            const exercicioAoLado = useCardDetail && !temSeta && screen.exercicio_ao_lado === true && Boolean(primeiroPonto.exercicio);
+            const explicacaoHtml = exercicioAoLado
+                ? `
+                    <div class="me-escada-detail me-escada-detail--exercicio-lado" id="meDiagramaExplicacao">
+                        <div class="me-escada-detail-columns">
+                            <div class="me-escada-detail-content">${this.pontoDetailInnerHtml(primeiroPonto)}</div>
+                            <div class="me-escada-detail-divider" aria-hidden="true"></div>
+                            <div class="me-escada-detail-content"><div id="meDiagramaExercicio">${this.exercicioPontoHtml(screen, primeiroPonto)}</div></div>
+                        </div>
+                    </div>
+                `
+                : temSeta
                 ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(slidesSeta[0])}${this.setaNavHtml(0, slidesSeta.length)}</div>`
                 : useCardDetail
                     ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(primeiroPonto)}</div>`
@@ -2743,7 +2758,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 ${this.tabelasHtml(screen.tabelas)}
                 ${this.escadaConversaoHtml(screen.escada_conversao)}
                 ${temSeta ? '' : this.caixaFormulaHtml(screen.caixa_formula)}
-                ${pontos.some((ponto) => ponto.exercicio)
+                ${pontos.some((ponto) => ponto.exercicio) && !exercicioAoLado
                     ? `<div id="meDiagramaExercicio">${screen.cartao_estilo ? this.exercicioPontoHtml(screen, primeiroPonto) : ''}</div>`
                     : ''}
             `;
