@@ -299,6 +299,10 @@
 
                 <span class="profile-hero-level-pill profile-subject-level-pill" id="profileSubjectLevelPillWrap">Nível <span id="profileLevelBadgeSubject">{{ nivel }}</span></span>
 
+                {% if disciplina_atual == 'biology' %}
+                <p class="profile-subject-titulo" id="profileSubjectTitulo" title="{{ titulo_descricao }}">{{ titulo_nome }}</p>
+                {% endif %}
+
                 <p class="profile-subject-xp" id="xpAluno"><strong>{{ xp }}</strong> <span>/ {{ proximo_nivel_xp }} XP</span></p>
 
                 <div class="barra profile-progress-bar">
