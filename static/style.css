@@ -2170,11 +2170,21 @@ body.shadcn-profile .pro-gate-overlay {
     justify-content: center;
     padding: 24px;
     background: rgba(10, 15, 10, .55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     overflow-y: auto;
 }
 
 body.shadcn-profile .pro-gate-overlay[hidden] {
     display: none;
+}
+
+/* Enquanto o popup do SuperExplore está aberto, a página por trás não
+   pode fazer scroll (só o próprio popup, se o conteúdo for maior que o
+   ecrã — ver overflow-y:auto acima). */
+body.shadcn-profile:has(.pro-gate-overlay:not([hidden])) {
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* --sp-accent-soft is a translucent green in dark mode (meant for subtle
