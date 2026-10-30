@@ -155,6 +155,7 @@
     <button type="button" class="nav-drawer-toggle" id="navDrawerToggle" aria-label="{% trans 'Abrir menu' %}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
+    <span class="kim-topbar-greeting">Olá, {{ request.user.username }}! 👋</span>
     <div class="header-icon-wrapper">
     <button class="header-icon-btn" id="notificationsBtn" type="button" aria-label="Notificações" aria-expanded="false">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bell-icon lucide-bell"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
@@ -167,10 +168,14 @@
 </div>
 
 <div class="kim-workspace" id="kimWorkspace">
+    <div class="kim-conversas-overlay" id="kimConversasOverlay"></div>
     <aside class="kim-conversas" id="kimConversas">
         <div class="kim-conversas-header">
             <img class="kim-avatar kim-avatar--sm" src="{% static 'images/Mascote botao flutuante.png' %}" alt="">
             <span>Conversas</span>
+            <button type="button" class="kim-icon-btn kim-conversas-close" id="kimConversasClose" aria-label="Fechar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
         </div>
         <div class="kim-conversas-body">
             <button type="button" class="kim-nova-conversa" id="kimNovaConversaBtn">

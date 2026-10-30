@@ -27,6 +27,9 @@
     }
     setConversasVisiveis(!mobileQuery.matches);
 
+    document.getElementById('kimConversasClose')?.addEventListener('click', () => setConversasVisiveis(false));
+    document.getElementById('kimConversasOverlay')?.addEventListener('click', () => setConversasVisiveis(false));
+
     toggleBtn?.addEventListener('click', () => {
         setConversasVisiveis(workspace.classList.contains('is-conversas-hidden'));
     });

@@ -12138,33 +12138,146 @@ html.dark-mode .mascote-chat-input:focus {
     color: #7b847f;
 }
 
-/* ---- Mobile: chat a toda a largura, conversas como painel por cima ---- */
+/* ---- Mobile: como o ADMITI — saudação no topo, chat a ecrã inteiro e
+   conversas num drawer à esquerda por cima de um fundo escurecido ---- */
+
+.kim-topbar-greeting,
+.kim-conversas-close,
+.kim-conversas-overlay {
+    display: none;
+}
 
 @media (max-width: 980px) {
-    .kim-workspace {
-        position: relative;
-        height: calc(100dvh - 90px);
-        border: 1px solid #e6e8e6;
-        border-radius: 14px;
+    .kim-body .profile-layout {
+        padding: 0;
     }
 
-    .kim-conversas {
-        position: absolute;
-        inset: 0 auto 0 0;
-        width: min(300px, 85%);
-        z-index: 3;
-        box-shadow: 8px 0 24px rgba(0, 0, 0, .12);
+    .kim-body .profile-main-shell {
+        padding: 0;
+    }
+
+    .kim-body .profile-content {
+        gap: 0;
+        max-width: none;
+    }
+
+    .kim-body .missions-topbar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 64px;
+        margin: 0;
+        padding: 8px 16px;
+        border-bottom: 1px solid #e6e8e6;
+        background: #f7f8f7;
+    }
+
+    .kim-body .missions-topbar-logo,
+    .kim-body .missions-topbar .header-icon-wrapper {
+        display: none;
+    }
+
+    .kim-body .missions-topbar .nav-drawer-toggle {
+        order: 0;
+        margin: 0;
+    }
+
+    .kim-topbar-greeting {
+        display: block;
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: #1d2420;
+    }
+
+    .kim-workspace {
+        position: relative;
+        height: calc(100dvh - 65px);
+        border: 0;
+        border-radius: 0;
+    }
+
+    .kim-conversas,
+    .kim-workspace.is-conversas-hidden .kim-conversas {
+        display: flex;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: min(300px, 82%);
+        z-index: 60;
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+        box-shadow: none;
+    }
+
+    .kim-workspace:not(.is-conversas-hidden) .kim-conversas {
+        transform: translateX(0);
+        box-shadow: 8px 0 24px rgba(0, 0, 0, .18);
+    }
+
+    .kim-conversas-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 55;
+        background: rgba(0, 0, 0, .4);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .25s ease;
+    }
+
+    .kim-workspace:not(.is-conversas-hidden) .kim-conversas-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .kim-conversas-close {
+        display: grid;
+        margin-left: auto;
+    }
+
+    .kim-workspace.is-conversas-hidden .kim-icon-btn svg {
+        transform: none;
+    }
+
+    .kim-chat-header {
+        padding: 0 16px;
+    }
+
+    .kim-messages {
+        padding: 18px 16px;
     }
 
     .kim-suggestions {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
         width: 100%;
     }
 
-    .kim-messages,
+    .kim-suggestion {
+        width: 100%;
+        min-height: 50px;
+        padding: 10px 14px;
+        border-radius: 14px;
+    }
+
+    .kim-suggestion::after {
+        display: none;
+    }
+
+    .kim-suggestion span {
+        width: auto;
+        height: auto;
+        background: none;
+    }
+
     .kim-composer {
-        padding-left: 14px;
-        padding-right: 14px;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .kim-input {
+        font-size: 1rem;
     }
 }
 
@@ -13137,6 +13250,119 @@ html.dark-mode body.shadcn-profile .profile-vocacional-card--geology {
     background: rgba(170, 130, 90, .14);
 }
 
+/* Desktop: painel "Olá" como os restantes cartões (branco, traço fino e
+   suave, cantos arredondados); "Nível N" alinhado com o início do título
+   por cima; e no cartão "Explore X" o nível substitui o título. */
+@media (min-width: 721px) {
+    body.shadcn-profile .profile-hero {
+        background: var(--sp-card, #ffffff);
+        border: 1px solid rgba(0, 0, 0, .12);
+        border-radius: var(--sp-radius);
+    }
+
+    html.dark-mode body.shadcn-profile .profile-hero {
+        border-color: var(--sp-border, #27272a);
+    }
+
+    body.shadcn-profile .profile-hero-level-pill {
+        padding: 0;
+        background: none;
+    }
+
+    body.shadcn-profile .profile-subject-titulo {
+        display: none;
+    }
+
+    body.shadcn-profile .profile-subject-level-pill {
+        display: block;
+        margin: 0 0 6px;
+        padding: 0;
+        background: none;
+        color: var(--sp-fg);
+        font-size: .92rem;
+        font-weight: 600;
+    }
+}
+
+/* Desktop: "Atividade Recente" mostra a lista real (testes, quizzes,
+   missões) como no telemóvel; o tempo de estudo semanal e os totais ficam
+   só no separador Estatísticas. */
+@media (min-width: 721px) {
+    body.shadcn-profile .profile-percurso-card {
+        display: none;
+    }
+
+    body.shadcn-profile .profile-atividade-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    body.shadcn-profile .profile-atividade-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        border-radius: var(--sp-radius);
+        background: var(--sp-card);
+        border: 1px solid rgba(0, 0, 0, .12);
+        text-decoration: none;
+        color: inherit;
+    }
+
+    html.dark-mode body.shadcn-profile .profile-atividade-item {
+        border-color: var(--sp-border);
+    }
+
+    body.shadcn-profile .profile-atividade-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    body.shadcn-profile .profile-atividade-title {
+        font-size: .95rem;
+        font-weight: 600;
+        color: var(--sp-fg);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    body.shadcn-profile .profile-atividade-meta {
+        font-size: .78rem;
+        color: var(--sp-muted-fg);
+    }
+
+    body.shadcn-profile .profile-atividade-status {
+        flex: none;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: var(--sp-accent-soft);
+        color: var(--sp-primary);
+        font-size: .75rem;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    body.shadcn-profile .profile-atividade-status.is-complete {
+        background: var(--sp-primary);
+        color: #fff;
+    }
+
+    body.shadcn-profile .profile-atividade-empty {
+        margin: 0;
+        padding: 18px;
+        border-radius: var(--sp-radius);
+        background: var(--sp-accent-soft);
+        color: var(--sp-muted-fg);
+        font-size: .88rem;
+        text-align: center;
+    }
+}
+
 /* Painel da foto de perfil: mesma cor pastel dos cartões acima. Só a partir
    de 721px — no telemóvel o painel funde-se com o fundo da página (ver
    .profile-hero em @media (max-width: 720px)), seja qual for a disciplina. */
@@ -13228,7 +13454,6 @@ body.shadcn-profile .profile-vocacional-btn:hover {
    instead of relying on viewport alone. (.profile-quote-banner used to be
    in this list too — it's shown on desktop now, see .profile-hero-row
    below, alongside the hero instead of being desktop-only hidden.) */
-body.shadcn-profile .profile-atividade-section,
 body.shadcn-profile .profile-tabs-bottom {
     display: none;
 }
