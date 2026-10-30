@@ -10518,9 +10518,15 @@ body.shadcn-profile .profile-stat-card span {
 body.shadcn-profile .barra,
 body.shadcn-profile .profile-progress-bar,
 body.shadcn-profile .profile-subject-bar {
-    background: var(--sp-border);
+    background: rgba(0, 0, 0, .1);
     border-radius: 999px;
     overflow: hidden;
+}
+
+html.dark-mode body.shadcn-profile .barra,
+html.dark-mode body.shadcn-profile .profile-progress-bar,
+html.dark-mode body.shadcn-profile .profile-subject-bar {
+    background: var(--sp-border);
 }
 
 body.shadcn-profile .progresso,
@@ -12784,7 +12790,7 @@ body.shadcn-profile .profile-subject-xp {
 }
 
 body.shadcn-profile .profile-subject-xp strong {
-    font-size: 2.6rem;
+    font-size: 1.1rem;
     font-weight: 800;
 }
 
@@ -12801,6 +12807,10 @@ body.shadcn-profile .profile-subject-card .profile-progress-bar {
     max-width: 460px;
     height: 8px;
     border-radius: 999px;
+    background: rgba(0, 0, 0, .1);
+}
+
+html.dark-mode body.shadcn-profile .profile-subject-card .profile-progress-bar {
     background: rgba(255, 255, 255, .6);
 }
 
@@ -13455,9 +13465,9 @@ body.shadcn-profile .profile-hero-row {
     }
 
     body.shadcn-profile .profile-subject-avatar {
-        width: 96px;
-        height: 96px;
-        font-size: 2.1rem;
+        width: 132px;
+        height: 132px;
+        font-size: 2.8rem;
     }
 
     body.shadcn-profile .profile-subject-avatar-edit {
@@ -13466,8 +13476,8 @@ body.shadcn-profile .profile-hero-row {
         bottom: 0;
         display: grid;
         place-items: center;
-        width: 26px;
-        height: 26px;
+        width: 32px;
+        height: 32px;
         padding: 0;
         border: 2px solid var(--sp-card);
         border-radius: 50%;
@@ -13477,8 +13487,8 @@ body.shadcn-profile .profile-hero-row {
     }
 
     body.shadcn-profile .profile-subject-avatar-edit svg {
-        width: 13px;
-        height: 13px;
+        width: 15px;
+        height: 15px;
     }
 
     body.shadcn-profile .profile-subject-avatar-edit:hover {
