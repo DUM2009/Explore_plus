@@ -13432,10 +13432,9 @@ body.shadcn-profile .profile-hero-row {
         text-overflow: ellipsis;
     }
 
-    /* The card becomes a two-column row: the text (title, level, XP, bar,
-       caption) on the left, the avatar big and vertically centered on the
-       right — matching the size/position the user circled in their
-       mockup screenshot. */
+    /* The card becomes a two-column row: the avatar on the left (it comes
+       after the text in the markup, so `order` moves it first visually),
+       the text (title, level, XP, bar, caption) on the right. */
     body.shadcn-profile .profile-subject-card {
         display: flex;
         align-items: center;
@@ -13443,6 +13442,7 @@ body.shadcn-profile .profile-hero-row {
     }
 
     body.shadcn-profile .profile-subject-card-main {
+        order: 2;
         flex: 1 1 auto;
         min-width: 0;
     }
@@ -13459,15 +13459,16 @@ body.shadcn-profile .profile-hero-row {
     }
 
     body.shadcn-profile .profile-subject-avatar-wrap {
+        order: 1;
         display: block;
         position: relative;
         flex: none;
     }
 
     body.shadcn-profile .profile-subject-avatar {
-        width: 132px;
-        height: 132px;
-        font-size: 2.8rem;
+        width: 104px;
+        height: 104px;
+        font-size: 2.3rem;
     }
 
     body.shadcn-profile .profile-subject-avatar-edit {
@@ -13476,8 +13477,8 @@ body.shadcn-profile .profile-hero-row {
         bottom: 0;
         display: grid;
         place-items: center;
-        width: 32px;
-        height: 32px;
+        width: 28px;
+        height: 28px;
         padding: 0;
         border: 2px solid var(--sp-card);
         border-radius: 50%;
@@ -13487,8 +13488,8 @@ body.shadcn-profile .profile-hero-row {
     }
 
     body.shadcn-profile .profile-subject-avatar-edit svg {
-        width: 15px;
-        height: 15px;
+        width: 14px;
+        height: 14px;
     }
 
     body.shadcn-profile .profile-subject-avatar-edit:hover {
