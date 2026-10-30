@@ -12682,7 +12682,7 @@ body.shadcn-profile .profile-subject-card {
     padding: 24px 28px;
     border-radius: var(--sp-radius);
     background: var(--sp-card, #ffffff);
-    border: 1px solid #000;
+    border: 1px solid rgba(0, 0, 0, .12);
 }
 
 /* O cartão "Explore X" muda de cor pastel consoante a disciplina ativa
@@ -13084,7 +13084,7 @@ body.shadcn-profile .profile-vocacional-card {
     padding: 18px 20px;
     border-radius: var(--sp-radius);
     background: var(--sp-card, #ffffff);
-    border: 1px solid #000;
+    border: 1px solid rgba(0, 0, 0, .12);
 }
 
 /* Mesma cor pastel do cartão "Explore X" ao lado (ver
