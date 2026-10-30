@@ -13506,8 +13506,18 @@ body.shadcn-profile .profile-hero-row {
            between them collapses — inline-block keeps it a single run of
            text so the space survives, same as the hero's own copy. */
         display: inline-block;
-        margin: 0 0 10px;
+        /* Cancels the pill's own left padding (6px 16px, from the shared
+           .profile-hero-level-pill rule) so "Nível" lines up with the XP
+           number below instead of sitting 16px to its right. */
+        margin: 0 0 10px -16px;
         background: var(--sp-card);
+    }
+
+    body.shadcn-profile .profile-subject-titulo {
+        margin: 0 0 6px;
+        color: var(--sp-muted-fg);
+        font-size: .92rem;
+        font-weight: 600;
     }
 
     /* ---- Quote banner (Darwin quote), directly above Teste Vocacional ---- */
