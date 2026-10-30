@@ -1529,6 +1529,36 @@ CATEGORIA_TESTES_DISCIPLINA = {
     'Campo Elétrico': 'physics',
     'Campo Magnético': 'physics',
     'Física Moderna': 'physics',
+    'Massa e Tamanho dos Átomos': 'chemistry',
+    'Energia dos Eletrões': 'chemistry',
+    'Tabela Periódica': 'chemistry',
+    'Ligação Química': 'chemistry',
+    'Gases e Dispersões': 'chemistry',
+    'Transformações Químicas': 'chemistry',
+    'Aspetos Quantitativos das Reações': 'chemistry',
+    'Equilíbrio Químico': 'chemistry',
+    'Reações Ácido-Base': 'chemistry',
+    'Oxidação-Redução': 'chemistry',
+    'Soluções e Solubilidade': 'chemistry',
+    'Estrutura e Propriedades dos Metais': 'chemistry',
+    'Corrosão, Pilhas e Proteção': 'chemistry',
+    'Metais, Ambiente e Vida': 'chemistry',
+    'Combustíveis Fósseis': 'chemistry',
+    'A Energia dos Combustíveis': 'chemistry',
+    'Plásticos, Vidros e Novos Materiais': 'chemistry',
+    'Geologia e Métodos': 'geology',
+    'A Terra, um Planeta Único': 'geology',
+    'Estrutura e Dinâmica da Geosfera': 'geology',
+    'Ocupação Antrópica e Ordenamento do Território': 'geology',
+    'Minerais': 'geology',
+    'Sedimentação e Rochas Sedimentares': 'geology',
+    'Magmatismo e Rochas Magmáticas': 'geology',
+    'Deformação de Rochas': 'geology',
+    'Metamorfismo e Rochas Metamórficas': 'geology',
+    'Exploração Sustentada de Recursos Geológicos': 'geology',
+    'Da Deriva dos Continentes à Tectónica de Placas': 'geology',
+    'A História da Terra e da Vida': 'geology',
+    'A Terra Ontem, Hoje e Amanhã': 'geology',
 }
 
 # Ano letivo de cada categoria (ver data-ano em .missions-category, tal
@@ -1570,23 +1600,42 @@ CATEGORIA_TESTES_ANO = {
     'Campo Elétrico': '12',
     'Campo Magnético': '12',
     'Física Moderna': '12',
+    'Massa e Tamanho dos Átomos': '10',
+    'Energia dos Eletrões': '10',
+    'Tabela Periódica': '10',
+    'Ligação Química': '10',
+    'Gases e Dispersões': '10',
+    'Transformações Químicas': '10',
+    'Aspetos Quantitativos das Reações': '11',
+    'Equilíbrio Químico': '11',
+    'Reações Ácido-Base': '11',
+    'Oxidação-Redução': '11',
+    'Soluções e Solubilidade': '11',
+    'Estrutura e Propriedades dos Metais': '12',
+    'Corrosão, Pilhas e Proteção': '12',
+    'Metais, Ambiente e Vida': '12',
+    'Combustíveis Fósseis': '12',
+    'A Energia dos Combustíveis': '12',
+    'Plásticos, Vidros e Novos Materiais': '12',
+    'Geologia e Métodos': '10',
+    'A Terra, um Planeta Único': '10',
+    'Estrutura e Dinâmica da Geosfera': '10',
+    'Ocupação Antrópica e Ordenamento do Território': '11',
+    'Minerais': '11',
+    'Sedimentação e Rochas Sedimentares': '11',
+    'Magmatismo e Rochas Magmáticas': '11',
+    'Deformação de Rochas': '11',
+    'Metamorfismo e Rochas Metamórficas': '11',
+    'Exploração Sustentada de Recursos Geológicos': '11',
+    'Da Deriva dos Continentes à Tectónica de Placas': '12',
+    'A História da Terra e da Vida': '12',
+    'A Terra Ontem, Hoje e Amanhã': '12',
 }
 
 # Cada missão tem 3 testes: o primeiro incluído no plano Free, os outros
 # dois exclusivos do SuperExplore (Pro). 'teste_id' fica a None enquanto o
 # teste ainda não tiver conteúdo — a página mostra-o como "Em breve".
 MISSOES_TESTES = [
-    {
-        'categoria': 'Obtenção de Matéria',
-        'titulo': 'Fotossíntese',
-        'meta': ['Grupos I, II e III', '14-16 perguntas', '45 minutos'],
-        'correcao': 'Correção automática e por IA.',
-        'testes': [
-            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fotossintese'},
-            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fotossintese-c4-milho'},
-            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fotossintese-cam-opuntia'},
-        ],
-    },
     {
         'categoria': 'Biodiversidade',
         'titulo': 'Diversidade e Organização Biológica',
@@ -1596,17 +1645,6 @@ MISSOES_TESTES = [
             {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'diversidade'},
             {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'diversidade-ornitorrinco'},
             {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'diversidade-liquenes'},
-        ],
-    },
-    {
-        'categoria': 'Citologia',
-        'titulo': 'Células e Organelos',
-        'meta': ['Grupos I, II e III', '14 perguntas', '45 minutos'],
-        'correcao': 'Correção automática e por IA.',
-        'testes': [
-            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'celulas'},
-            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'celulas-pancreas'},
-            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'celulas-endossimbiotica'},
         ],
     },
     {
@@ -1620,30 +1658,6 @@ MISSOES_TESTES = [
             {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-3'},
         ],
     },
-    # ARQUIVADO (capítulo retirado do site; reativar descomentando o bloco abaixo):
-    #     {
-    #         'categoria': 'Energia e Fenómenos Elétricos',
-    #         'titulo': 'Energia e Fenómenos Elétricos',
-    #         'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
-    #         'correcao': 'Correção automática e por IA.',
-    #         'testes': [
-    #             {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m2-teste-1'},
-    #             {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m2-teste-2'},
-    #             {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m2-teste-3'},
-    #         ],
-    #     },
-    # ARQUIVADO (capítulo retirado do site; reativar descomentando o bloco abaixo):
-    #     {
-    #         'categoria': 'Energia, Fenómenos Térmicos e Radiação',
-    #         'titulo': 'Energia, Fenómenos Térmicos e Radiação',
-    #         'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
-    #         'correcao': 'Correção automática e por IA.',
-    #         'testes': [
-    #             {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m3-teste-1'},
-    #             {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m3-teste-2'},
-    #             {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m3-teste-3'},
-    #         ],
-    #     },
 ]
 
 # Capítulos que ainda não têm testes escritos — aparecem na página de
@@ -1651,7 +1665,16 @@ MISSOES_TESTES = [
 # testes a "Em breve" (teste_id a None), em vez de ficarem de fora da
 # página só porque ainda não há conteúdo. Categoria e título espelham
 # exatamente os usados em index-missions.html.
+#
+# Só o primeiro capítulo de cada disciplina/ano tem testes a sério (ver
+# MISSOES_TESTES acima) — todos os outros ficam aqui como "Em breve",
+# incluindo Fotossíntese e Células e Organelos, que já tinham testes
+# escritos mas não são o primeiro capítulo do 10º ano de Biologia
+# (pedido explícito: só o 1º capítulo de cada disciplina/ano fica
+# disponível, mesmo quando outro já tem conteúdo pronto).
 _TESTES_EM_BREVE = [
+    ('Obtenção de Matéria', 'Fotossíntese'),
+    ('Citologia', 'Células e Organelos'),
     ('Bioquímica', 'Biomoléculas'),
     ('Obtenção de Matéria', 'Membrana Celular e Transporte Transmembranar'),
     ('Obtenção de Matéria', 'Obtenção de Matéria pelos Seres Heterotróficos'),
@@ -1659,9 +1682,9 @@ _TESTES_EM_BREVE = [
     ('Distribuição de Matéria', 'Transporte nos Animais'),
     ('Transformação e Utilização de Energia', 'Respiração Aeróbia e Fermentação'),
     ('Transformação e Utilização de Energia', 'Trocas Gasosas'),
-    # ARQUIVADO: ('Evolução', 'A Origem da Célula Eucariótica'),
-    # ARQUIVADO: ('Evolução', 'Lamarckismo e Darwinismo'),
-    # ARQUIVADO: ('Sistemática dos Seres Vivos', 'Taxonomia e Sistemática'),
+    ('Evolução', 'A Origem da Célula Eucariótica'),
+    ('Evolução', 'Lamarckismo e Darwinismo'),
+    ('Sistemática dos Seres Vivos', 'Taxonomia e Sistemática'),
     ('Crescimento, Renovação e Diferenciação Celular', 'O Código da Vida'),
     ('Crescimento, Renovação e Diferenciação Celular', 'Síntese Proteica'),
     ('Crescimento, Renovação e Diferenciação Celular', 'Ciclo Celular'),
@@ -1671,24 +1694,58 @@ _TESTES_EM_BREVE = [
     ('Reprodução', 'Ciclos de Vida'),
     ('Ecologia', 'Ecossistemas'),
     ('Corpo Humano', 'Sistema Nervoso e Hormonal'),
-    # ARQUIVADO (capítulo de Botânica retirado da Explore Biology; reativar quando for preciso):
-    # ('Botânica', 'Fisiologia Vegetal'),
+    ('Botânica', 'Fisiologia Vegetal'),
     ('Reprodução e Manipulação da Fertilidade', 'Reprodução e Manipulação da Fertilidade'),
-    # ARQUIVADO: ('Património Genético', 'Património Genético'),
-    # ARQUIVADO: ('Imunidade e Controlo de Doenças', 'Imunidade e Controlo de Doenças'),
-    # ARQUIVADO: ('Produção de Alimentos e Sustentabilidade', 'Produção de Alimentos e Sustentabilidade'),
+    ('Património Genético', 'Património Genético'),
+    ('Imunidade e Controlo de Doenças', 'Imunidade e Controlo de Doenças'),
+    ('Produção de Alimentos e Sustentabilidade', 'Produção de Alimentos e Sustentabilidade'),
+    ('Energia e Fenómenos Elétricos', 'Energia e Fenómenos Elétricos'),
+    ('Energia, Fenómenos Térmicos e Radiação', 'Energia, Fenómenos Térmicos e Radiação'),
     ('Movimento e Interações', 'Movimento e Interações'),
     ('Movimento e Interações', 'Forças e Movimentos'),
-    # ARQUIVADO: ('Sinais, Ondas e Som', 'Sinais, Ondas e Som'),
-    # ARQUIVADO: ('Eletromagnetismo', 'Eletromagnetismo'),
-    # ARQUIVADO: ('Eletromagnetismo', 'Ondas Eletromagnéticas'),
+    ('Sinais, Ondas e Som', 'Sinais, Ondas e Som'),
+    ('Eletromagnetismo', 'Eletromagnetismo'),
+    ('Eletromagnetismo', 'Ondas Eletromagnéticas'),
     ('Cinemática e Dinâmica 2D', 'Cinemática e Dinâmica 2D'),
     ('Centro de Massa e Momento Linear', 'Centro de Massa e Momento Linear'),
-    # ARQUIVADO: ('Fluidos', 'Fluidos'),
-    # ARQUIVADO: ('Campo Gravítico', 'Campo Gravítico'),
-    # ARQUIVADO: ('Campo Elétrico', 'Campo Elétrico'),
-    # ARQUIVADO: ('Campo Magnético', 'Campo Magnético'),
-    # ARQUIVADO: ('Física Moderna', 'Física Moderna'),
+    ('Fluidos', 'Fluidos'),
+    ('Campo Gravítico', 'Campo Gravítico'),
+    ('Campo Elétrico', 'Campo Elétrico'),
+    ('Campo Magnético', 'Campo Magnético'),
+    ('Física Moderna', 'Física Moderna'),
+    # Química — todos os capítulos ainda sem testes escritos (ver
+    # index-missions.html para a mesma lista/ordem por ano).
+    ('Massa e Tamanho dos Átomos', 'Massa e Tamanho dos Átomos'),
+    ('Energia dos Eletrões', 'Energia dos Eletrões'),
+    ('Tabela Periódica', 'Tabela Periódica'),
+    ('Ligação Química', 'Ligação Química'),
+    ('Gases e Dispersões', 'Gases e Dispersões'),
+    ('Transformações Químicas', 'Transformações Químicas'),
+    ('Aspetos Quantitativos das Reações', 'Aspetos Quantitativos das Reações'),
+    ('Equilíbrio Químico', 'Equilíbrio Químico'),
+    ('Reações Ácido-Base', 'Reações Ácido-Base'),
+    ('Oxidação-Redução', 'Oxidação-Redução'),
+    ('Soluções e Solubilidade', 'Soluções e Solubilidade'),
+    ('Estrutura e Propriedades dos Metais', 'Estrutura e Propriedades dos Metais'),
+    ('Corrosão, Pilhas e Proteção', 'Corrosão, Pilhas e Proteção'),
+    ('Metais, Ambiente e Vida', 'Metais, Ambiente e Vida'),
+    ('Combustíveis Fósseis', 'Combustíveis Fósseis'),
+    ('A Energia dos Combustíveis', 'A Energia dos Combustíveis'),
+    ('Plásticos, Vidros e Novos Materiais', 'Plásticos, Vidros e Novos Materiais'),
+    # Geologia — todos os capítulos ainda sem testes escritos.
+    ('Geologia e Métodos', 'Geologia e Métodos'),
+    ('A Terra, um Planeta Único', 'A Terra, um Planeta Único'),
+    ('Estrutura e Dinâmica da Geosfera', 'Estrutura e Dinâmica da Geosfera'),
+    ('Ocupação Antrópica e Ordenamento do Território', 'Ocupação Antrópica e Ordenamento do Território'),
+    ('Minerais', 'Minerais'),
+    ('Sedimentação e Rochas Sedimentares', 'Sedimentação e Rochas Sedimentares'),
+    ('Magmatismo e Rochas Magmáticas', 'Magmatismo e Rochas Magmáticas'),
+    ('Deformação de Rochas', 'Deformação de Rochas'),
+    ('Metamorfismo e Rochas Metamórficas', 'Metamorfismo e Rochas Metamórficas'),
+    ('Exploração Sustentada de Recursos Geológicos', 'Exploração Sustentada de Recursos Geológicos'),
+    ('Da Deriva dos Continentes à Tectónica de Placas', 'Da Deriva dos Continentes à Tectónica de Placas'),
+    ('A História da Terra e da Vida', 'A História da Terra e da Vida'),
+    ('A Terra Ontem, Hoje e Amanhã', 'A Terra Ontem, Hoje e Amanhã'),
 ]
 for _categoria, _titulo in _TESTES_EM_BREVE:
     MISSOES_TESTES.append({
@@ -1727,11 +1784,10 @@ def encontrar_config_teste(teste_id):
 def montar_categorias_testes(plano_aluno):
     categorias = {}
     for missao in MISSOES_TESTES:
-        # Só aparecem capítulos com pelo menos um teste já escrito — os
-        # painéis "Em breve" (teste_id a None) ficam guardados em
-        # MISSOES_TESTES/_TESTES_EM_BREVE mas não são mostrados.
-        if not any(teste.get('teste_id') is not None for teste in missao['testes']):
-            continue
+        # Todos os capítulos aparecem, mesmo sem nenhum teste escrito — os
+        # que só têm testes "Em breve" (teste_id a None, ver
+        # _TESTES_EM_BREVE acima) mostram-se na mesma, com os botões a
+        # "Em breve" em vez de ficarem de fora da página por completo.
         testes = []
         for teste in missao['testes']:
             disponivel = teste.get('teste_id') is not None
