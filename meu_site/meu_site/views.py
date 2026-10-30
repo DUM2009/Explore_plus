@@ -1479,17 +1479,20 @@ def pagina_kim(request):
 # Categoria sem entrada aqui cai no genérico 'images/Biology image.jpg'.
 CATEGORIA_TESTES_IMAGENS = {
     'Biodiversidade': 'images/Wallpaper biodiversidade.png',
-    'Bioquímica': 'images/Wallpaper bioquimica.png',
-    'Obtenção de Matéria': 'images/Folha.png',
+    'Obtenção de Matéria': 'images/Obtenção de Matéria.png',
     'Distribuição de Matéria': 'images/Coração.png',
     'Transformação e Utilização de Energia': 'images/Mitocôndira.png',
-    'Evolução': 'images/especie.jpg',
+    'Evolução': 'images/Evolução.png',
     'Sistemática dos Seres Vivos': 'images/organismo.jpg',
     'Crescimento, Renovação e Diferenciação Celular': 'images/Wallpaper DNA.png',
-    'Citologia': 'images/Célula.png',
+    'Reprodução': 'images/Diversidade genética.png',
     'Ecologia': 'images/ecossistema.jpg',
     'Corpo Humano': 'images/Wallpaper corpo humano.png',
     'Botânica': 'images/Relva.jpeg',
+    'Reprodução e Manipulação da Fertilidade': 'images/Reprodução e Manipulação da Fertilidade.png',
+    'Património Genético': 'images/Património Genético.png',
+    'Imunidade e Controlo de Doenças': 'images/Imunidade e Controlo de Doenças.png',
+    'Produção de Alimentos e Sustentabilidade': 'images/Produção de Alimentos e Sustentabilidade.png',
     'Energia e Movimentos': 'images/Energia e movimentos.png',
     'Energia e Fenómenos Elétricos': 'images/Energia e fenómenos elétricos.png',
     'Energia, Fenómenos Térmicos e Radiação': 'images/Fenómenos térmicos e radiação.png',
@@ -1498,18 +1501,44 @@ CATEGORIA_TESTES_IMAGENS = {
     'Eletromagnetismo': 'images/Eletromagnetismo.png',
     # As 7 categorias de Física do 12º ano (Cinemática e Dinâmica 2D, Centro
     # de Massa e Momento Linear, Fluidos, Campo Gravítico, Campo Elétrico,
-    # Campo Magnético, Física Moderna) ainda não têm imagem própria — os
-    # ficheiros f12_*.png nunca chegaram a existir em static/images/, o que
-    # causava um 500 em produção (o ManifestStaticFilesStorage do WhiteNoise
-    # rebenta em {% static %} de um ficheiro que não está no manifest). Sem
-    # entrada aqui, caem no fallback (.get(nome, 'images/Biology image.jpg')
-    # abaixo) até existir uma imagem real para cada uma.
+    # Campo Magnético, Física Moderna) partilham a mesma imagem genérica em
+    # index-missions.html também (não têm uma própria) — mesmo ficheiro
+    # aqui, por consistência.
+    'Cinemática e Dinâmica 2D': 'images/Energia e movimentos.png',
+    'Centro de Massa e Momento Linear': 'images/Energia e movimentos.png',
+    'Fluidos': 'images/Energia e movimentos.png',
+    'Campo Gravítico': 'images/Energia e movimentos.png',
+    'Campo Elétrico': 'images/Energia e movimentos.png',
+    'Campo Magnético': 'images/Energia e movimentos.png',
+    'Física Moderna': 'images/Energia e movimentos.png',
+    'Massa e Tamanho dos Átomos': 'images/Massa e tamanho dos átomos.png',
+    'Energia dos Eletrões': 'images/Energia dos eletrões.png',
+    'Tabela Periódica': 'images/Tabela periódica.png',
+    'Ligação Química': 'images/Ligação química.png',
+    'Gases e Dispersões': 'images/Gases e dispersão.png',
+    'Transformações Químicas': 'images/Transformações químicas.png',
+    'Aspetos Quantitativos das Reações': 'images/Aspetos quantitativos das reações.png',
+    'Equilíbrio Químico': 'images/Equilíbrio químico.png',
+    'Reações Ácido-Base': 'images/Reações ácido-base.png',
+    'Oxidação-Redução': 'images/Oxidação-Redução.png',
+    'Soluções e Solubilidade': 'images/Soluções e solubilidade.png',
+    # As 6 categorias de Química do 12º ano também partilham imagem
+    # genérica em index-missions.html (não têm uma própria).
+    'Estrutura e Propriedades dos Metais': 'images/Transformações químicas.png',
+    'Corrosão, Pilhas e Proteção': 'images/Transformações químicas.png',
+    'Metais, Ambiente e Vida': 'images/Transformações químicas.png',
+    'Combustíveis Fósseis': 'images/Transformações químicas.png',
+    'A Energia dos Combustíveis': 'images/Transformações químicas.png',
+    'Plásticos, Vidros e Novos Materiais': 'images/Transformações químicas.png',
+    # As categorias de Geologia não têm imagem própria em index-missions.html
+    # (os painéis lá também não têm span de imagem) — ficam sem entrada
+    # aqui, caem no fallback genérico abaixo.
 }
 
 # Categorias cuja imagem usa background-size:contain em vez de cover (ver
 # .missions-category-panel-image--contain), tal como em index-missions.html
 # — evita cortar ícones/desenhos que não preenchem todo o retângulo.
-CATEGORIA_TESTES_IMAGENS_CONTAIN = {'Citologia'}
+CATEGORIA_TESTES_IMAGENS_CONTAIN = {'Reações Ácido-Base'}
 
 # Disciplina de cada categoria (ver data-subject em .missions-category,
 # tal como em index-missions.html) — usado pelo subject-switcher.js para
@@ -1571,11 +1600,9 @@ CATEGORIA_TESTES_DISCIPLINA = {
 # entrada aqui fica sem ano (sem filtro de ano — ver montar_categorias_testes).
 CATEGORIA_TESTES_ANO = {
     'Biodiversidade': '10',
-    'Bioquímica': '10',
     'Obtenção de Matéria': '10',
     'Distribuição de Matéria': '10',
     'Transformação e Utilização de Energia': '10',
-    'Citologia': '10',
     'Botânica': '10',
     'Corpo Humano': '10',
     'Ecologia': '10',
@@ -1674,8 +1701,8 @@ MISSOES_TESTES = [
 # disponível, mesmo quando outro já tem conteúdo pronto).
 _TESTES_EM_BREVE = [
     ('Obtenção de Matéria', 'Fotossíntese'),
-    ('Citologia', 'Células e Organelos'),
-    ('Bioquímica', 'Biomoléculas'),
+    ('Biodiversidade', 'Células e Organelos'),
+    ('Biodiversidade', 'Biomoléculas'),
     ('Obtenção de Matéria', 'Membrana Celular e Transporte Transmembranar'),
     ('Obtenção de Matéria', 'Obtenção de Matéria pelos Seres Heterotróficos'),
     ('Distribuição de Matéria', 'Xilema e Floema'),
@@ -1713,39 +1740,54 @@ _TESTES_EM_BREVE = [
     ('Campo Elétrico', 'Campo Elétrico'),
     ('Campo Magnético', 'Campo Magnético'),
     ('Física Moderna', 'Física Moderna'),
-    # Química — todos os capítulos ainda sem testes escritos (ver
-    # index-missions.html para a mesma lista/ordem por ano).
-    ('Massa e Tamanho dos Átomos', 'Massa e Tamanho dos Átomos'),
-    ('Energia dos Eletrões', 'Energia dos Eletrões'),
+    # Química — títulos exatamente iguais às missões em index-missions.html
+    # (sem o "(Xº ano)" do h2 de lá, tal como as restantes entradas acima).
+    ('Massa e Tamanho dos Átomos', 'Massa e tamanho dos átomos'),
+    ('Energia dos Eletrões', 'Energia dos eletrões nos átomos'),
     ('Tabela Periódica', 'Tabela Periódica'),
-    ('Ligação Química', 'Ligação Química'),
-    ('Gases e Dispersões', 'Gases e Dispersões'),
-    ('Transformações Químicas', 'Transformações Químicas'),
-    ('Aspetos Quantitativos das Reações', 'Aspetos Quantitativos das Reações'),
-    ('Equilíbrio Químico', 'Equilíbrio Químico'),
-    ('Reações Ácido-Base', 'Reações Ácido-Base'),
-    ('Oxidação-Redução', 'Oxidação-Redução'),
-    ('Soluções e Solubilidade', 'Soluções e Solubilidade'),
-    ('Estrutura e Propriedades dos Metais', 'Estrutura e Propriedades dos Metais'),
-    ('Corrosão, Pilhas e Proteção', 'Corrosão, Pilhas e Proteção'),
-    ('Metais, Ambiente e Vida', 'Metais, Ambiente e Vida'),
-    ('Combustíveis Fósseis', 'Combustíveis Fósseis'),
-    ('A Energia dos Combustíveis', 'A Energia dos Combustíveis'),
-    ('Plásticos, Vidros e Novos Materiais', 'Plásticos, Vidros e Novos Materiais'),
-    # Geologia — todos os capítulos ainda sem testes escritos.
-    ('Geologia e Métodos', 'Geologia e Métodos'),
-    ('A Terra, um Planeta Único', 'A Terra, um Planeta Único'),
-    ('Estrutura e Dinâmica da Geosfera', 'Estrutura e Dinâmica da Geosfera'),
-    ('Ocupação Antrópica e Ordenamento do Território', 'Ocupação Antrópica e Ordenamento do Território'),
+    ('Ligação Química', 'Ligação química'),
+    ('Gases e Dispersões', 'Gases e dispersões'),
+    ('Transformações Químicas', 'Transformações químicas'),
+    ('Aspetos Quantitativos das Reações', 'Aspetos quantitativos das reações químicas'),
+    ('Equilíbrio Químico', 'Equilíbrio químico e extensão das reações'),
+    ('Reações Ácido-Base', 'Reações ácido-base'),
+    ('Oxidação-Redução', 'Reações de oxidação-redução'),
+    ('Soluções e Solubilidade', 'Soluções e equilíbrio de solubilidade'),
+    ('Estrutura e Propriedades dos Metais', 'Estrutura e propriedades dos metais'),
+    ('Corrosão, Pilhas e Proteção', 'Degradação dos metais: corrosão, pilhas e proteção'),
+    ('Metais, Ambiente e Vida', 'Metais, ambiente e vida'),
+    ('Combustíveis Fósseis', 'Combustíveis fósseis'),
+    ('A Energia dos Combustíveis', 'De onde vem a energia dos combustíveis'),
+    ('Plásticos, Vidros e Novos Materiais', 'Plásticos, vidros e novos materiais'),
+    # Geologia — idem, títulos das missões reais (várias categorias
+    # agrupam mais do que uma missão, tal como em index-missions.html).
+    ('Geologia e Métodos', 'A Terra Como Sistema e as Rochas'),
+    ('Geologia e Métodos', 'Métodos e Raciocínio Geológico'),
+    ('Geologia e Métodos', 'O Tempo Geológico'),
+    ('Geologia e Métodos', 'Tectónica de Placas'),
+    ('A Terra, um Planeta Único', 'Origem da Terra e do Sistema Solar'),
+    ('Estrutura e Dinâmica da Geosfera', 'Vulcanologia'),
+    ('Estrutura e Dinâmica da Geosfera', 'Sismologia'),
+    ('Estrutura e Dinâmica da Geosfera', 'O Interior da Terra'),
+    ('Ocupação Antrópica e Ordenamento do Território', 'Riscos Geológicos e Ordenamento do Território'),
     ('Minerais', 'Minerais'),
-    ('Sedimentação e Rochas Sedimentares', 'Sedimentação e Rochas Sedimentares'),
-    ('Magmatismo e Rochas Magmáticas', 'Magmatismo e Rochas Magmáticas'),
-    ('Deformação de Rochas', 'Deformação de Rochas'),
-    ('Metamorfismo e Rochas Metamórficas', 'Metamorfismo e Rochas Metamórficas'),
+    ('Sedimentação e Rochas Sedimentares', 'Rochas Sedimentares'),
+    ('Sedimentação e Rochas Sedimentares', 'Ambientes Sedimentares e Fósseis'),
+    ('Magmatismo e Rochas Magmáticas', 'Rochas Magmáticas'),
+    ('Deformação de Rochas', 'Deformação das Rochas'),
+    ('Metamorfismo e Rochas Metamórficas', 'Rochas Metamórficas'),
     ('Exploração Sustentada de Recursos Geológicos', 'Exploração Sustentada de Recursos Geológicos'),
-    ('Da Deriva dos Continentes à Tectónica de Placas', 'Da Deriva dos Continentes à Tectónica de Placas'),
-    ('A História da Terra e da Vida', 'A História da Terra e da Vida'),
-    ('A Terra Ontem, Hoje e Amanhã', 'A Terra Ontem, Hoje e Amanhã'),
+    ('Da Deriva dos Continentes à Tectónica de Placas', 'Deriva Continental e Expansão dos Fundos Oceânicos'),
+    ('Da Deriva dos Continentes à Tectónica de Placas', 'Dinâmica da Litosfera e Isostasia'),
+    ('Da Deriva dos Continentes à Tectónica de Placas', 'Orogenias, Riftes e Modelação das Paisagens'),
+    ('A História da Terra e da Vida', 'Tempo Geológico e Cronostratigrafia'),
+    ('A História da Terra e da Vida', 'A História da Vida: do Pré-Câmbrico ao Cenozoico'),
+    ('A História da Terra e da Vida', 'Evolução Paleogeográfica'),
+    ('A História da Terra e da Vida', 'Cartografia Geológica'),
+    ('A História da Terra e da Vida', 'Geologia de Portugal'),
+    ('A Terra Ontem, Hoje e Amanhã', 'Paleoclimas e Mudanças Ambientais'),
+    ('A Terra Ontem, Hoje e Amanhã', 'Mudanças Climáticas e Cenários para o Século XXI'),
+    ('A Terra Ontem, Hoje e Amanhã', 'Recursos Geoambientais e Contaminação'),
 ]
 for _categoria, _titulo in _TESTES_EM_BREVE:
     MISSOES_TESTES.append({
