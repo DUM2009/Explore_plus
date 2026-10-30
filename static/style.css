@@ -13418,7 +13418,6 @@ body.shadcn-profile .profile-hero-row {
        mockup screenshot. */
     body.shadcn-profile .profile-subject-card {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
         gap: 16px;
     }
@@ -13426,26 +13425,6 @@ body.shadcn-profile .profile-hero-row {
     body.shadcn-profile .profile-subject-card-main {
         flex: 1 1 auto;
         min-width: 0;
-    }
-
-    /* Citação movida para dentro do cartão "Explore X" (em vez de ser um
-       cartão branco à parte logo acima) — ocupa a linha toda por baixo do
-       nível/XP e do avatar (flex-wrap no cartão torna isso possível), e
-       perde o próprio fundo/moldura brancos para passar a ler-se como
-       parte do cartão verde, só com uma linha fina a separar. */
-    body.shadcn-profile .profile-subject-card .profile-quote-banner--mobile {
-        flex: 1 1 100%;
-        margin: 4px 0 0;
-        padding: 16px 0 0;
-        border: none;
-        border-top: 1px solid rgba(0, 0, 0, .08);
-        border-radius: 0;
-        background: none;
-        height: auto;
-    }
-
-    html.dark-mode body.shadcn-profile .profile-subject-card .profile-quote-banner--mobile {
-        border-top-color: rgba(255, 255, 255, .12);
     }
 
     /* "Explore Biology" was wrapping onto 2 lines now that the card shares
