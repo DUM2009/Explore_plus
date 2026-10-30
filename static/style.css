@@ -12845,6 +12845,41 @@ body.shadcn-profile .profile-atividade-ver-tudo {
     text-decoration: none;
 }
 
+/* Ícones da lista "Atividade Recente" — não presos ao @media(max-width:720px)
+   que mostra essa lista, para já virem corretos caso a lista passe a
+   aparecer também no desktop. Missão = alvo/roxo, quiz = visto/azul,
+   teste ou exame = folha/rosa — cor por categoria, pedido explicitamente. */
+body.shadcn-profile .profile-atividade-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-atividade-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+body.shadcn-profile .profile-atividade-icon--missao {
+    background: #ede7fb;
+    color: #7c5cbf;
+}
+
+body.shadcn-profile .profile-atividade-icon--quiz {
+    background: #e3f0fc;
+    color: #2f80c2;
+}
+
+body.shadcn-profile .profile-atividade-icon--teste {
+    background: #fbe6ef;
+    color: #c2487e;
+}
+
 body.shadcn-profile .profile-missions-viewall {
     display: inline-flex;
     align-items: center;
@@ -13577,33 +13612,6 @@ body.shadcn-profile .profile-hero-row {
         border: 1px solid var(--sp-border);
         text-decoration: none;
         color: inherit;
-    }
-
-    body.shadcn-profile .profile-atividade-icon {
-        display: grid;
-        place-items: center;
-        flex: none;
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        overflow: hidden;
-        background: var(--sp-accent-soft);
-        font-size: 1rem;
-        line-height: 1;
-    }
-
-    /* Missão = livro/roxo, quiz = alvo/azul, teste ou exame = folha/rosa —
-       cor por categoria de atividade, pedido explicitamente. */
-    body.shadcn-profile .profile-atividade-icon--missao {
-        background: #ede7fb;
-    }
-
-    body.shadcn-profile .profile-atividade-icon--quiz {
-        background: #e3f0fc;
-    }
-
-    body.shadcn-profile .profile-atividade-icon--teste {
-        background: #fbe6ef;
     }
 
     body.shadcn-profile .profile-atividade-info {
