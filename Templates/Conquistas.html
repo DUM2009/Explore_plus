@@ -65,7 +65,18 @@
 <p>Completa quizzes para desbloquear novas conquistas.</p>
 </div>
 
-<div class="achievement-grid" id="achievementsGrid"></div>
+<div class="achievement-grid" id="achievementsGrid">
+{% for conquista in conquistas_lista %}
+<div class="achievement-card {% if conquista.desbloqueada %}is-unlocked{% else %}is-locked{% endif %}">
+<div class="achievement-badge-art"><span class="achievement-emoji" aria-hidden="true">{% if conquista.desbloqueada %}{{ conquista.icone }}{% else %}🔒{% endif %}</span></div>
+<div class="achievement-copy">
+<h3>{{ conquista.nome }}</h3>
+<p>{{ conquista.frase }}</p>
+<span class="achievement-status">{% if conquista.desbloqueada %}Desbloqueado · +{{ conquista.xp }} XP{% else %}Bloqueado{% endif %}</span>
+</div>
+</div>
+{% endfor %}
+</div>
 </div>
 </div>
 

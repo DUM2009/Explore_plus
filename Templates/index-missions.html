@@ -582,14 +582,25 @@
         </div>
     </div>
 
-    {% if '11-movimento-e-interacoes' in missoes_lancadas or '11-forcas-e-movimentos' in missoes_lancadas %}
+    {% if '11-movimento-e-interacoes' in missoes_lancadas or '11-descrever-o-movimento' in missoes_lancadas or '11-forcas-e-movimentos' in missoes_lancadas %}
     <div class="missions-category" data-subject="physics" data-ano="11" hidden>
         <div class="missions-category-panel">
             <span class="missions-category-panel-image" style="background-image:url('{% static 'images/Movimentos e interações.png' %}')" aria-hidden="true"></span>
             <div class="missions-category-panel-body">
-                <h3 class="missions-category-panel-name">Movimento e Interações</h3>
+                <h3 class="missions-category-panel-name">Mecânica</h3>
                 <p class="missions-category-panel-tagline">Estás parado ou em movimento? Depende de quem vê. Referenciais, posição, velocidade, as quatro interações fundamentais e as leis de Newton.</p>
                 <div class="missions-grid" hidden>
+                    {% if '11-descrever-o-movimento' in missoes_lancadas %}
+                    <div class="mission-card">
+                        <div class="mission-card-info">
+                            <h2>Tempo, Posição, Velocidade e Aceleração (11º ano)</h2>
+                            <p>Estás parado ou em movimento? Depende de quem vê. Referencial, posição, deslocamento, velocidade e como ler gráficos posição-tempo e velocidade-tempo.</p>
+                        </div>
+                        <a href="{% url 'missao' missao_id='11-descrever-o-movimento' %}"><button type="button">Começar</button></a>
+                    </div>
+                    {% else %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Tempo, Posição, Velocidade e Aceleração (11º ano)</h2><p>Estás parado ou em movimento? Depende de quem vê. Referencial, posição, deslocamento, velocidade e como ler gráficos posição-tempo e velocidade-tempo.</p></div><button disabled>Em breve</button></div>
+                    {% endif %}
                     {% if '11-movimento-e-interacoes' in missoes_lancadas %}
                     <div class="mission-card">
                         <div class="mission-card-info">
@@ -598,6 +609,8 @@
                         </div>
                         <a href="{% url 'missao' missao_id='11-movimento-e-interacoes' %}"><button type="button">Começar</button></a>
                     </div>
+                    {% else %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Movimento e Interações (11º ano)</h2><p>Referenciais, posição, velocidade, as quatro interações fundamentais e as leis de Newton.</p></div><button disabled>Em breve</button></div>
                     {% endif %}
                     {% if '11-forcas-e-movimentos' in missoes_lancadas %}
                     <div class="mission-card">
@@ -607,9 +620,11 @@
                         </div>
                         <a href="{% url 'missao' missao_id='11-forcas-e-movimentos' %}"><button type="button">Começar</button></a>
                     </div>
+                    {% else %}
+                    <div class="mission-card locked"><div class="mission-card-info"><h2>Forças e Movimentos (11º ano)</h2><p>Gráficos v-t, queda livre, planos inclinados, velocidade terminal e satélites.</p></div><button disabled>Em breve</button></div>
                     {% endif %}
                 </div>
-                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Movimento e Interações" data-missions-toggle>
+                <button type="button" class="missions-category-panel-toggle" aria-expanded="false" aria-label="Ver missões de Mecânica" data-missions-toggle>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
             </div>

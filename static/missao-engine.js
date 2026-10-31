@@ -229,12 +229,29 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         if (!nome) return '';
         const src = `/static/images/${encodeURIComponent(nome)}`;
         if (!legenda) {
-            return `<img class="${classe}" src="${src}" alt="${escapeAttr(alt)}" onerror="this.style.display='none'">`;
+            return `<img class="${classe}" src="${src}" alt="${escapeAttr(alt)}" onerror="meImagemSemFicheiro(this)">`;
         }
         return `<img class="${classe}" src="${src}" alt="${escapeAttr(alt)}" data-legenda="${escapeAttr(legenda)}" onerror="meImagemEmFalta(this)">`;
     }
 
+    // Imagem que ainda não existe e sem legenda para um espaço reservado:
+    // esconde-a e, se era a única do painel com imagem à esquerda, tira essa
+    // coluna (e a linha vertical) para o texto ocupar a largura toda.
+    window.meImagemSemFicheiro = function (img) {
+        img.style.display = 'none';
+        const colunas = img.closest('.me-escada-detail-columns');
+        if (colunas && !colunas.querySelector('.me-escada-detail-media img:not([style*="display: none"]), .me-escada-detail-media .me-imagem-reservada')) {
+            colunas.classList.add('me-sem-imagem');
+        }
+    };
+
     window.meImagemEmFalta = function (img) {
+        // Num painel com a imagem à esquerda, a imagem em falta não deixa um
+        // quadrado reservado vazio: tira a coluna, o texto ocupa a largura toda.
+        if (img.closest('.me-escada-detail-columns')) {
+            window.meImagemSemFicheiro(img);
+            return;
+        }
         const reservado = document.createElement('div');
         reservado.className = 'me-imagem-reservada';
         reservado.textContent = img.dataset.legenda || '';
@@ -284,6 +301,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
 
             this.storageKey = this.buildStorageKey();
             this.state = this.loadState();
+            this.reconciliarRespostasGuardadas();
 
             this.render();
             window.addEventListener('explore:mascot-prefs-changed', () => this.render());
@@ -354,6 +372,45 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             } catch (error) {
                 return this.defaultState();
             }
+        }
+
+        /** As respostas dos quizzes ficam guardadas no navegador (localStorage)
+         *  com o "certo/errado" calculado no momento. Se o ficheiro da missão
+         *  mudar depois (resposta certa trocada, perguntas reordenadas), o
+         *  certo/errado guardado já não bate com a pergunta atual — e o ecrã
+         *  mostra, por exemplo, "Certo!" por baixo de uma opção a vermelho.
+         *  Aqui recalcula-se a partir da pergunta atual e deitam-se fora as
+         *  respostas que já não correspondem a ela (o aluno volta a responder). */
+        reconciliarRespostasGuardadas() {
+            const respostaValida = (resposta, pergunta) => {
+                if (!resposta || !pergunta) return false;
+                if (resposta.pergunta && resposta.pergunta !== pergunta.pergunta) return false;
+                return resposta.correct === (resposta.selected === pergunta.correta);
+            };
+            (this.sections || []).forEach((section) => {
+                (section.ecrãs || []).forEach((screen, screenIndex) => {
+                    if (screen.tipo === 'micro_verificacao') {
+                        const chave = `${section.secao_id}::${screenIndex}`;
+                        const resposta = this.state.answers && this.state.answers[chave];
+                        if (resposta && !respostaValida(resposta, screen)) delete this.state.answers[chave];
+                    }
+                    if (screen.tipo === 'quiz_seccao') {
+                        const quizState = this.state.quizState && this.state.quizState[section.secao_id];
+                        if (!quizState || !Array.isArray(quizState.answers)) return;
+                        const perguntas = screen.perguntas || [];
+                        const validas = [];
+                        for (let i = 0; i < quizState.answers.length; i += 1) {
+                            if (!respostaValida(quizState.answers[i], perguntas[i])) break;
+                            validas.push(quizState.answers[i]);
+                        }
+                        if (validas.length !== quizState.answers.length) {
+                            quizState.answers = validas;
+                            quizState.current = Math.min(quizState.current || 0, validas.length);
+                        }
+                    }
+                });
+            });
+            this.saveState();
         }
 
         saveState() {
@@ -588,7 +645,6 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                             <span class="mo-index-icon" style="background:#1f8a5b22; color:#1f8a5b">${section.icone || (index + 1)}</span>
                             <span class="mo-index-copy">
                                 <strong>${escapeHtml(section.titulo)}</strong>
-                                <span>~${section.tempo_estimado_min || 0} min</span>
                             </span>
                             <span class="mo-index-meta">
                                 ${statusHtml}
@@ -1605,7 +1661,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 btn.addEventListener('click', () => {
                     const selected = Number(btn.dataset.optionIndex);
                     const correct = selected === screen.correta;
-                    this.state.answers[answerKey] = { selected, correct };
+                    this.state.answers[answerKey] = { selected, correct, pergunta: screen.pergunta };
                     this.saveState();
                     if (correct) this.celebrateCorrectAnswer();
 
@@ -1778,6 +1834,38 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     });
                 });
                 atualizar();
+            });
+        }
+
+        /** Seta para baixo por baixo da caixa de fórmulas (ponto.detalhe_seta,
+         *  texto com parágrafos separados por linha em branco): ao clicar,
+         *  abre o texto e a seta roda. Ver bindSetaDetalhe. */
+        setaDetalheHtml(ponto) {
+            if (!ponto.detalhe_seta) return '';
+            const itens = String(ponto.detalhe_seta).split(/\n\s*\n/).filter(Boolean)
+                .map((par) => `<li>${boldMarkdown(escapeHtml(par))}</li>`).join('');
+            const paragrafos = `<ul class="me-seta-detalhe-lista">${itens}</ul>`;
+            return `
+                <div class="me-seta-detalhe">
+                    <button type="button" class="me-seta-detalhe-btn" aria-expanded="false" aria-label="Ver mais">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="me-seta-detalhe-painel" hidden>${paragrafos}</div>
+                </div>
+            `;
+        }
+
+        bindSetaDetalhe(scope) {
+            scope.querySelectorAll('.me-seta-detalhe').forEach((wrap) => {
+                if (wrap.dataset.bound) return;
+                wrap.dataset.bound = '1';
+                const btn = wrap.querySelector('.me-seta-detalhe-btn');
+                const painel = wrap.querySelector('.me-seta-detalhe-painel');
+                btn.addEventListener('click', () => {
+                    const aberto = btn.getAttribute('aria-expanded') === 'true';
+                    btn.setAttribute('aria-expanded', String(!aberto));
+                    painel.hidden = aberto;
+                });
             });
         }
 
@@ -2183,7 +2271,13 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
          * este bocado de HTML nos dois sítios.
          */
         pontoDetailInnerHtml(ponto) {
-            const imagemHtml = ponto.imagem ? `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(ponto.imagem)}" alt="${escapeHtml(ponto.label || '')}" onerror="this.style.display='none'">` : '';
+            // ponto.imagens (lista) mostra várias imagens empilhadas na
+            // coluna da esquerda, pela ordem da lista; ponto.imagem continua
+            // a servir para o caso de uma só.
+            const imagens = Array.isArray(ponto.imagens) && ponto.imagens.length
+                ? ponto.imagens
+                : (ponto.imagem ? [ponto.imagem] : []);
+            const imagemHtml = imagens.map((nome) => `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(nome)}" alt="${escapeHtml(ponto.label || '')}" onerror="meImagemSemFicheiro(this)">`).join('');
             // Legenda visível por baixo da foto (nome do que se vê + link para
             // a página de onde veio) — só usado em fotos reais tiradas de
             // fora do site (ex: parques nacionais), nunca em ilustrações/
@@ -2198,11 +2292,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const conteudoHtml = `
                 ${ponto.label ? `<h4 class="me-escada-detail-title">${escapeHtml(ponto.label)}</h4>` : ''}
                 <div class="me-escada-detail-text-row">
-                    <p class="me-escada-detail-text">${boldMarkdown(escapeHtml(ponto.explicacao || ''))}</p>
+                    <div class="me-escada-detail-paragrafos">${String(ponto.explicacao || '').split(/\n\s*\n/).map((paragrafo) => `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(paragrafo))}</p>`).join('')}</div>
                     ${this.curiosidadeToggleHtml(ponto)}
                     ${this.atencaoToggleHtml(ponto)}
                 </div>
                 ${this.caixaFormulaHtml(ponto.caixa_formula)}
+                ${this.setaDetalheHtml(ponto)}
                 ${this.curiosidadeRevealHtml(ponto)}
                 ${this.atencaoRevealHtml(ponto)}
                 ${this.proximaMissaoHtml(ponto)}
@@ -2213,7 +2308,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (!imagemHtml) return conteudoHtml;
             return `
                 <div class="me-escada-detail-columns">
-                    <div class="me-escada-detail-media">${imagemHtml}${fonteHtml}</div>
+                    <div class="me-escada-detail-media${imagens.length > 1 ? ' me-escada-detail-media--stack' : ''}">${imagemHtml}${fonteHtml}</div>
                     <div class="me-escada-detail-divider" aria-hidden="true"></div>
                     <div class="me-escada-detail-content">${conteudoHtml}</div>
                 </div>
@@ -2226,6 +2321,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
          *  caixa_formula) seguido dos pontos, tudo navegado por uma seta em
          *  vez de se escolher livremente. */
         setaNavHtml(index, total) {
+            // Um só slide: não há nada para navegar, por isso sem barra "1 / 1".
+            if (total <= 1) return '';
             return `
                 <div class="me-seta-nav">
                     <button type="button" class="me-seta-nav-btn me-seta-nav-btn--prev" ${index === 0 ? 'disabled' : ''} aria-label="Anterior">
@@ -2244,11 +2341,13 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
          *  seguinte/anterior) e volta a ligar curiosidade/atenção/
          *  inquérito desse slide, tal como bindDiagramaChips faz por
          *  ponto. */
-        bindDiagramaSetaNav(slides) {
+        bindDiagramaSetaNav(slides, extraHtml = '') {
             const explicacaoEl = this.root.querySelector('#meDiagramaExplicacao');
             if (!explicacaoEl) return;
             const irPara = (index) => {
-                explicacaoEl.innerHTML = this.pontoDetailInnerHtml(slides[index]) + this.setaNavHtml(index, slides.length);
+                explicacaoEl.innerHTML = this.pontoDetailInnerHtml(slides[index]) + this.setaNavHtml(index, slides.length) + extraHtml;
+                this.bindInterrogacao(explicacaoEl);
+                this.bindSetaDetalhe(explicacaoEl);
                 this.bindCuriosidadeToggle(explicacaoEl);
                 this.bindAtencaoToggle(explicacaoEl);
                 this.bindInquerito(explicacaoEl, slides[index]);
@@ -2689,7 +2788,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const temSeta = screen.pontos_seta === true;
             const slidesSeta = temSeta
                 ? [
-                    ...(screen.texto_principal ? [{ explicacao: screen.texto_principal, imagem: screen.imagem, caixa_formula: screen.caixa_formula }] : []),
+                    ...(screen.texto_principal ? [{ explicacao: screen.texto_principal, imagem: screen.imagem, imagens: screen.imagens, caixa_formula: screen.caixa_formula, curiosidade: screen.curiosidade, curiosidade_sem_titulo: screen.curiosidade_sem_titulo, atencao: screen.atencao, detalhe_seta: screen.detalhe_seta }] : []),
                     ...pontos.map((ponto) => ({ ...ponto, imagem: ponto.imagem || screen.imagem })),
                 ]
                 : null;
@@ -2709,7 +2808,11 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     </div>
                 `
                 : temSeta
-                ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(slidesSeta[0])}${this.setaNavHtml(0, slidesSeta.length)}</div>`
+                ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(slidesSeta[0])}${this.setaNavHtml(0, slidesSeta.length)}${this.aprofundarHtml(screen.aprofundar)}</div>`
+                : (useCardDetail && pontos.length === 0)
+                    // Sem pontos (só texto_principal + imagem + fórmula), não há
+                    // cartão de ponto para mostrar: evita a caixa creme vazia.
+                    ? ''
                 : useCardDetail
                     ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(primeiroPonto)}</div>`
                     : `<div class="me-diagrama-explicacao did-you-know" id="meDiagramaExplicacao" hidden></div>`;
@@ -2767,7 +2870,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             // do diagrama (ver screen.aprofundar) — sem breakout de largura
             // nem caixa própria (ver .me-gancho-card .did-you-know no CSS),
             // fundido aqui em vez de ser um ecrã à parte só para um botão.
-            const aprofundarHtml = this.aprofundarHtml(screen.aprofundar);
+            // Com pontos_seta, vive dentro do cartão navegado (ver explicacaoHtml).
+            const aprofundarHtml = temSeta ? '' : this.aprofundarHtml(screen.aprofundar);
 
             // Com introdução, "saber mais" ou screen.cartao_estilo (gancho
             // fundido, ou só o painel pedido para chips normais), tudo —
@@ -2994,7 +3098,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     : corpoHtml;
                 return `
                     <div class="me-interrogacao">
-                        <button type="button" class="me-interrogacao-toggle" aria-expanded="false" aria-label="${escapeHtml(aprofundar.rotulo || aprofundar.titulo || 'Queres saber mais?')}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5"/><path d="M12 18.5h.01"/></svg></button>
+                        <button type="button" class="me-interrogacao-toggle" aria-expanded="false" aria-label="${escapeHtml(aprofundar.rotulo || aprofundar.titulo || 'Queres saber mais?')}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${aprofundar.icone === 'lupa' ? '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>' : '<path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5"/><path d="M12 18.5h.01"/>'}</svg></button>
                         <div class="me-interrogacao-painel" hidden>${painelHtml}</div>
                     </div>
                 `;
@@ -3135,6 +3239,9 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
          *  O SVG é criado aqui vazio e preenchido por
          *  atualizarVisualSimulacao. */
         visualSimulacaoHtml(screen) {
+            if (screen.visual === 'rampa_skater') return this.rampaSkaterHtml();
+            if (screen.visual === 'posicao_eixo') return this.posicaoEixoHtml();
+            if (screen.visual === 'duas_bolas') return this.duasBolasHtml();
             if (screen.visual !== 'trabalho_caixa') return '';
             const seta = (id, cor) => `<marker id="meTc-${id}" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="15" markerHeight="15" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="${cor}"/></marker>`;
             return `
@@ -3173,7 +3280,366 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             `;
         }
 
+        /** Visual 'duas_bolas': duas bolas largadas do topo de um prédio de
+         *  h metros — A cai na vertical, B é atirada na horizontal com vx.
+         *  Animação em tempo real (1 s de simulação = 1 s), com uma imagem
+         *  de cada bola (e uma linha horizontal a ligá-las) a cada 0,25 s,
+         *  como numa fotografia estroboscópica. Controlos: h (m), vx (m/s).
+         *  O botão "Largar" começa a queda e, depois, "Repor" volta ao início. */
+        duasBolasHtml() {
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-db" viewBox="0 0 640 300" role="img" aria-label="Duas bolas a cair do topo de um prédio: uma largada e outra atirada na horizontal, sempre à mesma altura">
+                        <rect class="me-db-predio" x="20" y="270" width="80" height="0"/>
+                        <line class="me-db-chao" x1="0" y1="270" x2="640" y2="270"/>
+                        <g class="me-db-estrobo"></g>
+                        <circle class="me-db-bola me-db-bola--a" r="9"/>
+                        <circle class="me-db-bola me-db-bola--b" r="9"/>
+                        <text class="me-db-rotulo me-db-rotulo--a" text-anchor="middle">A</text>
+                        <text class="me-db-rotulo me-db-rotulo--b" text-anchor="middle">B</text>
+                        <text class="me-db-tempo" x="620" y="26" text-anchor="end"></text>
+                    </svg>
+                    <button type="button" class="me-simulacao-botao me-db-botao">Largar</button>
+                    <figcaption class="me-sim-visual-legenda">
+                        <span class="me-db-chave me-db-chave--a">A</span> largada
+                        <span class="me-db-chave me-db-chave--b">B</span> atirada na horizontal
+                        As linhas ligam as bolas a cada 0,25 s
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        atualizarDuasBolas(container, valores) {
+            const svg = container.querySelector('.me-db');
+            if (!svg) return;
+            const q = (sel) => svg.querySelector(sel);
+            const G = 9.8;
+            const BASE = 270;
+            const PXM = 8; // px por metro na vertical
+            const PXV = 14; // px por (m/s · s) na horizontal
+            const XA = 130;
+            const XB0 = 170;
+            let est = container._duasBolas;
+            if (!est) {
+                est = container._duasBolas = { h: null, vx: null, t: 0, estado: 'pronto', proximo: 0, raf: 0, ultimo: 0 };
+                const botao = container.querySelector('.me-db-botao');
+                est.botao = botao;
+                est.reiniciar = () => {
+                    est.t = 0;
+                    est.proximo = 0;
+                    est.estado = 'pronto';
+                    q('.me-db-estrobo').innerHTML = '';
+                    if (botao) botao.textContent = 'Largar';
+                    est.desenhar();
+                };
+                if (botao) {
+                    botao.addEventListener('click', () => {
+                        if (est.estado === 'pronto') {
+                            est.estado = 'a_cair';
+                            botao.textContent = 'Repor';
+                            est.ultimo = performance.now();
+                            est.arrancar();
+                        } else {
+                            est.reiniciar();
+                        }
+                    });
+                }
+                est.posicoes = (t) => {
+                    const y = Math.max(0, est.h - 0.5 * G * t * t);
+                    return {
+                        ya: BASE - PXM * y,
+                        xb: XB0 + PXV * est.vx * t,
+                        yb: BASE - PXM * y,
+                    };
+                };
+                est.desenhar = () => {
+                    const pos = est.posicoes(est.t);
+                    const ba = q('.me-db-bola--a');
+                    const bb = q('.me-db-bola--b');
+                    ba.setAttribute('cx', XA);
+                    ba.setAttribute('cy', (pos.ya - 9).toFixed(1));
+                    bb.setAttribute('cx', pos.xb.toFixed(1));
+                    bb.setAttribute('cy', (pos.yb - 9).toFixed(1));
+                    const ra = q('.me-db-rotulo--a');
+                    const rb = q('.me-db-rotulo--b');
+                    ra.setAttribute('x', XA);
+                    ra.setAttribute('y', (pos.ya - 24).toFixed(1));
+                    rb.setAttribute('x', pos.xb.toFixed(1));
+                    rb.setAttribute('y', (pos.yb - 24).toFixed(1));
+                    q('.me-db-tempo').textContent = `t = ${comVirgula(est.t.toFixed(2))} s`;
+                };
+                est.estroboscopio = (t) => {
+                    const pos = est.posicoes(t);
+                    q('.me-db-estrobo').insertAdjacentHTML('beforeend',
+                        `<line class="me-db-ligacao" x1="${XA}" y1="${(pos.ya - 9).toFixed(1)}" x2="${pos.xb.toFixed(1)}" y2="${(pos.yb - 9).toFixed(1)}"/>`
+                        + `<circle class="me-db-fantasma me-db-fantasma--a" cx="${XA}" cy="${(pos.ya - 9).toFixed(1)}" r="9"/>`
+                        + `<circle class="me-db-fantasma me-db-fantasma--b" cx="${pos.xb.toFixed(1)}" cy="${(pos.yb - 9).toFixed(1)}" r="9"/>`);
+                };
+                const frame = (agora) => {
+                    if (!container.isConnected) { est.raf = 0; return; }
+                    if (est.estado !== 'a_cair') { est.raf = 0; return; }
+                    const dt = Math.min(0.05, (agora - est.ultimo) / 1000 || 0);
+                    est.ultimo = agora;
+                    const tq = Math.sqrt(2 * est.h / G);
+                    est.t = Math.min(tq, est.t + dt);
+                    while (est.proximo <= est.t + 1e-9) {
+                        est.estroboscopio(est.proximo);
+                        est.proximo += 0.25;
+                    }
+                    est.desenhar();
+                    if (est.t >= tq) {
+                        est.estroboscopio(tq);
+                        est.estado = 'fim';
+                        est.raf = 0;
+                        return;
+                    }
+                    est.raf = requestAnimationFrame(frame);
+                };
+                est.arrancar = () => {
+                    if (est.raf) return;
+                    est.raf = requestAnimationFrame(frame);
+                };
+            }
+            const h = Number(valores.h) || 20;
+            const vx = Number(valores.vx) || 0;
+            const mudou = est.h !== h || est.vx !== vx;
+            est.h = h;
+            est.vx = vx;
+            // Prédio: altura proporcional a h
+            const predio = q('.me-db-predio');
+            predio.setAttribute('y', BASE - PXM * h);
+            predio.setAttribute('height', PXM * h);
+            predio.setAttribute('x', 60);
+            predio.setAttribute('width', 56);
+            if (mudou) est.reiniciar();
+        }
+
+        /** Visual 'posicao_eixo': uma estrada com um carro, a origem O do
+         *  eixo e o eixo Ox desenhado por baixo, com o sentido positivo e as
+         *  marcas de 5 em 5 m no referencial escolhido. Controlos: xc (carro),
+         *  xo (origem), s (+1 direita, −1 esquerda). O carro e a origem
+         *  deslizam (transição CSS) quando se mexe nos controlos. */
+        posicaoEixoHtml() {
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-pe" viewBox="0 0 640 250" role="img" aria-label="Carro numa estrada reta com um eixo Ox, a origem O e o sentido positivo escolhidos">
+                        <rect class="me-pe-estrada" x="20" y="130" width="600" height="44" rx="4"/>
+                        <line class="me-pe-faixa" x1="26" y1="152" x2="614" y2="152"/>
+                        <g class="me-pe-origem">
+                            <line class="me-pe-origem-linha" x1="0" y1="108" x2="0" y2="205"/>
+                            <text class="me-pe-origem-texto" x="0" y="98" text-anchor="middle">O</text>
+                        </g>
+                        <line class="me-pe-eixo" x1="16" y1="205" x2="624" y2="205"/>
+                        <polygon class="me-pe-seta" points="624,205 608,198 608,212"/>
+                        <text class="me-pe-x" x="622" y="190" text-anchor="end">x</text>
+                        <g class="me-pe-marcas"></g>
+                        <g class="me-pe-carro">
+                            <line class="me-pe-guia" x1="0" y1="174" x2="0" y2="205"/>
+                            <circle class="me-pe-ponto" cx="0" cy="205" r="6"/>
+                            <g transform="translate(0 168)">
+                                <rect class="me-pe-corpo" x="-28" y="-22" width="56" height="16" rx="5"/>
+                                <rect class="me-pe-cabine" x="-17" y="-35" width="32" height="15" rx="5"/>
+                                <circle class="me-pe-roda" cx="-16" cy="-6" r="6"/>
+                                <circle class="me-pe-roda" cx="16" cy="-6" r="6"/>
+                            </g>
+                            <text class="me-pe-valor" x="0" y="118" text-anchor="middle"></text>
+                        </g>
+                    </svg>
+                </figure>
+            `;
+        }
+
+        atualizarPosicaoEixo(container, valores) {
+            const svg = container.querySelector('.me-pe');
+            if (!svg) return;
+            const q = (sel) => svg.querySelector(sel);
+            const xc = Number(valores.xc) || 0;
+            const xo = Number(valores.xo) || 0;
+            const sinal = Number(valores.s) < 0 ? -1 : 1;
+            const px = (X) => 320 + X * 14;
+            q('.me-pe-carro').style.transform = `translateX(${px(xc)}px)`;
+            q('.me-pe-origem').style.transform = `translateX(${px(xo)}px)`;
+            const x = sinal * (xc - xo);
+            q('.me-pe-valor').textContent = `x = ${comVirgula(x)} m`;
+            // Seta do sentido positivo e letra x no extremo certo do eixo
+            const seta = q('.me-pe-seta');
+            const letra = q('.me-pe-x');
+            if (sinal > 0) {
+                seta.setAttribute('points', '624,205 608,198 608,212');
+                letra.setAttribute('x', 622);
+                letra.setAttribute('text-anchor', 'end');
+            } else {
+                seta.setAttribute('points', '16,205 32,198 32,212');
+                letra.setAttribute('x', 18);
+                letra.setAttribute('text-anchor', 'start');
+            }
+            // Marcas de 5 em 5 m no referencial escolhido: a coordenada c fica
+            // na posição da estrada xo + sinal * c.
+            let marcas = '';
+            for (let c = -40; c <= 40; c += 5) {
+                const X = xo + sinal * c;
+                if (X < -20 || X > 20) continue;
+                const xp = px(X);
+                const origem = c === 0;
+                marcas += `<line class="me-pe-marca${origem ? ' me-pe-marca--origem' : ''}" x1="${xp}" y1="${origem ? 195 : 199}" x2="${xp}" y2="${origem ? 215 : 211}"/>`
+                    + `<text class="me-pe-marca-texto" x="${xp}" y="233" text-anchor="middle">${String(c).replace('-', '−')}</text>`;
+            }
+            q('.me-pe-marcas').innerHTML = marcas;
+        }
+
+        /** Visual 'rampa_skater': rampa em U (parábola y = K x², x em
+         *  metros, 10 m de altura nas pontas), skater animado e barras de
+         *  energia (Ec, Epg, Em e a dissipada). Controlos usados: h (m),
+         *  m (kg) e atrito (% da energia mecânica dissipada a cada passagem
+         *  pelo fundo). O SVG é criado aqui e animado por
+         *  atualizarRampaSkater. */
+        rampaSkaterHtml() {
+            const K = 10 / 196;
+            let pista = '';
+            for (let xm = -14; xm <= 14.001; xm += 0.5) {
+                pista += `${pista ? 'L' : 'M'}${(300 + xm * 19).toFixed(1)} ${(260 - 20 * K * xm * xm).toFixed(1)} `;
+            }
+            const barras = [
+                ['ec', 'Ec', 612], ['epg', 'Epg', 676], ['em', 'Em', 740], ['dis', 'Dissipada', 804],
+            ].map(([id, rotulo, x]) => `
+                <g class="me-rampa-barra me-rampa-barra--${id}">
+                    <rect class="me-rampa-barra-fundo" x="${x}" y="70" width="40" height="190" rx="4"/>
+                    <rect class="me-rampa-barra-valor" x="${x}" y="260" width="40" height="0" rx="4"/>
+                    <text class="me-rampa-barra-num" x="${x + 20}" y="258" text-anchor="middle">0</text>
+                    <text class="me-rampa-barra-rotulo" x="${x + 20}" y="284" text-anchor="middle">${rotulo}</text>
+                </g>`).join('');
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-rampa" viewBox="0 20 860 290" role="img" aria-label="Skater a descer e a subir uma rampa em U, com barras das energias cinética, potencial gravítica, mecânica e perdida">
+                        <line class="me-rampa-h0" x1="24" x2="576"/>
+                        <text class="me-rampa-h0-texto" x="26" text-anchor="start"></text>
+                        <path class="me-rampa-solo" d="${pista}L566 260 L34 260 Z"/>
+                        <path class="me-rampa-pista" d="${pista}"/>
+                        <line class="me-rampa-chao" x1="0" y1="260" x2="590" y2="260"/>
+                        <text class="me-rampa-referencia" x="300" y="284" text-anchor="middle">Nível de referência da Epg: o fundo da rampa (Epg = 0)</text>
+                        <g class="me-rampa-skater">
+                            <rect class="me-rampa-prancha" x="-19" y="-9" width="38" height="5" rx="2.5"/>
+                            <circle class="me-rampa-roda" cx="-11" cy="-3" r="3"/>
+                            <circle class="me-rampa-roda" cx="11" cy="-3" r="3"/>
+                            <g class="me-rampa-pessoa">
+                                <circle class="me-rampa-cabeca" cx="0" cy="-47" r="6.5"/>
+                                <path d="M0 -40 L0 -23 M0 -23 L-7 -9 M0 -23 L7 -9 M0 -36 L-10 -26 M0 -36 L10 -26"/>
+                            </g>
+                        </g>
+                        <text class="me-rampa-titulo" x="724" y="48" text-anchor="middle">Energia (J)</text>
+                        ${barras}
+                    </svg>
+                    <button type="button" class="me-simulacao-botao me-rampa-reiniciar">Largar de novo</button>
+                    <figcaption class="me-sim-visual-legenda">
+                        <span class="me-rampa-item"><span class="me-rampa-chave me-rampa-chave--ec">Ec</span> (energia cinética)</span>
+                        <span class="me-rampa-item"><span class="me-rampa-chave me-rampa-chave--epg">Epg</span> (energia potencial gravítica)</span>
+                        <span class="me-rampa-item"><span class="me-rampa-chave me-rampa-chave--em">Em = Ec + Epg</span> (energia mecânica)</span>
+                        <span class="me-rampa-item"><span class="me-rampa-chave me-rampa-chave--dis">Dissipada</span> (energia mecânica que passa a energia interna)</span>
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        atualizarRampaSkater(container, valores) {
+            const svg = container.querySelector('.me-rampa');
+            if (!svg) return;
+            const K = 10 / 196;
+            const G = 9.8;
+            const q = (sel) => svg.querySelector(sel);
+            let est = container._rampa;
+            if (!est) {
+                est = container._rampa = { h0: null, x: 0, vx: 0, espera: 0, raf: 0, ultimo: 0, m: 50, atrito: 0 };
+                const reiniciar = () => {
+                    est.x = -Math.sqrt(est.h0 / K);
+                    est.vx = 0;
+                    est.espera = 0.7;
+                };
+                est.reiniciar = reiniciar;
+                const botao = container.querySelector('.me-rampa-reiniciar');
+                if (botao) botao.addEventListener('click', reiniciar);
+
+                est.desenhar = () => {
+                    const x = est.x;
+                    const y = K * x * x;
+                    const v2 = est.vx * est.vx * (1 + 4 * K * K * x * x);
+                    const ec = 0.5 * v2 * est.m;
+                    const epg = G * y * est.m;
+                    const em0 = G * est.h0 * est.m;
+                    const em = ec + epg;
+                    const dis = Math.max(0, em0 - em);
+                    const px = 300 + 19 * x;
+                    const py = 260 - 20 * y;
+                    const ang = Math.atan(-2 * K * x * 20 / 19) * 180 / Math.PI;
+                    q('.me-rampa-skater').setAttribute('transform', `translate(${px.toFixed(1)} ${py.toFixed(1)}) rotate(${ang.toFixed(1)})`);
+                    const escala = 190 / em0;
+                    [['ec', ec], ['epg', epg], ['em', em], ['dis', dis]].forEach(([id, val]) => {
+                        const altura = Math.min(200, Math.max(0, val * escala));
+                        const g = q(`.me-rampa-barra--${id}`);
+                        const r = g.querySelector('.me-rampa-barra-valor');
+                        r.setAttribute('y', (260 - altura).toFixed(1));
+                        r.setAttribute('height', altura.toFixed(1));
+                        const t = g.querySelector('.me-rampa-barra-num');
+                        t.setAttribute('y', (252 - altura).toFixed(1));
+                        t.textContent = comVirgula(Math.round(val));
+                    });
+                };
+
+                const passo = (dt) => {
+                    const x = est.x;
+                    const k2 = 4 * K * K;
+                    const a = -(k2 * x * est.vx * est.vx + 2 * G * K * x) / (1 + k2 * x * x);
+                    est.vx += a * dt;
+                    est.x += est.vx * dt;
+                    // Passagem pelo fundo: perde-se a fração de energia pedida
+                    // (no fundo toda a energia mecânica é cinética, por isso
+                    // v' = v √(1 − fração)).
+                    if ((x < 0 && est.x >= 0) || (x > 0 && est.x <= 0)) {
+                        est.vx *= Math.sqrt(Math.max(0, 1 - est.atrito / 100));
+                    }
+                };
+                const frame = (t) => {
+                    if (!container.isConnected) { est.raf = 0; return; }
+                    const dt = Math.min(0.05, (t - est.ultimo) / 1000 || 0);
+                    est.ultimo = t;
+                    if (est.espera > 0) {
+                        est.espera -= dt;
+                    } else {
+                        const n = Math.max(1, Math.ceil(dt / 0.004));
+                        for (let i = 0; i < n; i++) passo(dt / n);
+                    }
+                    est.desenhar();
+                    est.raf = requestAnimationFrame(frame);
+                };
+                est.arrancar = () => {
+                    if (est.raf) return;
+                    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                    est.ultimo = performance.now();
+                    est.raf = requestAnimationFrame(frame);
+                };
+            }
+            est.m = Number(valores.m) || 50;
+            est.atrito = Number(valores.atrito) || 0;
+            const h = Number(valores.h) || 5;
+            if (est.h0 !== h) {
+                est.h0 = h;
+                est.reiniciar();
+            }
+            // Linha tracejada à altura inicial
+            const yh = 260 - 20 * h;
+            const lh = q('.me-rampa-h0');
+            lh.setAttribute('y1', yh);
+            lh.setAttribute('y2', yh);
+            const th = q('.me-rampa-h0-texto');
+            th.setAttribute('y', yh - 6);
+            th.textContent = `h = ${comVirgula(h)} m`;
+            est.desenhar();
+            est.arrancar();
+        }
+
         atualizarVisualSimulacao(screen, container, valores) {
+            if (screen.visual === 'rampa_skater') { this.atualizarRampaSkater(container, valores); return; }
+            if (screen.visual === 'posicao_eixo') { this.atualizarPosicaoEixo(container, valores); return; }
+            if (screen.visual === 'duas_bolas') { this.atualizarDuasBolas(container, valores); return; }
             if (screen.visual !== 'trabalho_caixa') return;
             const svg = container.querySelector('.me-tc');
             if (!svg) return;
@@ -3535,10 +4001,10 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         bindDiagramaChips(diagramScreen) {
             if (diagramScreen.pontos_seta === true) {
                 const slides = [
-                    ...(diagramScreen.texto_principal ? [{ explicacao: diagramScreen.texto_principal, imagem: diagramScreen.imagem, caixa_formula: diagramScreen.caixa_formula }] : []),
+                    ...(diagramScreen.texto_principal ? [{ explicacao: diagramScreen.texto_principal, imagem: diagramScreen.imagem, imagens: diagramScreen.imagens, caixa_formula: diagramScreen.caixa_formula, curiosidade: diagramScreen.curiosidade, curiosidade_sem_titulo: diagramScreen.curiosidade_sem_titulo, atencao: diagramScreen.atencao, detalhe_seta: diagramScreen.detalhe_seta }] : []),
                     ...(diagramScreen.pontos || []).map((ponto) => ({ ...ponto, imagem: ponto.imagem || diagramScreen.imagem })),
                 ];
-                this.bindDiagramaSetaNav(slides);
+                this.bindDiagramaSetaNav(slides, this.aprofundarHtml(diagramScreen.aprofundar));
                 return;
             }
             const isEscada = diagramScreen.layout === 'escada';
@@ -3653,8 +4119,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             video.requestVideoFrameCallback ? video.requestVideoFrameCallback(draw) : requestAnimationFrame(draw);
         }
 
-        bindScreenInteractions(section, screen, screenIndex) {
-            this.root.querySelectorAll('.me-interrogacao').forEach((wrap) => {
+        /** Liga o botão "?" / lupa de aprofundar.estilo === 'interrogacao'
+         *  (uma só vez por elemento, para poder ser chamado em re-renders). */
+        bindInterrogacao(scope) {
+            scope.querySelectorAll('.me-interrogacao').forEach((wrap) => {
+                if (wrap.dataset.bound) return;
+                wrap.dataset.bound = '1';
                 const toggle = wrap.querySelector('.me-interrogacao-toggle');
                 const painel = wrap.querySelector('.me-interrogacao-painel');
                 toggle.addEventListener('click', () => {
@@ -3663,6 +4133,11 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     painel.hidden = isOpen;
                 });
             });
+        }
+
+        bindScreenInteractions(section, screen, screenIndex) {
+            this.bindInterrogacao(this.root);
+            this.bindSetaDetalhe(this.root);
 
             // Re-render substitui o <video> por um elemento novo a cada
             // vez (troca de ponto, popup, etc.) — o atributo autoplay do
@@ -3729,7 +4204,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                         btn.addEventListener('click', () => {
                             const selected = Number(btn.dataset.optionIndex);
                             const correct = selected === screen.correta;
-                            this.state.answers[answerKey] = { selected, correct };
+                            this.state.answers[answerKey] = { selected, correct, pergunta: screen.pergunta };
                             this.saveState();
                             if (correct) this.celebrateCorrectAnswer();
                             this.render();
@@ -3751,7 +4226,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                             btn.addEventListener('click', () => {
                                 const selected = Number(btn.dataset.quizOptionIndex);
                                 const correct = selected === question.correta;
-                                quizState.answers[quizState.current] = { selected, correct };
+                                quizState.answers[quizState.current] = { selected, correct, pergunta: question.pergunta };
                                 this.saveState();
                                 if (correct) this.celebrateCorrectAnswer();
                                 this.render();

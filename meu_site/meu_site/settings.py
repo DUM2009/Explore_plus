@@ -106,6 +106,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'allauth.account.middleware.AccountMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'meu_site.middleware.ConquistasAvisoMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 

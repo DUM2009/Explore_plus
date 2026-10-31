@@ -182,7 +182,7 @@
 
 <div class="profile-hero-row">
 
-<div class="profile-hero{% if disciplina_atual != 'biology' %} profile-hero--{{ disciplina_atual }}{% endif %}" data-tab-panel="perfil">
+<div class="profile-hero" data-tab-panel="perfil">
 
     <div class="profile-hero-main">
 
@@ -280,7 +280,7 @@
 
     <div class="profile-tab-panel" data-tab-panel="perfil">
 
-        <div class="profile-subject-card{% if disciplina_atual != 'biology' %} profile-subject-card--{{ disciplina_atual }}{% endif %}">
+        <div class="profile-subject-card">
             <div class="profile-subject-card-main">
                 <div class="profile-subject-card-head">
                     <div class="subject-switcher">
@@ -364,10 +364,19 @@
             <div class="profile-badge-grid">
                 {% for conquista in conquistas_lista %}
                 <div class="profile-badge-card {% if conquista.desbloqueada %}is-unlocked{% else %}is-locked{% endif %}">
-                    <span class="profile-badge-icon" aria-hidden="true">{{ conquista.icone }}</span>
+                    <span class="profile-badge-medal">
+                        <span class="profile-badge-icon" aria-hidden="true">{{ conquista.icone }}</span>
+                        {% if not conquista.desbloqueada %}<span class="profile-badge-lock" role="img" aria-label="Bloqueado">🔒</span>{% endif %}
+                    </span>
                     <span class="profile-badge-name">{{ conquista.nome }}</span>
                     <span class="profile-badge-desc">{{ conquista.descricao }}</span>
-                    <span class="profile-badge-status">{% if conquista.desbloqueada %}Desbloqueado{% else %}🔒 Bloqueado{% endif %}</span>
+                    <span class="profile-badge-xp">+{{ conquista.xp }} XP</span>
+                    {% if not conquista.desbloqueada and conquista.progresso %}
+                    <span class="profile-badge-progress">
+                        <span class="profile-badge-progress-bar"><span style="width: {{ conquista.progresso.percent }}%"></span></span>
+                        <span class="profile-badge-progress-txt">{{ conquista.progresso.atual }}/{{ conquista.progresso.meta }}</span>
+                    </span>
+                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
@@ -522,7 +531,7 @@
 
     <div class="profile-grid-aside" data-tab-panel="perfil">
 
-        <div class="profile-vocacional-card{% if disciplina_atual != 'biology' %} profile-vocacional-card--{{ disciplina_atual }}{% endif %}">
+        <div class="profile-vocacional-card">
             <div class="profile-vocacional-top">
                 <span class="profile-vocacional-icon" aria-hidden="true">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>

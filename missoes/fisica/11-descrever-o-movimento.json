@@ -1,0 +1,1531 @@
+{
+  "missao_id": "11-descrever-o-movimento",
+  "id_guiao": "fis11-m0",
+  "titulo": "Tempo, posição, velocidade e aceleração",
+  "disciplina": "fisica",
+  "ano": 11,
+  "imagem": "Movimentos e interações.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/></svg>",
+    "nome": "Mestre do Movimento"
+  },
+  "secoes": [
+    {
+      "secao_id": "repouso-movimento-referencial",
+      "titulo": "Repouso, movimento, referencial e trajetória",
+      "xp": 25,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "mascote_texto": "Quase todos os erros de sinal na Mecânica vêm de não se ter escolhido bem o referencial. Começa sempre por aqui.",
+          "titulo": "Quem se move?",
+          "imagem": "f11_autocarro_poste.png",
+          "imagem_legenda": "Passageira num autocarro a ver um poste pela janela; ao lado, pessoa parada no passeio a ver o autocarro passar.",
+          "texto_principal": "Vais sentada num autocarro e vês um poste passar pela janela. Para ti, o poste está a andar para trás. Para uma pessoa parada no passeio, o poste está quieto e o autocarro é que se move. Quem tem razão? Ambas. Em Física, falar de movimento só faz sentido se disseres em relação a quê. Antes de descrever qualquer movimento, é preciso escolher um referencial.",
+          "pontos": []
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Repouso, movimento e referencial",
+          "imagem": "f11_referencial_cartesiano.png",
+          "imagem_legenda": "Referencial cartesiano com os eixos Ox e Oy, as unidades marcadas e a origem O.",
+          "texto_principal": "Para dizer se um corpo se move, é preciso um referencial: um corpo (ou ponto) de referência a que se associa um sistema de eixos e um relógio para medir o tempo. Um corpo está em movimento em relação a um referencial se a sua posição nesse referencial variar com o tempo. Se não variar, está em repouso. Repouso e movimento não são absolutos: dependem do referencial escolhido, e os corpos estão em repouso ou em movimento sempre em relação a um referencial.\n\nQuando o referencial tem um sistema de eixos perpendiculares, chama-se referencial cartesiano: um eixo (Ox) para movimentos em linha reta, dois eixos (Oxy) para movimentos num plano e três eixos (Oxyz) para movimentos no espaço. A origem O é o ponto onde os eixos se cruzam.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Repouso",
+              "imagem": "f11_copo_repouso.png",
+              "explicacao": "A posição do corpo, em relação ao referencial, não varia com o tempo.",
+              "atencao": "**Erro comum: pensar que existe repouso absoluto**\n\nDizer \"o corpo está em repouso\" sem indicar o referencial é uma afirmação incompleta. A Terra roda e orbita o Sol, por isso nada à sua superfície está em repouso em termos absolutos."
+            },
+            {
+              "id": "p2",
+              "label": "Movimento",
+              "imagem": "f11_corredor_movimento.png",
+              "explicacao": "A posição do corpo, em relação ao referencial, varia com o tempo.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Curiosidade: o navio de Galileu**\n\nEm 1632, Galileu argumentou que, dentro de um navio que se move em linha reta com velocidade constante, tudo se passa como se o navio estivesse parado: uma gota que cai, um peixe no aquário, um salto. Não há experiência feita lá dentro que revele o movimento do navio. Esta ideia é a base do princípio da relatividade."
+            },
+            {
+              "id": "p3",
+              "label": "Trajetória",
+              "imagem": "f11_trajetoria_mapa.png",
+              "explicacao": "Linha formada pelas sucessivas posições do corpo ao longo do tempo. Pode ser reta ou curva.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**A trajetória depende do referencial**\n\nUma lâmpada solta-se do teto de um comboio que se move em linha reta, com velocidade constante. A forma da trajetória depende de quem a observa.\n\n**Passageiro dentro do comboio:** vê a lâmpada cair segundo uma reta vertical. O referencial é o comboio.\n\n**Observador na plataforma:** vê a lâmpada descrever uma curva (um arco de parábola), porque além de cair acompanha o movimento do comboio. O referencial é a Terra.\n\n**Conclusão:** a trajetória, tal como o repouso e o movimento, depende do referencial. Não existe \"a trajetória\" de um corpo sem dizer em relação a quê."
+            }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Uma lâmpada solta-se do teto de um comboio que se move com velocidade constante. Como é a trajetória da lâmpada para um observador parado na plataforma?",
+              "opcoes": [
+                "Uma reta vertical.",
+                "Uma reta horizontal.",
+                "Um arco de curva (parabólico).",
+                "Uma circunferência."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Para quem está na plataforma, a lâmpada cai e, ao mesmo tempo, avança com o comboio, descrevendo uma curva. Só para o passageiro a trajetória é uma reta vertical.",
+              "mascote_feedback_errado": "Pensa nas duas componentes do movimento visto da plataforma: a lâmpada cai e avança. A combinação dá uma curva. Só dentro do comboio é que a trajetória é uma reta vertical."
+            },
+            {
+              "pergunta": "Um passageiro está sentado num avião em voo. Em relação a que referencial está em repouso?",
+              "opcoes": [
+                "Em relação à Terra.",
+                "Em relação ao próprio avião.",
+                "Em relação às nuvens.",
+                "Não está em repouso em relação a nenhum referencial."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. A posição do passageiro não varia em relação ao avião, por isso está em repouso nesse referencial, embora esteja em movimento em relação à Terra.",
+              "mascote_feedback_errado": "Repouso e movimento dependem do referencial. Em relação ao avião, a posição do passageiro não muda: está em repouso. Em relação à Terra, move-se a centenas de km/h."
+            },
+            {
+              "pergunta": "Qual das afirmações é correta?",
+              "opcoes": [
+                "O movimento de um corpo é o mesmo em qualquer referencial.",
+                "Um corpo pode estar em repouso num referencial e em movimento noutro.",
+                "A trajetória de um corpo não depende do referencial.",
+                "Só a Terra pode ser usada como referencial."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Repouso, movimento e trajetória são relativos ao referencial escolhido. Qualquer corpo pode servir de referencial.",
+              "mascote_feedback_errado": "Não é bem assim. Repouso, movimento e trajetória são relativos ao referencial escolhido. Qualquer corpo pode servir de referencial."
+            },
+            {
+              "pergunta": "Um corpo move-se num plano. Quantos eixos tem, no mínimo, o referencial cartesiano adequado?",
+              "opcoes": [
+                "1",
+                "2",
+                "3",
+                "4"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Movimentos num plano descrevem-se com dois eixos perpendiculares (Oxy). Um eixo basta para movimentos em linha reta e três para movimentos no espaço.",
+              "mascote_feedback_errado": "Não é bem assim. Movimentos num plano descrevem-se com dois eixos perpendiculares (Oxy). Um eixo basta para movimentos em linha reta e três para movimentos no espaço."
+            },
+            {
+              "pergunta": "O que é a trajetória de um corpo?",
+              "opcoes": [
+                "A distância total percorrida pelo corpo.",
+                "A linha formada pelas sucessivas posições do corpo.",
+                "A variação da posição do corpo.",
+                "O tempo que o corpo demora a mover-se."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A trajetória é a linha que une as posições sucessivas do corpo. A distância percorrida mede o comprimento dessa linha, mas não é a linha.",
+              "mascote_feedback_errado": "Não é bem assim. A trajetória é a linha que une as posições sucessivas do corpo. A distância percorrida mede o comprimento dessa linha, mas não é a linha."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "posicao-eixo",
+      "titulo": "Posição de uma partícula num eixo",
+      "xp": 25,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "mascote_texto": "Posição não é distância percorrida. É a coordenada onde estás, medida a partir da origem escolhida.",
+          "titulo": "Onde estás na estrada?",
+          "imagem": "f11_marcos_quilometricos.png",
+          "imagem_legenda": "Carro vermelho numa autoestrada, ao lado de um marco quilométrico a indicar o km 46.",
+          "texto_principal": "Nas autoestradas há marcos quilométricos: placas que dizem \"km 45\", \"km 46\", \"km 47\". Quando dizes ao teu pai \"estamos no km 46\", estás a dar a tua posição ao longo da estrada. A contagem começa num ponto (o km 0) e cresce num sentido. Tens aqui, sem saberes, um referencial unidimensional: uma origem e um sentido positivo.",
+          "pontos": []
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Posição num eixo",
+          "imagem": "f11_eixo_posicao.png",
+          "imagem_legenda": "Eixo Ox com a origem O, o sentido positivo e uma partícula P na posição x = 1.",
+          "texto_principal": "Nos movimentos retilíneos basta um eixo, Ox, com uma origem e um sentido positivo. A posição de uma partícula é a sua coordenada x nesse eixo, em metros (m). A posição pode ser positiva, negativa ou nula.\n\n**Origem (O):** Ponto de posição x = 0. Escolhe-se livremente.\n\n**Sentido positivo:** Também se escolhe. Posições do lado positivo têm coordenada positiva; do outro lado, negativa.\n\n**Posição x:** Coordenada da partícula no eixo. Uma posição negativa não está \"errada\": só indica que a partícula está do lado negativo da origem.\n\n**Unidade SI:** O metro (m). A posição também se pode dar em km, mas nos cálculos converte-se para m.\n\n**Posição como função do tempo:** Quando a partícula se move, x muda com o tempo. Escreve-se x(t) ou simplesmente x.",
+          "pontos": [],
+          "atencao": "**Erro comum: confundir posição com distância percorrida**\n\nSe um carro sai do km 46 e chega ao km 50, a sua posição final é 50 km, mas percorreu apenas 4 km. A posição diz onde está; a distância percorrida diz quanto andou."
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Mudar de referencial muda os valores",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Origem em 0, sentido positivo para a direita",
+              "imagem": "f11_mudar_origem.png",
+              "explicacao": "A partícula P está em x = +30 m."
+            },
+            {
+              "id": "p2",
+              "label": "Origem deslocada 10 m para a direita",
+              "imagem": "f11_mudar_origem_2.png",
+              "explicacao": "A partícula continua no mesmo sítio, mas x = 30 − 10 = +20 m."
+            },
+            {
+              "id": "p3",
+              "label": "Sentido positivo invertido",
+              "imagem": "f11_mudar_origem_3.png",
+              "explicacao": "A partícula continua no mesmo sítio, mas agora x = −30 m."
+            },
+            {
+              "id": "p4",
+              "label": "Conclusão",
+              "explicacao": "O valor e o sinal da posição dependem da origem e do sentido positivo escolhidos. Escolhe-os no início e mantém-nos até ao fim do problema."
+            }
+          ]
+        },
+        {
+          "tipo": "simulacao",
+          "painel_colunas": true,
+          "id": "sim_posicao_eixo",
+          "titulo": "Muda o referencial, muda a posição",
+          "visual": "posicao_eixo",
+          "instrucao": "Mexe no carro, na origem do eixo e no sentido positivo. Vê como o valor da posição se altera.",
+          "controlos": [
+            {
+              "id": "xc",
+              "rotulo": "Posição do carro na estrada",
+              "min": -20,
+              "max": 20,
+              "passo": 1,
+              "valor_inicial": 15,
+              "unidade": "m"
+            },
+            {
+              "id": "xo",
+              "rotulo": "Posição da origem na estrada",
+              "min": -10,
+              "max": 10,
+              "passo": 1,
+              "valor_inicial": 0,
+              "unidade": "m"
+            },
+            {
+              "id": "s",
+              "rotulo": "Sentido positivo (+1 para a direita, −1 para a esquerda)",
+              "min": -1,
+              "max": 1,
+              "passo": 2,
+              "valor_inicial": 1,
+              "unidade": ""
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Posição no referencial escolhido",
+              "formula": "s * (xc - xo)",
+              "unidade": "m",
+              "casas_decimais": 0
+            }
+          ],
+          "desafio": {
+            "enunciado": "Com o carro em 15 m, a origem em 5 m e o sentido positivo para a direita, qual é a posição? E se inverteres o sentido?",
+            "campos": [
+              {
+                "rotulo": "Sentido positivo para a direita",
+                "unidade": "m",
+                "correta": 10
+              },
+              {
+                "rotulo": "Sentido positivo para a esquerda",
+                "unidade": "m",
+                "correta": -10
+              }
+            ],
+            "resolucao": [
+              "Para a direita: x = 15 − 5 = +10 m. Ao inverter o sentido, o sinal inverte-se: x = −10 m."
+            ]
+          }
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Num eixo Ox com origem na árvore e sentido positivo para a direita, um carro está 12 m à esquerda da árvore. Qual é a posição do carro?",
+              "opcoes": [
+                "+12 m",
+                "−12 m",
+                "0 m",
+                "24 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Está do lado negativo (esquerda) da origem, a 12 m dela: x = −12 m.",
+              "mascote_feedback_errado": "A posição é a coordenada no eixo. Estar à esquerda da origem, com o sentido positivo para a direita, dá um valor negativo: x = −12 m."
+            },
+            {
+              "pergunta": "O mesmo carro, no mesmo sítio, mas agora o sentido positivo do eixo passou a ser para a esquerda. Qual é a nova posição?",
+              "opcoes": [
+                "−12 m",
+                "+12 m",
+                "0 m",
+                "24 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. O carro continua a 12 m da árvore, mas agora do lado positivo do eixo: x = +12 m.",
+              "mascote_feedback_errado": "Ao inverter o sentido positivo, o sinal da posição inverte-se, mas o módulo mantém-se. O carro está agora do lado positivo: x = +12 m."
+            },
+            {
+              "pergunta": "Qual das afirmações sobre a posição de uma partícula num eixo é correta?",
+              "opcoes": [
+                "A posição nunca pode ser negativa.",
+                "A posição depende da origem e do sentido positivo escolhidos.",
+                "A posição é igual à distância percorrida.",
+                "A posição só se mede em quilómetros."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A posição é uma coordenada e depende do referencial. Pode ser negativa e não é, em geral, igual à distância percorrida.",
+              "mascote_feedback_errado": "Não é bem assim. A posição é uma coordenada e depende do referencial. Pode ser negativa e não é, em geral, igual à distância percorrida."
+            },
+            {
+              "pergunta": "Uma partícula está em x = +20 m num eixo. Se se deslocar a origem 5 m para a direita, mantendo o sentido positivo, qual passa a ser a posição?",
+              "opcoes": [
+                "25 m",
+                "15 m",
+                "20 m",
+                "−15 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A origem passou a estar 5 m mais à frente. A partícula, que não se mexeu, está agora 15 m à direita da nova origem: 20 − 5 = 15 m.",
+              "mascote_feedback_errado": "Não é bem assim. A origem passou a estar 5 m mais à frente. A partícula, que não se mexeu, está agora 15 m à direita da nova origem: 20 − 5 = 15 m."
+            },
+            {
+              "pergunta": "Um carro encontra-se no km 46 e noutro instante no km 50. Qual é a posição final se o referencial for o marco quilométrico?",
+              "opcoes": [
+                "4 km",
+                "46 km",
+                "50 km",
+                "96 km"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. A posição é a coordenada: km 50. A distância percorrida (4 km) é outra grandeza.",
+              "mascote_feedback_errado": "Não é bem assim. A posição é a coordenada: km 50. A distância percorrida (4 km) é outra grandeza."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "grafico-posicao-tempo",
+      "titulo": "Gráfico posição-tempo de um movimento retilíneo",
+      "xp": 25,
+      "tempo_estimado_min": 9,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "mascote_texto": "Aprende a passar de uma descrição para outra. É isso que os exames pedem.",
+          "titulo": "Quatro maneiras de contar um movimento",
+          "imagem": "f11_ciclista_quatro_descricoes.png",
+          "imagem_legenda": "Ciclista a pedalar numa estrada reta, com quatro balões à volta: frase, tabela, equação e gráfico.",
+          "texto_principal": "Uma ciclista pedala em linha reta, sempre à mesma velocidade. Podes contar este movimento de quatro maneiras: com palavras (\"parte de casa e avança 3 metros por segundo\"), com uma tabela de valores, com uma equação ou com um gráfico da posição em função do tempo. Todas dizem a mesma coisa. O gráfico posição-tempo é o que mostra a história inteira do movimento de relance.",
+          "pontos": []
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Um movimento, quatro descrições",
+          "imagem": "f11_quatro_descricoes.png",
+          "imagem_legenda": "Quatro cartões com o mesmo carrinho: frase, tabela (t = 0 a 4 s; x = 2, 5, 8, 11, 14 m), equação x = 2 + 3t e gráfico x-t em reta.",
+          "texto_principal": "Considera um carrinho que parte da posição x = 2 m e se move no sentido positivo com velocidade constante de 3 m/s. Este movimento pode ser descrito de quatro maneiras equivalentes.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Palavras",
+              "explicacao": "\"Parte de 2 m e desloca-se no sentido positivo a 3 m/s.\" Boa para perceber a situação, mas pouco precisa."
+            },
+            {
+              "id": "p2",
+              "label": "Tabela",
+              "explicacao": "t (s): 0, 1, 2, 3, 4. x (m): 2, 5, 8, 11, 14. Boa para dados medidos, como numa atividade laboratorial."
+            },
+            {
+              "id": "p3",
+              "label": "Equação",
+              "explicacao": "x = 2 + 3t (unidades SI). Boa para calcular a posição em qualquer instante."
+            },
+            {
+              "id": "p4",
+              "label": "Gráfico",
+              "explicacao": "Reta que passa por (0 s; 2 m) e sobe 3 m por cada segundo. O ponto em que a reta corta o eixo vertical é a posição inicial."
+            },
+            {
+              "id": "p5",
+              "label": "Cuidado",
+              "explicacao": "A posição inicial x₀ é a posição em t = 0 e não tem de ser zero."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "x = x₀ + v t",
+              "significado": "Movimento com velocidade constante. x₀ é a posição inicial e v a componente escalar da velocidade.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Ler um gráfico posição-tempo",
+          "imagem": "f11_xt_troços.png",
+          "imagem_legenda": "Gráfico x-t em quatro troços: de (0 s; 0 m) a (10 s; 20 m); horizontal até (20 s; 20 m); descendente até (30 s; 0 m); descendente menos inclinado até (40 s; −10 m).",
+          "texto_principal": "Uma pessoa move-se em linha reta e o gráfico da posição em função do tempo tem quatro troços. Mesmo sem calcular nada, o gráfico diz muito.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "0 a 10 s",
+              "explicacao": "A posição aumenta de 0 a 20 m. A pessoa move-se no sentido positivo."
+            },
+            {
+              "id": "p2",
+              "label": "10 a 20 s",
+              "explicacao": "A posição mantém-se em 20 m. A pessoa está parada (em repouso)."
+            },
+            {
+              "id": "p3",
+              "label": "20 a 30 s",
+              "explicacao": "A posição diminui de 20 m para 0. A pessoa inverte o sentido do movimento (passou a mover-se no sentido negativo) e chega à origem em t = 30 s."
+            },
+            {
+              "id": "p4",
+              "label": "30 a 40 s",
+              "explicacao": "A posição continua a diminuir, até −10 m, mas com menos inclinação: move-se no mesmo sentido negativo, mais devagar."
+            },
+            {
+              "id": "p5",
+              "label": "Cuidado",
+              "explicacao": "O gráfico não é o desenho do caminho. A pessoa anda sempre numa reta; o gráfico mostra como a posição evolui no tempo."
+            }
+          ]
+        },
+        {
+          "tipo": "simulacao",
+          "painel_colunas": true,
+          "id": "sim_quatro_descricoes",
+          "titulo": "Um movimento, quatro descrições",
+          "instrucao": "Escolhe a posição inicial e a velocidade. A simulação mostra, ao mesmo tempo, a equação, a tabela e o gráfico do mesmo movimento.",
+          "controlos": [
+            {
+              "id": "x0",
+              "rotulo": "Posição inicial",
+              "min": -10,
+              "max": 10,
+              "passo": 1,
+              "valor_inicial": 2,
+              "unidade": "m"
+            },
+            {
+              "id": "v",
+              "rotulo": "Velocidade",
+              "min": -5,
+              "max": 5,
+              "passo": 0.5,
+              "valor_inicial": 3,
+              "unidade": "m/s"
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Equação",
+              "formula": "\"x = \" + String(x0).replace('.', ',') + (v < 0 ? \" − \" : \" + \") + String(Math.abs(v)).replace('.', ',') + \" t\""
+            },
+            {
+              "rotulo": "x (t = 0 s)",
+              "formula": "x0 + v * 0",
+              "unidade": "m",
+              "casas_decimais": 1
+            },
+            {
+              "rotulo": "x (t = 1 s)",
+              "formula": "x0 + v * 1",
+              "unidade": "m",
+              "casas_decimais": 1
+            },
+            {
+              "rotulo": "x (t = 2 s)",
+              "formula": "x0 + v * 2",
+              "unidade": "m",
+              "casas_decimais": 1
+            },
+            {
+              "rotulo": "x (t = 3 s)",
+              "formula": "x0 + v * 3",
+              "unidade": "m",
+              "casas_decimais": 1
+            },
+            {
+              "rotulo": "x (t = 4 s)",
+              "formula": "x0 + v * 4",
+              "unidade": "m",
+              "casas_decimais": 1
+            }
+          ],
+          "desafio": {
+            "enunciado": "Com x0 = 10 m e v = −2,5 m/s, em que instante o corpo passa na origem?",
+            "campos": [
+              {
+                "rotulo": "t",
+                "unidade": "s",
+                "correta": 4
+              }
+            ],
+            "resolucao": [
+              "Na origem, x = 0: 10 − 2,5 t = 0, logo t = 4 s (10 − 2,5 × 4 = 0)."
+            ]
+          }
+        },
+        {
+          "tipo": "analogia",
+          "titulo": "O mesmo percurso, quatro formatos",
+          "cartao_estilo": true,
+          "texto": "Imagina uma viagem de comboio. O revisor anuncia \"seguimos a 90 km/h\" (palavras). O horário afixado na estação lista as horas de passagem em cada paragem (tabela). Uma regra de cálculo diz \"hora de chegada = hora de partida + distância / velocidade\" (equação). E o mapa de linha na parede mostra de relance onde está o comboio a cada hora (gráfico). É a mesma viagem. Quanto melhor souberes passar de um formato para outro, menos te enganam os enunciados."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Galileu, x₀ e gráficos curvos",
+          "texto": "**Curiosidade: como Galileu media o tempo**\n\nNo século XVII ainda não havia cronómetros. Galileu fazia rolar bolas num plano inclinado e media o tempo com um relógio de água: pesava a água que escorria de um recipiente. Os valores que obtinha eram uma tabela de posição e tempo, e foi dessas tabelas que tirou as leis da queda dos corpos.\n\n**Erro comum: confundir x₀ com 0**\n\nDizer que \"o corpo parte da origem\" só é correto quando x₀ = 0. Se o enunciado diz que parte do ponto x = 2 m, não é da origem: é de 2 m. Lê o valor de x em t = 0.\n\n**Erro comum: confundir o gráfico com a trajetória**\n\nUm gráfico x-t curvo não quer dizer que o corpo anda numa estrada curva. Pode andar numa estrada reta e o gráfico ser curvo: a curva só indica que a rapidez está a mudar."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "A tabela mostra a posição de um corpo ao longo do tempo: t = 0 s, x = 10 m; t = 2 s, x = 4 m; t = 4 s, x = −2 m; t = 6 s, x = −8 m. Qual é a equação do movimento?",
+              "opcoes": [
+                "x = 10 + 3t",
+                "x = 10 − 3t",
+                "x = 10 − 6t",
+                "x = −3t"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A posição inicial é 10 m e, em cada 2 s, a posição diminui 6 m, ou seja, 3 m em cada segundo. Confirmação: t = 6 s dá 10 − 18 = −8 m.",
+              "mascote_feedback_errado": "Lê a posição inicial na linha t = 0 (10 m) e vê quanto muda a posição em cada segundo: (4 − 10) / 2 = −3 m por segundo. Equação: x = 10 − 3t."
+            },
+            {
+              "pergunta": "O movimento de um corpo é descrito por x = −4 + 2t (unidades SI). Qual é a posição inicial e em que sentido se move?",
+              "opcoes": [
+                "x₀ = 4 m, sentido positivo.",
+                "x₀ = −4 m, sentido positivo.",
+                "x₀ = −4 m, sentido negativo.",
+                "x₀ = 2 m, sentido positivo."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Em t = 0, x = −4 m. O coeficiente de t é +2, positivo, logo o corpo move-se no sentido positivo do eixo.",
+              "mascote_feedback_errado": "Compara com x = x₀ + v t. O termo sem t é a posição inicial (−4 m) e o número que multiplica t é +2 m/s, sentido positivo."
+            },
+            {
+              "pergunta": "Qual é a equação do movimento de um corpo que parte da origem e se move no sentido negativo com 5 m/s?",
+              "opcoes": [
+                "x = 5t",
+                "x = −5t",
+                "x = −5 + t",
+                "x = 5 − t"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Parte da origem, logo x₀ = 0. Move-se no sentido negativo, logo v = −5 m/s. Por isso x = 0 + (−5)t = −5t.",
+              "mascote_feedback_errado": "Não é bem assim. Parte da origem, logo x₀ = 0. Move-se no sentido negativo, logo v = −5 m/s. Por isso x = 0 + (−5)t = −5t."
+            },
+            {
+              "pergunta": "O gráfico x-t de um corpo é uma reta que passa pelos pontos (0 s; 6 m) e (3 s; 0 m). Qual é a equação do movimento?",
+              "opcoes": [
+                "x = 6 + 2t",
+                "x = 6 − 2t",
+                "x = 6 − 3t",
+                "x = −2t"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. x₀ = 6 m. A posição diminui 6 m em 3 s, ou seja, 2 m por segundo: v = −2 m/s. Equação: x = 6 − 2t.",
+              "mascote_feedback_errado": "Não é bem assim. x₀ = 6 m. A posição diminui 6 m em 3 s, ou seja, 2 m por segundo: v = −2 m/s. Equação: x = 6 − 2t."
+            },
+            {
+              "pergunta": "No gráfico x-t de um corpo, a reta corta o eixo dos tempos em t = 5 s. O que significa?",
+              "opcoes": [
+                "O corpo parte da origem.",
+                "O corpo pára em t = 5 s.",
+                "O corpo passa na origem do eixo em t = 5 s.",
+                "O corpo inverte o sentido em t = 5 s."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Cortar o eixo dos tempos significa x = 0. O corpo passa na origem nesse instante.",
+              "mascote_feedback_errado": "Não é bem assim. Cortar o eixo dos tempos significa x = 0. O corpo passa na origem nesse instante."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "distancia-deslocamento",
+      "titulo": "Distância percorrida e deslocamento",
+      "xp": 25,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "mascote_texto": "A distância percorrida conta todos os passos. O deslocamento só quer saber de onde partiste e onde chegaste.",
+          "titulo": "O caminho e a mudança de sítio",
+          "imagem": "f11_ida_volta_escola.png",
+          "imagem_legenda": "Percurso de casa à escola, de manhã, e o regresso a casa, à tarde.",
+          "texto_principal": "De manhã vais de casa à escola, a 1,2 km. À tarde voltas a casa. No fim do dia, a aplicação de passos do telemóvel diz que andaste 2,4 km. Mas se alguém perguntar \"quanto mudaste de sítio em relação ao início do dia?\", a resposta é zero: estás exatamente onde começaste. São duas ideias diferentes: o caminho que fizeste e a mudança de posição.",
+          "pontos": []
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Deslocamento e distância percorrida",
+          "imagem": "f11_distancia_deslocamento.png",
+          "imagem_legenda": "Eixo com um percurso de ida e volta: de x = 0 a x = 8 m e regresso a x = 3 m, com setas a mostrar cada troço.",
+          "texto_principal": "O deslocamento depende apenas das posições inicial e final. A distância percorrida depende de todo o caminho feito.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Deslocamento",
+              "explicacao": "Δx = x final − x inicial. É a componente escalar do deslocamento, em metros. Pode ser positiva, negativa ou nula."
+            },
+            {
+              "id": "p2",
+              "label": "Distância percorrida (s)",
+              "explicacao": "Comprimento da trajetória efetivamente descrita. É sempre positiva ou nula."
+            },
+            {
+              "id": "p3",
+              "label": "Exemplo",
+              "explicacao": "Um robô vai de x = 0 a x = 8 m e depois regressa a x = 3 m. Δx = 3 − 0 = +3 m. Percorreu 8 m para a frente e 5 m para trás: s = 8 + 5 = 13 m."
+            },
+            {
+              "id": "p4",
+              "label": "O sinal de Δx",
+              "explicacao": "Δx positivo, o deslocamento aponta no sentido positivo do eixo. Δx negativo, no sentido negativo."
+            },
+            {
+              "id": "p5",
+              "label": "Vetor",
+              "explicacao": "O deslocamento é uma grandeza vetorial. Nos movimentos retilíneos usa-se a sua componente escalar Δx."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "Δx = x final − x inicial",
+              "significado": "Componente escalar do deslocamento (m).",
+              "unidades": ""
+            },
+            {
+              "expressao": "s",
+              "significado": "Distância percorrida: soma dos comprimentos de todos os troços do caminho.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Relação entre s e o deslocamento",
+          "imagem": "f11_relacao_s_deslocamento.png",
+          "imagem_legenda": "Três eixos: movimento sem inversão de 0 a 6 m; ida e volta de 0 a 6 m e regresso a 2 m; volta completa a uma pista.",
+          "texto_principal": "A distância percorrida é sempre maior ou igual ao módulo do deslocamento: s ≥ |Δx|. São iguais apenas num caso especial.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Movimento sem inversão de sentido",
+              "explicacao": "A partícula vai de 0 a 6 m sempre no mesmo sentido. s = 6 m e |Δx| = 6 m. Aqui s = |Δx|."
+            },
+            {
+              "id": "p2",
+              "label": "Movimento com inversão de sentido",
+              "explicacao": "De 0 a 6 m e depois de 6 m a 2 m. s = 6 + 4 = 10 m e |Δx| = |2 − 0| = 2 m. Aqui s > |Δx|."
+            },
+            {
+              "id": "p3",
+              "label": "Volta completa",
+              "explicacao": "Uma volta a uma pista de 400 m. s = 400 m e Δx = 0. O corpo voltou ao ponto de partida."
+            },
+            {
+              "id": "p4",
+              "label": "Regra",
+              "explicacao": "Só quando o movimento é retilíneo e sem inversão de sentido é que s = |Δx|. Se houver inversão de sentido, s > |Δx|."
+            }
+          ]
+        },
+        {
+          "tipo": "simulacao",
+          "painel_colunas": true,
+          "id": "sim_deslocamento_distancia",
+          "titulo": "Caminho feito e mudança de sítio",
+          "instrucao": "Escolhe a posição inicial, o ponto onde o corpo inverte o sentido e a posição final. Vê a distância percorrida e o deslocamento.",
+          "controlos": [
+            {
+              "id": "xi",
+              "rotulo": "Posição inicial",
+              "min": -10,
+              "max": 10,
+              "passo": 1,
+              "valor_inicial": 0,
+              "unidade": "m"
+            },
+            {
+              "id": "xv",
+              "rotulo": "Posição de inversão",
+              "min": -10,
+              "max": 10,
+              "passo": 1,
+              "valor_inicial": 8,
+              "unidade": "m"
+            },
+            {
+              "id": "xf",
+              "rotulo": "Posição final",
+              "min": -10,
+              "max": 10,
+              "passo": 1,
+              "valor_inicial": 3,
+              "unidade": "m"
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Deslocamento Δx",
+              "formula": "xf - xi",
+              "unidade": "m",
+              "casas_decimais": 0
+            },
+            {
+              "rotulo": "Módulo do deslocamento |Δx|",
+              "formula": "Math.abs(xf - xi)",
+              "unidade": "m",
+              "casas_decimais": 0
+            },
+            {
+              "rotulo": "Distância percorrida s",
+              "formula": "Math.abs(xv - xi) + Math.abs(xf - xv)",
+              "unidade": "m",
+              "casas_decimais": 0
+            },
+            {
+              "rotulo": "Comparação",
+              "formula": "(Math.abs(xv - xi) + Math.abs(xf - xv)) === Math.abs(xf - xi) ? \"s = |Δx|\" : \"s > |Δx|\""
+            }
+          ],
+          "desafio": {
+            "enunciado": "Com xi = 0, xv = 8 e xf = 3, qual é a distância percorrida e o deslocamento?",
+            "campos": [
+              {
+                "rotulo": "Distância percorrida",
+                "unidade": "m",
+                "correta": 13
+              },
+              {
+                "rotulo": "Deslocamento",
+                "unidade": "m",
+                "correta": 3
+              }
+            ],
+            "resolucao": [
+              "s = 8 + 5 = 13 m e Δx = 3 − 0 = +3 m. Para que s = |Δx| não pode haver inversão de sentido, por exemplo xv = xf."
+            ]
+          }
+        },
+        {
+          "tipo": "analogia",
+          "titulo": "O conta-quilómetros e o GPS",
+          "cartao_estilo": true,
+          "texto": "O conta-quilómetros do carro soma sempre, ande o carro para a frente ou para trás: é a distância percorrida. O GPS, que só quer saber onde estás em relação ao ponto de partida, desconta quando voltas para trás: é o deslocamento. Se andares 10 km para norte e 4 km para sul, o conta-quilómetros diz 14 km, mas estás só a 6 km do início."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Deslocamento negativo e o gráfico x-t",
+          "texto": "**Deslocamento pode ser negativo, distância não**\n\nΔx pode ser positivo, negativo ou nulo. A distância percorrida nunca é negativa.\n\n**Erro comum: usar \"posição final\" como se fosse deslocamento**\n\nSe um corpo parte de x = 5 m e chega a x = 8 m, a posição final é 8 m, mas o deslocamento é 8 − 5 = 3 m. Só coincidem se a posição inicial for zero.\n\n**A partir do gráfico x-t**\n\nNo gráfico da secção anterior (troços 0 a 10, 10 a 20, 20 a 30 e 30 a 40 s), a pessoa percorre 20 m para a frente, fica parada, volta 20 m para trás e depois recua mais 10 m. Distância percorrida: 20 + 20 + 10 = 50 m. Deslocamento: −10 − 0 = −10 m. Como houve inversão de sentido, s > |Δx|."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um carro passa da posição x = 5 m para a posição x = −3 m, sempre no mesmo sentido. Qual é a componente escalar do deslocamento?",
+              "opcoes": [
+                "8 m",
+                "−8 m",
+                "2 m",
+                "−2 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Δx = x final − x inicial = −3 − 5 = −8 m. O sinal negativo indica que o carro se deslocou no sentido negativo do eixo.",
+              "mascote_feedback_errado": "Faz sempre final menos inicial: Δx = −3 − 5 = −8 m. O sinal é importante: indica o sentido do deslocamento."
+            },
+            {
+              "pergunta": "Uma bola sobe de x = 0 até x = 5,0 m e depois cai até x = −2,0 m (eixo vertical, sentido positivo para cima). Qual é a distância percorrida?",
+              "opcoes": [
+                "3,0 m",
+                "7,0 m",
+                "12 m",
+                "−2,0 m"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Sobe 5,0 m e depois desce 5,0 + 2,0 = 7,0 m. Distância percorrida = 5,0 + 7,0 = 12 m. O deslocamento é Δx = −2,0 − 0 = −2,0 m.",
+              "mascote_feedback_errado": "Soma os comprimentos dos dois troços: a subida (5,0 m) e a descida (7,0 m, de 5,0 m até −2,0 m): s = 12 m."
+            },
+            {
+              "pergunta": "Um atleta dá duas voltas completas a uma pista de 400 m. Quais são a distância percorrida e o módulo do deslocamento?",
+              "opcoes": [
+                "800 m e 800 m",
+                "800 m e 0 m",
+                "0 m e 800 m",
+                "400 m e 0 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A distância percorrida é o comprimento total do caminho: 2 × 400 = 800 m. O deslocamento é nulo porque o atleta termina onde começou.",
+              "mascote_feedback_errado": "Não é bem assim. A distância percorrida é o comprimento total do caminho: 2 × 400 = 800 m. O deslocamento é nulo porque o atleta termina onde começou."
+            },
+            {
+              "pergunta": "Um robô vai de x = 0 a x = 8 m e regressa a x = 3 m. Qual é a distância percorrida e o deslocamento?",
+              "opcoes": [
+                "11 m e 3 m",
+                "13 m e 3 m",
+                "13 m e 13 m",
+                "3 m e 13 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Percorre 8 m para a frente e 5 m para trás: 13 m. O deslocamento só depende das posições inicial e final: 3 − 0 = 3 m.",
+              "mascote_feedback_errado": "Não é bem assim. Percorre 8 m para a frente e 5 m para trás: 13 m. O deslocamento só depende das posições inicial e final: 3 − 0 = 3 m."
+            },
+            {
+              "pergunta": "Qual das afirmações é sempre verdadeira?",
+              "opcoes": [
+                "A distância percorrida é igual ao módulo do deslocamento.",
+                "A distância percorrida é maior ou igual ao módulo do deslocamento.",
+                "A distância percorrida é menor ou igual ao módulo do deslocamento.",
+                "A distância percorrida pode ser negativa."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. s ≥ |Δx|, com igualdade apenas quando o movimento é retilíneo e sem inversão de sentido.",
+              "mascote_feedback_errado": "Não é bem assim. s ≥ |Δx|, com igualdade apenas quando o movimento é retilíneo e sem inversão de sentido."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "velocidade-media",
+      "titulo": "Velocidade média e gráfico posição-tempo",
+      "xp": 25,
+      "tempo_estimado_min": 10,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "mascote_texto": "Rapidez média e velocidade média parecem a mesma coisa. Não são, e os exames adoram essa diferença.",
+          "titulo": "A viagem Lisboa–Porto",
+          "imagem": "f11_velocimetro_viagem.png",
+          "imagem_legenda": "Velocímetro de um carro numa viagem entre Lisboa e o Porto.",
+          "texto_principal": "Fazes Lisboa–Porto, cerca de 300 km, em 3,0 horas. O velocímetro foi mostrando 0 km/h no início, 120 km/h na autoestrada, 60 km/h numa zona de obras. Mas se te perguntarem \"a que velocidade foi a viagem?\", respondes 100 km/h: 300 km a dividir por 3,0 h. É a velocidade média da viagem: um resumo, não o que o velocímetro marcou em cada instante.",
+          "pontos": []
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Rapidez média e velocidade média",
+          "imagem": "f11_rapidez_velocidade_media.png",
+          "imagem_legenda": "Uma pista de 400 m com um atleta; ao lado, um eixo com um percurso de ida e volta, com Δx e s assinalados.",
+          "texto_principal": "A rapidez média usa a distância percorrida e é sempre positiva. A velocidade média usa o deslocamento: é uma grandeza vetorial e, nos movimentos retilíneos, trabalha-se com a sua componente escalar.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Rapidez média",
+              "explicacao": "r m = s / Δt. Grandeza escalar, sempre positiva ou nula."
+            },
+            {
+              "id": "p2",
+              "label": "Componente escalar da velocidade média",
+              "explicacao": "v m = Δx / Δt. O sinal indica o sentido do deslocamento: positivo no sentido positivo do eixo, negativo no sentido contrário."
+            },
+            {
+              "id": "p3",
+              "label": "Quando coincidem",
+              "explicacao": "Só quando o movimento é retilíneo e sem inversão de sentido é que r m = |v m|."
+            },
+            {
+              "id": "p4",
+              "label": "Exemplo",
+              "explicacao": "Uma corredora dá uma volta completa a uma pista de 400 m em 80 s. r m = 400 / 80 = 5,0 m/s. Mas Δx = 0, logo v m = 0."
+            },
+            {
+              "id": "p5",
+              "label": "Unidade SI",
+              "explicacao": "Metro por segundo (m/s ou m s⁻¹). Para passar de km/h para m/s divide-se por 3,6."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "r m = s / Δt",
+              "significado": "Rapidez média.",
+              "unidades": ""
+            },
+            {
+              "expressao": "v m = Δx / Δt",
+              "significado": "Componente escalar da velocidade média.",
+              "unidades": ""
+            },
+            {
+              "expressao": "1 m/s = 3,6 km/h",
+              "significado": "Conversão de unidades.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Velocidade média no gráfico posição-tempo",
+          "imagem": "f11_secante_tangente.png",
+          "imagem_legenda": "Gráfico x-t da curva x = 2t² (unidades SI) com uma secante entre t = 0 s e t = 3 s; num segundo painel, uma reta x-t de (0 s; 2 m) a (4 s; 10 m).",
+          "texto_principal": "No gráfico da posição em função do tempo, a velocidade média entre dois instantes é o declive da reta que une os dois pontos do gráfico (a secante). Se o gráfico for uma reta, o declive é sempre o mesmo e a velocidade é constante.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Gráfico em reta",
+              "explicacao": "Uma reta que vai de (0 s; 2 m) a (4 s; 10 m) tem declive (10 − 2) / (4 − 0) = 2,0 m/s. É a velocidade média e também a velocidade em todos os instantes."
+            },
+            {
+              "id": "p2",
+              "label": "Gráfico em curva",
+              "explicacao": "Para x = 2t², a posição passa de 0 a 18 m entre t = 0 e t = 3 s. v m = 18 / 3 = 6,0 m/s. É o declive da secante entre esses dois pontos."
+            },
+            {
+              "id": "p3",
+              "label": "Sinal do declive",
+              "explicacao": "Declive positivo, v m positiva (sentido positivo). Declive negativo, v m negativa (sentido negativo). Reta horizontal, v m = 0."
+            },
+            {
+              "id": "p4",
+              "label": "Intervalos menores",
+              "explicacao": "Quanto menor for o intervalo de tempo, mais a velocidade média se aproxima da velocidade num instante (o declive da tangente ao gráfico nesse ponto)."
+            },
+            {
+              "id": "p5",
+              "label": "Cuidado",
+              "explicacao": "Usa sempre Δx / Δt (variações). Só podes usar x / t se o corpo partir da origem em t = 0."
+            }
+          ]
+        },
+        {
+          "tipo": "simulacao",
+          "painel_colunas": true,
+          "id": "sim_secante_tangente",
+          "titulo": "De média a instantânea",
+          "instrucao": "O corpo move-se segundo x = 2t² (unidades SI). Escolhe o instante inicial e o intervalo de tempo. Vê a velocidade média aproximar-se da velocidade instantânea quando diminuis o intervalo.",
+          "controlos": [
+            {
+              "id": "t1",
+              "rotulo": "Instante inicial",
+              "min": 0,
+              "max": 4,
+              "passo": 0.5,
+              "valor_inicial": 2,
+              "unidade": "s"
+            },
+            {
+              "id": "dt",
+              "rotulo": "Intervalo de tempo",
+              "min": 0.1,
+              "max": 3,
+              "passo": 0.1,
+              "valor_inicial": 2,
+              "unidade": "s"
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "x(t1)",
+              "formula": "2 * t1 * t1",
+              "unidade": "m",
+              "casas_decimais": 2
+            },
+            {
+              "rotulo": "x(t1 + Δt)",
+              "formula": "2 * (t1 + dt) * (t1 + dt)",
+              "unidade": "m",
+              "casas_decimais": 2
+            },
+            {
+              "rotulo": "Δx",
+              "formula": "2 * (t1 + dt) * (t1 + dt) - 2 * t1 * t1",
+              "unidade": "m",
+              "casas_decimais": 2
+            },
+            {
+              "rotulo": "Velocidade média",
+              "formula": "(2 * (t1 + dt) * (t1 + dt) - 2 * t1 * t1) / dt",
+              "unidade": "m/s",
+              "casas_decimais": 2
+            }
+          ],
+          "desafio": {
+            "enunciado": "Com t1 = 2,0 s e dt = 0,1 s, quanto vale a velocidade média? Para que valor tende quando dt diminui?",
+            "campos": [
+              {
+                "rotulo": "Velocidade média com dt = 0,1 s",
+                "unidade": "m/s",
+                "correta": 8.2,
+                "tolerancia": 0.01
+              },
+              {
+                "rotulo": "Valor para que tende (velocidade em t = 2 s)",
+                "unidade": "m/s",
+                "correta": 8,
+                "tolerancia": 0.01
+              }
+            ],
+            "resolucao": [
+              "Com dt = 0,1 s: Δx = 2 × 2,1² − 2 × 2² = 0,82 m, logo v m = 8,2 m/s. Quando dt diminui, tende para 8 m/s, a velocidade em t = 2 s."
+            ]
+          }
+        },
+        {
+          "tipo": "analogia",
+          "titulo": "O ritmo de leitura",
+          "cartao_estilo": true,
+          "texto": "Lês um livro de 300 páginas em 3 dias: 100 páginas por dia, em média. Mas no primeiro dia leste 200 páginas, no segundo apenas 20 e no terceiro 80. Esses 100 por dia são a velocidade média. A média esconde as variações, que só a análise de cada momento mostra."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "A média das velocidades e os radares de troço",
+          "texto": "**Erro comum: a média das velocidades**\n\nUm carro faz um troço a 60 km/h e volta pelo mesmo caminho a 40 km/h. A rapidez média no percurso total não é 50 km/h. Para um troço de comprimento d, o tempo total é d/60 + d/40 e a rapidez média é 2d / (d/60 + d/40) = 48 km/h. Gasta-se mais tempo à velocidade mais baixa.\n\n**Curiosidade: a velocidade média nos radares de troço**\n\nNas autoestradas há troços com radar de velocidade média: uma câmara regista a hora a que passas num ponto e outra, uns quilómetros à frente, a hora a que passas no segundo ponto. Num troço de 5,0 km com limite de 120 km/h, o tempo mínimo legal é 5,0 / 120 = 0,0417 h, ou seja, 2 min 30 s. Se fizeres o troço em menos tempo, és multado, mesmo que abrandes ao passar pelas câmaras.\n\n**O velocímetro**\n\nO velocímetro do carro mostra o módulo da velocidade num instante, não a velocidade média. É isso que se chama velocidade instantânea."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Um carro desloca-se a 72 km/h. Qual é o módulo da sua velocidade em m/s?",
+              "opcoes": [
+                "7,2 m/s",
+                "20 m/s",
+                "26 m/s",
+                "259 m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. 72 / 3,6 = 20 m/s. Confirmação: 72 km/h = 72 000 m / 3600 s = 20 m/s.",
+              "mascote_feedback_errado": "Para passar de km/h para m/s divide-se por 3,6: 72 / 3,6 = 20 m/s."
+            },
+            {
+              "pergunta": "O gráfico x-t de um corpo é uma reta que passa por (0 s; 2 m) e (4 s; 10 m). Qual é a componente escalar da velocidade média?",
+              "opcoes": [
+                "0,5 m/s",
+                "2,0 m/s",
+                "2,5 m/s",
+                "8,0 m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Muito bem. v m = Δx / Δt = (10 − 2) / (4 − 0) = 8 / 4 = 2,0 m/s.",
+              "mascote_feedback_errado": "A velocidade média é o declive: v m = Δx / Δt = (10 − 2) / (4 − 0) = 2,0 m/s. Não dividas a posição pelo tempo diretamente: usa as variações."
+            },
+            {
+              "pergunta": "Uma corredora dá uma volta completa a uma pista de 400 m em 80 s. Qual é a rapidez média e a componente escalar da velocidade média?",
+              "opcoes": [
+                "5,0 m/s e 5,0 m/s",
+                "5,0 m/s e 0 m/s",
+                "0 m/s e 5,0 m/s",
+                "0 m/s e 0 m/s"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato. Rapidez média = 400 / 80 = 5,0 m/s. O deslocamento é nulo (volta ao ponto de partida), logo a velocidade média é zero.",
+              "mascote_feedback_errado": "A rapidez média usa a distância percorrida (400 m): 400 / 80 = 5,0 m/s. A velocidade média usa o deslocamento, que é nulo numa volta completa: v m = 0."
+            },
+            {
+              "pergunta": "Um automóvel percorre 120 km em 1 h 30 min. Qual é a sua rapidez média?",
+              "opcoes": [
+                "60 km/h",
+                "80 km/h",
+                "90 km/h",
+                "180 km/h"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. 1 h 30 min = 1,5 h. r m = 120 / 1,5 = 80 km/h.",
+              "mascote_feedback_errado": "Não é bem assim. 1 h 30 min = 1,5 h. r m = 120 / 1,5 = 80 km/h."
+            },
+            {
+              "pergunta": "Um carro faz um troço a 60 km/h e regressa pelo mesmo caminho a 40 km/h. Qual é a rapidez média no percurso total?",
+              "opcoes": [
+                "48 km/h",
+                "50 km/h",
+                "52 km/h",
+                "100 km/h"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. Para um troço de comprimento d, o tempo total é d/60 + d/40 = 5d/120 = d/24. A distância total é 2d, logo r m = 2d / (d/24) = 48 km/h.",
+              "mascote_feedback_errado": "Não é bem assim. Para um troço de comprimento d, o tempo total é d/60 + d/40 = 5d/120 = d/24. A distância total é 2d, logo r m = 2d / (d/24) = 48 km/h."
+            },
+            {
+              "pergunta": "Um corpo move-se segundo x = 2t² (unidades SI). Qual é a componente escalar da velocidade média entre t = 1,0 s e t = 3,0 s?",
+              "opcoes": [
+                "4,0 m/s",
+                "6,0 m/s",
+                "8,0 m/s",
+                "16 m/s"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. x(1,0) = 2 m e x(3,0) = 18 m. Δx = 16 m e Δt = 2,0 s, logo v m = 8,0 m/s.",
+              "mascote_feedback_errado": "Não é bem assim. x(1,0) = 2 m e x(3,0) = 18 m. Δx = 16 m e Δt = 2,0 s, logo v m = 8,0 m/s."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "graficos-xt-vt",
+      "titulo": "Gráficos velocidade-tempo e posição-tempo",
+      "xp": 25,
+      "tempo_estimado_min": 14,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "sem_chips": true,
+          "mascote_texto": "No gráfico posição-tempo, o declive é a velocidade. No gráfico velocidade-tempo, o declive é a aceleração e a área é o deslocamento. Fica com isto de cor.",
+          "titulo": "Gráficos que contam uma corrida",
+          "imagem": "f11_app_corrida_vt.png",
+          "imagem_legenda": "Ecrã de uma aplicação de corrida com os gráficos de posição e de velocidade ao longo do tempo.",
+          "texto_principal": "A aplicação de corrida do teu telemóvel guarda a tua posição e a tua velocidade ao longo do tempo. Desses gráficos dá para saber quando aceleraste, quando paraste para atar o cordão e quanto correste no total, sem olhar para o mapa. Nesta secção juntas tudo o que aprendeste e aprendes a ler os dois gráficos mais importantes da Mecânica: posição-tempo e velocidade-tempo.",
+          "pontos": []
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Resumo do gráfico posição-tempo",
+          "imagem": "f11_graficos_xt.png",
+          "imagem_legenda": "Quatro gráficos x-t lado a lado: reta horizontal; reta crescente; reta decrescente; curva que sobe, atinge um máximo e desce.",
+          "texto_principal": "No gráfico da posição em função do tempo, o declive da reta (ou da tangente à curva num ponto) é a componente escalar da velocidade nesse instante.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Reta horizontal",
+              "explicacao": "Posição constante. O corpo está em repouso: v = 0."
+            },
+            {
+              "id": "p2",
+              "label": "Reta crescente",
+              "explicacao": "Velocidade constante e positiva. O corpo move-se no sentido positivo."
+            },
+            {
+              "id": "p3",
+              "label": "Reta decrescente",
+              "explicacao": "Velocidade constante e negativa. O corpo move-se no sentido negativo."
+            },
+            {
+              "id": "p4",
+              "label": "Curva com máximo",
+              "explicacao": "No ponto mais alto, a tangente é horizontal: v = 0 nesse instante. É onde o corpo inverte o sentido do movimento."
+            },
+            {
+              "id": "p5",
+              "label": "Curva mais inclinada",
+              "explicacao": "Quanto maior a inclinação da tangente (em módulo), maior a rapidez."
+            },
+            {
+              "id": "p6",
+              "label": "Exemplo",
+              "explicacao": "Retomando a pessoa da secção 3: troço 0 a 10 s: v = (20 − 0) / 10 = +2,0 m/s; troço 10 a 20 s: v = 0; troço 20 a 30 s: v = (0 − 20) / 10 = −2,0 m/s; troço 30 a 40 s: v = (−10 − 0) / 10 = −1,0 m/s. Rapidez média nos 40 s: 50 / 40 = 1,25 m/s. Velocidade média: −10 / 40 = −0,25 m/s."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "O encontro de dois corpos",
+          "imagem": "f11_dois_corpos_xt.png",
+          "imagem_legenda": "Duas retas no mesmo gráfico x-t: a do corpo A, crescente a partir da origem; a do corpo B, decrescente a partir de x = 60 m; o ponto de cruzamento marcado em (12 s; 36 m).",
+          "texto_principal": "O corpo A parte da origem com v = +3,0 m/s: x A = 3t. O corpo B parte de x = 60 m com v = −2,0 m/s: x B = 60 − 2t. Encontram-se quando x A = x B, e no gráfico é o ponto onde as duas linhas se cruzam.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Condição de encontro",
+              "explicacao": "Mesma posição no mesmo instante: x A = x B."
+            },
+            {
+              "id": "p2",
+              "label": "Instante",
+              "explicacao": "3t = 60 − 2t, logo 5t = 60 e t = 12 s."
+            },
+            {
+              "id": "p3",
+              "label": "Local",
+              "explicacao": "x = 3 × 12 = 36 m. Confirmação com B: 60 − 2 × 12 = 36 m."
+            },
+            {
+              "id": "p4",
+              "label": "Cuidado",
+              "explicacao": "O cruzamento dos gráficos x-t indica a mesma posição no mesmo instante, não a mesma velocidade. As velocidades até são diferentes (+3,0 e −2,0 m/s)."
+            }
+          ]
+        },
+        {
+          "tipo": "simulacao",
+          "painel_colunas": true,
+          "id": "sim_encontro",
+          "titulo": "Onde e quando se encontram?",
+          "instrucao": "O corpo A parte da origem. O corpo B parte de uma posição à tua escolha e vem ao encontro dele. Ajusta os valores e vê onde e quando se encontram.",
+          "controlos": [
+            {
+              "id": "xB0",
+              "rotulo": "Posição inicial de B",
+              "min": 20,
+              "max": 100,
+              "passo": 5,
+              "valor_inicial": 60,
+              "unidade": "m"
+            },
+            {
+              "id": "vA",
+              "rotulo": "Velocidade de A",
+              "min": 1,
+              "max": 5,
+              "passo": 0.5,
+              "valor_inicial": 3,
+              "unidade": "m/s"
+            },
+            {
+              "id": "vB",
+              "rotulo": "Velocidade de B",
+              "min": -5,
+              "max": -0.5,
+              "passo": 0.5,
+              "valor_inicial": -2,
+              "unidade": "m/s"
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Instante do encontro",
+              "formula": "xB0 / (vA - vB)",
+              "unidade": "s",
+              "casas_decimais": 1
+            },
+            {
+              "rotulo": "Posição do encontro",
+              "formula": "vA * xB0 / (vA - vB)",
+              "unidade": "m",
+              "casas_decimais": 1
+            }
+          ],
+          "desafio": {
+            "enunciado": "Com xB0 = 60 m, vA = 4,0 m/s e vB = −2,0 m/s, onde e quando se encontram?",
+            "campos": [
+              {
+                "rotulo": "Instante do encontro",
+                "unidade": "s",
+                "correta": 10
+              },
+              {
+                "rotulo": "Posição do encontro",
+                "unidade": "m",
+                "correta": 40
+              }
+            ],
+            "resolucao": [
+              "60 / (4 + 2) = 10 s e x = 4 × 10 = 40 m."
+            ]
+          }
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Gráfico velocidade-tempo",
+          "imagem": "f11_vt_troços.png",
+          "imagem_legenda": "Gráfico v-t em quatro troços: de (0 s; 0 m/s) a (4 s; 8 m/s); horizontal até (10 s; 8 m/s); descendente até (14 s; 0 m/s); descendente até (18 s; −4 m/s); áreas sombreadas.",
+          "texto_principal": "No gráfico da componente escalar da velocidade em função do tempo (v-t), o declive é a aceleração e a área entre o gráfico e o eixo dos tempos é o deslocamento. A área abaixo do eixo conta como negativa.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "0 a 4 s",
+              "explicacao": "v passa de 0 a 8 m/s. a = 8 / 4 = +2,0 m s⁻². Velocidade e aceleração positivas: movimento acelerado. Área = ½ × 4 × 8 = 16 m."
+            },
+            {
+              "id": "p2",
+              "label": "4 a 10 s",
+              "explicacao": "v = 8 m/s constante. a = 0: movimento uniforme. Área = 6 × 8 = 48 m."
+            },
+            {
+              "id": "p3",
+              "label": "10 a 14 s",
+              "explicacao": "v passa de 8 a 0 m/s. a = −8 / 4 = −2,0 m s⁻². Velocidade positiva e aceleração negativa: movimento retardado. Área = ½ × 4 × 8 = 16 m."
+            },
+            {
+              "id": "p4",
+              "label": "14 a 18 s",
+              "explicacao": "v passa de 0 a −4 m/s. a = −4 / 4 = −1,0 m s⁻². Velocidade e aceleração negativas: movimento acelerado, mas no sentido negativo. Área = ½ × 4 × (−4) = −8 m."
+            },
+            {
+              "id": "p5",
+              "label": "Balanço",
+              "explicacao": "Deslocamento = 16 + 48 + 16 − 8 = 72 m. Distância percorrida = 16 + 48 + 16 + 8 = 88 m. O corpo inverte o sentido em t = 14 s, quando a velocidade passa por zero e muda de sinal."
+            },
+            {
+              "id": "p6",
+              "label": "Acelerado ou retardado",
+              "explicacao": "Acelerado quando velocidade e aceleração têm o mesmo sinal (a rapidez aumenta). Retardado quando têm sinais opostos (a rapidez diminui)."
+            }
+          ],
+          "caixa_formula": [
+            {
+              "expressao": "a m = Δv / Δt",
+              "significado": "Aceleração média, em m s⁻². É o declive do gráfico v-t.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Δx = área sob o gráfico v-t (com sinal)",
+              "significado": "Deslocamento.",
+              "unidades": ""
+            },
+            {
+              "expressao": "Distância percorrida = soma das áreas em valor absoluto",
+              "significado": "Distância percorrida.",
+              "unidades": ""
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Do gráfico v-t para o gráfico x-t",
+          "imagem": "f11_vt_para_xt.png",
+          "imagem_legenda": "Os dois gráficos, um por cima do outro, com os mesmos quatro troços alinhados; o gráfico x-t com os pontos (4 s; 16 m), (10 s; 64 m), (14 s; 80 m), (18 s; 72 m).",
+          "texto_principal": "Para o mesmo movimento (com x₀ = 0), as posições nos fins de cada troço obtêm-se somando as áreas do gráfico v-t. A forma do gráfico x-t depende do tipo de troço.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Troço 1 (acelerado)",
+              "explicacao": "x passa de 0 a 16 m numa curva cada vez mais inclinada."
+            },
+            {
+              "id": "p2",
+              "label": "Troço 2 (uniforme)",
+              "explicacao": "x passa de 16 a 64 m numa reta de declive 8 m/s."
+            },
+            {
+              "id": "p3",
+              "label": "Troço 3 (retardado)",
+              "explicacao": "x passa de 64 a 80 m numa curva cada vez menos inclinada. Em t = 14 s a tangente é horizontal: v = 0 e a posição é máxima."
+            },
+            {
+              "id": "p4",
+              "label": "Troço 4",
+              "explicacao": "x desce de 80 a 72 m, porque a velocidade é negativa."
+            },
+            {
+              "id": "p5",
+              "label": "Regra geral",
+              "explicacao": "v-t reta inclinada dá x-t curvo (parábola). v-t horizontal dá x-t reta. v-t abaixo do eixo faz x diminuir."
+            }
+          ]
+        },
+        {
+          "tipo": "simulacao",
+          "painel_colunas": true,
+          "id": "sim_area_vt",
+          "titulo": "A área é o deslocamento",
+          "instrucao": "Escolhe a velocidade inicial, a aceleração e a duração. Confirma que a área do trapézio sob o gráfico v-t dá o mesmo valor que a fórmula do deslocamento.",
+          "controlos": [
+            {
+              "id": "v0",
+              "rotulo": "Velocidade inicial",
+              "min": 0,
+              "max": 10,
+              "passo": 1,
+              "valor_inicial": 4,
+              "unidade": "m/s"
+            },
+            {
+              "id": "a",
+              "rotulo": "Aceleração",
+              "min": 0,
+              "max": 4,
+              "passo": 0.5,
+              "valor_inicial": 2,
+              "unidade": "m s⁻²"
+            },
+            {
+              "id": "t",
+              "rotulo": "Duração",
+              "min": 1,
+              "max": 10,
+              "passo": 1,
+              "valor_inicial": 5,
+              "unidade": "s"
+            }
+          ],
+          "saidas": [
+            {
+              "rotulo": "Velocidade final",
+              "formula": "v0 + a * t",
+              "unidade": "m/s",
+              "casas_decimais": 1
+            },
+            {
+              "rotulo": "Área do trapézio",
+              "formula": "(v0 + (v0 + a * t)) / 2 * t",
+              "unidade": "m",
+              "casas_decimais": 1
+            },
+            {
+              "rotulo": "Deslocamento (v₀ t + ½ a t²)",
+              "formula": "v0 * t + 0.5 * a * t * t",
+              "unidade": "m",
+              "casas_decimais": 1
+            }
+          ],
+          "desafio": {
+            "enunciado": "Com v0 = 4 m/s, a = 2,0 m s⁻² e t = 5 s, quanto valem a velocidade final e o deslocamento?",
+            "campos": [
+              {
+                "rotulo": "Velocidade final",
+                "unidade": "m/s",
+                "correta": 14
+              },
+              {
+                "rotulo": "Deslocamento",
+                "unidade": "m",
+                "correta": 45
+              }
+            ],
+            "resolucao": [
+              "v = 4 + 2 × 5 = 14 m/s. A área do trapézio (4 + 14) / 2 × 5 = 45 m e a fórmula 4 × 5 + 0,5 × 2 × 25 = 45 m dão o mesmo valor."
+            ]
+          }
+        },
+        {
+          "tipo": "analogia",
+          "titulo": "O horário dos comboios",
+          "cartao_estilo": true,
+          "texto": "Nas estações, os responsáveis pelo tráfego usam gráficos de posição e tempo para marcar o percurso de cada comboio: o eixo horizontal é a hora, o vertical é a posição ao longo da linha. Dois comboios em sentidos contrários cruzam-se no ponto em que as duas linhas se intersetam. É o mesmo gráfico que estás a aprender, usado todos os dias. O gráfico de velocidade desse mesmo comboio já é outra história: aí a área por baixo é a distância que ele andou, tal como a soma dos troços do horário."
+        },
+        {
+          "tipo": "aprofundar",
+          "titulo": "Cruzamentos, sinais e equações",
+          "texto": "**Erro comum: o cruzamento de gráficos**\n\nQuando dois gráficos x-t se cruzam, os corpos estão na mesma posição nesse instante: encontram-se. Quando dois gráficos v-t se cruzam, os corpos têm a mesma velocidade nesse instante. Não quer dizer que estejam na mesma posição.\n\n**Erro comum: aceleração negativa não quer dizer travar**\n\nSe o eixo apontar para a direita e um carro andar para a esquerda (v < 0) a ganhar rapidez, a aceleração é negativa e o movimento é acelerado. Travar é quando a velocidade e a aceleração têm sinais opostos.\n\n**As equações do movimento com aceleração constante**\n\nQuando a aceleração é constante: v = v₀ + a t e x = x₀ + v₀ t + ½ a t². A segunda é a área do trapézio sob o gráfico v-t. Vais usá-las na queda livre."
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Num gráfico v-t, entre t = 4 s e t = 10 s a velocidade é constante e igual a 8 m/s. Qual é o deslocamento nesse intervalo?",
+              "opcoes": [
+                "8 m",
+                "24 m",
+                "48 m",
+                "80 m"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. A área do retângulo é 6 s × 8 m/s = 48 m.",
+              "mascote_feedback_errado": "O deslocamento é a área sob o gráfico: base 6 s (de 4 a 10 s) vezes altura 8 m/s = 48 m."
+            },
+            {
+              "pergunta": "Num gráfico v-t, a velocidade passa de 8 m/s, em t = 10 s, para 0, em t = 14 s, e depois torna-se negativa. Em que instante o corpo inverte o sentido do movimento?",
+              "opcoes": [
+                "4 s",
+                "10 s",
+                "14 s",
+                "18 s"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Exato. Em t = 14 s a velocidade passa de positiva a negativa, passando por zero. É aí que o corpo inverte o sentido.",
+              "mascote_feedback_errado": "O sentido inverte-se quando a velocidade muda de sinal: positiva até 14 s e negativa depois. Em t = 10 s o corpo só começa a abrandar."
+            },
+            {
+              "pergunta": "A velocidade de um corpo passa de −6,0 m/s para −2,0 m/s em 2,0 s. Qual é a aceleração média e como é o movimento?",
+              "opcoes": [
+                "−2,0 m s⁻², acelerado.",
+                "+2,0 m s⁻², acelerado.",
+                "+2,0 m s⁻², retardado.",
+                "−2,0 m s⁻², retardado."
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Δv = −2,0 − (−6,0) = +4,0 m/s, logo a m = +4,0 / 2,0 = +2,0 m s⁻². A velocidade é negativa e a aceleração positiva: sinais opostos, movimento retardado.",
+              "mascote_feedback_errado": "Faz final menos inicial: Δv = −2,0 − (−6,0) = +4,0 m/s, logo a m = +2,0 m s⁻². Como a velocidade é negativa e a aceleração positiva, a rapidez diminui: retardado."
+            },
+            {
+              "pergunta": "Uma pessoa percorre 20 m para a frente em 10 s, fica parada 10 s, volta 20 m em 10 s e depois recua mais 10 m em 10 s, sempre em linha reta. Qual é a rapidez média nos 40 s?",
+              "opcoes": [
+                "0,25 m/s",
+                "1,0 m/s",
+                "1,25 m/s",
+                "2,0 m/s"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Distância percorrida: 20 + 20 + 10 = 50 m. Rapidez média = 50 / 40 = 1,25 m/s. O deslocamento é −10 m, por isso a velocidade média é −0,25 m/s.",
+              "mascote_feedback_errado": "Não é bem assim. Distância percorrida: 20 + 20 + 10 = 50 m. Rapidez média = 50 / 40 = 1,25 m/s. O deslocamento é −10 m, por isso a velocidade média é −0,25 m/s."
+            },
+            {
+              "pergunta": "Um carro parte do repouso, aumenta a velocidade uniformemente até 12 m/s em 6,0 s e mantém depois essa velocidade durante 4,0 s. Qual é a distância percorrida nos 10 s?",
+              "opcoes": [
+                "48 m",
+                "72 m",
+                "84 m",
+                "120 m"
+              ],
+              "correta": 2,
+              "mascote_feedback_certo": "Certo. Primeiro troço: triângulo, ½ × 6,0 × 12 = 36 m. Segundo troço: retângulo, 4,0 × 12 = 48 m. Total: 36 + 48 = 84 m.",
+              "mascote_feedback_errado": "Não é bem assim. Primeiro troço: triângulo, ½ × 6,0 × 12 = 36 m. Segundo troço: retângulo, 4,0 × 12 = 48 m. Total: 36 + 48 = 84 m."
+            },
+            {
+              "pergunta": "Os gráficos v-t de dois corpos A e B cruzam-se em t = 5,0 s. O que se pode concluir?",
+              "opcoes": [
+                "Estão na mesma posição nesse instante.",
+                "Têm a mesma velocidade nesse instante.",
+                "Têm a mesma aceleração.",
+                "Chocam nesse instante."
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O ponto de cruzamento de dois gráficos v-t indica que as velocidades são iguais nesse instante. Nada se pode concluir sobre as posições sem os gráficos x-t.",
+              "mascote_feedback_errado": "Não é bem assim. O ponto de cruzamento de dois gráficos v-t indica que as velocidades são iguais nesse instante. Nada se pode concluir sobre as posições sem os gráficos x-t."
+            },
+            {
+              "pergunta": "O corpo A parte de x = 0 com v = +4,0 m/s e o corpo B parte de x = 100 m com v = −6,0 m/s, ao mesmo tempo. Em que posição se encontram?",
+              "opcoes": [
+                "10 m",
+                "40 m",
+                "50 m",
+                "60 m"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. 4t = 100 − 6t dá 10t = 100, logo t = 10 s. Posição: x = 4 × 10 = 40 m.",
+              "mascote_feedback_errado": "Não é bem assim. 4t = 100 − 6t dá 10t = 100, logo t = 10 s. Posição: x = 4 × 10 = 40 m."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mascote_fim": "Missão cumprida! Já sabes descrever um movimento em relação a um referencial, localizar uma partícula num eixo, distinguir distância percorrida de deslocamento, calcular velocidades médias e ler os gráficos posição-tempo e velocidade-tempo. Lembra-te das regras de ouro: no x-t o declive é a velocidade; no v-t o declive é a aceleração e a área é o deslocamento."
+}

@@ -71,7 +71,7 @@
           "cartao_estilo": true,
           "sem_chips": true,
           "pontos": [
-            { "id": "energia-interna", "label": "Energia interna", "imagem": "f10_energia_interna.jpg", "explicacao": "Soma das energias cinéticas e potenciais de todas as partículas (átomos, moléculas) que constituem o sistema. Não se vê a olho nu, mas manifesta-se, por exemplo, na temperatura. Quando um carro trava, a energia cinética não desaparece: transforma-se em energia interna dos travões, que aquecem.", "caixa_formula": [{ "expressao": "Ei = ΣEc + ΣEp", "unidades": ["**Ei** em joule (**J**)", "**ΣEc** (soma das energias cinéticas das partículas) em joule (**J**)", "**ΣEp** (soma das energias potenciais das partículas) em joule (**J**)"] }], "exercicio": {"enunciado": "Uma panela com água é aquecida no fogão. A água fica mais quente, mas não se desloca nem muda de altura. Que energia do sistema (a água) aumentou? Justifica.", "campos": [{"rotulo": "Aumentou a", "aceites": ["interna"]}], "resolucao": ["A energia mecânica não mudou: a água não ganhou velocidade nem altura, por isso a energia cinética e a energia potencial da água, como um todo, ficaram iguais.", "O que aumentou foi a energia interna: ao aquecer, as partículas da água passam a agitar-se mais, e a soma das suas energias cinéticas e potenciais aumenta. Manifesta-se no aumento da temperatura."], "resposta": "aumentou a energia interna da água."} }
+            { "id": "energia-interna", "label": "Energia interna", "imagem": "f10_energia_interna.jpg", "explicacao": "Soma das energias cinéticas e potenciais de todas as partículas (átomos, moléculas) que constituem o sistema. Não se vê a olho nu, mas manifesta-se, por exemplo, na temperatura. Quando um carro trava, a energia cinética não desaparece: transforma-se em energia interna dos travões, que aquecem.\n\nA energia interna depende de dois fatores. **Do número de partículas:** quantas mais partículas há, mais energias cinéticas e potenciais há para somar, por isso 2 L de água têm mais energia interna do que 1 L à mesma temperatura. **Da temperatura:** quanto mais quente está o sistema, mais agitadas andam as partículas (maior energia cinética média), por isso a mesma água a 80 °C tem mais energia interna do que a 20 °C.", "caixa_formula": [{ "expressao": "Ei = ΣEc + ΣEp", "unidades": ["**Ei** em joule (**J**)", "**ΣEc** (soma das energias cinéticas das partículas) em joule (**J**)", "**ΣEp** (soma das energias potenciais das partículas) em joule (**J**)"] }], "exercicio": {"enunciado": "Uma panela com água é aquecida no fogão. A água fica mais quente, mas não se desloca nem muda de altura. Que energia do sistema (a água) aumentou? Justifica.", "campos": [{"rotulo": "Aumentou a", "aceites": ["interna"]}], "resolucao": ["A energia mecânica não mudou: a água não ganhou velocidade nem altura, por isso a energia cinética e a energia potencial da água, como um todo, ficaram iguais.", "O que aumentou foi a energia interna: ao aquecer, as partículas da água passam a agitar-se mais, e a soma das suas energias cinéticas e potenciais aumenta. Manifesta-se no aumento da temperatura."], "resposta": "aumentou a energia interna da água."} }
           ]
         },
         {
@@ -237,19 +237,17 @@
             {
               "rotulo": "Trabalho potente (W > 0)",
               "imagem": "f10_trabalho_potente.jpg",
-              "explicacao": "0° ≤ α < 90°. A força favorece o movimento e transfere energia para o sistema. Exemplo: empurrar um carrinho de compras para a frente."
+              "explicacao": "0° ≤ α < 90°. A força favorece o movimento e transfere energia para o sistema. Exemplo, na imagem: o trabalhador empurra a caixa com uma força F que faz um ângulo θ com o deslocamento d, por isso favorece o movimento."
             },
             {
               "rotulo": "Trabalho nulo (W = 0)",
-              "imagem": "f10_trabalho_nulo.png",
-              "curiosidade_sem_titulo": true,
-              "curiosidade": "**Remar em diagonal**\n\nImagina que estás a empurrar um barco com uma vara, mas em vez de empurrares para trás empurras de lado, na diagonal. Parte do teu esforço faz o barco avançar; o resto só o empurra contra a margem. Quanto mais de lado empurrares, menos o barco avança com o mesmo esforço. Se empurrares completamente de lado (90°), o barco não avança nada, por muito que te canses. O cos α é exatamente a fração do esforço que faz o barco andar.",
-              "explicacao": "α = 90°. A força é perpendicular ao deslocamento e não transfere energia. Exemplo: o peso de um carro que anda numa estrada horizontal; a reação normal do chão."
+              "imagem": "f10_trabalho_nulo.jpg",
+              "explicacao": "α = 90°. A força é perpendicular ao deslocamento e não transfere energia. Exemplo, na imagem: o homem caminha com a pasta e o peso P e a reação normal N são perpendiculares ao deslocamento d (90°), por isso não realizam trabalho."
             },
             {
               "rotulo": "Trabalho resistente (W < 0)",
-              "imagem": "f10_trabalho_resistente.png",
-              "explicacao": "90° < α ≤ 180°. A força opõe-se ao movimento e retira energia ao sistema. Exemplo: o atrito sobre um bloco que desliza."
+              "imagem": "f10_trabalho_resistente.jpg",
+              "explicacao": "90° < α ≤ 180°. A força opõe-se ao movimento e retira energia ao sistema. Exemplo, na imagem: o carro trava e a força de atrito F tem sentido oposto ao deslocamento d (180°), por isso retira energia ao carro."
             }
           ]
         },
@@ -373,7 +371,7 @@
               "curiosidade_sem_titulo": true,
               "curiosidade": "**Estratégia para exercícios**\n\n1. Identifica o sistema e desenha todas as forças.\n\n2. Calcula o trabalho de cada força (as perpendiculares ao deslocamento dão zero).\n\n3. Soma tudo e iguala a ΔEc. Se o enunciado só pede a velocidade final e não fala em forças dissipativas, o método da conservação da energia mecânica costuma ser mais rápido.",
               "label": "Lei do trabalho-energia",
-              "imagem": "f10_teorema_ec.png",
+              "imagem": "f10_teorema_ec.jpg",
               "explicacao": "O teorema da energia cinética (ou lei do trabalho-energia) diz que o trabalho realizado pela resultante das forças que atuam num corpo é igual à variação da sua energia cinética. Se o trabalho total é positivo, o corpo ganha energia cinética (acelera). Se é negativo, perde (trava). Se é nulo, a energia cinética mantém-se.",
               "caixa_formula": [
                 {
@@ -404,7 +402,7 @@
             {
               "titulo": "Trabalho do peso - Corpo a descer",
               "texto": "O peso realiza trabalho positivo: W(P) = m g h. A energia potencial gravítica diminui.",
-              "imagem": "f10_peso_desce.png",
+              "imagem": "f10_peso_desce.jpg",
               "imagem_legenda": "Corpo a descer: o peso e o deslocamento apontam no mesmo sentido.",
               "caixa_formula": [
                 {
@@ -422,7 +420,7 @@
             {
               "titulo": "Trabalho do peso - Corpo a subir",
               "texto": "O peso realiza trabalho negativo: W(P) = −m g h. A energia potencial gravítica aumenta.",
-              "imagem": "f10_peso_sobe.png",
+              "imagem": "f10_peso_sobe.jpg",
               "imagem_legenda": "Corpo a subir: o peso aponta para baixo e o deslocamento para cima.",
               "caixa_formula": [
                 {
@@ -440,8 +438,8 @@
             {
               "titulo": "Trabalho do peso - Percurso qualquer",
               "texto": "Pela vertical ou pela rampa, o trabalho do peso é o mesmo se o desnível h for o mesmo.",
-              "imagem": "f10_peso_percurso.png",
-              "imagem_legenda": "Dois percursos diferentes entre os mesmos pontos A e B, com o mesmo desnível h.",
+              "imagem": "f10_peso_percurso.jpg",
+              "imagem_legenda": "Dois percursos a partir de A até ao nível de B e C: pela vertical (trajetória 2) e pela rampa (trajetória 1), com o mesmo desnível h.",
               "caixa_formula": [
                 {
                   "expressao": "W(P) = −ΔEpg",
@@ -455,8 +453,8 @@
             {
               "titulo": "Trabalho do peso - Percurso fechado",
               "texto": "Se o corpo volta ao ponto de partida, o trabalho do peso é nulo.",
-              "imagem": "f10_peso_fechado.png",
-              "imagem_legenda": "Percurso fechado: o corpo sai de A e volta a A.",
+              "imagem": "f10_peso_fechado.jpg",
+              "imagem_legenda": "Percurso fechado entre A e B: o corpo sai de A, passa por B e volta a A, por qualquer caminho, e o trabalho de uma força conservativa é nulo (W = 0).",
               "caixa_formula": [
                 {
                   "expressao": "W(P) = 0",
@@ -546,22 +544,20 @@
           "tipo": "diagrama_interativo", "cartao_estilo": true,
           "pontos_seta": true,
           "titulo": "Conservação da energia mecânica",
-          "imagem": "f10_rampa_energias.png",
           "mascote_titulo": "A energia não desaparece, só muda de forma.",
           "mascote_texto": "Um skater larga-se do topo de uma rampa em U. Sem dar ao pé, sobe do outro lado quase até à mesma altura. Quase. A cada vai-vem, sobe um pouco menos, até ficar parado no fundo. Se não houvesse atrito nem ar, ficaria a oscilar para sempre. Nesta secção vais perceber porquê, e vais aprender a calcular quanta energia se \"perde\".",
           "texto_principal": "Quando sobre um sistema só atuam forças conservativas (ou quando as forças não conservativas não realizam trabalho), a energia mecânica mantém-se constante. A energia cinética e a potencial transformam-se uma na outra, mas a soma não muda. Chama-se a isto conservação da energia mecânica.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "topo", "label": "Topo (repouso)", "explicacao": "Ec = 0. Toda a energia mecânica é potencial gravítica: Em = m g h.", "curiosidade_sem_titulo": true, "curiosidade": "**Porque é que a primeira subida da montanha-russa é sempre a mais alta**\n\nA primeira subida é feita com a ajuda de um motor. A partir daí, sem motor, a energia mecânica só pode diminuir por causa do atrito e da resistência do ar. Nenhuma subida seguinte pode ser mais alta do que a primeira. Os engenheiros projetam o percurso para que, mesmo com a dissipação, o carrinho tenha energia suficiente para chegar ao fim." },
-            { "id": "meio", "label": "A meio da descida", "explicacao": "Parte da Epg já se transformou em Ec. A soma continua igual." },
-            { "id": "fundo", "label": "Fundo", "explicacao": "Epg = 0 (se for o nível de referência). Toda a energia mecânica é cinética: velocidade máxima." },
-            { "id": "normal", "label": "Reação normal", "explicacao": "É perpendicular ao movimento em cada instante, por isso não realiza trabalho e não altera a energia mecânica, mesmo sendo uma força não conservativa." }
+            { "id": "topo", "label": "Conservação da energia mecânica", "imagem": "f10_rampa_energias.jpg", "explicacao": "**Topo (repouso):** Ec = 0. Toda a energia mecânica é potencial gravítica: Em = m g h.\n\n**A meio da descida:** parte da Epg já se transformou em Ec. A soma continua igual.\n\n**Fundo:** Epg = 0 (se for o nível de referência). Toda a energia mecânica é cinética: velocidade máxima.\n\n**Nota, reação normal:** é perpendicular ao movimento em cada instante, por isso não realiza trabalho e não altera a energia mecânica, mesmo sendo uma força não conservativa.", "curiosidade_sem_titulo": true, "curiosidade": "**Porque é que a primeira subida da montanha-russa é sempre a mais alta**\n\nA primeira subida é feita com a ajuda de um motor. A partir daí, sem motor, a energia mecânica só pode diminuir por causa do atrito e da resistência do ar. Nenhuma subida seguinte pode ser mais alta do que a primeira. Os engenheiros projetam o percurso para que, mesmo com a dissipação, o carrinho tenha energia suficiente para chegar ao fim." }
           ],
           "caixa_formula": [
             { "expressao": "Em,inicial = Em,final (se só forças conservativas realizam trabalho)", "significado": "Conservação da energia mecânica.", "unidades": "" },
             { "expressao": "v = √(2 g h)", "significado": "Velocidade ao fim de uma descida de altura h a partir do repouso, sem dissipação. Não depende da massa.", "unidades": "" }
           ],
           "aprofundar": {
+            "estilo": "interrogacao",
+            "icone": "lupa",
             "titulo": "Pistas no enunciado",
             "texto": "\"Despreze a resistência do ar\", \"superfície polida\", \"sem atrito\": podes usar a conservação da energia mecânica. \"A bola sobe a uma altura menor\", \"o bloco para\", \"a velocidade é menor do que a prevista\": há dissipação, usa W(Fnc) = ΔEm."
           }
@@ -570,15 +566,9 @@
           "tipo": "diagrama_interativo", "cartao_estilo": true,
           "pontos_seta": true,
           "titulo": "Quando há dissipação",
-          "imagem": "f10_dissipacao.png",
-          "texto_principal": "Se atuarem forças não conservativas que realizam trabalho, como o atrito ou a resistência do ar, a energia mecânica varia. A variação é igual ao trabalho dessas forças. Quando esse trabalho é negativo, diz-se que há dissipação de energia: a energia mecânica transforma-se em energia interna (aquecimento), que já não pode ser facilmente aproveitada.",
-          "instrucao": "Clica em cada ponto para veres a explicação.",
-          "pontos": [
-            { "id": "forcas-dissipativas", "label": "Forças dissipativas", "explicacao": "Atrito e resistência do ar realizam trabalho negativo e diminuem a energia mecânica." },
-            { "id": "energia-interna", "label": "Energia interna", "explicacao": "A energia \"perdida\" aparece como aumento de energia interna das superfícies, do ar e do próprio corpo.", "curiosidade_sem_titulo": true, "curiosidade": "**A areia na ampulheta.** A energia mecânica de um sistema sem atrito é como uma ampulheta: a areia passa de cima para baixo e de baixo para cima, mas a quantidade total é sempre a mesma. A energia potencial é a areia de cima, a cinética é a de baixo. Agora imagina que a ampulheta tem uma pequena fenda e, em cada volta, cai um pouco de areia para a mesa. Essa areia não desapareceu, está na mesa. Mas já não volta para dentro da ampulheta. É isso a dissipação: a energia continua a existir, só que como energia interna espalhada pela vizinhança, onde já não serve para pôr o skater a subir." },
-            { "id": "energia-total", "label": "Energia total", "explicacao": "A energia total (mecânica + interna) do conjunto sistema + vizinhança conserva-se sempre.", "curiosidade_sem_titulo": true, "curiosidade": "**Conservação da energia mecânica vs. conservação da energia**\n\nSão coisas diferentes. A energia total conserva-se sempre, em qualquer situação: é um princípio fundamental da Física. A energia mecânica só se conserva se as forças não conservativas não realizarem trabalho. Num exame, quando escreves \"a energia conserva-se\", tens de dizer qual." },
-            { "id": "forcas-motoras", "label": "Forças motoras", "explicacao": "Um motor ou uma pessoa podem realizar trabalho positivo e aumentar a energia mecânica." }
-          ],
+          "imagem": "f10_dissipacao.jpg",
+          "texto_principal": "Se atuarem forças não conservativas que realizam trabalho, como o atrito ou a resistência do ar, a energia mecânica varia. A variação é igual ao trabalho dessas forças. Quando esse trabalho é negativo, diz-se que há dissipação de energia: a energia mecânica transforma-se em energia interna (aquecimento), que já não pode ser facilmente aproveitada.\n\n**Nota:** a energia total (mecânica + interna) do conjunto sistema + vizinhança conserva-se sempre.",
+          "pontos": [],
           "caixa_formula": [
             { "expressao": "W(Fnc) = ΔEm", "significado": "O trabalho das forças não conservativas é igual à variação da energia mecânica.", "unidades": "" },
             { "expressao": "Energia dissipada = |W(forças dissipativas)|", "significado": "", "unidades": "" }
@@ -588,11 +578,12 @@
           "tipo": "simulacao", "painel_colunas": true,
           "id": "sim_conservacao_energia",
           "titulo": "A rampa do skater",
-          "instrucao": "Escolhe a altura de partida, a massa e o atrito. Os valores mostram a primeira descida a partir do repouso.",
+          "visual": "rampa_skater",
+          "instrucao": "Escolhe a altura de partida, a massa e o atrito. Vê como a energia passa de potencial a cinética e como o atrito a vai dissipando. Os valores mostram a primeira descida a partir do repouso.",
           "controlos": [
             { "id": "h", "rotulo": "Altura inicial", "min": 1, "max": 10, "passo": 0.5, "valor_inicial": 5, "unidade": "m" },
             { "id": "m", "rotulo": "Massa", "min": 20, "max": 100, "passo": 5, "valor_inicial": 50, "unidade": "kg" },
-            { "id": "atrito", "rotulo": "Fração de energia mecânica dissipada no fundo", "min": 0, "max": 30, "passo": 1, "valor_inicial": 0, "unidade": "%" }
+            { "id": "atrito", "rotulo": "Energia mecânica dissipada a cada passagem pelo fundo", "min": 0, "max": 30, "passo": 1, "valor_inicial": 0, "unidade": "%" }
           ],
           "saidas": [
             { "rotulo": "Energia mecânica inicial", "formula": "m * 9.8 * h", "unidade": "J", "casas_decimais": 1 },
@@ -669,7 +660,7 @@
     },
     {
       "secao_id": "potencia-rendimento-al",
-      "titulo": "Potência, rendimento e atividades laboratoriais",
+      "titulo": "Potência e rendimento",
       "xp": 25,
       "tempo_estimado_min": 10,
       "ecrãs": [
@@ -680,79 +671,11 @@
           "mascote_titulo": "Mesma energia, tempos diferentes: é isso que a potência mede.",
           "mascote_texto": "Subir as escadas até ao 4.º andar a correr ou a passo: a energia que gastas a elevar o teu corpo é a mesma nos dois casos. Então porque é que a correr ficas sem fôlego? Porque fizeste a mesma transferência de energia em menos tempo. A grandeza que mede isto é a potência. E há outra pergunta: de toda a energia que o teu corpo (ou um motor) usa, quanta é aproveitada? A resposta é o rendimento.",
           "texto_principal": "A potência é a rapidez com que a energia é transferida. O rendimento é a fração da energia fornecida que é aproveitada para o fim pretendido. Nenhum sistema real tem rendimento de 100 %, porque há sempre alguma energia dissipada.",
-          "pontos": [
-            { "id": "energia-fornecida", "label": "Energia fornecida", "explicacao": "Toda a energia que entra no sistema (por exemplo, energia elétrica que entra num motor)." },
-            { "id": "energia-util", "label": "Energia útil", "explicacao": "A parte que é usada para o fim pretendido (por exemplo, elevar uma carga).", "curiosidade_sem_titulo": true, "curiosidade": "**Encher um balde com uma mangueira furada**\n\nA potência é o caudal da mangueira: quantos litros por segundo saem da torneira. O rendimento é a fração da água que chega ao balde. Se a mangueira tiver furos, parte da água perde-se pelo caminho. Uma mangueira com mais caudal enche o balde mais depressa (mais potência), e uma mangueira com menos furos desperdiça menos água (mais rendimento). São coisas diferentes: podes ter uma mangueira muito potente e toda furada." },
-            { "id": "energia-dissipada", "label": "Energia dissipada", "explicacao": "A parte que não é aproveitada, geralmente como aumento de energia interna (aquecimento)." },
-            { "id": "balanco", "label": "Balanço", "explicacao": "Energia fornecida = energia útil + energia dissipada." }
-          ],
+          "detalhe_seta": "**Energia fornecida:** toda a energia que entra no sistema (por exemplo, energia elétrica que entra num motor).\n\n**Energia útil:** a parte que é usada para o fim pretendido (por exemplo, elevar uma carga).\n\n**Energia dissipada:** a parte que não é aproveitada, geralmente como aumento de energia interna (aquecimento).\n\n**Balanço:** energia fornecida = energia útil + energia dissipada.",
+          "curiosidade_sem_titulo": true, "curiosidade": "**Encher um balde com uma mangueira furada**\n\nA potência é o caudal da mangueira: quantos litros por segundo saem da torneira. O rendimento é a fração da água que chega ao balde. Se a mangueira tiver furos, parte da água perde-se pelo caminho. Uma mangueira com mais caudal enche o balde mais depressa (mais potência), e uma mangueira com menos furos desperdiça menos água (mais rendimento). São coisas diferentes: podes ter uma mangueira muito potente e toda furada.",
           "caixa_formula": [
             { "expressao": "P = E / Δt", "significado": "Potência.", "unidades": "P em watt (W), E em joule (J), Δt em segundo (s). 1 W = 1 J/s." },
             { "expressao": "η = E útil / E fornecida × 100", "significado": "Rendimento, em percentagem. Também se pode usar η = P útil / P fornecida × 100.", "unidades": "" }
-          ]
-        },
-        {
-          "tipo": "atividade_laboratorial",
-          "codigo": "AL 1.1",
-          "titulo": "Movimento num plano inclinado: variação da energia cinética e distância percorrida",
-          "objetivo": "Estudar como varia a energia cinética de um carrinho que desce um plano inclinado em função da distância percorrida, e relacionar essa variação com a resultante das forças.",
-          "material": [
-            "Calha (plano inclinado) com suporte para regular a inclinação",
-            "Carrinho com um pino ou pala de largura conhecida",
-            "Célula fotoelétrica ligada a um cronómetro digital (ou sistema de aquisição de dados)",
-            "Craveira ou paquímetro, para medir a largura da pala",
-            "Fita métrica ou régua",
-            "Balança"
-          ],
-          "procedimento": [
-            "Medir a massa do carrinho com a balança.",
-            "Medir a largura da pala (Δx) com a craveira.",
-            "Montar o plano com uma inclinação pequena e fixa.",
-            "Colocar a célula fotoelétrica numa posição do plano e marcar a posição de largada do carrinho, acima dela.",
-            "Medir a distância d entre a posição de largada e a célula.",
-            "Largar o carrinho sempre do repouso e da mesma posição, sem o empurrar. Registar o tempo de passagem da pala pela célula (Δt). Repetir três vezes e fazer a média.",
-            "Mudar a célula para outras posições (pelo menos cinco distâncias diferentes) e repetir."
-          ],
-          "tratamento_de_dados": "Velocidade na célula: v = Δx / Δt. Como a pala é estreita, esta velocidade média é praticamente a velocidade instantânea ao passar na célula.\n\nComo parte do repouso, ΔEc = ½ m v².\n\nConstruir o gráfico de ΔEc (eixo vertical) em função de d (eixo horizontal). O gráfico é uma reta que passa pela origem. Traçar a reta de ajuste (regressão linear na calculadora gráfica).\n\nPelo teorema da energia cinética, ΔEc = W(FR) = FR × d. Logo, o declive da reta é a intensidade da resultante das forças que atuam no carrinho.",
-          "conclusao": "A variação da energia cinética é diretamente proporcional à distância percorrida. A constante de proporcionalidade (declive) é a intensidade da resultante das forças, que é constante durante a descida.",
-          "erros_comuns": [
-            "Não largar o carrinho sempre do repouso e da mesma posição (dá uma energia cinética inicial diferente de zero).",
-            "Medir d até ao início da calha em vez de até à célula.",
-            "Usar a largura do carrinho inteiro em vez da largura da pala que interrompe o feixe.",
-            "Esquecer de converter a largura da pala de milímetros para metros antes de calcular v.",
-            "Afirmar que o declive é o peso: é a resultante das forças (componente do peso paralela ao plano menos o atrito)."
-          ]
-        },
-        {
-          "tipo": "aprofundar",
-          "titulo": "Medição e incertezas — o que precisas de saber para todas as ALs",
-          "texto": "Medir é comparar uma grandeza com uma unidade. Nenhuma medição é perfeita: há sempre uma incerteza associada.\n\n**1. Incerteza de leitura**\n\nInstrumento analógico (régua, termómetro de mercúrio, proveta): metade da menor divisão da escala. Régua graduada em milímetros: incerteza de leitura = 0,5 mm. Instrumento digital (cronómetro digital, multímetro, balança digital): uma unidade do último dígito. Balança que mostra 12,34 g: incerteza = 0,01 g. O resultado escreve-se com a incerteza: comprimento = (12,5 ± 0,5) mm.\n\n**2. Medições repetidas**\n\nQuando se repete uma medição várias vezes, o valor mais provável é a média dos valores obtidos. A incerteza absoluta pode ser estimada pelo maior desvio em módulo em relação à média. Exemplo: tempos 1,52 s; 1,48 s; 1,55 s. Média = 1,52 s. Desvios: 0,00; 0,04; 0,03. Maior desvio = 0,04 s. Resultado: t = (1,52 ± 0,04) s.\n\n**3. Incerteza relativa**\n\nIncerteza relativa = incerteza absoluta / valor medido, normalmente em percentagem. No exemplo anterior: 0,04 / 1,52 × 100 = 2,6 %. Quanto menor a incerteza relativa, mais precisa é a medição.\n\n**4. Erro percentual (quando se conhece o valor de referência)**\n\nErro percentual = |valor experimental − valor de referência| / valor de referência × 100. Mede a exatidão do resultado.\n\n**5. Precisão e exatidão**\n\nPrecisão: os valores medidos estão próximos uns dos outros (pouca dispersão). Exatidão: o valor medido está próximo do valor verdadeiro. Uma medição pode ser precisa e pouco exata (todos os tiros agrupados, mas longe do centro do alvo).\n\n**6. Erros sistemáticos e aleatórios**\n\nErros sistemáticos: afetam sempre no mesmo sentido (balança mal calibrada, zero da escala deslocado, paralaxe feita sempre do mesmo lado). Não se eliminam repetindo a medição. Afetam a exatidão. Erros aleatórios: variam de medição para medição, em sentido imprevisível (tempo de reação a acionar o cronómetro, pequenas vibrações). Reduzem-se repetindo a medição e calculando a média. Afetam a precisão.\n\n**7. Algarismos significativos**\n\nO resultado final não pode ter mais algarismos significativos do que os dados permitem. A incerteza escreve-se normalmente com um algarismo significativo, e o valor medido acaba na mesma casa decimal da incerteza."
-        },
-        {
-          "tipo": "atividade_laboratorial",
-          "codigo": "AL 1.2",
-          "titulo": "Movimento vertical de queda e ressalto de uma bola: transformações e transferências de energia",
-          "objetivo": "Relacionar a altura de ressalto com a altura de queda de uma bola e determinar a fração de energia mecânica dissipada na colisão com o solo.",
-          "material": [
-            "Bola (por exemplo, de ténis ou de basquetebol)",
-            "Fita métrica ou régua de 2 m fixa na vertical (ou sensor de posição com sistema de aquisição de dados)",
-            "Câmara de vídeo ou telemóvel para filmar o ressalto (opcional, facilita a leitura)",
-            "Balança"
-          ],
-          "procedimento": [
-            "Medir a massa da bola.",
-            "Largar a bola do repouso, de uma altura conhecida, junto à fita métrica.",
-            "Registar a altura máxima atingida após o primeiro ressalto. Repetir três vezes para a mesma altura de queda e fazer a média.",
-            "Repetir para pelo menos cinco alturas de queda diferentes.",
-            "As alturas medem-se sempre a partir da base da bola (ou sempre do centro), de forma consistente."
-          ],
-          "tratamento_de_dados": "Construir o gráfico da altura de ressalto (eixo vertical) em função da altura de queda (eixo horizontal). O gráfico é aproximadamente uma reta que passa pela origem, com declive menor do que 1.\n\nNo ponto mais alto (antes da queda e depois do ressalto), a bola está parada: Em = m g h. Por isso, a razão h ressalto / h queda é igual à fração da energia mecânica que a bola conserva.\n\nFração dissipada na colisão = 1 − declive. Exemplo: declive 0,70 significa que se dissipa 30 % da energia mecânica em cada ressalto.\n\nCom a equação da reta, prever a altura de ressalto para uma altura de queda que não foi medida.",
-          "conclusao": "A altura de ressalto é diretamente proporcional à altura de queda. Em cada colisão com o solo há dissipação de energia mecânica (a bola e o solo deformam-se e aquecem, e há produção de som). Bolas diferentes, ou a mesma bola em solos diferentes, dão declives diferentes.",
-          "erros_comuns": [
-            "Ler a altura de ressalto olhando de cima ou de baixo (erro de paralaxe). A leitura deve ser feita com os olhos ao nível da bola.",
-            "Atirar a bola em vez de a largar do repouso.",
-            "Atribuir toda a dissipação à resistência do ar: nestas alturas, a maior parte da energia é dissipada na colisão com o solo.",
-            "Dizer que a energia \"desaparece\" no ressalto: transforma-se em energia interna da bola, do solo e do ar."
           ]
         },
         {
@@ -771,42 +694,16 @@
               "mascote_feedback_errado": "Calcula primeiro a energia útil: E = m g h = 500 × 9,8 × 10 = 49 000 J. Depois a potência útil: 49 000 / 20 = 2450 W. Rendimento: 2450 / 4000 × 100 ≈ 61 %."
             },
             {
-              "pergunta": "Um multímetro digital indica 4,37 V. Qual é a incerteza de leitura?",
-              "opcoes": [
-                "0,5 V",
-                "0,05 V",
-                "0,01 V",
-                "0,005 V"
-              ],
-              "correta": 2,
-              "mascote_feedback_certo": "Exato. Num instrumento digital, a incerteza de leitura é uma unidade do último dígito apresentado: 0,01 V.",
-              "mascote_feedback_errado": "Nos instrumentos digitais não se usa metade da menor divisão. A incerteza é uma unidade do último dígito: aqui, 0,01 V."
-            },
-            {
               "pergunta": "Dois alunos com a mesma massa sobem a mesma escada. O João demora 10 s e a Rita 20 s. Qual das afirmações é correta?",
               "opcoes": ["O João transferiu mais energia.", "A Rita desenvolveu maior potência.", "Transferiram a mesma energia, mas o João desenvolveu o dobro da potência.", "Desenvolveram a mesma potência, porque a altura é igual."],
               "correta": 2,
               "mascote_feedback_certo": "Exato. A energia necessária (m g h) é igual para os dois. Como P = E / Δt, quem demora metade do tempo desenvolve o dobro da potência.",
               "mascote_feedback_errado": "A energia necessária (m g h) é igual para os dois. Como P = E / Δt, quem demora metade do tempo desenvolve o dobro da potência."
-            },
-            {
-              "pergunta": "Na AL 1.1, o gráfico de ΔEc em função da distância percorrida tem declive 0,45 J/m. O que representa este valor?",
-              "opcoes": ["A massa do carrinho, em kg.", "A velocidade final do carrinho, em m/s.", "A intensidade da resultante das forças, 0,45 N.", "A energia dissipada por metro."],
-              "correta": 2,
-              "mascote_feedback_certo": "Certo. Pelo teorema da energia cinética, ΔEc = FR × d. O declive (ΔEc / d) é a intensidade da resultante, e J/m é o mesmo que N.",
-              "mascote_feedback_errado": "Pelo teorema da energia cinética, ΔEc = FR × d. O declive (ΔEc / d) é a intensidade da resultante, e J/m é o mesmo que N."
-            },
-            {
-              "pergunta": "Na AL 1.2, a reta de ajuste entre a altura de ressalto e a altura de queda é h ressalto = 0,62 × h queda. Qual é a percentagem de energia mecânica dissipada em cada ressalto?",
-              "opcoes": ["62 %", "38 %", "0,62 %", "100 %"],
-              "correta": 1,
-              "mascote_feedback_certo": "Exato. O declive 0,62 indica que a bola conserva 62 % da energia mecânica. Dissipa-se 1 − 0,62 = 0,38, ou seja, 38 %.",
-              "mascote_feedback_errado": "O declive 0,62 indica que a bola conserva 62 % da energia mecânica. Dissipa-se 1 − 0,62 = 0,38, ou seja, 38 %."
             }
           ]
         }
       ]
     }
   ],
-  "mascote_fim": "Missão 1 concluída. Já sabes o que é um sistema, calculas trabalho, energia cinética e potencial, usas a conservação da energia mecânica e sabes o que acontece quando há atrito. Também já conheces as duas primeiras atividades laboratoriais. A seguir: eletricidade. A lógica é a mesma, porque continua a ser tudo sobre energia."
+  "mascote_fim": "Missão 1 concluída. Já sabes o que é um sistema, calculas trabalho, energia cinética e potencial, usas a conservação da energia mecânica e sabes o que acontece quando há atrito. A seguir: eletricidade. A lógica é a mesma, porque continua a ser tudo sobre energia."
 }

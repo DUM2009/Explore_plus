@@ -225,7 +225,7 @@
     {% for categoria in categorias_testes %}
     <div class="missions-category" data-subject="{{ categoria.disciplina }}"{% if categoria.ano %} data-ano="{{ categoria.ano }}"{% endif %}{% if categoria.disciplina != 'biology' %} hidden{% endif %}>
         <div class="missions-category-panel">
-            <span class="missions-category-panel-image{% if categoria.imagem_contain %} missions-category-panel-image--contain{% endif %}" style="background-image:url('{% static categoria.imagem %}')" aria-hidden="true"></span>
+            {% if categoria.imagem %}<span class="missions-category-panel-image{% if categoria.imagem_contain %} missions-category-panel-image--contain{% endif %}" style="background-image:url('{% static categoria.imagem %}')" aria-hidden="true"></span>{% endif %}
             <div class="missions-category-panel-body">
                 <div class="missions-category-panel-header">
                     <h3 class="missions-category-panel-name">{{ categoria.nome }}</h3>

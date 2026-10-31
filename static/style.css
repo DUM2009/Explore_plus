@@ -2442,15 +2442,15 @@ gap:20px;
 .missions-category-panel-tagline{
     flex-shrink:0;
     display:-webkit-box;
-    -webkit-line-clamp:2;
-    line-clamp:2;
+    -webkit-line-clamp:4;
+    line-clamp:4;
     -webkit-box-orient:vertical;
     overflow:hidden;
-    min-height:calc(1.5em * 2);
+    min-height:calc(1.45em * 3);
     margin:0 0 8px;
     color:var(--sp-muted-fg, #68718b);
-    font-size:.85rem;
-    line-height:1.5;
+    font-size:.76rem;
+    line-height:1.45;
 }
 
 /* The site-wide button{} / button:hover{} reset (green background,
@@ -6011,6 +6011,43 @@ body.nav-drawer-open {
 .achievement-card.is-locked .achievement-status{
     background:rgba(86,98,110,.14);
     color:#5d6a76;
+}
+
+.achievement-emoji{
+    font-size:3.2rem;
+    line-height:1;
+}
+
+.achievement-card.is-locked .achievement-emoji{
+    filter:grayscale(1);
+}
+
+.achievement-card.is-unlocked{
+    border-color:rgba(31,138,91,.4);
+}
+
+.explore-conquista-aviso{
+    position:fixed;
+    left:50%;
+    bottom:24px;
+    transform:translateX(-50%);
+    z-index:10000;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    max-width:calc(100vw - 32px);
+    padding:12px 18px;
+    border-radius:999px;
+    background:#1f8a5b;
+    color:#fff;
+    font-weight:700;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    animation:explore-conquista-aviso-in .35s ease;
+}
+
+@keyframes explore-conquista-aviso-in{
+    from{opacity:0;transform:translate(-50%,16px);}
+    to{opacity:1;transform:translate(-50%,0);}
 }
 
 .profile-side-panel{
@@ -12814,38 +12851,503 @@ body.shadcn-profile .profile-subject-card {
     border: 1px solid rgba(0, 0, 0, .12);
 }
 
-/* O cartão "Explore X" muda de cor pastel consoante a disciplina ativa
-   (ver disciplina_atual em pagina_perfil, views.py, que desenha a classe
-   profile-subject-card--<disciplina> no HTML) — Biologia fica a verde de
-   sempre (var(--sp-accent-soft), por omissão, sem classe extra). As
-   outras cores reaproveitam os mesmos tons pastel já usados noutros
-   sítios do site (ex: unidades da Biblioteca do Explorador). */
-body.shadcn-profile .profile-subject-card--chemistry {
-    background: #fdeee0;
-}
-
-body.shadcn-profile .profile-subject-card--physics {
-    background: #efe7fa;
-}
-
-body.shadcn-profile .profile-subject-card--geology {
-    background: #f1ece4;
-}
-
 html.dark-mode body.shadcn-profile .profile-subject-card {
     border-color: var(--sp-border, #27272a);
 }
 
-html.dark-mode body.shadcn-profile .profile-subject-card--chemistry {
-    background: rgba(230, 140, 60, .14);
+body.shadcn-profile .profile-subject-card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
 }
 
-html.dark-mode body.shadcn-profile .profile-subject-card--physics {
-    background: rgba(140, 100, 200, .14);
+body.shadcn-profile .profile-subject-card-head .profile-subject-leaf {
+    display: inline-flex;
+    color: var(--sp-primary);
 }
 
-html.dark-mode body.shadcn-profile .profile-subject-card--geology {
-    background: rgba(170, 130, 90, .14);
+body.shadcn-profile .profile-subject-card-head .profile-subject-leaf svg {
+    width: 22px;
+    height: 22px;
+}
+
+body.shadcn-profile .profile-subject-card-head .subject-switcher {
+    flex: 1 1 auto;
+}
+
+/* .subject-switcher-menu's right:0 (base rule) assumes the trigger sits
+   at the right edge of its row — here the trigger text sits at the LEFT
+   of the card instead, so a menu anchored to its right edge opened
+   mostly off the left edge of the screen on narrower phones (same bug
+   already fixed once for .missions-page-subrow, see the comment there). */
+body.shadcn-profile .profile-subject-card-head .subject-switcher-menu {
+    right: auto;
+    left: 0;
+}
+
+body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger {
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-subject-card-head .subject-switcher-trigger:hover {
+    background: none;
+    transform: none;
+}
+
+/* Mobile-only duplicate of the hero's avatar/level widgets, relocated
+   into the Explore Biology card (see @media(max-width:720px) below) —
+   hidden here since desktop keeps the original hero layout unchanged. */
+body.shadcn-profile .profile-subject-avatar-wrap {
+    display: none;
+}
+
+body.shadcn-profile .profile-subject-level-pill {
+    display: none;
+}
+
+body.shadcn-profile .profile-subject-xp {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 10px;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-subject-xp strong {
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+body.shadcn-profile .profile-subject-xp span {
+    margin-left: 6px;
+    color: var(--sp-muted-fg);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-subject-card .profile-progress-bar {
+    position: relative;
+    z-index: 1;
+    max-width: 460px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, .1);
+}
+
+html.dark-mode body.shadcn-profile .profile-subject-card .profile-progress-bar {
+    background: rgba(255, 255, 255, .6);
+}
+
+body.shadcn-profile .profile-subject-card .progresso {
+    border-radius: 999px;
+    background: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-subject-caption {
+    position: relative;
+    z-index: 1;
+    margin: 10px 0 0;
+    color: var(--sp-muted-fg);
+    font-size: .82rem;
+}
+
+/* ---- Missions section ---- */
+
+body.shadcn-profile .profile-missions-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+
+body.shadcn-profile .profile-missions-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-missions-head h2 svg {
+    width: 20px;
+    height: 20px;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-atividade-ver-tudo {
+    color: var(--sp-primary);
+    font-size: .82rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Ícones da lista "Atividade Recente" — não presos ao @media(max-width:720px)
+   que mostra essa lista, para já virem corretos caso a lista passe a
+   aparecer também no desktop. Missão = alvo/roxo, quiz = visto/azul,
+   teste ou exame = folha/rosa — cor por categoria, pedido explicitamente. */
+body.shadcn-profile .profile-atividade-icon {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-atividade-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+body.shadcn-profile .profile-atividade-icon--missao {
+    background: #ede7fb;
+    color: #7c5cbf;
+}
+
+body.shadcn-profile .profile-atividade-icon--quiz {
+    background: #e3f0fc;
+    color: #2f80c2;
+}
+
+body.shadcn-profile .profile-atividade-icon--teste {
+    background: #fbe6ef;
+    color: #c2487e;
+}
+
+body.shadcn-profile .profile-missions-viewall {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--sp-primary);
+    text-decoration: none;
+    font-size: .86rem;
+    font-weight: 700;
+}
+
+body.shadcn-profile .profile-missions-viewall svg {
+    width: 15px;
+    height: 15px;
+}
+
+body.shadcn-profile .profile-missions-card {
+    padding: 4px 24px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-missions-card .mission-row {
+    padding: 18px 0;
+}
+
+/* ---- "O teu percurso" card (Perfil tab) ---- */
+
+body.shadcn-profile .profile-percurso-card {
+    padding: 24px 28px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-percurso-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+}
+
+@media (max-width: 560px) {
+    body.shadcn-profile .profile-percurso-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+body.shadcn-profile .profile-percurso-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+    border-radius: 14px;
+    background: var(--sp-accent-soft);
+}
+
+body.shadcn-profile .profile-percurso-stat-icon {
+    display: inline-flex;
+    color: var(--sp-fg);
+}
+
+body.shadcn-profile .profile-percurso-stat-label {
+    color: var(--sp-muted-fg);
+    font-size: .88rem;
+}
+
+body.shadcn-profile .profile-percurso-stat-valor {
+    color: var(--sp-fg);
+    font-size: 1.7rem;
+    font-weight: 800;
+}
+
+body.shadcn-profile .profile-percurso-stat-valor small {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-percurso-atividade-titulo {
+    margin: 0 0 4px;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-percurso-atividade-caption {
+    margin: 0 0 16px;
+    color: var(--sp-muted-fg);
+    font-size: .82rem;
+}
+
+body.shadcn-profile .profile-percurso-card .stats-tempo-chart {
+    height: 140px;
+}
+
+/* ---- Conquistas tab: badge grid ---- */
+
+body.shadcn-profile .profile-badges-card {
+    padding: 24px 28px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-card);
+    border: 1px solid var(--sp-border);
+}
+
+body.shadcn-profile .profile-badges-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 4px;
+    color: var(--sp-fg);
+    font-family: var(--sp-font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+body.shadcn-profile .profile-badges-head h2 svg {
+    width: 20px;
+    height: 20px;
+    color: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-badges-head p {
+    margin: 0 0 20px;
+    color: var(--sp-muted-fg);
+    font-size: .88rem;
+}
+
+body.shadcn-profile .profile-badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 18px;
+}
+
+/* Conquistas "gamificadas": cartão branco com traço grosso e sombra dura
+   quando desbloqueado; a tracejado e sem sombra quando bloqueado. */
+body.shadcn-profile .profile-badge-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    padding: 22px 14px 16px;
+    border-radius: 22px;
+    border: 2px solid #1c1c1c;
+    background: #fff;
+    box-shadow: 4px 4px 0 #1c1c1c;
+}
+
+body.shadcn-profile .profile-badge-card.is-locked {
+    border: 2px dashed rgba(28, 28, 28, .3);
+    box-shadow: none;
+}
+
+body.shadcn-profile .profile-badge-medal {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    margin-bottom: 6px;
+    border-radius: 50%;
+    border: 3px solid #1c1c1c;
+    background: radial-gradient(circle at 32% 28%, #ffe58a, #f2b230 70%);
+    box-shadow: inset 0 -5px 0 rgba(0, 0, 0, .12);
+}
+
+body.shadcn-profile .profile-badge-card.is-locked .profile-badge-medal {
+    border: 2px dashed rgba(28, 28, 28, .3);
+    background: #f3f3f0;
+    box-shadow: none;
+}
+
+body.shadcn-profile .profile-badge-icon {
+    font-size: 2.3rem;
+    line-height: 1;
+}
+
+body.shadcn-profile .profile-badge-card.is-locked .profile-badge-icon {
+    filter: grayscale(1);
+    opacity: .5;
+}
+
+body.shadcn-profile .profile-badge-lock {
+    position: absolute;
+    right: -6px;
+    bottom: -4px;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(28, 28, 28, .4);
+    background: #fff;
+    font-size: .8rem;
+}
+
+body.shadcn-profile .profile-badge-name {
+    color: var(--sp-fg);
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.2;
+}
+
+body.shadcn-profile .profile-badge-desc {
+    color: var(--sp-muted-fg);
+    font-size: .8rem;
+    line-height: 1.35;
+}
+
+body.shadcn-profile .profile-badge-xp {
+    margin-top: 6px;
+    padding: 3px 12px;
+    border-radius: 999px;
+    border: 2px solid #1c1c1c;
+    background: #ffe27a;
+    color: #1c1c1c;
+    font-size: .74rem;
+    font-weight: 800;
+}
+
+body.shadcn-profile .profile-badge-card.is-locked .profile-badge-xp {
+    border-color: rgba(28, 28, 28, .3);
+    background: #fff;
+    color: var(--sp-muted-fg);
+}
+
+body.shadcn-profile .profile-badge-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 6px;
+}
+
+body.shadcn-profile .profile-badge-progress-bar {
+    flex: 1;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(28, 28, 28, .12);
+    overflow: hidden;
+}
+
+body.shadcn-profile .profile-badge-progress-bar > span {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--sp-primary);
+}
+
+body.shadcn-profile .profile-badge-progress-txt {
+    color: var(--sp-muted-fg);
+    font-size: .72rem;
+    font-weight: 700;
+}
+
+html.dark-mode body.shadcn-profile .profile-badge-card {
+    background: var(--sp-card, #18181b);
+    border-color: #e4e4e7;
+    box-shadow: 4px 4px 0 #e4e4e7;
+}
+
+html.dark-mode body.shadcn-profile .profile-badge-card.is-locked {
+    border-color: rgba(228, 228, 231, .3);
+    box-shadow: none;
+}
+
+html.dark-mode body.shadcn-profile .profile-badge-medal {
+    border-color: #e4e4e7;
+}
+
+html.dark-mode body.shadcn-profile .profile-badge-card.is-locked .profile-badge-medal {
+    border-color: rgba(228, 228, 231, .3);
+    background: rgba(255, 255, 255, .06);
+}
+
+html.dark-mode body.shadcn-profile .profile-badge-lock {
+    background: #27272a;
+    border-color: rgba(228, 228, 231, .4);
+}
+
+html.dark-mode body.shadcn-profile .profile-badge-card.is-locked .profile-badge-xp {
+    background: transparent;
+    border-color: rgba(228, 228, 231, .3);
+}
+
+body.shadcn-profile .profile-vocacional-card {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+body.shadcn-profile .profile-missions-section {
+    grid-column: 1 / -1;
+}
+
+/* Separador "Conquistas"/"Estatísticas": a aside (Teste Vocacional) só
+   existe no separador "Perfil", então aqui a coluna de 320px fica vazia —
+   esta classe (posta por profile-django.js ao trocar de separador) tira
+   essa coluna para o conteúdo principal esticar até à largura toda. */
+body.shadcn-profile .profile-grid.is-single-column {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 900px) {
+    body.shadcn-profile .profile-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* ---- Subject card ---- */
+
+body.shadcn-profile .profile-subject-card {
+    position: relative;
+    padding: 24px 28px;
+    border-radius: var(--sp-radius);
+    background: var(--sp-card, #ffffff);
+    border: 1px solid rgba(0, 0, 0, .12);
+}
+
+html.dark-mode body.shadcn-profile .profile-subject-card {
+    border-color: var(--sp-border, #27272a);
 }
 
 body.shadcn-profile .profile-subject-card-head {
@@ -13220,34 +13722,8 @@ body.shadcn-profile .profile-vocacional-card {
     border: 1px solid rgba(0, 0, 0, .12);
 }
 
-/* Mesma cor pastel do cartão "Explore X" ao lado (ver
-   .profile-subject-card--chemistry/--physics/--geology acima). */
-body.shadcn-profile .profile-vocacional-card--chemistry {
-    background: #fdeee0;
-}
-
-body.shadcn-profile .profile-vocacional-card--physics {
-    background: #efe7fa;
-}
-
-body.shadcn-profile .profile-vocacional-card--geology {
-    background: #f1ece4;
-}
-
 html.dark-mode body.shadcn-profile .profile-vocacional-card {
     border-color: var(--sp-border, #27272a);
-}
-
-html.dark-mode body.shadcn-profile .profile-vocacional-card--chemistry {
-    background: rgba(230, 140, 60, .14);
-}
-
-html.dark-mode body.shadcn-profile .profile-vocacional-card--physics {
-    background: rgba(140, 100, 200, .14);
-}
-
-html.dark-mode body.shadcn-profile .profile-vocacional-card--geology {
-    background: rgba(170, 130, 90, .14);
 }
 
 /* Desktop: painel "Olá" como os restantes cartões (branco, traço fino e
@@ -13363,35 +13839,6 @@ html.dark-mode body.shadcn-profile .profile-vocacional-card--geology {
     }
 }
 
-/* Painel da foto de perfil: mesma cor pastel dos cartões acima. Só a partir
-   de 721px — no telemóvel o painel funde-se com o fundo da página (ver
-   .profile-hero em @media (max-width: 720px)), seja qual for a disciplina. */
-@media (min-width: 721px) {
-    body.shadcn-profile .profile-hero--chemistry {
-        background: #fdeee0;
-    }
-
-    body.shadcn-profile .profile-hero--physics {
-        background: #efe7fa;
-    }
-
-    body.shadcn-profile .profile-hero--geology {
-        background: #f1ece4;
-    }
-
-    html.dark-mode body.shadcn-profile .profile-hero--chemistry {
-        background: rgba(230, 140, 60, .14);
-    }
-
-    html.dark-mode body.shadcn-profile .profile-hero--physics {
-        background: rgba(140, 100, 200, .14);
-    }
-
-    html.dark-mode body.shadcn-profile .profile-hero--geology {
-        background: rgba(170, 130, 90, .14);
-    }
-}
-
 body.shadcn-profile .profile-vocacional-top {
     display: flex;
     align-items: center;
@@ -13478,6 +13925,13 @@ body.shadcn-profile .profile-quote-banner--mobile {
    own existing mobile styling from the @media(max-width:720px) block). */
 body.shadcn-profile .profile-hero-row {
     display: block;
+}
+
+/* Os painéis do Perfil (hero, citação, ...) só aparecem no separador a que
+   pertencem — o display próprio de cada um vencia o atributo hidden que o
+   profile-django.js põe ao trocar de separador. */
+body.shadcn-profile [data-tab-panel][hidden] {
+    display: none !important;
 }
 
 @media (min-width: 721px) {

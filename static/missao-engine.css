@@ -2280,6 +2280,16 @@ html.dark-mode .me-inquerito-outro-input {
     text-align: left;
 }
 
+.me-escada-detail-paragrafos {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: left;
+}
+
+.me-escada-detail-paragrafos .me-escada-detail-text + .me-escada-detail-text {
+    margin-top: 12px;
+}
+
 button.me-ponto-curiosidade-toggle {
     flex-shrink: 0;
     width: 30px;
@@ -3716,6 +3726,200 @@ html.dark-mode .me-sim-visual-legenda {
     .me-tc-dlabel { font-size: 28px; }
 }
 
+/* Seta para baixo por baixo da caixa de fórmulas (ver setaDetalheHtml):
+   ao clicar abre o texto e a seta roda. */
+.me-seta-detalhe {
+    margin-top: 14px;
+    text-align: center;
+}
+
+button.me-seta-detalhe-btn {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1.5px solid #1f8a5b;
+    border-radius: 50%;
+    background: transparent;
+    color: #1f8a5b;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+}
+
+button.me-seta-detalhe-btn:hover,
+button.me-seta-detalhe-btn:focus-visible {
+    background: rgba(31, 138, 91, .1);
+    box-shadow: none;
+    transform: none;
+}
+
+.me-seta-detalhe-btn svg {
+    transition: transform .2s ease;
+}
+
+.me-seta-detalhe-btn[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+.me-seta-detalhe-painel {
+    margin-top: 12px;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    text-align: left;
+}
+
+.me-seta-detalhe-lista {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.me-seta-detalhe-lista li {
+    color: #4b5a52;
+    line-height: 1.6;
+}
+
+.me-seta-detalhe-lista li + li {
+    margin-top: 10px;
+}
+
+html.dark-mode .me-seta-detalhe-painel {
+    background: #17171a;
+    border-color: rgba(255, 255, 255, .35);
+}
+
+html.dark-mode .me-seta-detalhe-lista li {
+    color: #d4d4d8;
+}
+
+/* Duas bolas (visual 'duas_bolas', ver duasBolasHtml): uma largada e outra
+   atirada na horizontal, com imagens a cada 0,25 s. */
+.me-db {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.me-db-predio { fill: #cfd4d0; stroke: currentColor; stroke-width: 2; }
+.me-db-chao { stroke: currentColor; stroke-width: 2.5; }
+.me-db-bola--a, .me-db-fantasma--a { fill: #1c7ed6; stroke: currentColor; stroke-width: 1.5; }
+.me-db-bola--b, .me-db-fantasma--b { fill: #e8590c; stroke: currentColor; stroke-width: 1.5; }
+.me-db-fantasma { opacity: .35; }
+.me-db-ligacao { stroke: currentColor; stroke-width: 1.2; stroke-dasharray: 4 4; opacity: .5; }
+.me-db-rotulo { font-size: 16px; font-weight: 800; }
+.me-db-rotulo--a { fill: #1c7ed6; }
+.me-db-rotulo--b { fill: #e8590c; }
+.me-db-tempo { fill: currentColor; font-size: 18px; font-weight: 800; }
+.me-db-botao { display: block; margin: 10px auto 0; }
+.me-db-chave { font-weight: 800; }
+.me-db-chave--a { color: #1c7ed6; }
+.me-db-chave--b { color: #e8590c; }
+
+html.dark-mode .me-db-predio { fill: #3a3a3f; }
+
+@media (max-width: 640px) {
+    .me-db-rotulo { font-size: 24px; }
+    .me-db-tempo { font-size: 24px; }
+}
+
+/* Posição num eixo (visual 'posicao_eixo', ver posicaoEixoHtml): carro e
+   origem deslizam quando se mexe nos controlos. */
+.me-pe {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.me-pe-estrada { fill: #cfd4d0; }
+.me-pe-faixa { stroke: #ffffff; stroke-width: 3; stroke-dasharray: 14 12; }
+.me-pe-eixo { stroke: currentColor; stroke-width: 2.5; }
+.me-pe-seta { fill: currentColor; }
+.me-pe-x { fill: currentColor; font-size: 20px; font-weight: 700; font-style: italic; }
+.me-pe-marca { stroke: currentColor; stroke-width: 2; }
+.me-pe-marca--origem { stroke-width: 3.5; }
+.me-pe-marca-texto { fill: currentColor; font-size: 15px; font-weight: 700; }
+.me-pe-origem-linha { stroke: #c92a2a; stroke-width: 2; stroke-dasharray: 5 5; }
+.me-pe-origem-texto { fill: #c92a2a; font-size: 20px; font-weight: 800; }
+.me-pe-guia { stroke: currentColor; stroke-width: 1.5; stroke-dasharray: 3 4; opacity: .6; }
+.me-pe-ponto { fill: #e8590c; stroke: currentColor; stroke-width: 1.5; }
+.me-pe-corpo { fill: #e03131; stroke: currentColor; stroke-width: 1.5; }
+.me-pe-cabine { fill: #f1a3a3; stroke: currentColor; stroke-width: 1.5; }
+.me-pe-roda { fill: #2b2b2b; }
+.me-pe-valor { fill: currentColor; font-size: 18px; font-weight: 800; }
+.me-pe-carro, .me-pe-origem {
+    transition: transform .55s cubic-bezier(.4, 0, .2, 1);
+}
+
+html.dark-mode .me-pe-estrada { fill: #3a3a3f; }
+html.dark-mode .me-pe-faixa { stroke: #8b8b92; }
+
+@media (max-width: 640px) {
+    .me-pe-marca-texto { font-size: 22px; }
+    .me-pe-valor, .me-pe-x, .me-pe-origem-texto { font-size: 26px; }
+}
+
+/* Rampa do skater (visual 'rampa_skater', ver rampaSkaterHtml): rampa em U,
+   skater animado e barras de energia à direita. */
+.me-rampa {
+    display: block;
+    width: 100%;
+    max-width: 860px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.me-rampa-solo { fill: #e9e4da; }
+.me-rampa-pista { fill: none; stroke: currentColor; stroke-width: 3.5; stroke-linejoin: round; }
+.me-rampa-chao { stroke: currentColor; stroke-width: 2.5; }
+.me-rampa-h0 { stroke: currentColor; stroke-width: 1.5; stroke-dasharray: 6 6; opacity: .4; }
+.me-rampa-h0-texto { fill: currentColor; font-size: 15px; font-weight: 700; opacity: .7; }
+.me-rampa-prancha { fill: #c7792b; stroke: currentColor; stroke-width: 1.5; }
+.me-rampa-roda { fill: currentColor; }
+.me-rampa-pessoa path { fill: none; stroke: #1c7ed6; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.me-rampa-cabeca { fill: #f3d9a4; stroke: currentColor; stroke-width: 2; }
+.me-rampa-titulo { fill: currentColor; font-size: 16px; font-weight: 700; }
+.me-rampa-barra-fundo { fill: rgba(0, 0, 0, .06); }
+.me-rampa-barra-rotulo { fill: currentColor; font-size: 16px; font-weight: 700; }
+.me-rampa-barra-num { fill: currentColor; font-size: 15px; font-weight: 700; }
+.me-rampa-barra--ec .me-rampa-barra-valor { fill: #e8590c; }
+.me-rampa-barra--epg .me-rampa-barra-valor { fill: #1c7ed6; }
+.me-rampa-barra--em .me-rampa-barra-valor { fill: #2f9e44; }
+.me-rampa-barra--dis .me-rampa-barra-valor { fill: #868e96; }
+
+.me-rampa-reiniciar {
+    display: block;
+    margin: 10px auto 0;
+}
+
+.me-rampa-referencia { fill: currentColor; font-size: 15px; opacity: .75; }
+.me-rampa-item { display: inline-block; }
+.me-rampa-chave { font-weight: 700; }
+.me-rampa-chave--ec { color: #e8590c; }
+.me-rampa-chave--epg { color: #1c7ed6; }
+.me-rampa-chave--em { color: #2f9e44; }
+.me-rampa-chave--dis { color: #868e96; }
+
+html.dark-mode .me-rampa-solo { fill: #2a2a2e; }
+html.dark-mode .me-rampa-barra-fundo { fill: rgba(255, 255, 255, .08); }
+html.dark-mode .me-rampa-cabeca { fill: #6b5530; }
+
+@media (max-width: 640px) {
+    .me-rampa-barra-rotulo, .me-rampa-titulo { font-size: 24px; }
+    .me-rampa-barra-num, .me-rampa-h0-texto { font-size: 22px; }
+    .me-rampa-referencia { font-size: 21px; }
+}
+
 /* Painel "Desafio" no fim de uma simulação (screen.desafio): usa o mesmo
    painel dos exercícios (ver exercicioPontoHtml), só com outro título. */
 .me-simulacao-desafio {
@@ -3933,11 +4137,14 @@ html.dark-mode button.me-cp-seta:not([data-cp-seguinte]) {
    quando esse teste ainda não existe. */
 .mo-teste-card .mo-teste-btn,
 .mo-teste-card a.mo-teste-btn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    align-self: flex-start;
+    align-self: stretch;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
     padding: 10px 26px;
     border: 1px solid #1f8a5b;
     border-radius: 12px;
@@ -4108,4 +4315,11 @@ html.dark-mode .me-interrogacao-titulo {
 
 html.dark-mode .me-interrogacao-texto p {
     color: #d4d4d8;
+}
+
+/* Sem imagem (ficheiro ainda não existe): tira a coluna da imagem e a linha
+   vertical, o texto ocupa a largura toda. */
+.me-escada-detail-columns.me-sem-imagem > .me-escada-detail-media,
+.me-escada-detail-columns.me-sem-imagem > .me-escada-detail-divider {
+    display: none;
 }

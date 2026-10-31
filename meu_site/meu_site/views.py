@@ -21,6 +21,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils import timezone
+from .middleware import registar_aviso_conquistas
 from .models import (
     PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel,
     ResultadoAvaliacao, RegistoAtividadeDiaria, gerar_codigo_referral_unico,
@@ -80,12 +81,123 @@ def registar_atividade(user, minutos=0):
         registo.save(update_fields=['minutos'])
 
 
-def registar_resultado(user, tipo, identificador, unidade, nota_percentagem):
-    ResultadoAvaliacao.objects.create(
+# Conquistas (emblemas): lista fixa. `condicao` recebe o contexto calculado
+# em verificar_conquistas e diz se o aluno já a merece; `xp` soma-se ao XP do
+# aluno quando é desbloqueada pela primeira vez. O que está desbloqueado (e
+# quando) fica em PerfilAluno.conquistas: {id: data ISO}.
+CONQUISTAS = [
+    {'id': 'primeira_pegada', 'nome': 'Primeira Pegada', 'icone': '🐾',
+     'frase': 'Completa o teu 1.º quiz.', 'xp': 10,
+     'condicao': lambda ctx: ctx['total_quizzes'] >= 1},
+    {'id': 'rato_lab', 'nome': 'Rato de Laboratório', 'icone': '🐭',
+     'frase': 'Completa 5 quizzes.', 'xp': 30,
+     'condicao': lambda ctx: ctx['total_quizzes'] >= 5},
+    {'id': 'chama_acesa', 'nome': 'Chama Acesa', 'icone': '🔥',
+     'frase': 'Estuda 3 dias seguidos.', 'xp': 20,
+     'condicao': lambda ctx: ctx['sequencia'] >= 3},
+    {'id': 'missao_cumprida', 'nome': 'Missão Cumprida', 'icone': '🎯',
+     'frase': 'Completa todas as etapas de uma missão.', 'xp': 50,
+     'condicao': lambda ctx: ctx['missao_completa']},
+    {'id': 'em_cheio', 'nome': 'Em Cheio', 'icone': '💯',
+     'frase': 'Tira 100% num quiz.', 'xp': 40,
+     'condicao': lambda ctx: ctx['nota_maxima']},
+    {'id': 'dei_a_volta', 'nome': 'Dei a Volta', 'icone': '🔄',
+     'frase': 'Tira uma nota maior do que na tentativa anterior do mesmo quiz.', 'xp': 25,
+     'condicao': lambda ctx: ctx['melhorou']},
+]
+
+
+def lista_conquistas(perfil):
+    """CONQUISTAS com o estado deste aluno, para as páginas Perfil/Conquistas."""
+    desbloqueadas = (perfil.conquistas if perfil is not None else None) or {}
+    # Barra de progresso nas que se medem a contar: quizzes feitos e dias seguidos.
+    metas = {'primeira_pegada': 1, 'rato_lab': 5, 'chama_acesa': 3}
+    atuais = {}
+    if perfil is not None and any(not desbloqueadas.get(i) for i in metas):
+        atuais['primeira_pegada'] = atuais['rato_lab'] = ResultadoAvaliacao.objects.filter(user=perfil.user).count()
+        atuais['chama_acesa'] = perfil.calcular_sequencia()[0]
+    lista = []
+    for c in CONQUISTAS:
+        desbloqueada = bool(desbloqueadas.get(c['id']))
+        item = {
+            'id': c['id'], 'nome': c['nome'], 'icone': c['icone'], 'descricao': c['frase'],
+            'frase': c['frase'], 'xp': c['xp'], 'desbloqueada': desbloqueada, 'progresso': None,
+        }
+        if not desbloqueada and c['id'] in atuais:
+            meta = metas[c['id']]
+            atual = min(atuais[c['id']], meta)
+            item['progresso'] = {'atual': atual, 'meta': meta, 'percent': round(atual / meta * 100)}
+        lista.append(item)
+    return lista
+
+
+def verificar_conquistas(perfil, resultados=None):
+    """Vê quais conquistas ainda bloqueadas o aluno já merece, desbloqueia-as,
+    soma o XP e devolve as novas. Também as regista para
+    ConquistasAvisoMiddleware as passar ao browser (aviso "Nova
+    conquista: ...")."""
+    desbloqueadas = dict(perfil.conquistas or {})
+    pendentes = [c for c in CONQUISTAS if not desbloqueadas.get(c['id'])]
+    if not pendentes:
+        return []
+
+    melhorou = False
+    if resultados is None:
+        # Sem resultado "novo" (ex: ao abrir o Perfil): olha para todo o
+        # histórico do aluno, para as conquistas que já merecia antes de
+        # elas existirem ficarem desbloqueadas.
+        resultados = list(ResultadoAvaliacao.objects.filter(user=perfil.user).order_by('criado_em', 'pk'))
+        ultima_nota = {}
+        for resultado in resultados:
+            anterior = ultima_nota.get(resultado.identificador)
+            if anterior is not None and resultado.nota_percentagem > anterior:
+                melhorou = True
+            ultima_nota[resultado.identificador] = resultado.nota_percentagem
+    else:
+        for resultado in resultados:
+            anterior = (
+                ResultadoAvaliacao.objects
+                .filter(user=perfil.user, identificador=resultado.identificador)
+                .exclude(pk=resultado.pk).order_by('-criado_em', '-pk').first()
+            )
+            if anterior is not None and resultado.nota_percentagem > anterior.nota_percentagem:
+                melhorou = True
+    ctx = {
+        'total_quizzes': ResultadoAvaliacao.objects.filter(user=perfil.user).count(),
+        'sequencia': perfil.calcular_sequencia()[0],
+        'missao_completa': any(int(v) >= 100 for v in (perfil.progresso_missoes or {}).values()),
+        'nota_maxima': any(r.nota_percentagem >= 99.99 for r in resultados),
+        'melhorou': melhorou,
+    }
+
+    novas = [c for c in pendentes if c['condicao'](ctx)]
+    if not novas:
+        return []
+    agora = timezone.now().isoformat()
+    for c in novas:
+        desbloqueadas[c['id']] = agora
+    perfil.conquistas = desbloqueadas
+    perfil.pontos_xp += sum(c['xp'] for c in novas)
+    perfil.nivel = perfil.pontos_xp // 100 + 1
+    perfil.save(update_fields=['conquistas', 'pontos_xp', 'nivel'])
+
+    avisos = [{'id': c['id'], 'nome': c['nome'], 'icone': c['icone'], 'xp': c['xp']} for c in novas]
+    registar_aviso_conquistas(avisos)
+    return avisos
+
+
+def registar_resultado(user, tipo, identificador, unidade, nota_percentagem, verificar=True):
+    resultado = ResultadoAvaliacao.objects.create(
         user=user, tipo=tipo, identificador=identificador,
         unidade=unidade or '', nota_percentagem=nota_percentagem,
     )
     registar_atividade(user)
+    if verificar:
+        try:
+            verificar_conquistas(PerfilAluno.objects.get(user=user), [resultado])
+        except (PerfilAluno.DoesNotExist, OperationalError):
+            pass
+    return resultado
 
 
 def redirecionar_apos_autenticacao(user):
@@ -167,12 +279,16 @@ def pagina_perfil(request):
             'categoria': 'Energia, Fenómenos Térmicos e Radiação',
             'descricao': 'Temperatura, calor, condução, convecção, radiação e as leis da termodinâmica.',
         },
+        '11-descrever-o-movimento': {
+            'categoria': 'Mecânica',
+            'descricao': 'Estás parado ou em movimento? Depende de quem vê. Referencial, posição, deslocamento, velocidade e como ler gráficos posição-tempo e velocidade-tempo.',
+        },
         '11-movimento-e-interacoes': {
-            'categoria': 'Movimento e Interações',
+            'categoria': 'Mecânica',
             'descricao': 'Referenciais, posição, velocidade, as quatro interações fundamentais e as leis de Newton.',
         },
         '11-forcas-e-movimentos': {
-            'categoria': 'Forças e Movimentos',
+            'categoria': 'Mecânica',
             'descricao': 'Gráficos v-t, queda livre, planos inclinados, velocidade terminal e satélites.',
         },
         '11-sinais-ondas-som': {
@@ -330,24 +446,15 @@ def pagina_perfil(request):
     # está mesmo a explorar agora (mais progresso primeiro).
     missoes.sort(key=lambda missao: (missao['percent'] >= 100, -missao['percent']))
 
-    definicoes_conquistas = [
-        {'id': 'primeira-missao', 'nome': 'Primeiros Passos', 'icone': '🌱', 'descricao': 'Conclui a tua primeira missão.'},
-        {'id': 'fotossintese-mestre', 'nome': 'Mestre da Fotossíntese', 'icone': '🌿', 'descricao': 'Termina o capítulo da Fotossíntese a 100%.'},
-        {'id': 'sequencia-3-dias', 'nome': 'Em Chamas', 'icone': '🔥', 'descricao': 'Estuda 3 dias seguidos.'},
-        {'id': 'sequencia-7-dias', 'nome': 'Semana Perfeita', 'icone': '⭐', 'descricao': 'Estuda 7 dias seguidos.'},
-        {'id': 'nivel-5', 'nome': 'Explorador Veterano', 'icone': '🏅', 'descricao': 'Atinge o nível 5.'},
-        {'id': 'primeiro-teste-ouro', 'nome': 'Emblema de Ouro', 'icone': '🥇', 'descricao': 'Consegue emblema de ouro num teste final.'},
-    ]
-    conquistas_lista = [
-        {**definicao, 'desbloqueada': bool(badges.get(definicao['id']))}
-        for definicao in definicoes_conquistas
-    ]
+    if not perfil_legacy:
+        verificar_conquistas(perfil)
+    conquistas_lista = lista_conquistas(None if perfil_legacy else perfil)
 
     # Separador "Estatísticas" do perfil: mesmos dados de pagina_estatisticas
     # (ver calcular_dados_estatisticas), só que aqui dentro de um separador
     # em vez de página à parte. perfil_legacy não tem os campos que essa
     # função precisa (vocabulario_estado, etc.), por isso fica de fora.
-    dados_estatisticas = {} if perfil_legacy else calcular_dados_estatisticas(request, perfil)
+    dados_estatisticas = {} if perfil_legacy else calcular_dados_estatisticas(request, perfil, disciplina_atual, missoes)
 
     # "Atividade Recente" (separador Estatísticas): eventos reais, não
     # progresso estático — ResultadoAvaliacao já guarda um histórico com
@@ -357,7 +464,11 @@ def pagina_perfil(request):
     # livro roxo, quiz = alvo azul, teste/exame = folha rosa).
     nomes_unidades = {unidade['id']: unidade['nome'] for unidade in UNIDADES_BIBLIOTECA}
     atividade_recente = []
-    for resultado in ResultadoAvaliacao.objects.filter(user=request.user).order_by('-criado_em')[:10]:
+    categoria_por_missao = {m['id']: m['categoria'] for m in missoes}
+    for resultado in ResultadoAvaliacao.objects.filter(user=request.user).order_by('-criado_em')[:60]:
+        subjects, _ = _subjects_e_categoria_resultado(resultado, categoria_por_missao)
+        if disciplina_atual not in subjects:
+            continue
         unidade_nome = nomes_unidades.get(resultado.unidade, '')
         if resultado.tipo == 'missao_seccao':
             missao_id = resultado.identificador.split(':')[0]
@@ -365,12 +476,14 @@ def pagina_perfil(request):
             atividade_recente.append({
                 'categoria': 'quiz',
                 'titulo': f'Quiz — {titulo_missao or unidade_nome or "missão"}',
-                'subtitulo': unidade_nome,
+                'subtitulo': unidade_nome or categoria_por_missao.get(missao_id, ''),
                 'percent': round(resultado.nota_percentagem),
                 'criado_em': resultado.criado_em,
             })
         else:
             rotulo = 'Exame' if resultado.tipo == 'exame' else 'Teste'
+            if not unidade_nome and resultado.tipo == 'teste':
+                unidade_nome = _info_testes().get(resultado.identificador, ('', ''))[0]
             atividade_recente.append({
                 'categoria': 'teste',
                 'titulo': f'{rotulo} de {unidade_nome}' if unidade_nome else rotulo,
@@ -379,7 +492,7 @@ def pagina_perfil(request):
                 'criado_em': resultado.criado_em,
             })
     for missao in missoes:
-        if missao['percent'] >= 100:
+        if missao['percent'] >= 100 and obter_subject_da_missao(missao['id']) == disciplina_atual:
             atividade_recente.append({
                 'categoria': 'missao',
                 'titulo': missao['titulo'],
@@ -403,7 +516,7 @@ def pagina_perfil(request):
         'missoes_completas': sum(1 for missao in missoes if missao['percent'] >= 100),
         'conquistas': badges,
         'conquistas_lista': conquistas_lista,
-        'total_conquistas': sum(1 for desbloqueada in badges.values() if desbloqueada),
+        'total_conquistas': sum(1 for c in conquistas_lista if c['desbloqueada']),
         'missoes': missoes,
         'titulo_nome': titulo_nome,
         'titulo_icone': titulo_icone,
@@ -674,7 +787,88 @@ def _quizzes_por_missao(user):
     return pontos
 
 
-def calcular_dados_estatisticas(request, perfil):
+def _info_testes():
+    """teste_id -> (categoria, disciplina do subject-switcher), a partir de
+    MISSOES_TESTES e CATEGORIA_TESTES_DISCIPLINA."""
+    info = {}
+    for missao in MISSOES_TESTES:
+        categoria = missao['categoria']
+        subject = CATEGORIA_TESTES_DISCIPLINA.get(categoria, 'biology')
+        for teste in missao['testes']:
+            if teste.get('teste_id'):
+                info[teste['teste_id']] = (categoria, subject)
+    return info
+
+
+def _subjects_e_categoria_resultado(resultado, categoria_por_missao):
+    """Disciplina(s) do subject-switcher e capítulo (categoria) a que um
+    ResultadoAvaliacao pertence — usado para filtrar a atividade recente e
+    as estatísticas do perfil pela disciplina escolhida em "Explore X"."""
+    if resultado.tipo == 'missao_seccao':
+        missao_id = resultado.identificador.split(':')[0]
+        return {obter_subject_da_missao(missao_id)}, categoria_por_missao.get(missao_id)
+    if resultado.tipo == 'exame':
+        if resultado.identificador.startswith('biologia-geologia'):
+            return {'biology', 'geology'}, None
+        return {'physics', 'chemistry'}, None
+    categoria, subject = _info_testes().get(resultado.identificador, (None, None))
+    if subject is None:
+        subject = 'geology' if UNIDADE_ID_PARA_DISCIPLINA.get(resultado.unidade) == 'Geologia' else 'biology'
+    return {subject}, categoria
+
+
+def _desempenho_por_categoria(user, subject, missoes_perfil):
+    """Desempenho por capítulo para Física/Química/Geologia, onde os
+    capítulos são as categorias das missões (as unidades da Biblioteca só
+    cobrem Biologia). Mesmo formato de _progresso_missoes_por_unidade e
+    companhia, para o stats-desempenho.js desenhar tudo igual."""
+    missoes_subject = [m for m in missoes_perfil if obter_subject_da_missao(m['id']) == subject]
+    categoria_por_missao = {m['id']: m['categoria'] for m in missoes_perfil}
+    categorias = list(dict.fromkeys(m['categoria'] for m in missoes_subject))
+
+    notas_por_categoria = defaultdict(list)
+    notas_por_missao = defaultdict(list)
+    for resultado in ResultadoAvaliacao.objects.filter(user=user):
+        subjects, categoria = _subjects_e_categoria_resultado(resultado, categoria_por_missao)
+        if subject not in subjects:
+            continue
+        if categoria:
+            notas_por_categoria[categoria].append(resultado.nota_percentagem)
+        if resultado.tipo == 'missao_seccao':
+            notas_por_missao[resultado.identificador.split(':')[0]].append(resultado.nota_percentagem)
+
+    missoes_pontos, quizzes_pontos = [], []
+    for categoria in categorias:
+        percentagens = [m['percent'] for m in missoes_subject if m['categoria'] == categoria]
+        percent = round(sum(percentagens) / len(percentagens))
+        missoes_pontos.append({
+            'id': categoria, 'label': categoria, 'percent': percent,
+            'cor': '#1f8a5b', 'sem_dados': False, 'valor_label': f'{percent}%',
+        })
+        notas = notas_por_categoria.get(categoria)
+        if notas:
+            media = round(sum(notas) / len(notas))
+            quizzes_pontos.append({
+                'id': categoria, 'label': categoria, 'percent': media,
+                'cor': _cor_desempenho(media), 'sem_dados': False, 'valor_label': f'{media}%',
+            })
+        else:
+            quizzes_pontos.append({
+                'id': categoria, 'label': categoria, 'percent': 0,
+                'cor': '#c7cbd1', 'sem_dados': True, 'valor_label': 'Sem dados',
+            })
+
+    por_missao = []
+    for missao_id, notas in notas_por_missao.items():
+        media = round(sum(notas) / len(notas))
+        por_missao.append({
+            'id': missao_id, 'label': _titulo_missao(missao_id), 'percent': media,
+            'cor': _cor_desempenho(media), 'sem_dados': False, 'valor_label': f'{media}%',
+        })
+    return {'missoes': missoes_pontos, 'quizzes_capitulo': quizzes_pontos, 'quizzes_missao': por_missao}
+
+
+def calcular_dados_estatisticas(request, perfil, subject='biology', missoes_perfil=None):
     """Progresso pessoal do aluno — nunca comparações com outros alunos
     (sem rankings nem percentis aqui, ver Templates/estatisticas.html).
     Reaproveitado por pagina_estatisticas e pelo separador "Estatísticas"
@@ -706,11 +900,14 @@ def calcular_dados_estatisticas(request, perfil):
     #    missão dentro do capítulo escolhido pelo aluno (só quizzes de
     #    secção de missão, não testes/exames — esses não pertencem a
     #    nenhuma missão em concreto).
-    desempenho_periodos = {
-        'missoes': _progresso_missoes_por_unidade(perfil),
-        'quizzes_capitulo': _quizzes_por_unidade(request.user),
-        'quizzes_missao': _quizzes_por_missao(request.user),
-    }
+    if subject == 'biology' or missoes_perfil is None:
+        desempenho_periodos = {
+            'missoes': _progresso_missoes_por_unidade(perfil),
+            'quizzes_capitulo': _quizzes_por_unidade(request.user),
+            'quizzes_missao': _quizzes_por_missao(request.user),
+        }
+    else:
+        desempenho_periodos = _desempenho_por_categoria(request.user, subject, missoes_perfil)
 
     # (c) Hábitos de estudo — tempo somado dos últimos 7 dias (hoje
     # incluído) e sequência de dias seguidos (ver PerfilAluno.calcular_sequencia).
@@ -737,7 +934,11 @@ def calcular_dados_estatisticas(request, perfil):
     # aluno da Biblioteca do Explorador (ver aplicar_estado_vocabulario_aluno),
     # só somado nas 5 unidades em vez de mostrado unidade a unidade.
     vocab_totais = {'dominado': 0, 'a_rever': 0, 'novo': 0}
-    for unidade in UNIDADES_BIBLIOTECA_BIOLOGIA:
+    unidades_vocab = {
+        'biology': UNIDADES_BIBLIOTECA_BIOLOGIA,
+        'geology': [u for u in UNIDADES_BIBLIOTECA if u['disciplina'] == 'Geologia'],
+    }.get(subject, [])
+    for unidade in unidades_vocab:
         termos = aplicar_estado_vocabulario_aluno(perfil, unidade['id'], carregar_termos_unidade(unidade['id']))
         for termo in termos:
             vocab_totais[termo['estado']] = vocab_totais.get(termo['estado'], 0) + 1
@@ -1199,6 +1400,7 @@ def salvar_progresso_missao(request):
         progresso[mission_id] = percentage
     perfil.progresso_missoes = progresso
     update_fields = ['progresso_missoes']
+    resultados_novos = []
 
     section_scores = progress.get('sectionScores')
     if isinstance(section_scores, dict) and mission_id != 'profile':
@@ -1218,10 +1420,10 @@ def salvar_progresso_missao(request):
         unidade = MISSAO_ID_PARA_UNIDADE.get(mission_id, '')
         for secao_id, score in secoes[mission_id].items():
             if secoes_antigas.get(secao_id) != score:
-                registar_resultado(
+                resultados_novos.append(registar_resultado(
                     request.user, 'missao_seccao', f'{mission_id}:{secao_id}',
-                    unidade, float(score),
-                )
+                    unidade, float(score), verificar=False,
+                ))
 
     # Em que disciplina gravar este XP — ver static/profile-xp.js (manda-a
     # no corpo do pedido) e DISCIPLINA_MISSAO_PARA_SUBJECT acima. 'biology'
@@ -1244,6 +1446,8 @@ def salvar_progresso_missao(request):
         update_fields.extend(['pontos_xp', 'nivel'] if disciplina == 'biology' else ['xp_disciplinas'])
 
     perfil.save(update_fields=update_fields)
+    if mission_id != 'profile' and (resultados_novos or percentage >= 100):
+        verificar_conquistas(perfil, resultados_novos)
 
     return JsonResponse({
         'ok': True,
@@ -1496,7 +1700,7 @@ CATEGORIA_TESTES_IMAGENS = {
     'Energia e Movimentos': 'images/Energia e movimentos.png',
     'Energia e Fenómenos Elétricos': 'images/Energia e fenómenos elétricos.png',
     'Energia, Fenómenos Térmicos e Radiação': 'images/Fenómenos térmicos e radiação.png',
-    'Movimento e Interações': 'images/Movimentos e interações.png',
+    'Mecânica': 'images/Movimentos e interações.png',
     'Sinais, Ondas e Som': 'images/Sinais e ondas.png',
     'Eletromagnetismo': 'images/Eletromagnetismo.png',
     # As 7 categorias de Física do 12º ano (Cinemática e Dinâmica 2D, Centro
@@ -1548,7 +1752,7 @@ CATEGORIA_TESTES_DISCIPLINA = {
     'Energia e Movimentos': 'physics',
     'Energia e Fenómenos Elétricos': 'physics',
     'Energia, Fenómenos Térmicos e Radiação': 'physics',
-    'Movimento e Interações': 'physics',
+    'Mecânica': 'physics',
     'Sinais, Ondas e Som': 'physics',
     'Eletromagnetismo': 'physics',
     'Cinemática e Dinâmica 2D': 'physics',
@@ -1617,7 +1821,7 @@ CATEGORIA_TESTES_ANO = {
     'Energia e Movimentos': '10',
     'Energia e Fenómenos Elétricos': '10',
     'Energia, Fenómenos Térmicos e Radiação': '10',
-    'Movimento e Interações': '11',
+    'Mecânica': '11',
     'Sinais, Ondas e Som': '11',
     'Eletromagnetismo': '11',
     'Cinemática e Dinâmica 2D': '12',
@@ -1728,8 +1932,9 @@ _TESTES_EM_BREVE = [
     ('Produção de Alimentos e Sustentabilidade', 'Produção de Alimentos e Sustentabilidade'),
     ('Energia e Fenómenos Elétricos', 'Energia e Fenómenos Elétricos'),
     ('Energia, Fenómenos Térmicos e Radiação', 'Energia, Fenómenos Térmicos e Radiação'),
-    ('Movimento e Interações', 'Movimento e Interações'),
-    ('Movimento e Interações', 'Forças e Movimentos'),
+    ('Mecânica', 'Tempo, posição, velocidade e aceleração'),
+    ('Mecânica', 'Movimento e Interações'),
+    ('Mecânica', 'Forças e Movimentos'),
     ('Sinais, Ondas e Som', 'Sinais, Ondas e Som'),
     ('Eletromagnetismo', 'Eletromagnetismo'),
     ('Eletromagnetismo', 'Ondas Eletromagnéticas'),
@@ -1823,6 +2028,220 @@ def encontrar_config_teste(teste_id):
     return None
 
 
+# Capítulos e missões exatamente como em index-missions.html (nome, ordem e
+# "(Xº ano)"), para a página de Testes mostrar o mesmo que a das Missões.
+# Atualiza aqui sempre que mudares capítulos/missões lá.
+ORDEM_CAPITULOS_MISSOES = [
+    ('Biodiversidade', [
+        'Diversidade e Organização Biológica (10º ano)',
+        'Células e Organelos (10º ano)',
+        'Biomoléculas (10º ano)',
+    ]),
+    ('Ecologia', [
+        'Ecossistemas (10º ano)',
+    ]),
+    ('Obtenção de Matéria', [
+        'Membrana Celular e Transporte Transmembranar (10º ano)',
+        'Fotossíntese (10º ano)',
+        'Obtenção de Matéria pelos Seres Heterotróficos (10º ano)',
+    ]),
+    ('Corpo Humano', [
+        'Sistema Nervoso e Hormonal (10º ano)',
+    ]),
+    ('Distribuição de Matéria', [
+        'Xilema e Floema (10º ano)',
+        'Transporte nos Animais (10º ano)',
+    ]),
+    ('Botânica', [
+        'Fisiologia Vegetal (10º ano)',
+    ]),
+    ('Transformação e Utilização de Energia', [
+        'Respiração Aeróbia e Fermentação (10º ano)',
+        'Trocas Gasosas (10º ano)',
+    ]),
+    ('Crescimento, Renovação e Diferenciação Celular', [
+        'O Código da Vida (10º e 11º ano)',
+        'Síntese Proteica (11º ano)',
+        'Ciclo Celular (11º ano)',
+        'Mitose (11º ano)',
+    ]),
+    ('Reprodução', [
+        'Meiose e Reprodução Sexuada (11º ano)',
+        'Reprodução Assexuada (11º ano)',
+        'Ciclos de Vida (11º ano)',
+    ]),
+    ('Evolução', [
+        'A Origem da Célula Eucariótica (11º ano)',
+        'Lamarckismo e Darwinismo (11º ano)',
+    ]),
+    ('Sistemática dos Seres Vivos', [
+        'Taxonomia e Sistemática (11º ano)',
+    ]),
+    ('Reprodução e Manipulação da Fertilidade', [
+        'Gametogénese e Fecundação (12º ano)',
+        'Manipulação da Fertilidade (12º ano)',
+    ]),
+    ('Património Genético', [
+        'Mendel e a Hereditariedade (12º ano)',
+        'Engenharia Genética (12º ano)',
+    ]),
+    ('Imunidade e Controlo de Doenças', [
+        'O Sistema Imunitário (12º ano)',
+        'Desequilíbrios Imunitários e Biotecnologia (12º ano)',
+    ]),
+    ('Produção de Alimentos e Sustentabilidade', [
+        'Microrganismos e Produção de Alimentos (12º ano)',
+        'Conservação, OGM e Controlo de Pragas (12º ano)',
+    ]),
+    ('Energia e Movimentos', [
+        'Energia e Movimentos (10º ano)',
+    ]),
+    ('Energia e Fenómenos Elétricos', [
+        'Energia e Fenómenos Elétricos (10º ano)',
+    ]),
+    ('Energia, Fenómenos Térmicos e Radiação', [
+        'Energia, Fenómenos Térmicos e Radiação (10º ano)',
+    ]),
+    ('Mecânica', [
+        'Tempo, Posição, Velocidade e Aceleração (11º ano)',
+        'Movimento e Interações (11º ano)',
+        'Forças e Movimentos (11º ano)',
+    ]),
+    ('Sinais, Ondas e Som', [
+        'Sinais, Ondas e Som (11º ano)',
+    ]),
+    ('Eletromagnetismo', [
+        'Eletromagnetismo (11º ano)',
+        'Ondas Eletromagnéticas (11º ano)',
+    ]),
+    ('Cinemática e Dinâmica 2D', [
+        'Cinemática e Dinâmica 2D (12º ano)',
+    ]),
+    ('Centro de Massa e Momento Linear', [
+        'Centro de Massa e Momento Linear (12º ano)',
+    ]),
+    ('Fluidos', [
+        'Fluidos (12º ano)',
+    ]),
+    ('Campo Gravítico', [
+        'Campo Gravítico (12º ano)',
+    ]),
+    ('Campo Elétrico', [
+        'Campo Elétrico (12º ano)',
+    ]),
+    ('Campo Magnético', [
+        'Campo Magnético (12º ano)',
+    ]),
+    ('Física Moderna', [
+        'Física Moderna (12º ano)',
+    ]),
+    ('Massa e Tamanho dos Átomos', [
+        'Massa e tamanho dos átomos (10º ano)',
+    ]),
+    ('Energia dos Eletrões', [
+        'Energia dos eletrões nos átomos (10º ano)',
+    ]),
+    ('Tabela Periódica', [
+        'Tabela Periódica (10º ano)',
+    ]),
+    ('Ligação Química', [
+        'Ligação química (10º ano)',
+    ]),
+    ('Gases e Dispersões', [
+        'Gases e dispersões (10º ano)',
+    ]),
+    ('Transformações Químicas', [
+        'Transformações químicas (10º ano)',
+    ]),
+    ('Aspetos Quantitativos das Reações', [
+        'Aspetos quantitativos das reações químicas (11º ano)',
+    ]),
+    ('Equilíbrio Químico', [
+        'Equilíbrio químico e extensão das reações (11º ano)',
+    ]),
+    ('Reações Ácido-Base', [
+        'Reações ácido-base (11º ano)',
+    ]),
+    ('Oxidação-Redução', [
+        'Reações de oxidação-redução (11º ano)',
+    ]),
+    ('Soluções e Solubilidade', [
+        'Soluções e equilíbrio de solubilidade (11º ano)',
+    ]),
+    ('Estrutura e Propriedades dos Metais', [
+        'Estrutura e propriedades dos metais (12º ano)',
+    ]),
+    ('Corrosão, Pilhas e Proteção', [
+        'Degradação dos metais: corrosão, pilhas e proteção (12º ano)',
+    ]),
+    ('Metais, Ambiente e Vida', [
+        'Metais, ambiente e vida (12º ano)',
+    ]),
+    ('Combustíveis Fósseis', [
+        'Combustíveis fósseis (12º ano)',
+    ]),
+    ('A Energia dos Combustíveis', [
+        'De onde vem a energia dos combustíveis (12º ano)',
+    ]),
+    ('Plásticos, Vidros e Novos Materiais', [
+        'Plásticos, vidros e novos materiais (12º ano)',
+    ]),
+    ('Geologia e Métodos', [
+        'A Terra Como Sistema e as Rochas (10º ano)',
+        'Métodos e Raciocínio Geológico (10º ano)',
+        'O Tempo Geológico (10º ano)',
+        'Tectónica de Placas (10º ano)',
+    ]),
+    ('A Terra, um Planeta Único', [
+        'Origem da Terra e do Sistema Solar (10º ano)',
+    ]),
+    ('Estrutura e Dinâmica da Geosfera', [
+        'Vulcanologia (10º ano)',
+        'Sismologia (10º ano)',
+        'O Interior da Terra (10º ano)',
+    ]),
+    ('Ocupação Antrópica e Ordenamento do Território', [
+        'Riscos Geológicos e Ordenamento do Território (11º ano)',
+    ]),
+    ('Minerais', [
+        'Minerais (11º ano)',
+    ]),
+    ('Sedimentação e Rochas Sedimentares', [
+        'Rochas Sedimentares (11º ano)',
+        'Ambientes Sedimentares e Fósseis (11º ano)',
+    ]),
+    ('Magmatismo e Rochas Magmáticas', [
+        'Rochas Magmáticas (11º ano)',
+    ]),
+    ('Deformação de Rochas', [
+        'Deformação das Rochas (11º ano)',
+    ]),
+    ('Metamorfismo e Rochas Metamórficas', [
+        'Rochas Metamórficas (11º ano)',
+    ]),
+    ('Exploração Sustentada de Recursos Geológicos', [
+        'Exploração Sustentada de Recursos Geológicos (11º ano)',
+    ]),
+    ('Da Deriva dos Continentes à Tectónica de Placas', [
+        'Deriva Continental e Expansão dos Fundos Oceânicos (12º ano)',
+        'Dinâmica da Litosfera e Isostasia (12º ano)',
+        'Orogenias, Riftes e Modelação das Paisagens (12º ano)',
+    ]),
+    ('A História da Terra e da Vida', [
+        'Tempo Geológico e Cronostratigrafia (12º ano)',
+        'A História da Vida: do Pré-Câmbrico ao Cenozoico (12º ano)',
+        'Evolução Paleogeográfica (12º ano)',
+        'Cartografia Geológica (12º ano)',
+        'Geologia de Portugal (12º ano)',
+    ]),
+    ('A Terra Ontem, Hoje e Amanhã', [
+        'Paleoclimas e Mudanças Ambientais (12º ano)',
+        'Mudanças Climáticas e Cenários para o Século XXI (12º ano)',
+        'Recursos Geoambientais e Contaminação (12º ano)',
+    ]),
+]
+
+
 def montar_categorias_testes(plano_aluno):
     categorias = {}
     for missao in MISSOES_TESTES:
@@ -1841,16 +2260,46 @@ def montar_categorias_testes(plano_aluno):
                 'url': reverse(teste.get('rota', 'teste-fotossintese'), args=[teste['teste_id']]) if disponivel else None,
             })
         categorias.setdefault(missao['categoria'], []).append({**missao, 'testes': testes})
+    def base(titulo):
+        return re.sub(r'\s*\([^)]*ano\)\s*$', '', titulo).strip().lower()
+
+    def alinhar(nome, missoes):
+        # Mesmos nomes (com "(Xº ano)"), missões e ordem que em index-missions.html;
+        # missão que ainda não tem testes escritos aparece com os 3 a "Em breve".
+        canonicas = dict(ORDEM_CAPITULOS_MISSOES).get(nome)
+        if canonicas is None:
+            return missoes
+        por_base = {base(m['titulo']): m for m in missoes}
+        resultado = []
+        for titulo in canonicas:
+            existente = por_base.get(base(titulo))
+            if existente is not None:
+                resultado.append({**existente, 'titulo': titulo})
+            else:
+                resultado.append({
+                    'categoria': nome, 'titulo': titulo, 'meta': [], 'correcao': '',
+                    'testes': [
+                        {'titulo': 'Teste 1', 'plano': 'free', 'disponivel': False, 'desbloqueado': True, 'url': None},
+                        {'titulo': 'Teste 2', 'plano': 'pro', 'disponivel': False, 'desbloqueado': plano_aluno == 'pro', 'url': None},
+                        {'titulo': 'Teste 3', 'plano': 'pro', 'disponivel': False, 'desbloqueado': plano_aluno == 'pro', 'url': None},
+                    ],
+                })
+        return resultado
+
+    ordem = [nome for nome, _ in ORDEM_CAPITULOS_MISSOES if nome in categorias]
+    ordem += [nome for nome in categorias if nome not in ordem]
     return [
         {
             'nome': nome,
-            'missoes': missoes,
-            'imagem': CATEGORIA_TESTES_IMAGENS.get(nome, 'images/Biology image.jpg'),
+            'missoes': alinhar(nome, categorias[nome]),
+            # Sem imagem própria (ex: Geologia) o painel também não tem imagem
+            # em index-missions.html — aqui fica igual, sem imagem de recurso.
+            'imagem': CATEGORIA_TESTES_IMAGENS.get(nome),
             'imagem_contain': nome in CATEGORIA_TESTES_IMAGENS_CONTAIN,
             'disciplina': CATEGORIA_TESTES_DISCIPLINA.get(nome, 'biology'),
             'ano': CATEGORIA_TESTES_ANO.get(nome),
         }
-        for nome, missoes in categorias.items()
+        for nome in ordem
     ]
 
 
@@ -4399,7 +4848,12 @@ def pagina_resumo_detalhe(request, resumo_id):
 
 
 def pagina_Conquistas(request):
-    return render(request, 'Conquistas.html')
+    try:
+        perfil, _ = PerfilAluno.objects.get_or_create(user=request.user)
+        verificar_conquistas(perfil)
+    except OperationalError:
+        perfil = None
+    return render(request, 'Conquistas.html', {'conquistas_lista': lista_conquistas(perfil)})
 
 
 @login_required(login_url='login')

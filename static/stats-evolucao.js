@@ -101,6 +101,20 @@
         });
     }
 
+    // Arranca na disciplina escolhida em "Explore X" (e não sempre em Biologia).
+    const disciplinaInicial = {
+        biology: 'biologia', geology: 'geologia', physics: 'fisica', chemistry: 'quimica',
+    }[window.exploreDisciplinaAtual];
+    const opcaoInicial = disciplinaInicial
+        && disciplinaMenu.querySelector(`[data-disciplina="${disciplinaInicial}"]`);
+    if (opcaoInicial) {
+        disciplinaAtual = disciplinaInicial;
+        disciplinaMenu.querySelectorAll('button').forEach((item) => item.classList.remove('is-active'));
+        opcaoInicial.classList.add('is-active');
+        if (disciplinaLabel) disciplinaLabel.textContent = opcaoInicial.textContent.trim();
+        renderizar();
+    }
+
     bindDropdown(disciplinaBtn, disciplinaMenu, (opcao) => {
         disciplinaAtual = opcao.dataset.disciplina;
         if (disciplinaLabel) disciplinaLabel.textContent = opcao.textContent.trim();
