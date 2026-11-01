@@ -1906,9 +1906,19 @@ CATEGORIA_TESTES_IMAGENS = {
     'Combustíveis Fósseis': 'images/Transformações químicas.png',
     'A Energia dos Combustíveis': 'images/Transformações químicas.png',
     'Plásticos, Vidros e Novos Materiais': 'images/Transformações químicas.png',
-    # As categorias de Geologia não têm imagem própria em index-missions.html
-    # (os painéis lá também não têm span de imagem) — ficam sem entrada
-    # aqui, caem no fallback genérico abaixo.
+    'Geologia e Métodos': 'images/geo_capa_geologia_metodos.jpg',
+    'A Terra, um Planeta Único': 'images/geo_capa_origem_terra_sistema_solar.jpg',
+    'Estrutura e Dinâmica da Geosfera': 'images/geo_capa_geosfera.jpg',
+    'Ocupação Antrópica e Ordenamento do Território': 'images/geo_capa_riscos_ordenamento.jpg',
+    'Minerais': 'images/geo_capa_minerais.jpg',
+    'Sedimentação e Rochas Sedimentares': 'images/geo_capa_rochas_sedimentares.jpg',
+    'Magmatismo e Rochas Magmáticas': 'images/geo_capa_rochas_magmaticas.jpg',
+    'Deformação de Rochas': 'images/geo_capa_deformacao_rochas.jpg',
+    'Metamorfismo e Rochas Metamórficas': 'images/geo_capa_rochas_metamorficas.jpg',
+    'Exploração Sustentada de Recursos Geológicos': 'images/geo_capa_recursos_geologicos.jpg',
+    # As 3 categorias de Geologia do 12º ano ainda não têm imagem própria
+    # em index-missions.html — ficam sem entrada aqui, caem no fallback
+    # genérico abaixo.
 }
 
 # Categorias cuja imagem usa background-size:contain em vez de cover (ver
@@ -1917,7 +1927,7 @@ CATEGORIA_TESTES_IMAGENS = {
 CATEGORIA_TESTES_IMAGENS_CONTAIN = {'Reações Ácido-Base'}
 # Imagens com rostos: posição vertical (background-position) para as cabeças não ficarem cortadas,
 # a mesma usada para o mesmo capítulo em index-missions.html.
-CATEGORIA_TESTES_IMAGENS_POSICAO = {'Evolução Biológica': 'center 24%', 'Reprodução': 'center 5%', 'Património Genético': 'center 3%'}
+CATEGORIA_TESTES_IMAGENS_POSICAO = {'Evolução Biológica': 'center 24%', 'Reprodução': 'center 5%', 'Património Genético': 'center 3%', 'Ocupação Antrópica e Ordenamento do Território': 'center bottom'}
 
 # Disciplina de cada categoria (ver data-subject em .missions-category,
 # tal como em index-missions.html) — usado pelo subject-switcher.js para
