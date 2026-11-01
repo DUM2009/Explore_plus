@@ -11758,11 +11758,11 @@ html.dark-mode .mascote-chat-input:focus {
 
     body.kim-body {
         overflow: hidden;
-        height: 100vh;
+        height: 100dvh;
     }
 
     body.kim-body .profile-main-shell {
-        height: 100vh;
+        height: 100dvh;
         overflow: hidden;
     }
 
