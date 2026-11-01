@@ -11766,6 +11766,16 @@ html.dark-mode .mascote-chat-input:focus {
         overflow: hidden;
     }
 
+    /* The 76px bottom padding reserved site-wide for the fixed mobile tab
+       bar (Perfil/Conquistas/Estatísticas — see body.shadcn-profile
+       .profile-main-shell further below) doesn't apply here: Kim has no
+       such bar, and the padding was leaving a blank gap below the chat.
+       Same specificity as that rule (one element + two classes each), so
+       it needs the extra .kim-body class on body to actually win. */
+    body.shadcn-profile.kim-body .profile-main-shell {
+        padding-bottom: 0;
+    }
+
     body.kim-body .profile-content {
         display: flex;
         flex-direction: column;
@@ -12284,11 +12294,33 @@ html.dark-mode .mascote-chat-input:focus {
         margin: 0;
     }
 
+    /* With the logo and the notifications bell both hidden on this page's
+       topbar (above), the hamburger would otherwise sit right after the
+       greeting text instead of at the row's far edge — the generic
+       site-wide rule (body.shadcn-profile .missions-topbar
+       .nav-drawer-toggle, pinning it left) still wins over the .kim-body
+       rule just above due to higher specificity, so it's overridden here
+       with the same specificity bumped via the extra .kim-body class on
+       body itself. */
+    body.shadcn-profile.kim-body .missions-topbar .nav-drawer-toggle {
+        order: 3;
+        margin-left: auto;
+    }
+
     .kim-topbar-greeting {
         display: block;
         font-weight: 700;
         font-size: 1.05rem;
         color: #1d2420;
+    }
+
+    html.dark-mode .kim-body .missions-topbar {
+        background: #111113;
+        border-bottom-color: #27272a;
+    }
+
+    html.dark-mode .kim-topbar-greeting {
+        color: #f4f4f5;
     }
 
     .kim-workspace {
