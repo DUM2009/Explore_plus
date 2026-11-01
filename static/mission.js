@@ -1474,6 +1474,7 @@ class MissionSystem {
                 body: JSON.stringify({
                     message: text,
                     missionTitle: this.mission.title,
+                    tipoContexto: 'missao',
                     sectionTitle: section?.title || '',
                     context,
                     history: historyBeforeThisMessage

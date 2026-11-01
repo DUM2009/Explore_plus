@@ -516,7 +516,7 @@ async function sendMascoteChatMessage() {
             credentials: 'same-origin',
             body: JSON.stringify({
                 message: text,
-                missionTitle: 'Perfil',
+                missionTitle: '',
                 sectionTitle: '',
                 context: '',
                 history: historyBeforeThisMessage,

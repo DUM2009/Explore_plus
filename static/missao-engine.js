@@ -1097,6 +1097,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     body: JSON.stringify({
                         message: text,
                         missionTitle: this.missao.titulo,
+                        tipoContexto: 'missao',
                         sectionTitle: section?.titulo || '',
                         context,
                         history: historyBeforeThisMessage

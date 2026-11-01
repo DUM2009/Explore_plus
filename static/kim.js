@@ -152,7 +152,7 @@
                 credentials: 'same-origin',
                 body: JSON.stringify({
                     message: text,
-                    missionTitle: 'Kim',
+                    missionTitle: '',
                     sectionTitle: '',
                     context: '',
                     history: historyBefore,
