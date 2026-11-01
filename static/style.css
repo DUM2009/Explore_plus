@@ -11794,6 +11794,13 @@ html.dark-mode .mascote-chat-input:focus {
         display: none;
     }
 
+    /* The sidebar stays permanently open on desktop (see .profile-sidebar
+       elsewhere), so the hamburger that opens it on mobile — now living in
+       .kim-chat-header, see below — has nothing to do here. */
+    .kim-chat-header-nav-toggle {
+        display: none;
+    }
+
     .kim-workspace {
         position: fixed;
         top: 0;
@@ -12273,54 +12280,16 @@ html.dark-mode .mascote-chat-input:focus {
         max-width: none;
     }
 
+    /* The "Olá, <nome>!" bar used to sit above the Kim header — removed
+       entirely now, the hamburger moved into .kim-chat-header instead (see
+       .kim-chat-header-nav-toggle below), so there's nothing left to show
+       here on mobile. */
     .kim-body .missions-topbar {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        min-height: 64px;
-        margin: 0;
-        padding: 8px 16px;
-        border-bottom: 1px solid #e6e8e6;
-        background: #f7f8f7;
-    }
-
-    .kim-body .missions-topbar-logo,
-    .kim-body .missions-topbar .header-icon-wrapper {
         display: none;
     }
 
-    .kim-body .missions-topbar .nav-drawer-toggle {
-        order: 0;
-        margin: 0;
-    }
-
-    /* With the logo and the notifications bell both hidden on this page's
-       topbar (above), the hamburger would otherwise sit right after the
-       greeting text instead of at the row's far edge — the generic
-       site-wide rule (body.shadcn-profile .missions-topbar
-       .nav-drawer-toggle, pinning it left) still wins over the .kim-body
-       rule just above due to higher specificity, so it's overridden here
-       with the same specificity bumped via the extra .kim-body class on
-       body itself. */
-    body.shadcn-profile.kim-body .missions-topbar .nav-drawer-toggle {
-        order: 3;
+    .kim-chat-header-nav-toggle {
         margin-left: auto;
-    }
-
-    .kim-topbar-greeting {
-        display: block;
-        font-weight: 700;
-        font-size: 1.05rem;
-        color: #1d2420;
-    }
-
-    html.dark-mode .kim-body .missions-topbar {
-        background: #111113;
-        border-bottom-color: #27272a;
-    }
-
-    html.dark-mode .kim-topbar-greeting {
-        color: #f4f4f5;
     }
 
     .kim-workspace {
