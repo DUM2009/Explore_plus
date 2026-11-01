@@ -49,6 +49,14 @@ services:
         sync: false
       - key: GOOGLE_OAUTH_CLIENT_SECRET
         sync: false
+      # Remetente, Reply-To e endereço do site usados nos emails (opcionais;
+      # para mudar para @exploremore.pt basta alterar aqui, sem mexer no código).
+      - key: DEFAULT_FROM_EMAIL
+        sync: false
+      - key: EMAIL_REPLY_TO
+        sync: false
+      - key: SITE_URL
+        sync: false
       # Email de "recuperar password" (ver enviar_email_brevo em views.py) —
       # mandado pela API HTTP da Brevo (brevo.com), não por SMTP direto: o
       # Render bloqueia ligações de saída em smtp.gmail.com:587 (e portas

@@ -264,6 +264,14 @@ BREVO_API_KEY = os.environ.get('BREVO_API_KEY', '')
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', EMAIL_SUPORTE)
 
+# Para onde vão as respostas aos emails enviados pelo site (o remetente pode
+# ser um endereço que ninguém lê). Muda-se por variável de ambiente.
+EMAIL_REPLY_TO = os.environ.get('EMAIL_REPLY_TO', 'exploremore.pt26@gmail.com')
+
+# Endereço público do site, usado nos links dos emails (ex.: https://exploremore.pt).
+# Sem valor, usa o endereço do pedido atual (request.build_absolute_uri).
+SITE_URL = os.environ.get('SITE_URL', '').rstrip('/')
+
 
 # Without this, Django's default LOGGING config only mails ADMINS on a 500
 # (which we don't have set up) — nothing is ever written to stdout/stderr,

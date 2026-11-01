@@ -23,6 +23,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.utils import timezone
+from django.utils.html import escape
 from .middleware import registar_aviso_conquistas
 from .models import (
     PerfilAluno, InqueritoAluno, obter_limite_chat, titulo_para_nivel,
@@ -1024,6 +1025,10 @@ def pagina_estatisticas(request):
     if perfil is None:
         return render(request, 'estatisticas.html', {'perfil': None})
 
+    # Estatísticas são exclusivas do plano Pro.
+    if perfil.plano != 'pro':
+        return redirect('superexplore')
+
     return render(request, 'estatisticas.html', {
         'perfil': perfil,
         **calcular_dados_estatisticas(request, perfil),
@@ -1132,6 +1137,8 @@ def enviar_email_brevo(destinatario, assunto, texto, html=None):
         'subject': assunto,
         'textContent': texto,
     }
+    if settings.EMAIL_REPLY_TO:
+        payload['replyTo'] = {'email': settings.EMAIL_REPLY_TO, 'name': 'Explore+'}
     if html:
         payload['htmlContent'] = html
     try:
@@ -1148,6 +1155,75 @@ def enviar_email_brevo(destinatario, assunto, texto, html=None):
         return resposta.ok
     except requests.RequestException:
         return False
+
+
+def montar_email_recuperacao(user, link):
+    """(assunto, texto simples, html) do email de recuperação da palavra-passe."""
+    primeiro_nome = (user.first_name or '').strip().split(' ')[0]
+    saudacao = f'Caro/a {primeiro_nome},' if primeiro_nome else 'Caro/a utilizador/a,'
+    assunto = 'Pedido de recuperação da palavra-passe — Explore+'
+
+    texto = (
+        f'{saudacao}\n\n'
+        'Recebemos um pedido para repor a palavra-passe da sua conta na Explore+.\n\n'
+        'Para definir uma nova palavra-passe, abra a ligação abaixo. '
+        'Esta ligação é válida durante algumas horas.\n\n'
+        f'{link}\n\n'
+        'Se não fez este pedido, pode ignorar este email. '
+        'A sua palavra-passe atual mantém-se válida.\n\n'
+        'Com os melhores cumprimentos,\n'
+        'A equipa Explore+\n'
+    )
+
+    saudacao_html = escape(saudacao)
+    link_html = escape(link)
+    verde = '#1f8a5b'
+    html = (
+        '<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8">'
+        '<meta name="viewport" content="width=device-width, initial-scale=1.0"></head>'
+        '<body style="margin:0;padding:0;background:#f4f6f4;">'
+        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f6f4;padding:24px 12px;">'
+        '<tr><td align="center">'
+        '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+        'style="max-width:520px;background:#ffffff;border-radius:16px;overflow:hidden;'
+        'font-family:Arial,Helvetica,sans-serif;color:#244a37;">'
+        f'<tr><td align="center" style="padding:26px 24px;border-bottom:3px solid {verde};">'
+        f'<span style="font-size:28px;font-weight:bold;letter-spacing:.5px;color:{verde};">Explore+</span>'
+        '</td></tr>'
+        '<tr><td align="center" style="padding:32px 28px 8px;font-size:16px;line-height:1.6;">'
+        f'<p style="margin:0 0 16px;font-weight:bold;">{saudacao_html}</p>'
+        '<p style="margin:0 0 16px;">Recebemos um pedido para repor a palavra-passe da sua conta na Explore+.</p>'
+        '<p style="margin:0 0 8px;">Para definir uma nova palavra-passe, clique no botão abaixo. '
+        'Esta ligação é válida durante algumas horas.</p>'
+        '</td></tr>'
+        '<tr><td align="center" style="padding:20px 28px 28px;">'
+        f'<a href="{link_html}" style="background:{verde};color:#ffffff;padding:14px 32px;'
+        'border-radius:999px;text-decoration:none;font-weight:bold;font-size:16px;display:inline-block;">'
+        'Definir nova palavra-passe</a>'
+        '</td></tr>'
+        '<tr><td align="center" style="padding:0 28px 8px;font-size:13px;line-height:1.6;color:#6b7280;">'
+        '<p style="margin:0 0 6px;">Se o botão não funcionar, copie e cole o seguinte endereço no navegador:</p>'
+        f'<p style="margin:0;word-break:break-all;"><a href="{link_html}" style="color:{verde};">{link_html}</a></p>'
+        '</td></tr>'
+        '<tr><td align="center" style="padding:20px 28px 8px;font-size:14px;line-height:1.6;">'
+        '<p style="margin:0;">Se não fez este pedido, pode ignorar este email. '
+        'A sua palavra-passe atual mantém-se válida.</p>'
+        '</td></tr>'
+        '<tr><td align="center" style="padding:16px 28px 32px;font-size:14px;line-height:1.6;">'
+        '<p style="margin:0;">Com os melhores cumprimentos,<br><strong>A equipa Explore+</strong></p>'
+        '</td></tr>'
+        '</table></td></tr></table></body></html>'
+    )
+    return assunto, texto, html
+
+
+def link_absoluto(request, nome_url, args):
+    """Link completo para os emails: usa SITE_URL se estiver definido, para o
+    endereço do site poder mudar (ex.: para @exploremore.pt) sem mexer no código."""
+    caminho = reverse(nome_url, args=args)
+    if settings.SITE_URL:
+        return settings.SITE_URL + caminho
+    return request.build_absolute_uri(caminho)
 
 
 def pagina_recuperar_password(request):
@@ -1172,33 +1248,13 @@ def pagina_recuperar_password(request):
             if user and user.has_usable_password():
                 uid = urlsafe_base64_encode(force_bytes(user.pk))
                 token = default_token_generator.make_token(user)
-                link = request.build_absolute_uri(
-                    reverse('redefinir-password', args=[uid, token])
-                )
+                link = link_absoluto(request, 'redefinir-password', [uid, token])
+                assunto, texto, html = montar_email_recuperacao(user, link)
                 enviar_email_brevo(
                     destinatario=user.email,
-                    assunto='Recuperar password — Explore+',
-                    texto=(
-                        f'Olá {user.username},\n\n'
-                        f'Recebemos um pedido para repor a tua password na Explore+. '
-                        f'Clica no link abaixo para escolheres uma nova (válido por algumas horas):\n\n'
-                        f'{link}\n\n'
-                        f'Se não foste tu a pedir, ignora este email — a tua password atual continua válida.'
-                    ),
-                    html=(
-                        f'<div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;padding:24px">'
-                        f'<p>Olá {user.username},</p>'
-                        f'<p>Recebemos um pedido para repor a tua password na Explore+. '
-                        f'Clica no botão abaixo para escolheres uma nova (válido por algumas horas):</p>'
-                        f'<p style="text-align:center;margin:28px 0">'
-                        f'<a href="{link}" style="background:#9abe4f;color:#26380d;padding:12px 28px;'
-                        f'border-radius:18px;text-decoration:none;font-weight:bold;display:inline-block">'
-                        f'Escolher nova password</a></p>'
-                        f'<p style="color:#6b7280;font-size:0.85rem">Se o botão não funcionar, copia e cola este '
-                        f'link no browser:<br>{link}</p>'
-                        f'<p>Se não foste tu a pedir, ignora este email — a tua password atual continua válida.</p>'
-                        f'</div>'
-                    ),
+                    assunto=assunto,
+                    texto=texto,
+                    html=html,
                 )
             enviado = True
 

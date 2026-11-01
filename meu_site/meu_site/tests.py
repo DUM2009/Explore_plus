@@ -121,3 +121,65 @@ class MascoteChatTests(TestCase):
         self.assertLessEqual(len(msgs), 6 + 1)
         self.assertEqual(msgs[0]['role'], 'user')
         self.assertLessEqual(len(enviado['system'][0]['text']), 3000 + 4000)
+
+
+@override_settings(STORAGES={
+    'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+    'staticfiles': {'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage'},
+})
+class EstatisticasProTests(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user('aluno2', password='x')
+        self.client.force_login(self.user)
+        self.perfil, _ = PerfilAluno.objects.get_or_create(user=self.user)
+
+    def test_gratuito_ve_separador_bloqueado_e_nao_abre_a_pagina(self):
+        r = self.client.get(reverse('perfil'))
+        self.assertContains(r, 'profile-tab--pro is-locked')
+        self.assertContains(r, 'profile-tab-lock')
+        r = self.client.get(reverse('estatisticas'))
+        self.assertRedirects(r, reverse('superexplore'), fetch_redirect_response=False)
+
+    def test_pro_ve_separador_sem_cadeado_e_abre_a_pagina(self):
+        self.perfil.plano = 'pro'
+        self.perfil.save()
+        r = self.client.get(reverse('perfil'))
+        self.assertContains(r, 'profile-tab--pro')
+        self.assertNotContains(r, 'profile-tab--pro is-locked')
+        self.assertEqual(self.client.get(reverse('estatisticas')).status_code, 200)
+
+
+@override_settings(
+    BREVO_API_KEY='k', DEFAULT_FROM_EMAIL='nao-responder@exploremore.pt',
+    EMAIL_REPLY_TO='exploremore.pt26@gmail.com', SITE_URL='https://exploremore.pt',
+    STORAGES={
+        'default': {'BACKEND': 'django.core.files.storage.FileSystemStorage'},
+        'staticfiles': {'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage'},
+    },
+)
+class EmailRecuperacaoTests(TestCase):
+    def _enviar(self, **dados_user):
+        User.objects.create_user('aluno3', email='a@b.pt', password='x', **dados_user)
+        with mock.patch.object(views.requests, 'post') as post:
+            post.return_value.ok = True
+            self.client.post(reverse('recuperar-password'), {'email': 'a@b.pt'})
+        return post.call_args.kwargs['json']
+
+    def test_email_formal_com_primeiro_nome(self):
+        p = self._enviar(first_name='Maria Joana')
+        self.assertEqual(p['subject'], 'Pedido de recuperação da palavra-passe — Explore+')
+        self.assertEqual(p['sender'], {'email': 'nao-responder@exploremore.pt', 'name': 'Explore+'})
+        self.assertEqual(p['replyTo']['email'], 'exploremore.pt26@gmail.com')
+        self.assertTrue(p['textContent'].startswith('Caro/a Maria,'))
+        self.assertIn('Definir nova palavra-passe', p['htmlContent'])
+        self.assertIn('Explore+', p['htmlContent'])
+        link = [l for l in p['textContent'].split() if l.startswith('https://exploremore.pt/')][0]
+        self.assertIn('/redefinir-password/', link)
+        self.assertIn(link, p['htmlContent'])
+        texto_sem_link = p['textContent'].replace(link, '')
+        for proibido in (' tu ', 'você', 'Clica', 'password'):
+            self.assertNotIn(proibido, texto_sem_link)
+
+    def test_sem_nome(self):
+        p = self._enviar()
+        self.assertTrue(p['textContent'].startswith('Caro/a utilizador/a,'))

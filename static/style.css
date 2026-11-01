@@ -17299,3 +17299,32 @@ html.dark-mode .mascote-chat-bubble--assistant::before {
 html.dark-mode .mascote-chat-bubble--user {
     box-shadow: 0 6px 18px rgba(31, 138, 91, .35);
 }
+
+/* Separador "Estatísticas" (exclusivo Pro): só as letras douradas com o brilho
+   do botão SuperExplore (mesma animação sidebar-plan-cta-shine), sem fundo.
+   Para quem não é Pro fica com cadeado e leva ao SuperExplore. */
+body.shadcn-profile .profile-tab--pro .profile-tab-pro-text {
+    font-weight: 800;
+    background: linear-gradient(100deg, #e08a00 30%, #ffe08a 48%, #fff4c2 51%, #ffe08a 54%, #e08a00 72%);
+    background-size: 250% 100%;
+    background-position: 160% 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: sidebar-plan-cta-shine 3.2s ease-in-out infinite;
+}
+
+body.shadcn-profile .profile-tab--pro svg:not(.profile-tab-lock) {
+    color: #e08a00;
+}
+
+body.shadcn-profile .profile-tab--pro .profile-tab-lock {
+    width: 14px;
+    height: 14px;
+    color: #e08a00;
+}
+
+body.shadcn-profile .profile-tab--pro.is-locked {
+    cursor: pointer;
+}

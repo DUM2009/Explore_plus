@@ -646,6 +646,11 @@ const profileGrid = document.querySelector('.profile-grid');
 
 profileTabButtons.forEach((button) => {
     button.addEventListener('click', () => {
+        // Separador exclusivo do plano Pro: quem não o tem vai para a página do SuperExplore.
+        if (button.classList.contains('is-locked')) {
+            window.location.href = button.dataset.lockedUrl || '/superexplore/';
+            return;
+        }
         const target = button.dataset.tabTarget;
 
         profileTabButtons.forEach((btn) => btn.classList.toggle('is-active', btn === button));
