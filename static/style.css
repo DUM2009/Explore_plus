@@ -2157,6 +2157,26 @@ body.shadcn-profile .plans-note {
     text-align: center;
 }
 
+/* Pagamentos ainda desligados: botão "Ativar SuperExplore" bloqueado + aviso. */
+body.shadcn-profile .plan-card-btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+    filter: grayscale(.4);
+}
+
+body.shadcn-profile .plan-card-btn:disabled:hover {
+    filter: grayscale(.4);
+}
+
+body.shadcn-profile .plans-note--unavailable {
+    margin: 12px 0 0;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(245, 134, 10, .12);
+    color: var(--sp-fg, inherit);
+    font-weight: 600;
+}
+
 /* Paywall shown on page load for free-plan users on a pro-only page (ver
    Resumos.html), or opened on demand from a "Desbloquear" button elsewhere
    (ver Testes.html) — reaproveita o mesmo .plan-card do SuperExplore, só
@@ -4706,6 +4726,12 @@ cursor:not-allowed;
     width:auto;
 }
 
+/* Com a lista de testes aberta, a seta fica numa linha própria por baixo
+   do último teste, em vez de por cima da linha dele. */
+.teste-missions-grid .mission-card.is-open{
+    padding-bottom:62px;
+}
+
 .mission-card-meta{
     display:flex;
     flex-wrap:wrap;
@@ -6410,10 +6436,10 @@ body.nav-drawer-open {
   height: 62%;
 }
 
-.login-hifive .hero-float-card--top-left     { left: -8%; top: 12%; }
-.login-hifive .hero-float-card--top-right    { right: -10%; top: 6%; }
-.login-hifive .hero-float-card--bottom-left  { left: -10%; bottom: 20%; }
-.login-hifive .hero-float-card--bottom-right { right: -8%; bottom: 12%; }
+.login-hifive .hero-float-card--top-left     { left: -22%; top: 10%; }
+.login-hifive .hero-float-card--top-right    { right: -24%; top: 4%; }
+.login-hifive .hero-float-card--bottom-left  { left: -24%; bottom: 20%; }
+.login-hifive .hero-float-card--bottom-right { right: -22%; bottom: 10%; }
 
 @media (max-width: 640px) {
   .login-hifive .hero-float-card {
@@ -11933,7 +11959,8 @@ html.dark-mode .mascote-chat-input:focus {
     height: 38px;
     border-radius: 10px;
     object-fit: cover;
-    background: #e8f4ee;
+    /* Mesmo fundo do avatar do Kim na página inicial (.mentor-avatar). */
+    background: linear-gradient(160deg, #7fd6ac, #c3ecd9);
     flex: none;
 }
 
@@ -12367,8 +12394,7 @@ html.dark-mode .kim-conversa-item.is-active {
     color: #7cc26f;
 }
 
-html.dark-mode .kim-welcome-icon,
-html.dark-mode .kim-avatar {
+html.dark-mode .kim-welcome-icon {
     background: #16231a;
     color: #7cc26f;
 }
@@ -13714,7 +13740,7 @@ body.shadcn-profile .profile-badge-card.is-unlocked .profile-badge-status {
 body.shadcn-profile .profile-vocacional-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     gap: 14px;
     padding: 18px 20px;
     border-radius: var(--sp-radius);
@@ -13879,7 +13905,8 @@ body.shadcn-profile .profile-vocacional-btn {
     padding: 10px 16px;
     border: none;
     border-radius: 999px;
-    background: var(--sp-card);
+    /* O cartão já é --sp-card: o botão precisa de outro tom para se ver. */
+    background: var(--sp-border);
     color: var(--sp-muted-fg);
     font-family: inherit;
     font-size: .85rem;
@@ -13889,9 +13916,15 @@ body.shadcn-profile .profile-vocacional-btn {
 }
 
 body.shadcn-profile .profile-vocacional-btn:hover {
-    background: var(--sp-card);
+    background: var(--sp-border);
     transform: none;
     box-shadow: none;
+}
+
+/* A etiqueta "Em breve" também usa --sp-border; dentro do botão passa a
+   usar a cor do cartão para não desaparecer. */
+body.shadcn-profile .profile-vocacional-btn .subject-soon {
+    background: var(--sp-card);
 }
 
 /* ---- Mobile-only Perfil additions: "Atividade Recente" and the fixed
@@ -16382,6 +16415,9 @@ html.dark-mode .biblioteca-livro-item::before {
 
 body.shadcn-profile .plan-interval {
     display: inline-flex;
+    align-self: flex-start;
+    width: fit-content;
+    max-width: 100%;
     gap: 2px;
     padding: 3px;
     border-radius: 999px;
@@ -16531,4 +16567,24 @@ html.dark-mode .biblioteca-estante {
 html.dark-mode .biblioteca-livro-item::before,
 html.dark-mode .biblioteca-livro-item::after {
     content: none;
+}
+
+/* Biblioteca do Explorador bloqueada no MVP (ainda incompleta): item do menu
+   com cadeado, sem clique. Voltar a desbloquear = tirar a classe .is-locked. */
+.profile-sidebar-nav a.is-locked,
+.nav-drawer-list a.is-locked {
+    opacity: .55;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.profile-sidebar-nav a.is-locked .sidebar-lock-icon {
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: -2px;
+}
+
+.nav-drawer-list a.is-locked .sidebar-lock-icon {
+    margin-left: 6px;
+    vertical-align: -2px;
 }

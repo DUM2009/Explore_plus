@@ -4,7 +4,7 @@
   "titulo": "Campo gravítico",
   "disciplina": "fisica",
   "ano": 12,
-  "imagem": "f12_orbitas_kepler.png",
+  "imagem": "f12_lua.png",
   "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><ellipse cx=\"12\" cy=\"12\" rx=\"9\" ry=\"5\"/><circle cx=\"18\" cy=\"12\" r=\"1.5\"/></svg>", "nome": "Mestre do Campo Gravítico" },
   "secoes": [
     {
@@ -45,20 +45,18 @@
           "perguntas": [
             {
               "pergunta": "A distância média de Marte ao Sol é 1,52 vezes a da Terra. Qual é, aproximadamente, o período orbital de Marte?",
-              "opcoes": [
-                "1,52 anos",
-                "1,87 anos",
+              "opcoes": ["1,52 anos",
                 "2,31 anos",
-                "3,51 anos"
+                "3,51 anos",
+                "1,87 anos"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. T Marte ≈ 1,87 anos.",
               "mascote_feedback_errado": "Usa T² ∝ r³: T Marte = T Terra × (1,52)^(3/2) ≈ 1,87 anos."
             },
             {
               "pergunta": "Pela segunda lei de Kepler, onde é que a Terra se move mais depressa na sua órbita?",
-              "opcoes": [
-                "No ponto mais afastado do Sol (afélio).",
+              "opcoes": ["No ponto mais afastado do Sol (afélio).",
                 "No ponto mais próximo do Sol (periélio).",
                 "A velocidade é igual em todos os pontos.",
                 "Quando está alinhada com a Lua."
@@ -69,22 +67,22 @@
             },
             {
               "pergunta": "Segundo a primeira lei de Kepler, as órbitas dos planetas são:",
-              "opcoes": ["circunferências centradas no Sol.", "elipses, com o Sol num dos focos.", "elipses, com o Sol no centro.", "espirais."],
-              "correta": 1,
+              "opcoes": ["circunferências centradas no Sol.", "elipses, com o Sol no centro.", "elipses, com o Sol num dos focos.", "espirais."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. As órbitas são elípticas, com o Sol num dos focos.",
               "mascote_feedback_errado": "A primeira lei diz que as órbitas são elípticas e que o Sol ocupa um dos focos, não o centro."
             },
             {
               "pergunta": "A Terra orbita o Sol a 1,50 × 10¹¹ m com período de 1 ano (3,16 × 10⁷ s). Qual é a massa do Sol, aproximadamente?",
-              "opcoes": ["6,0 × 10²⁴ kg", "2,0 × 10³⁰ kg", "2,0 × 10²⁷ kg", "1,0 × 10³⁵ kg"],
-              "correta": 1,
+              "opcoes": ["2,0 × 10³⁰ kg", "6,0 × 10²⁴ kg", "2,0 × 10²⁷ kg", "1,0 × 10³⁵ kg"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. M ≈ 2,0 × 10³⁰ kg.",
               "mascote_feedback_errado": "M = 4π² r³ / (G T²) ≈ 2,0 × 10³⁰ kg."
             },
             {
               "pergunta": "Se a distância entre dois corpos triplicar, a força gravítica entre eles:",
-              "opcoes": ["triplica.", "fica 3 vezes menor.", "fica 9 vezes menor.", "fica 27 vezes menor."],
-              "correta": 2,
+              "opcoes": ["triplica.", "fica 9 vezes menor.", "fica 3 vezes menor.", "fica 27 vezes menor."],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. A força é inversamente proporcional a r².",
               "mascote_feedback_errado": "A força é inversamente proporcional a r². Com 3r, fica dividida por 3² = 9."
             }
@@ -131,32 +129,30 @@
           "perguntas": [
             {
               "pergunta": "A que distância do centro da Terra o campo gravítico é um quarto do valor à superfície?",
-              "opcoes": [
-                "1,25 R",
-                "2 R",
+              "opcoes": ["1,25 R",
                 "4 R",
-                "16 R"
+                "16 R",
+                "2 R"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. r = 2R, ou seja, uma altitude igual ao raio da Terra.",
               "mascote_feedback_errado": "O campo é inversamente proporcional ao quadrado da distância ao centro. Para dividir g por 4 = 2², a distância ao centro duplica: r = 2R."
             },
             {
               "pergunta": "Qual é a intensidade do campo gravítico da Terra à altitude da Estação Espacial Internacional (400 km)?",
-              "opcoes": [
+              "opcoes": ["8,7 N/kg",
                 "0 N/kg",
                 "2,5 N/kg",
-                "8,7 N/kg",
                 "9,8 N/kg"
               ],
-              "correta": 2,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. g ≈ 8,7 N/kg.",
               "mascote_feedback_errado": "Usa r = R + h = 6,77 × 10⁶ m. g = G M / r² ≈ 8,7 N/kg, ainda cerca de 89 % do valor à superfície."
             },
             {
               "pergunta": "As linhas de campo gravítico criado por uma massa pontual são:",
-              "opcoes": ["radiais, a apontar para fora da massa.", "radiais, a apontar para a massa.", "circunferências centradas na massa.", "paralelas e equidistantes em todo o espaço."],
-              "correta": 1,
+              "opcoes": ["radiais, a apontar para fora da massa.", "circunferências centradas na massa.", "radiais, a apontar para a massa.", "paralelas e equidistantes em todo o espaço."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. O campo gravítico é sempre atrativo.",
               "mascote_feedback_errado": "O campo gravítico é sempre atrativo, por isso as linhas apontam para a massa que o cria."
             },
@@ -169,8 +165,8 @@
             },
             {
               "pergunta": "Porque é que, junto à superfície da Terra, se pode considerar o campo gravítico uniforme?",
-              "opcoes": ["Porque a Terra é plana.", "Porque em regiões muito pequenas em comparação com o raio da Terra, a direção e a intensidade do campo quase não variam.", "Porque a massa da Terra está concentrada à superfície.", "Porque a gravidade não depende da distância."],
-              "correta": 1,
+              "opcoes": ["Porque em regiões muito pequenas em comparação com o raio da Terra, a direção e a intensidade do campo quase não variam.", "Porque a Terra é plana.", "Porque a massa da Terra está concentrada à superfície.", "Porque a gravidade não depende da distância."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Numa região pequena, as linhas são praticamente paralelas.",
               "mascote_feedback_errado": "Numa região com dimensões muito menores do que o raio terrestre, as linhas são praticamente paralelas e a distância ao centro quase não muda."
             }
@@ -218,25 +214,23 @@
           "perguntas": [
             {
               "pergunta": "Qual é a velocidade de escape da Terra?",
-              "opcoes": [
-                "7,9 km/s",
-                "11,2 km/s",
+              "opcoes": ["7,9 km/s",
                 "9,8 km/s",
+                "11,2 km/s",
                 "3,0 × 10⁵ km/s"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. v e ≈ 11,2 km/s, cerca de 40 000 km/h.",
               "mascote_feedback_errado": "v e = √(2 G M / R) ≈ 1,12 × 10⁴ m/s. O valor 7,9 km/s é a velocidade de um satélite em órbita rasante, não a de escape."
             },
             {
               "pergunta": "A Lua tem massa 7,35 × 10²² kg e raio 1,74 × 10⁶ m. Qual é a sua velocidade de escape?",
-              "opcoes": [
-                "1,7 km/s",
-                "2,4 km/s",
+              "opcoes": ["1,7 km/s",
                 "11,2 km/s",
-                "0,24 km/s"
+                "0,24 km/s",
+                "2,4 km/s"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. v e ≈ 2,4 km/s. Quase cinco vezes menor do que a da Terra.",
               "mascote_feedback_errado": "Aplica v e = √(2 G M / R) com os dados da Lua: ≈ 2,4 × 10³ m/s."
             },
@@ -249,15 +243,15 @@
             },
             {
               "pergunta": "A velocidade de escape de um planeta depende:",
-              "opcoes": ["da massa do corpo que escapa.", "da massa e do raio do planeta.", "apenas do raio do planeta.", "da direção de lançamento."],
-              "correta": 1,
+              "opcoes": ["da massa e do raio do planeta.", "da massa do corpo que escapa.", "apenas do raio do planeta.", "da direção de lançamento."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. v e = √(2 G M / R). A massa do corpo que escapa cancela-se.",
               "mascote_feedback_errado": "v e = √(2 G M / R). A massa do corpo que escapa cancela-se."
             },
             {
               "pergunta": "Um satélite de 1000 kg está numa órbita circular de raio 6,77 × 10⁶ m. Qual é a sua energia mecânica?",
-              "opcoes": ["2,9 × 10¹⁰ J", "−2,9 × 10¹⁰ J", "−5,9 × 10¹⁰ J", "0 J"],
-              "correta": 1,
+              "opcoes": ["2,9 × 10¹⁰ J", "−5,9 × 10¹⁰ J", "−2,9 × 10¹⁰ J", "0 J"],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. Em ≈ −2,9 × 10¹⁰ J.",
               "mascote_feedback_errado": "Em = −G M m / (2r) ≈ −2,9 × 10¹⁰ J."
             }

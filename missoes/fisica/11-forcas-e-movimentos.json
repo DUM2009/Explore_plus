@@ -76,20 +76,18 @@
           "perguntas": [
             {
               "pergunta": "A velocidade de um corpo passa de 10 m/s para 30 m/s em 4,0 s, com aceleração constante. Qual é a aceleração?",
-              "opcoes": [
-                "2,5 m s⁻²",
-                "5,0 m s⁻²",
+              "opcoes": ["2,5 m s⁻²",
                 "7,5 m s⁻²",
-                "10 m s⁻²"
+                "10 m s⁻²",
+                "5,0 m s⁻²"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. a = Δv / Δt = (30 − 10) / 4,0 = 5,0 m s⁻².",
               "mascote_feedback_errado": "A aceleração usa a variação de velocidade: a = (30 − 10) / 4,0 = 5,0 m s⁻²."
             },
             {
               "pergunta": "Um corpo parte do repouso e, com aceleração constante, atinge 20 m/s ao fim de 10 s. Qual é o deslocamento nesse intervalo?",
-              "opcoes": [
-                "20 m",
+              "opcoes": ["20 m",
                 "100 m",
                 "200 m",
                 "400 m"
@@ -100,22 +98,22 @@
             },
             {
               "pergunta": "Num gráfico v-t, um troço é uma reta horizontal acima do eixo dos tempos. Nesse troço, o corpo:",
-              "opcoes": ["está em repouso.", "move-se com velocidade constante no sentido positivo.", "tem aceleração constante e não nula.", "está a travar."],
-              "correta": 1,
+              "opcoes": ["move-se com velocidade constante no sentido positivo.", "está em repouso.", "tem aceleração constante e não nula.", "está a travar."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Reta horizontal no gráfico v-t significa velocidade constante (aceleração nula).",
               "mascote_feedback_errado": "Reta horizontal no gráfico v-t significa velocidade constante (aceleração nula). Acima do eixo, a velocidade é positiva."
             },
             {
               "pergunta": "Um carro que se desloca a 15 m/s trava uniformemente e para em 3,0 s. Qual é a distância percorrida durante a travagem?",
-              "opcoes": ["5,0 m", "22,5 m", "45 m", "90 m"],
-              "correta": 1,
+              "opcoes": ["5,0 m", "45 m", "22,5 m", "90 m"],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. A área sob o gráfico v-t é um triângulo: ½ × 3,0 × 15 = 22,5 m.",
               "mascote_feedback_errado": "A área sob o gráfico v-t é um triângulo: ½ × 3,0 × 15 = 22,5 m."
             },
             {
               "pergunta": "Um corpo move-se com velocidade negativa e aceleração positiva. O movimento é:",
-              "opcoes": ["acelerado.", "retardado.", "uniforme.", "impossível de classificar."],
-              "correta": 1,
+              "opcoes": ["retardado.", "acelerado.", "uniforme.", "impossível de classificar."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Velocidade e aceleração com sentidos opostos: a rapidez diminui.",
               "mascote_feedback_errado": "Velocidade e aceleração com sentidos opostos: a rapidez diminui, o movimento é retardado."
             }
@@ -231,8 +229,7 @@
           "perguntas": [
             {
               "pergunta": "Uma bola é lançada verticalmente para cima com 9,8 m/s. Quanto tempo demora a atingir a altura máxima e qual é essa altura? (despreza a resistência do ar)",
-              "opcoes": [
-                "1,0 s e 9,8 m",
+              "opcoes": ["1,0 s e 9,8 m",
                 "1,0 s e 4,9 m",
                 "2,0 s e 4,9 m",
                 "0,5 s e 2,5 m"
@@ -243,8 +240,7 @@
             },
             {
               "pergunta": "Na ausência de resistência do ar, uma bola de 5 kg e uma bola de 1 kg são largadas ao mesmo tempo da mesma altura. Qual chega primeiro ao chão?",
-              "opcoes": [
-                "A de 5 kg, porque é mais pesada.",
+              "opcoes": ["A de 5 kg, porque é mais pesada.",
                 "A de 1 kg, porque é mais leve.",
                 "Chegam ao mesmo tempo.",
                 "Depende da altura."
@@ -255,8 +251,8 @@
             },
             {
               "pergunta": "Uma pedra cai do repouso de 20 m de altura. Com que velocidade chega ao solo? (despreza a resistência do ar)",
-              "opcoes": ["9,8 m/s", "14 m/s", "20 m/s", "196 m/s"],
-              "correta": 2,
+              "opcoes": ["9,8 m/s", "14 m/s", "196 m/s", "20 m/s"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. v ≈ 20 m/s.",
               "mascote_feedback_errado": "Tempo de queda: 20 = 4,9 t², logo t ≈ 2,02 s. v = 9,8 × 2,02 ≈ 20 m/s. Pela energia (10.º ano): v = √(2 g h) = √(2 × 9,8 × 20) ≈ 20 m/s."
             },
@@ -269,8 +265,8 @@
             },
             {
               "pergunta": "Na AL 1.1, obteve-se v₁ = 1,50 m/s, v₂ = 3,00 m/s e Δt = 0,155 s. Qual é o valor experimental de g?",
-              "opcoes": ["9,52 m s⁻²", "9,68 m s⁻²", "19,4 m s⁻²", "29,0 m s⁻²"],
-              "correta": 1,
+              "opcoes": ["9,52 m s⁻²", "19,4 m s⁻²", "29,0 m s⁻²", "9,68 m s⁻²"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. g = (v₂ − v₁) / Δt ≈ 9,68 m s⁻².",
               "mascote_feedback_errado": "g = (v₂ − v₁) / Δt = (3,00 − 1,50) / 0,155 ≈ 9,68 m s⁻²."
             }
@@ -372,8 +368,7 @@
           "perguntas": [
             {
               "pergunta": "Um bloco desliza sem atrito num plano inclinado 30° em relação à horizontal. Qual é a sua aceleração? (sen 30° = 0,50)",
-              "opcoes": [
-                "9,8 m s⁻²",
+              "opcoes": ["9,8 m s⁻²",
                 "8,5 m s⁻²",
                 "4,9 m s⁻²",
                 "0 m s⁻²"
@@ -384,34 +379,33 @@
             },
             {
               "pergunta": "O mesmo plano (30°), agora com um bloco de 2,0 kg sujeito a uma força de atrito de 4,0 N. Qual é a aceleração do bloco a descer?",
-              "opcoes": [
+              "opcoes": ["2,9 m s⁻²",
                 "4,9 m s⁻²",
-                "2,9 m s⁻²",
                 "2,0 m s⁻²",
                 "6,9 m s⁻²"
               ],
-              "correta": 1,
+              "correta": 0,
               "mascote_feedback_certo": "Muito bem. P ∥ = 9,8 N. F R = 9,8 − 4,0 = 5,8 N. a = 5,8 / 2,0 = 2,9 m s⁻².",
               "mascote_feedback_errado": "Calcula a resultante ao longo do plano: P ∥ − F a = 2,0 × 9,8 × 0,50 − 4,0 = 5,8 N. a = F R / m = 5,8 / 2,0 = 2,9 m s⁻²."
             },
             {
               "pergunta": "Qual é a intensidade da reação normal sobre um bloco de 2,0 kg num plano inclinado 30°, sem outras forças perpendiculares ao plano? (cos 30° = 0,87)",
-              "opcoes": ["9,8 N", "17 N", "19,6 N", "0 N"],
-              "correta": 1,
+              "opcoes": ["9,8 N", "19,6 N", "0 N", "17 N"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. N = m g cos θ ≈ 17 N.",
               "mascote_feedback_errado": "N = m g cos θ = 2,0 × 9,8 × 0,87 ≈ 17 N. É menor do que o peso (19,6 N)."
             },
             {
               "pergunta": "Na AL 1.2, depois de o corpo suspenso tocar no chão, o carrinho:",
-              "opcoes": ["para imediatamente.", "continua com velocidade aproximadamente constante.", "continua a acelerar da mesma forma.", "inverte o sentido."],
-              "correta": 1,
+              "opcoes": ["para imediatamente.", "continua a acelerar da mesma forma.", "continua com velocidade aproximadamente constante.", "inverte o sentido."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. O fio deixa de exercer força e a resultante passa a ser aproximadamente nula.",
               "mascote_feedback_errado": "O fio deixa de exercer força. A resultante passa a ser aproximadamente nula, e o carrinho mantém a velocidade que tinha (primeira lei de Newton)."
             },
             {
               "pergunta": "Na AL 1.3, o gráfico v² = f(d) tem declive 4,0 m s⁻². Para um bloco de 0,50 kg, qual é a intensidade da força de atrito?",
-              "opcoes": ["0,50 N", "1,0 N", "2,0 N", "4,0 N"],
-              "correta": 1,
+              "opcoes": ["1,0 N", "0,50 N", "2,0 N", "4,0 N"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. |a| = 2,0 m s⁻². F a = m |a| = 0,50 × 2,0 = 1,0 N.",
               "mascote_feedback_errado": "Declive = 2 |a|, logo |a| = 2,0 m s⁻². F a = m |a| = 0,50 × 2,0 = 1,0 N."
             }
@@ -456,46 +450,44 @@
           "perguntas": [
             {
               "pergunta": "Um paraquedista com equipamento tem uma massa total de 80 kg e cai com velocidade terminal. Qual é a intensidade da resistência do ar?",
-              "opcoes": [
-                "0 N",
-                "80 N",
+              "opcoes": ["0 N",
                 "784 N",
+                "80 N",
                 "Maior do que 784 N"
               ],
-              "correta": 2,
+              "correta": 1,
               "mascote_feedback_certo": "Certo. Com velocidade constante, a resultante é nula: R ar = P = 80 × 9,8 = 784 N.",
               "mascote_feedback_errado": "Velocidade terminal significa velocidade constante, logo F R = 0. A resistência do ar equilibra o peso: 80 × 9,8 = 784 N."
             },
             {
               "pergunta": "Logo depois de o paraquedas abrir, qual é o sentido da força resultante sobre o paraquedista?",
-              "opcoes": [
+              "opcoes": ["Para cima, porque a resistência do ar passa a ser maior do que o peso.",
                 "Para baixo, porque ele continua a cair.",
-                "Para cima, porque a resistência do ar passa a ser maior do que o peso.",
                 "É nula, porque ele atingiu a velocidade terminal.",
                 "Horizontal."
               ],
-              "correta": 1,
+              "correta": 0,
               "mascote_feedback_certo": "Exato. A resistência do ar fica maior do que o peso, e a resultante aponta para cima.",
               "mascote_feedback_errado": "Ao abrir o paraquedas, a resistência do ar aumenta muito e ultrapassa o peso. A resultante aponta para cima: o movimento passa a retardado, embora o paraquedista continue a descer."
             },
             {
               "pergunta": "Durante a queda de um corpo com resistência do ar não desprezável, antes de atingir a velocidade terminal:",
-              "opcoes": ["a aceleração é constante e igual a g.", "a aceleração diminui e a velocidade aumenta.", "a aceleração aumenta e a velocidade diminui.", "a velocidade é constante."],
-              "correta": 1,
+              "opcoes": ["a aceleração é constante e igual a g.", "a aceleração aumenta e a velocidade diminui.", "a velocidade é constante.", "a aceleração diminui e a velocidade aumenta."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. A resistência aumenta com a velocidade, por isso a resultante e a aceleração diminuem.",
               "mascote_feedback_errado": "A resistência aumenta com a velocidade, por isso a resultante e a aceleração diminuem. A velocidade continua a aumentar, mas cada vez mais devagar."
             },
             {
               "pergunta": "Qual dos gráficos v-t descreve a queda de um corpo até atingir a velocidade terminal?",
-              "opcoes": ["Uma reta crescente.", "Uma reta horizontal.", "Uma curva crescente que tende para um valor constante.", "Uma curva decrescente."],
-              "correta": 2,
+              "opcoes": ["Uma reta crescente.", "Uma curva crescente que tende para um valor constante.", "Uma reta horizontal.", "Uma curva decrescente."],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. A velocidade aumenta com declive cada vez menor, até ficar constante.",
               "mascote_feedback_errado": "A velocidade aumenta com declive (aceleração) cada vez menor, até ficar constante: uma curva que tende para um patamar."
             },
             {
               "pergunta": "Dois paraquedistas com o mesmo equipamento, mas com massas diferentes, atingem a velocidade terminal. Qual deles tem maior velocidade terminal?",
-              "opcoes": ["O mais leve.", "O mais pesado, porque precisa de uma resistência do ar maior para equilibrar o peso.", "Têm a mesma, porque a aceleração da gravidade é igual para os dois.", "Nenhum atinge velocidade terminal."],
-              "correta": 1,
+              "opcoes": ["O mais leve.", "Têm a mesma, porque a aceleração da gravidade é igual para os dois.", "O mais pesado, porque precisa de uma resistência do ar maior para equilibrar o peso.", "Nenhum atinge velocidade terminal."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. A velocidade terminal é atingida quando R ar = P.",
               "mascote_feedback_errado": "A velocidade terminal é atingida quando R ar = P. Um peso maior exige uma resistência do ar maior, o que só acontece a uma velocidade maior."
             }
@@ -593,8 +585,7 @@
           "perguntas": [
             {
               "pergunta": "Uma criança num carrossel está a 5,0 m do centro e dá uma volta em 10 s. Qual é o módulo da sua velocidade e da sua aceleração?",
-              "opcoes": [
-                "0,50 m/s e 0 m s⁻²",
+              "opcoes": ["0,50 m/s e 0 m s⁻²",
                 "3,1 m/s e 2,0 m s⁻²",
                 "3,1 m/s e 0 m s⁻²",
                 "31 m/s e 197 m s⁻²"
@@ -605,8 +596,7 @@
             },
             {
               "pergunta": "Dois satélites estão na mesma órbita circular. Um tem o dobro da massa do outro. Como se comparam as suas velocidades?",
-              "opcoes": [
-                "O mais pesado anda com o dobro da velocidade.",
+              "opcoes": ["O mais pesado anda com o dobro da velocidade.",
                 "O mais pesado anda com metade da velocidade.",
                 "Têm a mesma velocidade.",
                 "O mais pesado cai para a Terra."
@@ -617,22 +607,22 @@
             },
             {
               "pergunta": "No movimento circular uniforme:",
-              "opcoes": ["a aceleração é nula porque o módulo da velocidade é constante.", "a aceleração aponta para o centro e só altera a direção da velocidade.", "a aceleração é tangente à trajetória.", "a força resultante aponta para fora da circunferência."],
-              "correta": 1,
+              "opcoes": ["a aceleração aponta para o centro e só altera a direção da velocidade.", "a aceleração é nula porque o módulo da velocidade é constante.", "a aceleração é tangente à trajetória.", "a força resultante aponta para fora da circunferência."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. A aceleração é centrípeta: aponta para o centro e não altera o módulo da velocidade.",
               "mascote_feedback_errado": "A velocidade muda de direção a cada instante, por isso há aceleração. É centrípeta: aponta para o centro e não altera o módulo da velocidade."
             },
             {
               "pergunta": "Qual é o período de um satélite geoestacionário?",
-              "opcoes": ["1 h 30 min", "12 h", "24 h", "27 dias"],
-              "correta": 2,
+              "opcoes": ["1 h 30 min", "12 h", "27 dias", "24 h"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. O satélite geoestacionário acompanha a rotação da Terra: cerca de 24 h.",
               "mascote_feedback_errado": "O satélite geoestacionário acompanha a rotação da Terra: dá uma volta no mesmo tempo que a Terra roda sobre si própria, cerca de 24 h."
             },
             {
               "pergunta": "Se o raio da órbita de um satélite aumentar, a sua velocidade orbital:",
-              "opcoes": ["aumenta.", "diminui.", "mantém-se.", "depende da massa do satélite."],
-              "correta": 1,
+              "opcoes": ["aumenta.", "mantém-se.", "diminui.", "depende da massa do satélite."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. v = √(G M / r). Com r maior, v é menor.",
               "mascote_feedback_errado": "v = √(G M / r). Com r maior, v é menor. Os satélites mais afastados andam mais devagar e demoram mais a dar uma volta."
             }

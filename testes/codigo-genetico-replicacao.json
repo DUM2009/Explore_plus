@@ -1,0 +1,398 @@
+{
+  "id": "codigo-genetico-replicacao",
+  "titulo": "Teste: Código Genético — Mecanismo da replicação",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — A equipa de enzimas"
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Quantificar a replicação",
+      "texto_apoio": "Considera os seguintes dados. O cromossoma de Escherichia coli é circular, tem 4,6 × 10⁶ pares de bases e uma única origem de replicação. A replicação é bidirecional e cada forquilha avança a 1000 nucleótidos por segundo. Um cromossoma de uma célula eucariótica tem 60 × 10⁶ pares de bases. Cada forquilha avança a 50 nucleótidos por segundo, e a replicação é bidirecional."
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Estirpes mutantes",
+      "texto_apoio": "Estudaram-se estirpes de Escherichia coli com mutações em genes envolvidos na replicação.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Estirpes estudadas",
+        "colunas": [
+          "Estirpe",
+          "Alteração"
+        ],
+        "linhas": [
+          [
+            "1",
+            "ADN ligase termossensível: funcional a 30 °C e inativa a 42 °C"
+          ],
+          [
+            "2",
+            "Primase sem atividade"
+          ],
+          [
+            "3",
+            "ADN polimerase sem capacidade de revisão"
+          ],
+          [
+            "4",
+            "Topoisomerase inibida por um fármaco"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 4,
+      "titulo": "GRUPO IV — Sequência e raciocínio crítico"
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada enzima ou proteína da Coluna I à respetiva função (Coluna II).",
+      "coluna_esquerda": [
+        {
+          "letra": "a",
+          "texto": "Helicase"
+        },
+        {
+          "letra": "b",
+          "texto": "Primase"
+        },
+        {
+          "letra": "c",
+          "texto": "ADN polimerase"
+        },
+        {
+          "letra": "d",
+          "texto": "ADN ligase"
+        }
+      ],
+      "coluna_direita": [
+        {
+          "numero": "1",
+          "texto": "Une, por ligação fosfodiéster, fragmentos de ADN adjacentes"
+        },
+        {
+          "numero": "2",
+          "texto": "Rompe as pontes de hidrogénio entre as cadeias da molécula"
+        },
+        {
+          "numero": "3",
+          "texto": "Sintetiza um segmento curto de ARN que fornece uma extremidade 3'-OH"
+        },
+        {
+          "numero": "4",
+          "texto": "Liga novos nucleótidos à extremidade 3' de uma cadeia em crescimento"
+        },
+        {
+          "numero": "5",
+          "texto": "Alivia a tensão criada pelo desenrolamento da hélice"
+        }
+      ],
+      "resposta_correta": {
+        "a": "2",
+        "b": "3",
+        "c": "4",
+        "d": "1"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A ADN polimerase não consegue iniciar a síntese de uma cadeia nova sem um segmento prévio, porque",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "necessita de uma extremidade 3'-OH livre à qual ligar o nucleótido seguinte."
+        },
+        {
+          "letra": "B",
+          "texto": "só reconhece nucleótidos de ARN como substrato."
+        },
+        {
+          "letra": "C",
+          "texto": "só se liga a ADN de cadeia simples."
+        },
+        {
+          "letra": "D",
+          "texto": "necessita de ATP para abrir a dupla hélice."
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 10
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "A ADN polimerase desloca-se ao longo da cadeia-molde no sentido 3'→5', sintetizando a cadeia nova no sentido 5'→3'."
+        },
+        {
+          "letra": "b",
+          "texto": "Cada fragmento de Okazaki é iniciado por um iniciador de ARN."
+        },
+        {
+          "letra": "c",
+          "texto": "A ADN ligase catalisa a formação de pontes de hidrogénio entre bases complementares."
+        },
+        {
+          "letra": "d",
+          "texto": "Na replicação bidirecional a partir de uma única origem, as duas forquilhas avançam no mesmo sentido."
+        }
+      ],
+      "resposta_correta": {
+        "a": "V",
+        "b": "V",
+        "c": "F",
+        "d": "F"
+      },
+      "cotacao": 20
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "Numa forquilha de replicação que avança da esquerda para a direita, a cadeia-molde inferior tem a extremidade 5' à esquerda e a extremidade 3' à direita. A cadeia nova complementar desta cadeia-molde é sintetizada",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "da esquerda para a direita, de forma contínua."
+        },
+        {
+          "letra": "B",
+          "texto": "da direita para a esquerda, de forma descontínua."
+        },
+        {
+          "letra": "C",
+          "texto": "da esquerda para a direita, de forma descontínua."
+        },
+        {
+          "letra": "D",
+          "texto": "da direita para a esquerda, de forma contínua."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 14
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Admitindo que as duas forquilhas avançam em simultâneo e à velocidade indicada, o tempo mínimo necessário para replicar o cromossoma de Escherichia coli é, aproximadamente,",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "19 minutos."
+        },
+        {
+          "letra": "B",
+          "texto": "38 minutos."
+        },
+        {
+          "letra": "C",
+          "texto": "77 minutos."
+        },
+        {
+          "letra": "D",
+          "texto": "383 minutos."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Admite que o cromossoma eucariótico deve ser replicado em 4 horas, que as origens de replicação se ativam em simultâneo e que se encontram regularmente espaçadas. O número mínimo de origens de replicação necessárias é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "21"
+        },
+        {
+          "letra": "B",
+          "texto": "42"
+        },
+        {
+          "letra": "C",
+          "texto": "84"
+        },
+        {
+          "letra": "D",
+          "texto": "417"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 14
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Admite que, na replicação do cromossoma de Escherichia coli, cada fragmento de Okazaki tem exatamente 1000 nucleótidos, que cada fragmento de Okazaki e cada cadeia contínua necessitam de um iniciador de ARN, e que não há outros iniciadores. O número total de iniciadores de ARN sintetizados na replicação completa do cromossoma é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "2302"
+        },
+        {
+          "letra": "B",
+          "texto": "4600"
+        },
+        {
+          "letra": "C",
+          "texto": "4602"
+        },
+        {
+          "letra": "D",
+          "texto": "9200"
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 16
+    },
+    {
+      "id": "p8",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Quando a estirpe 1 é mantida a 42 °C, acumulam-se fragmentos curtos de ADN recém-sintetizado. Estes fragmentos acumulam-se",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "apenas na cadeia sintetizada de forma descontínua, pois é aí que existem fragmentos a unir."
+        },
+        {
+          "letra": "B",
+          "texto": "em ambas as cadeias novas, pois ambas dependem da ligase."
+        },
+        {
+          "letra": "C",
+          "texto": "apenas na cadeia sintetizada de forma contínua."
+        },
+        {
+          "letra": "D",
+          "texto": "em nenhuma das cadeias."
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 16
+    },
+    {
+      "id": "p9",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Prevê e explica o efeito da mutação da estirpe 2 sobre a síntese das duas cadeias novas.",
+      "criterios_correcao": "Deve prever que a replicação não se inicia nas duas cadeias novas. A ADN polimerase só acrescenta nucleótidos a uma extremidade 3'-OH já existente e não consegue iniciar uma cadeia de raiz. A primase é a enzima que fornece essa extremidade, ao sintetizar o iniciador de ARN. Sem primase, não há iniciador nem na cadeia contínua (que necessita de um iniciador no início) nem na descontínua (que necessita de um iniciador para cada fragmento). Conclusão: a célula não consegue replicar o seu ADN.",
+      "cotacao": 22
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Na estirpe 3, é esperado que",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "a replicação deixe de ocorrer."
+        },
+        {
+          "letra": "B",
+          "texto": "a frequência de mutações aumente, mantendo-se a natureza semiconservativa da replicação."
+        },
+        {
+          "letra": "C",
+          "texto": "a dupla hélice deixe de ser antiparalela."
+        },
+        {
+          "letra": "D",
+          "texto": "a replicação passe a ser conservativa."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Na estirpe 4, é esperado que",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "as pontes de hidrogénio deixem de se formar na molécula-mãe."
+        },
+        {
+          "letra": "B",
+          "texto": "se acumule tensão à frente da forquilha, bloqueando a sua progressão."
+        },
+        {
+          "letra": "C",
+          "texto": "a primase deixe de sintetizar iniciadores, mas a helicase continue a funcionar normalmente."
+        },
+        {
+          "letra": "D",
+          "texto": "a cadeia descontínua passe a ser sintetizada de forma contínua."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12
+    },
+    {
+      "id": "p12",
+      "grupo": 4,
+      "tipo": "ordenacao",
+      "enunciado": "Ordena, de A a E, os acontecimentos que ocorrem numa forquilha de replicação, numa região da cadeia sintetizada de forma descontínua.",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "A ADN ligase une o fragmento recém-sintetizado ao fragmento adjacente."
+        },
+        {
+          "letra": "B",
+          "texto": "A helicase separa as cadeias da molécula."
+        },
+        {
+          "letra": "C",
+          "texto": "A primase sintetiza um iniciador de ARN."
+        },
+        {
+          "letra": "D",
+          "texto": "Uma ADN polimerase remove o iniciador de ARN e preenche a lacuna com ADN."
+        },
+        {
+          "letra": "E",
+          "texto": "A ADN polimerase acrescenta nucleótidos à extremidade 3' do iniciador."
+        }
+      ],
+      "resposta_correta": [
+        "B",
+        "C",
+        "E",
+        "D",
+        "A"
+      ],
+      "cotacao": 14
+    },
+    {
+      "id": "p13",
+      "grupo": 4,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno afirma: \"Se a helicase abrisse a dupla hélice mais depressa, as duas cadeias novas poderiam ser sintetizadas de forma contínua.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "Deve comentar que a afirmação é incorreta. A necessidade de sintetizar uma das cadeias de forma descontínua não resulta da velocidade da helicase, mas de duas características: as cadeias da molécula-mãe são antiparalelas, e a ADN polimerase só sintetiza no sentido 5'→3'. Numa das cadeias-molde, o sentido de síntese coincide com o do avanço da forquilha (síntese contínua); na outra é oposto, pelo que só pode ser sintetizada em fragmentos, à medida que a hélice se abre. Abrir a hélice mais depressa apenas faria avançar a forquilha mais depressa e não alteraria o sentido em que a polimerase trabalha.",
+      "cotacao": 22
+    }
+  ]
+}

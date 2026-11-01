@@ -47,6 +47,7 @@ MISSAO_ID_PARA_UNIDADE = {
     'ciclo-celular': 'citologia',
     'biomoleculas': 'bioquimica',
     'codigo-da-vida': 'genetica',
+    'bio12-gametogenese': 'genetica',
     'terra-sistema-rochas': 'geologia',
     'tempo-geologico': 'geologia',
     'tectonica-de-placas': 'geologia',
@@ -1684,9 +1685,9 @@ def pagina_kim(request):
 CATEGORIA_TESTES_IMAGENS = {
     'Biodiversidade': 'images/Wallpaper biodiversidade.png',
     'Obtenção de Matéria': 'images/Obtenção de Matéria.png',
-    'Distribuição de Matéria': 'images/Coração.png',
-    'Transformação e Utilização de Energia': 'images/Mitocôndira.png',
-    'Evolução': 'images/Evolução.png',
+    'Distribuição de Matéria': 'images/Distribuição de Matéria.png',
+    'Transformação e Utilização de Energia pelos Seres Vivos': 'images/Transformação e Utilização de Energia.png',
+    'Evolução Biológica': 'images/Evolução.png',
     'Sistemática dos Seres Vivos': 'images/organismo.jpg',
     'Crescimento, Renovação e Diferenciação Celular': 'images/Wallpaper DNA.png',
     'Reprodução': 'images/Diversidade genética.png',
@@ -1697,24 +1698,20 @@ CATEGORIA_TESTES_IMAGENS = {
     'Património Genético': 'images/Património Genético.png',
     'Imunidade e Controlo de Doenças': 'images/Imunidade e Controlo de Doenças.png',
     'Produção de Alimentos e Sustentabilidade': 'images/Produção de Alimentos e Sustentabilidade.png',
+    'Preservar e Recuperar o Ambiente': 'images/ecossistema.jpg',
     'Energia e Movimentos': 'images/Energia e movimentos.png',
     'Energia e Fenómenos Elétricos': 'images/Energia e fenómenos elétricos.png',
     'Energia, Fenómenos Térmicos e Radiação': 'images/Fenómenos térmicos e radiação.png',
     'Mecânica': 'images/Movimentos e interações.png',
     'Sinais, Ondas e Som': 'images/Sinais e ondas.png',
     'Eletromagnetismo': 'images/Eletromagnetismo.png',
-    # As 7 categorias de Física do 12º ano (Cinemática e Dinâmica 2D, Centro
-    # de Massa e Momento Linear, Fluidos, Campo Gravítico, Campo Elétrico,
-    # Campo Magnético, Física Moderna) partilham a mesma imagem genérica em
-    # index-missions.html também (não têm uma própria) — mesmo ficheiro
-    # aqui, por consistência.
-    'Cinemática e Dinâmica 2D': 'images/Energia e movimentos.png',
-    'Centro de Massa e Momento Linear': 'images/Energia e movimentos.png',
-    'Fluidos': 'images/Energia e movimentos.png',
-    'Campo Gravítico': 'images/Energia e movimentos.png',
-    'Campo Elétrico': 'images/Energia e movimentos.png',
-    'Campo Magnético': 'images/Energia e movimentos.png',
-    'Física Moderna': 'images/Energia e movimentos.png',
+    'Cinemática e Dinâmica 2D': 'images/f12_bilhar.png',
+    'Centro de Massa e Momento Linear': 'images/f12_airbag.png',
+    'Fluidos': 'images/f12_navio_cruzeiro.png',
+    'Campo Gravítico': 'images/f12_lua.png',
+    'Campo Elétrico': 'images/f12_trovoada.png',
+    'Campo Magnético': 'images/f12_aurora_boreal.png',
+    'Física Moderna': 'images/f12_fisica_moderna.png',
     'Massa e Tamanho dos Átomos': 'images/Massa e tamanho dos átomos.png',
     'Energia dos Eletrões': 'images/Energia dos eletrões.png',
     'Tabela Periódica': 'images/Tabela periódica.png',
@@ -1743,6 +1740,9 @@ CATEGORIA_TESTES_IMAGENS = {
 # .missions-category-panel-image--contain), tal como em index-missions.html
 # — evita cortar ícones/desenhos que não preenchem todo o retângulo.
 CATEGORIA_TESTES_IMAGENS_CONTAIN = {'Reações Ácido-Base'}
+# Imagens com rostos: posição vertical (background-position) para as cabeças não ficarem cortadas,
+# a mesma usada para o mesmo capítulo em index-missions.html.
+CATEGORIA_TESTES_IMAGENS_POSICAO = {'Evolução Biológica': 'center 24%', 'Reprodução': 'center 5%', 'Património Genético': 'center 3%'}
 
 # Disciplina de cada categoria (ver data-subject em .missions-category,
 # tal como em index-missions.html) — usado pelo subject-switcher.js para
@@ -1806,11 +1806,11 @@ CATEGORIA_TESTES_ANO = {
     'Biodiversidade': '10',
     'Obtenção de Matéria': '10',
     'Distribuição de Matéria': '10',
-    'Transformação e Utilização de Energia': '10',
+    'Transformação e Utilização de Energia pelos Seres Vivos': '10',
     'Botânica': '10',
     'Corpo Humano': '10',
     'Ecologia': '10',
-    'Evolução': '11',
+    'Evolução Biológica': '11',
     'Sistemática dos Seres Vivos': '11',
     'Crescimento, Renovação e Diferenciação Celular': '11',
     'Reprodução': '11',
@@ -1818,6 +1818,7 @@ CATEGORIA_TESTES_ANO = {
     'Património Genético': '12',
     'Imunidade e Controlo de Doenças': '12',
     'Produção de Alimentos e Sustentabilidade': '12',
+    'Preservar e Recuperar o Ambiente': '12',
     'Energia e Movimentos': '10',
     'Energia e Fenómenos Elétricos': '10',
     'Energia, Fenómenos Térmicos e Radiação': '10',
@@ -1879,6 +1880,28 @@ MISSOES_TESTES = [
         ],
     },
     {
+        'categoria': 'Crescimento, Renovação e Diferenciação Celular',
+        'titulo': 'O Código da Vida',
+        'meta': ['Grupos I a IV', '12 perguntas', '45 minutos'],
+        'correcao': 'Correção automática e por IA.',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'codigo-genetico'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'codigo-genetico-meselson-stahl'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'codigo-genetico-replicacao'},
+        ],
+    },
+    {
+        'categoria': 'Cinemática e Dinâmica 2D',
+        'titulo': 'Cinemática e Dinâmica 2D',
+        'meta': ['4 grupos, 13 itens', '45 minutos', 'Correção automática e por IA'],
+        'correcao': 'Correção automática e por IA.',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis12-m1-teste-1'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis12-m1-teste-2'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis12-m1-teste-3'},
+        ],
+    },
+    {
         'categoria': 'Energia e Movimentos',
         'titulo': 'Energia e Movimentos',
         'meta': ['4 questões, 20 itens', '90 minutos', 'Correção automática e por IA'],
@@ -1887,6 +1910,17 @@ MISSOES_TESTES = [
             {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis10-m1-teste-1'},
             {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-2'},
             {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis10-m1-teste-3'},
+        ],
+    },
+    {
+        'categoria': 'Mecânica',
+        'titulo': 'Tempo, Posição, Velocidade e Aceleração',
+        'meta': ['4 grupos, 13 itens', '45 minutos', 'Correção automática e por IA'],
+        'correcao': 'Correção automática e por IA.',
+        'testes': [
+            {'titulo': 'Teste 1', 'plano': 'free', 'teste_id': 'fis11-m1-teste-1'},
+            {'titulo': 'Teste 2', 'plano': 'pro', 'teste_id': 'fis11-m1-teste-2'},
+            {'titulo': 'Teste 3', 'plano': 'pro', 'teste_id': 'fis11-m1-teste-3'},
         ],
     },
 ]
@@ -1904,41 +1938,37 @@ MISSOES_TESTES = [
 # (pedido explícito: só o 1º capítulo de cada disciplina/ano fica
 # disponível, mesmo quando outro já tem conteúdo pronto).
 _TESTES_EM_BREVE = [
-    ('Obtenção de Matéria', 'Fotossíntese'),
     ('Biodiversidade', 'Células e Organelos'),
     ('Biodiversidade', 'Biomoléculas'),
-    ('Obtenção de Matéria', 'Membrana Celular e Transporte Transmembranar'),
     ('Obtenção de Matéria', 'Obtenção de Matéria pelos Seres Heterotróficos'),
-    ('Distribuição de Matéria', 'Xilema e Floema'),
+    ('Obtenção de Matéria', 'Obtenção de Matéria pelos Seres Autotróficos'),
+    ('Distribuição de Matéria', 'Distribuição de Matéria nas Plantas'),
     ('Distribuição de Matéria', 'Transporte nos Animais'),
-    ('Transformação e Utilização de Energia', 'Respiração Aeróbia e Fermentação'),
-    ('Transformação e Utilização de Energia', 'Trocas Gasosas'),
-    ('Evolução', 'A Origem da Célula Eucariótica'),
-    ('Evolução', 'Lamarckismo e Darwinismo'),
-    ('Sistemática dos Seres Vivos', 'Taxonomia e Sistemática'),
-    ('Crescimento, Renovação e Diferenciação Celular', 'O Código da Vida'),
+    ('Transformação e Utilização de Energia pelos Seres Vivos', 'Obtenção de Energia'),
+    ('Transformação e Utilização de Energia pelos Seres Vivos', 'Trocas Gasosas'),
     ('Crescimento, Renovação e Diferenciação Celular', 'Síntese Proteica'),
     ('Crescimento, Renovação e Diferenciação Celular', 'Ciclo Celular'),
-    ('Crescimento, Renovação e Diferenciação Celular', 'Mitose'),
-    ('Reprodução', 'Meiose e Reprodução Sexuada'),
     ('Reprodução', 'Reprodução Assexuada'),
+    ('Reprodução', 'Meiose e Reprodução Sexuada'),
     ('Reprodução', 'Ciclos de Vida'),
-    ('Ecologia', 'Ecossistemas'),
-    ('Corpo Humano', 'Sistema Nervoso e Hormonal'),
-    ('Botânica', 'Fisiologia Vegetal'),
-    ('Reprodução e Manipulação da Fertilidade', 'Reprodução e Manipulação da Fertilidade'),
-    ('Património Genético', 'Património Genético'),
+    ('Evolução Biológica', 'Evolução Biológica'),
+    ('Sistemática dos Seres Vivos', 'Sistemática dos Seres Vivos'),
+    ('Reprodução e Manipulação da Fertilidade', 'Gametogénese Humana'),
+    ('Reprodução e Manipulação da Fertilidade', 'Regulação Hormonal da Reprodução'),
+    ('Reprodução e Manipulação da Fertilidade', 'Fecundação'),
+    ('Reprodução e Manipulação da Fertilidade', 'Manipulação da Fertilidade'),
+    ('Património Genético', 'Hereditariedade'),
+    ('Património Genético', 'Biotecnologia'),
     ('Imunidade e Controlo de Doenças', 'Imunidade e Controlo de Doenças'),
     ('Produção de Alimentos e Sustentabilidade', 'Produção de Alimentos e Sustentabilidade'),
+    ('Preservar e Recuperar o Ambiente', 'Preservar e Recuperar o Ambiente'),
     ('Energia e Fenómenos Elétricos', 'Energia e Fenómenos Elétricos'),
     ('Energia, Fenómenos Térmicos e Radiação', 'Energia, Fenómenos Térmicos e Radiação'),
-    ('Mecânica', 'Tempo, posição, velocidade e aceleração'),
     ('Mecânica', 'Movimento e Interações'),
     ('Mecânica', 'Forças e Movimentos'),
     ('Sinais, Ondas e Som', 'Sinais, Ondas e Som'),
     ('Eletromagnetismo', 'Eletromagnetismo'),
     ('Eletromagnetismo', 'Ondas Eletromagnéticas'),
-    ('Cinemática e Dinâmica 2D', 'Cinemática e Dinâmica 2D'),
     ('Centro de Massa e Momento Linear', 'Centro de Massa e Momento Linear'),
     ('Fluidos', 'Fluidos'),
     ('Campo Gravítico', 'Campo Gravítico'),
@@ -2014,9 +2044,12 @@ TESTE_FREE_PARA_MISSAO = {
     'fotossintese': 'fotossintese',
     'diversidade': 'diversidade-organizacao-biologica',
     'celulas': 'celulas-organelos',
+    'codigo-genetico': 'codigo-da-vida',
     'fis10-m1-teste-1': 'energia-e-movimentos',
     'fis10-m2-teste-1': 'energia-e-fenomenos-eletricos',
     'fis10-m3-teste-1': 'energia-fenomenos-termicos-radiacao',
+    'fis11-m1-teste-1': '11-descrever-o-movimento',
+    'fis12-m1-teste-1': '12-cinematica-dinamica-2d',
 }
 
 
@@ -2037,61 +2070,52 @@ ORDEM_CAPITULOS_MISSOES = [
         'Células e Organelos (10º ano)',
         'Biomoléculas (10º ano)',
     ]),
-    ('Ecologia', [
-        'Ecossistemas (10º ano)',
-    ]),
     ('Obtenção de Matéria', [
-        'Membrana Celular e Transporte Transmembranar (10º ano)',
-        'Fotossíntese (10º ano)',
         'Obtenção de Matéria pelos Seres Heterotróficos (10º ano)',
-    ]),
-    ('Corpo Humano', [
-        'Sistema Nervoso e Hormonal (10º ano)',
+        'Obtenção de Matéria pelos Seres Autotróficos (10º ano)',
     ]),
     ('Distribuição de Matéria', [
-        'Xilema e Floema (10º ano)',
+        'Distribuição de Matéria nas Plantas (10º ano)',
         'Transporte nos Animais (10º ano)',
     ]),
-    ('Botânica', [
-        'Fisiologia Vegetal (10º ano)',
-    ]),
-    ('Transformação e Utilização de Energia', [
-        'Respiração Aeróbia e Fermentação (10º ano)',
+    ('Transformação e Utilização de Energia pelos Seres Vivos', [
+        'Obtenção de Energia (10º ano)',
         'Trocas Gasosas (10º ano)',
     ]),
     ('Crescimento, Renovação e Diferenciação Celular', [
         'O Código da Vida (10º e 11º ano)',
         'Síntese Proteica (11º ano)',
         'Ciclo Celular (11º ano)',
-        'Mitose (11º ano)',
     ]),
     ('Reprodução', [
-        'Meiose e Reprodução Sexuada (11º ano)',
         'Reprodução Assexuada (11º ano)',
+        'Meiose e Reprodução Sexuada (11º ano)',
         'Ciclos de Vida (11º ano)',
     ]),
-    ('Evolução', [
-        'A Origem da Célula Eucariótica (11º ano)',
-        'Lamarckismo e Darwinismo (11º ano)',
+    ('Evolução Biológica', [
+        'Evolução Biológica (11º ano)',
     ]),
     ('Sistemática dos Seres Vivos', [
-        'Taxonomia e Sistemática (11º ano)',
+        'Sistemática dos Seres Vivos (11º ano)',
     ]),
     ('Reprodução e Manipulação da Fertilidade', [
-        'Gametogénese e Fecundação (12º ano)',
+        'Gametogénese Humana (12º ano)',
+        'Regulação Hormonal da Reprodução (12º ano)',
+        'Fecundação (12º ano)',
         'Manipulação da Fertilidade (12º ano)',
     ]),
     ('Património Genético', [
-        'Mendel e a Hereditariedade (12º ano)',
-        'Engenharia Genética (12º ano)',
+        'Hereditariedade (12º ano)',
+        'Biotecnologia (12º ano)',
     ]),
     ('Imunidade e Controlo de Doenças', [
-        'O Sistema Imunitário (12º ano)',
-        'Desequilíbrios Imunitários e Biotecnologia (12º ano)',
+        'Imunidade e Controlo de Doenças (12º ano)',
     ]),
     ('Produção de Alimentos e Sustentabilidade', [
-        'Microrganismos e Produção de Alimentos (12º ano)',
-        'Conservação, OGM e Controlo de Pragas (12º ano)',
+        'Produção de Alimentos e Sustentabilidade (12º ano)',
+    ]),
+    ('Preservar e Recuperar o Ambiente', [
+        'Preservar e Recuperar o Ambiente (12º ano)',
     ]),
     ('Energia e Movimentos', [
         'Energia e Movimentos (10º ano)',
@@ -2296,6 +2320,7 @@ def montar_categorias_testes(plano_aluno):
             # em index-missions.html — aqui fica igual, sem imagem de recurso.
             'imagem': CATEGORIA_TESTES_IMAGENS.get(nome),
             'imagem_contain': nome in CATEGORIA_TESTES_IMAGENS_CONTAIN,
+            'imagem_posicao': CATEGORIA_TESTES_IMAGENS_POSICAO.get(nome),
             'disciplina': CATEGORIA_TESTES_DISCIPLINA.get(nome, 'biology'),
             'ano': CATEGORIA_TESTES_ANO.get(nome),
         }
@@ -2636,6 +2661,9 @@ def montar_biblioteca_estante(perfil, unidades=None):
 
 @login_required(login_url='login')
 def pagina_biblioteca(request):
+    # Biblioteca do Explorador bloqueada no MVP (ainda incompleta).
+    return redirect('index-missions')
+
     try:
         perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
     except OperationalError:
@@ -2650,6 +2678,9 @@ def pagina_biblioteca(request):
 
 @login_required(login_url='login')
 def pagina_biblioteca_geologia(request):
+    # Biblioteca do Explorador bloqueada no MVP (ainda incompleta).
+    return redirect('index-missions')
+
     try:
         perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
     except OperationalError:
@@ -2664,6 +2695,9 @@ def pagina_biblioteca_geologia(request):
 
 @login_required(login_url='login')
 def pagina_biblioteca_unidade(request, unidade_id):
+    # Biblioteca do Explorador bloqueada no MVP (ainda incompleta).
+    return redirect('index-missions')
+
     unidade = next((u for u in UNIDADES_BIBLIOTECA if u['id'] == unidade_id), None)
     if unidade is None:
         raise Http404('Unidade não encontrada.')
@@ -2703,6 +2737,9 @@ def pagina_biblioteca_unidade(request, unidade_id):
 
 @login_required(login_url='login')
 def pagina_flashcards(request, missao_id):
+    # Flashcards (parte da Biblioteca do Explorador) bloqueados no MVP.
+    return redirect('index-missions')
+
     try:
         perfil, created = PerfilAluno.objects.get_or_create(user=request.user)
     except OperationalError:

@@ -1,0 +1,392 @@
+{
+  "id": "fis11-m1-teste-1",
+  "titulo": "Teste 1 — Tempo, posição, velocidade e aceleração",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [],
+    "formulas": [
+      "Deslocamento: Δx = x final − x inicial",
+      "Rapidez média: distância percorrida ÷ intervalo de tempo",
+      "Componente escalar da velocidade média: v_m = Δx / Δt",
+      "Componente escalar da aceleração média: a_m = Δv / Δt"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Uma volta ao troço",
+      "texto_apoio": "A Marta treina num troço retilíneo. Adota-se um eixo Ox com origem na marca de partida e sentido positivo para a direita. A Marta parte da origem em t = 0 s, corre para a direita até à marca x = 60 m (em t = 10 s) e, sem parar, regressa, chegando à marca x = 20 m em t = 18 s."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Conceitos"
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Outro treino",
+      "texto_apoio": "Noutro treino, registou-se a posição da Marta, no mesmo eixo, ao longo do tempo.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Posição em função do tempo",
+        "colunas": [
+          "t (s)",
+          "0",
+          "2",
+          "4",
+          "6",
+          "8",
+          "10"
+        ],
+        "linhas": [
+          [
+            "x (m)",
+            "0",
+            "10",
+            "20",
+            "30",
+            "30",
+            "30"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 4,
+      "titulo": "GRUPO IV — Arranque e aceleração",
+      "texto_apoio": "No arranque de uma corrida, mediu-se a componente escalar da velocidade da Marta, ao longo do eixo Ox, em vários instantes.",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Velocidade em função do tempo",
+        "colunas": [
+          "t (s)",
+          "0,0",
+          "1,0",
+          "2,0",
+          "3,0",
+          "4,0"
+        ],
+        "linhas": [
+          [
+            "v (m/s)",
+            "0,0",
+            "4,0",
+            "7,0",
+            "9,0",
+            "10,0"
+          ]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "1",
+      "enunciado": "O deslocamento da Marta entre t = 0 s e t = 18 s é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "+100 m"
+        },
+        {
+          "letra": "B",
+          "texto": "+20 m"
+        },
+        {
+          "letra": "C",
+          "texto": "−20 m"
+        },
+        {
+          "letra": "D",
+          "texto": "+80 m"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12,
+      "explicacao": "Δx = x_final − x_inicial = 20 − 0 = +20 m."
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "2",
+      "enunciado": "A distância percorrida pela Marta entre t = 0 s e t = 18 s é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "20 m"
+        },
+        {
+          "letra": "B",
+          "texto": "60 m"
+        },
+        {
+          "letra": "C",
+          "texto": "80 m"
+        },
+        {
+          "letra": "D",
+          "texto": "100 m"
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 12,
+      "explicacao": "Ida: 60 m; volta: 60 − 20 = 40 m. Total: 60 + 40 = 100 m."
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "3",
+      "enunciado": "Calcula a rapidez média da Marta entre t = 0 s e t = 18 s. Apresenta o resultado em m/s, com dois algarismos significativos.",
+      "resposta_correta": "5,55",
+      "tolerancia_numerica": 0.06,
+      "cotacao": 18,
+      "explicacao": "Rapidez média = distância percorrida ÷ intervalo de tempo = 100 ÷ 18 = 5,56 m/s ≈ 5,6 m/s."
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "4",
+      "enunciado": "Calcula a componente escalar da velocidade média da Marta entre t = 0 s e t = 18 s. Apresenta o resultado em m/s, com dois algarismos significativos.",
+      "resposta_correta": "1,1",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 18,
+      "explicacao": "v_m = Δx ÷ Δt = (20 − 0) ÷ (18 − 0) = 1,11 m/s ≈ +1,1 m/s."
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "verdadeiro_falso",
+      "numero": "5",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "A trajetória de um corpo pode ser diferente consoante o referencial escolhido."
+        },
+        {
+          "letra": "b",
+          "texto": "O deslocamento de um corpo é sempre igual à distância que ele percorre."
+        },
+        {
+          "letra": "c",
+          "texto": "A velocidade média e a rapidez média de um corpo têm sempre o mesmo valor."
+        },
+        {
+          "letra": "d",
+          "texto": "Se um corpo regressa ao ponto de partida, a sua velocidade média nesse intervalo é nula."
+        }
+      ],
+      "resposta_correta": {
+        "a": "V",
+        "b": "F",
+        "c": "F",
+        "d": "V"
+      },
+      "cotacao": 16,
+      "explicacao": "(b) Só coincidem se não houver inversão de sentido. (c) A velocidade média usa o deslocamento; a rapidez média usa a distância. (d) O deslocamento é nulo."
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "correspondencia",
+      "numero": "6",
+      "enunciado": "Associa cada termo da Coluna I à respetiva descrição (Coluna II).",
+      "coluna_esquerda": [
+        {
+          "letra": "a",
+          "texto": "Instante"
+        },
+        {
+          "letra": "b",
+          "texto": "Intervalo de tempo"
+        },
+        {
+          "letra": "c",
+          "texto": "Posição"
+        },
+        {
+          "letra": "d",
+          "texto": "Deslocamento"
+        }
+      ],
+      "coluna_direita": [
+        {
+          "numero": "1",
+          "texto": "Valor lido num cronómetro num dado momento"
+        },
+        {
+          "numero": "2",
+          "texto": "Diferença entre o instante final e o instante inicial"
+        },
+        {
+          "numero": "3",
+          "texto": "Coordenada do corpo no eixo, num dado instante"
+        },
+        {
+          "numero": "4",
+          "texto": "Diferença entre a posição final e a posição inicial"
+        },
+        {
+          "numero": "5",
+          "texto": "Comprimento total do trajeto percorrido"
+        }
+      ],
+      "resposta_correta": {
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4"
+      },
+      "cotacao": 16,
+      "explicacao": "A opção (5) é a distância percorrida, que não corresponde a nenhum dos termos da Coluna I."
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "numero": "7",
+      "enunciado": "Muda-se a origem do eixo para a marca dos 60 m, mantendo o sentido positivo. Relativamente ao movimento descrito no Grupo I, o deslocamento total (de 0 a 18 s) e a posição final da Marta passam a ser, respetivamente,",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "+20 m e −40 m"
+        },
+        {
+          "letra": "B",
+          "texto": "−40 m e −40 m"
+        },
+        {
+          "letra": "C",
+          "texto": "+20 m e +20 m"
+        },
+        {
+          "letra": "D",
+          "texto": "+80 m e +80 m"
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 12,
+      "explicacao": "Com a nova origem, x' = x − 60. Posição final: 20 − 60 = −40 m. O deslocamento é uma diferença de posições e não depende da origem: continua +20 m."
+    },
+    {
+      "id": "p8",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "numero": "8",
+      "enunciado": "Calcula a componente escalar da velocidade média da Marta entre t = 0 s e t = 6 s. Apresenta o resultado em m/s.",
+      "resposta_correta": "5,0",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 16,
+      "explicacao": "v_m = (30 − 0) ÷ (6 − 0) = 5,0 m/s."
+    },
+    {
+      "id": "p9",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "numero": "9",
+      "enunciado": "Entre t = 6 s e t = 10 s, a Marta encontra-se",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "em movimento uniforme, com velocidade de 3,0 m/s."
+        },
+        {
+          "letra": "B",
+          "texto": "em movimento retardado."
+        },
+        {
+          "letra": "C",
+          "texto": "em repouso."
+        },
+        {
+          "letra": "D",
+          "texto": "a regressar à origem."
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12,
+      "explicacao": "A posição mantém-se em 30 m entre 6 s e 10 s, logo a velocidade é nula."
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "numero": "10",
+      "enunciado": "A componente escalar da velocidade média da Marta entre t = 0 s e t = 10 s é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "2,5 m/s"
+        },
+        {
+          "letra": "B",
+          "texto": "3,0 m/s"
+        },
+        {
+          "letra": "C",
+          "texto": "3,3 m/s"
+        },
+        {
+          "letra": "D",
+          "texto": "5,0 m/s"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 18,
+      "explicacao": "v_m = (30 − 0) ÷ (10 − 0) = 3,0 m/s. A opção (A) resulta de fazer a média de 5,0 e 0; a (C) de dividir por 9 s."
+    },
+    {
+      "id": "p11",
+      "grupo": 4,
+      "tipo": "resposta_curta",
+      "numero": "11",
+      "enunciado": "Calcula a componente escalar da aceleração média da Marta entre t = 1,0 s e t = 4,0 s. Apresenta o resultado em m/s².",
+      "resposta_correta": "2,0",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 14,
+      "explicacao": "a_m = Δv ÷ Δt = (10,0 − 4,0) ÷ (4,0 − 1,0) = 6,0 ÷ 3,0 = 2,0 m/s²."
+    },
+    {
+      "id": "p12",
+      "grupo": 4,
+      "tipo": "escolha_multipla",
+      "numero": "12",
+      "enunciado": "Num instante posterior, a Marta move-se no sentido positivo do eixo, com v = +8 m/s, e a componente escalar da sua aceleração é −2 m/s². Nesse instante, o movimento da Marta é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "acelerado, porque o módulo da velocidade aumenta."
+        },
+        {
+          "letra": "B",
+          "texto": "uniforme, porque a velocidade tem sinal constante."
+        },
+        {
+          "letra": "C",
+          "texto": "acelerado, porque a aceleração é diferente de zero."
+        },
+        {
+          "letra": "D",
+          "texto": "retardado, porque o módulo da velocidade diminui."
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 12,
+      "explicacao": "A velocidade e a aceleração têm sinais opostos, por isso o módulo da velocidade diminui: movimento retardado."
+    },
+    {
+      "id": "p13",
+      "grupo": 4,
+      "tipo": "resposta_longa",
+      "numero": "13",
+      "enunciado": "Um aluno afirma: \"Como a componente escalar da aceleração da Marta é negativa, ela está necessariamente a andar para trás.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "A afirmação está errada. Deve explicar que o sentido do movimento é dado pelo sinal da velocidade e não pelo da aceleração. Uma aceleração negativa com velocidade positiva significa que a Marta continua a deslocar-se no sentido positivo, mas a abrandar (movimento retardado). Só se a velocidade for negativa é que a Marta se move no sentido negativo. Deve ainda referir que o sinal da aceleração depende do sentido positivo escolhido para o eixo.",
+      "cotacao": 24
+    }
+  ]
+}

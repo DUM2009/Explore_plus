@@ -1,0 +1,307 @@
+{
+  "id": "fis12-m1-teste-3",
+  "titulo": "Teste 3 — Cinemática e dinâmica da partícula a duas dimensões",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      {
+        "grandeza": "Módulo da aceleração gravítica (g)",
+        "valor": "9,8 m s⁻²"
+      }
+    ],
+    "formulas": [
+      "Força de atrito estático máxima: F_a,e máx = μ_e N",
+      "Força de atrito cinético: F_a,c = μ_c N",
+      "Segunda lei de Newton: F_res = m a",
+      "Movimento circular: F_c = m v² / r",
+      "Movimento retilíneo uniformemente variado: v² = v₀² + 2 a Δy"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — O atrito do bloco",
+      "texto_apoio": "Numa atividade laboratorial, mediu-se a intensidade máxima da força de atrito estático entre um bloco de madeira e uma mesa horizontal, colocando massas sobre o bloco para variar a reação normal.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Atrito estático máximo em função da reação normal",
+        "colunas": [
+          "N (N)",
+          "5,0",
+          "10,0",
+          "15,0",
+          "20,0"
+        ],
+        "linhas": [
+          [
+            "F_a,e máx (N)",
+            "2,0",
+            "4,0",
+            "6,1",
+            "8,0"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Dois blocos ligados",
+      "texto_apoio": "Um bloco A, de massa 2,0 kg, está sobre uma mesa horizontal e liga-se, por um fio ideal que passa numa roldana sem atrito, a um bloco B, de massa 3,0 kg, suspenso. O coeficiente de atrito cinético entre o bloco A e a mesa é 0,25. Abandona-se o sistema, e o bloco B desce."
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Curvas, looping e roda gigante"
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "1",
+      "enunciado": "Calcula o valor do coeficiente de atrito estático entre o bloco e a mesa, a partir do declive da reta que melhor se ajusta aos dados. Apresenta o resultado com dois algarismos significativos.",
+      "resposta_correta": "0,40",
+      "tolerancia_numerica": 0.011,
+      "cotacao": 14,
+      "explicacao": "μ_e = declive de F_a,e máx em função de N = (8,0 − 2,0) ÷ (20,0 − 5,0) = 0,40. (Sem unidades.)"
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "2",
+      "enunciado": "Se o mesmo bloco, sem massas adicionais, fosse colocado sobre a face de menor área de contacto, o valor máximo do atrito estático",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "aumentaria."
+        },
+        {
+          "letra": "B",
+          "texto": "diminuiria."
+        },
+        {
+          "letra": "C",
+          "texto": "manter-se-ia."
+        },
+        {
+          "letra": "D",
+          "texto": "passaria a ser nulo."
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12,
+      "explicacao": "A força de atrito não depende da área aparente de contacto, mas só dos materiais e da reação normal."
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "3",
+      "enunciado": "Se se inclinasse a mesma mesa, o bloco começaria a deslizar quando o ângulo de inclinação atingisse o valor crítico. Calcula esse ângulo. Apresenta o resultado em graus, com dois algarismos significativos.",
+      "resposta_correta": "22",
+      "tolerancia_numerica": 0.25,
+      "cotacao": 14,
+      "explicacao": "No limiar do deslizamento, μ_e = tan θ_c ⇒ θ_c = arctan 0,40 ≈ 21,8° ≈ 22°."
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "numero": "4",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "A intensidade da força de atrito estático é sempre igual a μ_e N."
+        },
+        {
+          "letra": "b",
+          "texto": "Para o mesmo par de materiais, o coeficiente de atrito cinético é, em geral, menor do que o estático."
+        },
+        {
+          "letra": "c",
+          "texto": "Se a reação normal duplicar, a intensidade da força de atrito cinético duplica."
+        },
+        {
+          "letra": "d",
+          "texto": "O coeficiente de atrito tem como unidade o newton."
+        }
+      ],
+      "resposta_correta": {
+        "a": "F",
+        "b": "V",
+        "c": "V",
+        "d": "F"
+      },
+      "cotacao": 20,
+      "explicacao": "(a) F: só no limiar do deslizamento; antes, F_a,e ≤ μ_e N e iguala a força aplicada. (c) V: F_a,c = μ_c N. (d) F: é adimensional."
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "numero": "5",
+      "enunciado": "O módulo da aceleração do bloco A é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "4,9 m/s²"
+        },
+        {
+          "letra": "B",
+          "texto": "5,9 m/s²"
+        },
+        {
+          "letra": "C",
+          "texto": "9,8 m/s²"
+        },
+        {
+          "letra": "D",
+          "texto": "12 m/s²"
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 14,
+      "explicacao": "Bloco A (horizontal): T − μ m_A g = m_A a. Bloco B: m_B g − T = m_B a. Somando: m_B g − μ m_A g = (m_A + m_B) a ⇒ a = (29,4 − 4,9) ÷ 5,0 = 4,9 m/s². (A opção (B) ignora o atrito: 29,4 ÷ 5,0 = 5,9 m/s². A (C) tomaria B em queda livre.)"
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "numero": "6",
+      "enunciado": "Calcula a intensidade da tensão do fio durante o movimento. Apresenta o resultado em newton, com dois algarismos significativos.",
+      "resposta_correta": "14,7",
+      "tolerancia_numerica": 0.35,
+      "cotacao": 14,
+      "explicacao": "Bloco B: T = m_B (g − a) = 3,0 × (9,8 − 4,9) = 14,7 N ≈ 15 N. (Confirmação com A: T = m_A a + μ m_A g = 9,8 + 4,9 = 14,7 N.)"
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "numero": "7",
+      "enunciado": "Comparando a intensidade da tensão do fio com o peso do bloco B, conclui-se que",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "são iguais, porque o fio transmite o peso de B."
+        },
+        {
+          "letra": "B",
+          "texto": "a tensão é nula."
+        },
+        {
+          "letra": "C",
+          "texto": "a tensão é maior, porque o fio puxa B para cima."
+        },
+        {
+          "letra": "D",
+          "texto": "a tensão é menor, porque o bloco B acelera para baixo."
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 12,
+      "explicacao": "P_B = 29,4 N e T = 14,7 N. O bloco B tem aceleração para baixo, logo a resultante sobre B aponta para baixo: P_B > T."
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "numero": "8",
+      "enunciado": "Calcula o módulo da velocidade do bloco B depois de ter descido 0,50 m, a partir do repouso. Apresenta o resultado em m/s, com dois algarismos significativos.",
+      "resposta_correta": "2,2",
+      "tolerancia_numerica": 0.015,
+      "cotacao": 16,
+      "explicacao": "Movimento uniformemente acelerado a partir do repouso: v² = 2 a Δy = 2 × 4,9 × 0,50 = 4,9 ⇒ v = 2,2 m/s."
+    },
+    {
+      "id": "p9",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "numero": "9",
+      "enunciado": "Um automóvel descreve uma curva plana e horizontal, de raio 50 m, numa estrada em que o coeficiente de atrito estático entre os pneus e o piso é 0,70. Calcula o módulo da velocidade máxima com que o automóvel pode fazer a curva sem derrapar. Apresenta o resultado em m/s, com dois algarismos significativos.",
+      "resposta_correta": "18,5",
+      "tolerancia_numerica": 0.55,
+      "cotacao": 14,
+      "explicacao": "A força de atrito estático faz de força centrípeta: μ m g = m v² ÷ r ⇒ v = √(μ g r) = √(0,70 × 9,8 × 50) = √343 ≈ 18,5 m/s ≈ 19 m/s."
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "numero": "10",
+      "enunciado": "Se a massa do automóvel (incluindo a carga) fosse duplicada, a velocidade máxima na mesma curva",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "duplicaria."
+        },
+        {
+          "letra": "B",
+          "texto": "manter-se-ia."
+        },
+        {
+          "letra": "C",
+          "texto": "reduzir-se-ia a metade."
+        },
+        {
+          "letra": "D",
+          "texto": "aumentaria √2 vezes."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12,
+      "explicacao": "A massa cancela-se em μ m g = m v² ÷ r."
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "numero": "11",
+      "enunciado": "Um carrinho de uma montanha-russa percorre um looping circular vertical, de raio 8,0 m. Calcula o módulo da velocidade mínima que o carrinho deve ter no ponto mais alto, para manter o contacto com a calha. Apresenta o resultado em m/s, com dois algarismos significativos.",
+      "resposta_correta": "8,9",
+      "tolerancia_numerica": 0.06,
+      "cotacao": 14,
+      "explicacao": "No limite, a reação normal é nula e só o peso faz de força centrípeta: m g = m v² ÷ r ⇒ v = √(g r) = √(9,8 × 8,0) = √78,4 ≈ 8,9 m/s."
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "numero": "12",
+      "enunciado": "Numa roda gigante de raio 20 m, uma passageira de massa 60 kg descreve uma circunferência vertical com rapidez constante de 4,0 m/s. No ponto mais alto, a intensidade da reação normal do assento sobre a passageira é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "540 N"
+        },
+        {
+          "letra": "B",
+          "texto": "588 N"
+        },
+        {
+          "letra": "C",
+          "texto": "636 N"
+        },
+        {
+          "letra": "D",
+          "texto": "48 N"
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 14,
+      "explicacao": "No ponto mais alto, a resultante é centrípeta (para baixo): P − N = m v² ÷ r ⇒ N = m g − m v² ÷ r = 60 × 9,8 − 60 × 4,0² ÷ 20 = 588 − 48 = 540 N. (A opção (C) é o valor no ponto mais baixo: 588 + 48 = 636 N.)"
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "numero": "13",
+      "enunciado": "Um aluno afirma: \"No ponto mais alto do looping, o peso é equilibrado por uma força centrífuga, pelo que a resultante das forças sobre o carrinho é nula.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "A afirmação está errada. Deve explicar que, num movimento circular, a resultante das forças não é nula: tem a direção do centro da trajetória e módulo m v² ÷ r (segunda lei de Newton). No ponto mais alto, o peso e a reação normal da calha (ambos dirigidos para o centro) fornecem essa força centrípeta: m g + N = m v² ÷ r. A \"força centrífuga\" não é uma força real exercida sobre o carrinho num referencial inercial. O carrinho mantém-se em contacto porque a sua velocidade é suficiente para que N ≥ 0 (v ≥ √(g r)).",
+      "cotacao": 30
+    }
+  ]
+}

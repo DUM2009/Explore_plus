@@ -4,7 +4,7 @@
   "titulo": "Física moderna",
   "disciplina": "fisica",
   "ano": 12,
-  "imagem": "f12_ferro_incandescente.png",
+  "imagem": "f12_fisica_moderna.png",
   "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"3\"/><ellipse cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\"/><ellipse cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\" transform=\"rotate(60 12 12)\"/><ellipse cx=\"12\" cy=\"12\" rx=\"9\" ry=\"3.5\" transform=\"rotate(120 12 12)\"/></svg>", "nome": "Mestre da Física Moderna" },
   "secoes": [
     {
@@ -65,20 +65,18 @@
           "perguntas": [
             {
               "pergunta": "A temperatura da superfície do Sol é cerca de 5800 K. Para que comprimento de onda é máxima a emissão?",
-              "opcoes": [
+              "opcoes": ["5,0 × 10⁻⁵ m (infravermelho)",
                 "5,0 × 10⁻⁷ m (500 nm, visível)",
-                "5,0 × 10⁻⁵ m (infravermelho)",
                 "5,0 × 10⁻⁹ m (raios X)",
                 "1,7 × 10⁻⁷ m (ultravioleta)"
               ],
-              "correta": 0,
+              "correta": 1,
               "mascote_feedback_certo": "Certo. λ máx = b / T ≈ 500 nm, a meio do visível.",
               "mascote_feedback_errado": "Pela lei de Wien, λ máx = b / T = 2,90 × 10⁻³ / 5800 = 5,0 × 10⁻⁷ m = 500 nm."
             },
             {
               "pergunta": "Se a temperatura absoluta de um corpo duplicar, a potência que emite por radiação:",
-              "opcoes": [
-                "duplica.",
+              "opcoes": ["duplica.",
                 "quadruplica.",
                 "fica 8 vezes maior.",
                 "fica 16 vezes maior."
@@ -89,22 +87,22 @@
             },
             {
               "pergunta": "A lei de Wien estabelece que:",
-              "opcoes": ["a potência emitida é proporcional a T⁴.", "o comprimento de onda do máximo de emissão é inversamente proporcional à temperatura absoluta.", "a energia de um fotão é proporcional à frequência.", "todos os corpos emitem o mesmo espetro."],
-              "correta": 1,
+              "opcoes": ["a potência emitida é proporcional a T⁴.", "a energia de um fotão é proporcional à frequência.", "o comprimento de onda do máximo de emissão é inversamente proporcional à temperatura absoluta.", "todos os corpos emitem o mesmo espetro."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. λ máx T = constante.",
               "mascote_feedback_errado": "λ máx T = constante. Temperatura maior, máximo a comprimento de onda menor."
             },
             {
               "pergunta": "Qual é o comprimento de onda do máximo de emissão do corpo humano (310 K)?",
-              "opcoes": ["9,4 × 10⁻⁷ m", "9,4 × 10⁻⁶ m", "9,4 × 10⁻⁵ m", "0,90 m"],
-              "correta": 1,
+              "opcoes": ["9,4 × 10⁻⁶ m", "9,4 × 10⁻⁷ m", "9,4 × 10⁻⁵ m", "0,90 m"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. ≈ 9,4 µm, no infravermelho.",
               "mascote_feedback_errado": "λ máx = 2,90 × 10⁻³ / 310 ≈ 9,4 × 10⁻⁶ m (9,4 µm), no infravermelho."
             },
             {
               "pergunta": "A catástrofe do ultravioleta foi resolvida por:",
-              "opcoes": ["Einstein, com a teoria da relatividade.", "Planck, com a hipótese da quantização da energia.", "Maxwell, com as equações do eletromagnetismo.", "Newton, com a teoria corpuscular da luz."],
-              "correta": 1,
+              "opcoes": ["Einstein, com a teoria da relatividade.", "Maxwell, com as equações do eletromagnetismo.", "Newton, com a teoria corpuscular da luz.", "Planck, com a hipótese da quantização da energia."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. Planck mostrou que a energia trocada em quanta reproduzia o espetro experimental.",
               "mascote_feedback_errado": "Planck mostrou que, se a energia fosse trocada em quanta E = h f, a teoria reproduzia o espetro experimental."
             }
@@ -186,8 +184,7 @@
           "perguntas": [
             {
               "pergunta": "Qual é a energia de um fotão de luz verde com comprimento de onda 550 nm?",
-              "opcoes": [
-                "3,6 × 10⁻¹⁹ J (cerca de 2,3 eV)",
+              "opcoes": ["3,6 × 10⁻¹⁹ J (cerca de 2,3 eV)",
                 "3,6 × 10⁻²⁸ J",
                 "1,2 × 10⁻³⁰ J",
                 "5,5 × 10⁻⁷ J"
@@ -198,13 +195,12 @@
             },
             {
               "pergunta": "Um metal tem energia de remoção 3,6 × 10⁻¹⁹ J. Nele incide radiação ultravioleta de 300 nm. Qual é a energia cinética máxima dos eletrões emitidos?",
-              "opcoes": [
-                "6,6 × 10⁻¹⁹ J",
-                "3,0 × 10⁻¹⁹ J",
+              "opcoes": ["6,6 × 10⁻¹⁹ J",
                 "3,6 × 10⁻¹⁹ J",
+                "3,0 × 10⁻¹⁹ J",
                 "Não há emissão."
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Muito bem. Ec máx ≈ 3,0 × 10⁻¹⁹ J.",
               "mascote_feedback_errado": "Calcula a energia do fotão: 6,63 × 10⁻¹⁹ J. Subtrai a energia de remoção: Ec máx ≈ 3,0 × 10⁻¹⁹ J."
             },
@@ -217,15 +213,15 @@
             },
             {
               "pergunta": "Qual é a frequência limiar de um metal com energia de remoção 3,6 × 10⁻¹⁹ J?",
-              "opcoes": ["5,4 × 10¹⁴ Hz", "2,4 × 10¹⁵ Hz", "1,8 × 10⁻⁵³ Hz", "3,6 × 10¹⁴ Hz"],
-              "correta": 0,
+              "opcoes": ["2,4 × 10¹⁵ Hz", "1,8 × 10⁻⁵³ Hz", "3,6 × 10¹⁴ Hz", "5,4 × 10¹⁴ Hz"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. f₀ ≈ 5,4 × 10¹⁴ Hz.",
               "mascote_feedback_errado": "f₀ = W / h = 3,6 × 10⁻¹⁹ / 6,63 × 10⁻³⁴ ≈ 5,4 × 10¹⁴ Hz."
             },
             {
               "pergunta": "O efeito fotoelétrico evidencia:",
-              "opcoes": ["a natureza ondulatória da luz.", "a natureza corpuscular da luz.", "a quantização da carga elétrica.", "a conservação do momento linear."],
-              "correta": 1,
+              "opcoes": ["a natureza corpuscular da luz.", "a natureza ondulatória da luz.", "a quantização da carga elétrica.", "a conservação do momento linear."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Só a ideia de fotões explica a frequência limiar.",
               "mascote_feedback_errado": "Só a ideia de fotões (partículas de luz com energia h f) explica a existência de uma frequência limiar e a independência da energia dos eletrões em relação à intensidade."
             }
@@ -273,8 +269,7 @@
           "perguntas": [
             {
               "pergunta": "O núcleo de hélio-4 tem 2 protões e 2 neutrões. A soma das massas dos nucleões separados é 4,031882 u e a massa do núcleo é 4,001506 u. Qual é a energia de ligação?",
-              "opcoes": [
-                "0,030 MeV",
+              "opcoes": ["0,030 MeV",
                 "7,1 MeV",
                 "28,3 MeV",
                 "3730 MeV"
@@ -285,8 +280,7 @@
             },
             {
               "pergunta": "Porque é que a fusão de núcleos muito pesados não liberta energia?",
-              "opcoes": [
-                "Porque os núcleos pesados não têm energia de ligação.",
+              "opcoes": ["Porque os núcleos pesados não têm energia de ligação.",
                 "Porque, para além do ferro, a energia de ligação por nucleão diminui: o produto seria menos estável.",
                 "Porque os núcleos pesados não existem na natureza.",
                 "Porque a força nuclear forte não atua em núcleos pesados."
@@ -297,15 +291,15 @@
             },
             {
               "pergunta": "A força responsável pela estabilidade dos núcleos atómicos é:",
-              "opcoes": ["a força gravítica.", "a força elétrica.", "a força nuclear forte.", "a força nuclear fraca."],
-              "correta": 2,
+              "opcoes": ["a força gravítica.", "a força elétrica.", "a força nuclear fraca.", "a força nuclear forte."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. A força nuclear forte mantém os nucleões unidos.",
               "mascote_feedback_errado": "A força nuclear forte mantém os nucleões unidos, vencendo a repulsão elétrica entre os protões."
             },
             {
               "pergunta": "O núcleo mais estável é aquele que tem:",
-              "opcoes": ["maior energia de ligação total.", "maior energia de ligação por nucleão.", "maior número de protões.", "menor massa."],
-              "correta": 1,
+              "opcoes": ["maior energia de ligação total.", "maior número de protões.", "maior energia de ligação por nucleão.", "menor massa."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. A estabilidade avalia-se pela energia de ligação por nucleão.",
               "mascote_feedback_errado": "A estabilidade avalia-se pela energia de ligação por nucleão, que é máxima perto do ferro-56."
             },
@@ -359,20 +353,18 @@
           "perguntas": [
             {
               "pergunta": "O rádio-226 (²²⁶₈₈Ra) sofre decaimento alfa. Qual é o núcleo resultante?",
-              "opcoes": [
+              "opcoes": ["²²²₈₆Rn",
                 "²²⁶₈₆Rn",
-                "²²²₈₆Rn",
                 "²²²₈₈Ra",
                 "²²⁶₈₉Ac"
               ],
-              "correta": 1,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. ²²⁶₈₈Ra → ²²²₈₆Rn + ⁴₂He.",
               "mascote_feedback_errado": "Na emissão alfa, o núcleo perde 2 protões e 2 neutrões: A = 226 − 4 = 222 e Z = 88 − 2 = 86 (radão)."
             },
             {
               "pergunta": "Qual é a emissão radioativa mais penetrante?",
-              "opcoes": [
-                "Alfa",
+              "opcoes": ["Alfa",
                 "Beta",
                 "Gama",
                 "Todas iguais"
@@ -383,8 +375,8 @@
             },
             {
               "pergunta": "No decaimento beta menos de um núcleo:",
-              "opcoes": ["A e Z diminuem.", "A mantém-se e Z aumenta 1.", "A diminui 4 e Z diminui 2.", "A e Z mantêm-se."],
-              "correta": 1,
+              "opcoes": ["A mantém-se e Z aumenta 1.", "A e Z diminuem.", "A diminui 4 e Z diminui 2.", "A e Z mantêm-se."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Um neutrão transforma-se num protão.",
               "mascote_feedback_errado": "Um neutrão transforma-se num protão (Z aumenta 1) e é emitido um eletrão. O número total de nucleões não muda."
             },
@@ -397,8 +389,8 @@
             },
             {
               "pergunta": "Quem descobriu a radioatividade?",
-              "opcoes": ["Marie Curie, em 1898.", "Henri Becquerel, em 1896.", "Ernest Rutherford, em 1911.", "Albert Einstein, em 1905."],
-              "correta": 1,
+              "opcoes": ["Marie Curie, em 1898.", "Ernest Rutherford, em 1911.", "Albert Einstein, em 1905.", "Henri Becquerel, em 1896."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. Becquerel, em 1896.",
               "mascote_feedback_errado": "Becquerel descobriu a radioatividade do urânio em 1896. O casal Curie descobriu depois o polónio e o rádio."
             }
@@ -472,25 +464,23 @@
           "perguntas": [
             {
               "pergunta": "O iodo-131, usado no tratamento da tiroide, tem T ½ = 8,0 dias. Uma amostra tem atividade inicial de 8,0 × 10⁶ Bq. Qual é a atividade ao fim de 24 dias?",
-              "opcoes": [
-                "4,0 × 10⁶ Bq",
-                "2,7 × 10⁶ Bq",
+              "opcoes": ["4,0 × 10⁶ Bq",
                 "1,0 × 10⁶ Bq",
+                "2,7 × 10⁶ Bq",
                 "0 Bq"
               ],
-              "correta": 2,
+              "correta": 1,
               "mascote_feedback_certo": "Certo. 24 dias = 3 meias-vidas. A = 1,0 × 10⁶ Bq.",
               "mascote_feedback_errado": "Conta as meias-vidas: 24 / 8,0 = 3. Em cada uma, a atividade cai para metade: 8,0 → 4,0 → 2,0 → 1,0 × 10⁶ Bq."
             },
             {
               "pergunta": "Um fragmento de madeira tem 25 % do carbono-14 que tinha quando a árvore morreu (T ½ = 5730 anos). Que idade tem?",
-              "opcoes": [
-                "1430 anos",
+              "opcoes": ["1430 anos",
                 "5730 anos",
-                "11 460 anos",
-                "22 920 anos"
+                "22 920 anos",
+                "11 460 anos"
               ],
-              "correta": 2,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. 2 meias-vidas: 11 460 anos.",
               "mascote_feedback_errado": "25 % corresponde a um quarto, ou seja, duas vezes metade. Passaram 2 meias-vidas: 11 460 anos."
             },
@@ -503,15 +493,15 @@
             },
             {
               "pergunta": "Ao fim de 3 meias-vidas, que percentagem de uma amostra radioativa ainda não decaiu?",
-              "opcoes": ["33 %", "25 %", "12,5 %", "0 %"],
-              "correta": 2,
+              "opcoes": ["12,5 %", "33 %", "25 %", "0 %"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. (1/2)³ = 12,5 %.",
               "mascote_feedback_errado": "(1/2)³ = 1/8 = 12,5 %."
             },
             {
               "pergunta": "A constante de decaimento do carbono-14 (T ½ = 5730 anos) é:",
-              "opcoes": ["5730 anos⁻¹", "1,21 × 10⁻⁴ anos⁻¹", "8,27 × 10³ anos⁻¹", "0,693 anos⁻¹"],
-              "correta": 1,
+              "opcoes": ["5730 anos⁻¹", "8,27 × 10³ anos⁻¹", "0,693 anos⁻¹", "1,21 × 10⁻⁴ anos⁻¹"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. λ ≈ 1,21 × 10⁻⁴ anos⁻¹.",
               "mascote_feedback_errado": "λ = ln 2 / T ½ = 0,693 / 5730 ≈ 1,21 × 10⁻⁴ anos⁻¹."
             }

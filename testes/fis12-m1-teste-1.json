@@ -1,0 +1,367 @@
+{
+  "id": "fis12-m1-teste-1",
+  "titulo": "Teste 1 — Cinemática e dinâmica da partícula a duas dimensões",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [],
+    "formulas": [
+      "Vetor deslocamento: Δr = r final − r inicial",
+      "Velocidade média: v_m = Δr / Δt",
+      "Velocidade instantânea: v = dr / dt",
+      "Aceleração instantânea: a = dv / dt",
+      "Aceleração normal (movimento circular): a_n = v² / r",
+      "Módulo da aceleração: a = √(a_t² + a_n²)"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Posições de um drone",
+      "texto_apoio": "Um drone voa num plano horizontal. Adota-se um referencial cartesiano Oxy, com coordenadas em metros. Registaram-se as posições do drone em três instantes.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Posição do drone",
+        "colunas": [
+          "t (s)",
+          "0,0",
+          "2,0",
+          "4,0"
+        ],
+        "linhas": [
+          [
+            "Posição (x ; y) (m)",
+            "(2,0 ; 1,0)",
+            "(8,0 ; 9,0)",
+            "(14,0 ; 9,0)"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Conceitos"
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — O drone em círculo",
+      "texto_apoio": "O drone descreve uma trajetória circular de raio 12 m, com rapidez constante de 6,0 m/s."
+    },
+    {
+      "numero": 4,
+      "titulo": "GRUPO IV — Equações do movimento",
+      "texto_apoio": "Outro drone tem, no SI, o vetor posição dado por r(t) = (2,0 t ; 1,0 + 3,0 t − 2,0 t²), em que o primeiro valor é a coordenada x e o segundo é a coordenada y."
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "1",
+      "enunciado": "O vetor deslocamento do drone entre t = 0,0 s e t = 2,0 s, em metros, é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "(10 ; 10)"
+        },
+        {
+          "letra": "B",
+          "texto": "(6,0 ; 8,0)"
+        },
+        {
+          "letra": "C",
+          "texto": "(8,0 ; 9,0)"
+        },
+        {
+          "letra": "D",
+          "texto": "10"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12,
+      "explicacao": "Δr = r(2,0) − r(0,0) = (8,0 − 2,0 ; 9,0 − 1,0) = (6,0 ; 8,0) m."
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "2",
+      "enunciado": "Calcula o módulo da velocidade média do drone entre t = 0,0 s e t = 2,0 s. Apresenta o resultado em m/s.",
+      "resposta_correta": "5,0",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 14,
+      "explicacao": "|Δr| = √(6,0² + 8,0²) = 10 m. |v_m| = 10 ÷ 2,0 = 5,0 m/s."
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "3",
+      "enunciado": "Calcula o módulo do vetor deslocamento do drone entre t = 0,0 s e t = 4,0 s. Apresenta o resultado em metros, com dois algarismos significativos.",
+      "resposta_correta": "14",
+      "tolerancia_numerica": 0.45,
+      "cotacao": 14,
+      "explicacao": "Δr = (14,0 − 2,0 ; 9,0 − 1,0) = (12 ; 8,0) m. |Δr| = √(144 + 64) = √208 ≈ 14,4 m ≈ 14 m."
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "4",
+      "enunciado": "A distância percorrida pelo drone entre t = 0,0 s e t = 4,0 s é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "14,4 m"
+        },
+        {
+          "letra": "B",
+          "texto": "16 m"
+        },
+        {
+          "letra": "C",
+          "texto": "18 m"
+        },
+        {
+          "letra": "D",
+          "texto": "não inferior a 14,4 m, podendo ser maior"
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 16,
+      "explicacao": "Só se conhecem três posições. O módulo do deslocamento (14,4 m) é o comprimento da linha reta entre o início e o fim, e a distância percorrida nunca é inferior a esse valor, mas pode ser maior se o drone não seguir segmentos de reta. As opções (B) e (C) são valores concretos que os dados não permitem afirmar."
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "verdadeiro_falso",
+      "numero": "5",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "O vetor velocidade é, em cada instante, tangente à trajetória."
+        },
+        {
+          "letra": "b",
+          "texto": "Se o módulo da velocidade de uma partícula é constante, a sua aceleração é nula."
+        },
+        {
+          "letra": "c",
+          "texto": "O vetor deslocamento entre dois instantes depende da origem do referencial."
+        },
+        {
+          "letra": "d",
+          "texto": "A velocidade média, num intervalo de tempo, tem a mesma direção e o mesmo sentido do vetor deslocamento nesse intervalo."
+        }
+      ],
+      "resposta_correta": {
+        "a": "V",
+        "b": "F",
+        "c": "F",
+        "d": "V"
+      },
+      "cotacao": 16,
+      "explicacao": "(b) F: se a direção da velocidade muda, há aceleração normal. (c) F: o deslocamento é uma diferença de posições, não depende da origem."
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "correspondencia",
+      "numero": "6",
+      "enunciado": "Associa cada grandeza da Coluna I à respetiva descrição (Coluna II).",
+      "coluna_esquerda": [
+        {
+          "letra": "a",
+          "texto": "Aceleração tangencial"
+        },
+        {
+          "letra": "b",
+          "texto": "Aceleração normal"
+        },
+        {
+          "letra": "c",
+          "texto": "Vetor posição"
+        },
+        {
+          "letra": "d",
+          "texto": "Velocidade instantânea"
+        }
+      ],
+      "coluna_direita": [
+        {
+          "numero": "1",
+          "texto": "Altera o módulo da velocidade"
+        },
+        {
+          "numero": "2",
+          "texto": "Altera a direção da velocidade"
+        },
+        {
+          "numero": "3",
+          "texto": "Localiza a partícula em relação à origem do referencial"
+        },
+        {
+          "numero": "4",
+          "texto": "Limite do quociente entre o vetor deslocamento e o intervalo de tempo, quando este tende para zero"
+        },
+        {
+          "numero": "5",
+          "texto": "Tem sempre a direção do deslocamento total"
+        }
+      ],
+      "resposta_correta": {
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4"
+      },
+      "cotacao": 16,
+      "explicacao": "A opção (5) é distratora."
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "numero": "7",
+      "enunciado": "Um drone descreve uma trajetória circular com rapidez constante. A aceleração do drone",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "é nula."
+        },
+        {
+          "letra": "B",
+          "texto": "tem apenas componente tangencial."
+        },
+        {
+          "letra": "C",
+          "texto": "tem apenas componente normal, dirigida para o centro da trajetória."
+        },
+        {
+          "letra": "D",
+          "texto": "tem componente tangencial, no sentido do movimento."
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12,
+      "explicacao": "Com rapidez constante, a componente tangencial é nula. A direção da velocidade muda, e isso exige aceleração normal, dirigida para o centro."
+    },
+    {
+      "id": "p8",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "numero": "8",
+      "enunciado": "Calcula o módulo da aceleração do drone. Apresenta o resultado em m/s².",
+      "resposta_correta": "3,0",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 14,
+      "explicacao": "a = a_n = v² ÷ r = 6,0² ÷ 12 = 3,0 m/s² (a_t = 0)."
+    },
+    {
+      "id": "p9",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "numero": "9",
+      "enunciado": "Num instante em que o drone, ainda a descrever a mesma trajetória circular de raio 12 m, com rapidez 6,0 m/s, apresenta uma componente tangencial da aceleração de 1,5 m/s², o módulo da aceleração do drone é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "4,5 m/s²"
+        },
+        {
+          "letra": "B",
+          "texto": "3,4 m/s²"
+        },
+        {
+          "letra": "C",
+          "texto": "1,5 m/s²"
+        },
+        {
+          "letra": "D",
+          "texto": "3,0 m/s²"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 16,
+      "explicacao": "a_n = 3,0 m/s² e a_t = 1,5 m/s². As componentes são perpendiculares: a = √(3,0² + 1,5²) = √11,25 ≈ 3,4 m/s². (A opção (A) soma os módulos.)"
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "numero": "10",
+      "enunciado": "Se a rapidez do drone duplicasse (12 m/s), mantendo-se o raio da trajetória, a componente normal da aceleração passaria a ser",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "6,0 m/s²"
+        },
+        {
+          "letra": "B",
+          "texto": "9,0 m/s²"
+        },
+        {
+          "letra": "C",
+          "texto": "12 m/s²"
+        },
+        {
+          "letra": "D",
+          "texto": "24 m/s²"
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 14,
+      "explicacao": "a_n = v² ÷ r = 12² ÷ 12 = 12 m/s². Duplicar a rapidez multiplica a_n por 4."
+    },
+    {
+      "id": "p11",
+      "grupo": 4,
+      "tipo": "resposta_curta",
+      "numero": "11",
+      "enunciado": "Calcula o módulo da velocidade do drone no instante t = 1,0 s. Apresenta o resultado em m/s, com dois algarismos significativos.",
+      "resposta_correta": "2,2",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 14,
+      "explicacao": "v_x = dx/dt = 2,0 m/s. v_y = dy/dt = 3,0 − 4,0 t = 3,0 − 4,0 = −1,0 m/s. |v| = √(2,0² + (−1,0)²) = √5 ≈ 2,2 m/s."
+    },
+    {
+      "id": "p12",
+      "grupo": 4,
+      "tipo": "escolha_multipla",
+      "numero": "12",
+      "enunciado": "O vetor aceleração do drone, em m/s², é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "(0 ; −4,0)"
+        },
+        {
+          "letra": "B",
+          "texto": "(2,0 ; −4,0)"
+        },
+        {
+          "letra": "C",
+          "texto": "(0 ; −2,0)"
+        },
+        {
+          "letra": "D",
+          "texto": "(0 ; 3,0)"
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 12,
+      "explicacao": "a_x = dv_x/dt = 0. a_y = dv_y/dt = −4,0 m/s². Logo a = (0 ; −4,0) m/s²."
+    },
+    {
+      "id": "p13",
+      "grupo": 4,
+      "tipo": "resposta_longa",
+      "numero": "13",
+      "enunciado": "Um aluno afirma: \"Como a componente x da velocidade do drone é constante, a aceleração do drone é nula.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "A afirmação está errada. Deve explicar que a aceleração tem duas componentes e que ter a componente x nula não implica aceleração nula. Aqui, v_y = 3,0 − 4,0 t varia no tempo, logo a_y = −4,0 m/s², e a aceleração é (0 ; −4,0) m/s², de módulo 4,0 m/s². O movimento é uniforme segundo x e uniformemente variado segundo y, e a trajetória é curva (parabólica).",
+      "cotacao": 30
+    }
+  ]
+}

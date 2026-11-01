@@ -1,0 +1,389 @@
+{
+  "id": "codigo-genetico",
+  "titulo": "Teste: Código Genético",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Análise de quatro amostras",
+      "texto_apoio": "Um laboratório determinou a composição em bases azotadas de quatro amostras de ácido nucleico, extraídas de organismos diferentes. Os resultados, expressos em percentagem do número total de bases de cada amostra, encontram-se na Tabela 1.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Composição em bases azotadas (%)",
+        "colunas": [
+          "Amostra",
+          "Adenina",
+          "Timina",
+          "Guanina",
+          "Citosina",
+          "Uracilo"
+        ],
+        "linhas": [
+          [
+            "1",
+            "24",
+            "24",
+            "26",
+            "26",
+            "0"
+          ],
+          [
+            "2",
+            "33",
+            "25",
+            "18",
+            "24",
+            "0"
+          ],
+          [
+            "3",
+            "20",
+            "0",
+            "30",
+            "30",
+            "20"
+          ],
+          [
+            "4",
+            "27",
+            "0",
+            "23",
+            "21",
+            "29"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Composição e estrutura"
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Estabilidade térmica do ADN",
+      "texto_apoio": "A temperatura de desnaturação (Tₘ) é a temperatura a que metade das moléculas de ADN de cadeia dupla de uma amostra se encontra separada em cadeias simples. Mediu-se a Tₘ do ADN de três espécies de bactérias, em condições idênticas.",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Percentagem de G + C e Tₘ do ADN de três espécies",
+        "colunas": [
+          "Espécie",
+          "% de G + C",
+          "Tₘ (°C)"
+        ],
+        "linhas": [
+          [
+            "P",
+            "30",
+            "82"
+          ],
+          [
+            "Q",
+            "50",
+            "90"
+          ],
+          [
+            "R",
+            "70",
+            "98"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 4,
+      "titulo": "GRUPO IV — Replicação do ADN"
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A amostra 2 corresponde a",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "ARN de cadeia simples."
+        },
+        {
+          "letra": "B",
+          "texto": "ADN de cadeia dupla."
+        },
+        {
+          "letra": "C",
+          "texto": "ADN de cadeia simples."
+        },
+        {
+          "letra": "D",
+          "texto": "ARN de cadeia dupla."
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "Relativamente à amostra 3, a única conclusão que se pode retirar com segurança é que",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "se trata de uma molécula de cadeia dupla, pois A = U e G = C."
+        },
+        {
+          "letra": "B",
+          "texto": "se trata de ARN, mas os dados não permitem saber se tem uma ou duas cadeias."
+        },
+        {
+          "letra": "C",
+          "texto": "se trata de ADN de cadeia dupla."
+        },
+        {
+          "letra": "D",
+          "texto": "se trata de ARN de cadeia simples, pois não existe ARN de cadeia dupla."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 14
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "Um fragmento de 100 pares de bases, com a composição da amostra 1, tem um total de pontes de hidrogénio igual a",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "126"
+        },
+        {
+          "letra": "B",
+          "texto": "200"
+        },
+        {
+          "letra": "C",
+          "texto": "252"
+        },
+        {
+          "letra": "D",
+          "texto": "300"
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 14
+    },
+    {
+      "id": "p4",
+      "grupo": 2,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "Uma molécula de ARN de cadeia simples não pode formar pontes de hidrogénio entre as suas próprias bases."
+        },
+        {
+          "letra": "b",
+          "texto": "Num nucleótido, a base azotada liga-se ao carbono 5' da pentose."
+        },
+        {
+          "letra": "c",
+          "texto": "A ligação entre dois nucleótidos consecutivos da mesma cadeia é uma ligação covalente."
+        },
+        {
+          "letra": "d",
+          "texto": "Dois fragmentos de ADN de cadeia dupla com o mesmo número de pares de bases têm sempre o mesmo número de pontes de hidrogénio."
+        }
+      ],
+      "resposta_correta": {
+        "a": "F",
+        "b": "F",
+        "c": "V",
+        "d": "F"
+      },
+      "cotacao": 24
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada termo da Coluna I à respetiva descrição (Coluna II).",
+      "coluna_esquerda": [
+        {
+          "letra": "a",
+          "texto": "Nucleósido"
+        },
+        {
+          "letra": "b",
+          "texto": "Nucleótido"
+        },
+        {
+          "letra": "c",
+          "texto": "Ligação fosfodiéster"
+        },
+        {
+          "letra": "d",
+          "texto": "Ponte de hidrogénio"
+        }
+      ],
+      "coluna_direita": [
+        {
+          "numero": "1",
+          "texto": "Pentose ligada a uma base azotada"
+        },
+        {
+          "numero": "2",
+          "texto": "Pentose ligada a uma base azotada e a um grupo fosfato"
+        },
+        {
+          "numero": "3",
+          "texto": "Liga nucleótidos consecutivos da mesma cadeia"
+        },
+        {
+          "numero": "4",
+          "texto": "Liga bases de cadeias diferentes"
+        },
+        {
+          "numero": "5",
+          "texto": "Liga o grupo fosfato à base azotada"
+        }
+      ],
+      "resposta_correta": {
+        "a": "1",
+        "b": "2",
+        "c": "3",
+        "d": "4"
+      },
+      "cotacao": 14
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica por que razão, ao aquecer progressivamente uma solução de ADN de cadeia dupla, as duas cadeias se separam sem que cada cadeia se parta, e por que razão uma amostra mais rica em guanina e citosina exige uma temperatura mais elevada para se separar.",
+      "criterios_correcao": "Deve explicar que as duas cadeias estão unidas por pontes de hidrogénio, que são ligações fracas, enquanto os nucleótidos de cada cadeia estão unidos por ligações fosfodiéster, covalentes e fortes. O aquecimento fornece energia suficiente para romper as pontes de hidrogénio, mas não as ligações covalentes. Deve referir que entre G e C se formam 3 pontes de hidrogénio e entre A e T apenas 2, pelo que uma amostra mais rica em G e C tem mais pontes por par de bases e precisa de mais energia (temperatura mais alta) para separar as cadeias.",
+      "cotacao": 24
+    },
+    {
+      "id": "p7",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 2, é correto afirmar que",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "a Tₘ é diretamente proporcional à percentagem de G + C."
+        },
+        {
+          "letra": "B",
+          "texto": "por cada aumento de 10 pontos percentuais na percentagem de G + C, a Tₘ aumenta cerca de 4 °C."
+        },
+        {
+          "letra": "C",
+          "texto": "a Tₘ diminui quando a percentagem de G + C aumenta."
+        },
+        {
+          "letra": "D",
+          "texto": "a Tₘ é independente da composição em bases."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p8",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "O ADN de cadeia dupla de uma espécie S tem 22% de adenina. Admitindo que a Tₘ varia linearmente com a percentagem de G + C, o valor esperado de Tₘ para a espécie S é, aproximadamente,",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "79 °C"
+        },
+        {
+          "letra": "B",
+          "texto": "87,6 °C"
+        },
+        {
+          "letra": "C",
+          "texto": "92,4 °C"
+        },
+        {
+          "letra": "D",
+          "texto": "101,2 °C"
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 14
+    },
+    {
+      "id": "p9",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno afirma: \"A espécie R tem a maior percentagem de G + C, logo o seu ADN é a molécula mais comprida das três.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "Deve comentar criticamente que a percentagem de G + C é uma proporção e não informa sobre o comprimento da molécula. Uma molécula curta pode ter elevada percentagem de G + C e uma molécula longa pode ter baixa percentagem. A tabela relaciona a composição em bases com a Tₘ e não permite concluir nada sobre o comprimento. A conclusão do aluno não é válida.",
+      "cotacao": 24
+    },
+    {
+      "id": "p10",
+      "grupo": 4,
+      "tipo": "escolha_multipla",
+      "enunciado": "Uma molécula de ADN com as duas cadeias marcadas com ¹⁵N replica-se uma vez num meio que contém apenas ¹⁴N. Segundo o modelo conservativo, as moléculas-filha são",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "ambas híbridas (¹⁵N/¹⁴N)."
+        },
+        {
+          "letra": "B",
+          "texto": "uma ¹⁵N/¹⁵N e uma ¹⁴N/¹⁴N."
+        },
+        {
+          "letra": "C",
+          "texto": "ambas ¹⁴N/¹⁴N."
+        },
+        {
+          "letra": "D",
+          "texto": "uma ¹⁵N/¹⁴N e uma ¹⁴N/¹⁴N."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p11",
+      "grupo": 4,
+      "tipo": "escolha_multipla",
+      "enunciado": "Uma única molécula de ADN ¹⁵N/¹⁵N replica-se quatro vezes sucessivas num meio que contém apenas ¹⁴N, segundo o modelo semiconservativo. Ao fim das quatro replicações, o número total de cadeias polinucleotídicas que contêm ¹⁵N é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "2"
+        },
+        {
+          "letra": "B",
+          "texto": "4"
+        },
+        {
+          "letra": "C",
+          "texto": "8"
+        },
+        {
+          "letra": "D",
+          "texto": "16"
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 14
+    },
+    {
+      "id": "p12",
+      "grupo": 4,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno afirma: \"Se a replicação do ADN for semiconservativa, ao fim de duas gerações num meio com ¹⁴N, todo o ADN de uma cultura inicialmente marcada com ¹⁵N será híbrido.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "Deve comentar que, no modelo semiconservativo, só na primeira geração todo o ADN é híbrido (100%). Na segunda geração, cada molécula híbrida origina uma híbrida e uma ¹⁴N/¹⁴N, pelo que se obtém 50% de ADN híbrido e 50% de ADN leve. Logo, a afirmação do aluno é incorreta para a segunda geração. Deve ainda indicar que a fração de ADN híbrido na geração n é 2/2ⁿ.",
+      "cotacao": 26
+    }
+  ]
+}

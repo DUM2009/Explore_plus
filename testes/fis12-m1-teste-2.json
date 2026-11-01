@@ -1,0 +1,332 @@
+{
+  "id": "fis12-m1-teste-2",
+  "titulo": "Teste 2 — Cinemática e dinâmica da partícula a duas dimensões",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [
+      {
+        "grandeza": "Módulo da aceleração gravítica (g)",
+        "valor": "9,8 m s⁻²"
+      }
+    ],
+    "formulas": [
+      "Componentes da velocidade inicial: v₀x = v₀ cos θ; v₀y = v₀ sen θ",
+      "Movimento segundo Ox (uniforme): x = x₀ + v₀x t",
+      "Movimento segundo Oy (uniformemente variado): v_y = v₀y − g t; y = y₀ + v₀y t − ½ g t²",
+      "v_y² = v₀y² − 2 g Δy",
+      "Alcance (lançamento e aterragem à mesma altura): A = v₀² sen 2θ / g",
+      "Módulo da velocidade: v = √(v_x² + v_y²)"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — O remate",
+      "texto_apoio": "Um jogador remata uma bola, a partir do solo, com velocidade de módulo 20 m/s, fazendo 30° com a horizontal. Adota-se um referencial Oxy com origem no ponto do remate, eixo Ox horizontal e eixo Oy vertical, orientado para cima. Em todos os itens, despreza-se a resistência do ar e considera-se g = 9,8 m/s².",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Componente vertical da velocidade da bola (item 6)",
+        "colunas": [
+          "t (s)",
+          "0,0",
+          "0,5",
+          "1,0",
+          "1,5",
+          "2,0"
+        ],
+        "linhas": [
+          [
+            "v_y (m/s)",
+            "10,0",
+            "5,1",
+            "0,2",
+            "−4,7",
+            "−9,6"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Lançamento horizontal na bancada",
+      "texto_apoio": "Numa atividade laboratorial, lançou-se horizontalmente uma esfera a partir do bordo de uma mesa, com diferentes velocidades de lançamento, e mediu-se o alcance em cada caso (distância horizontal entre a vertical do bordo da mesa e o ponto de impacto no chão).",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Alcance em função da velocidade de lançamento",
+        "colunas": [
+          "v₀ (m/s)",
+          "1,0",
+          "1,5",
+          "2,0",
+          "2,5",
+          "3,0"
+        ],
+        "linhas": [
+          [
+            "Alcance (m)",
+            "0,40",
+            "0,61",
+            "0,81",
+            "1,01",
+            "1,21"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Da plataforma ao chão",
+      "texto_apoio": "Um jogador remata horizontalmente uma bola, com velocidade de módulo 8,0 m/s, a partir de uma plataforma situada 4,9 m acima do solo."
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "1",
+      "enunciado": "As componentes escalares da velocidade inicial da bola, segundo Ox e segundo Oy, são, respetivamente,",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "20 m/s e 0"
+        },
+        {
+          "letra": "B",
+          "texto": "10 m/s e 17 m/s"
+        },
+        {
+          "letra": "C",
+          "texto": "17 m/s e 10 m/s"
+        },
+        {
+          "letra": "D",
+          "texto": "14 m/s e 14 m/s"
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12,
+      "explicacao": "v₀x = v₀ cos 30° = 20 × 0,866 = 17 m/s. v₀y = v₀ sen 30° = 20 × 0,50 = 10 m/s. A opção (B) troca os eixos."
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "2",
+      "enunciado": "Calcula a altura máxima atingida pela bola. Apresenta o resultado em metros, com dois algarismos significativos.",
+      "resposta_correta": "5,1",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 14,
+      "explicacao": "No topo, v_y = 0: v_y² = v₀y² − 2 g h ⇒ 0 = 100 − 19,6 h ⇒ h = 5,1 m."
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "3",
+      "enunciado": "Calcula o alcance da bola. Apresenta o resultado em metros, com dois algarismos significativos.",
+      "resposta_correta": "35,3",
+      "tolerancia_numerica": 0.5,
+      "cotacao": 16,
+      "explicacao": "Tempo de voo: 0 = 10 t − 4,9 t² ⇒ t = 2,04 s. Alcance = v₀x × t = 17,32 × 2,04 ≈ 35 m. Também: A = v₀² sen 2θ ÷ g = 400 × 0,866 ÷ 9,8 ≈ 35 m."
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "4",
+      "enunciado": "No ponto mais alto da trajetória, a velocidade da bola",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "tem módulo 17 m/s e direção horizontal."
+        },
+        {
+          "letra": "B",
+          "texto": "é nula."
+        },
+        {
+          "letra": "C",
+          "texto": "tem módulo 10 m/s e direção vertical."
+        },
+        {
+          "letra": "D",
+          "texto": "tem módulo 20 m/s e direção horizontal."
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 12,
+      "explicacao": "No topo, só a componente vertical é nula; a horizontal mantém-se: v = v₀x = 17 m/s, horizontal."
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "numero": "5",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "Para um remate com a mesma velocidade inicial, mas a 60° com a horizontal, o tempo de voo seria o mesmo."
+        },
+        {
+          "letra": "b",
+          "texto": "Para um remate com a mesma velocidade inicial, mas a 60° com a horizontal, o alcance seria o mesmo."
+        },
+        {
+          "letra": "c",
+          "texto": "No ponto mais alto da trajetória, a aceleração da bola é nula."
+        },
+        {
+          "letra": "d",
+          "texto": "A componente horizontal da velocidade mantém-se constante durante todo o voo."
+        }
+      ],
+      "resposta_correta": {
+        "a": "F",
+        "b": "V",
+        "c": "F",
+        "d": "V"
+      },
+      "cotacao": 16,
+      "explicacao": "(a) t_voo = 2 v₀ sen θ ÷ g: a 30°, 2,0 s; a 60°, 3,5 s. (b) Ângulos complementares dão o mesmo alcance. (c) A aceleração é sempre g, dirigida para baixo. (d) Não há forças horizontais."
+    },
+    {
+      "id": "p6",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "6",
+      "enunciado": "Registou-se a componente escalar da velocidade da bola segundo Oy, em função do tempo, durante o voo (Tabela 1). Utilizando a área do gráfico v_y–t (por exemplo, pela regra dos trapézios), o deslocamento vertical da bola entre t = 0,0 s e t = 2,0 s é, aproximadamente,",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "0"
+        },
+        {
+          "letra": "B",
+          "texto": "0,40 m"
+        },
+        {
+          "letra": "C",
+          "texto": "5,1 m"
+        },
+        {
+          "letra": "D",
+          "texto": "10 m"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 16,
+      "explicacao": "O deslocamento é a área sob o gráfico, com sinal: 0,5 × [(10,0 + 5,1) ÷ 2 + (5,1 + 0,2) ÷ 2 + (0,2 − 4,7) ÷ 2 + (−4,7 − 9,6) ÷ 2] = 0,5 × 0,80 = 0,40 m. A bola ainda está ligeiramente acima do solo, pois o tempo de voo é 2,04 s."
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "numero": "7",
+      "enunciado": "O gráfico do alcance em função da velocidade de lançamento é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "uma parábola com vértice na origem."
+        },
+        {
+          "letra": "B",
+          "texto": "uma reta com declive negativo."
+        },
+        {
+          "letra": "C",
+          "texto": "uma hipérbole."
+        },
+        {
+          "letra": "D",
+          "texto": "uma reta que passa pela origem."
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 12,
+      "explicacao": "Em lançamento horizontal, alcance = v₀ × t_queda, com t_queda constante (determinado só pela altura): proporcionalidade direta."
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "numero": "8",
+      "enunciado": "Calcula o declive da reta que melhor se ajusta aos dados da Tabela 2 e indica a sua unidade SI. Apresenta o valor com dois algarismos significativos.",
+      "resposta_correta": "0,405",
+      "tolerancia_numerica": 0.006,
+      "cotacao": 14,
+      "explicacao": "Declive = (1,21 − 0,40) ÷ (3,0 − 1,0) = 0,405 s ≈ 0,40 s. O declive é o tempo de queda."
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "numero": "9",
+      "enunciado": "Calcula a altura da mesa, a partir do declive determinado na questão anterior. Apresenta o resultado em metros, com dois algarismos significativos.",
+      "resposta_correta": "0,79",
+      "tolerancia_numerica": 0.011,
+      "cotacao": 16,
+      "explicacao": "h = ½ g t² = 0,5 × 9,8 × 0,404² ≈ 0,80 m. Com t = 0,40 s: 0,78 m."
+    },
+    {
+      "id": "p10",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "numero": "10",
+      "enunciado": "Se a mesma experiência fosse repetida com uma mesa quatro vezes mais alta, o declive da reta passaria a ser, aproximadamente,",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "0,10 s"
+        },
+        {
+          "letra": "B",
+          "texto": "0,20 s"
+        },
+        {
+          "letra": "C",
+          "texto": "0,81 s"
+        },
+        {
+          "letra": "D",
+          "texto": "1,6 s"
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 14,
+      "explicacao": "t = √(2h ÷ g): quadruplicar h duplica t. O declive passa a 2 × 0,404 ≈ 0,81 s. A opção (D) multiplica o tempo por 4."
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "numero": "11",
+      "enunciado": "Calcula o intervalo de tempo que a bola demora a chegar ao solo. Apresenta o resultado em segundos.",
+      "resposta_correta": "1,0",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 14,
+      "explicacao": "Queda sem velocidade vertical inicial: 4,9 = ½ × 9,8 × t² ⇒ t = 1,0 s."
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "numero": "12",
+      "enunciado": "Calcula o módulo da velocidade da bola no instante em que atinge o solo. Apresenta o resultado em m/s, com dois algarismos significativos.",
+      "resposta_correta": "12,8",
+      "tolerancia_numerica": 0.21,
+      "cotacao": 16,
+      "explicacao": "v_x = 8,0 m/s. v_y = g t = 9,8 m/s. |v| = √(64 + 96,04) = √160 ≈ 12,65 m/s ≈ 13 m/s."
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "numero": "13",
+      "enunciado": "Um aluno afirma: \"O alcance de um projétil é máximo para um lançamento a 45°, qualquer que seja a altura de lançamento.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "A afirmação está parcialmente certa. Deve indicar que A = v₀² sen 2θ ÷ g é máximo para 45°, mas só quando o projétil aterra à mesma altura de onde foi lançado (por exemplo, lançamento a partir do solo). Se o lançamento for feito de uma altura h acima do ponto de aterragem, o projétil passa mais tempo no ar para o mesmo ângulo, e o ângulo que dá o alcance máximo é inferior a 45°. Por isso, a afirmação \"qualquer que seja a altura\" está errada.",
+      "cotacao": 28
+    }
+  ]
+}

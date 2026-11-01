@@ -238,6 +238,26 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
     // esconde-a e, se era a única do painel com imagem à esquerda, tira essa
     // coluna (e a linha vertical) para o texto ocupar a largura toda.
     window.meImagemSemFicheiro = function (img) {
+        // No servidor local (quem está a montar a missão), a imagem em falta
+        // aparece como uma caixa tracejada com o nome do ficheiro e a descrição
+        // da imagem a produzir. Para os alunos (site publicado), a coluna some.
+        const local = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+        if (local && !img.dataset.reservada) {
+            const nome = decodeURIComponent((img.getAttribute('src') || '').split('/').pop() || '');
+            const caixa = document.createElement('div');
+            caixa.className = 'me-imagem-reservada me-imagem-reservada--rascunho';
+            const titulo = document.createElement('strong');
+            titulo.textContent = `Imagem em falta: ${nome}`;
+            caixa.appendChild(titulo);
+            if (img.dataset.legenda) {
+                const desc = document.createElement('span');
+                desc.textContent = img.dataset.legenda;
+                caixa.appendChild(desc);
+            }
+            img.dataset.reservada = '1';
+            img.replaceWith(caixa);
+            return;
+        }
         img.style.display = 'none';
         const colunas = img.closest('.me-escada-detail-columns');
         if (colunas && !colunas.querySelector('.me-escada-detail-media img:not([style*="display: none"]), .me-escada-detail-media .me-imagem-reservada')) {
@@ -304,8 +324,49 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             this.reconciliarRespostasGuardadas();
 
             this.render();
+            this.iniciarScrollPersistente();
             window.addEventListener('explore:mascot-prefs-changed', () => this.render());
             this.startActivityHeartbeat();
+        }
+
+        /** Ao fazer refresh, o aluno volta ao mesmo sítio da página (e não ao
+         *  topo): guarda a posição do scroll no sessionStorage, junto com a
+         *  vista, a secção e o ecrã em que estava, e restaura-a depois do
+         *  primeiro desenho. O conteúdo é desenhado por JavaScript (e as
+         *  imagens e gráficos mudam a altura da página), por isso a posição é
+         *  reposta várias vezes durante o primeiro segundo e meio, e deixa de
+         *  ser reposta se o aluno mexer no scroll antes. */
+        iniciarScrollPersistente() {
+            const chave = `me_scroll_${this.missao.missao_id}`;
+            try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (erro) { /* ignora */ }
+            const assinatura = () => {
+                const seccao = this.getSection(this.state.activeSectionIndex || 0);
+                const ecra = seccao ? (this.state.screenIndexBySection[seccao.secao_id] || 0) : 0;
+                return `${this.state.view}|${this.state.activeSectionIndex || 0}|${ecra}`;
+            };
+            const guardar = () => {
+                try {
+                    const y = window.scrollY || document.documentElement.scrollTop || 0;
+                    sessionStorage.setItem(chave, JSON.stringify({ a: assinatura(), y }));
+                } catch (erro) { /* ignora */ }
+            };
+            let guardado = null;
+            try { guardado = JSON.parse(sessionStorage.getItem(chave) || 'null'); } catch (erro) { guardado = null; }
+            if (guardado && guardado.a === assinatura() && guardado.y > 0) {
+                let cancelado = false;
+                const cancelar = () => { cancelado = true; };
+                ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach((ev) => window.addEventListener(ev, cancelar, { once: true, passive: true }));
+                [0, 120, 350, 800, 1500].forEach((ms) => setTimeout(() => {
+                    if (!cancelado) window.scrollTo(0, guardado.y);
+                }, ms));
+            }
+            let espera = 0;
+            window.addEventListener('scroll', () => {
+                if (espera) return;
+                espera = setTimeout(() => { espera = 0; guardar(); }, 150);
+            }, { passive: true });
+            window.addEventListener('pagehide', guardar);
+            document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') guardar(); });
         }
 
         /** Regista tempo de estudo (para "Hábitos de estudo" e os gráficos
@@ -351,6 +412,9 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 view: 'mapa',
                 activeSectionIndex: 0,
                 screenIndexBySection: {},
+                // Slide (seta "2 / 5") em que o aluno está em cada ecrã com pontos_seta,
+                // para o refresh não voltar ao primeiro. Limpa ao mudar de ecrã.
+                slideSeta: {},
                 answers: {},
                 quizState: {},
                 completedSections: [],
@@ -685,8 +749,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                             <a href="${window.exploreExamesUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
                             <span class="profile-sidebar-label">Exames</span>
                             </a>
-                            <a href="${window.exploreBibliotecaUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></span>
-                            <span class="profile-sidebar-label">Biblioteca do Explorador</span>
+                            <a href="#" class="is-locked" aria-disabled="true" tabindex="-1"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></span>
+                            <span class="profile-sidebar-label">Biblioteca do Explorador <svg class="sidebar-lock-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
                             </a>
                             <a href="${window.exploreResumosUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
                             <span class="profile-sidebar-label">Resumos</span>
@@ -1078,6 +1142,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         }
 
         setScreenIndex(section, index) {
+            if (this.state.screenIndexBySection[section.secao_id] !== index) this.state.slideSeta = {};
             this.state.screenIndexBySection[section.secao_id] = index;
             this.saveState();
             // Limpa a marca de "popup já mostrado" ao mudar de ecrã, para
@@ -1837,6 +1902,140 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             });
         }
 
+        /** Gráfico de pontos (e reta) dentro de um slide — ponto.grafico:
+         *    x, y      — { rotulo, min, max, passo } de cada eixo
+         *    pontos    — lista de [x, y] a marcar
+         *    linha     — true para ligar os pontos com uma reta
+         *    destaques — [{ ponto: [x, y], texto, lado?: 'direita'|'esquerda', baixo?: true, alinhado?: true }]
+         *    degrau    — { de: [x, y], ate: [x, y], texto_h, texto_v }: triângulo
+         *                tracejado que mostra "quanto sobe por cada passo".
+         *    curva     — { formula: "2 * x * x", min, max }: curva y(x) desenhada
+         *                (a fórmula é JS, com x como variável).
+         *    textos    — [{ x, y, texto, cor?, ancora?, tamanho? }]: texto em coordenadas do desenho (px).
+         *    proporcao_igual — true: mesma escala (px por unidade) nos dois eixos.
+         *    largo     — true: figura mais larga (640); altura? — altura da figura (280 por omissão).
+         *    vetores   — [{ origem: [x, y], dx, dy, k (px por unidade), cor?, rotulo?, lado?,
+         *                  rotulo_dpx?: [dx, dy], dpx?: [dx, dy], projecoes? }]: setas à escala.
+         *    curvas    — [{ formula, min, max, cor?, largura?, opacidade? }]: mais curvas.
+         *    areas     — [{ pontos: [[x, y], ...], cor?, rotulo?, pos? }]: zonas sombreadas.
+         *    retas     — [{ de: [x, y], ate: [x, y], cor?, tracejado?, rotulo?, lado? }]:
+         *                retas extra (secantes, tangentes, comparações). */
+        graficoHtml(g) {
+            if (!g || !g.x || !g.y) return '';
+            // proporcao_igual: figura mais larga e mais alta, com espaço para as legendas
+            const larga = g.proporcao_igual === true || g.largo === true;
+            const L = larga ? 64 : 54, R = 16, T = 16, B = 46, W = larga ? 640 : 420;
+            let H = g.altura || 280;
+            let pw = W - L - R, ph;
+            if (g.proporcao_igual) {
+                // mesma escala nos dois eixos (px por unidade): a figura fica fiel à geometria
+                const esc = Math.min(pw / (g.x.max - g.x.min), 380 / (g.y.max - g.y.min));
+                pw = esc * (g.x.max - g.x.min);
+                ph = esc * (g.y.max - g.y.min);
+                H = T + ph + B;
+            } else {
+                ph = H - T - B;
+            }
+            const sx = (v) => L + (v - g.x.min) / (g.x.max - g.x.min) * pw;
+            const sy = (v) => T + ph - (v - g.y.min) / (g.y.max - g.y.min) * ph;
+            const r1 = (n) => Math.round(n * 10) / 10;
+            const marcas = (eixo) => {
+                const out = [];
+                for (let v = eixo.min; v <= eixo.max + 1e-9; v += eixo.passo) out.push(v);
+                return out;
+            };
+            const grelha = marcas(g.x).map((v) => `<line class="me-gr-grelha" x1="${r1(sx(v))}" y1="${T}" x2="${r1(sx(v))}" y2="${T + ph}"/><text class="me-gr-num" x="${r1(sx(v))}" y="${T + ph + 18}" text-anchor="middle">${comVirgula(v)}</text>`).join('')
+                + marcas(g.y).map((v) => {
+                    // Origem no canto: um só "0" (o do eixo horizontal)
+                    const semNumero = v === 0 && g.x.min === 0 && g.y.min === 0;
+                    return `<line class="me-gr-grelha" x1="${L}" y1="${r1(sy(v))}" x2="${L + pw}" y2="${r1(sy(v))}"/>${semNumero ? '' : `<text class="me-gr-num" x="${L - 8}" y="${r1(sy(v)) + 5}" text-anchor="end">${comVirgula(v)}</text>`}`;
+                }).join('');
+            const pts = g.pontos || [];
+            const linha = g.linha && pts.length > 1
+                ? `<polyline class="me-gr-linha" points="${pts.map((q) => `${r1(sx(q[0]))},${r1(sy(q[1]))}`).join(' ')}"/>` : '';
+            const bolas = pts.map((q) => `<circle class="me-gr-ponto" cx="${r1(sx(q[0]))}" cy="${r1(sy(q[1]))}" r="5"/>`).join('');
+            const desenharCurva = (c) => {
+                try {
+                    const f = new Function('x', `return (${c.formula});`);
+                    const n = 120;
+                    const xs = [];
+                    for (let i = 0; i <= n; i += 1) {
+                        const x = c.min + (c.max - c.min) * i / n;
+                        xs.push(`${r1(sx(x))},${r1(sy(f(x)))}`);
+                    }
+                    const estilo = `${c.cor ? `stroke:${escapeAttr(c.cor)};` : ''}${c.largura ? `stroke-width:${Number(c.largura)};` : ''}${c.opacidade != null ? `opacity:${Number(c.opacidade)};` : ''}`;
+                    return `<polyline class="me-gr-linha" style="${estilo}" points="${xs.join(' ')}"/>`;
+                } catch (erro) {
+                    return '';
+                }
+            };
+            let curva = g.curva ? desenharCurva(g.curva) : '';
+            (g.curvas || []).forEach((c) => { curva += desenharCurva(c); });
+            const areas = (g.areas || []).map((a) => {
+                const cor = a.cor || '#1f8a5b';
+                const pts = (a.pontos || []).map((q) => `${r1(sx(q[0]))},${r1(sy(q[1]))}`).join(' ');
+                const rot = a.rotulo && a.pos
+                    ? `<text class="me-gr-nota" style="fill:${escapeAttr(cor)}" x="${r1(sx(a.pos[0]))}" y="${r1(sy(a.pos[1]))}" text-anchor="middle">${escapeHtml(a.rotulo)}</text>` : '';
+                return `<polygon points="${pts}" style="fill:${escapeAttr(cor)};opacity:.22"/>${rot}`;
+            }).join('');
+            const retas = (g.retas || []).map((r) => {
+                const [x1, y1] = r.de, [x2, y2] = r.ate;
+                const cor = r.cor || '#e8590c';
+                const esq = r.lado === 'esquerda';
+                return `<line class="me-gr-reta" x1="${r1(sx(x1))}" y1="${r1(sy(y1))}" x2="${r1(sx(x2))}" y2="${r1(sy(y2))}" style="stroke:${escapeAttr(cor)}"${r.tracejado ? ' stroke-dasharray="7 5"' : ''}/>`
+                    + (r.rotulo ? `<text class="me-gr-nota" style="fill:${escapeAttr(cor)}" x="${r1(sx(x2)) + (esq ? -8 : 8)}" y="${r1(sy(y2)) - 6}" text-anchor="${esq ? 'end' : 'start'}">${escapeHtml(r.rotulo)}</text>` : '');
+            }).join('');
+            let degrau = '';
+            if (g.degrau) {
+                const [x1, y1] = g.degrau.de, [x2, y2] = g.degrau.ate;
+                degrau = `<polyline class="me-gr-degrau" points="${r1(sx(x1))},${r1(sy(y1))} ${r1(sx(x2))},${r1(sy(y1))} ${r1(sx(x2))},${r1(sy(y2))}"/>`
+                    + (g.degrau.texto_h ? `<text class="me-gr-nota" x="${r1((sx(x1) + sx(x2)) / 2)}" y="${r1(sy(y1)) + 18}" text-anchor="middle">${escapeHtml(g.degrau.texto_h)}</text>` : '')
+                    + (g.degrau.texto_v ? `<text class="me-gr-nota" x="${r1(sx(x2)) + 8}" y="${r1((sy(y1) + sy(y2)) / 2) + 5}" text-anchor="start">${escapeHtml(g.degrau.texto_v)}</text>` : '');
+            }
+            const destaques = (g.destaques || []).map((d) => {
+                const px = sx(d.ponto[0]), py = sy(d.ponto[1]);
+                const esq = d.lado === 'esquerda';
+                // alinhado: à mesma altura do ponto, afastado o suficiente para a reta (que sobe) não passar por cima do texto
+                const dx = d.alinhado ? 26 : 12;
+                const dy = d.alinhado ? 5 : (d.baixo ? 24 : -10);
+                return `<text class="me-gr-destaque" x="${r1(px) + (esq ? -10 : dx)}" y="${r1(py) + dy}" text-anchor="${esq ? 'end' : 'start'}">${escapeHtml(d.texto)}</text>`;
+            }).join('');
+            const textos = (g.textos || []).map((t) => `<text class="me-gr-nota me-gr-nota--halo" style="fill:${escapeAttr(t.cor || 'currentColor')};font-size:${Number(t.tamanho || 14)}px" x="${t.x}" y="${t.y}" text-anchor="${t.ancora || 'start'}">${escapeHtml(t.texto)}</text>`).join('');
+            const vetoresDefs = [];
+            const vetores = (g.vetores || []).map((v, i) => {
+                const cor = v.cor || '#e8590c';
+                const k = v.k || 10;
+                // v.abs: origem em coordenadas do desenho (px), para ampliações fora do gráfico
+                const ox = v.abs ? v.abs[0] : sx(v.origem[0]) + ((v.dpx || [0, 0])[0]);
+                const oy = v.abs ? v.abs[1] : sy(v.origem[1]) + ((v.dpx || [0, 0])[1]);
+                const ex = ox + (v.dx || 0) * k;
+                const ey = oy - (v.dy || 0) * k;
+                vetoresDefs.push(`<marker id="meGr-v${i}" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="13" orient="auto"><path d="M0 0 10 5 0 10z" fill="${escapeAttr(cor)}"/></marker>`);
+                const proj = v.projecoes
+                    ? `<line class="me-gr-proj" x1="${r1(ex)}" y1="${r1(ey)}" x2="${r1(ex)}" y2="${r1(oy)}"/><line class="me-gr-proj" x1="${r1(ex)}" y1="${r1(ey)}" x2="${r1(ox)}" y2="${r1(ey)}"/>` : '';
+                const [rdx, rdy] = v.rotulo_dpx || [8, -8];
+                const esq = v.lado === 'esquerda';
+                const rot = v.rotulo
+                    ? `<text class="me-gr-nota me-gr-nota--halo" style="fill:${escapeAttr(cor)}" x="${r1(ex + rdx)}" y="${r1(ey + rdy)}" text-anchor="${esq ? 'end' : 'start'}">${escapeHtml(v.rotulo)}</text>` : '';
+                return `${proj}<line class="me-gr-vetor" style="stroke:${escapeAttr(cor)}" x1="${r1(ox)}" y1="${r1(oy)}" x2="${r1(ex)}" y2="${r1(ey)}" marker-end="url(#meGr-v${i})"/>${rot}`;
+            }).join('');
+            return `
+                <figure class="me-grafico${larga ? ' me-grafico--largo' : ''}">
+                    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${escapeAttr(g.titulo || 'Gráfico')}">
+                        ${vetoresDefs.length ? `<defs>${vetoresDefs.join('')}</defs>` : ''}
+                        ${grelha}${areas}
+                        <line class="me-gr-eixo" x1="${L}" y1="${T + ph}" x2="${L + pw}" y2="${T + ph}"/>
+                        ${(g.y.min < 0 && g.y.max > 0) ? `<line class="me-gr-eixo" x1="${L}" y1="${r1(sy(0))}" x2="${L + pw}" y2="${r1(sy(0))}"/>` : ''}
+                        <line class="me-gr-eixo" x1="${L}" y1="${T}" x2="${L}" y2="${T + ph}"/>
+                        ${curva}${linha}${retas}${degrau}${bolas}${destaques}${vetores}${textos}
+                        <text class="me-gr-rotulo" x="${L + pw / 2}" y="${H - 6}" text-anchor="middle">${escapeHtml(g.x.rotulo || '')}</text>
+                        <text class="me-gr-rotulo" transform="translate(14 ${T + ph / 2}) rotate(-90)" text-anchor="middle">${escapeHtml(g.y.rotulo || '')}</text>
+                    </svg>
+                    ${g.titulo ? `<figcaption class="me-gr-titulo">${escapeHtml(g.titulo)}</figcaption>` : ''}
+                </figure>
+            `;
+        }
+
         /** Seta para baixo por baixo da caixa de fórmulas (ponto.detalhe_seta,
          *  texto com parágrafos separados por linha em branco): ao clicar,
          *  abre o texto e a seta roda. Ver bindSetaDetalhe. */
@@ -2277,7 +2476,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const imagens = Array.isArray(ponto.imagens) && ponto.imagens.length
                 ? ponto.imagens
                 : (ponto.imagem ? [ponto.imagem] : []);
-            const imagemHtml = imagens.map((nome) => `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(nome)}" alt="${escapeHtml(ponto.label || '')}" onerror="meImagemSemFicheiro(this)">`).join('');
+            const imagemHtml = imagens.map((nome) => `<img class="me-escada-detail-image" src="/static/images/${encodeURIComponent(nome)}" alt="${escapeHtml(ponto.label || '')}"${ponto.imagem_legenda ? ` data-legenda="${escapeAttr(ponto.imagem_legenda)}"` : ''} onerror="meImagemSemFicheiro(this)">`).join('');
             // Legenda visível por baixo da foto (nome do que se vê + link para
             // a página de onde veio) — só usado em fotos reais tiradas de
             // fora do site (ex: parques nacionais), nunca em ilustrações/
@@ -2296,6 +2495,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     ${this.curiosidadeToggleHtml(ponto)}
                     ${this.atencaoToggleHtml(ponto)}
                 </div>
+                ${this.graficoHtml(ponto.grafico)}
+                ${this.tabelasHtml(ponto.tabelas)}
                 ${this.caixaFormulaHtml(ponto.caixa_formula)}
                 ${this.setaDetalheHtml(ponto)}
                 ${this.curiosidadeRevealHtml(ponto)}
@@ -2306,6 +2507,16 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 ${this.inqueritoHtml(ponto)}
             `;
             if (!imagemHtml) return conteudoHtml;
+            // ponto.imagem_em_cima: a imagem fica por cima do texto (a toda a largura)
+            // em vez de à esquerda.
+            if (ponto.imagem_em_cima) {
+                return `
+                    <div class="me-escada-detail-empilhado">
+                        <div class="me-escada-detail-media${imagens.length > 1 ? ' me-escada-detail-media--stack' : ''}">${imagemHtml}${fonteHtml}</div>
+                        <div class="me-escada-detail-content">${conteudoHtml}</div>
+                    </div>
+                `;
+            }
             return `
                 <div class="me-escada-detail-columns">
                     <div class="me-escada-detail-media${imagens.length > 1 ? ' me-escada-detail-media--stack' : ''}">${imagemHtml}${fonteHtml}</div>
@@ -2341,10 +2552,15 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
          *  seguinte/anterior) e volta a ligar curiosidade/atenção/
          *  inquérito desse slide, tal como bindDiagramaChips faz por
          *  ponto. */
-        bindDiagramaSetaNav(slides, extraHtml = '') {
+        bindDiagramaSetaNav(slides, extraHtml = '', chave = '') {
             const explicacaoEl = this.root.querySelector('#meDiagramaExplicacao');
             if (!explicacaoEl) return;
             const irPara = (index) => {
+                if (chave) {
+                    this.state.slideSeta = this.state.slideSeta || {};
+                    this.state.slideSeta[chave] = index;
+                    this.saveState();
+                }
                 explicacaoEl.innerHTML = this.pontoDetailInnerHtml(slides[index]) + this.setaNavHtml(index, slides.length) + extraHtml;
                 this.bindInterrogacao(explicacaoEl);
                 this.bindSetaDetalhe(explicacaoEl);
@@ -2354,7 +2570,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 explicacaoEl.querySelector('.me-seta-nav-btn--prev')?.addEventListener('click', () => irPara(index - 1));
                 explicacaoEl.querySelector('.me-seta-nav-btn--next')?.addEventListener('click', () => irPara(index + 1));
             };
-            irPara(0);
+            const guardado = chave && this.state.slideSeta ? Number(this.state.slideSeta[chave]) : 0;
+            irPara(Number.isInteger(guardado) && guardado >= 0 && guardado < slides.length ? guardado : 0);
         }
 
         /**
@@ -2559,7 +2776,10 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
 
         renderCartaoPassos(section, screen, screenIndex) {
             this.cartaoPassoEstado = this.cartaoPassoEstado || {};
-            const indice = this.cartaoPassoEstado[this.cartaoPassoChave(section, screenIndex)] || 0;
+            const chavePasso = this.cartaoPassoChave(section, screenIndex);
+            const passoGuardado = this.state.slideSeta ? this.state.slideSeta[`cp::${chavePasso}`] : undefined;
+            if (this.cartaoPassoEstado[chavePasso] === undefined && Number.isInteger(passoGuardado)) this.cartaoPassoEstado[chavePasso] = passoGuardado;
+            const indice = this.cartaoPassoEstado[chavePasso] || 0;
             return `
                 <div class="mascot-overlay-card me-mascot-inline me-gancho-card">
                     <div class="me-escada-detail me-cartao-passos" data-cartao-passos>${this.cartaoPassosInnerHtml(screen, indice)}</div>
@@ -2573,6 +2793,9 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const chave = this.cartaoPassoChave(section, screenIndex);
             const total = (screen.passos || []).length;
             const desenhar = () => {
+                this.state.slideSeta = this.state.slideSeta || {};
+                this.state.slideSeta[`cp::${chave}`] = this.cartaoPassoEstado[chave] || 0;
+                this.saveState();
                 container.innerHTML = this.cartaoPassosInnerHtml(screen, this.cartaoPassoEstado[chave] || 0);
                 this.bindCuriosidadeToggle(container);
             };
@@ -2788,8 +3011,8 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const temSeta = screen.pontos_seta === true;
             const slidesSeta = temSeta
                 ? [
-                    ...(screen.texto_principal ? [{ explicacao: screen.texto_principal, imagem: screen.imagem, imagens: screen.imagens, caixa_formula: screen.caixa_formula, curiosidade: screen.curiosidade, curiosidade_sem_titulo: screen.curiosidade_sem_titulo, atencao: screen.atencao, detalhe_seta: screen.detalhe_seta }] : []),
-                    ...pontos.map((ponto) => ({ ...ponto, imagem: ponto.imagem || screen.imagem })),
+                    ...(screen.texto_principal ? [{ explicacao: screen.texto_principal, imagem: screen.imagem, imagem_legenda: screen.imagem_legenda, imagens: screen.imagens, caixa_formula: screen.caixa_formula, curiosidade: screen.curiosidade, curiosidade_sem_titulo: screen.curiosidade_sem_titulo, atencao: screen.atencao, detalhe_seta: screen.detalhe_seta, tabelas: screen.tabelas_slide, grafico: screen.grafico, imagem_em_cima: screen.imagem_em_cima }] : []),
+                    ...pontos.map((ponto) => ({ ...ponto, imagem: ponto.imagem || (screen.imagem_so_no_primeiro ? undefined : screen.imagem), imagem_legenda: ponto.imagem ? ponto.imagem_legenda : (screen.imagem_so_no_primeiro ? undefined : screen.imagem_legenda), imagem_em_cima: ponto.imagem_em_cima ?? screen.imagem_em_cima })),
                 ]
                 : null;
             const primeiroPonto = pontos[0] || {};
@@ -3193,7 +3416,23 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 `;
             }).join('');
 
-            const saidasHtml = (screen.saidas || []).map((saida, i) => `
+            // saida.tipo === 'tabela': tabela que se recalcula com os controlos.
+            //   colunas — cabeçalhos; linhas — lista de linhas, cada célula é um
+            //   texto fixo ou { formula, casas_decimais }.
+            const tabelaSaidaHtml = (saida, i) => `
+                <div class="me-simulacao-saida me-simulacao-saida--tabela">
+                    ${saida.rotulo ? `<span class="me-simulacao-saida-rotulo">${escapeHtml(saida.rotulo)}</span>` : ''}
+                    <div class="me-tabela-scroll">
+                        <table class="me-sim-tabela">
+                            <thead><tr>${(saida.colunas || []).map((c) => `<th scope="col">${escapeHtml(c)}</th>`).join('')}</tr></thead>
+                            <tbody>${(saida.linhas || []).map((linha, r) => `<tr>${linha.map((cel, c) => (typeof cel === 'object' && cel !== null)
+                                ? `<td><span data-simulacao-celula="${i}:${r}:${c}">—</span></td>`
+                                : `<td>${escapeHtml(String(cel))}</td>`).join('')}</tr>`).join('')}</tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+            const saidasHtml = (screen.saidas || []).map((saida, i) => saida.tipo === 'tabela' ? tabelaSaidaHtml(saida, i) : `
                 <div class="me-simulacao-saida">
                     <span class="me-simulacao-saida-rotulo">${escapeHtml(saida.rotulo)}</span>
                     <span class="me-simulacao-saida-valor" data-simulacao-saida="${i}">—</span>
@@ -3207,7 +3446,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     ${screen.instrucao ? `<p class="me-diagrama-ponte-texto">${escapeHtml(screen.instrucao)}</p>` : ''}
                     ${this.visualSimulacaoHtml(screen)}
                     ${screen.painel_colunas ? `
-                        <div class="me-escada-detail me-sim-painel">
+                        <div class="me-escada-detail me-sim-painel${screen.painel_empilhado ? ' me-sim-painel--empilhado' : ''}">
                             <div class="me-escada-detail-columns">
                                 <div class="me-sim-painel-controlos"><div class="me-simulacao-controlos">${controlosHtml}</div></div>
                                 <div class="me-escada-detail-divider" aria-hidden="true"></div>
@@ -3242,6 +3481,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (screen.visual === 'rampa_skater') return this.rampaSkaterHtml();
             if (screen.visual === 'posicao_eixo') return this.posicaoEixoHtml();
             if (screen.visual === 'duas_bolas') return this.duasBolasHtml();
+            if (screen.visual === 'projetil') return this.projetilHtml();
+            if (screen.visual === 'quatro_descricoes') return this.quatroDescricoesHtml();
+            if (screen.visual === 'deslocamento_distancia') return this.deslocamentoDistanciaHtml();
+            if (screen.visual === 'secante_tangente') return this.secanteTangenteHtml();
+            if (screen.visual === 'encontro') return this.encontroHtml();
+            if (screen.visual === 'area_vt') return this.areaVtHtml();
             if (screen.visual !== 'trabalho_caixa') return '';
             const seta = (id, cor) => `<marker id="meTc-${id}" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="15" markerHeight="15" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="${cor}"/></marker>`;
             return `
@@ -3278,6 +3523,731 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     </figcaption>
                 </figure>
             `;
+        }
+
+        /** Visual 'encontro': dois carros numa estrada reta (A parte da origem,
+         *  B parte de xB0 e vem ao encontro) e, por baixo, os gráficos x-t dos
+         *  dois, traçados à medida que o tempo passa. O instante e o local do
+         *  encontro ficam marcados com um anel, sem escrever os valores.
+         *  Controlos: xB0 (m), vA e vB (m/s, vB < 0). A animação repete-se. */
+        encontroHtml() {
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-en" viewBox="0 0 640 440" role="img" aria-label="Dois carros que se aproximam numa estrada reta e os gráficos posição-tempo de cada um">
+                        <rect class="me-en-estrada" x="30" y="60" width="580" height="32" rx="4"/>
+                        <line class="me-en-eixo" x1="30" y1="108" x2="610" y2="108"/>
+                        <g class="me-en-marcas"></g>
+                        <g class="me-en-carro me-en-carro--a">
+                            <rect class="me-en-corpo" x="-20" y="-18" width="40" height="12" rx="4"/>
+                            <rect class="me-en-cabine" x="-12" y="-27" width="22" height="11" rx="4"/>
+                            <circle class="me-en-roda" cx="-11" cy="-5" r="4.5"/><circle class="me-en-roda" cx="11" cy="-5" r="4.5"/>
+                            <text class="me-en-letra" y="-32" text-anchor="middle">A</text>
+                        </g>
+                        <g class="me-en-carro me-en-carro--b">
+                            <rect class="me-en-corpo" x="-20" y="-18" width="40" height="12" rx="4"/>
+                            <rect class="me-en-cabine" x="-10" y="-27" width="22" height="11" rx="4"/>
+                            <circle class="me-en-roda" cx="-11" cy="-5" r="4.5"/><circle class="me-en-roda" cx="11" cy="-5" r="4.5"/>
+                            <text class="me-en-letra" y="-32" text-anchor="middle">B</text>
+                        </g>
+                        <text class="me-en-tempo" x="40" y="40">t = 0,0 s</text>
+                        <g class="me-en-grelha"></g>
+                        <line class="me-en-eixo" x1="80" y1="170" x2="80" y2="380"/>
+                        <line class="me-en-eixo" x1="80" y1="380" x2="600" y2="380"/>
+                        <text class="me-en-rotulo" x="340" y="432" text-anchor="middle">t (s)</text>
+                        <text class="me-en-rotulo" x="86" y="164">x (m)</text>
+                        <polyline class="me-en-reta-fraca me-en-reta--a" points=""/>
+                        <polyline class="me-en-reta-fraca me-en-reta--b" points=""/>
+                        <polyline class="me-en-reta me-en-reta--a" points=""/>
+                        <polyline class="me-en-reta me-en-reta--b" points=""/>
+                        <circle class="me-en-anel" r="10"/>
+                        <circle class="me-en-ponto me-en-ponto--a" r="5.5"/>
+                        <circle class="me-en-ponto me-en-ponto--b" r="5.5"/>
+                    </svg>
+                    <figcaption class="me-sim-visual-legenda">
+                        <span class="me-en-chave me-en-chave--a">A</span> parte da origem
+                        <span class="me-en-chave me-en-chave--b">B</span> vem ao encontro
+                        O anel marca onde e quando as duas retas se cruzam.
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        atualizarEncontro(container, valores) {
+            const svg = container.querySelector('.me-en');
+            if (!svg) return;
+            const q = (sel) => svg.querySelector(sel);
+            const qa = (sel) => Array.from(svg.querySelectorAll(sel));
+            const r1 = (n) => Math.round(n * 10) / 10;
+            const set = (el, attrs) => { if (el) Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v)); };
+            const xB0 = Number(valores.xB0) || 60;
+            const vA = Number(valores.vA) || 1;
+            const vB = Number(valores.vB) || -1;
+            const tEnc = xB0 / (vA - vB);
+            const TMAX = Math.max(5, Math.ceil(tEnc * 1.2 / 5) * 5);
+            const sxR = (m) => 40 + m * 5.6;
+            const gx = (t) => 80 + t / TMAX * 520;
+            const gy = (x) => 380 - x * 2;
+            let est = container._encontro;
+            if (!est) {
+                est = container._encontro = { t: 0, espera: 0, raf: 0, ultimo: 0 };
+                const frame = (agora) => {
+                    if (!container.isConnected) { est.raf = 0; return; }
+                    const dt = Math.min(0.05, (agora - est.ultimo) / 1000 || 0);
+                    est.ultimo = agora;
+                    if (est.espera > 0) {
+                        est.espera -= dt;
+                        if (est.espera <= 0) est.t = 0;
+                    } else {
+                        // a animação demora sempre 6 s reais até ao encontro
+                        est.t += dt * est.tEnc / 6;
+                        if (est.t >= est.tEnc) { est.t = est.tEnc; est.espera = 1.8; }
+                    }
+                    est.desenhar();
+                    est.raf = requestAnimationFrame(frame);
+                };
+                est.arrancar = () => {
+                    if (est.raf) return;
+                    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { est.t = est.tEnc; return; }
+                    est.ultimo = performance.now();
+                    est.raf = requestAnimationFrame(frame);
+                };
+                est.desenhar = () => {
+                    const { xB0, vA, vB, t, TMAX } = est;
+                    const xa = vA * t;
+                    const xb = xB0 + vB * t;
+                    q('.me-en-carro--a').setAttribute('transform', `translate(${r1(sxR(xa))} 92)`);
+                    q('.me-en-carro--b').setAttribute('transform', `translate(${r1(sxR(xb))} 92) scale(-1 1)`);
+                    // as letras não se podem espelhar
+                    const lb = q('.me-en-carro--b .me-en-letra');
+                    lb.setAttribute('transform', 'scale(-1 1)');
+                    q('.me-en-tempo').textContent = `t = ${comVirgula(t.toFixed(1))} s`;
+                    qa('.me-en-reta--a')[1].setAttribute('points', `${r1(gx(0))},${r1(gy(0))} ${r1(gx(t))},${r1(gy(xa))}`);
+                    qa('.me-en-reta--b')[1].setAttribute('points', `${r1(gx(0))},${r1(gy(xB0))} ${r1(gx(t))},${r1(gy(xb))}`);
+                    set(q('.me-en-ponto--a'), { cx: r1(gx(t)), cy: r1(gy(xa)) });
+                    set(q('.me-en-ponto--b'), { cx: r1(gx(t)), cy: r1(gy(xb)) });
+                };
+            }
+            est.xB0 = xB0; est.vA = vA; est.vB = vB; est.tEnc = tEnc; est.TMAX = TMAX;
+            if (est.t > tEnc) est.t = tEnc;
+
+            // estrada: marcas de 20 em 20 m
+            let marcas = '';
+            for (let m = 0; m <= 100; m += 20) {
+                marcas += `<line x1="${r1(sxR(m))}" y1="102" x2="${r1(sxR(m))}" y2="114"/><text class="me-en-num" x="${r1(sxR(m))}" y="130" text-anchor="middle">${m}</text>`;
+            }
+            q('.me-en-marcas').innerHTML = marcas;
+            // grelha do gráfico (depende de TMAX)
+            let g = '';
+            const passoT = TMAX / 5;
+            for (let i = 0; i <= 5; i += 1) {
+                const t = i * passoT;
+                g += `<line x1="${r1(gx(t))}" y1="170" x2="${r1(gx(t))}" y2="380"/><text class="me-en-num" x="${r1(gx(t))}" y="400" text-anchor="middle">${comVirgula(Number.isInteger(t) ? t : t.toFixed(1))}</text>`;
+            }
+            for (let x = 0; x <= 100; x += 20) {
+                g += `<line x1="80" y1="${r1(gy(x))}" x2="600" y2="${r1(gy(x))}"/><text class="me-en-num" x="70" y="${r1(gy(x)) + 5}" text-anchor="end">${x}</text>`;
+            }
+            q('.me-en-grelha').innerHTML = g;
+            qa('.me-en-reta--a')[0].setAttribute('points', `${r1(gx(0))},${r1(gy(0))} ${r1(gx(TMAX))},${r1(gy(vA * TMAX))}`);
+            qa('.me-en-reta--b')[0].setAttribute('points', `${r1(gx(0))},${r1(gy(xB0))} ${r1(gx(TMAX))},${r1(gy(xB0 + vB * TMAX))}`);
+            set(q('.me-en-anel'), { cx: r1(gx(tEnc)), cy: r1(gy(vA * tEnc)) });
+            est.desenhar();
+            est.arrancar();
+        }
+
+        /** Visual 'area_vt': gráfico v-t de um movimento uniformemente variado
+         *  (v = v₀ + a t) com a área por baixo a encher-se à medida que o
+         *  tempo passa: o retângulo (v₀ t) a azul e o triângulo (½ a t²) a
+         *  laranja. O deslocamento mostrado é a soma das duas áreas.
+         *  Controlos: v0 (m/s), a (m s⁻²) e t (s, duração). Repete em ciclo. */
+        areaVtHtml() {
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-av" viewBox="0 0 640 380" role="img" aria-label="Gráfico velocidade-tempo com a área por baixo a crescer: um retângulo e um triângulo">
+                        <g class="me-av-grelha"></g>
+                        <line class="me-av-eixo" x1="70" y1="20" x2="70" y2="320"/>
+                        <line class="me-av-eixo" x1="70" y1="320" x2="600" y2="320"/>
+                        <text class="me-av-rotulo" x="335" y="372" text-anchor="middle">t (s)</text>
+                        <text class="me-av-rotulo" x="76" y="14">v (m/s)</text>
+                        <polygon class="me-av-ret" points=""/>
+                        <polygon class="me-av-tri" points=""/>
+                        <polyline class="me-av-linha-fraca" points=""/>
+                        <polyline class="me-av-linha" points=""/>
+                        <line class="me-av-cursor" x1="0" y1="20" x2="0" y2="320"/>
+                        <circle class="me-av-ponto" r="6"/>
+                        <text class="me-av-valor" x="84" y="42"></text>
+                        <text class="me-av-parcela me-av-parcela--r" x="84" y="64"></text>
+                        <text class="me-av-parcela me-av-parcela--t" x="84" y="84"></text>
+                    </svg>
+                    <figcaption class="me-sim-visual-legenda">
+                        <span class="me-av-chave me-av-chave--r">retângulo: v₀ t</span>
+                        <span class="me-av-chave me-av-chave--t">triângulo: ½ a t²</span>
+                        A área por baixo da reta é o deslocamento.
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        atualizarAreaVt(container, valores) {
+            const svg = container.querySelector('.me-av');
+            if (!svg) return;
+            const q = (sel) => svg.querySelector(sel);
+            const r1 = (n) => Math.round(n * 10) / 10;
+            const gx = (t) => 70 + t * 52;
+            const gy = (v) => 320 - v * 6;
+            let est = container._areaVt;
+            if (!est) {
+                est = container._areaVt = { t: 0, espera: 0, raf: 0, ultimo: 0, v0: 4, a: 2, T: 5 };
+                est.desenhar = () => {
+                    const { v0, a, T } = est;
+                    const t = Math.min(est.t, T);
+                    const v = v0 + a * t;
+                    q('.me-av-ret').setAttribute('points', `${gx(0)},${gy(0)} ${r1(gx(t))},${gy(0)} ${r1(gx(t))},${r1(gy(v0))} ${gx(0)},${r1(gy(v0))}`);
+                    q('.me-av-tri').setAttribute('points', `${gx(0)},${r1(gy(v0))} ${r1(gx(t))},${r1(gy(v0))} ${r1(gx(t))},${r1(gy(v))}`);
+                    q('.me-av-linha-fraca').setAttribute('points', `${gx(0)},${r1(gy(v0))} ${r1(gx(T))},${r1(gy(v0 + a * T))}`);
+                    q('.me-av-linha').setAttribute('points', `${gx(0)},${r1(gy(v0))} ${r1(gx(t))},${r1(gy(v))}`);
+                    const c = q('.me-av-cursor');
+                    c.setAttribute('x1', r1(gx(t))); c.setAttribute('x2', r1(gx(t)));
+                    const ponto = q('.me-av-ponto');
+                    ponto.setAttribute('cx', r1(gx(t))); ponto.setAttribute('cy', r1(gy(v)));
+                    const r = v0 * t;
+                    const tr = 0.5 * a * t * t;
+                    q('.me-av-valor').textContent = `t = ${comVirgula(t.toFixed(1))} s   Δx = área = ${comVirgula((r + tr).toFixed(1))} m`;
+                    q('.me-av-parcela--r').textContent = `retângulo v₀ t = ${comVirgula(r.toFixed(1))} m`;
+                    q('.me-av-parcela--t').textContent = `triângulo ½ a t² = ${comVirgula(tr.toFixed(1))} m`;
+                };
+                const frame = (agora) => {
+                    if (!container.isConnected) { est.raf = 0; return; }
+                    const dt = Math.min(0.05, (agora - est.ultimo) / 1000 || 0);
+                    est.ultimo = agora;
+                    if (est.espera > 0) {
+                        est.espera -= dt;
+                        if (est.espera <= 0) est.t = 0;
+                    } else {
+                        est.t += dt * est.T / 4;
+                        if (est.t >= est.T) { est.t = est.T; est.espera = 1.5; }
+                    }
+                    est.desenhar();
+                    est.raf = requestAnimationFrame(frame);
+                };
+                est.arrancar = () => {
+                    if (est.raf) return;
+                    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { est.t = est.T; return; }
+                    est.ultimo = performance.now();
+                    est.raf = requestAnimationFrame(frame);
+                };
+            }
+            est.v0 = Number(valores.v0) || 0;
+            est.a = Number(valores.a) || 0;
+            est.T = Number(valores.t) || 1;
+            if (est.t > est.T) est.t = est.T;
+            let g = '';
+            for (let t = 0; t <= 10; t += 2) {
+                g += `<line x1="${gx(t)}" y1="20" x2="${gx(t)}" y2="320"/><text class="me-av-num" x="${gx(t)}" y="340" text-anchor="middle">${t}</text>`;
+            }
+            for (let v = 0; v <= 50; v += 10) {
+                g += `<line x1="70" y1="${gy(v)}" x2="600" y2="${gy(v)}"/><text class="me-av-num" x="60" y="${gy(v) + 5}" text-anchor="end">${v}</text>`;
+            }
+            q('.me-av-grelha').innerHTML = g;
+            est.desenhar();
+            est.arrancar();
+        }
+
+        /** Visual 'secante_tangente': a curva x = 2t² com a secante entre t₁ e
+         *  t₁ + Δt (laranja), a tangente em t₁ (vermelha, tracejada) e o
+         *  triângulo Δt / Δx. Redesenha-se a cada alteração dos controlos
+         *  (t1 e dt). O botão "Aproximar" faz o Δt diminuir sozinho até ao
+         *  mínimo, para se ver a secante a encostar-se à tangente. */
+        secanteTangenteHtml() {
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-st" viewBox="0 0 640 380" role="img" aria-label="Curva posição-tempo x = 2t², com a secante entre dois instantes e a tangente no instante inicial">
+                        <defs><clipPath id="meSt-clip"><rect x="64" y="16" width="556" height="304"/></clipPath></defs>
+                        <g class="me-st-grelha"></g>
+                        <line class="me-st-eixo" x1="64" y1="320" x2="620" y2="320"/>
+                        <line class="me-st-eixo" x1="64" y1="16" x2="64" y2="320"/>
+                        <text class="me-st-rotulo" x="342" y="372" text-anchor="middle">t (s)</text>
+                        <text class="me-st-rotulo" transform="translate(16 168) rotate(-90)" text-anchor="middle">x (m)</text>
+                        <polyline class="me-st-curva" points=""/>
+                        <g clip-path="url(#meSt-clip)">
+                            <line class="me-st-tangente" x1="0" y1="0" x2="0" y2="0"/>
+                            <line class="me-st-secante" x1="0" y1="0" x2="0" y2="0"/>
+                        </g>
+                        <polyline class="me-st-triangulo" points=""/>
+                        <text class="me-st-nota me-st-nota--h" text-anchor="middle"></text>
+                        <text class="me-st-nota me-st-nota--v" text-anchor="start"></text>
+                        <circle class="me-st-ponto me-st-ponto--1" r="6"/>
+                        <circle class="me-st-ponto me-st-ponto--2" r="6"/>
+                        <text class="me-st-valor" x="76" y="38"></text>
+                        <text class="me-st-valor me-st-valor--t" x="76" y="60"></text>
+                    </svg>
+                    <button type="button" class="me-simulacao-botao me-st-botao">Aproximar</button>
+                    <figcaption class="me-sim-visual-legenda">
+                        <span class="me-st-chave me-st-chave--s">secante</span> velocidade média entre t₁ e t₁ + Δt
+                        <span class="me-st-chave me-st-chave--t">tangente</span> velocidade em t₁
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        atualizarSecanteTangente(container, valores) {
+            const svg = container.querySelector('.me-st');
+            if (!svg) return;
+            const q = (sel) => svg.querySelector(sel);
+            const r1 = (n) => Math.round(n * 10) / 10;
+            const L = 64, T = 16, W = 556, H = 304;
+            const TMAX = 7, XMAX = 100;
+            const sx = (t) => L + t / TMAX * W;
+            const sy = (x) => T + H - x / XMAX * H;
+            const set = (el, attrs) => { if (el) Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v)); };
+            const t1 = Number(valores.t1) || 0;
+            const dt = Number(valores.dt) || 0.1;
+            const t2 = t1 + dt;
+            const x = (t) => 2 * t * t;
+            const x1 = x(t1), x2 = x(t2);
+            const vm = (x2 - x1) / dt;
+            const vinst = 4 * t1;
+
+            // grelha e números (uma vez)
+            const grelha = q('.me-st-grelha');
+            if (!grelha.childNodes.length) {
+                let g = '';
+                for (let t = 0; t <= TMAX; t += 1) {
+                    g += `<line x1="${r1(sx(t))}" y1="${T}" x2="${r1(sx(t))}" y2="${T + H}"/><text class="me-st-num" x="${r1(sx(t))}" y="${T + H + 18}" text-anchor="middle">${t}</text>`;
+                }
+                for (let v = 0; v <= XMAX; v += 20) {
+                    g += `<line x1="${L}" y1="${r1(sy(v))}" x2="${L + W}" y2="${r1(sy(v))}"/><text class="me-st-num" x="${L - 8}" y="${r1(sy(v)) + 5}" text-anchor="end">${v}</text>`;
+                }
+                grelha.innerHTML = g;
+                const pts = [];
+                for (let i = 0; i <= 70; i += 1) {
+                    const t = TMAX * i / 70;
+                    pts.push(`${r1(sx(t))},${r1(sy(x(t)))}`);
+                }
+                q('.me-st-curva').setAttribute('points', pts.join(' '));
+            }
+
+            // reta com declive m (m/s) que passa por (ta, xa), estendida a todo o gráfico
+            const reta = (el, ta, xa, m) => {
+                const t0 = 0, t3 = TMAX;
+                set(el, { x1: r1(sx(t0)), y1: r1(sy(xa + m * (t0 - ta))), x2: r1(sx(t3)), y2: r1(sy(xa + m * (t3 - ta))) });
+            };
+            reta(q('.me-st-secante'), t1, x1, vm);
+            reta(q('.me-st-tangente'), t1, x1, vinst);
+
+            set(q('.me-st-ponto--1'), { cx: r1(sx(t1)), cy: r1(sy(x1)) });
+            set(q('.me-st-ponto--2'), { cx: r1(sx(t2)), cy: r1(sy(x2)) });
+            q('.me-st-triangulo').setAttribute('points', `${r1(sx(t1))},${r1(sy(x1))} ${r1(sx(t2))},${r1(sy(x1))} ${r1(sx(t2))},${r1(sy(x2))}`);
+            const nh = q('.me-st-nota--h');
+            set(nh, { x: r1((sx(t1) + sx(t2)) / 2), y: r1(sy(x1)) + 20 });
+            nh.textContent = `Δt = ${comVirgula(dt.toFixed(1))} s`;
+            const nv = q('.me-st-nota--v');
+            set(nv, { x: r1(sx(t2)) + 10, y: r1((sy(x1) + sy(x2)) / 2) + 5 });
+            nv.textContent = `Δx = ${comVirgula((x2 - x1).toFixed(1))} m`;
+            q('.me-st-valor').textContent = `Velocidade média (secante): ${comVirgula(vm.toFixed(2))} m/s`;
+            q('.me-st-valor--t').textContent = `Velocidade em t₁ (tangente): ${comVirgula(vinst.toFixed(2))} m/s`;
+
+            // botão "Aproximar": faz o Δt diminuir sozinho até ao mínimo
+            const botao = container.querySelector('.me-st-botao');
+            if (botao && !botao.dataset.bound) {
+                botao.dataset.bound = '1';
+                botao.addEventListener('click', () => {
+                    const slider = container.querySelector('[data-simulacao-controlo="dt"]');
+                    if (!slider) return;
+                    if (container._stRaf) cancelAnimationFrame(container._stRaf);
+                    const min = Number(slider.min) || 0.1;
+                    const inicio = Number(slider.max) || 3;
+                    const inicioT = performance.now();
+                    const duracao = 4500;
+                    const passo = () => {
+                        if (!container.isConnected) return;
+                        const f = Math.min(1, (performance.now() - inicioT) / duracao);
+                        // decai de forma suave (rápido ao início, lento no fim)
+                        const valor = min + (inicio - min) * Math.pow(1 - f, 2);
+                        slider.value = valor.toFixed(1);
+                        slider.dispatchEvent(new Event('input', { bubbles: true }));
+                        if (f < 1) container._stRaf = requestAnimationFrame(passo);
+                    };
+                    container._stRaf = requestAnimationFrame(passo);
+                });
+            }
+        }
+
+        /** Visual 'deslocamento_distancia': um corpo que anda de xi até xv,
+         *  inverte o sentido e termina em xf, no eixo Ox. A bola percorre o
+         *  caminho em ciclo, enquanto dois contadores mostram a distância
+         *  percorrida até agora (que só aumenta) e o deslocamento até agora
+         *  (x − xi, que pode diminuir). Setas por cima do eixo: ida e volta;
+         *  por baixo, a seta do deslocamento (de xi a xf). Controlos: xi, xv, xf. */
+        deslocamentoDistanciaHtml() {
+            const sx = (m) => 320 + m * 27;
+            let eixo = '';
+            for (let m = -10; m <= 10; m += 1) {
+                const grande = m % 5 === 0;
+                eixo += `<line class="me-dd-marca" x1="${sx(m)}" y1="${grande ? 144 : 147}" x2="${sx(m)}" y2="${grande ? 156 : 153}"/>`
+                    + (grande ? `<text class="me-dd-num" x="${sx(m)}" y="174" text-anchor="middle">${String(m).replace('-', '−')}</text>` : '');
+            }
+            const seta = (id, cor) => `<marker id="meDd-${id}" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0 10 5 0 10z" fill="${cor}"/></marker>`;
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-dd" viewBox="0 0 640 270" role="img" aria-label="Um corpo que anda de uma posição inicial até um ponto de inversão e depois até à posição final, com a distância percorrida e o deslocamento">
+                        <defs>${seta('ida', '#1c7ed6')}${seta('volta', '#7048e8')}${seta('desl', '#e8590c')}</defs>
+                        <text class="me-dd-dist" x="30" y="28">Distância percorrida: 0,0 m</text>
+                        <text class="me-dd-desl" x="610" y="28" text-anchor="end">Deslocamento: 0,0 m</text>
+                        <line class="me-dd-guia" data-g="i" x1="0" y1="100" x2="0" y2="150"/>
+                        <line class="me-dd-guia" data-g="v" x1="0" y1="76" x2="0" y2="150"/>
+                        <line class="me-dd-guia" data-g="f" x1="0" y1="76" x2="0" y2="150"/>
+                        <line class="me-dd-ida" y1="100" y2="100" marker-end="url(#meDd-ida)"/>
+                        <line class="me-dd-volta" y1="76" y2="76" marker-end="url(#meDd-volta)"/>
+                        <text class="me-dd-etiqueta me-dd-etiqueta--ida" y="92" text-anchor="middle">ida</text>
+                        <text class="me-dd-etiqueta me-dd-etiqueta--volta" y="68" text-anchor="middle">volta</text>
+                        <line class="me-dd-eixo" x1="30" y1="150" x2="610" y2="150"/>
+                        <polygon class="me-dd-eixo-seta" points="612,150 598,144 598,156"/>
+                        <text class="me-dd-letra" x="606" y="136" text-anchor="end">x (m)</text>
+                        ${eixo}
+                        <line class="me-dd-guia" data-g="di" x1="0" y1="150" x2="0" y2="205"/>
+                        <line class="me-dd-guia" data-g="df" x1="0" y1="150" x2="0" y2="205"/>
+                        <line class="me-dd-deslocamento" y1="205" y2="205" marker-end="url(#meDd-desl)"/>
+                        <text class="me-dd-etiqueta me-dd-etiqueta--desl" y="230" text-anchor="middle">Δx</text>
+                        <circle class="me-dd-pt me-dd-pt--i" r="6" cy="150"/>
+                        <circle class="me-dd-pt me-dd-pt--v" r="6" cy="150"/>
+                        <circle class="me-dd-pt me-dd-pt--f" r="6" cy="150"/>
+                        <circle class="me-dd-bola" r="10"/>
+                    </svg>
+                    <figcaption class="me-sim-visual-legenda">
+                        <span class="me-dd-chave me-dd-chave--i">início</span>
+                        <span class="me-dd-chave me-dd-chave--v">inversão</span>
+                        <span class="me-dd-chave me-dd-chave--f">fim</span>
+                        A distância percorrida só aumenta; o deslocamento mede só de onde partiu até onde está.
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        atualizarDeslocamentoDistancia(container, valores) {
+            const svg = container.querySelector('.me-dd');
+            if (!svg) return;
+            const q = (sel) => svg.querySelector(sel);
+            const r1 = (n) => Math.round(n * 10) / 10;
+            const sx = (m) => 320 + m * 27;
+            const xi = Number(valores.xi) || 0;
+            const xv = Number(valores.xv) || 0;
+            const xf = Number(valores.xf) || 0;
+            const set = (el, attrs) => { if (el) Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v)); };
+            const mostrar = (el, sim) => { if (el) el.style.display = sim ? '' : 'none'; };
+            const ida = Math.abs(xv - xi);
+            const volta = Math.abs(xf - xv);
+            const total = ida + volta;
+            const desl = xf - xi;
+
+            // Setas e guias estáticas
+            set(q('.me-dd-ida'), { x1: r1(sx(xi)), x2: r1(sx(xv)) });
+            mostrar(q('.me-dd-ida'), ida > 0);
+            set(q('.me-dd-etiqueta--ida'), { x: r1((sx(xi) + sx(xv)) / 2) });
+            mostrar(q('.me-dd-etiqueta--ida'), ida > 1.5);
+            set(q('.me-dd-volta'), { x1: r1(sx(xv)), x2: r1(sx(xf)) });
+            mostrar(q('.me-dd-volta'), volta > 0);
+            set(q('.me-dd-etiqueta--volta'), { x: r1((sx(xv) + sx(xf)) / 2) });
+            mostrar(q('.me-dd-etiqueta--volta'), volta > 1.5);
+            set(q('.me-dd-deslocamento'), { x1: r1(sx(xi)), x2: r1(sx(xf)) });
+            mostrar(q('.me-dd-deslocamento'), desl !== 0);
+            const etiquetaDesl = q('.me-dd-etiqueta--desl');
+            set(etiquetaDesl, { x: r1((sx(xi) + sx(xf)) / 2) });
+            etiquetaDesl.textContent = `Δx = ${desl > 0 ? '+' : ''}${comVirgula(desl)} m`;
+            [['i', xi], ['v', xv], ['f', xf], ['di', xi], ['df', xf]].forEach(([g, m]) => {
+                set(q(`[data-g="${g}"]`), { x1: r1(sx(m)), x2: r1(sx(m)) });
+            });
+            set(q('.me-dd-pt--i'), { cx: r1(sx(xi)) });
+            set(q('.me-dd-pt--v'), { cx: r1(sx(xv)) });
+            set(q('.me-dd-pt--f'), { cx: r1(sx(xf)) });
+
+            let est = container._deslDist;
+            if (!est) {
+                est = container._deslDist = { xi, xv, xf, d: 0, espera: 0, raf: 0, ultimo: 0 };
+                est.desenhar = () => {
+                    const { xi, xv, xf } = est;
+                    const ida = Math.abs(xv - xi);
+                    const total = ida + Math.abs(xf - xv);
+                    const d = Math.min(est.d, total);
+                    let x;
+                    if (d <= ida) x = xi + Math.sign(xv - xi) * d;
+                    else x = xv + Math.sign(xf - xv) * (d - ida);
+                    set(q('.me-dd-bola'), { cx: r1(sx(x)), cy: 140 });
+                    const dx = x - xi;
+                    q('.me-dd-dist').textContent = `Distância percorrida: ${comVirgula(d.toFixed(1))} m`;
+                    q('.me-dd-desl').textContent = `Deslocamento: ${dx > 0.05 ? '+' : ''}${comVirgula(dx.toFixed(1))} m`;
+                };
+                const frame = (agora) => {
+                    if (!container.isConnected) { est.raf = 0; return; }
+                    const dt = Math.min(0.05, (agora - est.ultimo) / 1000 || 0);
+                    est.ultimo = agora;
+                    const total = Math.abs(est.xv - est.xi) + Math.abs(est.xf - est.xv);
+                    if (est.espera > 0) {
+                        est.espera -= dt;
+                        if (est.espera <= 0) est.d = 0;
+                    } else {
+                        // velocidade constante: no mínimo 3 s para o caminho todo
+                        est.d += dt * Math.max(total / 5, 2);
+                        if (est.d >= total) { est.d = total; est.espera = 1.5; }
+                    }
+                    est.desenhar();
+                    est.raf = requestAnimationFrame(frame);
+                };
+                est.arrancar = () => {
+                    if (est.raf) return;
+                    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { est.d = Infinity; return; }
+                    est.ultimo = performance.now();
+                    est.raf = requestAnimationFrame(frame);
+                };
+            }
+            const mudou = est.xi !== xi || est.xv !== xv || est.xf !== xf;
+            est.xi = xi; est.xv = xv; est.xf = xf;
+            if (mudou) { est.d = 0; est.espera = 0.4; }
+            est.desenhar();
+            est.arrancar();
+        }
+
+        /** Visual 'quatro_descricoes': o mesmo movimento (x = x0 + v t, com t
+         *  de 0 a 4 s) visto de duas maneiras ao mesmo tempo — um carro a
+         *  andar no eixo Ox e o gráfico x-t a ser traçado, com um ponto que
+         *  acompanha o carro. Repete em ciclo. Marca no gráfico o instante em
+         *  que o corpo passa na origem (sem escrever o valor). Controlos:
+         *  x0 (m) e v (m/s). */
+        quatroDescricoesHtml() {
+            const sx = (m) => 320 + m * 9.33;
+            let eixo = '';
+            for (let m = -30; m <= 30; m += 10) {
+                eixo += `<line class="me-qd-marca${m === 0 ? ' me-qd-marca--origem' : ''}" x1="${sx(m)}" y1="${m === 0 ? 92 : 98}" x2="${sx(m)}" y2="${m === 0 ? 118 : 112}"/>`
+                    + `<text class="me-qd-num" x="${sx(m)}" y="134" text-anchor="middle">${String(m).replace('-', '−')}</text>`;
+            }
+            const gx = (t) => 80 + t * 130;
+            const gy = (v) => 285 - v * (110 / 30);
+            let grelha = '';
+            for (let t = 0; t <= 4; t += 1) {
+                grelha += `<line class="me-qd-grelha" x1="${gx(t)}" y1="175" x2="${gx(t)}" y2="395"/>`
+                    + `<text class="me-qd-num" x="${gx(t)}" y="414" text-anchor="middle">${t}</text>`;
+            }
+            for (let v = -30; v <= 30; v += 10) {
+                grelha += `<line class="me-qd-grelha" x1="80" y1="${gy(v)}" x2="600" y2="${gy(v)}"/>`
+                    + `<text class="me-qd-num" x="70" y="${gy(v) + 5}" text-anchor="end">${String(v).replace('-', '−')}</text>`;
+            }
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-qd" viewBox="0 0 640 430" role="img" aria-label="Um carro a andar no eixo Ox e, por baixo, o gráfico posição-tempo do mesmo movimento">
+                        <rect class="me-qd-estrada" x="30" y="58" width="580" height="30" rx="4"/>
+                        <line class="me-qd-eixo" x1="30" y1="105" x2="610" y2="105"/>
+                        <polygon class="me-qd-seta" points="612,105 598,99 598,111"/>
+                        <text class="me-qd-letra" x="606" y="90" text-anchor="end">x (m)</text>
+                        <text class="me-qd-origem" x="${sx(0)}" y="148" text-anchor="middle">O</text>
+                        ${eixo}
+                        <g class="me-qd-carro">
+                            <rect class="me-qd-corpo" x="-20" y="-18" width="40" height="12" rx="4"/>
+                            <rect class="me-qd-cabine" x="-12" y="-27" width="22" height="11" rx="4"/>
+                            <circle class="me-qd-roda" cx="-11" cy="-5" r="4.5"/>
+                            <circle class="me-qd-roda" cx="11" cy="-5" r="4.5"/>
+                        </g>
+                        <text class="me-qd-tempo" x="40" y="46">t = 0,0 s</text>
+                        <text class="me-qd-pos" x="610" y="46" text-anchor="end">x = 0,0 m</text>
+                        ${grelha}
+                        <line class="me-qd-eixo" x1="80" y1="175" x2="80" y2="395"/>
+                        <line class="me-qd-eixo" x1="80" y1="${gy(0)}" x2="600" y2="${gy(0)}"/>
+                        <text class="me-qd-letra" x="600" y="${gy(0) - 8}" text-anchor="end">t (s)</text>
+                        <text class="me-qd-letra" x="86" y="172">x (m)</text>
+                        <polyline class="me-qd-reta-fraca" points=""/>
+                        <polyline class="me-qd-reta" points=""/>
+                        <circle class="me-qd-origem-anel" r="9" style="display:none"/>
+                        <circle class="me-qd-ponto" r="6"/>
+                    </svg>
+                    <figcaption class="me-sim-visual-legenda">
+                        O carro e o ponto do gráfico mexem-se ao mesmo tempo. Quando a reta cruza o eixo horizontal, o corpo está na origem (x = 0).
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        atualizarQuatroDescricoes(container, valores) {
+            const svg = container.querySelector('.me-qd');
+            if (!svg) return;
+            const q = (sel) => svg.querySelector(sel);
+            const r1 = (n) => Math.round(n * 10) / 10;
+            const sx = (m) => 320 + m * 9.33;
+            const gx = (t) => 80 + t * 130;
+            const gy = (v) => 285 - v * (110 / 30);
+            let est = container._quatroDesc;
+            if (!est) {
+                est = container._quatroDesc = { x0: 2, v: 3, t: 0, espera: 0, raf: 0, ultimo: 0 };
+                est.desenhar = () => {
+                    const { x0, v, t } = est;
+                    const xt = x0 + v * t;
+                    q('.me-qd-carro').setAttribute('transform', `translate(${r1(sx(Math.max(-33, Math.min(33, xt))))} 90)`);
+                    q('.me-qd-tempo').textContent = `t = ${comVirgula(t.toFixed(1))} s`;
+                    q('.me-qd-pos').textContent = `x = ${comVirgula(xt.toFixed(1))} m`;
+                    q('.me-qd-reta-fraca').setAttribute('points', `${r1(gx(0))},${r1(gy(x0))} ${r1(gx(4))},${r1(gy(x0 + 4 * v))}`);
+                    q('.me-qd-reta').setAttribute('points', `${r1(gx(0))},${r1(gy(x0))} ${r1(gx(t))},${r1(gy(xt))}`);
+                    const ponto = q('.me-qd-ponto');
+                    ponto.setAttribute('cx', r1(gx(t)));
+                    ponto.setAttribute('cy', r1(gy(xt)));
+                    // Instante em que passa na origem (sem escrever o valor)
+                    const anel = q('.me-qd-origem-anel');
+                    const tc = v !== 0 ? -x0 / v : null;
+                    if (tc !== null && tc >= 0 && tc <= 4 && x0 !== 0) {
+                        anel.style.display = '';
+                        anel.setAttribute('cx', r1(gx(tc)));
+                        anel.setAttribute('cy', r1(gy(0)));
+                    } else {
+                        anel.style.display = 'none';
+                    }
+                };
+                const frame = (agora) => {
+                    if (!container.isConnected) { est.raf = 0; return; }
+                    const dt = Math.min(0.05, (agora - est.ultimo) / 1000 || 0);
+                    est.ultimo = agora;
+                    if (est.espera > 0) {
+                        est.espera -= dt;
+                        if (est.espera <= 0) est.t = 0;
+                    } else {
+                        est.t += dt;
+                        if (est.t >= 4) { est.t = 4; est.espera = 1; }
+                    }
+                    est.desenhar();
+                    est.raf = requestAnimationFrame(frame);
+                };
+                est.arrancar = () => {
+                    if (est.raf) return;
+                    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { est.t = 4; return; }
+                    est.ultimo = performance.now();
+                    est.raf = requestAnimationFrame(frame);
+                };
+            }
+            est.x0 = Number(valores.x0) || 0;
+            est.v = Number(valores.v) || 0;
+            est.desenhar();
+            est.arrancar();
+        }
+
+        /** Visual 'projetil': a trajetória de um projétil (v0, ângulo e altura
+         *  de lançamento), com uma bola a percorrê-la em ciclo (4 s reais para
+         *  o voo todo), a trajetória tracejada, as componentes vx (azul) e vy
+         *  (laranja) da velocidade na posição da bola, e marcas na altura
+         *  máxima e no alcance. Escala igual nos dois eixos.
+         *  Controlos: v0 (m/s), theta (graus) e h0 (m). */
+        projetilHtml() {
+            return `
+                <figure class="me-sim-visual">
+                    <svg class="me-pj" viewBox="0 0 640 340" role="img" aria-label="Trajetória parabólica de um projétil, com as componentes horizontal e vertical da velocidade">
+                        <defs>
+                            <marker id="mePj-vx" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 10 5 0 10z" fill="#1c7ed6"/></marker>
+                            <marker id="mePj-vy" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0 0 10 5 0 10z" fill="#e8590c"/></marker>
+                        </defs>
+                        <rect class="me-pj-predio" x="20" y="290" width="30" height="0"/>
+                        <line class="me-pj-chao" x1="20" y1="290" x2="620" y2="290"/>
+                        <polyline class="me-pj-trajetoria" points=""/>
+                        <polyline class="me-pj-rasto" points=""/>
+                        <line class="me-pj-vx" marker-end="url(#mePj-vx)"/>
+                        <line class="me-pj-vy" marker-end="url(#mePj-vy)"/>
+                        <circle class="me-pj-bola" r="8"/>
+                        <circle class="me-pj-topo" r="6"/>
+                        <text class="me-pj-nota me-pj-nota--topo" text-anchor="middle">altura máxima</text>
+                        <circle class="me-pj-fim" r="6"/>
+                        <text class="me-pj-nota me-pj-nota--fim" text-anchor="middle">alcance</text>
+                        <text class="me-pj-tempo" x="620" y="28" text-anchor="end">t = 0,0 s</text>
+                    </svg>
+                    <figcaption class="me-sim-visual-legenda">
+                        <span class="me-pj-chave me-pj-chave--x">vₓ</span> componente horizontal (constante)
+                        <span class="me-pj-chave me-pj-chave--y">v_y</span> componente vertical (muda com o tempo)
+                    </figcaption>
+                </figure>
+            `;
+        }
+
+        atualizarProjetil(container, valores) {
+            const svg = container.querySelector('.me-pj');
+            if (!svg) return;
+            const q = (sel) => svg.querySelector(sel);
+            const r1 = (n) => Math.round(n * 10) / 10;
+            const set = (el, attrs) => { if (el) Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v)); };
+            const G = 9.8;
+            const v0 = Number(valores.v0) || 1;
+            const th = (Number(valores.theta) || 0) * Math.PI / 180;
+            const h0 = Number(valores.h0) || 0;
+            const vx = v0 * Math.cos(th);
+            const vy0 = v0 * Math.sin(th);
+            const T = (vy0 + Math.sqrt(vy0 * vy0 + 2 * G * h0)) / G;
+            const R = vx * T;
+            const tTopo = vy0 > 0 ? vy0 / G : 0;
+            const Hmax = h0 + (vy0 > 0 ? vy0 * vy0 / (2 * G) : 0);
+            const escala = Math.min(540 / Math.max(R, 5), 230 / Math.max(Hmax, 3));
+            const X0 = 56, BASE = 290;
+            const px = (m) => X0 + m * escala;
+            const py = (m) => BASE - m * escala;
+            const pos = (t) => ({ x: vx * t, y: Math.max(0, h0 + vy0 * t - 0.5 * G * t * t) });
+
+            // prédio, trajetória completa, marcas
+            const predio = q('.me-pj-predio');
+            set(predio, { x: X0 - 34, y: r1(py(h0)), height: r1(BASE - py(h0)), width: 34 });
+            predio.style.display = h0 > 0 ? '' : 'none';
+            const pts = [];
+            for (let i = 0; i <= 80; i += 1) {
+                const q2 = pos(T * i / 80);
+                pts.push(`${r1(px(q2.x))},${r1(py(q2.y))}`);
+            }
+            q('.me-pj-trajetoria').setAttribute('points', pts.join(' '));
+            const topo = pos(tTopo);
+            set(q('.me-pj-topo'), { cx: r1(px(topo.x)), cy: r1(py(topo.y)) });
+            set(q('.me-pj-nota--topo'), { x: r1(px(topo.x)), y: r1(py(topo.y)) - 12 });
+            set(q('.me-pj-fim'), { cx: r1(px(R)), cy: BASE });
+            set(q('.me-pj-nota--fim'), { x: r1(px(R)), y: BASE + 22 });
+            q('.me-pj-topo').style.display = vy0 > 0.01 ? '' : 'none';
+            q('.me-pj-nota--topo').style.display = vy0 > 0.01 ? '' : 'none';
+
+            let est = container._projetil;
+            if (!est) {
+                est = container._projetil = { t: 0, espera: 0, raf: 0, ultimo: 0, T: 1 };
+                const frame = (agora) => {
+                    if (!container.isConnected) { est.raf = 0; return; }
+                    const dt = Math.min(0.05, (agora - est.ultimo) / 1000 || 0);
+                    est.ultimo = agora;
+                    if (est.espera > 0) {
+                        est.espera -= dt;
+                        if (est.espera <= 0) est.t = 0;
+                    } else {
+                        est.t += dt * est.T / 4;
+                        if (est.t >= est.T) { est.t = est.T; est.espera = 1.5; }
+                    }
+                    est.desenhar();
+                    est.raf = requestAnimationFrame(frame);
+                };
+                est.arrancar = () => {
+                    if (est.raf) return;
+                    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { est.t = est.T; return; }
+                    est.ultimo = performance.now();
+                    est.raf = requestAnimationFrame(frame);
+                };
+                est.desenhar = () => {
+                    const { vx, vy0, h0, T, escala } = est;
+                    const t = Math.min(est.t, T);
+                    const c = { x: vx * t, y: Math.max(0, h0 + vy0 * t - 0.5 * 9.8 * t * t) };
+                    const vy = vy0 - 9.8 * t;
+                    const X = X0 + c.x * escala, Y = BASE - c.y * escala;
+                    set(q('.me-pj-bola'), { cx: r1(X), cy: r1(Y) - 8 });
+                    const rasto = [];
+                    for (let i = 0; i <= 40; i += 1) {
+                        const tt = t * i / 40;
+                        rasto.push(`${r1(X0 + vx * tt * escala)},${r1(BASE - Math.max(0, h0 + vy0 * tt - 0.5 * 9.8 * tt * tt) * escala)}`);
+                    }
+                    q('.me-pj-rasto').setAttribute('points', rasto.join(' '));
+                    const k = 4; // px por m/s
+                    const noChao = c.y <= 0 && t > 0;
+                    set(q('.me-pj-vx'), { x1: r1(X), y1: r1(Y) - 8, x2: r1(X + vx * k), y2: r1(Y) - 8 });
+                    set(q('.me-pj-vy'), { x1: r1(X), y1: r1(Y) - 8, x2: r1(X), y2: r1(Y) - 8 - r1(vy * k) });
+                    q('.me-pj-vy').style.display = (noChao || Math.abs(vy * k) < 2) ? 'none' : '';
+                    q('.me-pj-vx').style.display = vx * k < 2 ? 'none' : '';
+                    q('.me-pj-tempo').textContent = `t = ${comVirgula(t.toFixed(1))} s`;
+                };
+            }
+            est.vx = vx; est.vy0 = vy0; est.h0 = h0; est.T = T; est.escala = escala;
+            if (est.t > T) est.t = T;
+            est.desenhar();
+            est.arrancar();
         }
 
         /** Visual 'duas_bolas': duas bolas largadas do topo de um prédio de
@@ -3640,6 +4610,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (screen.visual === 'rampa_skater') { this.atualizarRampaSkater(container, valores); return; }
             if (screen.visual === 'posicao_eixo') { this.atualizarPosicaoEixo(container, valores); return; }
             if (screen.visual === 'duas_bolas') { this.atualizarDuasBolas(container, valores); return; }
+            if (screen.visual === 'projetil') { this.atualizarProjetil(container, valores); return; }
+            if (screen.visual === 'quatro_descricoes') { this.atualizarQuatroDescricoes(container, valores); return; }
+            if (screen.visual === 'deslocamento_distancia') { this.atualizarDeslocamentoDistancia(container, valores); return; }
+            if (screen.visual === 'secante_tangente') { this.atualizarSecanteTangente(container, valores); return; }
+            if (screen.visual === 'encontro') { this.atualizarEncontro(container, valores); return; }
+            if (screen.visual === 'area_vt') { this.atualizarAreaVt(container, valores); return; }
             if (screen.visual !== 'trabalho_caixa') return;
             const svg = container.querySelector('.me-tc');
             if (!svg) return;
@@ -3787,6 +4763,23 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                 const escopo = { ...valores, dados: screen.dados || {}, num: formatarNumero };
                 this.atualizarVisualSimulacao(screen, container, valores);
                 saidas.forEach((saida, i) => {
+                    if (saida.tipo === 'tabela') {
+                        (saida.linhas || []).forEach((linha, r) => linha.forEach((cel, c) => {
+                            if (typeof cel !== 'object' || cel === null) return;
+                            const celula = container.querySelector(`[data-simulacao-celula="${i}:${r}:${c}"]`);
+                            if (!celula) return;
+                            let valor;
+                            try {
+                                valor = new Function(...Object.keys(escopo), `return (${cel.formula});`)(...Object.values(escopo));
+                            } catch (erro) {
+                                valor = null;
+                            }
+                            celula.textContent = (typeof valor === 'number' && Number.isFinite(valor))
+                                ? comVirgula(cel.casas_decimais != null ? valor.toFixed(cel.casas_decimais) : valor)
+                                : '—';
+                        }));
+                        return;
+                    }
                     const span = container.querySelector(`[data-simulacao-saida="${i}"]`);
                     if (!span) return;
                     let resultado;
@@ -4001,10 +4994,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         bindDiagramaChips(diagramScreen) {
             if (diagramScreen.pontos_seta === true) {
                 const slides = [
-                    ...(diagramScreen.texto_principal ? [{ explicacao: diagramScreen.texto_principal, imagem: diagramScreen.imagem, imagens: diagramScreen.imagens, caixa_formula: diagramScreen.caixa_formula, curiosidade: diagramScreen.curiosidade, curiosidade_sem_titulo: diagramScreen.curiosidade_sem_titulo, atencao: diagramScreen.atencao, detalhe_seta: diagramScreen.detalhe_seta }] : []),
-                    ...(diagramScreen.pontos || []).map((ponto) => ({ ...ponto, imagem: ponto.imagem || diagramScreen.imagem })),
+                    ...(diagramScreen.texto_principal ? [{ explicacao: diagramScreen.texto_principal, imagem: diagramScreen.imagem, imagem_legenda: diagramScreen.imagem_legenda, imagens: diagramScreen.imagens, caixa_formula: diagramScreen.caixa_formula, curiosidade: diagramScreen.curiosidade, curiosidade_sem_titulo: diagramScreen.curiosidade_sem_titulo, atencao: diagramScreen.atencao, detalhe_seta: diagramScreen.detalhe_seta, tabelas: diagramScreen.tabelas_slide, grafico: diagramScreen.grafico, imagem_em_cima: diagramScreen.imagem_em_cima }] : []),
+                    ...(diagramScreen.pontos || []).map((ponto) => ({ ...ponto, imagem: ponto.imagem || (diagramScreen.imagem_so_no_primeiro ? undefined : diagramScreen.imagem), imagem_legenda: ponto.imagem ? ponto.imagem_legenda : (diagramScreen.imagem_so_no_primeiro ? undefined : diagramScreen.imagem_legenda), imagem_em_cima: ponto.imagem_em_cima ?? diagramScreen.imagem_em_cima })),
                 ];
-                this.bindDiagramaSetaNav(slides, this.aprofundarHtml(diagramScreen.aprofundar));
+                const secaoAtiva = this.getSection(this.state.activeSectionIndex || 0);
+                const chaveSlide = `${secaoAtiva ? secaoAtiva.secao_id : ''}::${diagramScreen.titulo || ''}`;
+                this.bindDiagramaSetaNav(slides, this.aprofundarHtml(diagramScreen.aprofundar), chaveSlide);
                 return;
             }
             const isEscada = diagramScreen.layout === 'escada';
@@ -4027,8 +5022,13 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             if (exercicioInicialEl) {
                 this.bindExercicio(exercicioInicialEl, diagramScreen, pontosDiagrama[0]);
             }
+            const secaoChip = this.getSection(this.state.activeSectionIndex || 0);
+            const chaveChip = `chip::${secaoChip ? secaoChip.secao_id : ''}::${diagramScreen.titulo || ''}`;
             this.root.querySelectorAll('[data-ponto-index]').forEach((chip) => {
                 chip.addEventListener('click', () => {
+                    this.state.slideSeta = this.state.slideSeta || {};
+                    this.state.slideSeta[chaveChip] = Number(chip.dataset.pontoIndex);
+                    this.saveState();
                     const ponto = pontosDiagrama[Number(chip.dataset.pontoIndex)];
                     this.root.querySelectorAll(activeSelector).forEach((c) => c.classList.remove('is-active'));
                     chip.classList.add('is-active');
@@ -4077,6 +5077,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     }
                 });
             });
+            // refresh: volta ao ponto que estava aberto
+            const guardadoChip = this.state.slideSeta ? Number(this.state.slideSeta[chaveChip]) : 0;
+            if (Number.isInteger(guardadoChip) && guardadoChip > 0) {
+                const alvo = this.root.querySelector(`[data-ponto-index="${guardadoChip}"]`);
+                if (alvo) alvo.click();
+            }
         }
 
         /** Vídeos decorativos (ex: molécula a girar) vêm com fundo branco

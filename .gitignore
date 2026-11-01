@@ -12,3 +12,6 @@ env/
 *.log
 
 .env
+
+# Cópias de segurança (dados pessoais dos utilizadores)
+backups/

@@ -59,20 +59,18 @@
           "perguntas": [
             {
               "pergunta": "Um eletrão é colocado num campo elétrico uniforme que aponta para a direita. Para onde aponta a força elétrica que atua sobre ele?",
-              "opcoes": [
-                "Para a direita.",
-                "Para a esquerda.",
+              "opcoes": ["Para a direita.",
                 "Para cima.",
-                "É nula, porque o campo é uniforme."
+                "É nula, porque o campo é uniforme.",
+                "Para a esquerda."
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. O eletrão tem carga negativa, por isso a força tem sentido oposto ao do campo.",
               "mascote_feedback_errado": "O sentido do campo é o da força sobre uma carga positiva. Como o eletrão é negativo, a força aponta no sentido oposto: para a esquerda."
             },
             {
               "pergunta": "Uma carga de 2,0 µC é colocada num campo elétrico de intensidade 5,0 × 10³ N/C. Qual é a intensidade da força elétrica? (1 µC = 10⁻⁶ C)",
-              "opcoes": [
-                "1,0 × 10⁻² N",
+              "opcoes": ["1,0 × 10⁻² N",
                 "2,5 × 10³ N",
                 "1,0 × 10⁴ N",
                 "4,0 × 10⁻¹⁰ N"
@@ -153,32 +151,30 @@
           "perguntas": [
             {
               "pergunta": "Qual é a diferença essencial entre as linhas de campo magnético de um íman e as linhas de campo elétrico de duas cargas opostas?",
-              "opcoes": [
-                "As linhas magnéticas cruzam-se.",
-                "As linhas magnéticas são fechadas; as elétricas começam nas cargas positivas e terminam nas negativas.",
+              "opcoes": ["As linhas magnéticas cruzam-se.",
                 "As linhas elétricas são sempre circulares.",
+                "As linhas magnéticas são fechadas; as elétricas começam nas cargas positivas e terminam nas negativas.",
                 "Não há diferença."
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Exato. Não existem \"cargas magnéticas\" isoladas, por isso as linhas de campo magnético são fechadas.",
               "mascote_feedback_errado": "As linhas de campo elétrico nascem nas cargas positivas e morrem nas negativas. As magnéticas não têm início nem fim: são fechadas, continuando por dentro do íman."
             },
             {
               "pergunta": "O polo norte da agulha de uma bússola aponta para o norte geográfico. O que se pode concluir sobre o campo magnético da Terra?",
-              "opcoes": [
+              "opcoes": ["Perto do polo norte geográfico existe um polo sul magnético.",
                 "Perto do polo norte geográfico existe um polo norte magnético.",
-                "Perto do polo norte geográfico existe um polo sul magnético.",
                 "A Terra não tem campo magnético; a bússola aponta para norte por causa da rotação.",
                 "O campo magnético terrestre aponta para sul."
               ],
-              "correta": 1,
+              "correta": 0,
               "mascote_feedback_certo": "Muito bem. Polos diferentes atraem-se.",
               "mascote_feedback_errado": "O polo norte da agulha é atraído por um polo sul. Por isso, perto do polo norte geográfico está o polo sul magnético da Terra."
             },
             {
               "pergunta": "Partindo um íman em barra ao meio, obtém-se:",
-              "opcoes": ["um polo norte isolado e um polo sul isolado.", "dois ímanes, cada um com polo norte e polo sul.", "dois pedaços de ferro sem propriedades magnéticas.", "dois polos norte."],
-              "correta": 1,
+              "opcoes": ["um polo norte isolado e um polo sul isolado.", "dois pedaços de ferro sem propriedades magnéticas.", "dois polos norte.", "dois ímanes, cada um com polo norte e polo sul."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. Não existem polos magnéticos isolados.",
               "mascote_feedback_errado": "Não existem polos magnéticos isolados. Cada pedaço é um novo íman completo."
             },
@@ -191,8 +187,8 @@
             },
             {
               "pergunta": "No interior de uma bobina longa percorrida por corrente, o campo magnético é:",
-              "opcoes": ["nulo.", "aproximadamente uniforme.", "mais intenso junto às paredes.", "radial."],
-              "correta": 1,
+              "opcoes": ["nulo.", "mais intenso junto às paredes.", "radial.", "aproximadamente uniforme."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. No interior de uma bobina, o campo é aproximadamente uniforme.",
               "mascote_feedback_errado": "No interior de uma bobina (solenoide), as linhas são paralelas e igualmente espaçadas: o campo é aproximadamente uniforme."
             }
@@ -285,8 +281,7 @@
           "perguntas": [
             {
               "pergunta": "Uma espira de área 0,020 m² está num campo magnético uniforme de 0,50 T, perpendicular ao plano da espira. Qual é o fluxo magnético?",
-              "opcoes": [
-                "0 Wb",
+              "opcoes": ["0 Wb",
                 "0,010 Wb",
                 "0,025 Wb",
                 "25 Wb"
@@ -297,34 +292,33 @@
             },
             {
               "pergunta": "O campo magnético do exercício anterior é desligado e o fluxo passa de 0,010 Wb para zero em 0,10 s. Se em vez de uma espira houver uma bobina com 100 espiras, qual é a força eletromotriz induzida média?",
-              "opcoes": [
+              "opcoes": ["10 V",
                 "0,10 V",
                 "1,0 V",
-                "10 V",
                 "100 V"
               ],
-              "correta": 2,
+              "correta": 0,
               "mascote_feedback_certo": "Muito bem. Com 100 espiras: 100 × 0,10 = 10 V.",
               "mascote_feedback_errado": "A variação de fluxo total é N × ΔΦ = 100 × 0,010 = 1,0 Wb. |ε| = 1,0 / 0,10 = 10 V."
             },
             {
               "pergunta": "Uma espira está num campo magnético uniforme e constante. Qual das situações NÃO induz corrente na espira?",
-              "opcoes": ["Rodar a espira.", "Aumentar a intensidade do campo.", "Deslocar a espira dentro do campo uniforme, sem a rodar.", "Deformar a espira, diminuindo a sua área."],
-              "correta": 2,
+              "opcoes": ["Rodar a espira.", "Deslocar a espira dentro do campo uniforme, sem a rodar.", "Aumentar a intensidade do campo.", "Deformar a espira, diminuindo a sua área."],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. Deslocar sem rodar não altera B, A nem α: o fluxo não varia.",
               "mascote_feedback_errado": "Num campo uniforme, deslocar a espira sem rodar não altera B, A nem α: o fluxo não varia e não há indução."
             },
             {
               "pergunta": "Uma espira roda de uma posição em que o campo é perpendicular ao seu plano para uma posição em que o campo é paralelo ao seu plano. O fluxo magnético:",
-              "opcoes": ["passa de zero para o máximo.", "passa do máximo para zero.", "mantém-se.", "duplica."],
-              "correta": 1,
+              "opcoes": ["passa do máximo para zero.", "passa de zero para o máximo.", "mantém-se.", "duplica."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Com o campo perpendicular ao plano, α = 0° e o fluxo é máximo. Paralelo, α = 90° e o fluxo é nulo.",
               "mascote_feedback_errado": "Com o campo perpendicular ao plano, α = 0° e o fluxo é máximo (B A). Com o campo paralelo ao plano, α = 90° e o fluxo é nulo."
             },
             {
               "pergunta": "Se um íman for introduzido numa bobina com o dobro da rapidez, a força eletromotriz induzida:",
-              "opcoes": ["mantém-se.", "reduz-se a metade.", "duplica, porque a mesma variação de fluxo ocorre em metade do tempo.", "quadruplica."],
-              "correta": 2,
+              "opcoes": ["mantém-se.", "reduz-se a metade.", "quadruplica.", "duplica, porque a mesma variação de fluxo ocorre em metade do tempo."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. |ε| = |ΔΦ| / Δt. A variação de fluxo é a mesma; o tempo é metade.",
               "mascote_feedback_errado": "|ε| = |ΔΦ| / Δt. A variação de fluxo é a mesma; o tempo é metade; a força eletromotriz duplica."
             }
@@ -384,39 +378,37 @@
           "perguntas": [
             {
               "pergunta": "Um transformador tem 1000 espiras no primário e 50 no secundário. O primário está ligado a 230 V. Qual é a tensão no secundário?",
-              "opcoes": [
-                "4600 V",
+              "opcoes": ["4600 V",
                 "230 V",
-                "23 V",
-                "11,5 V"
+                "11,5 V",
+                "23 V"
               ],
-              "correta": 3,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. U s = U p × N s / N p = 230 × 50 / 1000 = 11,5 V.",
               "mascote_feedback_errado": "De U p / U s = N p / N s: U s = 230 × 50 / 1000 = 11,5 V. Menos espiras no secundário, menos tensão."
             },
             {
               "pergunta": "Porque é que não se pode ligar um transformador a uma pilha?",
-              "opcoes": [
+              "opcoes": ["Porque a corrente contínua cria um fluxo magnético constante e não há indução no secundário.",
                 "Porque a pilha tem tensão demasiado baixa.",
-                "Porque a corrente contínua cria um fluxo magnético constante e não há indução no secundário.",
                 "Porque a pilha tem resistência interna.",
                 "Porque o núcleo de ferro bloqueia a corrente contínua."
               ],
-              "correta": 1,
+              "correta": 0,
               "mascote_feedback_certo": "Exato. Sem variação de fluxo, não há força eletromotriz induzida.",
               "mascote_feedback_errado": "O transformador funciona por indução, que exige fluxo variável. A corrente contínua de uma pilha cria um campo constante, e no secundário não se induz nada."
             },
             {
               "pergunta": "Num alternador, a força eletromotriz induzida é máxima quando:",
-              "opcoes": ["o fluxo magnético através da bobina é máximo.", "o fluxo magnético está a variar mais depressa, isto é, quando o plano da bobina é paralelo ao campo.", "a bobina está parada.", "o campo magnético é nulo."],
-              "correta": 1,
+              "opcoes": ["o fluxo magnético através da bobina é máximo.", "a bobina está parada.", "o fluxo magnético está a variar mais depressa, isto é, quando o plano da bobina é paralelo ao campo.", "o campo magnético é nulo."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. O que conta é a rapidez de variação do fluxo.",
               "mascote_feedback_errado": "Pela lei de Faraday, o que conta é a rapidez de variação do fluxo. Essa rapidez é máxima quando o fluxo passa por zero (plano da bobina paralelo ao campo)."
             },
             {
               "pergunta": "Pretende-se obter 12 V a partir da rede de 230 V com um transformador cujo primário tem 1150 espiras. Quantas espiras deve ter o secundário?",
-              "opcoes": ["12", "60", "96", "22 042"],
-              "correta": 1,
+              "opcoes": ["12", "96", "22 042", "60"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. N s = N p × U s / U p = 1150 × 12 / 230 = 60 espiras.",
               "mascote_feedback_errado": "N s = N p × U s / U p = 1150 × 12 / 230 = 60 espiras."
             },

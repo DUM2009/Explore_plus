@@ -61,32 +61,30 @@
           "perguntas": [
             {
               "pergunta": "Uma estação de rádio emite a 100 MHz. Qual é o comprimento de onda das ondas emitidas? (1 MHz = 10⁶ Hz)",
-              "opcoes": [
-                "0,33 m",
-                "3,00 m",
+              "opcoes": ["0,33 m",
                 "30,0 m",
+                "3,00 m",
                 "3,00 × 10¹⁶ m"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. λ = c / f = 3,00 × 10⁸ / 1,00 × 10⁸ = 3,00 m.",
               "mascote_feedback_errado": "Converte a frequência: 100 MHz = 1,00 × 10⁸ Hz. λ = c / f = 3,00 × 10⁸ / 1,00 × 10⁸ = 3,00 m."
             },
             {
               "pergunta": "Ordena por ordem crescente de frequência: luz visível, raios X, micro-ondas.",
-              "opcoes": [
-                "Raios X, visível, micro-ondas.",
-                "Micro-ondas, visível, raios X.",
+              "opcoes": ["Raios X, visível, micro-ondas.",
                 "Visível, micro-ondas, raios X.",
-                "Micro-ondas, raios X, visível."
+                "Micro-ondas, raios X, visível.",
+                "Micro-ondas, visível, raios X."
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Exato. As micro-ondas têm frequência mais baixa do que o visível, e os raios X mais alta.",
               "mascote_feedback_errado": "No espetro, a frequência aumenta assim: rádio, micro-ondas, infravermelho, visível, ultravioleta, raios X, gama. Logo: micro-ondas, visível, raios X."
             },
             {
               "pergunta": "Qual das afirmações sobre as ondas eletromagnéticas é correta?",
-              "opcoes": ["São ondas longitudinais.", "Precisam de um meio material para se propagar.", "No vazio, todas se propagam com a mesma velocidade.", "Os raios X propagam-se no vazio mais depressa do que a luz visível."],
-              "correta": 2,
+              "opcoes": ["São ondas longitudinais.", "No vazio, todas se propagam com a mesma velocidade.", "Precisam de um meio material para se propagar.", "Os raios X propagam-se no vazio mais depressa do que a luz visível."],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. No vazio, todas as ondas eletromagnéticas se propagam a c = 3,00 × 10⁸ m/s.",
               "mascote_feedback_errado": "No vazio, todas as ondas eletromagnéticas se propagam a c = 3,00 × 10⁸ m/s, qualquer que seja a frequência. São transversais e não precisam de meio."
             },
@@ -182,20 +180,18 @@
           "perguntas": [
             {
               "pergunta": "Qual é a velocidade da luz num vidro com índice de refração 1,50?",
-              "opcoes": [
+              "opcoes": ["2,00 × 10⁸ m/s",
                 "4,50 × 10⁸ m/s",
                 "3,00 × 10⁸ m/s",
-                "2,00 × 10⁸ m/s",
                 "1,50 × 10⁸ m/s"
               ],
-              "correta": 2,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. v = c / n = 3,00 × 10⁸ / 1,50 = 2,00 × 10⁸ m/s.",
               "mascote_feedback_errado": "De n = c / v: v = c / n = 3,00 × 10⁸ / 1,50 = 2,00 × 10⁸ m/s. Num meio material, a luz é sempre mais lenta do que no vazio."
             },
             {
               "pergunta": "Um feixe de luz passa do ar para a água com um ângulo de incidência de 45°. Qual é o ângulo de refração? (n ar = 1,00; n água = 1,33; sen 45° = 0,707)",
-              "opcoes": [
-                "45°",
+              "opcoes": ["45°",
                 "70°",
                 "32°",
                 "0°"
@@ -213,15 +209,15 @@
             },
             {
               "pergunta": "Um raio passa do ar para o vidro (n = 1,50) com ângulo de incidência 30° (sen 30° = 0,500). Qual é o ângulo de refração?",
-              "opcoes": ["19,5°", "30,0°", "48,6°", "45,0°"],
-              "correta": 0,
+              "opcoes": ["30,0°", "48,6°", "19,5°", "45,0°"],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. sen α₂ = 0,333, α₂ ≈ 19,5°.",
               "mascote_feedback_errado": "1,00 × 0,500 = 1,50 × sen α₂, logo sen α₂ = 0,333 e α₂ ≈ 19,5°."
             },
             {
               "pergunta": "Quando a luz passa da água para o ar (sem ser perpendicularmente):",
-              "opcoes": ["aproxima-se da normal, porque a velocidade diminui.", "afasta-se da normal, porque a velocidade aumenta.", "não muda de direção.", "a frequência aumenta."],
-              "correta": 1,
+              "opcoes": ["afasta-se da normal, porque a velocidade aumenta.", "aproxima-se da normal, porque a velocidade diminui.", "não muda de direção.", "a frequência aumenta."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. O ar é menos refringente do que a água: a luz fica mais rápida e afasta-se da normal.",
               "mascote_feedback_errado": "O ar é menos refringente do que a água: a luz fica mais rápida e afasta-se da normal. A frequência mantém-se."
             }
@@ -309,8 +305,7 @@
           "perguntas": [
             {
               "pergunta": "Qual é o ângulo crítico para a luz que passa do vidro (n = 1,50) para o ar (n = 1,00)?",
-              "opcoes": [
-                "33,7°",
+              "opcoes": ["33,7°",
                 "41,8°",
                 "48,8°",
                 "90°"
@@ -321,13 +316,12 @@
             },
             {
               "pergunta": "Pode haver reflexão total quando a luz passa do ar para a água?",
-              "opcoes": [
-                "Sim, se o ângulo de incidência for maior do que 48,8°.",
+              "opcoes": ["Sim, se o ângulo de incidência for maior do que 48,8°.",
                 "Sim, para qualquer ângulo.",
-                "Não, porque a luz está a passar para um meio mais refringente.",
-                "Não, porque a água absorve toda a luz."
+                "Não, porque a água absorve toda a luz.",
+                "Não, porque a luz está a passar para um meio mais refringente."
               ],
-              "correta": 2,
+              "correta": 3,
               "mascote_feedback_certo": "Exato. A reflexão total só é possível do meio mais refringente para o menos refringente.",
               "mascote_feedback_errado": "A reflexão total exige que a luz vá de um meio mais refringente para um menos refringente. Do ar para a água é o contrário, por isso nunca há reflexão total."
             },
@@ -340,15 +334,15 @@
             },
             {
               "pergunta": "Na AL 3.1, o gráfico de sen α ar em função de sen α material tem declive 1,33. De que material se trata, provavelmente?",
-              "opcoes": ["Vidro.", "Água.", "Diamante.", "Ar."],
-              "correta": 1,
+              "opcoes": ["Vidro.", "Diamante.", "Água.", "Ar."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. O declive é o índice de refração do material.",
               "mascote_feedback_errado": "O declive é o índice de refração do material. 1,33 corresponde à água."
             },
             {
               "pergunta": "Numa fibra ótica, o núcleo tem de ter:",
-              "opcoes": ["índice de refração menor do que o revestimento.", "índice de refração maior do que o revestimento.", "o mesmo índice de refração que o revestimento.", "índice de refração igual ao do ar."],
-              "correta": 1,
+              "opcoes": ["índice de refração maior do que o revestimento.", "índice de refração menor do que o revestimento.", "o mesmo índice de refração que o revestimento.", "índice de refração igual ao do ar."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. A reflexão total só acontece do meio mais refringente para o menos refringente.",
               "mascote_feedback_errado": "A reflexão total só acontece quando a luz vai do meio mais refringente para o menos refringente. Por isso, o núcleo tem de ter índice maior do que o revestimento."
             }
@@ -442,32 +436,30 @@
           "perguntas": [
             {
               "pergunta": "Uma rede tem 600 linhas por milímetro. Qual é a distância entre fendas, em metros?",
-              "opcoes": [
-                "600 m",
+              "opcoes": ["600 m",
                 "1,67 × 10⁻³ m",
-                "1,67 × 10⁻⁶ m",
-                "6,00 × 10⁻⁴ m"
+                "6,00 × 10⁻⁴ m",
+                "1,67 × 10⁻⁶ m"
               ],
-              "correta": 2,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. d = 1 / 600 mm = 1,67 × 10⁻³ mm = 1,67 × 10⁻⁶ m.",
               "mascote_feedback_errado": "d = 1 / N. Com 600 linhas por mm: d = 1/600 mm = 1,67 × 10⁻³ mm. Passando para metros: 1,67 × 10⁻⁶ m."
             },
             {
               "pergunta": "Um laser vermelho (λ = 650 nm) ilumina essa rede (d = 1,67 × 10⁻⁶ m). Qual é o ângulo do máximo de primeira ordem? (1 nm = 10⁻⁹ m)",
-              "opcoes": [
-                "3,9°",
-                "23°",
+              "opcoes": ["3,9°",
                 "39°",
+                "23°",
                 "67°"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Muito bem. sen θ ≈ 0,39. θ ≈ 23°.",
               "mascote_feedback_errado": "Usa n λ = d sen θ com n = 1: sen θ = 650 × 10⁻⁹ / 1,67 × 10⁻⁶ ≈ 0,39. θ = arcsen(0,39) ≈ 23°."
             },
             {
               "pergunta": "A difração de uma onda é mais acentuada quando:",
-              "opcoes": ["a abertura é muito maior do que o comprimento de onda.", "a abertura tem dimensões da ordem de grandeza do comprimento de onda.", "a onda é longitudinal.", "a onda se propaga no vazio."],
-              "correta": 1,
+              "opcoes": ["a abertura tem dimensões da ordem de grandeza do comprimento de onda.", "a abertura é muito maior do que o comprimento de onda.", "a onda é longitudinal.", "a onda se propaga no vazio."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. A difração é notória quando as dimensões são comparáveis ao comprimento de onda.",
               "mascote_feedback_errado": "A difração é notória quando as dimensões da abertura ou do obstáculo são comparáveis ao comprimento de onda."
             },
@@ -480,8 +472,8 @@
             },
             {
               "pergunta": "Na AL 3.2, substituiu-se a rede de 300 linhas/mm por uma de 600 linhas/mm, mantendo o laser. Os máximos de primeira ordem:",
-              "opcoes": ["ficam mais próximos do máximo central.", "ficam mais afastados do máximo central.", "ficam na mesma posição.", "desaparecem."],
-              "correta": 1,
+              "opcoes": ["ficam mais próximos do máximo central.", "ficam na mesma posição.", "desaparecem.", "ficam mais afastados do máximo central."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. Com mais linhas por mm, d é menor e o ângulo aumenta.",
               "mascote_feedback_errado": "Com mais linhas por mm, d é menor. Como sen θ = λ / d, o ângulo aumenta e os máximos afastam-se."
             }
@@ -536,32 +528,30 @@
           "perguntas": [
             {
               "pergunta": "Uma ambulância aproxima-se de ti com a sirene ligada. Em relação ao som emitido, o som que ouves tem:",
-              "opcoes": [
-                "menor frequência.",
-                "maior frequência.",
+              "opcoes": ["menor frequência.",
                 "a mesma frequência, mas mais intensidade.",
+                "maior frequência.",
                 "maior comprimento de onda."
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. As frentes de onda chegam-te mais juntas: frequência maior. O som parece mais agudo.",
               "mascote_feedback_errado": "Com a fonte a aproximar-se, o comprimento de onda detetado diminui e a frequência detetada aumenta: o som parece mais agudo."
             },
             {
               "pergunta": "As riscas do espetro de uma galáxia distante aparecem deslocadas para comprimentos de onda maiores do que os medidos em laboratório. O que se conclui?",
-              "opcoes": [
+              "opcoes": ["A galáxia está a afastar-se.",
                 "A galáxia está a aproximar-se.",
-                "A galáxia está a afastar-se.",
                 "A galáxia é mais quente do que o Sol.",
                 "A galáxia está parada."
               ],
-              "correta": 1,
+              "correta": 0,
               "mascote_feedback_certo": "Exato. Desvio para comprimentos de onda maiores é desvio para o vermelho: a galáxia afasta-se.",
               "mascote_feedback_errado": "Comprimentos de onda maiores do que o normal significam desvio para o vermelho, e isso indica que a fonte se está a afastar."
             },
             {
               "pergunta": "O efeito Doppler consiste:",
-              "opcoes": ["na alteração da frequência emitida por uma fonte quando ela se move.", "na alteração da frequência detetada devido ao movimento relativo entre a fonte e o observador.", "no aumento da intensidade do som com a proximidade da fonte.", "na mudança de direção de uma onda ao mudar de meio."],
-              "correta": 1,
+              "opcoes": ["na alteração da frequência emitida por uma fonte quando ela se move.", "no aumento da intensidade do som com a proximidade da fonte.", "na mudança de direção de uma onda ao mudar de meio.", "na alteração da frequência detetada devido ao movimento relativo entre a fonte e o observador."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. A fonte emite sempre a mesma frequência; o que muda é a frequência detetada.",
               "mascote_feedback_errado": "A fonte emite sempre a mesma frequência. O que muda é a frequência que o observador deteta, por causa do movimento relativo."
             },

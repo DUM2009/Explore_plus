@@ -4,7 +4,7 @@
   "titulo": "Campo elétrico",
   "disciplina": "fisica",
   "ano": 12,
-  "imagem": "f12_atomo_hidrogenio.png",
+  "imagem": "f12_trovoada.png",
   "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"2\"/><path d=\"M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3\"/></svg>", "nome": "Mestre do Campo Elétrico" },
   "secoes": [
     {
@@ -45,20 +45,18 @@
           "perguntas": [
             {
               "pergunta": "Duas cargas de 2,0 µC e 3,0 µC estão separadas por 0,30 m no ar. Qual é a intensidade da força entre elas?",
-              "opcoes": [
-                "0,18 N",
-                "0,60 N",
+              "opcoes": ["0,18 N",
                 "6,0 × 10⁴ N",
-                "2,0 N"
+                "2,0 N",
+                "0,60 N"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. F ≈ 0,60 N. Como têm o mesmo sinal, repelem-se.",
               "mascote_feedback_errado": "Converte µC para C (10⁻⁶) e não te esqueças de elevar a distância ao quadrado: F = 9,0 × 10⁹ × 6,0 × 10⁻¹² / 0,090 = 0,60 N."
             },
             {
               "pergunta": "Uma carga de +2,0 nC está em x = 0 e outra de −2,0 nC em x = 0,20 m. Qual é o campo elétrico no ponto médio (x = 0,10 m)?",
-              "opcoes": [
-                "Nulo.",
+              "opcoes": ["Nulo.",
                 "1,8 × 10³ N/C, no sentido positivo de x.",
                 "3,6 × 10³ N/C, no sentido positivo de x.",
                 "3,6 × 10³ N/C, no sentido negativo de x."
@@ -69,8 +67,8 @@
             },
             {
               "pergunta": "Se o módulo de cada uma de duas cargas duplicar e a distância entre elas também duplicar, a força elétrica:",
-              "opcoes": ["duplica.", "quadruplica.", "mantém-se.", "fica reduzida a um quarto."],
-              "correta": 2,
+              "opcoes": ["mantém-se.", "duplica.", "quadruplica.", "fica reduzida a um quarto."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. O numerador e o denominador ficam ambos 4 vezes maiores.",
               "mascote_feedback_errado": "O numerador fica 2 × 2 = 4 vezes maior e o denominador (r²) também fica 4 vezes maior. A força não muda."
             },
@@ -83,8 +81,8 @@
             },
             {
               "pergunta": "Um eletrão é colocado num ponto onde o campo elétrico aponta para norte. A força sobre ele aponta para:",
-              "opcoes": ["norte.", "sul.", "este.", "é nula."],
-              "correta": 1,
+              "opcoes": ["norte.", "este.", "é nula.", "sul."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. A carga do eletrão é negativa.",
               "mascote_feedback_errado": "A carga do eletrão é negativa, por isso a força tem sentido oposto ao do campo."
             }
@@ -126,8 +124,7 @@
           "perguntas": [
             {
               "pergunta": "Onde se encontra a carga em excesso de uma esfera metálica carregada, em equilíbrio eletrostático?",
-              "opcoes": [
-                "Uniformemente distribuída pelo volume.",
+              "opcoes": ["Uniformemente distribuída pelo volume.",
                 "Concentrada no centro.",
                 "Na superfície exterior.",
                 "Metade no interior, metade na superfície."
@@ -138,8 +135,7 @@
             },
             {
               "pergunta": "Porque é que dentro de um elevador metálico o telemóvel perde muitas vezes a rede?",
-              "opcoes": [
-                "Porque o elevador está em movimento.",
+              "opcoes": ["Porque o elevador está em movimento.",
                 "Porque o invólucro metálico funciona como uma gaiola de Faraday e bloqueia grande parte das ondas eletromagnéticas.",
                 "Porque o ar dentro do elevador é diferente.",
                 "Porque o elevador tem íman."
@@ -150,22 +146,22 @@
             },
             {
               "pergunta": "No interior de um condutor em equilíbrio eletrostático, o campo elétrico é:",
-              "opcoes": ["máximo.", "nulo.", "igual ao da superfície.", "radial."],
-              "correta": 1,
+              "opcoes": ["nulo.", "máximo.", "igual ao da superfície.", "radial."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Se houvesse campo, as cargas moveriam-se.",
               "mascote_feedback_errado": "Se houvesse campo no interior, as cargas livres mover-se-iam e o condutor não estaria em equilíbrio."
             },
             {
               "pergunta": "O efeito das pontas explica:",
-              "opcoes": ["porque é que os condutores são bons isoladores.", "porque é que o campo é mais intenso junto às zonas pontiagudas de um condutor, o que é aproveitado nos para-raios.", "porque é que as cargas ficam no interior dos condutores.", "porque é que a força elétrica diminui com a distância."],
-              "correta": 1,
+              "opcoes": ["porque é que os condutores são bons isoladores.", "porque é que as cargas ficam no interior dos condutores.", "porque é que o campo é mais intenso junto às zonas pontiagudas de um condutor, o que é aproveitado nos para-raios.", "porque é que a força elétrica diminui com a distância."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. A carga por unidade de área é maior nas pontas.",
               "mascote_feedback_errado": "A carga por unidade de área é maior nas pontas, e aí o campo exterior é mais intenso, o que facilita descargas e é usado nos para-raios."
             },
             {
               "pergunta": "Junto à superfície exterior de um condutor em equilíbrio eletrostático, o campo elétrico é:",
-              "opcoes": ["paralelo à superfície.", "perpendicular à superfície.", "nulo.", "tangente à superfície."],
-              "correta": 1,
+              "opcoes": ["paralelo à superfície.", "nulo.", "tangente à superfície.", "perpendicular à superfície."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. Perpendicular à superfície.",
               "mascote_feedback_errado": "Se tivesse uma componente paralela à superfície, as cargas deslocar-se-iam ao longo dela. Em equilíbrio, só pode ser perpendicular."
             }
@@ -245,8 +241,7 @@
           "perguntas": [
             {
               "pergunta": "Qual é o potencial elétrico a 0,30 m de uma carga de +2,0 nC?",
-              "opcoes": [
-                "20 V",
+              "opcoes": ["20 V",
                 "60 V",
                 "200 V",
                 "6,0 × 10⁻¹⁸ V"
@@ -257,34 +252,33 @@
             },
             {
               "pergunta": "Duas placas paralelas separadas por 4,0 cm estão ligadas a uma fonte de 12 V. Qual é a intensidade do campo elétrico entre elas?",
-              "opcoes": [
+              "opcoes": ["300 V/m",
                 "0,48 V/m",
                 "3,0 V/m",
-                "300 V/m",
                 "3,0 × 10⁴ V/m"
               ],
-              "correta": 2,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. E = U / d = 300 V/m.",
               "mascote_feedback_errado": "Converte a distância para metros: 4,0 cm = 0,040 m. E = U / d = 12 / 0,040 = 300 V/m."
             },
             {
               "pergunta": "Uma carga de 1,0 µC desloca-se de um ponto A (V A = 100 V) para um ponto B (V B = 40 V). Qual é o trabalho realizado pela força elétrica?",
-              "opcoes": ["6,0 × 10⁻⁵ J", "−6,0 × 10⁻⁵ J", "1,4 × 10⁻⁴ J", "60 J"],
-              "correta": 0,
+              "opcoes": ["−6,0 × 10⁻⁵ J", "1,4 × 10⁻⁴ J", "60 J", "6,0 × 10⁻⁵ J"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. W = 6,0 × 10⁻⁵ J.",
               "mascote_feedback_errado": "W = q (V A − V B) = 1,0 × 10⁻⁶ × (100 − 40) = 6,0 × 10⁻⁵ J."
             },
             {
               "pergunta": "As superfícies equipotenciais de uma carga pontual são:",
-              "opcoes": ["planos paralelos.", "superfícies esféricas centradas na carga.", "retas radiais.", "cilindros."],
-              "correta": 1,
+              "opcoes": ["superfícies esféricas centradas na carga.", "planos paralelos.", "retas radiais.", "cilindros."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Todos os pontos à mesma distância têm o mesmo potencial.",
               "mascote_feedback_errado": "V = k q / r depende só da distância à carga. Todos os pontos à mesma distância (uma esfera) têm o mesmo potencial."
             },
             {
               "pergunta": "Na AL 2.1, o gráfico V = f(x) tem declive 85 V/m. O que representa este valor?",
-              "opcoes": ["A diferença de potencial entre as placas.", "A intensidade do campo elétrico entre as placas.", "A carga das placas.", "A resistência da água."],
-              "correta": 1,
+              "opcoes": ["A diferença de potencial entre as placas.", "A carga das placas.", "A intensidade do campo elétrico entre as placas.", "A resistência da água."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. O declive do gráfico do potencial em função da distância é a intensidade do campo.",
               "mascote_feedback_errado": "Num campo uniforme, E = ΔV / Δx: o declive do gráfico do potencial em função da distância é a intensidade do campo."
             }
@@ -331,8 +325,7 @@
           "perguntas": [
             {
               "pergunta": "Um eletrão, inicialmente em repouso, é acelerado por uma diferença de potencial de 100 V. Qual é a sua velocidade final?",
-              "opcoes": [
-                "1,0 × 10² m/s",
+              "opcoes": ["1,0 × 10² m/s",
                 "5,9 × 10⁶ m/s",
                 "3,5 × 10¹³ m/s",
                 "3,0 × 10⁸ m/s"
@@ -343,13 +336,12 @@
             },
             {
               "pergunta": "Um eletrão entra horizontalmente, a 1,0 × 10⁷ m/s, entre duas placas com 5,0 cm de comprimento onde há um campo vertical de 1,0 × 10³ V/m. Quanto se desvia na vertical até sair das placas?",
-              "opcoes": [
-                "0,22 mm",
-                "2,2 mm",
+              "opcoes": ["0,22 mm",
                 "2,2 cm",
-                "0 mm"
+                "0 mm",
+                "2,2 mm"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Muito bem. y ≈ 2,2 mm.",
               "mascote_feedback_errado": "Trata como um lançamento horizontal. Tempo entre as placas: t = L / v₀ = 5,0 × 10⁻⁹ s. Aceleração: a = e E / m ≈ 1,76 × 10¹⁴ m s⁻². Desvio: y = ½ a t² ≈ 2,2 mm."
             },
@@ -369,8 +361,8 @@
             },
             {
               "pergunta": "Um eletrão entra perpendicularmente às linhas de um campo elétrico uniforme. A sua trajetória dentro do campo é:",
-              "opcoes": ["retilínea.", "circular.", "parabólica.", "helicoidal."],
-              "correta": 2,
+              "opcoes": ["parabólica.", "retilínea.", "circular.", "helicoidal."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. A força é constante e perpendicular à velocidade inicial.",
               "mascote_feedback_errado": "A força é constante e perpendicular à velocidade inicial, como no lançamento horizontal: a trajetória é uma parábola."
             }
@@ -497,32 +489,30 @@
           "perguntas": [
             {
               "pergunta": "Um condensador de 100 µF é carregado a 12 V. Qual é a carga armazenada?",
-              "opcoes": [
-                "1,2 × 10⁻³ C",
-                "8,3 C",
+              "opcoes": ["8,3 C",
                 "1,2 C",
+                "1,2 × 10⁻³ C",
                 "1,2 × 10³ C"
               ],
-              "correta": 0,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. Q = 1,2 × 10⁻³ C.",
               "mascote_feedback_errado": "Converte a capacidade: 100 µF = 1,0 × 10⁻⁴ F. Q = C U = 1,0 × 10⁻⁴ × 12 = 1,2 × 10⁻³ C."
             },
             {
               "pergunta": "Um condensador de 100 µF descarrega-se através de uma resistência de 10 kΩ. Quanto tempo demora a tensão a cair para metade?",
-              "opcoes": [
-                "0,10 s",
-                "0,69 s",
+              "opcoes": ["0,10 s",
                 "1,0 s",
-                "1,4 s"
+                "1,4 s",
+                "0,69 s"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Muito bem. t ½ ≈ 0,69 s.",
               "mascote_feedback_errado": "Calcula primeiro a constante de tempo: R C = 1,0 s. t ½ = R C ln 2 = 0,69 s."
             },
             {
               "pergunta": "A unidade SI de capacidade é:",
-              "opcoes": ["coulomb.", "volt.", "farad.", "ohm."],
-              "correta": 2,
+              "opcoes": ["farad.", "coulomb.", "volt.", "ohm."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Farad (F), em homenagem a Michael Faraday.",
               "mascote_feedback_errado": "C = Q / U, em coulomb por volt, a que se chama farad (F), em homenagem a Michael Faraday."
             },
@@ -535,8 +525,8 @@
             },
             {
               "pergunta": "Na AL 2.2, o gráfico ln U = f(t) tem declive −0,025 s⁻¹ e a resistência de descarga é 2,0 MΩ. Qual é a capacidade?",
-              "opcoes": ["5,0 µF", "20 µF", "50 µF", "80 µF"],
-              "correta": 1,
+              "opcoes": ["5,0 µF", "50 µF", "80 µF", "20 µF"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. C = 20 µF.",
               "mascote_feedback_errado": "RC = 1 / 0,025 = 40 s. C = 40 / (2,0 × 10⁶) = 2,0 × 10⁻⁵ F = 20 µF."
             }

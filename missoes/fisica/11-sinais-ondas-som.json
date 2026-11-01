@@ -40,8 +40,7 @@
           "perguntas": [
             {
               "pergunta": "Na \"onda\" do estádio, as pessoas levantam-se e sentam-se (movimento vertical) e a onda avança ao longo das bancadas (horizontalmente). Que tipo de onda é?",
-              "opcoes": [
-                "Longitudinal",
+              "opcoes": ["Longitudinal",
                 "Transversal",
                 "Eletromagnética",
                 "Não é uma onda, porque as pessoas não se deslocam"
@@ -52,20 +51,19 @@
             },
             {
               "pergunta": "Porque é que o som não se propaga no espaço?",
-              "opcoes": [
-                "Porque está demasiado frio.",
-                "Porque é uma onda mecânica e no vazio não há meio material.",
+              "opcoes": ["Porque está demasiado frio.",
                 "Porque é uma onda transversal.",
-                "Porque a gravidade é muito fraca."
+                "Porque a gravidade é muito fraca.",
+                "Porque é uma onda mecânica e no vazio não há meio material."
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Exato. O som precisa de partículas que vibrem para se propagar.",
               "mascote_feedback_errado": "O som é uma onda mecânica: precisa de um meio material. No espaço, praticamente não há matéria, por isso o som não se propaga."
             },
             {
               "pergunta": "Uma onda transporta:",
-              "opcoes": ["matéria e energia.", "só matéria.", "energia, sem transporte de matéria.", "nem matéria nem energia."],
-              "correta": 2,
+              "opcoes": ["energia, sem transporte de matéria.", "matéria e energia.", "só matéria.", "nem matéria nem energia."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. As partículas do meio oscilam em torno da sua posição de equilíbrio.",
               "mascote_feedback_errado": "As partículas do meio oscilam em torno da sua posição de equilíbrio. O que se propaga é a perturbação, e com ela a energia."
             },
@@ -78,8 +76,8 @@
             },
             {
               "pergunta": "Qual das ondas se pode propagar no vazio?",
-              "opcoes": ["O som.", "As ondas sísmicas.", "A luz.", "As ondas do mar."],
-              "correta": 2,
+              "opcoes": ["O som.", "A luz.", "As ondas sísmicas.", "As ondas do mar."],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. Só as ondas eletromagnéticas se propagam no vazio.",
               "mascote_feedback_errado": "Só as ondas eletromagnéticas se propagam no vazio. As outras são ondas mecânicas e precisam de um meio."
             }
@@ -174,46 +172,44 @@
           "perguntas": [
             {
               "pergunta": "O som de um diapasão tem frequência 440 Hz e propaga-se no ar a 340 m/s. Qual é o comprimento de onda?",
-              "opcoes": [
-                "0,77 m",
-                "1,3 m",
+              "opcoes": ["1,3 m",
                 "100 m",
-                "1,5 × 10⁵ m"
+                "1,5 × 10⁵ m",
+                "0,77 m"
               ],
-              "correta": 0,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. λ = v / f = 340 / 440 ≈ 0,77 m.",
               "mascote_feedback_errado": "De v = λ f tiras λ = v / f = 340 / 440 ≈ 0,77 m."
             },
             {
               "pergunta": "Um sinal é descrito por y = 0,05 sen(200π t) (SI). Qual é a sua frequência?",
-              "opcoes": [
-                "200 Hz",
-                "100 Hz",
+              "opcoes": ["200 Hz",
                 "628 Hz",
+                "100 Hz",
                 "0,05 Hz"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Muito bem. f = ω / 2π = 200π / 2π = 100 Hz.",
               "mascote_feedback_errado": "O número dentro do seno, a multiplicar por t, é ω = 2π f. Aqui ω = 200π, logo f = 200π / 2π = 100 Hz."
             },
             {
               "pergunta": "Uma onda propaga-se a 1500 m/s na água com comprimento de onda de 3,0 m. Qual é a sua frequência?",
-              "opcoes": ["5,0 × 10⁻³ Hz", "500 Hz", "1503 Hz", "4500 Hz"],
-              "correta": 1,
+              "opcoes": ["500 Hz", "5,0 × 10⁻³ Hz", "1503 Hz", "4500 Hz"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. f = v / λ = 1500 / 3,0 = 500 Hz.",
               "mascote_feedback_errado": "f = v / λ = 1500 / 3,0 = 500 Hz."
             },
             {
               "pergunta": "Um som passa do ar para a água. O que se mantém?",
-              "opcoes": ["A velocidade.", "O comprimento de onda.", "A frequência.", "Nada."],
-              "correta": 2,
+              "opcoes": ["A velocidade.", "O comprimento de onda.", "Nada.", "A frequência."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. A frequência é imposta pela fonte e não depende do meio.",
               "mascote_feedback_errado": "A frequência é imposta pela fonte e não depende do meio. A velocidade e o comprimento de onda mudam."
             },
             {
               "pergunta": "Num gráfico da elongação em função do tempo de um sinal harmónico, duas cristas consecutivas estão separadas por 4,0 ms. Qual é a frequência?",
-              "opcoes": ["4,0 Hz", "25 Hz", "250 Hz", "4000 Hz"],
-              "correta": 2,
+              "opcoes": ["4,0 Hz", "250 Hz", "25 Hz", "4000 Hz"],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. T = 4,0 × 10⁻³ s. f = 1 / T = 250 Hz.",
               "mascote_feedback_errado": "A distância entre cristas num gráfico y-t é o período: T = 4,0 × 10⁻³ s. f = 1 / T = 250 Hz."
             }
@@ -283,46 +279,44 @@
           "perguntas": [
             {
               "pergunta": "Um barco emite um ultrassom na direção do fundo do mar e recebe o eco 0,40 s depois. Se a velocidade do som na água é 1500 m/s, qual é a profundidade?",
-              "opcoes": [
-                "150 m",
-                "300 m",
+              "opcoes": ["150 m",
                 "600 m",
+                "300 m",
                 "3750 m"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. 2d = v t = 1500 × 0,40 = 600 m, logo d = 300 m.",
               "mascote_feedback_errado": "No eco, o som faz o caminho duas vezes (ida e volta). 2d = 1500 × 0,40 = 600 m, portanto d = 300 m."
             },
             {
               "pergunta": "Dois sons têm a mesma amplitude, mas o som A tem 200 Hz e o som B tem 800 Hz. Qual é a afirmação correta?",
-              "opcoes": [
+              "opcoes": ["B é mais agudo do que A.",
                 "A é mais forte do que B.",
-                "B é mais agudo do que A.",
                 "A e B têm a mesma altura.",
                 "B é mais grave do que A."
               ],
-              "correta": 1,
+              "correta": 0,
               "mascote_feedback_certo": "Exato. A altura depende da frequência: maior frequência, som mais agudo.",
               "mascote_feedback_errado": "A altura está ligada à frequência. B tem maior frequência, por isso é mais agudo. Como as amplitudes são iguais, a intensidade é a mesma."
             },
             {
               "pergunta": "Qual das afirmações sobre o som é correta?",
-              "opcoes": ["É uma onda eletromagnética transversal.", "É uma onda mecânica longitudinal.", "Propaga-se mais depressa no ar do que na água.", "Propaga-se no vazio."],
-              "correta": 1,
+              "opcoes": ["É uma onda eletromagnética transversal.", "Propaga-se mais depressa no ar do que na água.", "Propaga-se no vazio.", "É uma onda mecânica longitudinal."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. O som é uma onda mecânica longitudinal.",
               "mascote_feedback_errado": "O som é uma onda mecânica longitudinal (variações de pressão na direção de propagação). Propaga-se mais depressa na água do que no ar e não se propaga no vazio."
             },
             {
               "pergunta": "Que característica permite distinguir a mesma nota musical tocada numa flauta e numa guitarra?",
-              "opcoes": ["A altura.", "A intensidade.", "O timbre.", "A frequência."],
-              "correta": 2,
+              "opcoes": ["A altura.", "O timbre.", "A intensidade.", "A frequência."],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. A mesma nota tem a mesma frequência (altura); o que muda é a forma da onda, o timbre.",
               "mascote_feedback_errado": "A mesma nota tem a mesma frequência (altura). O que muda é a forma da onda, ou seja, o timbre."
             },
             {
               "pergunta": "Um som tem frequência 30 000 Hz. Trata-se de:",
-              "opcoes": ["um infrassom.", "um som audível agudo.", "um ultrassom.", "um som audível grave."],
-              "correta": 2,
+              "opcoes": ["um ultrassom.", "um infrassom.", "um som audível agudo.", "um som audível grave."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Acima de 20 000 Hz, os sons chamam-se ultrassons.",
               "mascote_feedback_errado": "Acima de 20 000 Hz, os sons não são audíveis pelo ser humano e chamam-se ultrassons."
             }
@@ -429,8 +423,7 @@
           "perguntas": [
             {
               "pergunta": "No ecrã de um osciloscópio, um período ocupa 5 divisões e a base de tempo é 0,2 ms/div. Qual é a frequência do sinal?",
-              "opcoes": [
-                "1,0 Hz",
+              "opcoes": ["1,0 Hz",
                 "200 Hz",
                 "1000 Hz",
                 "5000 Hz"
@@ -448,15 +441,15 @@
             },
             {
               "pergunta": "Na AL 2.2, com os microfones separados 1,36 m, mediu-se Δt = 4,0 ms. Qual é a velocidade do som obtida?",
-              "opcoes": ["5,4 m/s", "340 m/s", "544 m/s", "3,4 × 10⁵ m/s"],
-              "correta": 1,
+              "opcoes": ["340 m/s", "5,4 m/s", "544 m/s", "3,4 × 10⁵ m/s"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. v = d / Δt = 1,36 / 4,0 × 10⁻³ = 340 m/s.",
               "mascote_feedback_errado": "v = d / Δt = 1,36 / 4,0 × 10⁻³ = 340 m/s."
             },
             {
               "pergunta": "Na AL 2.1, aumentou-se o volume do gerador de sinais sem mudar a frequência. O que se observou no osciloscópio?",
-              "opcoes": ["O período diminuiu.", "A amplitude do sinal aumentou e o período manteve-se.", "A frequência aumentou.", "A forma do sinal mudou de sinusoidal para quadrada."],
-              "correta": 1,
+              "opcoes": ["O período diminuiu.", "A frequência aumentou.", "A amplitude do sinal aumentou e o período manteve-se.", "A forma do sinal mudou de sinusoidal para quadrada."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. O volume está associado à amplitude; o período (e a frequência) não muda.",
               "mascote_feedback_errado": "O volume está associado à intensidade do som, ou seja, à amplitude. A frequência (e o período) não mudam."
             }

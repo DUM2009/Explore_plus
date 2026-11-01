@@ -52,46 +52,44 @@
           "perguntas": [
             {
               "pergunta": "Através de um fio passam 3,0 C de carga em 2,0 s. Qual é a corrente elétrica?",
-              "opcoes": [
-                "0,67 A",
-                "1,5 A",
+              "opcoes": ["0,67 A",
                 "5,0 A",
-                "6,0 A"
+                "6,0 A",
+                "1,5 A"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. I = Q / Δt = 3,0 / 2,0 = 1,5 A.",
               "mascote_feedback_errado": "A corrente é a carga que passa por segundo: I = Q / Δt = 3,0 / 2,0 = 1,5 A."
             },
             {
               "pergunta": "Queres medir a diferença de potencial nos terminais de uma lâmpada. Como ligas o voltímetro?",
-              "opcoes": [
-                "Em série com a lâmpada.",
-                "Em paralelo com a lâmpada.",
+              "opcoes": ["Em série com a lâmpada.",
                 "Em série com a pilha, depois de retirar a lâmpada.",
+                "Em paralelo com a lâmpada.",
                 "Tanto faz, o valor é o mesmo."
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Exato. O voltímetro compara dois pontos, por isso liga-se aos dois terminais da lâmpada, em paralelo.",
               "mascote_feedback_errado": "O voltímetro mede a diferença entre dois pontos: liga-se em paralelo, aos terminais do componente. Em série liga-se o amperímetro."
             },
             {
               "pergunta": "Qual é o sentido convencional da corrente elétrica no circuito exterior a uma pilha?",
-              "opcoes": ["Do polo negativo para o polo positivo.", "Do polo positivo para o polo negativo.", "Não tem sentido definido em corrente contínua.", "O mesmo sentido do movimento dos eletrões."],
-              "correta": 1,
+              "opcoes": ["Do polo positivo para o polo negativo.", "Do polo negativo para o polo positivo.", "Não tem sentido definido em corrente contínua.", "O mesmo sentido do movimento dos eletrões."],
+              "correta": 0,
               "mascote_feedback_certo": "Exato. Por convenção histórica, a corrente vai do polo positivo para o negativo no circuito exterior.",
               "mascote_feedback_errado": "Por convenção histórica, a corrente vai do polo positivo para o negativo no circuito exterior. Os eletrões movem-se no sentido contrário."
             },
             {
               "pergunta": "Uma pilha de 9,0 V fornece energia a uma carga de 2,0 C. Quanta energia é transferida para essa carga?",
-              "opcoes": ["4,5 J", "11 J", "18 J", "0,22 J"],
-              "correta": 2,
+              "opcoes": ["4,5 J", "18 J", "11 J", "0,22 J"],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. U = E / Q, logo E = U × Q = 9,0 × 2,0 = 18 J.",
               "mascote_feedback_errado": "U = E / Q, logo E = U × Q = 9,0 × 2,0 = 18 J."
             },
             {
               "pergunta": "Qual é a forma correta de ligar um amperímetro para medir a corrente numa lâmpada?",
-              "opcoes": ["Em paralelo com a lâmpada.", "Em série com a lâmpada.", "Diretamente aos terminais da pilha, sem mais nada.", "Em paralelo com a pilha."],
-              "correta": 1,
+              "opcoes": ["Em paralelo com a lâmpada.", "Diretamente aos terminais da pilha, sem mais nada.", "Em paralelo com a pilha.", "Em série com a lâmpada."],
+              "correta": 3,
               "mascote_feedback_certo": "Exato. A corrente tem de passar pelo amperímetro, por isso liga-se em série.",
               "mascote_feedback_errado": "A corrente tem de passar pelo amperímetro, por isso liga-se em série. Ligá-lo em paralelo ou diretamente à pilha pode danificá-lo."
             }
@@ -171,8 +169,7 @@
           "perguntas": [
             {
               "pergunta": "Uma resistência ligada a 12 V é percorrida por uma corrente de 0,50 A. Qual é o valor da resistência?",
-              "opcoes": [
-                "6,0 Ω",
+              "opcoes": ["6,0 Ω",
                 "12 Ω",
                 "24 Ω",
                 "0,042 Ω"
@@ -183,34 +180,33 @@
             },
             {
               "pergunta": "Um fio de cobre tem resistência R. Outro fio de cobre tem o dobro do comprimento e o dobro da área de secção. Qual é a resistência do segundo fio?",
-              "opcoes": [
-                "R / 4",
-                "R / 2",
+              "opcoes": ["R / 4",
                 "R",
+                "R / 2",
                 "4R"
               ],
-              "correta": 2,
+              "correta": 1,
               "mascote_feedback_certo": "Muito bem. O dobro do comprimento duplica a resistência, o dobro da área reduz para metade. Os dois efeitos anulam-se: R' = ρ (2l) / (2A) = R.",
               "mascote_feedback_errado": "Usa R = ρ l / A. Com 2l e 2A: R' = ρ × 2l / 2A = ρ l / A = R. Os dois fatores cancelam."
             },
             {
               "pergunta": "O gráfico U-I de um condutor é uma reta que passa pela origem, com U = 6,0 V quando I = 0,20 A. Qual é a resistência?",
-              "opcoes": ["1,2 Ω", "3,3 × 10⁻² Ω", "30 Ω", "Não se pode calcular porque o condutor não é óhmico."],
-              "correta": 2,
+              "opcoes": ["30 Ω", "1,2 Ω", "3,3 × 10⁻² Ω", "Não se pode calcular porque o condutor não é óhmico."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Reta pela origem significa condutor óhmico. R = U / I = 6,0 / 0,20 = 30 Ω.",
               "mascote_feedback_errado": "Reta pela origem significa condutor óhmico. R = U / I = 6,0 / 0,20 = 30 Ω."
             },
             {
               "pergunta": "Qual é a resistência de um fio de nicrómio com 5,0 m de comprimento e 0,50 mm² de secção? (ρ = 1,1 × 10⁻⁶ Ω m)",
-              "opcoes": ["1,1 Ω", "2,75 Ω", "11 Ω", "1,1 × 10⁻⁵ Ω"],
-              "correta": 2,
+              "opcoes": ["1,1 Ω", "11 Ω", "2,75 Ω", "1,1 × 10⁻⁵ Ω"],
+              "correta": 1,
               "mascote_feedback_certo": "Exato. A = 0,50 mm² = 0,50 × 10⁻⁶ m². R = ρ l / A = 1,1 × 10⁻⁶ × 5,0 / (0,50 × 10⁻⁶) = 11 Ω.",
               "mascote_feedback_errado": "A = 0,50 mm² = 0,50 × 10⁻⁶ m². R = ρ l / A = 1,1 × 10⁻⁶ × 5,0 / (0,50 × 10⁻⁶) = 11 Ω."
             },
             {
               "pergunta": "Quando a temperatura de um fio de cobre aumenta:",
-              "opcoes": ["a resistividade diminui, porque os eletrões ficam mais rápidos.", "a resistividade aumenta.", "a resistência mantém-se, porque o comprimento não muda.", "o fio torna-se supercondutor."],
-              "correta": 1,
+              "opcoes": ["a resistividade diminui, porque os eletrões ficam mais rápidos.", "a resistência mantém-se, porque o comprimento não muda.", "o fio torna-se supercondutor.", "a resistividade aumenta."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. Nos metais, a resistividade aumenta com a temperatura.",
               "mascote_feedback_errado": "Nos metais, a resistividade aumenta com a temperatura. Os iões da rede vibram mais e dificultam a passagem dos eletrões."
             }
@@ -270,46 +266,44 @@
           "perguntas": [
             {
               "pergunta": "Uma chaleira de 2000 W está ligada durante 3 minutos. Quanta energia consome, em kWh?",
-              "opcoes": [
+              "opcoes": ["0,10 kWh",
                 "6,0 kWh",
                 "0,60 kWh",
-                "0,10 kWh",
                 "0,033 kWh"
               ],
-              "correta": 2,
+              "correta": 0,
               "mascote_feedback_certo": "Exato. 2000 W = 2,0 kW e 3 min = 0,05 h. E = 2,0 × 0,05 = 0,10 kWh.",
               "mascote_feedback_errado": "Converte primeiro as unidades: 2000 W = 2,0 kW e 3 min = 3/60 h = 0,05 h. E = P Δt = 2,0 × 0,05 = 0,10 kWh."
             },
             {
               "pergunta": "Um secador de 2000 W está ligado a 230 V. Qual é a corrente que o percorre?",
-              "opcoes": [
-                "0,12 A",
-                "8,7 A",
+              "opcoes": ["0,12 A",
                 "115 A",
+                "8,7 A",
                 "4,6 × 10⁵ A"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. I = P / U = 2000 / 230 = 8,7 A.",
               "mascote_feedback_errado": "De P = U I tiras I = P / U = 2000 / 230 ≈ 8,7 A."
             },
             {
               "pergunta": "Quantos joules correspondem a 2,5 kWh?",
-              "opcoes": ["2,5 × 10³ J", "9,0 × 10³ J", "9,0 × 10⁶ J", "1,44 × 10⁶ J"],
-              "correta": 2,
+              "opcoes": ["2,5 × 10³ J", "9,0 × 10⁶ J", "9,0 × 10³ J", "1,44 × 10⁶ J"],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. 1 kWh = 3,6 × 10⁶ J. Logo 2,5 × 3,6 × 10⁶ = 9,0 × 10⁶ J.",
               "mascote_feedback_errado": "1 kWh = 3,6 × 10⁶ J. Logo 2,5 × 3,6 × 10⁶ = 9,0 × 10⁶ J."
             },
             {
               "pergunta": "Numa resistência, a corrente passa de 2 A para 4 A. A potência dissipada por efeito Joule:",
-              "opcoes": ["duplica.", "fica quatro vezes maior.", "fica igual.", "fica reduzida a metade."],
-              "correta": 1,
+              "opcoes": ["duplica.", "fica igual.", "fica quatro vezes maior.", "fica reduzida a metade."],
+              "correta": 2,
               "mascote_feedback_certo": "Exato. P = R I². Se I duplica, I² fica quatro vezes maior e a potência também.",
               "mascote_feedback_errado": "P = R I². Se I duplica, I² fica quatro vezes maior e a potência também."
             },
             {
               "pergunta": "Uma lâmpada tem a indicação \"12 V, 36 W\". Qual é a sua resistência em funcionamento normal?",
-              "opcoes": ["3,0 Ω", "4,0 Ω", "0,33 Ω", "432 Ω"],
-              "correta": 1,
+              "opcoes": ["4,0 Ω", "3,0 Ω", "0,33 Ω", "432 Ω"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. P = U² / R, logo R = U² / P = 12² / 36 = 144 / 36 = 4,0 Ω.",
               "mascote_feedback_errado": "P = U² / R, logo R = U² / P = 12² / 36 = 144 / 36 = 4,0 Ω. Em alternativa: I = P / U = 3,0 A e R = U / I = 4,0 Ω."
             }
@@ -387,25 +381,23 @@
           "perguntas": [
             {
               "pergunta": "Duas resistências de 2,0 Ω e 4,0 Ω estão ligadas em série a uma fonte de 12 V. Qual é a corrente no circuito?",
-              "opcoes": [
-                "1,0 A",
-                "2,0 A",
+              "opcoes": ["1,0 A",
                 "3,0 A",
-                "9,0 A"
+                "9,0 A",
+                "2,0 A"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. Em série, Req = 2,0 + 4,0 = 6,0 Ω. I = U / Req = 12 / 6,0 = 2,0 A.",
               "mascote_feedback_errado": "Em série as resistências somam-se: 2,0 + 4,0 = 6,0 Ω. I = 12 / 6,0 = 2,0 A."
             },
             {
               "pergunta": "As mesmas resistências (2,0 Ω e 4,0 Ω) são agora ligadas em paralelo à fonte de 12 V. Qual é a corrente total fornecida pela fonte?",
-              "opcoes": [
+              "opcoes": ["9,0 A",
                 "2,0 A",
                 "4,5 A",
-                "6,0 A",
-                "9,0 A"
+                "6,0 A"
               ],
-              "correta": 3,
+              "correta": 0,
               "mascote_feedback_certo": "Muito bem. Em paralelo cada resistência tem 12 V. I1 = 12 / 2,0 = 6,0 A; I2 = 12 / 4,0 = 3,0 A. Total: 9,0 A.",
               "mascote_feedback_errado": "Em paralelo, cada resistência está sujeita aos 12 V. I1 = 12 / 2,0 = 6,0 A e I2 = 12 / 4,0 = 3,0 A. A corrente total é a soma: 9,0 A."
             },
@@ -418,15 +410,15 @@
             },
             {
               "pergunta": "Num nó de um circuito entram 5,0 A por um fio. Saem dois fios: num deles passam 2,0 A. Qual é a corrente no outro?",
-              "opcoes": ["2,0 A", "3,0 A", "5,0 A", "7,0 A"],
-              "correta": 1,
+              "opcoes": ["2,0 A", "5,0 A", "7,0 A", "3,0 A"],
+              "correta": 3,
               "mascote_feedback_certo": "Exato. A carga conserva-se: o que entra num nó é igual ao que sai. 5,0 = 2,0 + I, logo I = 3,0 A.",
               "mascote_feedback_errado": "A carga conserva-se: o que entra num nó é igual ao que sai. 5,0 = 2,0 + I, logo I = 3,0 A."
             },
             {
               "pergunta": "Qual é a razão pela qual a instalação elétrica de uma casa é feita em paralelo?",
-              "opcoes": ["Para que a corrente seja igual em todos os aparelhos.", "Para que todos os aparelhos fiquem sujeitos à mesma tensão e funcionem de forma independente.", "Para diminuir o consumo de energia.", "Porque em paralelo não há efeito Joule."],
-              "correta": 1,
+              "opcoes": ["Para que a corrente seja igual em todos os aparelhos.", "Para diminuir o consumo de energia.", "Para que todos os aparelhos fiquem sujeitos à mesma tensão e funcionem de forma independente.", "Porque em paralelo não há efeito Joule."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. Em paralelo, todos os aparelhos recebem os 230 V para que foram projetados e cada um pode ser ligado ou desligado sem afetar os outros.",
               "mascote_feedback_errado": "Em paralelo, todos os aparelhos recebem os 230 V para que foram projetados e cada um pode ser ligado ou desligado sem afetar os outros."
             }
@@ -515,25 +507,23 @@
           "perguntas": [
             {
               "pergunta": "Uma pilha com ε = 9,0 V e r = 1,0 Ω fornece uma corrente de 0,50 A. Qual é a tensão nos seus terminais?",
-              "opcoes": [
+              "opcoes": ["8,5 V",
                 "9,5 V",
                 "9,0 V",
-                "8,5 V",
                 "4,5 V"
               ],
-              "correta": 2,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. U = ε − r I = 9,0 − 1,0 × 0,50 = 8,5 V. O rendimento é 8,5 / 9,0 × 100 = 94 %.",
               "mascote_feedback_errado": "A tensão nos terminais é menor do que a força eletromotriz: U = ε − r I = 9,0 − 1,0 × 0,50 = 8,5 V."
             },
             {
               "pergunta": "A curva característica de um gerador corta o eixo U em 6,0 V e o eixo I em 3,0 A. Qual é a sua resistência interna?",
-              "opcoes": [
-                "0,50 Ω",
-                "2,0 Ω",
+              "opcoes": ["0,50 Ω",
                 "3,0 Ω",
+                "2,0 Ω",
                 "18 Ω"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Muito bem. ε = 6,0 V (ordenada na origem). Declive = (0 − 6,0) / (3,0 − 0) = −2,0 V/A. r = 2,0 Ω.",
               "mascote_feedback_errado": "A resistência interna é o módulo do declive: |ΔU / ΔI| = 6,0 / 3,0 = 2,0 Ω. Também podes pensar que no curto-circuito I = ε / r, logo r = 6,0 / 3,0 = 2,0 Ω."
             },
@@ -546,15 +536,15 @@
             },
             {
               "pergunta": "Um gerador com ε = 12 V e r = 0,50 Ω fornece 4,0 A a um circuito. Qual é a potência dissipada no seu interior?",
-              "opcoes": ["2,0 W", "8,0 W", "40 W", "48 W"],
-              "correta": 1,
+              "opcoes": ["2,0 W", "40 W", "48 W", "8,0 W"],
+              "correta": 3,
               "mascote_feedback_certo": "Exato. P dissipada = r I² = 0,50 × 4,0² = 8,0 W.",
               "mascote_feedback_errado": "P dissipada = r I² = 0,50 × 4,0² = 0,50 × 16 = 8,0 W. A potência total é ε I = 48 W e a útil é U I = (12 − 2,0) × 4,0 = 40 W. 40 + 8 = 48 W."
             },
             {
               "pergunta": "Quando a corrente fornecida por um gerador real aumenta, a tensão nos seus terminais:",
-              "opcoes": ["aumenta, porque há mais energia.", "mantém-se igual à força eletromotriz.", "diminui, porque aumenta a energia dissipada na resistência interna.", "passa a ser negativa."],
-              "correta": 2,
+              "opcoes": ["diminui, porque aumenta a energia dissipada na resistência interna.", "aumenta, porque há mais energia.", "mantém-se igual à força eletromotriz.", "passa a ser negativa."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. U = ε − r I. Com mais corrente, o termo r I cresce e U diminui.",
               "mascote_feedback_errado": "U = ε − r I. Com mais corrente, o termo r I cresce e U diminui."
             }

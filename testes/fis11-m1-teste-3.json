@@ -1,0 +1,342 @@
+{
+  "id": "fis11-m1-teste-3",
+  "titulo": "Teste 3 — Tempo, posição, velocidade e aceleração",
+  "disciplina": "Física",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "formulario": {
+    "constantes": [],
+    "formulas": [
+      "Componente escalar da velocidade média: v_m = Δy / Δt",
+      "Componente escalar da aceleração média: a_m = Δv / Δt",
+      "Movimento retilíneo uniformemente variado: v = v₀ + a t",
+      "Movimento retilíneo uniformemente variado: y = y₀ + v₀ t + ½ a t²",
+      "Movimento retilíneo uniformemente variado: v² = v₀² + 2 a Δy",
+      "Erro percentual: |valor obtido − valor de referência| ÷ valor de referência × 100"
+    ]
+  },
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Uma bola lançada para cima",
+      "texto_apoio": "Numa aula, uma bola é lançada verticalmente para cima, a partir do solo, com velocidade de módulo 12 m/s. Adota-se um eixo Oy vertical, com origem no solo e sentido positivo para cima. Despreza-se a resistência do ar e considera-se g = 10 m/s²."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Queda livre medida com um sensor",
+      "texto_apoio": "Num laboratório, uma esfera foi largada do repouso, e um sensor de movimento registou a sua posição y, medida a partir do ponto de largada, com sentido positivo para baixo.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Posição da esfera em função do tempo",
+        "colunas": [
+          "t (s)",
+          "0,10",
+          "0,20",
+          "0,30",
+          "0,40",
+          "0,50"
+        ],
+        "linhas": [
+          [
+            "y (m)",
+            "0,049",
+            "0,196",
+            "0,441",
+            "0,784",
+            "1,225"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Um carrinho num carril",
+      "texto_apoio": "Um carrinho move-se num carril retilíneo horizontal. Adota-se um eixo Ox ao longo do carril. Em t = 0 s, o carrinho encontra-se na origem. Um sensor registou a componente escalar da velocidade do carrinho.",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Velocidade do carrinho em função do tempo",
+        "colunas": [
+          "t (s)",
+          "0,0",
+          "1,0",
+          "2,0",
+          "3,0"
+        ],
+        "linhas": [
+          [
+            "v (m/s)",
+            "+3,0",
+            "+1,0",
+            "−1,0",
+            "−3,0"
+          ]
+        ]
+      }
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "1",
+      "enunciado": "No instante em que a bola atinge a altura máxima, a componente escalar da aceleração é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "0"
+        },
+        {
+          "letra": "B",
+          "texto": "−10 m/s²"
+        },
+        {
+          "letra": "C",
+          "texto": "+10 m/s²"
+        },
+        {
+          "letra": "D",
+          "texto": "−12 m/s²"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12,
+      "explicacao": "Em todo o movimento, só sob a ação da gravidade, a aceleração é −10 m/s². A velocidade é nula no ponto mais alto, mas a aceleração não."
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "2",
+      "enunciado": "Calcula o intervalo de tempo que a bola demora a atingir a altura máxima. Apresenta o resultado em segundos.",
+      "resposta_correta": "1,2",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 12,
+      "explicacao": "v = v₀ + a t ⇒ 0 = 12 − 10 t ⇒ t = 1,2 s."
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "numero": "3",
+      "enunciado": "Calcula a altura máxima atingida pela bola. Apresenta o resultado em metros.",
+      "resposta_correta": "7,2",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 14,
+      "explicacao": "v² = v₀² + 2 a Δy ⇒ 0 = 144 − 20 Δy ⇒ Δy = 7,2 m. (Também: y = 12 × 1,2 − 5 × 1,2² = 14,4 − 7,2 = 7,2 m.)"
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "4",
+      "enunciado": "Quando a bola regressa ao solo, a componente escalar da sua velocidade é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "0"
+        },
+        {
+          "letra": "B",
+          "texto": "+12 m/s"
+        },
+        {
+          "letra": "C",
+          "texto": "−24 m/s"
+        },
+        {
+          "letra": "D",
+          "texto": "−12 m/s"
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 12,
+      "explicacao": "Por simetria, regressa ao solo com velocidade de mesmo módulo e sentido oposto: −12 m/s. (Ou: v = 12 − 10 × 2,4 = −12 m/s.)"
+    },
+    {
+      "id": "p5",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "5",
+      "enunciado": "Os instantes em que a bola se encontra a 5,0 m do solo são, aproximadamente,",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "0,42 s e 2,0 s"
+        },
+        {
+          "letra": "B",
+          "texto": "0,54 s e 1,9 s"
+        },
+        {
+          "letra": "C",
+          "texto": "0,60 s e 1,8 s"
+        },
+        {
+          "letra": "D",
+          "texto": "1,2 s (único instante)"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 18,
+      "explicacao": "y = 12 t − 5 t² = 5 ⇒ 5 t² − 12 t + 5 = 0 ⇒ t = [12 ± √(144 − 100)] ÷ 10 = (12 ± 6,63) ÷ 10 ⇒ t ≈ 0,54 s e t ≈ 1,9 s (uma na subida e outra na descida)."
+    },
+    {
+      "id": "p6",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "numero": "6",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F).",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "O intervalo de tempo da subida é igual ao da descida, até ao mesmo nível."
+        },
+        {
+          "letra": "b",
+          "texto": "Em t = 0,60 s, a componente escalar da velocidade da bola é +6,0 m/s."
+        },
+        {
+          "letra": "c",
+          "texto": "A componente escalar da aceleração da bola muda de sinal no ponto mais alto."
+        },
+        {
+          "letra": "d",
+          "texto": "Em t = 1,8 s, a componente escalar da velocidade da bola é +6,0 m/s."
+        }
+      ],
+      "resposta_correta": {
+        "a": "V",
+        "b": "V",
+        "c": "F",
+        "d": "F"
+      },
+      "cotacao": 16,
+      "explicacao": "(a) V. (b) V: v = 12 − 10 × 0,60 = +6,0 m/s. (c) F: a aceleração é constante, −10 m/s², em todo o movimento. (d) F: v = 12 − 10 × 1,8 = −6,0 m/s; é o módulo, a rapidez, que é 6,0 m/s."
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "numero": "7",
+      "enunciado": "Para determinar a aceleração da esfera a partir de um gráfico de reta, deve representar-se y em função de",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "t²"
+        },
+        {
+          "letra": "B",
+          "texto": "t"
+        },
+        {
+          "letra": "C",
+          "texto": "√t"
+        },
+        {
+          "letra": "D",
+          "texto": "1/t"
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 12,
+      "explicacao": "Partindo do repouso, y = ½ g t². Representando y em função de t², obtém-se uma reta cujo declive é ½ g."
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "numero": "8",
+      "enunciado": "Usando o par de valores t = 0,50 s e y = 1,225 m, calcula o valor da aceleração da esfera. Apresenta o resultado em m/s².",
+      "resposta_correta": "9,8",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 14,
+      "explicacao": "y = ½ g t² ⇒ g = 2 y ÷ t² = 2 × 1,225 ÷ 0,50² = 2,45 ÷ 0,25 = 9,8 m/s²."
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "numero": "9",
+      "enunciado": "O resultado da questão anterior deve ser apresentado como",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "9,800 m/s²"
+        },
+        {
+          "letra": "B",
+          "texto": "10 m/s²"
+        },
+        {
+          "letra": "C",
+          "texto": "9,8 m/s²"
+        },
+        {
+          "letra": "D",
+          "texto": "9,80 m/s²"
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 14,
+      "explicacao": "O tempo (0,50 s) tem dois algarismos significativos, e o resultado deve ter o mesmo número: 9,8 m/s²."
+    },
+    {
+      "id": "p10",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "numero": "10",
+      "enunciado": "Um grupo obteve, nesta experiência, o valor 9,3 m/s². Calcula o erro percentual desse valor, tomando como referência o valor obtido na questão 8. Apresenta o resultado em percentagem, com dois algarismos significativos.",
+      "resposta_correta": "5,1",
+      "tolerancia_numerica": 0.1,
+      "cotacao": 16,
+      "explicacao": "Erro percentual = |9,3 − 9,8| ÷ 9,8 × 100 = 0,5 ÷ 9,8 × 100 = 5,1%."
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "numero": "11",
+      "enunciado": "O carrinho inverte o sentido do movimento no instante",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "1,0 s"
+        },
+        {
+          "letra": "B",
+          "texto": "2,0 s"
+        },
+        {
+          "letra": "C",
+          "texto": "3,0 s"
+        },
+        {
+          "letra": "D",
+          "texto": "1,5 s"
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 12,
+      "explicacao": "A velocidade anula-se quando muda de +1,0 m/s (t = 1,0 s) para −1,0 m/s (t = 2,0 s). Como a variação é linear (a = −2,0 m/s²): 3,0 − 2,0 t = 0 ⇒ t = 1,5 s."
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "numero": "12",
+      "enunciado": "Calcula a distância percorrida pelo carrinho entre t = 0 s e t = 3,0 s. Apresenta o resultado em metros.",
+      "resposta_correta": "4,5",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 18,
+      "explicacao": "a = (−3,0 − 3,0) ÷ 3,0 = −2,0 m/s². x(t) = 3,0 t − 1,0 t². Em t = 1,5 s: x = 4,5 − 2,25 = 2,25 m (afastamento máximo). Em t = 3,0 s: x = 9,0 − 9,0 = 0 (volta à origem). Distância = 2,25 + 2,25 = 4,5 m. (O deslocamento é nulo, mas a distância não.)"
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "numero": "13",
+      "enunciado": "Um aluno afirma: \"No instante em que o carrinho inverte o sentido do movimento, a velocidade é nula e, por isso, a aceleração também é nula nesse instante.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "A afirmação está errada. Deve explicar que a velocidade nula num instante não implica aceleração nula. A aceleração mede a rapidez com que a velocidade varia, e aqui a velocidade passa de +1,0 m/s para −1,0 m/s: varia sempre, com a = −2,0 m/s² constante, inclusive no instante em que se anula. Se a aceleração fosse nula, a velocidade manter-se-ia nula (o carrinho ficaria parado) e não haveria inversão de sentido. Pode usar o exemplo da bola no ponto mais alto da trajetória.",
+      "cotacao": 30
+    }
+  ]
+}

@@ -3392,6 +3392,21 @@ html.dark-mode .me-simulacao-saida-valor {
     text-align: center;
 }
 
+/* Imagem em falta, só no servidor local: nome do ficheiro e descrição. */
+.me-imagem-reservada--rascunho {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    border-color: #e8590c;
+    background: #fff6ef;
+    color: #6b4a33;
+    text-align: left;
+}
+
+.me-imagem-reservada--rascunho strong {
+    color: #c2410c;
+}
+
 html.dark-mode .me-imagem-reservada {
     border-color: #3a3f3b;
     background: rgba(255, 255, 255, .04);
@@ -3726,6 +3741,70 @@ html.dark-mode .me-sim-visual-legenda {
     .me-tc-dlabel { font-size: 28px; }
 }
 
+/* Gráfico dentro de um slide (ver graficoHtml / ponto.grafico). */
+.me-grafico {
+    margin: 14px 0 4px;
+}
+
+.me-grafico svg {
+    display: block;
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+    color: #2b2b2b;
+}
+
+.me-grafico--largo svg { max-width: 640px; }
+.me-gr-grelha { stroke: currentColor; stroke-width: 1; opacity: .12; }
+.me-gr-eixo { stroke: currentColor; stroke-width: 2.2; }
+.me-gr-linha { fill: none; stroke: #1f8a5b; stroke-width: 3; stroke-linejoin: round; }
+.me-gr-ponto { fill: #1f8a5b; stroke: #ffffff; stroke-width: 2; }
+.me-gr-degrau { fill: none; stroke: #e8590c; stroke-width: 2; stroke-dasharray: 5 4; }
+.me-gr-reta { stroke-width: 3; stroke-linecap: round; }
+.me-gr-vetor { stroke-width: 3.5; stroke-linecap: round; fill: none; }
+.me-gr-proj { stroke: currentColor; stroke-width: 1.4; stroke-dasharray: 4 4; opacity: .5; }
+.me-gr-nota--halo { paint-order: stroke; stroke: #faf6ee; stroke-width: 4px; stroke-linejoin: round; }
+.me-gr-num { fill: currentColor; font-size: 13px; font-weight: 600; }
+.me-gr-rotulo { fill: currentColor; font-size: 14px; font-weight: 700; }
+.me-gr-nota { fill: #e8590c; font-size: 13px; font-weight: 700; }
+.me-gr-destaque { fill: #1f8a5b; font-size: 13px; font-weight: 800; paint-order: stroke; stroke: #faf6ee; stroke-width: 4px; stroke-linejoin: round; }
+.me-gr-titulo {
+    margin-top: 6px;
+    text-align: center;
+    font-size: .85rem;
+    color: #4b5a52;
+}
+
+html.dark-mode .me-grafico svg { color: #e6e1da; }
+html.dark-mode .me-gr-ponto { stroke: #23302a; }
+html.dark-mode .me-gr-destaque, html.dark-mode .me-gr-nota--halo { stroke: #23302a; }
+html.dark-mode .me-gr-titulo { color: #b8b2aa; }
+
+@media (max-width: 640px) {
+    .me-gr-num, .me-gr-nota, .me-gr-destaque { font-size: 15px; }
+    .me-gr-rotulo { font-size: 16px; }
+}
+
+/* Imagem por cima do texto (ponto.imagem_em_cima / screen.imagem_em_cima). */
+.me-escada-detail-empilhado {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.me-escada-detail-empilhado .me-escada-detail-media {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.me-escada-detail-empilhado .me-escada-detail-image {
+    max-width: min(100%, 680px);
+    max-height: 340px;
+    margin: 0 auto;
+}
+
 /* Seta para baixo por baixo da caixa de fórmulas (ver setaDetalheHtml):
    ao clicar abre o texto e a seta roda. */
 .me-seta-detalhe {
@@ -3794,6 +3873,257 @@ html.dark-mode .me-seta-detalhe-painel {
 
 html.dark-mode .me-seta-detalhe-lista li {
     color: #d4d4d8;
+}
+
+/* Tabela que se recalcula numa simulação (saida.tipo === 'tabela'). */
+.me-simulacao-saida--tabela {
+    display: block;
+}
+
+.me-sim-tabela {
+    width: 100%;
+    margin-top: 8px;
+    border-collapse: collapse;
+    font-size: .95rem;
+}
+
+.me-sim-tabela th,
+.me-sim-tabela td {
+    padding: 8px 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, .08);
+}
+
+.me-sim-tabela thead th {
+    font-weight: 800;
+    background: rgba(31, 138, 91, .1);
+}
+
+.me-sim-tabela td span {
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+
+html.dark-mode .me-sim-tabela th,
+html.dark-mode .me-sim-tabela td {
+    border-bottom-color: rgba(255, 255, 255, .1);
+}
+
+/* Projétil (visual 'projetil', ver projetilHtml). */
+.me-pj {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+    color: #2b2b2b;
+}
+
+.me-pj-predio { fill: #cfd4d0; stroke: currentColor; stroke-width: 2; }
+.me-pj-chao { stroke: currentColor; stroke-width: 2.5; }
+.me-pj-trajetoria { fill: none; stroke: currentColor; stroke-width: 2; stroke-dasharray: 5 6; opacity: .45; }
+.me-pj-rasto { fill: none; stroke: #1f8a5b; stroke-width: 3.5; stroke-linecap: round; }
+.me-pj-bola { fill: #e8590c; stroke: currentColor; stroke-width: 2; }
+.me-pj-vx { stroke: #1c7ed6; stroke-width: 3.5; }
+.me-pj-vy { stroke: #e8590c; stroke-width: 3.5; }
+.me-pj-topo, .me-pj-fim { fill: none; stroke: #c92a2a; stroke-width: 2.5; }
+.me-pj-nota { fill: #c92a2a; font-size: 13px; font-weight: 800; }
+.me-pj-tempo { fill: currentColor; font-size: 16px; font-weight: 800; }
+.me-pj-chave { font-weight: 800; }
+.me-pj-chave--x { color: #1c7ed6; }
+.me-pj-chave--y { color: #e8590c; }
+
+html.dark-mode .me-pj { color: #e6e1da; }
+html.dark-mode .me-pj-predio { fill: #3a3a3f; }
+
+@media (max-width: 640px) {
+    .me-pj-nota { font-size: 17px; }
+    .me-pj-tempo { font-size: 19px; }
+}
+
+/* Encontro (visual 'encontro') e área v-t (visual 'area_vt'). */
+.me-en, .me-av {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+    color: #2b2b2b;
+}
+
+.me-en-estrada { fill: #cfd4d0; }
+.me-en-eixo, .me-av-eixo { stroke: currentColor; stroke-width: 2.2; }
+.me-en-marcas line { stroke: currentColor; stroke-width: 1.6; }
+.me-en-grelha line, .me-av-grelha line { stroke: currentColor; stroke-width: 1; opacity: .12; }
+.me-en-num, .me-av-num { fill: currentColor; font-size: 13px; font-weight: 600; }
+.me-en-rotulo, .me-av-rotulo { fill: currentColor; font-size: 14px; font-weight: 700; }
+.me-en-corpo { stroke: currentColor; stroke-width: 1.5; }
+.me-en-carro--a .me-en-corpo { fill: #1c7ed6; }
+.me-en-carro--b .me-en-corpo { fill: #e03131; }
+.me-en-cabine { fill: #dee2e6; stroke: currentColor; stroke-width: 1.5; }
+.me-en-roda { fill: #2b2b2b; }
+.me-en-letra { font-size: 16px; font-weight: 800; }
+.me-en-carro--a .me-en-letra { fill: #1c7ed6; }
+.me-en-carro--b .me-en-letra { fill: #e03131; }
+.me-en-tempo { fill: currentColor; font-size: 17px; font-weight: 800; }
+.me-en-reta, .me-en-reta-fraca { fill: none; stroke-width: 3.5; stroke-linecap: round; }
+.me-en-reta-fraca { stroke-width: 2.5; stroke-dasharray: 6 6; opacity: .3; }
+.me-en-reta--a { stroke: #1c7ed6; }
+.me-en-reta--b { stroke: #e03131; }
+.me-en-ponto { stroke: #ffffff; stroke-width: 2; }
+.me-en-ponto--a { fill: #1c7ed6; }
+.me-en-ponto--b { fill: #e03131; }
+.me-en-anel { fill: none; stroke: #2b2b2b; stroke-width: 2.5; stroke-dasharray: 4 3; }
+.me-en-chave { font-weight: 800; }
+.me-en-chave--a { color: #1c7ed6; }
+.me-en-chave--b { color: #e03131; }
+
+.me-av-ret { fill: rgba(28, 126, 214, .28); }
+.me-av-tri { fill: rgba(232, 89, 12, .3); }
+.me-av-linha { fill: none; stroke: #1f8a5b; stroke-width: 3.5; stroke-linecap: round; }
+.me-av-linha-fraca { fill: none; stroke: #1f8a5b; stroke-width: 2.5; stroke-dasharray: 6 6; opacity: .3; }
+.me-av-cursor { stroke: currentColor; stroke-width: 1.2; stroke-dasharray: 3 4; opacity: .5; }
+.me-av-ponto { fill: #e8590c; stroke: #ffffff; stroke-width: 2; }
+.me-av-valor { fill: currentColor; font-size: 16px; font-weight: 800; }
+.me-av-parcela { font-size: 14px; font-weight: 700; }
+.me-av-parcela--r { fill: #1c7ed6; }
+.me-av-parcela--t { fill: #e8590c; }
+.me-av-chave { font-weight: 800; }
+.me-av-chave--r { color: #1c7ed6; }
+.me-av-chave--t { color: #e8590c; }
+
+html.dark-mode .me-en, html.dark-mode .me-av { color: #e6e1da; }
+html.dark-mode .me-en-estrada { fill: #3a3a3f; }
+html.dark-mode .me-en-ponto, html.dark-mode .me-av-ponto { stroke: #23302a; }
+
+@media (max-width: 640px) {
+    .me-en-num, .me-av-num { font-size: 18px; }
+    .me-en-rotulo, .me-av-rotulo, .me-en-tempo, .me-av-valor { font-size: 19px; }
+    .me-av-parcela { font-size: 17px; }
+}
+
+/* Secante e tangente (visual 'secante_tangente', ver secanteTangenteHtml). */
+.me-st {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+    color: #2b2b2b;
+}
+
+.me-st-grelha line { stroke: currentColor; stroke-width: 1; opacity: .12; }
+.me-st-num { fill: currentColor; font-size: 13px; font-weight: 600; }
+.me-st-eixo { stroke: currentColor; stroke-width: 2.2; }
+.me-st-rotulo { fill: currentColor; font-size: 14px; font-weight: 700; }
+.me-st-curva { fill: none; stroke: #1f8a5b; stroke-width: 3.5; stroke-linejoin: round; }
+.me-st-secante { stroke: #e8590c; stroke-width: 3; }
+.me-st-tangente { stroke: #c92a2a; stroke-width: 2.5; stroke-dasharray: 8 6; }
+.me-st-triangulo { fill: rgba(232, 89, 12, .08); stroke: #e8590c; stroke-width: 1.8; stroke-dasharray: 4 3; }
+.me-st-nota { fill: #e8590c; font-size: 13px; font-weight: 800; }
+.me-st-ponto { stroke: #ffffff; stroke-width: 2; }
+.me-st-ponto--1 { fill: #1c7ed6; }
+.me-st-ponto--2 { fill: #e8590c; }
+.me-st-valor { fill: #e8590c; font-size: 16px; font-weight: 800; }
+.me-st-valor--t { fill: #c92a2a; }
+.me-st-botao { display: block; margin: 10px auto 0; }
+.me-st-chave { font-weight: 800; }
+.me-st-chave--s { color: #e8590c; }
+.me-st-chave--t { color: #c92a2a; }
+
+html.dark-mode .me-st { color: #e6e1da; }
+html.dark-mode .me-st-ponto { stroke: #23302a; }
+
+@media (max-width: 640px) {
+    .me-st-num, .me-st-nota { font-size: 17px; }
+    .me-st-rotulo, .me-st-valor { font-size: 19px; }
+}
+
+/* Deslocamento e distância (visual 'deslocamento_distancia', ver deslocamentoDistanciaHtml). */
+.me-dd {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+    color: #2b2b2b;
+}
+
+.me-dd-eixo { stroke: currentColor; stroke-width: 2.4; }
+.me-dd-eixo-seta { fill: currentColor; }
+.me-dd-marca { stroke: currentColor; stroke-width: 1.6; }
+.me-dd-num { fill: currentColor; font-size: 13px; font-weight: 600; }
+.me-dd-letra { fill: currentColor; font-size: 14px; font-weight: 700; font-style: italic; }
+.me-dd-guia { stroke: currentColor; stroke-width: 1.2; stroke-dasharray: 3 4; opacity: .45; }
+.me-dd-ida { stroke: #1c7ed6; stroke-width: 3.5; }
+.me-dd-volta { stroke: #7048e8; stroke-width: 3.5; }
+.me-dd-deslocamento { stroke: #e8590c; stroke-width: 4; }
+.me-dd-etiqueta { font-size: 13px; font-weight: 800; }
+.me-dd-etiqueta--ida { fill: #1c7ed6; }
+.me-dd-etiqueta--volta { fill: #7048e8; }
+.me-dd-etiqueta--desl { fill: #e8590c; font-size: 15px; }
+.me-dd-pt--i { fill: #2f9e44; stroke: #ffffff; stroke-width: 2; }
+.me-dd-pt--v { fill: #7048e8; stroke: #ffffff; stroke-width: 2; }
+.me-dd-pt--f { fill: #c92a2a; stroke: #ffffff; stroke-width: 2; }
+.me-dd-bola { fill: #e8590c; stroke: currentColor; stroke-width: 2; }
+.me-dd-dist, .me-dd-desl { fill: currentColor; font-size: 16px; font-weight: 800; }
+.me-dd-dist { fill: #1c7ed6; }
+.me-dd-desl { fill: #e8590c; }
+.me-dd-chave { font-weight: 800; }
+.me-dd-chave--i { color: #2f9e44; }
+.me-dd-chave--v { color: #7048e8; }
+.me-dd-chave--f { color: #c92a2a; }
+
+html.dark-mode .me-dd { color: #e6e1da; }
+html.dark-mode .me-dd-pt--i, html.dark-mode .me-dd-pt--v, html.dark-mode .me-dd-pt--f { stroke: #23302a; }
+
+@media (max-width: 640px) {
+    .me-dd-num, .me-dd-etiqueta { font-size: 18px; }
+    .me-dd-letra, .me-dd-dist, .me-dd-desl, .me-dd-etiqueta--desl { font-size: 19px; }
+}
+
+/* Quatro descrições (visual 'quatro_descricoes', ver quatroDescricoesHtml):
+   carro no eixo e gráfico x-t traçados em simultâneo. */
+.me-qd {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    margin: 0 auto;
+    overflow: visible;
+    color: #2b2b2b;
+}
+
+.me-qd-estrada { fill: #cfd4d0; }
+.me-qd-eixo { stroke: currentColor; stroke-width: 2.4; }
+.me-qd-seta { fill: currentColor; }
+.me-qd-marca { stroke: currentColor; stroke-width: 2; }
+.me-qd-marca--origem { stroke: #c92a2a; stroke-width: 3.5; }
+.me-qd-origem { fill: #c92a2a; font-size: 18px; font-weight: 800; }
+.me-qd-num { fill: currentColor; font-size: 13px; font-weight: 600; }
+.me-qd-letra { fill: currentColor; font-size: 14px; font-weight: 700; font-style: italic; }
+.me-qd-grelha { stroke: currentColor; stroke-width: 1; opacity: .12; }
+.me-qd-reta-fraca { fill: none; stroke: #1f8a5b; stroke-width: 2.5; stroke-dasharray: 6 6; opacity: .35; }
+.me-qd-reta { fill: none; stroke: #1f8a5b; stroke-width: 3.5; stroke-linecap: round; }
+.me-qd-ponto { fill: #e8590c; stroke: #ffffff; stroke-width: 2; }
+.me-qd-origem-anel { fill: none; stroke: #c92a2a; stroke-width: 2.5; }
+.me-qd-corpo { fill: #e03131; stroke: currentColor; stroke-width: 1.5; }
+.me-qd-cabine { fill: #f1a3a3; stroke: currentColor; stroke-width: 1.5; }
+.me-qd-roda { fill: #2b2b2b; }
+.me-qd-tempo, .me-qd-pos { fill: currentColor; font-size: 16px; font-weight: 800; }
+
+html.dark-mode .me-qd { color: #e6e1da; }
+html.dark-mode .me-qd-estrada { fill: #3a3a3f; }
+html.dark-mode .me-qd-ponto { stroke: #23302a; }
+
+@media (max-width: 640px) {
+    .me-qd-num { font-size: 18px; }
+    .me-qd-letra, .me-qd-tempo, .me-qd-pos { font-size: 20px; }
+    .me-qd-origem { font-size: 24px; }
 }
 
 /* Duas bolas (visual 'duas_bolas', ver duasBolasHtml): uma largada e outra
@@ -3970,6 +4300,29 @@ html.dark-mode .me-rampa-cabeca { fill: #6b5530; }
     font-size: .95rem;
 }
 
+/* Simulação com os resultados por baixo dos controlos (screen.painel_empilhado). */
+.me-sim-painel--empilhado .me-escada-detail-columns {
+    flex-direction: column;
+    gap: 18px;
+}
+
+.me-sim-painel--empilhado .me-escada-detail-divider {
+    width: 100%;
+    height: 1px;
+    min-height: 0;
+    align-self: stretch;
+}
+
+.me-sim-painel--empilhado .me-sim-painel-controlos,
+.me-sim-painel--empilhado .me-sim-painel-saidas {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.me-sim-painel--empilhado .me-sim-painel-saidas {
+    align-items: flex-start;
+}
+
 /* 💡 no canto de baixo à direita do painel de uma simulação
    (screen.curiosidade): o texto abre por baixo do painel. */
 .me-sim-painel {
@@ -4016,6 +4369,11 @@ html.dark-mode .me-simulacao-saidas {
 
 html.dark-mode .me-simulacao-saida::before {
     background: #7fd6a8;
+}
+
+/* Na saída em tabela, a bolinha fica ao lado do título (não a meio da tabela). */
+.me-simulacao-saida--tabela::before {
+    top: 12px;
 }
 
 /* Ecrã "cartao_passos" (ver renderCartaoPassos): uma seta por baixo do

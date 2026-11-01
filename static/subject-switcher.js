@@ -86,6 +86,10 @@
 
     function selecionarDisciplina(disciplina) {
         disciplinaAtual = disciplina;
+        // Repõe o último ano escolhido nesta disciplina (ver guardarAno);
+        // atualizarAnosDisponiveis corrige-o se já não existir aqui.
+        const anoSalvo = anoGuardado(disciplina);
+        if (anoSalvo && Array.from(anoOpcoes).some((o) => o.dataset.ano === anoSalvo)) anoAtual = anoSalvo;
         const temAnos = anoSwitcher ? atualizarAnosDisponiveis(disciplina) : false;
         categorias.forEach((categoria) => {
             if (categoria.dataset.subject !== disciplina) {
@@ -125,6 +129,25 @@
         }
     }
 
+    // Guarda também o ano escolhido, um por disciplina (ex: Física 12º e
+    // Biologia 10º), para não voltar sempre ao 10º ano ao recarregar ou ao
+    // regressar de outra página.
+    const PREFIXO_ANO = 'explore_ano_switcher_';
+    function guardarAno(disciplina, ano) {
+        try {
+            localStorage.setItem(PREFIXO_ANO + disciplina, ano);
+        } catch (erro) {
+            // Ignora erros de storage (navegação privada/quota).
+        }
+    }
+    function anoGuardado(disciplina) {
+        try {
+            return localStorage.getItem(PREFIXO_ANO + disciplina);
+        } catch (erro) {
+            return null;
+        }
+    }
+
     opcoes.forEach((opcao) => {
         opcao.addEventListener('click', () => {
             selecionarDisciplina(opcao.dataset.subject);
@@ -139,6 +162,7 @@
             anoAtual = opcao.dataset.ano;
             anoOpcoes.forEach((o) => o.classList.toggle('is-active', o === opcao));
             aplicarFiltroAno();
+            if (disciplinaAtual) guardarAno(disciplinaAtual, anoAtual);
         });
     });
 

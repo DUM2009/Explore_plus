@@ -161,6 +161,22 @@
       "estado": "novo",
       "ultima_revisao": null,
       "relacionados": ["conservacao_in_situ"]
+    },
+    {
+      "id": "solo",
+      "termo": "Solo",
+      "definicao": "Camada superficial da crosta terrestre, formada por partículas minerais, matéria orgânica, água e ar, onde crescem as plantas e vivem muitos organismos.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["ecossistema"]
+    },
+    {
+      "id": "ar",
+      "termo": "Ar",
+      "definicao": "Mistura de gases que forma a atmosfera (cerca de 78 % de azoto e 21 % de oxigénio), essencial para a respiração e para a fotossíntese.",
+      "estado": "novo",
+      "ultima_revisao": null,
+      "relacionados": ["ecossistema"]
     }
   ]
 }

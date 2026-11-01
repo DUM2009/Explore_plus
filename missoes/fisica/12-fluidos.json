@@ -4,7 +4,7 @@
   "titulo": "Fluidos",
   "disciplina": "fisica",
   "ano": 12,
-  "imagem": "f12_navio_iceberg.png",
+  "imagem": "f12_navio_cruzeiro.png",
   "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 15c2 2 4 2 6 0s4-2 6 0 4 2 6 0\"/><path d=\"M2 19c2 2 4 2 6 0s4-2 6 0 4 2 6 0\"/><path d=\"M12 3v9\"/></svg>", "nome": "Mestre dos Fluidos" },
   "secoes": [
     {
@@ -46,25 +46,23 @@
           "perguntas": [
             {
               "pergunta": "Uma pessoa de 60 kg apoia todo o peso num salto com 1,0 cm² de área. Qual é a pressão exercida no chão? (1 cm² = 10⁻⁴ m²)",
-              "opcoes": [
-                "5,9 × 10² Pa",
-                "6,0 × 10³ Pa",
+              "opcoes": ["5,9 × 10² Pa",
                 "5,9 × 10⁶ Pa",
+                "6,0 × 10³ Pa",
                 "5,9 × 10⁸ Pa"
               ],
-              "correta": 2,
+              "correta": 1,
               "mascote_feedback_certo": "Certo. p = F / A ≈ 5,9 × 10⁶ Pa, cerca de 58 vezes a pressão atmosférica.",
               "mascote_feedback_errado": "A força é o peso: 60 × 9,8 = 588 N. A área em m² é 1,0 × 10⁻⁴ m². p = 588 / 10⁻⁴ ≈ 5,9 × 10⁶ Pa."
             },
             {
               "pergunta": "Um bloco tem 2,0 kg e 2,5 × 10⁻⁴ m³ de volume. Qual é a sua densidade relativa?",
-              "opcoes": [
-                "0,80",
+              "opcoes": ["0,80",
                 "2,5",
-                "8,0",
-                "8,0 × 10³"
+                "8,0 × 10³",
+                "8,0"
               ],
-              "correta": 2,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. ρ = 8,0 × 10³ kg m⁻³. d = 8,0.",
               "mascote_feedback_errado": "Calcula ρ = m / V = 8,0 × 10³ kg m⁻³ e divide pela massa volúmica da água: d = 8,0. A densidade relativa não tem unidades."
             },
@@ -77,8 +75,8 @@
             },
             {
               "pergunta": "Quantos pascal correspondem a 1013 hPa?",
-              "opcoes": ["10,13 Pa", "1013 Pa", "1,013 × 10⁵ Pa", "1,013 × 10⁶ Pa"],
-              "correta": 2,
+              "opcoes": ["1,013 × 10⁵ Pa", "10,13 Pa", "1013 Pa", "1,013 × 10⁶ Pa"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. 1013 hPa = 1,013 × 10⁵ Pa: é a pressão atmosférica normal.",
               "mascote_feedback_errado": "1 hPa = 100 Pa. 1013 × 100 = 1,013 × 10⁵ Pa: é a pressão atmosférica normal, como aparece nos boletins meteorológicos."
             },
@@ -149,39 +147,37 @@
           "perguntas": [
             {
               "pergunta": "Qual é a pressão total a 10 m de profundidade no mar? (ρ água do mar ≈ 1,03 × 10³ kg m⁻³; p₀ = 1,01 × 10⁵ Pa)",
-              "opcoes": [
+              "opcoes": ["2,0 × 10⁵ Pa",
                 "1,01 × 10⁵ Pa",
                 "1,01 × 10⁵ Pa + 1,01 × 10³ Pa",
-                "2,0 × 10⁵ Pa",
                 "1,0 × 10⁶ Pa"
               ],
-              "correta": 2,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. p ≈ 2,0 × 10⁵ Pa. Cerca de 2 atm.",
               "mascote_feedback_errado": "p = p₀ + ρ g h ≈ 1,01 × 10⁵ + 1,01 × 10⁵ ≈ 2,0 × 10⁵ Pa. A cada 10 m de água, a pressão aumenta cerca de 1 atm."
             },
             {
               "pergunta": "Numa prensa hidráulica, o êmbolo pequeno tem 10 cm² e o grande 500 cm². Que força é preciso fazer no êmbolo pequeno para elevar um carro de 1000 kg?",
-              "opcoes": [
-                "9,8 × 10³ N",
-                "196 N",
+              "opcoes": ["9,8 × 10³ N",
                 "20 N",
+                "196 N",
                 "4,9 × 10⁵ N"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Muito bem. F₁ = F₂ × A₁ / A₂ = 196 N.",
               "mascote_feedback_errado": "De F₁ / A₁ = F₂ / A₂: F₁ = 9800 × (10 / 500) = 196 N."
             },
             {
               "pergunta": "Três recipientes de formas diferentes têm água até à mesma altura. No fundo de qual é maior a pressão?",
-              "opcoes": ["No mais largo.", "No mais estreito.", "É igual nos três.", "No que tem mais água."],
-              "correta": 2,
+              "opcoes": ["No mais largo.", "No mais estreito.", "No que tem mais água.", "É igual nos três."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. A pressão só depende da profundidade, não da forma do recipiente.",
               "mascote_feedback_errado": "A pressão num ponto de um líquido em equilíbrio só depende da profundidade (e de ρ e g), não da forma do recipiente nem da quantidade de líquido."
             },
             {
               "pergunta": "Qual é a altura da coluna de mercúrio (ρ = 13,6 × 10³ kg m⁻³) num barómetro, à pressão de 1,01 × 10⁵ Pa?",
-              "opcoes": ["7,4 cm", "76 cm", "1,0 m", "10,3 m"],
-              "correta": 1,
+              "opcoes": ["76 cm", "7,4 cm", "1,0 m", "10,3 m"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. h ≈ 0,76 m.",
               "mascote_feedback_errado": "h = p₀ / (ρ g) = 1,01 × 10⁵ / (13,6 × 10³ × 9,8) ≈ 0,76 m."
             },
@@ -279,20 +275,18 @@
           "perguntas": [
             {
               "pergunta": "Uma pedra de 0,60 kg e volume 2,0 × 10⁻⁴ m³ é pendurada num dinamómetro e totalmente mergulhada em água. Quanto indica o dinamómetro?",
-              "opcoes": [
-                "5,9 N",
-                "3,9 N",
+              "opcoes": ["5,9 N",
                 "2,0 N",
-                "7,8 N"
+                "7,8 N",
+                "3,9 N"
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. Peso aparente = 5,88 − 1,96 ≈ 3,9 N.",
               "mascote_feedback_errado": "Calcula a impulsão: I = ρ água V g = 1,96 N. O dinamómetro indica o peso aparente: 5,88 − 1,96 ≈ 3,9 N."
             },
             {
               "pergunta": "O gelo tem massa volúmica 917 kg m⁻³ e a água do mar 1025 kg m⁻³. Que fração de um iceberg está submersa?",
-              "opcoes": [
-                "10 %",
+              "opcoes": ["10 %",
                 "50 %",
                 "89 %",
                 "100 %"
@@ -303,15 +297,15 @@
             },
             {
               "pergunta": "Um corpo totalmente mergulhado em água desce mais fundo. A impulsão:",
-              "opcoes": ["aumenta, porque a pressão aumenta.", "mantém-se, porque o volume imerso e a massa volúmica da água não mudam.", "diminui.", "anula-se no fundo."],
-              "correta": 1,
+              "opcoes": ["aumenta, porque a pressão aumenta.", "diminui.", "anula-se no fundo.", "mantém-se, porque o volume imerso e a massa volúmica da água não mudam."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. I = ρ V imerso g não muda com a profundidade se o corpo estiver totalmente submerso.",
               "mascote_feedback_errado": "I = ρ V imerso g. Com o corpo totalmente submerso, V imerso não muda com a profundidade, e a água é praticamente incompressível."
             },
             {
               "pergunta": "Um bloco de madeira (ρ = 600 kg m⁻³) flutua em água. Que fração do volume fica fora de água?",
-              "opcoes": ["60 %", "40 %", "6 %", "0 %"],
-              "correta": 1,
+              "opcoes": ["40 %", "60 %", "6 %", "0 %"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. 1 − 0,60 = 0,40.",
               "mascote_feedback_errado": "A fração submersa é 600 / 1000 = 0,60. A fração fora de água é 1 − 0,60 = 0,40."
             },
@@ -399,46 +393,44 @@
           "perguntas": [
             {
               "pergunta": "Se o raio de uma esfera duplicar (mesmo material, mesmo fluido), a sua velocidade terminal:",
-              "opcoes": [
-                "duplica.",
-                "fica quatro vezes maior.",
+              "opcoes": ["duplica.",
                 "fica reduzida a metade.",
+                "fica quatro vezes maior.",
                 "mantém-se."
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. v t é proporcional a r². Com o dobro do raio, fica 4 vezes maior.",
               "mascote_feedback_errado": "Na expressão v t = 2 r² g (ρ esfera − ρ fluido) / (9 η), o raio está ao quadrado. Com 2r, v t fica 4 vezes maior."
             },
             {
               "pergunta": "Uma esfera de aço (ρ = 7,8 × 10³ kg m⁻³) com raio 1,0 mm cai em glicerina (ρ = 1,26 × 10³ kg m⁻³; η = 1,5 Pa s). Qual é a velocidade terminal?",
-              "opcoes": [
+              "opcoes": ["9,5 × 10⁻⁶ m/s",
                 "9,5 × 10⁻³ m/s",
-                "9,5 × 10⁻⁶ m/s",
                 "0,95 m/s",
                 "1,1 × 10⁻² m/s"
               ],
-              "correta": 0,
+              "correta": 1,
               "mascote_feedback_certo": "Certo. v t ≈ 9,5 × 10⁻³ m/s, cerca de 1 cm por segundo.",
               "mascote_feedback_errado": "Converte o raio: 1,0 mm = 1,0 × 10⁻³ m. v t = 2 × 10⁻⁶ × 9,8 × 6540 / 13,5 ≈ 9,5 × 10⁻³ m/s."
             },
             {
               "pergunta": "Numa esfera que cai num líquido com velocidade terminal, qual é a relação entre as forças?",
-              "opcoes": ["P = F resistência", "P = I + F resistência", "P + I = F resistência", "P = I"],
-              "correta": 1,
+              "opcoes": ["P = F resistência", "P + I = F resistência", "P = I + F resistência", "P = I"],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. O peso é equilibrado pela impulsão e pela resistência.",
               "mascote_feedback_errado": "Com velocidade constante, a resultante é nula. O peso (para baixo) é equilibrado pela impulsão e pela resistência (ambas para cima)."
             },
             {
               "pergunta": "Na AL 1.4, qual é o gráfico que permite obter uma reta?",
-              "opcoes": ["v t em função de r.", "v t em função de r².", "v t em função de 1/r.", "tempo em função de r."],
-              "correta": 1,
+              "opcoes": ["v t em função de r².", "v t em função de r.", "v t em função de 1/r.", "tempo em função de r."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. v t é proporcional a r².",
               "mascote_feedback_errado": "Pela lei de Stokes, v t é proporcional a r², por isso o gráfico v t = f(r²) é uma reta que passa pela origem."
             },
             {
               "pergunta": "Porque é que a primeira marca da proveta não deve estar junto à superfície?",
-              "opcoes": ["Para a esfera ter tempo de atingir a velocidade terminal.", "Para a esfera aquecer.", "Porque a impulsão só existe em profundidade.", "Para medir a aceleração inicial."],
-              "correta": 0,
+              "opcoes": ["Para a esfera aquecer.", "Porque a impulsão só existe em profundidade.", "Para medir a aceleração inicial.", "Para a esfera ter tempo de atingir a velocidade terminal."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. Nos primeiros centímetros a esfera ainda está a acelerar.",
               "mascote_feedback_errado": "Nos primeiros centímetros, a esfera ainda está a acelerar. Só depois de atingir a velocidade terminal é que a velocidade medida entre as marcas é constante."
             }

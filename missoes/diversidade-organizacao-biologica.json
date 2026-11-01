@@ -205,7 +205,6 @@
           "mascote_texto": "Achas que \"biodiversidade\" é só o número de espécies diferentes que existem? Há muito mais do que isso escondido nessa palavra.",
           "ponte_texto": "Vamos descobrir os três níveis que compõem a biodiversidade de um ecossistema.",
           "titulo": "Os três níveis de biodiversidade",
-          "imagem": "tres_niveis_biodiversidade.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "diversidade_genetica", "label": "Diversidade genética", "imagem": "Diversidade de genes.png", "explicacao": "A variedade de genes que existe dentro de uma mesma espécie — é o que torna, por exemplo, cada humano geneticamente único, ou permite que existam raças de cães tão diferentes entre si." },
@@ -271,7 +270,6 @@
           "mascote_texto": "Achas que a extinção de espécies é sempre um processo natural e lento? Hoje em dia, isso já não é bem verdade.",
           "titulo": "Causas da perda de biodiversidade",
           "cartao_estilo": true,
-          "imagem": "causas_extincao.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "destruicao_habitat", "label": "Destruição de habitat", "imagem": "Destruição de habitats.jpeg", "explicacao": "A principal causa de perda de biodiversidade atualmente — desflorestação, urbanização e conversão de terrenos para agricultura destroem o espaço onde as espécies vivem." },
@@ -285,7 +283,6 @@
           "tipo": "diagrama_interativo",
           "titulo": "Estratégias de conservação",
           "cartao_estilo": true,
-          "imagem": "estrategias_conservacao.png",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             { "id": "areas_protegidas", "label": "Áreas protegidas", "explicacao": "Parques nacionais e reservas naturais, onde a atividade humana é limitada ou regulada, para proteger habitats e espécies.", "imagem": "parque_nacional_peneda_geres.jpg", "imagem_fonte": { "texto": "Serra Amarela, Parque Nacional da Peneda-Gerês", "url": "https://commons.wikimedia.org/wiki/File:Serra_Amarela_(3998067385)_(2).jpg" } },

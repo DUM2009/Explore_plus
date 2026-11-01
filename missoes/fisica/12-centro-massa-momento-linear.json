@@ -46,20 +46,18 @@
           "perguntas": [
             {
               "pergunta": "Uma massa de 2,0 kg está em x = 0 e outra de 3,0 kg em x = 5,0 m. Onde está o centro de massa?",
-              "opcoes": [
+              "opcoes": ["x = 3,0 m",
                 "x = 2,0 m",
                 "x = 2,5 m",
-                "x = 3,0 m",
                 "x = 5,0 m"
               ],
-              "correta": 2,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. x CM = (2,0 × 0 + 3,0 × 5,0) / 5,0 = 3,0 m.",
               "mascote_feedback_errado": "x CM = (m₁ x₁ + m₂ x₂) / (m₁ + m₂) = (0 + 15) / 5,0 = 3,0 m. Não é o ponto médio, porque as massas são diferentes."
             },
             {
               "pergunta": "Um projétil de fogo de artifício explode no ar em vários pedaços. Desprezando a resistência do ar, o que acontece ao centro de massa dos pedaços logo após a explosão?",
-              "opcoes": [
-                "Para no ar.",
+              "opcoes": ["Para no ar.",
                 "Continua a descrever a mesma parábola que o projétil descrevia.",
                 "Sobe verticalmente.",
                 "Cai verticalmente."
@@ -70,22 +68,22 @@
             },
             {
               "pergunta": "O modelo da partícula material deixa de ser adequado quando:",
-              "opcoes": ["o corpo tem massa muito grande.", "interessa estudar a rotação ou a deformação do corpo.", "o corpo se move muito depressa.", "o corpo está sujeito a forças."],
-              "correta": 1,
+              "opcoes": ["o corpo tem massa muito grande.", "o corpo se move muito depressa.", "o corpo está sujeito a forças.", "interessa estudar a rotação ou a deformação do corpo."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. O modelo da partícula só descreve o movimento do centro de massa.",
               "mascote_feedback_errado": "O modelo da partícula só descreve o movimento do centro de massa. Se a rotação ou a deformação forem relevantes, é preciso considerar o corpo como um sistema de partículas."
             },
             {
               "pergunta": "Três partículas de 1,0 kg estão nos pontos (0 ; 0), (2,0 ; 0) e (0 ; 3,0) m. Quais são as coordenadas do centro de massa?",
-              "opcoes": ["(0,67 ; 1,0) m", "(1,0 ; 1,5) m", "(2,0 ; 3,0) m", "(0,67 ; 1,5) m"],
-              "correta": 0,
+              "opcoes": ["(1,0 ; 1,5) m", "(2,0 ; 3,0) m", "(0,67 ; 1,0) m", "(0,67 ; 1,5) m"],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. x CM = 0,67 m; y CM = 1,0 m.",
               "mascote_feedback_errado": "x CM = (0 + 2,0 + 0) / 3 = 0,67 m; y CM = (0 + 0 + 3,0) / 3 = 1,0 m."
             },
             {
               "pergunta": "Num sistema isolado (resultante das forças exteriores nula), o centro de massa:",
-              "opcoes": ["está sempre em repouso.", "está em repouso ou em movimento retilíneo uniforme.", "tem aceleração constante e não nula.", "descreve um movimento circular."],
-              "correta": 1,
+              "opcoes": ["está em repouso ou em movimento retilíneo uniforme.", "está sempre em repouso.", "tem aceleração constante e não nula.", "descreve um movimento circular."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. F R,ext = M a CM = 0, logo a CM = 0.",
               "mascote_feedback_errado": "F R,ext = M a CM = 0, logo a CM = 0: o centro de massa mantém a sua velocidade."
             }
@@ -151,20 +149,18 @@
           "perguntas": [
             {
               "pergunta": "Um passageiro de 70 kg a 15 m/s é travado até parar. Sem airbag, a travagem demora 0,005 s; com airbag, 0,10 s. Qual é a força média com airbag?",
-              "opcoes": [
-                "1,05 × 10³ N",
-                "1,05 × 10⁴ N",
+              "opcoes": ["1,05 × 10³ N",
                 "2,1 × 10⁵ N",
+                "1,05 × 10⁴ N",
                 "1,05 × 10⁶ N"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. |Δp| = 1050 kg m s⁻¹. Com airbag: F m = 1050 / 0,10 = 1,05 × 10⁴ N.",
               "mascote_feedback_errado": "A variação do momento linear é 70 × 15 = 1050 kg m s⁻¹. F m = Δp / Δt = 1050 / 0,10 = 1,05 × 10⁴ N."
             },
             {
               "pergunta": "Um canhão de 500 kg dispara uma bala de 5,0 kg a 200 m/s. Qual é a velocidade de recuo do canhão (desprezando o atrito)?",
-              "opcoes": [
-                "0,5 m/s",
+              "opcoes": ["0,5 m/s",
                 "2,0 m/s",
                 "20 m/s",
                 "200 m/s"
@@ -175,15 +171,15 @@
             },
             {
               "pergunta": "Qual é o momento linear de um carro de 1000 kg a 20 m/s?",
-              "opcoes": ["50 kg m s⁻¹", "2,0 × 10⁴ kg m s⁻¹", "2,0 × 10⁵ kg m s⁻¹", "4,0 × 10⁵ kg m s⁻¹"],
-              "correta": 1,
+              "opcoes": ["50 kg m s⁻¹", "2,0 × 10⁵ kg m s⁻¹", "4,0 × 10⁵ kg m s⁻¹", "2,0 × 10⁴ kg m s⁻¹"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. p = m v = 2,0 × 10⁴ kg m s⁻¹.",
               "mascote_feedback_errado": "p = m v = 1000 × 20 = 2,0 × 10⁴ kg m s⁻¹."
             },
             {
               "pergunta": "Dois patinadores (60 kg e 40 kg), inicialmente parados, empurram-se. O de 40 kg sai a 3,0 m/s. A que velocidade sai o outro?",
-              "opcoes": ["3,0 m/s", "2,0 m/s, em sentido oposto", "4,5 m/s, em sentido oposto", "0 m/s"],
-              "correta": 1,
+              "opcoes": ["2,0 m/s, em sentido oposto", "3,0 m/s", "4,5 m/s, em sentido oposto", "0 m/s"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. v = −2,0 m/s.",
               "mascote_feedback_errado": "0 = 40 × 3,0 + 60 × v, logo v = −2,0 m/s."
             },
@@ -289,20 +285,18 @@
           "perguntas": [
             {
               "pergunta": "Um carro de 1000 kg a 20 m/s bate num carro parado de 1500 kg e ficam presos. Com que velocidade se movem logo após a colisão?",
-              "opcoes": [
-                "20 m/s",
+              "opcoes": ["20 m/s",
                 "13 m/s",
-                "8,0 m/s",
-                "0 m/s"
+                "0 m/s",
+                "8,0 m/s"
               ],
-              "correta": 2,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. v' = 20 000 / 2500 = 8,0 m/s.",
               "mascote_feedback_errado": "Conserva o momento linear: 1000 × 20 + 1500 × 0 = (1000 + 1500) v'. v' = 20 000 / 2500 = 8,0 m/s."
             },
             {
               "pergunta": "Na colisão anterior, que fração da energia cinética inicial foi dissipada?",
-              "opcoes": [
-                "0 %",
+              "opcoes": ["0 %",
                 "40 %",
                 "60 %",
                 "100 %"
@@ -313,8 +307,8 @@
             },
             {
               "pergunta": "Numa colisão perfeitamente inelástica:",
-              "opcoes": ["o momento linear e a energia cinética conservam-se.", "o momento linear conserva-se, mas há diminuição máxima de energia cinética, e os corpos ficam juntos.", "a energia cinética conserva-se, mas o momento não.", "nem o momento nem a energia cinética se conservam."],
-              "correta": 1,
+              "opcoes": ["o momento linear conserva-se, mas há diminuição máxima de energia cinética, e os corpos ficam juntos.", "o momento linear e a energia cinética conservam-se.", "a energia cinética conserva-se, mas o momento não.", "nem o momento nem a energia cinética se conservam."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. O momento conserva-se sempre; na perfeitamente inelástica, a perda de energia é máxima.",
               "mascote_feedback_errado": "O momento conserva-se em todas as colisões (forças exteriores desprezáveis). Na perfeitamente inelástica, os corpos ficam juntos e a perda de energia cinética é a maior possível."
             },
@@ -327,8 +321,8 @@
             },
             {
               "pergunta": "Na AL 1.3, um carrinho aproxima-se do alvo fixo a 0,80 m/s e afasta-se a 0,52 m/s. Qual é o coeficiente de restituição?",
-              "opcoes": ["0,28", "0,65", "1,5", "0,42"],
-              "correta": 1,
+              "opcoes": ["0,28", "1,5", "0,42", "0,65"],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. e = 0,52 / 0,80 = 0,65.",
               "mascote_feedback_errado": "e = v afastamento / v aproximação = 0,52 / 0,80 = 0,65."
             }

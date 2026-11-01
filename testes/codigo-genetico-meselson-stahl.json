@@ -1,0 +1,387 @@
+{
+  "id": "codigo-genetico-meselson-stahl",
+  "titulo": "Teste: Código Genético — Meselson e Stahl",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — O protocolo e a lógica da experiência",
+      "texto_apoio": "Numa reprodução da experiência de Meselson e Stahl, cultivaram-se bactérias Escherichia coli durante muitas gerações num meio cuja única fonte de azoto continha ¹⁵N. Depois, as bactérias foram transferidas para um meio cuja única fonte de azoto continha ¹⁴N. A intervalos regulares, recolheram-se amostras, extraiu-se o ADN e centrifugou-se numa solução de cloreto de césio (CsCl), formando-se bandas, que se identificaram por absorção de luz ultravioleta."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Análise de dados",
+      "texto_apoio": "A Tabela 1 apresenta a percentagem de ADN em cada banda, em amostras recolhidas ao longo do tempo, após a transferência das bactérias para o meio com ¹⁴N (Experiência A).",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Experiência A: distribuição do ADN pelas bandas (%)",
+        "colunas": [
+          "Tempo após a transferência (min)",
+          "ADN pesado",
+          "ADN híbrido",
+          "ADN leve"
+        ],
+        "linhas": [
+          [
+            "0",
+            "100",
+            "0",
+            "0"
+          ],
+          [
+            "20",
+            "0",
+            "100",
+            "0"
+          ],
+          [
+            "40",
+            "0",
+            "50",
+            "50"
+          ],
+          [
+            "60",
+            "0",
+            "25",
+            "75"
+          ],
+          [
+            "80",
+            "0",
+            "12,5",
+            "87,5"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Raciocínio crítico"
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "Numa solução de CsCl submetida a ultracentrifugação, as moléculas de ADN distribuem-se ao longo do tubo",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "por ordem do seu comprimento, ficando as mais longas no fundo."
+        },
+        {
+          "letra": "B",
+          "texto": "por ordem da sua carga elétrica, ficando as mais negativas no fundo."
+        },
+        {
+          "letra": "C",
+          "texto": "em posições em que a sua densidade é igual à da solução."
+        },
+        {
+          "letra": "D",
+          "texto": "por ordem do número de cadeias, ficando as de cadeia dupla no fundo."
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 10
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "As bactérias foram mantidas durante muitas gerações no meio com ¹⁵N antes da transferência, para",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "aumentar o número de bactérias disponíveis para a experiência."
+        },
+        {
+          "letra": "B",
+          "texto": "garantir que praticamente todo o ADN inicial era ¹⁵N/¹⁵N."
+        },
+        {
+          "letra": "C",
+          "texto": "tornar o ADN radioativo."
+        },
+        {
+          "letra": "D",
+          "texto": "impedir que as bactérias se dividissem no meio seguinte."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada resultado experimental hipotético (Coluna I) ao(s) modelo(s) de replicação que esse resultado permite rejeitar (Coluna II).",
+      "coluna_esquerda": [
+        {
+          "letra": "a",
+          "texto": "Na geração 1, uma única banda, de densidade intermédia."
+        },
+        {
+          "letra": "b",
+          "texto": "Na geração 2, duas bandas, uma de densidade intermédia e outra de ADN leve."
+        },
+        {
+          "letra": "c",
+          "texto": "Na geração 1, duas bandas, uma de ADN pesado e outra de ADN leve."
+        },
+        {
+          "letra": "d",
+          "texto": "Na geração 0, uma única banda, de ADN pesado."
+        }
+      ],
+      "coluna_direita": [
+        {
+          "numero": "1",
+          "texto": "Apenas o modelo conservativo"
+        },
+        {
+          "numero": "2",
+          "texto": "Apenas o modelo dispersivo"
+        },
+        {
+          "numero": "3",
+          "texto": "Os modelos conservativo e dispersivo"
+        },
+        {
+          "numero": "4",
+          "texto": "Os modelos semiconservativo e dispersivo"
+        },
+        {
+          "numero": "5",
+          "texto": "Nenhum dos três modelos"
+        }
+      ],
+      "resposta_correta": {
+        "a": "1",
+        "b": "3",
+        "c": "4",
+        "d": "5"
+      },
+      "cotacao": 20
+    },
+    {
+      "id": "p4",
+      "grupo": 1,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica por que razão o resultado obtido na geração 1 (uma única banda intermédia) não permite, por si só, escolher entre o modelo semiconservativo e o modelo dispersivo, e indica que resultado, obtido numa geração posterior, permite fazer essa escolha.",
+      "criterios_correcao": "Deve explicar que, na geração 1, tanto o modelo semiconservativo (cada molécula tem uma cadeia antiga e uma nova) como o dispersivo (cada molécula tem cadeias com segmentos antigos e novos misturados) preveem uma única banda de densidade intermédia, pelo que o resultado é compatível com ambos. Deve indicar que a geração 2 permite a escolha: o modelo semiconservativo prevê duas bandas (50% intermédia e 50% leve), enquanto o dispersivo prevê uma única banda, com densidade menor do que a da intermédia. O aparecimento de duas bandas na geração 2 rejeita o dispersivo.",
+      "cotacao": 24
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 1, o tempo de geração destas bactérias, nas condições da experiência, é de",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "10 minutos."
+        },
+        {
+          "letra": "B",
+          "texto": "20 minutos."
+        },
+        {
+          "letra": "C",
+          "texto": "40 minutos."
+        },
+        {
+          "letra": "D",
+          "texto": "80 minutos."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 10
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Admitindo que o padrão da Tabela 1 se mantém, a percentagem de ADN híbrido numa amostra recolhida aos 100 minutos é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "3,125%"
+        },
+        {
+          "letra": "B",
+          "texto": "6,25%"
+        },
+        {
+          "letra": "C",
+          "texto": "10%"
+        },
+        {
+          "letra": "D",
+          "texto": "25%"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Na Experiência B, bactérias cultivadas durante muitas gerações em ¹⁴N foram transferidas para um meio com ¹⁵N. Segundo o modelo semiconservativo, uma amostra recolhida 60 minutos após a transferência (tempo de geração de 20 minutos) apresenta",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "25% de ADN híbrido e 75% de ADN pesado."
+        },
+        {
+          "letra": "B",
+          "texto": "75% de ADN híbrido e 25% de ADN pesado."
+        },
+        {
+          "letra": "C",
+          "texto": "25% de ADN híbrido e 75% de ADN leve."
+        },
+        {
+          "letra": "D",
+          "texto": "100% de ADN híbrido."
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 12
+    },
+    {
+      "id": "p8",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Na Experiência C, bactérias cultivadas durante muitas gerações em ¹⁵N foram transferidas para um meio com ¹⁴N durante exatamente uma geração e, de seguida, voltaram a ser transferidas para um meio com ¹⁵N durante exatamente uma geração. Segundo o modelo semiconservativo, a amostra final apresenta",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "100% de ADN híbrido."
+        },
+        {
+          "letra": "B",
+          "texto": "50% de ADN pesado e 50% de ADN híbrido."
+        },
+        {
+          "letra": "C",
+          "texto": "50% de ADN híbrido e 50% de ADN leve."
+        },
+        {
+          "letra": "D",
+          "texto": "25% de ADN pesado, 50% de ADN híbrido e 25% de ADN leve."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 14
+    },
+    {
+      "id": "p9",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Sabe-se que a densidade do ADN totalmente ¹⁴N é 1,710 g/cm³ e a do ADN totalmente ¹⁵N é 1,724 g/cm³, e que a densidade de uma molécula varia linearmente com a fração de azoto que é ¹⁵N. Segundo o modelo dispersivo, o ADN da geração 2 (a partir de ADN inicialmente pesado, transferido para ¹⁴N) formaria uma única banda com a densidade de",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "1,7100 g/cm³"
+        },
+        {
+          "letra": "B",
+          "texto": "1,7135 g/cm³"
+        },
+        {
+          "letra": "C",
+          "texto": "1,7170 g/cm³"
+        },
+        {
+          "letra": "D",
+          "texto": "1,7205 g/cm³"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 14
+    },
+    {
+      "id": "p10",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Segundo o modelo semiconservativo, a percentagem de ADN híbrido numa amostra passa a ser inferior a 1% a partir da geração",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "6"
+        },
+        {
+          "letra": "B",
+          "texto": "7"
+        },
+        {
+          "letra": "C",
+          "texto": "8"
+        },
+        {
+          "letra": "D",
+          "texto": "9"
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12
+    },
+    {
+      "id": "p11",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno afirma: \"Mesmo sem os resultados da geração 2, a desnaturação por calor do ADN híbrido da geração 1 teria permitido distinguir o modelo semiconservativo do modelo dispersivo, se tivesse originado duas bandas de cadeias simples, uma pesada e outra leve.\" Comenta criticamente esta afirmação, indicando o que cada um dos dois modelos preveria para esse ADN desnaturado.",
+      "criterios_correcao": "O aluno tem razão. Deve explicar que, no modelo semiconservativo, o ADN híbrido é formado por uma cadeia inteiramente pesada e uma cadeia inteiramente leve, pelo que, depois de separadas, originam duas bandas (uma pesada e outra leve). No modelo dispersivo, cada cadeia seria uma mistura de segmentos antigos (¹⁵N) e novos (¹⁴N), com densidade intermédia, pelo que o ADN desnaturado originaria uma única banda de cadeias simples, de densidade intermédia. Logo, esse resultado distingue os dois modelos já na geração 1.",
+      "cotacao": 24
+    },
+    {
+      "id": "p12",
+      "grupo": 3,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno conclui: \"A experiência de Meselson e Stahl provou que a replicação do ADN é semiconservativa em todos os seres vivos.\" Comenta criticamente esta conclusão.",
+      "criterios_correcao": "Deve comentar que a experiência foi realizada em E. coli, uma bactéria, e que um único estudo num organismo não prova que o mecanismo seja igual em todos os seres vivos. A generalização exige outros estudos noutros organismos (por exemplo, em células eucarióticas, que mais tarde confirmaram resultados análogos). Deve ainda referir que o conhecimento científico é sustentado por evidências convergentes, e que a conclusão deveria ter sido formulada como evidência a favor do modelo semiconservativo para a bactéria estudada, sem extrapolação automática.",
+      "cotacao": 22
+    },
+    {
+      "id": "p13",
+      "grupo": 3,
+      "tipo": "ordenacao",
+      "enunciado": "Ordena, de A a E, as etapas do protocolo experimental, pela sequência em que foram realizadas.",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "Extração do ADN das amostras."
+        },
+        {
+          "letra": "B",
+          "texto": "Ultracentrifugação em gradiente de cloreto de césio."
+        },
+        {
+          "letra": "C",
+          "texto": "Crescimento prolongado das bactérias em meio com ¹⁵N."
+        },
+        {
+          "letra": "D",
+          "texto": "Transferência das bactérias para meio com ¹⁴N."
+        },
+        {
+          "letra": "E",
+          "texto": "Recolha de amostras de bactérias a intervalos correspondentes a uma geração."
+        }
+      ],
+      "resposta_correta": [
+        "C",
+        "D",
+        "E",
+        "A",
+        "B"
+      ],
+      "cotacao": 16
+    }
+  ]
+}

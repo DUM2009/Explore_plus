@@ -88,46 +88,44 @@
           "perguntas": [
             {
               "pergunta": "Um carro com 1000 kg desloca-se a 20 m/s. Qual é a sua energia cinética?",
-              "opcoes": [
+              "opcoes": ["2,0 × 10⁵ J",
                 "1,0 × 10⁴ J",
                 "2,0 × 10⁴ J",
-                "2,0 × 10⁵ J",
                 "4,0 × 10⁵ J"
               ],
-              "correta": 2,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Ec = ½ × 1000 × 20² = ½ × 1000 × 400 = 2,0 × 10⁵ J.",
               "mascote_feedback_errado": "Não te esqueças de elevar a velocidade ao quadrado: Ec = ½ × 1000 × 20² = 500 × 400 = 2,0 × 10⁵ J."
             },
             {
               "pergunta": "Se a velocidade de um corpo duplicar, a sua energia cinética...",
-              "opcoes": [
-                "também duplica.",
-                "fica quatro vezes maior.",
+              "opcoes": ["também duplica.",
                 "fica reduzida a metade.",
+                "fica quatro vezes maior.",
                 "mantém-se, porque a massa não mudou."
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Isso mesmo. Como a velocidade está ao quadrado, 2² = 4. É por isso que um choque a 100 km/h é muito mais grave do que a 50 km/h: tem quatro vezes mais energia cinética.",
               "mascote_feedback_errado": "A energia cinética é proporcional ao quadrado da velocidade. Se v passa para 2v, Ec passa para (2)² = 4 vezes o valor inicial."
             },
             {
               "pergunta": "Qual das seguintes afirmações descreve corretamente a vizinhança de um sistema?",
-              "opcoes": ["É a parte do sistema mais próxima da fronteira.", "É tudo o que está fora do sistema e pode interagir com ele.", "É a linha que separa o sistema do resto do universo.", "É o ponto onde se concentra a massa do sistema."],
-              "correta": 1,
+              "opcoes": ["É a parte do sistema mais próxima da fronteira.", "É a linha que separa o sistema do resto do universo.", "É o ponto onde se concentra a massa do sistema.", "É tudo o que está fora do sistema e pode interagir com ele."],
+              "correta": 3,
               "mascote_feedback_certo": "Exato. A vizinhança é tudo o que fica fora da fronteira.",
               "mascote_feedback_errado": "A vizinhança é tudo o que fica fora da fronteira. A fronteira é a linha de separação e o ponto onde se considera concentrada a massa é o centro de massa."
             },
             {
               "pergunta": "Um carro com 1000 kg desloca-se a 20 m/s. Qual é a sua energia cinética?",
-              "opcoes": ["1,0 × 10⁴ J", "2,0 × 10⁴ J", "2,0 × 10⁵ J", "4,0 × 10⁵ J"],
-              "correta": 2,
+              "opcoes": ["1,0 × 10⁴ J", "2,0 × 10⁵ J", "2,0 × 10⁴ J", "4,0 × 10⁵ J"],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. Ec = ½ × 1000 × 20² = ½ × 1000 × 400 = 2,0 × 10⁵ J.",
               "mascote_feedback_errado": "Não te esqueças de elevar a velocidade ao quadrado: Ec = ½ × 1000 × 20² = 500 × 400 = 2,0 × 10⁵ J."
             },
             {
               "pergunta": "Se a velocidade de um corpo duplicar, a sua energia cinética...",
-              "opcoes": ["também duplica.", "fica quatro vezes maior.", "fica reduzida a metade.", "mantém-se, porque a massa não mudou."],
-              "correta": 1,
+              "opcoes": ["fica quatro vezes maior.", "também duplica.", "fica reduzida a metade.", "mantém-se, porque a massa não mudou."],
+              "correta": 0,
               "mascote_feedback_certo": "Isso mesmo. Como a velocidade está ao quadrado, 2² = 4. É por isso que um choque a 100 km/h é muito mais grave do que a 50 km/h: tem quatro vezes mais energia cinética.",
               "mascote_feedback_errado": "A energia cinética é proporcional ao quadrado da velocidade. Se v passa para 2v, Ec passa para (2)² = 4 vezes o valor inicial."
             },
@@ -291,20 +289,18 @@
           "perguntas": [
             {
               "pergunta": "Puxas uma caixa com uma força de 20 N que faz um ângulo de 60° com a horizontal. A caixa desloca-se 5 m na horizontal. Qual é o trabalho realizado por essa força? (cos 60° = 0,50)",
-              "opcoes": [
-                "100 J",
+              "opcoes": ["100 J",
                 "87 J",
-                "50 J",
-                "10 J"
+                "10 J",
+                "50 J"
               ],
-              "correta": 2,
+              "correta": 3,
               "mascote_feedback_certo": "Exato. W = 20 × 5 × cos 60° = 100 × 0,50 = 50 J. Só metade da força foi aproveitada.",
               "mascote_feedback_errado": "Não te esqueças do cos α. W = F d cos α = 20 × 5 × 0,50 = 50 J."
             },
             {
               "pergunta": "Um satélite descreve uma órbita circular em torno da Terra. A força gravítica aponta sempre para o centro da órbita. Qual é o trabalho dessa força?",
-              "opcoes": [
-                "Positivo, porque o satélite se move.",
+              "opcoes": ["Positivo, porque o satélite se move.",
                 "Negativo, porque puxa o satélite para dentro.",
                 "Nulo, porque em cada instante a força é perpendicular ao movimento.",
                 "Impossível de saber sem a massa do satélite."
@@ -315,22 +311,22 @@
             },
             {
               "pergunta": "Puxas uma caixa com uma força de 20 N que faz um ângulo de 60° com a horizontal. A caixa desloca-se 5 m na horizontal. Qual é o trabalho realizado por essa força? (cos 60° = 0,50)",
-              "opcoes": ["100 J", "87 J", "50 J", "10 J"],
-              "correta": 2,
+              "opcoes": ["50 J", "100 J", "87 J", "10 J"],
+              "correta": 0,
               "mascote_feedback_certo": "Exato. W = 20 × 5 × cos 60° = 100 × 0,50 = 50 J. Só metade da força foi aproveitada.",
               "mascote_feedback_errado": "Não te esqueças do cos α. W = F d cos α = 20 × 5 × 0,50 = 50 J."
             },
             {
               "pergunta": "Um satélite descreve uma órbita circular em torno da Terra. A força gravítica aponta sempre para o centro da órbita. Qual é o trabalho dessa força?",
-              "opcoes": ["Positivo, porque o satélite se move.", "Negativo, porque puxa o satélite para dentro.", "Nulo, porque em cada instante a força é perpendicular ao movimento.", "Impossível de saber sem a massa do satélite."],
-              "correta": 2,
+              "opcoes": ["Positivo, porque o satélite se move.", "Nulo, porque em cada instante a força é perpendicular ao movimento.", "Negativo, porque puxa o satélite para dentro.", "Impossível de saber sem a massa do satélite."],
+              "correta": 1,
               "mascote_feedback_certo": "Muito bem. Se a força é sempre perpendicular ao movimento, não transfere energia. Por isso a rapidez do satélite se mantém constante.",
               "mascote_feedback_errado": "Olha para o ângulo: a força aponta para o centro e o movimento é tangente à órbita, portanto α = 90° e cos 90° = 0. O trabalho é nulo."
             },
             {
               "pergunta": "Sobre um bloco que desliza numa superfície horizontal atuam o peso, a reação normal, uma força de tração horizontal e o atrito. Quais destas forças realizam trabalho nulo?",
-              "opcoes": ["A tração e o atrito.", "O peso e a reação normal.", "Só o peso.", "Nenhuma: todas realizam trabalho."],
-              "correta": 1,
+              "opcoes": ["A tração e o atrito.", "Só o peso.", "Nenhuma: todas realizam trabalho.", "O peso e a reação normal."],
+              "correta": 3,
               "mascote_feedback_certo": "Exato. O peso e a reação normal são perpendiculares ao deslocamento horizontal (α = 90°), por isso o seu trabalho é nulo.",
               "mascote_feedback_errado": "O peso e a reação normal são perpendiculares ao deslocamento horizontal (α = 90°), por isso o seu trabalho é nulo. A tração realiza trabalho potente e o atrito trabalho resistente."
             },
@@ -343,8 +339,8 @@
             },
             {
               "pergunta": "Sobre um corpo atuam duas forças: uma realiza 40 J de trabalho e a outra −15 J. Qual é o trabalho da força resultante?",
-              "opcoes": ["55 J", "25 J", "−25 J", "40 J"],
-              "correta": 1,
+              "opcoes": ["55 J", "−25 J", "40 J", "25 J"],
+              "correta": 3,
               "mascote_feedback_certo": "Exato. O trabalho da resultante é a soma dos trabalhos de todas as forças: 40 + (−15) = 25 J.",
               "mascote_feedback_errado": "O trabalho da resultante é a soma dos trabalhos de todas as forças: 40 + (−15) = 25 J."
             }
@@ -487,25 +483,23 @@
           "perguntas": [
             {
               "pergunta": "Um livro de 2 kg é levantado do chão até uma prateleira a 1,5 m de altura. Qual é o trabalho realizado pelo peso?",
-              "opcoes": [
+              "opcoes": ["−29 J",
                 "29 J",
-                "−29 J",
                 "3,0 J",
                 "0 J, porque o livro fica parado no fim"
               ],
-              "correta": 1,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. O livro sobe, o peso aponta para baixo: trabalho resistente. W(P) = −m g h = −2 × 9,8 × 1,5 = −29,4 J ≈ −29 J.",
               "mascote_feedback_errado": "O peso aponta para baixo e o livro sobe, por isso o trabalho do peso é negativo: W(P) = −m g h = −2 × 9,8 × 1,5 = −29,4 J ≈ −29 J. O facto de ficar parado no fim não interessa: conta o deslocamento."
             },
             {
               "pergunta": "Um carrinho com 2 kg parte do repouso e, depois de todas as forças terem realizado um trabalho total de 36 J, qual é a sua velocidade?",
-              "opcoes": [
-                "3 m/s",
-                "6 m/s",
+              "opcoes": ["3 m/s",
                 "18 m/s",
+                "6 m/s",
                 "36 m/s"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Muito bem. W(FR) = ΔEc → 36 = ½ × 2 × v² − 0 → v² = 36 → v = 6 m/s.",
               "mascote_feedback_errado": "Aplica o teorema: W(FR) = Ec,final − Ec,inicial. Como parte do repouso, Ec,inicial = 0. 36 = ½ × 2 × v², logo v² = 36 e v = 6 m/s."
             },
@@ -525,8 +519,8 @@
             },
             {
               "pergunta": "Um carro de 1000 kg trava de 20 m/s até parar. Qual é o trabalho realizado pela resultante das forças?",
-              "opcoes": ["2,0 × 10⁵ J", "−2,0 × 10⁵ J", "−1,0 × 10⁴ J", "0 J"],
-              "correta": 1,
+              "opcoes": ["−2,0 × 10⁵ J", "2,0 × 10⁵ J", "−1,0 × 10⁴ J", "0 J"],
+              "correta": 0,
               "mascote_feedback_certo": "Exato. W(FR) = ΔEc = 0 − ½ × 1000 × 20² = −2,0 × 10⁵ J. Negativo, porque o carro perdeu energia cinética.",
               "mascote_feedback_errado": "W(FR) = ΔEc = 0 − ½ × 1000 × 20² = −2,0 × 10⁵ J. Negativo, porque o carro perdeu energia cinética."
             }
@@ -611,20 +605,18 @@
           "perguntas": [
             {
               "pergunta": "Uma bola com 0,5 kg cai do repouso de uma altura de 2,0 m. Desprezando a resistência do ar, com que velocidade chega ao chão?",
-              "opcoes": [
-                "2,0 m/s",
+              "opcoes": ["2,0 m/s",
                 "4,0 m/s",
-                "6,3 m/s",
-                "20 m/s"
+                "20 m/s",
+                "6,3 m/s"
               ],
-              "correta": 2,
+              "correta": 3,
               "mascote_feedback_certo": "Isso mesmo. m g h = ½ m v², logo v = √(2 × 9,8 × 2,0) = √39,2 ≈ 6,3 m/s. Repara que a massa se cancelou.",
               "mascote_feedback_errado": "Iguala a energia mecânica no início e no fim: m g h = ½ m v². A massa cancela: v = √(2 g h) = √(2 × 9,8 × 2,0) = √39,2 ≈ 6,3 m/s."
             },
             {
               "pergunta": "Um esquiador com 60 kg parte do repouso do topo de uma pista com 20 m de desnível e chega ao fundo a 15 m/s. Qual foi o trabalho das forças não conservativas?",
-              "opcoes": [
-                "−5,0 × 10³ J",
+              "opcoes": ["−5,0 × 10³ J",
                 "−1,2 × 10⁴ J",
                 "6,75 × 10³ J",
                 "0 J"
@@ -635,8 +627,8 @@
             },
             {
               "pergunta": "Um corpo desce uma rampa sem atrito. Durante a descida:",
-              "opcoes": ["a energia cinética e a potencial gravítica aumentam.", "a energia potencial gravítica diminui e a energia mecânica mantém-se.", "a energia mecânica diminui, porque o corpo desce.", "a energia cinética mantém-se, porque não há atrito."],
-              "correta": 1,
+              "opcoes": ["a energia cinética e a potencial gravítica aumentam.", "a energia mecânica diminui, porque o corpo desce.", "a energia cinética mantém-se, porque não há atrito.", "a energia potencial gravítica diminui e a energia mecânica mantém-se."],
+              "correta": 3,
               "mascote_feedback_certo": "Exato. Sem forças dissipativas, a energia mecânica conserva-se. O que diminui em Epg aumenta em Ec.",
               "mascote_feedback_errado": "Sem forças dissipativas, a energia mecânica conserva-se. O que diminui em Epg aumenta em Ec."
             },
@@ -683,20 +675,19 @@
           "perguntas": [
             {
               "pergunta": "Um motor eleva uma carga de 500 kg a 10 m de altura, com velocidade constante, em 20 s. O motor consome uma potência de 4000 W. Qual é o seu rendimento?",
-              "opcoes": [
-                "25 %",
+              "opcoes": ["25 %",
                 "50 %",
-                "61 %",
-                "80 %"
+                "80 %",
+                "61 %"
               ],
-              "correta": 2,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. E útil = m g h = 500 × 9,8 × 10 = 4,9 × 10⁴ J. P útil = 4,9 × 10⁴ / 20 = 2450 W. η = 2450 / 4000 × 100 ≈ 61 %.",
               "mascote_feedback_errado": "Calcula primeiro a energia útil: E = m g h = 500 × 9,8 × 10 = 49 000 J. Depois a potência útil: 49 000 / 20 = 2450 W. Rendimento: 2450 / 4000 × 100 ≈ 61 %."
             },
             {
               "pergunta": "Dois alunos com a mesma massa sobem a mesma escada. O João demora 10 s e a Rita 20 s. Qual das afirmações é correta?",
-              "opcoes": ["O João transferiu mais energia.", "A Rita desenvolveu maior potência.", "Transferiram a mesma energia, mas o João desenvolveu o dobro da potência.", "Desenvolveram a mesma potência, porque a altura é igual."],
-              "correta": 2,
+              "opcoes": ["O João transferiu mais energia.", "Transferiram a mesma energia, mas o João desenvolveu o dobro da potência.", "A Rita desenvolveu maior potência.", "Desenvolveram a mesma potência, porque a altura é igual."],
+              "correta": 1,
               "mascote_feedback_certo": "Exato. A energia necessária (m g h) é igual para os dois. Como P = E / Δt, quem demora metade do tempo desenvolve o dobro da potência.",
               "mascote_feedback_errado": "A energia necessária (m g h) é igual para os dois. Como P = E / Δt, quem demora metade do tempo desenvolve o dobro da potência."
             }

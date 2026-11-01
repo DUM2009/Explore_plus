@@ -1,213 +1,871 @@
 {
   "missao_id": "codigo-da-vida",
-  "titulo": "O Código da Vida",
+  "titulo": "Código Genético",
   "disciplina": "genetica",
+  "xp_total": 150,
   "imagem": "Wallpaper DNA.png",
-  "badge": { "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m10 16 1.5 1.5\"/><path d=\"m14 8-1.5-1.5\"/><path d=\"M15 2c-1.798 1.998-2.518 3.995-2.807 5.993\"/><path d=\"m16.5 10.5 1 1\"/><path d=\"m17 6-2.891-2.891\"/><path d=\"M2 15c6.667-6 13.333 0 20-6\"/><path d=\"m20 9 .891.891\"/><path d=\"M3.109 14.109 4 15\"/><path d=\"m6.5 12.5 1 1\"/><path d=\"m7 18 2.891 2.891\"/><path d=\"M9 22c1.798-1.998 2.518-3.995 2.807-5.993\"/></svg>", "nome": "Mestre do Código Genético" },
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m10 16 1.5 1.5\"/><path d=\"m14 8-1.5-1.5\"/><path d=\"M15 2c-1.798 1.998-2.518 3.995-2.807 5.993\"/><path d=\"m16.5 10.5 1 1\"/><path d=\"m17 6-2.891-2.891\"/><path d=\"M2 15c6.667-6 13.333 0 20-6\"/><path d=\"m20 9 .891.891\"/><path d=\"M3.109 14.109 4 15\"/><path d=\"m6.5 12.5 1 1\"/><path d=\"m7 18 2.891 2.891\"/><path d=\"M9 22c1.798-1.998 2.518-3.995 2.807-5.993\"/></svg>",
+    "nome": "Mestre do Código Genético"
+  },
   "secoes": [
     {
-      "secao_id": "adn-ao-cromossoma",
-      "titulo": "Do ADN ao cromossoma",
-      "xp": 20,
-      "tempo_estimado_min": 5,
+      "secao_id": "nucleotidos",
+      "titulo": "Nucleótidos: os tijolos dos ácidos nucleicos",
+      "xp": 25,
+      "tempo_estimado_min": 7,
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
-          "mascote_texto": "O ADN de uma única célula tua, esticado, teria quase 2 metros de comprimento — mas cabe todo dentro de um núcleo microscópico. Como é que isso é possível?",
-          "ponte_texto": "A resposta está em vários níveis de organização, do ADN em si até ao cromossoma. Conhece-os a seguir.",
-          "titulo": "Do ADN ao cromossoma",
+          "pontos_seta": true,
+          "titulo": "O nucleótido",
+          "imagem": "cv_nucleotido.png",
+          "imagem_legenda": "Um nucleótido desmontado em três peças coloridas: o grupo fosfato, a pentose (com os carbonos numerados de 1' a 5') e a base azotada. Um botão \"Ver ADN / Ver ARN\" troca a pentose e a base.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "Um nucleótido tem três peças: um grupo fosfato, uma pentose e uma base azotada. Toca em cada uma para veres o nome e a função. O que muda entre o ADN e o ARN é a pentose e uma das bases.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "adn", "label": "ADN", "explicacao": "Molécula em dupla hélice que guarda toda a informação genética de um ser vivo, escrita numa sequência de quatro bases azotadas (A, T, C, G)." },
-            { "id": "gene", "label": "Gene", "explicacao": "Um segmento de ADN que contém a informação necessária para produzir uma proteína específica ou determinar uma característica do organismo." },
-            { "id": "cromatina", "label": "Cromatina", "explicacao": "A forma como o ADN se apresenta na maior parte do ciclo de vida da célula — enrolado à volta de proteínas (histonas), como um fio à volta de um carrinho, para caber dentro do núcleo." },
-            { "id": "cromossoma", "label": "Cromossoma", "explicacao": "A forma mais condensada e organizada da cromatina, visível ao microscópio sobretudo durante a divisão celular — cada espécie tem um número característico de cromossomas (o ser humano tem 46)." },
-            { "id": "genoma", "label": "Genoma", "explicacao": "O conjunto de toda a informação genética (todo o ADN) de um organismo — no ser humano, distribuído por 23 pares de cromossomas." }
+            {
+              "id": "p1",
+              "label": "Grupo fosfato",
+              "explicacao": "Liga-se ao carbono 5' da pentose. Dá carga negativa à molécula, o que torna os ácidos nucleicos ácidos. É igual no ADN e no ARN."
+            },
+            {
+              "id": "p2",
+              "label": "Pentose",
+              "explicacao": "Açúcar com 5 carbonos. No ADN é a **desoxirribose**; no ARN é a **ribose**, que tem um grupo -OH a mais no carbono 2'."
+            },
+            {
+              "id": "p3",
+              "label": "Base azotada",
+              "explicacao": "Liga-se ao carbono 1' da pentose. No ADN: adenina (A), guanina (G), citosina (C) e timina (T). No ARN, a timina é substituída por **uracilo** (U).",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Pensa nisto como...**\n\nUm nucleótido é como uma **peça de LEGO com três encaixes**: a base (a parte que varia, como a cor da peça), a pentose (o corpo da peça) e o fosfato (o encaixe que liga à peça seguinte). O que muda de peça para peça é só a \"cor\": A, G, C ou T."
+            }
           ],
           "aprofundar": {
-            "titulo": "Quanto ADN cabe mesmo dentro de um núcleo?",
-            "texto": "Se esticasses todo o ADN de uma única célula humana, formarias um fio com cerca de 2 metros de comprimento — e ainda assim cabe dentro de um núcleo com apenas alguns milésimos de milímetro de diâmetro. Isto só é possível graças a vários níveis de enrolamento: o ADN enrola-se à volta de proteínas histonas formando nucleossomas (como contas num colar), que por sua vez se enrolam e condensam repetidamente até formar a cromatina e, no momento da divisão celular, os cromossomas bem organizados e compactos."
+            "titulo": "Nucleósido, nucleótido e a ligação fosfodiéster",
+            "texto": "Uma pentose ligada a uma base azotada forma um **nucleósido**. Se lhe juntarmos um grupo fosfato, obtém-se um **nucleótido**.\n\nPara formar uma cadeia, o grupo fosfato ligado ao carbono 5' de um nucleótido liga-se ao grupo -OH do carbono 3' do nucleótido anterior. Esta ligação covalente chama-se **ligação fosfodiéster** e forma-se por reação de condensação (com libertação de água).\n\nO resultado é uma cadeia com uma extremidade 5' (com fosfato livre) e uma extremidade 3' (com -OH livre).",
+            "estilo": "interrogacao"
+          }
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Purinas e pirimidinas",
+          "imagem": "cv_purinas_pirimidinas.png",
+          "imagem_legenda": "As cinco bases azotadas desenhadas e agrupadas: as purinas (adenina e guanina), com dois anéis, e as pirimidinas (citosina, timina e uracilo), com um só anel.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "As bases dividem-se em dois grupos conforme a estrutura. Toca em cada grupo para veres que bases o formam.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Purinas",
+              "explicacao": "Adenina (A) e guanina (G). Têm **dois anéis**."
+            },
+            {
+              "id": "p2",
+              "label": "Pirimidinas",
+              "explicacao": "Citosina (C), timina (T) e uracilo (U). Têm **um só anel**."
+            }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é a diferença de composição entre um nucleótido de ADN e um de ARN?",
+              "opcoes": [
+                "Só a pentose e uma das bases",
+                "O número de grupos fosfato e a pentose"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo. A pentose (desoxirribose ou ribose) e a base (T ou U) são as duas diferenças. O grupo fosfato é igual.",
+              "mascote_feedback_errado": "Quase. O grupo fosfato é igual nos dois. As diferenças estão na pentose e numa das bases."
+            },
+            {
+              "pergunta": "Quais destas bases são purinas?",
+              "opcoes": [
+                "Adenina e guanina",
+                "Citosina e timina"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. As purinas (A e G) têm dois anéis, e as pirimidinas (C, T e U) têm um só.",
+              "mascote_feedback_errado": "Não. Citosina e timina têm um só anel: são pirimidinas. As purinas são a adenina e a guanina."
+            },
+            {
+              "pergunta": "Um nucleósido é formado por:",
+              "opcoes": [
+                "Pentose + base azotada",
+                "Pentose + grupo fosfato"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. Pentose mais base azotada é um nucleósido. Com o grupo fosfato, passa a nucleótido.",
+              "mascote_feedback_errado": "Não é bem assim. O grupo fosfato é o que distingue o nucleótido do nucleósido. O nucleósido é só pentose + base azotada."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: o uracilo existe no ADN.",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. O uracilo existe no ARN, onde substitui a timina.",
+              "mascote_feedback_errado": "Na verdade é falso. O uracilo existe no ARN, onde substitui a timina."
+            },
+            {
+              "pergunta": "A ligação fosfodiéster estabelece-se entre:",
+              "opcoes": [
+                "O carbono 5' de um nucleótido e a base do seguinte",
+                "O fosfato ligado ao carbono 5' de um nucleótido e o carbono 3' do nucleótido anterior"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo. É o que liga os nucleótidos em cadeia, formando o esqueleto açúcar-fosfato.",
+              "mascote_feedback_errado": "Não. A ligação fosfodiéster junta o fosfato (carbono 5') de um nucleótido ao carbono 3' do nucleótido anterior. As bases não participam."
+            }
+          ],
+          "mascote_conclusao": "Já conheces a peça. A seguir, vamos ver como essas peças se juntam para formar uma hélice."
+        }
+      ]
+    },
+    {
+      "secao_id": "dupla-helice",
+      "titulo": "Do polinucleótido à dupla hélice",
+      "xp": 25,
+      "tempo_estimado_min": 9,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "layout": "timeline",
+          "titulo": "As pistas que fecharam o puzzle",
+          "imagem": "cv_linha_tempo_adn.png",
+          "imagem_legenda": "Linha do tempo com quatro marcos, cada um com um pequeno ícone: Chargaff, Franklin e Wilkins, Watson e Crick, e o Prémio Nobel.",
+          "instrucao": "Clica em cada marco da linha do tempo para veres o que aconteceu.",
+          "pontos": [
+            {
+              "id": "chargaff",
+              "label": "Erwin Chargaff (c. 1950)",
+              "explicacao": "Analisou o ADN de várias espécies e concluiu que a quantidade de adenina é igual à de timina (A = T) e a de guanina igual à de citosina (G = C). Logo, purinas = pirimidinas. A proporção (A + T) / (G + C), contudo, varia de espécie para espécie."
+            },
+            {
+              "id": "franklin-wilkins",
+              "label": "Rosalind Franklin e Maurice Wilkins (1951-1952)",
+              "explicacao": "Com difração de raios X, obtiveram imagens que mostravam que o ADN tem forma helicoidal, com repetições regulares. A mais famosa é a \"Fotografia 51\", de Franklin e do seu aluno Raymond Gosling."
+            },
+            {
+              "id": "watson-crick",
+              "label": "James Watson e Francis Crick (1953)",
+              "explicacao": "Construíram o modelo da dupla hélice, que explicava as regras de Chargaff e os dados de raios X."
+            },
+            {
+              "id": "nobel",
+              "label": "Prémio Nobel (1962)",
+              "explicacao": "Watson, Crick e Wilkins. Franklin tinha falecido em 1958, e o Nobel não é atribuído a título póstumo."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "A dupla hélice",
+          "imagem": "cv_dupla_helice.png",
+          "imagem_legenda": "A dupla hélice de ADN com o esqueleto açúcar-fosfato por fora (a azul), os pares de bases por dentro, as pontes de hidrogénio (2 entre A e T, 3 entre C e G), setas em sentidos opostos a marcar o sentido 5'→3' de cada cadeia e as medidas da hélice.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "A dupla hélice tem duas cadeias enroladas uma na outra. Toca em cada elemento para perceberes como se organiza.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Esqueleto açúcar-fosfato",
+              "explicacao": "Fica no **exterior** da hélice. Liga os nucleótidos de cada cadeia por ligações fosfodiéster (covalentes, fortes).",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Pensa nisto como...**\n\nA dupla hélice é como uma **escada de corda enrolada em espiral**. Os dois lados da escada (o esqueleto açúcar-fosfato) são as cordas fortes, e os degraus (os pares de bases) são as ligações fracas que seguram um lado ao outro. E, como numa autoestrada de dois sentidos, as duas cordas correm em sentidos contrários."
+            },
+            {
+              "id": "p2",
+              "label": "Pares de bases",
+              "explicacao": "Ficam no **interior**. A liga-se a T por **2 pontes de hidrogénio**; C liga-se a G por **3 pontes de hidrogénio**. Cada par junta uma purina e uma pirimidina, o que mantém a largura da hélice constante (cerca de 2 nm)."
+            },
+            {
+              "id": "p3",
+              "label": "Antiparalelismo",
+              "explicacao": "As duas cadeias correm em sentidos opostos. Uma vai de 5' para 3' e a outra de 3' para 5'."
+            },
+            {
+              "id": "p4",
+              "label": "Medidas",
+              "explicacao": "0,34 nm entre pares de bases consecutivos. Uma volta completa tem cerca de 3,4 nm, ou seja, 10 pares de bases."
+            }
+          ],
+          "aprofundar": {
+            "titulo": "Porque é que há pontes de hidrogénio entre cadeias, e ligações fosfodiéster dentro de cada cadeia?",
+            "texto": "As ligações fosfodiéster são covalentes, por isso fortes: mantêm cada cadeia inteira. As pontes de hidrogénio são fracas individualmente, mas muito numerosas. Isto permite separar as duas cadeias (para copiar ou ler o ADN) sem partir nenhuma delas.\n\nComo C≡G tem 3 pontes e A=T tem 2, uma zona do ADN rica em G e C é mais estável: precisa de uma temperatura mais alta para separar as duas cadeias (desnaturação).",
+            "estilo": "interrogacao"
           }
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
             {
-              "pergunta": "Um gene é:",
-              "opcoes": ["Um segmento de ADN com a informação para uma característica", "Um cromossoma inteiro"],
+              "pergunta": "Que descoberta de Chargaff foi fundamental para o modelo de Watson e Crick?",
+              "opcoes": [
+                "Em todas as espécies, A = T e G = C",
+                "A quantidade de ADN é igual em todas as espécies"
+              ],
               "correta": 0,
-              "mascote_feedback_certo": "Exato! Um cromossoma contém muitos genes diferentes ao longo do seu comprimento.",
-              "mascote_feedback_errado": "Um gene é apenas um segmento de ADN — um cromossoma inteiro contém muitos genes diferentes."
+              "mascote_feedback_certo": "Exato. Foi a pista para o emparelhamento de bases.",
+              "mascote_feedback_errado": "Não. A quantidade de ADN varia entre espécies. A pista de Chargaff foi que A = T e G = C."
             },
             {
-              "pergunta": "O conjunto de todo o ADN de um organismo chama-se:",
-              "opcoes": ["Genoma", "Gene"],
+              "pergunta": "Numa molécula de ADN, a adenina de uma cadeia emparelha com a timina da outra através de:",
+              "opcoes": [
+                "2 pontes de hidrogénio",
+                "3 pontes de hidrogénio"
+              ],
               "correta": 0,
-              "mascote_feedback_certo": "Correto! O genoma é toda a informação genética — o gene é só uma pequena parte dela.",
-              "mascote_feedback_errado": "Chama-se genoma — o gene é apenas uma pequena parte dele."
+              "mascote_feedback_certo": "Certo. A=T tem 2; C≡G tem 3.",
+              "mascote_feedback_errado": "Não. A e T fazem 2 pontes de hidrogénio. São C e G que fazem 3."
             },
             {
-              "pergunta": "Os cromossomas ficam visíveis ao microscópio, de forma bem organizada e condensada, sobretudo:",
-              "opcoes": ["Durante a divisão celular", "Durante todo o ciclo de vida da célula, sem exceção"],
+              "pergunta": "Uma cadeia de ADN tem a sequência 5'-ATGCCA-3'. Qual é a sequência da cadeia complementar?",
+              "opcoes": [
+                "3'-TACGGT-5'",
+                "5'-TACGGT-3'"
+              ],
               "correta": 0,
-              "mascote_feedback_certo": "Isso mesmo! Fora da divisão celular, o ADN está descondensado, como cromatina.",
-              "mascote_feedback_errado": "É sobretudo durante a divisão celular — no resto do tempo, o ADN está descondensado, como cromatina."
+              "mascote_feedback_certo": "Certo. As cadeias são antiparalelas, por isso a complementar lê-se de 3' para 5' quando está alinhada por baixo.",
+              "mascote_feedback_errado": "Cuidado com os sentidos. A cadeia complementar é antiparalela: 3'-TACGGT-5' (ou, lida de 5' para 3': 5'-TGGCAT-3')."
             },
             {
-              "pergunta": "A cromatina é:",
-              "opcoes": ["ADN enrolado à volta de proteínas histonas", "Uma proteína que substitui o ADN durante a divisão"],
+              "pergunta": "Segundo Chargaff, numa molécula de ADN com 30% de adenina, a percentagem de citosina é:",
+              "opcoes": [
+                "20%",
+                "30%"
+              ],
               "correta": 0,
-              "mascote_feedback_certo": "Correto! As histonas ajudam o ADN, muito comprido, a caber dentro do núcleo.",
-              "mascote_feedback_errado": "A cromatina é o próprio ADN, enrolado à volta de proteínas histonas — não uma proteína que o substitui."
+              "mascote_feedback_certo": "Certo. Se A = 30%, então T = 30%. Sobram 40% para G + C, ou seja, 20% cada.",
+              "mascote_feedback_errado": "Não. Se A = 30%, T = 30%; sobram 40% para G + C, ou seja, 20% cada."
             },
             {
-              "pergunta": "Verdadeiro ou Falso: o ser humano tem 46 cromossomas, organizados em 23 pares.",
-              "opcoes": ["Verdadeiro", "Falso"],
-              "correta": 0,
-              "mascote_feedback_certo": "Certo! 23 pares — um de cada par vem da mãe, o outro do pai.",
-              "mascote_feedback_errado": "Na verdade é verdadeiro — são 46 cromossomas, em 23 pares (um de cada par vem da mãe, o outro do pai)."
+              "pergunta": "Verdadeiro ou Falso: nas duas cadeias de uma molécula de ADN, os nucleótidos estão orientados no mesmo sentido (5'→3').",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. As cadeias são antiparalelas.",
+              "mascote_feedback_errado": "Na verdade é falso. As duas cadeias são antiparalelas: correm em sentidos opostos."
+            },
+            {
+              "pergunta": "A estabilidade da dupla hélice deve-se, sobretudo, a:",
+              "opcoes": [
+                "Ligações fosfodiéster entre as bases",
+                "Pontes de hidrogénio entre bases complementares"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo. As fosfodiéster mantêm cada cadeia inteira, mas não unem as duas.",
+              "mascote_feedback_errado": "Não. As ligações fosfodiéster mantêm cada cadeia, não unem as duas. É o grande número de pontes de hidrogénio entre bases complementares que estabiliza a hélice."
             }
           ],
-          "mascote_conclusao": "Já sabes como o ADN se organiza, do gene ao cromossoma. A seguir, vamos descobrir como essa informação é mesmo lida — o código genético."
+          "mascote_conclusao": "Já sabes ler a estrutura do ADN. A seguir, vamos compará-lo com o seu \"primo\", o ARN."
         }
       ]
     },
     {
-      "secao_id": "codigo-genetico",
-      "titulo": "O código genético",
+      "secao_id": "adn-arn",
+      "titulo": "ADN e ARN: comparar para distinguir",
+      "xp": 25,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "ADN e ARN lado a lado",
+          "imagem": "cv_adn_vs_arn.png",
+          "imagem_legenda": "Uma molécula de ADN em dupla hélice ao lado de uma molécula de ARN de cadeia simples dobrada, com a pentose e as bases de cada uma assinaladas.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "Há seis características que distinguem o ADN do ARN. Toca em cada uma para veres a comparação.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "pentose",
+              "label": "Pentose",
+              "explicacao": "**ADN**: desoxirribose. **ARN**: ribose."
+            },
+            {
+              "id": "bases",
+              "label": "Bases azotadas",
+              "explicacao": "**ADN**: A, G, C e **T**. **ARN**: A, G, C e **U**."
+            },
+            {
+              "id": "cadeias",
+              "label": "Número de cadeias",
+              "explicacao": "**ADN**: duas (dupla hélice). **ARN**: uma (cadeia simples, que pode dobrar-se)."
+            },
+            {
+              "id": "tamanho",
+              "label": "Tamanho",
+              "explicacao": "**ADN**: moléculas muito longas. **ARN**: moléculas mais curtas."
+            },
+            {
+              "id": "localizacao",
+              "label": "Localização na célula eucariota",
+              "explicacao": "**ADN**: núcleo, mitocôndrias e cloroplastos. **ARN**: núcleo e citoplasma."
+            },
+            {
+              "id": "estabilidade",
+              "label": "Estabilidade",
+              "explicacao": "**ADN**: mais estável. **ARN**: menos estável.",
+              "tabelas": [
+                {
+                  "titulo": "ADN e ARN lado a lado",
+                  "colunas": [
+                    "Característica",
+                    "ADN",
+                    "ARN"
+                  ],
+                  "linhas": [
+                    [
+                      "Pentose",
+                      "Desoxirribose",
+                      "Ribose"
+                    ],
+                    [
+                      "Bases azotadas",
+                      "A, G, C, T",
+                      "A, G, C, U"
+                    ],
+                    [
+                      "Número de cadeias",
+                      "Duas (dupla hélice)",
+                      "Uma (cadeia simples, que pode dobrar-se)"
+                    ],
+                    [
+                      "Tamanho",
+                      "Moléculas muito longas",
+                      "Moléculas mais curtas"
+                    ],
+                    [
+                      "Localização na célula eucariota",
+                      "Núcleo, mitocôndrias e cloroplastos",
+                      "Núcleo e citoplasma"
+                    ],
+                    [
+                      "Estabilidade",
+                      "Mais estável",
+                      "Menos estável"
+                    ]
+                  ]
+                }
+              ],
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Pensa nisto como...**\n\nO ADN é o **livro de receitas guardado na biblioteca**: estável, protegido e feito para durar. O ARN é uma **cópia em papel de rascunho**: mais curta, mais frágil e feita para ser usada e deitada fora."
+            }
+          ],
+          "aprofundar": {
+            "titulo": "Porque é que o ARN é menos estável?",
+            "texto": "O grupo -OH extra no carbono 2' da ribose torna a molécula de ARN quimicamente mais reativa e mais fácil de degradar do que a de ADN.\n\nPara uma molécula cuja função é guardar informação durante toda a vida de uma célula, a estabilidade do ADN é vantajosa. O ARN é um material de uso temporário.\n\nExistem vários tipos de ARN (mensageiro, de transferência e ribossómico), cujas funções vais estudar na missão seguinte. Em alguns vírus (por exemplo, o vírus da gripe), o próprio material genético é ARN.",
+            "estilo": "interrogacao"
+          }
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Num ARN de cadeia simples, a quantidade de adenina é sempre igual à de uracilo?",
+              "opcoes": [
+                "Não necessariamente",
+                "Sim, por emparelhamento A-U"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato. A regra A = T, G = C só é garantida quando existem duas cadeias complementares. Numa cadeia simples, não há razão para os valores serem iguais.",
+              "mascote_feedback_errado": "Cuidado. A igualdade de bases vem do emparelhamento entre duas cadeias. Numa cadeia simples, os valores podem ser diferentes."
+            },
+            {
+              "pergunta": "Com base na tabela, qual é a base que existe no ARN mas não no ADN?",
+              "opcoes": [
+                "Uracilo",
+                "Timina"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. No ARN, o uracilo emparelha com a adenina.",
+              "mascote_feedback_errado": "Não. A timina é do ADN. No ARN existe uracilo."
+            },
+            {
+              "pergunta": "A pentose do ARN é:",
+              "opcoes": [
+                "Desoxirribose",
+                "Ribose"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. A ribose tem um grupo -OH a mais no carbono 2'.",
+              "mascote_feedback_errado": "Não. A desoxirribose é a pentose do ADN. No ARN a pentose é a ribose."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: o ADN de uma célula eucariota existe apenas no núcleo.",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Existe também em mitocôndrias e cloroplastos.",
+              "mascote_feedback_errado": "Na verdade é falso. O ADN existe também em mitocôndrias e cloroplastos."
+            },
+            {
+              "pergunta": "Uma molécula tem 25% de uracilo. É ADN ou ARN?",
+              "opcoes": [
+                "ARN",
+                "ADN"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo. O uracilo só existe no ARN.",
+              "mascote_feedback_errado": "Não. O uracilo só existe no ARN. No ADN a base equivalente é a timina."
+            }
+          ],
+          "mascote_conclusao": "Já sabes distinguir os dois ácidos nucleicos. Agora, a pergunta central: como é que o ADN se copia?"
+        }
+      ]
+    },
+    {
+      "secao_id": "tres-modelos-replicacao",
+      "titulo": "Como se copia o ADN? Três modelos",
       "xp": 25,
       "tempo_estimado_min": 6,
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
-          "mascote_texto": "O código genético é lido em grupos de exatamente 3 letras — e é praticamente igual em todos os seres vivos, de uma bactéria a um elefante. Como é que isso funciona?",
-          "ponte_texto": "Conhece os conceitos-chave por trás dessa \"linguagem\" universal da vida.",
-          "titulo": "Como se lê o código genético",
+          "pontos_seta": true,
+          "titulo": "Os três modelos de replicação",
+          "imagem": "cv_tres_modelos.png",
+          "imagem_legenda": "Uma molécula-mãe com as duas cadeias a azul e, ao lado, as moléculas-filhas de cada modelo (conservativo, semiconservativo e dispersivo), com as cadeias antigas a azul e as novas a vermelho. Mostra-se também a geração seguinte de cada modelo.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "Havia três hipóteses para a replicação. Toca em cada modelo para veres como seriam as moléculas-filhas, com as cadeias antigas a azul e as novas a vermelho.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "codao", "label": "Codão", "explicacao": "Uma sequência de três bases azotadas consecutivas do ADN/RNA que codifica um aminoácido específico ou um sinal de paragem — a \"palavra\" básica do código genético." },
-            { "id": "iniciacao", "label": "Codão de iniciação", "explicacao": "O codão AUG assinala onde começa a leitura da mensagem genética, e codifica sempre o aminoácido metionina." },
-            { "id": "stop", "label": "Codões STOP", "explicacao": "Três codões (UAA, UAG, UGA) não codificam nenhum aminoácido — assinalam o fim da sequência a traduzir, terminando a síntese da proteína." },
-            { "id": "universalidade", "label": "Universalidade do código", "explicacao": "Com raríssimas exceções, o código genético é o mesmo em todos os seres vivos — o mesmo codão codifica o mesmo aminoácido numa bactéria, numa planta ou num ser humano." },
-            { "id": "degenerescencia", "label": "Redundância (degenerescência)", "explicacao": "A maioria dos aminoácidos pode ser codificada por mais do que um codão diferente — o que torna o código genético mais tolerante a pequenos erros (mutações) na sequência." }
+            {
+              "id": "conservativo",
+              "label": "Modelo conservativo",
+              "explicacao": "A molécula original mantém-se inteira (duas cadeias antigas) e forma-se uma molécula totalmente nova (duas cadeias novas).",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Pensa nisto como...**\n\nImagina que tens um **casaco** e queres copiá-lo. No modelo conservativo, guardas o casaco inteiro e fazes outro novo de raiz. No semiconservativo, abres o casaco ao meio: cada metade fica com o fecho, e cada uma recebe uma metade nova. No dispersivo, desfazes o casaco em retalhos e misturas retalhos velhos e novos nos dois casacos."
+            },
+            {
+              "id": "semiconservativo",
+              "label": "Modelo semiconservativo",
+              "explicacao": "Cada molécula-filha tem uma cadeia antiga (que serviu de molde) e uma cadeia nova."
+            },
+            {
+              "id": "dispersivo",
+              "label": "Modelo dispersivo",
+              "explicacao": "As cadeias das moléculas-filhas são formadas por segmentos antigos e segmentos novos, misturados ao longo de cada cadeia."
+            }
           ],
           "aprofundar": {
-            "titulo": "Porque é que o código genético é (quase) universal?",
-            "texto": "O facto de praticamente todos os seres vivos — de uma bactéria a uma baleia — usarem exatamente o mesmo código genético é uma das provas mais fortes de que toda a vida na Terra partilha um antepassado comum: se a vida tivesse surgido várias vezes, de forma independente, seria extremamente improvável que todos os organismos tivessem chegado exatamente ao mesmo código, por acaso. Esta universalidade é também o que torna possível a engenharia genética — inserir um gene humano numa bactéria, por exemplo, para produzir insulina, só funciona porque ambos \"leem\" o ADN da mesma forma."
+            "titulo": "Uma pista no próprio artigo de 1953",
+            "texto": "No final do artigo em que apresentaram a dupla hélice, Watson e Crick escreveram que o emparelhamento específico das bases sugeria de imediato um mecanismo de cópia do material genético.\n\nSe cada cadeia serve de molde à sua complementar, o resultado natural é o modelo semiconservativo. Mas era uma hipótese. Faltava prová-la com uma experiência, e foi isso que Meselson e Stahl fizeram em 1958.",
+            "estilo": "interrogacao"
           }
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
             {
-              "pergunta": "Uma trinca de bases que codifica um aminoácido chama-se:",
-              "opcoes": ["Codão", "Gene"],
-              "correta": 0,
-              "mascote_feedback_certo": "Exato! Um gene é composto por muitos codões seguidos.",
-              "mascote_feedback_errado": "Chama-se codão — um gene é composto por muitos codões seguidos."
-            },
-            {
-              "pergunta": "O codão de iniciação, que marca o início da síntese proteica, é:",
-              "opcoes": ["AUG", "UAA"],
-              "correta": 0,
-              "mascote_feedback_certo": "Correto! O AUG codifica também o primeiro aminoácido, a metionina.",
-              "mascote_feedback_errado": "É o AUG — o UAA é, na verdade, um dos codões STOP."
-            },
-            {
-              "pergunta": "Os codões UAA, UAG e UGA têm em comum:",
-              "opcoes": ["Codificam todos o mesmo aminoácido", "Nenhum codifica um aminoácido — são sinais de paragem"],
+              "pergunta": "Num modelo semiconservativo, cada molécula-filha é constituída por:",
+              "opcoes": [
+                "Duas cadeias novas",
+                "Uma cadeia antiga e uma cadeia nova"
+              ],
               "correta": 1,
-              "mascote_feedback_certo": "Isso mesmo! São os três codões STOP, que terminam a síntese da proteína.",
-              "mascote_feedback_errado": "Na verdade, nenhum deles codifica um aminoácido — são os três codões STOP, que terminam a síntese da proteína."
+              "mascote_feedback_certo": "Isso mesmo. Cada cadeia antiga serve de molde para a nova.",
+              "mascote_feedback_errado": "Não. Duas cadeias novas seria o caso de uma das moléculas no modelo conservativo. No semiconservativo, cada filha tem uma antiga e uma nova."
             },
             {
-              "pergunta": "Verdadeiro ou Falso: o código genético é completamente diferente de espécie para espécie.",
-              "opcoes": ["Verdadeiro", "Falso"],
-              "correta": 1,
-              "mascote_feedback_certo": "Certo! O código genético é, com raríssimas exceções, universal — praticamente igual em todos os seres vivos.",
-              "mascote_feedback_errado": "Na verdade é falso — o código genético é, com raríssimas exceções, universal, praticamente igual em todos os seres vivos."
-            },
-            {
-              "pergunta": "Vários codões diferentes poderem codificar o mesmo aminoácido chama-se:",
-              "opcoes": ["Degenerescência (redundância) do código genético", "Mutação"],
+              "pergunta": "Qual dos modelos prevê que, depois de uma replicação, existam duas moléculas-filha diferentes uma da outra?",
+              "opcoes": [
+                "Conservativo",
+                "Semiconservativo"
+              ],
               "correta": 0,
-              "mascote_feedback_certo": "Boa! Essa redundância torna o código mais tolerante a pequenos erros na sequência.",
-              "mascote_feedback_errado": "Chama-se degenerescência (ou redundância) do código genético — a mutação é outra coisa: uma alteração na sequência do ADN."
+              "mascote_feedback_certo": "Certo. No conservativo, uma é toda antiga e a outra toda nova.",
+              "mascote_feedback_errado": "Não. No semiconservativo, as duas filhas são iguais entre si (uma cadeia antiga e outra nova cada)."
+            },
+            {
+              "pergunta": "Em que fase do ciclo celular ocorre a replicação do ADN?",
+              "opcoes": [
+                "Fase S da interfase",
+                "Prófase"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. O ADN é copiado na fase S, antes de a célula se dividir.",
+              "mascote_feedback_errado": "Não. A prófase já é uma fase da divisão. A replicação ocorre antes, na fase S da interfase."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: no modelo dispersivo, nenhuma molécula-filha tem cadeias inteiramente antigas.",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. As cadeias são mistas ao longo da sua extensão.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro. No modelo dispersivo, as cadeias das filhas são mistas: têm segmentos antigos e novos misturados."
+            },
+            {
+              "pergunta": "Nos três modelos, a informação genética das moléculas-filha é igual à da molécula-mãe?",
+              "opcoes": [
+                "Sim, o que muda é a distribuição do material antigo e novo",
+                "Não, só no semiconservativo"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato. A sequência de bases é a mesma nos três. O que os distingue é como se distribuem as cadeias antigas e novas.",
+              "mascote_feedback_errado": "Não. Em qualquer dos modelos a sequência de bases é copiada fielmente. O que muda é a distribuição do material antigo e novo."
             }
           ],
-          "mascote_conclusao": "Já sabes como o código genético é lido. Para terminar, vamos perceber porque é que, apesar de partilharmos quase todo o ADN uns com os outros, cada pessoa continua a ser geneticamente única."
+          "mascote_conclusao": "Três hipóteses, uma só correta. Vamos ver como se decidiu."
         }
       ]
     },
     {
-      "secao_id": "genes-alelos-hereditariedade",
-      "titulo": "Genes, alelos e hereditariedade",
+      "secao_id": "meselson-stahl",
+      "titulo": "A experiência de Meselson e Stahl",
       "xp": 25,
-      "tempo_estimado_min": 6,
+      "tempo_estimado_min": 10,
       "ecrãs": [
         {
           "tipo": "diagrama_interativo",
           "cartao_estilo": true,
-          "mascote_texto": "Porque será que duas pessoas nunca têm exatamente o mesmo ADN (a não ser gémeos idênticos)?",
-          "ponte_texto": "A resposta está nestes conceitos — a chave para perceber a hereditariedade.",
-          "titulo": "Genes, alelos e hereditariedade",
+          "pontos_seta": true,
+          "titulo": "O protocolo da experiência",
+          "imagem": "cv_meselson_protocolo.png",
+          "imagem_legenda": "Sequência em 5 passos: E. coli num meio com ¹⁵N; transferência para um meio com ¹⁴N; recolha de amostras a cada geração; extração do ADN; ultracentrifugação em gradiente de cloreto de césio (CsCl), com leitura das bandas.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "A ideia foi crescer bactérias com um azoto mais pesado, passá-las para azoto comum e ver, geração a geração, onde ficava o ADN depois de centrifugado. Toca em cada passo.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
-            { "id": "gene_alelo", "label": "Gene e alelo", "explicacao": "Um gene é uma \"posição\" no ADN com informação para uma característica; um alelo é cada uma das versões alternativas que esse gene pode ter (ex: o gene da cor dos olhos pode ter o alelo \"castanho\" ou o alelo \"azul\")." },
-            { "id": "genotipo", "label": "Genótipo", "explicacao": "A constituição genética de um indivíduo — o conjunto de alelos que possui para um ou mais genes." },
-            { "id": "fenotipo", "label": "Fenótipo", "explicacao": "As características observáveis de um indivíduo (físicas, fisiológicas, etc.), resultantes da interação entre o genótipo e o ambiente." },
-            { "id": "homo_hetero", "label": "Homozigótico vs. heterozigótico", "explicacao": "Um indivíduo é homozigótico para um gene se tiver dois alelos iguais, e heterozigótico se tiver dois alelos diferentes." },
-            { "id": "mutacao", "label": "Mutação", "explicacao": "Uma alteração na sequência do ADN — pode ser prejudicial, neutra, ou até vantajosa, e é a principal fonte de novos alelos e de variabilidade genética numa população." }
+            {
+              "id": "isotopos",
+              "label": "¹⁵N e ¹⁴N",
+              "explicacao": "O azoto comum é o ¹⁴N. O ¹⁵N é um isótopo **mais pesado e não radioativo**. O azoto está presente nas bases azotadas, por isso o ADN das bactérias que crescem com ¹⁵N fica mais denso."
+            },
+            {
+              "id": "passo1",
+              "label": "Passo 1: meio com ¹⁵N",
+              "explicacao": "As bactérias (*E. coli*) crescem durante muitas gerações num meio com ¹⁵N como fonte de azoto, até todo o seu ADN conter ¹⁵N (ADN \"pesado\")."
+            },
+            {
+              "id": "passo2",
+              "label": "Passo 2: passagem para ¹⁴N",
+              "explicacao": "As bactérias passam para um meio com ¹⁴N. Todo o ADN novo formado a seguir é feito com ¹⁴N (\"leve\")."
+            },
+            {
+              "id": "passos3a5",
+              "label": "Passos 3 a 5: amostras e centrifugação",
+              "explicacao": "A cada geração recolhem-se amostras, extrai-se o ADN e centrifuga-se numa solução de CsCl. O ADN fica na zona do tubo cuja densidade é igual à sua. O ADN pesado fica mais abaixo; o leve, mais acima; o híbrido (¹⁴N/¹⁵N), no meio."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "O que cada modelo previa e o que se viu",
+          "imagem": "cv_meselson_tubos.png",
+          "imagem_legenda": "Tubos de centrifugação lado a lado para as gerações 0, 1, 2, 3 e 4, com as bandas previstas por cada modelo (conservativo, semiconservativo e dispersivo) e, por fim, as bandas observadas na experiência real.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "Cada modelo previa bandas diferentes nos tubos de centrifugação. Toca em cada modelo para veres a previsão e, no fim, o resultado real da experiência.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "prev-conservativo",
+              "label": "Previsão: conservativo",
+              "explicacao": "Geração 1 com **2 bandas** (50% pesado, 50% leve), sem banda intermédia."
+            },
+            {
+              "id": "prev-semiconservativo",
+              "label": "Previsão: semiconservativo",
+              "explicacao": "Geração 1 com **1 banda intermédia**. Geração 2 com **2 bandas** (50% intermédia, 50% leve).",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Pensa nisto como...**\n\nImagina que pintas de **vermelho** todas as cartas de um baralho (ADN pesado). Depois, cada vez que uma carta é copiada, a cópia é feita em **papel azul** (ADN leve). Se, ao fim de uma cópia, encontras apenas cartas meio vermelhas e meio azuis, percebes que cada carta nova tem uma metade antiga e outra nova. E, na cópia seguinte, metade das cartas serão azuis puras: as metades vermelhas ficaram diluídas."
+            },
+            {
+              "id": "prev-dispersivo",
+              "label": "Previsão: dispersivo",
+              "explicacao": "Geração 1 com **1 banda intermédia**. Geração 2 com **1 só banda**, mais leve do que a intermédia, e sempre uma só banda nas gerações seguintes, que vai subindo no tubo."
+            },
+            {
+              "id": "resultado-real",
+              "label": "Resultado real",
+              "explicacao": "Na geração 1 apareceu uma só banda, intermédia. Na geração 2 apareceram duas bandas, uma intermédia e outra leve. Só o modelo semiconservativo explica os dois resultados.",
+              "tabelas": [
+                {
+                  "titulo": "Bandas observadas",
+                  "colunas": [
+                    "Geração (após passar para ¹⁴N)",
+                    "Bandas observadas"
+                  ],
+                  "linhas": [
+                    [
+                      "0",
+                      "1 banda: ADN pesado (¹⁵N/¹⁵N)"
+                    ],
+                    [
+                      "1",
+                      "1 banda: ADN híbrido (¹⁵N/¹⁴N), numa posição intermédia"
+                    ],
+                    [
+                      "2",
+                      "2 bandas: 50% híbrido e 50% leve (¹⁴N/¹⁴N)"
+                    ],
+                    [
+                      "3",
+                      "2 bandas: 25% híbrido e 75% leve"
+                    ],
+                    [
+                      "4",
+                      "2 bandas: 12,5% híbrido e 87,5% leve"
+                    ]
+                  ]
+                }
+              ]
+            }
           ],
           "aprofundar": {
-            "titulo": "Porque nunca há duas pessoas com o mesmo ADN (mesmo entre gémeos... quase)",
-            "texto": "Todos os seres humanos partilham cerca de 99,9% da sequência de ADN — é essa semelhança que nos torna, biologicamente, uma só espécie. Mas esse 0,1% que varia de pessoa para pessoa, espalhado por milhões de posições ao longo do genoma, é mais do que suficiente para tornar cada indivíduo único (exceto gémeos idênticos, que partilham o mesmo ADN de origem). Essa variação surge sobretudo de mutações acumuladas ao longo de gerações, e da forma como os alelos dos pais se combinam de novas maneiras em cada descendente."
+            "titulo": "A matemática por trás das bandas",
+            "texto": "No modelo semiconservativo, as duas cadeias antigas (¹⁵N) nunca desaparecem; continuam a existir ao longo das gerações, mas ficam distribuídas por um número cada vez maior de moléculas.\n\nDepois de *n* gerações há 2ⁿ moléculas, e apenas 2 são híbridas (cada uma com uma cadeia antiga). Logo, a fração de ADN híbrido é 2/2ⁿ: 100% na geração 1, 50% na 2, 25% na 3, 12,5% na 4. O resto é ADN leve.\n\nMeselson e Stahl fizeram ainda mais uma verificação: desnaturaram por aquecimento o ADN híbrido e verificaram que as cadeias se separavam em duas bandas, uma pesada e uma leve. Isto confirma que cada molécula híbrida tem uma cadeia inteira de ¹⁵N e uma cadeia inteira de ¹⁴N.",
+            "estilo": "interrogacao"
           }
         },
         {
           "tipo": "quiz_seccao",
           "perguntas": [
             {
-              "pergunta": "As diferentes versões possíveis de um mesmo gene chamam-se:",
-              "opcoes": ["Alelos", "Genomas"],
+              "pergunta": "Porque é que Meselson e Stahl usaram ¹⁵N para marcar o ADN?",
+              "opcoes": [
+                "Porque as bases azotadas contêm azoto, e o ¹⁵N torna o ADN mais denso",
+                "Porque o ¹⁵N é radioativo e deixa o ADN marcado"
+              ],
               "correta": 0,
-              "mascote_feedback_certo": "Exato! Por exemplo, os alelos \"castanho\" e \"azul\" do gene da cor dos olhos.",
-              "mascote_feedback_errado": "Chamam-se alelos — o genoma é todo o ADN de um organismo, não uma versão de um gene."
+              "mascote_feedback_certo": "Certo. E o ¹⁵N não é radioativo. A marcação é pela densidade.",
+              "mascote_feedback_errado": "Não. O ¹⁵N é um isótopo estável (não radioativo). O que o torna útil é ser mais denso."
             },
             {
-              "pergunta": "O conjunto de alelos que um indivíduo possui chama-se o seu:",
-              "opcoes": ["Genótipo", "Fenótipo"],
+              "pergunta": "O aparecimento de uma só banda intermédia na geração 1 permite rejeitar qual modelo?",
+              "opcoes": [
+                "O conservativo",
+                "O dispersivo"
+              ],
               "correta": 0,
-              "mascote_feedback_certo": "Correto! O fenótipo são as características que daí resultam, visíveis por fora.",
-              "mascote_feedback_errado": "Chama-se genótipo — o fenótipo são as características observáveis que daí resultam."
+              "mascote_feedback_certo": "Exato. O conservativo previa uma banda pesada e uma leve, e nunca uma intermédia.",
+              "mascote_feedback_errado": "Não. O dispersivo também prevê uma banda intermédia na geração 1. É o conservativo que fica rejeitado."
             },
             {
-              "pergunta": "Um indivíduo com dois alelos diferentes para o mesmo gene diz-se:",
-              "opcoes": ["Homozigótico", "Heterozigótico"],
+              "pergunta": "Na geração 2 aparecem duas bandas (intermédia e leve). Que modelo é rejeitado por este resultado?",
+              "opcoes": [
+                "O dispersivo",
+                "O conservativo"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. O dispersivo previa uma só banda. Com a geração 2, só o semiconservativo explica os resultados todos.",
+              "mascote_feedback_errado": "Não. O conservativo já tinha sido rejeitado na geração 1. Aqui é o dispersivo que falha, porque previa uma só banda."
+            },
+            {
+              "pergunta": "Depois de 3 gerações em ¹⁴N, partindo de uma molécula pesada, quantas moléculas existem e quantas são híbridas?",
+              "opcoes": [
+                "8 moléculas, 2 híbridas",
+                "6 moléculas, 3 híbridas"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. Há 2³ = 8 moléculas, e só 2 têm uma das cadeias antigas.",
+              "mascote_feedback_errado": "Não. Depois de 3 gerações há 2³ = 8 moléculas, e só 2 são híbridas, porque só existem duas cadeias antigas."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: se a replicação for semiconservativa, nunca aparece uma banda de ADN pesado (¹⁵N/¹⁵N) depois da transferência para ¹⁴N.",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. Cada cadeia pesada fica sempre emparelhada com uma cadeia leve.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro. No modelo semiconservativo, cada cadeia pesada fica sempre emparelhada com uma cadeia leve nova."
+            },
+            {
+              "pergunta": "A experiência de Meselson e Stahl confirmou o modelo:",
+              "opcoes": [
+                "Conservativo",
+                "Semiconservativo",
+                "Dispersivo"
+              ],
               "correta": 1,
-              "mascote_feedback_certo": "Isso mesmo! Homozigótico seria se os dois alelos fossem iguais.",
-              "mascote_feedback_errado": "Diz-se heterozigótico — homozigótico seria se os dois alelos fossem iguais."
-            },
-            {
-              "pergunta": "Uma alteração na sequência do ADN chama-se:",
-              "opcoes": ["Mutação", "Tradução"],
-              "correta": 0,
-              "mascote_feedback_certo": "Boa! As mutações são a principal fonte de novos alelos.",
-              "mascote_feedback_errado": "Chama-se mutação — a tradução é o processo de produzir uma proteína a partir do RNA."
-            },
-            {
-              "pergunta": "Verdadeiro ou Falso: o fenótipo de um indivíduo depende só do genótipo, nunca do ambiente.",
-              "opcoes": ["Verdadeiro", "Falso"],
-              "correta": 1,
-              "mascote_feedback_certo": "Certo! O fenótipo resulta da interação entre o genótipo e o ambiente.",
-              "mascote_feedback_errado": "Na verdade é falso — o fenótipo resulta da interação entre o genótipo e o ambiente, não só do genótipo."
+              "mascote_feedback_certo": "Exato. A replicação do ADN é semiconservativa.",
+              "mascote_feedback_errado": "Não. O conservativo foi rejeitado na geração 1 e o dispersivo na geração 2. Ficou o semiconservativo."
             }
           ],
-          "mascote_conclusao": "Parabéns, aprendiz! Completaste a missão O Código da Vida. Já sabes como o ADN se organiza em genes e cromossomas, como o código genético é lido em codões, e porque é que cada pessoa é geneticamente única. 🧬"
+          "mascote_conclusao": "Já sabes que a replicação é semiconservativa. Falta saber como é que a célula faz isso, passo a passo."
+        }
+      ]
+    },
+    {
+      "secao_id": "mecanismo-replicacao",
+      "titulo": "O mecanismo da replicação",
+      "xp": 25,
+      "tempo_estimado_min": 12,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "A forquilha de replicação",
+          "imagem": "cv_forquilha_replicacao.png",
+          "imagem_legenda": "A dupla hélice a abrir-se em Y, com cada enzima (helicase, topoisomerase, proteínas de ligação ao ADN de cadeia simples, primase, ADN polimerase e ADN ligase) com um rótulo e uma cor própria, na ordem em que atuam.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "A replicação começa numa origem e avança com uma equipa de enzimas na forquilha de replicação. Toca em cada elemento, pela ordem em que atuam.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "origem",
+              "label": "1. Origem de replicação",
+              "explicacao": "Zona da molécula onde a replicação começa. Ao formar-se a \"bolha de replicação\", há **duas forquilhas** que avançam em sentidos opostos (replicação **bidirecional**)."
+            },
+            {
+              "id": "helicase",
+              "label": "2. Helicase",
+              "explicacao": "Abre a dupla hélice, quebrando as pontes de hidrogénio entre as bases.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Pensa nisto como...**\n\nImagina um **fecho de correr** que se abre (helicase) e, atrás dele, dois operários a fazer a cópia de cada lado. Um deles trabalha sempre no mesmo sentido do fecho e escreve de seguida, sem parar. O outro só consegue escrever num sentido; por isso, tem de recuar, escrever um bocadinho, e recuar outra vez, deixando pequenos pedaços que depois são colados (ligase)."
+            },
+            {
+              "id": "topoisomerase",
+              "label": "3. Topoisomerase",
+              "explicacao": "Alivia a tensão causada pelo desenrolamento, à frente da forquilha."
+            },
+            {
+              "id": "ssb",
+              "label": "4. Proteínas de ligação ao ADN de cadeia simples",
+              "explicacao": "Mantêm as duas cadeias separadas, impedindo que se voltem a emparelhar."
+            },
+            {
+              "id": "primase",
+              "label": "5. Primase",
+              "explicacao": "Sintetiza um pequeno segmento de ARN, o **iniciador** (*primer*), que fornece uma extremidade 3'-OH livre."
+            },
+            {
+              "id": "polimerase",
+              "label": "6. ADN polimerase",
+              "explicacao": "Acrescenta nucleótidos à extremidade 3' do iniciador, por complementaridade com a cadeia-molde. **Só sintetiza no sentido 5'→3'.**"
+            },
+            {
+              "id": "ligase",
+              "label": "7. ADN ligase",
+              "explicacao": "Une os fragmentos de ADN, formando as ligações fosfodiéster que faltam."
+            }
+          ],
+          "aprofundar": {
+            "titulo": "Procariotas e eucariotas",
+            "texto": "Nas bactérias, o cromossoma é circular e tem **uma única origem de replicação**. Em *E. coli*, com cerca de 4,6 milhões de pares de bases, a replicação demora cerca de 40 minutos, com cada forquilha a avançar a cerca de 1000 nucleótidos por segundo.\n\nNas células eucarióticas, a replicação é muito mais lenta em cada forquilha (cerca de 50 nucleótidos por segundo), mas os cromossomas têm **muitas origens de replicação** ao mesmo tempo. As bolhas vão crescendo até se encontrarem e se fundirem. Sem esta estratégia, replicar um cromossoma humano demoraria semanas.",
+            "estilo": "interrogacao"
+          }
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Cadeia contínua e cadeia descontínua",
+          "imagem": "cv_cadeia_continua_descontinua.png",
+          "imagem_legenda": "A forquilha ampliada, com as duas cadeias-molde. Uma cadeia nova é sintetizada de forma contínua, no mesmo sentido do avanço da forquilha. A outra é sintetizada em pequenos fragmentos, no sentido oposto, cada um com o seu iniciador.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "As duas cadeias do ADN são antiparalelas, mas a ADN polimerase só trabalha de 5' para 3'. Por isso, as duas cadeias novas não são feitas da mesma maneira. Toca em cada uma.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "continua",
+              "label": "Cadeia contínua (líder)",
+              "explicacao": "Numa das cadeias-molde, a síntese é **contínua**, no mesmo sentido em que a forquilha avança."
+            },
+            {
+              "id": "descontinua",
+              "label": "Cadeia descontínua (retardada)",
+              "explicacao": "Na outra, a síntese é **descontínua**: faz-se em pequenos fragmentos, no sentido contrário ao da forquilha, cada um iniciado por um novo iniciador de ARN. Estes fragmentos chamam-se **fragmentos de Okazaki**."
+            }
+          ],
+          "aprofundar": {
+            "titulo": "A fidelidade da cópia",
+            "texto": "A ADN polimerase não se limita a copiar. Tem uma capacidade de **revisão**: quando coloca um nucleótido errado, volta atrás e remove-o. Depois, outros mecanismos de reparação corrigem erros que escaparam.\n\nNo final, a taxa de erro é de cerca de **1 erro por cada 10⁹ a 10¹⁰ nucleótidos copiados**. Os poucos erros que persistem são mutações, a matéria-prima da variabilidade.",
+            "estilo": "interrogacao"
+          }
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual é a enzima que abre a dupla hélice, quebrando as pontes de hidrogénio?",
+              "opcoes": [
+                "Helicase",
+                "ADN ligase"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. A helicase \"abre o fecho\".",
+              "mascote_feedback_errado": "Não. A ligase une fragmentos. Quem abre a dupla hélice é a helicase."
+            },
+            {
+              "pergunta": "Porque é que uma das cadeias é sintetizada em fragmentos?",
+              "opcoes": [
+                "Porque a ADN polimerase só sintetiza no sentido 5'→3' e as cadeias são antiparalelas",
+                "Porque a helicase só consegue abrir pequenos troços de cada vez"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato. A direção da polimerase, combinada com o antiparalelismo, obriga a esta solução.",
+              "mascote_feedback_errado": "Não. É por causa da orientação: a polimerase só vai de 5' para 3', e as cadeias correm em sentidos opostos."
+            },
+            {
+              "pergunta": "Que enzima remove os iniciadores de ARN e os substitui por ADN?",
+              "opcoes": [
+                "ADN polimerase",
+                "Primase"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo. Uma ADN polimerase substitui o ARN por ADN, e a ligase fecha o último espaço.",
+              "mascote_feedback_errado": "Não. A primase só sintetiza os iniciadores. Quem os substitui por ADN é uma ADN polimerase."
+            },
+            {
+              "pergunta": "Qual é a enzima que forma o iniciador de ARN?",
+              "opcoes": [
+                "Primase",
+                "ADN ligase"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo. A primase sintetiza o iniciador de ARN.",
+              "mascote_feedback_errado": "Não. A ADN ligase une fragmentos de ADN. O iniciador de ARN é feito pela primase."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: a ADN polimerase consegue iniciar uma cadeia nova sem extremidade 3'-OH disponível.",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo. Precisa do iniciador, que lhe fornece essa extremidade.",
+              "mascote_feedback_errado": "Na verdade é falso. A ADN polimerase só acrescenta nucleótidos a uma extremidade 3'-OH já existente, e é o iniciador que a fornece."
+            },
+            {
+              "pergunta": "Um cromossoma eucariota tem muitas origens de replicação porque:",
+              "opcoes": [
+                "Cada forquilha avança devagar, e várias origens permitem copiar o cromossoma em tempo útil",
+                "Cada origem só consegue copiar uma das duas cadeias do cromossoma"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato. Com muitas origens a trabalhar ao mesmo tempo, o cromossoma copia-se em tempo útil.",
+              "mascote_feedback_errado": "Não. Cada origem dá duas forquilhas que copiam as duas cadeias de um troço do cromossoma. A razão é o tempo: cada forquilha avança devagar, e várias origens permitem copiar o cromossoma em tempo útil."
+            }
+          ],
+          "mascote_conclusao": "Parabéns. Já sabes o que é o ADN, como foi provada a sua replicação e quais são as enzimas que a realizam. Na próxima missão, vais ver o que a célula faz com a informação que está nesse ADN."
         }
       ]
     }
-  ]
+  ],
+  "mascote_fim": "Missão cumprida! Já sabes de que são feitos os ácidos nucleicos, como se organiza a dupla hélice, em que diferem o ADN e o ARN e como a célula copia o ADN de forma semiconservativa, com a ajuda de uma equipa de enzimas. A seguir: o que a célula faz com a informação que está nesse ADN."
 }

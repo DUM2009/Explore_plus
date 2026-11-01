@@ -94,20 +94,18 @@
           "perguntas": [
             {
               "pergunta": "Um protão move-se a 2,0 × 10⁶ m/s perpendicularmente a um campo magnético de 0,50 T. Qual é o raio da sua trajetória?",
-              "opcoes": [
-                "4,2 × 10⁻² m",
-                "4,2 m",
+              "opcoes": ["4,2 m",
                 "2,1 × 10⁻² m",
-                "6,7 × 10⁻⁹ m"
+                "6,7 × 10⁻⁹ m",
+                "4,2 × 10⁻² m"
               ],
-              "correta": 0,
+              "correta": 3,
               "mascote_feedback_certo": "Certo. r ≈ 4,2 × 10⁻² m, cerca de 4 cm.",
               "mascote_feedback_errado": "A força magnética é a força centrípeta: e v B = m v² / r, logo r = m v / (e B) ≈ 4,2 × 10⁻² m."
             },
             {
               "pergunta": "Uma partícula com carga descreve um movimento circular num campo magnético uniforme. Ao fim de uma volta completa, a sua energia cinética:",
-              "opcoes": [
-                "aumentou.",
+              "opcoes": ["aumentou.",
                 "diminuiu.",
                 "manteve-se.",
                 "depende do sinal da carga."
@@ -118,8 +116,8 @@
             },
             {
               "pergunta": "Uma carga move-se paralelamente às linhas de um campo magnético uniforme. A força magnética sobre ela é:",
-              "opcoes": ["máxima.", "nula.", "perpendicular ao campo e de intensidade q v B.", "paralela ao campo."],
-              "correta": 1,
+              "opcoes": ["nula.", "máxima.", "perpendicular ao campo e de intensidade q v B.", "paralela ao campo."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Com v paralela a B, sen θ = 0.",
               "mascote_feedback_errado": "Com v paralela a B, sen θ = 0 e a força magnética é nula. A carga continua em movimento retilíneo uniforme."
             },
@@ -132,8 +130,8 @@
             },
             {
               "pergunta": "Um eletrão com velocidade oblíqua em relação a um campo magnético uniforme descreve uma trajetória:",
-              "opcoes": ["retilínea.", "circular.", "parabólica.", "helicoidal."],
-              "correta": 3,
+              "opcoes": ["retilínea.", "circular.", "helicoidal.", "parabólica."],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. É uma hélice.",
               "mascote_feedback_errado": "A componente da velocidade paralela ao campo mantém-se e a componente perpendicular dá movimento circular. O resultado é uma hélice."
             }
@@ -194,20 +192,18 @@
           "perguntas": [
             {
               "pergunta": "Num seletor de velocidades, o campo elétrico é 2,0 × 10⁴ V/m e o campo magnético é 0,10 T. Que velocidade têm as partículas que passam sem desvio?",
-              "opcoes": [
+              "opcoes": ["2,0 × 10⁵ m/s",
                 "2,0 × 10³ m/s",
-                "2,0 × 10⁵ m/s",
                 "2,0 × 10⁶ m/s",
                 "5,0 × 10⁻⁶ m/s"
               ],
-              "correta": 1,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. v = E / B = 2,0 × 10⁵ m/s.",
               "mascote_feedback_errado": "As forças anulam-se quando q E = q v B, logo v = E / B = 2,0 × 10⁴ / 0,10 = 2,0 × 10⁵ m/s."
             },
             {
               "pergunta": "Um fio com 0,30 m, percorrido por 5,0 A, está perpendicular a um campo magnético de 0,20 T. Qual é a intensidade da força sobre o fio?",
-              "opcoes": [
-                "0,030 N",
+              "opcoes": ["0,030 N",
                 "0,30 N",
                 "3,0 N",
                 "7,5 N"
@@ -218,15 +214,15 @@
             },
             {
               "pergunta": "Num espectrómetro de massa, dois iões com a mesma carga e a mesma velocidade entram na câmara de deflexão. O ião com maior massa:",
-              "opcoes": ["descreve uma trajetória de raio menor.", "descreve uma trajetória de raio maior.", "não é desviado.", "é desviado em sentido oposto."],
-              "correta": 1,
+              "opcoes": ["descreve uma trajetória de raio menor.", "não é desviado.", "é desviado em sentido oposto.", "descreve uma trajetória de raio maior."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. O raio é proporcional à massa.",
               "mascote_feedback_errado": "r = m v / (|q| B). Com a mesma carga, velocidade e campo, o raio é proporcional à massa."
             },
             {
               "pergunta": "No seletor de velocidades, uma partícula mais rápida do que E / B:",
-              "opcoes": ["passa sem desvio.", "desvia-se, porque a força magnética fica maior do que a elétrica.", "desvia-se, porque a força elétrica fica maior do que a magnética.", "para."],
-              "correta": 1,
+              "opcoes": ["desvia-se, porque a força magnética fica maior do que a elétrica.", "passa sem desvio.", "desvia-se, porque a força elétrica fica maior do que a magnética.", "para."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. A força magnética aumenta com v e passa a vencer.",
               "mascote_feedback_errado": "A força elétrica q E não depende da velocidade; a magnética q v B aumenta com v. Se v > E / B, a força magnética vence e a partícula desvia-se."
             },

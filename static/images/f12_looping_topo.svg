@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 430" font-family="Outfit, Arial, sans-serif">
+  <defs>
+    <marker id="p" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0 0 10 5 0 10z" fill="#c92a2a"/></marker>
+    <marker id="n" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0 0 10 5 0 10z" fill="#1c7ed6"/></marker>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto"><path d="M0 0 10 5 0 10z" fill="#1f8a5b"/></marker>
+    <marker id="g" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0 10 5 0 10z" fill="#6b7280"/></marker>
+  </defs>
+  <rect width="640" height="430" rx="14" fill="#ffffff"/>
+<circle cx="320" cy="235" r="140" fill="none" stroke="#4b5563" stroke-width="12"/>
+<circle cx="320" cy="235" r="140" fill="none" stroke="#9ca3af" stroke-width="2" stroke-dasharray="3 7"/>
+<!-- carrinho no topo, de cabeça para baixo -->
+<circle cx="296" cy="103" r="7" fill="#1f2937"/>
+<circle cx="344" cy="103" r="7" fill="#1f2937"/>
+<rect x="280" y="108" width="80" height="28" rx="8" fill="#dc2626" stroke="#7f1d1d" stroke-width="2"/>
+<line x1="320" y1="145" x2="320" y2="227" stroke="#6b7280" stroke-width="2" stroke-dasharray="7 6"/>
+<circle cx="320" cy="235" r="6" fill="#111827"/>
+<text x="320" y="261" font-size="15" font-weight="800" fill="#111827" text-anchor="middle">centro</text>
+<text x="332" y="205" font-size="17" font-weight="800" fill="#111827" text-anchor="start">r</text>
+<line x1="290.0" y1="128.0" x2="290.0" y2="198.0" stroke="#ffffff" stroke-width="9" stroke-linecap="round"/><line x1="290.0" y1="128.0" x2="290.0" y2="198.0" stroke="#1c7ed6" stroke-width="5" stroke-linecap="round" marker-end="url(#n)"/>
+<line x1="350.0" y1="128.0" x2="350.0" y2="198.0" stroke="#ffffff" stroke-width="9" stroke-linecap="round"/><line x1="350.0" y1="128.0" x2="350.0" y2="198.0" stroke="#c92a2a" stroke-width="5" stroke-linecap="round" marker-end="url(#p)"/>
+<text x="270" y="168" font-size="19" font-weight="800" fill="#1c7ed6" text-anchor="end">N</text>
+<text x="366" y="168" font-size="17" font-weight="800" fill="#c92a2a" text-anchor="start">P = m g</text>
+<line x1="372" y1="66" x2="268" y2="66" stroke="#6b7280" stroke-width="3" marker-end="url(#g)"/>
+<text x="386" y="72" font-size="19" font-weight="800" fill="#6b7280" text-anchor="start">v</text>
+<text x="320" y="396" font-size="15" font-weight="600" fill="#374151" text-anchor="middle">No topo, N e P apontam ambos para o centro: N + m g = m v² / r.</text>
+<text x="320" y="416" font-size="15" font-weight="600" fill="#374151" text-anchor="middle">Velocidade mínima para não perder o contacto: N = 0 e v mín = √(g r).</text>
+</svg>

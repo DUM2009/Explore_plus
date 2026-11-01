@@ -1,0 +1,648 @@
+{
+  "missao_id": "bio12-gametogenese",
+  "titulo": "Gametogénese",
+  "disciplina": "genetica",
+  "xp_total": 100,
+  "imagem": "Reprodução e Manipulação da Fertilidade.png",
+  "badge": {
+    "icone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"9\" cy=\"12\" r=\"6\"/><circle cx=\"15\" cy=\"12\" r=\"6\"/></svg>",
+    "nome": "Mestre da Gametogénese"
+  },
+  "mascote_fim": "Missão cumprida! Já sabes como se fabricam os espermatozoides e os ovócitos, porque é que cada gâmeta tem só 23 cromossomas e porque é que as duas gametogéneses são tão diferentes.",
+  "secoes": [
+    {
+      "secao_id": "gonadas-gametas",
+      "titulo": "Gónadas e gâmetas",
+      "xp": 20,
+      "tempo_estimado_min": 5,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Das gónadas aos gâmetas",
+          "imagem": "gametogenese_gonadas_gametas.png",
+          "imagem_legenda": "Silhueta humana com os testículos e os ovários destacados; de cada um sai uma seta para um gâmeta com n = 23, e a união dos dois gâmetas dá uma célula com 2n = 46.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "Quase todas as células do teu corpo têm 46 cromossomas, mas cada espermatozoide e cada ovócito só leva 23. Se levassem 46, o ovo teria 92. A solução está numa divisão especial, a meiose, que acontece nas gónadas.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Gónadas",
+              "explicacao": "Órgãos onde se formam os gâmetas: os testículos no homem e os ovários na mulher. Também produzem as hormonas sexuais.",
+              "imagem": "gam_gonadas.png",
+              "imagem_legenda": "Silhueta humana de frente com os testículos (masculino) e os ovários (feminino) destacados e legendados \"gónadas\"."
+            },
+            {
+              "id": "p2",
+              "label": "Gâmetas",
+              "explicacao": "Células sexuais (espermatozoides e ovócitos). São haploides: têm n = 23 cromossomas, metade do número das outras células do corpo.",
+              "imagem": "gam_gametas.png",
+              "imagem_legenda": "Um espermatozoide e um ovócito, cada um com a indicação n = 23."
+            },
+            {
+              "id": "p3",
+              "label": "Células diploides (2n = 46)",
+              "explicacao": "As células do corpo têm 46 cromossomas, organizados em 23 pares de cromossomas homólogos: um de cada par veio da mãe e o outro do pai.",
+              "imagem": "gam_diploide.png",
+              "imagem_legenda": "Uma célula com 23 pares de cromossomas homólogos, um de cada par a azul (pai) e a rosa (mãe), com a indicação 2n = 46.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Pensa num baralho de cartas**\n\nCada pessoa tem um baralho completo de 46 cartas, organizadas em 23 pares. Para fazer um filho, cada progenitor dá meio baralho: 23 cartas, uma de cada par, escolhidas ao acaso. Quando as duas metades se juntam, o baralho volta a ter 46 cartas. A meiose é o gesto de separar o baralho a meio. Sem ela, cada geração ficava com o dobro das cartas."
+            },
+            {
+              "id": "p4",
+              "label": "Meiose",
+              "explicacao": "Divisão celular que reduz o número de cromossomas para metade (de 2n para n). É formada por duas divisões seguidas, meiose I e meiose II, depois de uma única duplicação do ADN, e origina quatro células.",
+              "imagem": "gam_meiose.png",
+              "imagem_legenda": "Uma célula 2n a dividir-se duas vezes seguidas (meiose I e meiose II) e a originar quatro células n.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Porque é que a meiose tem duas divisões?**\n\nAntes da meiose, o ADN duplica uma só vez: cada cromossoma passa a ter dois cromatídeos-irmãos. Na meiose I separam-se os cromossomas homólogos, e por isso o número de cromossomas passa de 46 para 23 (é a divisão que reduz). Na meiose II separam-se os cromatídeos-irmãos, tal como numa mitose, e cada cromossoma fica com um único cromatídeo. Resultado: de uma célula 2n saem quatro células n."
+            },
+            {
+              "id": "p5",
+              "label": "Fecundação",
+              "explicacao": "Quando um espermatozoide (n = 23) e um ovócito (n = 23) se unem, formam um ovo com 2n = 46. É assim que o número de cromossomas da espécie se mantém de geração em geração.",
+              "imagem": "gam_fecundacao.png",
+              "imagem_legenda": "Um espermatozoide (n = 23) e um ovócito (n = 23) a unirem-se num ovo com 2n = 46.",
+              "exercicio": {
+                "enunciado": "Se os gâmetas tivessem 46 cromossomas cada um, quantos cromossomas teria o ovo depois da fecundação?",
+                "campos": [
+                  {
+                    "rotulo": "Cromossomas do ovo",
+                    "aceites": [
+                      "92"
+                    ]
+                  }
+                ],
+                "resolucao": [
+                  "O ovo recebe os cromossomas do espermatozoide e do ovócito: 46 + 46 = 92. E a cada geração o número duplicava. Por isso a meiose é essencial."
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Quantos cromossomas tem um espermatozoide humano?",
+              "opcoes": [
+                "46",
+                "23"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! Os gâmetas só levam metade: 23 cromossomas.",
+              "mascote_feedback_errado": "Os gâmetas são haploides: levam metade dos cromossomas, ou seja, 23. Os 46 são das outras células do corpo."
+            },
+            {
+              "pergunta": "Em que tipo de divisão celular se formam os gâmetas?",
+              "opcoes": [
+                "Meiose",
+                "Mitose"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! A meiose é a divisão que reduz o número de cromossomas para metade.",
+              "mascote_feedback_errado": "A mitose mantém o número de cromossomas. Para formar gâmetas é preciso reduzi-lo para metade, e isso é a meiose."
+            },
+            {
+              "pergunta": "Onde se formam os gâmetas femininos?",
+              "opcoes": [
+                "No útero",
+                "Nos ovários"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Os ovários são as gónadas femininas.",
+              "mascote_feedback_errado": "Os gâmetas femininos formam-se nos ovários, as gónadas da mulher. O útero é onde o embrião se desenvolve."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: as células do corpo têm 23 pares de cromossomas homólogos.",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo! São 23 pares, ou seja, 46 cromossomas.",
+              "mascote_feedback_errado": "Na verdade é verdadeiro: 23 pares de homólogos dão 46 cromossomas."
+            },
+            {
+              "pergunta": "A meiose origina, a partir de uma célula 2n:",
+              "opcoes": [
+                "Quatro células n",
+                "Duas células 2n"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Duas divisões seguidas e o número de cromossomas reduzido a metade.",
+              "mascote_feedback_errado": "A meiose tem duas divisões e reduz os cromossomas para metade: de uma célula 2n saem quatro células n. Duas células 2n seria o resultado de uma mitose."
+            },
+            {
+              "pergunta": "Qual das divisões da meiose separa os cromossomas homólogos e reduz o número de cromossomas?",
+              "opcoes": [
+                "Meiose II",
+                "Meiose I"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! É na meiose I que os homólogos se separam e o número passa de 46 para 23.",
+              "mascote_feedback_errado": "É a meiose I. Na meiose II separam-se os cromatídeos-irmãos, tal como numa mitose, e o número de cromossomas já não muda."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "espermatogenese",
+      "titulo": "Espermatogénese",
+      "xp": 25,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "A linha de produção dos espermatozoides",
+          "imagem": "espermatogenese_tubulo.png",
+          "imagem_legenda": "Corte de um testículo com um túbulo seminífero ampliado: da periferia para o lúmen, espermatogónia, espermatócito I, espermatócitos II, espermátides e espermatozoides, com as células de Sertoli e as células de Leydig entre os túbulos. Cada fase indica o número de cromossomas.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "Nos testículos de um homem adulto produzem-se centenas de milhões de espermatozoides por dia. A espermatogénese é uma linha de produção na parede dos túbulos seminíferos: as células avançam da periferia para o centro e vão mudando até se tornarem espermatozoides.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Espermatogónia (2n = 46)",
+              "explicacao": "Célula germinativa na periferia do túbulo seminífero. Divide-se por mitose, para renovar o stock de células; algumas crescem e transformam-se em espermatócitos I.",
+              "imagem": "gam_espermatogonia.png",
+              "imagem_legenda": "Corte da parede de um túbulo seminífero com a espermatogónia (2n = 46) na periferia, a dividir-se por mitose."
+            },
+            {
+              "id": "p2",
+              "label": "Espermatócito I (2n = 46)",
+              "explicacao": "O ADN já duplicou: tem 46 cromossomas, cada um com dois cromatídeos. É esta célula que entra na meiose.",
+              "imagem": "gam_espermatocito_i.png",
+              "imagem_legenda": "Um espermatócito I com 46 cromossomas, cada um com dois cromatídeos, a entrar na meiose."
+            },
+            {
+              "id": "p3",
+              "label": "Meiose I",
+              "explicacao": "Separa os cromossomas homólogos. De cada espermatócito I saem dois espermatócitos II, com n = 23 cromossomas, ainda com dois cromatídeos cada. A citocinese é igual: as duas células têm o mesmo tamanho.",
+              "imagem": "gam_espermatogenese_meiose_i.png",
+              "imagem_legenda": "Um espermatócito I a separar os homólogos e a originar dois espermatócitos II do mesmo tamanho, com n = 23.",
+              "atencao": "**Erro comum: \"a meiose I já dá espermátides\"**\n\nA meiose I origina espermatócitos II. Só a meiose II dá origem às espermátides."
+            },
+            {
+              "id": "p4",
+              "label": "Meiose II",
+              "explicacao": "Separa os cromatídeos-irmãos. De cada espermatócito II saem duas espermátides, com 23 cromossomas de um só cromatídeo. No total, cada espermatócito I dá quatro espermátides.",
+              "imagem": "gam_espermatogenese_meiose_ii.png",
+              "imagem_legenda": "Dois espermatócitos II a separarem os cromatídeos-irmãos e a originarem, no total, quatro espermátides com n = 23."
+            },
+            {
+              "id": "p5",
+              "label": "Espermiogénese",
+              "explicacao": "As espermátides não se dividem mais: transformam-se em espermatozoides. O núcleo compacta-se, forma-se o acrossoma (com enzimas), as mitocôndrias juntam-se na peça intermédia e desenvolve-se a cauda (flagelo). O excesso de citoplasma é perdido.",
+              "imagem": "gam_espermiogenese.png",
+              "imagem_legenda": "Uma espermátide a transformar-se num espermatozoide, com o acrossoma, o núcleo, a peça intermédia com mitocôndrias e a cauda identificados.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**O espermatozoide é como um entregador de bicicleta**\n\nA espermatogénese é uma linha de montagem. A matéria-prima são as espermatogónias, que se multiplicam para nunca faltar material. A meiose é a divisão do trabalho: de uma célula saem quatro, com metade da informação. A espermiogénese é o acabamento: o espermatozoide recebe um motor (as mitocôndrias), uma hélice (o flagelo) e um capacete com ferramentas (o acrossoma, que guarda as enzimas para furar as camadas do ovócito). No fim, fica leve e rápido, só com o essencial: o ADN."
+            },
+            {
+              "id": "p6",
+              "label": "Células de Sertoli",
+              "explicacao": "Células de suporte dentro do túbulo. Sustentam, protegem e nutrem as células em desenvolvimento.",
+              "imagem": "gam_sertoli.png",
+              "imagem_legenda": "Uma célula de Sertoli grande, dentro do túbulo, a envolver as células em desenvolvimento."
+            },
+            {
+              "id": "p7",
+              "label": "Células de Leydig",
+              "explicacao": "Células entre os túbulos seminíferos. Produzem testosterona, a hormona que estimula a espermatogénese e os caracteres sexuais masculinos.",
+              "imagem": "gam_leydig.png",
+              "imagem_legenda": "Células de Leydig entre dois túbulos seminíferos, com uma seta para a testosterona.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Quem manda na espermatogénese?**\n\nO hipotálamo liberta GnRH, que estimula a hipófise a produzir FSH e LH. A LH estimula as células de Leydig a produzirem testosterona. A FSH atua nas células de Sertoli. Em conjunto, estas hormonas mantêm a espermatogénese. Há ainda um pormenor curioso: os testículos ficam fora do corpo, no escroto, porque a espermatogénese funciona melhor a uma temperatura cerca de 2 a 3 °C inferior à do resto do corpo. Desde a espermatogónia até ao espermatozoide maduro passam-se cerca de dois a três meses, e o processo repete-se de forma contínua desde a puberdade, ao longo da vida."
+            }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Quantos espermatozoides se formam a partir de um espermatócito I?",
+              "opcoes": [
+                "4",
+                "1"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Exato! Duas divisões seguidas dão quatro células, e todas se transformam em espermatozoides.",
+              "mascote_feedback_errado": "Um espermatócito I divide-se duas vezes (meiose I e meiose II): 1, 2, 4. As quatro células são funcionais."
+            },
+            {
+              "pergunta": "Que células produzem testosterona?",
+              "opcoes": [
+                "Células de Sertoli",
+                "Células de Leydig"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! As células de Leydig, localizadas entre os túbulos, produzem testosterona.",
+              "mascote_feedback_errado": "As células de Sertoli estão dentro do túbulo e nutrem as células em desenvolvimento. Quem produz testosterona são as de Leydig, entre os túbulos."
+            },
+            {
+              "pergunta": "Quantos cromossomas tem uma espermátide?",
+              "opcoes": [
+                "46",
+                "23"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Já passou pelas duas divisões da meiose: tem 23 cromossomas, cada um com um cromatídeo.",
+              "mascote_feedback_errado": "A espermátide vem depois da meiose II, por isso já é haploide: 23 cromossomas."
+            },
+            {
+              "pergunta": "Onde decorre a espermatogénese?",
+              "opcoes": [
+                "Nas vesículas seminais",
+                "Nos túbulos seminíferos"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! É na parede dos túbulos seminíferos que se formam os espermatozoides.",
+              "mascote_feedback_errado": "A espermatogénese decorre nos túbulos seminíferos, dentro dos testículos. As vesículas seminais produzem parte do sémen, mas não formam espermatozoides."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: a meiose I de um espermatócito I origina espermátides.",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! A meiose I origina espermatócitos II. Só a meiose II dá origem a espermátides.",
+              "mascote_feedback_errado": "É falso: a meiose I origina espermatócitos II. Só a meiose II dá origem a espermátides."
+            },
+            {
+              "pergunta": "Quantos cromossomas tem um espermatócito II?",
+              "opcoes": [
+                "23",
+                "46"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Isso mesmo! Depois da meiose I já é haploide: 23 cromossomas, ainda com dois cromatídeos cada.",
+              "mascote_feedback_errado": "Depois da meiose I o número de cromossomas já foi reduzido a metade: o espermatócito II tem 23 cromossomas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "oogenese",
+      "titulo": "Oogénese",
+      "xp": 30,
+      "tempo_estimado_min": 8,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Oogénese, parte 1: da vida fetal à puberdade",
+          "imagem": "oogenese_linha_tempo.png",
+          "imagem_legenda": "Linha do tempo com a vida fetal, o nascimento, a puberdade e a menopausa: ovogónias a dividirem-se por mitose, ovócitos I rodeados de células (folículos primordiais) parados em prófase I, e o número de ovócitos em cada momento.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "Quando uma menina nasce, os ovários já contêm todos os ovócitos que alguma vez vai ter: cerca de um a dois milhões. Alguns vão esperar décadas, a meio de uma divisão. É isto que distingue a oogénese da espermatogénese: duas pausas longas, e uma divisão em que quase todo o citoplasma fica de um só lado.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Ovogónia (2n = 46)",
+              "explicacao": "Célula germinativa do ovário. Multiplica-se por mitose durante a vida fetal e nenhuma ovogónia nova se forma depois do nascimento.",
+              "imagem": "gam_ovogonia.png",
+              "imagem_legenda": "Ovogónias no ovário de um feto a multiplicarem-se por mitose."
+            },
+            {
+              "id": "p2",
+              "label": "Ovócito I (2n = 46)",
+              "explicacao": "Resulta do crescimento de uma ovogónia. Começa a meiose I ainda no feto, mas pára em prófase I.",
+              "imagem": "gam_ovocito_i.png",
+              "imagem_legenda": "Um ovócito I a crescer a partir de uma ovogónia, com a etiqueta \"parado em prófase I\"."
+            },
+            {
+              "id": "p3",
+              "label": "Folículo primordial",
+              "explicacao": "Ovócito I rodeado por uma camada de células foliculares. É o estado em que os ovócitos esperam, muitas vezes durante décadas.",
+              "imagem": "gam_foliculo_primordial.png",
+              "imagem_legenda": "Um ovócito I rodeado por uma camada de células foliculares."
+            },
+            {
+              "id": "p4",
+              "label": "Reserva limitada",
+              "explicacao": "Ao nascimento há cerca de 1 a 2 milhões de ovócitos I; na puberdade restam cerca de 400 000, porque muitos degeneram. Ao longo da vida, só cerca de 400 chegam a ser libertados.",
+              "imagem": "gam_reserva_ovocitos.png",
+              "imagem_legenda": "Três barras (nascimento, puberdade, ao longo da vida) a mostrar a redução do número de ovócitos: 1 a 2 milhões, 400 000 e cerca de 400.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**A idade conta**\n\nOs ovócitos são formados antes do nascimento e ficam em pausa durante décadas. Por isso, o ovócito de uma mulher de 38 anos tem 38 anos mais o tempo de gestação. Com a idade, aumenta a probabilidade de erros na separação dos cromossomas durante a meiose, e essa é uma das razões por que a fertilidade diminui. A oogénese termina na menopausa, por volta dos 50 anos, quando praticamente já não restam folículos. Nos homens, como a espermatogénese recomeça continuamente a partir das espermatogónias, não há uma idade em que acabe de repente."
+            }
+          ]
+        },
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Oogénese, parte 2: do ciclo à fecundação",
+          "imagem": "oogenese_ciclo_fecundacao.png",
+          "imagem_legenda": "Sequência de cinco passos num ovário e numa trompa: folículo a crescer, folículo de Graaf com a meiose I a libertar um glóbulo polar, ovulação de um ovócito II parado em metáfase II, espermatozoide a entrar na trompa e fecundação com a meiose II e o segundo glóbulo polar.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "A partir da puberdade, em cada ciclo um ovócito retoma a meiose. Segue os passos desde o folículo até à fecundação.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Folículo de Graaf",
+              "explicacao": "Folículo maduro, junto à parede do ovário. Em cada ciclo, sob a ação da FSH, vários folículos crescem, mas normalmente só um chega à maturação completa.",
+              "imagem": "gam_foliculo_graaf.png",
+              "imagem_legenda": "Um folículo de Graaf junto à parede do ovário, com o ovócito I no interior."
+            },
+            {
+              "id": "p2",
+              "label": "Meiose I e citocinese desigual",
+              "explicacao": "Pouco antes da ovulação, o ovócito I conclui a meiose I. Origina um ovócito II (n = 23), com quase todo o citoplasma, e um primeiro glóbulo polar, minúsculo. A divisão do citoplasma é desigual.",
+              "imagem": "gam_citocinese_desigual.png",
+              "imagem_legenda": "Um ovócito I a dividir-se de forma desigual: um ovócito II grande e um glóbulo polar minúsculo.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Os glóbulos polares são \"ficheiros temporários\"**\n\nOs glóbulos polares ficaram com a informação que sobrava, e quase nenhum citoplasma. São minúsculos e acabam por degenerar. A divisão desigual dá ao ovócito quase todo o citoplasma, com as reservas de que o embrião vai precisar nos primeiros dias."
+            },
+            {
+              "id": "p3",
+              "label": "Primeira e segunda pausa",
+              "explicacao": "A primeira pausa é em prófase I (desde a vida fetal). O ovócito II começa a meiose II e pára de novo, em metáfase II. É nesse estado que é libertado.",
+              "imagem": "gam_duas_pausas.png",
+              "imagem_legenda": "Uma linha com as duas pausas da oogénese: prófase I (desde a vida fetal) e metáfase II (até à fecundação).",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Um jogo com dois pontos de gravação**\n\nA oogénese é como um jogo de vídeo com dois pontos de gravação. O jogo começa ainda antes de a menina nascer, e é gravado em prófase I. Quando chega a puberdade, em cada ciclo um ovócito carrega o jogo, continua até ao segundo ponto e volta a gravar, em metáfase II. Só quando um espermatozoide entra é que o jogo chega ao fim."
+            },
+            {
+              "id": "p4",
+              "label": "Ovulação",
+              "explicacao": "O folículo rompe e liberta o ovócito II, rodeado de zona pelúcida e de células foliculares. A trompa de Falópio capta-o.",
+              "imagem": "gam_ovulacao.png",
+              "imagem_legenda": "O folículo a romper-se e a libertar um ovócito II, rodeado de zona pelúcida, para a trompa de Falópio.",
+              "atencao": "**Erro comum: \"na ovulação sai um óvulo\"**\n\nO que sai do ovário ainda não terminou a meiose: é um ovócito II, parado em metáfase II. O óvulo só se forma se houver fecundação."
+            },
+            {
+              "id": "p5",
+              "label": "Fecundação",
+              "explicacao": "Só se um espermatozoide entrar é que o ovócito II conclui a meiose II. Origina o óvulo (com quase todo o citoplasma) e um segundo glóbulo polar. Se não houver fecundação, o ovócito II degenera.",
+              "imagem": "gam_fecundacao_meiose_ii.png",
+              "imagem_legenda": "Um espermatozoide a entrar no ovócito II, que conclui a meiose II e liberta o segundo glóbulo polar."
+            },
+            {
+              "id": "p6",
+              "label": "Corpo amarelo",
+              "explicacao": "Depois da ovulação, o que resta do folículo transforma-se no corpo amarelo (corpo lúteo), que produz hormonas. Se não houver gravidez, degenera.",
+              "imagem": "gam_corpo_amarelo.png",
+              "imagem_legenda": "O que resta do folículo depois da ovulação, a transformar-se no corpo amarelo."
+            }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Em que fase está parado um ovócito I desde a vida fetal até à puberdade?",
+              "opcoes": [
+                "Metáfase II",
+                "Prófase I"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! É a primeira pausa da oogénese: prófase I.",
+              "mascote_feedback_errado": "A metáfase II é a segunda pausa, e só aparece depois da meiose I. Os ovócitos I esperam em prófase I."
+            },
+            {
+              "pergunta": "O que é libertado do ovário na ovulação?",
+              "opcoes": [
+                "Um ovócito II parado em metáfase II",
+                "Um óvulo já completo"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Correto! O ovócito II só conclui a meiose II se for fecundado.",
+              "mascote_feedback_errado": "Na ovulação o que sai do ovário ainda não terminou a meiose: é um ovócito II, parado em metáfase II. Só a fecundação o faz acabar."
+            },
+            {
+              "pergunta": "Para que serve a citocinese desigual na oogénese?",
+              "opcoes": [
+                "Para formar quatro óvulos funcionais",
+                "Para o ovócito ficar com quase todo o citoplasma, que guarda reservas para o embrião"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! O ovócito precisa de reservas para os primeiros dias do embrião. Os glóbulos polares são minúsculos e acabam por degenerar.",
+              "mascote_feedback_errado": "Na oogénese só se forma um gâmeta funcional por ovócito I. A citocinese desigual serve para dar ao ovócito quase todo o citoplasma, com as reservas."
+            },
+            {
+              "pergunta": "Quando começa a oogénese?",
+              "opcoes": [
+                "Antes do nascimento, na vida fetal",
+                "Na puberdade"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo! As ovogónias multiplicam-se e os ovócitos I entram em meiose ainda na vida fetal.",
+              "mascote_feedback_errado": "A oogénese começa antes do nascimento, na vida fetal. Na puberdade o que acontece é que os ovócitos começam a ser libertados, um por ciclo."
+            },
+            {
+              "pergunta": "De cada ovócito I resulta quantos gâmetas funcionais?",
+              "opcoes": [
+                "4",
+                "1"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Só um: os glóbulos polares são minúsculos e degeneram.",
+              "mascote_feedback_errado": "Só resulta 1 gâmeta funcional por ovócito I. Os glóbulos polares ficam com quase nenhum citoplasma e degeneram. Os quatro gâmetas são da espermatogénese."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: a meiose II do ovócito só termina se houver fecundação.",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo! O ovócito II pára em metáfase II e só conclui a meiose se um espermatozoide o fecundar.",
+              "mascote_feedback_errado": "É verdadeiro: o ovócito II pára em metáfase II e só conclui a meiose se um espermatozoide o fecundar."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "secao_id": "lado-a-lado",
+      "titulo": "Espermatogénese e oogénese lado a lado",
+      "xp": 25,
+      "tempo_estimado_min": 7,
+      "ecrãs": [
+        {
+          "tipo": "diagrama_interativo",
+          "cartao_estilo": true,
+          "pontos_seta": true,
+          "titulo": "Duas estratégias, um mesmo processo de base",
+          "imagem": "gametogenese_comparacao.png",
+          "imagem_legenda": "Duas colunas lado a lado, espermatogénese e oogénese, com seis linhas comparativas (início e fim, produção, gâmetas por célula inicial, citocinese, pausas e gâmeta final) e uma faixa central a indicar o que têm em comum: meiose e n = 23.",
+          "imagem_so_no_primeiro": true,
+          "texto_principal": "Um homem produz centenas de milhões de gâmetas por dia. Uma mulher liberta cerca de 400 ao longo da vida. O processo de base é o mesmo (meiose), mas as estratégias são opostas: quantidade num caso, qualidade e reservas no outro.",
+          "instrucao": "Clica em cada ponto para veres a explicação.",
+          "pontos": [
+            {
+              "id": "p1",
+              "label": "Resumo comparativo",
+              "explicacao": "Os seis pontos em que a espermatogénese e a oogénese mais diferem. Vais vê-los um a um a seguir.",
+              "tabelas": [
+                {
+                  "titulo": "Espermatogénese e oogénese",
+                  "colunas": [
+                    "",
+                    "Espermatogénese",
+                    "Oogénese"
+                  ],
+                  "linhas": [
+                    [
+                      "Início",
+                      "Puberdade",
+                      "Vida fetal"
+                    ],
+                    [
+                      "Produção",
+                      "Centenas de milhões por dia",
+                      "Cerca de 1 por ciclo"
+                    ],
+                    [
+                      "Gâmetas por célula inicial",
+                      "4",
+                      "1 (mais glóbulos polares)"
+                    ],
+                    [
+                      "Citocinese",
+                      "Igual",
+                      "Desigual"
+                    ],
+                    [
+                      "Pausas",
+                      "Nenhuma",
+                      "Duas (prófase I e metáfase II)"
+                    ],
+                    [
+                      "Gâmeta final",
+                      "Pequeno e móvel",
+                      "Grande e imóvel"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "p2",
+              "label": "Início e fim",
+              "explicacao": "Espermatogénese: começa na puberdade e continua ao longo da vida. Oogénese: começa na vida fetal e os ovócitos são libertados da puberdade até à menopausa (cerca dos 50 anos).",
+              "imagem": "gam_inicio_fim.png",
+              "imagem_legenda": "Duas linhas do tempo: a espermatogénese a começar na puberdade e a continuar pela vida fora, e a oogénese a começar na vida fetal e a acabar na menopausa."
+            },
+            {
+              "id": "p3",
+              "label": "Quantidade",
+              "explicacao": "Espermatogénese: centenas de milhões de espermatozoides por dia. Oogénese: normalmente um ovócito libertado por ciclo (cerca de 28 dias).",
+              "imagem": "gam_quantidade.png",
+              "imagem_legenda": "Uma multidão de espermatozoides ao lado de um único ovócito, a comparar as quantidades."
+            },
+            {
+              "id": "p4",
+              "label": "Gâmetas a partir de uma célula",
+              "explicacao": "De um espermatócito I saem 4 espermatozoides. De um ovócito I sai 1 gâmeta funcional, mais glóbulos polares (até 3) que degeneram.",
+              "imagem": "gam_gametas_por_celula.png",
+              "imagem_legenda": "Um espermatócito I a originar quatro espermatozoides, e um ovócito I a originar um ovócito grande e glóbulos polares pequenos."
+            },
+            {
+              "id": "p5",
+              "label": "Citocinese e pausas",
+              "explicacao": "Espermatogénese: citocinese igual, as células filhas têm o mesmo tamanho, e o processo é contínuo, sem pausas. Oogénese: citocinese desigual, o ovócito fica com quase todo o citoplasma, e há duas pausas, em prófase I e em metáfase II.",
+              "imagem": "gam_citocinese_pausas.png",
+              "imagem_legenda": "Duas divisões lado a lado: a espermatogénese com células do mesmo tamanho e sem pausas, e a oogénese com uma célula grande e uma minúscula e duas pausas assinaladas."
+            },
+            {
+              "id": "p6",
+              "label": "O gâmeta final",
+              "explicacao": "O espermatozoide é pequeno, móvel e tem poucas reservas: só leva o ADN e as enzimas para entrar no ovócito. O ovócito é grande, imóvel, rodeado por zona pelúcida e com muitas reservas para o embrião.",
+              "imagem": "gam_gameta_final.png",
+              "imagem_legenda": "Um espermatozoide pequeno e com cauda ao lado de um ovócito grande, rodeado pela zona pelúcida.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Um entregador e uma casa**\n\nO espermatozoide é como um entregador de bicicleta: leve, rápido, leva só o pacote (o ADN). O ovócito é como a casa que recebe a entrega: tem a despensa cheia, a cama feita e tudo o que o morador (o embrião) vai precisar nos primeiros dias. Por isso, um homem faz entregadores aos milhões, e uma mulher prepara uma casa de cada vez."
+            },
+            {
+              "id": "p7",
+              "label": "O que têm em comum",
+              "explicacao": "Ambas incluem meiose e originam gâmetas haploides (n = 23). Em ambas, o crossing-over e a distribuição ao acaso dos homólogos garantem variabilidade genética.",
+              "imagem": "gam_em_comum.png",
+              "imagem_legenda": "Os dois processos a convergirem numa faixa central com \"meiose\" e \"n = 23\".",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**Porque é que ninguém é igual a ninguém**\n\nNa prófase I da meiose, os cromossomas homólogos trocam segmentos entre si (crossing-over). Na metáfase I, a orientação de cada par de homólogos é feita ao acaso. Só pela distribuição ao acaso, cada pessoa pode formar 2²³ ≈ 8,4 milhões de gâmetas diferentes, sem contar com o crossing-over. Entre dois progenitores, são 2²³ × 2²³ ≈ 70 biliões de combinações possíveis. É por isso que dois irmãos (exceto gémeos verdadeiros) são geneticamente diferentes."
+            }
+          ]
+        },
+        {
+          "tipo": "quiz_seccao",
+          "perguntas": [
+            {
+              "pergunta": "Qual destas é característica da oogénese e não da espermatogénese?",
+              "opcoes": [
+                "Formação de quatro gâmetas funcionais por célula inicial",
+                "Citocinese desigual"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Exato! Na oogénese o citoplasma divide-se de forma desigual. A formação de quatro gâmetas é da espermatogénese.",
+              "mascote_feedback_errado": "Quatro gâmetas funcionais por célula inicial é a espermatogénese. Na oogénese só há um, e a divisão do citoplasma é desigual."
+            },
+            {
+              "pergunta": "Porque é que o espermatozoide é pequeno e tem muito poucas reservas?",
+              "opcoes": [
+                "Porque tem de alimentar o embrião",
+                "Porque a sua função é chegar ao ovócito e entregar o ADN"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Correto! O espermatozoide é como um mensageiro leve e rápido. As reservas estão no ovócito.",
+              "mascote_feedback_errado": "Quem fornece as reservas ao embrião é o ovócito. O espermatozoide só leva o ADN, e por isso pode ser pequeno e rápido."
+            },
+            {
+              "pergunta": "O que têm em comum a espermatogénese e a oogénese?",
+              "opcoes": [
+                "Ambas começam na puberdade",
+                "Ambas incluem meiose"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Em ambas a meiose reduz os cromossomas de 46 para 23.",
+              "mascote_feedback_errado": "A oogénese começa antes do nascimento. O que têm em comum é a meiose, que origina gâmetas haploides."
+            },
+            {
+              "pergunta": "Quantos gâmetas funcionais resultam de um espermatócito I e de um ovócito I, respetivamente?",
+              "opcoes": [
+                "1 e 4",
+                "4 e 1"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Certo! Um espermatócito I dá 4 espermatozoides; um ovócito I dá 1 gâmeta funcional.",
+              "mascote_feedback_errado": "É ao contrário: um espermatócito I dá 4 espermatozoides, e um ovócito I dá apenas 1 gâmeta funcional, mais glóbulos polares que degeneram."
+            },
+            {
+              "pergunta": "Verdadeiro ou Falso: o crossing-over e a distribuição ao acaso dos homólogos aumentam a variabilidade genética dos gâmetas.",
+              "opcoes": [
+                "Verdadeiro",
+                "Falso"
+              ],
+              "correta": 0,
+              "mascote_feedback_certo": "Certo! Os dois mecanismos geram gâmetas geneticamente diferentes.",
+              "mascote_feedback_errado": "É verdadeiro: o crossing-over e a distribuição ao acaso dos homólogos dão gâmetas geneticamente diferentes."
+            },
+            {
+              "pergunta": "Qual é a vantagem da citocinese desigual na oogénese?",
+              "opcoes": [
+                "O ovócito torna-se móvel",
+                "O ovócito fica com muitas reservas para o embrião"
+              ],
+              "correta": 1,
+              "mascote_feedback_certo": "Isso mesmo! Quase todo o citoplasma, e as reservas, ficam no ovócito.",
+              "mascote_feedback_errado": "A citocinese desigual deixa quase todo o citoplasma no ovócito, com muitas reservas para o embrião. O ovócito não é móvel: quem se move é o espermatozoide."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

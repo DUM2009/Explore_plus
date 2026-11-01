@@ -52,46 +52,44 @@
           "perguntas": [
             {
               "pergunta": "Qual é, em kelvin, a temperatura de 25 °C?",
-              "opcoes": [
+              "opcoes": ["298,15 K",
                 "248,15 K",
                 "25 K",
-                "273,15 K",
-                "298,15 K"
+                "273,15 K"
               ],
-              "correta": 3,
+              "correta": 0,
               "mascote_feedback_certo": "Certo. T = 25 + 273,15 = 298,15 K. Nos exames é comum aparecer arredondado para 298 K.",
               "mascote_feedback_errado": "Soma 273,15 à temperatura em graus Celsius: 25 + 273,15 = 298,15 K."
             },
             {
               "pergunta": "Voltando ao banco de jardim: porque é que o metal parece mais frio do que a madeira, se estão à mesma temperatura?",
-              "opcoes": [
-                "Porque o metal está, na verdade, a uma temperatura mais baixa.",
-                "Porque o metal transfere energia da tua mão muito mais depressa do que a madeira.",
+              "opcoes": ["Porque o metal está, na verdade, a uma temperatura mais baixa.",
                 "Porque o metal transfere frio para a tua mão.",
-                "Porque a madeira produz calor."
+                "Porque a madeira produz calor.",
+                "Porque o metal transfere energia da tua mão muito mais depressa do que a madeira."
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Exato. O metal é melhor condutor térmico: retira energia à tua mão mais rapidamente. A pele sente a rapidez com que perde energia, não a temperatura do objeto.",
               "mascote_feedback_errado": "O \"frio\" não se transfere: só energia, e sempre do mais quente para o mais frio. O metal conduz melhor e retira energia à tua mão mais depressa, por isso parece mais frio. Vais ver isto em detalhe mais à frente, na secção sobre condução e convecção."
             },
             {
               "pergunta": "Qual das afirmações é correta?",
-              "opcoes": ["Um corpo quente tem mais calor do que um corpo frio.", "O calor é energia transferida devido a uma diferença de temperatura.", "A temperatura é a energia total das partículas de um corpo.", "Dois corpos em equilíbrio térmico têm a mesma energia interna."],
-              "correta": 1,
+              "opcoes": ["Um corpo quente tem mais calor do que um corpo frio.", "A temperatura é a energia total das partículas de um corpo.", "O calor é energia transferida devido a uma diferença de temperatura.", "Dois corpos em equilíbrio térmico têm a mesma energia interna."],
+              "correta": 2,
               "mascote_feedback_certo": "Exato. Calor é energia em trânsito entre corpos a temperaturas diferentes.",
               "mascote_feedback_errado": "Calor é energia em trânsito entre corpos a temperaturas diferentes. Em equilíbrio térmico, os corpos têm a mesma temperatura, mas podem ter energias internas muito diferentes (depende da massa e do material)."
             },
             {
               "pergunta": "Uma variação de temperatura de 30 °C corresponde a uma variação de:",
-              "opcoes": ["30 K", "303,15 K", "243,15 K", "86 K"],
-              "correta": 0,
+              "opcoes": ["303,15 K", "30 K", "243,15 K", "86 K"],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. As duas escalas têm divisões do mesmo tamanho. Uma variação de 30 °C é igual a uma variação de 30 K.",
               "mascote_feedback_errado": "As duas escalas têm divisões do mesmo tamanho. Uma variação de 30 °C é igual a uma variação de 30 K. Só as temperaturas (não as variações) diferem de 273,15."
             },
             {
               "pergunta": "O funcionamento de um termómetro baseia-se:",
-              "opcoes": ["na primeira lei da termodinâmica.", "na lei zero da termodinâmica: o termómetro atinge o equilíbrio térmico com o corpo.", "na conservação da energia mecânica.", "no efeito Joule."],
-              "correta": 1,
+              "opcoes": ["na lei zero da termodinâmica: o termómetro atinge o equilíbrio térmico com o corpo.", "na primeira lei da termodinâmica.", "na conservação da energia mecânica.", "no efeito Joule."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Quando o termómetro fica em equilíbrio térmico com o corpo, estão os dois à mesma temperatura.",
               "mascote_feedback_errado": "Quando o termómetro fica em equilíbrio térmico com o corpo, estão os dois à mesma temperatura, e a leitura do termómetro é a temperatura do corpo."
             }
@@ -177,8 +175,7 @@
           "perguntas": [
             {
               "pergunta": "Um painel com 1,6 m² recebe uma irradiância de 1000 W/m² e fornece uma potência elétrica de 320 W. Qual é o seu rendimento?",
-              "opcoes": [
-                "5,0 %",
+              "opcoes": ["5,0 %",
                 "20 %",
                 "32 %",
                 "50 %"
@@ -189,34 +186,33 @@
             },
             {
               "pergunta": "Porque é que a energia do Sol consegue chegar à Terra?",
-              "opcoes": [
-                "Porque é transportada pelo ar.",
-                "Porque a radiação eletromagnética não precisa de um meio material para se propagar.",
+              "opcoes": ["Porque é transportada pelo ar.",
                 "Por condução através do espaço.",
-                "Por convecção das partículas do Sol."
+                "Por convecção das partículas do Sol.",
+                "Porque a radiação eletromagnética não precisa de um meio material para se propagar."
               ],
-              "correta": 1,
+              "correta": 3,
               "mascote_feedback_certo": "Exato. A condução e a convecção precisam de matéria. A radiação propaga-se no vazio.",
               "mascote_feedback_errado": "Entre o Sol e a Terra praticamente não há matéria, por isso não pode haver condução nem convecção. Só a radiação se propaga no vazio."
             },
             {
               "pergunta": "Qual das afirmações sobre a emissão de radiação é correta?",
-              "opcoes": ["Só os corpos quentes emitem radiação.", "Todos os corpos emitem radiação; a potência emitida aumenta com a temperatura.", "Os corpos frios emitem radiação de comprimento de onda menor.", "Um corpo em equilíbrio térmico deixa de emitir radiação."],
-              "correta": 1,
+              "opcoes": ["Só os corpos quentes emitem radiação.", "Os corpos frios emitem radiação de comprimento de onda menor.", "Todos os corpos emitem radiação; a potência emitida aumenta com a temperatura.", "Um corpo em equilíbrio térmico deixa de emitir radiação."],
+              "correta": 2,
               "mascote_feedback_certo": "Exato. Todos os corpos emitem radiação. Quanto maior a temperatura, maior a potência emitida.",
               "mascote_feedback_errado": "Todos os corpos emitem radiação. Quanto maior a temperatura, maior a potência emitida e menores os comprimentos de onda predominantes. Em equilíbrio, o corpo continua a emitir, mas absorve na mesma proporção."
             },
             {
               "pergunta": "Na AL 3.1, o gráfico da potência em função da resistência exterior:",
-              "opcoes": ["é uma reta crescente.", "é uma reta decrescente.", "apresenta um máximo para um determinado valor de resistência.", "é uma linha horizontal, porque a luz é constante."],
-              "correta": 2,
+              "opcoes": ["apresenta um máximo para um determinado valor de resistência.", "é uma reta crescente.", "é uma reta decrescente.", "é uma linha horizontal, porque a luz é constante."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Entre os dois extremos há um valor de resistência que dá a potência máxima.",
               "mascote_feedback_errado": "A potência é pequena com resistências muito baixas (tensão quase nula) e muito altas (corrente quase nula). Entre os dois extremos há um valor de resistência que dá a potência máxima."
             },
             {
               "pergunta": "Qual é a função de um coletor solar térmico?",
-              "opcoes": ["Produzir energia elétrica a partir da radiação.", "Aquecer um fluido, normalmente água, através da absorção de radiação.", "Refletir a radiação solar para arrefecer a casa.", "Armazenar energia elétrica em baterias."],
-              "correta": 1,
+              "opcoes": ["Produzir energia elétrica a partir da radiação.", "Refletir a radiação solar para arrefecer a casa.", "Armazenar energia elétrica em baterias.", "Aquecer um fluido, normalmente água, através da absorção de radiação."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. O coletor solar térmico transforma a energia da radiação em energia interna de um fluido.",
               "mascote_feedback_errado": "O coletor solar térmico transforma a energia da radiação em energia interna de um fluido. Quem produz energia elétrica é o painel fotovoltaico."
             }
@@ -270,39 +266,37 @@
           "perguntas": [
             {
               "pergunta": "Uma janela de vidro simples tem 2,0 m² de área e 4,0 mm de espessura. A temperatura é de 20 °C dentro de casa e 5 °C lá fora. Qual é a rapidez de transferência de energia por condução através do vidro? (k vidro = 0,80 W m⁻¹ K⁻¹)",
-              "opcoes": [
-                "6,0 W",
-                "60 W",
+              "opcoes": ["6,0 W",
                 "6,0 × 10³ W",
+                "60 W",
                 "6,0 × 10⁴ W"
               ],
-              "correta": 2,
+              "correta": 1,
               "mascote_feedback_certo": "Certo. Q / Δt = 0,80 × 2,0 × 15 / 0,0040 = 6000 W. É por isso que os vidros simples deixam fugir tanta energia.",
               "mascote_feedback_errado": "Não te esqueças de converter a espessura para metros: 4,0 mm = 0,0040 m. Q / Δt = k A ΔT / l = 0,80 × 2,0 × 15 / 0,0040 = 6,0 × 10³ W."
             },
             {
               "pergunta": "Porque é que num frigorífico o congelador costuma estar na parte de cima (nos modelos antigos)?",
-              "opcoes": [
-                "Porque o ar frio sobe.",
-                "Porque o ar arrefecido junto ao congelador fica mais denso e desce, arrefecendo o resto do frigorífico por convecção.",
+              "opcoes": ["Porque o ar frio sobe.",
                 "Porque o frio se propaga melhor para baixo por condução.",
+                "Porque o ar arrefecido junto ao congelador fica mais denso e desce, arrefecendo o resto do frigorífico por convecção.",
                 "Porque a parte de cima recebe menos radiação."
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Muito bem. O ar frio é mais denso e desce, criando correntes de convecção que arrefecem todo o interior.",
               "mascote_feedback_errado": "O ar frio é mais denso e desce. Com o congelador em cima, esse ar desce e circula pelo frigorífico todo, por convecção."
             },
             {
               "pergunta": "Qual das alterações diminui a energia perdida por condução através de uma parede?",
-              "opcoes": ["Diminuir a espessura da parede.", "Usar um material com maior condutividade térmica.", "Aumentar a espessura da parede.", "Aumentar a área da parede."],
-              "correta": 2,
+              "opcoes": ["Diminuir a espessura da parede.", "Usar um material com maior condutividade térmica.", "Aumentar a área da parede.", "Aumentar a espessura da parede."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. A rapidez de transferência é inversamente proporcional à espessura l. Aumentar a espessura diminui as perdas.",
               "mascote_feedback_errado": "Pela expressão Q / Δt = k A ΔT / l, a rapidez de transferência é inversamente proporcional à espessura l. Aumentar a espessura diminui as perdas."
             },
             {
               "pergunta": "Em qual das situações a transferência de energia se faz principalmente por convecção?",
-              "opcoes": ["Uma colher metálica que aquece numa chávena de chá.", "A água de uma panela que aquece por inteiro enquanto está ao lume.", "A energia do Sol que chega à Terra.", "O cabo de uma frigideira que aquece."],
-              "correta": 1,
+              "opcoes": ["A água de uma panela que aquece por inteiro enquanto está ao lume.", "Uma colher metálica que aquece numa chávena de chá.", "A energia do Sol que chega à Terra.", "O cabo de uma frigideira que aquece."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Na água da panela, formam-se correntes de convecção.",
               "mascote_feedback_errado": "Na água da panela, formam-se correntes de convecção. A colher e o cabo aquecem por condução, e a energia do Sol chega por radiação."
             },
@@ -404,8 +398,7 @@
           "perguntas": [
             {
               "pergunta": "Que energia é necessária para aquecer 2,0 kg de água de 20 °C até 70 °C? (c = 4,18 × 10³ J kg⁻¹ °C⁻¹)",
-              "opcoes": [
-                "4,18 × 10⁴ J",
+              "opcoes": ["4,18 × 10⁴ J",
                 "2,09 × 10⁵ J",
                 "4,18 × 10⁵ J",
                 "5,85 × 10⁵ J"
@@ -416,34 +409,33 @@
             },
             {
               "pergunta": "Que energia é necessária para fundir completamente 0,50 kg de gelo a 0 °C? (ΔH fusão = 3,34 × 10⁵ J/kg)",
-              "opcoes": [
+              "opcoes": ["3,34 × 10⁵ J",
                 "1,67 × 10⁵ J",
-                "3,34 × 10⁵ J",
                 "6,68 × 10⁵ J",
                 "2,09 × 10³ J"
               ],
-              "correta": 0,
+              "correta": 1,
               "mascote_feedback_certo": "Exato. E = m ΔH = 0,50 × 3,34 × 10⁵ = 1,67 × 10⁵ J. E durante todo este processo a temperatura manteve-se em 0 °C.",
               "mascote_feedback_errado": "Numa mudança de estado usa-se E = m ΔH, não m c ΔT (a temperatura não varia). E = 0,50 × 3,34 × 10⁵ = 1,67 × 10⁵ J."
             },
             {
               "pergunta": "Fornece-se a mesma energia a 1 kg de água e a 1 kg de alumínio, ambos a 20 °C. Qual aquece mais?",
-              "opcoes": ["A água, porque tem maior capacidade térmica mássica.", "O alumínio, porque tem menor capacidade térmica mássica.", "Aquecem o mesmo, porque têm a mesma massa.", "Depende da temperatura inicial."],
-              "correta": 1,
+              "opcoes": ["A água, porque tem maior capacidade térmica mássica.", "Aquecem o mesmo, porque têm a mesma massa.", "Depende da temperatura inicial.", "O alumínio, porque tem menor capacidade térmica mássica."],
+              "correta": 3,
               "mascote_feedback_certo": "Certo. ΔT = E / (m c). Com E e m iguais, quem tem menor c sofre maior variação de temperatura.",
               "mascote_feedback_errado": "ΔT = E / (m c). Com E e m iguais, quem tem menor c sofre maior variação de temperatura. O alumínio (c cerca de 900) aquece cerca de 4,6 vezes mais do que a água (c = 4180)."
             },
             {
               "pergunta": "Na AL 3.2, com um bloco de 1,00 kg, obteve-se um gráfico de ΔT em função de E com declive 1,20 × 10⁻³ °C/J. Qual é a capacidade térmica mássica do material?",
-              "opcoes": ["1,20 × 10⁻³ J kg⁻¹ °C⁻¹", "833 J kg⁻¹ °C⁻¹", "1200 J kg⁻¹ °C⁻¹", "4180 J kg⁻¹ °C⁻¹"],
-              "correta": 1,
+              "opcoes": ["1,20 × 10⁻³ J kg⁻¹ °C⁻¹", "1200 J kg⁻¹ °C⁻¹", "833 J kg⁻¹ °C⁻¹", "4180 J kg⁻¹ °C⁻¹"],
+              "correta": 2,
               "mascote_feedback_certo": "Certo. c = 1 / (m × declive) = 1 / (1,00 × 1,20 × 10⁻³) = 833 J kg⁻¹ °C⁻¹.",
               "mascote_feedback_errado": "c = 1 / (m × declive) = 1 / (1,00 × 1,20 × 10⁻³) = 833 J kg⁻¹ °C⁻¹."
             },
             {
               "pergunta": "Durante a ebulição da água pura, à pressão normal, com o fornecimento contínuo de energia:",
-              "opcoes": ["a temperatura sobe regularmente.", "a temperatura mantém-se constante, porque a energia é usada para mudar o estado.", "a temperatura desce, porque a água evapora.", "a energia fornecida é destruída."],
-              "correta": 1,
+              "opcoes": ["a temperatura mantém-se constante, porque a energia é usada para mudar o estado.", "a temperatura sobe regularmente.", "a temperatura desce, porque a água evapora.", "a energia fornecida é destruída."],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Durante uma mudança de estado de uma substância pura, a temperatura mantém-se constante.",
               "mascote_feedback_errado": "Durante uma mudança de estado de uma substância pura, a temperatura mantém-se constante. A energia fornecida serve para vencer as ligações entre as moléculas."
             }
@@ -529,39 +521,37 @@
           "perguntas": [
             {
               "pergunta": "Um gás recebe 500 J de energia como calor e, ao expandir-se, realiza 200 J de trabalho sobre a vizinhança. Não há trocas por radiação. Qual é a variação da sua energia interna?",
-              "opcoes": [
-                "700 J",
-                "300 J",
+              "opcoes": ["700 J",
                 "−300 J",
+                "300 J",
                 "−700 J"
               ],
-              "correta": 1,
+              "correta": 2,
               "mascote_feedback_certo": "Certo. Q = +500 J (entra), W = −200 J (o sistema realiza trabalho, a energia sai). ΔU = −200 + 500 + 0 = 300 J.",
               "mascote_feedback_errado": "Atenção aos sinais. O calor entra: Q = +500 J. O gás realiza trabalho sobre a vizinhança, portanto a energia sai: W = −200 J. ΔU = W + Q + R = −200 + 500 + 0 = 300 J."
             },
             {
               "pergunta": "Na bomba de bicicleta que aquece, qual é a principal transferência de energia que aumenta a energia interna do ar dentro da bomba?",
-              "opcoes": [
-                "Calor, vindo da mão.",
+              "opcoes": ["Calor, vindo da mão.",
                 "Radiação, vinda da luz ambiente.",
-                "Trabalho, realizado ao comprimir o ar.",
-                "Nenhuma: a energia interna não varia."
+                "Nenhuma: a energia interna não varia.",
+                "Trabalho, realizado ao comprimir o ar."
               ],
-              "correta": 2,
+              "correta": 3,
               "mascote_feedback_certo": "Exato. Ao empurrar o êmbolo, realizas trabalho sobre o ar (W > 0). A energia interna do ar aumenta e a temperatura sobe.",
               "mascote_feedback_errado": "Estás a empurrar o êmbolo e a comprimir o ar: isso é trabalho realizado sobre o sistema (W > 0). É esse trabalho que aumenta a energia interna do ar e aquece a bomba."
             },
             {
               "pergunta": "Num sistema termicamente isolado em que não há trocas de energia com a vizinhança:",
-              "opcoes": ["a energia interna aumenta.", "a energia interna diminui.", "a energia interna mantém-se constante.", "a temperatura de todas as partes é sempre igual."],
-              "correta": 2,
+              "opcoes": ["a energia interna aumenta.", "a energia interna mantém-se constante.", "a energia interna diminui.", "a temperatura de todas as partes é sempre igual."],
+              "correta": 1,
               "mascote_feedback_certo": "Certo. Se W = Q = R = 0, então ΔU = 0.",
               "mascote_feedback_errado": "Se W = Q = R = 0, então ΔU = 0. Dentro do sistema pode haver transferências entre partes a temperaturas diferentes, mas o total mantém-se."
             },
             {
               "pergunta": "Um sistema cede 150 J como calor, recebe 50 J como trabalho e não troca radiação. Qual é a variação da sua energia interna?",
-              "opcoes": ["200 J", "100 J", "−100 J", "−200 J"],
-              "correta": 2,
+              "opcoes": ["−100 J", "200 J", "100 J", "−200 J"],
+              "correta": 0,
               "mascote_feedback_certo": "Certo. Q = −150 J (sai), W = +50 J (entra), R = 0. ΔU = 50 − 150 + 0 = −100 J.",
               "mascote_feedback_errado": "Q = −150 J (sai), W = +50 J (entra), R = 0. ΔU = 50 − 150 + 0 = −100 J. A energia interna diminui."
             },
@@ -569,8 +559,8 @@
               "pergunta": "Qual das afirmações traduz a segunda lei da termodinâmica, no contexto do 10.º ano?",
               "opcoes": ["A energia total de um sistema isolado conserva-se.", "Em qualquer processo real há degradação de energia e nenhuma máquina tem rendimento de 100 %.", "A energia pode ser criada a partir do calor.", "Dois corpos em equilíbrio térmico com um terceiro estão em equilíbrio entre si."],
               "correta": 1,
-              "mascote_feedback_certo": "Certo. A primeira opção é a primeira lei (conservação), a última é a lei zero.",
-              "mascote_feedback_errado": "A primeira opção é a primeira lei (conservação), a última é a lei zero. A segunda lei trata do sentido dos processos e da degradação da energia."
+              "mascote_feedback_certo": "Certo. A afirmação sobre a energia total se conservar é a primeira lei, e a do equilíbrio com um terceiro corpo é a lei zero.",
+              "mascote_feedback_errado": "A afirmação sobre a energia total se conservar é a primeira lei, e a do equilíbrio com um terceiro corpo é a lei zero. A segunda lei trata do sentido dos processos e da degradação da energia."
             }
           ]
         }
