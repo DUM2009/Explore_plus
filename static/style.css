@@ -7185,6 +7185,10 @@ body.nav-drawer-open {
    MODO ESCURO (perfil)
    ===================================================== */
 
+html.dark-mode{
+    background:#111113;
+}
+
 html.dark-mode body{
     background:#111113;
     color:#e7ede8;
@@ -11739,6 +11743,40 @@ html.dark-mode .mascote-chat-input:focus {
     background: #f7f8f7;
     overflow: hidden;
     font-family: inherit;
+}
+
+/* Mobile: the page itself must not scroll — only .kim-messages (between
+   .kim-chat-header's bottom border and .kim-composer's top border) does.
+   Desktop already gets this via .kim-workspace's own position:fixed
+   below; mobile has no such constraint by default, so the whole page
+   scrolls as normal content, double-scrolling against .kim-messages'
+   own overflow-y:auto and letting the fixed header/topbar drift. */
+@media (max-width: 980px) {
+    html:has(body.kim-body) {
+        overflow: hidden;
+    }
+
+    body.kim-body {
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    body.kim-body .profile-main-shell {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    body.kim-body .profile-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 0;
+    }
+
+    body.kim-body .kim-workspace {
+        flex: 1 1 auto;
+        min-height: 0;
+    }
 }
 
 @media (min-width: 981px) {
