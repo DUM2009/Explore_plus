@@ -22,6 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # root — that file is gitignored and never committed.
 load_dotenv(BASE_DIR.parent / '.env')
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY', '')
+# Modelo do chat da mascote; muda-se no Render (Environment) sem mexer no código.
+ANTHROPIC_MODEL = os.environ.get('ANTHROPIC_MODEL', 'claude-haiku-5-5')
+# Modelo da correção de testes com IA (respostas longas e itens calc/open).
+ANTHROPIC_MODEL_CORRECAO = os.environ.get('ANTHROPIC_MODEL_CORRECAO', 'claude-haiku-5-5')
 
 # Email de contacto mostrado no link "Suporte" do menu da conta (ver
 # meu_site.context_processors.constantes_do_site e os templates que usam

@@ -1,0 +1,408 @@
+{
+  "id": "gametogenese-espermatogenese",
+  "titulo": "Teste: Gametogénese — Espermatogénese e hormonas",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Hormonas e testículo",
+      "texto_apoio": "Num estudo com ratos adultos, formaram-se três grupos. Ao grupo B administrou-se uma substância que bloqueia os recetores da LH; ao grupo C, uma substância que bloqueia os recetores da FSH; o grupo A (controlo) não recebeu qualquer tratamento. Passado algum tempo, mediram-se a concentração de testosterona no sangue e a produção de espermatozoides. Os resultados encontram-se na Tabela 1.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Efeito do bloqueio dos recetores hormonais",
+        "colunas": [
+          "Grupo",
+          "Tratamento",
+          "Testosterona no sangue",
+          "Espermatozoides produzidos (milhões por dia)"
+        ],
+        "linhas": [
+          [
+            "A",
+            "Nenhum (controlo)",
+            "Normal",
+            "120"
+          ],
+          [
+            "B",
+            "Bloqueio dos recetores da LH",
+            "Muito baixa",
+            "30"
+          ],
+          [
+            "C",
+            "Bloqueio dos recetores da FSH",
+            "Normal",
+            "72"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Contar células"
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Esquema de um túbulo seminífero",
+      "texto_apoio": "Um esquema representa um corte transversal de um túbulo seminífero. As células estão numeradas de 1 a 6 e caracterizam-se do seguinte modo: 1 — junto à parede do túbulo, com 46 cromossomas e 46 cromatídeos, dividem-se por mitose; 2 — um pouco mais afastadas da parede, células maiores, com 46 cromossomas e 92 cromatídeos; 3 — mais próximas do lúmen, células pequenas e arredondadas, com 23 cromossomas e 23 cromatídeos; 4 — no lúmen do túbulo, células com cabeça e cauda; 5 — fora do túbulo, entre túbulos vizinhos; 6 — células grandes, que se estendem da parede ao lúmen e contactam com todas as células germinativas."
+    },
+    {
+      "numero": 4,
+      "titulo": "GRUPO IV — Temperatura e espermatogénese",
+      "texto_apoio": "Em alguns casos de infertilidade masculina, os testículos não descem para o escroto antes do nascimento e permanecem na cavidade abdominal (criptorquidia)."
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "Os resultados do grupo B explicam-se porque a LH atua sobre",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "as células de Sertoli, que produzem testosterona."
+        },
+        {
+          "letra": "B",
+          "texto": "as células de Leydig, que produzem testosterona."
+        },
+        {
+          "letra": "C",
+          "texto": "as células de Sertoli, que sustentam as células germinativas."
+        },
+        {
+          "letra": "D",
+          "texto": "as espermatogónias, que entram em meiose."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "enunciado": "Calcula a percentagem de redução da produção de espermatozoides no grupo C, relativamente ao grupo A. Apresenta o resultado em percentagem.",
+      "resposta_correta": "40%",
+      "tolerancia_numerica": 0,
+      "cotacao": 16
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F) cada uma das afirmações seguintes, com base nos dados do estudo e nos teus conhecimentos.",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "Os resultados do grupo C mostram que a FSH não é necessária para a produção de testosterona."
+        },
+        {
+          "letra": "b",
+          "texto": "A testosterona é produzida pelas células de Sertoli."
+        },
+        {
+          "letra": "c",
+          "texto": "A GnRH é produzida pela hipófise."
+        },
+        {
+          "letra": "d",
+          "texto": "A FSH atua sobre as células de Sertoli."
+        }
+      ],
+      "resposta_correta": {
+        "a": "V",
+        "b": "F",
+        "c": "F",
+        "d": "V"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p4",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "enunciado": "Uma espermatogónia divide-se por mitose duas vezes sucessivas. Todas as células resultantes crescem, tornam-se espermatócitos I e completam a espermatogénese. Calcula o número de espermatozoides que se formam.",
+      "resposta_correta": "16",
+      "tolerancia_numerica": 0,
+      "cotacao": 16
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "enunciado": "Numa amostra de tecido testicular, contaram-se 40 espermatócitos II e 60 espermátides. Calcula o número total de cromatídeos presentes nestas 100 células.",
+      "resposta_correta": "3220",
+      "tolerancia_numerica": 0,
+      "cotacao": 16
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "Um homem produz cerca de 2,0 × 10⁸ espermatozoides por dia. Calcula o número de espermatócitos I que, por dia, completam a meiose para originar estes espermatozoides.",
+      "resposta_correta": "5,0 × 10⁷",
+      "palavras_chave": [
+        "5,0 × 10⁷",
+        "5,0×10⁷",
+        "5 × 10⁷",
+        "5×10⁷",
+        "5,0 x 10^7",
+        "5,0x10^7",
+        "5 x 10^7",
+        "5x10^7",
+        "5,0 × 10^7",
+        "5 × 10^7",
+        "5,0*10^7",
+        "5*10^7",
+        "5,0e7",
+        "5e7",
+        "50 milhões",
+        "50 000 000",
+        "50000000",
+        "50.000.000"
+      ],
+      "cotacao": 14
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "completar_texto",
+      "enunciado": "Seleciona a opção que completa corretamente cada espaço do texto.",
+      "texto_com_espacos": "Na espermiogénese, cada (1) transforma-se num espermatozoide por diferenciação, sem divisão celular. O (2) contém enzimas que facilitam a penetração no ovócito, e a (3) possui mitocôndrias que fornecem energia para o movimento.",
+      "espacos": [
+        {
+          "id": "1",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "espermatócito II"
+            },
+            {
+              "letra": "B",
+              "texto": "espermátide"
+            },
+            {
+              "letra": "C",
+              "texto": "espermatogónia"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "núcleo"
+            },
+            {
+              "letra": "B",
+              "texto": "cauda"
+            },
+            {
+              "letra": "C",
+              "texto": "acrossoma"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "cauda"
+            },
+            {
+              "letra": "B",
+              "texto": "peça intermédia"
+            },
+            {
+              "letra": "C",
+              "texto": "acrossoma"
+            }
+          ]
+        }
+      ],
+      "resposta_correta": {
+        "1": "B",
+        "2": "C",
+        "3": "B"
+      },
+      "cotacao": 14
+    },
+    {
+      "id": "p8",
+      "grupo": 3,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada número do esquema (Coluna I) à respetiva designação (Coluna II).",
+      "coluna_esquerda": [
+        {
+          "letra": "a",
+          "texto": "Células 1"
+        },
+        {
+          "letra": "b",
+          "texto": "Células 2"
+        },
+        {
+          "letra": "c",
+          "texto": "Células 3"
+        },
+        {
+          "letra": "d",
+          "texto": "Células 5"
+        }
+      ],
+      "coluna_direita": [
+        {
+          "numero": "1",
+          "texto": "Espermátides"
+        },
+        {
+          "numero": "2",
+          "texto": "Espermatogónias"
+        },
+        {
+          "numero": "3",
+          "texto": "Células de Leydig"
+        },
+        {
+          "numero": "4",
+          "texto": "Espermatócitos I"
+        },
+        {
+          "numero": "5",
+          "texto": "Células de Sertoli"
+        }
+      ],
+      "resposta_correta": {
+        "a": "2",
+        "b": "4",
+        "c": "1",
+        "d": "3"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p9",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Se uma substância impedisse a conclusão da meiose I, acumular-se-iam, no túbulo, células do tipo",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "1"
+        },
+        {
+          "letra": "B",
+          "texto": "3"
+        },
+        {
+          "letra": "C",
+          "texto": "2"
+        },
+        {
+          "letra": "D",
+          "texto": "4"
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Num campo microscópico observam-se 12 células do tipo 3, todas formadas pela meiose completa de espermatócitos I. O número de espermatócitos I que as originou foi",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "3"
+        },
+        {
+          "letra": "B",
+          "texto": "6"
+        },
+        {
+          "letra": "C",
+          "texto": "12"
+        },
+        {
+          "letra": "D",
+          "texto": "48"
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 14
+    },
+    {
+      "id": "p11",
+      "grupo": 4,
+      "tipo": "escolha_multipla",
+      "enunciado": "Num homem com criptorquidia, a produção de espermatozoides fica comprometida porque",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "as células de Sertoli deixam de existir."
+        },
+        {
+          "letra": "B",
+          "texto": "a hipófise deixa de produzir LH."
+        },
+        {
+          "letra": "C",
+          "texto": "o hipotálamo deixa de produzir GnRH."
+        },
+        {
+          "letra": "D",
+          "texto": "a temperatura no interior da cavidade abdominal é superior à ideal para a espermatogénese."
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 12
+    },
+    {
+      "id": "p12",
+      "grupo": 4,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F) cada uma das afirmações seguintes.",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "A espermatogénese termina por volta dos 50 anos, tal como a oogénese na menopausa."
+        },
+        {
+          "letra": "b",
+          "texto": "Depois da puberdade, a espermatogénese continua ao longo da vida."
+        },
+        {
+          "letra": "c",
+          "texto": "Desde a espermatogónia ao espermatozoide decorrem cerca de 2 a 3 meses."
+        },
+        {
+          "letra": "d",
+          "texto": "Cada espermátide origina quatro espermatozoides."
+        }
+      ],
+      "resposta_correta": {
+        "a": "F",
+        "b": "V",
+        "c": "V",
+        "d": "F"
+      },
+      "cotacao": 14
+    },
+    {
+      "id": "p13",
+      "grupo": 4,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno afirma: \"Se uma espermatogónia se dividir uma vez por mitose e as duas células resultantes entrarem em meiose, formam-se 8 espermatozoides, todos geneticamente idênticos, pois vêm da mesma espermatogónia.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "A afirmação está parcialmente certa. A parte quantitativa está correta: uma mitose origina 2 espermatócitos I, e cada um forma 4 espermatozoides, o que dá 8. A parte \"todos geneticamente idênticos\" está errada. O aluno deve explicar que a meiose gera variabilidade: o crossing-over (prófase I) troca segmentos entre cromatídeos de cromossomas homólogos, e a distribuição ao acaso dos homólogos na meiose I faz com que os espermatozoides tenham combinações diferentes de cromossomas e de alelos. Por isso, mesmo vindo da mesma espermatogónia, os espermatozoides são geneticamente diferentes entre si (embora os dois espermatócitos I, formados por mitose, fossem idênticos). Pode ainda referir que a mitose conserva a informação genética, enquanto a meiose a recombina.",
+      "cotacao": 28
+    }
+  ]
+}

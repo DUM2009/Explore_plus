@@ -1,0 +1,401 @@
+{
+  "id": "gametogenese-oogenese",
+  "titulo": "Teste: Gametogénese — Oogénese e reserva ovárica",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — A reserva de ovócitos",
+      "texto_apoio": "A Tabela 1 apresenta o número aproximado de ovócitos I existentes nos ovários de uma mulher, em diferentes idades. Os valores são médios e arredondados, para efeitos deste teste.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Número de ovócitos I nos ovários, em função da idade",
+        "colunas": [
+          "Idade",
+          "Ovócitos I (valor aproximado)"
+        ],
+        "linhas": [
+          [
+            "Nascimento",
+            "1 000 000"
+          ],
+          [
+            "Puberdade (cerca de 12 anos)",
+            "400 000"
+          ],
+          [
+            "30 anos",
+            "105 000"
+          ],
+          [
+            "37 anos",
+            "28 000"
+          ],
+          [
+            "Menopausa (cerca de 51 anos)",
+            "1 000"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Os produtos da oogénese"
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Idade e qualidade dos ovócitos",
+      "texto_apoio": "A Tabela 2 apresenta, para diferentes idades, a percentagem de ovócitos II com um número anormal de cromossomas (valores ilustrativos).",
+      "tabela_apoio": {
+        "titulo": "Tabela 2 — Ovócitos II com número anormal de cromossomas",
+        "colunas": [
+          "Idade",
+          "Ovócitos II com número anormal de cromossomas (%)"
+        ],
+        "linhas": [
+          [
+            "25 anos",
+            "8"
+          ],
+          [
+            "35 anos",
+            "20"
+          ],
+          [
+            "40 anos",
+            "40"
+          ],
+          [
+            "43 anos",
+            "60"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 4,
+      "titulo": "GRUPO IV — Comparar e interpretar"
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "enunciado": "Calcula a percentagem de ovócitos I perdidos entre o nascimento e a puberdade. Apresenta o resultado em percentagem.",
+      "resposta_correta": "60%",
+      "tolerancia_numerica": 0,
+      "cotacao": 14
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "Ao longo da vida, só cerca de 400 ovócitos são libertados. A grande diminuição do número de ovócitos I desde a puberdade até à menopausa deve-se, sobretudo, a",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "todos os ovócitos que não são libertados serem fecundados."
+        },
+        {
+          "letra": "B",
+          "texto": "a maioria dos folículos que crescem em cada ciclo não chegar à ovulação."
+        },
+        {
+          "letra": "C",
+          "texto": "os ovócitos I se transformarem em ovogónias."
+        },
+        {
+          "letra": "D",
+          "texto": "as ovogónias formarem novos ovócitos I em cada ciclo."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "modo_correcao": "palavras_chave",
+      "enunciado": "Calcula a perda média anual de ovócitos I entre os 30 e os 37 anos. Apresenta o resultado em número de ovócitos por ano.",
+      "resposta_correta": "11 000",
+      "palavras_chave": [
+        "11000",
+        "11 000",
+        "11.000",
+        "1,1 × 10⁴",
+        "1,1×10⁴",
+        "1,1 x 10^4",
+        "1,1x10^4",
+        "1,1*10^4",
+        "1,1e4"
+      ],
+      "cotacao": 16
+    },
+    {
+      "id": "p4",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "enunciado": "Considera 50 ovócitos I que completam a oogénese, em que todos os ovócitos II são fecundados e o 1.º glóbulo polar não se divide. Calcula o número total de glóbulos polares formados.",
+      "resposta_correta": "100",
+      "tolerancia_numerica": 0,
+      "cotacao": 14
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "enunciado": "Calcula o número total de cromatídeos do ovócito II e do 1.º glóbulo polar formados a partir de um mesmo ovócito I.",
+      "resposta_correta": "92",
+      "tolerancia_numerica": 0,
+      "cotacao": 14
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F) cada uma das afirmações seguintes.",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "O ovócito I permanece parado em prófase I desde a vida fetal até pouco antes da ovulação."
+        },
+        {
+          "letra": "b",
+          "texto": "O ovócito II conclui a meiose II antes da ovulação."
+        },
+        {
+          "letra": "c",
+          "texto": "Se não houver fecundação, o ovócito II conclui a meiose II e origina um óvulo."
+        },
+        {
+          "letra": "d",
+          "texto": "Após a ovulação, o folículo transforma-se no corpo amarelo."
+        }
+      ],
+      "resposta_correta": {
+        "a": "V",
+        "b": "F",
+        "c": "F",
+        "d": "V"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "completar_texto",
+      "enunciado": "Seleciona a opção que completa corretamente cada espaço do texto.",
+      "texto_com_espacos": "Em cada ciclo, sob a ação da (1), crescem vários folículos, mas normalmente só um chega a folículo de (2). Depois da ovulação, o folículo transforma-se no corpo (3), que produz hormonas e degenera se não houver gravidez.",
+      "espacos": [
+        {
+          "id": "1",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "LH"
+            },
+            {
+              "letra": "B",
+              "texto": "FSH"
+            },
+            {
+              "letra": "C",
+              "texto": "GnRH"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "Graaf"
+            },
+            {
+              "letra": "B",
+              "texto": "Sertoli"
+            },
+            {
+              "letra": "C",
+              "texto": "Leydig"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "amarelo"
+            },
+            {
+              "letra": "B",
+              "texto": "polar"
+            },
+            {
+              "letra": "C",
+              "texto": "fibroso"
+            }
+          ]
+        }
+      ],
+      "resposta_correta": {
+        "1": "B",
+        "2": "A",
+        "3": "A"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p8",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "enunciado": "Numa amostra de 250 ovócitos II de mulheres de 40 anos, o número de ovócitos II com o número normal de cromossomas é, em valor esperado, de quantos? Apresenta o resultado como número de ovócitos II.",
+      "resposta_correta": "150",
+      "tolerancia_numerica": 0,
+      "cotacao": 14
+    },
+    {
+      "id": "p9",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Um ovócito II com 24 cromossomas é fecundado por um espermatozoide normal. O zigoto formado tem",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "46 cromossomas."
+        },
+        {
+          "letra": "B",
+          "texto": "23 cromossomas."
+        },
+        {
+          "letra": "C",
+          "texto": "47 cromossomas."
+        },
+        {
+          "letra": "D",
+          "texto": "48 cromossomas."
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "O aumento de erros na separação dos cromossomas com a idade da mulher relaciona-se com o facto de os ovócitos I",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "permanecerem em prófase I desde a vida fetal, ou seja, durante várias décadas."
+        },
+        {
+          "letra": "B",
+          "texto": "serem formados por mitose pouco antes de cada ovulação."
+        },
+        {
+          "letra": "C",
+          "texto": "iniciarem a meiose I apenas na puberdade."
+        },
+        {
+          "letra": "D",
+          "texto": "concluírem a meiose II logo após a ovulação."
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 14
+    },
+    {
+      "id": "p11",
+      "grupo": 4,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada célula da Coluna I à respetiva descrição da Coluna II.",
+      "coluna_esquerda": [
+        {
+          "letra": "a",
+          "texto": "Ovogónia (ou oogónia)"
+        },
+        {
+          "letra": "b",
+          "texto": "Ovócito I"
+        },
+        {
+          "letra": "c",
+          "texto": "Ovócito II"
+        },
+        {
+          "letra": "d",
+          "texto": "Óvulo"
+        }
+      ],
+      "coluna_direita": [
+        {
+          "numero": "1",
+          "texto": "Célula 2n que se divide por mitose, apenas na vida fetal"
+        },
+        {
+          "numero": "2",
+          "texto": "Célula n, parada em metáfase II, libertada na ovulação"
+        },
+        {
+          "numero": "3",
+          "texto": "Célula 2n, parada em prófase I, no interior de um folículo primordial"
+        },
+        {
+          "numero": "4",
+          "texto": "Célula n, que resulta da conclusão da meiose II após a entrada de um espermatozoide"
+        },
+        {
+          "numero": "5",
+          "texto": "Célula muito pequena, n, com 46 cromatídeos, formada na meiose I"
+        }
+      ],
+      "resposta_correta": {
+        "a": "1",
+        "b": "3",
+        "c": "2",
+        "d": "4"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p12",
+      "grupo": 4,
+      "tipo": "escolha_multipla",
+      "enunciado": "Sem considerar o crossing-over, o número de combinações de cromossomas possíveis no zigoto formado pelos gâmetas de um mesmo casal, só pela distribuição ao acaso dos cromossomas homólogos na formação dos gâmetas, é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "2²³"
+        },
+        {
+          "letra": "B",
+          "texto": "2 × 2²³"
+        },
+        {
+          "letra": "C",
+          "texto": "23²"
+        },
+        {
+          "letra": "D",
+          "texto": "2⁴⁶"
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 12
+    },
+    {
+      "id": "p13",
+      "grupo": 4,
+      "tipo": "resposta_longa",
+      "enunciado": "Explica por que razão a fertilidade da mulher diminui com a idade, relacionando a quantidade e a qualidade dos ovócitos, com base nas Tabelas 1 e 2 e no que sabes sobre a oogénese.",
+      "criterios_correcao": "O aluno deve referir (1) quantidade: as ovogónias só se formam na vida fetal e a reserva de ovócitos I não é renovada; a Tabela 1 mostra a diminuição de 1 000 000 ao nascimento para 105 000 aos 30 anos, 28 000 aos 37 e cerca de 1 000 na menopausa, que marca o fim da oogénese e da fertilidade; (2) qualidade: os ovócitos I ficam parados em prófase I desde a vida fetal, e com a idade aumentam os erros na separação dos cromossomas (a Tabela 2 mostra a subida de 8% aos 25 anos para 60% aos 43), o que origina ovócitos II com número anormal de cromossomas e zigotos com número anormal de cromossomas (por exemplo, 47), muitas vezes inviáveis; (3) conclusão: com a idade, há menos ovócitos e uma maior proporção de ovócitos com anomalias, o que reduz a probabilidade de fecundação e de gravidez com sucesso. Valoriza-se a relação entre os dois fatores e o uso dos dados das tabelas.",
+      "cotacao": 30
+    }
+  ]
+}

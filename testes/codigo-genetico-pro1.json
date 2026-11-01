@@ -1,0 +1,364 @@
+{
+  "id": "codigo-genetico-pro1",
+  "titulo": "Teste: Código Genético — Meselson e Stahl e os modelos de replicação",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — A experiência",
+      "texto_apoio": "Em 1958, Meselson e Stahl cultivaram Escherichia coli durante várias gerações num meio com ¹⁵N (isótopo pesado, não radioativo), até todo o ADN das bactérias ficar pesado. Transferiram depois as bactérias para um meio com ¹⁴N (isótopo leve). Em cada geração, recolheram amostras, extraíram o ADN e centrifugaram-no num gradiente de cloreto de césio (CsCl). O ADN pesado (¹⁵N/¹⁵N) fica numa posição inferior no tubo, o híbrido (¹⁵N/¹⁴N) fica a meio e o leve (¹⁴N/¹⁴N) fica numa posição superior.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Bandas de ADN, por geração, após a transferência para o meio com ¹⁴N",
+        "colunas": [
+          "Geração",
+          "Bandas observadas"
+        ],
+        "linhas": [
+          [
+            "0",
+            "100% pesada"
+          ],
+          [
+            "1",
+            "100% híbrida"
+          ],
+          [
+            "2",
+            "50% híbrida e 50% leve"
+          ],
+          [
+            "3",
+            "25% híbrida e 75% leve"
+          ],
+          [
+            "4",
+            "12,5% híbrida e 87,5% leve"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Dos dados aos cálculos",
+      "texto_apoio": "Considera que a Tabela 1 foi obtida a partir de uma população que, na geração 0, tem uma única molécula de ADN pesado, e que a replicação é semiconservativa. Em cada geração, o número de moléculas duplica."
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Uma nova experiência",
+      "texto_apoio": "As bactérias da geração 4 da Tabela 1 foram transferidas de novo para um meio com ¹⁵N e cultivadas durante uma geração."
+    },
+    {
+      "numero": 4,
+      "titulo": "GRUPO IV — Interpretação e método"
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "1",
+      "enunciado": "A banda única na posição pesada, na geração 0, mostra que",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "o ¹⁵N é radioativo e marcou o ADN."
+        },
+        {
+          "letra": "B",
+          "texto": "todo o ADN das bactérias continha ¹⁵N, sendo mais denso do que o ADN normal."
+        },
+        {
+          "letra": "C",
+          "texto": "a replicação do ADN é conservativa."
+        },
+        {
+          "letra": "D",
+          "texto": "as bactérias ainda não tinham replicado o ADN."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12,
+      "explicacao": "O ¹⁵N é um isótopo não radioativo e mais denso. O ADN com ¹⁵N fica na posição pesada. A geração 0 ainda não tem replicação em ¹⁴N."
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "numero": "2",
+      "enunciado": "O resultado da geração 1 (uma única banda híbrida) permite excluir o modelo",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "semiconservativo."
+        },
+        {
+          "letra": "B",
+          "texto": "dispersivo."
+        },
+        {
+          "letra": "C",
+          "texto": "conservativo."
+        },
+        {
+          "letra": "D",
+          "texto": "nenhum dos três modelos."
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12,
+      "explicacao": "O modelo conservativo previa duas bandas na geração 1 (uma pesada e uma leve). O modelo dispersivo também previa uma só banda intermédia, por isso não é excluído por este resultado."
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "numero": "3",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F) cada uma das afirmações seguintes.",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "Com o resultado da geração 1, o modelo dispersivo não pode ser excluído."
+        },
+        {
+          "letra": "b",
+          "texto": "Na geração 2, o aparecimento de uma banda leve exclui o modelo semiconservativo."
+        },
+        {
+          "letra": "c",
+          "texto": "O resultado da geração 1, por si só, prova que a replicação é semiconservativa."
+        },
+        {
+          "letra": "d",
+          "texto": "No modelo semiconservativo, o ADN híbrido tem uma cadeia com ¹⁵N e outra com ¹⁴N."
+        }
+      ],
+      "resposta_correta": {
+        "a": "V",
+        "b": "F",
+        "c": "F",
+        "d": "V"
+      },
+      "cotacao": 16,
+      "explicacao": "(b) É precisamente o que o modelo semiconservativo prevê. (c) A geração 1 exclui o conservativo, mas é compatível com o semiconservativo e o dispersivo."
+    },
+    {
+      "id": "p4",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "numero": "4",
+      "enunciado": "Calcula a percentagem de ADN híbrido na geração 5.",
+      "resposta_correta": "6,25",
+      "tolerancia_numerica": 0.06,
+      "cotacao": 14,
+      "explicacao": "Na geração n há 2ⁿ moléculas, das quais 2 são híbridas: 2 ÷ 32 = 0,0625 = 6,25%."
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "numero": "5",
+      "enunciado": "Calcula o número da primeira geração em que a percentagem de ADN leve é igual ou superior a 99%.",
+      "resposta_correta": "8",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 18,
+      "explicacao": "Fração híbrida = 2 ÷ 2ⁿ. Na geração 7: 2 ÷ 128 = 1,56% híbrida, logo 98,4% leve (< 99%). Na geração 8: 2 ÷ 256 = 0,78% híbrida, logo 99,2% leve (≥ 99%)."
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "numero": "6",
+      "enunciado": "Calcula o número de moléculas de ADN sem ¹⁵N na geração 6, a partir de uma única molécula inicial de ADN pesado.",
+      "resposta_correta": "62",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 16,
+      "explicacao": "Na geração 6 há 2⁶ = 64 moléculas; 2 são híbridas e as restantes, 64 − 2 = 62, são leves (sem ¹⁵N)."
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "numero": "7",
+      "enunciado": "Se a replicação fosse conservativa, as bandas observadas na geração 2 seriam",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "100% híbrida."
+        },
+        {
+          "letra": "B",
+          "texto": "50% híbrida e 50% leve."
+        },
+        {
+          "letra": "C",
+          "texto": "25% pesada e 75% leve."
+        },
+        {
+          "letra": "D",
+          "texto": "100% leve."
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12,
+      "explicacao": "No modelo conservativo, a molécula original mantém-se inteira e as novas são totalmente leves. Na geração 2, seriam 1 pesada e 3 leves, ou seja, 25% pesada e 75% leve."
+    },
+    {
+      "id": "p8",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "numero": "8",
+      "enunciado": "Calcula a percentagem de ADN híbrido após essa geração.",
+      "resposta_correta": "93,75",
+      "tolerancia_numerica": 0.06,
+      "cotacao": 16,
+      "explicacao": "Na geração 4 há 16 moléculas: 2 híbridas e 14 leves. Na replicação seguinte (meio com ¹⁵N), cada leve origina 2 híbridas (14 × 2 = 28); cada híbrida origina 1 híbrida e 1 pesada (2 híbridas + 2 pesadas). Total = 32: 30 híbridas e 2 pesadas. 30 ÷ 32 = 93,75%."
+    },
+    {
+      "id": "p9",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "numero": "9",
+      "enunciado": "Após essa geração, no tubo de centrifugação observam-se",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "duas bandas: híbrida (maioritária) e pesada, sem banda leve."
+        },
+        {
+          "letra": "B",
+          "texto": "duas bandas: leve e híbrida."
+        },
+        {
+          "letra": "C",
+          "texto": "uma única banda híbrida."
+        },
+        {
+          "letra": "D",
+          "texto": "três bandas: leve, híbrida e pesada."
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 12,
+      "explicacao": "Há 30 moléculas híbridas e 2 pesadas, e nenhuma leve (todas as moléculas têm agora pelo menos uma cadeia com ¹⁵N)."
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "numero": "10",
+      "enunciado": "Noutra experiência, bactérias com ADN totalmente leve (¹⁴N/¹⁴N) são cultivadas num meio com ¹⁵N durante 3 gerações. Calcula a percentagem de ADN pesado (¹⁵N/¹⁵N) obtida.",
+      "resposta_correta": "75",
+      "tolerancia_numerica": 0.05,
+      "cotacao": 14,
+      "explicacao": "Após 3 gerações há 8 moléculas, 2 híbridas e 6 pesadas: 6 ÷ 8 = 75%. (Situação simétrica da experiência original.)"
+    },
+    {
+      "id": "p11",
+      "grupo": 4,
+      "tipo": "escolha_multipla",
+      "numero": "11",
+      "enunciado": "A ultracentrifugação em gradiente de CsCl permitiu separar as moléculas de ADN com base",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "no tamanho das moléculas."
+        },
+        {
+          "letra": "B",
+          "texto": "na carga elétrica."
+        },
+        {
+          "letra": "C",
+          "texto": "na sequência de bases azotadas."
+        },
+        {
+          "letra": "D",
+          "texto": "na densidade, que depende do isótopo de azoto incorporado."
+        }
+      ],
+      "resposta_correta": "D",
+      "cotacao": 12,
+      "explicacao": "O ADN foi separado pela densidade, que depende da proporção de ¹⁵N (pesado) e de ¹⁴N (leve)."
+    },
+    {
+      "id": "p12",
+      "grupo": 4,
+      "tipo": "completar_texto",
+      "numero": "12",
+      "enunciado": "Seleciona a opção que completa corretamente cada espaço do texto.",
+      "texto_com_espacos": "Partindo de uma única molécula de ADN pesado, o número de moléculas híbridas é, em cada geração, igual a (1), pelo que a sua proporção (2) ao longo das gerações. A banda pesada deixa de existir a partir da geração (3).",
+      "espacos": [
+        {
+          "id": "1",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "1"
+            },
+            {
+              "letra": "B",
+              "texto": "2"
+            },
+            {
+              "letra": "C",
+              "texto": "2ⁿ"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "aumenta"
+            },
+            {
+              "letra": "B",
+              "texto": "diminui"
+            },
+            {
+              "letra": "C",
+              "texto": "mantém-se"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "0"
+            },
+            {
+              "letra": "B",
+              "texto": "1"
+            },
+            {
+              "letra": "C",
+              "texto": "2"
+            }
+          ]
+        }
+      ],
+      "resposta_correta": {
+        "1": "B",
+        "2": "B",
+        "3": "B"
+      },
+      "cotacao": 16,
+      "explicacao": "O número de moléculas híbridas é sempre 2, enquanto o total duplica em cada geração (2ⁿ). A banda pesada só existe na geração 0."
+    },
+    {
+      "id": "p13",
+      "grupo": 4,
+      "tipo": "resposta_longa",
+      "numero": "13",
+      "enunciado": "Explica, com base nos dados da Tabela 1, por que razão só o modelo semiconservativo explica os resultados da experiência de Meselson e Stahl.",
+      "criterios_correcao": "O aluno deve referir: (1) que na geração 1 há só ADN híbrido: o conservativo prevê uma banda pesada e uma leve (excluído); (2) que na geração 2 surgem duas bandas (50% híbrida e 50% leve): o dispersivo prevê uma só banda de densidade intermédia-leve, logo é excluído, e o conservativo também seria excluído (prevê pesada + leve); (3) que o modelo semiconservativo, em que cada molécula-filha tem uma cadeia antiga e uma nova, prevê exatamente: geração 1, todo híbrido; geração 2, 2 híbridas e 2 leves (50/50); geração 3, 25% híbrida e 75% leve; geração 4, 12,5% e 87,5%; (4) que o número de moléculas híbridas se mantém em 2 enquanto o total duplica, o que reproduz a série 100%, 50%, 25%, 12,5%. Conclusão: só o semiconservativo explica os dois resultados em conjunto (geração 1 e geração 2). Valoriza-se a utilização dos valores da tabela.",
+      "cotacao": 30
+    }
+  ]
+}

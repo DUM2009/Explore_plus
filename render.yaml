@@ -18,6 +18,12 @@ services:
         value: "3.12.10"
       - key: ANTHROPIC_API_KEY
         sync: false
+      # Modelo do chat da mascote — opcional; sem valor usa claude-haiku-5-5.
+      - key: ANTHROPIC_MODEL
+        sync: false
+      # Modelo da correção de testes com IA — opcional; sem valor usa claude-haiku-5-5.
+      - key: ANTHROPIC_MODEL_CORRECAO
+        sync: false
       # Stripe (assinatura SuperExplore) — chave secreta, Price ID e segredo de
       # assinatura do webhook, todos definidos manualmente no dashboard do
       # Render (Environment tab), nunca aqui.

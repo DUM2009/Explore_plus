@@ -1,0 +1,429 @@
+{
+  "id": "gametogenese",
+  "titulo": "Teste: Gametogénese",
+  "disciplina": "Biologia",
+  "duracao_sugerida_min": 45,
+  "cotacao_total": 200,
+  "grupos": [
+    {
+      "numero": 1,
+      "titulo": "GRUPO I — Gónadas, gâmetas e meiose",
+      "texto_apoio": "Nos seres humanos, as células do corpo têm 2n = 46 cromossomas. Os gâmetas formam-se nas gónadas, por meiose, e têm n = 23 cromossomas."
+    },
+    {
+      "numero": 2,
+      "titulo": "GRUPO II — Espermatogénese",
+      "texto_apoio": "A espermatogénese ocorre nos túbulos seminíferos. A Tabela 1 apresenta o número de cromossomas e de cromatídeos de algumas células desta linha celular.",
+      "tabela_apoio": {
+        "titulo": "Tabela 1 — Cromossomas e cromatídeos em células da espermatogénese",
+        "colunas": [
+          "Célula",
+          "Nº de cromossomas",
+          "Nº de cromatídeos"
+        ],
+        "linhas": [
+          [
+            "Espermatócito I",
+            "46",
+            "92"
+          ],
+          [
+            "Espermatócito II",
+            "23",
+            "46"
+          ],
+          [
+            "Espermátide",
+            "23",
+            "23"
+          ]
+        ]
+      }
+    },
+    {
+      "numero": 3,
+      "titulo": "GRUPO III — Oogénese",
+      "texto_apoio": "A oogénese ocorre nos ovários. As ovogónias (ou oogónias) multiplicam-se por mitose apenas durante a vida fetal. Ao nascimento, existem 1 a 2 milhões de ovócitos I; na puberdade restam cerca de 400 000, e ao longo da vida só cerca de 400 são libertados, um por ciclo."
+    },
+    {
+      "numero": 4,
+      "titulo": "GRUPO IV — Comparação e variabilidade genética"
+    }
+  ],
+  "perguntas": [
+    {
+      "id": "p1",
+      "grupo": 1,
+      "tipo": "escolha_multipla",
+      "enunciado": "A produção de espermatozoides ocorre",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "nas células de Leydig, que produzem testosterona."
+        },
+        {
+          "letra": "B",
+          "texto": "nos túbulos seminíferos dos testículos."
+        },
+        {
+          "letra": "C",
+          "texto": "no escroto, que mantém os testículos a temperatura mais baixa."
+        },
+        {
+          "letra": "D",
+          "texto": "no hipotálamo, sob ação da GnRH."
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12
+    },
+    {
+      "id": "p2",
+      "grupo": 1,
+      "tipo": "resposta_curta",
+      "enunciado": "Calcula o número de cromatídeos de um ovócito I, imediatamente antes de se iniciar a meiose I.",
+      "resposta_correta": "92",
+      "tolerancia_numerica": 0,
+      "cotacao": 16
+    },
+    {
+      "id": "p3",
+      "grupo": 1,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F) cada uma das afirmações seguintes.",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "Na meiose ocorre uma duplicação do ADN e duas divisões celulares."
+        },
+        {
+          "letra": "b",
+          "texto": "Na meiose II separam-se os cromossomas homólogos."
+        },
+        {
+          "letra": "c",
+          "texto": "A partir de uma célula 2n, a meiose origina duas células n."
+        },
+        {
+          "letra": "d",
+          "texto": "Um ovócito II tem 23 cromossomas, cada um com dois cromatídeos-irmãos."
+        }
+      ],
+      "resposta_correta": {
+        "a": "V",
+        "b": "F",
+        "c": "F",
+        "d": "V"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p4",
+      "grupo": 2,
+      "tipo": "escolha_multipla",
+      "enunciado": "Com base na Tabela 1, a transformação de um espermatócito I em espermatócitos II corresponde",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "à meiose I, pois o número de cromossomas passa de 46 para 23."
+        },
+        {
+          "letra": "B",
+          "texto": "à meiose II, pois o número de cromatídeos passa de 92 para 46."
+        },
+        {
+          "letra": "C",
+          "texto": "a uma mitose, pois as células resultantes se mantêm diploides."
+        },
+        {
+          "letra": "D",
+          "texto": "à espermiogénese, pois as células resultantes se diferenciam."
+        }
+      ],
+      "resposta_correta": "A",
+      "cotacao": 12
+    },
+    {
+      "id": "p5",
+      "grupo": 2,
+      "tipo": "correspondencia",
+      "enunciado": "Associa cada célula da Coluna I à respetiva descrição da Coluna II.",
+      "coluna_esquerda": [
+        {
+          "letra": "a",
+          "texto": "Espermatogónia"
+        },
+        {
+          "letra": "b",
+          "texto": "Espermatócito I"
+        },
+        {
+          "letra": "c",
+          "texto": "Espermátide"
+        },
+        {
+          "letra": "d",
+          "texto": "Espermatozoide"
+        }
+      ],
+      "coluna_direita": [
+        {
+          "numero": "1",
+          "texto": "Célula 2n que se divide por mitose"
+        },
+        {
+          "numero": "2",
+          "texto": "Célula n com 23 cromatídeos, que se diferencia sem se dividir"
+        },
+        {
+          "numero": "3",
+          "texto": "Célula 2n com 92 cromatídeos, que inicia a meiose I"
+        },
+        {
+          "numero": "4",
+          "texto": "Célula com acrossoma, peça intermédia com mitocôndrias e cauda"
+        },
+        {
+          "numero": "5",
+          "texto": "Célula n com 46 cromatídeos"
+        }
+      ],
+      "resposta_correta": {
+        "a": "1",
+        "b": "3",
+        "c": "2",
+        "d": "4"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p6",
+      "grupo": 2,
+      "tipo": "resposta_curta",
+      "enunciado": "Calcula o número de espermatozoides que se formam a partir de 25 espermatócitos I.",
+      "resposta_correta": "100",
+      "tolerancia_numerica": 0,
+      "cotacao": 14
+    },
+    {
+      "id": "p7",
+      "grupo": 2,
+      "tipo": "completar_texto",
+      "enunciado": "Seleciona a opção que completa corretamente cada espaço do texto.",
+      "texto_com_espacos": "As células de (1), situadas no interior dos túbulos seminíferos, sustentam e nutrem as células germinativas e são estimuladas pela (2). As células de (3), situadas entre os túbulos, produzem (4).",
+      "espacos": [
+        {
+          "id": "1",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "Sertoli"
+            },
+            {
+              "letra": "B",
+              "texto": "Leydig"
+            },
+            {
+              "letra": "C",
+              "texto": "Graaf"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "LH"
+            },
+            {
+              "letra": "B",
+              "texto": "FSH"
+            },
+            {
+              "letra": "C",
+              "texto": "GnRH"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "Leydig"
+            },
+            {
+              "letra": "B",
+              "texto": "Sertoli"
+            },
+            {
+              "letra": "C",
+              "texto": "Graaf"
+            }
+          ]
+        },
+        {
+          "id": "4",
+          "opcoes": [
+            {
+              "letra": "A",
+              "texto": "progesterona"
+            },
+            {
+              "letra": "B",
+              "texto": "FSH"
+            },
+            {
+              "letra": "C",
+              "texto": "testosterona"
+            }
+          ]
+        }
+      ],
+      "resposta_correta": {
+        "1": "A",
+        "2": "B",
+        "3": "A",
+        "4": "C"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p8",
+      "grupo": 3,
+      "tipo": "ordenacao",
+      "enunciado": "Ordena, de A a E, as etapas seguintes, de acordo com a sequência em que ocorrem na oogénese.",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "O ovócito I inicia a meiose I e fica parado em prófase I."
+        },
+        {
+          "letra": "B",
+          "texto": "As ovogónias multiplicam-se por mitose."
+        },
+        {
+          "letra": "C",
+          "texto": "O ovócito II é libertado do ovário, parado em metáfase II."
+        },
+        {
+          "letra": "D",
+          "texto": "O ovócito I conclui a meiose I, formando o ovócito II e o 1.º glóbulo polar."
+        },
+        {
+          "letra": "E",
+          "texto": "O ovócito II conclui a meiose II, formando o óvulo e o 2.º glóbulo polar."
+        }
+      ],
+      "resposta_correta": [
+        "B",
+        "A",
+        "D",
+        "C",
+        "E"
+      ],
+      "cotacao": 18
+    },
+    {
+      "id": "p9",
+      "grupo": 3,
+      "tipo": "escolha_multipla",
+      "enunciado": "Na ovulação, a célula libertada do ovário é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "um ovócito I, parado em prófase I."
+        },
+        {
+          "letra": "B",
+          "texto": "um óvulo que já concluiu a meiose II."
+        },
+        {
+          "letra": "C",
+          "texto": "um ovócito II, parado em metáfase II."
+        },
+        {
+          "letra": "D",
+          "texto": "o 1.º glóbulo polar."
+        }
+      ],
+      "resposta_correta": "C",
+      "cotacao": 12
+    },
+    {
+      "id": "p10",
+      "grupo": 3,
+      "tipo": "resposta_curta",
+      "enunciado": "Calcula a percentagem de ovócitos existentes na puberdade que são libertados ao longo da vida. Apresenta o resultado em percentagem.",
+      "resposta_correta": "0,1%",
+      "tolerancia_numerica": 0.01,
+      "cotacao": 16
+    },
+    {
+      "id": "p11",
+      "grupo": 4,
+      "tipo": "verdadeiro_falso",
+      "enunciado": "Classifica como Verdadeira (V) ou Falsa (F) cada uma das afirmações seguintes.",
+      "itens": [
+        {
+          "letra": "a",
+          "texto": "De um espermatócito I formam-se quatro gâmetas funcionais, e de um ovócito I forma-se um único óvulo funcional."
+        },
+        {
+          "letra": "b",
+          "texto": "A espermatogénese e a oogénese começam ambas na puberdade."
+        },
+        {
+          "letra": "c",
+          "texto": "Na conclusão da meiose I da oogénese, a citocinese é desigual."
+        },
+        {
+          "letra": "d",
+          "texto": "Os glóbulos polares são gâmetas funcionais, capazes de ser fecundados."
+        }
+      ],
+      "resposta_correta": {
+        "a": "V",
+        "b": "F",
+        "c": "V",
+        "d": "F"
+      },
+      "cotacao": 16
+    },
+    {
+      "id": "p12",
+      "grupo": 4,
+      "tipo": "escolha_multipla",
+      "enunciado": "Sem considerar o crossing-over, o número de gâmetas geneticamente diferentes que uma pessoa pode produzir, só pela distribuição ao acaso dos cromossomas homólogos, é",
+      "opcoes": [
+        {
+          "letra": "A",
+          "texto": "23²"
+        },
+        {
+          "letra": "B",
+          "texto": "2²³"
+        },
+        {
+          "letra": "C",
+          "texto": "46"
+        },
+        {
+          "letra": "D",
+          "texto": "2 × 23"
+        }
+      ],
+      "resposta_correta": "B",
+      "cotacao": 12
+    },
+    {
+      "id": "p13",
+      "grupo": 4,
+      "tipo": "resposta_longa",
+      "enunciado": "Um aluno afirma: \"Como o homem produz milhões de espermatozoides e a mulher liberta apenas um ovócito por ciclo, a meiose na mulher origina menos variabilidade genética do que no homem.\" Comenta criticamente esta afirmação.",
+      "criterios_correcao": "A afirmação está errada. O aluno deve explicar que a variabilidade genética de cada gâmeta resulta de dois mecanismos da meiose, o crossing-over (na prófase I) e a distribuição ao acaso dos cromossomas homólogos (na meiose I), e que ambos ocorrem na espermatogénese e na oogénese. Em ambos os sexos, cada pessoa pode produzir 2²³ ≈ 8,4 milhões de gâmetas diferentes (sem contar com o crossing-over). A diferença entre o homem e a mulher está no número de gâmetas produzidos e na citocinese (igual na espermatogénese; desigual na oogénese, com formação de glóbulos polares), e não na variabilidade genética de cada gâmeta. Pode ainda referir que a variabilidade do zigoto depende da combinação dos dois gâmetas na fecundação.",
+      "cotacao": 24
+    }
+  ]
+}

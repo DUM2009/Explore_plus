@@ -161,7 +161,7 @@
           "pontos_seta": true,
           "titulo": "A linha de produção dos espermatozoides",
           "imagem": "espermatogenese_tubulo.png",
-          "imagem_legenda": "Corte de um testículo com um túbulo seminífero ampliado: da periferia para o lúmen, espermatogónia, espermatócito I, espermatócitos II, espermátides e espermatozoides, com as células de Sertoli e as células de Leydig entre os túbulos. Cada fase indica o número de cromossomas.",
+          "imagem_legenda": "Esquema do túbulo seminífero, da periferia para o lúmen: espermatogónia, espermatócito I, espermatócitos II, espermátides e espermatozoides, com cada fase a indicar o número de cromossomas, as células de Sertoli a envolvê-las e as células de Leydig por baixo, entre os túbulos.",
           "imagem_so_no_primeiro": true,
           "texto_principal": "Nos testículos de um homem adulto produzem-se centenas de milhões de espermatozoides por dia. A espermatogénese é uma linha de produção na parede dos túbulos seminíferos: as células avançam da periferia para o centro e vão mudando até se tornarem espermatozoides.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -301,15 +301,15 @@
           "pontos_seta": true,
           "titulo": "Oogénese, parte 1: da vida fetal à puberdade",
           "imagem": "oogenese_linha_tempo.png",
-          "imagem_legenda": "Linha do tempo com a vida fetal, o nascimento, a puberdade e a menopausa: ovogónias a dividirem-se por mitose, ovócitos I rodeados de células (folículos primordiais) parados em prófase I, e o número de ovócitos em cada momento.",
+          "imagem_legenda": "Linha do tempo com a vida fetal, o nascimento, a puberdade e a menopausa: ovogónias a dividirem-se por mitose, ovócitos I parados em prófase I, e o número de ovócitos em cada momento.",
           "imagem_so_no_primeiro": true,
           "texto_principal": "Quando uma menina nasce, os ovários já contêm todos os ovócitos que alguma vez vai ter: cerca de um a dois milhões. Alguns vão esperar décadas, a meio de uma divisão. É isto que distingue a oogénese da espermatogénese: duas pausas longas, e uma divisão em que quase todo o citoplasma fica de um só lado.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
           "pontos": [
             {
               "id": "p1",
-              "label": "Ovogónia (2n = 46)",
-              "explicacao": "Célula germinativa do ovário. Multiplica-se por mitose durante a vida fetal e nenhuma ovogónia nova se forma depois do nascimento.",
+              "label": "Ovogónia ou oogónia (2n = 46)",
+              "explicacao": "Célula germinativa do ovário, também chamada **oogónia**. Multiplica-se por mitose durante a vida fetal e nenhuma ovogónia nova se forma depois do nascimento.",
               "imagem": "gam_ovogonia.png",
               "imagem_legenda": "Ovogónias no ovário de um feto a multiplicarem-se por mitose."
             },
@@ -332,7 +332,7 @@
               "label": "Reserva limitada",
               "explicacao": "Ao nascimento há cerca de 1 a 2 milhões de ovócitos I; na puberdade restam cerca de 400 000, porque muitos degeneram. Ao longo da vida, só cerca de 400 chegam a ser libertados.",
               "imagem": "gam_reserva_ovocitos.png",
-              "imagem_legenda": "Três barras (nascimento, puberdade, ao longo da vida) a mostrar a redução do número de ovócitos: 1 a 2 milhões, 400 000 e cerca de 400.",
+              "imagem_legenda": "Três círculos cada vez mais pequenos (ao nascimento, na puberdade e ao longo da vida) com o número de ovócitos: 1 a 2 milhões, cerca de 400 000 e cerca de 400 libertados.",
               "curiosidade_sem_titulo": true,
               "curiosidade": "**A idade conta**\n\nOs ovócitos são formados antes do nascimento e ficam em pausa durante décadas. Por isso, o ovócito de uma mulher de 38 anos tem 38 anos mais o tempo de gestação. Com a idade, aumenta a probabilidade de erros na separação dos cromossomas durante a meiose, e essa é uma das razões por que a fertilidade diminui. A oogénese termina na menopausa, por volta dos 50 anos, quando praticamente já não restam folículos. Nos homens, como a espermatogénese recomeça continuamente a partir das espermatogónias, não há uma idade em que acabe de repente."
             }
@@ -344,7 +344,7 @@
           "pontos_seta": true,
           "titulo": "Oogénese, parte 2: do ciclo à fecundação",
           "imagem": "oogenese_ciclo_fecundacao.png",
-          "imagem_legenda": "Sequência de cinco passos num ovário e numa trompa: folículo a crescer, folículo de Graaf com a meiose I a libertar um glóbulo polar, ovulação de um ovócito II parado em metáfase II, espermatozoide a entrar na trompa e fecundação com a meiose II e o segundo glóbulo polar.",
+          "imagem_legenda": "Sequência de cinco passos: folículo a crescer, folículo de Graaf com a meiose I a libertar um glóbulo polar, ovulação de um ovócito II parado em metáfase II, espermatozoide a entrar no ovócito II e fecundação, com a meiose II concluída e o segundo glóbulo polar.",
           "imagem_so_no_primeiro": true,
           "texto_principal": "A partir da puberdade, em cada ciclo um ovócito retoma a meiose. Segue os passos desde o folículo até à fecundação.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -477,7 +477,7 @@
           "pontos_seta": true,
           "titulo": "Duas estratégias, um mesmo processo de base",
           "imagem": "gametogenese_comparacao.png",
-          "imagem_legenda": "Duas colunas lado a lado, espermatogénese e oogénese, com seis linhas comparativas (início e fim, produção, gâmetas por célula inicial, citocinese, pausas e gâmeta final) e uma faixa central a indicar o que têm em comum: meiose e n = 23.",
+          "imagem_legenda": "Duas colunas lado a lado, espermatogénese e oogénese, com seis linhas comparativas (início e fim, produção, gâmetas por célula inicial, citocinese, pausas e gâmeta final) e, por baixo, uma faixa com o que têm em comum: meiose e gâmetas n = 23.",
           "imagem_so_no_primeiro": true,
           "texto_principal": "Um homem produz centenas de milhões de gâmetas por dia. Uma mulher liberta cerca de 400 ao longo da vida. O processo de base é o mesmo (meiose), mas as estratégias são opostas: quantidade num caso, qualidade e reservas no outro.",
           "instrucao": "Clica em cada ponto para veres a explicação.",
@@ -546,9 +546,11 @@
             {
               "id": "p4",
               "label": "Gâmetas a partir de uma célula",
-              "explicacao": "De um espermatócito I saem 4 espermatozoides. De um ovócito I sai 1 gâmeta funcional, mais glóbulos polares (até 3) que degeneram.",
+              "explicacao": "De um espermatócito I saem 4 espermatozoides. De um ovócito I sai 1 gâmeta funcional, mais 2 glóbulos polares (o 1.º e o 2.º), que degeneram.",
               "imagem": "gam_gametas_por_celula.png",
-              "imagem_legenda": "Um espermatócito I a originar quatro espermatozoides, e um ovócito I a originar um ovócito grande e glóbulos polares pequenos."
+              "imagem_legenda": "Um espermatócito I a originar quatro espermatozoides, e um ovócito I a originar um óvulo funcional e dois glóbulos polares pequenos.",
+              "curiosidade_sem_titulo": true,
+              "curiosidade": "**E o terceiro glóbulo polar?**\n\nPor vezes o 1.º glóbulo polar também se divide na meiose II. Nesse caso formam-se **3 glóbulos polares** e, com o óvulo, 4 células no total, tal como na espermatogénese. Mas só uma delas, o óvulo, é funcional: os glóbulos polares são minúsculos e acabam por degenerar."
             },
             {
               "id": "p5",

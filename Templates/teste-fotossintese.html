@@ -9,6 +9,16 @@
 
 <title>{{ teste.titulo }} | Explore+</title>
 
+<script>
+    (function () {
+        try {
+            if (localStorage.getItem('explore-theme') === 'dark') {
+                document.documentElement.classList.add('dark-mode');
+                document.documentElement.dataset.theme = 'dark';
+            }
+        } catch (error) {}
+    })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,30 +28,46 @@
 
 <body class="shadcn-profile">
 
+<header class="teste-topbar">
+    <a href="{% url 'Testes' %}" class="teste-topbar-close" aria-label="Voltar aos testes" data-tooltip="Voltar aos testes">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </a>
+    <div class="teste-topbar-titles">
+        <span class="teste-topbar-title">{{ teste.titulo }}</span>
+        <div class="teste-progress-row">
+            <div class="teste-progress-track" role="progressbar" id="testeProgressTrack" aria-label="Perguntas respondidas" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                <div class="teste-progress-fill" id="testeProgressFill" style="width:0%"></div>
+            </div>
+            <span class="teste-progress-percent" id="testeProgressPercent">0%</span>
+        </div>
+    </div>
+    <div class="teste-topbar-actions">
+        {% if teste.formulario %}
+        <button type="button" class="teste-topbar-btn" id="testeFormularioToggleBtn" aria-label="Formulário" data-tooltip="Formulário">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>
+        </button>
+        {% endif %}
+        <button type="button" class="teste-topbar-btn" id="testeTimerToggleBtn" aria-label="Temporizador" data-tooltip="Temporizador">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </button>
+        <button type="button" class="teste-topbar-btn teste-theme-toggle" id="testeThemeToggle" aria-label="Alternar modo claro/escuro" data-tooltip="Modo claro/escuro">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+    </div>
+</header>
+
 <section class="profile-layout profile-layout--no-sidebar">
 
 <div class="profile-main-shell">
 <div class="profile-content">
 
-<div class="missions-topbar">
-    <div class="missions-topbar-logo">
-        <img src="{% static 'images/Logo.png' %}" alt="Logotipo Explore+">
-    </div>
-</div>
+
 
 <section class="missions-page teste-page">
-    <a href="{% url 'Testes' %}" class="teste-voltar">&larr; Voltar aos testes</a>
-
     <div class="teste-container">
         <h1>{{ teste.titulo }}</h1>
         <p class="teste-meta">{{ teste.disciplina }} &middot; Duração sugerida: {{ teste.duracao_sugerida_min }} minutos &middot; Cotação total: {{ teste.cotacao_total }} pontos</p>
-
-        <div class="teste-timer-bar">
-            {% if teste.formulario %}
-            <button type="button" class="teste-timer-toggle-btn" id="testeFormularioToggleBtn">Formulário</button>
-            {% endif %}
-            <button type="button" class="teste-timer-toggle-btn" id="testeTimerToggleBtn">Adicionar temporizador</button>
-        </div>
 
     <form id="testeForm" novalidate>
     {% for grupo in teste.grupos %}
@@ -293,17 +319,43 @@
 </button>
 
 <div class="teste-mascote-panel" id="testeMascotePanel" hidden>
-    <div class="teste-mascote-panel-header">
-        <span>Fala com o Kim</span>
-        <button type="button" class="teste-mascote-panel-close" id="testeMascotePanelClose" aria-label="Fechar">✕</button>
-    </div>
-    <div class="teste-mascote-messages" id="testeMascoteMessages"></div>
-    <form class="teste-mascote-form" id="testeMascoteForm">
-        <input type="text" class="teste-mascote-input" id="testeMascoteInput" placeholder="Escreve a tua pergunta..." autocomplete="off" maxlength="500">
-        <button type="submit" class="teste-mascote-send" aria-label="Enviar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+    <div class="teste-mascote-resize" id="testeMascoteResize" role="separator" aria-orientation="vertical" aria-label="Alterar a largura do chat" tabindex="0" title="Arrasta para alterar a largura"></div>
+    <div class="kim-chat-header">
+        <img class="kim-avatar" src="{% static 'images/Mascote botao flutuante.png' %}" alt="">
+        <div class="kim-chat-header-text">
+            <strong>Kim</strong>
+            <span>Assistente virtual</span>
+        </div>
+        <button type="button" class="kim-icon-btn teste-mascote-panel-close" id="testeMascotePanelClose" aria-label="Fechar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
-    </form>
+    </div>
+
+    <div class="kim-messages teste-mascote-messages" id="testeMascoteMessages">
+        <div class="kim-welcome" id="testeMascoteWelcome">
+            <div class="kim-welcome-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+            </div>
+            <h2 class="kim-welcome-title">Olá, {{ request.user.username }}! &#128075;</h2>
+            <p class="kim-welcome-text">Sou o Kim. Se tiveres dúvidas sobre alguma pergunta do teste, pergunta-me. Não te dou a resposta direta, só te ajudo a perceber.</p>
+            <div class="kim-suggestions">
+                <button type="button" class="kim-suggestion" data-suggestion="Podes explicar-me um conceito de forma simples?"><span aria-hidden="true">&#128161;</span>Explica-me um conceito</button>
+                <button type="button" class="kim-suggestion" data-suggestion="Podes dar-me uma pista para esta pergunta, sem me dares a resposta?"><span aria-hidden="true">&#128269;</span>Dá-me uma pista</button>
+                <button type="button" class="kim-suggestion" data-suggestion="Que fórmulas ou conceitos devo usar nesta pergunta?"><span aria-hidden="true">&#128218;</span>O que devo usar?</button>
+                <button type="button" class="kim-suggestion" data-suggestion="Podes dar-me um exemplo prático parecido?"><span aria-hidden="true">&#129504;</span>Dá-me um exemplo</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="kim-composer">
+        <form class="kim-form" id="testeMascoteForm">
+            <input type="text" class="kim-input" id="testeMascoteInput" placeholder="Pergunta ao Kim..." autocomplete="off" maxlength="500">
+            <button type="submit" class="kim-send" aria-label="Enviar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            </button>
+        </form>
+        <p class="kim-disclaimer">O Kim pode cometer erros. Considera verificar informações importantes.</p>
+    </div>
 </div>
 
 {{ progresso_guardado|json_script:"progresso-guardado-data" }}
@@ -327,30 +379,91 @@ window.exploreMascoteChatUrl = '{% url "mascote-chat" %}';
     const messagesEl = document.getElementById('testeMascoteMessages');
 
     let history = [];
-    let welcomed = false;
 
     function appendBubble(role, text, isTyping) {
+        document.getElementById('testeMascoteWelcome')?.remove();
         const bubble = document.createElement('div');
-        bubble.className = `teste-mascote-bubble teste-mascote-bubble--${role}${isTyping ? ' is-typing' : ''}`;
+        bubble.className = `mascote-chat-bubble mascote-chat-bubble--${role}${isTyping ? ' is-typing' : ''}`;
         bubble.textContent = text;
         messagesEl.appendChild(bubble);
         messagesEl.scrollTop = messagesEl.scrollHeight;
         return bubble;
     }
 
+    messagesEl.querySelectorAll('.kim-suggestion').forEach((button) => {
+        button.addEventListener('click', () => {
+            input.value = button.dataset.suggestion || '';
+            input.focus();
+        });
+    });
+
+    // Com o chat aberto, o teste desloca-se para a esquerda (ver .teste-kim-aberto
+    // no CSS) em vez de ficar tapado, e a largura do painel pode ser alterada.
+    const LARGURA_MIN = 320;
+    const LARGURA_PADRAO = 400;
+    const resizeHandle = document.getElementById('testeMascoteResize');
+
+    function larguraMax() {
+        return Math.min(720, Math.round(window.innerWidth * 0.6));
+    }
+
+    function definirLargura(px, guardar) {
+        const largura = Math.max(LARGURA_MIN, Math.min(larguraMax(), Math.round(px)));
+        document.documentElement.style.setProperty('--teste-kim-w', largura + 'px');
+        if (guardar) {
+            try { localStorage.setItem('teste-kim-largura', String(largura)); } catch (error) {}
+        }
+        return largura;
+    }
+
+    try {
+        const guardada = Number(localStorage.getItem('teste-kim-largura'));
+        definirLargura(guardada >= LARGURA_MIN ? guardada : LARGURA_PADRAO, false);
+    } catch (error) {
+        definirLargura(LARGURA_PADRAO, false);
+    }
+
+    function atualizarEstadoPainel() {
+        document.body.classList.toggle('teste-kim-aberto', !panel.hidden);
+    }
+
     fab?.addEventListener('click', () => {
         const willOpen = panel.hidden;
         panel.hidden = !willOpen;
-        if (willOpen) {
-            if (!welcomed) {
-                welcomed = true;
-                appendBubble('assistant', 'Olá! Sou o Kim 🦎 Se tiveres dúvidas sobre alguma pergunta do teste, pergunta-me — mas não te dou a resposta direta, só ajudo-te a perceber.');
-            }
-            input?.focus();
-        }
+        atualizarEstadoPainel();
+        if (willOpen) input?.focus();
     });
 
-    closeBtn?.addEventListener('click', () => { panel.hidden = true; });
+    resizeHandle?.addEventListener('pointerdown', (event) => {
+        event.preventDefault();
+        resizeHandle.setPointerCapture(event.pointerId);
+        document.body.classList.add('teste-kim-a-redimensionar');
+        const mover = (e) => definirLargura(window.innerWidth - e.clientX, true);
+        const parar = () => {
+            document.body.classList.remove('teste-kim-a-redimensionar');
+            resizeHandle.removeEventListener('pointermove', mover);
+            resizeHandle.removeEventListener('pointerup', parar);
+            resizeHandle.removeEventListener('pointercancel', parar);
+        };
+        resizeHandle.addEventListener('pointermove', mover);
+        resizeHandle.addEventListener('pointerup', parar);
+        resizeHandle.addEventListener('pointercancel', parar);
+    });
+
+    // Teclado: setas esquerda/direita alteram a largura de 20 em 20 px
+    resizeHandle?.addEventListener('keydown', (event) => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        const atual = panel.getBoundingClientRect().width;
+        definirLargura(atual + (event.key === 'ArrowLeft' ? 20 : -20), true);
+    });
+
+    window.addEventListener('resize', () => {
+        const atual = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--teste-kim-w'), 10) || LARGURA_PADRAO;
+        definirLargura(atual, false);
+    });
+
+    closeBtn?.addEventListener('click', () => { panel.hidden = true; atualizarEstadoPainel(); });
 
     form?.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -708,8 +821,40 @@ function renderAutoavaliacaoPendente(dados) {
     });
 }
 
+/** Barra de progresso da barra de cima: perguntas com alguma resposta. */
+function atualizarProgresso() {
+    const respostas = coletarRespostas();
+    const ids = Object.keys(respostas);
+    const respondida = (v) => {
+        if (v === null || v === undefined || v === '') return false;
+        if (Array.isArray(v)) return v.some(Boolean);
+        if (typeof v === 'object') return Object.values(v).some(Boolean);
+        return true;
+    };
+    const feitas = ids.filter((id) => respondida(respostas[id])).length;
+    const percent = ids.length ? Math.round((feitas / ids.length) * 100) : 0;
+    document.getElementById('testeProgressFill').style.width = percent + '%';
+    document.getElementById('testeProgressPercent').textContent = percent + '%';
+    document.getElementById('testeProgressTrack').setAttribute('aria-valuenow', String(percent));
+}
+
+document.getElementById('testeForm').addEventListener('input', atualizarProgresso);
+document.getElementById('testeForm').addEventListener('change', atualizarProgresso);
+
+(function () {
+    const btn = document.getElementById('testeThemeToggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        const escuro = !document.documentElement.classList.contains('dark-mode');
+        document.documentElement.classList.toggle('dark-mode', escuro);
+        document.documentElement.dataset.theme = escuro ? 'dark' : 'light';
+        try { localStorage.setItem('explore-theme', escuro ? 'dark' : 'light'); } catch (error) {}
+    });
+})();
+
 if (window.exploreProgressoGuardado && Object.keys(window.exploreProgressoGuardado).length > 0) {
     restaurarRespostas(window.exploreProgressoGuardado);
+    atualizarProgresso();
     const aviso = document.getElementById('testeGuardadoAviso');
     if (aviso) {
         aviso.hidden = false;
@@ -839,7 +984,7 @@ document.getElementById('testeForm').addEventListener('submit', async (event) =>
         pauseBtn.hidden = false;
         pauseBtn.textContent = 'Pausar';
         stopBtn.hidden = false;
-        toggleBtn.textContent = 'Temporizador';
+        toggleBtn.classList.add('is-ativo');
         modalDisplay.classList.remove('is-esgotado');
         fab.classList.remove('is-esgotado');
         atualizarMostradores();
@@ -866,7 +1011,7 @@ document.getElementById('testeForm').addEventListener('submit', async (event) =>
         startBtn.hidden = false;
         pauseBtn.hidden = true;
         stopBtn.hidden = true;
-        toggleBtn.textContent = 'Adicionar temporizador';
+        toggleBtn.classList.remove('is-ativo');
         modalDisplay.classList.remove('is-esgotado');
         fab.classList.remove('is-esgotado');
         fab.hidden = true;

@@ -2466,6 +2466,25 @@ html.dark-mode .me-ponto-curiosidade-reveal strong {
     color: #4b5a52;
 }
 
+.me-escada-detail-lista {
+    margin: 0;
+    padding-left: 22px;
+    color: #4b5a52;
+}
+
+.me-escada-detail-lista li + li {
+    margin-top: 8px;
+}
+
+.me-escada-detail-text + .me-escada-detail-lista,
+.me-escada-detail-lista + .me-escada-detail-text {
+    margin-top: 12px;
+}
+
+html.dark-mode .me-escada-detail-lista {
+    color: #b9c7bd;
+}
+
 .me-escada-detail-text + .me-escada-detail-text {
     margin-top: 12px;
 }
@@ -3805,6 +3824,34 @@ html.dark-mode .me-gr-titulo { color: #b8b2aa; }
     margin: 0 auto;
 }
 
+/* Várias imagens (screen.imagens) com a imagem por cima do texto: ficam
+   lado a lado, em vez de uma por baixo da outra. */
+.me-escada-detail-empilhado .me-escada-detail-media--stack {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.me-escada-detail-empilhado .me-escada-detail-media--stack .me-escada-detail-image {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: calc(50% - 8px);
+    max-height: 300px;
+    margin: 0;
+    object-fit: contain;
+}
+
+@media (max-width: 640px) {
+    .me-escada-detail-empilhado .me-escada-detail-media--stack {
+        flex-direction: column;
+    }
+
+    .me-escada-detail-empilhado .me-escada-detail-media--stack .me-escada-detail-image {
+        max-width: 100%;
+    }
+}
+
 /* Seta para baixo por baixo da caixa de fórmulas (ver setaDetalheHtml):
    ao clicar abre o texto e a seta roda. */
 .me-seta-detalhe {
@@ -4660,6 +4707,23 @@ html.dark-mode .me-interrogacao-imagem-fonte {
 html.dark-mode button.me-interrogacao-toggle {
     background: rgba(135, 195, 245, 0.18);
     color: #8cc4f2;
+}
+
+/* Botão de aprofundar com o sinal de perigo (aprofundar.icone === 'perigo'):
+   mesmo painel branco, mas o botão em tom âmbar, como o aviso "Erro comum". */
+button.me-interrogacao-toggle.me-interrogacao-toggle--perigo {
+    background: #fdf1d9;
+    color: #b7791f;
+}
+
+button.me-interrogacao-toggle.me-interrogacao-toggle--perigo:hover,
+button.me-interrogacao-toggle.me-interrogacao-toggle--perigo:focus-visible {
+    background: #fae6bd;
+}
+
+html.dark-mode button.me-interrogacao-toggle.me-interrogacao-toggle--perigo {
+    background: rgba(217, 155, 24, 0.2);
+    color: #f0b94a;
 }
 
 html.dark-mode .me-interrogacao-painel {

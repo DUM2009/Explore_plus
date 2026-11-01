@@ -740,20 +740,23 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                             <a href="${window.explorePerfilUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
                             <span class="profile-sidebar-label">Perfil</span>
                             </a>
+                            <a href="${window.exploreKimUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg></span>
+                            <span class="profile-sidebar-label">Kim · assistente IA</span>
+                            </a>
                             <a href="${this.missionsIndexUrl}" class="is-active" aria-current="page"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span>
                             <span class="profile-sidebar-label">Missões</span>
                             </a>
                             <a href="${window.exploreTestesUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M8 13h2"/><path d="M14 13h2"/><path d="M8 17h2"/><path d="M14 17h2"/></svg></span>
                             <span class="profile-sidebar-label">Testes</span>
                             </a>
-                            <a href="${window.exploreExamesUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
-                            <span class="profile-sidebar-label">Exames</span>
-                            </a>
                             <a href="#" class="is-locked" aria-disabled="true" tabindex="-1"><span class="profile-sidebar-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v8l3-3 3 3V2"/><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg></span>
                             <span class="profile-sidebar-label">Biblioteca do Explorador <svg class="sidebar-lock-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
                             </a>
                             <a href="${window.exploreResumosUrl || '#'}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg></span>
                             <span class="profile-sidebar-label">Resumos</span>
+                            </a>
+                            <a href="mailto:${window.exploreSuporteEmail || ''}"><span class="profile-sidebar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg></span>
+                            <span class="profile-sidebar-label">Suporte</span>
                             </a>
                         </nav>
                         <div class="sidebar-theme-card">
@@ -854,27 +857,9 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                         </section>
                     </div>
                 </div>
-                <button type="button" class="mascot-chat-fab" id="moMascotFab" aria-label="Falar com a mascote">
-                    ${this.mascotFabFigureHtml()}
-                </button>
             `;
 
             this.bindMapaChrome();
-
-            // O botão flutuante aqui no mapa abre o chat dentro da secção
-            // ativa (mesmo mecanismo de #meMascotFab em renderSeccao) — não
-            // há painel de chat próprio desta vista.
-            this.root.querySelector('#moMascotFab')?.addEventListener('click', () => {
-                const index = this.state.activeSectionIndex || 0;
-                const section = this.getSection(index);
-                if (!(section.secao_id in this.state.screenIndexBySection)) {
-                    this.state.screenIndexBySection[section.secao_id] = 0;
-                }
-                this.state.view = 'seccao';
-                this.chatOpen = true;
-                this.saveState();
-                this.render();
-            });
 
             this.root.querySelectorAll('[data-section-index]').forEach((btn) => {
                 btn.addEventListener('click', () => {
@@ -2491,7 +2476,14 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const conteudoHtml = `
                 ${ponto.label ? `<h4 class="me-escada-detail-title">${escapeHtml(ponto.label)}</h4>` : ''}
                 <div class="me-escada-detail-text-row">
-                    <div class="me-escada-detail-paragrafos">${String(ponto.explicacao || '').split(/\n\s*\n/).map((paragrafo) => `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(paragrafo))}</p>`).join('')}</div>
+                    <div class="me-escada-detail-paragrafos">${String(ponto.explicacao || '').split(/\n\s*\n/).map((paragrafo) => {
+                        // Parágrafo em que todas as linhas começam por "- ": lista de tópicos.
+                        const linhas = paragrafo.split('\n');
+                        if (linhas.every((linha) => /^\s*-\s+/.test(linha))) {
+                            return `<ul class="me-escada-detail-lista">${linhas.map((linha) => `<li>${boldMarkdown(escapeHtml(linha.replace(/^\s*-\s+/, '')))}</li>`).join('')}</ul>`;
+                        }
+                        return `<p class="me-escada-detail-text">${boldMarkdown(escapeHtml(paragrafo))}</p>`;
+                    }).join('')}</div>
                     ${this.curiosidadeToggleHtml(ponto)}
                     ${this.atencaoToggleHtml(ponto)}
                 </div>
@@ -2561,7 +2553,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     this.state.slideSeta[chave] = index;
                     this.saveState();
                 }
-                explicacaoEl.innerHTML = this.pontoDetailInnerHtml(slides[index]) + this.setaNavHtml(index, slides.length) + extraHtml;
+                explicacaoEl.innerHTML = this.pontoDetailInnerHtml(slides[index]) + this.setaNavHtml(index, slides.length) + (slides[index].aprofundar ? this.aprofundarHtml(slides[index].aprofundar) : extraHtml);
                 this.bindInterrogacao(explicacaoEl);
                 this.bindSetaDetalhe(explicacaoEl);
                 this.bindCuriosidadeToggle(explicacaoEl);
@@ -3011,7 +3003,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             const temSeta = screen.pontos_seta === true;
             const slidesSeta = temSeta
                 ? [
-                    ...(screen.texto_principal ? [{ explicacao: screen.texto_principal, imagem: screen.imagem, imagem_legenda: screen.imagem_legenda, imagens: screen.imagens, caixa_formula: screen.caixa_formula, curiosidade: screen.curiosidade, curiosidade_sem_titulo: screen.curiosidade_sem_titulo, atencao: screen.atencao, detalhe_seta: screen.detalhe_seta, tabelas: screen.tabelas_slide, grafico: screen.grafico, imagem_em_cima: screen.imagem_em_cima }] : []),
+                    ...(screen.texto_principal ? [{ explicacao: screen.texto_principal, aprofundar: screen.aprofundar_so_no_primeiro ? screen.aprofundar : undefined, imagem: screen.imagem, imagem_legenda: screen.imagem_legenda, imagens: screen.imagens, caixa_formula: screen.caixa_formula, curiosidade: screen.curiosidade, curiosidade_sem_titulo: screen.curiosidade_sem_titulo, atencao: screen.atencao, detalhe_seta: screen.detalhe_seta, tabelas: screen.tabelas_slide, grafico: screen.grafico, imagem_em_cima: screen.imagem_em_cima }] : []),
                     ...pontos.map((ponto) => ({ ...ponto, imagem: ponto.imagem || (screen.imagem_so_no_primeiro ? undefined : screen.imagem), imagem_legenda: ponto.imagem ? ponto.imagem_legenda : (screen.imagem_so_no_primeiro ? undefined : screen.imagem_legenda), imagem_em_cima: ponto.imagem_em_cima ?? screen.imagem_em_cima })),
                 ]
                 : null;
@@ -3031,7 +3023,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     </div>
                 `
                 : temSeta
-                ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(slidesSeta[0])}${this.setaNavHtml(0, slidesSeta.length)}${this.aprofundarHtml(screen.aprofundar)}</div>`
+                ? `<div class="me-escada-detail" id="meDiagramaExplicacao">${this.pontoDetailInnerHtml(slidesSeta[0])}${this.setaNavHtml(0, slidesSeta.length)}${this.aprofundarHtml(slidesSeta[0].aprofundar || screen.aprofundar)}</div>`
                 : (useCardDetail && pontos.length === 0)
                     // Sem pontos (só texto_principal + imagem + fórmula), não há
                     // cartão de ponto para mostrar: evita a caixa creme vazia.
@@ -3321,7 +3313,7 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
                     : corpoHtml;
                 return `
                     <div class="me-interrogacao">
-                        <button type="button" class="me-interrogacao-toggle" aria-expanded="false" aria-label="${escapeHtml(aprofundar.rotulo || aprofundar.titulo || 'Queres saber mais?')}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${aprofundar.icone === 'lupa' ? '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>' : '<path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5"/><path d="M12 18.5h.01"/>'}</svg></button>
+                        <button type="button" class="me-interrogacao-toggle${aprofundar.icone === 'perigo' ? ' me-interrogacao-toggle--perigo' : ''}" aria-expanded="false" aria-label="${escapeHtml(aprofundar.rotulo || aprofundar.titulo || 'Queres saber mais?')}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${aprofundar.icone === 'lupa' ? '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>' : (aprofundar.icone === 'perigo' ? '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>' : '<path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 4.5"/><path d="M12 18.5h.01"/>')}</svg></button>
                         <div class="me-interrogacao-painel" hidden>${painelHtml}</div>
                     </div>
                 `;
@@ -4994,12 +4986,12 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
         bindDiagramaChips(diagramScreen) {
             if (diagramScreen.pontos_seta === true) {
                 const slides = [
-                    ...(diagramScreen.texto_principal ? [{ explicacao: diagramScreen.texto_principal, imagem: diagramScreen.imagem, imagem_legenda: diagramScreen.imagem_legenda, imagens: diagramScreen.imagens, caixa_formula: diagramScreen.caixa_formula, curiosidade: diagramScreen.curiosidade, curiosidade_sem_titulo: diagramScreen.curiosidade_sem_titulo, atencao: diagramScreen.atencao, detalhe_seta: diagramScreen.detalhe_seta, tabelas: diagramScreen.tabelas_slide, grafico: diagramScreen.grafico, imagem_em_cima: diagramScreen.imagem_em_cima }] : []),
+                    ...(diagramScreen.texto_principal ? [{ explicacao: diagramScreen.texto_principal, aprofundar: diagramScreen.aprofundar_so_no_primeiro ? diagramScreen.aprofundar : undefined, imagem: diagramScreen.imagem, imagem_legenda: diagramScreen.imagem_legenda, imagens: diagramScreen.imagens, caixa_formula: diagramScreen.caixa_formula, curiosidade: diagramScreen.curiosidade, curiosidade_sem_titulo: diagramScreen.curiosidade_sem_titulo, atencao: diagramScreen.atencao, detalhe_seta: diagramScreen.detalhe_seta, tabelas: diagramScreen.tabelas_slide, grafico: diagramScreen.grafico, imagem_em_cima: diagramScreen.imagem_em_cima }] : []),
                     ...(diagramScreen.pontos || []).map((ponto) => ({ ...ponto, imagem: ponto.imagem || (diagramScreen.imagem_so_no_primeiro ? undefined : diagramScreen.imagem), imagem_legenda: ponto.imagem ? ponto.imagem_legenda : (diagramScreen.imagem_so_no_primeiro ? undefined : diagramScreen.imagem_legenda), imagem_em_cima: ponto.imagem_em_cima ?? diagramScreen.imagem_em_cima })),
                 ];
                 const secaoAtiva = this.getSection(this.state.activeSectionIndex || 0);
                 const chaveSlide = `${secaoAtiva ? secaoAtiva.secao_id : ''}::${diagramScreen.titulo || ''}`;
-                this.bindDiagramaSetaNav(slides, this.aprofundarHtml(diagramScreen.aprofundar), chaveSlide);
+                this.bindDiagramaSetaNav(slides, diagramScreen.aprofundar_so_no_primeiro ? '' : this.aprofundarHtml(diagramScreen.aprofundar), chaveSlide);
                 return;
             }
             const isEscada = diagramScreen.layout === 'escada';
