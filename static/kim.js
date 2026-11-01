@@ -146,22 +146,20 @@
         history.push({ role: 'user', text });
         const typingEl = appendBubble('assistant', '…', true);
         try {
-            const response = await fetch(window.exploreMascoteChatUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': window.exploreCsrfToken },
-                credentials: 'same-origin',
-                body: JSON.stringify({
-                    message: text,
-                    missionTitle: '',
-                    sectionTitle: '',
-                    context: '',
-                    history: historyBefore,
-                    conversaId,
-                }),
+            const { ok, data } = await exploreChatSend(window.exploreMascoteChatUrl, window.exploreCsrfToken, {
+                message: text,
+                missionTitle: '',
+                sectionTitle: '',
+                context: '',
+                history: historyBefore,
+                conversaId,
+            }, (parcial) => {
+                typingEl.classList.remove('is-typing');
+                typingEl.textContent = parcial;
+                messagesEl.scrollTop = messagesEl.scrollHeight;
             });
-            const data = await response.json().catch(() => ({}));
-            typingEl?.remove();
-            if (!response.ok) {
+            if (!ok) {
+                typingEl?.remove();
                 appendBubble('assistant', data.erro || 'Não consegui responder agora. Tenta mais tarde.');
                 if (data.limiteAtingido && sendBtn) {
                     input.disabled = true;
@@ -170,7 +168,8 @@
                 }
                 return;
             }
-            appendBubble('assistant', data.reply || '...');
+            typingEl.classList.remove('is-typing');
+            typingEl.textContent = data.reply || '...';
             history.push({ role: 'assistant', text: data.reply || '' });
             if (data.conversaId) {
                 conversaId = data.conversaId;

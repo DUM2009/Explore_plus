@@ -1084,36 +1084,32 @@ O resultado final não pode ter mais algarismos significativos do que os dados p
             this.chatHistory.push({ role: 'user', text });
 
             const typingEl = this.appendChatBubble('assistant', '…', true);
-            const context = (this.root.querySelector('.screen-card')?.textContent || '').trim().slice(0, 6000);
+            const context = (this.root.querySelector('.screen-card')?.textContent || '').trim().slice(0, 3000);
 
             try {
-                const response = await fetch(this.mascoteChatUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': this.csrfToken
-                    },
-                    credentials: 'same-origin',
-                    body: JSON.stringify({
-                        message: text,
-                        missionTitle: this.missao.titulo,
-                        tipoContexto: 'missao',
-                        sectionTitle: section?.titulo || '',
-                        context,
-                        history: historyBeforeThisMessage
-                    })
+                const { ok, data } = await exploreChatSend(this.mascoteChatUrl, this.csrfToken, {
+                    message: text,
+                    missionTitle: this.missao.titulo,
+                    tipoContexto: 'missao',
+                    sectionTitle: section?.titulo || '',
+                    context,
+                    history: historyBeforeThisMessage
+                }, (parcial) => {
+                    typingEl.classList.remove('is-typing');
+                    typingEl.textContent = parcial;
+                    const messagesEl = typingEl.parentElement;
+                    if (messagesEl) messagesEl.scrollTop = messagesEl.scrollHeight;
                 });
 
-                const data = await response.json().catch(() => ({}));
-                typingEl?.remove();
-
-                if (!response.ok) {
+                if (!ok) {
+                    typingEl?.remove();
                     this.appendChatBubble('assistant', data.erro || 'Não consegui responder agora. Tenta mais tarde.');
                     if (data.limiteAtingido) this.disableChatInput();
                     return;
                 }
 
-                this.appendChatBubble('assistant', data.reply || '...');
+                typingEl.classList.remove('is-typing');
+                typingEl.textContent = data.reply || '...';
                 this.chatHistory.push({ role: 'assistant', text: data.reply || '' });
             } catch (error) {
                 typingEl?.remove();

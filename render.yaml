@@ -4,7 +4,7 @@ services:
     runtime: python
     plan: free
     buildCommand: "pip install -r requirements.txt && python meu_site/manage.py collectstatic --noinput && python meu_site/manage.py migrate && (python meu_site/manage.py createsuperuser --noinput || true)"
-    startCommand: "gunicorn meu_site.wsgi:application --chdir meu_site"
+    startCommand: "gunicorn meu_site.wsgi:application --chdir meu_site --workers 1 --threads 8 --timeout 60"
     envVars:
       - key: SECRET_KEY
         generateValue: true

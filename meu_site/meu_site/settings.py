@@ -279,6 +279,11 @@ LOGGING = {
         },
     },
     'loggers': {
+        'explore.mascote': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
         'django.request': {
             'handlers': ['console'],
             'level': 'ERROR',

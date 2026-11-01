@@ -59,6 +59,7 @@
     window.exploreMascoteImgUrl = window.exploreMascoteImgUrl || '{% static "images/Mascote botao flutuante.png" %}';
     window.exploreUsername = window.exploreUsername || '{{ request.user.username|escapejs }}';
 </script>
+<script src="{% static 'mascote-stream.js' %}" defer></script>
 <script src="{% static 'mascote-fab-global.js' %}" defer></script>
 {% endif %}
 

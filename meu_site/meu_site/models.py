@@ -178,6 +178,16 @@ class PerfilAluno(models.Model):
         self.save(update_fields=['uso_chat_semana'])
         return True
 
+    def devolver_uso_chat(self):
+        """Desfaz uma pergunta contada por verificar_e_incrementar_uso_chat
+        quando a resposta falhou — o aluno não perde uma pergunta por um erro
+        nosso."""
+        uso = self.uso_chat_semana if isinstance(self.uso_chat_semana, dict) else {}
+        if uso.get('perguntas', 0) > 0:
+            uso['perguntas'] -= 1
+            self.uso_chat_semana = uso
+            self.save(update_fields=['uso_chat_semana'])
+
     def calcular_sequencia(self):
         """Devolve (sequencia_atual, recorde) de dias seguidos com pelo
         menos um RegistoAtividadeDiaria — conta para trás a partir de hoje

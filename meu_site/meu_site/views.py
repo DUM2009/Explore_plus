@@ -1,5 +1,7 @@
 import json
+import logging
 import re
+import time
 import unicodedata
 from collections import defaultdict
 from datetime import timedelta
@@ -7,7 +9,7 @@ import anthropic
 import requests
 import stripe
 from django.conf import settings
-from django.http import JsonResponse, Http404, HttpResponse
+from django.http import JsonResponse, Http404, HttpResponse, StreamingHttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db import OperationalError
@@ -1542,6 +1544,12 @@ REGRAS_MASCOTE = (
     "('Boa!', 'Isso mesmo!'), e quando ele erra diz com carinho que é uma boa tentativa e dá "
     "uma pista, sem dar logo a resposta. Podes usar pequenas expressões de aventura, como "
     "'Vamos explorar!', sem exagerar.\n\n"
+    "Regras de ensino. Quando o aluno erra: corrige primeiro o erro de forma clara e curta. "
+    "Depois faz UMA só pergunta, simples, cuja resposta seja o passo seguinte para o aluno "
+    "chegar à conclusão por si; a pergunta deve levar o aluno a responder algo que ele consegue "
+    "dizer, e a resposta não pode estar já escrita na tua mensagem. Não faças perguntas ao "
+    "contrário nem várias perguntas seguidas. Quando o aluno acerta: confirma e liga ao "
+    "conceito mais geral.\n\n"
     "Usa emojis com moderação: no máximo 1 ou 2 por mensagem, só quando acrescentam simpatia "
     "ou ênfase (por exemplo, 🧬 ao falar de ADN, 🎉 quando o aluno acerta). Nunca uses emojis "
     "em explicações científicas longas nem mais do que 2 numa mensagem.\n\n"
@@ -1578,6 +1586,122 @@ def construir_system_prompt_mascote(mission_title, section_title, context_text, 
             "— não inventes factos que o contradigam:\n\n" + context_text
         )
     return "\n\n".join(partes)
+
+
+logger_mascote = logging.getLogger('explore.mascote')
+
+# Limites do pedido à API: menos contexto = resposta mais rápida e mais barata.
+MASCOTE_HISTORICO_MAX_MENSAGENS = 6
+MASCOTE_HISTORICO_MAX_CHARS = 1200
+MASCOTE_CONTEXTO_MAX_CHARS = 3000
+# Segundos sem receber dados da API antes de desistir (no streaming conta
+# entre blocos, não a resposta toda). Tem de ficar abaixo do timeout do gunicorn.
+MASCOTE_TIMEOUT_S = 25
+MASCOTE_MSG_DEMORA = 'O Kim está a pensar demais, tenta outra vez.'
+
+
+def _erro_mascote_reintentavel(exc):
+    """Falhas passageiras (rede, timeout, 5xx/529 sobrecarga, 429) merecem
+    mais uma tentativa; erros de pedido/autenticação não."""
+    if isinstance(exc, (anthropic.APIConnectionError, anthropic.RateLimitError)):
+        return True
+    return isinstance(exc, anthropic.APIStatusError) and exc.status_code >= 500
+
+
+def _resposta_erro_mascote(exc):
+    """(mensagem, estado HTTP) para mostrar ao aluno."""
+    if isinstance(exc, anthropic.RateLimitError):
+        return 'Muitos pedidos de momento. Tenta novamente daqui a pouco.', 429
+    if _erro_mascote_reintentavel(exc):
+        return MASCOTE_MSG_DEMORA, 504
+    return 'O serviço de chat está indisponível de momento.', 502
+
+
+def _system_blocos_mascote(system_prompt):
+    return [{"type": "text", "text": system_prompt, "cache_control": {"type": "ephemeral"}}]
+
+
+def chamar_mascote(system_prompt, messages):
+    """Resposta completa do Kim. Tenta de novo uma vez em falhas passageiras
+    e regista o tempo de cada chamada."""
+    client = anthropic.Anthropic(
+        api_key=settings.ANTHROPIC_API_KEY, timeout=MASCOTE_TIMEOUT_S, max_retries=0,
+    )
+    for tentativa in (1, 2):
+        inicio = time.monotonic()
+        try:
+            response = client.messages.create(
+                model=settings.ANTHROPIC_MODEL,
+                max_tokens=500,
+                system=_system_blocos_mascote(system_prompt),
+                messages=messages,
+            )
+        except anthropic.APIError as exc:
+            logger_mascote.warning(
+                'mascote: erro da API (%s) apos %.2fs, tentativa %d: %s',
+                type(exc).__name__, time.monotonic() - inicio, tentativa, exc,
+            )
+            if tentativa == 1 and _erro_mascote_reintentavel(exc):
+                time.sleep(0.5)
+                continue
+            raise
+        logger_mascote.info(
+            'mascote: ok em %.2fs (modelo=%s, tentativa=%d, entrada=%s, saida=%s tokens)',
+            time.monotonic() - inicio, settings.ANTHROPIC_MODEL, tentativa,
+            response.usage.input_tokens, response.usage.output_tokens,
+        )
+        return next((b.text for b in response.content if b.type == 'text'), '')
+
+
+def chamar_mascote_stream(system_prompt, messages):
+    """Gerador com os pedaços de texto do Kim à medida que chegam. Só tenta de
+    novo se a falha for antes de ter enviado texto (depois já não dá para
+    recomeçar sem duplicar o que o aluno viu)."""
+    client = anthropic.Anthropic(
+        api_key=settings.ANTHROPIC_API_KEY, timeout=MASCOTE_TIMEOUT_S, max_retries=0,
+    )
+    for tentativa in (1, 2):
+        inicio = time.monotonic()
+        primeiro_texto = None
+        try:
+            with client.messages.stream(
+                model=settings.ANTHROPIC_MODEL,
+                max_tokens=500,
+                system=_system_blocos_mascote(system_prompt),
+                messages=messages,
+            ) as stream:
+                for texto in stream.text_stream:
+                    if primeiro_texto is None:
+                        primeiro_texto = time.monotonic() - inicio
+                    yield texto
+                final = stream.get_final_message()
+        except anthropic.APIError as exc:
+            logger_mascote.warning(
+                'mascote(stream): erro da API (%s) apos %.2fs, tentativa %d, texto_ja_enviado=%s: %s',
+                type(exc).__name__, time.monotonic() - inicio, tentativa, primeiro_texto is not None, exc,
+            )
+            if tentativa == 1 and primeiro_texto is None and _erro_mascote_reintentavel(exc):
+                time.sleep(0.5)
+                continue
+            raise
+        logger_mascote.info(
+            'mascote(stream): ok em %.2fs, primeiro texto em %.2fs (modelo=%s, tentativa=%d, entrada=%s, saida=%s tokens)',
+            time.monotonic() - inicio, primeiro_texto or 0, settings.ANTHROPIC_MODEL, tentativa,
+            final.usage.input_tokens, final.usage.output_tokens,
+        )
+        return
+
+
+def _guardar_conversa_mascote(conversa, user_message, reply):
+    agora = timezone.now().isoformat()
+    mensagens = list(conversa.mensagens or [])
+    mensagens.append({'role': 'user', 'text': user_message, 'criado_em': agora})
+    mensagens.append({'role': 'assistant', 'text': reply, 'criado_em': agora})
+    conversa.mensagens = mensagens
+    if not conversa.titulo:
+        conversa.titulo = user_message[:60]
+    conversa.atualizado_em = timezone.now()
+    conversa.save(update_fields=['mensagens', 'titulo', 'atualizado_em'])
 
 
 @login_required(login_url='login')
@@ -1617,7 +1741,7 @@ def mascote_chat(request):
 
     mission_title = str(dados.get('missionTitle', ''))[:200]
     section_title = str(dados.get('sectionTitle', ''))[:200]
-    context_text = str(dados.get('context', ''))[:6000]
+    context_text = str(dados.get('context', ''))[:MASCOTE_CONTEXTO_MAX_CHARS]
     tipo_contexto = str(dados.get('tipoContexto', ''))[:20]
 
     conversa_id = dados.get('conversaId')
@@ -1630,49 +1754,59 @@ def mascote_chat(request):
     history = dados.get('history')
     messages = []
     if isinstance(history, list):
-        for entry in history[-10:]:
+        for entry in history[-MASCOTE_HISTORICO_MAX_MENSAGENS:]:
             if not isinstance(entry, dict):
                 continue
             role = entry.get('role')
-            text = str(entry.get('text', ''))[:2000]
+            text = str(entry.get('text', ''))[:MASCOTE_HISTORICO_MAX_CHARS]
             if role in ('user', 'assistant') and text:
                 messages.append({'role': role, 'content': text})
+    # A API exige que a conversa comece com uma mensagem do aluno; cortar o
+    # histórico às últimas N pode deixar uma resposta do Kim à cabeça.
+    while messages and messages[0]['role'] != 'user':
+        messages.pop(0)
     messages.append({'role': 'user', 'content': user_message})
 
     system_prompt = construir_system_prompt_mascote(
         mission_title, section_title, context_text, tipo_contexto,
     )
 
+    if dados.get('stream'):
+        def eventos():
+            partes = []
+            try:
+                for pedaco in chamar_mascote_stream(system_prompt, messages):
+                    partes.append(pedaco)
+                    yield json.dumps({'t': 'delta', 'text': pedaco}) + '\n'
+            except anthropic.APIError as exc:
+                perfil.devolver_uso_chat()
+                mensagem, _ = _resposta_erro_mascote(exc)
+                yield json.dumps({'t': 'erro', 'erro': mensagem}) + '\n'
+                return
+            except Exception:
+                logger_mascote.exception('mascote(stream): erro inesperado')
+                perfil.devolver_uso_chat()
+                yield json.dumps({'t': 'erro', 'erro': MASCOTE_MSG_DEMORA}) + '\n'
+                return
+            reply = ''.join(partes)
+            _guardar_conversa_mascote(conversa, user_message, reply)
+            yield json.dumps({
+                't': 'done', 'reply': reply, 'conversaId': conversa.id, 'titulo': conversa.titulo,
+            }) + '\n'
+
+        resposta = StreamingHttpResponse(eventos(), content_type='application/x-ndjson')
+        resposta['Cache-Control'] = 'no-cache'
+        resposta['X-Accel-Buffering'] = 'no'
+        return resposta
+
     try:
-        client = anthropic.Anthropic(api_key=settings.ANTHROPIC_API_KEY)
-        response = client.messages.create(
-            model=settings.ANTHROPIC_MODEL,
-            max_tokens=500,
-            system=[{
-                "type": "text",
-                "text": system_prompt,
-                "cache_control": {"type": "ephemeral"},
-            }],
-            messages=messages,
-        )
-        reply = next((block.text for block in response.content if block.type == 'text'), '')
-    except anthropic.RateLimitError:
-        return JsonResponse({'erro': 'Muitos pedidos de momento. Tenta novamente daqui a pouco.'}, status=429)
-    except anthropic.APIStatusError:
-        return JsonResponse({'erro': 'O serviço de chat está indisponível de momento.'}, status=502)
-    except anthropic.APIConnectionError:
-        return JsonResponse({'erro': 'Não foi possível ligar ao serviço de chat.'}, status=502)
+        reply = chamar_mascote(system_prompt, messages)
+    except anthropic.APIError as exc:
+        perfil.devolver_uso_chat()
+        mensagem, estado = _resposta_erro_mascote(exc)
+        return JsonResponse({'erro': mensagem}, status=estado)
 
-    agora = timezone.now().isoformat()
-    mensagens = list(conversa.mensagens or [])
-    mensagens.append({'role': 'user', 'text': user_message, 'criado_em': agora})
-    mensagens.append({'role': 'assistant', 'text': reply, 'criado_em': agora})
-    conversa.mensagens = mensagens
-    if not conversa.titulo:
-        conversa.titulo = user_message[:60]
-    conversa.atualizado_em = timezone.now()
-    conversa.save(update_fields=['mensagens', 'titulo', 'atualizado_em'])
-
+    _guardar_conversa_mascote(conversa, user_message, reply)
     return JsonResponse({'reply': reply, 'conversaId': conversa.id, 'titulo': conversa.titulo})
 
 
