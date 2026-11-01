@@ -17212,3 +17212,90 @@ html.dark-mode .teste-mascote-panel {
     padding: 8px 0;
     line-height: 1.4;
 }
+
+
+/* ===================== Chat do Kim: balões modernos + avatar do Kim =====================
+   Só estilo: o avatar é um ::before dos balões do Kim (sem mexer no JS dos 3
+   chats), e os "três pontos" de a escrever são um ::after que substitui o "…". */
+.mascote-chat-bubble {
+    border-radius: 18px;
+    padding: 11px 15px;
+    line-height: 1.5;
+}
+
+.mascote-chat-bubble--user {
+    border-bottom-right-radius: 6px;
+    background: linear-gradient(135deg, #2bb673, #1a7f55);
+    box-shadow: 0 6px 18px rgba(31, 138, 91, .28);
+}
+
+.mascote-chat-bubble--assistant {
+    position: relative;
+    margin-left: 40px;
+    max-width: calc(85% - 40px);
+    border-bottom-left-radius: 6px;
+    border-color: transparent;
+    background: #f1f4f2;
+    box-shadow: 0 1px 3px rgba(16, 40, 29, .08);
+}
+
+.mascote-chat-bubble--assistant::before {
+    content: "";
+    position: absolute;
+    left: -40px;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e6efe9 url('/static/images/kim_chat_avatar.jpg') center / cover no-repeat;
+    box-shadow: 0 2px 8px rgba(16, 40, 29, .18);
+}
+
+.kim-messages .mascote-chat-bubble--assistant {
+    max-width: calc(78% - 40px);
+}
+
+.teste-mascote-panel .kim-messages .mascote-chat-bubble--assistant {
+    max-width: calc(85% - 40px);
+}
+
+.mascote-chat-bubble--assistant.is-typing {
+    font-size: 0;
+    font-style: normal;
+    min-width: 54px;
+    min-height: 38px;
+    box-shadow: 0 1px 3px rgba(16, 40, 29, .08);
+}
+
+.mascote-chat-bubble--assistant.is-typing::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 30px;
+    height: 8px;
+    transform: translate(-50%, -50%);
+    background:
+        radial-gradient(circle at 4px 50%, #8fa39a 3.5px, transparent 4px),
+        radial-gradient(circle at 15px 50%, #8fa39a 3.5px, transparent 4px),
+        radial-gradient(circle at 26px 50%, #8fa39a 3.5px, transparent 4px);
+    animation: kim-a-escrever 1.2s ease-in-out infinite;
+}
+
+@keyframes kim-a-escrever {
+    0%, 100% { opacity: .35; }
+    50% { opacity: 1; }
+}
+
+html.dark-mode .mascote-chat-bubble--assistant {
+    background: #232328;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .35);
+}
+
+html.dark-mode .mascote-chat-bubble--assistant::before {
+    background-color: #2d2d33;
+}
+
+html.dark-mode .mascote-chat-bubble--user {
+    box-shadow: 0 6px 18px rgba(31, 138, 91, .35);
+}

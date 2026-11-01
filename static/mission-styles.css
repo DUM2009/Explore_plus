@@ -5598,3 +5598,25 @@ html[data-theme="dark"] .mission-fact-banner {
    of the site's own light/dark toggle. */
 
 
+
+
+/* Chat do Kim nas missões: balões modernos no tema castanho (a forma e o
+   avatar vêm de style.css). */
+.mascote-chat-bubble--user {
+    background: linear-gradient(135deg, #bd8a5a, #a9784a);
+    box-shadow: 0 6px 18px rgba(169, 120, 74, .32);
+}
+
+.mascote-chat-bubble--assistant {
+    background: #f6ecd8;
+    border-color: transparent;
+}
+
+html[data-theme="dark"] .mascote-chat-bubble--user {
+    background: linear-gradient(135deg, #4a8a3c, #3a6b2f);
+}
+
+html[data-theme="dark"] .mascote-chat-bubble--assistant {
+    background: #232328;
+    border-color: transparent;
+}
