@@ -17328,3 +17328,42 @@ body.shadcn-profile .profile-tab--pro .profile-tab-lock {
 body.shadcn-profile .profile-tab--pro.is-locked {
     cursor: pointer;
 }
+
+
+/* Sidebar: "Biblioteca do Explorador" (bloqueada) tem de se ver toda, com o
+   cadeado — em vez de cortar com "…", quebra em duas linhas. */
+.profile-sidebar-nav a.is-locked .profile-sidebar-label,
+.nav-drawer-list a.is-locked .profile-sidebar-label {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    line-height: 1.25;
+    text-wrap: balance;
+}
+
+/* Conquistas (modo escuro): contorno e sombra a verde, como o ícone da
+   medalha do título (--sp-primary), em vez de brancos. */
+html.dark-mode body.shadcn-profile .profile-badge-card {
+    border-color: var(--sp-primary);
+    box-shadow: 4px 4px 0 var(--sp-primary);
+}
+
+html.dark-mode body.shadcn-profile .profile-badge-card.is-locked {
+    border-color: color-mix(in srgb, var(--sp-primary) 40%, transparent);
+    box-shadow: none;
+}
+
+/* "Em breve" no lugar do cadeado, ao lado de "Explorador" (Biblioteca do / Explorador [Em breve]). */
+.sidebar-soon-badge {
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: middle;
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: color-mix(in srgb, currentColor 14%, transparent);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    line-height: 1.5;
+    text-wrap: nowrap;
+}
