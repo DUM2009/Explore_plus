@@ -6302,6 +6302,21 @@ body.nav-drawer-open {
         padding:24px;
     }
 
+    /* The test-taking page (.teste-page) needs the extra width more than
+       the 24px breathing room above gives other pages — on a narrow
+       phone screen every bit of it matters for formulas/options that
+       would otherwise wrap awkwardly. Scoped with :has() so only this
+       page's padding shrinks, not every other page sharing
+       .profile-layout. .teste-container's own inner padding (32px,
+       meant for a wide desktop card) shrinks to match. */
+    .profile-layout:has(.teste-page){
+        padding:10px;
+    }
+
+    .teste-page .teste-container{
+        padding:16px;
+    }
+
     .profile-section-heading{
         flex-direction:column;
         align-items:flex-start;
